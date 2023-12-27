@@ -21,11 +21,13 @@ type CreateConfigRequest struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The description of the common configuration item.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Chinese
 	// *   **en_us**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The value of the common configuration item. The meaning of this parameter varies with the value of the Code parameter.
 	//
 	// *   If you set the Code parameter to **access_failed_cnt**, the Value parameter specifies the maximum number of access attempts allowed when DSC fails to access an unauthorized resource.
@@ -52,8 +54,18 @@ func (s *CreateConfigRequest) SetDescription(v string) *CreateConfigRequest {
 	return s
 }
 
+func (s *CreateConfigRequest) SetFeatureType(v int32) *CreateConfigRequest {
+	s.FeatureType = &v
+	return s
+}
+
 func (s *CreateConfigRequest) SetLang(v string) *CreateConfigRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *CreateConfigRequest) SetSourceIp(v string) *CreateConfigRequest {
+	s.SourceIp = &v
 	return s
 }
 
@@ -151,6 +163,7 @@ type CreateDataLimitRequest struct {
 	// *   **0**: no
 	// *   **1**: yes (default)
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Chinese
@@ -198,6 +211,7 @@ type CreateDataLimitRequest struct {
 	// *   **cn-shenzhen**: China (Shenzhen)
 	// *   **cn-hongkong**: China (Hong Kong)
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The username that is used to access the database.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -237,6 +251,11 @@ func (s *CreateDataLimitRequest) SetEngineType(v string) *CreateDataLimitRequest
 
 func (s *CreateDataLimitRequest) SetEventStatus(v int32) *CreateDataLimitRequest {
 	s.EventStatus = &v
+	return s
+}
+
+func (s *CreateDataLimitRequest) SetFeatureType(v int32) *CreateDataLimitRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -282,6 +301,11 @@ func (s *CreateDataLimitRequest) SetSamplingSize(v int32) *CreateDataLimitReques
 
 func (s *CreateDataLimitRequest) SetServiceRegionId(v string) *CreateDataLimitRequest {
 	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *CreateDataLimitRequest) SetSourceIp(v string) *CreateDataLimitRequest {
+	s.SourceIp = &v
 	return s
 }
 
@@ -386,14 +410,22 @@ type CreateRuleRequest struct {
 	// *   **2**: audit rule
 	// *   **3**: anomalous event detection rule
 	// *   **99**: custom rule
-	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The statistical expression.
 	StatExpress *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
 	// Specifies whether to enable the sensitive data detection rule. Valid values:
 	//
 	// *   **1**: yes
 	// *   **0**: no
-	Status      *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the data asset. Valid values:
+	//
+	// *   **0**: all data assets
+	// *   **1**: structured data asset
+	// *   **2**: unstructured data asset
+	//
+	// > If you set the parameter to 1 or 2, rules that support all data assets and rules that support the queried data asset type are returned.
 	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
 	// The code of the service to which the sensitive data detection rule is applied. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
@@ -465,6 +497,11 @@ func (s *CreateRuleRequest) SetRiskLevelId(v int64) *CreateRuleRequest {
 
 func (s *CreateRuleRequest) SetRuleType(v int32) *CreateRuleRequest {
 	s.RuleType = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetSourceIp(v string) *CreateRuleRequest {
+	s.SourceIp = &v
 	return s
 }
 
@@ -550,6 +587,7 @@ func (s *CreateRuleResponse) SetBody(v *CreateRuleResponseBody) *CreateRuleRespo
 type CreateScanTaskRequest struct {
 	// The unique ID of the data asset, such as an instance, a database, and a bucket. You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the unique ID.
 	DataLimitId *int64 `json:"DataLimitId,omitempty" xml:"DataLimitId,omitempty"`
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The interval between two consecutive custom scan tasks. Unit: days. Valid values: 1 to 2147483648.
 	IntervalDay *int32 `json:"IntervalDay,omitempty" xml:"IntervalDay,omitempty"`
 	// The language of the content within the request and response.
@@ -574,6 +612,7 @@ type CreateScanTaskRequest struct {
 	ScanRange *int32 `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
 	// The data to be scanned in a structured data asset. Prefix match, suffix match, and regular expression match are supported.
 	ScanRangeContent *string `json:"ScanRangeContent,omitempty" xml:"ScanRangeContent,omitempty"`
+	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The name of the scan task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The account that is used to create the scan task.
@@ -590,6 +629,11 @@ func (s CreateScanTaskRequest) GoString() string {
 
 func (s *CreateScanTaskRequest) SetDataLimitId(v int64) *CreateScanTaskRequest {
 	s.DataLimitId = &v
+	return s
+}
+
+func (s *CreateScanTaskRequest) SetFeatureType(v int32) *CreateScanTaskRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -630,6 +674,11 @@ func (s *CreateScanTaskRequest) SetScanRange(v int32) *CreateScanTaskRequest {
 
 func (s *CreateScanTaskRequest) SetScanRangeContent(v string) *CreateScanTaskRequest {
 	s.ScanRangeContent = &v
+	return s
+}
+
+func (s *CreateScanTaskRequest) SetSourceIp(v string) *CreateScanTaskRequest {
+	s.SourceIp = &v
 	return s
 }
 
@@ -698,11 +747,13 @@ func (s *CreateScanTaskResponse) SetBody(v *CreateScanTaskResponseBody) *CreateS
 }
 
 type CreateSlrRoleRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Simplified Chinese
 	// *   **en_us**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s CreateSlrRoleRequest) String() string {
@@ -713,8 +764,18 @@ func (s CreateSlrRoleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSlrRoleRequest) SetFeatureType(v int32) *CreateSlrRoleRequest {
+	s.FeatureType = &v
+	return s
+}
+
 func (s *CreateSlrRoleRequest) SetLang(v string) *CreateSlrRoleRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *CreateSlrRoleRequest) SetSourceIp(v string) *CreateSlrRoleRequest {
+	s.SourceIp = &v
 	return s
 }
 
@@ -776,6 +837,7 @@ func (s *CreateSlrRoleResponse) SetBody(v *CreateSlrRoleResponseBody) *CreateSlr
 }
 
 type DeleteDataLimitRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The ID of the data asset.
 	//
 	// You can call the DescribeDataLimits operation to query the IDs of data assets. The value of the Id response parameter indicates the ID of a data asset.
@@ -784,7 +846,8 @@ type DeleteDataLimitRequest struct {
 	//
 	// *   **zh_cn**: Chinese
 	// *   **en_us**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DeleteDataLimitRequest) String() string {
@@ -795,6 +858,11 @@ func (s DeleteDataLimitRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteDataLimitRequest) SetFeatureType(v int32) *DeleteDataLimitRequest {
+	s.FeatureType = &v
+	return s
+}
+
 func (s *DeleteDataLimitRequest) SetId(v int64) *DeleteDataLimitRequest {
 	s.Id = &v
 	return s
@@ -802,6 +870,11 @@ func (s *DeleteDataLimitRequest) SetId(v int64) *DeleteDataLimitRequest {
 
 func (s *DeleteDataLimitRequest) SetLang(v string) *DeleteDataLimitRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DeleteDataLimitRequest) SetSourceIp(v string) *DeleteDataLimitRequest {
+	s.SourceIp = &v
 	return s
 }
 
@@ -853,10 +926,12 @@ func (s *DeleteDataLimitResponse) SetBody(v *DeleteDataLimitResponseBody) *Delet
 }
 
 type DeleteRuleRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The ID of the sensitive data detection rule.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DeleteRuleRequest) String() string {
@@ -867,6 +942,11 @@ func (s DeleteRuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteRuleRequest) SetFeatureType(v int32) *DeleteRuleRequest {
+	s.FeatureType = &v
+	return s
+}
+
 func (s *DeleteRuleRequest) SetId(v int64) *DeleteRuleRequest {
 	s.Id = &v
 	return s
@@ -874,6 +954,11 @@ func (s *DeleteRuleRequest) SetId(v int64) *DeleteRuleRequest {
 
 func (s *DeleteRuleRequest) SetLang(v string) *DeleteRuleRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DeleteRuleRequest) SetSourceIp(v string) *DeleteRuleRequest {
+	s.SourceIp = &v
 	return s
 }
 
@@ -926,6 +1011,7 @@ func (s *DeleteRuleResponse) SetBody(v *DeleteRuleResponseBody) *DeleteRuleRespo
 
 type DescribeCategoryTemplateListRequest struct {
 	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FeatureType   *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	UsageScenario *int32  `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
@@ -941,6 +1027,11 @@ func (s DescribeCategoryTemplateListRequest) GoString() string {
 
 func (s *DescribeCategoryTemplateListRequest) SetCurrentPage(v int32) *DescribeCategoryTemplateListRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListRequest) SetFeatureType(v int32) *DescribeCategoryTemplateListRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -1109,6 +1200,7 @@ func (s *DescribeCategoryTemplateListResponse) SetBody(v *DescribeCategoryTempla
 type DescribeCategoryTemplateRuleListRequest struct {
 	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Simplified Chinese
@@ -1149,6 +1241,11 @@ func (s DescribeCategoryTemplateRuleListRequest) GoString() string {
 
 func (s *DescribeCategoryTemplateRuleListRequest) SetCurrentPage(v int32) *DescribeCategoryTemplateRuleListRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListRequest) SetFeatureType(v int32) *DescribeCategoryTemplateRuleListRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -2525,6 +2622,7 @@ func (s *DescribeDataAssetsResponse) SetBody(v *DescribeDataAssetsResponseBody) 
 }
 
 type DescribeDataLimitDetailRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The unique ID of the data asset that you want to query.
 	//
 	// > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
@@ -2547,6 +2645,11 @@ func (s DescribeDataLimitDetailRequest) String() string {
 
 func (s DescribeDataLimitDetailRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDataLimitDetailRequest) SetFeatureType(v int32) *DescribeDataLimitDetailRequest {
+	s.FeatureType = &v
+	return s
 }
 
 func (s *DescribeDataLimitDetailRequest) SetId(v int64) *DescribeDataLimitDetailRequest {
@@ -2727,6 +2830,7 @@ func (s *DescribeDataLimitDetailResponse) SetBody(v *DescribeDataLimitDetailResp
 }
 
 type DescribeDataLimitSetRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh_cn**: Simplified Chinese (default)
@@ -2752,6 +2856,11 @@ func (s DescribeDataLimitSetRequest) String() string {
 
 func (s DescribeDataLimitSetRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDataLimitSetRequest) SetFeatureType(v int32) *DescribeDataLimitSetRequest {
+	s.FeatureType = &v
+	return s
 }
 
 func (s *DescribeDataLimitSetRequest) SetLang(v string) *DescribeDataLimitSetRequest {
@@ -3071,7 +3180,8 @@ type DescribeDataLimitsRequest struct {
 	// The end of the time range to query The value is a UNIX timestamp. Unit: milliseconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
-	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EngineType  *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese
@@ -3140,6 +3250,11 @@ func (s *DescribeDataLimitsRequest) SetEndTime(v int64) *DescribeDataLimitsReque
 
 func (s *DescribeDataLimitsRequest) SetEngineType(v string) *DescribeDataLimitsRequest {
 	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeDataLimitsRequest) SetFeatureType(v int32) *DescribeDataLimitsRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -4189,6 +4304,7 @@ func (s *DescribeDataMaskingTasksResponse) SetBody(v *DescribeDataMaskingTasksRe
 
 type DescribeDataObjectColumnDetailRequest struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -4206,6 +4322,11 @@ func (s DescribeDataObjectColumnDetailRequest) GoString() string {
 
 func (s *DescribeDataObjectColumnDetailRequest) SetCurrentPage(v int32) *DescribeDataObjectColumnDetailRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailRequest) SetFeatureType(v int32) *DescribeDataObjectColumnDetailRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -4406,6 +4527,7 @@ func (s *DescribeDataObjectColumnDetailResponse) SetBody(v *DescribeDataObjectCo
 
 type DescribeDataObjectColumnDetailV2Request struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -4423,6 +4545,11 @@ func (s DescribeDataObjectColumnDetailV2Request) GoString() string {
 
 func (s *DescribeDataObjectColumnDetailV2Request) SetCurrentPage(v int32) *DescribeDataObjectColumnDetailV2Request {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2Request) SetFeatureType(v int32) *DescribeDataObjectColumnDetailV2Request {
+	s.FeatureType = &v
 	return s
 }
 
@@ -4624,6 +4751,8 @@ func (s *DescribeDataObjectColumnDetailV2Response) SetBody(v *DescribeDataObject
 type DescribeDataObjectsRequest struct {
 	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DomainId          *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	FeatureType       *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	FileCategoryCode  *int64  `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
 	FileType          *int64  `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -4653,6 +4782,16 @@ func (s *DescribeDataObjectsRequest) SetCurrentPage(v int32) *DescribeDataObject
 
 func (s *DescribeDataObjectsRequest) SetDomainId(v int64) *DescribeDataObjectsRequest {
 	s.DomainId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetFeatureType(v int32) *DescribeDataObjectsRequest {
+	s.FeatureType = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetFileCategoryCode(v int64) *DescribeDataObjectsRequest {
+	s.FileCategoryCode = &v
 	return s
 }
 
@@ -4765,6 +4904,7 @@ type DescribeDataObjectsResponseBodyItems struct {
 	LastScanTime        *int64                                           `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
 	ModelTags           []*DescribeDataObjectsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	Name                *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObjectFileCategory  *string                                          `json:"ObjectFileCategory,omitempty" xml:"ObjectFileCategory,omitempty"`
 	ObjectType          *string                                          `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	Path                *string                                          `json:"Path,omitempty" xml:"Path,omitempty"`
 	ProductCode         *string                                          `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
@@ -4815,6 +4955,11 @@ func (s *DescribeDataObjectsResponseBodyItems) SetModelTags(v []*DescribeDataObj
 
 func (s *DescribeDataObjectsResponseBodyItems) SetName(v string) *DescribeDataObjectsResponseBodyItems {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetObjectFileCategory(v string) *DescribeDataObjectsResponseBodyItems {
+	s.ObjectFileCategory = &v
 	return s
 }
 
@@ -5547,6 +5692,7 @@ func (s *DescribeEventDetailResponse) SetBody(v *DescribeEventDetailResponseBody
 }
 
 type DescribeEventTypesRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese
@@ -5573,6 +5719,11 @@ func (s DescribeEventTypesRequest) String() string {
 
 func (s DescribeEventTypesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEventTypesRequest) SetFeatureType(v int32) *DescribeEventTypesRequest {
+	s.FeatureType = &v
+	return s
 }
 
 func (s *DescribeEventTypesRequest) SetLang(v string) *DescribeEventTypesRequest {
@@ -6171,7 +6322,8 @@ type DescribeInstanceSourcesRequest struct {
 	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
-	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EngineType  *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of the content within the request and response. Valid values:
@@ -6222,6 +6374,11 @@ func (s *DescribeInstanceSourcesRequest) SetCurrentPage(v int32) *DescribeInstan
 
 func (s *DescribeInstanceSourcesRequest) SetEngineType(v string) *DescribeInstanceSourcesRequest {
 	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesRequest) SetFeatureType(v int32) *DescribeInstanceSourcesRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -6693,11 +6850,11 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 type DescribeInstancesResponseBodyItems struct {
-	// The point in time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The name of the department to which the data asset belongs.
 	DepartName *string `json:"DepartName,omitempty" xml:"DepartName,omitempty"`
-	// The unique ID of the data asset.
+	// The unique ID of the data asset in DSC.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The description of the data asset.
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
@@ -6706,16 +6863,17 @@ type DescribeInstancesResponseBodyItems struct {
 	// *   **true**: The data asset is secure.
 	// *   **false**: The data asset is insecure.
 	Labelsec *bool `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
-	// The point in time when the data asset was last scanned. This value is a UNIX timestamp. Unit: milliseconds.
-	LastFinishTime *int64                                         `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
-	ModelTags      []*DescribeInstancesResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	// The time when the data asset was last scanned. The value is a UNIX timestamp. Unit: milliseconds.
+	LastFinishTime *int64 `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
+	// A list of tags.
+	ModelTags []*DescribeInstancesResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	// The name of the data asset.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is deprecated.
 	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
 	// The Alibaba Cloud account to which the data asset belongs.
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
+	// The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets that DSC can scan to detect sensitive data, see [Supported data assets](~~212906~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the service to which the data asset belongs.
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
@@ -6724,12 +6882,12 @@ type DescribeInstancesResponseBodyItems struct {
 	// *   **true**: The data asset is being protected.
 	// *   **false**: The data asset is not protected.
 	Protection *bool `json:"Protection,omitempty" xml:"Protection,omitempty"`
-	// The sensitivity level of the data asset. A higher sensitivity level indicates that the identified data is more sensitive.
+	// The ID of the sensitivity level for the data asset. A higher sensitivity level ID indicates that the identified data is more sensitive.
 	//
-	// *   **1**: No sensitive data is identified.
+	// *   **1**: No sensitive data is detected.
 	// *   **2**: sensitive data at level 1.
 	// *   **3**: sensitive data at level 2.
-	// *   **4**: sensitive data at level 3
+	// *   **4**: sensitive data at level 3.
 	// *   **5**: sensitive data at level 4.
 	// *   **6**: sensitive data at level 5.
 	// *   **7**: sensitive data at level 6.
@@ -6744,10 +6902,10 @@ type DescribeInstancesResponseBodyItems struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// Indicates whether the data asset contains sensitive data. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The total number of sensitive data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the total number of sensitive tables in all databases of the instance.
+	// The number of sensitive data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the number of sensitive tables in all databases of the instance.
 	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
 	// The name of the tenant.
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
@@ -6864,7 +7022,17 @@ func (s *DescribeInstancesResponseBodyItems) SetTotalCount(v int32) *DescribeIns
 }
 
 type DescribeInstancesResponseBodyItemsModelTags struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the tag. Valid values:
+	//
+	// *   **101**: personal sensitive information
+	// *   **102**: personal information
+	// *   **107**: general information
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the tag. Valid values:
+	//
+	// *   Personal sensitive information
+	// *   Personal information
+	// *   General information
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -7327,7 +7495,8 @@ func (s *DescribeOssObjectDetailV2Response) SetBody(v *DescribeOssObjectDetailV2
 
 type DescribeOssObjectsRequest struct {
 	// The page number of the page to return.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage      *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FileCategoryCode *int64 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
 	// The ID of the instance to which the OSS object belongs.
 	//
 	// > You can call the **DescribeInstances** operation to query the instance ID.
@@ -7373,6 +7542,11 @@ func (s DescribeOssObjectsRequest) GoString() string {
 
 func (s *DescribeOssObjectsRequest) SetCurrentPage(v int32) *DescribeOssObjectsRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeOssObjectsRequest) SetFileCategoryCode(v int64) *DescribeOssObjectsRequest {
+	s.FileCategoryCode = &v
 	return s
 }
 
@@ -7478,7 +7652,9 @@ type DescribeOssObjectsResponseBodyItems struct {
 	// The type ID of the OSS object. Valid values include **900001**, **800015**, or **800005**, which indicates the MP4 file, PDF file, or OSS configuration file, respectively.
 	Category *int64 `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The file type of the OSS object.
-	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	CategoryName     *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	FileCategoryCode *int64  `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
+	FileCategoryName *string `json:"FileCategoryName,omitempty" xml:"FileCategoryName,omitempty"`
 	// The file ID of the OSS object.
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The ID of the OSS object.
@@ -7529,6 +7705,16 @@ func (s *DescribeOssObjectsResponseBodyItems) SetCategory(v int64) *DescribeOssO
 
 func (s *DescribeOssObjectsResponseBodyItems) SetCategoryName(v string) *DescribeOssObjectsResponseBodyItems {
 	s.CategoryName = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBodyItems) SetFileCategoryCode(v int64) *DescribeOssObjectsResponseBodyItems {
+	s.FileCategoryCode = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBodyItems) SetFileCategoryName(v string) *DescribeOssObjectsResponseBodyItems {
+	s.FileCategoryName = &v
 	return s
 }
 
@@ -7902,6 +8088,7 @@ func (s *DescribePackagesResponse) SetBody(v *DescribePackagesResponseBody) *Des
 }
 
 type DescribeRiskLevelsRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   zh_cn: Chinese (default)
@@ -7917,6 +8104,11 @@ func (s DescribeRiskLevelsRequest) String() string {
 
 func (s DescribeRiskLevelsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRiskLevelsRequest) SetFeatureType(v int32) *DescribeRiskLevelsRequest {
+	s.FeatureType = &v
+	return s
 }
 
 func (s *DescribeRiskLevelsRequest) SetLang(v string) *DescribeRiskLevelsRequest {
@@ -8065,6 +8257,8 @@ type DescribeRulesRequest struct {
 	// *   **0**: built-in rule
 	// *   **1**: custom rule
 	CustomType *int32 `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
+	// This parameter is deprecated.
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The parent group type of the rule.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Specifies whether to allow earlier versions of request parameters to support keywords that are supported in later versions of request parameters. Valid values:
@@ -8153,6 +8347,11 @@ func (s *DescribeRulesRequest) SetCurrentPage(v int32) *DescribeRulesRequest {
 
 func (s *DescribeRulesRequest) SetCustomType(v int32) *DescribeRulesRequest {
 	s.CustomType = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetFeatureType(v int32) *DescribeRulesRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -8276,6 +8475,8 @@ type DescribeRulesResponseBodyItems struct {
 	// The name of the content type of the sensitive data detection rule.
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The content in the sensitive data detection rule.
+	//
+	// >  A built-in detection rule whose CustomType is 0 does not return the content of the rule.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
 	ContentCategory *string `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
@@ -8323,7 +8524,7 @@ type DescribeRulesResponseBodyItems struct {
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	// The sensitivity level of data that hits the sensitive data detection rule. Valid values:
 	//
-	// *   **N/A**: No sensitive data is detected.
+	// *   **N/A**: indicates that no sensitive data is detected.
 	// *   **S1**: indicates the low sensitivity level.
 	// *   **S2**: indicates the medium sensitivity level.
 	// *   **S3**: indicates the high sensitivity level.
@@ -8335,13 +8536,18 @@ type DescribeRulesResponseBodyItems struct {
 	//
 	// *   **0**: disabled
 	// *   **1**: enabled
-	Status      *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The data asset type that is supported by the sensitive data detection rule. Valid values:
+	//
+	// *   **0**: all data assets
+	// *   **1**: structured data assets
+	// *   **2**: unstructured data assets
 	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
 	// The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The ID of the account that is used to create the sensitive data detection rule.
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The severity level of the alert. Valid values:
+	// The severity level. Valid values:
 	//
 	// *   **1**: low
 	// *   **2**: medium
@@ -8879,8 +9085,9 @@ func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *Describ
 }
 
 type DescribeTemplateAllRulesRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeTemplateAllRulesRequest) String() string {
@@ -8889,6 +9096,11 @@ func (s DescribeTemplateAllRulesRequest) String() string {
 
 func (s DescribeTemplateAllRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTemplateAllRulesRequest) SetFeatureType(v int32) *DescribeTemplateAllRulesRequest {
+	s.FeatureType = &v
+	return s
 }
 
 func (s *DescribeTemplateAllRulesRequest) SetLang(v string) *DescribeTemplateAllRulesRequest {
@@ -8977,6 +9189,7 @@ func (s *DescribeTemplateAllRulesResponse) SetBody(v *DescribeTemplateAllRulesRe
 }
 
 type DescribeUserStatusRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh_cn**: Simplified Chinese (default)
@@ -8990,6 +9203,11 @@ func (s DescribeUserStatusRequest) String() string {
 
 func (s DescribeUserStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeUserStatusRequest) SetFeatureType(v int32) *DescribeUserStatusRequest {
+	s.FeatureType = &v
+	return s
 }
 
 func (s *DescribeUserStatusRequest) SetLang(v string) *DescribeUserStatusRequest {
@@ -9059,8 +9277,9 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	//
 	// *   **1**: yes
 	// *   **0**: no
-	LabStatus    *int32 `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
-	OssTotalSize *int64 `json:"OssTotalSize,omitempty" xml:"OssTotalSize,omitempty"`
+	LabStatus      *int32 `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
+	OssTotalSize   *int64 `json:"OssTotalSize,omitempty" xml:"OssTotalSize,omitempty"`
+	ProtectionDays *int32 `json:"ProtectionDays,omitempty" xml:"ProtectionDays,omitempty"`
 	// Indicates whether DSC is purchased. Valid values:
 	//
 	// *   **true**: yes
@@ -9076,7 +9295,8 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	Trail *bool `json:"Trail,omitempty" xml:"Trail,omitempty"`
+	Trail         *bool `json:"Trail,omitempty" xml:"Trail,omitempty"`
+	UseAgentAudit *bool `json:"UseAgentAudit,omitempty" xml:"UseAgentAudit,omitempty"`
 	// The number of instances that are used.
 	UseInstanceNum *int32 `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
 	// The occupied space of the Object Storage Service (OSS) bucket. Unit: bytes.
@@ -9146,6 +9366,11 @@ func (s *DescribeUserStatusResponseBodyUserStatus) SetOssTotalSize(v int64) *Des
 	return s
 }
 
+func (s *DescribeUserStatusResponseBodyUserStatus) SetProtectionDays(v int32) *DescribeUserStatusResponseBodyUserStatus {
+	s.ProtectionDays = &v
+	return s
+}
+
 func (s *DescribeUserStatusResponseBodyUserStatus) SetPurchased(v bool) *DescribeUserStatusResponseBodyUserStatus {
 	s.Purchased = &v
 	return s
@@ -9168,6 +9393,11 @@ func (s *DescribeUserStatusResponseBodyUserStatus) SetRemainDays(v int32) *Descr
 
 func (s *DescribeUserStatusResponseBodyUserStatus) SetTrail(v bool) *DescribeUserStatusResponseBodyUserStatus {
 	s.Trail = &v
+	return s
+}
+
+func (s *DescribeUserStatusResponseBodyUserStatus) SetUseAgentAudit(v bool) *DescribeUserStatusResponseBodyUserStatus {
+	s.UseAgentAudit = &v
 	return s
 }
 
@@ -9212,7 +9442,8 @@ func (s *DescribeUserStatusResponse) SetBody(v *DescribeUserStatusResponseBody) 
 
 type DisableUserConfigRequest struct {
 	// The code of the configuration item. You can call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code of the configuration item.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh_cn**: Chinese (default)
@@ -9230,6 +9461,11 @@ func (s DisableUserConfigRequest) GoString() string {
 
 func (s *DisableUserConfigRequest) SetCode(v string) *DisableUserConfigRequest {
 	s.Code = &v
+	return s
+}
+
+func (s *DisableUserConfigRequest) SetFeatureType(v int32) *DisableUserConfigRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -9291,7 +9527,8 @@ type ExecDatamaskRequest struct {
 	// *   **dataHeaderList**: the names of the columns in which data needs to be de-identified. Specify the column names in accordance with the order of data that needs to be de-identified.
 	// *   **dataList**: the data that needs to be de-identified.
 	// *   **ruleList**: the IDs of sensitive data detection rules used to detect data that needs to be de-identified. Specify the rule IDs in accordance with the order of data that needs to be de-identified. Each ID identifies a sensitive data detection rule that is used to detect a type of sensitive data. You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Simplified Chinese
@@ -9314,6 +9551,11 @@ func (s ExecDatamaskRequest) GoString() string {
 
 func (s *ExecDatamaskRequest) SetData(v string) *ExecDatamaskRequest {
 	s.Data = &v
+	return s
+}
+
+func (s *ExecDatamaskRequest) SetFeatureType(v int32) *ExecDatamaskRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -9479,7 +9721,8 @@ type ModifyDataLimitRequest struct {
 	//
 	// *   **MySQL**
 	// *   **SQLServer**
-	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EngineType  *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The unique ID of the data asset for which you want to modify configuration items.
 	//
 	// > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
@@ -9559,6 +9802,11 @@ func (s *ModifyDataLimitRequest) SetAutoScan(v int32) *ModifyDataLimitRequest {
 
 func (s *ModifyDataLimitRequest) SetEngineType(v string) *ModifyDataLimitRequest {
 	s.EngineType = &v
+	return s
+}
+
+func (s *ModifyDataLimitRequest) SetFeatureType(v int32) *ModifyDataLimitRequest {
+	s.FeatureType = &v
 	return s
 }
 
@@ -9873,6 +10121,7 @@ func (s *ModifyEventStatusResponse) SetBody(v *ModifyEventStatusResponseBody) *M
 }
 
 type ModifyEventTypeStatusRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the anomalous event subtype. Separate multiple IDs with commas (,).
@@ -9887,6 +10136,11 @@ func (s ModifyEventTypeStatusRequest) String() string {
 
 func (s ModifyEventTypeStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyEventTypeStatusRequest) SetFeatureType(v int32) *ModifyEventTypeStatusRequest {
+	s.FeatureType = &v
+	return s
 }
 
 func (s *ModifyEventTypeStatusRequest) SetLang(v string) *ModifyEventTypeStatusRequest {
@@ -9947,6 +10201,7 @@ func (s *ModifyEventTypeStatusResponse) SetBody(v *ModifyEventTypeStatusResponse
 }
 
 type ModifyReportTaskStatusRequest struct {
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Simplified Chinese
@@ -9967,6 +10222,11 @@ func (s ModifyReportTaskStatusRequest) String() string {
 
 func (s ModifyReportTaskStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyReportTaskStatusRequest) SetFeatureType(v int32) *ModifyReportTaskStatusRequest {
+	s.FeatureType = &v
+	return s
 }
 
 func (s *ModifyReportTaskStatusRequest) SetLang(v string) *ModifyReportTaskStatusRequest {
@@ -10070,7 +10330,12 @@ type ModifyRuleRequest struct {
 	// *   **1**: data detection rule
 	// *   **2**: audit rule
 	// *   **3**: anomalous event detection rule
-	RuleType    *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The data assets supported by the sensitive data detection rule. Valid values:
+	//
+	// *   **0**: all data assets
+	// *   **1**: structured data assets
+	// *   **2**: unstructured data assets
 	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
 	// The risk level of the alert that is triggered by the sensitive data detection rule. Valid values:
 	//
@@ -10446,8 +10711,16 @@ func (client *Client) CreateConfigWithOptions(request *CreateConfigRequest, runt
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Value)) {
@@ -10535,6 +10808,10 @@ func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest
 		query["EventStatus"] = request.EventStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -10569,6 +10846,10 @@ func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceRegionId)) {
 		query["ServiceRegionId"] = request.ServiceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
@@ -10667,6 +10948,10 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 		query["RuleType"] = request.RuleType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StatExpress)) {
 		query["StatExpress"] = request.StatExpress
 	}
@@ -10740,6 +11025,10 @@ func (client *Client) CreateScanTaskWithOptions(request *CreateScanTaskRequest, 
 		query["DataLimitId"] = request.DataLimitId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IntervalDay)) {
 		query["IntervalDay"] = request.IntervalDay
 	}
@@ -10770,6 +11059,10 @@ func (client *Client) CreateScanTaskWithOptions(request *CreateScanTaskRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ScanRangeContent)) {
 		query["ScanRangeContent"] = request.ScanRangeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
@@ -10837,8 +11130,16 @@ func (client *Client) CreateSlrRoleWithOptions(request *CreateSlrRoleRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10898,12 +11199,20 @@ func (client *Client) DeleteDataLimitWithOptions(request *DeleteDataLimitRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10954,12 +11263,20 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11004,6 +11321,10 @@ func (client *Client) DescribeCategoryTemplateListWithOptions(request *DescribeC
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
@@ -11069,6 +11390,10 @@ func (client *Client) DescribeCategoryTemplateRuleListWithOptions(request *Descr
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
@@ -11448,6 +11773,10 @@ func (client *Client) DescribeDataLimitDetailWithOptions(request *DescribeDataLi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
 	}
@@ -11509,6 +11838,10 @@ func (client *Client) DescribeDataLimitSetWithOptions(request *DescribeDataLimit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -11595,6 +11928,10 @@ func (client *Client) DescribeDataLimitsWithOptions(request *DescribeDataLimitsR
 
 	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
 		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
@@ -11851,6 +12188,10 @@ func (client *Client) DescribeDataObjectColumnDetailWithOptions(request *Describ
 		query["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
 	}
@@ -11913,6 +12254,10 @@ func (client *Client) DescribeDataObjectColumnDetailV2WithOptions(request *Descr
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
@@ -11981,6 +12326,14 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 
 	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
 		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileCategoryCode)) {
+		query["FileCategoryCode"] = request.FileCategoryCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FileType)) {
@@ -12163,6 +12516,10 @@ func (client *Client) DescribeEventTypesWithOptions(request *DescribeEventTypesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -12359,6 +12716,10 @@ func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstan
 
 	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
 		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -12655,6 +13016,10 @@ func (client *Client) DescribeOssObjectsWithOptions(request *DescribeOssObjectsR
 		query["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FileCategoryCode)) {
+		query["FileCategoryCode"] = request.FileCategoryCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -12833,6 +13198,10 @@ func (client *Client) DescribeRiskLevelsWithOptions(request *DescribeRiskLevelsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -12903,6 +13272,10 @@ func (client *Client) DescribeRulesWithOptions(request *DescribeRulesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.CustomType)) {
 		query["CustomType"] = request.CustomType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
@@ -13102,6 +13475,10 @@ func (client *Client) DescribeTemplateAllRulesWithOptions(request *DescribeTempl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -13159,6 +13536,10 @@ func (client *Client) DescribeUserStatusWithOptions(request *DescribeUserStatusR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -13224,6 +13605,10 @@ func (client *Client) DisableUserConfigWithOptions(request *DisableUserConfigReq
 		query["Code"] = request.Code
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -13278,6 +13663,10 @@ func (client *Client) ExecDatamaskWithOptions(request *ExecDatamaskRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Data)) {
 		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
@@ -13386,6 +13775,10 @@ func (client *Client) ModifyDataLimitWithOptions(request *ModifyDataLimitRequest
 
 	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
 		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
@@ -13626,6 +14019,10 @@ func (client *Client) ModifyEventTypeStatusWithOptions(request *ModifyEventTypeS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -13683,6 +14080,10 @@ func (client *Client) ModifyReportTaskStatusWithOptions(request *ModifyReportTas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
+		query["FeatureType"] = request.FeatureType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
