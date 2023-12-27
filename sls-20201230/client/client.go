@@ -7662,6 +7662,46 @@ func (s *PutProjectPolicyResponse) SetStatusCode(v int32) *PutProjectPolicyRespo
 	return s
 }
 
+type PutProjectTransferAccelerationRequest struct {
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s PutProjectTransferAccelerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutProjectTransferAccelerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutProjectTransferAccelerationRequest) SetEnabled(v bool) *PutProjectTransferAccelerationRequest {
+	s.Enabled = &v
+	return s
+}
+
+type PutProjectTransferAccelerationResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s PutProjectTransferAccelerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutProjectTransferAccelerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutProjectTransferAccelerationResponse) SetHeaders(v map[string]*string) *PutProjectTransferAccelerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutProjectTransferAccelerationResponse) SetStatusCode(v int32) *PutProjectTransferAccelerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type PutWebtrackingRequest struct {
 	Logs   []map[string]*string `json:"__logs__,omitempty" xml:"__logs__,omitempty" type:"Repeated"`
 	Source *string              `json:"__source__,omitempty" xml:"__source__,omitempty"`
@@ -14324,6 +14364,55 @@ func (client *Client) PutProjectPolicy(project *string, request *PutProjectPolic
 	headers := make(map[string]*string)
 	_result = &PutProjectPolicyResponse{}
 	_body, _err := client.PutProjectPolicyWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutProjectTransferAccelerationWithOptions(project *string, request *PutProjectTransferAccelerationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutProjectTransferAccelerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		body["enabled"] = request.Enabled
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutProjectTransferAcceleration"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/transferacceleration"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &PutProjectTransferAccelerationResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutProjectTransferAcceleration(project *string, request *PutProjectTransferAccelerationRequest) (_result *PutProjectTransferAccelerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutProjectTransferAccelerationResponse{}
+	_body, _err := client.PutProjectTransferAccelerationWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
