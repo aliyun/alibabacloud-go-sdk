@@ -47,6 +47,187 @@ func (s *DemoCategory) SetSubCategories(v []*DemoCategory) *DemoCategory {
 	return s
 }
 
+type ForwardInfo struct {
+	ContainerName   *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	EipAllocationId *string `json:"EipAllocationId,omitempty" xml:"EipAllocationId,omitempty"`
+	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	NatGatewayId    *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	SSHPublicKey    *string `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
+}
+
+func (s ForwardInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ForwardInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ForwardInfo) SetContainerName(v string) *ForwardInfo {
+	s.ContainerName = &v
+	return s
+}
+
+func (s *ForwardInfo) SetEipAllocationId(v string) *ForwardInfo {
+	s.EipAllocationId = &v
+	return s
+}
+
+func (s *ForwardInfo) SetEnable(v bool) *ForwardInfo {
+	s.Enable = &v
+	return s
+}
+
+func (s *ForwardInfo) SetNatGatewayId(v string) *ForwardInfo {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *ForwardInfo) SetPort(v string) *ForwardInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *ForwardInfo) SetSSHPublicKey(v string) *ForwardInfo {
+	s.SSHPublicKey = &v
+	return s
+}
+
+type ForwardInfoResponse struct {
+	ConnectInfo     *ForwardInfoResponseConnectInfo `json:"ConnectInfo,omitempty" xml:"ConnectInfo,omitempty" type:"Struct"`
+	ContainerName   *string                         `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	EipAllocationId *string                         `json:"EipAllocationId,omitempty" xml:"EipAllocationId,omitempty"`
+	Enable          *bool                           `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	NatGatewayId    *string                         `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	Port            *string                         `json:"Port,omitempty" xml:"Port,omitempty"`
+	SSHPublicKey    *string                         `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
+}
+
+func (s ForwardInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ForwardInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ForwardInfoResponse) SetConnectInfo(v *ForwardInfoResponseConnectInfo) *ForwardInfoResponse {
+	s.ConnectInfo = v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetContainerName(v string) *ForwardInfoResponse {
+	s.ContainerName = &v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetEipAllocationId(v string) *ForwardInfoResponse {
+	s.EipAllocationId = &v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetEnable(v bool) *ForwardInfoResponse {
+	s.Enable = &v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetNatGatewayId(v string) *ForwardInfoResponse {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetPort(v string) *ForwardInfoResponse {
+	s.Port = &v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetSSHPublicKey(v string) *ForwardInfoResponse {
+	s.SSHPublicKey = &v
+	return s
+}
+
+type ForwardInfoResponseConnectInfo struct {
+	Internet *ForwardInfoResponseConnectInfoInternet `json:"Internet,omitempty" xml:"Internet,omitempty" type:"Struct"`
+	Intranet *ForwardInfoResponseConnectInfoIntranet `json:"Intranet,omitempty" xml:"Intranet,omitempty" type:"Struct"`
+	Message  *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Phase    *string                                 `json:"Phase,omitempty" xml:"Phase,omitempty"`
+}
+
+func (s ForwardInfoResponseConnectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ForwardInfoResponseConnectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ForwardInfoResponseConnectInfo) SetInternet(v *ForwardInfoResponseConnectInfoInternet) *ForwardInfoResponseConnectInfo {
+	s.Internet = v
+	return s
+}
+
+func (s *ForwardInfoResponseConnectInfo) SetIntranet(v *ForwardInfoResponseConnectInfoIntranet) *ForwardInfoResponseConnectInfo {
+	s.Intranet = v
+	return s
+}
+
+func (s *ForwardInfoResponseConnectInfo) SetMessage(v string) *ForwardInfoResponseConnectInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *ForwardInfoResponseConnectInfo) SetPhase(v string) *ForwardInfoResponseConnectInfo {
+	s.Phase = &v
+	return s
+}
+
+type ForwardInfoResponseConnectInfoInternet struct {
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s ForwardInfoResponseConnectInfoInternet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ForwardInfoResponseConnectInfoInternet) GoString() string {
+	return s.String()
+}
+
+func (s *ForwardInfoResponseConnectInfoInternet) SetEndpoint(v string) *ForwardInfoResponseConnectInfoInternet {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ForwardInfoResponseConnectInfoInternet) SetPort(v string) *ForwardInfoResponseConnectInfoInternet {
+	s.Port = &v
+	return s
+}
+
+type ForwardInfoResponseConnectInfoIntranet struct {
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s ForwardInfoResponseConnectInfoIntranet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ForwardInfoResponseConnectInfoIntranet) GoString() string {
+	return s.String()
+}
+
+func (s *ForwardInfoResponseConnectInfoIntranet) SetEndpoint(v string) *ForwardInfoResponseConnectInfoIntranet {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ForwardInfoResponseConnectInfoIntranet) SetPort(v string) *ForwardInfoResponseConnectInfoIntranet {
+	s.Port = &v
+	return s
+}
+
 type CreateIdleInstanceCullerRequest struct {
 	CpuPercentThreshold  *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
 	GpuPercentThreshold  *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
@@ -150,6 +331,7 @@ type CreateInstanceRequest struct {
 	Accessibility        *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	CloudDisks           []*CreateInstanceRequestCloudDisks      `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
 	Datasets             []*CreateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	Driver               *string                                 `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	EcsSpec              *string                                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	EnvironmentVariables map[string]*string                      `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
 	ImageId              *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
@@ -185,6 +367,11 @@ func (s *CreateInstanceRequest) SetCloudDisks(v []*CreateInstanceRequestCloudDis
 
 func (s *CreateInstanceRequest) SetDatasets(v []*CreateInstanceRequestDatasets) *CreateInstanceRequest {
 	s.Datasets = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetDriver(v string) *CreateInstanceRequest {
+	s.Driver = &v
 	return s
 }
 
@@ -376,11 +563,12 @@ func (s *CreateInstanceRequestRequestedResource) SetSharedMemory(v string) *Crea
 }
 
 type CreateInstanceRequestUserVpc struct {
-	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	DefaultRoute    *string        `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	ExtendedCIDRs   []*string      `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	ForwardInfos    []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	SecurityGroupId *string        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateInstanceRequestUserVpc) String() string {
@@ -398,6 +586,11 @@ func (s *CreateInstanceRequestUserVpc) SetDefaultRoute(v string) *CreateInstance
 
 func (s *CreateInstanceRequestUserVpc) SetExtendedCIDRs(v []*string) *CreateInstanceRequestUserVpc {
 	s.ExtendedCIDRs = v
+	return s
+}
+
+func (s *CreateInstanceRequestUserVpc) SetForwardInfos(v []*ForwardInfo) *CreateInstanceRequestUserVpc {
+	s.ForwardInfos = v
 	return s
 }
 
@@ -592,8 +785,10 @@ func (s *CreateInstanceShutdownTimerResponse) SetBody(v *CreateInstanceShutdownT
 }
 
 type CreateInstanceSnapshotRequest struct {
+	ExcludePaths        []*string                              `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
 	ImageUrl            *string                                `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	Labels              []*CreateInstanceSnapshotRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Overwrite           *bool                                  `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 	SnapshotDescription *string                                `json:"SnapshotDescription,omitempty" xml:"SnapshotDescription,omitempty"`
 	SnapshotName        *string                                `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 }
@@ -606,6 +801,11 @@ func (s CreateInstanceSnapshotRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceSnapshotRequest) SetExcludePaths(v []*string) *CreateInstanceSnapshotRequest {
+	s.ExcludePaths = v
+	return s
+}
+
 func (s *CreateInstanceSnapshotRequest) SetImageUrl(v string) *CreateInstanceSnapshotRequest {
 	s.ImageUrl = &v
 	return s
@@ -613,6 +813,11 @@ func (s *CreateInstanceSnapshotRequest) SetImageUrl(v string) *CreateInstanceSna
 
 func (s *CreateInstanceSnapshotRequest) SetLabels(v []*CreateInstanceSnapshotRequestLabels) *CreateInstanceSnapshotRequest {
 	s.Labels = v
+	return s
+}
+
+func (s *CreateInstanceSnapshotRequest) SetOverwrite(v bool) *CreateInstanceSnapshotRequest {
+	s.Overwrite = &v
 	return s
 }
 
@@ -1136,6 +1341,7 @@ type GetInstanceResponseBody struct {
 	CloudDisks                 []*GetInstanceResponseBodyCloudDisks           `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
 	Code                       *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datasets                   []*GetInstanceResponseBodyDatasets             `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	Driver                     *string                                        `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	EcsSpec                    *string                                        `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	EnvironmentVariables       map[string]*string                             `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
 	GmtCreateTime              *string                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -1211,6 +1417,11 @@ func (s *GetInstanceResponseBody) SetCode(v string) *GetInstanceResponseBody {
 
 func (s *GetInstanceResponseBody) SetDatasets(v []*GetInstanceResponseBodyDatasets) *GetInstanceResponseBody {
 	s.Datasets = v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetDriver(v string) *GetInstanceResponseBody {
+	s.Driver = &v
 	return s
 }
 
@@ -1741,10 +1952,11 @@ func (s *GetInstanceResponseBodyRequestedResource) SetSharedMemory(v string) *Ge
 }
 
 type GetInstanceResponseBodyUserVpc struct {
-	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	DefaultRoute    *string                `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	ExtendedCIDRs   []*string              `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	ForwardInfos    []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	SecurityGroupId *string                `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Vpc Id。
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -1764,6 +1976,11 @@ func (s *GetInstanceResponseBodyUserVpc) SetDefaultRoute(v string) *GetInstanceR
 
 func (s *GetInstanceResponseBodyUserVpc) SetExtendedCIDRs(v []*string) *GetInstanceResponseBodyUserVpc {
 	s.ExtendedCIDRs = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyUserVpc) SetForwardInfos(v []*ForwardInfoResponse) *GetInstanceResponseBodyUserVpc {
+	s.ForwardInfos = v
 	return s
 }
 
@@ -2075,21 +2292,23 @@ func (s *GetInstanceShutdownTimerResponse) SetBody(v *GetInstanceShutdownTimerRe
 }
 
 type GetInstanceSnapshotResponseBody struct {
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HttpStatusCode  *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName    *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success         *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code            *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExcludePaths    []*string                                `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
+	GmtCreateTime   *string                                  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string                                  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	HttpStatusCode  *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	ImageId         *string                                  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUrl        *string                                  `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InstanceId      *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Labels          []*GetInstanceSnapshotResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Message         *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	ReasonCode      *string                                  `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage   *string                                  `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RequestId       *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnapshotId      *string                                  `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotName    *string                                  `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	Status          *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success         *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceSnapshotResponseBody) String() string {
@@ -2102,6 +2321,11 @@ func (s GetInstanceSnapshotResponseBody) GoString() string {
 
 func (s *GetInstanceSnapshotResponseBody) SetCode(v string) *GetInstanceSnapshotResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetInstanceSnapshotResponseBody) SetExcludePaths(v []*string) *GetInstanceSnapshotResponseBody {
+	s.ExcludePaths = v
 	return s
 }
 
@@ -2132,6 +2356,11 @@ func (s *GetInstanceSnapshotResponseBody) SetImageUrl(v string) *GetInstanceSnap
 
 func (s *GetInstanceSnapshotResponseBody) SetInstanceId(v string) *GetInstanceSnapshotResponseBody {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceSnapshotResponseBody) SetLabels(v []*GetInstanceSnapshotResponseBodyLabels) *GetInstanceSnapshotResponseBody {
+	s.Labels = v
 	return s
 }
 
@@ -2172,6 +2401,29 @@ func (s *GetInstanceSnapshotResponseBody) SetStatus(v string) *GetInstanceSnapsh
 
 func (s *GetInstanceSnapshotResponseBody) SetSuccess(v bool) *GetInstanceSnapshotResponseBody {
 	s.Success = &v
+	return s
+}
+
+type GetInstanceSnapshotResponseBodyLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetInstanceSnapshotResponseBodyLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceSnapshotResponseBodyLabels) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceSnapshotResponseBodyLabels) SetKey(v string) *GetInstanceSnapshotResponseBodyLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *GetInstanceSnapshotResponseBodyLabels) SetValue(v string) *GetInstanceSnapshotResponseBodyLabels {
+	s.Value = &v
 	return s
 }
 
@@ -3055,6 +3307,7 @@ func (s *ListInstanceSnapshotResponseBody) SetTotalCount(v int64) *ListInstanceS
 }
 
 type ListInstanceSnapshotResponseBodySnapshots struct {
+	ExcludePaths    []*string                                          `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
 	GmtCreateTime   *string                                            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string                                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	ImageId         *string                                            `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
@@ -3074,6 +3327,11 @@ func (s ListInstanceSnapshotResponseBodySnapshots) String() string {
 
 func (s ListInstanceSnapshotResponseBodySnapshots) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceSnapshotResponseBodySnapshots) SetExcludePaths(v []*string) *ListInstanceSnapshotResponseBodySnapshots {
+	s.ExcludePaths = v
+	return s
 }
 
 func (s *ListInstanceSnapshotResponseBodySnapshots) SetGmtCreateTime(v string) *ListInstanceSnapshotResponseBodySnapshots {
@@ -3418,6 +3676,7 @@ type ListInstancesResponseBodyInstances struct {
 	AccumulatedRunningTimeInMs *int64                                                    `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
 	CloudDisks                 []*ListInstancesResponseBodyInstancesCloudDisks           `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
 	Datasets                   []*ListInstancesResponseBodyInstancesDatasets             `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	Driver                     *string                                                   `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	EcsSpec                    *string                                                   `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	EnvironmentVariables       map[string]*string                                        `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
 	GmtCreateTime              *string                                                   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -3484,6 +3743,11 @@ func (s *ListInstancesResponseBodyInstances) SetCloudDisks(v []*ListInstancesRes
 
 func (s *ListInstancesResponseBodyInstances) SetDatasets(v []*ListInstancesResponseBodyInstancesDatasets) *ListInstancesResponseBodyInstances {
 	s.Datasets = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetDriver(v string) *ListInstancesResponseBodyInstances {
+	s.Driver = &v
 	return s
 }
 
@@ -3982,11 +4246,12 @@ func (s *ListInstancesResponseBodyInstancesRequestedResource) SetSharedMemory(v 
 }
 
 type ListInstancesResponseBodyInstancesUserVpc struct {
-	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	DefaultRoute    *string                `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	ExtendedCIDRs   []*string              `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	ForwardInfos    []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	SecurityGroupId *string                `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesUserVpc) String() string {
@@ -4004,6 +4269,11 @@ func (s *ListInstancesResponseBodyInstancesUserVpc) SetDefaultRoute(v string) *L
 
 func (s *ListInstancesResponseBodyInstancesUserVpc) SetExtendedCIDRs(v []*string) *ListInstancesResponseBodyInstancesUserVpc {
 	s.ExtendedCIDRs = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesUserVpc) SetForwardInfos(v []*ForwardInfoResponse) *ListInstancesResponseBodyInstancesUserVpc {
+	s.ForwardInfos = v
 	return s
 }
 
@@ -4224,11 +4494,14 @@ type UpdateInstanceRequest struct {
 	Accessibility        *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	Datasets             []*UpdateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	DisassociateDatasets *bool                                   `json:"DisassociateDatasets,omitempty" xml:"DisassociateDatasets,omitempty"`
+	DisassociateDriver   *bool                                   `json:"DisassociateDriver,omitempty" xml:"DisassociateDriver,omitempty"`
 	DisassociateVpc      *bool                                   `json:"DisassociateVpc,omitempty" xml:"DisassociateVpc,omitempty"`
+	Driver               *string                                 `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	EcsSpec              *string                                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	ImageId              *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageUrl             *string                                 `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	InstanceName         *string                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Priority             *int64                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RequestedResource    *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
 	UserId               *string                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserVpc              *UpdateInstanceRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
@@ -4258,8 +4531,18 @@ func (s *UpdateInstanceRequest) SetDisassociateDatasets(v bool) *UpdateInstanceR
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetDisassociateDriver(v bool) *UpdateInstanceRequest {
+	s.DisassociateDriver = &v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetDisassociateVpc(v bool) *UpdateInstanceRequest {
 	s.DisassociateVpc = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDriver(v string) *UpdateInstanceRequest {
+	s.Driver = &v
 	return s
 }
 
@@ -4280,6 +4563,11 @@ func (s *UpdateInstanceRequest) SetImageUrl(v string) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetInstanceName(v string) *UpdateInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetPriority(v int64) *UpdateInstanceRequest {
+	s.Priority = &v
 	return s
 }
 
@@ -4368,11 +4656,12 @@ func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *Upda
 }
 
 type UpdateInstanceRequestUserVpc struct {
-	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	DefaultRoute    *string        `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	ExtendedCIDRs   []*string      `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	ForwardInfos    []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	SecurityGroupId *string        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateInstanceRequestUserVpc) String() string {
@@ -4390,6 +4679,11 @@ func (s *UpdateInstanceRequestUserVpc) SetDefaultRoute(v string) *UpdateInstance
 
 func (s *UpdateInstanceRequestUserVpc) SetExtendedCIDRs(v []*string) *UpdateInstanceRequestUserVpc {
 	s.ExtendedCIDRs = v
+	return s
+}
+
+func (s *UpdateInstanceRequestUserVpc) SetForwardInfos(v []*ForwardInfo) *UpdateInstanceRequestUserVpc {
+	s.ForwardInfos = v
 	return s
 }
 
@@ -4603,6 +4897,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["Datasets"] = request.Datasets
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Driver)) {
+		body["Driver"] = request.Driver
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
 		body["EcsSpec"] = request.EcsSpec
 	}
@@ -4747,12 +5045,20 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludePaths)) {
+		body["ExcludePaths"] = request.ExcludePaths
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
 		body["ImageUrl"] = request.ImageUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Overwrite)) {
+		body["Overwrite"] = request.Overwrite
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotDescription)) {
@@ -5707,8 +6013,16 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["DisassociateDatasets"] = request.DisassociateDatasets
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DisassociateDriver)) {
+		body["DisassociateDriver"] = request.DisassociateDriver
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisassociateVpc)) {
 		body["DisassociateVpc"] = request.DisassociateVpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Driver)) {
+		body["Driver"] = request.Driver
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
@@ -5725,6 +6039,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RequestedResource)) {
