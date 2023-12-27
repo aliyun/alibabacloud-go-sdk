@@ -7030,6 +7030,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster Edition.
 	Category            *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CompressStorageMode *string `json:"CompressStorageMode,omitempty" xml:"CompressStorageMode,omitempty"`
+	CompressStorageUsed *int64  `json:"CompressStorageUsed,omitempty" xml:"CompressStorageUsed,omitempty"`
 	// The time when the cluster was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the cluster.
@@ -7211,6 +7212,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetCategory(v string) *Describe
 
 func (s *DescribeDBClusterAttributeResponseBody) SetCompressStorageMode(v string) *DescribeDBClusterAttributeResponseBody {
 	s.CompressStorageMode = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetCompressStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody {
+	s.CompressStorageUsed = &v
 	return s
 }
 
@@ -7510,6 +7516,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// > This parameter is supported only for serverless clusters.
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	SubCluster     *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
 	// The ID of the zone.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
@@ -7604,6 +7611,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetServerWeight(v string
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetServerlessType(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.ServerlessType = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetSubCluster(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.SubCluster = &v
 	return s
 }
 
@@ -8629,7 +8641,8 @@ type DescribeDBClusterMigrationResponseBodyDBClusterEndpointList struct {
 	// *   **Cluster**: the default cluster endpoint
 	// *   **Primary**: the primary endpoint
 	// *   **Custom**: the custom cluster endpoint
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointType  *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	ReadWriteMode *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 }
 
 func (s DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) String() string {
@@ -8652,6 +8665,11 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) SetDBEndpo
 
 func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) SetEndpointType(v string) *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList {
 	s.EndpointType = &v
+	return s
+}
+
+func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) SetReadWriteMode(v string) *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList {
+	s.ReadWriteMode = &v
 	return s
 }
 
@@ -8725,6 +8743,7 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems
 type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
 	// Details about the endpoints.
 	AddressItems []*DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
+	CustinsType  *string                                                              `json:"CustinsType,omitempty" xml:"CustinsType,omitempty"`
 	// The ID of the endpoint.
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The type of the endpoint. Valid values:
@@ -8744,6 +8763,11 @@ func (s DescribeDBClusterMigrationResponseBodyRdsEndpointList) GoString() string
 
 func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointList) SetAddressItems(v []*DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems) *DescribeDBClusterMigrationResponseBodyRdsEndpointList {
 	s.AddressItems = v
+	return s
+}
+
+func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointList) SetCustinsType(v string) *DescribeDBClusterMigrationResponseBodyRdsEndpointList {
+	s.CustinsType = &v
 	return s
 }
 
@@ -10273,6 +10297,8 @@ type DescribeDBClustersRequest struct {
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The database engine version of the cluster.
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// 查询方式，当取值为Simple时，将返回简略版参数
+	DescribeType *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	// Specifies whether the cluster has expired. Valid values:
 	//
 	// *   **true**
@@ -10347,6 +10373,11 @@ func (s *DescribeDBClustersRequest) SetDBType(v string) *DescribeDBClustersReque
 
 func (s *DescribeDBClustersRequest) SetDBVersion(v string) *DescribeDBClustersRequest {
 	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeDBClustersRequest) SetDescribeType(v string) *DescribeDBClustersRequest {
+	s.DescribeType = &v
 	return s
 }
 
@@ -12414,6 +12445,106 @@ func (s *DescribeDBProxyPerformanceResponse) SetStatusCode(v int32) *DescribeDBP
 }
 
 func (s *DescribeDBProxyPerformanceResponse) SetBody(v *DescribeDBProxyPerformanceResponseBody) *DescribeDBProxyPerformanceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDasConfigRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeDasConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDasConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDasConfigRequest) SetDBClusterId(v string) *DescribeDasConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDasConfigRequest) SetOwnerAccount(v string) *DescribeDasConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDasConfigRequest) SetOwnerId(v int64) *DescribeDasConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDasConfigRequest) SetResourceOwnerAccount(v string) *DescribeDasConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDasConfigRequest) SetResourceOwnerId(v int64) *DescribeDasConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeDasConfigResponseBody struct {
+	// Id of the request
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StorageAutoScale  *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
+	StorageUpperBound *int64  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+}
+
+func (s DescribeDasConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDasConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDasConfigResponseBody) SetRequestId(v string) *DescribeDasConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDasConfigResponseBody) SetStorageAutoScale(v string) *DescribeDasConfigResponseBody {
+	s.StorageAutoScale = &v
+	return s
+}
+
+func (s *DescribeDasConfigResponseBody) SetStorageUpperBound(v int64) *DescribeDasConfigResponseBody {
+	s.StorageUpperBound = &v
+	return s
+}
+
+type DescribeDasConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDasConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDasConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDasConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDasConfigResponse) SetHeaders(v map[string]*string) *DescribeDasConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDasConfigResponse) SetStatusCode(v int32) *DescribeDasConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDasConfigResponse) SetBody(v *DescribeDasConfigResponseBody) *DescribeDasConfigResponse {
 	s.Body = v
 	return s
 }
@@ -18196,6 +18327,7 @@ type FailoverDBClusterRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RollBackForDisaster  *bool   `json:"RollBackForDisaster,omitempty" xml:"RollBackForDisaster,omitempty"`
 	// The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](~~98094~~) operation to query node information, such as node IDs.
 	//
 	// > *   If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
@@ -18238,6 +18370,11 @@ func (s *FailoverDBClusterRequest) SetResourceOwnerAccount(v string) *FailoverDB
 
 func (s *FailoverDBClusterRequest) SetResourceOwnerId(v int64) *FailoverDBClusterRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *FailoverDBClusterRequest) SetRollBackForDisaster(v bool) *FailoverDBClusterRequest {
+	s.RollBackForDisaster = &v
 	return s
 }
 
@@ -19340,6 +19477,7 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 }
 
 type ModifyDBClusterRequest struct {
+	CompressStorage      *string `json:"CompressStorage,omitempty" xml:"CompressStorage,omitempty"`
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	DataSyncMode         *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
 	FaultSimulateMode    *string `json:"FaultSimulateMode,omitempty" xml:"FaultSimulateMode,omitempty"`
@@ -19358,6 +19496,11 @@ func (s ModifyDBClusterRequest) String() string {
 
 func (s ModifyDBClusterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBClusterRequest) SetCompressStorage(v string) *ModifyDBClusterRequest {
+	s.CompressStorage = &v
+	return s
 }
 
 func (s *ModifyDBClusterRequest) SetDBClusterId(v string) *ModifyDBClusterRequest {
@@ -20772,39 +20915,38 @@ type ModifyDBClusterPrimaryZoneRequest struct {
 	//
 	// *   false: scheduled task
 	// *   true: immediate task
-	FromTimeService         *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
+	FromTimeService *bool `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
+	// Specifies whether to switch back over to the original primary zone. Valid values: true: Switch over back to the original primary zone. false: Do not switch back over to the original primary zone. If this parameter is set to false, the primary zone of the cluster is changed to the specified destination zone.
 	IsSwitchOverForDisaster *string `json:"IsSwitchOverForDisaster,omitempty" xml:"IsSwitchOverForDisaster,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The latest start time to switch the primary zone within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >
 	//
-	// *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
+	// *   The latest start time must be at least 30 minutes later than the earliest start time.
 	//
-	// *   By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	// *   If you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by `the value of the PlannedEndTime parameter + 30 minutes` by default. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest time to switch the primary zone within the scheduled time period. Specify the parameter in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The earliest start time to switch the primary zone within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >
 	//
-	// *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	// *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
 	//
-	// *   If this parameter is empty, the primary zone is immediately switched.
+	// *   If you left this parameter empty, the primary zone is immediately switched.
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of in the destination primary zone.
+	// The virtual private cloud (VPC) ID of the destination primary zone.
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The ID of vSwitch in the destination primary zone.
 	//
 	// >
 	//
-	// *   This parameter is required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster.
+	// *   For a PolarDB for Oracle or PolarDB for PostgreSQL cluster, this parameter is required.
 	//
-	// *   For a PolarDB for MySQL cluster:
-	//
-	//     *   This parameter is optional if no vSwitches have been created in the destination zone. The default vSwitch is used.
-	//     *   This parameter is required if a vSwitch has been created in the destination zone.
+	// *   For a PolarDB for MySQL cluster: - This parameter is optional if no vSwitches have been created in the destination zone. The default vSwitch is used. - This parameter is required if a vSwitch has been created in the destination zone.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the destination primary zone.
 	//
@@ -24650,7 +24792,6 @@ type TempModifyDBNodeRequest struct {
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// The type of operation performed on the cluster. Valid values:
 	//
-	// *   **Add**: add one or more nodes to the cluster.
 	// *   **Modify**: temporarily upgrade the configuration of the cluster.
 	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -29835,6 +29976,10 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 		query["DBVersion"] = request.DBVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DescribeType)) {
+		query["DescribeType"] = request.DescribeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Expired)) {
 		query["Expired"] = request.Expired
 	}
@@ -30371,6 +30516,66 @@ func (client *Client) DescribeDBProxyPerformance(request *DescribeDBProxyPerform
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBProxyPerformanceResponse{}
 	_body, _err := client.DescribeDBProxyPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDasConfigWithOptions(request *DescribeDasConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDasConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDasConfig"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDasConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDasConfig(request *DescribeDasConfigRequest) (_result *DescribeDasConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDasConfigResponse{}
+	_body, _err := client.DescribeDasConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32438,6 +32643,10 @@ func (client *Client) FailoverDBClusterWithOptions(request *FailoverDBClusterReq
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RollBackForDisaster)) {
+		query["RollBackForDisaster"] = request.RollBackForDisaster
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TargetDBNodeId)) {
 		query["TargetDBNodeId"] = request.TargetDBNodeId
 	}
@@ -33052,6 +33261,10 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CompressStorage)) {
+		query["CompressStorage"] = request.CompressStorage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
 	}
