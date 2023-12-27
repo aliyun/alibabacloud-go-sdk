@@ -1531,7 +1531,8 @@ func (s *VideoModerationResultResponseBodyData) SetLiveId(v string) *VideoModera
 }
 
 type VideoModerationResultResponseBodyDataAudioResult struct {
-	SliceDetails []*VideoModerationResultResponseBodyDataAudioResultSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
+	AudioSummarys []*VideoModerationResultResponseBodyDataAudioResultAudioSummarys `json:"AudioSummarys,omitempty" xml:"AudioSummarys,omitempty" type:"Repeated"`
+	SliceDetails  []*VideoModerationResultResponseBodyDataAudioResultSliceDetails  `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
 }
 
 func (s VideoModerationResultResponseBodyDataAudioResult) String() string {
@@ -1542,8 +1543,36 @@ func (s VideoModerationResultResponseBodyDataAudioResult) GoString() string {
 	return s.String()
 }
 
+func (s *VideoModerationResultResponseBodyDataAudioResult) SetAudioSummarys(v []*VideoModerationResultResponseBodyDataAudioResultAudioSummarys) *VideoModerationResultResponseBodyDataAudioResult {
+	s.AudioSummarys = v
+	return s
+}
+
 func (s *VideoModerationResultResponseBodyDataAudioResult) SetSliceDetails(v []*VideoModerationResultResponseBodyDataAudioResultSliceDetails) *VideoModerationResultResponseBodyDataAudioResult {
 	s.SliceDetails = v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataAudioResultAudioSummarys struct {
+	Label    *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	LabelSum *int32  `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultAudioSummarys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultAudioSummarys) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) SetLabel(v string) *VideoModerationResultResponseBodyDataAudioResultAudioSummarys {
+	s.Label = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) SetLabelSum(v int32) *VideoModerationResultResponseBodyDataAudioResultAudioSummarys {
+	s.LabelSum = &v
 	return s
 }
 
@@ -1625,8 +1654,9 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetUrl(v 
 }
 
 type VideoModerationResultResponseBodyDataFrameResult struct {
-	FrameNum *int32                                                    `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
-	Frames   []*VideoModerationResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	FrameNum      *int32                                                           `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	FrameSummarys []*VideoModerationResultResponseBodyDataFrameResultFrameSummarys `json:"FrameSummarys,omitempty" xml:"FrameSummarys,omitempty" type:"Repeated"`
+	Frames        []*VideoModerationResultResponseBodyDataFrameResultFrames        `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResult) String() string {
@@ -1642,15 +1672,44 @@ func (s *VideoModerationResultResponseBodyDataFrameResult) SetFrameNum(v int32) 
 	return s
 }
 
+func (s *VideoModerationResultResponseBodyDataFrameResult) SetFrameSummarys(v []*VideoModerationResultResponseBodyDataFrameResultFrameSummarys) *VideoModerationResultResponseBodyDataFrameResult {
+	s.FrameSummarys = v
+	return s
+}
+
 func (s *VideoModerationResultResponseBodyDataFrameResult) SetFrames(v []*VideoModerationResultResponseBodyDataFrameResultFrames) *VideoModerationResultResponseBodyDataFrameResult {
 	s.Frames = v
 	return s
 }
 
+type VideoModerationResultResponseBodyDataFrameResultFrameSummarys struct {
+	Label    *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	LabelSum *int32  `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFrameSummarys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFrameSummarys) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFrameSummarys) SetLabel(v string) *VideoModerationResultResponseBodyDataFrameResultFrameSummarys {
+	s.Label = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFrameSummarys) SetLabelSum(v int32) *VideoModerationResultResponseBodyDataFrameResultFrameSummarys {
+	s.LabelSum = &v
+	return s
+}
+
 type VideoModerationResultResponseBodyDataFrameResultFrames struct {
-	Offset  *float32                                                         `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Results []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	TempUrl *string                                                          `json:"TempUrl,omitempty" xml:"TempUrl,omitempty"`
+	Offset    *float32                                                         `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Results   []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	TempUrl   *string                                                          `json:"TempUrl,omitempty" xml:"TempUrl,omitempty"`
+	Timestamp *int64                                                           `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFrames) String() string {
@@ -1673,6 +1732,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetResults(v []
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTempUrl(v string) *VideoModerationResultResponseBodyDataFrameResultFrames {
 	s.TempUrl = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTimestamp(v int64) *VideoModerationResultResponseBodyDataFrameResultFrames {
+	s.Timestamp = &v
 	return s
 }
 
