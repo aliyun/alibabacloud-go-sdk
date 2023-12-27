@@ -1360,20 +1360,21 @@ func (s *LoggingLoggingDetails) SetType(v string) *LoggingLoggingDetails {
 }
 
 type Logstore struct {
-	AppendMeta     *bool        `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	AutoSplit      *bool        `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	CreateTime     *int32       `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	EnableTracking *bool        `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	EncryptConf    *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	HotTtl         *int32       `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	LastModifyTime *int32       `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	LogstoreName   *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	MaxSplitShard  *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	Mode           *string      `json:"mode,omitempty" xml:"mode,omitempty"`
-	ProductType    *string      `json:"productType,omitempty" xml:"productType,omitempty"`
-	ShardCount     *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
-	TelemetryType  *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	Ttl            *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	AppendMeta          *bool        `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
+	AutoSplit           *bool        `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	CreateTime          *int32       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	EnableTracking      *bool        `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
+	EncryptConf         *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
+	HotTtl              *int32       `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	InfrequentAccessTTL *int32       `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
+	LastModifyTime      *int32       `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	LogstoreName        *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	MaxSplitShard       *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	Mode                *string      `json:"mode,omitempty" xml:"mode,omitempty"`
+	ProductType         *string      `json:"productType,omitempty" xml:"productType,omitempty"`
+	ShardCount          *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	TelemetryType       *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
+	Ttl                 *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s Logstore) String() string {
@@ -1411,6 +1412,11 @@ func (s *Logstore) SetEncryptConf(v *EncryptConf) *Logstore {
 
 func (s *Logstore) SetHotTtl(v int32) *Logstore {
 	s.HotTtl = &v
+	return s
+}
+
+func (s *Logstore) SetInfrequentAccessTTL(v int32) *Logstore {
+	s.InfrequentAccessTTL = &v
 	return s
 }
 
@@ -2393,7 +2399,8 @@ type CreateLogStoreRequest struct {
 	// The retention period of data in the hot storage tier of the Logstore. Unit: days. You can specify a value that ranges from 30 to the value of ttl.
 	//
 	// Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](~~308645~~).
-	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
 	// The name of the Logstore. The name must meet the following requirements:
 	//
 	// *   The name must be unique in a project.
@@ -2453,6 +2460,11 @@ func (s *CreateLogStoreRequest) SetEncryptConf(v *EncryptConf) *CreateLogStoreRe
 
 func (s *CreateLogStoreRequest) SetHotTtl(v int32) *CreateLogStoreRequest {
 	s.HotTtl = &v
+	return s
+}
+
+func (s *CreateLogStoreRequest) SetInfrequentAccessTTL(v int32) *CreateLogStoreRequest {
+	s.InfrequentAccessTTL = &v
 	return s
 }
 
@@ -8446,7 +8458,8 @@ type UpdateLogStoreRequest struct {
 	// The data structure of the encryption configuration.
 	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
 	// The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: day. You can specify a value that ranges from 30 to the value of ttl. Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](~~308645~~).
-	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
 	// The name of the Logstore.
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
@@ -8458,10 +8471,12 @@ type UpdateLogStoreRequest struct {
 	// *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
 	// *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// Deprecated
 	// The number of shards.
 	//
 	// > You cannot call the UpdateLogstore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
 	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// Deprecated
 	// The type of the log that you want to query. Valid values:
 	//
 	// *   None: all types of logs.
@@ -8501,6 +8516,11 @@ func (s *UpdateLogStoreRequest) SetEncryptConf(v *EncryptConf) *UpdateLogStoreRe
 
 func (s *UpdateLogStoreRequest) SetHotTtl(v int32) *UpdateLogStoreRequest {
 	s.HotTtl = &v
+	return s
+}
+
+func (s *UpdateLogStoreRequest) SetInfrequentAccessTTL(v int32) *UpdateLogStoreRequest {
+	s.InfrequentAccessTTL = &v
 	return s
 }
 
@@ -10096,6 +10116,10 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.HotTtl)) {
 		body["hot_ttl"] = request.HotTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InfrequentAccessTTL)) {
+		body["infrequentAccessTTL"] = request.InfrequentAccessTTL
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LogstoreName)) {
@@ -15195,6 +15219,10 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 
 	if !tea.BoolValue(util.IsUnset(request.HotTtl)) {
 		body["hot_ttl"] = request.HotTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InfrequentAccessTTL)) {
+		body["infrequentAccessTTL"] = request.InfrequentAccessTTL
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LogstoreName)) {
