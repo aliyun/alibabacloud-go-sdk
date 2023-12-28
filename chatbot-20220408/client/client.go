@@ -299,7 +299,9 @@ func (s *BeginSessionRequest) SetInstanceId(v string) *BeginSessionRequest {
 }
 
 type BeginSessionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AsrMaxEndSilence *int32  `json:"AsrMaxEndSilence,omitempty" xml:"AsrMaxEndSilence,omitempty"`
+	Interruptible    *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 静默超时时间
 	SilenceReplyTimeout *int32  `json:"SilenceReplyTimeout,omitempty" xml:"SilenceReplyTimeout,omitempty"`
 	WelcomeMessage      *string `json:"WelcomeMessage,omitempty" xml:"WelcomeMessage,omitempty"`
@@ -311,6 +313,16 @@ func (s BeginSessionResponseBody) String() string {
 
 func (s BeginSessionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *BeginSessionResponseBody) SetAsrMaxEndSilence(v int32) *BeginSessionResponseBody {
+	s.AsrMaxEndSilence = &v
+	return s
+}
+
+func (s *BeginSessionResponseBody) SetInterruptible(v bool) *BeginSessionResponseBody {
+	s.Interruptible = &v
+	return s
 }
 
 func (s *BeginSessionResponseBody) SetRequestId(v string) *BeginSessionResponseBody {
