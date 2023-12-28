@@ -448,8 +448,10 @@ type CreateInstanceRequest struct {
 	// The unit of the valid duration of the purchased resources.
 	// Valid value for subscription: Month or Year.
 	// Default value: Month for subscription, and Hour for pay-as-you-go.
-	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	ReplicaMode *string `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
+	PeriodUnit      *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PrimaryInstance *string `json:"PrimaryInstance,omitempty" xml:"PrimaryInstance,omitempty"`
+	PrimaryRegion   *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
+	ReplicaMode     *string `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The series of the OceanBase cluster. Valid values:
@@ -527,6 +529,16 @@ func (s *CreateInstanceRequest) SetPeriod(v int64) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetPeriodUnit(v string) *CreateInstanceRequest {
 	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPrimaryInstance(v string) *CreateInstanceRequest {
+	s.PrimaryInstance = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPrimaryRegion(v string) *CreateInstanceRequest {
+	s.PrimaryRegion = &v
 	return s
 }
 
@@ -4388,7 +4400,7 @@ type CreateTenantUserResponseBody struct {
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of database accounts in the tenant.
-	TenantUser []*CreateTenantUserResponseBodyTenantUser `json:"TenantUser,omitempty" xml:"TenantUser,omitempty" type:"Repeated"`
+	TenantUser *CreateTenantUserResponseBodyTenantUser `json:"TenantUser,omitempty" xml:"TenantUser,omitempty" type:"Struct"`
 }
 
 func (s CreateTenantUserResponseBody) String() string {
@@ -4404,20 +4416,16 @@ func (s *CreateTenantUserResponseBody) SetRequestId(v string) *CreateTenantUserR
 	return s
 }
 
-func (s *CreateTenantUserResponseBody) SetTenantUser(v []*CreateTenantUserResponseBodyTenantUser) *CreateTenantUserResponseBody {
+func (s *CreateTenantUserResponseBody) SetTenantUser(v *CreateTenantUserResponseBodyTenantUser) *CreateTenantUserResponseBody {
 	s.TenantUser = v
 	return s
 }
 
 type CreateTenantUserResponseBodyTenantUser struct {
-	// The roles of the accounts.
-	Roles []*CreateTenantUserResponseBodyTenantUserRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The name of the database account.
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The status of the database account. Valid values:  - Locked: The account is locked. - ONLINE: The account is unlocked. The default status of a new account is ONLINE after it is created.
-	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
-	// The type of the database account. Valid values:  - Admin: the super administrator account. - Normal: a general account.
-	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Roles      []*CreateTenantUserResponseBodyTenantUserRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	UserName   *string                                        `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserStatus *string                                        `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+	UserType   *string                                        `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s CreateTenantUserResponseBodyTenantUser) String() string {
@@ -4449,12 +4457,8 @@ func (s *CreateTenantUserResponseBodyTenantUser) SetUserType(v string) *CreateTe
 }
 
 type CreateTenantUserResponseBodyTenantUserRoles struct {
-	// The name of the database.
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The role of the account.  In Oracle mode, a role is a schema-level role. Valid values: - ReadWrite: a role that has the read and write privileges, including CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SYNONYM, CREATE SEQUENCE, CREATE TRIGGER, CREATE TYPE, CREATE SESSION, EXECUTE ANY PROCEDURE, CREATE ANY OUTLINE, ALTER ANY OUTLINE, DROP ANY OUTLINE, CREATE ANY PROCEDURE, ALTER ANY PROCEDURE, DROP ANY PROCEDURE, CREATE ANY SEQUENCE, ALTER ANY SEQUENCE, DROP ANY SEQUENCE, CREATE ANY TYPE, ALTER ANY TYPE, DROP ANY TYPE, SYSKM, CREATE ANY TRIGGER, ALTER ANY TRIGGER, DROP ANY TRIGGER, CREATE PROFILE, ALTER PROFILE, and DROP PROFILE. - ReadOnly: a role that has only the read-only privilege SELECT.
-	// In MySQL mode, a role is a database-level role. Valid values: - ReadWrite: a role that has the read and write privileges, namely ALL PRIVILEGES. - ReadOnly: a role that has only the read-only privilege SELECT. - DDL: a role that has the DDL privileges such as CREATE, DROP, ALTER, SHOW VIEW, and CREATE VIEW. - DML: a role that has the DML privileges such as SELECT, INSERT, UPDATE, DELETE, and SHOW VIEW.
-	// * By default, an Oracle account has the read and write privileges on its own schema, which are not listed here.
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s CreateTenantUserResponseBodyTenantUserRoles) String() string {
@@ -6220,6 +6224,7 @@ func (s *DescribeAvailableSpecResponseBodyData) SetAvailableSpecifications(v []*
 
 type DescribeAvailableSpecResponseBodyDataAvailableSpecifications struct {
 	DiskSizeRange    *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange    `json:"DiskSizeRange,omitempty" xml:"DiskSizeRange,omitempty" type:"Struct"`
+	DiskTypes        []*string                                                                     `json:"DiskTypes,omitempty" xml:"DiskTypes,omitempty" type:"Repeated"`
 	InstanceClass    *string                                                                       `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	LogDiskSizeRange *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange `json:"LogDiskSizeRange,omitempty" xml:"LogDiskSizeRange,omitempty" type:"Struct"`
 	NodeNum          []*int32                                                                      `json:"NodeNum,omitempty" xml:"NodeNum,omitempty" type:"Repeated"`
@@ -6236,6 +6241,11 @@ func (s DescribeAvailableSpecResponseBodyDataAvailableSpecifications) GoString()
 
 func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecifications) SetDiskSizeRange(v *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange) *DescribeAvailableSpecResponseBodyDataAvailableSpecifications {
 	s.DiskSizeRange = v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecifications) SetDiskTypes(v []*string) *DescribeAvailableSpecResponseBodyDataAvailableSpecifications {
+	s.DiskTypes = v
 	return s
 }
 
@@ -7099,10 +7109,11 @@ type DescribeInstanceResponseBodyInstance struct {
 	NodeNum      *string `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	ObRpmVersion *string `json:"ObRpmVersion,omitempty" xml:"ObRpmVersion,omitempty"`
 	// The list of zones.
-	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	ProxyClusterId     *string `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
-	ProxyServiceStatus *string `json:"ProxyServiceStatus,omitempty" xml:"ProxyServiceStatus,omitempty"`
-	ReplicaMode        *string `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
+	PayType            *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ProxyClusterId     *string                                               `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
+	ProxyServiceStatus *string                                               `json:"ProxyServiceStatus,omitempty" xml:"ProxyServiceStatus,omitempty"`
+	ReadOnlyResource   *DescribeInstanceResponseBodyInstanceReadOnlyResource `json:"ReadOnlyResource,omitempty" xml:"ReadOnlyResource,omitempty" type:"Struct"`
+	ReplicaMode        *string                                               `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
 	// The size of used memory in the cluster, in GB.
 	Resource *DescribeInstanceResponseBodyInstanceResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// Indicates whether the OBServer version is the latest.
@@ -7268,6 +7279,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetProxyServiceStatus(v string) *
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyInstance) SetReadOnlyResource(v *DescribeInstanceResponseBodyInstanceReadOnlyResource) *DescribeInstanceResponseBodyInstance {
+	s.ReadOnlyResource = v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstance) SetReplicaMode(v string) *DescribeInstanceResponseBodyInstance {
 	s.ReplicaMode = &v
 	return s
@@ -7353,6 +7369,252 @@ func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetUpperTh
 
 func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetUpperbound(v int64) *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig {
 	s.Upperbound = &v
+	return s
+}
+
+type DescribeInstanceResponseBodyInstanceReadOnlyResource struct {
+	CapacityUnit *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
+	Cpu          *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu          `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	DiskSize     *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize     `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	LogDiskSize  *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
+	Memory       *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	UnitCount    *int64                                                            `json:"UnitCount,omitempty" xml:"UnitCount,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResource) SetCapacityUnit(v *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit) *DescribeInstanceResponseBodyInstanceReadOnlyResource {
+	s.CapacityUnit = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResource) SetCpu(v *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu) *DescribeInstanceResponseBodyInstanceReadOnlyResource {
+	s.Cpu = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResource) SetDiskSize(v *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) *DescribeInstanceResponseBodyInstanceReadOnlyResource {
+	s.DiskSize = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResource) SetLogDiskSize(v *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) *DescribeInstanceResponseBodyInstanceReadOnlyResource {
+	s.LogDiskSize = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResource) SetMemory(v *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory) *DescribeInstanceResponseBodyInstanceReadOnlyResource {
+	s.Memory = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResource) SetUnitCount(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResource {
+	s.UnitCount = &v
+	return s
+}
+
+type DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit struct {
+	MaxCapacityUnit  *int32  `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	MinCapacityUnit  *int32  `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	UsedCapacityUnit *string `json:"UsedCapacityUnit,omitempty" xml:"UsedCapacityUnit,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit) SetMaxCapacityUnit(v int32) *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit {
+	s.MaxCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit) SetMinCapacityUnit(v int32) *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit {
+	s.MinCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit) SetUsedCapacityUnit(v string) *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit {
+	s.UsedCapacityUnit = &v
+	return s
+}
+
+type DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu struct {
+	OriginalTotalCpu *int64 `json:"OriginalTotalCpu,omitempty" xml:"OriginalTotalCpu,omitempty"`
+	TotalCpu         *int64 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
+	UnitCpu          *int64 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
+	UsedCpu          *int64 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu) SetOriginalTotalCpu(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu {
+	s.OriginalTotalCpu = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu) SetTotalCpu(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu {
+	s.TotalCpu = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu) SetUnitCpu(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu {
+	s.UnitCpu = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu) SetUsedCpu(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu {
+	s.UsedCpu = &v
+	return s
+}
+
+type DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize struct {
+	DataUsedSize          *float64  `json:"DataUsedSize,omitempty" xml:"DataUsedSize,omitempty"`
+	MaxDiskSize           *float64  `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
+	MaxDiskUsedObServer   []*string `json:"MaxDiskUsedObServer,omitempty" xml:"MaxDiskUsedObServer,omitempty" type:"Repeated"`
+	MaxDiskUsedPercent    *float64  `json:"MaxDiskUsedPercent,omitempty" xml:"MaxDiskUsedPercent,omitempty"`
+	OriginalTotalDiskSize *int64    `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
+	TotalDiskSize         *int64    `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
+	UnitDiskSize          *int64    `json:"UnitDiskSize,omitempty" xml:"UnitDiskSize,omitempty"`
+	UsedDiskSize          *int64    `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetDataUsedSize(v float64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize {
+	s.DataUsedSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetMaxDiskSize(v float64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize {
+	s.MaxDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetMaxDiskUsedObServer(v []*string) *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize {
+	s.MaxDiskUsedObServer = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetMaxDiskUsedPercent(v float64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize {
+	s.MaxDiskUsedPercent = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetOriginalTotalDiskSize(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize {
+	s.OriginalTotalDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetTotalDiskSize(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize {
+	s.TotalDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetUnitDiskSize(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize {
+	s.UnitDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetUsedDiskSize(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize {
+	s.UsedDiskSize = &v
+	return s
+}
+
+type DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize struct {
+	LogAssignedSize        *string   `json:"LogAssignedSize,omitempty" xml:"LogAssignedSize,omitempty"`
+	MaxLogAssignedObServer []*string `json:"MaxLogAssignedObServer,omitempty" xml:"MaxLogAssignedObServer,omitempty" type:"Repeated"`
+	MaxLogAssignedPercent  *string   `json:"MaxLogAssignedPercent,omitempty" xml:"MaxLogAssignedPercent,omitempty"`
+	TotalDiskSize          *int64    `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
+	UnitDiskSize           *int64    `json:"UnitDiskSize,omitempty" xml:"UnitDiskSize,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) SetLogAssignedSize(v string) *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize {
+	s.LogAssignedSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) SetMaxLogAssignedObServer(v []*string) *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize {
+	s.MaxLogAssignedObServer = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) SetMaxLogAssignedPercent(v string) *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize {
+	s.MaxLogAssignedPercent = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) SetTotalDiskSize(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize {
+	s.TotalDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) SetUnitDiskSize(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize {
+	s.UnitDiskSize = &v
+	return s
+}
+
+type DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory struct {
+	OriginalTotalMemory *int64 `json:"OriginalTotalMemory,omitempty" xml:"OriginalTotalMemory,omitempty"`
+	TotalMemory         *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	UnitMemory          *int64 `json:"UnitMemory,omitempty" xml:"UnitMemory,omitempty"`
+	UsedMemory          *int64 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory) SetOriginalTotalMemory(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory {
+	s.OriginalTotalMemory = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory) SetTotalMemory(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory) SetUnitMemory(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory {
+	s.UnitMemory = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory) SetUsedMemory(v int64) *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory {
+	s.UsedMemory = &v
 	return s
 }
 
@@ -7559,6 +7821,7 @@ type DescribeInstanceResponseBodyInstanceResourceLogDiskSize struct {
 	LogAssignedSize        *string   `json:"LogAssignedSize,omitempty" xml:"LogAssignedSize,omitempty"`
 	MaxLogAssignedObServer []*string `json:"MaxLogAssignedObServer,omitempty" xml:"MaxLogAssignedObServer,omitempty" type:"Repeated"`
 	MaxLogAssignedPercent  *string   `json:"MaxLogAssignedPercent,omitempty" xml:"MaxLogAssignedPercent,omitempty"`
+	OriginalTotalDiskSize  *int32    `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
 	// The ID of the region.
 	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
 	// The request ID.
@@ -7585,6 +7848,11 @@ func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetMaxLogAssig
 
 func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetMaxLogAssignedPercent(v string) *DescribeInstanceResponseBodyInstanceResourceLogDiskSize {
 	s.MaxLogAssignedPercent = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetOriginalTotalDiskSize(v int32) *DescribeInstanceResponseBodyInstanceResourceLogDiskSize {
+	s.OriginalTotalDiskSize = &v
 	return s
 }
 
@@ -8447,7 +8715,8 @@ type DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits
 	// The return result of the request.
 	ManualMigrate *bool `json:"ManualMigrate,omitempty" xml:"ManualMigrate,omitempty"`
 	// It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ReplicaType *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
 	// Alibaba Cloud CLI
 	UnitCpu *float32 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
 	// The operation that you want to perform.
@@ -8486,6 +8755,11 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesU
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits) SetNodeId(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits {
 	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits) SetReplicaType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits {
+	s.ReplicaType = &v
 	return s
 }
 
@@ -8561,6 +8835,7 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZones) SetZoneResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes struct {
+	FullCopyId *int64 `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
 	// The information of zones.
 	NodeCopyId *int64 `json:"NodeCopyId,omitempty" xml:"NodeCopyId,omitempty"`
 	// The ID of the resource unit.
@@ -8568,7 +8843,9 @@ type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes struct {
 	// The ID of the node.
 	NodeResource []*DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource `json:"NodeResource,omitempty" xml:"NodeResource,omitempty" type:"Repeated"`
 	// The ID of the OBServer where the resource unit resides.
-	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	NodeStatus     *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	ReadOnlyCopyId *int64  `json:"ReadOnlyCopyId,omitempty" xml:"ReadOnlyCopyId,omitempty"`
+	ReplicaType    *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) String() string {
@@ -8577,6 +8854,11 @@ func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) String()
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetFullCopyId(v int64) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
+	s.FullCopyId = &v
+	return s
 }
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetNodeCopyId(v int64) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
@@ -8596,6 +8878,16 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetNode
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetNodeStatus(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
 	s.NodeStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetReadOnlyCopyId(v int64) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
+	s.ReadOnlyCopyId = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetReplicaType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
+	s.ReplicaType = &v
 	return s
 }
 
@@ -9383,6 +9675,7 @@ type DescribeMetricsDataRequest struct {
 	Labels        *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	Limit         *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	Metrics       *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	ReplicaType   *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
 	SortMetricKey *string `json:"SortMetricKey,omitempty" xml:"SortMetricKey,omitempty"`
 	SortOrder     *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -9423,6 +9716,11 @@ func (s *DescribeMetricsDataRequest) SetLimit(v string) *DescribeMetricsDataRequ
 
 func (s *DescribeMetricsDataRequest) SetMetrics(v string) *DescribeMetricsDataRequest {
 	s.Metrics = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetReplicaType(v string) *DescribeMetricsDataRequest {
+	s.ReplicaType = &v
 	return s
 }
 
@@ -23143,7 +23441,8 @@ type DescribeTenantResponseBodyTenant struct {
 	// The request ID.
 	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	// You can call this operation to create a single tenant in a specific cluster.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataMergeTime *string `json:"DataMergeTime,omitempty" xml:"DataMergeTime,omitempty"`
 	// The list of zones.
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
 	// The series of the instance.
@@ -23230,7 +23529,8 @@ type DescribeTenantResponseBodyTenant struct {
 	// The type of the payment.
 	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
 	// Example 1
-	PrimaryZoneDeployType *string `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
+	PrimaryZoneDeployType *string                                           `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
+	ReadOnlyResource      *DescribeTenantResponseBodyTenantReadOnlyResource `json:"ReadOnlyResource,omitempty" xml:"ReadOnlyResource,omitempty" type:"Struct"`
 	// <DescribeTenantResponse>
 	//     <RequestId>EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C</RequestId>
 	//     <Tenant>
@@ -23346,6 +23646,11 @@ func (s *DescribeTenantResponseBodyTenant) SetCreateTime(v string) *DescribeTena
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetDataMergeTime(v string) *DescribeTenantResponseBodyTenant {
+	s.DataMergeTime = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetDeployMode(v string) *DescribeTenantResponseBodyTenant {
 	s.DeployMode = &v
 	return s
@@ -23421,6 +23726,11 @@ func (s *DescribeTenantResponseBodyTenant) SetPrimaryZoneDeployType(v string) *D
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetReadOnlyResource(v *DescribeTenantResponseBodyTenantReadOnlyResource) *DescribeTenantResponseBodyTenant {
+	s.ReadOnlyResource = v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetSeries(v string) *DescribeTenantResponseBodyTenant {
 	s.Series = &v
 	return s
@@ -23471,9 +23781,184 @@ func (s *DescribeTenantResponseBodyTenant) SetVpcId(v string) *DescribeTenantRes
 	return s
 }
 
+type DescribeTenantResponseBodyTenantReadOnlyResource struct {
+	CapacityUnit *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
+	Cpu          *DescribeTenantResponseBodyTenantReadOnlyResourceCpu          `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	DiskSize     *DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize     `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	LogDiskSize  *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
+	Memory       *DescribeTenantResponseBodyTenantReadOnlyResourceMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	UnitNum      *int32                                                        `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResource) SetCapacityUnit(v *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit) *DescribeTenantResponseBodyTenantReadOnlyResource {
+	s.CapacityUnit = v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResource) SetCpu(v *DescribeTenantResponseBodyTenantReadOnlyResourceCpu) *DescribeTenantResponseBodyTenantReadOnlyResource {
+	s.Cpu = v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResource) SetDiskSize(v *DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize) *DescribeTenantResponseBodyTenantReadOnlyResource {
+	s.DiskSize = v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResource) SetLogDiskSize(v *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize) *DescribeTenantResponseBodyTenantReadOnlyResource {
+	s.LogDiskSize = v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResource) SetMemory(v *DescribeTenantResponseBodyTenantReadOnlyResourceMemory) *DescribeTenantResponseBodyTenantReadOnlyResource {
+	s.Memory = v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResource) SetUnitNum(v int32) *DescribeTenantResponseBodyTenantReadOnlyResource {
+	s.UnitNum = &v
+	return s
+}
+
+type DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit struct {
+	MaxCapacityUnit *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	MinCapacityUnit *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	UsedCapacit     *int32 `json:"UsedCapacit,omitempty" xml:"UsedCapacit,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit) SetMaxCapacityUnit(v int32) *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit {
+	s.MaxCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit) SetMinCapacityUnit(v int32) *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit {
+	s.MinCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit) SetUsedCapacit(v int32) *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit {
+	s.UsedCapacit = &v
+	return s
+}
+
+type DescribeTenantResponseBodyTenantReadOnlyResourceCpu struct {
+	TotalCpu *float32 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
+	UnitCpu  *float32 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
+	UsedCpu  *float32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceCpu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceCpu) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceCpu) SetTotalCpu(v float32) *DescribeTenantResponseBodyTenantReadOnlyResourceCpu {
+	s.TotalCpu = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceCpu) SetUnitCpu(v float32) *DescribeTenantResponseBodyTenantReadOnlyResourceCpu {
+	s.UnitCpu = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceCpu) SetUsedCpu(v float32) *DescribeTenantResponseBodyTenantReadOnlyResourceCpu {
+	s.UsedCpu = &v
+	return s
+}
+
+type DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize struct {
+	UsedDiskSize *float32 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize) SetUsedDiskSize(v float32) *DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize {
+	s.UsedDiskSize = &v
+	return s
+}
+
+type DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize struct {
+	TotalLogDisk *int32 `json:"TotalLogDisk,omitempty" xml:"TotalLogDisk,omitempty"`
+	UnitLogDisk  *int32 `json:"UnitLogDisk,omitempty" xml:"UnitLogDisk,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize) SetTotalLogDisk(v int32) *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize {
+	s.TotalLogDisk = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize) SetUnitLogDisk(v int32) *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize {
+	s.UnitLogDisk = &v
+	return s
+}
+
+type DescribeTenantResponseBodyTenantReadOnlyResourceMemory struct {
+	TotalMemory *float32 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	UnitMemory  *float32 `json:"UnitMemory,omitempty" xml:"UnitMemory,omitempty"`
+	UsedMemory  *float32 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantReadOnlyResourceMemory) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceMemory) SetTotalMemory(v float32) *DescribeTenantResponseBodyTenantReadOnlyResourceMemory {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceMemory) SetUnitMemory(v float32) *DescribeTenantResponseBodyTenantReadOnlyResourceMemory {
+	s.UnitMemory = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantReadOnlyResourceMemory) SetUsedMemory(v float32) *DescribeTenantResponseBodyTenantReadOnlyResourceMemory {
+	s.UsedMemory = &v
+	return s
+}
+
 type DescribeTenantResponseBodyTenantTenantConnections struct {
 	// The primary zone of the tenant.
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AddressType           *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ConnectionReplicaType *string `json:"ConnectionReplicaType,omitempty" xml:"ConnectionReplicaType,omitempty"`
 	// The Internet address for accessing the tenant.
 	ConnectionZones        []*string `json:"ConnectionZones,omitempty" xml:"ConnectionZones,omitempty" type:"Repeated"`
 	EnableTransactionSplit *bool     `json:"EnableTransactionSplit,omitempty" xml:"EnableTransactionSplit,omitempty"`
@@ -23520,6 +24005,11 @@ func (s DescribeTenantResponseBodyTenantTenantConnections) GoString() string {
 
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetAddressType(v string) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.AddressType = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetConnectionReplicaType(v string) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.ConnectionReplicaType = &v
 	return s
 }
 
@@ -23807,7 +24297,8 @@ type DescribeTenantResponseBodyTenantTenantZones struct {
 	// 是否允许开启读写分离地址
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The intranet port for accessing the tenant.
-	TenantZoneId *string `json:"TenantZoneId,omitempty" xml:"TenantZoneId,omitempty"`
+	TenantZoneId       *string                                                          `json:"TenantZoneId,omitempty" xml:"TenantZoneId,omitempty"`
+	TenantZoneReplicas []*DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas `json:"TenantZoneReplicas,omitempty" xml:"TenantZoneReplicas,omitempty" type:"Repeated"`
 	// The character set.
 	TenantZoneRole *string `json:"TenantZoneRole,omitempty" xml:"TenantZoneRole,omitempty"`
 }
@@ -23830,8 +24321,60 @@ func (s *DescribeTenantResponseBodyTenantTenantZones) SetTenantZoneId(v string) 
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantZones) SetTenantZoneReplicas(v []*DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) *DescribeTenantResponseBodyTenantTenantZones {
+	s.TenantZoneReplicas = v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantZones) SetTenantZoneRole(v string) *DescribeTenantResponseBodyTenantTenantZones {
 	s.TenantZoneRole = &v
+	return s
+}
+
+type DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas struct {
+	FullCopyId      *int32  `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
+	LogicZoneName   *string `json:"LogicZoneName,omitempty" xml:"LogicZoneName,omitempty"`
+	ReadOnlyCopyId  *string `json:"ReadOnlyCopyId,omitempty" xml:"ReadOnlyCopyId,omitempty"`
+	ZoneCopyId      *int32  `json:"ZoneCopyId,omitempty" xml:"ZoneCopyId,omitempty"`
+	ZoneNodes       *string `json:"ZoneNodes,omitempty" xml:"ZoneNodes,omitempty"`
+	ZoneReplicaType *string `json:"ZoneReplicaType,omitempty" xml:"ZoneReplicaType,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetFullCopyId(v int32) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
+	s.FullCopyId = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetLogicZoneName(v string) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
+	s.LogicZoneName = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetReadOnlyCopyId(v string) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
+	s.ReadOnlyCopyId = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetZoneCopyId(v int32) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
+	s.ZoneCopyId = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetZoneNodes(v string) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
+	s.ZoneNodes = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetZoneReplicaType(v string) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
+	s.ZoneReplicaType = &v
 	return s
 }
 
@@ -29882,6 +30425,7 @@ func (s *ModifyInstanceNodeNumResponse) SetBody(v *ModifyInstanceNodeNumResponse
 
 type ModifyInstanceSpecRequest struct {
 	DiskSize      *int64  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskType      *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -29897,6 +30441,11 @@ func (s ModifyInstanceSpecRequest) GoString() string {
 
 func (s *ModifyInstanceSpecRequest) SetDiskSize(v int64) *ModifyInstanceSpecRequest {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetDiskType(v string) *ModifyInstanceSpecRequest {
+	s.DiskType = &v
 	return s
 }
 
@@ -30068,9 +30617,13 @@ func (s *ModifyInstanceTagsResponse) SetBody(v *ModifyInstanceTagsResponseBody) 
 }
 
 type ModifyInstanceTemporaryCapacityRequest struct {
-	DiskSize   *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The disk size. Unit: GB.
+	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Spec       *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// Specification.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s ModifyInstanceTemporaryCapacityRequest) String() string {
@@ -30079,6 +30632,11 @@ func (s ModifyInstanceTemporaryCapacityRequest) String() string {
 
 func (s ModifyInstanceTemporaryCapacityRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceTemporaryCapacityRequest) SetAcceptLanguage(v string) *ModifyInstanceTemporaryCapacityRequest {
+	s.AcceptLanguage = &v
+	return s
 }
 
 func (s *ModifyInstanceTemporaryCapacityRequest) SetDiskSize(v string) *ModifyInstanceTemporaryCapacityRequest {
@@ -30097,6 +30655,7 @@ func (s *ModifyInstanceTemporaryCapacityRequest) SetSpec(v string) *ModifyInstan
 }
 
 type ModifyInstanceTemporaryCapacityResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30507,10 +31066,12 @@ type ModifyTenantPrimaryZoneRequest struct {
 	// ```
 	MasterIntranetAddressZone *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
 	// The ID of the vSwitch.
-	PrimaryZone      *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	TenantEndpointId *string `json:"TenantEndpointId,omitempty" xml:"TenantEndpointId,omitempty"`
+	PrimaryZone            *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	TenantEndpointDirectId *string `json:"TenantEndpointDirectId,omitempty" xml:"TenantEndpointDirectId,omitempty"`
+	TenantEndpointId       *string `json:"TenantEndpointId,omitempty" xml:"TenantEndpointId,omitempty"`
 	// The return result of the request.
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UserDirectVSwitchId *string `json:"UserDirectVSwitchId,omitempty" xml:"UserDirectVSwitchId,omitempty"`
 	// The request ID.
 	UserVSwitchId *string `json:"UserVSwitchId,omitempty" xml:"UserVSwitchId,omitempty"`
 }
@@ -30538,6 +31099,11 @@ func (s *ModifyTenantPrimaryZoneRequest) SetPrimaryZone(v string) *ModifyTenantP
 	return s
 }
 
+func (s *ModifyTenantPrimaryZoneRequest) SetTenantEndpointDirectId(v string) *ModifyTenantPrimaryZoneRequest {
+	s.TenantEndpointDirectId = &v
+	return s
+}
+
 func (s *ModifyTenantPrimaryZoneRequest) SetTenantEndpointId(v string) *ModifyTenantPrimaryZoneRequest {
 	s.TenantEndpointId = &v
 	return s
@@ -30545,6 +31111,11 @@ func (s *ModifyTenantPrimaryZoneRequest) SetTenantEndpointId(v string) *ModifyTe
 
 func (s *ModifyTenantPrimaryZoneRequest) SetTenantId(v string) *ModifyTenantPrimaryZoneRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *ModifyTenantPrimaryZoneRequest) SetUserDirectVSwitchId(v string) *ModifyTenantPrimaryZoneRequest {
+	s.UserDirectVSwitchId = &v
 	return s
 }
 
@@ -35499,6 +36070,14 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["PeriodUnit"] = request.PeriodUnit
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PrimaryInstance)) {
+		body["PrimaryInstance"] = request.PrimaryInstance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryRegion)) {
+		body["PrimaryRegion"] = request.PrimaryRegion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReplicaMode)) {
 		body["ReplicaMode"] = request.ReplicaMode
 	}
@@ -37751,8 +38330,14 @@ func (client *Client) DescribeMetricsDataWithOptions(request *DescribeMetricsDat
 		query["StartTime"] = request.StartTime
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReplicaType)) {
+		body["ReplicaType"] = request.ReplicaType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMetricsData"),
@@ -40841,6 +41426,10 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		body["DiskSize"] = request.DiskSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		body["DiskType"] = request.DiskType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		body["DryRun"] = request.DryRun
 	}
@@ -40941,6 +41530,10 @@ func (client *Client) ModifyInstanceTemporaryCapacityWithOptions(request *Modify
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		body["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
 		body["DiskSize"] = request.DiskSize
 	}
@@ -41169,12 +41762,20 @@ func (client *Client) ModifyTenantPrimaryZoneWithOptions(request *ModifyTenantPr
 		body["PrimaryZone"] = request.PrimaryZone
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TenantEndpointDirectId)) {
+		body["TenantEndpointDirectId"] = request.TenantEndpointDirectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TenantEndpointId)) {
 		body["TenantEndpointId"] = request.TenantEndpointId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
 		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDirectVSwitchId)) {
+		body["UserDirectVSwitchId"] = request.UserDirectVSwitchId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserVSwitchId)) {
