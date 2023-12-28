@@ -1975,6 +1975,140 @@ func (s *DescribePhoneNumberOperatorAttributeResponse) SetBody(v *DescribePhoneN
 	return s
 }
 
+type DescribePhoneNumberRiskRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribePhoneNumberRiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberRiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberRiskRequest) SetAuthCode(v string) *DescribePhoneNumberRiskRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskRequest) SetInputNumber(v string) *DescribePhoneNumberRiskRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskRequest) SetMask(v string) *DescribePhoneNumberRiskRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskRequest) SetOwnerId(v int64) *DescribePhoneNumberRiskRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskRequest) SetResourceOwnerAccount(v string) *DescribePhoneNumberRiskRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskRequest) SetResourceOwnerId(v int64) *DescribePhoneNumberRiskRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribePhoneNumberRiskResponseBody struct {
+	AccessDeniedDetail *string                                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *DescribePhoneNumberRiskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePhoneNumberRiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberRiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberRiskResponseBody) SetAccessDeniedDetail(v string) *DescribePhoneNumberRiskResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskResponseBody) SetCode(v string) *DescribePhoneNumberRiskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskResponseBody) SetData(v *DescribePhoneNumberRiskResponseBodyData) *DescribePhoneNumberRiskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskResponseBody) SetMessage(v string) *DescribePhoneNumberRiskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskResponseBody) SetRequestId(v string) *DescribePhoneNumberRiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePhoneNumberRiskResponseBodyData struct {
+	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s DescribePhoneNumberRiskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberRiskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberRiskResponseBodyData) SetVerifyResult(v string) *DescribePhoneNumberRiskResponseBodyData {
+	s.VerifyResult = &v
+	return s
+}
+
+type DescribePhoneNumberRiskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberRiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePhoneNumberRiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberRiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberRiskResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberRiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskResponse) SetStatusCode(v int32) *DescribePhoneNumberRiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberRiskResponse) SetBody(v *DescribePhoneNumberRiskResponseBody) *DescribePhoneNumberRiskResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePhoneTwiceTelVerifyRequest struct {
 	// The authorization code.
 	//
@@ -6403,6 +6537,70 @@ func (client *Client) DescribePhoneNumberOperatorAttribute(request *DescribePhon
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberOperatorAttributeResponse{}
 	_body, _err := client.DescribePhoneNumberOperatorAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePhoneNumberRiskWithOptions(request *DescribePhoneNumberRiskRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberRiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePhoneNumberRisk"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePhoneNumberRiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePhoneNumberRisk(request *DescribePhoneNumberRiskRequest) (_result *DescribePhoneNumberRiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePhoneNumberRiskResponse{}
+	_body, _err := client.DescribePhoneNumberRiskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
