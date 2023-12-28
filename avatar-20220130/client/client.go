@@ -524,6 +524,99 @@ func (s *CloseTimedResetOperateResponse) SetBody(v *CloseTimedResetOperateRespon
 	return s
 }
 
+type ConfirmAvatar2dTrainRequest struct {
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Confirm  *string `json:"Confirm,omitempty" xml:"Confirm,omitempty"`
+	TenantId *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ConfirmAvatar2dTrainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmAvatar2dTrainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmAvatar2dTrainRequest) SetCode(v string) *ConfirmAvatar2dTrainRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *ConfirmAvatar2dTrainRequest) SetConfirm(v string) *ConfirmAvatar2dTrainRequest {
+	s.Confirm = &v
+	return s
+}
+
+func (s *ConfirmAvatar2dTrainRequest) SetTenantId(v int64) *ConfirmAvatar2dTrainRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ConfirmAvatar2dTrainResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConfirmAvatar2dTrainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmAvatar2dTrainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmAvatar2dTrainResponseBody) SetCode(v string) *ConfirmAvatar2dTrainResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ConfirmAvatar2dTrainResponseBody) SetMessage(v string) *ConfirmAvatar2dTrainResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ConfirmAvatar2dTrainResponseBody) SetRequestId(v string) *ConfirmAvatar2dTrainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConfirmAvatar2dTrainResponseBody) SetSuccess(v bool) *ConfirmAvatar2dTrainResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConfirmAvatar2dTrainResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConfirmAvatar2dTrainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConfirmAvatar2dTrainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmAvatar2dTrainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmAvatar2dTrainResponse) SetHeaders(v map[string]*string) *ConfirmAvatar2dTrainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfirmAvatar2dTrainResponse) SetStatusCode(v int32) *ConfirmAvatar2dTrainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfirmAvatar2dTrainResponse) SetBody(v *ConfirmAvatar2dTrainResponseBody) *ConfirmAvatar2dTrainResponse {
+	s.Body = v
+	return s
+}
+
 type Create2dAvatarRequest struct {
 	Callback    *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -6193,6 +6286,58 @@ func (client *Client) CloseTimedResetOperate(request *CloseTimedResetOperateRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseTimedResetOperateResponse{}
 	_body, _err := client.CloseTimedResetOperateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ConfirmAvatar2dTrainWithOptions(request *ConfirmAvatar2dTrainRequest, runtime *util.RuntimeOptions) (_result *ConfirmAvatar2dTrainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Confirm)) {
+		query["Confirm"] = request.Confirm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfirmAvatar2dTrain"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfirmAvatar2dTrainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConfirmAvatar2dTrain(request *ConfirmAvatar2dTrainRequest) (_result *ConfirmAvatar2dTrainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfirmAvatar2dTrainResponse{}
+	_body, _err := client.ConfirmAvatar2dTrainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
