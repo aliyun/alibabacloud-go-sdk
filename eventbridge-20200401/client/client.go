@@ -864,7 +864,7 @@ type CreateEventSourceRequest struct {
 	SourceRocketMQParameters *CreateEventSourceRequestSourceRocketMQParameters `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Log Service.
 	SourceSLSParameters *CreateEventSourceRequestSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is scheduled events.
+	// The parameters that are configured if you specify scheduled events as the event source.
 	SourceScheduledEventParameters *CreateEventSourceRequestSourceScheduledEventParameters `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty" type:"Struct"`
 }
 
@@ -1357,7 +1357,7 @@ type CreateEventSourceShrinkRequest struct {
 	SourceRocketMQParametersShrink *string `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty"`
 	// The parameters that are configured if the event source is Log Service.
 	SourceSLSParametersShrink *string `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty"`
-	// The parameters that are configured if the event source is scheduled events.
+	// The parameters that are configured if you specify scheduled events as the event source.
 	SourceScheduledEventParametersShrink *string `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty"`
 }
 
@@ -3915,7 +3915,8 @@ type CreateEventStreamingRequestSource struct {
 	// The parameters that are configured if you specify the event source as Message Service (MNS).
 	SourceMNSParameters *CreateEventStreamingRequestSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify the event source as Message Queue for MQTT.
-	SourceMQTTParameters *CreateEventStreamingRequestSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceMQTTParameters       *CreateEventStreamingRequestSourceSourceMQTTParameters       `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourcePrometheusParameters *CreateEventStreamingRequestSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify the event source as Message Queue for RabbitMQ.
 	SourceRabbitMQParameters *CreateEventStreamingRequestSourceSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify the event source as Message Queue for Apache RocketMQ.
@@ -3949,6 +3950,11 @@ func (s *CreateEventStreamingRequestSource) SetSourceMNSParameters(v *CreateEven
 
 func (s *CreateEventStreamingRequestSource) SetSourceMQTTParameters(v *CreateEventStreamingRequestSourceSourceMQTTParameters) *CreateEventStreamingRequestSource {
 	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSource) SetSourcePrometheusParameters(v *CreateEventStreamingRequestSourceSourcePrometheusParameters) *CreateEventStreamingRequestSource {
+	s.SourcePrometheusParameters = v
 	return s
 }
 
@@ -4162,6 +4168,35 @@ func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetRegionId(v st
 
 func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetTopic(v string) *CreateEventStreamingRequestSourceSourceMQTTParameters {
 	s.Topic = &v
+	return s
+}
+
+type CreateEventStreamingRequestSourceSourcePrometheusParameters struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSourceSourcePrometheusParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSourceSourcePrometheusParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSourceSourcePrometheusParameters) SetClusterId(v string) *CreateEventStreamingRequestSourceSourcePrometheusParameters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourcePrometheusParameters) SetDataType(v string) *CreateEventStreamingRequestSourceSourcePrometheusParameters {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourcePrometheusParameters) SetLabels(v string) *CreateEventStreamingRequestSourceSourcePrometheusParameters {
+	s.Labels = &v
 	return s
 }
 
@@ -8554,7 +8589,8 @@ type GetEventStreamingResponseBodyDataSource struct {
 	// Source MNS Parameters
 	SourceMNSParameters *GetEventStreamingResponseBodyDataSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event source is Message Queue for MQTT.
-	SourceMQTTParameters *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceMQTTParameters       *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters       `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourcePrometheusParameters *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	// Source RabbitMQ Parameters
 	SourceRabbitMQParameters *GetEventStreamingResponseBodyDataSourceSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	// Source RocketMQ Parameters
@@ -8588,6 +8624,11 @@ func (s *GetEventStreamingResponseBodyDataSource) SetSourceMNSParameters(v *GetE
 
 func (s *GetEventStreamingResponseBodyDataSource) SetSourceMQTTParameters(v *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters) *GetEventStreamingResponseBodyDataSource {
 	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSource) SetSourcePrometheusParameters(v *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) *GetEventStreamingResponseBodyDataSource {
+	s.SourcePrometheusParameters = v
 	return s
 }
 
@@ -8801,6 +8842,35 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters) SetRegionI
 
 func (s *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters) SetTopic(v string) *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters {
 	s.Topic = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) SetClusterId(v string) *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) SetDataType(v string) *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) SetLabels(v string) *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters {
+	s.Labels = &v
 	return s
 }
 
@@ -14323,7 +14393,8 @@ type QueryEventRequest struct {
 	// The name of the event bus.
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The event ID.
-	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// EventSource is required for querying default bus events.
 	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
 }
 
@@ -18440,7 +18511,8 @@ type UpdateEventStreamingRequestSource struct {
 	// The parameters that are configured if the event source is Message Service (MNS).
 	SourceMNSParameters *UpdateEventStreamingRequestSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for MQTT.
-	SourceMQTTParameters *UpdateEventStreamingRequestSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceMQTTParameters       *UpdateEventStreamingRequestSourceSourceMQTTParameters       `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourcePrometheusParameters *UpdateEventStreamingRequestSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for RabbitMQ.
 	SourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
@@ -18474,6 +18546,11 @@ func (s *UpdateEventStreamingRequestSource) SetSourceMNSParameters(v *UpdateEven
 
 func (s *UpdateEventStreamingRequestSource) SetSourceMQTTParameters(v *UpdateEventStreamingRequestSourceSourceMQTTParameters) *UpdateEventStreamingRequestSource {
 	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourcePrometheusParameters(v *UpdateEventStreamingRequestSourceSourcePrometheusParameters) *UpdateEventStreamingRequestSource {
+	s.SourcePrometheusParameters = v
 	return s
 }
 
@@ -18687,6 +18764,35 @@ func (s *UpdateEventStreamingRequestSourceSourceMQTTParameters) SetRegionId(v st
 
 func (s *UpdateEventStreamingRequestSourceSourceMQTTParameters) SetTopic(v string) *UpdateEventStreamingRequestSourceSourceMQTTParameters {
 	s.Topic = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSourceSourcePrometheusParameters struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSourceSourcePrometheusParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSourceSourcePrometheusParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSourceSourcePrometheusParameters) SetClusterId(v string) *UpdateEventStreamingRequestSourceSourcePrometheusParameters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourcePrometheusParameters) SetDataType(v string) *UpdateEventStreamingRequestSourceSourcePrometheusParameters {
+	s.DataType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourcePrometheusParameters) SetLabels(v string) *UpdateEventStreamingRequestSourceSourcePrometheusParameters {
+	s.Labels = &v
 	return s
 }
 
