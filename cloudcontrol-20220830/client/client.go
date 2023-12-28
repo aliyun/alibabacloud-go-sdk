@@ -226,6 +226,227 @@ func (s *DeleteResourceResponse) SetBody(v *DeleteResourceResponseBody) *DeleteR
 	return s
 }
 
+type GetPriceRequest struct {
+	RegionId           *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ResourceAttributes map[string]interface{} `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
+}
+
+func (s GetPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPriceRequest) SetRegionId(v string) *GetPriceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetPriceRequest) SetResourceAttributes(v map[string]interface{}) *GetPriceRequest {
+	s.ResourceAttributes = v
+	return s
+}
+
+type GetPriceShrinkRequest struct {
+	RegionId                 *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ResourceAttributesShrink *string `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
+}
+
+func (s GetPriceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPriceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPriceShrinkRequest) SetRegionId(v string) *GetPriceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetPriceShrinkRequest) SetResourceAttributesShrink(v string) *GetPriceShrinkRequest {
+	s.ResourceAttributesShrink = &v
+	return s
+}
+
+type GetPriceResponseBody struct {
+	Price     *GetPriceResponseBodyPrice `json:"price,omitempty" xml:"price,omitempty" type:"Struct"`
+	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPriceResponseBody) SetPrice(v *GetPriceResponseBodyPrice) *GetPriceResponseBody {
+	s.Price = v
+	return s
+}
+
+func (s *GetPriceResponseBody) SetRequestId(v string) *GetPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPriceResponseBodyPrice struct {
+	Currency         *string                                      `json:"currency,omitempty" xml:"currency,omitempty"`
+	DiscountPrice    *float32                                     `json:"discountPrice,omitempty" xml:"discountPrice,omitempty"`
+	ModuleDetails    []*GetPriceResponseBodyPriceModuleDetails    `json:"moduleDetails,omitempty" xml:"moduleDetails,omitempty" type:"Repeated"`
+	OriginalPrice    *float32                                     `json:"originalPrice,omitempty" xml:"originalPrice,omitempty"`
+	PromotionDetails []*GetPriceResponseBodyPricePromotionDetails `json:"promotionDetails,omitempty" xml:"promotionDetails,omitempty" type:"Repeated"`
+	TradePrice       *float32                                     `json:"tradePrice,omitempty" xml:"tradePrice,omitempty"`
+}
+
+func (s GetPriceResponseBodyPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPriceResponseBodyPrice) GoString() string {
+	return s.String()
+}
+
+func (s *GetPriceResponseBodyPrice) SetCurrency(v string) *GetPriceResponseBodyPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPrice) SetDiscountPrice(v float32) *GetPriceResponseBodyPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPrice) SetModuleDetails(v []*GetPriceResponseBodyPriceModuleDetails) *GetPriceResponseBodyPrice {
+	s.ModuleDetails = v
+	return s
+}
+
+func (s *GetPriceResponseBodyPrice) SetOriginalPrice(v float32) *GetPriceResponseBodyPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPrice) SetPromotionDetails(v []*GetPriceResponseBodyPricePromotionDetails) *GetPriceResponseBodyPrice {
+	s.PromotionDetails = v
+	return s
+}
+
+func (s *GetPriceResponseBodyPrice) SetTradePrice(v float32) *GetPriceResponseBodyPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type GetPriceResponseBodyPriceModuleDetails struct {
+	CostAfterDiscount *float32 `json:"costAfterDiscount,omitempty" xml:"costAfterDiscount,omitempty"`
+	InvoiceDiscount   *float32 `json:"invoiceDiscount,omitempty" xml:"invoiceDiscount,omitempty"`
+	ModuleCode        *string  `json:"moduleCode,omitempty" xml:"moduleCode,omitempty"`
+	ModuleName        *string  `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	OriginalCost      *float32 `json:"originalCost,omitempty" xml:"originalCost,omitempty"`
+	PriceType         *float32 `json:"priceType,omitempty" xml:"priceType,omitempty"`
+}
+
+func (s GetPriceResponseBodyPriceModuleDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPriceResponseBodyPriceModuleDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetPriceResponseBodyPriceModuleDetails) SetCostAfterDiscount(v float32) *GetPriceResponseBodyPriceModuleDetails {
+	s.CostAfterDiscount = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPriceModuleDetails) SetInvoiceDiscount(v float32) *GetPriceResponseBodyPriceModuleDetails {
+	s.InvoiceDiscount = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPriceModuleDetails) SetModuleCode(v string) *GetPriceResponseBodyPriceModuleDetails {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPriceModuleDetails) SetModuleName(v string) *GetPriceResponseBodyPriceModuleDetails {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPriceModuleDetails) SetOriginalCost(v float32) *GetPriceResponseBodyPriceModuleDetails {
+	s.OriginalCost = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPriceModuleDetails) SetPriceType(v float32) *GetPriceResponseBodyPriceModuleDetails {
+	s.PriceType = &v
+	return s
+}
+
+type GetPriceResponseBodyPricePromotionDetails struct {
+	PromotionDesc *string `json:"promotionDesc,omitempty" xml:"promotionDesc,omitempty"`
+	PromotionId   *int64  `json:"promotionId,omitempty" xml:"promotionId,omitempty"`
+	PromotionName *string `json:"promotionName,omitempty" xml:"promotionName,omitempty"`
+}
+
+func (s GetPriceResponseBodyPricePromotionDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPriceResponseBodyPricePromotionDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetPriceResponseBodyPricePromotionDetails) SetPromotionDesc(v string) *GetPriceResponseBodyPricePromotionDetails {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPricePromotionDetails) SetPromotionId(v int64) *GetPriceResponseBodyPricePromotionDetails {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *GetPriceResponseBodyPricePromotionDetails) SetPromotionName(v string) *GetPriceResponseBodyPricePromotionDetails {
+	s.PromotionName = &v
+	return s
+}
+
+type GetPriceResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPriceResponse) SetHeaders(v map[string]*string) *GetPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPriceResponse) SetStatusCode(v int32) *GetPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPriceResponse) SetBody(v *GetPriceResponseBody) *GetPriceResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourceTypeHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAcceptLanguage *string            `json:"x-acs-accept-language,omitempty" xml:"x-acs-accept-language,omitempty"`
@@ -1874,6 +2095,62 @@ func (client *Client) DeleteResource(requestPath *string, request *DeleteResourc
 	headers := make(map[string]*string)
 	_result = &DeleteResourceResponse{}
 	_body, _err := client.DeleteResourceWithOptions(requestPath, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPriceWithOptions(requestPath *string, tmpReq *GetPriceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPriceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetPriceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceAttributes)) {
+		request.ResourceAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceAttributes, tea.String("resourceAttributes"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAttributesShrink)) {
+		query["resourceAttributes"] = request.ResourceAttributesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPrice"),
+		Version:     tea.String("2022-08-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String(tea.StringValue(requestPath)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPrice(requestPath *string, request *GetPriceRequest) (_result *GetPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPriceResponse{}
+	_body, _err := client.GetPriceWithOptions(requestPath, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
