@@ -758,10 +758,13 @@ func (s *GetPackageRequest) SetSourceProject(v string) *GetPackageRequest {
 
 type GetPackageResponseBody struct {
 	// The returned data.
-	Data      *GetPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	HttpCode  *int32                      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	Data *GetPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
@@ -885,7 +888,8 @@ type GetPackageResponseBodyDataResourceListFunction struct {
 	// The operations that were performed on the function.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the function.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of schema.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -916,7 +920,8 @@ type GetPackageResponseBodyDataResourceListResource struct {
 	// The operations that were performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the resource.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of schema.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -947,7 +952,8 @@ type GetPackageResponseBodyDataResourceListTable struct {
 	// The operations that were performed on the table.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the table.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of schema.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -1003,9 +1009,28 @@ func (s *GetPackageResponse) SetBody(v *GetPackageResponseBody) *GetPackageRespo
 	return s
 }
 
+type GetProjectRequest struct {
+	Verbose *bool `json:"verbose,omitempty" xml:"verbose,omitempty"`
+}
+
+func (s GetProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectRequest) SetVerbose(v bool) *GetProjectRequest {
+	s.Verbose = &v
+	return s
+}
+
 type GetProjectResponseBody struct {
 	// The returned data.
-	Data *GetProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Data      *GetProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
@@ -1022,6 +1047,16 @@ func (s GetProjectResponseBody) GoString() string {
 
 func (s *GetProjectResponseBody) SetData(v *GetProjectResponseBodyData) *GetProjectResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetErrorCode(v string) *GetProjectResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetErrorMsg(v string) *GetProjectResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
@@ -1057,8 +1092,9 @@ type GetProjectResponseBodyData struct {
 	// The permission properties.
 	SecurityProperties *GetProjectResponseBodyDataSecurityProperties `json:"securityProperties,omitempty" xml:"securityProperties,omitempty" type:"Struct"`
 	// The status of the project. Valid values: -**AVAILABLE**: The project was available. -**READONLY**: The project was read only. -**FROZEN**: The project was frozen. -**DELETING**: The project was being deleted.
-	Status      *string   `json:"status,omitempty" xml:"status,omitempty"`
-	SuperAdmins []*string `json:"superAdmins,omitempty" xml:"superAdmins,omitempty" type:"Repeated"`
+	Status         *string   `json:"status,omitempty" xml:"status,omitempty"`
+	SuperAdmins    []*string `json:"superAdmins,omitempty" xml:"superAdmins,omitempty" type:"Repeated"`
+	ThreeTierModel *bool     `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
 	// The type of the project. Valid values: -**managed**: The project is an internal project. -**external**: The project is an external project.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -1131,6 +1167,11 @@ func (s *GetProjectResponseBodyData) SetSuperAdmins(v []*string) *GetProjectResp
 	return s
 }
 
+func (s *GetProjectResponseBodyData) SetThreeTierModel(v bool) *GetProjectResponseBodyData {
+	s.ThreeTierModel = &v
+	return s
+}
+
 func (s *GetProjectResponseBodyData) SetType(v string) *GetProjectResponseBodyData {
 	s.Type = &v
 	return s
@@ -1163,7 +1204,8 @@ func (s *GetProjectResponseBodyDataIpWhiteList) SetVpcIpList(v string) *GetProje
 
 type GetProjectResponseBodyDataProperties struct {
 	// Indicates whether a full table scan on the project is enabled.
-	AllowFullScan *bool `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
+	AllowFullScan    *bool   `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
+	ElderTunnelQuota *string `json:"elderTunnelQuota,omitempty" xml:"elderTunnelQuota,omitempty"`
 	// Indicates whether the DECIMAL data type in MaxCompute V2.0 is enabled.
 	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
 	// Indicates whether tunnel quota routing is enabled.
@@ -1196,6 +1238,11 @@ func (s GetProjectResponseBodyDataProperties) GoString() string {
 
 func (s *GetProjectResponseBodyDataProperties) SetAllowFullScan(v bool) *GetProjectResponseBodyDataProperties {
 	s.AllowFullScan = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataProperties) SetElderTunnelQuota(v string) *GetProjectResponseBodyDataProperties {
+	s.ElderTunnelQuota = &v
 	return s
 }
 
@@ -1284,6 +1331,7 @@ func (s *GetProjectResponseBodyDataPropertiesEncryption) SetKey(v string) *GetPr
 type GetProjectResponseBodyDataPropertiesStorageTierInfo struct {
 	// The backup storage.
 	ProjectBackupSize *int64 `json:"projectBackupSize,omitempty" xml:"projectBackupSize,omitempty"`
+	ProjectTotalSize  *int64 `json:"projectTotalSize,omitempty" xml:"projectTotalSize,omitempty"`
 	// The tiered storage.
 	StorageTierSize *GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize `json:"storageTierSize,omitempty" xml:"storageTierSize,omitempty" type:"Struct"`
 }
@@ -1298,6 +1346,11 @@ func (s GetProjectResponseBodyDataPropertiesStorageTierInfo) GoString() string {
 
 func (s *GetProjectResponseBodyDataPropertiesStorageTierInfo) SetProjectBackupSize(v int64) *GetProjectResponseBodyDataPropertiesStorageTierInfo {
 	s.ProjectBackupSize = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesStorageTierInfo) SetProjectTotalSize(v int64) *GetProjectResponseBodyDataPropertiesStorageTierInfo {
+	s.ProjectTotalSize = &v
 	return s
 }
 
@@ -1503,9 +1556,13 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 }
 
 type GetQuotaRequest struct {
+	// The trusted AccessKey pairs.
 	AkProven *string `json:"AkProven,omitempty" xml:"AkProven,omitempty"`
-	Mock     *bool   `json:"mock,omitempty" xml:"mock,omitempty"`
-	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Specifies whether to include submodules. Valid values: -true: The request includes submodules. -false: The request does not include submodules. This is the default value.
+	Mock *bool `json:"mock,omitempty" xml:"mock,omitempty"`
+	// The region ID.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID.
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -1538,26 +1595,46 @@ func (s *GetQuotaRequest) SetTenantId(v string) *GetQuotaRequest {
 }
 
 type GetQuotaResponseBody struct {
-	BillingPolicy    *GetQuotaResponseBodyBillingPolicy      `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	Cluster          *string                                 `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	CreateTime       *int64                                  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CreatorId        *string                                 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	Data             *GetQuotaResponseBodyData               `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Id               *string                                 `json:"id,omitempty" xml:"id,omitempty"`
-	Name             *string                                 `json:"name,omitempty" xml:"name,omitempty"`
-	NickName         *string                                 `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	Parameter        map[string]interface{}                  `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	ParentId         *string                                 `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	RegionId         *string                                 `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	RequestId        *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SaleTag          *GetQuotaResponseBodySaleTag            `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
-	ScheduleInfo     *GetQuotaResponseBodyScheduleInfo       `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	Status           *string                                 `json:"status,omitempty" xml:"status,omitempty"`
+	// The information about the order.
+	BillingPolicy *GetQuotaResponseBodyBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
+	// The cluster ID.
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The time when the resource was created.
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the resource.
+	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// The returned data.
+	Data *GetQuotaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The quota ID.
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the quota.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The alias of the quota.
+	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	// The description of the quota.
+	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// The ID of the parent resource.
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	SaleTag *GetQuotaResponseBodySaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
+	// The information about the scheduling plan.
+	ScheduleInfo *GetQuotaResponseBodyScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
+	// The status of the resource.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The information about the level-2 quota.
 	SubQuotaInfoList []*GetQuotaResponseBodySubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
-	Tag              *string                                 `json:"tag,omitempty" xml:"tag,omitempty"`
-	TenantId         *string                                 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	Type             *string                                 `json:"type,omitempty" xml:"type,omitempty"`
-	Version          *string                                 `json:"version,omitempty" xml:"version,omitempty"`
+	// The tag of the resource for the quota.
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The tenant ID.
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version number.
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetQuotaResponseBody) String() string {
@@ -1669,9 +1746,15 @@ func (s *GetQuotaResponseBody) SetVersion(v string) *GetQuotaResponseBody {
 }
 
 type GetQuotaResponseBodyBillingPolicy struct {
+	// The billing method of the quota. Valid values:
+	//
+	// *   subscription: a subscription quota.
+	// *   payasyougo: a pay-as-you-go quota.
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
-	OdpsSpecCode  *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	OrderId       *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The specifications of the order.
+	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
+	// The order ID.
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
 func (s GetQuotaResponseBodyBillingPolicy) String() string {
@@ -1698,24 +1781,42 @@ func (s *GetQuotaResponseBodyBillingPolicy) SetOrderId(v string) *GetQuotaRespon
 }
 
 type GetQuotaResponseBodyData struct {
-	BillingPolicy    *GetQuotaResponseBodyDataBillingPolicy      `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	Cluster          *string                                     `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	CreateTime       *int64                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CreatorId        *string                                     `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	Id               *string                                     `json:"id,omitempty" xml:"id,omitempty"`
-	Name             *string                                     `json:"name,omitempty" xml:"name,omitempty"`
-	NickName         *string                                     `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	Parameter        map[string]interface{}                      `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	ParentId         *string                                     `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	RegionId         *string                                     `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	SaleTag          *GetQuotaResponseBodyDataSaleTag            `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
-	ScheduleInfo     *GetQuotaResponseBodyDataScheduleInfo       `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	Status           *string                                     `json:"status,omitempty" xml:"status,omitempty"`
+	// The information about the order.
+	BillingPolicy *GetQuotaResponseBodyDataBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
+	// The cluster ID.
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The time when the resource was created.
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the resource.
+	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// The quota ID.
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the quota.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The alias of the quota.
+	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	// The description of the quota.
+	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// The ID of the parent resource.
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	SaleTag *GetQuotaResponseBodyDataSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
+	// The information about the scheduling plan.
+	ScheduleInfo *GetQuotaResponseBodyDataScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
+	// The status of the resource.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The information about the level-2 quota.
 	SubQuotaInfoList []*GetQuotaResponseBodyDataSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
-	Tag              *string                                     `json:"tag,omitempty" xml:"tag,omitempty"`
-	TenantId         *string                                     `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	Type             *string                                     `json:"type,omitempty" xml:"type,omitempty"`
-	Version          *string                                     `json:"version,omitempty" xml:"version,omitempty"`
+	// The tag of the resource for the quota.
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The tenant ID.
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version number.
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetQuotaResponseBodyData) String() string {
@@ -1817,9 +1918,15 @@ func (s *GetQuotaResponseBodyData) SetVersion(v string) *GetQuotaResponseBodyDat
 }
 
 type GetQuotaResponseBodyDataBillingPolicy struct {
+	// The billing method of the quota. Valid values:
+	//
+	// *   subscription: a subscription quota.
+	// *   payasyougo: a pay-as-you-go quota.
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
-	OdpsSpecCode  *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	OrderId       *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The specifications of the order.
+	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
+	// The order ID.
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
 func (s GetQuotaResponseBodyDataBillingPolicy) String() string {
@@ -1846,8 +1953,10 @@ func (s *GetQuotaResponseBodyDataBillingPolicy) SetOrderId(v string) *GetQuotaRe
 }
 
 type GetQuotaResponseBodyDataSaleTag struct {
-	ResourceIds  []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The type of the object. Valid values: quota and project.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s GetQuotaResponseBodyDataSaleTag) String() string {
@@ -1869,14 +1978,22 @@ func (s *GetQuotaResponseBodyDataSaleTag) SetResourceType(v string) *GetQuotaRes
 }
 
 type GetQuotaResponseBodyDataScheduleInfo struct {
-	CurrPlan     *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	CurrTime     *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	NextPlan     *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	NextTime     *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	OncePlan     *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	OnceTime     *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The quota plan that takes effect based on the scheduling plan.
+	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
+	// The time when the current quota plan is scheduled.
+	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
+	// The next quota plan that will take effect based on the scheduling plan.
+	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
+	// The time when the next quota plan is scheduled.
+	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
+	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
+	// The time when the quota plan immediately takes effect.
+	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The name of the operator.
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	Timezone     *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// The time zone of the project.
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
 func (s GetQuotaResponseBodyDataScheduleInfo) String() string {
@@ -1928,23 +2045,40 @@ func (s *GetQuotaResponseBodyDataScheduleInfo) SetTimezone(v string) *GetQuotaRe
 }
 
 type GetQuotaResponseBodyDataSubQuotaInfoList struct {
+	// The information about the order.
 	BillingPolicy *GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	Cluster       *string                                                `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	CreateTime    *int64                                                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CreatorId     *string                                                `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	Id            *string                                                `json:"id,omitempty" xml:"id,omitempty"`
-	Name          *string                                                `json:"name,omitempty" xml:"name,omitempty"`
-	NickName      *string                                                `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	Parameter     map[string]interface{}                                 `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	ParentId      *string                                                `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	RegionId      *string                                                `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	SaleTag       *GetQuotaResponseBodyDataSubQuotaInfoListSaleTag       `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
-	ScheduleInfo  *GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo  `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	Status        *string                                                `json:"status,omitempty" xml:"status,omitempty"`
-	Tag           *string                                                `json:"tag,omitempty" xml:"tag,omitempty"`
-	TenantId      *string                                                `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	Type          *string                                                `json:"type,omitempty" xml:"type,omitempty"`
-	Version       *string                                                `json:"version,omitempty" xml:"version,omitempty"`
+	// The cluster ID.
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The time when the resource was created.
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the resource.
+	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// The ID of the level-2 quota.
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the level-2 quota.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The nickname of the level-2 quota.
+	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	// The description of the quota.
+	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// The ID of the parent resource.
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	SaleTag *GetQuotaResponseBodyDataSubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
+	// The information about the scheduling plan.
+	ScheduleInfo *GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
+	// The status of the resource.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The tag of the resource for the quota.
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The tenant ID.
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version number.
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetQuotaResponseBodyDataSubQuotaInfoList) String() string {
@@ -2041,9 +2175,15 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoList) SetVersion(v string) *GetQuot
 }
 
 type GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy struct {
+	// The billing method of the quota. Valid values:
+	//
+	// *   subscription: a subscription quota.
+	// *   payasyougo: a pay-as-you-go quota.
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
-	OdpsSpecCode  *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	OrderId       *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The specifications of the order.
+	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
+	// The order ID.
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
 func (s GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy) String() string {
@@ -2070,8 +2210,10 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy) SetOrderId(v str
 }
 
 type GetQuotaResponseBodyDataSubQuotaInfoListSaleTag struct {
-	ResourceIds  []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The type of the object. Valid values: quota and project.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s GetQuotaResponseBodyDataSubQuotaInfoListSaleTag) String() string {
@@ -2093,14 +2235,22 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoListSaleTag) SetResourceType(v stri
 }
 
 type GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo struct {
-	CurrPlan     *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	CurrTime     *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	NextPlan     *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	NextTime     *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	OncePlan     *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	OnceTime     *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The quota plan that takes effect based on the scheduling plan.
+	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
+	// The time when the current quota plan is scheduled.
+	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
+	// The next quota plan that will take effect based on the scheduling plan.
+	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
+	// The time when the next quota plan is scheduled.
+	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
+	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
+	// The time when the quota plan immediately takes effect.
+	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The name of the operator.
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	Timezone     *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// The time zone of the project.
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
 func (s GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo) String() string {
@@ -2152,8 +2302,10 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo) SetTimezone(v str
 }
 
 type GetQuotaResponseBodySaleTag struct {
-	ResourceIds  []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The type of the object. Valid values: quota and project.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s GetQuotaResponseBodySaleTag) String() string {
@@ -2175,14 +2327,22 @@ func (s *GetQuotaResponseBodySaleTag) SetResourceType(v string) *GetQuotaRespons
 }
 
 type GetQuotaResponseBodyScheduleInfo struct {
-	CurrPlan     *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	CurrTime     *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	NextPlan     *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	NextTime     *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	OncePlan     *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	OnceTime     *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The quota plan that takes effect based on the scheduling plan.
+	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
+	// The time when the current quota plan is scheduled.
+	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
+	// The next quota plan that will take effect based on the scheduling plan.
+	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
+	// The time when the next quota plan is scheduled.
+	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
+	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
+	// The time when the quota plan immediately takes effect.
+	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The name of the operator.
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	Timezone     *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// The time zone of the project.
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
 func (s GetQuotaResponseBodyScheduleInfo) String() string {
@@ -2234,23 +2394,40 @@ func (s *GetQuotaResponseBodyScheduleInfo) SetTimezone(v string) *GetQuotaRespon
 }
 
 type GetQuotaResponseBodySubQuotaInfoList struct {
+	// The information about the order.
 	BillingPolicy *GetQuotaResponseBodySubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	Cluster       *string                                            `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	CreateTime    *int64                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CreatorId     *string                                            `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	Id            *string                                            `json:"id,omitempty" xml:"id,omitempty"`
-	Name          *string                                            `json:"name,omitempty" xml:"name,omitempty"`
-	NickName      *string                                            `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	Parameter     map[string]interface{}                             `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	ParentId      *string                                            `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	RegionId      *string                                            `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	SaleTag       *GetQuotaResponseBodySubQuotaInfoListSaleTag       `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
-	ScheduleInfo  *GetQuotaResponseBodySubQuotaInfoListScheduleInfo  `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	Status        *string                                            `json:"status,omitempty" xml:"status,omitempty"`
-	Tag           *string                                            `json:"tag,omitempty" xml:"tag,omitempty"`
-	TenantId      *string                                            `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	Type          *string                                            `json:"type,omitempty" xml:"type,omitempty"`
-	Version       *string                                            `json:"version,omitempty" xml:"version,omitempty"`
+	// The cluster ID.
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The time when the resource was created.
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the resource.
+	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// The ID of the level-2 quota.
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the level-2 quota.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The alias of the level-2 quota.
+	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	// The description of the quota.
+	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// The ID of the parent resource.
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	SaleTag *GetQuotaResponseBodySubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
+	// The information about the scheduling plan.
+	ScheduleInfo *GetQuotaResponseBodySubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
+	// The status of the resource.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The tag of the resource for the quota.
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The tenant ID.
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version number.
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetQuotaResponseBodySubQuotaInfoList) String() string {
@@ -2347,9 +2524,15 @@ func (s *GetQuotaResponseBodySubQuotaInfoList) SetVersion(v string) *GetQuotaRes
 }
 
 type GetQuotaResponseBodySubQuotaInfoListBillingPolicy struct {
+	// The billing method of the quota. Valid values:
+	//
+	// *   subscription: a subscription quota.
+	// *   payasyougo: a pay-as-you-go quota.
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
-	OdpsSpecCode  *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	OrderId       *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The specifications of the order.
+	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
+	// The order ID.
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
 func (s GetQuotaResponseBodySubQuotaInfoListBillingPolicy) String() string {
@@ -2376,8 +2559,10 @@ func (s *GetQuotaResponseBodySubQuotaInfoListBillingPolicy) SetOrderId(v string)
 }
 
 type GetQuotaResponseBodySubQuotaInfoListSaleTag struct {
-	ResourceIds  []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The type of the object. Valid values: quota and project.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s GetQuotaResponseBodySubQuotaInfoListSaleTag) String() string {
@@ -2399,14 +2584,22 @@ func (s *GetQuotaResponseBodySubQuotaInfoListSaleTag) SetResourceType(v string) 
 }
 
 type GetQuotaResponseBodySubQuotaInfoListScheduleInfo struct {
-	CurrPlan     *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	CurrTime     *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	NextPlan     *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	NextTime     *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	OncePlan     *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	OnceTime     *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The quota plan that takes effect based on the scheduling plan.
+	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
+	// The time when the current quota plan is scheduled.
+	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
+	// The next quota plan that will take effect based on the scheduling plan.
+	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
+	// The time when the next quota plan is scheduled.
+	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
+	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
+	// The time when the quota plan immediately takes effect.
+	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The name of the operator.
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	Timezone     *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// The time zone of the project.
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
 func (s GetQuotaResponseBodySubQuotaInfoListScheduleInfo) String() string {
@@ -3228,10 +3421,13 @@ func (s *GetQuotaScheduleResponse) SetBody(v *GetQuotaScheduleResponseBody) *Get
 
 type GetRoleAclResponseBody struct {
 	// The returned data.
-	Data      *GetRoleAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	HttpCode  *int32                      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	Data *GetRoleAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code.
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
@@ -3326,7 +3522,8 @@ type GetRoleAclResponseBodyDataFunction struct {
 	// The operations that were performed on the function.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the function.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3357,7 +3554,8 @@ type GetRoleAclResponseBodyDataInstance struct {
 	// The operations that were performed on the instance.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the instance.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3388,7 +3586,8 @@ type GetRoleAclResponseBodyDataPackage struct {
 	// The operations that were performed on the package.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the package.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3419,7 +3618,8 @@ type GetRoleAclResponseBodyDataProject struct {
 	// The operations that were performed on the project.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the MaxCompute project.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3450,7 +3650,8 @@ type GetRoleAclResponseBodyDataResource struct {
 	// The operations that were performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the resource.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3481,7 +3682,8 @@ type GetRoleAclResponseBodyDataTable struct {
 	// The operations that were performed on the table.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the table.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -4155,7 +4357,8 @@ type ListFunctionsRequest struct {
 	// The maximum number of entries to return on each page.
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
-	Prefix     *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// the name of schema.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -4248,8 +4451,9 @@ type ListFunctionsResponseBodyDataFunctions struct {
 	// The class in which the function was defined.
 	Class *string `json:"class,omitempty" xml:"class,omitempty"`
 	// The time when the function was created. Unit: milliseconds.
-	CreationTime *int64  `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
-	DisplayName  *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
+	// The display name of the function.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The name of the function.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The owner of the function.
@@ -4333,13 +4537,20 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 }
 
 type ListJobInfosRequest struct {
-	AscOrder    *bool   `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to sort query results in ascending or descending order.
+	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	// The request body parameters.
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The column based on which you want to sort query results.
 	OrderColumn *string `json:"orderColumn,omitempty" xml:"orderColumn,omitempty"`
-	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Region      *string `json:"region,omitempty" xml:"region,omitempty"`
-	TenantId    *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The page number.
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The region ID.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID.
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
 func (s ListJobInfosRequest) String() string {
@@ -4386,9 +4597,12 @@ func (s *ListJobInfosRequest) SetTenantId(v string) *ListJobInfosRequest {
 }
 
 type ListJobInfosResponseBody struct {
-	Data      *ListJobInfosResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	HttpCode  *int32                        `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The returned data.
+	Data *ListJobInfosResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListJobInfosResponseBody) String() string {
@@ -4415,10 +4629,14 @@ func (s *ListJobInfosResponseBody) SetRequestId(v string) *ListJobInfosResponseB
 }
 
 type ListJobInfosResponseBodyData struct {
+	// The list of the information about the jobs.
 	JobInfoList []*ListJobInfosResponseBodyDataJobInfoList `json:"jobInfoList,omitempty" xml:"jobInfoList,omitempty" type:"Repeated"`
-	PageNumber  *int64                                     `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int64                                     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	TotalCount  *int64                                     `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The page number.
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListJobInfosResponseBodyData) String() string {
@@ -4450,33 +4668,60 @@ func (s *ListJobInfosResponseBodyData) SetTotalCount(v int64) *ListJobInfosRespo
 }
 
 type ListJobInfosResponseBodyDataJobInfoList struct {
-	Cluster         *string  `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	CuSnapshot      *float64 `json:"cuSnapshot,omitempty" xml:"cuSnapshot,omitempty"`
-	CuUsage         *int64   `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
-	EndAtTime       *int64   `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
-	ExtNodeId       *string  `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
-	ExtNodeOnDuty   *string  `json:"extNodeOnDuty,omitempty" xml:"extNodeOnDuty,omitempty"`
-	ExtPlantFrom    *string  `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
-	InstanceId      *string  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	JobOwner        *string  `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	JobType         *string  `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	MemorySnapshot  *float64 `json:"memorySnapshot,omitempty" xml:"memorySnapshot,omitempty"`
-	MemoryUsage     *int64   `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
-	Priority        *int64   `json:"priority,omitempty" xml:"priority,omitempty"`
-	Project         *string  `json:"project,omitempty" xml:"project,omitempty"`
-	QuotaNickname   *string  `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	QuotaType       *string  `json:"quotaType,omitempty" xml:"quotaType,omitempty"`
-	Region          *string  `json:"region,omitempty" xml:"region,omitempty"`
-	RunningAtTime   *int64   `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
-	RunningTime     *int64   `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
-	Signature       *string  `json:"signature,omitempty" xml:"signature,omitempty"`
-	Status          *string  `json:"status,omitempty" xml:"status,omitempty"`
-	StatusSnapshot  *string  `json:"statusSnapshot,omitempty" xml:"statusSnapshot,omitempty"`
-	SubmittedAtTime *int64   `json:"submittedAtTime,omitempty" xml:"submittedAtTime,omitempty"`
-	Tags            *string  `json:"tags,omitempty" xml:"tags,omitempty"`
-	TenantId        *string  `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	TotalTime       *int64   `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
-	WaitingTime     *int64   `json:"waitingTime,omitempty" xml:"waitingTime,omitempty"`
+	// The cluster ID.
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The CU snapshot proportion of the job.
+	CuSnapshot *float64 `json:"cuSnapshot,omitempty" xml:"cuSnapshot,omitempty"`
+	// The total number of used compute units (CUs).
+	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
+	// The time when the job stops running.
+	EndAtTime *int64 `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
+	// The node ID of DataWorks.
+	ExtNodeId *string `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
+	// The account of the node owner.
+	ExtNodeOnDuty *string `json:"extNodeOnDuty,omitempty" xml:"extNodeOnDuty,omitempty"`
+	// The upstream platform.
+	ExtPlantFrom *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The account that commits the job.
+	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
+	// The type of the job.
+	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
+	// The memory snapshot proportion of the job.
+	MemorySnapshot *float64 `json:"memorySnapshot,omitempty" xml:"memorySnapshot,omitempty"`
+	// The total memory usage.
+	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
+	// The priority of the job.
+	Priority *int64 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// The name of the MaxCompute project.
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The nickname of the quota that is used by the job.
+	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	// The type of the quota.
+	QuotaType *string `json:"quotaType,omitempty" xml:"quotaType,omitempty"`
+	// The region ID.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The time when the job starts to run.
+	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
+	// The period for which the job runs.
+	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
+	// The signature of the SQL job.
+	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// The status of the job.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The status of the snapshot.
+	StatusSnapshot *string `json:"statusSnapshot,omitempty" xml:"statusSnapshot,omitempty"`
+	// The time when the job was committed.
+	SubmittedAtTime *int64 `json:"submittedAtTime,omitempty" xml:"submittedAtTime,omitempty"`
+	// The tags.
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The tenant ID.
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The total period for which the job runs.
+	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
+	// The duration for which the job waits to start.
+	WaitingTime *int64 `json:"waitingTime,omitempty" xml:"waitingTime,omitempty"`
 }
 
 func (s ListJobInfosResponseBodyDataJobInfoList) String() string {
@@ -8646,7 +8891,8 @@ func (s *UpdateProjectIpWhiteListResponse) SetBody(v *UpdateProjectIpWhiteListRe
 
 type UpdateQuotaHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	AkProven      *string            `json:"AkProven,omitempty" xml:"AkProven,omitempty"`
+	// The trusted AccessKey pairs.
+	AkProven *string `json:"AkProven,omitempty" xml:"AkProven,omitempty"`
 }
 
 func (s UpdateQuotaHeaders) String() string {
@@ -8668,8 +8914,11 @@ func (s *UpdateQuotaHeaders) SetAkProven(v string) *UpdateQuotaHeaders {
 }
 
 type UpdateQuotaRequest struct {
-	Body     *string `json:"body,omitempty" xml:"body,omitempty"`
-	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The request body parameter.
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The region ID.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID.
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -8697,7 +8946,9 @@ func (s *UpdateQuotaRequest) SetTenantId(v string) *UpdateQuotaRequest {
 }
 
 type UpdateQuotaResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The returned data.
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9422,9 +9673,19 @@ func (client *Client) GetPackage(projectName *string, packageName *string, reque
 	return _result, _err
 }
 
-func (client *Client) GetProjectWithOptions(projectName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetProjectWithOptions(projectName *string, request *GetProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["verbose"] = request.Verbose
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProject"),
@@ -9446,11 +9707,11 @@ func (client *Client) GetProjectWithOptions(projectName *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) GetProject(projectName *string) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetProject(projectName *string, request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetProjectResponse{}
-	_body, _err := client.GetProjectWithOptions(projectName, headers, runtime)
+	_body, _err := client.GetProjectWithOptions(projectName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
