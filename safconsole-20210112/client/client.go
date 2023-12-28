@@ -216,8 +216,11 @@ func (s *UploadSampleApiRequest) SetService(v string) *UploadSampleApiRequest {
 }
 
 type UploadSampleApiResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UploadSampleApiResponseBody) String() string {
@@ -228,8 +231,23 @@ func (s UploadSampleApiResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UploadSampleApiResponseBody) SetCode(v string) *UploadSampleApiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UploadSampleApiResponseBody) SetMessage(v string) *UploadSampleApiResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *UploadSampleApiResponseBody) SetRequestId(v string) *UploadSampleApiResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UploadSampleApiResponseBody) SetSuccess(v string) *UploadSampleApiResponseBody {
+	s.Success = &v
 	return s
 }
 
