@@ -5471,6 +5471,7 @@ type UAIDVerificationRequest struct {
 	Ip                   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Province             *string `json:"Province,omitempty" xml:"Province,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Token                *string `json:"Token,omitempty" xml:"Token,omitempty"`
@@ -5507,6 +5508,11 @@ func (s *UAIDVerificationRequest) SetOutId(v string) *UAIDVerificationRequest {
 
 func (s *UAIDVerificationRequest) SetOwnerId(v int64) *UAIDVerificationRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetProvince(v string) *UAIDVerificationRequest {
+	s.Province = &v
 	return s
 }
 
@@ -8037,6 +8043,10 @@ func (client *Client) UAIDVerificationWithOptions(request *UAIDVerificationReque
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Province)) {
+		query["Province"] = request.Province
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
