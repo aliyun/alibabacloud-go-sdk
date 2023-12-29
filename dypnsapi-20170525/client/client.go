@@ -13,15 +13,24 @@ import (
 )
 
 type CheckSmsVerifyCodeRequest struct {
-	CaseAuthPolicy       *int64  `json:"CaseAuthPolicy,omitempty" xml:"CaseAuthPolicy,omitempty"`
-	CountryCode          *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The verification policy for uppercase and lowercase letters of the verification code. Valid values:
+	//
+	// *   1: The verification policy does not distinguish uppercase and lowercase letters.
+	// *   2: The verification policy distinguishes uppercase and lowercase letters.
+	CaseAuthPolicy *int64 `json:"CaseAuthPolicy,omitempty" xml:"CaseAuthPolicy,omitempty"`
+	// The country code of the phone number. Default value: 86.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The external ID.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number.
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
-	VerifyCode           *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	// The verification service name. If this parameter is not specified, the default service is used. The name can be up to 20 characters in length.
+	SchemeName *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+	// The verification code.
+	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 
 func (s CheckSmsVerifyCodeRequest) String() string {
@@ -78,11 +87,22 @@ func (s *CheckSmsVerifyCodeRequest) SetVerifyCode(v string) *CheckSmsVerifyCodeR
 }
 
 type CheckSmsVerifyCodeResponseBody struct {
-	AccessDeniedDetail *string                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model              *CheckSmsVerifyCodeResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	Success            *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details about the access denial.
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [Response codes](https://help.aliyun.com/zh/pnvs/developer-reference/api-return-code?spm=a2c4g.11174283.0.0.70c5616bkj38Wa).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned data.
+	Model *CheckSmsVerifyCodeResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckSmsVerifyCodeResponseBody) String() string {
@@ -119,7 +139,12 @@ func (s *CheckSmsVerifyCodeResponseBody) SetSuccess(v bool) *CheckSmsVerifyCodeR
 }
 
 type CheckSmsVerifyCodeResponseBodyModel struct {
-	OutId        *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The external ID.
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The verification results. Valid values:
+	//
+	// *   PASS: The verification is successful.
+	// *   UNKNOWN: The verification failed.
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
@@ -171,17 +196,30 @@ func (s *CheckSmsVerifyCodeResponse) SetBody(v *CheckSmsVerifyCodeResponseBody) 
 }
 
 type CreateSchemeConfigRequest struct {
-	AndroidPackageName   *string `json:"AndroidPackageName,omitempty" xml:"AndroidPackageName,omitempty"`
-	AndroidPackageSign   *string `json:"AndroidPackageSign,omitempty" xml:"AndroidPackageSign,omitempty"`
-	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	H5Origin             *string `json:"H5Origin,omitempty" xml:"H5Origin,omitempty"`
-	H5Url                *string `json:"H5Url,omitempty" xml:"H5Url,omitempty"`
-	IosBundleId          *string `json:"IosBundleId,omitempty" xml:"IosBundleId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The package name. This parameter is required when Platform is set to Android. The name must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (\_), and periods (.).
+	AndroidPackageName *string `json:"AndroidPackageName,omitempty" xml:"AndroidPackageName,omitempty"`
+	// The package signature. This parameter is required when Platform is set to Android. The signature must be 32 characters in length and can contain digits and letters.
+	AndroidPackageSign *string `json:"AndroidPackageSign,omitempty" xml:"AndroidPackageSign,omitempty"`
+	// The app name, which can be up to 20 characters in length and can contain letters.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The reserved field. HTML5 apps are not supported.
+	H5Origin *string `json:"H5Origin,omitempty" xml:"H5Origin,omitempty"`
+	// The reserved field. HTML5 apps are not supported.
+	H5Url *string `json:"H5Url,omitempty" xml:"H5Url,omitempty"`
+	// The bundle ID. This parameter is required when OsType is set to iOS. The bundle ID must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (\_), and periods (.).
+	IosBundleId *string `json:"IosBundleId,omitempty" xml:"IosBundleId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The app platform.
+	//
+	// Valid values:
+	//
+	// *   Android
+	// *   iOS
 	Platform             *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+	// The service name, which can be up to 10 characters in length and can contain letters.
+	SchemeName *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
 }
 
 func (s CreateSchemeConfigRequest) String() string {
@@ -248,11 +286,22 @@ func (s *CreateSchemeConfigRequest) SetSchemeName(v string) *CreateSchemeConfigR
 }
 
 type CreateSchemeConfigResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *CreateSchemeConfigResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](https://help.aliyun.com/zh/pnvs/developer-reference/api-return-code?spm=a2c4g.11186623.0.0.5c3a662fbgeAuk).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned results.
+	Model *CreateSchemeConfigResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSchemeConfigResponseBody) String() string {
@@ -289,6 +338,7 @@ func (s *CreateSchemeConfigResponseBody) SetSuccess(v bool) *CreateSchemeConfigR
 }
 
 type CreateSchemeConfigResponseBodyModel struct {
+	// The service code.
 	SchemeCode *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
 }
 
@@ -335,25 +385,44 @@ func (s *CreateSchemeConfigResponse) SetBody(v *CreateSchemeConfigResponseBody) 
 }
 
 type CreateVerifySchemeRequest struct {
-	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AuthType             *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	BundleId             *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	CmApiCode            *int64  `json:"CmApiCode,omitempty" xml:"CmApiCode,omitempty"`
-	CtApiCode            *int64  `json:"CtApiCode,omitempty" xml:"CtApiCode,omitempty"`
-	CuApiCode            *int64  `json:"CuApiCode,omitempty" xml:"CuApiCode,omitempty"`
-	Email                *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	IpWhiteList          *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
-	Origin               *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	OsType               *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PackName             *string `json:"PackName,omitempty" xml:"PackName,omitempty"`
+	// The app name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The verification type. You can select multiple types only when the phone number verification is supported. Separate multiple types with commas (,).
+	//
+	// *   **1**: phone number verification
+	// *   **2**: SMS verification
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The bundle ID. This parameter is required when OsType is set to iOS. The bundle ID must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (\_), and periods (.).
+	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	// The channel code of China Mobile.
+	CmApiCode *int64 `json:"CmApiCode,omitempty" xml:"CmApiCode,omitempty"`
+	// The channel code of China Telecom.
+	CtApiCode *int64 `json:"CtApiCode,omitempty" xml:"CtApiCode,omitempty"`
+	// The channel code of China Unicom.
+	CuApiCode *int64 `json:"CuApiCode,omitempty" xml:"CuApiCode,omitempty"`
+	// The email address that receives the key.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The IP address whitelist.
+	IpWhiteList *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
+	// The source URL of the HTML5 app page. We recommend that you specify this parameter as a domain name.
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The type of the operating system for the terminal. Valid values: iOS and Android.
+	OsType  *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The package name. This parameter is required when OsType is set to Android. The name must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (\_), and periods (.).
+	PackName *string `json:"PackName,omitempty" xml:"PackName,omitempty"`
+	// The package signature. This parameter is required when OsType is set to Android. The signature must be 32 characters in length and can contain digits and letters.
 	PackSign             *string `json:"PackSign,omitempty" xml:"PackSign,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SceneType            *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
-	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
-	SmsSignName          *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	Url                  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The service type.
+	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
+	// The service name.
+	SchemeName *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+	// The bound SMS signature. This parameter is valid only when AuthType is set to 2. The signature must be approved.
+	SmsSignName *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	// The URL of the HTML5 app page.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s CreateVerifySchemeRequest) String() string {
@@ -460,12 +529,24 @@ func (s *CreateVerifySchemeRequest) SetUrl(v string) *CreateVerifySchemeRequest 
 }
 
 type CreateVerifySchemeResponseBody struct {
-	Code                *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
 	GateVerifySchemeDTO *CreateVerifySchemeResponseBodyGateVerifySchemeDTO `json:"GateVerifySchemeDTO,omitempty" xml:"GateVerifySchemeDTO,omitempty" type:"Struct"`
-	HttpStatusCode      *int64                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message             *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId           *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateVerifySchemeResponseBody) String() string {
@@ -507,6 +588,7 @@ func (s *CreateVerifySchemeResponseBody) SetSuccess(v bool) *CreateVerifySchemeR
 }
 
 type CreateVerifySchemeResponseBodyGateVerifySchemeDTO struct {
+	// The service code.
 	SchemeCode *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
 }
 
@@ -553,11 +635,13 @@ func (s *CreateVerifySchemeResponse) SetBody(v *CreateVerifySchemeResponseBody) 
 }
 
 type DeleteVerifySchemeRequest struct {
+	// The user ID.
 	CustomerId           *int64  `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SchemeCode           *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
+	// The service code.
+	SchemeCode *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
 }
 
 func (s DeleteVerifySchemeRequest) String() string {
@@ -594,10 +678,17 @@ func (s *DeleteVerifySchemeRequest) SetSchemeCode(v string) *DeleteVerifySchemeR
 }
 
 type DeleteVerifySchemeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request is successful. For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The result of the operation. Valid values:
+	//
+	// *   **true**: The verification service is deleted.
+	// *   **false**: The verification service failed to be deleted.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteVerifySchemeResponseBody) String() string {
@@ -658,11 +749,13 @@ func (s *DeleteVerifySchemeResponse) SetBody(v *DeleteVerifySchemeResponseBody) 
 }
 
 type DescribeVerifySchemeRequest struct {
+	// The user ID.
 	CustomerId           *int64  `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SchemeCode           *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
+	// The service code.
+	SchemeCode *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
 }
 
 func (s DescribeVerifySchemeRequest) String() string {
@@ -699,9 +792,13 @@ func (s *DescribeVerifySchemeRequest) SetSchemeCode(v string) *DescribeVerifySch
 }
 
 type DescribeVerifySchemeResponseBody struct {
-	Code                 *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message              *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId            *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. OK indicates that the request is successful. For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response parameters.
 	SchemeQueryResultDTO *DescribeVerifySchemeResponseBodySchemeQueryResultDTO `json:"SchemeQueryResultDTO,omitempty" xml:"SchemeQueryResultDTO,omitempty" type:"Struct"`
 }
 
@@ -734,6 +831,7 @@ func (s *DescribeVerifySchemeResponseBody) SetSchemeQueryResultDTO(v *DescribeVe
 }
 
 type DescribeVerifySchemeResponseBodySchemeQueryResultDTO struct {
+	// The key generated when you create a service in the console.
 	AppEncryptInfo *string `json:"AppEncryptInfo,omitempty" xml:"AppEncryptInfo,omitempty"`
 }
 
@@ -780,11 +878,14 @@ func (s *DescribeVerifySchemeResponse) SetBody(v *DescribeVerifySchemeResponseBo
 }
 
 type GetAuthTokenRequest struct {
+	// The requested domain name.
 	Origin               *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Url                  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	SceneCode            *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// The URL of the requested web page.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetAuthTokenRequest) String() string {
@@ -815,15 +916,27 @@ func (s *GetAuthTokenRequest) SetResourceOwnerId(v int64) *GetAuthTokenRequest {
 	return s
 }
 
+func (s *GetAuthTokenRequest) SetSceneCode(v string) *GetAuthTokenRequest {
+	s.SceneCode = &v
+	return s
+}
+
 func (s *GetAuthTokenRequest) SetUrl(v string) *GetAuthTokenRequest {
 	s.Url = &v
 	return s
 }
 
 type GetAuthTokenResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response parameters.
 	TokenInfo *GetAuthTokenResponseBodyTokenInfo `json:"TokenInfo,omitempty" xml:"TokenInfo,omitempty" type:"Struct"`
 }
 
@@ -856,8 +969,14 @@ func (s *GetAuthTokenResponseBody) SetTokenInfo(v *GetAuthTokenResponseBodyToken
 }
 
 type GetAuthTokenResponseBodyTokenInfo struct {
+	// The business authentication token.
+	//
+	// >  AccessToken is valid for 10 minutes and can be used repeatedly within its validity period.
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	JwtToken    *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	// The API authentication token.
+	//
+	// >  JwtToken is valid for 1 hour and can be used repeatedly within its validity period.
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
 }
 
 func (s GetAuthTokenResponseBodyTokenInfo) String() string {
@@ -908,12 +1027,15 @@ func (s *GetAuthTokenResponse) SetBody(v *GetAuthTokenResponseBody) *GetAuthToke
 }
 
 type GetAuthorizationUrlRequest struct {
-	EndDate              *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The authorization end date, which is in the yyyy-MM-dd format. This parameter is required for services of contract type.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number.
 	PhoneNo              *string `json:"PhoneNo,omitempty" xml:"PhoneNo,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SchemeId             *int64  `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+	// The ID of the authorization scenario. You can view the ID of the authorization scenario on the **Authorization Scenario Management** page in the **Phone Number Verification Service console**.
+	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
 }
 
 func (s GetAuthorizationUrlRequest) String() string {
@@ -955,10 +1077,17 @@ func (s *GetAuthorizationUrlRequest) SetSchemeId(v int64) *GetAuthorizationUrlRe
 }
 
 type GetAuthorizationUrlResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAuthorizationUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *GetAuthorizationUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAuthorizationUrlResponseBody) String() string {
@@ -990,6 +1119,7 @@ func (s *GetAuthorizationUrlResponseBody) SetRequestId(v string) *GetAuthorizati
 }
 
 type GetAuthorizationUrlResponseBodyData struct {
+	// The authorization URL.
 	AuthorizationUrl *string `json:"AuthorizationUrl,omitempty" xml:"AuthorizationUrl,omitempty"`
 }
 
@@ -1036,15 +1166,21 @@ func (s *GetAuthorizationUrlResponse) SetBody(v *GetAuthorizationUrlResponseBody
 }
 
 type GetFusionAuthTokenRequest struct {
-	BundleId             *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	DurationSeconds      *int64  `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PackageName          *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	PackageSign          *string `json:"PackageSign,omitempty" xml:"PackageSign,omitempty"`
+	// The bundle ID of the app. This parameter is required when Platform is set to iOS.
+	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	// The validity period of the token. Unit: seconds. Valid values: 900 to 43200.
+	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
+	OwnerId         *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The package name of the app. This parameter is required when Platform is set to Android.
+	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// The package signature of the app. This parameter is required when Platform is set to Android.
+	PackageSign *string `json:"PackageSign,omitempty" xml:"PackageSign,omitempty"`
+	// The platform type. Valid values: Android and iOS.
 	Platform             *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SchemeCode           *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
+	// The service code.
+	SchemeCode *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
 }
 
 func (s GetFusionAuthTokenRequest) String() string {
@@ -1101,11 +1237,16 @@ func (s *GetFusionAuthTokenRequest) SetSchemeCode(v string) *GetFusionAuthTokenR
 }
 
 type GetFusionAuthTokenResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The response code. If OK is returned, the request is successful. Other values indicate that the request failed. For more information, see Error codes.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The authentication code. The value of this parameter is a string.
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful. Valid values: true false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFusionAuthTokenResponseBody) String() string {
@@ -1171,7 +1312,9 @@ func (s *GetFusionAuthTokenResponse) SetBody(v *GetFusionAuthTokenResponseBody) 
 }
 
 type GetMobileRequest struct {
-	AccessToken          *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The logon token obtained by the SDK for your app.
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The external ID.
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1212,10 +1355,17 @@ func (s *GetMobileRequest) SetResourceOwnerId(v int64) *GetMobileRequest {
 }
 
 type GetMobileResponseBody struct {
-	Code               *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
 	GetMobileResultDTO *GetMobileResponseBodyGetMobileResultDTO `json:"GetMobileResultDTO,omitempty" xml:"GetMobileResultDTO,omitempty" type:"Struct"`
-	Message            *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMobileResponseBody) String() string {
@@ -1247,6 +1397,7 @@ func (s *GetMobileResponseBody) SetRequestId(v string) *GetMobileResponseBody {
 }
 
 type GetMobileResponseBodyGetMobileResultDTO struct {
+	// The phone number,
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 }
 
@@ -1296,7 +1447,8 @@ type GetPhoneWithTokenRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SpToken              *string `json:"SpToken,omitempty" xml:"SpToken,omitempty"`
+	// The token for phone number verification that is obtained by the JavaScript SDK. The validity period of the token is 10 minutes for China Telecom, 30 minutes for China Unicom, and 2 minutes for China Mobile. The token can be used only once.
+	SpToken *string `json:"SpToken,omitempty" xml:"SpToken,omitempty"`
 }
 
 func (s GetPhoneWithTokenRequest) String() string {
@@ -1328,10 +1480,17 @@ func (s *GetPhoneWithTokenRequest) SetSpToken(v string) *GetPhoneWithTokenReques
 }
 
 type GetPhoneWithTokenResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetPhoneWithTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *GetPhoneWithTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPhoneWithTokenResponseBody) String() string {
@@ -1363,6 +1522,7 @@ func (s *GetPhoneWithTokenResponseBody) SetRequestId(v string) *GetPhoneWithToke
 }
 
 type GetPhoneWithTokenResponseBodyData struct {
+	// The phone number.
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 }
 
@@ -1409,17 +1569,25 @@ func (s *GetPhoneWithTokenResponse) SetBody(v *GetPhoneWithTokenResponseBody) *G
 }
 
 type GetSmsAuthTokensRequest struct {
-	BundleId             *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	Expire               *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	OsType               *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the iOS application. This parameter is required if OsType is set to **iOS**.
+	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	// The validity period of the token. Unit: seconds. Valid values: 900 to 43200.
+	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// The type of the operating system. Valid values: **Android** and **iOS**.
+	OsType  *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The package name. This parameter is required if OsType is set to **Android**.
 	PackageName          *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SceneCode            *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	SmsCodeExpire        *int32  `json:"SmsCodeExpire,omitempty" xml:"SmsCodeExpire,omitempty"`
-	SmsTemplateCode      *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	// The service code.
+	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// The signature. This parameter is required if OsType is set to **Android**.
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The validity period of the SMS verification code. Unit: seconds. Default value: 180.
+	SmsCodeExpire *int32 `json:"SmsCodeExpire,omitempty" xml:"SmsCodeExpire,omitempty"`
+	// The code of the text message template.
+	SmsTemplateCode *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
 }
 
 func (s GetSmsAuthTokensRequest) String() string {
@@ -1486,10 +1654,17 @@ func (s *GetSmsAuthTokensRequest) SetSmsTemplateCode(v string) *GetSmsAuthTokens
 }
 
 type GetSmsAuthTokensResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSmsAuthTokensResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *GetSmsAuthTokensResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSmsAuthTokensResponseBody) String() string {
@@ -1521,11 +1696,16 @@ func (s *GetSmsAuthTokensResponseBody) SetRequestId(v string) *GetSmsAuthTokensR
 }
 
 type GetSmsAuthTokensResponseBodyData struct {
-	BizToken           *string `json:"BizToken,omitempty" xml:"BizToken,omitempty"`
-	ExpireTime         *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	StsAccessKeyId     *string `json:"StsAccessKeyId,omitempty" xml:"StsAccessKeyId,omitempty"`
+	// The business token.
+	BizToken *string `json:"BizToken,omitempty" xml:"BizToken,omitempty"`
+	// The time when the token expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The AccessKey ID.
+	StsAccessKeyId *string `json:"StsAccessKeyId,omitempty" xml:"StsAccessKeyId,omitempty"`
+	// The AccessKey secret.
 	StsAccessKeySecret *string `json:"StsAccessKeySecret,omitempty" xml:"StsAccessKeySecret,omitempty"`
-	StsToken           *string `json:"StsToken,omitempty" xml:"StsToken,omitempty"`
+	// The security token.
+	StsToken *string `json:"StsToken,omitempty" xml:"StsToken,omitempty"`
 }
 
 func (s GetSmsAuthTokensResponseBodyData) String() string {
@@ -1590,8 +1770,314 @@ func (s *GetSmsAuthTokensResponse) SetBody(v *GetSmsAuthTokensResponseBody) *Get
 	return s
 }
 
+type JyCreateVerifySchemeRequest struct {
+	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BundleId             *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	CmApiCode            *int64  `json:"CmApiCode,omitempty" xml:"CmApiCode,omitempty"`
+	CtApiCode            *int64  `json:"CtApiCode,omitempty" xml:"CtApiCode,omitempty"`
+	CuApiCode            *int64  `json:"CuApiCode,omitempty" xml:"CuApiCode,omitempty"`
+	OsType               *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PackName             *string `json:"PackName,omitempty" xml:"PackName,omitempty"`
+	PackSign             *string `json:"PackSign,omitempty" xml:"PackSign,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+}
+
+func (s JyCreateVerifySchemeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JyCreateVerifySchemeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *JyCreateVerifySchemeRequest) SetAppName(v string) *JyCreateVerifySchemeRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetBundleId(v string) *JyCreateVerifySchemeRequest {
+	s.BundleId = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetCmApiCode(v int64) *JyCreateVerifySchemeRequest {
+	s.CmApiCode = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetCtApiCode(v int64) *JyCreateVerifySchemeRequest {
+	s.CtApiCode = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetCuApiCode(v int64) *JyCreateVerifySchemeRequest {
+	s.CuApiCode = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetOsType(v string) *JyCreateVerifySchemeRequest {
+	s.OsType = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetOwnerId(v int64) *JyCreateVerifySchemeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetPackName(v string) *JyCreateVerifySchemeRequest {
+	s.PackName = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetPackSign(v string) *JyCreateVerifySchemeRequest {
+	s.PackSign = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetResourceOwnerAccount(v string) *JyCreateVerifySchemeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetResourceOwnerId(v int64) *JyCreateVerifySchemeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeRequest) SetSchemeName(v string) *JyCreateVerifySchemeRequest {
+	s.SchemeName = &v
+	return s
+}
+
+type JyCreateVerifySchemeResponseBody struct {
+	Code                 *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	GateVerifySchemeData *JyCreateVerifySchemeResponseBodyGateVerifySchemeData `json:"GateVerifySchemeData,omitempty" xml:"GateVerifySchemeData,omitempty" type:"Struct"`
+	Message              *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId            *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s JyCreateVerifySchemeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JyCreateVerifySchemeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *JyCreateVerifySchemeResponseBody) SetCode(v string) *JyCreateVerifySchemeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeResponseBody) SetGateVerifySchemeData(v *JyCreateVerifySchemeResponseBodyGateVerifySchemeData) *JyCreateVerifySchemeResponseBody {
+	s.GateVerifySchemeData = v
+	return s
+}
+
+func (s *JyCreateVerifySchemeResponseBody) SetMessage(v string) *JyCreateVerifySchemeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeResponseBody) SetRequestId(v string) *JyCreateVerifySchemeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type JyCreateVerifySchemeResponseBodyGateVerifySchemeData struct {
+	SchemeCode *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
+}
+
+func (s JyCreateVerifySchemeResponseBodyGateVerifySchemeData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JyCreateVerifySchemeResponseBodyGateVerifySchemeData) GoString() string {
+	return s.String()
+}
+
+func (s *JyCreateVerifySchemeResponseBodyGateVerifySchemeData) SetSchemeCode(v string) *JyCreateVerifySchemeResponseBodyGateVerifySchemeData {
+	s.SchemeCode = &v
+	return s
+}
+
+type JyCreateVerifySchemeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *JyCreateVerifySchemeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s JyCreateVerifySchemeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JyCreateVerifySchemeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *JyCreateVerifySchemeResponse) SetHeaders(v map[string]*string) *JyCreateVerifySchemeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *JyCreateVerifySchemeResponse) SetStatusCode(v int32) *JyCreateVerifySchemeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *JyCreateVerifySchemeResponse) SetBody(v *JyCreateVerifySchemeResponseBody) *JyCreateVerifySchemeResponse {
+	s.Body = v
+	return s
+}
+
+type JyQueryAppInfoBySceneCodeRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SceneCode            *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+}
+
+func (s JyQueryAppInfoBySceneCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JyQueryAppInfoBySceneCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *JyQueryAppInfoBySceneCodeRequest) SetOwnerId(v int64) *JyQueryAppInfoBySceneCodeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeRequest) SetResourceOwnerAccount(v string) *JyQueryAppInfoBySceneCodeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeRequest) SetResourceOwnerId(v int64) *JyQueryAppInfoBySceneCodeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeRequest) SetSceneCode(v string) *JyQueryAppInfoBySceneCodeRequest {
+	s.SceneCode = &v
+	return s
+}
+
+type JyQueryAppInfoBySceneCodeResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *JyQueryAppInfoBySceneCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s JyQueryAppInfoBySceneCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JyQueryAppInfoBySceneCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponseBody) SetCode(v string) *JyQueryAppInfoBySceneCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponseBody) SetData(v *JyQueryAppInfoBySceneCodeResponseBodyData) *JyQueryAppInfoBySceneCodeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponseBody) SetMessage(v string) *JyQueryAppInfoBySceneCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponseBody) SetRequestId(v string) *JyQueryAppInfoBySceneCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type JyQueryAppInfoBySceneCodeResponseBodyData struct {
+	CmAppId  *string `json:"CmAppId,omitempty" xml:"CmAppId,omitempty"`
+	CmAppKey *string `json:"CmAppKey,omitempty" xml:"CmAppKey,omitempty"`
+	CtAppId  *string `json:"CtAppId,omitempty" xml:"CtAppId,omitempty"`
+	CtAppKey *string `json:"CtAppKey,omitempty" xml:"CtAppKey,omitempty"`
+}
+
+func (s JyQueryAppInfoBySceneCodeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JyQueryAppInfoBySceneCodeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponseBodyData) SetCmAppId(v string) *JyQueryAppInfoBySceneCodeResponseBodyData {
+	s.CmAppId = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponseBodyData) SetCmAppKey(v string) *JyQueryAppInfoBySceneCodeResponseBodyData {
+	s.CmAppKey = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponseBodyData) SetCtAppId(v string) *JyQueryAppInfoBySceneCodeResponseBodyData {
+	s.CtAppId = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponseBodyData) SetCtAppKey(v string) *JyQueryAppInfoBySceneCodeResponseBodyData {
+	s.CtAppKey = &v
+	return s
+}
+
+type JyQueryAppInfoBySceneCodeResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *JyQueryAppInfoBySceneCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s JyQueryAppInfoBySceneCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JyQueryAppInfoBySceneCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponse) SetHeaders(v map[string]*string) *JyQueryAppInfoBySceneCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponse) SetStatusCode(v int32) *JyQueryAppInfoBySceneCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *JyQueryAppInfoBySceneCodeResponse) SetBody(v *JyQueryAppInfoBySceneCodeResponseBody) *JyQueryAppInfoBySceneCodeResponse {
+	s.Body = v
+	return s
+}
+
 type QueryGateVerifyBillingPublicRequest struct {
-	AuthenticationType   *int32  `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
+	// The verification method. Valid values:
+	//
+	// *   **0**: phone number verification
+	// *   **1**: one-click logon
+	// *   **2**: all
+	// *   **3**: facial recognition
+	// *   **4**: SMS verification
+	AuthenticationType *int32 `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
+	// The month in which the bill is generated. Specify this parameter in the YYYYMM format. Example: 202111.
 	Month                *string `json:"Month,omitempty" xml:"Month,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1626,10 +2112,17 @@ func (s *QueryGateVerifyBillingPublicRequest) SetResourceOwnerAccount(v string) 
 }
 
 type QueryGateVerifyBillingPublicResponseBody struct {
-	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryGateVerifyBillingPublicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The billing information about each verification service.
+	Data *QueryGateVerifyBillingPublicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryGateVerifyBillingPublicResponseBody) String() string {
@@ -1661,7 +2154,9 @@ func (s *QueryGateVerifyBillingPublicResponseBody) SetRequestId(v string) *Query
 }
 
 type QueryGateVerifyBillingPublicResponseBodyData struct {
-	AmountSum        *string                                                         `json:"AmountSum,omitempty" xml:"AmountSum,omitempty"`
+	// The fees generated for all verification services. Unitrogen: CNY.
+	AmountSum *string `json:"AmountSum,omitempty" xml:"AmountSum,omitempty"`
+	// The details of fees.
 	SceneBillingList []*QueryGateVerifyBillingPublicResponseBodyDataSceneBillingList `json:"SceneBillingList,omitempty" xml:"SceneBillingList,omitempty" type:"Repeated"`
 }
 
@@ -1684,12 +2179,19 @@ func (s *QueryGateVerifyBillingPublicResponseBodyData) SetSceneBillingList(v []*
 }
 
 type QueryGateVerifyBillingPublicResponseBodyDataSceneBillingList struct {
-	Add         *string `json:"Add,omitempty" xml:"Add,omitempty"`
-	Amount      *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ItemName    *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	SceneCode   *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	SceneName   *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// The billable items.
+	Add *string `json:"Add,omitempty" xml:"Add,omitempty"`
+	// The fees generated for the verification service. Unitrogen: CNY.
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The verification method.
+	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	// The service code.
+	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// The service name.
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// The unit price. Unit: CNY.
 	SinglePrice *string `json:"SinglePrice,omitempty" xml:"SinglePrice,omitempty"`
 }
 
@@ -1766,13 +2268,26 @@ func (s *QueryGateVerifyBillingPublicResponse) SetBody(v *QueryGateVerifyBilling
 }
 
 type QueryGateVerifyStatisticPublicRequest struct {
-	AuthenticationType   *int32  `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
-	EndDate              *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The verification method. Valid values:
+	//
+	// *   **1**: one-click logon
+	// *   **2**: phone number verification, including the verification of the phone number used in HTML5 pages
+	// *   **3**: SMS verification
+	// *   **4**: facial recognition
+	AuthenticationType *int32 `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
+	// The end date. Specify this parameter in the YYYYMMDD format. Example: 20220106.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The type of the operating system. Valid values:
+	//
+	// *   **Android**
+	// *   **iOS**
 	OsType               *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	SceneCode            *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	StartDate            *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The service code.
+	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// The start date. Specify this parameter in the YYYYMMDD format. Example: 20220101.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s QueryGateVerifyStatisticPublicRequest) String() string {
@@ -1819,10 +2334,17 @@ func (s *QueryGateVerifyStatisticPublicRequest) SetStartDate(v string) *QueryGat
 }
 
 type QueryGateVerifyStatisticPublicResponseBody struct {
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryGateVerifyStatisticPublicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the calls of Phone Number Verification Service, including the total calls, the successful calls, failed calls, unknown calls, and daily calls within the statistical date range.
+	Data *QueryGateVerifyStatisticPublicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryGateVerifyStatisticPublicResponseBody) String() string {
@@ -1854,11 +2376,16 @@ func (s *QueryGateVerifyStatisticPublicResponseBody) SetRequestId(v string) *Que
 }
 
 type QueryGateVerifyStatisticPublicResponseBodyData struct {
+	// The information about the daily calls.
 	DayStatistic []*QueryGateVerifyStatisticPublicResponseBodyDataDayStatistic `json:"DayStatistic,omitempty" xml:"DayStatistic,omitempty" type:"Repeated"`
-	Total        *int64                                                        `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalFail    *int64                                                        `json:"TotalFail,omitempty" xml:"TotalFail,omitempty"`
-	TotalSuccess *int64                                                        `json:"TotalSuccess,omitempty" xml:"TotalSuccess,omitempty"`
-	TotalUnknown *int64                                                        `json:"TotalUnknown,omitempty" xml:"TotalUnknown,omitempty"`
+	// The total calls.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The failed calls.
+	TotalFail *int64 `json:"TotalFail,omitempty" xml:"TotalFail,omitempty"`
+	// The successful calls.
+	TotalSuccess *int64 `json:"TotalSuccess,omitempty" xml:"TotalSuccess,omitempty"`
+	// The unknown calls.
+	TotalUnknown *int64 `json:"TotalUnknown,omitempty" xml:"TotalUnknown,omitempty"`
 }
 
 func (s QueryGateVerifyStatisticPublicResponseBodyData) String() string {
@@ -1895,10 +2422,14 @@ func (s *QueryGateVerifyStatisticPublicResponseBodyData) SetTotalUnknown(v int64
 }
 
 type QueryGateVerifyStatisticPublicResponseBodyDataDayStatistic struct {
+	// The date. This field is accurate to the day. The value of this field is in the YYYYMMDD format. Example: 20220103.
 	StatisticDateStr *string `json:"StatisticDateStr,omitempty" xml:"StatisticDateStr,omitempty"`
-	TotalFail        *int64  `json:"TotalFail,omitempty" xml:"TotalFail,omitempty"`
-	TotalSuccess     *int64  `json:"TotalSuccess,omitempty" xml:"TotalSuccess,omitempty"`
-	TotalUnknown     *int64  `json:"TotalUnknown,omitempty" xml:"TotalUnknown,omitempty"`
+	// The failed calls on the day.
+	TotalFail *int64 `json:"TotalFail,omitempty" xml:"TotalFail,omitempty"`
+	// The successful calls on the day.
+	TotalSuccess *int64 `json:"TotalSuccess,omitempty" xml:"TotalSuccess,omitempty"`
+	// The unknown calls on the day.
+	TotalUnknown *int64 `json:"TotalUnknown,omitempty" xml:"TotalUnknown,omitempty"`
 }
 
 func (s QueryGateVerifyStatisticPublicResponseBodyDataDayStatistic) String() string {
@@ -1959,14 +2490,21 @@ func (s *QueryGateVerifyStatisticPublicResponse) SetBody(v *QueryGateVerifyStati
 }
 
 type QuerySendDetailsRequest struct {
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CurrentPage          *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique ID of the business, which is provided by Alibaba Cloud.
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The number of the page on which you are reading the text message. Pages start from page 1. The value of this parameter cannot exceed the maximum page number.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The phone number.
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SendDate             *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	// The date when the text message was sent. You can query text messages that were sent within the last 30 days.
+	//
+	// Specify the date in the yyyyMMdd format. Example: 20181225.
+	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
 }
 
 func (s QuerySendDetailsRequest) String() string {
@@ -2018,12 +2556,23 @@ func (s *QuerySendDetailsRequest) SetSendDate(v string) *QuerySendDetailsRequest
 }
 
 type QuerySendDetailsResponseBody struct {
-	AccessDeniedDetail *string                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model              []*QuerySendDetailsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	Success            *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount         *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The details about the access denial.
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	//
+	// If OK is returned, the request is successful. Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html?spm=a2c4g.419277.0.i11).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned data.
+	Model []*QuerySendDetailsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries in the list.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySendDetailsResponseBody) String() string {
@@ -2065,13 +2614,34 @@ func (s *QuerySendDetailsResponseBody) SetTotalCount(v int64) *QuerySendDetailsR
 }
 
 type QuerySendDetailsResponseBodyModel struct {
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ErrCode      *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	OutId        *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	PhoneNum     *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
-	ReceiveDate  *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
-	SendDate     *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	SendStatus   *int64  `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	// The content of the text message.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The status code returned by the carrier.
+	//
+	// *   If the text message was delivered, "DELIVERED" is returned.
+	// *   If the text message failed to be sent, see [Error codes](https://help.aliyun.com/document_detail/101347.html?spm=a2c4g.419277.0.i8) for more information.
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The extension field.
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The phone number.
+	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// The date and time when the text message was received.
+	ReceiveDate *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
+	// The date when the text message was sent. You can query text messages that were sent within the last 30 days.
+	//
+	// The date is in the yyyyMMdd format. Example: 20181225.
+	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	// The delivery status of the text message.
+	//
+	// *   1: A delivery receipt is to be sent.
+	// *   2: The text message failed to be sent.
+	// *   3: The text message was sent.
+	SendStatus *int64 `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	// The code of the text message template.
+	//
+	// Log on to the SMS console. In the left-side navigation pane, click **Go China** or **Go Globe**. You can view the text message template code in the **Template Code** column on the **Message Templates** tab.
+	//
+	// >  The text message templates must be created on the Go Globe page and approved.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -2153,23 +2723,67 @@ func (s *QuerySendDetailsResponse) SetBody(v *QuerySendDetailsResponseBody) *Que
 }
 
 type SendSmsVerifyCodeRequest struct {
-	CodeLength           *int64  `json:"CodeLength,omitempty" xml:"CodeLength,omitempty"`
-	CodeType             *int64  `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	CountryCode          *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	DuplicatePolicy      *int64  `json:"DuplicatePolicy,omitempty" xml:"DuplicatePolicy,omitempty"`
-	Interval             *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The length of the verification code. Default value: 4. Valid values: 4 to 8.
+	CodeLength *int64 `json:"CodeLength,omitempty" xml:"CodeLength,omitempty"`
+	// The type of the generated verification code. Default value: 1. Valid values:
+	//
+	// *   1: digits only
+	// *   2: uppercase letters only
+	// *   3: lowercase letters only
+	// *   4: uppercase and lowercase letters
+	// *   5: digits and uppercase letters
+	// *   6: digits and lowercase letters
+	// *   7: digits and uppercase and lowercase letters
+	CodeType *int64 `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// The country code of the phone number. SMS verification codes can be sent only by using phone numbers in the Chinese mainland. Default value: 86.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// Specifies how to handle the verification codes received earlier in a case where verification codes are sent to the same phone number for the same scenario within the validity period.
+	//
+	// *   1 (default): The latest verification code overwrites the verification codes received earlier. In this case, verification codes received earlier expire.
+	// *   2: Verification codes within their validity period are valid and can be used for verification.
+	DuplicatePolicy *int64 `json:"DuplicatePolicy,omitempty" xml:"DuplicatePolicy,omitempty"`
+	// The time interval. Unit: seconds. Default value: 60. This parameter specifies how often you can send a verification code.
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The external ID.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number.
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ReturnVerifyCode     *bool   `json:"ReturnVerifyCode,omitempty" xml:"ReturnVerifyCode,omitempty"`
-	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
-	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	SmsUpExtendCode      *string `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
-	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateParam        *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
-	ValidTime            *int64  `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
+	// Specifies whether to return a verification code.
+	//
+	// *   **true**
+	// *   **false**
+	ReturnVerifyCode *bool `json:"ReturnVerifyCode,omitempty" xml:"ReturnVerifyCode,omitempty"`
+	// The verification service name. If this parameter is not specified, the default service is used. The name can be up to 20 characters in length.
+	SchemeName *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+	// The signature.
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The extension code of the upstream text message. Upstream text messages are text messages sent to the communication service provider. Upstream text messages are used to customize a service, complete an inquiry, or send a request. You are charged for sending upstream text messages based on the billing standards of the service provider.
+	//
+	// >  The extension code is automatically generated by the system when the signature is generated. You do not need to specify the extension code. You can skip this parameter based on your business requirements. If you want to use custom extension codes, contact your account manager.
+	SmsUpExtendCode *string `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
+	// The code of the text message template.
+	//
+	// Log on to the [SMS console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview). In the left-side navigation pane, click **Go China** or **Go Globe**. You can view the text message template code in the **Template Code** column on the **Message Templates** tab.
+	//
+	// >  The text message templates must be created on the Go Globe page and approved.
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The value of the variable in the text message template. The verification code is replaced with "##code##".
+	//
+	// Example 1: For a system-defined template that contains variables, if the template content is "Your verification code is ${code} and valid for 5 minutes. Do not disclose the verification code to others.", specify the value of this parameter as {"code":"##code##"}
+	//
+	// Example 2: For a custom template, if the template content is ${content}, specify the value of this parameter as {"content":"Your verification code is ##code## and must be used within 5 minutes."}.
+	//
+	// >
+	//
+	// *   If line breaks are required in JSON-formatted data, they must meet the relevant requirements that are specified in the standard JSON protocol.
+	//
+	// *   For more information about template variables, see [SMS template specifications](~~108253~~).
+	TemplateParam *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
+	// The validity period of the verification code. Unit: seconds. Default value: 300.
+	ValidTime *int64 `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
 }
 
 func (s SendSmsVerifyCodeRequest) String() string {
@@ -2266,11 +2880,19 @@ func (s *SendSmsVerifyCodeRequest) SetValidTime(v int64) *SendSmsVerifyCodeReque
 }
 
 type SendSmsVerifyCodeResponseBody struct {
-	AccessDeniedDetail *string                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model              *SendSmsVerifyCodeResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	Success            *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details about the access denial.
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. If OK is returned, the request is successful. For more information, see [Response codes](https://help.aliyun.com/zh/pnvs/developer-reference/api-return-code?spm=a2c4g.11174283.0.0.70c5616bkj38Wa).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned data.
+	Model *SendSmsVerifyCodeResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendSmsVerifyCodeResponseBody) String() string {
@@ -2307,9 +2929,13 @@ func (s *SendSmsVerifyCodeResponseBody) SetSuccess(v bool) *SendSmsVerifyCodeRes
 }
 
 type SendSmsVerifyCodeResponseBodyModel struct {
-	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	OutId      *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The business ID.
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The external ID.
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The verification code.
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 
@@ -2371,9 +2997,12 @@ func (s *SendSmsVerifyCodeResponse) SetBody(v *SendSmsVerifyCodeResponseBody) *S
 }
 
 type VerifyMobileRequest struct {
-	AccessCode           *string `json:"AccessCode,omitempty" xml:"AccessCode,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The token obtained by the SDK for your app.
+	AccessCode *string `json:"AccessCode,omitempty" xml:"AccessCode,omitempty"`
+	// The external ID.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number.
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2418,10 +3047,17 @@ func (s *VerifyMobileRequest) SetResourceOwnerId(v int64) *VerifyMobileRequest {
 }
 
 type VerifyMobileResponseBody struct {
-	Code                *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
 	GateVerifyResultDTO *VerifyMobileResponseBodyGateVerifyResultDTO `json:"GateVerifyResultDTO,omitempty" xml:"GateVerifyResultDTO,omitempty" type:"Struct"`
-	Message             *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId           *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s VerifyMobileResponseBody) String() string {
@@ -2453,7 +3089,13 @@ func (s *VerifyMobileResponseBody) SetRequestId(v string) *VerifyMobileResponseB
 }
 
 type VerifyMobileResponseBodyGateVerifyResultDTO struct {
-	VerifyId     *string `json:"VerifyId,omitempty" xml:"VerifyId,omitempty"`
+	// The verification ID.
+	VerifyId *string `json:"VerifyId,omitempty" xml:"VerifyId,omitempty"`
+	// The verification results. Valid values:
+	//
+	// *   **PASS: The input phone number is consistent with the phone number that you use.**
+	// *   **REJECT: The input phone number is different from the phone number that you use.**
+	// *   **UNKNOWN: The system cannot judge whether the input phone number is consistent with the phone number that you use.
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
@@ -2505,11 +3147,13 @@ func (s *VerifyMobileResponse) SetBody(v *VerifyMobileResponseBody) *VerifyMobil
 }
 
 type VerifyPhoneWithTokenRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number.
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SpToken              *string `json:"SpToken,omitempty" xml:"SpToken,omitempty"`
+	// The token for phone number verification that is obtained by the JavaScript SDK.
+	SpToken *string `json:"SpToken,omitempty" xml:"SpToken,omitempty"`
 }
 
 func (s VerifyPhoneWithTokenRequest) String() string {
@@ -2546,10 +3190,17 @@ func (s *VerifyPhoneWithTokenRequest) SetSpToken(v string) *VerifyPhoneWithToken
 }
 
 type VerifyPhoneWithTokenResponseBody struct {
-	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
 	GateVerify *VerifyPhoneWithTokenResponseBodyGateVerify `json:"GateVerify,omitempty" xml:"GateVerify,omitempty" type:"Struct"`
-	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s VerifyPhoneWithTokenResponseBody) String() string {
@@ -2581,7 +3232,13 @@ func (s *VerifyPhoneWithTokenResponseBody) SetRequestId(v string) *VerifyPhoneWi
 }
 
 type VerifyPhoneWithTokenResponseBodyGateVerify struct {
-	VerifyId     *string `json:"VerifyId,omitempty" xml:"VerifyId,omitempty"`
+	// The external ID.
+	VerifyId *string `json:"VerifyId,omitempty" xml:"VerifyId,omitempty"`
+	// The verification results. Valid values:
+	//
+	// *   PASS: The input phone number is consistent with the phone number used in HTML5 pages.
+	// *   REJECT: The input phone number is different from the phone number used in HTML5 pages.
+	// *   UNKNOWN: The system cannot judge whether the input phone number is consistent with the phone number used in HTML5 pages.
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
@@ -2633,9 +3290,12 @@ func (s *VerifyPhoneWithTokenResponse) SetBody(v *VerifyPhoneWithTokenResponseBo
 }
 
 type VerifySmsCodeRequest struct {
+	// The phone number, which is used to receive SMS verification codes.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	SmsCode     *string `json:"SmsCode,omitempty" xml:"SmsCode,omitempty"`
-	SmsToken    *string `json:"SmsToken,omitempty" xml:"SmsToken,omitempty"`
+	// The SMS verification code.
+	SmsCode *string `json:"SmsCode,omitempty" xml:"SmsCode,omitempty"`
+	// The text message verification code. After you successfully call the corresponding API operation to send the SMS verification code, the end users receive the SMS verification code. SmsToken is returned by the SDK for SMS verification for you to verify the text message verification code. For an Android client, sendVerifyCode is called to send the verification code. For an iOS client, sendVerifyCodeWithTimeout is called to send the verification code. For more information, see [Overview](~~400434~~).
+	SmsToken *string `json:"SmsToken,omitempty" xml:"SmsToken,omitempty"`
 }
 
 func (s VerifySmsCodeRequest) String() string {
@@ -2662,9 +3322,19 @@ func (s *VerifySmsCodeRequest) SetSmsToken(v string) *VerifySmsCodeRequest {
 }
 
 type VerifySmsCodeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   If OK is returned, the request is successful.
+	// *   For more information about other error codes, see [API response codes](~~85198~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2729,7 +3399,8 @@ type VerifyWithFusionAuthTokenRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VerifyToken          *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
+	// The unified verification token that is returned by the client SDKs.
+	VerifyToken *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
 }
 
 func (s VerifyWithFusionAuthTokenRequest) String() string {
@@ -2761,11 +3432,16 @@ func (s *VerifyWithFusionAuthTokenRequest) SetVerifyToken(v string) *VerifyWithF
 }
 
 type VerifyWithFusionAuthTokenResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *VerifyWithFusionAuthTokenResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code. If OK is returned, the request is successful. Other values indicate that the request failed. For more information, see Error codes.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned data.
+	Model *VerifyWithFusionAuthTokenResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// The request ID, which is used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values: true false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s VerifyWithFusionAuthTokenResponseBody) String() string {
@@ -2802,8 +3478,11 @@ func (s *VerifyWithFusionAuthTokenResponseBody) SetSuccess(v bool) *VerifyWithFu
 }
 
 type VerifyWithFusionAuthTokenResponseBodyModel struct {
-	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	PhoneScore   *int64  `json:"PhoneScore,omitempty" xml:"PhoneScore,omitempty"`
+	// The phone number, which is returned when the verification is successful.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The phone number score, which is generated only after the phone number scoring node is enabled and the verification is successful. The higher the score, the more risky the phone number. Valid values: 0 to 100.
+	PhoneScore *int64 `json:"PhoneScore,omitempty" xml:"PhoneScore,omitempty"`
+	// The verification result. Valid values: PASS and UNKNOWN.
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
@@ -3067,6 +3746,14 @@ func (client *Client) CreateSchemeConfig(request *CreateSchemeConfigRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateVerifySchemeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateVerifySchemeResponse
+ */
 func (client *Client) CreateVerifySchemeWithOptions(request *CreateVerifySchemeRequest, runtime *util.RuntimeOptions) (_result *CreateVerifySchemeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3172,6 +3859,13 @@ func (client *Client) CreateVerifySchemeWithOptions(request *CreateVerifySchemeR
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateVerifySchemeRequest
+ * @return CreateVerifySchemeResponse
+ */
 func (client *Client) CreateVerifyScheme(request *CreateVerifySchemeRequest) (_result *CreateVerifySchemeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVerifySchemeResponse{}
@@ -3183,6 +3877,14 @@ func (client *Client) CreateVerifyScheme(request *CreateVerifySchemeRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteVerifySchemeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteVerifySchemeResponse
+ */
 func (client *Client) DeleteVerifySchemeWithOptions(request *DeleteVerifySchemeRequest, runtime *util.RuntimeOptions) (_result *DeleteVerifySchemeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3232,6 +3934,13 @@ func (client *Client) DeleteVerifySchemeWithOptions(request *DeleteVerifySchemeR
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteVerifySchemeRequest
+ * @return DeleteVerifySchemeResponse
+ */
 func (client *Client) DeleteVerifyScheme(request *DeleteVerifySchemeRequest) (_result *DeleteVerifySchemeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVerifySchemeResponse{}
@@ -3243,6 +3952,14 @@ func (client *Client) DeleteVerifyScheme(request *DeleteVerifySchemeRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeVerifySchemeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeVerifySchemeResponse
+ */
 func (client *Client) DescribeVerifySchemeWithOptions(request *DescribeVerifySchemeRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifySchemeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3292,6 +4009,13 @@ func (client *Client) DescribeVerifySchemeWithOptions(request *DescribeVerifySch
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeVerifySchemeRequest
+ * @return DescribeVerifySchemeResponse
+ */
 func (client *Client) DescribeVerifyScheme(request *DescribeVerifySchemeRequest) (_result *DescribeVerifySchemeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVerifySchemeResponse{}
@@ -3303,6 +4027,16 @@ func (client *Client) DescribeVerifyScheme(request *DescribeVerifySchemeRequest)
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetAuthTokenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAuthTokenResponse
+ */
 func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runtime *util.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3323,6 +4057,10 @@ func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
+		query["SceneCode"] = request.SceneCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
@@ -3352,6 +4090,15 @@ func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runt
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetAuthTokenRequest
+ * @return GetAuthTokenResponse
+ */
 func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAuthTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthTokenResponse{}
@@ -3363,6 +4110,16 @@ func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAu
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account and obtain an Alibaba Cloud AccessKey pair. For more information, see [Process of communication authorization](~~196922~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetAuthorizationUrlRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAuthorizationUrlResponse
+ */
 func (client *Client) GetAuthorizationUrlWithOptions(request *GetAuthorizationUrlRequest, runtime *util.RuntimeOptions) (_result *GetAuthorizationUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3416,6 +4173,15 @@ func (client *Client) GetAuthorizationUrlWithOptions(request *GetAuthorizationUr
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account and obtain an Alibaba Cloud AccessKey pair. For more information, see [Process of communication authorization](~~196922~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetAuthorizationUrlRequest
+ * @return GetAuthorizationUrlResponse
+ */
 func (client *Client) GetAuthorizationUrl(request *GetAuthorizationUrlRequest) (_result *GetAuthorizationUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthorizationUrlResponse{}
@@ -3503,6 +4269,17 @@ func (client *Client) GetFusionAuthToken(request *GetFusionAuthTokenRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+ * >  This operation is applicable only to one-click logon or registration. You can call this operation only after you confirm the authorization on the authorization page provided by the SDK for one-click logon. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetMobileRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMobileResponse
+ */
 func (client *Client) GetMobileWithOptions(request *GetMobileRequest, runtime *util.RuntimeOptions) (_result *GetMobileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3552,6 +4329,16 @@ func (client *Client) GetMobileWithOptions(request *GetMobileRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+ * >  This operation is applicable only to one-click logon or registration. You can call this operation only after you confirm the authorization on the authorization page provided by the SDK for one-click logon. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetMobileRequest
+ * @return GetMobileResponse
+ */
 func (client *Client) GetMobile(request *GetMobileRequest) (_result *GetMobileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMobileResponse{}
@@ -3563,6 +4350,17 @@ func (client *Client) GetMobile(request *GetMobileRequest) (_result *GetMobileRe
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+ * >  This operation is applicable only to one-click logon or registration in HTML5 pages. You can call this operation only after you confirm the authorization on the authorization page provided by the JavaScript SDK. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetPhoneWithTokenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetPhoneWithTokenResponse
+ */
 func (client *Client) GetPhoneWithTokenWithOptions(request *GetPhoneWithTokenRequest, runtime *util.RuntimeOptions) (_result *GetPhoneWithTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3608,6 +4406,16 @@ func (client *Client) GetPhoneWithTokenWithOptions(request *GetPhoneWithTokenReq
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+ * >  This operation is applicable only to one-click logon or registration in HTML5 pages. You can call this operation only after you confirm the authorization on the authorization page provided by the JavaScript SDK. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetPhoneWithTokenRequest
+ * @return GetPhoneWithTokenResponse
+ */
 func (client *Client) GetPhoneWithToken(request *GetPhoneWithTokenRequest) (_result *GetPhoneWithTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPhoneWithTokenResponse{}
@@ -3619,6 +4427,16 @@ func (client *Client) GetPhoneWithToken(request *GetPhoneWithTokenRequest) (_res
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetSmsAuthTokensRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetSmsAuthTokensResponse
+ */
 func (client *Client) GetSmsAuthTokensWithOptions(request *GetSmsAuthTokensRequest, runtime *util.RuntimeOptions) (_result *GetSmsAuthTokensResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3692,6 +4510,15 @@ func (client *Client) GetSmsAuthTokensWithOptions(request *GetSmsAuthTokensReque
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetSmsAuthTokensRequest
+ * @return GetSmsAuthTokensResponse
+ */
 func (client *Client) GetSmsAuthTokens(request *GetSmsAuthTokensRequest) (_result *GetSmsAuthTokensResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSmsAuthTokensResponse{}
@@ -3703,6 +4530,188 @@ func (client *Client) GetSmsAuthTokens(request *GetSmsAuthTokensRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated : JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
+ *
+ * @param request JyCreateVerifySchemeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return JyCreateVerifySchemeResponse
+ */
+// Deprecated
+func (client *Client) JyCreateVerifySchemeWithOptions(request *JyCreateVerifySchemeRequest, runtime *util.RuntimeOptions) (_result *JyCreateVerifySchemeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BundleId)) {
+		query["BundleId"] = request.BundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CmApiCode)) {
+		query["CmApiCode"] = request.CmApiCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CtApiCode)) {
+		query["CtApiCode"] = request.CtApiCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CuApiCode)) {
+		query["CuApiCode"] = request.CuApiCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OsType)) {
+		query["OsType"] = request.OsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackName)) {
+		query["PackName"] = request.PackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackSign)) {
+		query["PackSign"] = request.PackSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemeName)) {
+		query["SchemeName"] = request.SchemeName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("JyCreateVerifyScheme"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &JyCreateVerifySchemeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * @deprecated : JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
+ *
+ * @param request JyCreateVerifySchemeRequest
+ * @return JyCreateVerifySchemeResponse
+ */
+// Deprecated
+func (client *Client) JyCreateVerifyScheme(request *JyCreateVerifySchemeRequest) (_result *JyCreateVerifySchemeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &JyCreateVerifySchemeResponse{}
+	_body, _err := client.JyCreateVerifySchemeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * @deprecated : JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
+ *
+ * @param request JyQueryAppInfoBySceneCodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return JyQueryAppInfoBySceneCodeResponse
+ */
+// Deprecated
+func (client *Client) JyQueryAppInfoBySceneCodeWithOptions(request *JyQueryAppInfoBySceneCodeRequest, runtime *util.RuntimeOptions) (_result *JyQueryAppInfoBySceneCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("JyQueryAppInfoBySceneCode"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &JyQueryAppInfoBySceneCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * @deprecated : JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
+ *
+ * @param request JyQueryAppInfoBySceneCodeRequest
+ * @return JyQueryAppInfoBySceneCodeResponse
+ */
+// Deprecated
+func (client *Client) JyQueryAppInfoBySceneCode(request *JyQueryAppInfoBySceneCodeRequest) (_result *JyQueryAppInfoBySceneCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &JyQueryAppInfoBySceneCodeResponse{}
+	_body, _err := client.JyQueryAppInfoBySceneCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request QueryGateVerifyBillingPublicRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryGateVerifyBillingPublicResponse
+ */
 func (client *Client) QueryGateVerifyBillingPublicWithOptions(request *QueryGateVerifyBillingPublicRequest, runtime *util.RuntimeOptions) (_result *QueryGateVerifyBillingPublicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3748,6 +4757,13 @@ func (client *Client) QueryGateVerifyBillingPublicWithOptions(request *QueryGate
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request QueryGateVerifyBillingPublicRequest
+ * @return QueryGateVerifyBillingPublicResponse
+ */
 func (client *Client) QueryGateVerifyBillingPublic(request *QueryGateVerifyBillingPublicRequest) (_result *QueryGateVerifyBillingPublicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryGateVerifyBillingPublicResponse{}
@@ -3759,6 +4775,14 @@ func (client *Client) QueryGateVerifyBillingPublic(request *QueryGateVerifyBilli
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request QueryGateVerifyStatisticPublicRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryGateVerifyStatisticPublicResponse
+ */
 func (client *Client) QueryGateVerifyStatisticPublicWithOptions(request *QueryGateVerifyStatisticPublicRequest, runtime *util.RuntimeOptions) (_result *QueryGateVerifyStatisticPublicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3816,6 +4840,13 @@ func (client *Client) QueryGateVerifyStatisticPublicWithOptions(request *QueryGa
 	return _result, _err
 }
 
+/**
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request QueryGateVerifyStatisticPublicRequest
+ * @return QueryGateVerifyStatisticPublicResponse
+ */
 func (client *Client) QueryGateVerifyStatisticPublic(request *QueryGateVerifyStatisticPublicRequest) (_result *QueryGateVerifyStatisticPublicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryGateVerifyStatisticPublicResponse{}
@@ -3827,6 +4858,14 @@ func (client *Client) QueryGateVerifyStatisticPublic(request *QueryGateVerifySta
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request QuerySendDetailsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QuerySendDetailsResponse
+ */
+// Deprecated
 func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsRequest, runtime *util.RuntimeOptions) (_result *QuerySendDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3888,6 +4927,13 @@ func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsReque
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request QuerySendDetailsRequest
+ * @return QuerySendDetailsResponse
+ */
+// Deprecated
 func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_result *QuerySendDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySendDetailsResponse{}
@@ -4007,6 +5053,17 @@ func (client *Client) SendSmsVerifyCode(request *SendSmsVerifyCodeRequest) (_res
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+ * >  This operation is applicable to only the verification of thephone number that you use. To obtain a phone number for one-click logon, call [GetMobile](~~189865~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request VerifyMobileRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return VerifyMobileResponse
+ */
 func (client *Client) VerifyMobileWithOptions(request *VerifyMobileRequest, runtime *util.RuntimeOptions) (_result *VerifyMobileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4060,6 +5117,16 @@ func (client *Client) VerifyMobileWithOptions(request *VerifyMobileRequest, runt
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+ * >  This operation is applicable to only the verification of thephone number that you use. To obtain a phone number for one-click logon, call [GetMobile](~~189865~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request VerifyMobileRequest
+ * @return VerifyMobileResponse
+ */
 func (client *Client) VerifyMobile(request *VerifyMobileRequest) (_result *VerifyMobileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyMobileResponse{}
@@ -4071,6 +5138,16 @@ func (client *Client) VerifyMobile(request *VerifyMobileRequest) (_result *Verif
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request VerifyPhoneWithTokenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return VerifyPhoneWithTokenResponse
+ */
 func (client *Client) VerifyPhoneWithTokenWithOptions(request *VerifyPhoneWithTokenRequest, runtime *util.RuntimeOptions) (_result *VerifyPhoneWithTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4120,6 +5197,15 @@ func (client *Client) VerifyPhoneWithTokenWithOptions(request *VerifyPhoneWithTo
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request VerifyPhoneWithTokenRequest
+ * @return VerifyPhoneWithTokenResponse
+ */
 func (client *Client) VerifyPhoneWithToken(request *VerifyPhoneWithTokenRequest) (_result *VerifyPhoneWithTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyPhoneWithTokenResponse{}
@@ -4131,6 +5217,16 @@ func (client *Client) VerifyPhoneWithToken(request *VerifyPhoneWithTokenRequest)
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request VerifySmsCodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return VerifySmsCodeResponse
+ */
 func (client *Client) VerifySmsCodeWithOptions(request *VerifySmsCodeRequest, runtime *util.RuntimeOptions) (_result *VerifySmsCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4172,6 +5268,15 @@ func (client *Client) VerifySmsCodeWithOptions(request *VerifySmsCodeRequest, ru
 	return _result, _err
 }
 
+/**
+ * ### [](#)Preparations
+ * You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request VerifySmsCodeRequest
+ * @return VerifySmsCodeResponse
+ */
 func (client *Client) VerifySmsCode(request *VerifySmsCodeRequest) (_result *VerifySmsCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifySmsCodeResponse{}
