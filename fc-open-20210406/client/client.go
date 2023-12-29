@@ -2183,6 +2183,7 @@ func (s *SourceRocketMQParameters) SetTopic(v string) *SourceRocketMQParameters 
 type StatefulAsyncInvocation struct {
 	AlreadyRetriedTimes    *int64                          `json:"alreadyRetriedTimes,omitempty" xml:"alreadyRetriedTimes,omitempty"`
 	DestinationStatus      *string                         `json:"destinationStatus,omitempty" xml:"destinationStatus,omitempty"`
+	DurationMs             *int64                          `json:"durationMs,omitempty" xml:"durationMs,omitempty"`
 	EndTime                *int64                          `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	Events                 []*StatefulAsyncInvocationEvent `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
 	FunctionName           *string                         `json:"functionName,omitempty" xml:"functionName,omitempty"`
@@ -2192,6 +2193,7 @@ type StatefulAsyncInvocation struct {
 	InvocationPayload      *string                         `json:"invocationPayload,omitempty" xml:"invocationPayload,omitempty"`
 	Qualifier              *string                         `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	RequestId              *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ReturnPayload          *string                         `json:"returnPayload,omitempty" xml:"returnPayload,omitempty"`
 	ServiceName            *string                         `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	StartedTime            *int64                          `json:"startedTime,omitempty" xml:"startedTime,omitempty"`
 	Status                 *string                         `json:"status,omitempty" xml:"status,omitempty"`
@@ -2212,6 +2214,11 @@ func (s *StatefulAsyncInvocation) SetAlreadyRetriedTimes(v int64) *StatefulAsync
 
 func (s *StatefulAsyncInvocation) SetDestinationStatus(v string) *StatefulAsyncInvocation {
 	s.DestinationStatus = &v
+	return s
+}
+
+func (s *StatefulAsyncInvocation) SetDurationMs(v int64) *StatefulAsyncInvocation {
+	s.DurationMs = &v
 	return s
 }
 
@@ -2257,6 +2264,11 @@ func (s *StatefulAsyncInvocation) SetQualifier(v string) *StatefulAsyncInvocatio
 
 func (s *StatefulAsyncInvocation) SetRequestId(v string) *StatefulAsyncInvocation {
 	s.RequestId = &v
+	return s
+}
+
+func (s *StatefulAsyncInvocation) SetReturnPayload(v string) *StatefulAsyncInvocation {
+	s.ReturnPayload = &v
 	return s
 }
 
@@ -2919,7 +2931,9 @@ type CreateAliasResponseBody struct {
 	// The description of the alias.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The time when the alias was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	ResolvePolicy    *string      `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy      *RoutePolicy `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
 	// The ID of the version to which the alias points.
 	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
@@ -2954,6 +2968,16 @@ func (s *CreateAliasResponseBody) SetDescription(v string) *CreateAliasResponseB
 
 func (s *CreateAliasResponseBody) SetLastModifiedTime(v string) *CreateAliasResponseBody {
 	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *CreateAliasResponseBody) SetResolvePolicy(v string) *CreateAliasResponseBody {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *CreateAliasResponseBody) SetRoutePolicy(v *RoutePolicy) *CreateAliasResponseBody {
+	s.RoutePolicy = v
 	return s
 }
 
@@ -11585,7 +11609,9 @@ type UpdateAliasResponseBody struct {
 	// The description of the alias.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The time when the alias was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	ResolvePolicy    *string      `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy      *RoutePolicy `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
 	// The ID of the version to which the alias points.
 	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
@@ -11620,6 +11646,16 @@ func (s *UpdateAliasResponseBody) SetDescription(v string) *UpdateAliasResponseB
 
 func (s *UpdateAliasResponseBody) SetLastModifiedTime(v string) *UpdateAliasResponseBody {
 	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *UpdateAliasResponseBody) SetResolvePolicy(v string) *UpdateAliasResponseBody {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *UpdateAliasResponseBody) SetRoutePolicy(v *RoutePolicy) *UpdateAliasResponseBody {
+	s.RoutePolicy = v
 	return s
 }
 
@@ -12659,6 +12695,8 @@ type UpdateTriggerResponseBody struct {
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// The ARN of the event source.
 	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	TargetArn *string `json:"targetArn,omitempty" xml:"targetArn,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type.
 	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 	// The unique ID of the trigger.
@@ -12713,6 +12751,16 @@ func (s *UpdateTriggerResponseBody) SetQualifier(v string) *UpdateTriggerRespons
 
 func (s *UpdateTriggerResponseBody) SetSourceArn(v string) *UpdateTriggerResponseBody {
 	s.SourceArn = &v
+	return s
+}
+
+func (s *UpdateTriggerResponseBody) SetStatus(v string) *UpdateTriggerResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateTriggerResponseBody) SetTargetArn(v string) *UpdateTriggerResponseBody {
+	s.TargetArn = &v
 	return s
 }
 
