@@ -348,6 +348,140 @@ func (s *AddRecordTemplateResponse) SetBody(v *AddRecordTemplateResponseBody) *A
 	return s
 }
 
+type CreateAppStreamingOutTemplateRequest struct {
+	AppId                *string                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	StreamingOutTemplate *CreateAppStreamingOutTemplateRequestStreamingOutTemplate `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty" type:"Struct"`
+}
+
+func (s CreateAppStreamingOutTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppStreamingOutTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppStreamingOutTemplateRequest) SetAppId(v string) *CreateAppStreamingOutTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *CreateAppStreamingOutTemplateRequestStreamingOutTemplate) *CreateAppStreamingOutTemplateRequest {
+	s.StreamingOutTemplate = v
+	return s
+}
+
+type CreateAppStreamingOutTemplateRequestStreamingOutTemplate struct {
+	EnableVad   *bool     `json:"EnableVad,omitempty" xml:"EnableVad,omitempty"`
+	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateAppStreamingOutTemplateRequestStreamingOutTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppStreamingOutTemplateRequestStreamingOutTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppStreamingOutTemplateRequestStreamingOutTemplate) SetEnableVad(v bool) *CreateAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.EnableVad = &v
+	return s
+}
+
+func (s *CreateAppStreamingOutTemplateRequestStreamingOutTemplate) SetLayoutIds(v []*string) *CreateAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.LayoutIds = v
+	return s
+}
+
+func (s *CreateAppStreamingOutTemplateRequestStreamingOutTemplate) SetMediaEncode(v int32) *CreateAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.MediaEncode = &v
+	return s
+}
+
+func (s *CreateAppStreamingOutTemplateRequestStreamingOutTemplate) SetName(v string) *CreateAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.Name = &v
+	return s
+}
+
+type CreateAppStreamingOutTemplateShrinkRequest struct {
+	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
+}
+
+func (s CreateAppStreamingOutTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppStreamingOutTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppStreamingOutTemplateShrinkRequest) SetAppId(v string) *CreateAppStreamingOutTemplateShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppStreamingOutTemplateShrinkRequest) SetStreamingOutTemplateShrink(v string) *CreateAppStreamingOutTemplateShrinkRequest {
+	s.StreamingOutTemplateShrink = &v
+	return s
+}
+
+type CreateAppStreamingOutTemplateResponseBody struct {
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateAppStreamingOutTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppStreamingOutTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppStreamingOutTemplateResponseBody) SetRequestId(v string) *CreateAppStreamingOutTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAppStreamingOutTemplateResponseBody) SetTemplateId(v string) *CreateAppStreamingOutTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateAppStreamingOutTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAppStreamingOutTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAppStreamingOutTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppStreamingOutTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppStreamingOutTemplateResponse) SetHeaders(v map[string]*string) *CreateAppStreamingOutTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppStreamingOutTemplateResponse) SetStatusCode(v int32) *CreateAppStreamingOutTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppStreamingOutTemplateResponse) SetBody(v *CreateAppStreamingOutTemplateResponseBody) *CreateAppStreamingOutTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAutoLiveStreamRuleRequest struct {
 	AppId             *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CallBack          *string   `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
@@ -718,6 +852,116 @@ func (s *CreateMPULayoutResponse) SetStatusCode(v int32) *CreateMPULayoutRespons
 }
 
 func (s *CreateMPULayoutResponse) SetBody(v *CreateMPULayoutResponseBody) *CreateMPULayoutResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAppStreamingOutTemplateRequest struct {
+	AppId                *string                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	StreamingOutTemplate *DeleteAppStreamingOutTemplateRequestStreamingOutTemplate `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty" type:"Struct"`
+}
+
+func (s DeleteAppStreamingOutTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppStreamingOutTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppStreamingOutTemplateRequest) SetAppId(v string) *DeleteAppStreamingOutTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *DeleteAppStreamingOutTemplateRequestStreamingOutTemplate) *DeleteAppStreamingOutTemplateRequest {
+	s.StreamingOutTemplate = v
+	return s
+}
+
+type DeleteAppStreamingOutTemplateRequestStreamingOutTemplate struct {
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteAppStreamingOutTemplateRequestStreamingOutTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppStreamingOutTemplateRequestStreamingOutTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppStreamingOutTemplateRequestStreamingOutTemplate) SetTemplateId(v string) *DeleteAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteAppStreamingOutTemplateShrinkRequest struct {
+	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
+}
+
+func (s DeleteAppStreamingOutTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppStreamingOutTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppStreamingOutTemplateShrinkRequest) SetAppId(v string) *DeleteAppStreamingOutTemplateShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppStreamingOutTemplateShrinkRequest) SetStreamingOutTemplateShrink(v string) *DeleteAppStreamingOutTemplateShrinkRequest {
+	s.StreamingOutTemplateShrink = &v
+	return s
+}
+
+type DeleteAppStreamingOutTemplateResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAppStreamingOutTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppStreamingOutTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppStreamingOutTemplateResponseBody) SetRequestId(v string) *DeleteAppStreamingOutTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAppStreamingOutTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAppStreamingOutTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAppStreamingOutTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppStreamingOutTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppStreamingOutTemplateResponse) SetHeaders(v map[string]*string) *DeleteAppStreamingOutTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppStreamingOutTemplateResponse) SetStatusCode(v int32) *DeleteAppStreamingOutTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAppStreamingOutTemplateResponse) SetBody(v *DeleteAppStreamingOutTemplateResponseBody) *DeleteAppStreamingOutTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -1170,6 +1414,211 @@ func (s *DescribeAppKeyResponse) SetStatusCode(v int32) *DescribeAppKeyResponse 
 }
 
 func (s *DescribeAppKeyResponse) SetBody(v *DescribeAppKeyResponseBody) *DescribeAppKeyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppStreamingOutTemplatesRequest struct {
+	AppId     *string                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Condition *DescribeAppStreamingOutTemplatesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	PageNum   *int32                                            `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeAppStreamingOutTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppStreamingOutTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppStreamingOutTemplatesRequest) SetAppId(v string) *DescribeAppStreamingOutTemplatesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesRequest) SetCondition(v *DescribeAppStreamingOutTemplatesRequestCondition) *DescribeAppStreamingOutTemplatesRequest {
+	s.Condition = v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesRequest) SetPageNum(v int32) *DescribeAppStreamingOutTemplatesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesRequest) SetPageSize(v int32) *DescribeAppStreamingOutTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeAppStreamingOutTemplatesRequestCondition struct {
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeAppStreamingOutTemplatesRequestCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppStreamingOutTemplatesRequestCondition) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppStreamingOutTemplatesRequestCondition) SetName(v string) *DescribeAppStreamingOutTemplatesRequestCondition {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesRequestCondition) SetTemplateId(v string) *DescribeAppStreamingOutTemplatesRequestCondition {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeAppStreamingOutTemplatesShrinkRequest struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeAppStreamingOutTemplatesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppStreamingOutTemplatesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppStreamingOutTemplatesShrinkRequest) SetAppId(v string) *DescribeAppStreamingOutTemplatesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesShrinkRequest) SetConditionShrink(v string) *DescribeAppStreamingOutTemplatesShrinkRequest {
+	s.ConditionShrink = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesShrinkRequest) SetPageNum(v int32) *DescribeAppStreamingOutTemplatesShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesShrinkRequest) SetPageSize(v int32) *DescribeAppStreamingOutTemplatesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeAppStreamingOutTemplatesResponseBody struct {
+	// Id of the request
+	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Templates []*DescribeAppStreamingOutTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	TotalNum  *int64                                                   `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	TotalPage *int64                                                   `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeAppStreamingOutTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppStreamingOutTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBody) SetRequestId(v string) *DescribeAppStreamingOutTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBody) SetTemplates(v []*DescribeAppStreamingOutTemplatesResponseBodyTemplates) *DescribeAppStreamingOutTemplatesResponseBody {
+	s.Templates = v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBody) SetTotalNum(v int64) *DescribeAppStreamingOutTemplatesResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBody) SetTotalPage(v int64) *DescribeAppStreamingOutTemplatesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeAppStreamingOutTemplatesResponseBodyTemplates struct {
+	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableVad   *bool     `json:"EnableVad,omitempty" xml:"EnableVad,omitempty"`
+	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateId  *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeAppStreamingOutTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppStreamingOutTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBodyTemplates) SetCreateTime(v string) *DescribeAppStreamingOutTemplatesResponseBodyTemplates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBodyTemplates) SetEnableVad(v bool) *DescribeAppStreamingOutTemplatesResponseBodyTemplates {
+	s.EnableVad = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBodyTemplates) SetLayoutIds(v []*string) *DescribeAppStreamingOutTemplatesResponseBodyTemplates {
+	s.LayoutIds = v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBodyTemplates) SetMediaEncode(v int32) *DescribeAppStreamingOutTemplatesResponseBodyTemplates {
+	s.MediaEncode = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBodyTemplates) SetName(v string) *DescribeAppStreamingOutTemplatesResponseBodyTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponseBodyTemplates) SetTemplateId(v string) *DescribeAppStreamingOutTemplatesResponseBodyTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeAppStreamingOutTemplatesResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAppStreamingOutTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAppStreamingOutTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppStreamingOutTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponse) SetHeaders(v map[string]*string) *DescribeAppStreamingOutTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponse) SetStatusCode(v int32) *DescribeAppStreamingOutTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppStreamingOutTemplatesResponse) SetBody(v *DescribeAppStreamingOutTemplatesResponseBody) *DescribeAppStreamingOutTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -8446,6 +8895,146 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 	return s
 }
 
+type ModifyAppStreamingOutTemplateRequest struct {
+	AppId                *string                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	StreamingOutTemplate *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty" type:"Struct"`
+}
+
+func (s ModifyAppStreamingOutTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppStreamingOutTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppStreamingOutTemplateRequest) SetAppId(v string) *ModifyAppStreamingOutTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) *ModifyAppStreamingOutTemplateRequest {
+	s.StreamingOutTemplate = v
+	return s
+}
+
+type ModifyAppStreamingOutTemplateRequestStreamingOutTemplate struct {
+	EnableVad   *bool     `json:"EnableVad,omitempty" xml:"EnableVad,omitempty"`
+	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateId  *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) SetEnableVad(v bool) *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.EnableVad = &v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) SetLayoutIds(v []*string) *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.LayoutIds = v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) SetMediaEncode(v int32) *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.MediaEncode = &v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) SetName(v string) *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) SetTemplateId(v string) *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+type ModifyAppStreamingOutTemplateShrinkRequest struct {
+	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
+}
+
+func (s ModifyAppStreamingOutTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppStreamingOutTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppStreamingOutTemplateShrinkRequest) SetAppId(v string) *ModifyAppStreamingOutTemplateShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateShrinkRequest) SetStreamingOutTemplateShrink(v string) *ModifyAppStreamingOutTemplateShrinkRequest {
+	s.StreamingOutTemplateShrink = &v
+	return s
+}
+
+type ModifyAppStreamingOutTemplateResponseBody struct {
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s ModifyAppStreamingOutTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppStreamingOutTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppStreamingOutTemplateResponseBody) SetRequestId(v string) *ModifyAppStreamingOutTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateResponseBody) SetTemplateId(v string) *ModifyAppStreamingOutTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+type ModifyAppStreamingOutTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAppStreamingOutTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAppStreamingOutTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppStreamingOutTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppStreamingOutTemplateResponse) SetHeaders(v map[string]*string) *ModifyAppStreamingOutTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateResponse) SetStatusCode(v int32) *ModifyAppStreamingOutTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppStreamingOutTemplateResponse) SetBody(v *ModifyAppStreamingOutTemplateResponseBody) *ModifyAppStreamingOutTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyMPULayoutRequest struct {
 	AppId         *string                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AudioMixCount *int32                         `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
@@ -11326,6 +11915,60 @@ func (client *Client) AddRecordTemplate(request *AddRecordTemplateRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CreateAppStreamingOutTemplateWithOptions(tmpReq *CreateAppStreamingOutTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateAppStreamingOutTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAppStreamingOutTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamingOutTemplate)) {
+		request.StreamingOutTemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamingOutTemplate, tea.String("StreamingOutTemplate"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamingOutTemplateShrink)) {
+		query["StreamingOutTemplate"] = request.StreamingOutTemplateShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppStreamingOutTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppStreamingOutTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAppStreamingOutTemplate(request *CreateAppStreamingOutTemplateRequest) (_result *CreateAppStreamingOutTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppStreamingOutTemplateResponse{}
+	_body, _err := client.CreateAppStreamingOutTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateAutoLiveStreamRuleWithOptions(request *CreateAutoLiveStreamRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAutoLiveStreamRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11527,6 +12170,60 @@ func (client *Client) CreateMPULayout(request *CreateMPULayoutRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMPULayoutResponse{}
 	_body, _err := client.CreateMPULayoutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAppStreamingOutTemplateWithOptions(tmpReq *DeleteAppStreamingOutTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteAppStreamingOutTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAppStreamingOutTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamingOutTemplate)) {
+		request.StreamingOutTemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamingOutTemplate, tea.String("StreamingOutTemplate"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamingOutTemplateShrink)) {
+		query["StreamingOutTemplate"] = request.StreamingOutTemplateShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppStreamingOutTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAppStreamingOutTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAppStreamingOutTemplate(request *DeleteAppStreamingOutTemplateRequest) (_result *DeleteAppStreamingOutTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppStreamingOutTemplateResponse{}
+	_body, _err := client.DeleteAppStreamingOutTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11835,6 +12532,68 @@ func (client *Client) DescribeAppKey(request *DescribeAppKeyRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppKeyResponse{}
 	_body, _err := client.DescribeAppKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAppStreamingOutTemplatesWithOptions(tmpReq *DescribeAppStreamingOutTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeAppStreamingOutTemplatesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeAppStreamingOutTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Condition)) {
+		request.ConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Condition, tea.String("Condition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConditionShrink)) {
+		query["Condition"] = request.ConditionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppStreamingOutTemplates"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppStreamingOutTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAppStreamingOutTemplates(request *DescribeAppStreamingOutTemplatesRequest) (_result *DescribeAppStreamingOutTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppStreamingOutTemplatesResponse{}
+	_body, _err := client.DescribeAppStreamingOutTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14215,6 +14974,60 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppResponse{}
 	_body, _err := client.ModifyAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAppStreamingOutTemplateWithOptions(tmpReq *ModifyAppStreamingOutTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyAppStreamingOutTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyAppStreamingOutTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamingOutTemplate)) {
+		request.StreamingOutTemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamingOutTemplate, tea.String("StreamingOutTemplate"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamingOutTemplateShrink)) {
+		query["StreamingOutTemplate"] = request.StreamingOutTemplateShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppStreamingOutTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppStreamingOutTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAppStreamingOutTemplate(request *ModifyAppStreamingOutTemplateRequest) (_result *ModifyAppStreamingOutTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppStreamingOutTemplateResponse{}
+	_body, _err := client.ModifyAppStreamingOutTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
