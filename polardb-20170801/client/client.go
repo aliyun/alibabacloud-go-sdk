@@ -14431,7 +14431,8 @@ func (s *DescribeMaskingRulesResponseBody) SetSuccess(v bool) *DescribeMaskingRu
 
 type DescribeMaskingRulesResponseBodyData struct {
 	// Details about the masking rules.
-	RuleList []*string `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	RuleList    []*string `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	RuleVersion *string   `json:"RuleVersion,omitempty" xml:"RuleVersion,omitempty"`
 }
 
 func (s DescribeMaskingRulesResponseBodyData) String() string {
@@ -14444,6 +14445,11 @@ func (s DescribeMaskingRulesResponseBodyData) GoString() string {
 
 func (s *DescribeMaskingRulesResponseBodyData) SetRuleList(v []*string) *DescribeMaskingRulesResponseBodyData {
 	s.RuleList = v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponseBodyData) SetRuleVersion(v string) *DescribeMaskingRulesResponseBodyData {
+	s.RuleVersion = &v
 	return s
 }
 
@@ -23420,6 +23426,7 @@ type ModifyMaskingRulesRequest struct {
 	//
 	// > You must specify either the `RuleName` or `RuleNameList` parameter.
 	RuleNameList *string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty"`
+	RuleVersion  *string `json:"RuleVersion,omitempty" xml:"RuleVersion,omitempty"`
 }
 
 func (s ModifyMaskingRulesRequest) String() string {
@@ -23452,6 +23459,11 @@ func (s *ModifyMaskingRulesRequest) SetRuleName(v string) *ModifyMaskingRulesReq
 
 func (s *ModifyMaskingRulesRequest) SetRuleNameList(v string) *ModifyMaskingRulesRequest {
 	s.RuleNameList = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetRuleVersion(v string) *ModifyMaskingRulesRequest {
+	s.RuleVersion = &v
 	return s
 }
 
@@ -35534,6 +35546,10 @@ func (client *Client) ModifyMaskingRulesWithOptions(request *ModifyMaskingRulesR
 
 	if !tea.BoolValue(util.IsUnset(request.RuleNameList)) {
 		query["RuleNameList"] = request.RuleNameList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleVersion)) {
+		query["RuleVersion"] = request.RuleVersion
 	}
 
 	req := &openapi.OpenApiRequest{
