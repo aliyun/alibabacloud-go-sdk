@@ -6808,6 +6808,8 @@ type ListApplicationsResponseBodyApplications struct {
 	// *   urn:alibaba:idaas:app:source:template: The application is created based on a template.
 	// *   urn:alibaba:idaas: The application is created based on the standard protocol.
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
+	// 应用模板ID
+	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
 	// The client ID of the application.
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The time when the application was created. The value is a UNIX timestamp. Unit: milliseconds.
@@ -6862,6 +6864,11 @@ func (s *ListApplicationsResponseBodyApplications) SetApplicationName(v string) 
 
 func (s *ListApplicationsResponseBodyApplications) SetApplicationSourceType(v string) *ListApplicationsResponseBodyApplications {
 	s.ApplicationSourceType = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyApplications) SetApplicationTemplateId(v string) *ListApplicationsResponseBodyApplications {
+	s.ApplicationTemplateId = &v
 	return s
 }
 

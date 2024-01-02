@@ -1,3 +1,6 @@
+2024-01-02 Version: v1.3.2
+- Generated golang 2021-12-01 for Eiam.
+
 2023-12-21 Version: v1.3.1
 - Generated golang 2021-12-01 for Eiam.
 
