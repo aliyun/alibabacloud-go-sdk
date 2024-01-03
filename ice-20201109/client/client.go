@@ -11345,6 +11345,7 @@ type GetMediaProducingJobResponseBodyMediaProducingJob struct {
 	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateId   *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Timeline     *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	UserData     *string  `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	VodMediaId   *string  `json:"VodMediaId,omitempty" xml:"VodMediaId,omitempty"`
 }
 
@@ -11423,6 +11424,11 @@ func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetTemplateId(v stri
 
 func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetTimeline(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
 	s.Timeline = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetUserData(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.UserData = &v
 	return s
 }
 
