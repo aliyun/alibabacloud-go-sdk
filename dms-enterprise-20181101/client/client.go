@@ -8532,6 +8532,93 @@ func (s *DeleteScenarioResponse) SetBody(v *DeleteScenarioResponseBody) *DeleteS
 	return s
 }
 
+type DeleteStandardGroupRequest struct {
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteStandardGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStandardGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStandardGroupRequest) SetGroupId(v int64) *DeleteStandardGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteStandardGroupRequest) SetTid(v int64) *DeleteStandardGroupRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteStandardGroupResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteStandardGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStandardGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStandardGroupResponseBody) SetErrorCode(v string) *DeleteStandardGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteStandardGroupResponseBody) SetErrorMessage(v string) *DeleteStandardGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteStandardGroupResponseBody) SetRequestId(v string) *DeleteStandardGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteStandardGroupResponseBody) SetSuccess(v bool) *DeleteStandardGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteStandardGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteStandardGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteStandardGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStandardGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStandardGroupResponse) SetHeaders(v map[string]*string) *DeleteStandardGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStandardGroupResponse) SetStatusCode(v int32) *DeleteStandardGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteStandardGroupResponse) SetBody(v *DeleteStandardGroupResponseBody) *DeleteStandardGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteTaskRequest struct {
 	// The ID of the node you want to delete.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
@@ -20321,6 +20408,146 @@ func (s *GetSQLReviewOptimizeDetailResponse) SetStatusCode(v int32) *GetSQLRevie
 }
 
 func (s *GetSQLReviewOptimizeDetailResponse) SetBody(v *GetSQLReviewOptimizeDetailResponseBody) *GetSQLReviewOptimizeDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetStandardGroupRequest struct {
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetStandardGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStandardGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStandardGroupRequest) SetGroupId(v int64) *GetStandardGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetStandardGroupRequest) SetTid(v int64) *GetStandardGroupRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetStandardGroupResponseBody struct {
+	ErrorCode     *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StandardGroup *GetStandardGroupResponseBodyStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
+	Success       *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetStandardGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStandardGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStandardGroupResponseBody) SetErrorCode(v string) *GetStandardGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetStandardGroupResponseBody) SetErrorMessage(v string) *GetStandardGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetStandardGroupResponseBody) SetRequestId(v string) *GetStandardGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStandardGroupResponseBody) SetStandardGroup(v *GetStandardGroupResponseBodyStandardGroup) *GetStandardGroupResponseBody {
+	s.StandardGroup = v
+	return s
+}
+
+func (s *GetStandardGroupResponseBody) SetSuccess(v bool) *GetStandardGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetStandardGroupResponseBodyStandardGroup struct {
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId      *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupMode    *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LastMenderId *int64  `json:"LastMenderId,omitempty" xml:"LastMenderId,omitempty"`
+}
+
+func (s GetStandardGroupResponseBodyStandardGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStandardGroupResponseBodyStandardGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetStandardGroupResponseBodyStandardGroup) SetDbType(v string) *GetStandardGroupResponseBodyStandardGroup {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetStandardGroupResponseBodyStandardGroup) SetDescription(v string) *GetStandardGroupResponseBodyStandardGroup {
+	s.Description = &v
+	return s
+}
+
+func (s *GetStandardGroupResponseBodyStandardGroup) SetGroupId(v int64) *GetStandardGroupResponseBodyStandardGroup {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetStandardGroupResponseBodyStandardGroup) SetGroupMode(v string) *GetStandardGroupResponseBodyStandardGroup {
+	s.GroupMode = &v
+	return s
+}
+
+func (s *GetStandardGroupResponseBodyStandardGroup) SetGroupName(v string) *GetStandardGroupResponseBodyStandardGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetStandardGroupResponseBodyStandardGroup) SetLastMenderId(v int64) *GetStandardGroupResponseBodyStandardGroup {
+	s.LastMenderId = &v
+	return s
+}
+
+type GetStandardGroupResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetStandardGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStandardGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStandardGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStandardGroupResponse) SetHeaders(v map[string]*string) *GetStandardGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStandardGroupResponse) SetStatusCode(v int32) *GetStandardGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetStandardGroupResponse) SetBody(v *GetStandardGroupResponseBody) *GetStandardGroupResponse {
 	s.Body = v
 	return s
 }
@@ -41165,6 +41392,158 @@ func (s *UpdateScenarioResponse) SetBody(v *UpdateScenarioResponseBody) *UpdateS
 	return s
 }
 
+type UpdateStandardGroupRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId     *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateStandardGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStandardGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStandardGroupRequest) SetDescription(v string) *UpdateStandardGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateStandardGroupRequest) SetGroupId(v int64) *UpdateStandardGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateStandardGroupRequest) SetGroupName(v string) *UpdateStandardGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateStandardGroupRequest) SetTid(v int64) *UpdateStandardGroupRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateStandardGroupResponseBody struct {
+	ErrorCode     *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StandardGroup *UpdateStandardGroupResponseBodyStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
+	Success       *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateStandardGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStandardGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStandardGroupResponseBody) SetErrorCode(v string) *UpdateStandardGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBody) SetErrorMessage(v string) *UpdateStandardGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBody) SetRequestId(v string) *UpdateStandardGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBody) SetStandardGroup(v *UpdateStandardGroupResponseBodyStandardGroup) *UpdateStandardGroupResponseBody {
+	s.StandardGroup = v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBody) SetSuccess(v bool) *UpdateStandardGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateStandardGroupResponseBodyStandardGroup struct {
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId      *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupMode    *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LastMenderId *int64  `json:"LastMenderId,omitempty" xml:"LastMenderId,omitempty"`
+}
+
+func (s UpdateStandardGroupResponseBodyStandardGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStandardGroupResponseBodyStandardGroup) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStandardGroupResponseBodyStandardGroup) SetDbType(v string) *UpdateStandardGroupResponseBodyStandardGroup {
+	s.DbType = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBodyStandardGroup) SetDescription(v string) *UpdateStandardGroupResponseBodyStandardGroup {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBodyStandardGroup) SetGroupId(v int64) *UpdateStandardGroupResponseBodyStandardGroup {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBodyStandardGroup) SetGroupMode(v string) *UpdateStandardGroupResponseBodyStandardGroup {
+	s.GroupMode = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBodyStandardGroup) SetGroupName(v string) *UpdateStandardGroupResponseBodyStandardGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponseBodyStandardGroup) SetLastMenderId(v int64) *UpdateStandardGroupResponseBodyStandardGroup {
+	s.LastMenderId = &v
+	return s
+}
+
+type UpdateStandardGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateStandardGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateStandardGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStandardGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStandardGroupResponse) SetHeaders(v map[string]*string) *UpdateStandardGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateStandardGroupResponse) SetStatusCode(v int32) *UpdateStandardGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateStandardGroupResponse) SetBody(v *UpdateStandardGroupResponseBody) *UpdateStandardGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTaskConfigRequest struct {
 	// The advanced configuration for the node. The value of this parameter must be a JSON string.
 	NodeConfig *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
@@ -46194,6 +46573,54 @@ func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DeleteStandardGroupWithOptions(request *DeleteStandardGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteStandardGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStandardGroup"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStandardGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteStandardGroup(request *DeleteStandardGroupRequest) (_result *DeleteStandardGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteStandardGroupResponse{}
+	_body, _err := client.DeleteStandardGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteTaskWithOptions(request *DeleteTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49287,6 +49714,54 @@ func (client *Client) GetSQLReviewOptimizeDetail(request *GetSQLReviewOptimizeDe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSQLReviewOptimizeDetailResponse{}
 	_body, _err := client.GetSQLReviewOptimizeDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetStandardGroupWithOptions(request *GetStandardGroupRequest, runtime *util.RuntimeOptions) (_result *GetStandardGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStandardGroup"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetStandardGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStandardGroup(request *GetStandardGroupRequest) (_result *GetStandardGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStandardGroupResponse{}
+	_body, _err := client.GetStandardGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55388,6 +55863,62 @@ func (client *Client) UpdateScenario(request *UpdateScenarioRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateScenarioResponse{}
 	_body, _err := client.UpdateScenarioWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateStandardGroupWithOptions(request *UpdateStandardGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateStandardGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStandardGroup"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateStandardGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateStandardGroup(request *UpdateStandardGroupRequest) (_result *UpdateStandardGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateStandardGroupResponse{}
+	_body, _err := client.UpdateStandardGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
