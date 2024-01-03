@@ -5252,7 +5252,8 @@ func (s *ApplyAddRequestCarRule) SetScenarioTemplateName(v string) *ApplyAddRequ
 }
 
 type ApplyAddRequestExternalTravelerList struct {
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserName   *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserNameEn *string `json:"user_name_en,omitempty" xml:"user_name_en,omitempty"`
 }
 
 func (s ApplyAddRequestExternalTravelerList) String() string {
@@ -5265,6 +5266,11 @@ func (s ApplyAddRequestExternalTravelerList) GoString() string {
 
 func (s *ApplyAddRequestExternalTravelerList) SetUserName(v string) *ApplyAddRequestExternalTravelerList {
 	s.UserName = &v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerList) SetUserNameEn(v string) *ApplyAddRequestExternalTravelerList {
+	s.UserNameEn = &v
 	return s
 }
 
@@ -7450,7 +7456,8 @@ func (s *ApplyModifyRequestCarRule) SetScenarioTemplateName(v string) *ApplyModi
 }
 
 type ApplyModifyRequestExternalTravelerList struct {
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserName   *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserNameEn *string `json:"user_name_en,omitempty" xml:"user_name_en,omitempty"`
 }
 
 func (s ApplyModifyRequestExternalTravelerList) String() string {
@@ -7463,6 +7470,11 @@ func (s ApplyModifyRequestExternalTravelerList) GoString() string {
 
 func (s *ApplyModifyRequestExternalTravelerList) SetUserName(v string) *ApplyModifyRequestExternalTravelerList {
 	s.UserName = &v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerList) SetUserNameEn(v string) *ApplyModifyRequestExternalTravelerList {
+	s.UserNameEn = &v
 	return s
 }
 
@@ -64082,6 +64094,7 @@ type TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList struct {
 	OutTicketStatus     *string  `json:"out_ticket_status,omitempty" xml:"out_ticket_status,omitempty"`
 	SegmentIndex        *int32   `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 	StartTime           *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	TicketEntrance      *string  `json:"ticket_entrance,omitempty" xml:"ticket_entrance,omitempty"`
 	TicketNo            *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 	TicketStatus        *int32   `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
 	ToCityName          *string  `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
@@ -64190,6 +64203,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetSegmentInde
 
 func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetStartTime(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
 	s.StartTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetTicketEntrance(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.TicketEntrance = &v
 	return s
 }
 
@@ -64682,6 +64700,7 @@ type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketIn
 	SegmentIndex    *int32   `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 	ServiceFee      *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
 	StartTime       *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	TicketEntrance  *string  `json:"ticket_entrance,omitempty" xml:"ticket_entrance,omitempty"`
 	TicketNo        *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 	TicketPrice     *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
 	TicketStatus    *int32   `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
@@ -64765,6 +64784,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTick
 
 func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetStartTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
 	s.StartTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetTicketEntrance(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.TicketEntrance = &v
 	return s
 }
 
