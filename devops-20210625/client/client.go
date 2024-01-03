@@ -743,6 +743,87 @@ func (s *CloseMergeRequestResponse) SetBody(v *CloseMergeRequestResponseBody) *C
 	return s
 }
 
+type CreateAppMembersRequest struct {
+	PlayerList     []*CreateAppMembersRequestPlayerList `json:"playerList,omitempty" xml:"playerList,omitempty" type:"Repeated"`
+	RoleNames      []*string                            `json:"roleNames,omitempty" xml:"roleNames,omitempty" type:"Repeated"`
+	OrganizationId *string                              `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CreateAppMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppMembersRequest) SetPlayerList(v []*CreateAppMembersRequestPlayerList) *CreateAppMembersRequest {
+	s.PlayerList = v
+	return s
+}
+
+func (s *CreateAppMembersRequest) SetRoleNames(v []*string) *CreateAppMembersRequest {
+	s.RoleNames = v
+	return s
+}
+
+func (s *CreateAppMembersRequest) SetOrganizationId(v string) *CreateAppMembersRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreateAppMembersRequestPlayerList struct {
+	Id   *string `json:"id,omitempty" xml:"id,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAppMembersRequestPlayerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppMembersRequestPlayerList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppMembersRequestPlayerList) SetId(v string) *CreateAppMembersRequestPlayerList {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateAppMembersRequestPlayerList) SetType(v string) *CreateAppMembersRequestPlayerList {
+	s.Type = &v
+	return s
+}
+
+type CreateAppMembersResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAppMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppMembersResponse) SetHeaders(v map[string]*string) *CreateAppMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppMembersResponse) SetStatusCode(v int32) *CreateAppMembersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppMembersResponse) SetBody(v string) *CreateAppMembersResponse {
+	s.Body = &v
+	return s
+}
+
 type CreateBranchRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	BranchName     *string `json:"branchName,omitempty" xml:"branchName,omitempty"`
@@ -7504,6 +7585,64 @@ func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *Creat
 	return s
 }
 
+type DeleteAppMemberRequest struct {
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	SubjectId      *string `json:"subjectId,omitempty" xml:"subjectId,omitempty"`
+	SubjectType    *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
+}
+
+func (s DeleteAppMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppMemberRequest) SetOrganizationId(v string) *DeleteAppMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *DeleteAppMemberRequest) SetSubjectId(v string) *DeleteAppMemberRequest {
+	s.SubjectId = &v
+	return s
+}
+
+func (s *DeleteAppMemberRequest) SetSubjectType(v string) *DeleteAppMemberRequest {
+	s.SubjectType = &v
+	return s
+}
+
+type DeleteAppMemberResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAppMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppMemberResponse) SetHeaders(v map[string]*string) *DeleteAppMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppMemberResponse) SetStatusCode(v int32) *DeleteAppMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAppMemberResponse) SetBody(v string) *DeleteAppMemberResponse {
+	s.Body = &v
+	return s
+}
+
 type DeleteBranchRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	BranchName     *string `json:"branchName,omitempty" xml:"branchName,omitempty"`
@@ -10065,6 +10204,93 @@ func (s *FrozenWorkspaceResponse) SetStatusCode(v int32) *FrozenWorkspaceRespons
 }
 
 func (s *FrozenWorkspaceResponse) SetBody(v *FrozenWorkspaceResponseBody) *FrozenWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type GetApplicationRequest struct {
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationRequest) SetOrganizationId(v string) *GetApplicationRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetApplicationResponseBody struct {
+	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate        *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	RequestId        *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBody) SetCreatorAccountId(v string) *GetApplicationResponseBody {
+	s.CreatorAccountId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetDescription(v string) *GetApplicationResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetGmtCreate(v string) *GetApplicationResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetName(v string) *GetApplicationResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetApplicationResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponse) SetHeaders(v map[string]*string) *GetApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApplicationResponse) SetStatusCode(v int32) *GetApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetApplicationResponse {
 	s.Body = v
 	return s
 }
@@ -18744,6 +18970,309 @@ func (s *JoinPipelineGroupResponse) SetStatusCode(v int32) *JoinPipelineGroupRes
 }
 
 func (s *JoinPipelineGroupResponse) SetBody(v *JoinPipelineGroupResponseBody) *JoinPipelineGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListApplicationMembersRequest struct {
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListApplicationMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationMembersRequest) SetOrganizationId(v string) *ListApplicationMembersRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListApplicationMembersResponseBody struct {
+	Current   *int64                                       `json:"current,omitempty" xml:"current,omitempty"`
+	PageSize  *int64                                       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Pages     *int64                                       `json:"pages,omitempty" xml:"pages,omitempty"`
+	Records   []*ListApplicationMembersResponseBodyRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Total     *int64                                       `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListApplicationMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationMembersResponseBody) SetCurrent(v int64) *ListApplicationMembersResponseBody {
+	s.Current = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBody) SetPageSize(v int64) *ListApplicationMembersResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBody) SetPages(v int64) *ListApplicationMembersResponseBody {
+	s.Pages = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBody) SetRecords(v []*ListApplicationMembersResponseBodyRecords) *ListApplicationMembersResponseBody {
+	s.Records = v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBody) SetRequestId(v string) *ListApplicationMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBody) SetTotal(v int64) *ListApplicationMembersResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListApplicationMembersResponseBodyRecords struct {
+	Avatar      *string                                              `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	Description *string                                              `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName *string                                              `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Id          *string                                              `json:"id,omitempty" xml:"id,omitempty"`
+	RoleList    []*ListApplicationMembersResponseBodyRecordsRoleList `json:"roleList,omitempty" xml:"roleList,omitempty" type:"Repeated"`
+	Type        *string                                              `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListApplicationMembersResponseBodyRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationMembersResponseBodyRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationMembersResponseBodyRecords) SetAvatar(v string) *ListApplicationMembersResponseBodyRecords {
+	s.Avatar = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBodyRecords) SetDescription(v string) *ListApplicationMembersResponseBodyRecords {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBodyRecords) SetDisplayName(v string) *ListApplicationMembersResponseBodyRecords {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBodyRecords) SetId(v string) *ListApplicationMembersResponseBodyRecords {
+	s.Id = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBodyRecords) SetRoleList(v []*ListApplicationMembersResponseBodyRecordsRoleList) *ListApplicationMembersResponseBodyRecords {
+	s.RoleList = v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBodyRecords) SetType(v string) *ListApplicationMembersResponseBodyRecords {
+	s.Type = &v
+	return s
+}
+
+type ListApplicationMembersResponseBodyRecordsRoleList struct {
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListApplicationMembersResponseBodyRecordsRoleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationMembersResponseBodyRecordsRoleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationMembersResponseBodyRecordsRoleList) SetDisplayName(v string) *ListApplicationMembersResponseBodyRecordsRoleList {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponseBodyRecordsRoleList) SetName(v string) *ListApplicationMembersResponseBodyRecordsRoleList {
+	s.Name = &v
+	return s
+}
+
+type ListApplicationMembersResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListApplicationMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApplicationMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationMembersResponse) SetHeaders(v map[string]*string) *ListApplicationMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplicationMembersResponse) SetStatusCode(v int32) *ListApplicationMembersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApplicationMembersResponse) SetBody(v *ListApplicationMembersResponseBody) *ListApplicationMembersResponse {
+	s.Body = v
+	return s
+}
+
+type ListApplicationsRequest struct {
+	NextToken      *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Pagination     *string `json:"pagination,omitempty" xml:"pagination,omitempty"`
+	PerPage        *int32  `json:"perPage,omitempty" xml:"perPage,omitempty"`
+	Sort           *string `json:"sort,omitempty" xml:"sort,omitempty"`
+}
+
+func (s ListApplicationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsRequest) SetNextToken(v string) *ListApplicationsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetOrderBy(v string) *ListApplicationsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetOrganizationId(v string) *ListApplicationsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetPagination(v string) *ListApplicationsRequest {
+	s.Pagination = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetPerPage(v int32) *ListApplicationsRequest {
+	s.PerPage = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetSort(v string) *ListApplicationsRequest {
+	s.Sort = &v
+	return s
+}
+
+type ListApplicationsResponseBody struct {
+	Data      []*ListApplicationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	NextToken *string                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListApplicationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsResponseBody) SetData(v []*ListApplicationsResponseBodyData) *ListApplicationsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListApplicationsResponseBody) SetNextToken(v string) *ListApplicationsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBody) SetRequestId(v string) *ListApplicationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListApplicationsResponseBodyData struct {
+	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate        *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListApplicationsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsResponseBodyData) SetCreatorAccountId(v string) *ListApplicationsResponseBodyData {
+	s.CreatorAccountId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyData) SetDescription(v string) *ListApplicationsResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyData) SetGmtCreate(v string) *ListApplicationsResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyData) SetName(v string) *ListApplicationsResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type ListApplicationsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApplicationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsResponse) SetHeaders(v map[string]*string) *ListApplicationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplicationsResponse) SetStatusCode(v int32) *ListApplicationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *ListApplicationsResponse {
 	s.Body = v
 	return s
 }
@@ -32524,6 +33053,180 @@ func (s *TriggerRepositoryMirrorSyncResponse) SetBody(v *TriggerRepositoryMirror
 	return s
 }
 
+type UpdateAppMemberRequest struct {
+	Player         *UpdateAppMemberRequestPlayer `json:"player,omitempty" xml:"player,omitempty" type:"Struct"`
+	RoleNames      []*string                     `json:"roleNames,omitempty" xml:"roleNames,omitempty" type:"Repeated"`
+	OrganizationId *string                       `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdateAppMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppMemberRequest) SetPlayer(v *UpdateAppMemberRequestPlayer) *UpdateAppMemberRequest {
+	s.Player = v
+	return s
+}
+
+func (s *UpdateAppMemberRequest) SetRoleNames(v []*string) *UpdateAppMemberRequest {
+	s.RoleNames = v
+	return s
+}
+
+func (s *UpdateAppMemberRequest) SetOrganizationId(v string) *UpdateAppMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdateAppMemberRequestPlayer struct {
+	Id   *string `json:"id,omitempty" xml:"id,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateAppMemberRequestPlayer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppMemberRequestPlayer) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppMemberRequestPlayer) SetId(v string) *UpdateAppMemberRequestPlayer {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateAppMemberRequestPlayer) SetType(v string) *UpdateAppMemberRequestPlayer {
+	s.Type = &v
+	return s
+}
+
+type UpdateAppMemberResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAppMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppMemberResponse) SetHeaders(v map[string]*string) *UpdateAppMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppMemberResponse) SetStatusCode(v int32) *UpdateAppMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAppMemberResponse) SetBody(v string) *UpdateAppMemberResponse {
+	s.Body = &v
+	return s
+}
+
+type UpdateApplicationRequest struct {
+	OwnerAccountId *string `json:"ownerAccountId,omitempty" xml:"ownerAccountId,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdateApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationRequest) SetOwnerAccountId(v string) *UpdateApplicationRequest {
+	s.OwnerAccountId = &v
+	return s
+}
+
+func (s *UpdateApplicationRequest) SetOrganizationId(v string) *UpdateApplicationRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdateApplicationResponseBody struct {
+	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate        *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	RequestId        *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationResponseBody) SetCreatorAccountId(v string) *UpdateApplicationResponseBody {
+	s.CreatorAccountId = &v
+	return s
+}
+
+func (s *UpdateApplicationResponseBody) SetDescription(v string) *UpdateApplicationResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateApplicationResponseBody) SetGmtCreate(v string) *UpdateApplicationResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateApplicationResponseBody) SetName(v string) *UpdateApplicationResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateApplicationResponseBody) SetRequestId(v string) *UpdateApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateApplicationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationResponse) SetHeaders(v map[string]*string) *UpdateApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateApplicationResponse) SetStatusCode(v int32) *UpdateApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateApplicationResponse) SetBody(v *UpdateApplicationResponseBody) *UpdateApplicationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFileRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	BranchName     *string `json:"branchName,omitempty" xml:"branchName,omitempty"`
@@ -37893,6 +38596,62 @@ func (client *Client) CloseMergeRequest(repositoryId *string, localId *string, r
 	return _result, _err
 }
 
+func (client *Client) CreateAppMembersWithOptions(appName *string, request *CreateAppMembersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PlayerList)) {
+		body["playerList"] = request.PlayerList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleNames)) {
+		body["roleNames"] = request.RoleNames
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppMembers"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/members"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("string"),
+	}
+	_result = &CreateAppMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAppMembers(appName *string, request *CreateAppMembersRequest) (_result *CreateAppMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAppMembersResponse{}
+	_body, _err := client.CreateAppMembersWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBranchWithOptions(repositoryId *string, request *CreateBranchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBranchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40037,6 +40796,60 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DeleteAppMemberWithOptions(appName *string, request *DeleteAppMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAppMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubjectId)) {
+		query["subjectId"] = request.SubjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubjectType)) {
+		query["subjectType"] = request.SubjectType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/members"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("string"),
+	}
+	_result = &DeleteAppMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAppMember(appName *string, request *DeleteAppMemberRequest) (_result *DeleteAppMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAppMemberResponse{}
+	_body, _err := client.DeleteAppMemberWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteBranchWithOptions(repositoryId *string, request *DeleteBranchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteBranchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41204,6 +42017,52 @@ func (client *Client) FrozenWorkspace(workspaceId *string) (_result *FrozenWorks
 	headers := make(map[string]*string)
 	_result = &FrozenWorkspaceResponse{}
 	_body, _err := client.FrozenWorkspaceWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetApplicationWithOptions(appName *string, request *GetApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplication"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetApplication(appName *string, request *GetApplicationRequest) (_result *GetApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetApplicationResponse{}
+	_body, _err := client.GetApplicationWithOptions(appName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43120,6 +43979,118 @@ func (client *Client) JoinPipelineGroup(organizationId *string, request *JoinPip
 	headers := make(map[string]*string)
 	_result = &JoinPipelineGroupResponse{}
 	_body, _err := client.JoinPipelineGroupWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListApplicationMembersWithOptions(appName *string, request *ListApplicationMembersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListApplicationMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplicationMembers"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/members"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApplicationMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApplicationMembers(appName *string, request *ListApplicationMembersRequest) (_result *ListApplicationMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListApplicationMembersResponse{}
+	_body, _err := client.ListApplicationMembersWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListApplicationsWithOptions(request *ListApplicationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListApplicationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pagination)) {
+		query["pagination"] = request.Pagination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerPage)) {
+		query["perPage"] = request.PerPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplications"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps%3Asearch"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApplications(request *ListApplicationsRequest) (_result *ListApplicationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.ListApplicationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47088,6 +48059,114 @@ func (client *Client) TriggerRepositoryMirrorSync(repositoryId *string, request 
 	headers := make(map[string]*string)
 	_result = &TriggerRepositoryMirrorSyncResponse{}
 	_body, _err := client.TriggerRepositoryMirrorSyncWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAppMemberWithOptions(appName *string, request *UpdateAppMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAppMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Player)) {
+		body["player"] = request.Player
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleNames)) {
+		body["roleNames"] = request.RoleNames
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAppMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/members"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("string"),
+	}
+	_result = &UpdateAppMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAppMember(appName *string, request *UpdateAppMemberRequest) (_result *UpdateAppMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAppMemberResponse{}
+	_body, _err := client.UpdateAppMemberWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateApplicationWithOptions(appName *string, request *UpdateApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccountId)) {
+		body["ownerAccountId"] = request.OwnerAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApplication"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateApplication(appName *string, request *UpdateApplicationRequest) (_result *UpdateApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateApplicationResponse{}
+	_body, _err := client.UpdateApplicationWithOptions(appName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
