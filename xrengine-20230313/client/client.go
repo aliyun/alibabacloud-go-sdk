@@ -134,6 +134,174 @@ func (s *AuthUserResponse) SetBody(v *AuthUserResponseBody) *AuthUserResponse {
 	return s
 }
 
+type BatchQueryMotionShopTaskStatusRequest struct {
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s BatchQueryMotionShopTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryMotionShopTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryMotionShopTaskStatusRequest) SetJwtToken(v string) *BatchQueryMotionShopTaskStatusRequest {
+	s.JwtToken = &v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusRequest) SetTaskId(v string) *BatchQueryMotionShopTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type BatchQueryMotionShopTaskStatusResponseBody struct {
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *BatchQueryMotionShopTaskStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchQueryMotionShopTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryMotionShopTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBody) SetCode(v string) *BatchQueryMotionShopTaskStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBody) SetData(v *BatchQueryMotionShopTaskStatusResponseBodyData) *BatchQueryMotionShopTaskStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBody) SetMessage(v string) *BatchQueryMotionShopTaskStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBody) SetRequestId(v string) *BatchQueryMotionShopTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBody) SetSuccess(v bool) *BatchQueryMotionShopTaskStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchQueryMotionShopTaskStatusResponseBodyData struct {
+	Tasks []*BatchQueryMotionShopTaskStatusResponseBodyDataTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s BatchQueryMotionShopTaskStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryMotionShopTaskStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBodyData) SetTasks(v []*BatchQueryMotionShopTaskStatusResponseBodyDataTasks) *BatchQueryMotionShopTaskStatusResponseBodyData {
+	s.Tasks = v
+	return s
+}
+
+type BatchQueryMotionShopTaskStatusResponseBodyDataTasks struct {
+	Result *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Status *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId *string                                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s BatchQueryMotionShopTaskStatusResponseBodyDataTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryMotionShopTaskStatusResponseBodyDataTasks) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasks) SetResult(v *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult) *BatchQueryMotionShopTaskStatusResponseBodyDataTasks {
+	s.Result = v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasks) SetStatus(v string) *BatchQueryMotionShopTaskStatusResponseBodyDataTasks {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasks) SetTaskId(v string) *BatchQueryMotionShopTaskStatusResponseBodyDataTasks {
+	s.TaskId = &v
+	return s
+}
+
+type BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult struct {
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	ShareUrl *string `json:"ShareUrl,omitempty" xml:"ShareUrl,omitempty"`
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult) SetCoverUrl(v string) *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult) SetShareUrl(v string) *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult {
+	s.ShareUrl = &v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult) SetVideoUrl(v string) *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult {
+	s.VideoUrl = &v
+	return s
+}
+
+type BatchQueryMotionShopTaskStatusResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchQueryMotionShopTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchQueryMotionShopTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryMotionShopTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponse) SetHeaders(v map[string]*string) *BatchQueryMotionShopTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponse) SetStatusCode(v int32) *BatchQueryMotionShopTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponse) SetBody(v *BatchQueryMotionShopTaskStatusResponseBody) *BatchQueryMotionShopTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDigitalHumanProjectRequest struct {
 	AudioId           *string `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
 	AudioUrl          *string `json:"AudioUrl,omitempty" xml:"AudioUrl,omitempty"`
@@ -516,6 +684,116 @@ func (s *CreateLivePortraitProjectResponse) SetBody(v *CreateLivePortraitProject
 	return s
 }
 
+type GenerateMotionShopVideoUploadUrlRequest struct {
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+}
+
+func (s GenerateMotionShopVideoUploadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateMotionShopVideoUploadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateMotionShopVideoUploadUrlRequest) SetJwtToken(v string) *GenerateMotionShopVideoUploadUrlRequest {
+	s.JwtToken = &v
+	return s
+}
+
+type GenerateMotionShopVideoUploadUrlResponseBody struct {
+	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GenerateMotionShopVideoUploadUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenerateMotionShopVideoUploadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateMotionShopVideoUploadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponseBody) SetCode(v string) *GenerateMotionShopVideoUploadUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponseBody) SetData(v *GenerateMotionShopVideoUploadUrlResponseBodyData) *GenerateMotionShopVideoUploadUrlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponseBody) SetMessage(v string) *GenerateMotionShopVideoUploadUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponseBody) SetRequestId(v string) *GenerateMotionShopVideoUploadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponseBody) SetSuccess(v bool) *GenerateMotionShopVideoUploadUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateMotionShopVideoUploadUrlResponseBodyData struct {
+	OssKey    *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	UploadUrl *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
+}
+
+func (s GenerateMotionShopVideoUploadUrlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateMotionShopVideoUploadUrlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponseBodyData) SetOssKey(v string) *GenerateMotionShopVideoUploadUrlResponseBodyData {
+	s.OssKey = &v
+	return s
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponseBodyData) SetUploadUrl(v string) *GenerateMotionShopVideoUploadUrlResponseBodyData {
+	s.UploadUrl = &v
+	return s
+}
+
+type GenerateMotionShopVideoUploadUrlResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateMotionShopVideoUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateMotionShopVideoUploadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateMotionShopVideoUploadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponse) SetHeaders(v map[string]*string) *GenerateMotionShopVideoUploadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponse) SetStatusCode(v int32) *GenerateMotionShopVideoUploadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateMotionShopVideoUploadUrlResponse) SetBody(v *GenerateMotionShopVideoUploadUrlResponseBody) *GenerateMotionShopVideoUploadUrlResponse {
+	s.Body = v
+	return s
+}
+
 type GetMapDataRequest struct {
 	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
@@ -827,6 +1105,152 @@ func (s *InitLocateResponse) SetStatusCode(v int32) *InitLocateResponse {
 }
 
 func (s *InitLocateResponse) SetBody(v *InitLocateResponseBody) *InitLocateResponse {
+	s.Body = v
+	return s
+}
+
+type ListCommonMaterialsRequest struct {
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCommonMaterialsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommonMaterialsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommonMaterialsRequest) SetJwtToken(v string) *ListCommonMaterialsRequest {
+	s.JwtToken = &v
+	return s
+}
+
+func (s *ListCommonMaterialsRequest) SetType(v string) *ListCommonMaterialsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListCommonMaterialsResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListCommonMaterialsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCommonMaterialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommonMaterialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommonMaterialsResponseBody) SetCode(v string) *ListCommonMaterialsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBody) SetData(v []*ListCommonMaterialsResponseBodyData) *ListCommonMaterialsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBody) SetMessage(v string) *ListCommonMaterialsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBody) SetRequestId(v string) *ListCommonMaterialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBody) SetSuccess(v bool) *ListCommonMaterialsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCommonMaterialsResponseBodyData struct {
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Ext      *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssKey   *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCommonMaterialsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommonMaterialsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommonMaterialsResponseBodyData) SetCoverUrl(v string) *ListCommonMaterialsResponseBodyData {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBodyData) SetExt(v string) *ListCommonMaterialsResponseBodyData {
+	s.Ext = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBodyData) SetFileUrl(v string) *ListCommonMaterialsResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBodyData) SetId(v string) *ListCommonMaterialsResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBodyData) SetName(v string) *ListCommonMaterialsResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBodyData) SetOssKey(v string) *ListCommonMaterialsResponseBodyData {
+	s.OssKey = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponseBodyData) SetType(v string) *ListCommonMaterialsResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type ListCommonMaterialsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCommonMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCommonMaterialsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommonMaterialsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommonMaterialsResponse) SetHeaders(v map[string]*string) *ListCommonMaterialsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCommonMaterialsResponse) SetStatusCode(v int32) *ListCommonMaterialsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCommonMaterialsResponse) SetBody(v *ListCommonMaterialsResponseBody) *ListCommonMaterialsResponse {
 	s.Body = v
 	return s
 }
@@ -1290,6 +1714,187 @@ func (s *ListLocationServiceResponse) SetBody(v *ListLocationServiceResponseBody
 	return s
 }
 
+type ListMotionShopTasksRequest struct {
+	Current  *int32  `json:"Current,omitempty" xml:"Current,omitempty"`
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	Size     *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListMotionShopTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMotionShopTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMotionShopTasksRequest) SetCurrent(v int32) *ListMotionShopTasksRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *ListMotionShopTasksRequest) SetJwtToken(v string) *ListMotionShopTasksRequest {
+	s.JwtToken = &v
+	return s
+}
+
+func (s *ListMotionShopTasksRequest) SetSize(v int32) *ListMotionShopTasksRequest {
+	s.Size = &v
+	return s
+}
+
+type ListMotionShopTasksResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Current   *int32                                 `json:"Current,omitempty" xml:"Current,omitempty"`
+	Data      []*ListMotionShopTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Pages     *int32                                 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Size      *int32                                 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total     *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListMotionShopTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMotionShopTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMotionShopTasksResponseBody) SetCode(v string) *ListMotionShopTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBody) SetCurrent(v int32) *ListMotionShopTasksResponseBody {
+	s.Current = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBody) SetData(v []*ListMotionShopTasksResponseBodyData) *ListMotionShopTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBody) SetMessage(v string) *ListMotionShopTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBody) SetPages(v int32) *ListMotionShopTasksResponseBody {
+	s.Pages = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBody) SetRequestId(v string) *ListMotionShopTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBody) SetSize(v int32) *ListMotionShopTasksResponseBody {
+	s.Size = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBody) SetSuccess(v bool) *ListMotionShopTasksResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBody) SetTotal(v int32) *ListMotionShopTasksResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListMotionShopTasksResponseBodyData struct {
+	Result *ListMotionShopTasksResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Status *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId *string                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ListMotionShopTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMotionShopTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMotionShopTasksResponseBodyData) SetResult(v *ListMotionShopTasksResponseBodyDataResult) *ListMotionShopTasksResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBodyData) SetStatus(v string) *ListMotionShopTasksResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBodyData) SetTaskId(v string) *ListMotionShopTasksResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type ListMotionShopTasksResponseBodyDataResult struct {
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	ShareUrl *string `json:"ShareUrl,omitempty" xml:"ShareUrl,omitempty"`
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s ListMotionShopTasksResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMotionShopTasksResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMotionShopTasksResponseBodyDataResult) SetCoverUrl(v string) *ListMotionShopTasksResponseBodyDataResult {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBodyDataResult) SetShareUrl(v string) *ListMotionShopTasksResponseBodyDataResult {
+	s.ShareUrl = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBodyDataResult) SetVideoUrl(v string) *ListMotionShopTasksResponseBodyDataResult {
+	s.VideoUrl = &v
+	return s
+}
+
+type ListMotionShopTasksResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMotionShopTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMotionShopTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMotionShopTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMotionShopTasksResponse) SetHeaders(v map[string]*string) *ListMotionShopTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMotionShopTasksResponse) SetStatusCode(v int32) *ListMotionShopTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponse) SetBody(v *ListMotionShopTasksResponseBody) *ListMotionShopTasksResponse {
+	s.Body = v
+	return s
+}
+
 type LivePortraitFaceDetectRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
@@ -1665,6 +2270,116 @@ func (s *LoginModelScopeResponse) SetStatusCode(v int32) *LoginModelScopeRespons
 }
 
 func (s *LoginModelScopeResponse) SetBody(v *LoginModelScopeResponseBody) *LoginModelScopeResponse {
+	s.Body = v
+	return s
+}
+
+type MotionShopVideoDetectRequest struct {
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	OssKey   *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+}
+
+func (s MotionShopVideoDetectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MotionShopVideoDetectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MotionShopVideoDetectRequest) SetJwtToken(v string) *MotionShopVideoDetectRequest {
+	s.JwtToken = &v
+	return s
+}
+
+func (s *MotionShopVideoDetectRequest) SetOssKey(v string) *MotionShopVideoDetectRequest {
+	s.OssKey = &v
+	return s
+}
+
+type MotionShopVideoDetectResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *MotionShopVideoDetectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MotionShopVideoDetectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MotionShopVideoDetectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MotionShopVideoDetectResponseBody) SetCode(v string) *MotionShopVideoDetectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MotionShopVideoDetectResponseBody) SetData(v *MotionShopVideoDetectResponseBodyData) *MotionShopVideoDetectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *MotionShopVideoDetectResponseBody) SetMessage(v string) *MotionShopVideoDetectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MotionShopVideoDetectResponseBody) SetRequestId(v string) *MotionShopVideoDetectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MotionShopVideoDetectResponseBody) SetSuccess(v bool) *MotionShopVideoDetectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MotionShopVideoDetectResponseBodyData struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s MotionShopVideoDetectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MotionShopVideoDetectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *MotionShopVideoDetectResponseBodyData) SetJobId(v string) *MotionShopVideoDetectResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type MotionShopVideoDetectResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MotionShopVideoDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MotionShopVideoDetectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MotionShopVideoDetectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MotionShopVideoDetectResponse) SetHeaders(v map[string]*string) *MotionShopVideoDetectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MotionShopVideoDetectResponse) SetStatusCode(v int32) *MotionShopVideoDetectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MotionShopVideoDetectResponse) SetBody(v *MotionShopVideoDetectResponseBody) *MotionShopVideoDetectResponse {
 	s.Body = v
 	return s
 }
@@ -14808,6 +15523,169 @@ func (s *QueryLongTtsResultResponse) SetBody(v *QueryLongTtsResultResponseBody) 
 	return s
 }
 
+type QueryMotionShopVideoDetectResultRequest struct {
+	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+}
+
+func (s QueryMotionShopVideoDetectResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMotionShopVideoDetectResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMotionShopVideoDetectResultRequest) SetJobId(v string) *QueryMotionShopVideoDetectResultRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultRequest) SetJwtToken(v string) *QueryMotionShopVideoDetectResultRequest {
+	s.JwtToken = &v
+	return s
+}
+
+type QueryMotionShopVideoDetectResultResponseBody struct {
+	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryMotionShopVideoDetectResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryMotionShopVideoDetectResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMotionShopVideoDetectResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBody) SetCode(v string) *QueryMotionShopVideoDetectResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBody) SetData(v *QueryMotionShopVideoDetectResultResponseBodyData) *QueryMotionShopVideoDetectResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBody) SetMessage(v string) *QueryMotionShopVideoDetectResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBody) SetRequestId(v string) *QueryMotionShopVideoDetectResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBody) SetSuccess(v bool) *QueryMotionShopVideoDetectResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryMotionShopVideoDetectResultResponseBodyData struct {
+	DetectResult *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult `json:"DetectResult,omitempty" xml:"DetectResult,omitempty" type:"Struct"`
+	Status       *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	VideoId      *string                                                       `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+}
+
+func (s QueryMotionShopVideoDetectResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMotionShopVideoDetectResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyData) SetDetectResult(v *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) *QueryMotionShopVideoDetectResultResponseBodyData {
+	s.DetectResult = v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyData) SetStatus(v string) *QueryMotionShopVideoDetectResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyData) SetVideoId(v string) *QueryMotionShopVideoDetectResultResponseBodyData {
+	s.VideoId = &v
+	return s
+}
+
+type QueryMotionShopVideoDetectResultResponseBodyDataDetectResult struct {
+	Box                []*float64 `json:"Box,omitempty" xml:"Box,omitempty" type:"Repeated"`
+	Code               *int32     `json:"Code,omitempty" xml:"Code,omitempty"`
+	CoverUrl           *string    `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Message            *string    `json:"Message,omitempty" xml:"Message,omitempty"`
+	SelectedFrameIndex *int32     `json:"SelectedFrameIndex,omitempty" xml:"SelectedFrameIndex,omitempty"`
+}
+
+func (s QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetBox(v []*float64) *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult {
+	s.Box = v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetCode(v int32) *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetCoverUrl(v string) *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetMessage(v string) *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetSelectedFrameIndex(v int32) *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult {
+	s.SelectedFrameIndex = &v
+	return s
+}
+
+type QueryMotionShopVideoDetectResultResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMotionShopVideoDetectResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMotionShopVideoDetectResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMotionShopVideoDetectResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMotionShopVideoDetectResultResponse) SetHeaders(v map[string]*string) *QueryMotionShopVideoDetectResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponse) SetStatusCode(v int32) *QueryMotionShopVideoDetectResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponse) SetBody(v *QueryMotionShopVideoDetectResultResponseBody) *QueryMotionShopVideoDetectResultResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitLongTtsTaskRequest struct {
 	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	JwtToken   *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
@@ -14903,6 +15781,128 @@ func (s *SubmitLongTtsTaskResponse) SetStatusCode(v int32) *SubmitLongTtsTaskRes
 }
 
 func (s *SubmitLongTtsTaskResponse) SetBody(v *SubmitLongTtsTaskResponseBody) *SubmitLongTtsTaskResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitMotionShopTaskRequest struct {
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	VideoId  *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+}
+
+func (s SubmitMotionShopTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMotionShopTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMotionShopTaskRequest) SetAvatarId(v string) *SubmitMotionShopTaskRequest {
+	s.AvatarId = &v
+	return s
+}
+
+func (s *SubmitMotionShopTaskRequest) SetJwtToken(v string) *SubmitMotionShopTaskRequest {
+	s.JwtToken = &v
+	return s
+}
+
+func (s *SubmitMotionShopTaskRequest) SetTitle(v string) *SubmitMotionShopTaskRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitMotionShopTaskRequest) SetVideoId(v string) *SubmitMotionShopTaskRequest {
+	s.VideoId = &v
+	return s
+}
+
+type SubmitMotionShopTaskResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SubmitMotionShopTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitMotionShopTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMotionShopTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMotionShopTaskResponseBody) SetCode(v string) *SubmitMotionShopTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitMotionShopTaskResponseBody) SetData(v *SubmitMotionShopTaskResponseBodyData) *SubmitMotionShopTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitMotionShopTaskResponseBody) SetMessage(v string) *SubmitMotionShopTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitMotionShopTaskResponseBody) SetRequestId(v string) *SubmitMotionShopTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitMotionShopTaskResponseBody) SetSuccess(v bool) *SubmitMotionShopTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitMotionShopTaskResponseBodyData struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SubmitMotionShopTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMotionShopTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMotionShopTaskResponseBodyData) SetTaskId(v string) *SubmitMotionShopTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitMotionShopTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitMotionShopTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitMotionShopTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMotionShopTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMotionShopTaskResponse) SetHeaders(v map[string]*string) *SubmitMotionShopTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitMotionShopTaskResponse) SetStatusCode(v int32) *SubmitMotionShopTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitMotionShopTaskResponse) SetBody(v *SubmitMotionShopTaskResponseBody) *SubmitMotionShopTaskResponse {
 	s.Body = v
 	return s
 }
@@ -15155,6 +16155,54 @@ func (client *Client) AuthUser(request *AuthUserRequest) (_result *AuthUserRespo
 	return _result, _err
 }
 
+func (client *Client) BatchQueryMotionShopTaskStatusWithOptions(request *BatchQueryMotionShopTaskStatusRequest, runtime *util.RuntimeOptions) (_result *BatchQueryMotionShopTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
+		body["JwtToken"] = request.JwtToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchQueryMotionShopTaskStatus"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchQueryMotionShopTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchQueryMotionShopTaskStatus(request *BatchQueryMotionShopTaskStatusRequest) (_result *BatchQueryMotionShopTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchQueryMotionShopTaskStatusResponse{}
+	_body, _err := client.BatchQueryMotionShopTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDigitalHumanProjectWithOptions(request *CreateDigitalHumanProjectRequest, runtime *util.RuntimeOptions) (_result *CreateDigitalHumanProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15363,6 +16411,50 @@ func (client *Client) CreateLivePortraitProject(request *CreateLivePortraitProje
 	return _result, _err
 }
 
+func (client *Client) GenerateMotionShopVideoUploadUrlWithOptions(request *GenerateMotionShopVideoUploadUrlRequest, runtime *util.RuntimeOptions) (_result *GenerateMotionShopVideoUploadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
+		query["JwtToken"] = request.JwtToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateMotionShopVideoUploadUrl"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateMotionShopVideoUploadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateMotionShopVideoUploadUrl(request *GenerateMotionShopVideoUploadUrlRequest) (_result *GenerateMotionShopVideoUploadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateMotionShopVideoUploadUrlResponse{}
+	_body, _err := client.GenerateMotionShopVideoUploadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMapDataWithOptions(request *GetMapDataRequest, runtime *util.RuntimeOptions) (_result *GetMapDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15507,6 +16599,54 @@ func (client *Client) InitLocate(request *InitLocateRequest) (_result *InitLocat
 	return _result, _err
 }
 
+func (client *Client) ListCommonMaterialsWithOptions(request *ListCommonMaterialsRequest, runtime *util.RuntimeOptions) (_result *ListCommonMaterialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
+		query["JwtToken"] = request.JwtToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCommonMaterials"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCommonMaterialsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCommonMaterials(request *ListCommonMaterialsRequest) (_result *ListCommonMaterialsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCommonMaterialsResponse{}
+	_body, _err := client.ListCommonMaterialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDigitalHumanMaterialsWithOptions(request *ListDigitalHumanMaterialsRequest, runtime *util.RuntimeOptions) (_result *ListDigitalHumanMaterialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15622,6 +16762,58 @@ func (client *Client) ListLocationService(request *ListLocationServiceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLocationServiceResponse{}
 	_body, _err := client.ListLocationServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMotionShopTasksWithOptions(request *ListMotionShopTasksRequest, runtime *util.RuntimeOptions) (_result *ListMotionShopTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Current)) {
+		body["Current"] = request.Current
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
+		body["JwtToken"] = request.JwtToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		body["Size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMotionShopTasks"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMotionShopTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMotionShopTasks(request *ListMotionShopTasksRequest) (_result *ListMotionShopTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMotionShopTasksResponse{}
+	_body, _err := client.ListMotionShopTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15780,6 +16972,56 @@ func (client *Client) LoginModelScope(request *LoginModelScopeRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &LoginModelScopeResponse{}
 	_body, _err := client.LoginModelScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MotionShopVideoDetectWithOptions(request *MotionShopVideoDetectRequest, runtime *util.RuntimeOptions) (_result *MotionShopVideoDetectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
+		query["JwtToken"] = request.JwtToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OssKey)) {
+		body["OssKey"] = request.OssKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MotionShopVideoDetect"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MotionShopVideoDetectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MotionShopVideoDetect(request *MotionShopVideoDetectRequest) (_result *MotionShopVideoDetectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MotionShopVideoDetectResponse{}
+	_body, _err := client.MotionShopVideoDetectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17943,6 +19185,56 @@ func (client *Client) QueryLongTtsResult(request *QueryLongTtsResultRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) QueryMotionShopVideoDetectResultWithOptions(request *QueryMotionShopVideoDetectResultRequest, runtime *util.RuntimeOptions) (_result *QueryMotionShopVideoDetectResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
+		query["JwtToken"] = request.JwtToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMotionShopVideoDetectResult"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMotionShopVideoDetectResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMotionShopVideoDetectResult(request *QueryMotionShopVideoDetectResultRequest) (_result *QueryMotionShopVideoDetectResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMotionShopVideoDetectResultResponse{}
+	_body, _err := client.QueryMotionShopVideoDetectResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitLongTtsTaskWithOptions(request *SubmitLongTtsTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitLongTtsTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17990,6 +19282,62 @@ func (client *Client) SubmitLongTtsTask(request *SubmitLongTtsTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitLongTtsTaskResponse{}
 	_body, _err := client.SubmitLongTtsTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitMotionShopTaskWithOptions(request *SubmitMotionShopTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitMotionShopTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarId)) {
+		body["AvatarId"] = request.AvatarId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
+		body["JwtToken"] = request.JwtToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		body["VideoId"] = request.VideoId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitMotionShopTask"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitMotionShopTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitMotionShopTask(request *SubmitMotionShopTaskRequest) (_result *SubmitMotionShopTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitMotionShopTaskResponse{}
+	_body, _err := client.SubmitMotionShopTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
