@@ -18327,6 +18327,7 @@ func (s *FlightItineraryScanQueryResponseBodyModule) SetTotalSize(v int32) *Flig
 type FlightItineraryScanQueryResponseBodyModuleItems struct {
 	// 销售单位代号
 	AgentCode  *string `json:"agent_code,omitempty" xml:"agent_code,omitempty"`
+	ApplyId    *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BillDate   *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
 	Build      *string `json:"build,omitempty" xml:"build,omitempty"`
 	CostCenter *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
@@ -18368,6 +18369,11 @@ func (s FlightItineraryScanQueryResponseBodyModuleItems) GoString() string {
 
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetAgentCode(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
 	s.AgentCode = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetApplyId(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.ApplyId = &v
 	return s
 }
 
@@ -65276,6 +65282,7 @@ func (s *TrainTicketScanQueryResponseBodyModule) SetTotalSize(v int32) *TrainTic
 }
 
 type TrainTicketScanQueryResponseBodyModuleItems struct {
+	ApplyId      *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrStation   *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
 	BillDate     *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
 	CoachName    *string `json:"coach_name,omitempty" xml:"coach_name,omitempty"`
@@ -65307,6 +65314,11 @@ func (s TrainTicketScanQueryResponseBodyModuleItems) String() string {
 
 func (s TrainTicketScanQueryResponseBodyModuleItems) GoString() string {
 	return s.String()
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetApplyId(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.ApplyId = &v
+	return s
 }
 
 func (s *TrainTicketScanQueryResponseBodyModuleItems) SetArrStation(v string) *TrainTicketScanQueryResponseBodyModuleItems {
