@@ -1631,10 +1631,11 @@ func (s *DescAccountSummaryResponse) SetBody(v *DescAccountSummaryResponseBody) 
 }
 
 type DescDomainRequest struct {
-	DomainId             *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	DomainId                  *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RequireRealTimeDnsRecords *bool   `json:"RequireRealTimeDnsRecords,omitempty" xml:"RequireRealTimeDnsRecords,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescDomainRequest) String() string {
@@ -1652,6 +1653,11 @@ func (s *DescDomainRequest) SetDomainId(v int32) *DescDomainRequest {
 
 func (s *DescDomainRequest) SetOwnerId(v int64) *DescDomainRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescDomainRequest) SetRequireRealTimeDnsRecords(v bool) *DescDomainRequest {
+	s.RequireRealTimeDnsRecords = &v
 	return s
 }
 
@@ -6179,6 +6185,10 @@ func (client *Client) DescDomainWithOptions(request *DescDomainRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireRealTimeDnsRecords)) {
+		query["RequireRealTimeDnsRecords"] = request.RequireRealTimeDnsRecords
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
