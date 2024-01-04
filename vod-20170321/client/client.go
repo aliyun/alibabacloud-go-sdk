@@ -868,9 +868,12 @@ func (s *AddVodDomainResponse) SetBody(v *AddVodDomainResponseBody) *AddVodDomai
 }
 
 type AddVodStorageForAppRequest struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can obtain the application ID from the response to the [CreateAppInfo](https://help.aliyun.com/zh/vod/developer-reference/api-vod-2017-03-21-createappinfo) or [ListAppInfo](https://help.aliyun.com/zh/vod/developer-reference/api-vod-2017-03-21-listappinfo) operation.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The address of an Object Storage Service (OSS) bucket. This parameter does not take effect. You can call this operation to add only VOD buckets.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	StorageType     *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The storage type. Default value: vod_oss_bucket.
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s AddVodStorageForAppRequest) String() string {
@@ -897,7 +900,9 @@ func (s *AddVodStorageForAppRequest) SetStorageType(v string) *AddVodStorageForA
 }
 
 type AddVodStorageForAppResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The address of the VOD bucket.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 }
 
@@ -1581,14 +1586,17 @@ func (s *BatchStopVodDomainResponse) SetBody(v *BatchStopVodDomainResponseBody) 
 }
 
 type CancelUrlUploadJobsRequest struct {
-	// The IDs of the upload jobs. You can obtain the job IDs in the response parameter PlayInfo of the [GetPlayInfo](~~56124~~) operation.
+	// The IDs of the upload jobs. You can obtain the job IDs from PlayInfo in the response to the [GetPlayInfo](~~56124~~) operation.
+	//
 	// *   You can specify a maximum of 10 IDs.
 	// *   Separate multiple IDs with commas (,).
-	// > You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
+	//
+	// >  You must specify either JobIds or UploadUrls. If you specify both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	// The upload URLs of source files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
+	// The upload URLs of source video files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
+	//
 	// > *   You must encode the URLs before you use the URLs.
-	// > *   You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
+	// > *   You must specify either JobIds or UploadUrls. If you specify both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
 	UploadUrls *string `json:"UploadUrls,omitempty" xml:"UploadUrls,omitempty"`
 }
 
@@ -1613,9 +1621,7 @@ func (s *CancelUrlUploadJobsRequest) SetUploadUrls(v string) *CancelUrlUploadJob
 type CancelUrlUploadJobsResponseBody struct {
 	// The IDs of canceled jobs.
 	CanceledJobs []*string `json:"CanceledJobs,omitempty" xml:"CanceledJobs,omitempty" type:"Repeated"`
-	// The job IDs or upload URLs that do not exist.
-	//
-	// If you set the request parameter JobIds, the job IDs that do not exist are returned. If you set the request parameter UploadUrls, the upload URLs that do not exist are returned.
+	// The jobs that do not exist.
 	NonExists []*string `json:"NonExists,omitempty" xml:"NonExists,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -8422,6 +8428,99 @@ func (s *DetachAppPolicyFromIdentityResponse) SetBody(v *DetachAppPolicyFromIden
 	return s
 }
 
+type GenerateDownloadSecretKeyRequest struct {
+	AppDecryptKey        *string `json:"AppDecryptKey,omitempty" xml:"AppDecryptKey,omitempty"`
+	AppIdentification    *string `json:"AppIdentification,omitempty" xml:"AppIdentification,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GenerateDownloadSecretKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDownloadSecretKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDownloadSecretKeyRequest) SetAppDecryptKey(v string) *GenerateDownloadSecretKeyRequest {
+	s.AppDecryptKey = &v
+	return s
+}
+
+func (s *GenerateDownloadSecretKeyRequest) SetAppIdentification(v string) *GenerateDownloadSecretKeyRequest {
+	s.AppIdentification = &v
+	return s
+}
+
+func (s *GenerateDownloadSecretKeyRequest) SetOwnerId(v int64) *GenerateDownloadSecretKeyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GenerateDownloadSecretKeyRequest) SetResourceOwnerAccount(v string) *GenerateDownloadSecretKeyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GenerateDownloadSecretKeyRequest) SetResourceOwnerId(v int64) *GenerateDownloadSecretKeyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GenerateDownloadSecretKeyResponseBody struct {
+	AppEncryptKey *string `json:"AppEncryptKey,omitempty" xml:"AppEncryptKey,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateDownloadSecretKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDownloadSecretKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDownloadSecretKeyResponseBody) SetAppEncryptKey(v string) *GenerateDownloadSecretKeyResponseBody {
+	s.AppEncryptKey = &v
+	return s
+}
+
+func (s *GenerateDownloadSecretKeyResponseBody) SetRequestId(v string) *GenerateDownloadSecretKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateDownloadSecretKeyResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateDownloadSecretKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateDownloadSecretKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDownloadSecretKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDownloadSecretKeyResponse) SetHeaders(v map[string]*string) *GenerateDownloadSecretKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateDownloadSecretKeyResponse) SetStatusCode(v int32) *GenerateDownloadSecretKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateDownloadSecretKeyResponse) SetBody(v *GenerateDownloadSecretKeyResponseBody) *GenerateDownloadSecretKeyResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateKMSDataKeyRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15050,7 +15149,7 @@ type GetMezzanineInfoResponseBodyMezzanine struct {
 	// *   **UploadFail**: The file fails to be uploaded.
 	// *   **Deleted**: The file is deleted.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage class of the audio or video file. Valid values:
+	// The storage class of the audio file. Valid values:
 	//
 	// *   **Standard**: All media resources are stored as Standard objects.
 	// *   **IA**: All media resources are stored as IA objects.
@@ -15059,7 +15158,8 @@ type GetMezzanineInfoResponseBodyMezzanine struct {
 	// *   **SourceIA**: Only the source files are IA objects.
 	// *   **SourceArchive**: Only the source files are Archive objects.
 	// *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-	// *   **Changing**: The storage class is being modified.
+	// *   **Changing**: The storage class of the audio file is being changed.
+	// *   **SourceChanging**: The storage class of the source file is being changed.
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The ID of the video.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
@@ -15167,24 +15267,24 @@ type GetMezzanineInfoResponseBodyMezzanineAudioStreamList struct {
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	// The output layout of the sound channels. Valid values:
 	//
-	// *   **mono**: mono sound channel
-	// *   **stereo**: two sound channels
+	// *   **mono**
+	// *   **stereo**
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
 	// The number of sound channels.
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The full name of the codec format.
+	// The full name of the encoding format.
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the codec format.
+	// The short name of the encoding format.
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the codec format.
+	// The tag of the encoding format.
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the codec format.
+	// The tag string of the encoding format.
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
 	// The codec time base.
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration of the audio stream.
+	// The duration of the audio file.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The sequence number of the audio stream, which specifies the position of the audio stream in all audio streams.
+	// The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -15192,11 +15292,11 @@ type GetMezzanineInfoResponseBodyMezzanineAudioStreamList struct {
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
 	// The sampling format.
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// The sample rate.
+	// The sampling rate of the audio stream.
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// The beginning of the time range that was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base.
+	// The time base of the audio stream.
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
@@ -15291,31 +15391,31 @@ func (s *GetMezzanineInfoResponseBodyMezzanineAudioStreamList) SetTimebase(v str
 type GetMezzanineInfoResponseBodyMezzanineVideoStreamList struct {
 	// The average frame rate.
 	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// The bitrate of the file. Unit: Kbit/s.
+	// The bitrate. Unit: Kbit/s.
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The full name of the codec format.
+	// The full name of the encoding format.
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the codec format.
+	// The short name of the encoding format.
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The tag of the codec format.
+	// The tag of the encoding format.
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// The tag string of the codec format.
+	// The tag string of the encoding format.
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
 	// The codec time base.
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The display aspect ratio.
+	// The display aspect ratio (DAR) of the video stream.
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// The duration of the video stream.
+	// The duration of the audio file.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The target frame rate.
+	// The frame rate of the output file.
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The HDR type.
+	// The HDR type of the video stream.
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	// Indicates whether the video stream contains bidirectional frames (B-frames).
+	// Indicates whether the video stream contains B-frames.
 	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// The height of the video resolution.
+	// The height of the video stream.
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The sequence number of the video stream, which indicates the position of the video stream in all video streams.
+	// The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -15327,15 +15427,15 @@ type GetMezzanineInfoResponseBodyMezzanineVideoStreamList struct {
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
 	// The codec profile.
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The rotation angle of the video. Valid values: **\[0, 360)**.
+	// The rotation angle of the video. Valid values: **\[0,360)**.
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// The sample aspect ratio.
+	// The sample aspect ratio (SAR) of the video stream.
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// The beginning of the time range that was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time base.
+	// The time base of the audio stream.
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// The width of the video resolution.
+	// The width of the video in pixels.
 	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -17434,7 +17534,8 @@ type GetVideoInfoResponseBodyVideo struct {
 	// *   **SourceIA**: Only the source files are IA objects.
 	// *   **SourceArchive**: Only the source files are Archive objects.
 	// *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-	// *   **Changing**: The storage class is being modified.
+	// *   **Changing**: The storage class of the audio or video file is being changed.
+	// *   **SourceChanging**: The storage class of the source file is being changed.
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The storage address of the media file.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
@@ -17635,7 +17736,7 @@ type GetVideoInfosResponseBody struct {
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The period of time in which the object remains in the restored state.
+	// The information about the audio or video files.
 	VideoList []*GetVideoInfosResponseBodyVideoList `json:"VideoList,omitempty" xml:"VideoList,omitempty" type:"Repeated"`
 }
 
@@ -17665,60 +17766,63 @@ func (s *GetVideoInfosResponseBody) SetVideoList(v []*GetVideoInfosResponseBodyV
 type GetVideoInfosResponseBodyVideoList struct {
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the video category.
+	// The ID of the category.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the video category.
+	// The name of the category.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The URL of the video thumbnail.
+	// The thumbnail URL of the audio or video file.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the video.
+	// The description of the audio or video file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the video. Unit: seconds.
+	// The duration of the audio or video file. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The period of time in which the object remains in the restored state.
+	// The period of time in which the audio or video file remains in the restored state.
 	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
 	// The restoration status of the audio or video file. Valid values:
-	// - **Processing**
-	// - **Success**
-	// - **Failed**
+	//
+	// *   **Processing**
+	// *   **Success**
+	// *   **Failed**
 	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The size of the video mezzanine file. Unit: byte.
+	// The size of the source file. Unit: bytes.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The URL array of video snapshots.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The status of the video. By default, videos in all states are returned. Multiple states are separated by commas (,). Valid values:
+	// The status of the video. Valid values:
 	//
 	// *   **Uploading**: The video is being uploaded.
-	// *   **UploadFail**: The video fails to be uploaded.
+	// *   **UploadFail**: The video failed to be uploaded.
 	// *   **UploadSucc**: The video is uploaded.
 	// *   **Transcoding**: The video is being transcoded.
-	// *   **TranscodeFail**: The video fails to be transcoded.
+	// *   **TranscodeFail**: The video failed to be transcoded.
 	// *   **Blocked**: The video is blocked.
-	// *   **Normal**: The video can be played.
+	// *   **Normal**: The video is normal.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The storage class of the audio or video file. Valid values:
-	// - **Standard**: All media resources are stored as Standard objects.
-	// - **IA**: All media resources are stored as IA objects.
-	// - **Archive**: All media resources are stored as Archive objects.
-	// - **ColdArchive**: All media resources are stored as Cold Archive objects.
-	// - **SourceIA**: Only the source files are IA objects.
-	// - **SourceArchive**: Only the source files are Archive objects.
-	// - **SourceColdArchive**: Only the source files are Cold Archive objects.
-	// - **Changing**: The storage class is being modified.
+	//
+	// *   **Standard**: All media resources are stored as Standard objects.
+	// *   **IA**: All media resources are stored as IA objects.
+	// *   **Archive**: All media resources are stored as Archive objects.
+	// *   **ColdArchive**: All media resources are stored as Cold Archive objects.
+	// *   **SourceIA**: Only the source files are IA objects.
+	// *   **SourceArchive**: Only the source files are Archive objects.
+	// *   **SourceColdArchive**: Only the source files are Cold Archive objects.
+	// *   **Changing**: The storage class of the audio or video file is being changed.
+	// *   **SourceChanging**: The storage class of the source file is being changed.
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The Object Storage Service (OSS) bucket where the video file is stored.
+	// The storage address of the audio or video file.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the video. Multiple tags are separated by commas (,).
+	// The tags of the audio or video file. Multiple tags are separated by commas (,).
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the template group that was used to transcode the video.
+	// The ID of the transcoding template group.
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The title of the video.
+	// The title of the audio or video file.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The ID of the video.
+	// The ID of the audio or video file.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -17945,7 +18049,7 @@ type GetVideoListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of media files returned.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The period of time in which the object remains in the restored state.
+	// The information about the audio or video files. Information about a maximum of 5,000 audio or video files can be returned.
 	VideoList *GetVideoListResponseBodyVideoList `json:"VideoList,omitempty" xml:"VideoList,omitempty" type:"Struct"`
 }
 
@@ -17992,37 +18096,37 @@ func (s *GetVideoListResponseBodyVideoList) SetVideo(v []*GetVideoListResponseBo
 type GetVideoListResponseBodyVideoListVideo struct {
 	// The ID of the application. Default value: **app-1000000**.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The category ID of the media file.
+	// The category ID of the audio or video file.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The name of the category.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL of the media file.
+	// The thumbnail URL of the audio or video file.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the media file.
+	// The description of the audio or video file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the media file. Unit: seconds.
+	// The duration of the audio or video file. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The period of time in which the object remains in the restored state.
+	// The period of time in which the audio or video file remains in the restored state.
 	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
-	// The restoration status of the media file. Valid values:
+	// The restoration status of the audio or video file. Valid values:
 	//
-	// - **Processing**
-	// - **Success**
-	// - **Failed**
+	// *   **Processing**
+	// *   **Success**
+	// *   **Failed**
 	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
 	// The size of the source file. Unit: bytes.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The video snapshot URLs.
+	// The URL array of video snapshots.
 	Snapshots *GetVideoListResponseBodyVideoListVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The status of the video. Valid values:
+	// The status of the audio or video file. Valid values:
 	//
 	// *   **Uploading**: The video is being uploaded.
 	// *   **UploadFail**: The video failed to be uploaded.
-	// *   **UploadSucc**: The video has been uploaded.
+	// *   **UploadSucc**: The video is uploaded.
 	// *   **Transcoding**: The video is being transcoded.
 	// *   **TranscodeFail**: The video failed to be transcoded.
 	// *   **checking**: The video is being reviewed.
@@ -18032,24 +18136,25 @@ type GetVideoListResponseBodyVideoListVideo struct {
 	//
 	// For more information about each video status, see the "Status: the status of a video" section of the [Basic data types](~~52839#section-p7c-jgy-070~~) topic.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage class of the media file. Valid values:
+	// The storage class of the audio or video file. Valid values:
 	//
-	// - **Standard**: All media resources are stored as Standard objects.
-	// - **IA**: All media resources are stored as IA objects.
-	// - **Archive**: All media resources are stored as Archive objects.
-	// - **ColdArchive**: All media resources are stored as Cold Archive objects.
-	// - **SourceIA**: Only the source files are IA objects.
-	// - **SourceArchive**: Only the source files are Archive objects.
-	// - **SourceColdArchive**: Only the source files are Cold Archive objects.
-	// - **Changing**: The storage class is being modified.
+	// *   **Standard**: All media resources are stored as Standard objects.
+	// *   **IA**: All media resources are stored as IA objects.
+	// *   **Archive**: All media resources are stored as Archive objects.
+	// *   **ColdArchive**: All media resources are stored as Cold Archive objects.
+	// *   **SourceIA**: Only the source files are IA objects.
+	// *   **SourceArchive**: Only the source files are Archive objects.
+	// *   **SourceColdArchive**: Only the source files are Cold Archive objects.
+	// *   **Changing**: The storage class of the audio or video file is being changed.
+	// *   **SourceChanging**: The storage class of the source file is being changed.
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The storage address of the media file.
+	// The storage address of the audio or video file.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the media file. Multiple tags are separated by commas (,).
+	// The tags of the audio or video file. Multiple tags are separated by commas (,).
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the media file.
+	// The title of the audio or video file.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The ID of the media file.
+	// The ID of the audio or video file.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -24369,23 +24474,26 @@ func (s *SubmitAIJobResponse) SetBody(v *SubmitAIJobResponseBody) *SubmitAIJobRe
 }
 
 type SubmitAIMediaAuditJobRequest struct {
-	// The configuration information about the review task.
+	// The configuration information about the review job.
 	//
-	// *   Other configuration items of the review task. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
-	// *   If you want to adjust review standards and rules based on ResourceType, submit a ticket to request technical support.
+	// *   Other configuration items of the review job. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
+	// *   If you want to modify the review standard and rules based on ResourceType, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply) to reach technical support.
 	// *   The value of ResourceType can contain only letters, digits, and underscores (\_).
 	MediaAuditConfiguration *string `json:"MediaAuditConfiguration,omitempty" xml:"MediaAuditConfiguration,omitempty"`
-	// The ID of the media file.
-	//
-	// You can obtain the ID of the media file on the Content Moderation page in the ApsaraVideo VOD console.
+	// The ID of the video file. To obtain the file ID, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Review Management** > **Content Moderation** in the left-side navigation pane.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The type of the media file. Only **video** is supported.
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The ID of the AI template. If you do not specify this parameter, the ID of the default AI template for automated review is used.
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The custom settings. The value is a JSON string. You can configure settings such as message callbacks. For more information, see [Request parameters](~~86952~~).
+	// The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
 	//
-	// >  The callback configurations take effect only if you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console.
+	// *   Obtain the ID of the AI template from the response to the [AddAITemplate](~~102930~~) operation. The value of TemplateId is the ID of the AI template.
+	// *   Obtain the ID of the AI template from the response to the [ListAITemplate](~~102936~~) operation. The value of TemplateId is the ID of the AI template.
+	//
+	// >  If you do not specify an ID, the ID of the default AI template is used.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The custom settings. The value must be a JSON string. You can configure settings such as message callbacks. For more information, see [UserData](~~86952~~).
+	//
+	// >  To use the callback configurations specified by this parameter, you must configure an HTTP callback URL and specify the types of the callback events in the ApsaraVideo VOD console. Otherwise, the callback configurations do not take effect. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -24423,9 +24531,9 @@ func (s *SubmitAIMediaAuditJobRequest) SetUserData(v string) *SubmitAIMediaAudit
 }
 
 type SubmitAIMediaAuditJobResponseBody struct {
-	// The ID of the task.
+	// The ID of the job.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the video.
+	// The ID of the media file.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -25162,26 +25270,37 @@ func (s *SubmitSnapshotJobResponse) SetBody(v *SubmitSnapshotJobResponseBody) *S
 }
 
 type SubmitTranscodeJobsRequest struct {
-	// The encryption configurations. The value is a JSON-formatted string. This parameter is required only when HLS encryption is used.
-	// > *   In the JSON-formatted string of the [EncryptConfig](~~86952~~) parameter, you must set the **CipherText** parameter to an AES-128 ciphertext key that is generated by calling the [GenerateDataKey](~~28948~~) operation. Otherwise, the transcoding job that uses HLS encryption fails. For more information about how to use HLS encryption, see [HLS encryption](~~68612~~).
-	// > *   Regardless of whether HLS encryption or Alibaba Cloud proprietary cryptography is required, you must enable HLS encryption for the template group that is specified by the **TemplateGroupId** parameter. Otherwise, HLS encryption cannot be used.
+	// The encryption configurations. The value must be a JSON string. This parameter is required only when you use HLS encryption.
+	//
+	// >
+	//
+	// *   You must set **CipherText** in [EncrptConfig](~~86952~~) to the AES\_128 cipher text that is obtained from the response to the [GenerateKMSDataKey](~~455051~~) operation. Otherwise, the HLS encryption fails. For more information about how to use HLS encryption, see [HLS encryption](~~68612~~).
+	//
+	// *   You must select HLS encryption for the template specified by **TemplateGroupId** no matter you use HLS encryption or Alibaba Cloud proprietary cryptography. Otherwise, the transcoded file is not encrypted.
 	EncryptConfig *string `json:"EncryptConfig,omitempty" xml:"EncryptConfig,omitempty"`
-	// The parameters used for overriding. The value is a JSON-formatted string. You can set this parameter to override the watermark or subtitle that is associated with the transcoding template. You can override the file URL of an image watermark, the content of a text watermark, the URL of a subtitle file, and the encoding format of a subtitle file. For more information about the data structure, see the "OverrideParams" section of the [Media processing parameters](~~98618~~) topic.
+	// The override parameter. The value must be a JSON string. You can use this parameter to override the image watermark, text watermark, or subtitle file specified in the transcoding template, or override the encoding format of the subtitle file. For more information about the data structure, see [OverrideParams](~~98618~~).
 	OverrideParams *string `json:"OverrideParams,omitempty" xml:"OverrideParams,omitempty"`
-	// The ID of the pipeline.
+	// The ID of the queue that you want to use to run the job.
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority of the current transcoding job in all queued jobs.
+	// The priority of the transcoding job in all queued jobs.
+	//
 	// *   Valid values: **1** to **10**.
 	// *   A value of **10** indicates the highest priority.
 	// *   Default value: **6**.
-	// > This parameter specifies the priority of only the current transcoding job in all queued jobs and does not affect the priorities of jobs that are running.
+	//
+	// >  This parameter takes effect only on the queued transcoding jobs. The priorities of the in-progress transcoding jobs are not affected.
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the transcoding template group used when the video is transcoded. To specify a transcoding template group, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.18.2f1a2267jCybwh#/vod/settings/transcode/vod) and view the ID of the transcoding template group on the Transcode page.
+	// The ID of the transcoding template group that you want to use. To view the template group ID, perform the following operations: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups**.
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The custom configurations, including callback configurations. The value is a JSON-formatted string. For more information, see the "UserData" section of the [Request parameters](~~86952~~) topic.
-	// > The callback configurations take effect only when you specify an HTTP callback URL and select specific callback events in the ApsaraVideo VOD console.
+	// The custom settings. The value must be a JSON string. You can configure settings such as message callbacks. For more information, see [UserData](~~86952~~).
+	//
+	// >  To use the callback configurations specified by this parameter, you must configure an HTTP callback URL and specify the types of the callback events in the ApsaraVideo VOD console. Otherwise, the callback configurations do not take effect.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the video.
+	// The ID of the video file. You can use one of the following methods to obtain the video ID:
+	//
+	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you call to upload the video.
+	// *   Obtain the value of VideoId from the response to the [SearchMedia](~~86044~~) operation after you upload the video.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -25231,10 +25350,11 @@ func (s *SubmitTranscodeJobsRequest) SetVideoId(v string) *SubmitTranscodeJobsRe
 type SubmitTranscodeJobsResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The transcoding jobs.
-	// > This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
+	// The information about the transcoding job.
+	//
+	// >  This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
 	TranscodeJobs *SubmitTranscodeJobsResponseBodyTranscodeJobs `json:"TranscodeJobs,omitempty" xml:"TranscodeJobs,omitempty" type:"Struct"`
-	// The ID of the transcoding job that was submitted.
+	// The ID of the transcoding task that was submitted.
 	TranscodeTaskId *string `json:"TranscodeTaskId,omitempty" xml:"TranscodeTaskId,omitempty"`
 }
 
@@ -25279,7 +25399,9 @@ func (s *SubmitTranscodeJobsResponseBodyTranscodeJobs) SetTranscodeJob(v []*Subm
 }
 
 type SubmitTranscodeJobsResponseBodyTranscodeJobsTranscodeJob struct {
-	// The ID of the job.
+	// The ID of the transcoding job.
+	//
+	// >  This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -25326,7 +25448,13 @@ func (s *SubmitTranscodeJobsResponse) SetBody(v *SubmitTranscodeJobsResponseBody
 }
 
 type SubmitWorkflowJobRequest struct {
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The ID of the media file. You can use one of the following methods to obtain the ID:
+	//
+	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// *   Obtain the value of the VideoId parameter when you call the [CreateUploadVideo](~~55407~~) operation to upload media files.
+	// *   Obtain the value of the VideoId parameter when you call the [SearchMedia](~~86044~~) operation after you upload media files.
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
 	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
@@ -25349,6 +25477,7 @@ func (s *SubmitWorkflowJobRequest) SetWorkflowId(v string) *SubmitWorkflowJobReq
 }
 
 type SubmitWorkflowJobResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27702,6 +27831,14 @@ func (client *Client) AddVodDomain(request *AddVodDomainRequest) (_result *AddVo
 	return _result, _err
 }
 
+/**
+ * You can call this operation to add a buckets to an ApsaraVideo VOD applications.
+ * > You can add only one ApsaraVideo VOD bucket for each application. If you specify an AppId that does not exist or the ID of an application for which an VOD bucket is enabled, an error is returned.
+ *
+ * @param request AddVodStorageForAppRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddVodStorageForAppResponse
+ */
 func (client *Client) AddVodStorageForAppWithOptions(request *AddVodStorageForAppRequest, runtime *util.RuntimeOptions) (_result *AddVodStorageForAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27743,6 +27880,13 @@ func (client *Client) AddVodStorageForAppWithOptions(request *AddVodStorageForAp
 	return _result, _err
 }
 
+/**
+ * You can call this operation to add a buckets to an ApsaraVideo VOD applications.
+ * > You can add only one ApsaraVideo VOD bucket for each application. If you specify an AppId that does not exist or the ID of an application for which an VOD bucket is enabled, an error is returned.
+ *
+ * @param request AddVodStorageForAppRequest
+ * @return AddVodStorageForAppResponse
+ */
 func (client *Client) AddVodStorageForApp(request *AddVodStorageForAppRequest) (_result *AddVodStorageForAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddVodStorageForAppResponse{}
@@ -28175,7 +28319,7 @@ func (client *Client) BatchStopVodDomain(request *BatchStopVodDomainRequest) (_r
 }
 
 /**
- * *   You can cancel only a URL-based upload job in the **Pending** state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](~~106830~~) operation.
+ * *   You can cancel only URL-based upload jobs in the **Pending** state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](~~106830~~) operation.
  * *   You cannot cancel an upload job that already starts.
  *
  * @param request CancelUrlUploadJobsRequest
@@ -28220,7 +28364,7 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 }
 
 /**
- * *   You can cancel only a URL-based upload job in the **Pending** state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](~~106830~~) operation.
+ * *   You can cancel only URL-based upload jobs in the **Pending** state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](~~106830~~) operation.
  * *   You cannot cancel an upload job that already starts.
  *
  * @param request CancelUrlUploadJobsRequest
@@ -28347,7 +28491,8 @@ func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateA
 }
 
 /**
- * *   The process of obtaining upload URLs and credentials is a core process in ApsaraVideo VOD and is required for each upload operation. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using server upload SDKs, client upload SDKs, URLs of auxiliary media assets, Object Storage Service (OSS) API, or native OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97\\_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
+ * *   You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using SDKs for upload from servers, SDKs for upload from clients, URLs of auxiliary media assets, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
  * *   If the upload credential expires, you can call this operation to obtain a new upload URL and credential. The default validity period of an upload credential is 3,000 seconds.
  * *   You can configure a callback to receive an [AttachedMediaUploadComplete](~~103250~~) event notification to determine whether the upload is successful.
  *
@@ -28429,7 +28574,8 @@ func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUpload
 }
 
 /**
- * *   The process of obtaining upload URLs and credentials is a core process in ApsaraVideo VOD and is required for each upload operation. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using server upload SDKs, client upload SDKs, URLs of auxiliary media assets, Object Storage Service (OSS) API, or native OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97\\_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
+ * *   You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using SDKs for upload from servers, SDKs for upload from clients, URLs of auxiliary media assets, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
  * *   If the upload credential expires, you can call this operation to obtain a new upload URL and credential. The default validity period of an upload credential is 3,000 seconds.
  * *   You can configure a callback to receive an [AttachedMediaUploadComplete](~~103250~~) event notification to determine whether the upload is successful.
  *
@@ -28448,6 +28594,7 @@ func (client *Client) CreateUploadAttachedMedia(request *CreateUploadAttachedMed
 }
 
 /**
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97\\_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
  * *   You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
  * *   You cannot refresh the upload URL or credential when you upload images. If the image upload credential expires, you can call this operation to obtain a new upload URL and credential. By default, the validity period of an image upload credential is 3,000 seconds.
  * *   You can call the [CreateUploadAttachedMedia](~~98467~~) operation to upload image watermarks.
@@ -28527,6 +28674,7 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 }
 
 /**
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97\\_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
  * *   You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
  * *   You cannot refresh the upload URL or credential when you upload images. If the image upload credential expires, you can call this operation to obtain a new upload URL and credential. By default, the validity period of an image upload credential is 3,000 seconds.
  * *   You can call the [CreateUploadAttachedMedia](~~98467~~) operation to upload image watermarks.
@@ -28547,6 +28695,7 @@ func (client *Client) CreateUploadImage(request *CreateUploadImageRequest) (_res
 }
 
 /**
+ * *   **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97\\_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
  * *   You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
  * *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
  * *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
@@ -28636,6 +28785,7 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 }
 
 /**
+ * *   **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97\\_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
  * *   You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
  * *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
  * *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
@@ -28836,7 +28986,6 @@ func (client *Client) DeleteAITemplate(request *DeleteAITemplateRequest) (_resul
 }
 
 /**
- * ## Usage note
  * Application with resources can not be deleted.
  *
  * @param request DeleteAppInfoRequest
@@ -28877,7 +29026,6 @@ func (client *Client) DeleteAppInfoWithOptions(request *DeleteAppInfoRequest, ru
 }
 
 /**
- * ## Usage note
  * Application with resources can not be deleted.
  *
  * @param request DeleteAppInfoRequest
@@ -31587,6 +31735,66 @@ func (client *Client) DetachAppPolicyFromIdentity(request *DetachAppPolicyFromId
 	return _result, _err
 }
 
+func (client *Client) GenerateDownloadSecretKeyWithOptions(request *GenerateDownloadSecretKeyRequest, runtime *util.RuntimeOptions) (_result *GenerateDownloadSecretKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppDecryptKey)) {
+		query["AppDecryptKey"] = request.AppDecryptKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppIdentification)) {
+		query["AppIdentification"] = request.AppIdentification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateDownloadSecretKey"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateDownloadSecretKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateDownloadSecretKey(request *GenerateDownloadSecretKeyRequest) (_result *GenerateDownloadSecretKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateDownloadSecretKeyResponse{}
+	_body, _err := client.GenerateDownloadSecretKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GenerateKMSDataKeyWithOptions(request *GenerateKMSDataKeyRequest, runtime *util.RuntimeOptions) (_result *GenerateKMSDataKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32958,7 +33166,7 @@ func (client *Client) GetMessageCallback(request *GetMessageCallbackRequest) (_r
 }
 
 /**
- * > You can obtain the complete mezzanine file information only after a stream is transcoded.
+ * You can obtain complete information about the source file only after a stream is transcoded.
  *
  * @param request GetMezzanineInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33010,7 +33218,7 @@ func (client *Client) GetMezzanineInfoWithOptions(request *GetMezzanineInfoReque
 }
 
 /**
- * > You can obtain the complete mezzanine file information only after a stream is transcoded.
+ * You can obtain complete information about the source file only after a stream is transcoded.
  *
  * @param request GetMezzanineInfoRequest
  * @return GetMezzanineInfoResponse
@@ -33027,6 +33235,7 @@ func (client *Client) GetMezzanineInfo(request *GetMezzanineInfoRequest) (_resul
 }
 
 /**
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for outbound traffic when you download or play videos based on URLs in ApsaraVideo VOD. For more information about billing of outbound traffic, see [Billing of outbound traffic](~~188308#section-rwh-e88-f7j~~). If you have configured an accelerated domain name, see [Billing of the acceleration service](~~188308#section-c5t-oq9-15e~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
  * *   You can use the ID of a media file to query the playback URL of the file. After you integrate ApsaraVideo Player SDK for URL-based playback or a third-party player, you can use the obtained playback URLs to play audio and video files.
  * *   Only videos whose Status is Normal can be played. The Status parameter in the response indicates the status of the video. For more information, see [Overview](~~57290~~).
  * *   If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
@@ -33113,6 +33322,7 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 }
 
 /**
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for outbound traffic when you download or play videos based on URLs in ApsaraVideo VOD. For more information about billing of outbound traffic, see [Billing of outbound traffic](~~188308#section-rwh-e88-f7j~~). If you have configured an accelerated domain name, see [Billing of the acceleration service](~~188308#section-c5t-oq9-15e~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
  * *   You can use the ID of a media file to query the playback URL of the file. After you integrate ApsaraVideo Player SDK for URL-based playback or a third-party player, you can use the obtained playback URLs to play audio and video files.
  * *   Only videos whose Status is Normal can be played. The Status parameter in the response indicates the status of the video. For more information, see [Overview](~~57290~~).
  * *   If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
@@ -33508,7 +33718,8 @@ func (client *Client) GetVideoInfo(request *GetVideoInfoRequest) (_result *GetVi
 }
 
 /**
- * You can call this operation to obtain the basic information about multiple videos at a time based on video IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of each video.
+ * *   You can call this operation to obtain basic information about multiple media files based on media IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags.
+ * *   After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive notifications for the **VideoAnalysisComplete** event. For more information, see [Overview](~~55627~~).
  *
  * @param request GetVideoInfosRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33548,7 +33759,8 @@ func (client *Client) GetVideoInfosWithOptions(request *GetVideoInfosRequest, ru
 }
 
 /**
- * You can call this operation to obtain the basic information about multiple videos at a time based on video IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of each video.
+ * *   You can call this operation to obtain basic information about multiple media files based on media IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags.
+ * *   After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive notifications for the **VideoAnalysisComplete** event. For more information, see [Overview](~~55627~~).
  *
  * @param request GetVideoInfosRequest
  * @return GetVideoInfosResponse
@@ -36088,6 +36300,7 @@ func (client *Client) SubmitAIImageJob(request *SubmitAIImageJobRequest) (_resul
 }
 
 /**
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the smart tagging and video fingerprinting features. For more information, see [Billing of video AI](~~188310#section-g7l-s3o-9ng~~).**
  * *   Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)** and **China (Shanghai)**.
  * *   You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Video AI](~~101148~~).
  * *   If this is the first time you use the video fingerprinting feature, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
@@ -36159,6 +36372,7 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 }
 
 /**
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the smart tagging and video fingerprinting features. For more information, see [Billing of video AI](~~188310#section-g7l-s3o-9ng~~).**
  * *   Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)** and **China (Shanghai)**.
  * *   You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Video AI](~~101148~~).
  * *   If this is the first time you use the video fingerprinting feature, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
@@ -36178,6 +36392,16 @@ func (client *Client) SubmitAIJob(request *SubmitAIJobRequest) (_result *SubmitA
 	return _result, _err
 }
 
+/**
+ * *   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the automated review feature. For more information about billing, submit a ticket or contact your account manager.**
+ * *   You can call this operation only in the **China (Shanghai)**, **China (Beijing)**, and **Singapore** regions.
+ * *   For more information, see [Automated review](~~101148~~).
+ * *   After an automated review job is complete, the images generated during the review are stored in the VOD bucket for two weeks free of charge. The images are automatically deleted after two weeks.
+ *
+ * @param request SubmitAIMediaAuditJobRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SubmitAIMediaAuditJobResponse
+ */
 func (client *Client) SubmitAIMediaAuditJobWithOptions(request *SubmitAIMediaAuditJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAIMediaAuditJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36227,6 +36451,15 @@ func (client *Client) SubmitAIMediaAuditJobWithOptions(request *SubmitAIMediaAud
 	return _result, _err
 }
 
+/**
+ * *   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the automated review feature. For more information about billing, submit a ticket or contact your account manager.**
+ * *   You can call this operation only in the **China (Shanghai)**, **China (Beijing)**, and **Singapore** regions.
+ * *   For more information, see [Automated review](~~101148~~).
+ * *   After an automated review job is complete, the images generated during the review are stored in the VOD bucket for two weeks free of charge. The images are automatically deleted after two weeks.
+ *
+ * @param request SubmitAIMediaAuditJobRequest
+ * @return SubmitAIMediaAuditJobResponse
+ */
 func (client *Client) SubmitAIMediaAuditJob(request *SubmitAIMediaAuditJobRequest) (_result *SubmitAIMediaAuditJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAIMediaAuditJobResponse{}
@@ -36239,6 +36472,7 @@ func (client *Client) SubmitAIMediaAuditJob(request *SubmitAIMediaAuditJobReques
 }
 
 /**
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the digital watermark feature. For more information about billing, see [Billing of digital watermarks](~~188310#section-rcb-x9z-6p1~~).**
  * *   You must upload the video from which you want to extract the digital watermark to ApsaraVideo VOD.
  * *   The duration of the video from which you want to extract the digital watermark must exceed 3 minutes.
  *
@@ -36300,6 +36534,7 @@ func (client *Client) SubmitDigitalWatermarkExtractJobWithOptions(request *Submi
 }
 
 /**
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the digital watermark feature. For more information about billing, see [Billing of digital watermarks](~~188310#section-rcb-x9z-6p1~~).**
  * *   You must upload the video from which you want to extract the digital watermark to ApsaraVideo VOD.
  * *   The duration of the video from which you want to extract the digital watermark must exceed 3 minutes.
  *
@@ -36626,9 +36861,11 @@ func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_res
 }
 
 /**
- * *   You can transcode a video only in the UploadSucc, Normal, or Checking state.
- *  *   You can obtain the transcoding result in the [StreamTranscodeComplete](~~55636~~) or [TranscodeComplete](~~55638~~) event notification.
- *  *   If you initiate an HTTP Live Streaming (HLS) packaging task, you can call this operation to dynamically override the subtitle. If the packaging task does not contain subtitles, we recommend that you do not call this operation to initiate the packaging task. Instead, you can specify the ID of the specific template group when you upload the video. The packaging process is automatically initiated.
+ * ### [](#)Usage notes
+ * *   **Make sure that you understand the billing methods and prices of ApsaraVideo VOD before you call this operation. For more information about billing of the transcoding feature, see [Billing of basic services](~~188308#section-ejb-nii-nqa~~).**
+ * *   You can transcode a video only in the Uploaded, Normal, or Reviewing state.
+ * *   You can obtain the transcoding results from the [StreamTranscodeComplete](~~55636~~) or [TranscodeComplete](~~55638~~) callback.
+ * *   You can call this operation to dynamically override the subtitle URL in an HTTP Live Streaming (HLS) packaging task. If the packaging task does not contain subtitles, we recommend that you specify the ID of the specific packaging template group when you upload the video instead of calling this operation.
  *
  * @param request SubmitTranscodeJobsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36692,9 +36929,11 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 }
 
 /**
- * *   You can transcode a video only in the UploadSucc, Normal, or Checking state.
- *  *   You can obtain the transcoding result in the [StreamTranscodeComplete](~~55636~~) or [TranscodeComplete](~~55638~~) event notification.
- *  *   If you initiate an HTTP Live Streaming (HLS) packaging task, you can call this operation to dynamically override the subtitle. If the packaging task does not contain subtitles, we recommend that you do not call this operation to initiate the packaging task. Instead, you can specify the ID of the specific template group when you upload the video. The packaging process is automatically initiated.
+ * ### [](#)Usage notes
+ * *   **Make sure that you understand the billing methods and prices of ApsaraVideo VOD before you call this operation. For more information about billing of the transcoding feature, see [Billing of basic services](~~188308#section-ejb-nii-nqa~~).**
+ * *   You can transcode a video only in the Uploaded, Normal, or Reviewing state.
+ * *   You can obtain the transcoding results from the [StreamTranscodeComplete](~~55636~~) or [TranscodeComplete](~~55638~~) callback.
+ * *   You can call this operation to dynamically override the subtitle URL in an HTTP Live Streaming (HLS) packaging task. If the packaging task does not contain subtitles, we recommend that you specify the ID of the specific packaging template group when you upload the video instead of calling this operation.
  *
  * @param request SubmitTranscodeJobsRequest
  * @return SubmitTranscodeJobsResponse
@@ -36710,6 +36949,14 @@ func (client *Client) SubmitTranscodeJobs(request *SubmitTranscodeJobsRequest) (
 	return _result, _err
 }
 
+/**
+ * * **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. When you use workflows to process videos, you may be charged for transcoding, encryption, and automated review. For more information, see [Billing overview](~~188307~~).**
+ * * You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](~~115347~~).
+ *
+ * @param request SubmitWorkflowJobRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SubmitWorkflowJobResponse
+ */
 func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobRequest, runtime *util.RuntimeOptions) (_result *SubmitWorkflowJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36747,6 +36994,13 @@ func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobReq
 	return _result, _err
 }
 
+/**
+ * * **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. When you use workflows to process videos, you may be charged for transcoding, encryption, and automated review. For more information, see [Billing overview](~~188307~~).**
+ * * You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](~~115347~~).
+ *
+ * @param request SubmitWorkflowJobRequest
+ * @return SubmitWorkflowJobResponse
+ */
 func (client *Client) SubmitWorkflowJob(request *SubmitWorkflowJobRequest) (_result *SubmitWorkflowJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitWorkflowJobResponse{}
@@ -37691,8 +37945,10 @@ func (client *Client) UploadMediaByURL(request *UploadMediaByURLRequest) (_resul
 }
 
 /**
- * You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+. You can call the [GetURLUploadInfos](~~106830~~) operation to query the upload status. After the upload is complete, the callback of the UploadByURLComplete event is returned.
- * >  This operation is available only in the Singapore (Singapore) region.
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97\\_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
+ * *   This operation is available only in the **China (Shanghai)** and **Singapore** regions.
+ * *   You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+.
+ * *   You can call the [GetURLUploadInfos](~~106830~~) operation to query the upload status. After the upload is complete, the callback of the [UploadByURLComplete](~~376427~~) event is returned.
  *
  * @param request UploadStreamByURLRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37752,8 +38008,10 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 }
 
 /**
- * You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+. You can call the [GetURLUploadInfos](~~106830~~) operation to query the upload status. After the upload is complete, the callback of the UploadByURLComplete event is returned.
- * >  This operation is available only in the Singapore (Singapore) region.
+ * *   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97\\_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2\\_tsv~~).**
+ * *   This operation is available only in the **China (Shanghai)** and **Singapore** regions.
+ * *   You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+.
+ * *   You can call the [GetURLUploadInfos](~~106830~~) operation to query the upload status. After the upload is complete, the callback of the [UploadByURLComplete](~~376427~~) event is returned.
  *
  * @param request UploadStreamByURLRequest
  * @return UploadStreamByURLResponse
