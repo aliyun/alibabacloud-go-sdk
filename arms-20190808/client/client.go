@@ -21789,8 +21789,10 @@ func (s *GetStackResponse) SetBody(v *GetStackResponseBody) *GetStackResponse {
 }
 
 type GetSyntheticMonitorsRequest struct {
-	Filter   *GetSyntheticMonitorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	RegionId *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The query conditions.
+	Filter *GetSyntheticMonitorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetSyntheticMonitorsRequest) String() string {
@@ -21812,9 +21814,14 @@ func (s *GetSyntheticMonitorsRequest) SetRegionId(v string) *GetSyntheticMonitor
 }
 
 type GetSyntheticMonitorsRequestFilter struct {
+	// The type of the monitoring point. Valid values: 1: PC. 2: mobile device.
 	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
-	Network         *int32 `json:"Network,omitempty" xml:"Network,omitempty"`
-	TaskType        *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The network type. Valid values: 1: private network. 2: Internet.
+	Network *int32 `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The type of the monitoring task. Valid values:
+	//
+	// 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed. 6: file download.
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetSyntheticMonitorsRequestFilter) String() string {
@@ -21841,8 +21848,10 @@ func (s *GetSyntheticMonitorsRequestFilter) SetTaskType(v int32) *GetSyntheticMo
 }
 
 type GetSyntheticMonitorsShrinkRequest struct {
+	// The query conditions.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetSyntheticMonitorsShrinkRequest) String() string {
@@ -21864,10 +21873,14 @@ func (s *GetSyntheticMonitorsShrinkRequest) SetRegionId(v string) *GetSyntheticM
 }
 
 type GetSyntheticMonitorsResponseBody struct {
-	Code      *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetSyntheticMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of monitoring points.
+	Data []*GetSyntheticMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSyntheticMonitorsResponseBody) String() string {
@@ -21899,16 +21912,26 @@ func (s *GetSyntheticMonitorsResponseBody) SetRequestId(v string) *GetSyntheticM
 }
 
 type GetSyntheticMonitorsResponseBodyData struct {
-	Available     *string `json:"Available,omitempty" xml:"Available,omitempty"`
-	CanBeSelected *bool   `json:"CanBeSelected,omitempty" xml:"CanBeSelected,omitempty"`
-	City          *string `json:"City,omitempty" xml:"City,omitempty"`
-	CityCode      *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	ClientType    *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	Country       *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Ipv6          *int32  `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	Operator      *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	OperatorCode  *string `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Indicates whether the monitoring point is available. Valid values: true and false.
+	Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
+	// Indicates whether the monitoring point is selected. Valid values: true and false.
+	CanBeSelected *bool `json:"CanBeSelected,omitempty" xml:"CanBeSelected,omitempty"`
+	// The city.
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The city code.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The client type of the monitoring point. Valid values: 1: data center. 2: Internet. 3: mobile device. 4: ECS instance.
+	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The country.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// Indicates whether IPv6 is supported. Valid values: 0: IPv6 is not supported. 1: IPv6 is supported.
+	Ipv6 *int32 `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// The carrier.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The carrier code.
+	OperatorCode *string `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
+	// The region.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s GetSyntheticMonitorsResponseBodyData) String() string {
@@ -23375,8 +23398,10 @@ func (s *GetSyntheticTaskMonitorsResponse) SetBody(v *GetSyntheticTaskMonitorsRe
 }
 
 type GetTimingSyntheticTaskRequest struct {
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the synthetic monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskRequest) String() string {
@@ -23398,10 +23423,14 @@ func (s *GetTimingSyntheticTaskRequest) SetTaskId(v string) *GetTimingSyntheticT
 }
 
 type GetTimingSyntheticTaskResponseBody struct {
-	Code      *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTimingSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code returned. The status code 200 indicates that the request was successful.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
+	Data *GetTimingSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBody) String() string {
@@ -23433,20 +23462,36 @@ func (s *GetTimingSyntheticTaskResponseBody) SetRequestId(v string) *GetTimingSy
 }
 
 type GetTimingSyntheticTaskResponseBodyData struct {
+	// The list of assertions.
 	AvailableAssertions []*GetTimingSyntheticTaskResponseBodyDataAvailableAssertions `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty" type:"Repeated"`
-	CommonSetting       *GetTimingSyntheticTaskResponseBodyDataCommonSetting         `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
-	CustomPeriod        *GetTimingSyntheticTaskResponseBodyDataCustomPeriod          `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
-	Frequency           *string                                                      `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	MonitorCategory     *int64                                                       `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
-	MonitorConf         *GetTimingSyntheticTaskResponseBodyDataMonitorConf           `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
-	Monitors            []*GetTimingSyntheticTaskResponseBodyDataMonitors            `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
-	Name                *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId            *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId     *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status              *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                []*GetTimingSyntheticTaskResponseBodyDataTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskId              *string                                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType            *int32                                                       `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The general settings.
+	CommonSetting *GetTimingSyntheticTaskResponseBodyDataCommonSetting `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
+	// The custom cycle.
+	CustomPeriod *GetTimingSyntheticTaskResponseBodyDataCustomPeriod `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
+	// The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
+	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The detection point type. 1: PC. 2: mobile device.
+	MonitorCategory *int64 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	// The monitoring configurations.
+	MonitorConf *GetTimingSyntheticTaskResponseBodyDataMonitorConf `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
+	// The list of monitoring points.
+	Monitors []*GetTimingSyntheticTaskResponseBodyDataMonitors `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
+	// The name of the task.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// CREATING: The task is being created. RUNNING: The task is running. PARTIAL_RUNNING: The task is partially running. STOP: The task is stopped. LIMIT_STOP: The task is stopped due to quota insufficiency. EXCEPTION: The task is abnormal. DELETE: The task is deleted. DELETE_EXCEPTION: The task failed to be deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag.
+	Tags []*GetTimingSyntheticTaskResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the synthetic monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// ICMP TCP DNS HTTP Website speed measurement File download
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyData) String() string {
@@ -23528,10 +23573,14 @@ func (s *GetTimingSyntheticTaskResponseBodyData) SetTaskType(v int32) *GetTiming
 }
 
 type GetTimingSyntheticTaskResponseBodyDataAvailableAssertions struct {
-	Expect   *string `json:"Expect,omitempty" xml:"Expect,omitempty"`
+	// The expected value.
+	Expect *string `json:"Expect,omitempty" xml:"Expect,omitempty"`
+	// The condition. gt: greater than. gte: greater than or equal to. lt: less than. lte: less than or equal to. eq: equal to. neq: not equal to. ctn: contain. nctn: does not contain. exist: exist. n_exist: does not exist. belong: belong to. n_belong: does not belong to. reg_match: regular expression.
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The check target. If you set the type parameter to HttpResCode, HttpResBody, or HttpResponseTime, you do not need to set the target parameter. If you set the type parameter to HttpResHead, you must specify the key in the header. If you set the type parameter to HttpResBodyJson, use jsonPath.
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The assertion type. Valid values: HttpResCode, HttpResHead, HttpResBody, HttpResBodyJson, HttpResponseTime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet latency), IcmpPackAvgLatency (average packet latency), TraceRouteHops (number of hops), DnsARecord (A record), DnsCName (CNAME), websiteTTFB (time to first packet), websiteTTLB (time to last packet), websiteFST (first paint time), websiteFFST (first meaningful paint), websiteOnload (full loaded time). For more information, see the following description.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) String() string {
@@ -23563,12 +23612,29 @@ func (s *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) SetType(v st
 }
 
 type GetTimingSyntheticTaskResponseBodyDataCommonSetting struct {
-	CustomHost      *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	IpType          *int32                                                         `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	IsOpenTrace     *bool                                                          `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
-	MonitorSamples  *int32                                                         `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
-	TraceClientType *int32                                                         `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
-	XtraceRegion    *string                                                        `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
+	// The custom host.
+	CustomHost *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	// The IP version. Valid values:
+	//
+	// *   0: A version is automatically selected.
+	// *   1: IPv4
+	// *   2: IPv6
+	IpType *int32 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// 是否开启链路追踪。
+	IsOpenTrace *bool `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
+	// Specifies whether to evenly distribute monitoring samples. Valid values:
+	//
+	// *   0: No
+	// *   1: Yes
+	MonitorSamples *int32 `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	// 链路追踪客户端类型：
+	//
+	// - 0：ARMS Agent
+	// - 1：OpenTelemetry
+	// - 2：Jaeger
+	TraceClientType *int32 `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
+	// 链路数据上报region。
+	XtraceRegion *string `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataCommonSetting) String() string {
@@ -23610,8 +23676,10 @@ func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetXtraceRegion(v 
 }
 
 type GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost struct {
-	Hosts      []*GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	SelectType *int32                                                                `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// The list of hosts.
+	Hosts []*GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// The selection mode. 0: Random. 1: Polling.
+	SelectType *int32 `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) String() string {
@@ -23633,9 +23701,16 @@ func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) SetSelec
 }
 
 type GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts struct {
-	Domain *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	IpType *int32    `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	Ips    []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+	// The domain name.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The IP version. Valid values:
+	//
+	// *   0: A version is automatically selected.
+	// *   1: IPv4
+	// *   2: IPv6
+	IpType *int32 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The list of IP addresses.
+	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) String() string {
@@ -23662,7 +23737,9 @@ func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) Set
 }
 
 type GetTimingSyntheticTaskResponseBodyDataCustomPeriod struct {
-	EndHour   *int64 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	// The hour at which the test ends. Valid values: 0 to 24.
+	EndHour *int64 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	// The hour at which the test starts. Valid values: 0 to 24.
 	StartHour *int64 `json:"StartHour,omitempty" xml:"StartHour,omitempty"`
 }
 
@@ -23685,13 +23762,20 @@ func (s *GetTimingSyntheticTaskResponseBodyDataCustomPeriod) SetStartHour(v int6
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConf struct {
-	ApiHTTP      *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP      `json:"ApiHTTP,omitempty" xml:"ApiHTTP,omitempty" type:"Struct"`
+	// The HTTP(S) synthetic test parameters.
+	ApiHTTP *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP `json:"ApiHTTP,omitempty" xml:"ApiHTTP,omitempty" type:"Struct"`
+	// The file download parameters.
 	FileDownload *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload `json:"FileDownload,omitempty" xml:"FileDownload,omitempty" type:"Struct"`
-	NetDNS       *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS       `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
-	NetICMP      *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP      `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
-	NetTCP       *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP       `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
-	Stream       *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream       `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Struct"`
-	Website      *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite      `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
+	// The DNS synthetic test parameters. This parameter is required if the TaskType parameter is set to 3.
+	NetDNS *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
+	// The ICMP synthetic test parameters. This parameter is required if the TaskType parameter is set to 1.
+	NetICMP *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
+	// The TCP synthetic tests parameters. This parameter is required if the TaskType parameter is set to 2.
+	NetTCP *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
+	// 流媒体拨测配置。
+	Stream *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Struct"`
+	// The website-speed measurement parameters.
+	Website *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConf) String() string {
@@ -23738,12 +23822,21 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetWebsite(v *GetTim
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP struct {
-	ConnectTimeout *int64                                                               `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	Method         *string                                                              `json:"Method,omitempty" xml:"Method,omitempty"`
-	RequestBody    *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
-	RequestHeaders map[string]*string                                                   `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
-	TargetUrl      *string                                                              `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout        *int64                                                               `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// The request method.
+	//
+	// *   POST
+	// *   GET
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The HTTP request body.
+	RequestBody *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
+	// The HTTP request header.
+	RequestHeaders map[string]*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	// The URL for synthetic monitoring.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The timeout period. Unit: milliseconds. Default value: 10000. Minimum value: 1000. Maximum value: 300000.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) String() string {
@@ -23785,8 +23878,10 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetTimeout(v 
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody struct {
+	// The content of the request body. Format: JSON string. The parameter is required if the type parameter is set to text/plain, application/json, application/xml, or text/html. Format: JSON string.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the request body. Valid values: text/plain, application/json, application/x-www-form-urlencoded, multipart/form-data, application/xml, and text/html.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody) String() string {
@@ -23808,24 +23903,53 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody) Se
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload struct {
-	ConnectionTimeout                   *int64             `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
-	CustomHeaderContent                 map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
-	DownloadKernel                      *int64             `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
-	IgnoreCertificateAuthError          *int32             `json:"IgnoreCertificateAuthError,omitempty" xml:"IgnoreCertificateAuthError,omitempty"`
-	IgnoreCertificateCanceledError      *int32             `json:"IgnoreCertificateCanceledError,omitempty" xml:"IgnoreCertificateCanceledError,omitempty"`
-	IgnoreCertificateOutOfDateError     *int32             `json:"IgnoreCertificateOutOfDateError,omitempty" xml:"IgnoreCertificateOutOfDateError,omitempty"`
-	IgnoreCertificateStatusError        *int32             `json:"IgnoreCertificateStatusError,omitempty" xml:"IgnoreCertificateStatusError,omitempty"`
-	IgnoreCertificateUntrustworthyError *int32             `json:"IgnoreCertificateUntrustworthyError,omitempty" xml:"IgnoreCertificateUntrustworthyError,omitempty"`
-	IgnoreCertificateUsingError         *int32             `json:"IgnoreCertificateUsingError,omitempty" xml:"IgnoreCertificateUsingError,omitempty"`
-	IgnoreInvalidHostError              *int32             `json:"IgnoreInvalidHostError,omitempty" xml:"IgnoreInvalidHostError,omitempty"`
-	MonitorTimeout                      *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
-	QuickProtocol                       *int64             `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
-	Redirection                         *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
-	TargetUrl                           *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	TransmissionSize                    *int64             `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
-	ValidateKeywords                    *string            `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
-	VerifyWay                           *int32             `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
-	WhiteList                           *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+	// The connection timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 5000.
+	ConnectionTimeout *int64 `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
+	// The content of the custom request header.
+	CustomHeaderContent map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	// The kernel type.
+	//
+	// *   1: curl
+	// *   0: WinInet
+	DownloadKernel *int64 `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
+	// Specifies whether to ignore CA certificate authentication errors. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateAuthError *int32 `json:"IgnoreCertificateAuthError,omitempty" xml:"IgnoreCertificateAuthError,omitempty"`
+	// Specifies whether to ignore certificate revocation errors. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateCanceledError *int32 `json:"IgnoreCertificateCanceledError,omitempty" xml:"IgnoreCertificateCanceledError,omitempty"`
+	// Specifies whether to ignore certificate invalidity. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateOutOfDateError *int32 `json:"IgnoreCertificateOutOfDateError,omitempty" xml:"IgnoreCertificateOutOfDateError,omitempty"`
+	// Specifies whether to ignore certificate status errors. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateStatusError *int32 `json:"IgnoreCertificateStatusError,omitempty" xml:"IgnoreCertificateStatusError,omitempty"`
+	// Specifies whether to ignore certificate incredibility. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateUntrustworthyError *int32 `json:"IgnoreCertificateUntrustworthyError,omitempty" xml:"IgnoreCertificateUntrustworthyError,omitempty"`
+	// Specifies whether to ignore certificate usage errors. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateUsingError *int32 `json:"IgnoreCertificateUsingError,omitempty" xml:"IgnoreCertificateUsingError,omitempty"`
+	// Specifies whether to ignore host invalidity. 0: No. 1: Yes. Default value: 1.
+	IgnoreInvalidHostError *int32 `json:"IgnoreInvalidHostError,omitempty" xml:"IgnoreInvalidHostError,omitempty"`
+	// The monitoring timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 60000.
+	MonitorTimeout *int64 `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	// The QUIC protocol type.
+	//
+	// *   1: http1
+	// *   2: http2
+	// *   3: http3
+	QuickProtocol *int64 `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	// Specifies whether to support redirection. 0: No. 1: Yes. Default value: 1.
+	Redirection *int32 `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	// The file download URL.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The maximum file size of a single transfer. Unit: KB. Minimum value: 1. Maximum value: 20480. Valid values: 2048.
+	TransmissionSize *int64 `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
+	// 验证关键词。
+	ValidateKeywords *string `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
+	// 验证方式。
+	//
+	// - 0：不验证
+	// - 1：验证字符串
+	// - 2：MD5验证
+	VerifyWay *int32 `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+	// DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+	WhiteList *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) String() string {
@@ -23927,11 +24051,16 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetWhite
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS struct {
-	DnsServerIpType *int32  `json:"DnsServerIpType,omitempty" xml:"DnsServerIpType,omitempty"`
-	NsServer        *string `json:"NsServer,omitempty" xml:"NsServer,omitempty"`
-	QueryMethod     *int32  `json:"QueryMethod,omitempty" xml:"QueryMethod,omitempty"`
-	TargetUrl       *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout         *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The IP version of the DNS server. 0: IPv4. 1: IPv6. 2: A version is automatically selected. Default value: 0.
+	DnsServerIpType *int32 `json:"DnsServerIpType,omitempty" xml:"DnsServerIpType,omitempty"`
+	// The IP address of the DNS server. Default value: 114.114.114.114.
+	NsServer *string `json:"NsServer,omitempty" xml:"NsServer,omitempty"`
+	// The DNS query. 0: recursive, 1: iterative. Default value: 0.
+	QueryMethod *int32 `json:"QueryMethod,omitempty" xml:"QueryMethod,omitempty"`
+	// The destination domain name.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The timeout period for the DNS synthetic test. Unit: milliseconds. The minimum value is 1000 and the maximum value is 45000. Default value: 5000.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) String() string {
@@ -23968,15 +24097,24 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) SetTimeout(v i
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP struct {
-	Interval       *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	PackageNum     *int32  `json:"PackageNum,omitempty" xml:"PackageNum,omitempty"`
-	PackageSize    *int32  `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
-	SplitPackage   *bool   `json:"SplitPackage,omitempty" xml:"SplitPackage,omitempty"`
-	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
-	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
-	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+	// The interval at which ICMP packets are sent. Unit: milliseconds. Minimum value: 200. Maximum value: 2000. Default value: 200.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of ICMP packets that are sent. Minimum value: 1. Maximum value: 50. Default value: 4.
+	PackageNum *int32 `json:"PackageNum,omitempty" xml:"PackageNum,omitempty"`
+	// The size of each ICMP packet. Unit: bytes. Valid values: 32, 64, 128, 256, 512, 1024.
+	PackageSize *int32 `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
+	// Specifies whether to split ICMP packets. Default value: true.
+	SplitPackage *bool `json:"SplitPackage,omitempty" xml:"SplitPackage,omitempty"`
+	// The destination host IP address or domain name
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Specifies whether to enable the tracert command. Default value: true.
+	TracertEnable *bool `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	// The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 64.
+	TracertNumMax *int32 `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	// The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
+	TracertTimeout *int64 `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) String() string {
@@ -24033,13 +24171,20 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetTracertTim
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP struct {
-	ConnectTimes   *int32  `json:"ConnectTimes,omitempty" xml:"ConnectTimes,omitempty"`
-	Interval       *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
-	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
-	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+	// The number of TCP connections that are established in a test. Minimum value: 1. Maximum value: 16. Default value: 4.
+	ConnectTimes *int32 `json:"ConnectTimes,omitempty" xml:"ConnectTimes,omitempty"`
+	// The interval at which TCP connections are established. Unit: milliseconds. Minimum value: 200. Maximum value: 10000. Default value: 200.
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The destination host IP address.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Specifies whether to enable the tracert command. Default value: true.
+	TracertEnable *bool `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	// The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 20.
+	TracertNumMax *int32 `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	// The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
+	TracertTimeout *int64 `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) String() string {
@@ -24086,13 +24231,26 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetTracertTime
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfStream struct {
-	CustomHeaderContent  map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
-	PlayerType           *int32             `json:"PlayerType,omitempty" xml:"PlayerType,omitempty"`
-	StreamAddressType    *int32             `json:"StreamAddressType,omitempty" xml:"StreamAddressType,omitempty"`
-	StreamMonitorTimeout *int32             `json:"StreamMonitorTimeout,omitempty" xml:"StreamMonitorTimeout,omitempty"`
-	StreamType           *int32             `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	TargetUrl            *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	WhiteList            *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+	// 自定义header，JSON Map格式。
+	CustomHeaderContent map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	// 播放器，不传默认12。
+	//
+	// - 12：VLC
+	// - 2：FlashPlayer
+	PlayerType *int32 `json:"PlayerType,omitempty" xml:"PlayerType,omitempty"`
+	// 资源地址类型：
+	//
+	// - 1：资源地址。
+	// - 0：页面地址。不传默认0。
+	StreamAddressType *int32 `json:"StreamAddressType,omitempty" xml:"StreamAddressType,omitempty"`
+	// 监测时长，单位秒，最长支持60s，不传默认60。
+	StreamMonitorTimeout *int32 `json:"StreamMonitorTimeout,omitempty" xml:"StreamMonitorTimeout,omitempty"`
+	// 音视频标志：0-视频，1-音频。
+	StreamType *int32 `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// 流媒体资源地址。
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+	WhiteList *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) String() string {
@@ -24139,25 +24297,51 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) SetWhiteList(v
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite struct {
-	AutomaticScrolling     *int32             `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
-	CustomHeader           *int32             `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
-	CustomHeaderContent    map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
-	DNSHijackWhitelist     *string            `json:"DNSHijackWhitelist,omitempty" xml:"DNSHijackWhitelist,omitempty"`
-	DisableCache           *int32             `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
-	DisableCompression     *int32             `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
-	ElementBlacklist       *string            `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
-	FilterInvalidIP        *int32             `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
-	FlowHijackJumpTimes    *int32             `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
-	FlowHijackLogo         *string            `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
-	IgnoreCertificateError *int32             `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
-	MonitorTimeout         *int32             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
-	PageTamper             *string            `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
-	Redirection            *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
-	SlowElementThreshold   *int64             `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
-	TargetUrl              *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	VerifyStringBlacklist  *string            `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
-	VerifyStringWhitelist  *string            `json:"VerifyStringWhitelist,omitempty" xml:"VerifyStringWhitelist,omitempty"`
-	WaitCompletionTime     *int64             `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
+	// Specifies whether to automatically scroll up and down the screen to load a page. 0: No. 1: Yes. Default value: 0.
+	AutomaticScrolling *int32 `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
+	// Specifies whether to create a custom header. 0: No. 1: The first packet is modified. 2: All packets are modified. Default value: 0.
+	CustomHeader *int32 `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
+	// The custom header. Format: JSON map.
+	CustomHeaderContent map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	// 域名（例如www.aliyun.com）解析时，解析出的IP地址或者CNAME不在DNS劫持白名单内，用户就会访问失败或者返回一个非Aliyun的目标IP；若解析结果中的IP或者CNAME在DNS白名单内，则会被认定为没有发生DNS劫持。
+	//
+	// 填写格式：域名:匹配规则。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+	DNSHijackWhitelist *string `json:"DNSHijackWhitelist,omitempty" xml:"DNSHijackWhitelist,omitempty"`
+	// Specifies whether to disable the cache. 0: No. 1: Yes. Default value: 1.
+	DisableCache *int32 `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
+	// Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. 0: No. 1: Yes. Default value: 0.
+	DisableCompression *int32 `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
+	// 在页面加载过程中如果出现元素黑名单中配置的元素，不会请求加载该元素 。
+	ElementBlacklist *string `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
+	// Specifies whether to exclude invalid IP addresses.
+	//
+	// *   1: No
+	// *   0: Yes
+	FilterInvalidIP *int32 `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	// 识别元素：设置浏览页面元素总个数。
+	FlowHijackJumpTimes *int32 `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
+	// 劫持标识：设置匹配的关键信息。填写劫持判断关键字或关键元素，允许带星号（*）。
+	FlowHijackLogo *string `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
+	// Specifies whether to ignore SSL certificate errors during browsing. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateError *int32 `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
+	// The monitoring timeout period. Unit: milliseconds. Default value: 20000. Minimum value: 5000. Maximum value: 300000.
+	MonitorTimeout *int32 `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	// 监测页面出现了域名设置之外的元素都属于页面被篡改。常见的表现形式为弹出广告、浮动广告、跳转等。
+	//
+	// 填写格式：域名:元素。元素支持填写通配符，可以填写多个元素，多个元素以竖线（|）隔开。例如：www.aliyun.com:|/cc/bb/a.gif|/vv/bb/cc.jpg，表示www.aliyun.com域名下除基础文档、/cc/bb/a.gif和/vv/bb/cc.jpg之外的其他元素都属于页面被篡改。
+	PageTamper *string `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
+	// Specifies whether to continue browsing after redirection. 0: No, 1:Yes. Default value: 1.
+	Redirection *int32 `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	// The time threshold that is used to define a slow element. Unit: milliseconds. Default value: 5000. Minimum value: 1. Maximum value: 300000.
+	SlowElementThreshold *int64 `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	// The destination URL.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// 验证字符串即监测页面源代码中的某个任意字符串。若客户端返回的源码中包含任一黑名单中的字符串则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
+	VerifyStringBlacklist *string `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
+	// 验证字符串即监测页面源代码中的某个任意字符串。客户端返回的源码必须包含所有白名单中的字符串，否则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
+	VerifyStringWhitelist *string `json:"VerifyStringWhitelist,omitempty" xml:"VerifyStringWhitelist,omitempty"`
+	// The maximum waiting time. Unit: milliseconds. Default value: 5000. Minimum value: 5000. Maximum value: 300000.
+	WaitCompletionTime *int64 `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) String() string {
@@ -24264,8 +24448,11 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetWaitComple
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitors struct {
-	CityCode     *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	ClientType   *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The city code.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The client type of the monitoring point. Valid values: 1: data center. 2: Internet. 3: mobile device. 4: ECS instance.
+	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The carrier code.
 	OperatorCode *string `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
 }
 
@@ -24293,7 +24480,9 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitors) SetOperatorCode(v strin
 }
 
 type GetTimingSyntheticTaskResponseBodyDataTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -33502,10 +33691,14 @@ func (s *ListSilencePoliciesResponse) SetBody(v *ListSilencePoliciesResponseBody
 }
 
 type ListTimingSyntheticTasksRequest struct {
-	RegionId        *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Search          *ListTimingSyntheticTasksRequestSearch `json:"Search,omitempty" xml:"Search,omitempty" type:"Struct"`
-	Tags            []*ListTimingSyntheticTasksRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The search keyword.
+	Search *ListTimingSyntheticTasksRequestSearch `json:"Search,omitempty" xml:"Search,omitempty" type:"Struct"`
+	// The tags.
+	Tags []*ListTimingSyntheticTasksRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTimingSyntheticTasksRequest) String() string {
@@ -33537,14 +33730,22 @@ func (s *ListTimingSyntheticTasksRequest) SetTags(v []*ListTimingSyntheticTasksR
 }
 
 type ListTimingSyntheticTasksRequestSearch struct {
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order      *int32    `json:"Order,omitempty" xml:"Order,omitempty"`
-	OrderField *string   `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	Page       *int32    `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status     *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskIds    []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	TaskTypes  []*int32  `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
+	// The task name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order by which tasks are sorted. 1: ascending order. -1: descending order.
+	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The condition by which tasks are sorted. You can sort tasks by gmtCreate, gmtModified, status, or monitorCount.
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The page number. This parameter is required.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page. This parameter is required.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The task status. CREATING: The task is being created. RUNNING: The task is running. PARTIAL_RUNNING: The task is partially running. STOP: The task is stopped. LIMIT_STOP: The task is stopped due to quota limit. EXCEPTION: The task is abnormal. DELETE: The task is deleted. DELETE_EXCEPTION: An exception occurs while deleting the task.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task IDs.
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The task types.
+	TaskTypes []*int32 `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListTimingSyntheticTasksRequestSearch) String() string {
@@ -33596,7 +33797,9 @@ func (s *ListTimingSyntheticTasksRequestSearch) SetTaskTypes(v []*int32) *ListTi
 }
 
 type ListTimingSyntheticTasksRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -33619,10 +33822,14 @@ func (s *ListTimingSyntheticTasksRequestTags) SetValue(v string) *ListTimingSynt
 }
 
 type ListTimingSyntheticTasksShrinkRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SearchShrink    *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The search keyword.
+	SearchShrink *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListTimingSyntheticTasksShrinkRequest) String() string {
@@ -33654,10 +33861,14 @@ func (s *ListTimingSyntheticTasksShrinkRequest) SetTagsShrink(v string) *ListTim
 }
 
 type ListTimingSyntheticTasksResponseBody struct {
-	Code      *int64                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListTimingSyntheticTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *ListTimingSyntheticTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTimingSyntheticTasksResponseBody) String() string {
@@ -33689,10 +33900,14 @@ func (s *ListTimingSyntheticTasksResponseBody) SetRequestId(v string) *ListTimin
 }
 
 type ListTimingSyntheticTasksResponseBodyData struct {
-	Items    []*ListTimingSyntheticTasksResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Page     *int32                                           `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int32                                           `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The queried tasks.
+	Items []*ListTimingSyntheticTasksResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of tasks.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListTimingSyntheticTasksResponseBodyData) String() string {
@@ -33724,19 +33939,34 @@ func (s *ListTimingSyntheticTasksResponseBodyData) SetTotal(v int32) *ListTiming
 }
 
 type ListTimingSyntheticTasksResponseBodyDataItems struct {
-	Frequency       *string                                              `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	GmtCreate       *string                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	MonitorCategory *int32                                               `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
-	MonitorNum      *string                                              `json:"MonitorNum,omitempty" xml:"MonitorNum,omitempty"`
-	Name            *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId        *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            []*ListTimingSyntheticTasksResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskId          *string                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType        *int32                                               `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	Url             *string                                              `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
+	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The time when the task was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the task was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The detection point type. 1: PC. 2: mobile device.
+	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	// The number of detection points.
+	MonitorNum *string `json:"MonitorNum,omitempty" xml:"MonitorNum,omitempty"`
+	// The task name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The task status. CREATING: The task is being created. RUNNING: The task is running. PARTIAL_RUNNING: The task is partially running. STOP: The task is stopped. LIMIT_STOP: The task is stopped due to quota limit. EXCEPTION: The task is abnormal. DELETE: The task is deleted. DELETE_EXCEPTION: An exception occurs while deleting the task.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags []*ListTimingSyntheticTasksResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the synthetic monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed. 6: file download.
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The URL for synthetic monitoring.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListTimingSyntheticTasksResponseBodyDataItems) String() string {
@@ -33813,7 +34043,9 @@ func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetUrl(v string) *ListTi
 }
 
 type ListTimingSyntheticTasksResponseBodyDataItemsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -43027,19 +43259,34 @@ func (s *UpdatePrometheusRemoteWriteResponse) SetBody(v *UpdatePrometheusRemoteW
 }
 
 type UpdateTimingSyntheticTaskRequest struct {
+	// The list of assertions.
 	AvailableAssertions []*UpdateTimingSyntheticTaskRequestAvailableAssertions `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty" type:"Repeated"`
-	CommonSetting       *UpdateTimingSyntheticTaskRequestCommonSetting         `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
-	CustomPeriod        *UpdateTimingSyntheticTaskRequestCustomPeriod          `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
-	Frequency           *string                                                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	MonitorCategory     *int32                                                 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
-	MonitorConf         *UpdateTimingSyntheticTaskRequestMonitorConf           `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
-	Monitors            []*UpdateTimingSyntheticTaskRequestMonitors            `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
-	Name                *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId            *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId     *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags                []*UpdateTimingSyntheticTaskRequestTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskId              *string                                                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType            *int32                                                 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The general settings.
+	CommonSetting *UpdateTimingSyntheticTaskRequestCommonSetting `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
+	// The custom cycle.
+	CustomPeriod *UpdateTimingSyntheticTaskRequestCustomPeriod `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
+	// The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
+	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The detection point type. 1: PC. 2: mobile device.
+	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	// The monitoring configurations.
+	MonitorConf *UpdateTimingSyntheticTaskRequestMonitorConf `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
+	// The list of monitoring points.
+	Monitors []*UpdateTimingSyntheticTaskRequestMonitors `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
+	// The name of the task.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of tags.
+	Tags []*UpdateTimingSyntheticTaskRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the synthetic monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequest) String() string {
@@ -43116,10 +43363,14 @@ func (s *UpdateTimingSyntheticTaskRequest) SetTaskType(v int32) *UpdateTimingSyn
 }
 
 type UpdateTimingSyntheticTaskRequestAvailableAssertions struct {
-	Expect   *string `json:"Expect,omitempty" xml:"Expect,omitempty"`
+	// The expected value.
+	Expect *string `json:"Expect,omitempty" xml:"Expect,omitempty"`
+	// The condition. gt: greater than. gte: greater than or equal to. lt: less than. lte: less than or equal to. eq: equal to. neq: not equal to. ctn: contain. nctn: does not contain. exist: exist. n_exist: does not exist. belong: belong to. n_belong: does not belong to. reg_match: regular expression.
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The check target. If you set the type parameter to HttpResCode, HttpResBody, or HttpResponseTime, you do not need to set the target parameter. If you set the type parameter to HttpResHead, you must specify the key in the header. If you set the type parameter to HttpResBodyJson, use jsonPath.
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The assertion type. Valid values: HttpResCode, HttpResHead, HttpResBody, HttpResBodyJson, HttpResponseTime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet latency), IcmpPackAvgLatency (average packet latency), TraceRouteHops (number of hops), DnsARecord (A record), DnsCName (CNAME), websiteTTFB (time to first packet), websiteTTLB (time to last packet), websiteFST (first paint time), websiteFFST (first meaningful paint), websiteOnload (full loaded time). For more information, see the following description.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestAvailableAssertions) String() string {
@@ -43151,12 +43402,29 @@ func (s *UpdateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) 
 }
 
 type UpdateTimingSyntheticTaskRequestCommonSetting struct {
-	CustomHost      *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	IpType          *int32                                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	IsOpenTrace     *bool                                                    `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
-	MonitorSamples  *int32                                                   `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
-	TraceClientType *int32                                                   `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
-	XtraceRegion    *string                                                  `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
+	// The custom host.
+	CustomHost *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	// The IP version. Valid values:
+	//
+	// *   0: A version is automatically selected.
+	// *   1: IPv4
+	// *   2: IPv6
+	IpType *int32 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// 是否开启链路追踪。
+	IsOpenTrace *bool `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
+	// Specifies whether to evenly distribute monitoring samples. Valid values:
+	//
+	// *   0: No
+	// *   1: Yes
+	MonitorSamples *int32 `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	// 链路追踪客户端类型：
+	//
+	// - 0：ARMS Agent
+	// - 1：OpenTelemetry
+	// - 2：Jaeger
+	TraceClientType *int32 `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
+	// 链路数据上报region。
+	XtraceRegion *string `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestCommonSetting) String() string {
@@ -43198,8 +43466,10 @@ func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetXtraceRegion(v string
 }
 
 type UpdateTimingSyntheticTaskRequestCommonSettingCustomHost struct {
-	Hosts      []*UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	SelectType *int32                                                          `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// The list of hosts.
+	Hosts []*UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// The selection mode. 0: Random. 1: Polling.
+	SelectType *int32 `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) String() string {
@@ -43221,9 +43491,16 @@ func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) SetSelectType(
 }
 
 type UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts struct {
-	Domain *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	IpType *int32    `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	Ips    []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+	// The domain name.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The IP version. Valid values:
+	//
+	// *   0: A version is automatically selected.
+	// *   1: IPv4
+	// *   2: IPv6
+	IpType *int32 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The list of IP addresses.
+	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) String() string {
@@ -43250,7 +43527,9 @@ func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIps(v 
 }
 
 type UpdateTimingSyntheticTaskRequestCustomPeriod struct {
-	EndHour   *int32 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	// The hour at which the test ends. Valid values: 0 to 24.
+	EndHour *int32 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	// The hour at which the test starts. Valid values: 0 to 24.
 	StartHour *int32 `json:"StartHour,omitempty" xml:"StartHour,omitempty"`
 }
 
@@ -43273,13 +43552,20 @@ func (s *UpdateTimingSyntheticTaskRequestCustomPeriod) SetStartHour(v int32) *Up
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConf struct {
-	ApiHTTP      *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP      `json:"ApiHTTP,omitempty" xml:"ApiHTTP,omitempty" type:"Struct"`
+	// The HTTP(S) synthetic test parameters.
+	ApiHTTP *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP `json:"ApiHTTP,omitempty" xml:"ApiHTTP,omitempty" type:"Struct"`
+	// The file download parameters.
 	FileDownload *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload `json:"FileDownload,omitempty" xml:"FileDownload,omitempty" type:"Struct"`
-	NetDNS       *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS       `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
-	NetICMP      *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP      `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
-	NetTCP       *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP       `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
-	Stream       *UpdateTimingSyntheticTaskRequestMonitorConfStream       `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Struct"`
-	Website      *UpdateTimingSyntheticTaskRequestMonitorConfWebsite      `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
+	// The DNS synthetic test parameters.
+	NetDNS *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
+	// The ICMP synthetic test parameters.
+	NetICMP *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
+	// The TCP synthetic tests parameters. This parameter is required if the TaskType parameter is set to 2.
+	NetTCP *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
+	// 流媒体拨测配置。
+	Stream *UpdateTimingSyntheticTaskRequestMonitorConfStream `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Struct"`
+	// The website-speed measurement parameters.
+	Website *UpdateTimingSyntheticTaskRequestMonitorConfWebsite `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConf) String() string {
@@ -43326,12 +43612,21 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetWebsite(v *UpdateTiming
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
-	ConnectTimeout *int64                                                         `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	Method         *string                                                        `json:"Method,omitempty" xml:"Method,omitempty"`
-	RequestBody    *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
-	RequestHeaders map[string]*string                                             `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
-	TargetUrl      *string                                                        `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout        *int64                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// The request method.
+	//
+	// *   POST
+	// *   GET
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The HTTP request body.
+	RequestBody *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
+	// The custom header field.
+	RequestHeaders map[string]*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	// The URL or request path for synthetic monitoring.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The timeout period. Unit: milliseconds. Default value: 10000. Minimum value: 1000. Maximum value: 300000.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) String() string {
@@ -43373,8 +43668,10 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetTimeout(v int64)
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody struct {
+	// The content of the request body. Format: JSON string. The parameter is required if the type parameter is set to text/plain, application/json, application/xml, or text/html. Format: JSON string.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the request body. Valid values: text/plain, application/json, application/x-www-form-urlencoded, multipart/form-data, application/xml, and text/html.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) String() string {
@@ -43396,24 +43693,53 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) SetType(
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfFileDownload struct {
-	ConnectionTimeout                   *int64             `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
-	CustomHeaderContent                 map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
-	DownloadKernel                      *int32             `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
-	IgnoreCertificateAuthError          *int32             `json:"IgnoreCertificateAuthError,omitempty" xml:"IgnoreCertificateAuthError,omitempty"`
-	IgnoreCertificateCanceledError      *int32             `json:"IgnoreCertificateCanceledError,omitempty" xml:"IgnoreCertificateCanceledError,omitempty"`
-	IgnoreCertificateOutOfDateError     *int32             `json:"IgnoreCertificateOutOfDateError,omitempty" xml:"IgnoreCertificateOutOfDateError,omitempty"`
-	IgnoreCertificateStatusError        *int32             `json:"IgnoreCertificateStatusError,omitempty" xml:"IgnoreCertificateStatusError,omitempty"`
-	IgnoreCertificateUntrustworthyError *int32             `json:"IgnoreCertificateUntrustworthyError,omitempty" xml:"IgnoreCertificateUntrustworthyError,omitempty"`
-	IgnoreCertificateUsingError         *int32             `json:"IgnoreCertificateUsingError,omitempty" xml:"IgnoreCertificateUsingError,omitempty"`
-	IgnoreInvalidHostError              *int32             `json:"IgnoreInvalidHostError,omitempty" xml:"IgnoreInvalidHostError,omitempty"`
-	MonitorTimeout                      *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
-	QuickProtocol                       *int32             `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
-	Redirection                         *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
-	TargetUrl                           *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	TransmissionSize                    *int64             `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
-	ValidateKeywords                    *string            `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
-	VerifyWay                           *int32             `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
-	WhiteList                           *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+	// The connection timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 5000.
+	ConnectionTimeout *int64 `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
+	// The content of the custom request header.
+	CustomHeaderContent map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	// The kernel type.
+	//
+	// *   1: curl
+	// *   0: WinInet
+	DownloadKernel *int32 `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
+	// Specifies whether to ignore CA certificate authentication errors. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateAuthError *int32 `json:"IgnoreCertificateAuthError,omitempty" xml:"IgnoreCertificateAuthError,omitempty"`
+	// Specifies whether to ignore certificate revocation errors. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateCanceledError *int32 `json:"IgnoreCertificateCanceledError,omitempty" xml:"IgnoreCertificateCanceledError,omitempty"`
+	// Specifies whether to ignore certificate invalidity. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateOutOfDateError *int32 `json:"IgnoreCertificateOutOfDateError,omitempty" xml:"IgnoreCertificateOutOfDateError,omitempty"`
+	// Specifies whether to ignore certificate status errors. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateStatusError *int32 `json:"IgnoreCertificateStatusError,omitempty" xml:"IgnoreCertificateStatusError,omitempty"`
+	// Specifies whether to ignore certificate incredibility. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateUntrustworthyError *int32 `json:"IgnoreCertificateUntrustworthyError,omitempty" xml:"IgnoreCertificateUntrustworthyError,omitempty"`
+	// Specifies whether to ignore certificate usage errors. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateUsingError *int32 `json:"IgnoreCertificateUsingError,omitempty" xml:"IgnoreCertificateUsingError,omitempty"`
+	// Specifies whether to ignore host invalidity. 0: No. 1: Yes. Default value: 1.
+	IgnoreInvalidHostError *int32 `json:"IgnoreInvalidHostError,omitempty" xml:"IgnoreInvalidHostError,omitempty"`
+	// The monitoring timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 60000.
+	MonitorTimeout *int64 `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	// The QUIC protocol type.
+	//
+	// *   1: http1
+	// *   2: http2
+	// *   3: http3
+	QuickProtocol *int32 `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	// Specifies whether to support redirection. 0: No. 1: Yes. Default value: 1.
+	Redirection *int32 `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	// The file download URL.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The maximum file size of a single transfer. Unit: KB. Minimum value: 1. Maximum value: 20480. Valid values: 2048.
+	TransmissionSize *int64 `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
+	// 验证关键词。
+	ValidateKeywords *string `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
+	// 验证方式。
+	//
+	// - 0：不验证
+	// - 1：验证字符串
+	// - 2：MD5验证
+	VerifyWay *int32 `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+	// DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+	WhiteList *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) String() string {
@@ -43515,12 +43841,18 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetWhiteList(v
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfNetDNS struct {
-	Dig             *int32  `json:"Dig,omitempty" xml:"Dig,omitempty"`
-	DnsServerIpType *int32  `json:"DnsServerIpType,omitempty" xml:"DnsServerIpType,omitempty"`
-	NsServer        *string `json:"NsServer,omitempty" xml:"NsServer,omitempty"`
-	QueryMethod     *int32  `json:"QueryMethod,omitempty" xml:"QueryMethod,omitempty"`
-	TargetUrl       *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout         *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Specifies whether to use dig to display the data. 0: No. 1: Yes.
+	Dig *int32 `json:"Dig,omitempty" xml:"Dig,omitempty"`
+	// The IP version of the DNS server. 0: IPv4. 1: IPv6. 2: A version is automatically selected. Default value: 0.
+	DnsServerIpType *int32 `json:"DnsServerIpType,omitempty" xml:"DnsServerIpType,omitempty"`
+	// The IP address of the DNS server. Default value: 114.114.114.114.
+	NsServer *string `json:"NsServer,omitempty" xml:"NsServer,omitempty"`
+	// The DNS query. 0: recursive, 1: iterative. Default value: 0.
+	QueryMethod *int32 `json:"QueryMethod,omitempty" xml:"QueryMethod,omitempty"`
+	// The destination domain name.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The timeout period for the DNS synthetic test. Unit: milliseconds. The minimum value is 1000 and the maximum value is 45000. Default value: 5000.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) String() string {
@@ -43562,15 +43894,24 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) SetTimeout(v int64) 
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfNetICMP struct {
-	Interval       *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	PackageNum     *int32  `json:"PackageNum,omitempty" xml:"PackageNum,omitempty"`
-	PackageSize    *int32  `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
-	SplitPackage   *bool   `json:"SplitPackage,omitempty" xml:"SplitPackage,omitempty"`
-	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
-	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
-	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+	// The interval at which ICMP packets are sent. Unit: milliseconds. Minimum value: 200. Maximum value: 10000.
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of ICMP packets that are sent. Minimum value: 1. Maximum value: 50. Default value: 4.
+	PackageNum *int32 `json:"PackageNum,omitempty" xml:"PackageNum,omitempty"`
+	// The size of each ICMP packet. Unit: bytes. Valid values: 32, 64, 128, 256, 512, 1024.
+	PackageSize *int32 `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
+	// Specifies whether to split ICMP packets. Default value: true.
+	SplitPackage *bool `json:"SplitPackage,omitempty" xml:"SplitPackage,omitempty"`
+	// The destination host IP address or domain name. Port numbers, protocol headers, or request paths are not supported.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Specifies whether to enable the tracert command. Default value: true.
+	TracertEnable *bool `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	// The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 64.
+	TracertNumMax *int32 `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	// The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
+	TracertTimeout *int64 `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) String() string {
@@ -43627,13 +43968,20 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTracertTimeout(v
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfNetTCP struct {
-	ConnectTimes   *int32  `json:"ConnectTimes,omitempty" xml:"ConnectTimes,omitempty"`
-	Interval       *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
-	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
-	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+	// The number of TCP connections that are established in a test. Minimum value: 1. Maximum value: 16. Default value: 4.
+	ConnectTimes *int32 `json:"ConnectTimes,omitempty" xml:"ConnectTimes,omitempty"`
+	// The interval at which TCP connections are established. Unit: milliseconds. Minimum value: 200. Maximum value: 10000. Default value: 200.
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The destination host IP address.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Specifies whether to enable the tracert command. Default value: true.
+	TracertEnable *bool `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	// The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 20.
+	TracertNumMax *int32 `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	// The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
+	TracertTimeout *int64 `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) String() string {
@@ -43680,13 +44028,26 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertTimeout(v 
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfStream struct {
-	CustomHeaderContent  map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
-	PlayerType           *int32             `json:"PlayerType,omitempty" xml:"PlayerType,omitempty"`
-	StreamAddressType    *int32             `json:"StreamAddressType,omitempty" xml:"StreamAddressType,omitempty"`
-	StreamMonitorTimeout *int32             `json:"StreamMonitorTimeout,omitempty" xml:"StreamMonitorTimeout,omitempty"`
-	StreamType           *int32             `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	TargetUrl            *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	WhiteList            *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+	// 自定义header，JSON Map格式。
+	CustomHeaderContent map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	// 播放器，不传默认12。
+	//
+	// - 12：VLC
+	// - 2：FlashPlayer
+	PlayerType *int32 `json:"PlayerType,omitempty" xml:"PlayerType,omitempty"`
+	// 资源地址类型：
+	//
+	// - 1：资源地址。
+	// - 0：页面地址。不传默认0。
+	StreamAddressType *int32 `json:"StreamAddressType,omitempty" xml:"StreamAddressType,omitempty"`
+	// 监测时长，单位秒，最长支持60s，不传默认60。
+	StreamMonitorTimeout *int32 `json:"StreamMonitorTimeout,omitempty" xml:"StreamMonitorTimeout,omitempty"`
+	// 音视频标志：0-视频，1-音频。
+	StreamType *int32 `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// 流媒体地址。
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+	WhiteList *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfStream) String() string {
@@ -43733,25 +44094,49 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfStream) SetWhiteList(v strin
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfWebsite struct {
-	AutomaticScrolling     *int32             `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
-	CustomHeader           *int32             `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
-	CustomHeaderContent    map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
-	DNSHijackWhitelist     *string            `json:"DNSHijackWhitelist,omitempty" xml:"DNSHijackWhitelist,omitempty"`
-	DisableCache           *int32             `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
-	DisableCompression     *int32             `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
-	ElementBlacklist       *string            `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
-	FilterInvalidIP        *int32             `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
-	FlowHijackJumpTimes    *int32             `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
-	FlowHijackLogo         *string            `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
-	IgnoreCertificateError *int32             `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
-	MonitorTimeout         *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
-	PageTamper             *string            `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
-	Redirection            *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
-	SlowElementThreshold   *int64             `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
-	TargetUrl              *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	VerifyStringBlacklist  *string            `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
-	VerifyStringWhitelist  *string            `json:"VerifyStringWhitelist,omitempty" xml:"VerifyStringWhitelist,omitempty"`
-	WaitCompletionTime     *int64             `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
+	// Specifies whether to automatically scroll up and down the screen to load a page. 0: No. 1: Yes. Default value: 0.
+	AutomaticScrolling *int32 `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
+	// Specifies whether to create a custom header. 0: No. 1: The first packet is modified. 2: All packets are modified. Default value: 0.
+	CustomHeader *int32 `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
+	// The custom header. Format: JSON map.
+	CustomHeaderContent map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	// 域名（例如www.aliyun.com）解析时，解析出的IP地址或者CNAME不在DNS劫持白名单内，用户就会访问失败或者返回一个非Aliyun的目标IP；若解析结果中的IP或者CNAME在DNS白名单内，则会被认定为没有发生DNS劫持。
+	//
+	// 填写格式：域名:匹配规则。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+	DNSHijackWhitelist *string `json:"DNSHijackWhitelist,omitempty" xml:"DNSHijackWhitelist,omitempty"`
+	// Specifies whether to disable the cache. 0: No. 1: Yes. Default value: 1.
+	DisableCache *int32 `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
+	// Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. 0: No. 1: Yes. Default value: 0.
+	DisableCompression *int32 `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
+	// 在页面加载过程中如果出现元素黑名单中配置的元素，不会请求加载该元素 。
+	ElementBlacklist *string `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
+	// Specifies whether to filter invalid IP addresses.
+	//
+	// *   1: No
+	// *   0: Yes
+	FilterInvalidIP *int32 `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	// 识别元素：设置浏览页面元素总个数。
+	FlowHijackJumpTimes *int32 `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
+	// 劫持标识：设置匹配的关键信息。填写劫持判断关键字或关键元素，允许带星号（*）。
+	FlowHijackLogo *string `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
+	// Specifies whether to ignore SSL certificate errors during browsing. 0: No. 1: Yes. Default value: 1.
+	IgnoreCertificateError *int32 `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
+	// The monitoring timeout period. Unit: milliseconds. Minimum value: 5000. Maximum value: 300000. Default value: 40000.
+	MonitorTimeout *int64 `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	// 监测页面出现了域名设置之外的元素都属于页面被篡改。常见的表现形式为弹出广告、浮动广告、跳转等。
+	PageTamper *string `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
+	// Specifies whether to continue browsing after redirection. 0: No, 1:Yes. Default value: 1.
+	Redirection *int32 `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	// The time threshold that is used to define a slow element. Unit: milliseconds. Default value: 5000. Minimum value: 1. Maximum value: 300000.
+	SlowElementThreshold *int64 `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	// The destination URL.
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// 验证字符串即监测页面源代码中的某个任意字符串。若客户端返回的源码中包含任一黑名单中的字符串则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
+	VerifyStringBlacklist *string `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
+	// 验证字符串即监测页面源代码中的某个任意字符串。客户端返回的源码必须包含所有白名单中的字符串，否则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
+	VerifyStringWhitelist *string `json:"VerifyStringWhitelist,omitempty" xml:"VerifyStringWhitelist,omitempty"`
+	// The maximum waiting time. Unit: milliseconds. Default value: 5000. Minimum value: 5000. Maximum value: 300000.
+	WaitCompletionTime *int64 `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfWebsite) String() string {
@@ -43858,8 +44243,11 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetWaitCompletionTi
 }
 
 type UpdateTimingSyntheticTaskRequestMonitors struct {
-	CityCode     *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	ClientType   *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The city code.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The client type of the monitoring point. Valid values: 1: data center. 2: Internet. 3: mobile device. 4: ECS instance.
+	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The carrier code.
 	OperatorCode *string `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
 }
 
@@ -43887,7 +44275,9 @@ func (s *UpdateTimingSyntheticTaskRequestMonitors) SetOperatorCode(v string) *Up
 }
 
 type UpdateTimingSyntheticTaskRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -43910,19 +44300,34 @@ func (s *UpdateTimingSyntheticTaskRequestTags) SetValue(v string) *UpdateTimingS
 }
 
 type UpdateTimingSyntheticTaskShrinkRequest struct {
+	// The list of assertions.
 	AvailableAssertionsShrink *string `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty"`
-	CommonSettingShrink       *string `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty"`
-	CustomPeriodShrink        *string `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty"`
-	Frequency                 *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	MonitorCategory           *int32  `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
-	MonitorConfShrink         *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	MonitorsShrink            *string `json:"Monitors,omitempty" xml:"Monitors,omitempty"`
-	Name                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagsShrink                *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TaskId                    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType                  *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The general settings.
+	CommonSettingShrink *string `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty"`
+	// The custom cycle.
+	CustomPeriodShrink *string `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty"`
+	// The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
+	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The detection point type. 1: PC. 2: mobile device.
+	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	// The monitoring configurations.
+	MonitorConfShrink *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	// The list of monitoring points.
+	MonitorsShrink *string `json:"Monitors,omitempty" xml:"Monitors,omitempty"`
+	// The name of the task.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the synthetic monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskShrinkRequest) String() string {
@@ -43999,11 +44404,19 @@ func (s *UpdateTimingSyntheticTaskShrinkRequest) SetTaskType(v int32) *UpdateTim
 }
 
 type UpdateTimingSyntheticTaskResponseBody struct {
-	Code      *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateTimingSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
+	Data *UpdateTimingSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskResponseBody) String() string {
@@ -44040,6 +44453,7 @@ func (s *UpdateTimingSyntheticTaskResponseBody) SetSuccess(v bool) *UpdateTiming
 }
 
 type UpdateTimingSyntheticTaskResponseBodyData struct {
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
