@@ -3879,50 +3879,55 @@ func (s *DescribeAuditRecordsResponse) SetBody(v *DescribeAuditRecordsResponseBo
 }
 
 type DescribeAvailabilityZonesRequest struct {
-	// The language of the returned values of the **RegionName** and **ZoneName** parameters. Default value: zh. Valid values:
+	// The language of the values of the returned **RegionName** and **ZoneName** parameters. Valid values:
 	//
-	// *   **zh**: Chinese.
+	// *   **zh** (default): Chinese
 	// *   **en**: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The instance type of the instance.
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The database engine type of the instance. Valid values:
+	// The architecture of the instance. Valid values:
 	//
 	// *   **normal**: replica set instance
 	// *   **sharding**: sharded cluster instance
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The database engine version of the instance.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the secondary zone that you want to exclude from the query results. You can configure both the ExcludeSecondaryZoneId and ExcludeZoneId parameters to filter multiple zones that you want to exclude from the query results.
+	// The secondary zone ID that is excluded from the query results. You can configure the ExcludeZoneId and ExcludeSecondaryZoneId parameters to specify the IDs of multiple zones that are excluded from the query results.
 	ExcludeSecondaryZoneId *string `json:"ExcludeSecondaryZoneId,omitempty" xml:"ExcludeSecondaryZoneId,omitempty"`
-	// The ID of the zone that you want to exclude from the query results.
+	// The zone ID that is excluded from the query results.
 	ExcludeZoneId *string `json:"ExcludeZoneId,omitempty" xml:"ExcludeZoneId,omitempty"`
-	// The billing method of the instance. Default value: PrePaid. Valid values:
+	// The billing method. Valid values:
 	//
-	// *   **PrePaid**: subscription
+	// *   **PrePaid** (default): subscription
 	// *   **PostPaid**: pay-as-you-go
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The edition of the ApsaraDB for MongoDB instance. The instance can be of a high-availability edition or beta edition.
+	// The edition of the instance. High-Available Edition and Preview Edition (dbfs) are supported.
 	MongoType    *string `json:"MongoType,omitempty" xml:"MongoType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 节点数，只适用于副本集。
+	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	// The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zones to be displayed. The values include the zones in which you can create an instance that uses cloud disks, the zones in which you can create an instance that uses local disks, and the zones in which you can create an instance that uses cloud disks and local disks.
+	// The storage type of the instance. cloud: The system displays only zones in which cloud disk-based instances can be deployed. local: The system displays only zones in which local disk-based instances can be deployed. default or null: The system displays only zones in which cloud disk-based and local disk-based instances can be deployed.
 	StorageSupport *string `json:"StorageSupport,omitempty" xml:"StorageSupport,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// *   **cloud_essd1**: PL1.enhanced SSD (ESSD)
-	// *   **cloud_essd2**: PL2 ESSD.
-	// *   **cloud_essd3**: PL3 ESSD.
-	// *   **local_ssd**: local SSD.
+	// *   **cloud_essd1**: PL1 enhanced SSD (ESSD)
+	// *   **cloud_essd2**: PL2 ESSD
+	// *   **cloud_essd3**: PL3 ESSD
+	// *   **local_ssd**: Local SSD
 	//
-	// > *   Instances of MongoDB 4.4 and later only support cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
-	// > *   Instances of MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
+	// >
+	//
+	// *   Instances that run MongoDB 4.4 or later support only cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
+	//
+	// *   Instances that run MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query available zones.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -3988,6 +3993,11 @@ func (s *DescribeAvailabilityZonesRequest) SetOwnerId(v int64) *DescribeAvailabi
 
 func (s *DescribeAvailabilityZonesRequest) SetRegionId(v string) *DescribeAvailabilityZonesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAvailabilityZonesRequest) SetReplicationFactor(v string) *DescribeAvailabilityZonesRequest {
+	s.ReplicationFactor = &v
 	return s
 }
 
@@ -4246,6 +4256,8 @@ type DescribeAvailableResourceRequest struct {
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of nodes, only applicable to replica sets.
+	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4304,6 +4316,11 @@ func (s *DescribeAvailableResourceRequest) SetOwnerId(v int64) *DescribeAvailabl
 
 func (s *DescribeAvailableResourceRequest) SetRegionId(v string) *DescribeAvailableResourceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceRequest) SetReplicationFactor(v string) *DescribeAvailableResourceRequest {
+	s.ReplicationFactor = &v
 	return s
 }
 
@@ -6060,6 +6077,8 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The maximum IOPS of the instance.
 	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	// The maximum MBPS of the instance, Unit: MB/s.
+	MaxMBPS *int32 `json:"MaxMBPS,omitempty" xml:"MaxMBPS,omitempty"`
 	// The information of the mongos nodes.
 	//
 	// >  This parameter is returned if the instance is a sharded cluster instance.
@@ -6312,6 +6331,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetMaxCon
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetMaxIOPS(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.MaxIOPS = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetMaxMBPS(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.MaxMBPS = &v
 	return s
 }
 
@@ -6741,6 +6765,8 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardA
 	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
 	// The maximum number of connections to the shard node.
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	// The maximum  MBPS of the shard node, Unit: MB/s.
+	MaxDiskMbps *string `json:"MaxDiskMbps,omitempty" xml:"MaxDiskMbps,omitempty"`
 	// The maximum IOPS of the shard node.
 	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	// The instance type of the shard node.
@@ -6774,6 +6800,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListSh
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetMaxConnections(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
 	s.MaxConnections = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetMaxDiskMbps(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
+	s.MaxDiskMbps = &v
 	return s
 }
 
@@ -13604,7 +13635,8 @@ type DescribeSecurityIpsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ShowHDMIps           *bool   `json:"ShowHDMIps,omitempty" xml:"ShowHDMIps,omitempty"`
+	// Whether to display DAS whitelist information.
+	ShowHDMIps *bool `json:"ShowHDMIps,omitempty" xml:"ShowHDMIps,omitempty"`
 }
 
 func (s DescribeSecurityIpsRequest) String() string {
@@ -22368,7 +22400,7 @@ func (client *Client) DescribeAuditRecords(request *DescribeAuditRecordsRequest)
 }
 
 /**
- * You can call this operation to query zones in which you can create an ApsaraDB for MongoDB instance.
+ * Queries the zones in which an ApsaraDB for MongoDB instance can be deployed under specified purchase conditions. The region ID is required in the purchase condition.
  *
  * @param request DescribeAvailabilityZonesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22424,6 +22456,10 @@ func (client *Client) DescribeAvailabilityZonesWithOptions(request *DescribeAvai
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReplicationFactor)) {
+		query["ReplicationFactor"] = request.ReplicationFactor
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -22472,7 +22508,7 @@ func (client *Client) DescribeAvailabilityZonesWithOptions(request *DescribeAvai
 }
 
 /**
- * You can call this operation to query zones in which you can create an ApsaraDB for MongoDB instance.
+ * Queries the zones in which an ApsaraDB for MongoDB instance can be deployed under specified purchase conditions. The region ID is required in the purchase condition.
  *
  * @param request DescribeAvailabilityZonesRequest
  * @return DescribeAvailabilityZonesResponse
@@ -22580,6 +22616,10 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplicationFactor)) {
+		query["ReplicationFactor"] = request.ReplicationFactor
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
