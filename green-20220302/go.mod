@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/green-20220302
+module github.com/alibabacloud-go/green-20220302/v2
 
 go 1.15
 

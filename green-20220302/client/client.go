@@ -340,7 +340,7 @@ func (s *DescribeImageModerationResultRequest) SetReqId(v string) *DescribeImage
 }
 
 type DescribeImageModerationResultResponseBody struct {
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code      *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *DescribeImageModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Msg       *string                                        `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -354,7 +354,7 @@ func (s DescribeImageModerationResultResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImageModerationResultResponseBody) SetCode(v string) *DescribeImageModerationResultResponseBody {
+func (s *DescribeImageModerationResultResponseBody) SetCode(v int32) *DescribeImageModerationResultResponseBody {
 	s.Code = &v
 	return s
 }
