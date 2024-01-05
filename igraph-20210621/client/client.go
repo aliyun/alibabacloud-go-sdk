@@ -1126,7 +1126,11 @@ func (s *ListDemoGraphSchemasResponse) SetBody(v *ListDemoGraphSchemasResponseBo
 }
 
 type ListGraphSchemasRequest struct {
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Namespace    *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	PageLimit    *string `json:"pageLimit,omitempty" xml:"pageLimit,omitempty"`
+	PageStart    *string `json:"pageStart,omitempty" xml:"pageStart,omitempty"`
+	ReturnSpec   *string `json:"returnSpec,omitempty" xml:"returnSpec,omitempty"`
+	SchemaStatus *string `json:"schemaStatus,omitempty" xml:"schemaStatus,omitempty"`
 }
 
 func (s ListGraphSchemasRequest) String() string {
@@ -1139,6 +1143,26 @@ func (s ListGraphSchemasRequest) GoString() string {
 
 func (s *ListGraphSchemasRequest) SetNamespace(v string) *ListGraphSchemasRequest {
 	s.Namespace = &v
+	return s
+}
+
+func (s *ListGraphSchemasRequest) SetPageLimit(v string) *ListGraphSchemasRequest {
+	s.PageLimit = &v
+	return s
+}
+
+func (s *ListGraphSchemasRequest) SetPageStart(v string) *ListGraphSchemasRequest {
+	s.PageStart = &v
+	return s
+}
+
+func (s *ListGraphSchemasRequest) SetReturnSpec(v string) *ListGraphSchemasRequest {
+	s.ReturnSpec = &v
+	return s
+}
+
+func (s *ListGraphSchemasRequest) SetSchemaStatus(v string) *ListGraphSchemasRequest {
+	s.SchemaStatus = &v
 	return s
 }
 
@@ -2431,6 +2455,22 @@ func (client *Client) ListGraphSchemasWithOptions(instanceId *string, graphName 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
 		query["namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageLimit)) {
+		query["pageLimit"] = request.PageLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageStart)) {
+		query["pageStart"] = request.PageStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnSpec)) {
+		query["returnSpec"] = request.ReturnSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaStatus)) {
+		query["schemaStatus"] = request.SchemaStatus
 	}
 
 	req := &openapi.OpenApiRequest{
