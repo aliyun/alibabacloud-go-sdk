@@ -143,7 +143,6 @@ type CheckCreateDBInstanceRequest struct {
 	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityIPList        *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	StorageSize           *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	UsedTime              *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// VPC ID。
@@ -221,11 +220,6 @@ func (s *CheckCreateDBInstanceRequest) SetResourceOwnerId(v int64) *CheckCreateD
 
 func (s *CheckCreateDBInstanceRequest) SetSecurityIPList(v string) *CheckCreateDBInstanceRequest {
 	s.SecurityIPList = &v
-	return s
-}
-
-func (s *CheckCreateDBInstanceRequest) SetStorageSize(v string) *CheckCreateDBInstanceRequest {
-	s.StorageSize = &v
 	return s
 }
 
@@ -402,7 +396,6 @@ type CreateDBClusterRequest struct {
 	// 代表资源组的资源属性字段
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StorageSize     *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	UsedTime        *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// VPC ID。
@@ -470,11 +463,6 @@ func (s *CreateDBClusterRequest) SetResourceGroupId(v string) *CreateDBClusterRe
 
 func (s *CreateDBClusterRequest) SetResourceOwnerId(v int64) *CreateDBClusterRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateDBClusterRequest) SetStorageSize(v string) *CreateDBClusterRequest {
-	s.StorageSize = &v
 	return s
 }
 
@@ -588,7 +576,6 @@ type CreateDBInstanceRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityIPList  *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	StorageSize     *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	UsedTime        *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// VPC ID。
@@ -666,11 +653,6 @@ func (s *CreateDBInstanceRequest) SetResourceOwnerId(v int64) *CreateDBInstanceR
 
 func (s *CreateDBInstanceRequest) SetSecurityIPList(v string) *CreateDBInstanceRequest {
 	s.SecurityIPList = &v
-	return s
-}
-
-func (s *CreateDBInstanceRequest) SetStorageSize(v string) *CreateDBInstanceRequest {
-	s.StorageSize = &v
 	return s
 }
 
@@ -1198,21 +1180,19 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetSubDomain(v string) *Descri
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
-	CacheStorageSizeGB  *string `json:"CacheStorageSizeGB,omitempty" xml:"CacheStorageSizeGB,omitempty"`
-	CacheStorageSizeGiB *int64  `json:"CacheStorageSizeGiB,omitempty" xml:"CacheStorageSizeGiB,omitempty"`
-	CacheStorageType    *string `json:"CacheStorageType,omitempty" xml:"CacheStorageType,omitempty"`
-	ChargeType          *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CpuCores            *int64  `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	CreatedTime         *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DbClusterClass      *string `json:"DbClusterClass,omitempty" xml:"DbClusterClass,omitempty"`
-	DbClusterId         *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	DbClusterName       *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
-	DbInstanceName      *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	Memory              *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	ObjectStoreSizeGiB  *int64  `json:"ObjectStoreSizeGiB,omitempty" xml:"ObjectStoreSizeGiB,omitempty"`
-	PerformanceLevel    *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CacheStorageSizeGB *string `json:"CacheStorageSizeGB,omitempty" xml:"CacheStorageSizeGB,omitempty"`
+	CacheStorageType   *string `json:"CacheStorageType,omitempty" xml:"CacheStorageType,omitempty"`
+	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CpuCores           *int64  `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	CreatedTime        *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DbClusterClass     *string `json:"DbClusterClass,omitempty" xml:"DbClusterClass,omitempty"`
+	DbClusterId        *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	DbClusterName      *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
+	DbInstanceName     *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	Memory             *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBClusterList) String() string {
@@ -1225,11 +1205,6 @@ func (s DescribeDBInstanceAttributeResponseBodyDBClusterList) GoString() string 
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetCacheStorageSizeGB(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
 	s.CacheStorageSizeGB = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetCacheStorageSizeGiB(v int64) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
-	s.CacheStorageSizeGiB = &v
 	return s
 }
 
@@ -1275,11 +1250,6 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetDbInstanceName
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetMemory(v int64) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
 	s.Memory = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetObjectStoreSizeGiB(v int64) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
-	s.ObjectStoreSizeGiB = &v
 	return s
 }
 
@@ -1357,6 +1327,7 @@ func (s *DescribeDBInstanceNetInfoRequest) SetResourceOwnerId(v int64) *Describe
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
+	DBClustersNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos `json:"DBClustersNetInfos,omitempty" xml:"DBClustersNetInfos,omitempty" type:"Repeated"`
 	DBInstanceNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Repeated"`
 	RequestId          *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1369,6 +1340,11 @@ func (s DescribeDBInstanceNetInfoResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBInstanceNetInfoResponseBody) SetDBClustersNetInfos(v []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) *DescribeDBInstanceNetInfoResponseBody {
+	s.DBClustersNetInfos = v
+	return s
+}
+
 func (s *DescribeDBInstanceNetInfoResponseBody) SetDBInstanceNetInfos(v []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) *DescribeDBInstanceNetInfoResponseBody {
 	s.DBInstanceNetInfos = v
 	return s
@@ -1379,7 +1355,96 @@ func (s *DescribeDBInstanceNetInfoResponseBody) SetRequestId(v string) *Describe
 	return s
 }
 
+type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos struct {
+	ClusterId        *string                                                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ConnectionString *string                                                            `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	Ip               *string                                                            `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NetType          *string                                                            `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	PortList         []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	UserVisible      *bool                                                              `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
+	VpcId            *string                                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcInstanceId    *string                                                            `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	VswitchId        *string                                                            `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetClusterId(v string) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetConnectionString(v string) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.ConnectionString = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetIp(v string) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetNetType(v string) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.NetType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetPortList(v []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.PortList = v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetUserVisible(v bool) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.UserVisible = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetVpcId(v string) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetVpcInstanceId(v string) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.VpcInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetVswitchId(v string) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos {
+	s.VswitchId = &v
+	return s
+}
+
+type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList struct {
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList) SetPort(v int32) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList) SetProtocol(v string) *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList {
+	s.Protocol = &v
+	return s
+}
+
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
+	ClusterId        *string                                                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ConnectionString *string                                                            `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	Ip               *string                                                            `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	NetType          *string                                                            `json:"NetType,omitempty" xml:"NetType,omitempty"`
@@ -1397,6 +1462,11 @@ func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) String() string
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetClusterId(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetConnectionString(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos {
@@ -1592,43 +1662,40 @@ func (s *DescribeDBInstancesResponseBody) SetTotalRecordCount(v int64) *Describe
 }
 
 type DescribeDBInstancesResponseBodyItems struct {
-	Category             *string                                              `json:"Category,omitempty" xml:"Category,omitempty"`
-	ChargeType           *string                                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClusterCount         *int32                                               `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
-	CreateTime           *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBClusterList        []*DescribeDBInstancesResponseBodyItemsDBClusterList `json:"DBClusterList,omitempty" xml:"DBClusterList,omitempty" type:"Repeated"`
-	DBInstanceId         *string                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Description          *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	Engine               *string                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion        *string                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime           *string                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GmtCreated           *string                                              `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtModified          *string                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InstanceClass        *string                                              `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	InstanceUsedType     *string                                              `json:"InstanceUsedType,omitempty" xml:"InstanceUsedType,omitempty"`
-	IsDeleted            *bool                                                `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	LockMode             *int64                                               `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason           *string                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTimeStr   *string                                              `json:"MaintainEndTimeStr,omitempty" xml:"MaintainEndTimeStr,omitempty"`
-	MaintainEndtime      *string                                              `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
-	MaintainStartTimeStr *string                                              `json:"MaintainStartTimeStr,omitempty" xml:"MaintainStartTimeStr,omitempty"`
-	MaintainStarttime    *string                                              `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
-	ObjectStoreSize      *int64                                               `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
-	ParentInstance       *string                                              `json:"ParentInstance,omitempty" xml:"ParentInstance,omitempty"`
-	RegionId             *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceCpu          *int64                                               `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
-	ResourceGroupId      *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceMemory       *int64                                               `json:"ResourceMemory,omitempty" xml:"ResourceMemory,omitempty"`
-	ScaleMax             *int64                                               `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	ScaleMin             *int64                                               `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	ScaleReplica         *int64                                               `json:"ScaleReplica,omitempty" xml:"ScaleReplica,omitempty"`
-	Status               *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageSize          *int64                                               `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	StorageType          *string                                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags                 []*DescribeDBInstancesResponseBodyItemsTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantClusterId      *string                                              `json:"TenantClusterId,omitempty" xml:"TenantClusterId,omitempty"`
-	TenantToken          *string                                              `json:"TenantToken,omitempty" xml:"TenantToken,omitempty"`
-	TenantUserId         *string                                              `json:"TenantUserId,omitempty" xml:"TenantUserId,omitempty"`
+	Category             *string                                     `json:"Category,omitempty" xml:"Category,omitempty"`
+	ChargeType           *string                                     `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterCount         *int32                                      `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	DBInstanceId         *string                                     `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Description          *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	Engine               *string                                     `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion        *string                                     `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime           *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	GmtCreated           *string                                     `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified          *string                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceUsedType     *string                                     `json:"InstanceUsedType,omitempty" xml:"InstanceUsedType,omitempty"`
+	IsDeleted            *bool                                       `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	LockMode             *int64                                      `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason           *string                                     `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MaintainEndTimeStr   *string                                     `json:"MaintainEndTimeStr,omitempty" xml:"MaintainEndTimeStr,omitempty"`
+	MaintainEndtime      *string                                     `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
+	MaintainStartTimeStr *string                                     `json:"MaintainStartTimeStr,omitempty" xml:"MaintainStartTimeStr,omitempty"`
+	MaintainStarttime    *string                                     `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	ObjectStoreSize      *int64                                      `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
+	ParentInstance       *string                                     `json:"ParentInstance,omitempty" xml:"ParentInstance,omitempty"`
+	RegionId             *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceCpu          *int64                                      `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
+	ResourceGroupId      *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceMemory       *int64                                      `json:"ResourceMemory,omitempty" xml:"ResourceMemory,omitempty"`
+	ScaleMax             *int64                                      `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	ScaleMin             *int64                                      `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleReplica         *int64                                      `json:"ScaleReplica,omitempty" xml:"ScaleReplica,omitempty"`
+	Status               *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageSize          *int64                                      `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageType          *string                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags                 []*DescribeDBInstancesResponseBodyItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantClusterId      *string                                     `json:"TenantClusterId,omitempty" xml:"TenantClusterId,omitempty"`
+	TenantToken          *string                                     `json:"TenantToken,omitempty" xml:"TenantToken,omitempty"`
+	TenantUserId         *string                                     `json:"TenantUserId,omitempty" xml:"TenantUserId,omitempty"`
 	// VPC ID。
 	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId        *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
@@ -1656,16 +1723,6 @@ func (s *DescribeDBInstancesResponseBodyItems) SetChargeType(v string) *Describe
 
 func (s *DescribeDBInstancesResponseBodyItems) SetClusterCount(v int32) *DescribeDBInstancesResponseBodyItems {
 	s.ClusterCount = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItems) SetCreateTime(v string) *DescribeDBInstancesResponseBodyItems {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItems) SetDBClusterList(v []*DescribeDBInstancesResponseBodyItemsDBClusterList) *DescribeDBInstancesResponseBodyItems {
-	s.DBClusterList = v
 	return s
 }
 
@@ -1701,11 +1758,6 @@ func (s *DescribeDBInstancesResponseBodyItems) SetGmtCreated(v string) *Describe
 
 func (s *DescribeDBInstancesResponseBodyItems) SetGmtModified(v string) *DescribeDBInstancesResponseBodyItems {
 	s.GmtModified = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItems) SetInstanceClass(v string) *DescribeDBInstancesResponseBodyItems {
-	s.InstanceClass = &v
 	return s
 }
 
@@ -1846,89 +1898,6 @@ func (s *DescribeDBInstancesResponseBodyItems) SetZoneId(v string) *DescribeDBIn
 
 func (s *DescribeDBInstancesResponseBodyItems) SetConnectionString(v string) *DescribeDBInstancesResponseBodyItems {
 	s.ConnectionString = &v
-	return s
-}
-
-type DescribeDBInstancesResponseBodyItemsDBClusterList struct {
-	CacheStorageSizeGiB *int64  `json:"CacheStorageSizeGiB,omitempty" xml:"CacheStorageSizeGiB,omitempty"`
-	CacheStorageType    *string `json:"CacheStorageType,omitempty" xml:"CacheStorageType,omitempty"`
-	CpuCores            *int64  `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	CreatedTime         *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DBInstanceId        *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DbClusterClass      *string `json:"DbClusterClass,omitempty" xml:"DbClusterClass,omitempty"`
-	DbClusterId         *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	DbClusterName       *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
-	Memory              *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	PerformanceLevel    *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ObjectStoreSizeGiB  *int64  `json:"objectStoreSizeGiB,omitempty" xml:"objectStoreSizeGiB,omitempty"`
-}
-
-func (s DescribeDBInstancesResponseBodyItemsDBClusterList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstancesResponseBodyItemsDBClusterList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetCacheStorageSizeGiB(v int64) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.CacheStorageSizeGiB = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetCacheStorageType(v string) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.CacheStorageType = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetCpuCores(v int64) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.CpuCores = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetCreatedTime(v string) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetDBInstanceId(v string) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetDbClusterClass(v string) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.DbClusterClass = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetDbClusterId(v string) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.DbClusterId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetDbClusterName(v string) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.DbClusterName = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetMemory(v int64) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.Memory = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetPerformanceLevel(v string) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.PerformanceLevel = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetStatus(v string) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBodyItemsDBClusterList) SetObjectStoreSizeGiB(v int64) *DescribeDBInstancesResponseBodyItemsDBClusterList {
-	s.ObjectStoreSizeGiB = &v
 	return s
 }
 
@@ -3377,10 +3346,6 @@ func (client *Client) CheckCreateDBInstanceWithOptions(request *CheckCreateDBIns
 		query["SecurityIPList"] = request.SecurityIPList
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
-		query["StorageSize"] = request.StorageSize
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -3521,10 +3486,6 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
-		query["StorageSize"] = request.StorageSize
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -3637,10 +3598,6 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
 		query["SecurityIPList"] = request.SecurityIPList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
-		query["StorageSize"] = request.StorageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
