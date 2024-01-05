@@ -284,6 +284,81 @@ func (s *DataExtraInfoSubDbsValueTablesColumns) SetIsGenerateField(v bool) *Data
 	return s
 }
 
+type CreateBackupSetDownloadLinkRequest struct {
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateBackupSetDownloadLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupSetDownloadLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupSetDownloadLinkRequest) SetBackupSetId(v string) *CreateBackupSetDownloadLinkRequest {
+	s.BackupSetId = &v
+	return s
+}
+
+func (s *CreateBackupSetDownloadLinkRequest) SetInstanceId(v string) *CreateBackupSetDownloadLinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateBackupSetDownloadLinkResponseBody struct {
+	DownloadTaskId *int64  `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBackupSetDownloadLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupSetDownloadLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupSetDownloadLinkResponseBody) SetDownloadTaskId(v int64) *CreateBackupSetDownloadLinkResponseBody {
+	s.DownloadTaskId = &v
+	return s
+}
+
+func (s *CreateBackupSetDownloadLinkResponseBody) SetRequestId(v string) *CreateBackupSetDownloadLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBackupSetDownloadLinkResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBackupSetDownloadLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBackupSetDownloadLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupSetDownloadLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupSetDownloadLinkResponse) SetHeaders(v map[string]*string) *CreateBackupSetDownloadLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBackupSetDownloadLinkResponse) SetStatusCode(v int32) *CreateBackupSetDownloadLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBackupSetDownloadLinkResponse) SetBody(v *CreateBackupSetDownloadLinkResponseBody) *CreateBackupSetDownloadLinkResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDatabaseRequest struct {
 	// The name of the database.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -6728,6 +6803,352 @@ func (s *DescribeCharsetResponse) SetStatusCode(v int32) *DescribeCharsetRespons
 }
 
 func (s *DescribeCharsetResponse) SetBody(v *DescribeCharsetResponseBody) *DescribeCharsetResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDataBackupSetRequest struct {
+	BackupObjectType *string `json:"BackupObjectType,omitempty" xml:"BackupObjectType,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDataBackupSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataBackupSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataBackupSetRequest) SetBackupObjectType(v string) *DescribeDataBackupSetRequest {
+	s.BackupObjectType = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetRequest) SetEndTime(v string) *DescribeDataBackupSetRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetRequest) SetInstanceId(v string) *DescribeDataBackupSetRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetRequest) SetPageNumber(v int32) *DescribeDataBackupSetRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetRequest) SetPageSize(v int32) *DescribeDataBackupSetRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetRequest) SetStartTime(v string) *DescribeDataBackupSetRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetRequest) SetStatus(v string) *DescribeDataBackupSetRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeDataBackupSetResponseBody struct {
+	Data       []*DescribeDataBackupSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDataBackupSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataBackupSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataBackupSetResponseBody) SetData(v []*DescribeDataBackupSetResponseBodyData) *DescribeDataBackupSetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBody) SetRequestId(v string) *DescribeDataBackupSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBody) SetTotalCount(v int32) *DescribeDataBackupSetResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDataBackupSetResponseBodyData struct {
+	BackupObjectType   *string                                               `json:"BackupObjectType,omitempty" xml:"BackupObjectType,omitempty"`
+	BackupObjects      []*DescribeDataBackupSetResponseBodyDataBackupObjects `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty" type:"Repeated"`
+	BackupResults      []*DescribeDataBackupSetResponseBodyDataBackupResults `json:"BackupResults,omitempty" xml:"BackupResults,omitempty" type:"Repeated"`
+	Checkpoint         *string                                               `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	DataSize           *int32                                                `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	DataVersion        *int32                                                `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	DownloadTaskId     *int64                                                `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
+	DownloadTaskStatus *string                                               `json:"DownloadTaskStatus,omitempty" xml:"DownloadTaskStatus,omitempty"`
+	EndTime            *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Method             *string                                               `json:"Method,omitempty" xml:"Method,omitempty"`
+	Policy             *string                                               `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Progress           *string                                               `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	SetId              *int32                                                `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	StartTime          *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageClass       *string                                               `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	Type               *string                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	Validity           *string                                               `json:"Validity,omitempty" xml:"Validity,omitempty"`
+}
+
+func (s DescribeDataBackupSetResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataBackupSetResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetBackupObjectType(v string) *DescribeDataBackupSetResponseBodyData {
+	s.BackupObjectType = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetBackupObjects(v []*DescribeDataBackupSetResponseBodyDataBackupObjects) *DescribeDataBackupSetResponseBodyData {
+	s.BackupObjects = v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetBackupResults(v []*DescribeDataBackupSetResponseBodyDataBackupResults) *DescribeDataBackupSetResponseBodyData {
+	s.BackupResults = v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetCheckpoint(v string) *DescribeDataBackupSetResponseBodyData {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetDataSize(v int32) *DescribeDataBackupSetResponseBodyData {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetDataVersion(v int32) *DescribeDataBackupSetResponseBodyData {
+	s.DataVersion = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetDownloadTaskId(v int64) *DescribeDataBackupSetResponseBodyData {
+	s.DownloadTaskId = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetDownloadTaskStatus(v string) *DescribeDataBackupSetResponseBodyData {
+	s.DownloadTaskStatus = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetEndTime(v string) *DescribeDataBackupSetResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetMethod(v string) *DescribeDataBackupSetResponseBodyData {
+	s.Method = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetPolicy(v string) *DescribeDataBackupSetResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetProgress(v string) *DescribeDataBackupSetResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetSetId(v int32) *DescribeDataBackupSetResponseBodyData {
+	s.SetId = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetStartTime(v string) *DescribeDataBackupSetResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetStatus(v string) *DescribeDataBackupSetResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetStorageClass(v string) *DescribeDataBackupSetResponseBodyData {
+	s.StorageClass = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetType(v string) *DescribeDataBackupSetResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyData) SetValidity(v string) *DescribeDataBackupSetResponseBodyData {
+	s.Validity = &v
+	return s
+}
+
+type DescribeDataBackupSetResponseBodyDataBackupObjects struct {
+	ClusterName        *string                                                                 `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	DatabaseTablesList []*DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList `json:"DatabaseTablesList,omitempty" xml:"DatabaseTablesList,omitempty" type:"Repeated"`
+	TenantName         *string                                                                 `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+}
+
+func (s DescribeDataBackupSetResponseBodyDataBackupObjects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataBackupSetResponseBodyDataBackupObjects) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupObjects) SetClusterName(v string) *DescribeDataBackupSetResponseBodyDataBackupObjects {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupObjects) SetDatabaseTablesList(v []*DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList) *DescribeDataBackupSetResponseBodyDataBackupObjects {
+	s.DatabaseTablesList = v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupObjects) SetTenantName(v string) *DescribeDataBackupSetResponseBodyDataBackupObjects {
+	s.TenantName = &v
+	return s
+}
+
+type DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList struct {
+	Database *string   `json:"Database,omitempty" xml:"Database,omitempty"`
+	Tables   []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList) SetDatabase(v string) *DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList) SetTables(v []*string) *DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList {
+	s.Tables = v
+	return s
+}
+
+type DescribeDataBackupSetResponseBodyDataBackupResults struct {
+	ClusterName        *string                                                                 `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	TableBackupResults []*DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults `json:"TableBackupResults,omitempty" xml:"TableBackupResults,omitempty" type:"Repeated"`
+	TenantName         *string                                                                 `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+}
+
+func (s DescribeDataBackupSetResponseBodyDataBackupResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataBackupSetResponseBodyDataBackupResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupResults) SetClusterName(v string) *DescribeDataBackupSetResponseBodyDataBackupResults {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupResults) SetTableBackupResults(v []*DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults) *DescribeDataBackupSetResponseBodyDataBackupResults {
+	s.TableBackupResults = v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupResults) SetTenantName(v string) *DescribeDataBackupSetResponseBodyDataBackupResults {
+	s.TenantName = &v
+	return s
+}
+
+type DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults struct {
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Table    *string `json:"Table,omitempty" xml:"Table,omitempty"`
+}
+
+func (s DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults) SetDatabase(v string) *DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults) SetMessage(v string) *DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults) SetStatus(v string) *DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults) SetTable(v string) *DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults {
+	s.Table = &v
+	return s
+}
+
+type DescribeDataBackupSetResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataBackupSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataBackupSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataBackupSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataBackupSetResponse) SetHeaders(v map[string]*string) *DescribeDataBackupSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponse) SetStatusCode(v int32) *DescribeDataBackupSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataBackupSetResponse) SetBody(v *DescribeDataBackupSetResponseBody) *DescribeDataBackupSetResponse {
 	s.Body = v
 	return s
 }
@@ -35948,6 +36369,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateBackupSetDownloadLinkWithOptions(request *CreateBackupSetDownloadLinkRequest, runtime *util.RuntimeOptions) (_result *CreateBackupSetDownloadLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupSetId)) {
+		body["BackupSetId"] = request.BackupSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBackupSetDownloadLink"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBackupSetDownloadLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBackupSetDownloadLink(request *CreateBackupSetDownloadLinkRequest) (_result *CreateBackupSetDownloadLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBackupSetDownloadLinkResponse{}
+	_body, _err := client.CreateBackupSetDownloadLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, runtime *util.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37829,6 +38298,74 @@ func (client *Client) DescribeCharset(request *DescribeCharsetRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCharsetResponse{}
 	_body, _err := client.DescribeCharsetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDataBackupSetWithOptions(request *DescribeDataBackupSetRequest, runtime *util.RuntimeOptions) (_result *DescribeDataBackupSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupObjectType)) {
+		body["BackupObjectType"] = request.BackupObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataBackupSet"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataBackupSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataBackupSet(request *DescribeDataBackupSetRequest) (_result *DescribeDataBackupSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataBackupSetResponse{}
+	_body, _err := client.DescribeDataBackupSetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
