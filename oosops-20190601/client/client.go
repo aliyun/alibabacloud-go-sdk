@@ -6165,6 +6165,7 @@ func (s *UpdatePublicPatchBaselineResponse) SetBody(v *UpdatePublicPatchBaseline
 }
 
 type UpdatePublicTemplateRequest struct {
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Popularity   *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
 	Publisher    *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
@@ -6178,6 +6179,11 @@ func (s UpdatePublicTemplateRequest) String() string {
 
 func (s UpdatePublicTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdatePublicTemplateRequest) SetCategory(v string) *UpdatePublicTemplateRequest {
+	s.Category = &v
+	return s
 }
 
 func (s *UpdatePublicTemplateRequest) SetContent(v string) *UpdatePublicTemplateRequest {
@@ -6229,6 +6235,7 @@ func (s *UpdatePublicTemplateResponseBody) SetTemplate(v *UpdatePublicTemplateRe
 }
 
 type UpdatePublicTemplateResponseBodyTemplate struct {
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CreatedBy       *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	CreatedDate     *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -6249,6 +6256,11 @@ func (s UpdatePublicTemplateResponseBodyTemplate) String() string {
 
 func (s UpdatePublicTemplateResponseBodyTemplate) GoString() string {
 	return s.String()
+}
+
+func (s *UpdatePublicTemplateResponseBodyTemplate) SetCategory(v string) *UpdatePublicTemplateResponseBodyTemplate {
+	s.Category = &v
+	return s
 }
 
 func (s *UpdatePublicTemplateResponseBodyTemplate) SetCreatedBy(v string) *UpdatePublicTemplateResponseBodyTemplate {
@@ -9086,6 +9098,10 @@ func (client *Client) UpdatePublicTemplateWithOptions(request *UpdatePublicTempl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		query["Content"] = request.Content
 	}
