@@ -2334,6 +2334,180 @@ func (s *GetPromptResponse) SetBody(v *GetPromptResponseBody) *GetPromptResponse
 	return s
 }
 
+type GetText2ImageJobRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetText2ImageJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetText2ImageJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetText2ImageJobRequest) SetAgentKey(v string) *GetText2ImageJobRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetText2ImageJobRequest) SetTaskId(v string) *GetText2ImageJobRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetText2ImageJobResponseBody struct {
+	Images      []*GetText2ImageJobResponseBodyImages    `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	RequestId   *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId      *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskMetrics *GetText2ImageJobResponseBodyTaskMetrics `json:"TaskMetrics,omitempty" xml:"TaskMetrics,omitempty" type:"Struct"`
+	TaskStatus  *string                                  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Usage       []*GetText2ImageJobResponseBodyUsage     `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Repeated"`
+}
+
+func (s GetText2ImageJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetText2ImageJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetText2ImageJobResponseBody) SetImages(v []*GetText2ImageJobResponseBodyImages) *GetText2ImageJobResponseBody {
+	s.Images = v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBody) SetRequestId(v string) *GetText2ImageJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBody) SetTaskId(v string) *GetText2ImageJobResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBody) SetTaskMetrics(v *GetText2ImageJobResponseBodyTaskMetrics) *GetText2ImageJobResponseBody {
+	s.TaskMetrics = v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBody) SetTaskStatus(v string) *GetText2ImageJobResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBody) SetUsage(v []*GetText2ImageJobResponseBodyUsage) *GetText2ImageJobResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetText2ImageJobResponseBodyImages struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	URL     *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s GetText2ImageJobResponseBodyImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetText2ImageJobResponseBodyImages) GoString() string {
+	return s.String()
+}
+
+func (s *GetText2ImageJobResponseBodyImages) SetCode(v string) *GetText2ImageJobResponseBodyImages {
+	s.Code = &v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBodyImages) SetMessage(v string) *GetText2ImageJobResponseBodyImages {
+	s.Message = &v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBodyImages) SetURL(v string) *GetText2ImageJobResponseBodyImages {
+	s.URL = &v
+	return s
+}
+
+type GetText2ImageJobResponseBodyTaskMetrics struct {
+	Failed    *int32 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Succeeded *int32 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	Total     *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetText2ImageJobResponseBodyTaskMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetText2ImageJobResponseBodyTaskMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *GetText2ImageJobResponseBodyTaskMetrics) SetFailed(v int32) *GetText2ImageJobResponseBodyTaskMetrics {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBodyTaskMetrics) SetSucceeded(v int32) *GetText2ImageJobResponseBodyTaskMetrics {
+	s.Succeeded = &v
+	return s
+}
+
+func (s *GetText2ImageJobResponseBodyTaskMetrics) SetTotal(v int32) *GetText2ImageJobResponseBodyTaskMetrics {
+	s.Total = &v
+	return s
+}
+
+type GetText2ImageJobResponseBodyUsage struct {
+	ImageCount *int32 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
+}
+
+func (s GetText2ImageJobResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetText2ImageJobResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetText2ImageJobResponseBodyUsage) SetImageCount(v int32) *GetText2ImageJobResponseBodyUsage {
+	s.ImageCount = &v
+	return s
+}
+
+type GetText2ImageJobResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetText2ImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetText2ImageJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetText2ImageJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetText2ImageJobResponse) SetHeaders(v map[string]*string) *GetText2ImageJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetText2ImageJobResponse) SetStatusCode(v int32) *GetText2ImageJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetText2ImageJobResponse) SetBody(v *GetText2ImageJobResponseBody) *GetText2ImageJobResponse {
+	s.Body = v
+	return s
+}
+
 type ImportEnterpriseDocumentRequest struct {
 	AgentKey     *string                                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DataType     *int32                                         `json:"DataType,omitempty" xml:"DataType,omitempty"`
@@ -3919,6 +4093,123 @@ func (s *SearchEnterpriseDataResponse) SetBody(v *SearchEnterpriseDataResponseBo
 	return s
 }
 
+type SubmitText2ImageJobRequest struct {
+	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	N              *int32  `json:"N,omitempty" xml:"N,omitempty"`
+	NegativePrompt *string `json:"NegativePrompt,omitempty" xml:"NegativePrompt,omitempty"`
+	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Seed           *int32  `json:"Seed,omitempty" xml:"Seed,omitempty"`
+	Size           *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Style          *string `json:"Style,omitempty" xml:"Style,omitempty"`
+}
+
+func (s SubmitText2ImageJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitText2ImageJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitText2ImageJobRequest) SetAgentKey(v string) *SubmitText2ImageJobRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobRequest) SetAppId(v string) *SubmitText2ImageJobRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobRequest) SetN(v int32) *SubmitText2ImageJobRequest {
+	s.N = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobRequest) SetNegativePrompt(v string) *SubmitText2ImageJobRequest {
+	s.NegativePrompt = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobRequest) SetPrompt(v string) *SubmitText2ImageJobRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobRequest) SetSeed(v int32) *SubmitText2ImageJobRequest {
+	s.Seed = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobRequest) SetSize(v string) *SubmitText2ImageJobRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobRequest) SetStyle(v string) *SubmitText2ImageJobRequest {
+	s.Style = &v
+	return s
+}
+
+type SubmitText2ImageJobResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s SubmitText2ImageJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitText2ImageJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitText2ImageJobResponseBody) SetRequestId(v string) *SubmitText2ImageJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobResponseBody) SetTaskId(v string) *SubmitText2ImageJobResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobResponseBody) SetTaskStatus(v string) *SubmitText2ImageJobResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
+type SubmitText2ImageJobResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitText2ImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitText2ImageJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitText2ImageJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitText2ImageJobResponse) SetHeaders(v map[string]*string) *SubmitText2ImageJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitText2ImageJobResponse) SetStatusCode(v int32) *SubmitText2ImageJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitText2ImageJobResponse) SetBody(v *SubmitText2ImageJobResponseBody) *SubmitText2ImageJobResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateEnterpriseDataInfoRequest struct {
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
@@ -5309,6 +5600,46 @@ func (client *Client) GetPrompt(request *GetPromptRequest) (_result *GetPromptRe
 	return _result, _err
 }
 
+func (client *Client) GetText2ImageJobWithOptions(request *GetText2ImageJobRequest, runtime *util.RuntimeOptions) (_result *GetText2ImageJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetText2ImageJob"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetText2ImageJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetText2ImageJob(request *GetText2ImageJobRequest) (_result *GetText2ImageJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetText2ImageJobResponse{}
+	_body, _err := client.GetText2ImageJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ImportEnterpriseDocumentWithOptions(tmpReq *ImportEnterpriseDocumentRequest, runtime *util.RuntimeOptions) (_result *ImportEnterpriseDocumentResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5846,6 +6177,78 @@ func (client *Client) SearchEnterpriseData(request *SearchEnterpriseDataRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchEnterpriseDataResponse{}
 	_body, _err := client.SearchEnterpriseDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitText2ImageJobWithOptions(request *SubmitText2ImageJobRequest, runtime *util.RuntimeOptions) (_result *SubmitText2ImageJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.N)) {
+		query["N"] = request.N
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NegativePrompt)) {
+		query["NegativePrompt"] = request.NegativePrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Seed)) {
+		query["Seed"] = request.Seed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Style)) {
+		query["Style"] = request.Style
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitText2ImageJob"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitText2ImageJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitText2ImageJob(request *SubmitText2ImageJobRequest) (_result *SubmitText2ImageJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitText2ImageJobResponse{}
+	_body, _err := client.SubmitText2ImageJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
