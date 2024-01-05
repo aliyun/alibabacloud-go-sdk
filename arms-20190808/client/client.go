@@ -2726,6 +2726,118 @@ func (s *AddRecordingRuleResponse) SetBody(v *AddRecordingRuleResponseBody) *Add
 	return s
 }
 
+type AddTagToFlinkClusterRequest struct {
+	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	FlinkWorkSpaceId   *string `json:"FlinkWorkSpaceId,omitempty" xml:"FlinkWorkSpaceId,omitempty"`
+	FlinkWorkSpaceName *string `json:"FlinkWorkSpaceName,omitempty" xml:"FlinkWorkSpaceName,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TargetUserId       *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+}
+
+func (s AddTagToFlinkClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTagToFlinkClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTagToFlinkClusterRequest) SetClusterId(v string) *AddTagToFlinkClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterRequest) SetFlinkWorkSpaceId(v string) *AddTagToFlinkClusterRequest {
+	s.FlinkWorkSpaceId = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterRequest) SetFlinkWorkSpaceName(v string) *AddTagToFlinkClusterRequest {
+	s.FlinkWorkSpaceName = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterRequest) SetRegionId(v string) *AddTagToFlinkClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterRequest) SetResourceGroupId(v string) *AddTagToFlinkClusterRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterRequest) SetTargetUserId(v string) *AddTagToFlinkClusterRequest {
+	s.TargetUserId = &v
+	return s
+}
+
+type AddTagToFlinkClusterResponseBody struct {
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddTagToFlinkClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTagToFlinkClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTagToFlinkClusterResponseBody) SetCode(v int32) *AddTagToFlinkClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterResponseBody) SetData(v string) *AddTagToFlinkClusterResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterResponseBody) SetRequestId(v string) *AddTagToFlinkClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterResponseBody) SetSuccess(v bool) *AddTagToFlinkClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddTagToFlinkClusterResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddTagToFlinkClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddTagToFlinkClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTagToFlinkClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTagToFlinkClusterResponse) SetHeaders(v map[string]*string) *AddTagToFlinkClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTagToFlinkClusterResponse) SetStatusCode(v int32) *AddTagToFlinkClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddTagToFlinkClusterResponse) SetBody(v *AddTagToFlinkClusterResponseBody) *AddTagToFlinkClusterResponse {
+	s.Body = v
+	return s
+}
+
 type AppendInstancesToPrometheusGlobalViewRequest struct {
 	// The list of global aggregation instances. The value is a JSON string.
 	Clusters *string `json:"Clusters,omitempty" xml:"Clusters,omitempty"`
@@ -45586,6 +45698,70 @@ func (client *Client) AddRecordingRule(request *AddRecordingRuleRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &AddRecordingRuleResponse{}
 	_body, _err := client.AddRecordingRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddTagToFlinkClusterWithOptions(request *AddTagToFlinkClusterRequest, runtime *util.RuntimeOptions) (_result *AddTagToFlinkClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlinkWorkSpaceId)) {
+		query["FlinkWorkSpaceId"] = request.FlinkWorkSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlinkWorkSpaceName)) {
+		query["FlinkWorkSpaceName"] = request.FlinkWorkSpaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
+		query["TargetUserId"] = request.TargetUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTagToFlinkCluster"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddTagToFlinkClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddTagToFlinkCluster(request *AddTagToFlinkClusterRequest) (_result *AddTagToFlinkClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddTagToFlinkClusterResponse{}
+	_body, _err := client.AddTagToFlinkClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

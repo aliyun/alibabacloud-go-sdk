@@ -1,3 +1,6 @@
+2024-01-05 Version: v4.11.0
+- Generated golang 2019-08-08 for ARMS.
+
 2024-01-04 Version: v4.10.1
 - Generated golang 2019-08-08 for ARMS.
 
