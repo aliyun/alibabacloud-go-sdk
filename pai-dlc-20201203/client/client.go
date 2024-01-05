@@ -1984,6 +1984,53 @@ func (s *Resources) SetMemory(v string) *Resources {
 	return s
 }
 
+type SanityCheckResultItem struct {
+	CheckNumber *int32  `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
+	FinishedAt  *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Phase       *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	StartedAt   *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s SanityCheckResultItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SanityCheckResultItem) GoString() string {
+	return s.String()
+}
+
+func (s *SanityCheckResultItem) SetCheckNumber(v int32) *SanityCheckResultItem {
+	s.CheckNumber = &v
+	return s
+}
+
+func (s *SanityCheckResultItem) SetFinishedAt(v string) *SanityCheckResultItem {
+	s.FinishedAt = &v
+	return s
+}
+
+func (s *SanityCheckResultItem) SetMessage(v string) *SanityCheckResultItem {
+	s.Message = &v
+	return s
+}
+
+func (s *SanityCheckResultItem) SetPhase(v string) *SanityCheckResultItem {
+	s.Phase = &v
+	return s
+}
+
+func (s *SanityCheckResultItem) SetStartedAt(v string) *SanityCheckResultItem {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *SanityCheckResultItem) SetStatus(v string) *SanityCheckResultItem {
+	s.Status = &v
+	return s
+}
+
 type SmartCache struct {
 	CacheWorkerNum  *int64  `json:"CacheWorkerNum,omitempty" xml:"CacheWorkerNum,omitempty"`
 	CacheWorkerSize *int64  `json:"CacheWorkerSize,omitempty" xml:"CacheWorkerSize,omitempty"`
@@ -2906,7 +2953,9 @@ type GetJobResponseBody struct {
 	RestartTimes     *string                          `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
 	Settings         *JobSettings                     `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	Status           *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusHistory    []*StatusTransitionItem          `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
 	SubStatus        *string                          `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	TenantId         *string                          `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	ThirdpartyLibDir *string                          `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
 	ThirdpartyLibs   []*string                        `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
 	UserCommand      *string                          `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
@@ -3063,8 +3112,18 @@ func (s *GetJobResponseBody) SetStatus(v string) *GetJobResponseBody {
 	return s
 }
 
+func (s *GetJobResponseBody) SetStatusHistory(v []*StatusTransitionItem) *GetJobResponseBody {
+	s.StatusHistory = v
+	return s
+}
+
 func (s *GetJobResponseBody) SetSubStatus(v string) *GetJobResponseBody {
 	s.SubStatus = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetTenantId(v string) *GetJobResponseBody {
+	s.TenantId = &v
 	return s
 }
 
@@ -3521,6 +3580,87 @@ func (s *GetJobMetricsResponse) SetStatusCode(v int32) *GetJobMetricsResponse {
 }
 
 func (s *GetJobMetricsResponse) SetBody(v *GetJobMetricsResponseBody) *GetJobMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type GetJobSanityCheckResultRequest struct {
+	SanityCheckNumber *int32  `json:"SanityCheckNumber,omitempty" xml:"SanityCheckNumber,omitempty"`
+	SanityCheckPhase  *string `json:"SanityCheckPhase,omitempty" xml:"SanityCheckPhase,omitempty"`
+}
+
+func (s GetJobSanityCheckResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobSanityCheckResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobSanityCheckResultRequest) SetSanityCheckNumber(v int32) *GetJobSanityCheckResultRequest {
+	s.SanityCheckNumber = &v
+	return s
+}
+
+func (s *GetJobSanityCheckResultRequest) SetSanityCheckPhase(v string) *GetJobSanityCheckResultRequest {
+	s.SanityCheckPhase = &v
+	return s
+}
+
+type GetJobSanityCheckResultResponseBody struct {
+	JobId             *string                  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestID         *string                  `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	SanityCheckResult []*SanityCheckResultItem `json:"SanityCheckResult,omitempty" xml:"SanityCheckResult,omitempty" type:"Repeated"`
+}
+
+func (s GetJobSanityCheckResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobSanityCheckResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobSanityCheckResultResponseBody) SetJobId(v string) *GetJobSanityCheckResultResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobSanityCheckResultResponseBody) SetRequestID(v string) *GetJobSanityCheckResultResponseBody {
+	s.RequestID = &v
+	return s
+}
+
+func (s *GetJobSanityCheckResultResponseBody) SetSanityCheckResult(v []*SanityCheckResultItem) *GetJobSanityCheckResultResponseBody {
+	s.SanityCheckResult = v
+	return s
+}
+
+type GetJobSanityCheckResultResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobSanityCheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetJobSanityCheckResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobSanityCheckResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobSanityCheckResultResponse) SetHeaders(v map[string]*string) *GetJobSanityCheckResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobSanityCheckResultResponse) SetStatusCode(v int32) *GetJobSanityCheckResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobSanityCheckResultResponse) SetBody(v *GetJobSanityCheckResultResponseBody) *GetJobSanityCheckResultResponse {
 	s.Body = v
 	return s
 }
@@ -4120,6 +4260,81 @@ func (s *ListEcsSpecsResponse) SetStatusCode(v int32) *ListEcsSpecsResponse {
 }
 
 func (s *ListEcsSpecsResponse) SetBody(v *ListEcsSpecsResponseBody) *ListEcsSpecsResponse {
+	s.Body = v
+	return s
+}
+
+type ListJobSanityCheckResultsRequest struct {
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+}
+
+func (s ListJobSanityCheckResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobSanityCheckResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobSanityCheckResultsRequest) SetOrder(v string) *ListJobSanityCheckResultsRequest {
+	s.Order = &v
+	return s
+}
+
+type ListJobSanityCheckResultsResponseBody struct {
+	RequestID          *string                    `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	SanityCheckResults [][]*SanityCheckResultItem `json:"SanityCheckResults,omitempty" xml:"SanityCheckResults,omitempty" type:"Repeated"`
+	TotalCount         *int32                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListJobSanityCheckResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobSanityCheckResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobSanityCheckResultsResponseBody) SetRequestID(v string) *ListJobSanityCheckResultsResponseBody {
+	s.RequestID = &v
+	return s
+}
+
+func (s *ListJobSanityCheckResultsResponseBody) SetSanityCheckResults(v [][]*SanityCheckResultItem) *ListJobSanityCheckResultsResponseBody {
+	s.SanityCheckResults = v
+	return s
+}
+
+func (s *ListJobSanityCheckResultsResponseBody) SetTotalCount(v int32) *ListJobSanityCheckResultsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListJobSanityCheckResultsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListJobSanityCheckResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListJobSanityCheckResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobSanityCheckResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobSanityCheckResultsResponse) SetHeaders(v map[string]*string) *ListJobSanityCheckResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobSanityCheckResultsResponse) SetStatusCode(v int32) *ListJobSanityCheckResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobSanityCheckResultsResponse) SetBody(v *ListJobSanityCheckResultsResponseBody) *ListJobSanityCheckResultsResponse {
 	s.Body = v
 	return s
 }
@@ -5488,6 +5703,56 @@ func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest
 	return _result, _err
 }
 
+func (client *Client) GetJobSanityCheckResultWithOptions(JobId *string, request *GetJobSanityCheckResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobSanityCheckResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SanityCheckNumber)) {
+		query["SanityCheckNumber"] = request.SanityCheckNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SanityCheckPhase)) {
+		query["SanityCheckPhase"] = request.SanityCheckPhase
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobSanityCheckResult"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/sanitycheckresult"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobSanityCheckResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSanityCheckResultRequest) (_result *GetJobSanityCheckResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetJobSanityCheckResultResponse{}
+	_body, _err := client.GetJobSanityCheckResultWithOptions(JobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, request *GetPodEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPodEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5867,6 +6132,52 @@ func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListE
 	headers := make(map[string]*string)
 	_result = &ListEcsSpecsResponse{}
 	_body, _err := client.ListEcsSpecsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListJobSanityCheckResultsWithOptions(JobId *string, request *ListJobSanityCheckResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobSanityCheckResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobSanityCheckResults"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/sanitycheckresults"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobSanityCheckResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobSanityCheckResultsRequest) (_result *ListJobSanityCheckResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListJobSanityCheckResultsResponse{}
+	_body, _err := client.ListJobSanityCheckResultsWithOptions(JobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
