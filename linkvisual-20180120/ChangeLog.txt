@@ -1,3 +1,6 @@
+2024-01-08 Version: v2.1.0
+- Generated golang 2018-01-20 for Linkvisual.
+
 2023-05-11 Version: v2.0.1
 - Support Live Streaming and VOD P2P.
 
