@@ -3587,6 +3587,7 @@ func (s *GetJobMetricsResponse) SetBody(v *GetJobMetricsResponseBody) *GetJobMet
 type GetJobSanityCheckResultRequest struct {
 	SanityCheckNumber *int32  `json:"SanityCheckNumber,omitempty" xml:"SanityCheckNumber,omitempty"`
 	SanityCheckPhase  *string `json:"SanityCheckPhase,omitempty" xml:"SanityCheckPhase,omitempty"`
+	Token             *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetJobSanityCheckResultRequest) String() string {
@@ -3604,6 +3605,11 @@ func (s *GetJobSanityCheckResultRequest) SetSanityCheckNumber(v int32) *GetJobSa
 
 func (s *GetJobSanityCheckResultRequest) SetSanityCheckPhase(v string) *GetJobSanityCheckResultRequest {
 	s.SanityCheckPhase = &v
+	return s
+}
+
+func (s *GetJobSanityCheckResultRequest) SetToken(v string) *GetJobSanityCheckResultRequest {
+	s.Token = &v
 	return s
 }
 
@@ -5715,6 +5721,10 @@ func (client *Client) GetJobSanityCheckResultWithOptions(JobId *string, request 
 
 	if !tea.BoolValue(util.IsUnset(request.SanityCheckPhase)) {
 		query["SanityCheckPhase"] = request.SanityCheckPhase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
 	}
 
 	req := &openapi.OpenApiRequest{
