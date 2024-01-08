@@ -1249,6 +1249,198 @@ func (s *TextModerationResponse) SetBody(v *TextModerationResponseBody) *TextMod
 	return s
 }
 
+type TextModerationPlusRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s TextModerationPlusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusRequest) SetService(v string) *TextModerationPlusRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *TextModerationPlusRequest) SetServiceParameters(v string) *TextModerationPlusRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type TextModerationPlusResponseBody struct {
+	Code    *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *TextModerationPlusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TextModerationPlusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBody) SetCode(v int32) *TextModerationPlusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBody) SetData(v *TextModerationPlusResponseBodyData) *TextModerationPlusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBody) SetMessage(v string) *TextModerationPlusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBody) SetRequestId(v string) *TextModerationPlusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TextModerationPlusResponseBodyData struct {
+	Advice []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
+	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Score  *float32                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s TextModerationPlusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyData) SetAdvice(v []*TextModerationPlusResponseBodyDataAdvice) *TextModerationPlusResponseBodyData {
+	s.Advice = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetResult(v []*TextModerationPlusResponseBodyDataResult) *TextModerationPlusResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetScore(v float32) *TextModerationPlusResponseBodyData {
+	s.Score = &v
+	return s
+}
+
+type TextModerationPlusResponseBodyDataAdvice struct {
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+}
+
+func (s TextModerationPlusResponseBodyDataAdvice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyDataAdvice) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyDataAdvice) SetAnswer(v string) *TextModerationPlusResponseBodyDataAdvice {
+	s.Answer = &v
+	return s
+}
+
+type TextModerationPlusResponseBodyDataResult struct {
+	Confidence    *float32                                                 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	CustomizedHit []*TextModerationPlusResponseBodyDataResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
+	Label         *string                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
+	RiskWords     *string                                                  `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+}
+
+func (s TextModerationPlusResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyDataResult) SetConfidence(v float32) *TextModerationPlusResponseBodyDataResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataResult) SetCustomizedHit(v []*TextModerationPlusResponseBodyDataResultCustomizedHit) *TextModerationPlusResponseBodyDataResult {
+	s.CustomizedHit = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataResult) SetLabel(v string) *TextModerationPlusResponseBodyDataResult {
+	s.Label = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataResult) SetRiskWords(v string) *TextModerationPlusResponseBodyDataResult {
+	s.RiskWords = &v
+	return s
+}
+
+type TextModerationPlusResponseBodyDataResultCustomizedHit struct {
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s TextModerationPlusResponseBodyDataResultCustomizedHit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyDataResultCustomizedHit) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyDataResultCustomizedHit) SetKeyWords(v string) *TextModerationPlusResponseBodyDataResultCustomizedHit {
+	s.KeyWords = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataResultCustomizedHit) SetLibName(v string) *TextModerationPlusResponseBodyDataResultCustomizedHit {
+	s.LibName = &v
+	return s
+}
+
+type TextModerationPlusResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TextModerationPlusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TextModerationPlusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponse) SetHeaders(v map[string]*string) *TextModerationPlusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TextModerationPlusResponse) SetStatusCode(v int32) *TextModerationPlusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TextModerationPlusResponse) SetBody(v *TextModerationPlusResponseBody) *TextModerationPlusResponse {
+	s.Body = v
+	return s
+}
+
 type VideoModerationRequest struct {
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
@@ -2633,6 +2825,54 @@ func (client *Client) TextModeration(request *TextModerationRequest) (_result *T
 	runtime := &util.RuntimeOptions{}
 	_result = &TextModerationResponse{}
 	_body, _err := client.TextModerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TextModerationPlusWithOptions(request *TextModerationPlusRequest, runtime *util.RuntimeOptions) (_result *TextModerationPlusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TextModerationPlus"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TextModerationPlusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TextModerationPlus(request *TextModerationPlusRequest) (_result *TextModerationPlusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TextModerationPlusResponse{}
+	_body, _err := client.TextModerationPlusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
