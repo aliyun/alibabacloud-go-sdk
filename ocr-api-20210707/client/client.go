@@ -469,21 +469,23 @@ func (s *RecognizeAirItineraryResponse) SetBody(v *RecognizeAirItineraryResponse
 }
 
 type RecognizeAllTextRequest struct {
-	AdvancedConfig            *RecognizeAllTextRequestAdvancedConfig            `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty" type:"Struct"`
-	IdCardConfig              *RecognizeAllTextRequestIdCardConfig              `json:"IdCardConfig,omitempty" xml:"IdCardConfig,omitempty" type:"Struct"`
-	InternationalIdCardConfig *RecognizeAllTextRequestInternationalIdCardConfig `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty" type:"Struct"`
-	MultiLanConfig            *RecognizeAllTextRequestMultiLanConfig            `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty" type:"Struct"`
-	OutputBarCode             *bool                                             `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
-	OutputCoordinate          []byte                                            `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
-	OutputFigure              *bool                                             `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	OutputKVExcel             *bool                                             `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
-	OutputOricoord            *bool                                             `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
-	OutputQrcode              *bool                                             `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
-	OutputStamp               *bool                                             `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
-	PageNo                    *int32                                            `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	Type                      *string                                           `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url                       *string                                           `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body                      io.Reader                                         `json:"body,omitempty" xml:"body,omitempty"`
+	AdvancedConfig                     *RecognizeAllTextRequestAdvancedConfig                     `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty" type:"Struct"`
+	IdCardConfig                       *RecognizeAllTextRequestIdCardConfig                       `json:"IdCardConfig,omitempty" xml:"IdCardConfig,omitempty" type:"Struct"`
+	InternationalBusinessLicenseConfig *RecognizeAllTextRequestInternationalBusinessLicenseConfig `json:"InternationalBusinessLicenseConfig,omitempty" xml:"InternationalBusinessLicenseConfig,omitempty" type:"Struct"`
+	InternationalIdCardConfig          *RecognizeAllTextRequestInternationalIdCardConfig          `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty" type:"Struct"`
+	MultiLanConfig                     *RecognizeAllTextRequestMultiLanConfig                     `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty" type:"Struct"`
+	OutputBarCode                      *bool                                                      `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
+	OutputCoordinate                   []byte                                                     `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
+	OutputFigure                       *bool                                                      `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	OutputKVExcel                      *bool                                                      `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
+	OutputOricoord                     *bool                                                      `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
+	OutputQrcode                       *bool                                                      `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
+	OutputStamp                        *bool                                                      `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
+	PageNo                             *int32                                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	TableConfig                        *RecognizeAllTextRequestTableConfig                        `json:"TableConfig,omitempty" xml:"TableConfig,omitempty" type:"Struct"`
+	Type                               *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url                                *string                                                    `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body                               io.Reader                                                  `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAllTextRequest) String() string {
@@ -501,6 +503,11 @@ func (s *RecognizeAllTextRequest) SetAdvancedConfig(v *RecognizeAllTextRequestAd
 
 func (s *RecognizeAllTextRequest) SetIdCardConfig(v *RecognizeAllTextRequestIdCardConfig) *RecognizeAllTextRequest {
 	s.IdCardConfig = v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetInternationalBusinessLicenseConfig(v *RecognizeAllTextRequestInternationalBusinessLicenseConfig) *RecognizeAllTextRequest {
+	s.InternationalBusinessLicenseConfig = v
 	return s
 }
 
@@ -551,6 +558,11 @@ func (s *RecognizeAllTextRequest) SetOutputStamp(v bool) *RecognizeAllTextReques
 
 func (s *RecognizeAllTextRequest) SetPageNo(v int32) *RecognizeAllTextRequest {
 	s.PageNo = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetTableConfig(v *RecognizeAllTextRequestTableConfig) *RecognizeAllTextRequest {
+	s.TableConfig = v
 	return s
 }
 
@@ -645,6 +657,23 @@ func (s *RecognizeAllTextRequestIdCardConfig) SetOutputIdCardQuality(v bool) *Re
 	return s
 }
 
+type RecognizeAllTextRequestInternationalBusinessLicenseConfig struct {
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+}
+
+func (s RecognizeAllTextRequestInternationalBusinessLicenseConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextRequestInternationalBusinessLicenseConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextRequestInternationalBusinessLicenseConfig) SetCountry(v string) *RecognizeAllTextRequestInternationalBusinessLicenseConfig {
+	s.Country = &v
+	return s
+}
+
 type RecognizeAllTextRequestInternationalIdCardConfig struct {
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
 }
@@ -679,22 +708,59 @@ func (s *RecognizeAllTextRequestMultiLanConfig) SetLanguages(v string) *Recogniz
 	return s
 }
 
+type RecognizeAllTextRequestTableConfig struct {
+	IsHandWritingTable *bool `json:"IsHandWritingTable,omitempty" xml:"IsHandWritingTable,omitempty"`
+	IsLineLessTable    *bool `json:"IsLineLessTable,omitempty" xml:"IsLineLessTable,omitempty"`
+	OutputTableExcel   *bool `json:"OutputTableExcel,omitempty" xml:"OutputTableExcel,omitempty"`
+	OutputTableHtml    *bool `json:"OutputTableHtml,omitempty" xml:"OutputTableHtml,omitempty"`
+}
+
+func (s RecognizeAllTextRequestTableConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextRequestTableConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextRequestTableConfig) SetIsHandWritingTable(v bool) *RecognizeAllTextRequestTableConfig {
+	s.IsHandWritingTable = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestTableConfig) SetIsLineLessTable(v bool) *RecognizeAllTextRequestTableConfig {
+	s.IsLineLessTable = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestTableConfig) SetOutputTableExcel(v bool) *RecognizeAllTextRequestTableConfig {
+	s.OutputTableExcel = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestTableConfig) SetOutputTableHtml(v bool) *RecognizeAllTextRequestTableConfig {
+	s.OutputTableHtml = &v
+	return s
+}
+
 type RecognizeAllTextShrinkRequest struct {
-	AdvancedConfigShrink            *string   `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
-	IdCardConfigShrink              *string   `json:"IdCardConfig,omitempty" xml:"IdCardConfig,omitempty"`
-	InternationalIdCardConfigShrink *string   `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty"`
-	MultiLanConfigShrink            *string   `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty"`
-	OutputBarCode                   *bool     `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
-	OutputCoordinate                []byte    `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
-	OutputFigure                    *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	OutputKVExcel                   *bool     `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
-	OutputOricoord                  *bool     `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
-	OutputQrcode                    *bool     `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
-	OutputStamp                     *bool     `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
-	PageNo                          *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	Type                            *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url                             *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body                            io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	AdvancedConfigShrink                     *string   `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	IdCardConfigShrink                       *string   `json:"IdCardConfig,omitempty" xml:"IdCardConfig,omitempty"`
+	InternationalBusinessLicenseConfigShrink *string   `json:"InternationalBusinessLicenseConfig,omitempty" xml:"InternationalBusinessLicenseConfig,omitempty"`
+	InternationalIdCardConfigShrink          *string   `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty"`
+	MultiLanConfigShrink                     *string   `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty"`
+	OutputBarCode                            *bool     `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
+	OutputCoordinate                         []byte    `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
+	OutputFigure                             *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	OutputKVExcel                            *bool     `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
+	OutputOricoord                           *bool     `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
+	OutputQrcode                             *bool     `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
+	OutputStamp                              *bool     `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
+	PageNo                                   *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	TableConfigShrink                        *string   `json:"TableConfig,omitempty" xml:"TableConfig,omitempty"`
+	Type                                     *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url                                      *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body                                     io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAllTextShrinkRequest) String() string {
@@ -712,6 +778,11 @@ func (s *RecognizeAllTextShrinkRequest) SetAdvancedConfigShrink(v string) *Recog
 
 func (s *RecognizeAllTextShrinkRequest) SetIdCardConfigShrink(v string) *RecognizeAllTextShrinkRequest {
 	s.IdCardConfigShrink = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetInternationalBusinessLicenseConfigShrink(v string) *RecognizeAllTextShrinkRequest {
+	s.InternationalBusinessLicenseConfigShrink = &v
 	return s
 }
 
@@ -762,6 +833,11 @@ func (s *RecognizeAllTextShrinkRequest) SetOutputStamp(v bool) *RecognizeAllText
 
 func (s *RecognizeAllTextShrinkRequest) SetPageNo(v int32) *RecognizeAllTextShrinkRequest {
 	s.PageNo = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetTableConfigShrink(v string) *RecognizeAllTextShrinkRequest {
+	s.TableConfigShrink = &v
 	return s
 }
 
@@ -9009,12 +9085,20 @@ func (client *Client) RecognizeAllTextWithOptions(tmpReq *RecognizeAllTextReques
 		request.IdCardConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IdCardConfig, tea.String("IdCardConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.InternationalBusinessLicenseConfig)) {
+		request.InternationalBusinessLicenseConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InternationalBusinessLicenseConfig, tea.String("InternationalBusinessLicenseConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.InternationalIdCardConfig)) {
 		request.InternationalIdCardConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InternationalIdCardConfig, tea.String("InternationalIdCardConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.MultiLanConfig)) {
 		request.MultiLanConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MultiLanConfig, tea.String("MultiLanConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TableConfig)) {
+		request.TableConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableConfig, tea.String("TableConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -9024,6 +9108,10 @@ func (client *Client) RecognizeAllTextWithOptions(tmpReq *RecognizeAllTextReques
 
 	if !tea.BoolValue(util.IsUnset(request.IdCardConfigShrink)) {
 		query["IdCardConfig"] = request.IdCardConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternationalBusinessLicenseConfigShrink)) {
+		query["InternationalBusinessLicenseConfig"] = request.InternationalBusinessLicenseConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InternationalIdCardConfigShrink)) {
@@ -9064,6 +9152,10 @@ func (client *Client) RecognizeAllTextWithOptions(tmpReq *RecognizeAllTextReques
 
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
 		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableConfigShrink)) {
+		query["TableConfig"] = request.TableConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
