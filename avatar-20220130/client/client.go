@@ -4313,6 +4313,7 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 
 type SubmitAudioTo2DAvatarVideoTaskRequest struct {
 	App            *SubmitAudioTo2DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	AudioInfo      *SubmitAudioTo2DAvatarVideoTaskRequestAudioInfo  `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty" type:"Struct"`
 	AvatarInfo     *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
 	Callback       *bool                                            `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	CallbackParams *string                                          `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
@@ -4333,6 +4334,11 @@ func (s SubmitAudioTo2DAvatarVideoTaskRequest) GoString() string {
 
 func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetApp(v *SubmitAudioTo2DAvatarVideoTaskRequestApp) *SubmitAudioTo2DAvatarVideoTaskRequest {
 	s.App = v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetAudioInfo(v *SubmitAudioTo2DAvatarVideoTaskRequestAudioInfo) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.AudioInfo = v
 	return s
 }
 
@@ -4390,6 +4396,23 @@ func (s SubmitAudioTo2DAvatarVideoTaskRequestApp) GoString() string {
 
 func (s *SubmitAudioTo2DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitAudioTo2DAvatarVideoTaskRequestApp {
 	s.AppId = &v
+	return s
+}
+
+type SubmitAudioTo2DAvatarVideoTaskRequestAudioInfo struct {
+	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequestAudioInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequestAudioInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestAudioInfo) SetSampleRate(v int32) *SubmitAudioTo2DAvatarVideoTaskRequestAudioInfo {
+	s.SampleRate = &v
 	return s
 }
 
@@ -4471,6 +4494,7 @@ func (s *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) 
 
 type SubmitAudioTo2DAvatarVideoTaskShrinkRequest struct {
 	AppShrink        *string `json:"App,omitempty" xml:"App,omitempty"`
+	AudioInfoShrink  *string `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty"`
 	AvatarInfoShrink *string `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty"`
 	Callback         *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	CallbackParams   *string `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
@@ -4491,6 +4515,11 @@ func (s SubmitAudioTo2DAvatarVideoTaskShrinkRequest) GoString() string {
 
 func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetAppShrink(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
 	s.AppShrink = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetAudioInfoShrink(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.AudioInfoShrink = &v
 	return s
 }
 
@@ -4623,6 +4652,7 @@ func (s *SubmitAudioTo2DAvatarVideoTaskResponse) SetBody(v *SubmitAudioTo2DAvata
 
 type SubmitAudioTo3DAvatarVideoTaskRequest struct {
 	App            *SubmitAudioTo3DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	AudioInfo      *SubmitAudioTo3DAvatarVideoTaskRequestAudioInfo  `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty" type:"Struct"`
 	AvatarInfo     *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
 	Callback       *bool                                            `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	CallbackParams *string                                          `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
@@ -4643,6 +4673,11 @@ func (s SubmitAudioTo3DAvatarVideoTaskRequest) GoString() string {
 
 func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetApp(v *SubmitAudioTo3DAvatarVideoTaskRequestApp) *SubmitAudioTo3DAvatarVideoTaskRequest {
 	s.App = v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetAudioInfo(v *SubmitAudioTo3DAvatarVideoTaskRequestAudioInfo) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.AudioInfo = v
 	return s
 }
 
@@ -4700,6 +4735,23 @@ func (s SubmitAudioTo3DAvatarVideoTaskRequestApp) GoString() string {
 
 func (s *SubmitAudioTo3DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitAudioTo3DAvatarVideoTaskRequestApp {
 	s.AppId = &v
+	return s
+}
+
+type SubmitAudioTo3DAvatarVideoTaskRequestAudioInfo struct {
+	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequestAudioInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequestAudioInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestAudioInfo) SetSampleRate(v int32) *SubmitAudioTo3DAvatarVideoTaskRequestAudioInfo {
+	s.SampleRate = &v
 	return s
 }
 
@@ -4775,6 +4827,7 @@ func (s *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) 
 
 type SubmitAudioTo3DAvatarVideoTaskShrinkRequest struct {
 	AppShrink        *string `json:"App,omitempty" xml:"App,omitempty"`
+	AudioInfoShrink  *string `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty"`
 	AvatarInfoShrink *string `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty"`
 	Callback         *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	CallbackParams   *string `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
@@ -4795,6 +4848,11 @@ func (s SubmitAudioTo3DAvatarVideoTaskShrinkRequest) GoString() string {
 
 func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetAppShrink(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
 	s.AppShrink = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetAudioInfoShrink(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.AudioInfoShrink = &v
 	return s
 }
 
@@ -5226,6 +5284,7 @@ func (s *SubmitTextTo2DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitText
 
 type SubmitTextTo2DAvatarVideoTaskRequestAudioInfo struct {
 	PitchRate  *int32  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	SampleRate *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
 	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
 	Volume     *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
@@ -5241,6 +5300,11 @@ func (s SubmitTextTo2DAvatarVideoTaskRequestAudioInfo) GoString() string {
 
 func (s *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo) SetPitchRate(v int32) *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo {
 	s.PitchRate = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo) SetSampleRate(v int32) *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo {
+	s.SampleRate = &v
 	return s
 }
 
@@ -5305,9 +5369,10 @@ type SubmitTextTo2DAvatarVideoTaskRequestVideoInfo struct {
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" xml:"BackgroundImageUrl,omitempty"`
 	IsAlpha            *bool   `json:"IsAlpha,omitempty" xml:"IsAlpha,omitempty"`
 	// Deprecated
-	IsSubtitles      *bool  `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
-	Resolution       *int32 `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	SubtitleEmbedded *bool  `json:"SubtitleEmbedded,omitempty" xml:"SubtitleEmbedded,omitempty"`
+	IsSubtitles      *bool                                                       `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
+	Resolution       *int32                                                      `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	SubtitleEmbedded *bool                                                       `json:"SubtitleEmbedded,omitempty" xml:"SubtitleEmbedded,omitempty"`
+	SubtitleStyle    *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle `json:"SubtitleStyle,omitempty" xml:"SubtitleStyle,omitempty" type:"Struct"`
 }
 
 func (s SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) String() string {
@@ -5345,6 +5410,52 @@ func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) *
 
 func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetSubtitleEmbedded(v bool) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo {
 	s.SubtitleEmbedded = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetSubtitleStyle(v *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo {
+	s.SubtitleStyle = v
+	return s
+}
+
+type SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle struct {
+	Color        *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutlineColor *string `json:"OutlineColor,omitempty" xml:"OutlineColor,omitempty"`
+	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Y            *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetColor(v string) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.Color = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetName(v string) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetOutlineColor(v string) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.OutlineColor = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetSize(v int32) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.Size = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetY(v int32) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.Y = &v
 	return s
 }
 
@@ -5596,6 +5707,7 @@ func (s *SubmitTextTo3DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitText
 
 type SubmitTextTo3DAvatarVideoTaskRequestAudioInfo struct {
 	PitchRate  *int32  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	SampleRate *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
 	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
 	Volume     *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
@@ -5611,6 +5723,11 @@ func (s SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) GoString() string {
 
 func (s *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) SetPitchRate(v int32) *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo {
 	s.PitchRate = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) SetSampleRate(v int32) *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo {
+	s.SampleRate = &v
 	return s
 }
 
@@ -5669,9 +5786,10 @@ type SubmitTextTo3DAvatarVideoTaskRequestVideoInfo struct {
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" xml:"BackgroundImageUrl,omitempty"`
 	IsAlpha            *bool   `json:"IsAlpha,omitempty" xml:"IsAlpha,omitempty"`
 	// Deprecated
-	IsSubtitles      *bool  `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
-	Resolution       *int32 `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	SubtitleEmbedded *bool  `json:"SubtitleEmbedded,omitempty" xml:"SubtitleEmbedded,omitempty"`
+	IsSubtitles      *bool                                                       `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
+	Resolution       *int32                                                      `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	SubtitleEmbedded *bool                                                       `json:"SubtitleEmbedded,omitempty" xml:"SubtitleEmbedded,omitempty"`
+	SubtitleStyle    *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle `json:"SubtitleStyle,omitempty" xml:"SubtitleStyle,omitempty" type:"Struct"`
 }
 
 func (s SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) String() string {
@@ -5709,6 +5827,52 @@ func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) *
 
 func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) SetSubtitleEmbedded(v bool) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo {
 	s.SubtitleEmbedded = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) SetSubtitleStyle(v *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo {
+	s.SubtitleStyle = v
+	return s
+}
+
+type SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle struct {
+	Color        *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutlineColor *string `json:"OutlineColor,omitempty" xml:"OutlineColor,omitempty"`
+	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Y            *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetColor(v string) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.Color = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetName(v string) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetOutlineColor(v string) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.OutlineColor = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetSize(v int32) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.Size = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle) SetY(v int32) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfoSubtitleStyle {
+	s.Y = &v
 	return s
 }
 
@@ -7464,6 +7628,10 @@ func (client *Client) SubmitAudioTo2DAvatarVideoTaskWithOptions(tmpReq *SubmitAu
 		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.AudioInfo)) {
+		request.AudioInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AudioInfo, tea.String("AudioInfo"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.AvatarInfo)) {
 		request.AvatarInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvatarInfo, tea.String("AvatarInfo"), tea.String("json"))
 	}
@@ -7475,6 +7643,10 @@ func (client *Client) SubmitAudioTo2DAvatarVideoTaskWithOptions(tmpReq *SubmitAu
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppShrink)) {
 		query["App"] = request.AppShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AudioInfoShrink)) {
+		query["AudioInfo"] = request.AudioInfoShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AvatarInfoShrink)) {
@@ -7554,6 +7726,10 @@ func (client *Client) SubmitAudioTo3DAvatarVideoTaskWithOptions(tmpReq *SubmitAu
 		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.AudioInfo)) {
+		request.AudioInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AudioInfo, tea.String("AudioInfo"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.AvatarInfo)) {
 		request.AvatarInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvatarInfo, tea.String("AvatarInfo"), tea.String("json"))
 	}
@@ -7565,6 +7741,10 @@ func (client *Client) SubmitAudioTo3DAvatarVideoTaskWithOptions(tmpReq *SubmitAu
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppShrink)) {
 		query["App"] = request.AppShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AudioInfoShrink)) {
+		query["AudioInfo"] = request.AudioInfoShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AvatarInfoShrink)) {
