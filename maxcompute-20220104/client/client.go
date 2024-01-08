@@ -1010,6 +1010,7 @@ func (s *GetPackageResponse) SetBody(v *GetPackageResponseBody) *GetPackageRespo
 }
 
 type GetProjectRequest struct {
+	// Specifies whether to use additional information.
 	Verbose *bool `json:"verbose,omitempty" xml:"verbose,omitempty"`
 }
 
@@ -1028,9 +1029,11 @@ func (s *GetProjectRequest) SetVerbose(v bool) *GetProjectRequest {
 
 type GetProjectResponseBody struct {
 	// The returned data.
-	Data      *GetProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Data *GetProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
@@ -1075,6 +1078,8 @@ type GetProjectResponseBodyData struct {
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The storage usage.
 	CostStorage *string `json:"costStorage,omitempty" xml:"costStorage,omitempty"`
+	// Create time
+	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The default computing quota.
 	DefaultQuota *string `json:"defaultQuota,omitempty" xml:"defaultQuota,omitempty"`
 	// The IP address whitelist.
@@ -1087,14 +1092,18 @@ type GetProjectResponseBodyData struct {
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
 	// The properties of the project.
 	Properties *GetProjectResponseBodyDataProperties `json:"properties,omitempty" xml:"properties,omitempty" type:"Struct"`
+	// RegionID
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The tag.
 	SaleTag *GetProjectResponseBodyDataSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The permission properties.
 	SecurityProperties *GetProjectResponseBodyDataSecurityProperties `json:"securityProperties,omitempty" xml:"securityProperties,omitempty" type:"Struct"`
 	// The status of the project. Valid values: -**AVAILABLE**: The project was available. -**READONLY**: The project was read only. -**FROZEN**: The project was frozen. -**DELETING**: The project was being deleted.
-	Status         *string   `json:"status,omitempty" xml:"status,omitempty"`
-	SuperAdmins    []*string `json:"superAdmins,omitempty" xml:"superAdmins,omitempty" type:"Repeated"`
-	ThreeTierModel *bool     `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The Super_Administrator role.
+	SuperAdmins []*string `json:"superAdmins,omitempty" xml:"superAdmins,omitempty" type:"Repeated"`
+	// Indicates whether the current project supports the three-layer model of MaxCompute.
+	ThreeTierModel *bool `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
 	// The type of the project. Valid values: -**managed**: The project is an internal project. -**external**: The project is an external project.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -1114,6 +1123,11 @@ func (s *GetProjectResponseBodyData) SetComment(v string) *GetProjectResponseBod
 
 func (s *GetProjectResponseBodyData) SetCostStorage(v string) *GetProjectResponseBodyData {
 	s.CostStorage = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyData) SetCreatedTime(v int64) *GetProjectResponseBodyData {
+	s.CreatedTime = &v
 	return s
 }
 
@@ -1144,6 +1158,11 @@ func (s *GetProjectResponseBodyData) SetProductType(v string) *GetProjectRespons
 
 func (s *GetProjectResponseBodyData) SetProperties(v *GetProjectResponseBodyDataProperties) *GetProjectResponseBodyData {
 	s.Properties = v
+	return s
+}
+
+func (s *GetProjectResponseBodyData) SetRegionId(v string) *GetProjectResponseBodyData {
+	s.RegionId = &v
 	return s
 }
 
@@ -1204,7 +1223,8 @@ func (s *GetProjectResponseBodyDataIpWhiteList) SetVpcIpList(v string) *GetProje
 
 type GetProjectResponseBodyDataProperties struct {
 	// Indicates whether a full table scan on the project is enabled.
-	AllowFullScan    *bool   `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
+	AllowFullScan *bool `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
+	// This operation does not return a value for this parameter.
 	ElderTunnelQuota *string `json:"elderTunnelQuota,omitempty" xml:"elderTunnelQuota,omitempty"`
 	// Indicates whether the DECIMAL data type in MaxCompute V2.0 is enabled.
 	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
@@ -1331,7 +1351,8 @@ func (s *GetProjectResponseBodyDataPropertiesEncryption) SetKey(v string) *GetPr
 type GetProjectResponseBodyDataPropertiesStorageTierInfo struct {
 	// The backup storage.
 	ProjectBackupSize *int64 `json:"projectBackupSize,omitempty" xml:"projectBackupSize,omitempty"`
-	ProjectTotalSize  *int64 `json:"projectTotalSize,omitempty" xml:"projectTotalSize,omitempty"`
+	// The total storage.
+	ProjectTotalSize *int64 `json:"projectTotalSize,omitempty" xml:"projectTotalSize,omitempty"`
 	// The tiered storage.
 	StorageTierSize *GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize `json:"storageTierSize,omitempty" xml:"storageTierSize,omitempty" type:"Struct"`
 }
@@ -5130,7 +5151,25 @@ func (s *ListProjectUsersResponse) SetBody(v *ListProjectUsersResponseBody) *Lis
 }
 
 type ListProjectsRequest struct {
-	// The flag to choose whether list the specific catalog - system_catalog.
+	// Specifies whether to list a project named SystemCatalog.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	ListSystemCatalog *bool `json:"listSystemCatalog,omitempty" xml:"listSystemCatalog,omitempty"`
 	// The maximum number of entries to return on each page.
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
@@ -5146,7 +5185,7 @@ type ListProjectsRequest struct {
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTags *string `json:"saleTags,omitempty" xml:"saleTags,omitempty"`
-	// The ID of the tenant.
+	// The tenant ID.
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The project type. Valid values: external and managed. The value external indicates an external project, which is used in the data lakehouse solution. The value managed indicates an internal project.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
@@ -5213,7 +5252,7 @@ func (s *ListProjectsRequest) SetType(v string) *ListProjectsRequest {
 type ListProjectsResponseBody struct {
 	// The returned data.
 	Data *ListProjectsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5275,29 +5314,51 @@ func (s *ListProjectsResponseBodyData) SetProjects(v []*ListProjectsResponseBody
 }
 
 type ListProjectsResponseBodyDataProjects struct {
-	// The tag.
+	// The tags.
 	Tags []*ListProjectsResponseBodyDataProjectsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The remarks.
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The storage usage.
 	CostStorage *string `json:"costStorage,omitempty" xml:"costStorage,omitempty"`
+	// Create time
+	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The default computing quota.
 	DefaultQuota *string `json:"defaultQuota,omitempty" xml:"defaultQuota,omitempty"`
 	// The IP address whitelist.
 	IpWhiteList *ListProjectsResponseBodyDataProjectsIpWhiteList `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Struct"`
-	// The name of the MaxCompute project.
+	// The name of the project.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The owner of the project.
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The properties of the project.
 	Properties *ListProjectsResponseBodyDataProjectsProperties `json:"properties,omitempty" xml:"properties,omitempty" type:"Struct"`
+	// Region Id
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *ListProjectsResponseBodyDataProjectsSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The permission properties.
 	SecurityProperties *ListProjectsResponseBodyDataProjectsSecurityProperties `json:"securityProperties,omitempty" xml:"securityProperties,omitempty" type:"Struct"`
-	// The status of the project. Valid values: -AVAILABLE: The project is available. -READONLY: The project is read only. -FROZEN: The project is frozen. -DELETING: The project is being deleted.
+	// The status of the project. Valid values: -AVAILABLE: The project is available. -READONLY: The project is read-only. -FROZEN: The project is frozen. -DELETING: The project is being deleted.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Indicates whether the current project support the three-tier model
+	// Indicates whether the current project supports the MaxCompute three-layer model.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	ThreeTierModel *bool `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
 	// The project type. Valid values: -managed: The project is an internal project. -external: The project is an external project.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
@@ -5326,6 +5387,11 @@ func (s *ListProjectsResponseBodyDataProjects) SetCostStorage(v string) *ListPro
 	return s
 }
 
+func (s *ListProjectsResponseBodyDataProjects) SetCreatedTime(v int64) *ListProjectsResponseBodyDataProjects {
+	s.CreatedTime = &v
+	return s
+}
+
 func (s *ListProjectsResponseBodyDataProjects) SetDefaultQuota(v string) *ListProjectsResponseBodyDataProjects {
 	s.DefaultQuota = &v
 	return s
@@ -5348,6 +5414,11 @@ func (s *ListProjectsResponseBodyDataProjects) SetOwner(v string) *ListProjectsR
 
 func (s *ListProjectsResponseBodyDataProjects) SetProperties(v *ListProjectsResponseBodyDataProjectsProperties) *ListProjectsResponseBodyDataProjects {
 	s.Properties = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataProjects) SetRegionId(v string) *ListProjectsResponseBodyDataProjects {
+	s.RegionId = &v
 	return s
 }
 
@@ -5377,9 +5448,9 @@ func (s *ListProjectsResponseBodyDataProjects) SetType(v string) *ListProjectsRe
 }
 
 type ListProjectsResponseBodyDataProjectsTags struct {
-	// The key of the tag.
+	// The tag key.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -5429,19 +5500,19 @@ func (s *ListProjectsResponseBodyDataProjectsIpWhiteList) SetVpcIpList(v string)
 type ListProjectsResponseBodyDataProjectsProperties struct {
 	// Indicates whether a full table scan on the project is enabled.
 	AllowFullScan *bool `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
-	// Indicates whether the DECIMAL data type in MaxCompute V2.0 is enabled.
+	// Indicates whether the DECIMAL data type in the MaxCompute V2.0 data type edition is enabled.
 	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
 	// Indicates whether tunnel quota routing is enabled.
 	EnableTunnelQuotaRoute *bool `json:"enableTunnelQuotaRoute,omitempty" xml:"enableTunnelQuotaRoute,omitempty"`
 	// The encryption information.
 	Encryption *ListProjectsResponseBodyDataProjectsPropertiesEncryption `json:"encryption,omitempty" xml:"encryption,omitempty" type:"Struct"`
-	// The number of days for which backup data can be retained.
+	// The maximum number of days for which backup data can be retained.
 	RetentionDays *int64 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
 	// The upper limit for the resources that are consumed by an SQL statement.
 	SqlMeteringMax *string `json:"sqlMeteringMax,omitempty" xml:"sqlMeteringMax,omitempty"`
-	// The lifecycle of tables in the project.
+	// The lifecycle of a table in the project.
 	TableLifecycle *ListProjectsResponseBodyDataProjectsPropertiesTableLifecycle `json:"tableLifecycle,omitempty" xml:"tableLifecycle,omitempty" type:"Struct"`
-	// The time zone of the project.
+	// The time zone of the instance.
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The name of the tunnel quota.
 	TunnelQuota *string `json:"tunnelQuota,omitempty" xml:"tunnelQuota,omitempty"`
@@ -7568,7 +7639,8 @@ type ListResourcesRequest struct {
 	// The maximum number of entries to return on each page.
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The name of the resource.
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the schema.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -7658,21 +7730,69 @@ func (s *ListResourcesResponseBodyData) SetResources(v []*ListResourcesResponseB
 }
 
 type ListResourcesResponseBodyDataResources struct {
-	Comment    *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The remarks.
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The Base64-encoded 128-bit MD5 hash value of the HTTP request body.
 	ContentMD5 *string `json:"contentMD5,omitempty" xml:"contentMD5,omitempty"`
 	// The time when the resource was created.
-	CreationTime     *int64  `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
-	DisplayName      *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	LastModifiedTime *int64  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LastUpdator      *string `json:"lastUpdator,omitempty" xml:"lastUpdator,omitempty"`
+	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
+	// The display name.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The time when the resource was modified.
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The user who updated the resource.
+	LastUpdator *string `json:"lastUpdator,omitempty" xml:"lastUpdator,omitempty"`
 	// The name of the resource.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The owner of the resource.
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The schema of the resource.
+	// The schema to which the resource belongs.
 	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
-	Size   *int64  `json:"size,omitempty" xml:"size,omitempty"`
-	// The type of the resource.
+	// The size of the resource.
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// The resource type.
+	//
+	// Valid values:
+	//
+	// *   file
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   py
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   jar
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   volumefile
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   table
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -8088,7 +8208,8 @@ type ListTablesRequest struct {
 	// The maximum number of entries to return on each page.
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
-	Prefix     *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The name of the schema.
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 	// The type of the table.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
@@ -8130,7 +8251,7 @@ func (s *ListTablesRequest) SetType(v string) *ListTablesRequest {
 type ListTablesResponseBody struct {
 	// The returned data.
 	Data *ListTablesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -8185,42 +8306,69 @@ func (s *ListTablesResponseBodyData) SetTables(v []*ListTablesResponseBodyDataTa
 }
 
 type ListTablesResponseBodyDataTables struct {
-	AutoRefreshEnabled *bool   `json:"autoRefreshEnabled,omitempty" xml:"autoRefreshEnabled,omitempty"`
-	CreateTableDDL     *string `json:"createTableDDL,omitempty" xml:"createTableDDL,omitempty"`
+	// Indicates whether to enable the scheduled update feature for the materialized view.
+	AutoRefreshEnabled *bool `json:"autoRefreshEnabled,omitempty" xml:"autoRefreshEnabled,omitempty"`
+	// The DDL statement that is used to create the table.
+	CreateTableDDL *string `json:"createTableDDL,omitempty" xml:"createTableDDL,omitempty"`
 	// The time when the table was created.
-	CreationTime     *int64  `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
-	DisplayName      *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	FileNum          *int64  `json:"fileNum,omitempty" xml:"fileNum,omitempty"`
-	IsExternalTable  *bool   `json:"isExternalTable,omitempty" xml:"isExternalTable,omitempty"`
-	IsOutdated       *bool   `json:"isOutdated,omitempty" xml:"isOutdated,omitempty"`
-	LastAccessTime   *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	LastDDLTime      *int64  `json:"lastDDLTime,omitempty" xml:"lastDDLTime,omitempty"`
-	LastModifiedTime *int64  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Lifecycle        *string `json:"lifecycle,omitempty" xml:"lifecycle,omitempty"`
-	Location         *string `json:"location,omitempty" xml:"location,omitempty"`
-	MaterializedView *bool   `json:"materializedView,omitempty" xml:"materializedView,omitempty"`
+	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
+	// The display name of the table.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The number of files.
+	FileNum *int64 `json:"fileNum,omitempty" xml:"fileNum,omitempty"`
+	// Indicates whether the table is an external table.
+	IsExternalTable *bool `json:"isExternalTable,omitempty" xml:"isExternalTable,omitempty"`
+	// Indicates whether the data in the materialized view is invalid due to data changes in the source table.
+	IsOutdated *bool `json:"isOutdated,omitempty" xml:"isOutdated,omitempty"`
+	// The time when the data was last accessed.
+	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	// The last time when the DDL statement of the table was updated.
+	LastDDLTime *int64 `json:"lastDDLTime,omitempty" xml:"lastDDLTime,omitempty"`
+	// The time when the data was last updated.
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The lifecycle of the table.
+	Lifecycle *string `json:"lifecycle,omitempty" xml:"lifecycle,omitempty"`
+	// The storage location of the external table.
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// Indicates whether a materialized view is created.
+	MaterializedView *bool `json:"materializedView,omitempty" xml:"materializedView,omitempty"`
 	// The name of the table.
-	Name                           *string                                          `json:"name,omitempty" xml:"name,omitempty"`
-	NativeColumns                  []*ListTablesResponseBodyDataTablesNativeColumns `json:"nativeColumns,omitempty" xml:"nativeColumns,omitempty" type:"Repeated"`
-	OdpsPropertiesRolearn          *string                                          `json:"odpsPropertiesRolearn,omitempty" xml:"odpsPropertiesRolearn,omitempty"`
-	OdpsSqlTextOptionFlushHeader   *bool                                            `json:"odpsSqlTextOptionFlushHeader,omitempty" xml:"odpsSqlTextOptionFlushHeader,omitempty"`
-	OdpsTextOptionHeaderLinesCount *int64                                           `json:"odpsTextOptionHeaderLinesCount,omitempty" xml:"odpsTextOptionHeaderLinesCount,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The information about columns.
+	NativeColumns []*ListTablesResponseBodyDataTablesNativeColumns `json:"nativeColumns,omitempty" xml:"nativeColumns,omitempty" type:"Repeated"`
+	// The Alibaba Cloud Resource Name (ARN) of AliyunODPSDefaultRole in Resource Access Management (RAM).
+	OdpsPropertiesRolearn *string `json:"odpsPropertiesRolearn,omitempty" xml:"odpsPropertiesRolearn,omitempty"`
+	// Indicates whether to ignore the table header.
+	OdpsSqlTextOptionFlushHeader *bool `json:"odpsSqlTextOptionFlushHeader,omitempty" xml:"odpsSqlTextOptionFlushHeader,omitempty"`
+	// Indicates whether to ignore the first N rows of the table header.
+	OdpsTextOptionHeaderLinesCount *int64 `json:"odpsTextOptionHeaderLinesCount,omitempty" xml:"odpsTextOptionHeaderLinesCount,omitempty"`
 	// The owner of the table.
-	Owner            *string                                             `json:"owner,omitempty" xml:"owner,omitempty"`
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The information about the partition column.
 	PartitionColumns []*ListTablesResponseBodyDataTablesPartitionColumns `json:"partitionColumns,omitempty" xml:"partitionColumns,omitempty" type:"Repeated"`
-	PhysicalSize     *int64                                              `json:"physicalSize,omitempty" xml:"physicalSize,omitempty"`
-	ProjectName      *string                                             `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	RewriteEnabled   *bool                                               `json:"rewriteEnabled,omitempty" xml:"rewriteEnabled,omitempty"`
-	// The schema of the table.
-	Schema                   *string `json:"schema,omitempty" xml:"schema,omitempty"`
-	Size                     *int64  `json:"size,omitempty" xml:"size,omitempty"`
-	StorageHandler           *string `json:"storageHandler,omitempty" xml:"storageHandler,omitempty"`
-	TableComment             *string `json:"tableComment,omitempty" xml:"tableComment,omitempty"`
-	TableLabel               *string `json:"tableLabel,omitempty" xml:"tableLabel,omitempty"`
-	TablesotreTableName      *string `json:"tablesotreTableName,omitempty" xml:"tablesotreTableName,omitempty"`
+	// The physical size of the table.
+	PhysicalSize *int64 `json:"physicalSize,omitempty" xml:"physicalSize,omitempty"`
+	// The name of the project.
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// Indicates whether to enable the query rewrite operation that is performed based on the materialized view.
+	RewriteEnabled *bool `json:"rewriteEnabled,omitempty" xml:"rewriteEnabled,omitempty"`
+	// The schema to which the table belongs.
+	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The size of the table.
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// The extractor of the external table.
+	StorageHandler *string `json:"storageHandler,omitempty" xml:"storageHandler,omitempty"`
+	// The description of the table.
+	TableComment *string `json:"tableComment,omitempty" xml:"tableComment,omitempty"`
+	// The security level of the table.
+	TableLabel *string `json:"tableLabel,omitempty" xml:"tableLabel,omitempty"`
+	// The name of the Tablestore table that you want MaxCompute to access.
+	TablesotreTableName *string `json:"tablesotreTableName,omitempty" xml:"tablesotreTableName,omitempty"`
+	// The columns of the Tablestore table that you want MaxCompute to access. The columns include primary key columns and attribute columns.
 	TablestoreColumnsMapping *string `json:"tablestoreColumnsMapping,omitempty" xml:"tablestoreColumnsMapping,omitempty"`
 	// The type of the table.
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The statement that is used to generate the view.
 	ViewText *string `json:"viewText,omitempty" xml:"viewText,omitempty"`
 }
 
@@ -8393,10 +8541,14 @@ func (s *ListTablesResponseBodyDataTables) SetViewText(v string) *ListTablesResp
 }
 
 type ListTablesResponseBodyDataTablesNativeColumns struct {
+	// The remarks.
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The security level of the column.
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The name of the column.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the column.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListTablesResponseBodyDataTablesNativeColumns) String() string {
@@ -8428,10 +8580,14 @@ func (s *ListTablesResponseBodyDataTablesNativeColumns) SetType(v string) *ListT
 }
 
 type ListTablesResponseBodyDataTablesPartitionColumns struct {
+	// The remarks.
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The security level of the partition column.
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The name of the partition column.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the partition column.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListTablesResponseBodyDataTablesPartitionColumns) String() string {
