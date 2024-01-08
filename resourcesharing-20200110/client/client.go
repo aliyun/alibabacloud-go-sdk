@@ -15,7 +15,7 @@ import (
 type AcceptResourceShareInvitationRequest struct {
 	// The ID of the resource sharing invitation.
 	//
-	// You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+	// You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID.
 	ResourceShareInvitationId *string `json:"ResourceShareInvitationId,omitempty" xml:"ResourceShareInvitationId,omitempty"`
 }
 
@@ -33,9 +33,9 @@ func (s *AcceptResourceShareInvitationRequest) SetResourceShareInvitationId(v st
 }
 
 type AcceptResourceShareInvitationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource sharing invitation.
+	// The information about the resource sharing invitation.
 	ResourceShareInvitation *AcceptResourceShareInvitationResponseBodyResourceShareInvitation `json:"ResourceShareInvitation,omitempty" xml:"ResourceShareInvitation,omitempty" type:"Struct"`
 }
 
@@ -58,6 +58,7 @@ func (s *AcceptResourceShareInvitationResponseBody) SetResourceShareInvitation(v
 }
 
 type AcceptResourceShareInvitationResponseBodyResourceShareInvitation struct {
+	// The information about the failure.
 	AcceptInvitationFailedDetails []*AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails `json:"AcceptInvitationFailedDetails,omitempty" xml:"AcceptInvitationFailedDetails,omitempty" type:"Repeated"`
 	// The time when the invitation was created. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -65,7 +66,7 @@ type AcceptResourceShareInvitationResponseBodyResourceShareInvitation struct {
 	ReceiverAccountId *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
 	// The ID of the resource share.
 	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	// The ID of the invitation.
+	// The ID of the resource sharing invitation.
 	ResourceShareInvitationId *string `json:"ResourceShareInvitationId,omitempty" xml:"ResourceShareInvitationId,omitempty"`
 	// The name of the resource share.
 	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
@@ -73,11 +74,12 @@ type AcceptResourceShareInvitationResponseBodyResourceShareInvitation struct {
 	SenderAccountId *string `json:"SenderAccountId,omitempty" xml:"SenderAccountId,omitempty"`
 	// The status of the invitation. Valid values:
 	//
-	// *   Pending: The invitation is waiting for confirmation.
-	// *   Accepted: The invitation is accepted.
-	// *   Cancelled: The invitation is canceled.
-	// *   Rejected: The invitation is rejected.
-	// *   Expired: The invitation has expired.
+	// *   Pending
+	// *   Accepted
+	// *   Cancelled
+	// *   Rejected
+	// *   Expired
+	// *   AcceptFailed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -130,10 +132,24 @@ func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitation) SetSt
 }
 
 type AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails struct {
+	// The type of the sharing operation. Valid values:
+	//
+	// *   Associate
 	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the shared resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the shared resource.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The failure status. Valid values:
+	//
+	// *   Unavailable: The resource cannot be shared.
+	// *   LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
+	// *   ZonalResourceInaccessible: The resource is unavailable in this region.
+	// *   InternalError: An internal error occurred during the check.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The failure cause.
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 }
 
@@ -335,6 +351,7 @@ type AssociateResourceShareResponseBodyResourceShareAssociations struct {
 	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 	// The name of the resource share.
 	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	TargetProperty    *string `json:"TargetProperty,omitempty" xml:"TargetProperty,omitempty"`
 	// The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
 	//
 	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the association of the shared resource was updated.
@@ -387,6 +404,11 @@ func (s *AssociateResourceShareResponseBodyResourceShareAssociations) SetResourc
 
 func (s *AssociateResourceShareResponseBodyResourceShareAssociations) SetResourceShareName(v string) *AssociateResourceShareResponseBodyResourceShareAssociations {
 	s.ResourceShareName = &v
+	return s
+}
+
+func (s *AssociateResourceShareResponseBodyResourceShareAssociations) SetTargetProperty(v string) *AssociateResourceShareResponseBodyResourceShareAssociations {
+	s.TargetProperty = &v
 	return s
 }
 
@@ -1165,6 +1187,7 @@ type DisassociateResourceShareResponseBodyResourceShareAssociations struct {
 	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 	// The name of the resource share.
 	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	TargetProperty    *string `json:"TargetProperty,omitempty" xml:"TargetProperty,omitempty"`
 	// The time when the disassociation of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
 	//
 	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the disassociation of the resource was updated.
@@ -1217,6 +1240,11 @@ func (s *DisassociateResourceShareResponseBodyResourceShareAssociations) SetReso
 
 func (s *DisassociateResourceShareResponseBodyResourceShareAssociations) SetResourceShareName(v string) *DisassociateResourceShareResponseBodyResourceShareAssociations {
 	s.ResourceShareName = &v
+	return s
+}
+
+func (s *DisassociateResourceShareResponseBodyResourceShareAssociations) SetTargetProperty(v string) *DisassociateResourceShareResponseBodyResourceShareAssociations {
+	s.TargetProperty = &v
 	return s
 }
 
@@ -1965,6 +1993,7 @@ func (s *ListResourceShareAssociationsResponseBody) SetResourceShareAssociations
 }
 
 type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
+	AssociationFailedDetails []*ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails `json:"AssociationFailedDetails,omitempty" xml:"AssociationFailedDetails,omitempty" type:"Repeated"`
 	// The association status. Valid values:
 	//
 	// *   Associating: The entity is being associated.
@@ -2006,6 +2035,7 @@ type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
 	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 	// The name of the resource share.
 	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	TargetProperty    *string `json:"TargetProperty,omitempty" xml:"TargetProperty,omitempty"`
 	// The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
 	//
 	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the association of the shared resource was updated.
@@ -2019,6 +2049,11 @@ func (s ListResourceShareAssociationsResponseBodyResourceShareAssociations) Stri
 
 func (s ListResourceShareAssociationsResponseBodyResourceShareAssociations) GoString() string {
 	return s.String()
+}
+
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) SetAssociationFailedDetails(v []*ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) *ListResourceShareAssociationsResponseBodyResourceShareAssociations {
+	s.AssociationFailedDetails = v
+	return s
 }
 
 func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) SetAssociationStatus(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociations {
@@ -2066,8 +2101,54 @@ func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) Set
 	return s
 }
 
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) SetTargetProperty(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociations {
+	s.TargetProperty = &v
+	return s
+}
+
 func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) SetUpdateTime(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociations {
 	s.UpdateTime = &v
+	return s
+}
+
+type ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails struct {
+	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityType    *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+}
+
+func (s ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetAssociateType(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
+	s.AssociateType = &v
+	return s
+}
+
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetEntityId(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
+	s.EntityId = &v
+	return s
+}
+
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetEntityType(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetStatus(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
+	s.Status = &v
+	return s
+}
+
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetStatusMessage(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
+	s.StatusMessage = &v
 	return s
 }
 
@@ -2105,7 +2186,7 @@ type ListResourceShareInvitationsRequest struct {
 	//
 	// Valid values: 1 to 100. Default value: 20.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The IDs of the resource shares.
 	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
@@ -2142,11 +2223,11 @@ func (s *ListResourceShareInvitationsRequest) SetResourceShareInvitationIds(v []
 }
 
 type ListResourceShareInvitationsResponseBody struct {
-	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource sharing invitations.
+	// The information about the resource sharing invitations.
 	ResourceShareInvitations []*ListResourceShareInvitationsResponseBodyResourceShareInvitations `json:"ResourceShareInvitations,omitempty" xml:"ResourceShareInvitations,omitempty" type:"Repeated"`
 }
 
@@ -2175,7 +2256,8 @@ func (s *ListResourceShareInvitationsResponseBody) SetResourceShareInvitations(v
 
 type ListResourceShareInvitationsResponseBodyResourceShareInvitations struct {
 	// The time when the invitation was created. The time is displayed in UTC.
-	CreateTime              *string                                                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The information about the failure.
 	InvitationFailedDetails []*ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails `json:"InvitationFailedDetails,omitempty" xml:"InvitationFailedDetails,omitempty" type:"Repeated"`
 	// The Alibaba Cloud account ID of the invitee.
 	ReceiverAccountId *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
@@ -2189,11 +2271,12 @@ type ListResourceShareInvitationsResponseBodyResourceShareInvitations struct {
 	SenderAccountId *string `json:"SenderAccountId,omitempty" xml:"SenderAccountId,omitempty"`
 	// The status of the invitation. Valid values:
 	//
-	// *   Pending: The invitation is waiting for confirmation.
-	// *   Accepted: The invitation is accepted.
-	// *   Cancelled: The invitation is canceled.
-	// *   Rejected: The invitation is rejected.
-	// *   Expired: The invitation has expired.
+	// *   Pending
+	// *   Accepted
+	// *   Cancelled
+	// *   Rejected
+	// *   Expired
+	// *   AcceptFailed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2246,10 +2329,26 @@ func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) SetSt
 }
 
 type ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails struct {
+	// The type of the sharing operation. Valid values:
+	//
+	// *   Associate
+	// *   Disassociate
 	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the shared resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the shared resource.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The failure status. Valid values:
+	//
+	// *   Unavailable: The resource cannot be shared.
+	// *   LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
+	// *   ZonalResourceInaccessible: The resource is unavailable in this region.
+	// *   UnsupportedOperation: The operation is not allowed because another association exists.
+	// *   InternalError: An internal error occurred during the check.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The failure cause.
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 }
 
@@ -3004,7 +3103,8 @@ type ListSharedTargetsResponseBodySharedTargets struct {
 	//
 	// *   If the value of `ResourceOwner` is `Self`, the value of this parameter is the ID of a principal.
 	// *   If the value of `ResourceOwner` is `OtherAccounts`, the value of this parameter is the ID of a resource owner.
-	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetId       *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetProperty *string `json:"TargetProperty,omitempty" xml:"TargetProperty,omitempty"`
 	// The time when the association of the principal was updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -3034,6 +3134,11 @@ func (s *ListSharedTargetsResponseBodySharedTargets) SetResourceShareId(v string
 
 func (s *ListSharedTargetsResponseBodySharedTargets) SetTargetId(v string) *ListSharedTargetsResponseBodySharedTargets {
 	s.TargetId = &v
+	return s
+}
+
+func (s *ListSharedTargetsResponseBodySharedTargets) SetTargetProperty(v string) *ListSharedTargetsResponseBodySharedTargets {
+	s.TargetProperty = &v
 	return s
 }
 
@@ -3422,9 +3527,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 }
 
 /**
+ * ### [](#)
  * *   A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
  * *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
- * This topic provides an example on how to call the API operation to accept the resource sharing invitation `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
+ * This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
  *
  * @param request AcceptResourceShareInvitationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3464,9 +3570,10 @@ func (client *Client) AcceptResourceShareInvitationWithOptions(request *AcceptRe
 }
 
 /**
+ * ### [](#)
  * *   A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
  * *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
- * This topic provides an example on how to call the API operation to accept the resource sharing invitation `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
+ * This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
  *
  * @param request AcceptResourceShareInvitationRequest
  * @return AcceptResourceShareInvitationResponse
@@ -4339,6 +4446,7 @@ func (client *Client) ListResourceShareAssociations(request *ListResourceShareAs
 }
 
 /**
+ * ### [](#)
  * This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
  *
  * @param request ListResourceShareInvitationsRequest
@@ -4391,6 +4499,7 @@ func (client *Client) ListResourceShareInvitationsWithOptions(request *ListResou
 }
 
 /**
+ * ### [](#)
  * This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
  *
  * @param request ListResourceShareInvitationsRequest
