@@ -48,8 +48,8 @@ func (s *ActualDeductResourceCmd) SetTaskId(v string) *ActualDeductResourceCmd {
 }
 
 type ActualDeductResourceResult struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	Errorcode    *string `json:"errorcode,omitempty" xml:"errorcode,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
@@ -62,13 +62,13 @@ func (s ActualDeductResourceResult) GoString() string {
 	return s.String()
 }
 
-func (s *ActualDeductResourceResult) SetErrorMessage(v string) *ActualDeductResourceResult {
-	s.ErrorMessage = &v
+func (s *ActualDeductResourceResult) SetErrorCode(v string) *ActualDeductResourceResult {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *ActualDeductResourceResult) SetErrorcode(v string) *ActualDeductResourceResult {
-	s.Errorcode = &v
+func (s *ActualDeductResourceResult) SetErrorMessage(v string) *ActualDeductResourceResult {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -136,8 +136,8 @@ func (s *DirectDeductResourceCmd) SetToken(v string) *DirectDeductResourceCmd {
 }
 
 type DirectDeductResourceResult struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	Errorcode    *string `json:"errorcode,omitempty" xml:"errorcode,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
@@ -150,13 +150,13 @@ func (s DirectDeductResourceResult) GoString() string {
 	return s.String()
 }
 
-func (s *DirectDeductResourceResult) SetErrorMessage(v string) *DirectDeductResourceResult {
-	s.ErrorMessage = &v
+func (s *DirectDeductResourceResult) SetErrorCode(v string) *DirectDeductResourceResult {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *DirectDeductResourceResult) SetErrorcode(v string) *DirectDeductResourceResult {
-	s.Errorcode = &v
+func (s *DirectDeductResourceResult) SetErrorMessage(v string) *DirectDeductResourceResult {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -224,8 +224,8 @@ func (s *ExpectDeductResourceCmd) SetToken(v string) *ExpectDeductResourceCmd {
 }
 
 type ExpectDeductResourceResult struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	Errorcode    *string `json:"errorcode,omitempty" xml:"errorcode,omitempty"`
 	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
@@ -239,13 +239,13 @@ func (s ExpectDeductResourceResult) GoString() string {
 	return s.String()
 }
 
-func (s *ExpectDeductResourceResult) SetErrorMessage(v string) *ExpectDeductResourceResult {
-	s.ErrorMessage = &v
+func (s *ExpectDeductResourceResult) SetErrorCode(v string) *ExpectDeductResourceResult {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *ExpectDeductResourceResult) SetErrorcode(v string) *ExpectDeductResourceResult {
-	s.Errorcode = &v
+func (s *ExpectDeductResourceResult) SetErrorMessage(v string) *ExpectDeductResourceResult {
+	s.ErrorMessage = &v
 	return s
 }
 
