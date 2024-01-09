@@ -106,7 +106,9 @@ type CreateTrailRequest struct {
 	//
 	// *   true: creates a multi-account trail.
 	// *   false (default): creates a single-account trail.
-	IsOrganizationTrail *bool `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
+	IsOrganizationTrail    *bool   `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
+	MaxComputeProjectArn   *string `json:"MaxComputeProjectArn,omitempty" xml:"MaxComputeProjectArn,omitempty"`
+	MaxComputeWriteRoleArn *string `json:"MaxComputeWriteRoleArn,omitempty" xml:"MaxComputeWriteRoleArn,omitempty"`
 	// The name of the trail to be created.
 	//
 	// The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (\_).
@@ -163,6 +165,16 @@ func (s *CreateTrailRequest) SetIsOrganizationTrail(v bool) *CreateTrailRequest 
 	return s
 }
 
+func (s *CreateTrailRequest) SetMaxComputeProjectArn(v string) *CreateTrailRequest {
+	s.MaxComputeProjectArn = &v
+	return s
+}
+
+func (s *CreateTrailRequest) SetMaxComputeWriteRoleArn(v string) *CreateTrailRequest {
+	s.MaxComputeWriteRoleArn = &v
+	return s
+}
+
 func (s *CreateTrailRequest) SetName(v string) *CreateTrailRequest {
 	s.Name = &v
 	return s
@@ -202,7 +214,9 @@ type CreateTrailResponseBody struct {
 	// The read/write type of the events to be delivered.
 	EventRW *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
 	// The home region of the trail.
-	HomeRegion *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
+	HomeRegion             *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
+	MaxComputeProjectArn   *string `json:"MaxComputeProjectArn,omitempty" xml:"MaxComputeProjectArn,omitempty"`
+	MaxComputeWriteRoleArn *string `json:"MaxComputeWriteRoleArn,omitempty" xml:"MaxComputeWriteRoleArn,omitempty"`
 	// The name of the trail.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The name of the OSS bucket to which events are to be delivered.
@@ -236,6 +250,16 @@ func (s *CreateTrailResponseBody) SetEventRW(v string) *CreateTrailResponseBody 
 
 func (s *CreateTrailResponseBody) SetHomeRegion(v string) *CreateTrailResponseBody {
 	s.HomeRegion = &v
+	return s
+}
+
+func (s *CreateTrailResponseBody) SetMaxComputeProjectArn(v string) *CreateTrailResponseBody {
+	s.MaxComputeProjectArn = &v
+	return s
+}
+
+func (s *CreateTrailResponseBody) SetMaxComputeWriteRoleArn(v string) *CreateTrailResponseBody {
+	s.MaxComputeWriteRoleArn = &v
 	return s
 }
 
@@ -648,7 +672,9 @@ type DescribeTrailsResponseBodyTrailList struct {
 	//
 	// *   false (default)
 	// *   true
-	IsOrganizationTrail *bool `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
+	IsOrganizationTrail    *bool   `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
+	MaxComputeProjectArn   *string `json:"MaxComputeProjectArn,omitempty" xml:"MaxComputeProjectArn,omitempty"`
+	MaxComputeWriteRoleArn *string `json:"MaxComputeWriteRoleArn,omitempty" xml:"MaxComputeWriteRoleArn,omitempty"`
 	// The name of the trail.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource directory.
@@ -712,6 +738,16 @@ func (s *DescribeTrailsResponseBodyTrailList) SetHomeRegion(v string) *DescribeT
 
 func (s *DescribeTrailsResponseBodyTrailList) SetIsOrganizationTrail(v bool) *DescribeTrailsResponseBodyTrailList {
 	s.IsOrganizationTrail = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetMaxComputeProjectArn(v string) *DescribeTrailsResponseBodyTrailList {
+	s.MaxComputeProjectArn = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetMaxComputeWriteRoleArn(v string) *DescribeTrailsResponseBodyTrailList {
+	s.MaxComputeWriteRoleArn = &v
 	return s
 }
 
@@ -2596,7 +2632,9 @@ type UpdateTrailRequest struct {
 	// *   Write: write events. It is the default value.
 	// *   Read: read events.
 	// *   All: read and write events.
-	EventRW *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
+	EventRW                *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
+	MaxComputeProjectArn   *string `json:"MaxComputeProjectArn,omitempty" xml:"MaxComputeProjectArn,omitempty"`
+	MaxComputeWriteRoleArn *string `json:"MaxComputeWriteRoleArn,omitempty" xml:"MaxComputeWriteRoleArn,omitempty"`
 	// The name of the trail whose configurations you want to update.
 	//
 	// The name must be 6 to 36 characters in length and can contain lowercase letters, digits, hyphens (-), and underscores (\_). It must start with a lowercase letter.
@@ -2646,6 +2684,16 @@ func (s *UpdateTrailRequest) SetEventRW(v string) *UpdateTrailRequest {
 	return s
 }
 
+func (s *UpdateTrailRequest) SetMaxComputeProjectArn(v string) *UpdateTrailRequest {
+	s.MaxComputeProjectArn = &v
+	return s
+}
+
+func (s *UpdateTrailRequest) SetMaxComputeWriteRoleArn(v string) *UpdateTrailRequest {
+	s.MaxComputeWriteRoleArn = &v
+	return s
+}
+
 func (s *UpdateTrailRequest) SetName(v string) *UpdateTrailRequest {
 	s.Name = &v
 	return s
@@ -2685,7 +2733,9 @@ type UpdateTrailResponseBody struct {
 	// The read/write type of the events to be delivered.
 	EventRW *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
 	// The home region of the trail.
-	HomeRegion *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
+	HomeRegion             *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
+	MaxComputeProjectArn   *string `json:"MaxComputeProjectArn,omitempty" xml:"MaxComputeProjectArn,omitempty"`
+	MaxComputeWriteRoleArn *string `json:"MaxComputeWriteRoleArn,omitempty" xml:"MaxComputeWriteRoleArn,omitempty"`
 	// The name of the trail.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The name of the OSS bucket.
@@ -2719,6 +2769,16 @@ func (s *UpdateTrailResponseBody) SetEventRW(v string) *UpdateTrailResponseBody 
 
 func (s *UpdateTrailResponseBody) SetHomeRegion(v string) *UpdateTrailResponseBody {
 	s.HomeRegion = &v
+	return s
+}
+
+func (s *UpdateTrailResponseBody) SetMaxComputeProjectArn(v string) *UpdateTrailResponseBody {
+	s.MaxComputeProjectArn = &v
+	return s
+}
+
+func (s *UpdateTrailResponseBody) SetMaxComputeWriteRoleArn(v string) *UpdateTrailResponseBody {
+	s.MaxComputeWriteRoleArn = &v
 	return s
 }
 
@@ -2962,6 +3022,14 @@ func (client *Client) CreateTrailWithOptions(request *CreateTrailRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.IsOrganizationTrail)) {
 		query["IsOrganizationTrail"] = request.IsOrganizationTrail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeProjectArn)) {
+		query["MaxComputeProjectArn"] = request.MaxComputeProjectArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeWriteRoleArn)) {
+		query["MaxComputeWriteRoleArn"] = request.MaxComputeWriteRoleArn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -4084,6 +4152,14 @@ func (client *Client) UpdateTrailWithOptions(request *UpdateTrailRequest, runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EventRW)) {
 		query["EventRW"] = request.EventRW
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeProjectArn)) {
+		query["MaxComputeProjectArn"] = request.MaxComputeProjectArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeWriteRoleArn)) {
+		query["MaxComputeWriteRoleArn"] = request.MaxComputeWriteRoleArn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
