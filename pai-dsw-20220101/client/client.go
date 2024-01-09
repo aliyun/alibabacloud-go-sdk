@@ -441,10 +441,11 @@ func (s *CreateInstanceRequest) SetWorkspaceSource(v string) *CreateInstanceRequ
 }
 
 type CreateInstanceRequestCloudDisks struct {
-	Capacity  *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	SubType   *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	Capacity  *string                                `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	MountPath *string                                `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Path      *string                                `json:"Path,omitempty" xml:"Path,omitempty"`
+	Status    *CreateInstanceRequestCloudDisksStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	SubType   *string                                `json:"SubType,omitempty" xml:"SubType,omitempty"`
 }
 
 func (s CreateInstanceRequestCloudDisks) String() string {
@@ -470,8 +471,42 @@ func (s *CreateInstanceRequestCloudDisks) SetPath(v string) *CreateInstanceReque
 	return s
 }
 
+func (s *CreateInstanceRequestCloudDisks) SetStatus(v *CreateInstanceRequestCloudDisksStatus) *CreateInstanceRequestCloudDisks {
+	s.Status = v
+	return s
+}
+
 func (s *CreateInstanceRequestCloudDisks) SetSubType(v string) *CreateInstanceRequestCloudDisks {
 	s.SubType = &v
+	return s
+}
+
+type CreateInstanceRequestCloudDisksStatus struct {
+	Available *int64 `json:"Available,omitempty" xml:"Available,omitempty"`
+	Capacity  *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Usage     *int64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s CreateInstanceRequestCloudDisksStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestCloudDisksStatus) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestCloudDisksStatus) SetAvailable(v int64) *CreateInstanceRequestCloudDisksStatus {
+	s.Available = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCloudDisksStatus) SetCapacity(v int64) *CreateInstanceRequestCloudDisksStatus {
+	s.Capacity = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCloudDisksStatus) SetUsage(v int64) *CreateInstanceRequestCloudDisksStatus {
+	s.Usage = &v
 	return s
 }
 
@@ -4491,21 +4526,23 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type UpdateInstanceRequest struct {
-	Accessibility        *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Datasets             []*UpdateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	DisassociateDatasets *bool                                   `json:"DisassociateDatasets,omitempty" xml:"DisassociateDatasets,omitempty"`
-	DisassociateDriver   *bool                                   `json:"DisassociateDriver,omitempty" xml:"DisassociateDriver,omitempty"`
-	DisassociateVpc      *bool                                   `json:"DisassociateVpc,omitempty" xml:"DisassociateVpc,omitempty"`
-	Driver               *string                                 `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	EcsSpec              *string                                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	ImageId              *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl             *string                                 `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceName         *string                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Priority             *int64                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RequestedResource    *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
-	UserId               *string                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserVpc              *UpdateInstanceRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	WorkspaceSource      *string                                 `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
+	Accessibility            *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CloudDisks               []*UpdateInstanceRequestCloudDisks      `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	Datasets                 []*UpdateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	DisassociateDatasets     *bool                                   `json:"DisassociateDatasets,omitempty" xml:"DisassociateDatasets,omitempty"`
+	DisassociateDriver       *bool                                   `json:"DisassociateDriver,omitempty" xml:"DisassociateDriver,omitempty"`
+	DisassociateForwardInfos *bool                                   `json:"DisassociateForwardInfos,omitempty" xml:"DisassociateForwardInfos,omitempty"`
+	DisassociateVpc          *bool                                   `json:"DisassociateVpc,omitempty" xml:"DisassociateVpc,omitempty"`
+	Driver                   *string                                 `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	EcsSpec                  *string                                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	ImageId                  *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUrl                 *string                                 `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InstanceName             *string                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Priority                 *int64                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RequestedResource        *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	UserId                   *string                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserVpc                  *UpdateInstanceRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	WorkspaceSource          *string                                 `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -4521,6 +4558,11 @@ func (s *UpdateInstanceRequest) SetAccessibility(v string) *UpdateInstanceReques
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetCloudDisks(v []*UpdateInstanceRequestCloudDisks) *UpdateInstanceRequest {
+	s.CloudDisks = v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetDatasets(v []*UpdateInstanceRequestDatasets) *UpdateInstanceRequest {
 	s.Datasets = v
 	return s
@@ -4533,6 +4575,11 @@ func (s *UpdateInstanceRequest) SetDisassociateDatasets(v bool) *UpdateInstanceR
 
 func (s *UpdateInstanceRequest) SetDisassociateDriver(v bool) *UpdateInstanceRequest {
 	s.DisassociateDriver = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDisassociateForwardInfos(v bool) *UpdateInstanceRequest {
+	s.DisassociateForwardInfos = &v
 	return s
 }
 
@@ -4588,6 +4635,29 @@ func (s *UpdateInstanceRequest) SetUserVpc(v *UpdateInstanceRequestUserVpc) *Upd
 
 func (s *UpdateInstanceRequest) SetWorkspaceSource(v string) *UpdateInstanceRequest {
 	s.WorkspaceSource = &v
+	return s
+}
+
+type UpdateInstanceRequestCloudDisks struct {
+	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	SubType  *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+}
+
+func (s UpdateInstanceRequestCloudDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestCloudDisks) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestCloudDisks) SetCapacity(v string) *UpdateInstanceRequestCloudDisks {
+	s.Capacity = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestCloudDisks) SetSubType(v string) *UpdateInstanceRequestCloudDisks {
+	s.SubType = &v
 	return s
 }
 
@@ -6005,6 +6075,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["Accessibility"] = request.Accessibility
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CloudDisks)) {
+		body["CloudDisks"] = request.CloudDisks
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Datasets)) {
 		body["Datasets"] = request.Datasets
 	}
@@ -6015,6 +6089,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !tea.BoolValue(util.IsUnset(request.DisassociateDriver)) {
 		body["DisassociateDriver"] = request.DisassociateDriver
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisassociateForwardInfos)) {
+		body["DisassociateForwardInfos"] = request.DisassociateForwardInfos
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DisassociateVpc)) {
