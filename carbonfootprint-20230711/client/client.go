@@ -327,6 +327,123 @@ func (s *QueryCarbonTrackResponse) SetBody(v *QueryCarbonTrackResponseBody) *Que
 	return s
 }
 
+type QueryMultiAccountCarbonTrackRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryMultiAccountCarbonTrackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMultiAccountCarbonTrackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMultiAccountCarbonTrackRequest) SetEndTime(v string) *QueryMultiAccountCarbonTrackRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryMultiAccountCarbonTrackRequest) SetStartTime(v string) *QueryMultiAccountCarbonTrackRequest {
+	s.StartTime = &v
+	return s
+}
+
+type QueryMultiAccountCarbonTrackResponseBody struct {
+	Data []*QueryMultiAccountCarbonTrackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryMultiAccountCarbonTrackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMultiAccountCarbonTrackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMultiAccountCarbonTrackResponseBody) SetData(v []*QueryMultiAccountCarbonTrackResponseBodyData) *QueryMultiAccountCarbonTrackResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryMultiAccountCarbonTrackResponseBody) SetRequestId(v string) *QueryMultiAccountCarbonTrackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryMultiAccountCarbonTrackResponseBodyData struct {
+	CarbonActualEmission *string `json:"CarbonActualEmission,omitempty" xml:"CarbonActualEmission,omitempty"`
+	Month                *string `json:"Month,omitempty" xml:"Month,omitempty"`
+	ProductCode          *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Uid                  *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s QueryMultiAccountCarbonTrackResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMultiAccountCarbonTrackResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMultiAccountCarbonTrackResponseBodyData) SetCarbonActualEmission(v string) *QueryMultiAccountCarbonTrackResponseBodyData {
+	s.CarbonActualEmission = &v
+	return s
+}
+
+func (s *QueryMultiAccountCarbonTrackResponseBodyData) SetMonth(v string) *QueryMultiAccountCarbonTrackResponseBodyData {
+	s.Month = &v
+	return s
+}
+
+func (s *QueryMultiAccountCarbonTrackResponseBodyData) SetProductCode(v string) *QueryMultiAccountCarbonTrackResponseBodyData {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *QueryMultiAccountCarbonTrackResponseBodyData) SetRegion(v string) *QueryMultiAccountCarbonTrackResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *QueryMultiAccountCarbonTrackResponseBodyData) SetUid(v string) *QueryMultiAccountCarbonTrackResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type QueryMultiAccountCarbonTrackResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMultiAccountCarbonTrackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMultiAccountCarbonTrackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMultiAccountCarbonTrackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMultiAccountCarbonTrackResponse) SetHeaders(v map[string]*string) *QueryMultiAccountCarbonTrackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMultiAccountCarbonTrackResponse) SetStatusCode(v int32) *QueryMultiAccountCarbonTrackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMultiAccountCarbonTrackResponse) SetBody(v *QueryMultiAccountCarbonTrackResponseBody) *QueryMultiAccountCarbonTrackResponse {
+	s.Body = v
+	return s
+}
+
 type VerifyResponseBody struct {
 	Data      *VerifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -573,6 +690,46 @@ func (client *Client) QueryCarbonTrack(request *QueryCarbonTrackRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCarbonTrackResponse{}
 	_body, _err := client.QueryCarbonTrackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMultiAccountCarbonTrackWithOptions(request *QueryMultiAccountCarbonTrackRequest, runtime *util.RuntimeOptions) (_result *QueryMultiAccountCarbonTrackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMultiAccountCarbonTrack"),
+		Version:     tea.String("2023-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMultiAccountCarbonTrackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMultiAccountCarbonTrack(request *QueryMultiAccountCarbonTrackRequest) (_result *QueryMultiAccountCarbonTrackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMultiAccountCarbonTrackResponse{}
+	_body, _err := client.QueryMultiAccountCarbonTrackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
