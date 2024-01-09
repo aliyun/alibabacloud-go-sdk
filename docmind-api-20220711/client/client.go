@@ -176,7 +176,9 @@ func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetBody(v *AyncTradeDo
 }
 
 type GetDocStructureResultRequest struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ImageStrategy  *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	RevealMarkdown *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
 }
 
 func (s GetDocStructureResultRequest) String() string {
@@ -189,6 +191,16 @@ func (s GetDocStructureResultRequest) GoString() string {
 
 func (s *GetDocStructureResultRequest) SetId(v string) *GetDocStructureResultRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *GetDocStructureResultRequest) SetImageStrategy(v string) *GetDocStructureResultRequest {
+	s.ImageStrategy = &v
+	return s
+}
+
+func (s *GetDocStructureResultRequest) SetRevealMarkdown(v bool) *GetDocStructureResultRequest {
+	s.RevealMarkdown = &v
 	return s
 }
 
@@ -1635,6 +1647,8 @@ type SubmitDigitalDocStructureJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ImageStrategy     *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	RevealMarkdown    *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
 }
 
 func (s SubmitDigitalDocStructureJobRequest) String() string {
@@ -1660,10 +1674,22 @@ func (s *SubmitDigitalDocStructureJobRequest) SetFileUrl(v string) *SubmitDigita
 	return s
 }
 
+func (s *SubmitDigitalDocStructureJobRequest) SetImageStrategy(v string) *SubmitDigitalDocStructureJobRequest {
+	s.ImageStrategy = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobRequest) SetRevealMarkdown(v bool) *SubmitDigitalDocStructureJobRequest {
+	s.RevealMarkdown = &v
+	return s
+}
+
 type SubmitDigitalDocStructureJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ImageStrategy     *string   `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	RevealMarkdown    *bool     `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
 }
 
 func (s SubmitDigitalDocStructureJobAdvanceRequest) String() string {
@@ -1686,6 +1712,16 @@ func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileNameExtension(v stri
 
 func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDigitalDocStructureJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetImageStrategy(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
+	s.ImageStrategy = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetRevealMarkdown(v bool) *SubmitDigitalDocStructureJobAdvanceRequest {
+	s.RevealMarkdown = &v
 	return s
 }
 
@@ -2489,6 +2525,14 @@ func (client *Client) GetDocStructureResultWithOptions(request *GetDocStructureR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageStrategy)) {
+		query["ImageStrategy"] = request.ImageStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevealMarkdown)) {
+		query["RevealMarkdown"] = request.RevealMarkdown
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3425,6 +3469,14 @@ func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDig
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageStrategy)) {
+		query["ImageStrategy"] = request.ImageStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevealMarkdown)) {
+		query["RevealMarkdown"] = request.RevealMarkdown
 	}
 
 	req := &openapi.OpenApiRequest{
