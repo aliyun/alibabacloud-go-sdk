@@ -284,6 +284,218 @@ func (s *DataExtraInfoSubDbsValueTablesColumns) SetIsGenerateField(v bool) *Data
 	return s
 }
 
+type CancelProjectModifyRecordRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CancelProjectModifyRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelProjectModifyRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelProjectModifyRecordRequest) SetId(v string) *CancelProjectModifyRecordRequest {
+	s.Id = &v
+	return s
+}
+
+type CancelProjectModifyRecordResponseBody struct {
+	Advice      *string                                           `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                           `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        interface{}                                       `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *CancelProjectModifyRecordResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CancelProjectModifyRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelProjectModifyRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetAdvice(v string) *CancelProjectModifyRecordResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetCode(v string) *CancelProjectModifyRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetCost(v string) *CancelProjectModifyRecordResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetData(v interface{}) *CancelProjectModifyRecordResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetErrorDetail(v *CancelProjectModifyRecordResponseBodyErrorDetail) *CancelProjectModifyRecordResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetMessage(v string) *CancelProjectModifyRecordResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetPageNumber(v int32) *CancelProjectModifyRecordResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetPageSize(v int32) *CancelProjectModifyRecordResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetRequestId(v string) *CancelProjectModifyRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetSuccess(v bool) *CancelProjectModifyRecordResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBody) SetTotalCount(v int64) *CancelProjectModifyRecordResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CancelProjectModifyRecordResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s CancelProjectModifyRecordResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelProjectModifyRecordResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetCode(v string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetLevel(v string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetMessage(v string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetMessageMcmsKey(v string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetProposal(v string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetProposalMcmsKey(v string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetReason(v string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetReasonMcmsKey(v string) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *CancelProjectModifyRecordResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type CancelProjectModifyRecordResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelProjectModifyRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelProjectModifyRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelProjectModifyRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelProjectModifyRecordResponse) SetHeaders(v map[string]*string) *CancelProjectModifyRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponse) SetStatusCode(v int32) *CancelProjectModifyRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelProjectModifyRecordResponse) SetBody(v *CancelProjectModifyRecordResponseBody) *CancelProjectModifyRecordResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBackupSetDownloadLinkRequest struct {
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2509,17 +2721,20 @@ func (s *CreateProjectRequest) SetWorkerGradeId(v string) *CreateProjectRequest 
 }
 
 type CreateProjectRequestCommonTransferConfig struct {
-	ActiveActive           *bool   `json:"ActiveActive,omitempty" xml:"ActiveActive,omitempty"`
-	DataWorksBusinessName  *string `json:"DataWorksBusinessName,omitempty" xml:"DataWorksBusinessName,omitempty"`
-	DatahubTopicType       *string `json:"DatahubTopicType,omitempty" xml:"DatahubTopicType,omitempty"`
-	MqPartition            *int32  `json:"MqPartition,omitempty" xml:"MqPartition,omitempty"`
-	MqPartitionMode        *string `json:"MqPartitionMode,omitempty" xml:"MqPartitionMode,omitempty"`
-	MqSerializerType       *string `json:"MqSerializerType,omitempty" xml:"MqSerializerType,omitempty"`
-	RocketMqEnableMsgTrace *bool   `json:"RocketMqEnableMsgTrace,omitempty" xml:"RocketMqEnableMsgTrace,omitempty"`
-	RocketMqMsgTags        *string `json:"RocketMqMsgTags,omitempty" xml:"RocketMqMsgTags,omitempty"`
-	RocketMqProducerGroup  *string `json:"RocketMqProducerGroup,omitempty" xml:"RocketMqProducerGroup,omitempty"`
-	RocketMqSendMsgTimeout *int64  `json:"RocketMqSendMsgTimeout,omitempty" xml:"RocketMqSendMsgTimeout,omitempty"`
-	TableCategory          *string `json:"TableCategory,omitempty" xml:"TableCategory,omitempty"`
+	ActiveActive           *bool                                                    `json:"ActiveActive,omitempty" xml:"ActiveActive,omitempty"`
+	CustomColumns          []*CreateProjectRequestCommonTransferConfigCustomColumns `json:"CustomColumns,omitempty" xml:"CustomColumns,omitempty" type:"Repeated"`
+	DataWorksBusinessName  *string                                                  `json:"DataWorksBusinessName,omitempty" xml:"DataWorksBusinessName,omitempty"`
+	DatahubTopicType       *string                                                  `json:"DatahubTopicType,omitempty" xml:"DatahubTopicType,omitempty"`
+	MqPartition            *int32                                                   `json:"MqPartition,omitempty" xml:"MqPartition,omitempty"`
+	MqPartitionMode        *string                                                  `json:"MqPartitionMode,omitempty" xml:"MqPartitionMode,omitempty"`
+	MqSerializerType       *string                                                  `json:"MqSerializerType,omitempty" xml:"MqSerializerType,omitempty"`
+	RocketMqEnableMsgTrace *bool                                                    `json:"RocketMqEnableMsgTrace,omitempty" xml:"RocketMqEnableMsgTrace,omitempty"`
+	RocketMqMsgTags        *string                                                  `json:"RocketMqMsgTags,omitempty" xml:"RocketMqMsgTags,omitempty"`
+	RocketMqProducerGroup  *string                                                  `json:"RocketMqProducerGroup,omitempty" xml:"RocketMqProducerGroup,omitempty"`
+	RocketMqSendMsgTimeout *int64                                                   `json:"RocketMqSendMsgTimeout,omitempty" xml:"RocketMqSendMsgTimeout,omitempty"`
+	SyncSchema             *bool                                                    `json:"SyncSchema,omitempty" xml:"SyncSchema,omitempty"`
+	SyncSchemaColumnName   *string                                                  `json:"SyncSchemaColumnName,omitempty" xml:"SyncSchemaColumnName,omitempty"`
+	TableCategory          *string                                                  `json:"TableCategory,omitempty" xml:"TableCategory,omitempty"`
 }
 
 func (s CreateProjectRequestCommonTransferConfig) String() string {
@@ -2532,6 +2747,11 @@ func (s CreateProjectRequestCommonTransferConfig) GoString() string {
 
 func (s *CreateProjectRequestCommonTransferConfig) SetActiveActive(v bool) *CreateProjectRequestCommonTransferConfig {
 	s.ActiveActive = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetCustomColumns(v []*CreateProjectRequestCommonTransferConfigCustomColumns) *CreateProjectRequestCommonTransferConfig {
+	s.CustomColumns = v
 	return s
 }
 
@@ -2580,8 +2800,41 @@ func (s *CreateProjectRequestCommonTransferConfig) SetRocketMqSendMsgTimeout(v i
 	return s
 }
 
+func (s *CreateProjectRequestCommonTransferConfig) SetSyncSchema(v bool) *CreateProjectRequestCommonTransferConfig {
+	s.SyncSchema = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetSyncSchemaColumnName(v string) *CreateProjectRequestCommonTransferConfig {
+	s.SyncSchemaColumnName = &v
+	return s
+}
+
 func (s *CreateProjectRequestCommonTransferConfig) SetTableCategory(v string) *CreateProjectRequestCommonTransferConfig {
 	s.TableCategory = &v
+	return s
+}
+
+type CreateProjectRequestCommonTransferConfigCustomColumns struct {
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+}
+
+func (s CreateProjectRequestCommonTransferConfigCustomColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestCommonTransferConfigCustomColumns) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestCommonTransferConfigCustomColumns) SetColumnName(v string) *CreateProjectRequestCommonTransferConfigCustomColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfigCustomColumns) SetExpression(v string) *CreateProjectRequestCommonTransferConfigCustomColumns {
+	s.Expression = &v
 	return s
 }
 
@@ -3879,6 +4132,894 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 	return s
 }
 
+type CreateProjectModifyRecordsRequest struct {
+	Databases []*CreateProjectModifyRecordsRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	Id        *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequest) SetDatabases(v []*CreateProjectModifyRecordsRequestDatabases) *CreateProjectModifyRecordsRequest {
+	s.Databases = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequest) SetId(v string) *CreateProjectModifyRecordsRequest {
+	s.Id = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabases struct {
+	Id             *string                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                     `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*CreateProjectModifyRecordsRequestDatabasesSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*CreateProjectModifyRecordsRequestDatabasesSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*CreateProjectModifyRecordsRequestDatabasesTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	Views          []*CreateProjectModifyRecordsRequestDatabasesViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabases) SetId(v string) *CreateProjectModifyRecordsRequestDatabases {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabases) SetMappedName(v string) *CreateProjectModifyRecordsRequestDatabases {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabases) SetName(v string) *CreateProjectModifyRecordsRequestDatabases {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabases) SetSpecificTables(v []*CreateProjectModifyRecordsRequestDatabasesSpecificTables) *CreateProjectModifyRecordsRequestDatabases {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabases) SetSpecificViews(v []*CreateProjectModifyRecordsRequestDatabasesSpecificViews) *CreateProjectModifyRecordsRequestDatabases {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabases) SetTables(v []*CreateProjectModifyRecordsRequestDatabasesTables) *CreateProjectModifyRecordsRequestDatabases {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabases) SetViews(v []*CreateProjectModifyRecordsRequestDatabasesViews) *CreateProjectModifyRecordsRequestDatabases {
+	s.Views = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesSpecificTables struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                               `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                 `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                               `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                 `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTables) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema) *CreateProjectModifyRecordsRequestDatabasesSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTables) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestDatabasesSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTables) SetId(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTables) SetMappedName(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTables) SetName(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTables) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestDatabasesSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTables) SetWhereClause(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesSpecificViews struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                              `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                              `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViews) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema) *CreateProjectModifyRecordsRequestDatabasesSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViews) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestDatabasesSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViews) SetId(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViews) SetMappedName(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViews) SetName(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViews) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestDatabasesSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViews) SetWhereClause(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesTables struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                       `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                         `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                       `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                         `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) *CreateProjectModifyRecordsRequestDatabasesTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestDatabasesTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetId(v string) *CreateProjectModifyRecordsRequestDatabasesTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetMappedName(v string) *CreateProjectModifyRecordsRequestDatabasesTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetName(v string) *CreateProjectModifyRecordsRequestDatabasesTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestDatabasesTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetWhereClause(v string) *CreateProjectModifyRecordsRequestDatabasesTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesViews struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                      `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                        `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                      `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                        `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViews) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema) *CreateProjectModifyRecordsRequestDatabasesViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViews) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestDatabasesViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViews) SetId(v string) *CreateProjectModifyRecordsRequestDatabasesViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViews) SetMappedName(v string) *CreateProjectModifyRecordsRequestDatabasesViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViews) SetName(v string) *CreateProjectModifyRecordsRequestDatabasesViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViews) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestDatabasesViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViews) SetWhereClause(v string) *CreateProjectModifyRecordsRequestDatabasesViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsShrinkRequest struct {
+	DatabasesShrink *string `json:"Databases,omitempty" xml:"Databases,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsShrinkRequest) SetDatabasesShrink(v string) *CreateProjectModifyRecordsShrinkRequest {
+	s.DatabasesShrink = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsShrinkRequest) SetId(v string) *CreateProjectModifyRecordsShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+type CreateProjectModifyRecordsResponseBody struct {
+	Advice      *string                                            `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                            `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *int64                                             `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *CreateProjectModifyRecordsResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetAdvice(v string) *CreateProjectModifyRecordsResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetCode(v string) *CreateProjectModifyRecordsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetCost(v string) *CreateProjectModifyRecordsResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetData(v int64) *CreateProjectModifyRecordsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetErrorDetail(v *CreateProjectModifyRecordsResponseBodyErrorDetail) *CreateProjectModifyRecordsResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetMessage(v string) *CreateProjectModifyRecordsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetPageNumber(v int32) *CreateProjectModifyRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetPageSize(v int32) *CreateProjectModifyRecordsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetRequestId(v string) *CreateProjectModifyRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetSuccess(v bool) *CreateProjectModifyRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBody) SetTotalCount(v int64) *CreateProjectModifyRecordsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateProjectModifyRecordsResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetCode(v string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetLevel(v string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetMessage(v string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetMessageMcmsKey(v string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetProposal(v string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetProposalMcmsKey(v string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetReason(v string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetReasonMcmsKey(v string) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *CreateProjectModifyRecordsResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type CreateProjectModifyRecordsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProjectModifyRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProjectModifyRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsResponse) SetHeaders(v map[string]*string) *CreateProjectModifyRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponse) SetStatusCode(v int32) *CreateProjectModifyRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsResponse) SetBody(v *CreateProjectModifyRecordsResponseBody) *CreateProjectModifyRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRdsPostgreSQLDataSourceRequest struct {
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s CreateRdsPostgreSQLDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRdsPostgreSQLDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRdsPostgreSQLDataSourceRequest) SetDatabaseName(v string) *CreateRdsPostgreSQLDataSourceRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceRequest) SetDescription(v string) *CreateRdsPostgreSQLDataSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceRequest) SetInstanceId(v string) *CreateRdsPostgreSQLDataSourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceRequest) SetName(v string) *CreateRdsPostgreSQLDataSourceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceRequest) SetPassword(v string) *CreateRdsPostgreSQLDataSourceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceRequest) SetUserName(v string) *CreateRdsPostgreSQLDataSourceRequest {
+	s.UserName = &v
+	return s
+}
+
+type CreateRdsPostgreSQLDataSourceResponseBody struct {
+	Advice      *string                                               `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                               `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *string                                               `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateRdsPostgreSQLDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRdsPostgreSQLDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetAdvice(v string) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetCode(v string) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetCost(v string) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetData(v string) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetErrorDetail(v *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetMessage(v string) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetPageNumber(v int32) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetPageSize(v int32) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetRequestId(v string) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetSuccess(v bool) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBody) SetTotalCount(v int64) *CreateRdsPostgreSQLDataSourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetCode(v string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetLevel(v string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetMessage(v string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetMessageMcmsKey(v string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetProposal(v string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetProposalMcmsKey(v string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetReason(v string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetReasonMcmsKey(v string) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *CreateRdsPostgreSQLDataSourceResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type CreateRdsPostgreSQLDataSourceResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRdsPostgreSQLDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRdsPostgreSQLDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRdsPostgreSQLDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponse) SetHeaders(v map[string]*string) *CreateRdsPostgreSQLDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponse) SetStatusCode(v int32) *CreateRdsPostgreSQLDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRdsPostgreSQLDataSourceResponse) SetBody(v *CreateRdsPostgreSQLDataSourceResponseBody) *CreateRdsPostgreSQLDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSecurityIpGroupRequest struct {
 	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4579,6 +5720,218 @@ func (s *CreateTenantUserResponse) SetStatusCode(v int32) *CreateTenantUserRespo
 }
 
 func (s *CreateTenantUserResponse) SetBody(v *CreateTenantUserResponseBody) *CreateTenantUserResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataSourceRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceRequest) SetId(v string) *DeleteDataSourceRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteDataSourceResponseBody struct {
+	Advice      *string                                  `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                  `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        interface{}                              `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *DeleteDataSourceResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DeleteDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceResponseBody) SetAdvice(v string) *DeleteDataSourceResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetCode(v string) *DeleteDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetCost(v string) *DeleteDataSourceResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetData(v interface{}) *DeleteDataSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetErrorDetail(v *DeleteDataSourceResponseBodyErrorDetail) *DeleteDataSourceResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetMessage(v string) *DeleteDataSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetPageNumber(v int32) *DeleteDataSourceResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetPageSize(v int32) *DeleteDataSourceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetRequestId(v string) *DeleteDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetSuccess(v bool) *DeleteDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetTotalCount(v int64) *DeleteDataSourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DeleteDataSourceResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DeleteDataSourceResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetCode(v string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *DeleteDataSourceResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetLevel(v string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetMessage(v string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetMessageMcmsKey(v string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetProposal(v string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetProposalMcmsKey(v string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetReason(v string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetReasonMcmsKey(v string) *DeleteDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *DeleteDataSourceResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DeleteDataSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceResponse) SetHeaders(v map[string]*string) *DeleteDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataSourceResponse) SetStatusCode(v int32) *DeleteDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *DeleteDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -28654,6 +30007,1602 @@ func (s *ListProjectFullVerifyResultResponse) SetBody(v *ListProjectFullVerifyRe
 	return s
 }
 
+type ListProjectModifyRecordsRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListProjectModifyRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsRequest) SetId(v string) *ListProjectModifyRecordsRequest {
+	s.Id = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBody struct {
+	Advice      *string                                          `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                          `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        []*ListProjectModifyRecordsResponseBodyData      `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorDetail *ListProjectModifyRecordsResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetAdvice(v string) *ListProjectModifyRecordsResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetCode(v string) *ListProjectModifyRecordsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetCost(v string) *ListProjectModifyRecordsResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetData(v []*ListProjectModifyRecordsResponseBodyData) *ListProjectModifyRecordsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetErrorDetail(v *ListProjectModifyRecordsResponseBodyErrorDetail) *ListProjectModifyRecordsResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetMessage(v string) *ListProjectModifyRecordsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetPageNumber(v int32) *ListProjectModifyRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetPageSize(v int32) *ListProjectModifyRecordsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetRequestId(v string) *ListProjectModifyRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetSuccess(v bool) *ListProjectModifyRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBody) SetTotalCount(v int64) *ListProjectModifyRecordsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyData struct {
+	Databases             []*ListProjectModifyRecordsResponseBodyDataDatabases           `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	ErrorDetail           *ListProjectModifyRecordsResponseBodyDataErrorDetail           `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	GmtModified           *string                                                        `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                    *int64                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	MergeRequestId        *int64                                                         `json:"MergeRequestId,omitempty" xml:"MergeRequestId,omitempty"`
+	MigrationObjectsInfo  *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo  `json:"MigrationObjectsInfo,omitempty" xml:"MigrationObjectsInfo,omitempty" type:"Struct"`
+	OmsProjectMappingInfo *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo `json:"OmsProjectMappingInfo,omitempty" xml:"OmsProjectMappingInfo,omitempty" type:"Struct"`
+	Status                *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubProjectId          *string                                                        `json:"SubProjectId,omitempty" xml:"SubProjectId,omitempty"`
+	TableEtlList          []*ListProjectModifyRecordsResponseBodyDataTableEtlList        `json:"TableEtlList,omitempty" xml:"TableEtlList,omitempty" type:"Repeated"`
+	Type                  *string                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateRequestId       *int64                                                         `json:"UpdateRequestId,omitempty" xml:"UpdateRequestId,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetDatabases(v []*ListProjectModifyRecordsResponseBodyDataDatabases) *ListProjectModifyRecordsResponseBodyData {
+	s.Databases = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetErrorDetail(v *ListProjectModifyRecordsResponseBodyDataErrorDetail) *ListProjectModifyRecordsResponseBodyData {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetGmtModified(v string) *ListProjectModifyRecordsResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetId(v int64) *ListProjectModifyRecordsResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetMergeRequestId(v int64) *ListProjectModifyRecordsResponseBodyData {
+	s.MergeRequestId = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetMigrationObjectsInfo(v *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo) *ListProjectModifyRecordsResponseBodyData {
+	s.MigrationObjectsInfo = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetOmsProjectMappingInfo(v *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo) *ListProjectModifyRecordsResponseBodyData {
+	s.OmsProjectMappingInfo = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetStatus(v string) *ListProjectModifyRecordsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetSubProjectId(v string) *ListProjectModifyRecordsResponseBodyData {
+	s.SubProjectId = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetTableEtlList(v []*ListProjectModifyRecordsResponseBodyDataTableEtlList) *ListProjectModifyRecordsResponseBodyData {
+	s.TableEtlList = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetType(v string) *ListProjectModifyRecordsResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyData) SetUpdateRequestId(v int64) *ListProjectModifyRecordsResponseBodyData {
+	s.UpdateRequestId = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabases struct {
+	Id             *string                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                            `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*ListProjectModifyRecordsResponseBodyDataDatabasesTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	Views          []*ListProjectModifyRecordsResponseBodyDataDatabasesViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabases) SetId(v string) *ListProjectModifyRecordsResponseBodyDataDatabases {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabases) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabases {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabases) SetName(v string) *ListProjectModifyRecordsResponseBodyDataDatabases {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabases) SetSpecificTables(v []*ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) *ListProjectModifyRecordsResponseBodyDataDatabases {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabases) SetSpecificViews(v []*ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) *ListProjectModifyRecordsResponseBodyDataDatabases {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabases) SetTables(v []*ListProjectModifyRecordsResponseBodyDataDatabasesTables) *ListProjectModifyRecordsResponseBodyDataDatabases {
+	s.Tables = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabases) SetViews(v []*ListProjectModifyRecordsResponseBodyDataDatabasesViews) *ListProjectModifyRecordsResponseBodyDataDatabases {
+	s.Views = v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables struct {
+	AdbTableSchema *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	Columns        []*ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns      `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	FilterColumns  []*string                                                                      `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                        `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                      `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                        `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) SetAdbTableSchema(v *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) SetColumns(v []*ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables {
+	s.Columns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) SetFilterColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) SetId(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) SetName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) SetShardColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables) SetWhereClause(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *int32    `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns struct {
+	ColumnComment   *string `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
+	ColumnKey       *string `json:"ColumnKey,omitempty" xml:"ColumnKey,omitempty"`
+	ColumnName      *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnType      *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	DataLength      *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataPrecision   *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	DataScale       *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	DefaultValue    *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Encoding        *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	IsGenerateField *bool   `json:"IsGenerateField,omitempty" xml:"IsGenerateField,omitempty"`
+	MappedName      *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Nullable        *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Position        *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	RawColumnType   *string `json:"RawColumnType,omitempty" xml:"RawColumnType,omitempty"`
+	RecordFieldType *string `json:"RecordFieldType,omitempty" xml:"RecordFieldType,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetColumnComment(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.ColumnComment = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetColumnKey(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.ColumnKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetColumnName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetColumnType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetDataLength(v int64) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.DataLength = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetDataPrecision(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.DataPrecision = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetDataScale(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.DataScale = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetDefaultValue(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetEncoding(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.Encoding = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetIsGenerateField(v bool) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.IsGenerateField = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetNullable(v bool) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.Nullable = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetPosition(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.Position = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetRawColumnType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.RawColumnType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetRecordFieldType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.RecordFieldType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns) SetType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificTablesColumns {
+	s.Type = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews struct {
+	AdbTableSchema *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	Columns        []*ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns      `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	FilterColumns  []*string                                                                     `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                       `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                     `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                       `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) SetAdbTableSchema(v *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) SetColumns(v []*ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews {
+	s.Columns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) SetFilterColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) SetId(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) SetName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) SetShardColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews) SetWhereClause(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *int32    `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns struct {
+	ColumnComment   *string `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
+	ColumnKey       *string `json:"ColumnKey,omitempty" xml:"ColumnKey,omitempty"`
+	ColumnName      *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnType      *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	DataLength      *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataPrecision   *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	DataScale       *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	DefaultValue    *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Encoding        *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	IsGenerateField *bool   `json:"IsGenerateField,omitempty" xml:"IsGenerateField,omitempty"`
+	MappedName      *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Nullable        *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Position        *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	RawColumnType   *string `json:"RawColumnType,omitempty" xml:"RawColumnType,omitempty"`
+	RecordFieldType *string `json:"RecordFieldType,omitempty" xml:"RecordFieldType,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetColumnComment(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.ColumnComment = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetColumnKey(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.ColumnKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetColumnName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetColumnType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetDataLength(v int64) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.DataLength = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetDataPrecision(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.DataPrecision = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetDataScale(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.DataScale = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetDefaultValue(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetEncoding(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.Encoding = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetIsGenerateField(v bool) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.IsGenerateField = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetNullable(v bool) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.Nullable = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetPosition(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.Position = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetRawColumnType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.RawColumnType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetRecordFieldType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.RecordFieldType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns) SetType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesSpecificViewsColumns {
+	s.Type = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesTables struct {
+	AdbTableSchema *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	Columns        []*ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns      `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	FilterColumns  []*string                                                              `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                              `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesTables) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTables) SetAdbTableSchema(v *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema) *ListProjectModifyRecordsResponseBodyDataDatabasesTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTables) SetColumns(v []*ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) *ListProjectModifyRecordsResponseBodyDataDatabasesTables {
+	s.Columns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTables) SetFilterColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTables) SetId(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTables {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTables) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTables) SetName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTables {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTables) SetShardColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTables) SetWhereClause(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTables {
+	s.WhereClause = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *int32    `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema) SetDistributedKeys(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema) SetPartitionLifeCycle(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema) SetPartitionStatement(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema) SetPrimaryKeys(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns struct {
+	ColumnComment   *string `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
+	ColumnKey       *string `json:"ColumnKey,omitempty" xml:"ColumnKey,omitempty"`
+	ColumnName      *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnType      *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	DataLength      *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataPrecision   *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	DataScale       *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	DefaultValue    *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Encoding        *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	IsGenerateField *bool   `json:"IsGenerateField,omitempty" xml:"IsGenerateField,omitempty"`
+	MappedName      *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Nullable        *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Position        *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	RawColumnType   *string `json:"RawColumnType,omitempty" xml:"RawColumnType,omitempty"`
+	RecordFieldType *string `json:"RecordFieldType,omitempty" xml:"RecordFieldType,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetColumnComment(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.ColumnComment = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetColumnKey(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.ColumnKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetColumnName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetColumnType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetDataLength(v int64) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.DataLength = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetDataPrecision(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.DataPrecision = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetDataScale(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.DataScale = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetDefaultValue(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetEncoding(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.Encoding = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetIsGenerateField(v bool) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.IsGenerateField = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetNullable(v bool) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.Nullable = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetPosition(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.Position = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetRawColumnType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.RawColumnType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetRecordFieldType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.RecordFieldType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns) SetType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesTablesColumns {
+	s.Type = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesViews struct {
+	AdbTableSchema *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	Columns        []*ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns      `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	FilterColumns  []*string                                                             `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                               `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                             `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                               `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesViews) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViews) SetAdbTableSchema(v *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema) *ListProjectModifyRecordsResponseBodyDataDatabasesViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViews) SetColumns(v []*ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) *ListProjectModifyRecordsResponseBodyDataDatabasesViews {
+	s.Columns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViews) SetFilterColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViews) SetId(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViews {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViews) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViews) SetName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViews {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViews) SetShardColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViews) SetWhereClause(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViews {
+	s.WhereClause = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *int32    `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema) SetDistributedKeys(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema) SetPartitionLifeCycle(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema) SetPartitionStatement(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema) SetPrimaryKeys(v []*string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns struct {
+	ColumnComment   *string `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
+	ColumnKey       *string `json:"ColumnKey,omitempty" xml:"ColumnKey,omitempty"`
+	ColumnName      *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnType      *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	DataLength      *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataPrecision   *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	DataScale       *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	DefaultValue    *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Encoding        *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	IsGenerateField *bool   `json:"IsGenerateField,omitempty" xml:"IsGenerateField,omitempty"`
+	MappedName      *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Nullable        *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Position        *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	RawColumnType   *string `json:"RawColumnType,omitempty" xml:"RawColumnType,omitempty"`
+	RecordFieldType *string `json:"RecordFieldType,omitempty" xml:"RecordFieldType,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetColumnComment(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.ColumnComment = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetColumnKey(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.ColumnKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetColumnName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetColumnType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetDataLength(v int64) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.DataLength = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetDataPrecision(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.DataPrecision = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetDataScale(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.DataScale = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetDefaultValue(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetEncoding(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.Encoding = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetIsGenerateField(v bool) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.IsGenerateField = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetMappedName(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.MappedName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetNullable(v bool) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.Nullable = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetPosition(v int32) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.Position = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetRawColumnType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.RawColumnType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetRecordFieldType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.RecordFieldType = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns) SetType(v string) *ListProjectModifyRecordsResponseBodyDataDatabasesViewsColumns {
+	s.Type = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetCode(v string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetExtraContext(v map[string]interface{}) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetLevel(v string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetMessage(v string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetMessageMcmsContext(v map[string]*string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetMessageMcmsKey(v string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetProposal(v string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetProposalMcmsContext(v map[string]*string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetProposalMcmsKey(v string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetReason(v string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetReasonMcmsContext(v map[string]*string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetReasonMcmsKey(v string) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataErrorDetail) SetUpstreamErrorDetail(v interface{}) *ListProjectModifyRecordsResponseBodyDataErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo struct {
+	Tables       []*ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables      `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TablesBlack  []*ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack `json:"TablesBlack,omitempty" xml:"TablesBlack,omitempty" type:"Repeated"`
+	Views        []*ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews       `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+	ViewsBlack   []*ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack  `json:"ViewsBlack,omitempty" xml:"ViewsBlack,omitempty" type:"Repeated"`
+	WildcardMode *bool                                                                      `json:"WildcardMode,omitempty" xml:"WildcardMode,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo) SetTables(v []*ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo {
+	s.Tables = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo) SetTablesBlack(v []*ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo {
+	s.TablesBlack = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo) SetViews(v []*ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo {
+	s.Views = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo) SetViewsBlack(v []*ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo {
+	s.ViewsBlack = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo) SetWildcardMode(v bool) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfo {
+	s.WildcardMode = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables) SetName(v string) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables) SetSchema(v string) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTables {
+	s.Schema = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack) SetName(v string) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack) SetSchema(v string) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoTablesBlack {
+	s.Schema = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews) SetName(v string) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews) SetSchema(v string) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViews {
+	s.Schema = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack) SetName(v string) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack) SetSchema(v string) *ListProjectModifyRecordsResponseBodyDataMigrationObjectsInfoViewsBlack {
+	s.Schema = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo struct {
+	ColumnMappings []*ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings `json:"ColumnMappings,omitempty" xml:"ColumnMappings,omitempty" type:"Repeated"`
+	SchemaMappings []*ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings `json:"SchemaMappings,omitempty" xml:"SchemaMappings,omitempty" type:"Repeated"`
+	TableMappings  []*ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings  `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	ViewMappings   []*ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings   `json:"ViewMappings,omitempty" xml:"ViewMappings,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo) SetColumnMappings(v []*ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo {
+	s.ColumnMappings = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo) SetSchemaMappings(v []*ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo {
+	s.SchemaMappings = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo) SetTableMappings(v []*ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo {
+	s.TableMappings = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo) SetViewMappings(v []*ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfo {
+	s.ViewMappings = v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings struct {
+	DestName     *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
+	SourceName   *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceSchema *string `json:"SourceSchema,omitempty" xml:"SourceSchema,omitempty"`
+	SourceTable  *string `json:"SourceTable,omitempty" xml:"SourceTable,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings) SetDestName(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings {
+	s.DestName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings) SetSourceName(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings) SetSourceSchema(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings {
+	s.SourceSchema = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings) SetSourceTable(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoColumnMappings {
+	s.SourceTable = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings struct {
+	DestName   *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings) SetDestName(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings {
+	s.DestName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings) SetSourceName(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoSchemaMappings {
+	s.SourceName = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings struct {
+	DestName     *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
+	SourceName   *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceSchema *string `json:"SourceSchema,omitempty" xml:"SourceSchema,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings) SetDestName(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings {
+	s.DestName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings) SetSourceName(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings) SetSourceSchema(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoTableMappings {
+	s.SourceSchema = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings struct {
+	DestName     *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
+	SourceName   *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceSchema *string `json:"SourceSchema,omitempty" xml:"SourceSchema,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings) SetDestName(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings {
+	s.DestName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings) SetSourceName(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings) SetSourceSchema(v string) *ListProjectModifyRecordsResponseBodyDataOmsProjectMappingInfoViewMappings {
+	s.SourceSchema = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyDataTableEtlList struct {
+	Database         *string   `json:"Database,omitempty" xml:"Database,omitempty"`
+	DestDatabase     *string   `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	DestName         *string   `json:"DestName,omitempty" xml:"DestName,omitempty"`
+	FilterColumns    []*string `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	LogicTableId     *string   `json:"LogicTableId,omitempty" xml:"LogicTableId,omitempty"`
+	ShardColumns     []*string `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	SourceEndpointId *string   `json:"SourceEndpointId,omitempty" xml:"SourceEndpointId,omitempty"`
+	TableName        *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TenantName       *string   `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	WhereClause      *string   `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataTableEtlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyDataTableEtlList) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetDatabase(v string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.Database = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetDestDatabase(v string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.DestDatabase = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetDestName(v string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.DestName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetFilterColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetLogicTableId(v string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.LogicTableId = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetShardColumns(v []*string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetSourceEndpointId(v string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.SourceEndpointId = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetTableName(v string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetTenantName(v string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.TenantName = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyDataTableEtlList) SetWhereClause(v string) *ListProjectModifyRecordsResponseBodyDataTableEtlList {
+	s.WhereClause = &v
+	return s
+}
+
+type ListProjectModifyRecordsResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListProjectModifyRecordsResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetCode(v string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetLevel(v string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetMessage(v string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetProposal(v string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetReason(v string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ListProjectModifyRecordsResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListProjectModifyRecordsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProjectModifyRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectModifyRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectModifyRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectModifyRecordsResponse) SetHeaders(v map[string]*string) *ListProjectModifyRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponse) SetStatusCode(v int32) *ListProjectModifyRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectModifyRecordsResponse) SetBody(v *ListProjectModifyRecordsResponseBody) *ListProjectModifyRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type ListProjectsRequest struct {
 	LabelIds            []*string `json:"LabelIds,omitempty" xml:"LabelIds,omitempty" type:"Repeated"`
 	Order               *string   `json:"Order,omitempty" xml:"Order,omitempty"`
@@ -32810,6 +35759,218 @@ func (s *ReleaseProjectResponse) SetBody(v *ReleaseProjectResponseBody) *Release
 	return s
 }
 
+type ReleaseWorkerInstanceRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ReleaseWorkerInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseWorkerInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseWorkerInstanceRequest) SetId(v string) *ReleaseWorkerInstanceRequest {
+	s.Id = &v
+	return s
+}
+
+type ReleaseWorkerInstanceResponseBody struct {
+	Advice      *string                                       `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                       `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *string                                       `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *ReleaseWorkerInstanceResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ReleaseWorkerInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseWorkerInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetAdvice(v string) *ReleaseWorkerInstanceResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetCode(v string) *ReleaseWorkerInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetCost(v string) *ReleaseWorkerInstanceResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetData(v string) *ReleaseWorkerInstanceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetErrorDetail(v *ReleaseWorkerInstanceResponseBodyErrorDetail) *ReleaseWorkerInstanceResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetMessage(v string) *ReleaseWorkerInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetPageNumber(v int32) *ReleaseWorkerInstanceResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetPageSize(v int32) *ReleaseWorkerInstanceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetRequestId(v string) *ReleaseWorkerInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetSuccess(v bool) *ReleaseWorkerInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBody) SetTotalCount(v int64) *ReleaseWorkerInstanceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ReleaseWorkerInstanceResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ReleaseWorkerInstanceResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseWorkerInstanceResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetCode(v string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetLevel(v string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetMessage(v string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetProposal(v string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetReason(v string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ReleaseWorkerInstanceResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ReleaseWorkerInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseWorkerInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleaseWorkerInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseWorkerInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseWorkerInstanceResponse) SetHeaders(v map[string]*string) *ReleaseWorkerInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponse) SetStatusCode(v int32) *ReleaseWorkerInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseWorkerInstanceResponse) SetBody(v *ReleaseWorkerInstanceResponseBody) *ReleaseWorkerInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ResetOmsOpenAPIProjectRequest struct {
 	// The total count, which takes effect in a pagination query.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -33397,6 +36558,218 @@ func (s *ResumeProjectResponse) SetStatusCode(v int32) *ResumeProjectResponse {
 }
 
 func (s *ResumeProjectResponse) SetBody(v *ResumeProjectResponseBody) *ResumeProjectResponse {
+	s.Body = v
+	return s
+}
+
+type RetryProjectModifyRecordsRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s RetryProjectModifyRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryProjectModifyRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryProjectModifyRecordsRequest) SetId(v string) *RetryProjectModifyRecordsRequest {
+	s.Id = &v
+	return s
+}
+
+type RetryProjectModifyRecordsResponseBody struct {
+	Advice      *string                                           `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                           `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        interface{}                                       `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *RetryProjectModifyRecordsResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s RetryProjectModifyRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryProjectModifyRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetAdvice(v string) *RetryProjectModifyRecordsResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetCode(v string) *RetryProjectModifyRecordsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetCost(v string) *RetryProjectModifyRecordsResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetData(v interface{}) *RetryProjectModifyRecordsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetErrorDetail(v *RetryProjectModifyRecordsResponseBodyErrorDetail) *RetryProjectModifyRecordsResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetMessage(v string) *RetryProjectModifyRecordsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetPageNumber(v int32) *RetryProjectModifyRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetPageSize(v int32) *RetryProjectModifyRecordsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetRequestId(v string) *RetryProjectModifyRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetSuccess(v bool) *RetryProjectModifyRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBody) SetTotalCount(v int64) *RetryProjectModifyRecordsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type RetryProjectModifyRecordsResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s RetryProjectModifyRecordsResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryProjectModifyRecordsResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetCode(v string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetLevel(v string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetMessage(v string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetMessageMcmsKey(v string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetProposal(v string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetProposalMcmsKey(v string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetReason(v string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetReasonMcmsKey(v string) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *RetryProjectModifyRecordsResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type RetryProjectModifyRecordsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetryProjectModifyRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryProjectModifyRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryProjectModifyRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryProjectModifyRecordsResponse) SetHeaders(v map[string]*string) *RetryProjectModifyRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponse) SetStatusCode(v int32) *RetryProjectModifyRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryProjectModifyRecordsResponse) SetBody(v *RetryProjectModifyRecordsResponseBody) *RetryProjectModifyRecordsResponse {
 	s.Body = v
 	return s
 }
@@ -35966,6 +39339,218 @@ func (s *StopProjectResponse) SetBody(v *StopProjectResponseBody) *StopProjectRe
 	return s
 }
 
+type StopProjectModifyRecordsRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s StopProjectModifyRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectModifyRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectModifyRecordsRequest) SetId(v string) *StopProjectModifyRecordsRequest {
+	s.Id = &v
+	return s
+}
+
+type StopProjectModifyRecordsResponseBody struct {
+	Advice      *string                                          `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                          `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        interface{}                                      `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *StopProjectModifyRecordsResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s StopProjectModifyRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectModifyRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetAdvice(v string) *StopProjectModifyRecordsResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetCode(v string) *StopProjectModifyRecordsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetCost(v string) *StopProjectModifyRecordsResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetData(v interface{}) *StopProjectModifyRecordsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetErrorDetail(v *StopProjectModifyRecordsResponseBodyErrorDetail) *StopProjectModifyRecordsResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetMessage(v string) *StopProjectModifyRecordsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetPageNumber(v int32) *StopProjectModifyRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetPageSize(v int32) *StopProjectModifyRecordsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetRequestId(v string) *StopProjectModifyRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetSuccess(v bool) *StopProjectModifyRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBody) SetTotalCount(v int64) *StopProjectModifyRecordsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type StopProjectModifyRecordsResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s StopProjectModifyRecordsResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectModifyRecordsResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetCode(v string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetLevel(v string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetMessage(v string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetMessageMcmsKey(v string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetProposal(v string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetProposalMcmsKey(v string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetReason(v string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetReasonMcmsKey(v string) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *StopProjectModifyRecordsResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type StopProjectModifyRecordsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopProjectModifyRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopProjectModifyRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectModifyRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectModifyRecordsResponse) SetHeaders(v map[string]*string) *StopProjectModifyRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponse) SetStatusCode(v int32) *StopProjectModifyRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopProjectModifyRecordsResponse) SetBody(v *StopProjectModifyRecordsResponseBody) *StopProjectModifyRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type StopProjectsByLabelRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -36362,6 +39947,50 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelProjectModifyRecordWithOptions(request *CancelProjectModifyRecordRequest, runtime *util.RuntimeOptions) (_result *CancelProjectModifyRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelProjectModifyRecord"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelProjectModifyRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelProjectModifyRecord(request *CancelProjectModifyRecordRequest) (_result *CancelProjectModifyRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelProjectModifyRecordResponse{}
+	_body, _err := client.CancelProjectModifyRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37166,6 +40795,124 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	return _result, _err
 }
 
+func (client *Client) CreateProjectModifyRecordsWithOptions(tmpReq *CreateProjectModifyRecordsRequest, runtime *util.RuntimeOptions) (_result *CreateProjectModifyRecordsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateProjectModifyRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Databases)) {
+		request.DatabasesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Databases, tea.String("Databases"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabasesShrink)) {
+		body["Databases"] = request.DatabasesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProjectModifyRecords"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProjectModifyRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProjectModifyRecords(request *CreateProjectModifyRecordsRequest) (_result *CreateProjectModifyRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProjectModifyRecordsResponse{}
+	_body, _err := client.CreateProjectModifyRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRdsPostgreSQLDataSourceWithOptions(request *CreateRdsPostgreSQLDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateRdsPostgreSQLDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		body["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRdsPostgreSQLDataSource"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRdsPostgreSQLDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRdsPostgreSQLDataSource(request *CreateRdsPostgreSQLDataSourceRequest) (_result *CreateRdsPostgreSQLDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRdsPostgreSQLDataSourceResponse{}
+	_body, _err := client.CreateRdsPostgreSQLDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateSecurityIpGroupWithOptions(request *CreateSecurityIpGroupRequest, runtime *util.RuntimeOptions) (_result *CreateSecurityIpGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37495,6 +41242,50 @@ func (client *Client) CreateTenantUser(request *CreateTenantUserRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTenantUserResponse{}
 	_body, _err := client.CreateTenantUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataSource"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_result *DeleteDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataSourceResponse{}
+	_body, _err := client.DeleteDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41565,6 +45356,50 @@ func (client *Client) ListProjectFullVerifyResult(request *ListProjectFullVerify
 	return _result, _err
 }
 
+func (client *Client) ListProjectModifyRecordsWithOptions(request *ListProjectModifyRecordsRequest, runtime *util.RuntimeOptions) (_result *ListProjectModifyRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectModifyRecords"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectModifyRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjectModifyRecords(request *ListProjectModifyRecordsRequest) (_result *ListProjectModifyRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectModifyRecordsResponse{}
+	_body, _err := client.ListProjectModifyRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -42857,6 +46692,50 @@ func (client *Client) ReleaseProject(request *ReleaseProjectRequest) (_result *R
 	return _result, _err
 }
 
+func (client *Client) ReleaseWorkerInstanceWithOptions(request *ReleaseWorkerInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseWorkerInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseWorkerInstance"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseWorkerInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseWorkerInstance(request *ReleaseWorkerInstanceRequest) (_result *ReleaseWorkerInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseWorkerInstanceResponse{}
+	_body, _err := client.ReleaseWorkerInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ResetOmsOpenAPIProjectWithOptions(request *ResetOmsOpenAPIProjectRequest, runtime *util.RuntimeOptions) (_result *ResetOmsOpenAPIProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43006,6 +46885,50 @@ func (client *Client) ResumeProject(request *ResumeProjectRequest) (_result *Res
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeProjectResponse{}
 	_body, _err := client.ResumeProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetryProjectModifyRecordsWithOptions(request *RetryProjectModifyRecordsRequest, runtime *util.RuntimeOptions) (_result *RetryProjectModifyRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryProjectModifyRecords"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryProjectModifyRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryProjectModifyRecords(request *RetryProjectModifyRecordsRequest) (_result *RetryProjectModifyRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryProjectModifyRecordsResponse{}
+	_body, _err := client.RetryProjectModifyRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43412,6 +47335,50 @@ func (client *Client) StopProject(request *StopProjectRequest) (_result *StopPro
 	runtime := &util.RuntimeOptions{}
 	_result = &StopProjectResponse{}
 	_body, _err := client.StopProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopProjectModifyRecordsWithOptions(request *StopProjectModifyRecordsRequest, runtime *util.RuntimeOptions) (_result *StopProjectModifyRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopProjectModifyRecords"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopProjectModifyRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopProjectModifyRecords(request *StopProjectModifyRecordsRequest) (_result *StopProjectModifyRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopProjectModifyRecordsResponse{}
+	_body, _err := client.StopProjectModifyRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
