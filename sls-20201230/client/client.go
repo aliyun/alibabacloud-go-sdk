@@ -3182,6 +3182,52 @@ func (s *CreateSavedSearchResponse) SetStatusCode(v int32) *CreateSavedSearchRes
 	return s
 }
 
+type CreateTicketResponseBody struct {
+	Ticket *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
+}
+
+func (s CreateTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketResponseBody) SetTicket(v string) *CreateTicketResponseBody {
+	s.Ticket = &v
+	return s
+}
+
+type CreateTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketResponse) SetHeaders(v map[string]*string) *CreateTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTicketResponse) SetStatusCode(v int32) *CreateTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicketResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAnnotationDataResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -10685,6 +10731,42 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 	headers := make(map[string]*string)
 	_result = &CreateSavedSearchResponse{}
 	_body, _err := client.CreateSavedSearchWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTicketWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTicket"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tickets"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTicketResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTicket() (_result *CreateTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTicketResponse{}
+	_body, _err := client.CreateTicketWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
