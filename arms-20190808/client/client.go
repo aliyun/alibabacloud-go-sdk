@@ -3701,8 +3701,14 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CheckCommercialStatusRequest struct {
+	// The region ID. Default value: cn-hangzhou.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Service  *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// Sub-services:
+	// - apm: Application Monitoring
+	// - rum: Real User Monitoring
+	// - prometheus: Managed Service for Prometheus
+	// - xtrace: Managed Service for OpenTelemetry
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 }
 
 func (s CheckCommercialStatusRequest) String() string {
@@ -3724,8 +3730,9 @@ func (s *CheckCommercialStatusRequest) SetService(v string) *CheckCommercialStat
 }
 
 type CheckCommercialStatusResponseBody struct {
+	// The returned struct.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4923,13 +4930,14 @@ type CreateEnvironmentRequest struct {
 	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
+	// For Cloud type environments, the current field value is RegionId.
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
 	// The name of the environment.
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
 	// The subtype of the environment. Valid values:
 	//
 	// *   CS: Container Service for Kubernetes (ACK)
-	// *   ECS: ECS
+	// *   ECS: Elastic Compute Service (ECS)
 	// *   Cloud: cloud service
 	EnvironmentSubType *string `json:"EnvironmentSubType,omitempty" xml:"EnvironmentSubType,omitempty"`
 	// The type of the environment. Valid values:
@@ -8155,6 +8163,9 @@ type CreatePrometheusInstanceRequest struct {
 	// - ecs: Prometheus for ECS
 	// - global-view: Global Aggregation Instance
 	// - aliyun-cs: Prometheus Instance for Container Service
+	// - cloud-product：Prometheus for cloud monitor
+	// - cloud-monitor：Prometheus for enterprise cloud monitor
+	// - flink: Prometheus for FLink
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
@@ -26073,7 +26084,41 @@ type InstallManagedPrometheusRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the ECS instance. If you set the ClusterType parameter to ecs, you must configure this parameter.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the monitoring object. Valid values: ask and ecs.
+	// The cluster type.
+	//
+	// Valid values:
+	//
+	// *   ecs
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   one
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   ask
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   pro
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana workspace used by the ASK cluster or ECS instance. If you set the value to free or leave the parameter empty, a shared Grafana workspace is used.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
@@ -30618,7 +30663,7 @@ func (s *ListInsightsEventsRequest) SetStartTime(v string) *ListInsightsEventsRe
 }
 
 type ListInsightsEventsResponseBody struct {
-	// The description of the event.
+	// The event details.
 	InsightsEvents []*ListInsightsEventsResponseBodyInsightsEvents `json:"InsightsEvents,omitempty" xml:"InsightsEvents,omitempty" type:"Repeated"`
 	// The title of the event.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -30643,18 +30688,19 @@ func (s *ListInsightsEventsResponseBody) SetRequestId(v string) *ListInsightsEve
 }
 
 type ListInsightsEventsResponseBodyInsightsEvents struct {
-	// The time at which the event occurred. The value is a timestamp.
+	// The time when the event occurred. The value is a timestamp.
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The ID of the application associated with the event.
+	// The description of the event.
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// Queries the abnormal Insights events within a specified period of time.
+	// The severity of the event.
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// auditing
-	Pid       *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the application associated with the event.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// Problem identification.
 	ProblemId *string `json:"ProblemId,omitempty" xml:"ProblemId,omitempty"`
-	// The overall response time of the \[HTTP] service of the application \[sd] spikes at \[2022-07-27 10:57:00]
+	// The title of the event.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The time at which the event occurred. The value is a timestamp.
+	// The type of the event.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -34209,6 +34255,10 @@ func (s *ListTimingSyntheticTasksResponse) SetBody(v *ListTimingSyntheticTasksRe
 }
 
 type ListTraceAppsRequest struct {
+	// The type of the application that is associated with the alert rule. Valid values:
+	//
+	// *   `TRACE`: Application Monitoring
+	// *   `EBPF`: Application Monitoring eBPF Edition
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -34295,7 +34345,7 @@ type ListTraceAppsResponseBody struct {
 	// *   `true`: The call was successful.
 	// *   `false`: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The list of Application Monitoring tasks.
+	// The queried application monitoring tasks.
 	TraceApps []*ListTraceAppsResponseBodyTraceApps `json:"TraceApps,omitempty" xml:"TraceApps,omitempty" type:"Repeated"`
 }
 
@@ -34336,14 +34386,17 @@ type ListTraceAppsResponseBodyTraceApps struct {
 	// The application ID.
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the application.
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The time when the monitoring task was created. The value is a timestamp. Unit: milliseconds.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The labels of the application.
-	Labels    []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Language  *string   `json:"Language,omitempty" xml:"Language,omitempty"`
-	Namespace *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The tags of the application.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The language.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The process identifier (PID) of the application.
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID.
@@ -34355,7 +34408,7 @@ type ListTraceAppsResponseBodyTraceApps struct {
 	// *   `true`: yes
 	// *   `false`: no
 	Show *bool `json:"Show,omitempty" xml:"Show,omitempty"`
-	// The application source.
+	// The source of the application.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The tags.
 	Tags []*ListTraceAppsResponseBodyTraceAppsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -34367,8 +34420,10 @@ type ListTraceAppsResponseBodyTraceApps struct {
 	// The time when the monitoring task was updated. The value is a timestamp. Unit: milliseconds.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The user ID.
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The type of the workload.
 	WorkloadKind *string `json:"WorkloadKind,omitempty" xml:"WorkloadKind,omitempty"`
+	// The name of the workload.
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
 }
 
@@ -43379,8 +43434,6 @@ type UpdateTimingSyntheticTaskRequest struct {
 	CustomPeriod *UpdateTimingSyntheticTaskRequestCustomPeriod `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
 	// The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	// The detection point type. 1: PC. 2: mobile device.
-	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
 	// The monitoring configurations.
 	MonitorConf *UpdateTimingSyntheticTaskRequestMonitorConf `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
 	// The list of monitoring points.
@@ -43395,10 +43448,6 @@ type UpdateTimingSyntheticTaskRequest struct {
 	Tags []*UpdateTimingSyntheticTaskRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the synthetic monitoring task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. Valid values:
-	//
-	// 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
-	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequest) String() string {
@@ -43426,11 +43475,6 @@ func (s *UpdateTimingSyntheticTaskRequest) SetCustomPeriod(v *UpdateTimingSynthe
 
 func (s *UpdateTimingSyntheticTaskRequest) SetFrequency(v string) *UpdateTimingSyntheticTaskRequest {
 	s.Frequency = &v
-	return s
-}
-
-func (s *UpdateTimingSyntheticTaskRequest) SetMonitorCategory(v int32) *UpdateTimingSyntheticTaskRequest {
-	s.MonitorCategory = &v
 	return s
 }
 
@@ -43466,11 +43510,6 @@ func (s *UpdateTimingSyntheticTaskRequest) SetTags(v []*UpdateTimingSyntheticTas
 
 func (s *UpdateTimingSyntheticTaskRequest) SetTaskId(v string) *UpdateTimingSyntheticTaskRequest {
 	s.TaskId = &v
-	return s
-}
-
-func (s *UpdateTimingSyntheticTaskRequest) SetTaskType(v int32) *UpdateTimingSyntheticTaskRequest {
-	s.TaskType = &v
 	return s
 }
 
@@ -44420,8 +44459,6 @@ type UpdateTimingSyntheticTaskShrinkRequest struct {
 	CustomPeriodShrink *string `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty"`
 	// The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	// The detection point type. 1: PC. 2: mobile device.
-	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
 	// The monitoring configurations.
 	MonitorConfShrink *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
 	// The list of monitoring points.
@@ -44436,10 +44473,6 @@ type UpdateTimingSyntheticTaskShrinkRequest struct {
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The ID of the synthetic monitoring task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. Valid values:
-	//
-	// 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
-	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskShrinkRequest) String() string {
@@ -44467,11 +44500,6 @@ func (s *UpdateTimingSyntheticTaskShrinkRequest) SetCustomPeriodShrink(v string)
 
 func (s *UpdateTimingSyntheticTaskShrinkRequest) SetFrequency(v string) *UpdateTimingSyntheticTaskShrinkRequest {
 	s.Frequency = &v
-	return s
-}
-
-func (s *UpdateTimingSyntheticTaskShrinkRequest) SetMonitorCategory(v int32) *UpdateTimingSyntheticTaskShrinkRequest {
-	s.MonitorCategory = &v
 	return s
 }
 
@@ -44507,11 +44535,6 @@ func (s *UpdateTimingSyntheticTaskShrinkRequest) SetTagsShrink(v string) *Update
 
 func (s *UpdateTimingSyntheticTaskShrinkRequest) SetTaskId(v string) *UpdateTimingSyntheticTaskShrinkRequest {
 	s.TaskId = &v
-	return s
-}
-
-func (s *UpdateTimingSyntheticTaskShrinkRequest) SetTaskType(v int32) *UpdateTimingSyntheticTaskShrinkRequest {
-	s.TaskType = &v
 	return s
 }
 
@@ -46139,6 +46162,13 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+/**
+ * You can call this operation to check whether ARMS is available for commercial use in a region.
+ *
+ * @param request CheckCommercialStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CheckCommercialStatusResponse
+ */
 func (client *Client) CheckCommercialStatusWithOptions(request *CheckCommercialStatusRequest, runtime *util.RuntimeOptions) (_result *CheckCommercialStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46168,6 +46198,12 @@ func (client *Client) CheckCommercialStatusWithOptions(request *CheckCommercialS
 	return _result, _err
 }
 
+/**
+ * You can call this operation to check whether ARMS is available for commercial use in a region.
+ *
+ * @param request CheckCommercialStatusRequest
+ * @return CheckCommercialStatusResponse
+ */
 func (client *Client) CheckCommercialStatus(request *CheckCommercialStatusRequest) (_result *CheckCommercialStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckCommercialStatusResponse{}
@@ -58250,10 +58286,6 @@ func (client *Client) UpdateTimingSyntheticTaskWithOptions(tmpReq *UpdateTimingS
 		query["Frequency"] = request.Frequency
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MonitorCategory)) {
-		query["MonitorCategory"] = request.MonitorCategory
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.MonitorConfShrink)) {
 		query["MonitorConf"] = request.MonitorConfShrink
 	}
@@ -58280,10 +58312,6 @@ func (client *Client) UpdateTimingSyntheticTaskWithOptions(tmpReq *UpdateTimingS
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
-		query["TaskType"] = request.TaskType
 	}
 
 	req := &openapi.OpenApiRequest{
