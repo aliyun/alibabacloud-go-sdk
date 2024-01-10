@@ -290,7 +290,9 @@ type CreateClusterRequestNetworks struct {
 	IpAllocationPolicy []*CreateClusterRequestNetworksIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
 	NewVpdInfo         *CreateClusterRequestNetworksNewVpdInfo           `json:"NewVpdInfo,omitempty" xml:"NewVpdInfo,omitempty" type:"Struct"`
 	SecurityGroupId    *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId          *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VSwitchZoneId      *string                                           `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
+	VpcId              *string                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// 复用VPD信息
 	VpdInfo *CreateClusterRequestNetworksVpdInfo `json:"VpdInfo,omitempty" xml:"VpdInfo,omitempty" type:"Struct"`
 }
@@ -318,8 +320,18 @@ func (s *CreateClusterRequestNetworks) SetSecurityGroupId(v string) *CreateClust
 	return s
 }
 
+func (s *CreateClusterRequestNetworks) SetVSwitchId(v string) *CreateClusterRequestNetworks {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *CreateClusterRequestNetworks) SetVSwitchZoneId(v string) *CreateClusterRequestNetworks {
 	s.VSwitchZoneId = &v
+	return s
+}
+
+func (s *CreateClusterRequestNetworks) SetVpcId(v string) *CreateClusterRequestNetworks {
+	s.VpcId = &v
 	return s
 }
 
