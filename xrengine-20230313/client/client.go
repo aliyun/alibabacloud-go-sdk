@@ -1809,9 +1809,10 @@ func (s *ListMotionShopTasksResponseBody) SetTotal(v int32) *ListMotionShopTasks
 }
 
 type ListMotionShopTasksResponseBodyData struct {
-	Result *ListMotionShopTasksResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Status *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId *string                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Material *ListMotionShopTasksResponseBodyDataMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
+	Result   *ListMotionShopTasksResponseBodyDataResult   `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Status   *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId   *string                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListMotionShopTasksResponseBodyData) String() string {
@@ -1820,6 +1821,11 @@ func (s ListMotionShopTasksResponseBodyData) String() string {
 
 func (s ListMotionShopTasksResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListMotionShopTasksResponseBodyData) SetMaterial(v *ListMotionShopTasksResponseBodyDataMaterial) *ListMotionShopTasksResponseBodyData {
+	s.Material = v
+	return s
 }
 
 func (s *ListMotionShopTasksResponseBodyData) SetResult(v *ListMotionShopTasksResponseBodyDataResult) *ListMotionShopTasksResponseBodyData {
@@ -1834,6 +1840,35 @@ func (s *ListMotionShopTasksResponseBodyData) SetStatus(v string) *ListMotionSho
 
 func (s *ListMotionShopTasksResponseBodyData) SetTaskId(v string) *ListMotionShopTasksResponseBodyData {
 	s.TaskId = &v
+	return s
+}
+
+type ListMotionShopTasksResponseBodyDataMaterial struct {
+	AvatarId *string    `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	Box      []*float64 `json:"Box,omitempty" xml:"Box,omitempty" type:"Repeated"`
+	CoverUrl *string    `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+}
+
+func (s ListMotionShopTasksResponseBodyDataMaterial) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMotionShopTasksResponseBodyDataMaterial) GoString() string {
+	return s.String()
+}
+
+func (s *ListMotionShopTasksResponseBodyDataMaterial) SetAvatarId(v string) *ListMotionShopTasksResponseBodyDataMaterial {
+	s.AvatarId = &v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBodyDataMaterial) SetBox(v []*float64) *ListMotionShopTasksResponseBodyDataMaterial {
+	s.Box = v
+	return s
+}
+
+func (s *ListMotionShopTasksResponseBodyDataMaterial) SetCoverUrl(v string) *ListMotionShopTasksResponseBodyDataMaterial {
+	s.CoverUrl = &v
 	return s
 }
 
