@@ -1,3 +1,6 @@
+2024-01-10 Version: v6.0.0
+- Generated golang 2018-01-20 for Iot.
+
 2023-09-22 Version: v5.2.0
 - Add Api ResetDeviceTimeline.
 
