@@ -1669,12 +1669,15 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type ListApplicationRequest struct {
+	// Keywords in the app name
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The HTTP status code.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The ID of the resource group to which the application belongs.
-	NextToken       *int32  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderType       *int64  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 1 update time,<br>2 creation time
+	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the applications to be returned.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -1719,13 +1722,18 @@ func (s *ListApplicationRequest) SetStatus(v string) *ListApplicationRequest {
 }
 
 type ListApplicationResponseBody struct {
+	// The HTTP status code.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the applications.
-	Data       []*ListApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken  *int32                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// App listing information
+	Data []*ListApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The interface returns information
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The query token returned in this call.
+	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the application.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListApplicationResponseBody) String() string {
@@ -1767,10 +1775,15 @@ func (s *ListApplicationResponseBody) SetTotalCount(v int32) *ListApplicationRes
 }
 
 type ListApplicationResponseBodyData struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The application ID.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The time when the application was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The URL of the application architecture image.
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group to which the application belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the application.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
