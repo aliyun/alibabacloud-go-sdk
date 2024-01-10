@@ -2068,7 +2068,7 @@ type CreateSecretParameterRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The data type of the parameter. Set the value to Secret.
+	// The type of the parameter. Set the value to Secret.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the encryption parameter. The value must be 1 to 4096 characters in length.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2154,7 +2154,7 @@ type CreateSecretParameterShrinkRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The data type of the parameter. Set the value to Secret.
+	// The type of the parameter. Set the value to Secret.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the encryption parameter. The value must be 1 to 4096 characters in length.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -3012,8 +3012,11 @@ type DeleteApplicationRequest struct {
 	// The application name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RetainResource *bool   `json:"RetainResource,omitempty" xml:"RetainResource,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to retain resources created by application manager when deleting the application. Valid values:
+	// - true
+	// - false
+	RetainResource *bool `json:"RetainResource,omitempty" xml:"RetainResource,omitempty"`
 }
 
 func (s DeleteApplicationRequest) String() string {
@@ -3097,8 +3100,11 @@ type DeleteApplicationGroupRequest struct {
 	// The name of the application group.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region. Set the value to cn-hangzhou.
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RetainResource *bool   `json:"RetainResource,omitempty" xml:"RetainResource,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to retain resources created by application manager when deleting the application. Valid values:
+	// - true
+	// - false
+	RetainResource *bool `json:"RetainResource,omitempty" xml:"RetainResource,omitempty"`
 }
 
 func (s DeleteApplicationGroupRequest) String() string {
@@ -3790,13 +3796,20 @@ func (s *DeployApplicationGroupResponse) SetBody(v *DeployApplicationGroupRespon
 }
 
 type DescribeApplicationGroupBillRequest struct {
+	// The application name.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	BillingCycle    *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The billing cycle, in the YYYY-MM format.
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The number of entries per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The application group name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The token that is used to retrieve the next page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the cloud resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeApplicationGroupBillRequest) String() string {
@@ -3843,10 +3856,14 @@ func (s *DescribeApplicationGroupBillRequest) SetResourceType(v string) *Describ
 }
 
 type DescribeApplicationGroupBillResponseBody struct {
+	// The consume of application group.
 	ApplicationGroupConsume []*DescribeApplicationGroupBillResponseBodyApplicationGroupConsume `json:"ApplicationGroupConsume,omitempty" xml:"ApplicationGroupConsume,omitempty" type:"Repeated"`
-	MaxResults              *int32                                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken               *string                                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId               *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApplicationGroupBillResponseBody) String() string {
@@ -3878,16 +3895,26 @@ func (s *DescribeApplicationGroupBillResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeApplicationGroupBillResponseBodyApplicationGroupConsume struct {
-	Amount       *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	CreationTime *string  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Currency     *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	InstanceId   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Optimization *string  `json:"Optimization,omitempty" xml:"Optimization,omitempty"`
-	PeakType     *string  `json:"PeakType,omitempty" xml:"PeakType,omitempty"`
-	Performance  *string  `json:"Performance,omitempty" xml:"Performance,omitempty"`
-	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The amount consumed by the instance.
+	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The time when the instance was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The currency unit.
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Optimization suggestions.
+	Optimization *string `json:"Optimization,omitempty" xml:"Optimization,omitempty"`
+	// The peak type.
+	PeakType *string `json:"PeakType,omitempty" xml:"PeakType,omitempty"`
+	// The performance of the data synchronization instance.
+	Performance *string `json:"Performance,omitempty" xml:"Performance,omitempty"`
+	// The status of instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) String() string {
@@ -4095,7 +4122,8 @@ type GenerateExecutionPolicyRequest struct {
 	// The RAM role.
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// The ID of the region.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The content of the template in the JSON or YAML format. This parameter is the same as the Content parameter that you can specify when you call the CreateTemplate operation. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	// The name of the template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -5026,8 +5054,6 @@ type GetOpsItemResponseBodyOpsItem struct {
 	CreateBy *string `json:"CreateBy,omitempty" xml:"CreateBy,omitempty"`
 	// The time when the O\&M item was created.
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The duplicated string.
-	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
 	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The user who last modified the O\&M item.
@@ -5081,11 +5107,6 @@ func (s *GetOpsItemResponseBodyOpsItem) SetCreateBy(v string) *GetOpsItemRespons
 
 func (s *GetOpsItemResponseBodyOpsItem) SetCreateDate(v string) *GetOpsItemResponseBodyOpsItem {
 	s.CreateDate = &v
-	return s
-}
-
-func (s *GetOpsItemResponseBodyOpsItem) SetDedupString(v string) *GetOpsItemResponseBodyOpsItem {
-	s.DedupString = &v
 	return s
 }
 
@@ -12668,6 +12689,7 @@ type ListTemplatesRequest struct {
 	CreatedDateBefore *string `json:"CreatedDateBefore,omitempty" xml:"CreatedDateBefore,omitempty"`
 	// Specifies whether to query the template that is configured with a trigger.
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
+	// The template is favorite or not.
 	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -12682,13 +12704,13 @@ type ListTemplatesRequest struct {
 	// *   **Public**
 	// *   **Private**
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The field that is used to sort the templates to be returned. Valid values:
+	// The field that is used to sort the templates to be queried. Valid values:
 	//
-	// *   **TotalExecutionCounts**: The system sorts the returned templates based on the total number of execution times of the template. This is the default value.
-	// *   **Popularity**: The system sorts the returned templates based on the popularity of the template.
-	// *   **TemplateName**: The system sorts the returned templates based on the name of the template.
-	// *   **CreatedDate**: The system sorts the returned templates based on the creation time of the template.
-	// *   **UpdateDate**: The system sorts the returned templates based on the update time of the template.
+	// *   **TotalExecutionCount** (default): The system sorts the returned templates based on the total number of times that the templates are used.
+	// *   **Popularity**: The system sorts the returned templates based on the popularity of the templates.
+	// *   **TemplateName**: The system sorts the returned templates based on the names of the templates.
+	// *   **CreatedDate**: The system sorts the returned templates based on the points in time when the templates are created.
+	// *   **UpdatedDate**: The system sorts the returned templates based on the points in time when the templates are updated.
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
@@ -12704,33 +12726,11 @@ type ListTemplatesRequest struct {
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The name of the template. All templates whose names contain the specified template name are to be returned.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the template.
+	// The type of the template. Valid values:
 	//
-	// Valid values:
-	//
-	// *   Automation
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   State
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   Package
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// *   Automation: the template for automated tasks.
+	// *   State: the template for configuration inventories.
+	// *   Package: the template for software packages.
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -12845,6 +12845,7 @@ type ListTemplatesShrinkRequest struct {
 	CreatedDateBefore *string `json:"CreatedDateBefore,omitempty" xml:"CreatedDateBefore,omitempty"`
 	// Specifies whether to query the template that is configured with a trigger.
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
+	// The template is favorite or not.
 	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -12859,13 +12860,13 @@ type ListTemplatesShrinkRequest struct {
 	// *   **Public**
 	// *   **Private**
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The field that is used to sort the templates to be returned. Valid values:
+	// The field that is used to sort the templates to be queried. Valid values:
 	//
-	// *   **TotalExecutionCounts**: The system sorts the returned templates based on the total number of execution times of the template. This is the default value.
-	// *   **Popularity**: The system sorts the returned templates based on the popularity of the template.
-	// *   **TemplateName**: The system sorts the returned templates based on the name of the template.
-	// *   **CreatedDate**: The system sorts the returned templates based on the creation time of the template.
-	// *   **UpdateDate**: The system sorts the returned templates based on the update time of the template.
+	// *   **TotalExecutionCount** (default): The system sorts the returned templates based on the total number of times that the templates are used.
+	// *   **Popularity**: The system sorts the returned templates based on the popularity of the templates.
+	// *   **TemplateName**: The system sorts the returned templates based on the names of the templates.
+	// *   **CreatedDate**: The system sorts the returned templates based on the points in time when the templates are created.
+	// *   **UpdatedDate**: The system sorts the returned templates based on the points in time when the templates are updated.
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
@@ -12881,33 +12882,11 @@ type ListTemplatesShrinkRequest struct {
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The name of the template. All templates whose names contain the specified template name are to be returned.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the template.
+	// The type of the template. Valid values:
 	//
-	// Valid values:
-	//
-	// *   Automation
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   State
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   Package
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// *   Automation: the template for automated tasks.
+	// *   State: the template for configuration inventories.
+	// *   Package: the template for software packages.
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -13045,7 +13024,8 @@ func (s *ListTemplatesResponseBody) SetTemplates(v []*ListTemplatesResponseBodyT
 
 type ListTemplatesResponseBodyTemplates struct {
 	// The type of the template.
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The constraints of template
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the template.
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
@@ -13056,13 +13036,15 @@ type ListTemplatesResponseBodyTemplates struct {
 	// Indicates whether the template is configured with a trigger.
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
 	// The SHA-256 value of the template content.
-	Hash       *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
-	IsFavorite *bool   `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// The template is favorite or not.
+	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The popularity of the public template. Valid values: **1-10**. A greater value indicates higher popularity. If the **ShareType** parameter is set to **Private**, the value of this parameter is `-1`.
 	//
 	// **Notes** This parameter is valid only if the value of the **ShareType** parameter is set to **Public**.
-	Popularity *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
-	Publisher  *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
+	Popularity *int32 `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
+	// The publisher of template.
+	Publisher *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. The share type of the template that you create is **Private**. Valid values:
