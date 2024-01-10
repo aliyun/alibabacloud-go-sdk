@@ -11233,6 +11233,20 @@ type DescribeParameterTemplatesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The role of the instance. Valid values:
+	//
+	// 1. db:  a shard node.
+	//
+	// 1. cs:  a Configserver node.
+	//
+	// 1. mongos:  a mongos node.
+	//
+	// 1. normal: a replica set node.
+	//
+	// 1. physical: a standalone node.
+	//
+	// default: normal
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s DescribeParameterTemplatesRequest) String() string {
@@ -11275,6 +11289,11 @@ func (s *DescribeParameterTemplatesRequest) SetResourceOwnerAccount(v string) *D
 
 func (s *DescribeParameterTemplatesRequest) SetResourceOwnerId(v int64) *DescribeParameterTemplatesRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetRole(v string) *DescribeParameterTemplatesRequest {
+	s.Role = &v
 	return s
 }
 
@@ -24681,6 +24700,10 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
 	}
 
 	req := &openapi.OpenApiRequest{
