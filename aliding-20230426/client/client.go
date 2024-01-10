@@ -3599,7 +3599,7 @@ func (s *CreateDeliveryPlanHeaders) SetAccountContext(v *CreateDeliveryPlanHeade
 }
 
 type CreateDeliveryPlanHeadersAccountContext struct {
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
 }
 
 func (s CreateDeliveryPlanHeadersAccountContext) String() string {
@@ -3610,8 +3610,8 @@ func (s CreateDeliveryPlanHeadersAccountContext) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDeliveryPlanHeadersAccountContext) SetAccountId(v string) *CreateDeliveryPlanHeadersAccountContext {
-	s.AccountId = &v
+func (s *CreateDeliveryPlanHeadersAccountContext) SetUserToken(v string) *CreateDeliveryPlanHeadersAccountContext {
+	s.UserToken = &v
 	return s
 }
 
@@ -22412,8 +22412,10 @@ type ListEventsResponseBody struct {
 	Events    []*ListEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
 	NextToken *string                         `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SyncToken *string `json:"syncToken,omitempty" xml:"syncToken,omitempty"`
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SyncToken       *string `json:"syncToken,omitempty" xml:"syncToken,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 }
 
 func (s ListEventsResponseBody) String() string {
@@ -22441,6 +22443,16 @@ func (s *ListEventsResponseBody) SetRequestId(v string) *ListEventsResponseBody 
 
 func (s *ListEventsResponseBody) SetSyncToken(v string) *ListEventsResponseBody {
 	s.SyncToken = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetVendorRequestId(v string) *ListEventsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetVendorType(v string) *ListEventsResponseBody {
+	s.VendorType = &v
 	return s
 }
 
