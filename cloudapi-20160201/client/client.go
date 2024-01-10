@@ -862,8 +862,9 @@ func (s *CreateApiForInnerResponse) SetBody(v *CreateApiForInnerResponseBody) *C
 }
 
 type CreateApiGroupRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CreateApiGroupRequest) String() string {
@@ -881,6 +882,11 @@ func (s *CreateApiGroupRequest) SetDescription(v string) *CreateApiGroupRequest 
 
 func (s *CreateApiGroupRequest) SetGroupName(v string) *CreateApiGroupRequest {
 	s.GroupName = &v
+	return s
+}
+
+func (s *CreateApiGroupRequest) SetSecurityToken(v string) *CreateApiGroupRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -18523,6 +18529,10 @@ func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
 		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
