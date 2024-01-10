@@ -1317,6 +1317,7 @@ func (s *SubmitTraceAbResponse) SetBody(v *SubmitTraceAbResponseBody) *SubmitTra
 type SubmitTraceExtractRequest struct {
 	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
 	Input    *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Params   *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
@@ -1336,6 +1337,11 @@ func (s *SubmitTraceExtractRequest) SetCallBack(v string) *SubmitTraceExtractReq
 
 func (s *SubmitTraceExtractRequest) SetInput(v string) *SubmitTraceExtractRequest {
 	s.Input = &v
+	return s
+}
+
+func (s *SubmitTraceExtractRequest) SetParams(v string) *SubmitTraceExtractRequest {
+	s.Params = &v
 	return s
 }
 
@@ -1434,6 +1440,7 @@ type SubmitTracemuRequest struct {
 	KeyUri  *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	Output  *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Params  *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	Trace   *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
 }
 
@@ -1457,6 +1464,11 @@ func (s *SubmitTracemuRequest) SetMediaId(v string) *SubmitTracemuRequest {
 
 func (s *SubmitTracemuRequest) SetOutput(v string) *SubmitTracemuRequest {
 	s.Output = &v
+	return s
+}
+
+func (s *SubmitTracemuRequest) SetParams(v string) *SubmitTracemuRequest {
+	s.Params = &v
 	return s
 }
 
@@ -2223,6 +2235,10 @@ func (client *Client) SubmitTraceExtractWithOptions(request *SubmitTraceExtractR
 		body["Input"] = request.Input
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		body["Url"] = request.Url
 	}
@@ -2283,6 +2299,10 @@ func (client *Client) SubmitTracemuWithOptions(request *SubmitTracemuRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Output)) {
 		body["Output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Trace)) {
