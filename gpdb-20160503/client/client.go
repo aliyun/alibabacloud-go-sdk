@@ -8,8 +8,13 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
+	fileform "github.com/alibabacloud-go/tea-fileform/service"
+	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
+	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
+	"io"
 )
 
 type AllocateInstancePublicConnectionRequest struct {
@@ -121,6 +126,117 @@ func (s *AllocateInstancePublicConnectionResponse) SetStatusCode(v int32) *Alloc
 }
 
 func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePublicConnectionResponseBody) *AllocateInstancePublicConnectionResponse {
+	s.Body = v
+	return s
+}
+
+type CancelUpsertCollectionDataJobRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CancelUpsertCollectionDataJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUpsertCollectionDataJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUpsertCollectionDataJobRequest) SetCollection(v string) *CancelUpsertCollectionDataJobRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobRequest) SetDBInstanceId(v string) *CancelUpsertCollectionDataJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobRequest) SetJobId(v string) *CancelUpsertCollectionDataJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobRequest) SetNamespace(v string) *CancelUpsertCollectionDataJobRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobRequest) SetNamespacePassword(v string) *CancelUpsertCollectionDataJobRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobRequest) SetOwnerId(v int64) *CancelUpsertCollectionDataJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobRequest) SetRegionId(v string) *CancelUpsertCollectionDataJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CancelUpsertCollectionDataJobResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CancelUpsertCollectionDataJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUpsertCollectionDataJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUpsertCollectionDataJobResponseBody) SetMessage(v string) *CancelUpsertCollectionDataJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobResponseBody) SetRequestId(v string) *CancelUpsertCollectionDataJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobResponseBody) SetStatus(v string) *CancelUpsertCollectionDataJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CancelUpsertCollectionDataJobResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelUpsertCollectionDataJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelUpsertCollectionDataJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUpsertCollectionDataJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUpsertCollectionDataJobResponse) SetHeaders(v map[string]*string) *CancelUpsertCollectionDataJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobResponse) SetStatusCode(v int32) *CancelUpsertCollectionDataJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobResponse) SetBody(v *CancelUpsertCollectionDataJobResponseBody) *CancelUpsertCollectionDataJobResponse {
 	s.Body = v
 	return s
 }
@@ -325,6 +441,7 @@ type CreateCollectionRequest struct {
 	Collection              *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Dimension               *int64  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	ExternalStorage         *int32  `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
 	HnswM                   *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
 	ManagerAccount          *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
@@ -358,6 +475,11 @@ func (s *CreateCollectionRequest) SetDBInstanceId(v string) *CreateCollectionReq
 
 func (s *CreateCollectionRequest) SetDimension(v int64) *CreateCollectionRequest {
 	s.Dimension = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetExternalStorage(v int32) *CreateCollectionRequest {
+	s.ExternalStorage = &v
 	return s
 }
 
@@ -598,6 +720,7 @@ type CreateDBInstanceRequest struct {
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// This parameter is no longer used.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	ProdType         *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
@@ -805,6 +928,11 @@ func (s *CreateDBInstanceRequest) SetPeriod(v string) *CreateDBInstanceRequest {
 
 func (s *CreateDBInstanceRequest) SetPrivateIpAddress(v string) *CreateDBInstanceRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetProdType(v string) *CreateDBInstanceRequest {
+	s.ProdType = &v
 	return s
 }
 
@@ -1188,6 +1316,7 @@ type CreateDocumentCollectionRequest struct {
 	Collection              *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	EmbeddingModel          *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	ExternalStorage         *int32  `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
 	HnswM                   *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
 	ManagerAccount          *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
@@ -1221,6 +1350,11 @@ func (s *CreateDocumentCollectionRequest) SetDBInstanceId(v string) *CreateDocum
 
 func (s *CreateDocumentCollectionRequest) SetEmbeddingModel(v string) *CreateDocumentCollectionRequest {
 	s.EmbeddingModel = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetExternalStorage(v int32) *CreateDocumentCollectionRequest {
+	s.ExternalStorage = &v
 	return s
 }
 
@@ -1636,6 +1770,7 @@ type CreateVectorIndexRequest struct {
 	Collection             *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Dimension              *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	ExternalStorage        *int32  `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
 	HnswM                  *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
 	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
@@ -1667,6 +1802,11 @@ func (s *CreateVectorIndexRequest) SetDBInstanceId(v string) *CreateVectorIndexR
 
 func (s *CreateVectorIndexRequest) SetDimension(v int32) *CreateVectorIndexRequest {
 	s.Dimension = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetExternalStorage(v int32) *CreateVectorIndexRequest {
+	s.ExternalStorage = &v
 	return s
 }
 
@@ -2834,6 +2974,206 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 	return s
 }
 
+type DescribeActiveSQLRecordsRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	MaxDuration  *string `json:"MaxDuration,omitempty" xml:"MaxDuration,omitempty"`
+	MinDuration  *string `json:"MinDuration,omitempty" xml:"MinDuration,omitempty"`
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User         *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeActiveSQLRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveSQLRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetDBInstanceId(v string) *DescribeActiveSQLRecordsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetDatabase(v string) *DescribeActiveSQLRecordsRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetEndTime(v string) *DescribeActiveSQLRecordsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetKeyword(v string) *DescribeActiveSQLRecordsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetMaxDuration(v string) *DescribeActiveSQLRecordsRequest {
+	s.MaxDuration = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetMinDuration(v string) *DescribeActiveSQLRecordsRequest {
+	s.MinDuration = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetOrder(v string) *DescribeActiveSQLRecordsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetStartTime(v string) *DescribeActiveSQLRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsRequest) SetUser(v string) *DescribeActiveSQLRecordsRequest {
+	s.User = &v
+	return s
+}
+
+type DescribeActiveSQLRecordsResponseBody struct {
+	DBInstanceId *string                                        `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Queries      []*DescribeActiveSQLRecordsResponseBodyQueries `json:"Queries,omitempty" xml:"Queries,omitempty" type:"Repeated"`
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeActiveSQLRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveSQLRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveSQLRecordsResponseBody) SetDBInstanceId(v string) *DescribeActiveSQLRecordsResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBody) SetQueries(v []*DescribeActiveSQLRecordsResponseBodyQueries) *DescribeActiveSQLRecordsResponseBody {
+	s.Queries = v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBody) SetRequestId(v string) *DescribeActiveSQLRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeActiveSQLRecordsResponseBodyQueries struct {
+	ClientAddr            *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
+	Database              *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	PID                   *string `json:"PID,omitempty" xml:"PID,omitempty"`
+	Query                 *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	QueryDuration         *string `json:"QueryDuration,omitempty" xml:"QueryDuration,omitempty"`
+	QueryStart            *string `json:"QueryStart,omitempty" xml:"QueryStart,omitempty"`
+	SessionID             *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	SqlTruncated          *string `json:"SqlTruncated,omitempty" xml:"SqlTruncated,omitempty"`
+	SqlTruncatedThreshold *string `json:"SqlTruncatedThreshold,omitempty" xml:"SqlTruncatedThreshold,omitempty"`
+	State                 *string `json:"State,omitempty" xml:"State,omitempty"`
+	User                  *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeActiveSQLRecordsResponseBodyQueries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveSQLRecordsResponseBodyQueries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetClientAddr(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.ClientAddr = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetDatabase(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetPID(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.PID = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetQuery(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.Query = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetQueryDuration(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.QueryDuration = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetQueryStart(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.QueryStart = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetSessionID(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.SessionID = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetSqlTruncated(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.SqlTruncated = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetSqlTruncatedThreshold(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.SqlTruncatedThreshold = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetState(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponseBodyQueries) SetUser(v string) *DescribeActiveSQLRecordsResponseBodyQueries {
+	s.User = &v
+	return s
+}
+
+type DescribeActiveSQLRecordsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeActiveSQLRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeActiveSQLRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveSQLRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveSQLRecordsResponse) SetHeaders(v map[string]*string) *DescribeActiveSQLRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponse) SetStatusCode(v int32) *DescribeActiveSQLRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeActiveSQLRecordsResponse) SetBody(v *DescribeActiveSQLRecordsResponseBody) *DescribeActiveSQLRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAvailableResourcesRequest struct {
 	// The billing method. Valid values:
 	//
@@ -3994,7 +4334,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **Prepaid**: subscription.
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The port number that is used to connect to the instance.
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProdType *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
 	ReadDelayTime *string `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
 	// The region ID of the instance.
@@ -4279,6 +4620,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPay
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetProdType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.ProdType = &v
 	return s
 }
 
@@ -7015,7 +7361,8 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	//
 	// *   **Postpaid**: pay-as-you-go.
 	// *   **Prepaid**: subscription.
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType  *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ProdType *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
@@ -7136,6 +7483,11 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetMasterNodeNum(v int3
 
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetPayType(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetProdType(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.ProdType = &v
 	return s
 }
 
@@ -13512,6 +13864,177 @@ func (s *DownloadSQLLogsRecordsResponse) SetBody(v *DownloadSQLLogsRecordsRespon
 	return s
 }
 
+type GetUpsertCollectionDataJobRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetUpsertCollectionDataJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUpsertCollectionDataJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUpsertCollectionDataJobRequest) SetCollection(v string) *GetUpsertCollectionDataJobRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobRequest) SetDBInstanceId(v string) *GetUpsertCollectionDataJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobRequest) SetJobId(v string) *GetUpsertCollectionDataJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobRequest) SetNamespace(v string) *GetUpsertCollectionDataJobRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobRequest) SetNamespacePassword(v string) *GetUpsertCollectionDataJobRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobRequest) SetOwnerId(v int64) *GetUpsertCollectionDataJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobRequest) SetRegionId(v string) *GetUpsertCollectionDataJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetUpsertCollectionDataJobResponseBody struct {
+	Job       *GetUpsertCollectionDataJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetUpsertCollectionDataJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUpsertCollectionDataJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUpsertCollectionDataJobResponseBody) SetJob(v *GetUpsertCollectionDataJobResponseBodyJob) *GetUpsertCollectionDataJobResponseBody {
+	s.Job = v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBody) SetMessage(v string) *GetUpsertCollectionDataJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBody) SetRequestId(v string) *GetUpsertCollectionDataJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBody) SetStatus(v string) *GetUpsertCollectionDataJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetUpsertCollectionDataJobResponseBodyJob struct {
+	Completed  *bool   `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// Job ID。
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Progress   *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetUpsertCollectionDataJobResponseBodyJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUpsertCollectionDataJobResponseBodyJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetUpsertCollectionDataJobResponseBodyJob) SetCompleted(v bool) *GetUpsertCollectionDataJobResponseBodyJob {
+	s.Completed = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBodyJob) SetCreateTime(v string) *GetUpsertCollectionDataJobResponseBodyJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBodyJob) SetError(v string) *GetUpsertCollectionDataJobResponseBodyJob {
+	s.Error = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBodyJob) SetId(v string) *GetUpsertCollectionDataJobResponseBodyJob {
+	s.Id = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBodyJob) SetProgress(v int32) *GetUpsertCollectionDataJobResponseBodyJob {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBodyJob) SetStatus(v string) *GetUpsertCollectionDataJobResponseBodyJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponseBodyJob) SetUpdateTime(v string) *GetUpsertCollectionDataJobResponseBodyJob {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetUpsertCollectionDataJobResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUpsertCollectionDataJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUpsertCollectionDataJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUpsertCollectionDataJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUpsertCollectionDataJobResponse) SetHeaders(v map[string]*string) *GetUpsertCollectionDataJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponse) SetStatusCode(v int32) *GetUpsertCollectionDataJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobResponse) SetBody(v *GetUpsertCollectionDataJobResponseBody) *GetUpsertCollectionDataJobResponse {
+	s.Body = v
+	return s
+}
+
 type GrantCollectionRequest struct {
 	// The name of the collection.
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
@@ -17864,15 +18387,18 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateCollectionDataMetadataRequest struct {
-	Collection        *string                `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Filter            *string                `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	Ids               []*string              `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	Collection   *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
+	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
 	Metadata          map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	Namespace         *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespacePassword *string                `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateCollectionDataMetadataRequest) String() string {
@@ -17929,15 +18455,18 @@ func (s *UpdateCollectionDataMetadataRequest) SetRegionId(v string) *UpdateColle
 }
 
 type UpdateCollectionDataMetadataShrinkRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Filter            *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IdsShrink         *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	Collection   *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
 	MetadataShrink    *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateCollectionDataMetadataShrinkRequest) String() string {
@@ -18957,6 +19486,176 @@ func (s *UpsertCollectionDataResponse) SetBody(v *UpsertCollectionDataResponseBo
 	return s
 }
 
+type UpsertCollectionDataAsyncRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpsertCollectionDataAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataAsyncRequest) SetCollection(v string) *UpsertCollectionDataAsyncRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncRequest) SetDBInstanceId(v string) *UpsertCollectionDataAsyncRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncRequest) SetFileUrl(v string) *UpsertCollectionDataAsyncRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncRequest) SetNamespace(v string) *UpsertCollectionDataAsyncRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncRequest) SetNamespacePassword(v string) *UpsertCollectionDataAsyncRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncRequest) SetOwnerId(v int64) *UpsertCollectionDataAsyncRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncRequest) SetRegionId(v string) *UpsertCollectionDataAsyncRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpsertCollectionDataAsyncAdvanceRequest struct {
+	Collection        *string   `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Namespace         *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string   `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpsertCollectionDataAsyncAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataAsyncAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataAsyncAdvanceRequest) SetCollection(v string) *UpsertCollectionDataAsyncAdvanceRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncAdvanceRequest) SetDBInstanceId(v string) *UpsertCollectionDataAsyncAdvanceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncAdvanceRequest) SetFileUrlObject(v io.Reader) *UpsertCollectionDataAsyncAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncAdvanceRequest) SetNamespace(v string) *UpsertCollectionDataAsyncAdvanceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncAdvanceRequest) SetNamespacePassword(v string) *UpsertCollectionDataAsyncAdvanceRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncAdvanceRequest) SetOwnerId(v int64) *UpsertCollectionDataAsyncAdvanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncAdvanceRequest) SetRegionId(v string) *UpsertCollectionDataAsyncAdvanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpsertCollectionDataAsyncResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpsertCollectionDataAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataAsyncResponseBody) SetJobId(v string) *UpsertCollectionDataAsyncResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncResponseBody) SetMessage(v string) *UpsertCollectionDataAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncResponseBody) SetRequestId(v string) *UpsertCollectionDataAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncResponseBody) SetStatus(v string) *UpsertCollectionDataAsyncResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UpsertCollectionDataAsyncResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpsertCollectionDataAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpsertCollectionDataAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataAsyncResponse) SetHeaders(v map[string]*string) *UpsertCollectionDataAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncResponse) SetStatusCode(v int32) *UpsertCollectionDataAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncResponse) SetBody(v *UpsertCollectionDataAsyncResponseBody) *UpsertCollectionDataAsyncResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -19097,6 +19796,76 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateInstancePublicConnectionResponse{}
 	_body, _err := client.AllocateInstancePublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelUpsertCollectionDataJobWithOptions(request *CancelUpsertCollectionDataJobRequest, runtime *util.RuntimeOptions) (_result *CancelUpsertCollectionDataJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		body["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		body["NamespacePassword"] = request.NamespacePassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelUpsertCollectionDataJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelUpsertCollectionDataJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelUpsertCollectionDataJob(request *CancelUpsertCollectionDataJobRequest) (_result *CancelUpsertCollectionDataJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelUpsertCollectionDataJobResponse{}
+	_body, _err := client.CancelUpsertCollectionDataJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19251,6 +20020,10 @@ func (client *Client) CreateCollectionWithOptions(request *CreateCollectionReque
 
 	if !tea.BoolValue(util.IsUnset(request.Dimension)) {
 		query["Dimension"] = request.Dimension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalStorage)) {
+		query["ExternalStorage"] = request.ExternalStorage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FullTextRetrievalFields)) {
@@ -19433,6 +20206,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
 		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdType)) {
+		query["ProdType"] = request.ProdType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -19655,6 +20432,10 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 
 	if !tea.BoolValue(util.IsUnset(request.EmbeddingModel)) {
 		query["EmbeddingModel"] = request.EmbeddingModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalStorage)) {
+		query["ExternalStorage"] = request.ExternalStorage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FullTextRetrievalFields)) {
@@ -19942,6 +20723,10 @@ func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexReq
 
 	if !tea.BoolValue(util.IsUnset(request.Dimension)) {
 		query["Dimension"] = request.Dimension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalStorage)) {
+		query["ExternalStorage"] = request.ExternalStorage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HnswM)) {
@@ -20612,6 +21397,82 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountsResponse{}
 	_body, _err := client.DescribeAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeActiveSQLRecordsWithOptions(request *DescribeActiveSQLRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveSQLRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDuration)) {
+		query["MaxDuration"] = request.MaxDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDuration)) {
+		query["MinDuration"] = request.MinDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeActiveSQLRecords"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeActiveSQLRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeActiveSQLRecords(request *DescribeActiveSQLRecordsRequest) (_result *DescribeActiveSQLRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeActiveSQLRecordsResponse{}
+	_body, _err := client.DescribeActiveSQLRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24252,6 +25113,76 @@ func (client *Client) DownloadSQLLogsRecords(request *DownloadSQLLogsRecordsRequ
 	return _result, _err
 }
 
+func (client *Client) GetUpsertCollectionDataJobWithOptions(request *GetUpsertCollectionDataJobRequest, runtime *util.RuntimeOptions) (_result *GetUpsertCollectionDataJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		body["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		body["NamespacePassword"] = request.NamespacePassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUpsertCollectionDataJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUpsertCollectionDataJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUpsertCollectionDataJob(request *GetUpsertCollectionDataJobRequest) (_result *GetUpsertCollectionDataJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUpsertCollectionDataJobResponse{}
+	_body, _err := client.GetUpsertCollectionDataJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GrantCollectionWithOptions(request *GrantCollectionRequest, runtime *util.RuntimeOptions) (_result *GrantCollectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27078,5 +28009,181 @@ func (client *Client) UpsertCollectionData(request *UpsertCollectionDataRequest)
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpsertCollectionDataAsyncWithOptions(request *UpsertCollectionDataAsyncRequest, runtime *util.RuntimeOptions) (_result *UpsertCollectionDataAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		body["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		body["NamespacePassword"] = request.NamespacePassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpsertCollectionDataAsync"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpsertCollectionDataAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpsertCollectionDataAsync(request *UpsertCollectionDataAsyncRequest) (_result *UpsertCollectionDataAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpsertCollectionDataAsyncResponse{}
+	_body, _err := client.UpsertCollectionDataAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpsertCollectionDataAsyncAdvance(request *UpsertCollectionDataAsyncAdvanceRequest, runtime *util.RuntimeOptions) (_result *UpsertCollectionDataAsyncResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("gpdb"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	upsertCollectionDataAsyncReq := &UpsertCollectionDataAsyncRequest{}
+	openapiutil.Convert(request, upsertCollectionDataAsyncReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		upsertCollectionDataAsyncReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	upsertCollectionDataAsyncResp, _err := client.UpsertCollectionDataAsyncWithOptions(upsertCollectionDataAsyncReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = upsertCollectionDataAsyncResp
 	return _result, _err
 }
