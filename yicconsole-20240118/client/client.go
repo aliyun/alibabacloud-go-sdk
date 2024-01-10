@@ -29,6 +29,100 @@ func (s *LxPopCmd) SetData(v string) *LxPopCmd {
 	return s
 }
 
+type BillingProcessMessageRequest struct {
+	Body *LxPopCmd `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BillingProcessMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BillingProcessMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BillingProcessMessageRequest) SetBody(v *LxPopCmd) *BillingProcessMessageRequest {
+	s.Body = v
+	return s
+}
+
+type BillingProcessMessageResponseBody struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Synchro *bool   `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data    *string `json:"data,omitempty" xml:"data,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s BillingProcessMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BillingProcessMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BillingProcessMessageResponseBody) SetMessage(v string) *BillingProcessMessageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BillingProcessMessageResponseBody) SetSynchro(v bool) *BillingProcessMessageResponseBody {
+	s.Synchro = &v
+	return s
+}
+
+func (s *BillingProcessMessageResponseBody) SetCode(v string) *BillingProcessMessageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BillingProcessMessageResponseBody) SetData(v string) *BillingProcessMessageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BillingProcessMessageResponseBody) SetRequestId(v string) *BillingProcessMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BillingProcessMessageResponseBody) SetSuccess(v bool) *BillingProcessMessageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BillingProcessMessageResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BillingProcessMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BillingProcessMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BillingProcessMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BillingProcessMessageResponse) SetHeaders(v map[string]*string) *BillingProcessMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BillingProcessMessageResponse) SetStatusCode(v int32) *BillingProcessMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BillingProcessMessageResponse) SetBody(v *BillingProcessMessageResponseBody) *BillingProcessMessageResponse {
+	s.Body = v
+	return s
+}
+
 type CheckPayOrderRequest struct {
 	Body *LxPopCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -539,6 +633,52 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BillingProcessMessageWithOptions(request *BillingProcessMessageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BillingProcessMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		query["body"] = request.Body
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BillingProcessMessage"),
+		Version:     tea.String("2024-01-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/v1/billing/commands/lifecycle"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BillingProcessMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BillingProcessMessage(request *BillingProcessMessageRequest) (_result *BillingProcessMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BillingProcessMessageResponse{}
+	_body, _err := client.BillingProcessMessageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
