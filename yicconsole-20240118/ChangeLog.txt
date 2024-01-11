@@ -1,3 +1,6 @@
+2024-01-11 Version: v1.2.0
+- Generated golang 2024-01-18 for YicConsole.
+
 2024-01-10 Version: v1.1.0
 - Generated golang 2024-01-18 for YicConsole.
 

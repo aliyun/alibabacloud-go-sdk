@@ -645,14 +645,9 @@ func (client *Client) BillingProcessMessageWithOptions(request *BillingProcessMe
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Body)) {
-		query["body"] = request.Body
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BillingProcessMessage"),
