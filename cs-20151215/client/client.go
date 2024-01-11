@@ -2038,14 +2038,10 @@ type CreateClusterRequest struct {
 	//
 	// Default value: `ack.standard`. If you leave this property empty, an ACK Basic cluster.is created.
 	//
-	// For more information, see [Overview of ACK Pro clusters](https://help.aliyun.com/document_detail/173290.html).
+	// For more information, see [Overview of ACK Pro clusters](~~173290~~).
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// The cluster type. Valid values:
-	//
-	// *   `Kubernetes`: ACK dedicated cluster.
-	// *   `ManagedKubernetes`: ACK Basic cluster or ACK Edge cluster.
-	// *   `Ask`: ACK Serverless Basic cluster.
-	// *   `ExternalKubernetes`: external cluster that is registered to ACK.
+	// The cluster type. Valid value: ManagedKubernetes.
+	// You can create ACK managed clusters, ACK Serverless clusters, and ACK Edge clusters.
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
 	// The CIDR block of pods. You can specify 10.0.0.0/8, 172.16-31.0.0/12-16, 192.168.0.0/16, or their subnets as the CIDR block of pods. The CIDR block of pods cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after the cluster is created.
 	//
@@ -4599,6 +4595,7 @@ func (s *DeleteAlertContactGroupResponse) SetStatusCode(v int32) *DeleteAlertCon
 }
 
 type DeleteClusterRequest struct {
+	// Deprecated
 	// Specifies whether to retain the Server Load Balancer (SLB) resources that are created by the cluster.
 	//
 	// *   `true`: retains the SLB resources that are created by the cluster.
@@ -4641,6 +4638,7 @@ func (s *DeleteClusterRequest) SetRetainResources(v []*string) *DeleteClusterReq
 }
 
 type DeleteClusterShrinkRequest struct {
+	// Deprecated
 	// Specifies whether to retain the Server Load Balancer (SLB) resources that are created by the cluster.
 	//
 	// *   `true`: retains the SLB resources that are created by the cluster.
@@ -15497,7 +15495,8 @@ type ModifyClusterRequest struct {
 	// Default value: `false`.
 	InstanceDeletionProtection *bool `json:"instance_deletion_protection,omitempty" xml:"instance_deletion_protection,omitempty"`
 	// The maintenance window of the cluster. This parameter takes effect only in ACK Pro clusters.
-	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
+	MaintenanceWindow *MaintenanceWindow                   `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
+	OperationPolicy   *ModifyClusterRequestOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// The ID of the resource group to which the cluster belongs.
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 	// 系统事件存储配置。
@@ -15562,6 +15561,11 @@ func (s *ModifyClusterRequest) SetMaintenanceWindow(v *MaintenanceWindow) *Modif
 	return s
 }
 
+func (s *ModifyClusterRequest) SetOperationPolicy(v *ModifyClusterRequestOperationPolicy) *ModifyClusterRequest {
+	s.OperationPolicy = v
+	return s
+}
+
 func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -15569,6 +15573,46 @@ func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterReques
 
 func (s *ModifyClusterRequest) SetSystemEventsLogging(v *ModifyClusterRequestSystemEventsLogging) *ModifyClusterRequest {
 	s.SystemEventsLogging = v
+	return s
+}
+
+type ModifyClusterRequestOperationPolicy struct {
+	ClusterAutoUpgrade *ModifyClusterRequestOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
+}
+
+func (s ModifyClusterRequestOperationPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterRequestOperationPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterRequestOperationPolicy) SetClusterAutoUpgrade(v *ModifyClusterRequestOperationPolicyClusterAutoUpgrade) *ModifyClusterRequestOperationPolicy {
+	s.ClusterAutoUpgrade = v
+	return s
+}
+
+type ModifyClusterRequestOperationPolicyClusterAutoUpgrade struct {
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s ModifyClusterRequestOperationPolicyClusterAutoUpgrade) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterRequestOperationPolicyClusterAutoUpgrade) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterRequestOperationPolicyClusterAutoUpgrade) SetChannel(v string) *ModifyClusterRequestOperationPolicyClusterAutoUpgrade {
+	s.Channel = &v
+	return s
+}
+
+func (s *ModifyClusterRequestOperationPolicyClusterAutoUpgrade) SetEnabled(v bool) *ModifyClusterRequestOperationPolicyClusterAutoUpgrade {
+	s.Enabled = &v
 	return s
 }
 
@@ -16946,7 +16990,6 @@ type OpenAckServiceRequest struct {
 	//
 	// *   `propayasgo`: ACK Pro
 	// *   `edgepayasgo`: ACK Edge
-	// *   `gspayasgo`: ACK for Alibaba Cloud Genomics Service (AGS)
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -24051,6 +24094,10 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 
 	if !tea.BoolValue(util.IsUnset(request.MaintenanceWindow)) {
 		body["maintenance_window"] = request.MaintenanceWindow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationPolicy)) {
+		body["operation_policy"] = request.OperationPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
