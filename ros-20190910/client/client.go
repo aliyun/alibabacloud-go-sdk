@@ -586,11 +586,7 @@ type CreateChangeSetRequest struct {
 	// *   StackPolicyDuringUpdateBody
 	// *   StackPolicyDuringUpdateURL
 	StackPolicyURL *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	// The structure of the template body. The template body must be 1 to 524,288 bytes in length.\
-	// If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessive length of URLs.
-	//
-	// You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateBody   *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
 	// You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
@@ -1107,11 +1103,8 @@ type CreateStackRequest struct {
 	// The URL can be up to 1,350 bytes in length.
 	StackPolicyURL *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
 	// The tags that you want to add to the stack.
-	Tags []*CreateStackRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	Tags         []*CreateStackRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody *string                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The template ID. This parameter applies to shared templates and private templates.
 	//
 	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
@@ -1423,11 +1416,8 @@ type CreateStackGroupRequest struct {
 	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	// The tags of the stack group.
-	Tags []*CreateStackGroupRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	Tags         []*CreateStackGroupRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody *string                        `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
 	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
@@ -1669,11 +1659,8 @@ type CreateStackGroupShrinkRequest struct {
 	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	// The tags of the stack group.
-	Tags []*CreateStackGroupShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	Tags         []*CreateStackGroupShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody *string                              `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
 	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
@@ -15462,10 +15449,7 @@ type PreviewStackRequest struct {
 	//
 	// The URL can be up to 1,350 bytes in length.
 	StackPolicyURL *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateBody   *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The template ID. This parameter applies to shared and private templates.
 	//
 	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
@@ -16931,13 +16915,8 @@ type UpdateStackRequest struct {
 	// The URL can be up to 1,350 bytes in length.
 	StackPolicyURL *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
 	// The value of tag N that you want to add to the template.
-	Tags []*UpdateStackRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
-	//
-	// If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	Tags         []*UpdateStackRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody *string                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared templates and private templates.
 	//
 	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
@@ -17368,10 +17347,7 @@ type UpdateStackGroupRequest struct {
 	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
 	// The region IDs of stack instances. You can specify a maximum of 20 region IDs.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The name of the RAM role to be assumed by the administrator account in ROS. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
-	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateBody   *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The permission model.
 	//
 	// Valid values:
@@ -17645,10 +17621,7 @@ type UpdateStackGroupShrinkRequest struct {
 	RegionIdsShrink *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
 	// The region IDs of stack instances. You can specify a maximum of 20 region IDs.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The name of the RAM role to be assumed by the administrator account in ROS. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
-	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateBody   *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The permission model.
 	//
 	// Valid values:
@@ -19624,10 +19597,6 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 		query["StackPolicyURL"] = request.StackPolicyURL
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
-		query["TemplateBody"] = request.TemplateBody
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -19652,8 +19621,14 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 		query["UsePreviousParameters"] = request.UsePreviousParameters
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		body["TemplateBody"] = request.TemplateBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateChangeSet"),
@@ -19827,10 +19802,6 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 		query["Tags"] = request.Tags
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
-		query["TemplateBody"] = request.TemplateBody
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -19855,8 +19826,14 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 		query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		body["TemplateBody"] = request.TemplateBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateStack"),
@@ -19971,10 +19948,6 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 		query["Tags"] = request.Tags
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
-		query["TemplateBody"] = request.TemplateBody
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -19987,8 +19960,14 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 		query["TemplateVersion"] = request.TemplateVersion
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		body["TemplateBody"] = request.TemplateBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateStackGroup"),
@@ -24282,10 +24261,6 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 		query["StackPolicyURL"] = request.StackPolicyURL
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
-		query["TemplateBody"] = request.TemplateBody
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -24310,8 +24285,14 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 		query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		body["TemplateBody"] = request.TemplateBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PreviewStack"),
@@ -25030,10 +25011,6 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 		query["Tags"] = request.Tags
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
-		query["TemplateBody"] = request.TemplateBody
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -25054,8 +25031,14 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 		query["UsePreviousParameters"] = request.UsePreviousParameters
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		body["TemplateBody"] = request.TemplateBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateStack"),
@@ -25193,10 +25176,6 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 		query["StackGroupName"] = request.StackGroupName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
-		query["TemplateBody"] = request.TemplateBody
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -25209,8 +25188,14 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 		query["TemplateVersion"] = request.TemplateVersion
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		body["TemplateBody"] = request.TemplateBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateStackGroup"),
