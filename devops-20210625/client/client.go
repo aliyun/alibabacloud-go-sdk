@@ -12764,6 +12764,7 @@ type GetMergeRequestResponseBodyResultReviewers struct {
 	Id                  *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name                *string `json:"name,omitempty" xml:"name,omitempty"`
 	ReviewOpinionStatus *string `json:"reviewOpinionStatus,omitempty" xml:"reviewOpinionStatus,omitempty"`
+	ReviewTime          *string `json:"reviewTime,omitempty" xml:"reviewTime,omitempty"`
 	State               *string `json:"state,omitempty" xml:"state,omitempty"`
 	Username            *string `json:"username,omitempty" xml:"username,omitempty"`
 }
@@ -12803,6 +12804,11 @@ func (s *GetMergeRequestResponseBodyResultReviewers) SetName(v string) *GetMerge
 
 func (s *GetMergeRequestResponseBodyResultReviewers) SetReviewOpinionStatus(v string) *GetMergeRequestResponseBodyResultReviewers {
 	s.ReviewOpinionStatus = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetReviewTime(v string) *GetMergeRequestResponseBodyResultReviewers {
+	s.ReviewTime = &v
 	return s
 }
 
@@ -14672,6 +14678,7 @@ func (s *GetProjectMemberResponseBody) SetSuccess(v bool) *GetProjectMemberRespo
 type GetProjectMemberResponseBodyResult struct {
 	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
 	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
 	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 }
@@ -14691,6 +14698,11 @@ func (s *GetProjectMemberResponseBodyResult) SetAccessLevel(v int32) *GetProject
 
 func (s *GetProjectMemberResponseBodyResult) SetAvatarUrl(v string) *GetProjectMemberResponseBodyResult {
 	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyResult) SetEmail(v string) *GetProjectMemberResponseBodyResult {
+	s.Email = &v
 	return s
 }
 
@@ -21737,13 +21749,14 @@ func (s *ListMergeRequestsResponseBodyResultAuthor) SetUsername(v string) *ListM
 }
 
 type ListMergeRequestsResponseBodyResultReviewers struct {
-	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
-	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	State     *string `json:"state,omitempty" xml:"state,omitempty"`
-	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
-	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	ReviewTime *string `json:"reviewTime,omitempty" xml:"reviewTime,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListMergeRequestsResponseBodyResultReviewers) String() string {
@@ -21771,6 +21784,11 @@ func (s *ListMergeRequestsResponseBodyResultReviewers) SetId(v int64) *ListMerge
 
 func (s *ListMergeRequestsResponseBodyResultReviewers) SetName(v string) *ListMergeRequestsResponseBodyResultReviewers {
 	s.Name = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultReviewers) SetReviewTime(v string) *ListMergeRequestsResponseBodyResultReviewers {
+	s.ReviewTime = &v
 	return s
 }
 
