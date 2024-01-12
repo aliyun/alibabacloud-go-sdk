@@ -1108,37 +1108,39 @@ func (s *JobElasticSpec) SetPSMinParallelism(v int32) *JobElasticSpec {
 }
 
 type JobItem struct {
-	CodeSource       *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	DataSources      []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	DisplayName      *string               `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Duration         *int64                `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EnabledDebugger  *bool                 `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	Envs             map[string]*string    `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	GmtCreateTime    *string               `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtFailedTime    *string               `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	GmtFinishTime    *string               `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	GmtRunningTime   *string               `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
-	GmtStoppedTime   *string               `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	GmtSubmittedTime *string               `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	GmtSuccessedTime *string               `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
-	JobId            *string               `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobSpecs         []*JobSpec            `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	JobType          *string               `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Priority         *int32                `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReasonCode       *string               `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage    *string               `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	ResourceId       *string               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceLevel    *string               `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	ResourceName     *string               `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Settings         *JobSettings          `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	Status           *string               `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus        *string               `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	ThirdpartyLibDir *string               `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	ThirdpartyLibs   []*string             `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
-	UserCommand      *string               `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	UserId           *string               `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId      *string               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName    *string               `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	CodeSource          *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	DataSources         []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	DisplayName         *string               `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Duration            *int64                `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnabledDebugger     *bool                 `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
+	Envs                map[string]*string    `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GmtCreateTime       *string               `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtFailedTime       *string               `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	GmtFinishTime       *string               `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	GmtRunningTime      *string               `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	GmtStoppedTime      *string               `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	GmtSubmittedTime    *string               `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	GmtSuccessedTime    *string               `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
+	JobId               *string               `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobSpecs            []*JobSpec            `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	JobType             *string               `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Priority            *int32                `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ReasonCode          *string               `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage       *string               `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	ResourceId          *string               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceLevel       *string               `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	ResourceName        *string               `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Settings            *JobSettings          `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	Status              *string               `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus           *string               `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	ThirdpartyLibDir    *string               `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	ThirdpartyLibs      []*string             `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	UseOversoldResource *bool                 `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
+	UserCommand         *string               `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	UserId              *string               `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Username            *string               `json:"Username,omitempty" xml:"Username,omitempty"`
+	WorkspaceId         *string               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName       *string               `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s JobItem) String() string {
@@ -1284,6 +1286,11 @@ func (s *JobItem) SetThirdpartyLibs(v []*string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetUseOversoldResource(v bool) *JobItem {
+	s.UseOversoldResource = &v
+	return s
+}
+
 func (s *JobItem) SetUserCommand(v string) *JobItem {
 	s.UserCommand = &v
 	return s
@@ -1291,6 +1298,11 @@ func (s *JobItem) SetUserCommand(v string) *JobItem {
 
 func (s *JobItem) SetUserId(v string) *JobItem {
 	s.UserId = &v
+	return s
+}
+
+func (s *JobItem) SetUsername(v string) *JobItem {
+	s.Username = &v
 	return s
 }
 
@@ -4364,6 +4376,7 @@ type ListJobsRequest struct {
 	Status            *string            `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags              map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	UserIdForFilter   *string            `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
+	Username          *string            `json:"Username,omitempty" xml:"Username,omitempty"`
 	WorkspaceId       *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4465,6 +4478,11 @@ func (s *ListJobsRequest) SetUserIdForFilter(v string) *ListJobsRequest {
 	return s
 }
 
+func (s *ListJobsRequest) SetUsername(v string) *ListJobsRequest {
+	s.Username = &v
+	return s
+}
+
 func (s *ListJobsRequest) SetWorkspaceId(v string) *ListJobsRequest {
 	s.WorkspaceId = &v
 	return s
@@ -4489,6 +4507,7 @@ type ListJobsShrinkRequest struct {
 	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	UserIdForFilter   *string `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
+	Username          *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4587,6 +4606,11 @@ func (s *ListJobsShrinkRequest) SetTagsShrink(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetUserIdForFilter(v string) *ListJobsShrinkRequest {
 	s.UserIdForFilter = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetUsername(v string) *ListJobsShrinkRequest {
+	s.Username = &v
 	return s
 }
 
@@ -6277,6 +6301,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.UserIdForFilter)) {
 		query["UserIdForFilter"] = request.UserIdForFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
