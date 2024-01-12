@@ -467,9 +467,9 @@ func (s *CreateQuotaApplicationResponse) SetBody(v *CreateQuotaApplicationRespon
 }
 
 type CreateQuotaApplicationsForTemplateRequest struct {
-	// The Alibaba Cloud accounts for which the quotas are applied.
+	// The Alibaba Cloud accounts that correspond to the resource directory member accounts for which the quotas are applied.
 	//
-	// >  For more information about the members of a resource directory, see [Query all the members in a resource directory](~~604207~~).
+	// >  You can apply for a quota increase for up to 50 member accounts in each request. For more information about the member accounts in a resource directory, see [ListAccounts](~~604207~~).
 	AliyunUids []*string `json:"AliyunUids,omitempty" xml:"AliyunUids,omitempty" type:"Repeated"`
 	// The requested value of the quota.
 	//
@@ -611,8 +611,9 @@ type CreateQuotaApplicationsForTemplateResponseBody struct {
 	// The Alibaba Cloud accounts for which the quotas are applied.
 	AliyunUids []*string `json:"AliyunUids,omitempty" xml:"AliyunUids,omitempty" type:"Repeated"`
 	// The ID of the quota application batch.
-	BatchQuotaApplicationId *string                                                      `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
-	FailResults             []*CreateQuotaApplicationsForTemplateResponseBodyFailResults `json:"FailResults,omitempty" xml:"FailResults,omitempty" type:"Repeated"`
+	BatchQuotaApplicationId *string `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
+	// The Alibaba Cloud accounts of the members in a resource directory whose quota increase request is rejected, and the reason for the rejection.
+	FailResults []*CreateQuotaApplicationsForTemplateResponseBodyFailResults `json:"FailResults,omitempty" xml:"FailResults,omitempty" type:"Repeated"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -646,8 +647,10 @@ func (s *CreateQuotaApplicationsForTemplateResponseBody) SetRequestId(v string) 
 }
 
 type CreateQuotaApplicationsForTemplateResponseBodyFailResults struct {
+	// The Alibaba Cloud account of the members in a resource directory whose quota increase request is rejected.
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason for the rejection.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s CreateQuotaApplicationsForTemplateResponseBodyFailResults) String() string {
@@ -3002,8 +3005,12 @@ type ListProductQuotasResponseBodyQuotas struct {
 	// The start time of the validity period of the quota. The value is displayed in UTC.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The end time of the validity period of the quota. The value is displayed in UTC.
-	ExpireTime  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GlobalQuota *bool   `json:"GlobalQuota,omitempty" xml:"GlobalQuota,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Indicates whether the quota is a global quota. Valid values:
+	//
+	// *   true: The quota is shared in all regions.
+	// *   false: The quota is independently used in a region.
+	GlobalQuota *bool `json:"GlobalQuota,omitempty" xml:"GlobalQuota,omitempty"`
 	// The calculation cycle of the quota.
 	Period *ListProductQuotasResponseBodyQuotasPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
 	// The abbreviation of the Alibaba Cloud service name.
@@ -4095,6 +4102,7 @@ func (s *ListQuotaApplicationTemplatesResponse) SetBody(v *ListQuotaApplicationT
 }
 
 type ListQuotaApplicationsRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The quota dimensions.
 	Dimensions []*ListQuotaApplicationsRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
 	// The keyword that you want to use to search for the application.
@@ -4132,6 +4140,11 @@ func (s ListQuotaApplicationsRequest) String() string {
 
 func (s ListQuotaApplicationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListQuotaApplicationsRequest) SetAcceptLanguage(v string) *ListQuotaApplicationsRequest {
+	s.AcceptLanguage = &v
+	return s
 }
 
 func (s *ListQuotaApplicationsRequest) SetDimensions(v []*ListQuotaApplicationsRequestDimensions) *ListQuotaApplicationsRequest {
@@ -4947,6 +4960,7 @@ func (s *ListQuotaApplicationsForTemplateResponseBody) SetTotalCount(v int32) *L
 }
 
 type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
+	// The Alibaba Cloud accounts for which the quotas are applied.
 	AliyunUids []*string `json:"AliyunUids,omitempty" xml:"AliyunUids,omitempty" type:"Repeated"`
 	// The time when the quota increase application was submitted. The value is displayed in UTC.
 	ApplyTime *string `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
@@ -4974,7 +4988,8 @@ type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
 	// *   FlowControl: API rate limit
 	// *   WhiteListLabel: privilege
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
-	Reason        *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason for the quota increase application.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) String() string {
@@ -6801,6 +6816,10 @@ func (client *Client) ListQuotaApplicationsWithOptions(request *ListQuotaApplica
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		body["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Dimensions)) {
 		body["Dimensions"] = request.Dimensions
 	}
