@@ -27709,6 +27709,8 @@ func (s *FlightOrderQueryResponseBodyModule) SetPriceInfoList(v []*FlightOrderQu
 
 type FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList struct {
 	ApplyId          *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrAirport       *string  `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
+	ArrCity          *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
 	ArrTime          *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
 	ChangeCabin      *string  `json:"change_cabin,omitempty" xml:"change_cabin,omitempty"`
 	ChangeCabinLevel *string  `json:"change_cabin_level,omitempty" xml:"change_cabin_level,omitempty"`
@@ -27717,11 +27719,15 @@ type FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList struct {
 	ChangeOrderId    *int64   `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
 	ChangeReason     *string  `json:"change_reason,omitempty" xml:"change_reason,omitempty"`
 	ChangeType       *int32   `json:"change_type,omitempty" xml:"change_type,omitempty"`
+	DepAirport       *string  `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
+	DepCity          *string  `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	DepTime          *string  `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Discount         *string  `json:"discount,omitempty" xml:"discount,omitempty"`
 	GmtCreate        *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModify        *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
 	OriginTicketNo   *string  `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
 	OutApplyId       *string  `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+	StopCity         *string  `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
 	TicketNo         *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 	TicketStatus     *string  `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
 	TicketStatusCode *int32   `json:"ticket_status_code,omitempty" xml:"ticket_status_code,omitempty"`
@@ -27738,6 +27744,16 @@ func (s FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) GoString()
 
 func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetApplyId(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetArrAirport(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.ArrAirport = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetArrCity(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.ArrCity = &v
 	return s
 }
 
@@ -27781,8 +27797,23 @@ func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetChange
 	return s
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetDepAirport(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.DepAirport = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetDepCity(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.DepCity = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetDepTime(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
 	s.DepTime = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetDiscount(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.Discount = &v
 	return s
 }
 
@@ -27803,6 +27834,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetOrigin
 
 func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetOutApplyId(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
 	s.OutApplyId = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetStopCity(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.StopCity = &v
 	return s
 }
 
@@ -27947,6 +27983,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetFlightNo(v string)
 
 type FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList struct {
 	ApplyId         *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrAirport      *string  `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
+	ArrCity         *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	DepAirport      *string  `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
+	DepCity         *string  `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	FlightNo        *string  `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	GmtCreate       *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModify       *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
 	OutApplyId      *string  `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
@@ -27967,6 +28008,31 @@ func (s FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) GoString()
 
 func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetApplyId(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetArrAirport(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.ArrAirport = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetArrCity(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetDepAirport(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.DepAirport = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetDepCity(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.DepCity = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetFlightNo(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.FlightNo = &v
 	return s
 }
 
