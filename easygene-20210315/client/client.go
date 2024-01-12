@@ -269,6 +269,7 @@ type CreateAppRequest struct {
 	LanguageVersion *string                         `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
 	Path            *string                         `json:"Path,omitempty" xml:"Path,omitempty"`
 	RevisionComment *string                         `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
+	RevisionTag     *string                         `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	Workspace       *string                         `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -345,6 +346,11 @@ func (s *CreateAppRequest) SetRevisionComment(v string) *CreateAppRequest {
 	return s
 }
 
+func (s *CreateAppRequest) SetRevisionTag(v string) *CreateAppRequest {
+	s.RevisionTag = &v
+	return s
+}
+
 func (s *CreateAppRequest) SetWorkspace(v string) *CreateAppRequest {
 	s.Workspace = &v
 	return s
@@ -410,6 +416,7 @@ type CreateAppShrinkRequest struct {
 	LanguageVersion    *string `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
 	Path               *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	RevisionComment    *string `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
+	RevisionTag        *string `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	Workspace          *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -486,17 +493,23 @@ func (s *CreateAppShrinkRequest) SetRevisionComment(v string) *CreateAppShrinkRe
 	return s
 }
 
+func (s *CreateAppShrinkRequest) SetRevisionTag(v string) *CreateAppShrinkRequest {
+	s.RevisionTag = &v
+	return s
+}
+
 func (s *CreateAppShrinkRequest) SetWorkspace(v string) *CreateAppShrinkRequest {
 	s.Workspace = &v
 	return s
 }
 
 type CreateAppResponseBody struct {
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Revision  *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	HostId      *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Revision    *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	RevisionTag *string `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
+	Workspace   *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateAppResponseBody) String() string {
@@ -524,6 +537,11 @@ func (s *CreateAppResponseBody) SetRequestId(v string) *CreateAppResponseBody {
 
 func (s *CreateAppResponseBody) SetRevision(v string) *CreateAppResponseBody {
 	s.Revision = &v
+	return s
+}
+
+func (s *CreateAppResponseBody) SetRevisionTag(v string) *CreateAppResponseBody {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -729,6 +747,7 @@ type CreateRunRequest struct {
 	Inputs           *string                         `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
 	Labels           *string                         `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OutputFolder     *string                         `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
+	RevisionTag      *string                         `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	Role             *string                         `json:"Role,omitempty" xml:"Role,omitempty"`
 	RunName          *string                         `json:"RunName,omitempty" xml:"RunName,omitempty"`
 	Workspace        *string                         `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
@@ -789,6 +808,11 @@ func (s *CreateRunRequest) SetLabels(v string) *CreateRunRequest {
 
 func (s *CreateRunRequest) SetOutputFolder(v string) *CreateRunRequest {
 	s.OutputFolder = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetRevisionTag(v string) *CreateRunRequest {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -853,6 +877,7 @@ type CreateRunShrinkRequest struct {
 	Inputs               *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
 	Labels               *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OutputFolder         *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
+	RevisionTag          *string `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	Role                 *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	RunName              *string `json:"RunName,omitempty" xml:"RunName,omitempty"`
 	Workspace            *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
@@ -913,6 +938,11 @@ func (s *CreateRunShrinkRequest) SetLabels(v string) *CreateRunShrinkRequest {
 
 func (s *CreateRunShrinkRequest) SetOutputFolder(v string) *CreateRunShrinkRequest {
 	s.OutputFolder = &v
+	return s
+}
+
+func (s *CreateRunShrinkRequest) SetRevisionTag(v string) *CreateRunShrinkRequest {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -1007,6 +1037,7 @@ type CreateSubmissionRequest struct {
 	OutputFolder     *string   `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
 	Outputs          *string   `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	Revision         *string   `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	RevisionTag      *string   `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	Workspace        *string   `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -1073,6 +1104,11 @@ func (s *CreateSubmissionRequest) SetRevision(v string) *CreateSubmissionRequest
 	return s
 }
 
+func (s *CreateSubmissionRequest) SetRevisionTag(v string) *CreateSubmissionRequest {
+	s.RevisionTag = &v
+	return s
+}
+
 func (s *CreateSubmissionRequest) SetWorkspace(v string) *CreateSubmissionRequest {
 	s.Workspace = &v
 	return s
@@ -1090,6 +1126,7 @@ type CreateSubmissionShrinkRequest struct {
 	OutputFolder      *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
 	Outputs           *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	Revision          *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	RevisionTag       *string `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	Workspace         *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -1153,6 +1190,11 @@ func (s *CreateSubmissionShrinkRequest) SetOutputs(v string) *CreateSubmissionSh
 
 func (s *CreateSubmissionShrinkRequest) SetRevision(v string) *CreateSubmissionShrinkRequest {
 	s.Revision = &v
+	return s
+}
+
+func (s *CreateSubmissionShrinkRequest) SetRevisionTag(v string) *CreateSubmissionShrinkRequest {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -1233,6 +1275,7 @@ type CreateTemplateRequest struct {
 	InputsExpression  []*CreateTemplateRequestInputsExpression  `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
 	Labels            *string                                   `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OutputsExpression []*CreateTemplateRequestOutputsExpression `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty" type:"Repeated"`
+	RevisionTag       *string                                   `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	RootEntity        *string                                   `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
 	TemplateName      *string                                   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	Workspace         *string                                   `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
@@ -1278,6 +1321,11 @@ func (s *CreateTemplateRequest) SetLabels(v string) *CreateTemplateRequest {
 
 func (s *CreateTemplateRequest) SetOutputsExpression(v []*CreateTemplateRequestOutputsExpression) *CreateTemplateRequest {
 	s.OutputsExpression = v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetRevisionTag(v string) *CreateTemplateRequest {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -1410,6 +1458,7 @@ type CreateTemplateShrinkRequest struct {
 	InputsExpressionShrink  *string `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty"`
 	Labels                  *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OutputsExpressionShrink *string `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty"`
+	RevisionTag             *string `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	RootEntity              *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
 	TemplateName            *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	Workspace               *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
@@ -1455,6 +1504,11 @@ func (s *CreateTemplateShrinkRequest) SetLabels(v string) *CreateTemplateShrinkR
 
 func (s *CreateTemplateShrinkRequest) SetOutputsExpressionShrink(v string) *CreateTemplateShrinkRequest {
 	s.OutputsExpressionShrink = &v
+	return s
+}
+
+func (s *CreateTemplateShrinkRequest) SetRevisionTag(v string) *CreateTemplateShrinkRequest {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -2250,9 +2304,10 @@ func (s *DownloadEntityResponse) SetBody(v *DownloadEntityResponseBody) *Downloa
 }
 
 type GetAppRequest struct {
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Revision  *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Revision    *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	RevisionTag *string `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
+	Workspace   *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetAppRequest) String() string {
@@ -2270,6 +2325,11 @@ func (s *GetAppRequest) SetAppName(v string) *GetAppRequest {
 
 func (s *GetAppRequest) SetRevision(v string) *GetAppRequest {
 	s.Revision = &v
+	return s
+}
+
+func (s *GetAppRequest) SetRevisionTag(v string) *GetAppRequest {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -2298,6 +2358,7 @@ type GetAppResponseBody struct {
 	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Revision         *string                           `json:"Revision,omitempty" xml:"Revision,omitempty"`
 	RevisionComment  *string                           `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
+	RevisionTag      *string                           `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	Revisions        []*GetAppResponseBodyRevisions    `json:"Revisions,omitempty" xml:"Revisions,omitempty" type:"Repeated"`
 	Scope            *string                           `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	Source           *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -2406,6 +2467,11 @@ func (s *GetAppResponseBody) SetRevision(v string) *GetAppResponseBody {
 
 func (s *GetAppResponseBody) SetRevisionComment(v string) *GetAppResponseBody {
 	s.RevisionComment = &v
+	return s
+}
+
+func (s *GetAppResponseBody) SetRevisionTag(v string) *GetAppResponseBody {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -2595,6 +2661,7 @@ type GetAppResponseBodyRevisions struct {
 	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Revision        *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
 	RevisionComment *string `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
+	RevisionTag     *string `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 }
 
 func (s GetAppResponseBodyRevisions) String() string {
@@ -2617,6 +2684,11 @@ func (s *GetAppResponseBodyRevisions) SetRevision(v string) *GetAppResponseBodyR
 
 func (s *GetAppResponseBodyRevisions) SetRevisionComment(v string) *GetAppResponseBodyRevisions {
 	s.RevisionComment = &v
+	return s
+}
+
+func (s *GetAppResponseBodyRevisions) SetRevisionTag(v string) *GetAppResponseBodyRevisions {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -3822,6 +3894,7 @@ type GetTemplateResponseBody struct {
 	LastModifiedTime  *string                                     `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	OutputsExpression []*GetTemplateResponseBodyOutputsExpression `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty" type:"Repeated"`
 	RequestId         *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RevisionTag       *string                                     `json:"RevisionTag,omitempty" xml:"RevisionTag,omitempty"`
 	RootEntity        *string                                     `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
 	Source            *string                                     `json:"Source,omitempty" xml:"Source,omitempty"`
 	TemplateName      *string                                     `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -3883,6 +3956,11 @@ func (s *GetTemplateResponseBody) SetOutputsExpression(v []*GetTemplateResponseB
 
 func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetRevisionTag(v string) *GetTemplateResponseBody {
+	s.RevisionTag = &v
 	return s
 }
 
@@ -4392,11 +4470,12 @@ type ListAppsRequest struct {
 	LabelSelector *string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
 	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy       *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	Scope         *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	Search        *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	Workspace     *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	// Next Token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Scope     *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Search    *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListAppsRequest) String() string {
@@ -4461,9 +4540,10 @@ type ListAppsResponseBody struct {
 	Apps       []*ListAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
 	HostId     *string                     `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Next Token
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAppsResponseBody) String() string {
@@ -6506,13 +6586,14 @@ func (s *ListRunsResponse) SetBody(v *ListRunsResponseBody) *ListRunsResponse {
 }
 
 type ListSubmissionsRequest struct {
-	IsReversed *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	Search     *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	IsReversed *bool  `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Next Token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search    *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListSubmissionsRequest) String() string {
@@ -7315,9 +7396,10 @@ type ListWorkspacesRequest struct {
 	IsReversed    *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
 	LabelSelector *string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
 	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy       *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	Search        *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	// NextToken
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search    *string `json:"Search,omitempty" xml:"Search,omitempty"`
 }
 
 func (s ListWorkspacesRequest) String() string {
@@ -7413,10 +7495,11 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	Labels           map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	LastModifiedTime *string            `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	Location         *string            `json:"Location,omitempty" xml:"Location,omitempty"`
-	Role             *string            `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status           *string            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Storage          *string            `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	Workspace        *string            `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	// RAM Role
+	Role      *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Storage   *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListWorkspacesResponseBodyWorkspaces) String() string {
@@ -8567,6 +8650,10 @@ func (client *Client) CreateAppWithOptions(tmpReq *CreateAppRequest, runtime *ut
 		query["RevisionComment"] = request.RevisionComment
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RevisionTag)) {
+		query["RevisionTag"] = request.RevisionTag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
 		query["Workspace"] = request.Workspace
 	}
@@ -8694,8 +8781,8 @@ func (client *Client) CreateRunWithOptions(tmpReq *CreateRunRequest, runtime *ut
 	}
 	request := &CreateRunShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ExecuteOptions))) {
-		request.ExecuteOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ExecuteOptions), tea.String("ExecuteOptions"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExecuteOptions)) {
+		request.ExecuteOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecuteOptions, tea.String("ExecuteOptions"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -8737,6 +8824,10 @@ func (client *Client) CreateRunWithOptions(tmpReq *CreateRunRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.OutputFolder)) {
 		query["OutputFolder"] = request.OutputFolder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevisionTag)) {
+		query["RevisionTag"] = request.RevisionTag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Role)) {
@@ -8841,6 +8932,10 @@ func (client *Client) CreateSubmissionWithOptions(tmpReq *CreateSubmissionReques
 		query["Revision"] = request.Revision
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RevisionTag)) {
+		query["RevisionTag"] = request.RevisionTag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
 		query["Workspace"] = request.Workspace
 	}
@@ -8913,6 +9008,10 @@ func (client *Client) CreateTemplateWithOptions(tmpReq *CreateTemplateRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevisionTag)) {
+		query["RevisionTag"] = request.RevisionTag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RootEntity)) {
@@ -9407,6 +9506,10 @@ func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.Ru
 
 	if !tea.BoolValue(util.IsUnset(request.Revision)) {
 		query["Revision"] = request.Revision
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevisionTag)) {
+		query["RevisionTag"] = request.RevisionTag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
@@ -10688,6 +10791,14 @@ func (client *Client) ResumeSubmission(request *ResumeSubmissionRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param tmpReq UpdateEntityRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateEntityResponse
+ */
+// Deprecated
 func (client *Client) UpdateEntityWithOptions(tmpReq *UpdateEntityRequest, runtime *util.RuntimeOptions) (_result *UpdateEntityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -10737,6 +10848,13 @@ func (client *Client) UpdateEntityWithOptions(tmpReq *UpdateEntityRequest, runti
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request UpdateEntityRequest
+ * @return UpdateEntityResponse
+ */
+// Deprecated
 func (client *Client) UpdateEntity(request *UpdateEntityRequest) (_result *UpdateEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEntityResponse{}
