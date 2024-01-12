@@ -19220,9 +19220,39 @@ func (s *UpgradeClusterRequest) SetVersion(v string) *UpgradeClusterRequest {
 	return s
 }
 
+type UpgradeClusterResponseBody struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s UpgradeClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClusterResponseBody) SetClusterId(v string) *UpgradeClusterResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpgradeClusterResponseBody) SetRequestId(v string) *UpgradeClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeClusterResponseBody) SetTaskId(v string) *UpgradeClusterResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type UpgradeClusterResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpgradeClusterResponse) String() string {
@@ -19240,6 +19270,11 @@ func (s *UpgradeClusterResponse) SetHeaders(v map[string]*string) *UpgradeCluste
 
 func (s *UpgradeClusterResponse) SetStatusCode(v int32) *UpgradeClusterResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeClusterResponse) SetBody(v *UpgradeClusterResponseBody) *UpgradeClusterResponse {
+	s.Body = v
 	return s
 }
 
@@ -19658,6 +19693,14 @@ func (client *Client) AttachInstancesToNodePool(ClusterId *string, NodepoolId *s
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CancelClusterUpgradeResponse
+ */
+// Deprecated
 func (client *Client) CancelClusterUpgradeWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelClusterUpgradeResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19682,6 +19725,12 @@ func (client *Client) CancelClusterUpgradeWithOptions(ClusterId *string, headers
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @return CancelClusterUpgradeResponse
+ */
+// Deprecated
 func (client *Client) CancelClusterUpgrade(ClusterId *string) (_result *CancelClusterUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21336,6 +21385,15 @@ func (client *Client) DescribeAddon(addonName *string, request *DescribeAddonReq
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeAddonsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeAddonsResponse
+ */
+// Deprecated
 func (client *Client) DescribeAddonsWithOptions(request *DescribeAddonsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAddonsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21386,6 +21444,13 @@ func (client *Client) DescribeAddonsWithOptions(request *DescribeAddonsRequest, 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeAddonsRequest
+ * @return DescribeAddonsResponse
+ */
+// Deprecated
 func (client *Client) DescribeAddons(request *DescribeAddonsRequest) (_result *DescribeAddonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21398,6 +21463,14 @@ func (client *Client) DescribeAddons(request *DescribeAddonsRequest) (_result *D
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClusterAddonInstanceResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonInstanceWithOptions(ClusterID *string, AddonName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21422,6 +21495,12 @@ func (client *Client) DescribeClusterAddonInstanceWithOptions(ClusterID *string,
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @return DescribeClusterAddonInstanceResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonInstance(ClusterID *string, AddonName *string) (_result *DescribeClusterAddonInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21434,6 +21513,14 @@ func (client *Client) DescribeClusterAddonInstance(ClusterID *string, AddonName 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClusterAddonMetadataResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string, componentId *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonMetadataResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21458,6 +21545,12 @@ func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string,
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @return DescribeClusterAddonMetadataResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonMetadata(clusterId *string, componentId *string, version *string) (_result *DescribeClusterAddonMetadataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21520,6 +21613,15 @@ func (client *Client) DescribeClusterAddonUpgradeStatus(ClusterId *string, Compo
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param tmpReq DescribeClusterAddonsUpgradeStatusRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClusterAddonsUpgradeStatusResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *string, tmpReq *DescribeClusterAddonsUpgradeStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonsUpgradeStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21560,6 +21662,13 @@ func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *s
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeClusterAddonsUpgradeStatusRequest
+ * @return DescribeClusterAddonsUpgradeStatusResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonsUpgradeStatus(ClusterId *string, request *DescribeClusterAddonsUpgradeStatusRequest) (_result *DescribeClusterAddonsUpgradeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21572,6 +21681,14 @@ func (client *Client) DescribeClusterAddonsUpgradeStatus(ClusterId *string, requ
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClusterAddonsVersionResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonsVersionWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonsVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21596,6 +21713,12 @@ func (client *Client) DescribeClusterAddonsVersionWithOptions(ClusterId *string,
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @return DescribeClusterAddonsVersionResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonsVersion(ClusterId *string) (_result *DescribeClusterAddonsVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24555,6 +24678,14 @@ func (client *Client) OpenAckService(request *OpenAckServiceRequest) (_result *O
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PauseClusterUpgradeResponse
+ */
+// Deprecated
 func (client *Client) PauseClusterUpgradeWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PauseClusterUpgradeResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -24579,6 +24710,12 @@ func (client *Client) PauseClusterUpgradeWithOptions(ClusterId *string, headers 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @return PauseClusterUpgradeResponse
+ */
+// Deprecated
 func (client *Client) PauseClusterUpgrade(ClusterId *string) (_result *PauseClusterUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24991,6 +25128,14 @@ func (client *Client) ResumeTask(taskId *string) (_result *ResumeTaskResponse, _
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResumeUpgradeClusterResponse
+ */
+// Deprecated
 func (client *Client) ResumeUpgradeClusterWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeUpgradeClusterResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -25015,6 +25160,12 @@ func (client *Client) ResumeUpgradeClusterWithOptions(ClusterId *string, headers
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @return ResumeUpgradeClusterResponse
+ */
+// Deprecated
 func (client *Client) ResumeUpgradeCluster(ClusterId *string) (_result *ResumeUpgradeClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26091,7 +26242,7 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeClusterResponse{}
 	_body, _err := client.CallApi(params, req, runtime)

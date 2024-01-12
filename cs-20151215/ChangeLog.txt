@@ -1,3 +1,6 @@
+2024-01-12 Version: v4.5.5
+- Generated golang 2015-12-15 for CS.
+
 2024-01-11 Version: v4.5.4
 - Generated golang 2015-12-15 for CS.
 
