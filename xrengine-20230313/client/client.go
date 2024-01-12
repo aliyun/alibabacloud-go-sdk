@@ -302,6 +302,134 @@ func (s *BatchQueryMotionShopTaskStatusResponse) SetBody(v *BatchQueryMotionShop
 	return s
 }
 
+type CreateAvatarTalkProjectRequest struct {
+	AvatarProjectId *string `json:"AvatarProjectId,omitempty" xml:"AvatarProjectId,omitempty"`
+	JwtToken        *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	TtsVoice        *string `json:"TtsVoice,omitempty" xml:"TtsVoice,omitempty"`
+	TxtContent      *string `json:"TxtContent,omitempty" xml:"TxtContent,omitempty"`
+}
+
+func (s CreateAvatarTalkProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAvatarTalkProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAvatarTalkProjectRequest) SetAvatarProjectId(v string) *CreateAvatarTalkProjectRequest {
+	s.AvatarProjectId = &v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectRequest) SetJwtToken(v string) *CreateAvatarTalkProjectRequest {
+	s.JwtToken = &v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectRequest) SetTitle(v string) *CreateAvatarTalkProjectRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectRequest) SetTtsVoice(v string) *CreateAvatarTalkProjectRequest {
+	s.TtsVoice = &v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectRequest) SetTxtContent(v string) *CreateAvatarTalkProjectRequest {
+	s.TxtContent = &v
+	return s
+}
+
+type CreateAvatarTalkProjectResponseBody struct {
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateAvatarTalkProjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAvatarTalkProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAvatarTalkProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAvatarTalkProjectResponseBody) SetCode(v string) *CreateAvatarTalkProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectResponseBody) SetData(v *CreateAvatarTalkProjectResponseBodyData) *CreateAvatarTalkProjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectResponseBody) SetMessage(v string) *CreateAvatarTalkProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectResponseBody) SetRequestId(v string) *CreateAvatarTalkProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectResponseBody) SetSuccess(v bool) *CreateAvatarTalkProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAvatarTalkProjectResponseBodyData struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CreateAvatarTalkProjectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAvatarTalkProjectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAvatarTalkProjectResponseBodyData) SetId(v string) *CreateAvatarTalkProjectResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type CreateAvatarTalkProjectResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAvatarTalkProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAvatarTalkProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAvatarTalkProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAvatarTalkProjectResponse) SetHeaders(v map[string]*string) *CreateAvatarTalkProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectResponse) SetStatusCode(v int32) *CreateAvatarTalkProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAvatarTalkProjectResponse) SetBody(v *CreateAvatarTalkProjectResponseBody) *CreateAvatarTalkProjectResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDigitalHumanProjectRequest struct {
 	AudioId           *string `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
 	AudioUrl          *string `json:"AudioUrl,omitempty" xml:"AudioUrl,omitempty"`
@@ -16231,6 +16359,68 @@ func (client *Client) BatchQueryMotionShopTaskStatus(request *BatchQueryMotionSh
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchQueryMotionShopTaskStatusResponse{}
 	_body, _err := client.BatchQueryMotionShopTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAvatarTalkProjectWithOptions(request *CreateAvatarTalkProjectRequest, runtime *util.RuntimeOptions) (_result *CreateAvatarTalkProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
+		query["JwtToken"] = request.JwtToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarProjectId)) {
+		body["AvatarProjectId"] = request.AvatarProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TtsVoice)) {
+		body["TtsVoice"] = request.TtsVoice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TxtContent)) {
+		body["TxtContent"] = request.TxtContent
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAvatarTalkProject"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAvatarTalkProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAvatarTalkProject(request *CreateAvatarTalkProjectRequest) (_result *CreateAvatarTalkProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAvatarTalkProjectResponse{}
+	_body, _err := client.CreateAvatarTalkProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
