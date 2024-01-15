@@ -18505,6 +18505,118 @@ func (s *GetWorkitemCommentListResponse) SetBody(v *GetWorkitemCommentListRespon
 	return s
 }
 
+type GetWorkitemFileResponseBody struct {
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Id of the request
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *string                                  `json:"success,omitempty" xml:"success,omitempty"`
+	WorkitemFile *GetWorkitemFileResponseBodyWorkitemFile `json:"workitemFile,omitempty" xml:"workitemFile,omitempty" type:"Struct"`
+}
+
+func (s GetWorkitemFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkitemFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkitemFileResponseBody) SetErrorCode(v string) *GetWorkitemFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponseBody) SetErrorMsg(v string) *GetWorkitemFileResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponseBody) SetRequestId(v string) *GetWorkitemFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponseBody) SetSuccess(v string) *GetWorkitemFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponseBody) SetWorkitemFile(v *GetWorkitemFileResponseBodyWorkitemFile) *GetWorkitemFileResponseBody {
+	s.WorkitemFile = v
+	return s
+}
+
+type GetWorkitemFileResponseBodyWorkitemFile struct {
+	Id     *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
+	Url    *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetWorkitemFileResponseBodyWorkitemFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkitemFileResponseBodyWorkitemFile) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkitemFileResponseBodyWorkitemFile) SetId(v string) *GetWorkitemFileResponseBodyWorkitemFile {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponseBodyWorkitemFile) SetName(v string) *GetWorkitemFileResponseBodyWorkitemFile {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponseBodyWorkitemFile) SetSize(v int32) *GetWorkitemFileResponseBodyWorkitemFile {
+	s.Size = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponseBodyWorkitemFile) SetSuffix(v string) *GetWorkitemFileResponseBodyWorkitemFile {
+	s.Suffix = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponseBodyWorkitemFile) SetUrl(v string) *GetWorkitemFileResponseBodyWorkitemFile {
+	s.Url = &v
+	return s
+}
+
+type GetWorkitemFileResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWorkitemFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkitemFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkitemFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkitemFileResponse) SetHeaders(v map[string]*string) *GetWorkitemFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkitemFileResponse) SetStatusCode(v int32) *GetWorkitemFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWorkitemFileResponse) SetBody(v *GetWorkitemFileResponseBody) *GetWorkitemFileResponse {
+	s.Body = v
+	return s
+}
+
 type GetWorkitemRelationsRequest struct {
 	RelationType *string `json:"relationType,omitempty" xml:"relationType,omitempty"`
 }
@@ -43829,6 +43941,42 @@ func (client *Client) GetWorkitemCommentList(organizationId *string, workitemId 
 	headers := make(map[string]*string)
 	_result = &GetWorkitemCommentListResponse{}
 	_body, _err := client.GetWorkitemCommentListWithOptions(organizationId, workitemId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWorkitemFileWithOptions(organizationId *string, workitemIdentifier *string, fileIdentifier *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkitemFileResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkitemFile"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitem/" + tea.StringValue(openapiutil.GetEncodeParam(workitemIdentifier)) + "/files/" + tea.StringValue(openapiutil.GetEncodeParam(fileIdentifier))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWorkitemFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWorkitemFile(organizationId *string, workitemIdentifier *string, fileIdentifier *string) (_result *GetWorkitemFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkitemFileResponse{}
+	_body, _err := client.GetWorkitemFileWithOptions(organizationId, workitemIdentifier, fileIdentifier, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
