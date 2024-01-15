@@ -54,11 +54,8 @@ func (s *AllocateInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *A
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -70,28 +67,13 @@ func (s AllocateInstancePublicConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AllocateInstancePublicConnectionResponseBody) SetCode(v string) *AllocateInstancePublicConnectionResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *AllocateInstancePublicConnectionResponseBody) SetInstanceName(v string) *AllocateInstancePublicConnectionResponseBody {
 	s.InstanceName = &v
 	return s
 }
 
-func (s *AllocateInstancePublicConnectionResponseBody) SetMessage(v string) *AllocateInstancePublicConnectionResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *AllocateInstancePublicConnectionResponseBody) SetRequestId(v string) *AllocateInstancePublicConnectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *AllocateInstancePublicConnectionResponseBody) SetSuccess(v bool) *AllocateInstancePublicConnectionResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -244,10 +226,7 @@ func (s *CheckCreateDBInstanceRequest) SetZoneId(v string) *CheckCreateDBInstanc
 }
 
 type CheckCreateDBInstanceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckCreateDBInstanceResponseBody) String() string {
@@ -258,23 +237,8 @@ func (s CheckCreateDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckCreateDBInstanceResponseBody) SetCode(v string) *CheckCreateDBInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CheckCreateDBInstanceResponseBody) SetMessage(v string) *CheckCreateDBInstanceResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *CheckCreateDBInstanceResponseBody) SetRequestId(v string) *CheckCreateDBInstanceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CheckCreateDBInstanceResponseBody) SetSuccess(v string) *CheckCreateDBInstanceResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1983,12 +1947,9 @@ func (s *DescribeSecurityIPListRequest) SetResourceOwnerId(v int64) *DescribeSec
 }
 
 type DescribeSecurityIPListResponseBody struct {
-	Code           *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	DBInstanceName *string                                         `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	GroupItems     []*DescribeSecurityIPListResponseBodyGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
-	Message        *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSecurityIPListResponseBody) String() string {
@@ -1997,11 +1958,6 @@ func (s DescribeSecurityIPListResponseBody) String() string {
 
 func (s DescribeSecurityIPListResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeSecurityIPListResponseBody) SetCode(v string) *DescribeSecurityIPListResponseBody {
-	s.Code = &v
-	return s
 }
 
 func (s *DescribeSecurityIPListResponseBody) SetDBInstanceName(v string) *DescribeSecurityIPListResponseBody {
@@ -2014,18 +1970,8 @@ func (s *DescribeSecurityIPListResponseBody) SetGroupItems(v []*DescribeSecurity
 	return s
 }
 
-func (s *DescribeSecurityIPListResponseBody) SetMessage(v string) *DescribeSecurityIPListResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DescribeSecurityIPListResponseBody) SetRequestId(v string) *DescribeSecurityIPListResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSecurityIPListResponseBody) SetSuccess(v bool) *DescribeSecurityIPListResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2147,10 +2093,7 @@ func (s *ModifyBEClusterAttributeRequest) SetValue(v string) *ModifyBEClusterAtt
 }
 
 type ModifyBEClusterAttributeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyBEClusterAttributeResponseBody) String() string {
@@ -2161,23 +2104,8 @@ func (s ModifyBEClusterAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyBEClusterAttributeResponseBody) SetCode(v string) *ModifyBEClusterAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifyBEClusterAttributeResponseBody) SetMessage(v string) *ModifyBEClusterAttributeResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ModifyBEClusterAttributeResponseBody) SetRequestId(v string) *ModifyBEClusterAttributeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyBEClusterAttributeResponseBody) SetSuccess(v string) *ModifyBEClusterAttributeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2387,10 +2315,7 @@ func (s *ModifyDBInstanceAttributeRequest) SetValue(v string) *ModifyDBInstanceA
 }
 
 type ModifyDBInstanceAttributeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyDBInstanceAttributeResponseBody) String() string {
@@ -2401,23 +2326,8 @@ func (s ModifyDBInstanceAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDBInstanceAttributeResponseBody) SetCode(v string) *ModifyDBInstanceAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifyDBInstanceAttributeResponseBody) SetMessage(v string) *ModifyDBInstanceAttributeResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ModifyDBInstanceAttributeResponseBody) SetRequestId(v string) *ModifyDBInstanceAttributeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceAttributeResponseBody) SetSuccess(v bool) *ModifyDBInstanceAttributeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2498,15 +2408,12 @@ func (s *ModifySecurityIPListRequest) SetSecurityIPList(v string) *ModifySecurit
 }
 
 type ModifySecurityIPListResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	DBInstanceName   *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	GroupTag         *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityIPList   *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SecurityIPType   *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	TaskId           *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	WhitelistNetType *string `json:"WhitelistNetType,omitempty" xml:"WhitelistNetType,omitempty"`
 }
@@ -2517,11 +2424,6 @@ func (s ModifySecurityIPListResponseBody) String() string {
 
 func (s ModifySecurityIPListResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ModifySecurityIPListResponseBody) SetCode(v string) *ModifySecurityIPListResponseBody {
-	s.Code = &v
-	return s
 }
 
 func (s *ModifySecurityIPListResponseBody) SetDBInstanceName(v string) *ModifySecurityIPListResponseBody {
@@ -2539,11 +2441,6 @@ func (s *ModifySecurityIPListResponseBody) SetGroupTag(v string) *ModifySecurity
 	return s
 }
 
-func (s *ModifySecurityIPListResponseBody) SetMessage(v string) *ModifySecurityIPListResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ModifySecurityIPListResponseBody) SetRequestId(v string) *ModifySecurityIPListResponseBody {
 	s.RequestId = &v
 	return s
@@ -2556,11 +2453,6 @@ func (s *ModifySecurityIPListResponseBody) SetSecurityIPList(v string) *ModifySe
 
 func (s *ModifySecurityIPListResponseBody) SetSecurityIPType(v string) *ModifySecurityIPListResponseBody {
 	s.SecurityIPType = &v
-	return s
-}
-
-func (s *ModifySecurityIPListResponseBody) SetSuccess(v bool) *ModifySecurityIPListResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2639,10 +2531,7 @@ func (s *ReleaseInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *Re
 }
 
 type ReleaseInstancePublicConnectionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReleaseInstancePublicConnectionResponseBody) String() string {
@@ -2653,23 +2542,8 @@ func (s ReleaseInstancePublicConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ReleaseInstancePublicConnectionResponseBody) SetCode(v string) *ReleaseInstancePublicConnectionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ReleaseInstancePublicConnectionResponseBody) SetMessage(v string) *ReleaseInstancePublicConnectionResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ReleaseInstancePublicConnectionResponseBody) SetRequestId(v string) *ReleaseInstancePublicConnectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ReleaseInstancePublicConnectionResponseBody) SetSuccess(v bool) *ReleaseInstancePublicConnectionResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3025,8 +2899,6 @@ func (s *StopBEClusterRequest) SetResourceOwnerId(v int64) *StopBEClusterRequest
 }
 
 type StopBEClusterResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3036,16 +2908,6 @@ func (s StopBEClusterResponseBody) String() string {
 
 func (s StopBEClusterResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *StopBEClusterResponseBody) SetCode(v string) *StopBEClusterResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StopBEClusterResponseBody) SetMessage(v string) *StopBEClusterResponseBody {
-	s.Message = &v
-	return s
 }
 
 func (s *StopBEClusterResponseBody) SetRequestId(v string) *StopBEClusterResponseBody {
@@ -3124,8 +2986,6 @@ func (s *UpgradeDBInstanceEngineVersionRequest) SetSwitchTimeMode(v string) *Upg
 }
 
 type UpgradeDBInstanceEngineVersionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3135,16 +2995,6 @@ func (s UpgradeDBInstanceEngineVersionResponseBody) String() string {
 
 func (s UpgradeDBInstanceEngineVersionResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *UpgradeDBInstanceEngineVersionResponseBody) SetCode(v string) *UpgradeDBInstanceEngineVersionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpgradeDBInstanceEngineVersionResponseBody) SetMessage(v string) *UpgradeDBInstanceEngineVersionResponseBody {
-	s.Message = &v
-	return s
 }
 
 func (s *UpgradeDBInstanceEngineVersionResponseBody) SetRequestId(v string) *UpgradeDBInstanceEngineVersionResponseBody {

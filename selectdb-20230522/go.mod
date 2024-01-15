@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/selectdb-20230522/v2
+module github.com/alibabacloud-go/selectdb-20230522/v3
 
 go 1.15
 
