@@ -14987,13 +14987,14 @@ func (s *PopRetryAITryOnTaskResponse) SetBody(v *PopRetryAITryOnTaskResponseBody
 }
 
 type PopSubmitAITryOnJobRequest struct {
-	BottomsId    *string `json:"BottomsId,omitempty" xml:"BottomsId,omitempty"`
-	ClothingType *string `json:"ClothingType,omitempty" xml:"ClothingType,omitempty"`
-	JwtToken     *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
-	ModelId      *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ShoeType     *string `json:"ShoeType,omitempty" xml:"ShoeType,omitempty"`
-	SuitId       *string `json:"SuitId,omitempty" xml:"SuitId,omitempty"`
-	TopsId       *string `json:"TopsId,omitempty" xml:"TopsId,omitempty"`
+	BottomsId          *string `json:"BottomsId,omitempty" xml:"BottomsId,omitempty"`
+	ClothingType       *string `json:"ClothingType,omitempty" xml:"ClothingType,omitempty"`
+	GeneratePictureNum *int32  `json:"GeneratePictureNum,omitempty" xml:"GeneratePictureNum,omitempty"`
+	JwtToken           *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	ModelId            *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ShoeType           *string `json:"ShoeType,omitempty" xml:"ShoeType,omitempty"`
+	SuitId             *string `json:"SuitId,omitempty" xml:"SuitId,omitempty"`
+	TopsId             *string `json:"TopsId,omitempty" xml:"TopsId,omitempty"`
 }
 
 func (s PopSubmitAITryOnJobRequest) String() string {
@@ -15011,6 +15012,11 @@ func (s *PopSubmitAITryOnJobRequest) SetBottomsId(v string) *PopSubmitAITryOnJob
 
 func (s *PopSubmitAITryOnJobRequest) SetClothingType(v string) *PopSubmitAITryOnJobRequest {
 	s.ClothingType = &v
+	return s
+}
+
+func (s *PopSubmitAITryOnJobRequest) SetGeneratePictureNum(v int32) *PopSubmitAITryOnJobRequest {
+	s.GeneratePictureNum = &v
 	return s
 }
 
@@ -19156,6 +19162,10 @@ func (client *Client) PopSubmitAITryOnJobWithOptions(request *PopSubmitAITryOnJo
 
 	if !tea.BoolValue(util.IsUnset(request.ClothingType)) {
 		query["ClothingType"] = request.ClothingType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GeneratePictureNum)) {
+		query["GeneratePictureNum"] = request.GeneratePictureNum
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
