@@ -1204,6 +1204,111 @@ func (s *GetInstanceIpWhiteListResponse) SetBody(v *GetInstanceIpWhiteListRespon
 	return s
 }
 
+type GetInstanceSecurityGroupsRequest struct {
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetInstanceSecurityGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceSecurityGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceSecurityGroupsRequest) SetInstanceId(v string) *GetInstanceSecurityGroupsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsRequest) SetOwnerAccount(v string) *GetInstanceSecurityGroupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsRequest) SetOwnerId(v int64) *GetInstanceSecurityGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsRequest) SetResourceOwnerAccount(v string) *GetInstanceSecurityGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsRequest) SetResourceOwnerId(v int64) *GetInstanceSecurityGroupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsRequest) SetSecurityToken(v string) *GetInstanceSecurityGroupsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetInstanceSecurityGroupsResponseBody struct {
+	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
+}
+
+func (s GetInstanceSecurityGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceSecurityGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceSecurityGroupsResponseBody) SetInstanceId(v string) *GetInstanceSecurityGroupsResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsResponseBody) SetRequestId(v string) *GetInstanceSecurityGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsResponseBody) SetSecurityGroups(v []*string) *GetInstanceSecurityGroupsResponseBody {
+	s.SecurityGroups = v
+	return s
+}
+
+type GetInstanceSecurityGroupsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceSecurityGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceSecurityGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceSecurityGroupsResponse) SetHeaders(v map[string]*string) *GetInstanceSecurityGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsResponse) SetStatusCode(v int32) *GetInstanceSecurityGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceSecurityGroupsResponse) SetBody(v *GetInstanceSecurityGroupsResponseBody) *GetInstanceSecurityGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type GetLdpsComputeGroupRequest struct {
 	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -3949,6 +4054,105 @@ func (s *UpdateInstanceIpWhiteListResponse) SetBody(v *UpdateInstanceIpWhiteList
 	return s
 }
 
+type UpdateInstanceSecurityGroupsRequest struct {
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityGroups       *string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s UpdateInstanceSecurityGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceSecurityGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceSecurityGroupsRequest) SetInstanceId(v string) *UpdateInstanceSecurityGroupsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateInstanceSecurityGroupsRequest) SetOwnerAccount(v string) *UpdateInstanceSecurityGroupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateInstanceSecurityGroupsRequest) SetOwnerId(v int64) *UpdateInstanceSecurityGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateInstanceSecurityGroupsRequest) SetResourceOwnerAccount(v string) *UpdateInstanceSecurityGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateInstanceSecurityGroupsRequest) SetResourceOwnerId(v int64) *UpdateInstanceSecurityGroupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateInstanceSecurityGroupsRequest) SetSecurityGroups(v string) *UpdateInstanceSecurityGroupsRequest {
+	s.SecurityGroups = &v
+	return s
+}
+
+func (s *UpdateInstanceSecurityGroupsRequest) SetSecurityToken(v string) *UpdateInstanceSecurityGroupsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type UpdateInstanceSecurityGroupsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateInstanceSecurityGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceSecurityGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceSecurityGroupsResponseBody) SetRequestId(v string) *UpdateInstanceSecurityGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateInstanceSecurityGroupsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInstanceSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateInstanceSecurityGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceSecurityGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceSecurityGroupsResponse) SetHeaders(v map[string]*string) *UpdateInstanceSecurityGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceSecurityGroupsResponse) SetStatusCode(v int32) *UpdateInstanceSecurityGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceSecurityGroupsResponse) SetBody(v *UpdateInstanceSecurityGroupsResponseBody) *UpdateInstanceSecurityGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLdpsComputeGroupRequest struct {
 	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -5025,6 +5229,70 @@ func (client *Client) GetInstanceIpWhiteList(request *GetInstanceIpWhiteListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceIpWhiteListResponse{}
 	_body, _err := client.GetInstanceIpWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInstanceSecurityGroupsWithOptions(request *GetInstanceSecurityGroupsRequest, runtime *util.RuntimeOptions) (_result *GetInstanceSecurityGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceSecurityGroups"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceSecurityGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceSecurityGroups(request *GetInstanceSecurityGroupsRequest) (_result *GetInstanceSecurityGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInstanceSecurityGroupsResponse{}
+	_body, _err := client.GetInstanceSecurityGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6239,6 +6507,74 @@ func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteLi
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceIpWhiteListResponse{}
 	_body, _err := client.UpdateInstanceIpWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceSecurityGroupsWithOptions(request *UpdateInstanceSecurityGroupsRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceSecurityGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroups)) {
+		query["SecurityGroups"] = request.SecurityGroups
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceSecurityGroups"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceSecurityGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceSecurityGroups(request *UpdateInstanceSecurityGroupsRequest) (_result *UpdateInstanceSecurityGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateInstanceSecurityGroupsResponse{}
+	_body, _err := client.UpdateInstanceSecurityGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
