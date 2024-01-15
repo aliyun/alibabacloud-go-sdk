@@ -1680,6 +1680,10 @@ type DescDomainResponseBody struct {
 	DkimAuthStatus     *string `json:"DkimAuthStatus,omitempty" xml:"DkimAuthStatus,omitempty"`
 	DkimPublicKey      *string `json:"DkimPublicKey,omitempty" xml:"DkimPublicKey,omitempty"`
 	DkimRR             *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
+	DmarcAuthStatus    *int32  `json:"DmarcAuthStatus,omitempty" xml:"DmarcAuthStatus,omitempty"`
+	DmarcHostRecord    *string `json:"DmarcHostRecord,omitempty" xml:"DmarcHostRecord,omitempty"`
+	DmarcRecord        *string `json:"DmarcRecord,omitempty" xml:"DmarcRecord,omitempty"`
+	DnsDmarc           *string `json:"DnsDmarc,omitempty" xml:"DnsDmarc,omitempty"`
 	DnsMx              *string `json:"DnsMx,omitempty" xml:"DnsMx,omitempty"`
 	DnsSpf             *string `json:"DnsSpf,omitempty" xml:"DnsSpf,omitempty"`
 	DnsTxt             *string `json:"DnsTxt,omitempty" xml:"DnsTxt,omitempty"`
@@ -1744,6 +1748,26 @@ func (s *DescDomainResponseBody) SetDkimPublicKey(v string) *DescDomainResponseB
 
 func (s *DescDomainResponseBody) SetDkimRR(v string) *DescDomainResponseBody {
 	s.DkimRR = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDmarcAuthStatus(v int32) *DescDomainResponseBody {
+	s.DmarcAuthStatus = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDmarcHostRecord(v string) *DescDomainResponseBody {
+	s.DmarcHostRecord = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDmarcRecord(v string) *DescDomainResponseBody {
+	s.DmarcRecord = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDnsDmarc(v string) *DescDomainResponseBody {
+	s.DnsDmarc = &v
 	return s
 }
 
