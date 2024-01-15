@@ -315,6 +315,99 @@ func (s *CheckDomainResponse) SetBody(v *CheckDomainResponseBody) *CheckDomainRe
 	return s
 }
 
+type CheckDomainDnsRequest struct {
+	DomainId             *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CheckDomainDnsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDomainDnsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDomainDnsRequest) SetDomainId(v int32) *CheckDomainDnsRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *CheckDomainDnsRequest) SetOwnerId(v int64) *CheckDomainDnsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CheckDomainDnsRequest) SetResourceOwnerAccount(v string) *CheckDomainDnsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CheckDomainDnsRequest) SetResourceOwnerId(v int64) *CheckDomainDnsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CheckDomainDnsRequest) SetType(v string) *CheckDomainDnsRequest {
+	s.Type = &v
+	return s
+}
+
+type CheckDomainDnsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CheckDomainDnsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDomainDnsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDomainDnsResponseBody) SetRequestId(v string) *CheckDomainDnsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckDomainDnsResponseBody) SetStatus(v int32) *CheckDomainDnsResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CheckDomainDnsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckDomainDnsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckDomainDnsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDomainDnsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDomainDnsResponse) SetHeaders(v map[string]*string) *CheckDomainDnsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckDomainDnsResponse) SetStatusCode(v int32) *CheckDomainDnsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckDomainDnsResponse) SetBody(v *CheckDomainDnsResponseBody) *CheckDomainDnsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDomainRequest struct {
 	DomainName           *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -604,6 +697,7 @@ type CreateTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TagDescription       *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
 	TagName              *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -627,6 +721,11 @@ func (s *CreateTagRequest) SetResourceOwnerAccount(v string) *CreateTagRequest {
 
 func (s *CreateTagRequest) SetResourceOwnerId(v int64) *CreateTagRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTagRequest) SetTagDescription(v string) *CreateTagRequest {
+	s.TagDescription = &v
 	return s
 }
 
@@ -1492,10 +1591,11 @@ func (s *DescAccountSummaryResponse) SetBody(v *DescAccountSummaryResponseBody) 
 }
 
 type DescDomainRequest struct {
-	DomainId             *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	DomainId                  *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RequireRealTimeDnsRecords *bool   `json:"RequireRealTimeDnsRecords,omitempty" xml:"RequireRealTimeDnsRecords,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescDomainRequest) String() string {
@@ -1513,6 +1613,11 @@ func (s *DescDomainRequest) SetDomainId(v int32) *DescDomainRequest {
 
 func (s *DescDomainRequest) SetOwnerId(v int64) *DescDomainRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescDomainRequest) SetRequireRealTimeDnsRecords(v bool) *DescDomainRequest {
+	s.RequireRealTimeDnsRecords = &v
 	return s
 }
 
@@ -1535,6 +1640,10 @@ type DescDomainResponseBody struct {
 	DkimAuthStatus     *string `json:"DkimAuthStatus,omitempty" xml:"DkimAuthStatus,omitempty"`
 	DkimPublicKey      *string `json:"DkimPublicKey,omitempty" xml:"DkimPublicKey,omitempty"`
 	DkimRR             *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
+	DmarcAuthStatus    *int32  `json:"DmarcAuthStatus,omitempty" xml:"DmarcAuthStatus,omitempty"`
+	DmarcHostRecord    *string `json:"DmarcHostRecord,omitempty" xml:"DmarcHostRecord,omitempty"`
+	DmarcRecord        *string `json:"DmarcRecord,omitempty" xml:"DmarcRecord,omitempty"`
+	DnsDmarc           *string `json:"DnsDmarc,omitempty" xml:"DnsDmarc,omitempty"`
 	DnsMx              *string `json:"DnsMx,omitempty" xml:"DnsMx,omitempty"`
 	DnsSpf             *string `json:"DnsSpf,omitempty" xml:"DnsSpf,omitempty"`
 	DnsTxt             *string `json:"DnsTxt,omitempty" xml:"DnsTxt,omitempty"`
@@ -1599,6 +1708,26 @@ func (s *DescDomainResponseBody) SetDkimPublicKey(v string) *DescDomainResponseB
 
 func (s *DescDomainResponseBody) SetDkimRR(v string) *DescDomainResponseBody {
 	s.DkimRR = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDmarcAuthStatus(v int32) *DescDomainResponseBody {
+	s.DmarcAuthStatus = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDmarcHostRecord(v string) *DescDomainResponseBody {
+	s.DmarcHostRecord = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDmarcRecord(v string) *DescDomainResponseBody {
+	s.DmarcRecord = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDnsDmarc(v string) *DescDomainResponseBody {
+	s.DnsDmarc = &v
 	return s
 }
 
@@ -2574,6 +2703,7 @@ type ModifyTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TagDescription       *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
 	TagId                *int32  `json:"TagId,omitempty" xml:"TagId,omitempty"`
 	TagName              *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
@@ -2598,6 +2728,11 @@ func (s *ModifyTagRequest) SetResourceOwnerAccount(v string) *ModifyTagRequest {
 
 func (s *ModifyTagRequest) SetResourceOwnerId(v int64) *ModifyTagRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyTagRequest) SetTagDescription(v string) *ModifyTagRequest {
+	s.TagDescription = &v
 	return s
 }
 
@@ -3875,8 +4010,9 @@ func (s *QueryTagByParamResponseBodyData) SetTag(v []*QueryTagByParamResponseBod
 }
 
 type QueryTagByParamResponseBodyDataTag struct {
-	TagId   *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
+	TagId          *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName        *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s QueryTagByParamResponseBodyDataTag) String() string {
@@ -3885,6 +4021,11 @@ func (s QueryTagByParamResponseBodyDataTag) String() string {
 
 func (s QueryTagByParamResponseBodyDataTag) GoString() string {
 	return s.String()
+}
+
+func (s *QueryTagByParamResponseBodyDataTag) SetTagDescription(v string) *QueryTagByParamResponseBodyDataTag {
+	s.TagDescription = &v
+	return s
 }
 
 func (s *QueryTagByParamResponseBodyDataTag) SetTagId(v string) *QueryTagByParamResponseBodyDataTag {
@@ -5552,6 +5693,66 @@ func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDo
 	return _result, _err
 }
 
+func (client *Client) CheckDomainDnsWithOptions(request *CheckDomainDnsRequest, runtime *util.RuntimeOptions) (_result *CheckDomainDnsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckDomainDns"),
+		Version:     tea.String("2017-06-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckDomainDnsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckDomainDns(request *CheckDomainDnsRequest) (_result *CheckDomainDnsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckDomainDnsResponse{}
+	_body, _err := client.CheckDomainDnsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5752,6 +5953,10 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagDescription)) {
+		query["TagDescription"] = request.TagDescription
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagName)) {
@@ -6290,6 +6495,10 @@ func (client *Client) DescDomainWithOptions(request *DescDomainRequest, runtime 
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RequireRealTimeDnsRecords)) {
+		query["RequireRealTimeDnsRecords"] = request.RequireRealTimeDnsRecords
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -6755,6 +6964,10 @@ func (client *Client) ModifyTagWithOptions(request *ModifyTagRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagDescription)) {
+		query["TagDescription"] = request.TagDescription
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagId)) {
