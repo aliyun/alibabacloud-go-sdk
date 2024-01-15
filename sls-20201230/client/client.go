@@ -13,6 +13,343 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AlertConfiguration struct {
+	Annotations            []*AlertTag                  `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	AutoAnnotation         *bool                        `json:"autoAnnotation,omitempty" xml:"autoAnnotation,omitempty"`
+	ConditionConfiguration *ConditionConfiguration      `json:"conditionConfiguration,omitempty" xml:"conditionConfiguration,omitempty"`
+	Dashboard              *string                      `json:"dashboard,omitempty" xml:"dashboard,omitempty"`
+	GroupConfiguration     *GroupConfiguration          `json:"groupConfiguration,omitempty" xml:"groupConfiguration,omitempty"`
+	JoinConfigurations     []*JoinConfiguration         `json:"joinConfigurations,omitempty" xml:"joinConfigurations,omitempty" type:"Repeated"`
+	Labels                 []*AlertTag                  `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	MuteUntil              *int64                       `json:"muteUntil,omitempty" xml:"muteUntil,omitempty"`
+	NoDataFire             *bool                        `json:"noDataFire,omitempty" xml:"noDataFire,omitempty"`
+	NoDataSeverity         *int32                       `json:"noDataSeverity,omitempty" xml:"noDataSeverity,omitempty"`
+	PolicyConfiguration    *PolicyConfiguration         `json:"policyConfiguration,omitempty" xml:"policyConfiguration,omitempty"`
+	QueryList              []*AlertQuery                `json:"queryList,omitempty" xml:"queryList,omitempty" type:"Repeated"`
+	SendResolved           *bool                        `json:"sendResolved,omitempty" xml:"sendResolved,omitempty"`
+	SeverityConfigurations []*SeverityConfiguration     `json:"severityConfigurations,omitempty" xml:"severityConfigurations,omitempty" type:"Repeated"`
+	SinkAlerthub           *SinkAlerthubConfiguration   `json:"sinkAlerthub,omitempty" xml:"sinkAlerthub,omitempty"`
+	SinkCms                *SinkCmsConfiguration        `json:"sinkCms,omitempty" xml:"sinkCms,omitempty"`
+	SinkEventStore         *SinkEventStoreConfiguration `json:"sinkEventStore,omitempty" xml:"sinkEventStore,omitempty"`
+	Tags                   []*string                    `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TemplateConfiguration  *TemplateConfiguration       `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
+	Threshold              *int32                       `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	Type                   *string                      `json:"type,omitempty" xml:"type,omitempty"`
+	Version                *string                      `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s AlertConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlertConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *AlertConfiguration) SetAnnotations(v []*AlertTag) *AlertConfiguration {
+	s.Annotations = v
+	return s
+}
+
+func (s *AlertConfiguration) SetAutoAnnotation(v bool) *AlertConfiguration {
+	s.AutoAnnotation = &v
+	return s
+}
+
+func (s *AlertConfiguration) SetConditionConfiguration(v *ConditionConfiguration) *AlertConfiguration {
+	s.ConditionConfiguration = v
+	return s
+}
+
+func (s *AlertConfiguration) SetDashboard(v string) *AlertConfiguration {
+	s.Dashboard = &v
+	return s
+}
+
+func (s *AlertConfiguration) SetGroupConfiguration(v *GroupConfiguration) *AlertConfiguration {
+	s.GroupConfiguration = v
+	return s
+}
+
+func (s *AlertConfiguration) SetJoinConfigurations(v []*JoinConfiguration) *AlertConfiguration {
+	s.JoinConfigurations = v
+	return s
+}
+
+func (s *AlertConfiguration) SetLabels(v []*AlertTag) *AlertConfiguration {
+	s.Labels = v
+	return s
+}
+
+func (s *AlertConfiguration) SetMuteUntil(v int64) *AlertConfiguration {
+	s.MuteUntil = &v
+	return s
+}
+
+func (s *AlertConfiguration) SetNoDataFire(v bool) *AlertConfiguration {
+	s.NoDataFire = &v
+	return s
+}
+
+func (s *AlertConfiguration) SetNoDataSeverity(v int32) *AlertConfiguration {
+	s.NoDataSeverity = &v
+	return s
+}
+
+func (s *AlertConfiguration) SetPolicyConfiguration(v *PolicyConfiguration) *AlertConfiguration {
+	s.PolicyConfiguration = v
+	return s
+}
+
+func (s *AlertConfiguration) SetQueryList(v []*AlertQuery) *AlertConfiguration {
+	s.QueryList = v
+	return s
+}
+
+func (s *AlertConfiguration) SetSendResolved(v bool) *AlertConfiguration {
+	s.SendResolved = &v
+	return s
+}
+
+func (s *AlertConfiguration) SetSeverityConfigurations(v []*SeverityConfiguration) *AlertConfiguration {
+	s.SeverityConfigurations = v
+	return s
+}
+
+func (s *AlertConfiguration) SetSinkAlerthub(v *SinkAlerthubConfiguration) *AlertConfiguration {
+	s.SinkAlerthub = v
+	return s
+}
+
+func (s *AlertConfiguration) SetSinkCms(v *SinkCmsConfiguration) *AlertConfiguration {
+	s.SinkCms = v
+	return s
+}
+
+func (s *AlertConfiguration) SetSinkEventStore(v *SinkEventStoreConfiguration) *AlertConfiguration {
+	s.SinkEventStore = v
+	return s
+}
+
+func (s *AlertConfiguration) SetTags(v []*string) *AlertConfiguration {
+	s.Tags = v
+	return s
+}
+
+func (s *AlertConfiguration) SetTemplateConfiguration(v *TemplateConfiguration) *AlertConfiguration {
+	s.TemplateConfiguration = v
+	return s
+}
+
+func (s *AlertConfiguration) SetThreshold(v int32) *AlertConfiguration {
+	s.Threshold = &v
+	return s
+}
+
+func (s *AlertConfiguration) SetType(v string) *AlertConfiguration {
+	s.Type = &v
+	return s
+}
+
+func (s *AlertConfiguration) SetVersion(v string) *AlertConfiguration {
+	s.Version = &v
+	return s
+}
+
+type AlertQuery struct {
+	ChartTitle   *string `json:"chartTitle,omitempty" xml:"chartTitle,omitempty"`
+	DashboardId  *string `json:"dashboardId,omitempty" xml:"dashboardId,omitempty"`
+	End          *string `json:"end,omitempty" xml:"end,omitempty"`
+	PowerSqlMode *string `json:"powerSqlMode,omitempty" xml:"powerSqlMode,omitempty"`
+	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
+	Query        *string `json:"query,omitempty" xml:"query,omitempty"`
+	Region       *string `json:"region,omitempty" xml:"region,omitempty"`
+	RoleArn      *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Start        *string `json:"start,omitempty" xml:"start,omitempty"`
+	Store        *string `json:"store,omitempty" xml:"store,omitempty"`
+	StoreType    *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	TimeSpanType *string `json:"timeSpanType,omitempty" xml:"timeSpanType,omitempty"`
+	Ui           *string `json:"ui,omitempty" xml:"ui,omitempty"`
+}
+
+func (s AlertQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlertQuery) GoString() string {
+	return s.String()
+}
+
+func (s *AlertQuery) SetChartTitle(v string) *AlertQuery {
+	s.ChartTitle = &v
+	return s
+}
+
+func (s *AlertQuery) SetDashboardId(v string) *AlertQuery {
+	s.DashboardId = &v
+	return s
+}
+
+func (s *AlertQuery) SetEnd(v string) *AlertQuery {
+	s.End = &v
+	return s
+}
+
+func (s *AlertQuery) SetPowerSqlMode(v string) *AlertQuery {
+	s.PowerSqlMode = &v
+	return s
+}
+
+func (s *AlertQuery) SetProject(v string) *AlertQuery {
+	s.Project = &v
+	return s
+}
+
+func (s *AlertQuery) SetQuery(v string) *AlertQuery {
+	s.Query = &v
+	return s
+}
+
+func (s *AlertQuery) SetRegion(v string) *AlertQuery {
+	s.Region = &v
+	return s
+}
+
+func (s *AlertQuery) SetRoleArn(v string) *AlertQuery {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *AlertQuery) SetStart(v string) *AlertQuery {
+	s.Start = &v
+	return s
+}
+
+func (s *AlertQuery) SetStore(v string) *AlertQuery {
+	s.Store = &v
+	return s
+}
+
+func (s *AlertQuery) SetStoreType(v string) *AlertQuery {
+	s.StoreType = &v
+	return s
+}
+
+func (s *AlertQuery) SetTimeSpanType(v string) *AlertQuery {
+	s.TimeSpanType = &v
+	return s
+}
+
+func (s *AlertQuery) SetUi(v string) *AlertQuery {
+	s.Ui = &v
+	return s
+}
+
+type AlertResp struct {
+	Configuration    *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	CreateTime       *int64              `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description      *string             `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName      *string             `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	LastModifiedTime *int64              `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Name             *string             `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule         *Schedule           `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	Status           *string             `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s AlertResp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlertResp) GoString() string {
+	return s.String()
+}
+
+func (s *AlertResp) SetConfiguration(v *AlertConfiguration) *AlertResp {
+	s.Configuration = v
+	return s
+}
+
+func (s *AlertResp) SetCreateTime(v int64) *AlertResp {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *AlertResp) SetDescription(v string) *AlertResp {
+	s.Description = &v
+	return s
+}
+
+func (s *AlertResp) SetDisplayName(v string) *AlertResp {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *AlertResp) SetLastModifiedTime(v int64) *AlertResp {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *AlertResp) SetName(v string) *AlertResp {
+	s.Name = &v
+	return s
+}
+
+func (s *AlertResp) SetSchedule(v *Schedule) *AlertResp {
+	s.Schedule = v
+	return s
+}
+
+func (s *AlertResp) SetStatus(v string) *AlertResp {
+	s.Status = &v
+	return s
+}
+
+type AlertTag struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s AlertTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlertTag) GoString() string {
+	return s.String()
+}
+
+func (s *AlertTag) SetKey(v string) *AlertTag {
+	s.Key = &v
+	return s
+}
+
+func (s *AlertTag) SetValue(v string) *AlertTag {
+	s.Value = &v
+	return s
+}
+
+type ConditionConfiguration struct {
+	Condition      *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	CountCondition *string `json:"countCondition,omitempty" xml:"countCondition,omitempty"`
+}
+
+func (s ConditionConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConditionConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ConditionConfiguration) SetCondition(v string) *ConditionConfiguration {
+	s.Condition = &v
+	return s
+}
+
+func (s *ConditionConfiguration) SetCountCondition(v string) *ConditionConfiguration {
+	s.CountCondition = &v
+	return s
+}
+
 type ConsumerGroup struct {
 	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
 	Order   *bool   `json:"order,omitempty" xml:"order,omitempty"`
@@ -39,6 +376,47 @@ func (s *ConsumerGroup) SetOrder(v bool) *ConsumerGroup {
 
 func (s *ConsumerGroup) SetTimeout(v int32) *ConsumerGroup {
 	s.Timeout = &v
+	return s
+}
+
+type CreateAlertReq struct {
+	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string             `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string             `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string             `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule      *Schedule           `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s CreateAlertReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertReq) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertReq) SetConfiguration(v *AlertConfiguration) *CreateAlertReq {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateAlertReq) SetDescription(v string) *CreateAlertReq {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAlertReq) SetDisplayName(v string) *CreateAlertReq {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateAlertReq) SetName(v string) *CreateAlertReq {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAlertReq) SetSchedule(v *Schedule) *CreateAlertReq {
+	s.Schedule = v
 	return s
 }
 
@@ -100,6 +478,29 @@ func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 	return s
 }
 
+type GroupConfiguration struct {
+	Fileds []*string `json:"fileds,omitempty" xml:"fileds,omitempty" type:"Repeated"`
+	Type   *string   `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GroupConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GroupConfiguration) SetFileds(v []*string) *GroupConfiguration {
+	s.Fileds = v
+	return s
+}
+
+func (s *GroupConfiguration) SetType(v string) *GroupConfiguration {
+	s.Type = &v
+	return s
+}
+
 type Histogram struct {
 	Count    *int64  `json:"count,omitempty" xml:"count,omitempty"`
 	From     *int32  `json:"from,omitempty" xml:"from,omitempty"`
@@ -132,6 +533,29 @@ func (s *Histogram) SetProgress(v string) *Histogram {
 
 func (s *Histogram) SetTo(v int32) *Histogram {
 	s.To = &v
+	return s
+}
+
+type JoinConfiguration struct {
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s JoinConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JoinConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *JoinConfiguration) SetCondition(v string) *JoinConfiguration {
+	s.Condition = &v
+	return s
+}
+
+func (s *JoinConfiguration) SetType(v string) *JoinConfiguration {
+	s.Type = &v
 	return s
 }
 
@@ -750,6 +1174,35 @@ func (s *MLServiceParamResource) SetReplica(v int32) *MLServiceParamResource {
 	return s
 }
 
+type PolicyConfiguration struct {
+	ActionPolicyId *string `json:"actionPolicyId,omitempty" xml:"actionPolicyId,omitempty"`
+	AlertPolicyId  *string `json:"alertPolicyId,omitempty" xml:"alertPolicyId,omitempty"`
+	RepeatInterval *string `json:"repeatInterval,omitempty" xml:"repeatInterval,omitempty"`
+}
+
+func (s PolicyConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PolicyConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *PolicyConfiguration) SetActionPolicyId(v string) *PolicyConfiguration {
+	s.ActionPolicyId = &v
+	return s
+}
+
+func (s *PolicyConfiguration) SetAlertPolicyId(v string) *PolicyConfiguration {
+	s.AlertPolicyId = &v
+	return s
+}
+
+func (s *PolicyConfiguration) SetRepeatInterval(v string) *PolicyConfiguration {
+	s.RepeatInterval = &v
+	return s
+}
+
 type SavedSearch struct {
 	DisplayName     *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
@@ -788,6 +1241,198 @@ func (s *SavedSearch) SetSearchQuery(v string) *SavedSearch {
 
 func (s *SavedSearch) SetTopic(v string) *SavedSearch {
 	s.Topic = &v
+	return s
+}
+
+type Schedule struct {
+	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	Delay          *int32  `json:"delay,omitempty" xml:"delay,omitempty"`
+	Interval       *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	RunImmediately *bool   `json:"runImmediately,omitempty" xml:"runImmediately,omitempty"`
+	TimeZone       *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s Schedule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Schedule) GoString() string {
+	return s.String()
+}
+
+func (s *Schedule) SetCronExpression(v string) *Schedule {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *Schedule) SetDelay(v int32) *Schedule {
+	s.Delay = &v
+	return s
+}
+
+func (s *Schedule) SetInterval(v string) *Schedule {
+	s.Interval = &v
+	return s
+}
+
+func (s *Schedule) SetRunImmediately(v bool) *Schedule {
+	s.RunImmediately = &v
+	return s
+}
+
+func (s *Schedule) SetTimeZone(v string) *Schedule {
+	s.TimeZone = &v
+	return s
+}
+
+func (s *Schedule) SetType(v string) *Schedule {
+	s.Type = &v
+	return s
+}
+
+type SeverityConfiguration struct {
+	EvalCondition *ConditionConfiguration `json:"evalCondition,omitempty" xml:"evalCondition,omitempty"`
+	Severity      *int32                  `json:"severity,omitempty" xml:"severity,omitempty"`
+}
+
+func (s SeverityConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeverityConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *SeverityConfiguration) SetEvalCondition(v *ConditionConfiguration) *SeverityConfiguration {
+	s.EvalCondition = v
+	return s
+}
+
+func (s *SeverityConfiguration) SetSeverity(v int32) *SeverityConfiguration {
+	s.Severity = &v
+	return s
+}
+
+type SinkAlerthubConfiguration struct {
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s SinkAlerthubConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkAlerthubConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *SinkAlerthubConfiguration) SetEnabled(v bool) *SinkAlerthubConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+type SinkCmsConfiguration struct {
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s SinkCmsConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkCmsConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *SinkCmsConfiguration) SetEnabled(v bool) *SinkCmsConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+type SinkEventStoreConfiguration struct {
+	Enabled    *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	EventStore *string `json:"eventStore,omitempty" xml:"eventStore,omitempty"`
+	Project    *string `json:"project,omitempty" xml:"project,omitempty"`
+	RoleArn    *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+}
+
+func (s SinkEventStoreConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkEventStoreConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *SinkEventStoreConfiguration) SetEnabled(v bool) *SinkEventStoreConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+func (s *SinkEventStoreConfiguration) SetEndpoint(v string) *SinkEventStoreConfiguration {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *SinkEventStoreConfiguration) SetEventStore(v string) *SinkEventStoreConfiguration {
+	s.EventStore = &v
+	return s
+}
+
+func (s *SinkEventStoreConfiguration) SetProject(v string) *SinkEventStoreConfiguration {
+	s.Project = &v
+	return s
+}
+
+func (s *SinkEventStoreConfiguration) SetRoleArn(v string) *SinkEventStoreConfiguration {
+	s.RoleArn = &v
+	return s
+}
+
+type TemplateConfiguration struct {
+	Aonotations map[string]interface{} `json:"aonotations,omitempty" xml:"aonotations,omitempty"`
+	Id          *string                `json:"id,omitempty" xml:"id,omitempty"`
+	Lang        *string                `json:"lang,omitempty" xml:"lang,omitempty"`
+	Tokens      map[string]interface{} `json:"tokens,omitempty" xml:"tokens,omitempty"`
+	Type        *string                `json:"type,omitempty" xml:"type,omitempty"`
+	Version     *string                `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s TemplateConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TemplateConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *TemplateConfiguration) SetAonotations(v map[string]interface{}) *TemplateConfiguration {
+	s.Aonotations = v
+	return s
+}
+
+func (s *TemplateConfiguration) SetId(v string) *TemplateConfiguration {
+	s.Id = &v
+	return s
+}
+
+func (s *TemplateConfiguration) SetLang(v string) *TemplateConfiguration {
+	s.Lang = &v
+	return s
+}
+
+func (s *TemplateConfiguration) SetTokens(v map[string]interface{}) *TemplateConfiguration {
+	s.Tokens = v
+	return s
+}
+
+func (s *TemplateConfiguration) SetType(v string) *TemplateConfiguration {
+	s.Type = &v
+	return s
+}
+
+func (s *TemplateConfiguration) SetVersion(v string) *TemplateConfiguration {
+	s.Version = &v
 	return s
 }
 
@@ -865,6 +1510,41 @@ func (s *Ticket) SetUsedNumber(v int32) *Ticket {
 
 func (s *Ticket) SetValid(v bool) *Ticket {
 	s.Valid = &v
+	return s
+}
+
+type UpdateAlertReq struct {
+	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string             `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string             `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Schedule      *Schedule           `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s UpdateAlertReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertReq) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertReq) SetConfiguration(v *AlertConfiguration) *UpdateAlertReq {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateAlertReq) SetDescription(v string) *UpdateAlertReq {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAlertReq) SetDisplayName(v string) *UpdateAlertReq {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateAlertReq) SetSchedule(v *Schedule) *UpdateAlertReq {
+	s.Schedule = v
 	return s
 }
 
@@ -1870,9 +2550,12 @@ func (s *ApplyConfigToMachineGroupResponse) SetStatusCode(v int32) *ApplyConfigT
 }
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	ResourceId      *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	ResourceType    *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The type of the resource. Only PROJECT is supported. Set the value to PROJECT.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -1922,8 +2605,10 @@ func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGrou
 }
 
 type ConsumerGroupHeartBeatRequest struct {
-	Body     []*int32 `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	Consumer *string  `json:"consumer,omitempty" xml:"consumer,omitempty"`
+	// The IDs of shards whose data is being consumed.
+	Body []*int32 `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// The consumer.
+	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
 }
 
 func (s ConsumerGroupHeartBeatRequest) String() string {
@@ -1973,9 +2658,57 @@ func (s *ConsumerGroupHeartBeatResponse) SetBody(v []*int32) *ConsumerGroupHeart
 	return s
 }
 
+type CreateAlertRequest struct {
+	Body *CreateAlertReq `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRequest) SetBody(v *CreateAlertReq) *CreateAlertRequest {
+	s.Body = v
+	return s
+}
+
+type CreateAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertResponse) SetHeaders(v map[string]*string) *CreateAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAlertResponse) SetStatusCode(v int32) *CreateAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAlertResponse) SetBody(v interface{}) *CreateAlertResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAnnotationDataSetRequest struct {
-	Body      *MLDataSetParam `json:"body,omitempty" xml:"body,omitempty"`
-	DatasetId *string         `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	// The data structure of the request.
+	Body *MLDataSetParam `json:"body,omitempty" xml:"body,omitempty"`
+	// The unique identifier of the dataset.
+	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
 }
 
 func (s CreateAnnotationDataSetRequest) String() string {
@@ -2020,6 +2753,7 @@ func (s *CreateAnnotationDataSetResponse) SetStatusCode(v int32) *CreateAnnotati
 }
 
 type CreateAnnotationLabelRequest struct {
+	// The data structure of the request.
 	Body *MLLabelParam `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2060,6 +2794,7 @@ func (s *CreateAnnotationLabelResponse) SetStatusCode(v int32) *CreateAnnotation
 }
 
 type CreateConfigRequest struct {
+	// The body of the request.
 	Body *LogtailConfig `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2163,6 +2898,7 @@ func (s *CreateConsumerGroupResponse) SetStatusCode(v int32) *CreateConsumerGrou
 }
 
 type CreateDashboardRequest struct {
+	// The data structure of the dashboard.
 	Body *Dashboard `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2604,13 +3340,20 @@ func (s *CreateLoggingResponse) SetStatusCode(v int32) *CreateLoggingResponse {
 }
 
 type CreateLogtailPipelineConfigRequest struct {
+	// The aggregation plug-ins.
 	Aggregators []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
-	ConfigName  *string                  `json:"configName,omitempty" xml:"configName,omitempty"`
-	Flushers    []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
-	Global      map[string]interface{}   `json:"global,omitempty" xml:"global,omitempty"`
-	Inputs      []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
-	LogSample   *string                  `json:"logSample,omitempty" xml:"logSample,omitempty"`
-	Processors  []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	// The name of the configuration.
+	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// The data output plug-ins.
+	Flushers []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
+	// The global configuration.
+	Global map[string]interface{} `json:"global,omitempty" xml:"global,omitempty"`
+	// The data source plug-ins.
+	Inputs []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
+	// The sample log.
+	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	// The processing plug-ins.
+	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 }
 
 func (s CreateLogtailPipelineConfigRequest) String() string {
@@ -2823,11 +3566,11 @@ type CreateOssExternalStoreRequestParameter struct {
 	Accesskey *string `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
 	// The name of the OSS bucket.
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// The associated fields.
+	// The fields that are associated to the external store.
 	Columns []*CreateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// The OSS endpoint.
+	// The Object Storage Service (OSS) endpoint.
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The associated objects.
+	// The names of the OSS objects that are associated to the external store.
 	Objects []*string `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
 }
 
@@ -3224,6 +3967,35 @@ func (s *CreateTicketResponse) SetStatusCode(v int32) *CreateTicketResponse {
 }
 
 func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicketResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertResponse) SetHeaders(v map[string]*string) *DeleteAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAlertResponse) SetStatusCode(v int32) *DeleteAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAlertResponse) SetBody(v interface{}) *DeleteAlertResponse {
 	s.Body = v
 	return s
 }
@@ -3685,6 +4457,93 @@ func (s *DeleteShipperResponse) SetHeaders(v map[string]*string) *DeleteShipperR
 
 func (s *DeleteShipperResponse) SetStatusCode(v int32) *DeleteShipperResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type DisableAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAlertResponse) SetHeaders(v map[string]*string) *DisableAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableAlertResponse) SetStatusCode(v int32) *DisableAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableAlertResponse) SetBody(v interface{}) *DisableAlertResponse {
+	s.Body = v
+	return s
+}
+
+type EnableAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAlertResponse) SetHeaders(v map[string]*string) *EnableAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableAlertResponse) SetStatusCode(v int32) *EnableAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableAlertResponse) SetBody(v interface{}) *EnableAlertResponse {
+	s.Body = v
+	return s
+}
+
+type GetAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AlertResp         `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertResponse) SetHeaders(v map[string]*string) *GetAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAlertResponse) SetStatusCode(v int32) *GetAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAlertResponse) SetBody(v *AlertResp) *GetAlertResponse {
+	s.Body = v
 	return s
 }
 
@@ -5071,34 +5930,35 @@ func (s *GetLogsV2Headers) SetAcceptEncoding(v string) *GetLogsV2Headers {
 }
 
 type GetLogsV2Request struct {
-	// Specifies whether to page forward or backward for the scan-based query or the phrase query.
+	// Specifies whether to page forward or backward for the scan-based query or the phrase search.
 	Forward *bool `json:"forward,omitempty" xml:"forward,omitempty"`
 	// The beginning of the time range to query. The value is the log time that is specified when log data is written.
 	//
-	// The time range specified by the from and to parameters is a left-closed and right-open interval. Each interval includes the specified start time but does not include the specified end time. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
-	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
+	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Minimum value: 0. Maximum value: 100. Default value: 100.
 	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
-	// The row from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
+	// The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
 	// Specifies whether to enable the SQL enhancement feature. By default, the feature is disabled.
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
 	// The search statement or the query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
 	//
-	// If you add set session parallel_sql=true; to the analytic statement in the query parameter, the dedicated SQL feature is enabled. Example: \* | set session parallel_sql=true; select count(\*) as pv.
+	// If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to \* | set session parallel_sql=true; select count(\*) as pv.
 	//
-	// Note: If you specify an analytic statement in the query parameter, the line and offset parameters are invalid for this operation. In this case, we recommend that you set the line and offset parameters to 0 and use a LIMIT clause to limit the number of entries to return on each page. For more information, see the "Perform paged queries" topic.
+	// Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to limit the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to the minute. Valid values:
 	//
-	// true: returns logs in reverse chronological order of log timestamps. false (default): returns logs in chronological order of log timestamps. Note The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort the returned logs. If the query parameter is set to a query statement, which consists of a search statement and an analytic statement, the reverse parameter does not take effect. The method used to sort the returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
-	Reverse *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	// true: Logs are returned in reverse chronological order of log timestamps. false (default): Logs are returned in chronological order of log timestamps. Note: The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort returned logs. If the query parameter is set to a query statement, the reverse parameter does not take effect. The method used to sort returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
+	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	// The parameter that is used to query data.
 	Session *string `json:"session,omitempty" xml:"session,omitempty"`
 	// The ID of the shard.
 	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
 	// The end of the time range to query. The value is the log time that is specified when log data is written.
 	//
-	// The time range specified by the from and to parameters is a left-closed and right-open interval. Each interval includes the specified start time but does not include the specified end time. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
 	// The topic of the logs. Default value: double quotation marks ("").
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
@@ -5811,9 +6671,98 @@ func (s *GetShipperStatusResponse) SetBody(v *GetShipperStatusResponseBody) *Get
 	return s
 }
 
+type ListAlertsRequest struct {
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListAlertsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertsRequest) SetLogstore(v string) *ListAlertsRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetOffset(v int32) *ListAlertsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetSize(v int32) *ListAlertsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListAlertsResponseBody struct {
+	Count   *int32       `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*AlertResp `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32       `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListAlertsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertsResponseBody) SetCount(v int32) *ListAlertsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListAlertsResponseBody) SetResults(v []*AlertResp) *ListAlertsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListAlertsResponseBody) SetTotal(v int32) *ListAlertsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListAlertsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAlertsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertsResponse) SetHeaders(v map[string]*string) *ListAlertsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAlertsResponse) SetStatusCode(v int32) *ListAlertsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAlertsResponse) SetBody(v *ListAlertsResponseBody) *ListAlertsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAnnotationDataRequest struct {
+	// The line from which the query starts.
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of entries per page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListAnnotationDataRequest) String() string {
@@ -5835,8 +6784,10 @@ func (s *ListAnnotationDataRequest) SetSize(v int32) *ListAnnotationDataRequest 
 }
 
 type ListAnnotationDataResponseBody struct {
-	Data  []*MLDataParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Total *int32         `json:"total,omitempty" xml:"total,omitempty"`
+	// The data returned.
+	Data []*MLDataParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAnnotationDataResponseBody) String() string {
@@ -5887,8 +6838,10 @@ func (s *ListAnnotationDataResponse) SetBody(v *ListAnnotationDataResponseBody) 
 }
 
 type ListAnnotationDataSetsRequest struct {
+	// The line from which the query starts.
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of entries per page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListAnnotationDataSetsRequest) String() string {
@@ -5910,8 +6863,10 @@ func (s *ListAnnotationDataSetsRequest) SetSize(v int32) *ListAnnotationDataSets
 }
 
 type ListAnnotationDataSetsResponseBody struct {
-	Data  []*MLDataSetParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Total *int32            `json:"total,omitempty" xml:"total,omitempty"`
+	// The data returned.
+	Data []*MLDataSetParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAnnotationDataSetsResponseBody) String() string {
@@ -5962,8 +6917,10 @@ func (s *ListAnnotationDataSetsResponse) SetBody(v *ListAnnotationDataSetsRespon
 }
 
 type ListAnnotationLabelsRequest struct {
+	// The line from which the query starts.
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of entries per page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListAnnotationLabelsRequest) String() string {
@@ -5985,8 +6942,10 @@ func (s *ListAnnotationLabelsRequest) SetSize(v int32) *ListAnnotationLabelsRequ
 }
 
 type ListAnnotationLabelsResponseBody struct {
-	Data  []*MLLabelParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Total *int32          `json:"total,omitempty" xml:"total,omitempty"`
+	// The data returned.
+	Data []*MLLabelParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The total number of tags that meet the query conditions.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAnnotationLabelsResponseBody) String() string {
@@ -6376,10 +7335,14 @@ func (s *ListCollectionPoliciesResponse) SetBody(v *ListCollectionPoliciesRespon
 }
 
 type ListConfigRequest struct {
-	ConfigName   *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// The name of the Logtail configuration.
+	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// The name of the Logstore.
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	Offset       *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size         *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page. Maximum value: 500.
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListConfigRequest) String() string {
@@ -6411,9 +7374,12 @@ func (s *ListConfigRequest) SetSize(v int64) *ListConfigRequest {
 }
 
 type ListConfigResponseBody struct {
+	// The Logtail configurations that are returned on the current page.
 	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	Count   *int32    `json:"count,omitempty" xml:"count,omitempty"`
-	Total   *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	// The number of Logtail configurations that are returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The total number of Logtail configurations that meet the query conditions.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListConfigResponseBody) String() string {
@@ -6498,8 +7464,10 @@ func (s *ListConsumerGroupResponse) SetBody(v []*ConsumerGroup) *ListConsumerGro
 }
 
 type ListDashboardRequest struct {
+	// The line from which the query starts. Default value: 0.
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of entries per page. Maximum value: 500. Default value: 500.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListDashboardRequest) String() string {
@@ -6521,8 +7489,10 @@ func (s *ListDashboardRequest) SetSize(v int32) *ListDashboardRequest {
 }
 
 type ListDashboardResponseBody struct {
+	// The details of the dashboard.
 	DashboardItems []*ListDashboardResponseBodyDashboardItems `json:"dashboardItems,omitempty" xml:"dashboardItems,omitempty" type:"Repeated"`
-	Dashboards     []*string                                  `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
+	// The queried dashboards. Each dashboard in the array is specified by dashboardName.
+	Dashboards []*string `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
 }
 
 func (s ListDashboardResponseBody) String() string {
@@ -6544,8 +7514,10 @@ func (s *ListDashboardResponseBody) SetDashboards(v []*string) *ListDashboardRes
 }
 
 type ListDashboardResponseBodyDashboardItems struct {
+	// The dashboard ID. The ID must be unique in a project. Fuzzy search is supported. For example, if you enter da, all dashboards whose IDs start with da are queried.
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The display name of the dashboard.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
 func (s ListDashboardResponseBodyDashboardItems) String() string {
@@ -6834,7 +7806,7 @@ func (s *ListLogStoresRequest) SetTelemetryType(v string) *ListLogStoresRequest 
 }
 
 type ListLogStoresResponseBody struct {
-	// The number of entries that are returned on the current page.
+	// The number of entries returned on the current page.
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 	// The Logstores that meet the query conditions.
 	Logstores []*string `json:"logstores,omitempty" xml:"logstores,omitempty" type:"Repeated"`
@@ -6895,10 +7867,14 @@ func (s *ListLogStoresResponse) SetBody(v *ListLogStoresResponseBody) *ListLogSt
 }
 
 type ListLogtailPipelineConfigRequest struct {
-	ConfigName   *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// The name of the Logtail pipeline configuration.
+	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// The name of the Logstore.
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	Offset       *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size         *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	// The line from which the query starts.
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of Logtail pipeline configurations per page.
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListLogtailPipelineConfigRequest) String() string {
@@ -6930,9 +7906,12 @@ func (s *ListLogtailPipelineConfigRequest) SetSize(v int64) *ListLogtailPipeline
 }
 
 type ListLogtailPipelineConfigResponseBody struct {
+	// The Logtail pipeline configurations that are returned on the current page.
 	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	Count   *int32    `json:"count,omitempty" xml:"count,omitempty"`
-	Total   *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	// The number of Logtail pipeline configurations that are returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The total number of Logtail pipeline configurations in the current project.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListLogtailPipelineConfigResponseBody) String() string {
@@ -7628,9 +8607,12 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type PutAnnotationDataRequest struct {
-	AnnotationdataId *string              `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
-	MlDataParam      *MLDataParam         `json:"mlDataParam,omitempty" xml:"mlDataParam,omitempty"`
-	RawLog           []map[string]*string `json:"rawLog,omitempty" xml:"rawLog,omitempty" type:"Repeated"`
+	// The unique identifier of the data.
+	AnnotationdataId *string `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
+	// The data structure of the request.
+	MlDataParam *MLDataParam `json:"mlDataParam,omitempty" xml:"mlDataParam,omitempty"`
+	// The raw log data.
+	RawLog []map[string]*string `json:"rawLog,omitempty" xml:"rawLog,omitempty" type:"Repeated"`
 }
 
 func (s PutAnnotationDataRequest) String() string {
@@ -7761,10 +8743,16 @@ func (s *PutProjectTransferAccelerationResponse) SetStatusCode(v int32) *PutProj
 }
 
 type PutWebtrackingRequest struct {
-	Logs   []map[string]*string `json:"__logs__,omitempty" xml:"__logs__,omitempty" type:"Repeated"`
-	Source *string              `json:"__source__,omitempty" xml:"__source__,omitempty"`
-	Tags   map[string]*string   `json:"__tags__,omitempty" xml:"__tags__,omitempty"`
-	Topic  *string              `json:"__topic__,omitempty" xml:"__topic__,omitempty"`
+	// The logs. Each element is a JSON object that indicates a log.
+	//
+	// >  **Note**: The time in a log that is collected by using the web tracking feature is the time at which Simple Log Service receives the log. You do not need to configure the \__time\_\_ field for each log. If this field exists, it is overwritten by the time at which Simple Log Service receives the log.
+	Logs []map[string]*string `json:"__logs__,omitempty" xml:"__logs__,omitempty" type:"Repeated"`
+	// The source of the logs.
+	Source *string `json:"__source__,omitempty" xml:"__source__,omitempty"`
+	// The tags of the logs.
+	Tags map[string]*string `json:"__tags__,omitempty" xml:"__tags__,omitempty"`
+	// The topic of the logs.
+	Topic *string `json:"__topic__,omitempty" xml:"__topic__,omitempty"`
 }
 
 func (s PutWebtrackingRequest) String() string {
@@ -8115,7 +9103,54 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 	return s
 }
 
+type UpdateAlertRequest struct {
+	Body *UpdateAlertReq `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRequest) SetBody(v *UpdateAlertReq) *UpdateAlertRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertResponse) SetHeaders(v map[string]*string) *UpdateAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAlertResponse) SetStatusCode(v int32) *UpdateAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAlertResponse) SetBody(v interface{}) *UpdateAlertResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAnnotationDataSetRequest struct {
+	// The data structure of the request.
 	Body *MLDataSetParam `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -8156,6 +9191,7 @@ func (s *UpdateAnnotationDataSetResponse) SetStatusCode(v int32) *UpdateAnnotati
 }
 
 type UpdateAnnotationLabelRequest struct {
+	// The data structure of the request.
 	Body *MLLabelParam `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -8196,6 +9232,7 @@ func (s *UpdateAnnotationLabelResponse) SetStatusCode(v int32) *UpdateAnnotation
 }
 
 type UpdateConfigRequest struct {
+	// The body of the request.
 	Body *LogtailConfig `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -8287,11 +9324,16 @@ func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGrou
 }
 
 type UpdateDashboardRequest struct {
-	Attribute     map[string]*string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	Charts        []*Chart           `json:"charts,omitempty" xml:"charts,omitempty" type:"Repeated"`
-	DashboardName *string            `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	Description   *string            `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName   *string            `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The attributes of the dashboard.
+	Attribute map[string]*string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// The charts on the dashboard.
+	Charts []*Chart `json:"charts,omitempty" xml:"charts,omitempty" type:"Repeated"`
+	// The name of the dashboard.
+	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
+	// The description of the dashboard.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the dashboard.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
 func (s UpdateDashboardRequest) String() string {
@@ -8746,13 +9788,20 @@ func (s *UpdateLoggingResponse) SetStatusCode(v int32) *UpdateLoggingResponse {
 }
 
 type UpdateLogtailPipelineConfigRequest struct {
+	// The aggregation plug-ins.
 	Aggregators []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
-	ConfigName  *string                  `json:"configName,omitempty" xml:"configName,omitempty"`
-	Flushers    []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
-	Global      map[string]interface{}   `json:"global,omitempty" xml:"global,omitempty"`
-	Inputs      []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
-	LogSample   *string                  `json:"logSample,omitempty" xml:"logSample,omitempty"`
-	Processors  []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	// The name of the configuration.
+	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// The data output plug-ins.
+	Flushers []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
+	// The global configuration.
+	Global map[string]interface{} `json:"global,omitempty" xml:"global,omitempty"`
+	// The data source plug-ins.
+	Inputs []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
+	// The sample log.
+	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	// The processing plug-ins.
+	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 }
 
 func (s UpdateLogtailPipelineConfigRequest) String() string {
@@ -9008,11 +10057,11 @@ type UpdateOssExternalStoreRequestParameter struct {
 	Accesskey *string `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
 	// The name of the OSS bucket.
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// The associated fields.
+	// The fields that are associated to the external store.
 	Columns []*UpdateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// The OSS endpoint.
+	// The Object Storage Service (OSS) endpoint.
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The associated objects.
+	// The names of the OSS objects that are associated to the external store.
 	Objects []*string `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
 }
 
@@ -9055,7 +10104,7 @@ func (s *UpdateOssExternalStoreRequestParameter) SetObjects(v []*string) *Update
 }
 
 type UpdateOssExternalStoreRequestParameterColumns struct {
-	// The key of the field.
+	// The name of the field.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The type of the field.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
@@ -9674,6 +10723,16 @@ func (client *Client) ChangeResourceGroup(project *string, request *ChangeResour
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Connections between consumers and servers are established by sending heartbeats at regular intervals. If a server does not receive heartbeats from a consumer on schedule, the server deletes the consumer.
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ConsumerGroupHeartBeatRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ConsumerGroupHeartBeatResponse
+ */
 func (client *Client) ConsumerGroupHeartBeatWithOptions(project *string, logstore *string, consumerGroup *string, request *ConsumerGroupHeartBeatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConsumerGroupHeartBeatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9712,11 +10771,63 @@ func (client *Client) ConsumerGroupHeartBeatWithOptions(project *string, logstor
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Connections between consumers and servers are established by sending heartbeats at regular intervals. If a server does not receive heartbeats from a consumer on schedule, the server deletes the consumer.
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ConsumerGroupHeartBeatRequest
+ * @return ConsumerGroupHeartBeatResponse
+ */
 func (client *Client) ConsumerGroupHeartBeat(project *string, logstore *string, consumerGroup *string, request *ConsumerGroupHeartBeatRequest) (_result *ConsumerGroupHeartBeatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ConsumerGroupHeartBeatResponse{}
 	_body, _err := client.ConsumerGroupHeartBeatWithOptions(project, logstore, consumerGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAlertWithOptions(project *string, request *CreateAlertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alerts"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &CreateAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAlert(project *string, request *CreateAlertRequest) (_result *CreateAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAlertResponse{}
+	_body, _err := client.CreateAlertWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9812,6 +10923,20 @@ func (client *Client) CreateAnnotationLabel(request *CreateAnnotationLabelReques
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~).
+ * *   You can create up to 100 Logtail configurations in a project.
+ * *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+ *
+ * @param request CreateConfigRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateConfigResponse
+ */
 func (client *Client) CreateConfigWithOptions(project *string, request *CreateConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9844,6 +10969,18 @@ func (client *Client) CreateConfigWithOptions(project *string, request *CreateCo
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~).
+ * *   You can create up to 100 Logtail configurations in a project.
+ * *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+ *
+ * @param request CreateConfigRequest
+ * @return CreateConfigResponse
+ */
 func (client *Client) CreateConfig(project *string, request *CreateConfigRequest) (_result *CreateConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9933,6 +11070,18 @@ func (client *Client) CreateConsumerGroup(project *string, logstore *string, req
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @param request CreateDashboardRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDashboardResponse
+ */
 func (client *Client) CreateDashboardWithOptions(project *string, request *CreateDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDashboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9965,6 +11114,16 @@ func (client *Client) CreateDashboardWithOptions(project *string, request *Creat
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @param request CreateDashboardRequest
+ * @return CreateDashboardResponse
+ */
 func (client *Client) CreateDashboard(project *string, request *CreateDashboardRequest) (_result *CreateDashboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10303,6 +11462,14 @@ func (client *Client) CreateLogging(project *string, request *CreateLoggingReque
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @param request CreateLogtailPipelineConfigRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLogtailPipelineConfigResponse
+ */
 func (client *Client) CreateLogtailPipelineConfigWithOptions(project *string, request *CreateLogtailPipelineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLogtailPipelineConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10364,6 +11531,12 @@ func (client *Client) CreateLogtailPipelineConfigWithOptions(project *string, re
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @param request CreateLogtailPipelineConfigRequest
+ * @return CreateLogtailPipelineConfigResponse
+ */
 func (client *Client) CreateLogtailPipelineConfig(project *string, request *CreateLogtailPipelineConfigRequest) (_result *CreateLogtailPipelineConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10458,6 +11631,7 @@ func (client *Client) CreateMachineGroup(project *string, request *CreateMachine
 }
 
 /**
+ * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param request CreateOssExternalStoreRequest
@@ -10511,6 +11685,7 @@ func (client *Client) CreateOssExternalStoreWithOptions(project *string, request
 }
 
 /**
+ * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param request CreateOssExternalStoreRequest
@@ -10774,6 +11949,45 @@ func (client *Client) CreateTicket() (_result *CreateTicketResponse, _err error)
 	return _result, _err
 }
 
+func (client *Client) DeleteAlertWithOptions(project *string, alertName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alerts/" + tea.StringValue(alertName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &DeleteAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAlert(project *string, alertName *string) (_result *DeleteAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAlertResponse{}
+	_body, _err := client.DeleteAlertWithOptions(project, alertName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAnnotationDataWithOptions(datasetId *string, annotationdataId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAnnotationDataResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10810,6 +12024,13 @@ func (client *Client) DeleteAnnotationData(datasetId *string, annotationdataId *
 	return _result, _err
 }
 
+/**
+ * You can delete a dataset only if no data exists in the dataset.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAnnotationDataSetResponse
+ */
 func (client *Client) DeleteAnnotationDataSetWithOptions(datasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAnnotationDataSetResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10834,6 +12055,11 @@ func (client *Client) DeleteAnnotationDataSetWithOptions(datasetId *string, head
 	return _result, _err
 }
 
+/**
+ * You can delete a dataset only if no data exists in the dataset.
+ *
+ * @return DeleteAnnotationDataSetResponse
+ */
 func (client *Client) DeleteAnnotationDataSet(datasetId *string) (_result *DeleteAnnotationDataSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10846,6 +12072,13 @@ func (client *Client) DeleteAnnotationDataSet(datasetId *string) (_result *Delet
 	return _result, _err
 }
 
+/**
+ * Only non-built-in tags can be deleted.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAnnotationLabelResponse
+ */
 func (client *Client) DeleteAnnotationLabelWithOptions(labelId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAnnotationLabelResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10870,6 +12103,11 @@ func (client *Client) DeleteAnnotationLabelWithOptions(labelId *string, headers 
 	return _result, _err
 }
 
+/**
+ * Only non-built-in tags can be deleted.
+ *
+ * @return DeleteAnnotationLabelResponse
+ */
 func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnnotationLabelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10932,6 +12170,19 @@ func (client *Client) DeleteCollectionPolicy(policyName *string, request *Delete
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ * *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteConfigResponse
+ */
 func (client *Client) DeleteConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConfigResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10959,6 +12210,17 @@ func (client *Client) DeleteConfigWithOptions(project *string, configName *strin
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ * *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+ *
+ * @return DeleteConfigResponse
+ */
 func (client *Client) DeleteConfig(project *string, configName *string) (_result *DeleteConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11022,6 +12284,17 @@ func (client *Client) DeleteConsumerGroup(project *string, logstore *string, con
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDashboardResponse
+ */
 func (client *Client) DeleteDashboardWithOptions(project *string, dashboardName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDashboardResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11049,6 +12322,15 @@ func (client *Client) DeleteDashboardWithOptions(project *string, dashboardName 
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @return DeleteDashboardResponse
+ */
 func (client *Client) DeleteDashboard(project *string, dashboardName *string) (_result *DeleteDashboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11308,6 +12590,13 @@ func (client *Client) DeleteLogging(project *string) (_result *DeleteLoggingResp
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteLogtailPipelineConfigResponse
+ */
 func (client *Client) DeleteLogtailPipelineConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLogtailPipelineConfigResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11335,6 +12624,11 @@ func (client *Client) DeleteLogtailPipelineConfigWithOptions(project *string, co
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @return DeleteLogtailPipelineConfigResponse
+ */
 func (client *Client) DeleteLogtailPipelineConfig(project *string, configName *string) (_result *DeleteLogtailPipelineConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11589,6 +12883,123 @@ func (client *Client) DeleteShipper(project *string, logstore *string, shipperNa
 	headers := make(map[string]*string)
 	_result = &DeleteShipperResponse{}
 	_body, _err := client.DeleteShipperWithOptions(project, logstore, shipperName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DisableAlertWithOptions(project *string, alertName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableAlertResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alerts/" + tea.StringValue(alertName) + "?action=disable"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &DisableAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableAlert(project *string, alertName *string) (_result *DisableAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DisableAlertResponse{}
+	_body, _err := client.DisableAlertWithOptions(project, alertName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableAlertWithOptions(project *string, alertName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableAlertResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alerts/" + tea.StringValue(alertName) + "?action=enable"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &EnableAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableAlert(project *string, alertName *string) (_result *EnableAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableAlertResponse{}
+	_body, _err := client.EnableAlertWithOptions(project, alertName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAlertWithOptions(project *string, alertName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAlertResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alerts/" + tea.StringValue(alertName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAlert(project *string, alertName *string) (_result *GetAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAlertResponse{}
+	_body, _err := client.GetAlertWithOptions(project, alertName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11919,6 +13330,18 @@ func (client *Client) GetCollectionPolicy(policyName *string, request *GetCollec
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ * *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetConfigResponse
+ */
 func (client *Client) GetConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConfigResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11946,6 +13369,16 @@ func (client *Client) GetConfigWithOptions(project *string, configName *string, 
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ * *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+ *
+ * @return GetConfigResponse
+ */
 func (client *Client) GetConfig(project *string, configName *string) (_result *GetConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12161,6 +13594,17 @@ func (client *Client) GetCursorTime(project *string, logstore *string, shardId *
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDashboardResponse
+ */
 func (client *Client) GetDashboardWithOptions(project *string, dashboardName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -12188,6 +13632,15 @@ func (client *Client) GetDashboardWithOptions(project *string, dashboardName *st
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @return GetDashboardResponse
+ */
 func (client *Client) GetDashboard(project *string, dashboardName *string) (_result *GetDashboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12771,6 +14224,13 @@ func (client *Client) GetLogsV2(project *string, logstore *string, request *GetL
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetLogtailPipelineConfigResponse
+ */
 func (client *Client) GetLogtailPipelineConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogtailPipelineConfigResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -12798,6 +14258,11 @@ func (client *Client) GetLogtailPipelineConfigWithOptions(project *string, confi
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @return GetLogtailPipelineConfigResponse
+ */
 func (client *Client) GetLogtailPipelineConfig(project *string, configName *string) (_result *GetLogtailPipelineConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13223,6 +14688,63 @@ func (client *Client) GetShipperStatus(project *string, logstore *string, shippe
 	return _result, _err
 }
 
+func (client *Client) ListAlertsWithOptions(project *string, request *ListAlertsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAlerts"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alerts"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAlertsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAlerts(project *string, request *ListAlertsRequest) (_result *ListAlertsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAlertsResponse{}
+	_body, _err := client.ListAlertsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAnnotationDataWithOptions(datasetId *string, request *ListAnnotationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAnnotationDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13449,6 +14971,18 @@ func (client *Client) ListCollectionPolicies(request *ListCollectionPoliciesRequ
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @param request ListConfigRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListConfigResponse
+ */
 func (client *Client) ListConfigWithOptions(project *string, request *ListConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13498,6 +15032,16 @@ func (client *Client) ListConfigWithOptions(project *string, request *ListConfig
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @param request ListConfigRequest
+ * @return ListConfigResponse
+ */
 func (client *Client) ListConfig(project *string, request *ListConfigRequest) (_result *ListConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13563,6 +15107,18 @@ func (client *Client) ListConsumerGroup(project *string, logstore *string) (_res
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @param request ListDashboardRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListDashboardResponse
+ */
 func (client *Client) ListDashboardWithOptions(project *string, request *ListDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDashboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13604,6 +15160,16 @@ func (client *Client) ListDashboardWithOptions(project *string, request *ListDas
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ *
+ * @param request ListDashboardRequest
+ * @return ListDashboardResponse
+ */
 func (client *Client) ListDashboard(project *string, request *ListDashboardRequest) (_result *ListDashboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13762,7 +15328,15 @@ func (client *Client) ListExternalStore(project *string, request *ListExternalSt
 
 /**
  * ### Usage notes
- * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * * An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * * The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ * ### Authentication resources
+ * The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+ * |Action|Resource|
+ * |:---|:---|
+ * |`log:ListLogStores`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*`|
  *
  * @param request ListLogStoresRequest
  * @param headers map
@@ -13824,7 +15398,15 @@ func (client *Client) ListLogStoresWithOptions(project *string, request *ListLog
 
 /**
  * ### Usage notes
- * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * * An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * * The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ * ### Authentication resources
+ * The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+ * |Action|Resource|
+ * |:---|:---|
+ * |`log:ListLogStores`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*`|
  *
  * @param request ListLogStoresRequest
  * @return ListLogStoresResponse
@@ -13841,6 +15423,14 @@ func (client *Client) ListLogStores(project *string, request *ListLogStoresReque
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @param request ListLogtailPipelineConfigRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListLogtailPipelineConfigResponse
+ */
 func (client *Client) ListLogtailPipelineConfigWithOptions(project *string, request *ListLogtailPipelineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLogtailPipelineConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13890,6 +15480,12 @@ func (client *Client) ListLogtailPipelineConfigWithOptions(project *string, requ
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @param request ListLogtailPipelineConfigRequest
+ * @return ListLogtailPipelineConfigResponse
+ */
 func (client *Client) ListLogtailPipelineConfig(project *string, request *ListLogtailPipelineConfigRequest) (_result *ListLogtailPipelineConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14041,7 +15637,7 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 }
 
 /**
- * ### Usage notes
+ * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param request ListProjectRequest
@@ -14096,7 +15692,7 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, header
 }
 
 /**
- * ### Usage notes
+ * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param request ListProjectRequest
@@ -14526,6 +16122,21 @@ func (client *Client) PutProjectTransferAcceleration(project *string, request *P
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~) and [Manage a Logstore](~~48990~~).
+ * *   You can call this operation to collect logs from web pages or clients.
+ * *   If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](~~31752~~).
+ * *   If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
+ * *   Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](~~31752~~).
+ * *   You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
+ * *   If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
+ *
+ * @param request PutWebtrackingRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PutWebtrackingResponse
+ */
 func (client *Client) PutWebtrackingWithOptions(project *string, logstoreName *string, request *PutWebtrackingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutWebtrackingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14575,6 +16186,19 @@ func (client *Client) PutWebtrackingWithOptions(project *string, logstoreName *s
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~) and [Manage a Logstore](~~48990~~).
+ * *   You can call this operation to collect logs from web pages or clients.
+ * *   If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](~~31752~~).
+ * *   If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
+ * *   Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](~~31752~~).
+ * *   You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
+ * *   If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
+ *
+ * @param request PutWebtrackingRequest
+ * @return PutWebtrackingResponse
+ */
 func (client *Client) PutWebtracking(project *string, logstoreName *string, request *PutWebtrackingRequest) (_result *PutWebtrackingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14916,6 +16540,50 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+func (client *Client) UpdateAlertWithOptions(project *string, alertName *string, request *UpdateAlertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alerts/" + tea.StringValue(alertName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &UpdateAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAlert(project *string, alertName *string, request *UpdateAlertRequest) (_result *UpdateAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAlertResponse{}
+	_body, _err := client.UpdateAlertWithOptions(project, alertName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateAnnotationDataSetWithOptions(datasetId *string, request *UpdateAnnotationDataSetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAnnotationDataSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14957,6 +16625,14 @@ func (client *Client) UpdateAnnotationDataSet(datasetId *string, request *Update
 	return _result, _err
 }
 
+/**
+ * You can update only the names of the tags in a tag set.
+ *
+ * @param request UpdateAnnotationLabelRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAnnotationLabelResponse
+ */
 func (client *Client) UpdateAnnotationLabelWithOptions(request *UpdateAnnotationLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAnnotationLabelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14986,6 +16662,12 @@ func (client *Client) UpdateAnnotationLabelWithOptions(request *UpdateAnnotation
 	return _result, _err
 }
 
+/**
+ * You can update only the names of the tags in a tag set.
+ *
+ * @param request UpdateAnnotationLabelRequest
+ * @return UpdateAnnotationLabelResponse
+ */
 func (client *Client) UpdateAnnotationLabel(request *UpdateAnnotationLabelRequest) (_result *UpdateAnnotationLabelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14998,6 +16680,20 @@ func (client *Client) UpdateAnnotationLabel(request *UpdateAnnotationLabelReques
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ * *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+ *
+ * @param request UpdateConfigRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateConfigResponse
+ */
 func (client *Client) UpdateConfigWithOptions(project *string, configName *string, request *UpdateConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15030,6 +16726,18 @@ func (client *Client) UpdateConfigWithOptions(project *string, configName *strin
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
+ * *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+ * The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+ * *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+ * *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+ *
+ * @param request UpdateConfigRequest
+ * @return UpdateConfigResponse
+ */
 func (client *Client) UpdateConfig(project *string, configName *string, request *UpdateConfigRequest) (_result *UpdateConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15111,6 +16819,15 @@ func (client *Client) UpdateConsumerGroup(project *string, logstore *string, con
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateDashboardRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateDashboardResponse
+ */
 func (client *Client) UpdateDashboardWithOptions(project *string, dashboardName *string, request *UpdateDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDashboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15164,6 +16881,13 @@ func (client *Client) UpdateDashboardWithOptions(project *string, dashboardName 
 	return _result, _err
 }
 
+/**
+ * ### [](#)Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateDashboardRequest
+ * @return UpdateDashboardResponse
+ */
 func (client *Client) UpdateDashboard(project *string, dashboardName *string, request *UpdateDashboardRequest) (_result *UpdateDashboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15492,6 +17216,14 @@ func (client *Client) UpdateLogging(project *string, request *UpdateLoggingReque
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @param request UpdateLogtailPipelineConfigRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateLogtailPipelineConfigResponse
+ */
 func (client *Client) UpdateLogtailPipelineConfigWithOptions(project *string, configName *string, request *UpdateLogtailPipelineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLogtailPipelineConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15553,6 +17285,12 @@ func (client *Client) UpdateLogtailPipelineConfigWithOptions(project *string, co
 	return _result, _err
 }
 
+/**
+ * The UK (London) region is supported. Supported regions are constantly updated.
+ *
+ * @param request UpdateLogtailPipelineConfigRequest
+ * @return UpdateLogtailPipelineConfigResponse
+ */
 func (client *Client) UpdateLogtailPipelineConfig(project *string, configName *string, request *UpdateLogtailPipelineConfigRequest) (_result *UpdateLogtailPipelineConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15709,6 +17447,7 @@ func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *s
 }
 
 /**
+ * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param request UpdateOssExternalStoreRequest
@@ -15762,6 +17501,7 @@ func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externa
 }
 
 /**
+ * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param request UpdateOssExternalStoreRequest
