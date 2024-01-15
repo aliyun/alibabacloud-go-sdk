@@ -3401,12 +3401,15 @@ func (s *ListPublicTemplateRegistrationsResponseBody) SetRequestId(v string) *Li
 
 type ListPublicTemplateRegistrationsResponseBodyRegistrations struct {
 	Comment         *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreatedDate     *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	Detail          *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	RegistrationId  *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+	ShowPages       *string `json:"ShowPages,omitempty" xml:"ShowPages,omitempty"`
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	UpdatedDate     *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
 func (s ListPublicTemplateRegistrationsResponseBodyRegistrations) String() string {
@@ -3422,6 +3425,11 @@ func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetComment(v 
 	return s
 }
 
+func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetCreatedDate(v string) *ListPublicTemplateRegistrationsResponseBodyRegistrations {
+	s.CreatedDate = &v
+	return s
+}
+
 func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetDetail(v string) *ListPublicTemplateRegistrationsResponseBodyRegistrations {
 	s.Detail = &v
 	return s
@@ -3429,6 +3437,11 @@ func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetDetail(v s
 
 func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetRegistrationId(v string) *ListPublicTemplateRegistrationsResponseBodyRegistrations {
 	s.RegistrationId = &v
+	return s
+}
+
+func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetShowPages(v string) *ListPublicTemplateRegistrationsResponseBodyRegistrations {
+	s.ShowPages = &v
 	return s
 }
 
@@ -3449,6 +3462,11 @@ func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetTemplateNa
 
 func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetTemplateVersion(v string) *ListPublicTemplateRegistrationsResponseBodyRegistrations {
 	s.TemplateVersion = &v
+	return s
+}
+
+func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetUpdatedDate(v string) *ListPublicTemplateRegistrationsResponseBodyRegistrations {
+	s.UpdatedDate = &v
 	return s
 }
 
