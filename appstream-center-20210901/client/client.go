@@ -12,6 +12,240 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AccessPageGetAclRequest struct {
+	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+}
+
+func (s AccessPageGetAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPageGetAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPageGetAclRequest) SetAccessPageId(v string) *AccessPageGetAclRequest {
+	s.AccessPageId = &v
+	return s
+}
+
+type AccessPageGetAclResponseBody struct {
+	Code    *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*AccessPageGetAclResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AccessPageGetAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPageGetAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPageGetAclResponseBody) SetCode(v string) *AccessPageGetAclResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AccessPageGetAclResponseBody) SetData(v []*AccessPageGetAclResponseBodyData) *AccessPageGetAclResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AccessPageGetAclResponseBody) SetMessage(v string) *AccessPageGetAclResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AccessPageGetAclResponseBody) SetRequestId(v string) *AccessPageGetAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AccessPageGetAclResponseBody) SetSuccess(v string) *AccessPageGetAclResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AccessPageGetAclResponseBodyData struct {
+	AccessMode    *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	AccessUrl     *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
+	EffectTime    *int32  `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	Unit          *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	UrlExpireTime *string `json:"UrlExpireTime,omitempty" xml:"UrlExpireTime,omitempty"`
+}
+
+func (s AccessPageGetAclResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPageGetAclResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPageGetAclResponseBodyData) SetAccessMode(v string) *AccessPageGetAclResponseBodyData {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *AccessPageGetAclResponseBodyData) SetAccessUrl(v string) *AccessPageGetAclResponseBodyData {
+	s.AccessUrl = &v
+	return s
+}
+
+func (s *AccessPageGetAclResponseBodyData) SetEffectTime(v int32) *AccessPageGetAclResponseBodyData {
+	s.EffectTime = &v
+	return s
+}
+
+func (s *AccessPageGetAclResponseBodyData) SetUnit(v string) *AccessPageGetAclResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+func (s *AccessPageGetAclResponseBodyData) SetUrlExpireTime(v string) *AccessPageGetAclResponseBodyData {
+	s.UrlExpireTime = &v
+	return s
+}
+
+type AccessPageGetAclResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AccessPageGetAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AccessPageGetAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPageGetAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPageGetAclResponse) SetHeaders(v map[string]*string) *AccessPageGetAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AccessPageGetAclResponse) SetStatusCode(v int32) *AccessPageGetAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AccessPageGetAclResponse) SetBody(v *AccessPageGetAclResponseBody) *AccessPageGetAclResponse {
+	s.Body = v
+	return s
+}
+
+type AccessPageSetAclRequest struct {
+	AccessMode     *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	AccessPageId   *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
+	EffectTime     *int32  `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	Unit           *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s AccessPageSetAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPageSetAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPageSetAclRequest) SetAccessMode(v string) *AccessPageSetAclRequest {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *AccessPageSetAclRequest) SetAccessPageId(v string) *AccessPageSetAclRequest {
+	s.AccessPageId = &v
+	return s
+}
+
+func (s *AccessPageSetAclRequest) SetAccessPageName(v string) *AccessPageSetAclRequest {
+	s.AccessPageName = &v
+	return s
+}
+
+func (s *AccessPageSetAclRequest) SetEffectTime(v int32) *AccessPageSetAclRequest {
+	s.EffectTime = &v
+	return s
+}
+
+func (s *AccessPageSetAclRequest) SetUnit(v string) *AccessPageSetAclRequest {
+	s.Unit = &v
+	return s
+}
+
+type AccessPageSetAclResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AccessPageSetAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPageSetAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPageSetAclResponseBody) SetCode(v string) *AccessPageSetAclResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AccessPageSetAclResponseBody) SetMessage(v string) *AccessPageSetAclResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AccessPageSetAclResponseBody) SetRequestId(v string) *AccessPageSetAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AccessPageSetAclResponseBody) SetSuccess(v string) *AccessPageSetAclResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AccessPageSetAclResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AccessPageSetAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AccessPageSetAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPageSetAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPageSetAclResponse) SetHeaders(v map[string]*string) *AccessPageSetAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AccessPageSetAclResponse) SetStatusCode(v int32) *AccessPageSetAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AccessPageSetAclResponse) SetBody(v *AccessPageSetAclResponseBody) *AccessPageSetAclResponse {
+	s.Body = v
+	return s
+}
+
 type ApproveOtaTaskRequest struct {
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	BizRegionId        *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
@@ -111,6 +345,302 @@ func (s *ApproveOtaTaskResponse) SetBody(v *ApproveOtaTaskResponseBody) *Approve
 	return s
 }
 
+type AskSessionPackagePriceRequest struct {
+	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	MaxSessions        *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SessionPackageType *string `json:"SessionPackageType,omitempty" xml:"SessionPackageType,omitempty"`
+	SessionSpec        *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	SessionType        *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+}
+
+func (s AskSessionPackagePriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackagePriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackagePriceRequest) SetChargeType(v string) *AskSessionPackagePriceRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceRequest) SetMaxSessions(v int32) *AskSessionPackagePriceRequest {
+	s.MaxSessions = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceRequest) SetPeriod(v int32) *AskSessionPackagePriceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceRequest) SetPeriodUnit(v string) *AskSessionPackagePriceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceRequest) SetRegion(v string) *AskSessionPackagePriceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceRequest) SetSessionPackageType(v string) *AskSessionPackagePriceRequest {
+	s.SessionPackageType = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceRequest) SetSessionSpec(v string) *AskSessionPackagePriceRequest {
+	s.SessionSpec = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceRequest) SetSessionType(v string) *AskSessionPackagePriceRequest {
+	s.SessionType = &v
+	return s
+}
+
+type AskSessionPackagePriceResponseBody struct {
+	Data      []*AskSessionPackagePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AskSessionPackagePriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackagePriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackagePriceResponseBody) SetData(v []*AskSessionPackagePriceResponseBodyData) *AskSessionPackagePriceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AskSessionPackagePriceResponseBody) SetRequestId(v string) *AskSessionPackagePriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AskSessionPackagePriceResponseBodyData struct {
+	Price *AskSessionPackagePriceResponseBodyDataPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+}
+
+func (s AskSessionPackagePriceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackagePriceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackagePriceResponseBodyData) SetPrice(v *AskSessionPackagePriceResponseBodyDataPrice) *AskSessionPackagePriceResponseBodyData {
+	s.Price = v
+	return s
+}
+
+type AskSessionPackagePriceResponseBodyDataPrice struct {
+	Currency      *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	TradePrice    *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s AskSessionPackagePriceResponseBodyDataPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackagePriceResponseBodyDataPrice) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackagePriceResponseBodyDataPrice) SetCurrency(v string) *AskSessionPackagePriceResponseBodyDataPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceResponseBodyDataPrice) SetDiscountPrice(v float32) *AskSessionPackagePriceResponseBodyDataPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceResponseBodyDataPrice) SetOriginalPrice(v float32) *AskSessionPackagePriceResponseBodyDataPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceResponseBodyDataPrice) SetTradePrice(v float32) *AskSessionPackagePriceResponseBodyDataPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type AskSessionPackagePriceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AskSessionPackagePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AskSessionPackagePriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackagePriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackagePriceResponse) SetHeaders(v map[string]*string) *AskSessionPackagePriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AskSessionPackagePriceResponse) SetStatusCode(v int32) *AskSessionPackagePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AskSessionPackagePriceResponse) SetBody(v *AskSessionPackagePriceResponseBody) *AskSessionPackagePriceResponse {
+	s.Body = v
+	return s
+}
+
+type AskSessionPackageRenewPriceRequest struct {
+	Period           *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit       *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	SessionPackageId *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+}
+
+func (s AskSessionPackageRenewPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackageRenewPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackageRenewPriceRequest) SetPeriod(v int32) *AskSessionPackageRenewPriceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *AskSessionPackageRenewPriceRequest) SetPeriodUnit(v string) *AskSessionPackageRenewPriceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *AskSessionPackageRenewPriceRequest) SetSessionPackageId(v string) *AskSessionPackageRenewPriceRequest {
+	s.SessionPackageId = &v
+	return s
+}
+
+type AskSessionPackageRenewPriceResponseBody struct {
+	Data      []*AskSessionPackageRenewPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AskSessionPackageRenewPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackageRenewPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackageRenewPriceResponseBody) SetData(v []*AskSessionPackageRenewPriceResponseBodyData) *AskSessionPackageRenewPriceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AskSessionPackageRenewPriceResponseBody) SetRequestId(v string) *AskSessionPackageRenewPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AskSessionPackageRenewPriceResponseBodyData struct {
+	Price *AskSessionPackageRenewPriceResponseBodyDataPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+}
+
+func (s AskSessionPackageRenewPriceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackageRenewPriceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackageRenewPriceResponseBodyData) SetPrice(v *AskSessionPackageRenewPriceResponseBodyDataPrice) *AskSessionPackageRenewPriceResponseBodyData {
+	s.Price = v
+	return s
+}
+
+type AskSessionPackageRenewPriceResponseBodyDataPrice struct {
+	Currency      *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	TradePrice    *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s AskSessionPackageRenewPriceResponseBodyDataPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackageRenewPriceResponseBodyDataPrice) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackageRenewPriceResponseBodyDataPrice) SetCurrency(v string) *AskSessionPackageRenewPriceResponseBodyDataPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *AskSessionPackageRenewPriceResponseBodyDataPrice) SetDiscountPrice(v float32) *AskSessionPackageRenewPriceResponseBodyDataPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *AskSessionPackageRenewPriceResponseBodyDataPrice) SetOriginalPrice(v float32) *AskSessionPackageRenewPriceResponseBodyDataPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *AskSessionPackageRenewPriceResponseBodyDataPrice) SetTradePrice(v float32) *AskSessionPackageRenewPriceResponseBodyDataPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type AskSessionPackageRenewPriceResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AskSessionPackageRenewPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AskSessionPackageRenewPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AskSessionPackageRenewPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AskSessionPackageRenewPriceResponse) SetHeaders(v map[string]*string) *AskSessionPackageRenewPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AskSessionPackageRenewPriceResponse) SetStatusCode(v int32) *AskSessionPackageRenewPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AskSessionPackageRenewPriceResponse) SetBody(v *AskSessionPackageRenewPriceResponseBody) *AskSessionPackageRenewPriceResponse {
+	s.Body = v
+	return s
+}
+
 type AuthorizeInstanceGroupRequest struct {
 	AppInstanceGroupId *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AuthorizeUserIds   []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
@@ -192,6 +722,147 @@ func (s *AuthorizeInstanceGroupResponse) SetBody(v *AuthorizeInstanceGroupRespon
 	return s
 }
 
+type BuySessionPackageRequest struct {
+	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	MaxSessions        *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SessionPackageName *string `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
+	SessionPackageType *string `json:"SessionPackageType,omitempty" xml:"SessionPackageType,omitempty"`
+	SessionSpec        *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	SessionType        *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+}
+
+func (s BuySessionPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuySessionPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BuySessionPackageRequest) SetChargeType(v string) *BuySessionPackageRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetMaxSessions(v int32) *BuySessionPackageRequest {
+	s.MaxSessions = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetPeriod(v int32) *BuySessionPackageRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetPeriodUnit(v string) *BuySessionPackageRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetProjectId(v string) *BuySessionPackageRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetRegion(v string) *BuySessionPackageRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetSessionPackageName(v string) *BuySessionPackageRequest {
+	s.SessionPackageName = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetSessionPackageType(v string) *BuySessionPackageRequest {
+	s.SessionPackageType = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetSessionSpec(v string) *BuySessionPackageRequest {
+	s.SessionSpec = &v
+	return s
+}
+
+func (s *BuySessionPackageRequest) SetSessionType(v string) *BuySessionPackageRequest {
+	s.SessionType = &v
+	return s
+}
+
+type BuySessionPackageResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SessionPackageId *int64  `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	Success          *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BuySessionPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuySessionPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BuySessionPackageResponseBody) SetCode(v string) *BuySessionPackageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BuySessionPackageResponseBody) SetMessage(v string) *BuySessionPackageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BuySessionPackageResponseBody) SetRequestId(v string) *BuySessionPackageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BuySessionPackageResponseBody) SetSessionPackageId(v int64) *BuySessionPackageResponseBody {
+	s.SessionPackageId = &v
+	return s
+}
+
+func (s *BuySessionPackageResponseBody) SetSuccess(v string) *BuySessionPackageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BuySessionPackageResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BuySessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BuySessionPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuySessionPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BuySessionPackageResponse) SetHeaders(v map[string]*string) *BuySessionPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BuySessionPackageResponse) SetStatusCode(v int32) *BuySessionPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BuySessionPackageResponse) SetBody(v *BuySessionPackageResponseBody) *BuySessionPackageResponse {
+	s.Body = v
+	return s
+}
+
 type CancelOtaTaskRequest struct {
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -269,6 +940,123 @@ func (s *CancelOtaTaskResponse) SetStatusCode(v int32) *CancelOtaTaskResponse {
 }
 
 func (s *CancelOtaTaskResponse) SetBody(v *CancelOtaTaskResponseBody) *CancelOtaTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAccessPageRequest struct {
+	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
+	CloudEnvId     *string `json:"CloudEnvId,omitempty" xml:"CloudEnvId,omitempty"`
+	EffectTime     *int32  `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Unit           *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s CreateAccessPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPageRequest) SetAccessPageName(v string) *CreateAccessPageRequest {
+	s.AccessPageName = &v
+	return s
+}
+
+func (s *CreateAccessPageRequest) SetCloudEnvId(v string) *CreateAccessPageRequest {
+	s.CloudEnvId = &v
+	return s
+}
+
+func (s *CreateAccessPageRequest) SetEffectTime(v int32) *CreateAccessPageRequest {
+	s.EffectTime = &v
+	return s
+}
+
+func (s *CreateAccessPageRequest) SetProjectId(v string) *CreateAccessPageRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateAccessPageRequest) SetProjectName(v string) *CreateAccessPageRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateAccessPageRequest) SetUnit(v string) *CreateAccessPageRequest {
+	s.Unit = &v
+	return s
+}
+
+type CreateAccessPageResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAccessPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPageResponseBody) SetCode(v string) *CreateAccessPageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAccessPageResponseBody) SetData(v string) *CreateAccessPageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateAccessPageResponseBody) SetMessage(v string) *CreateAccessPageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAccessPageResponseBody) SetRequestId(v string) *CreateAccessPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAccessPageResponseBody) SetSuccess(v string) *CreateAccessPageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAccessPageResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAccessPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAccessPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPageResponse) SetHeaders(v map[string]*string) *CreateAccessPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAccessPageResponse) SetStatusCode(v int32) *CreateAccessPageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAccessPageResponse) SetBody(v *CreateAccessPageResponseBody) *CreateAccessPageResponse {
 	s.Body = v
 	return s
 }
@@ -1000,6 +1788,259 @@ func (s *CreateImageFromAppInstanceGroupResponse) SetBody(v *CreateImageFromAppI
 	return s
 }
 
+type CreateProjectRequest struct {
+	Clipboard                    *int32  `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	CloudEnvId                   *string `json:"CloudEnvId,omitempty" xml:"CloudEnvId,omitempty"`
+	ContentId                    *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileTransfer                 *int32  `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	FrameRate                    *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	KeepAliveDuration            *int32  `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
+	ProjectName                  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SessionResolutionHeight      *int32  `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	SessionResolutionWidth       *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	SessionSpec                  *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	StreamingMode                *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	TerminalResolutionAdaptation *bool   `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
+}
+
+func (s CreateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequest) SetClipboard(v int32) *CreateProjectRequest {
+	s.Clipboard = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetCloudEnvId(v string) *CreateProjectRequest {
+	s.CloudEnvId = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetContentId(v string) *CreateProjectRequest {
+	s.ContentId = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDescription(v string) *CreateProjectRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetFileTransfer(v int32) *CreateProjectRequest {
+	s.FileTransfer = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetFrameRate(v int32) *CreateProjectRequest {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetKeepAliveDuration(v int32) *CreateProjectRequest {
+	s.KeepAliveDuration = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetProjectName(v string) *CreateProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetSessionResolutionHeight(v int32) *CreateProjectRequest {
+	s.SessionResolutionHeight = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetSessionResolutionWidth(v int32) *CreateProjectRequest {
+	s.SessionResolutionWidth = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetSessionSpec(v string) *CreateProjectRequest {
+	s.SessionSpec = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetStreamingMode(v string) *CreateProjectRequest {
+	s.StreamingMode = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetTerminalResolutionAdaptation(v bool) *CreateProjectRequest {
+	s.TerminalResolutionAdaptation = &v
+	return s
+}
+
+type CreateProjectResponseBody struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBody) SetCode(v string) *CreateProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetData(v string) *CreateProjectResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetMessage(v string) *CreateProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetPageNumber(v int32) *CreateProjectResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetPageSize(v int32) *CreateProjectResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetSuccess(v string) *CreateProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAccessPageRequest struct {
+	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+}
+
+func (s DeleteAccessPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessPageRequest) SetAccessPageId(v string) *DeleteAccessPageRequest {
+	s.AccessPageId = &v
+	return s
+}
+
+type DeleteAccessPageResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAccessPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessPageResponseBody) SetCode(v string) *DeleteAccessPageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAccessPageResponseBody) SetMessage(v string) *DeleteAccessPageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAccessPageResponseBody) SetRequestId(v string) *DeleteAccessPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAccessPageResponseBody) SetSuccess(v string) *DeleteAccessPageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAccessPageResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAccessPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAccessPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessPageResponse) SetHeaders(v map[string]*string) *DeleteAccessPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccessPageResponse) SetStatusCode(v int32) *DeleteAccessPageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccessPageResponse) SetBody(v *DeleteAccessPageResponseBody) *DeleteAccessPageResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAppInstanceGroupRequest struct {
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
@@ -1181,6 +2222,217 @@ func (s *DeleteAppInstancesResponse) SetStatusCode(v int32) *DeleteAppInstancesR
 }
 
 func (s *DeleteAppInstancesResponse) SetBody(v *DeleteAppInstancesResponseBody) *DeleteAppInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteProjectRequest struct {
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DeleteProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectRequest) SetProjectId(v string) *DeleteProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteProjectResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponseBody) SetCode(v string) *DeleteProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetData(v bool) *DeleteProjectResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetMessage(v string) *DeleteProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetSuccess(v string) *DeleteProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
+	s.Body = v
+	return s
+}
+
+type GetAccessPageSessionRequest struct {
+	AccessPageId    *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	AccessPageToken *string `json:"AccessPageToken,omitempty" xml:"AccessPageToken,omitempty"`
+	ExternalUserId  *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+}
+
+func (s GetAccessPageSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessPageSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessPageSessionRequest) SetAccessPageId(v string) *GetAccessPageSessionRequest {
+	s.AccessPageId = &v
+	return s
+}
+
+func (s *GetAccessPageSessionRequest) SetAccessPageToken(v string) *GetAccessPageSessionRequest {
+	s.AccessPageToken = &v
+	return s
+}
+
+func (s *GetAccessPageSessionRequest) SetExternalUserId(v string) *GetAccessPageSessionRequest {
+	s.ExternalUserId = &v
+	return s
+}
+
+type GetAccessPageSessionResponseBody struct {
+	Code    *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GetAccessPageSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAccessPageSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessPageSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessPageSessionResponseBody) SetCode(v string) *GetAccessPageSessionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAccessPageSessionResponseBody) SetData(v *GetAccessPageSessionResponseBodyData) *GetAccessPageSessionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAccessPageSessionResponseBody) SetMessage(v string) *GetAccessPageSessionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAccessPageSessionResponseBody) SetRequestId(v string) *GetAccessPageSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAccessPageSessionResponseBody) SetSuccess(v string) *GetAccessPageSessionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAccessPageSessionResponseBodyData struct {
+	ConnectTicket *string `json:"ConnectTicket,omitempty" xml:"ConnectTicket,omitempty"`
+	// flow ID
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s GetAccessPageSessionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessPageSessionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessPageSessionResponseBodyData) SetConnectTicket(v string) *GetAccessPageSessionResponseBodyData {
+	s.ConnectTicket = &v
+	return s
+}
+
+func (s *GetAccessPageSessionResponseBodyData) SetFlowId(v string) *GetAccessPageSessionResponseBodyData {
+	s.FlowId = &v
+	return s
+}
+
+type GetAccessPageSessionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAccessPageSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAccessPageSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessPageSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessPageSessionResponse) SetHeaders(v map[string]*string) *GetAccessPageSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAccessPageSessionResponse) SetStatusCode(v int32) *GetAccessPageSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAccessPageSessionResponse) SetBody(v *GetAccessPageSessionResponseBody) *GetAccessPageSessionResponse {
 	s.Body = v
 	return s
 }
@@ -1430,8 +2682,11 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetStatus(v stri
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppIcon        *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppVersion     *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) String() string {
@@ -1442,6 +2697,11 @@ func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) GoString() st
 	return s.String()
 }
 
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) SetAppIcon(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps {
+	s.AppIcon = &v
+	return s
+}
+
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) SetAppId(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps {
 	s.AppId = &v
 	return s
@@ -1449,6 +2709,16 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) SetAppId(v s
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) SetAppName(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps {
 	s.AppName = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) SetAppVersion(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) SetAppVersionName(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps {
+	s.AppVersionName = &v
 	return s
 }
 
@@ -1688,15 +2958,16 @@ func (s *GetAppInstanceGroupResponse) SetBody(v *GetAppInstanceGroupResponseBody
 }
 
 type GetConnectionTicketRequest struct {
-	AppId                  *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppInstanceGroupIdList []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
-	AppInstanceId          *string   `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppStartParam          *string   `json:"AppStartParam,omitempty" xml:"AppStartParam,omitempty"`
-	AppVersion             *string   `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizRegionId            *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	EndUserId              *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ProductType            *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	TaskId                 *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	AppId                   *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppInstanceGroupIdList  []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
+	AppInstanceId           *string   `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstancePersistentId *string   `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	AppStartParam           *string   `json:"AppStartParam,omitempty" xml:"AppStartParam,omitempty"`
+	AppVersion              *string   `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BizRegionId             *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	EndUserId               *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	ProductType             *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	TaskId                  *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetConnectionTicketRequest) String() string {
@@ -1719,6 +2990,11 @@ func (s *GetConnectionTicketRequest) SetAppInstanceGroupIdList(v []*string) *Get
 
 func (s *GetConnectionTicketRequest) SetAppInstanceId(v string) *GetConnectionTicketRequest {
 	s.AppInstanceId = &v
+	return s
+}
+
+func (s *GetConnectionTicketRequest) SetAppInstancePersistentId(v string) *GetConnectionTicketRequest {
+	s.AppInstancePersistentId = &v
 	return s
 }
 
@@ -1753,15 +3029,16 @@ func (s *GetConnectionTicketRequest) SetTaskId(v string) *GetConnectionTicketReq
 }
 
 type GetConnectionTicketResponseBody struct {
-	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	BizRegionId        *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	OsType             *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus         *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TenantId           *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Ticket             *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
+	AppInstanceGroupId      *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	BizRegionId             *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	OsType                  *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus              *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TenantId                *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Ticket                  *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
 func (s GetConnectionTicketResponseBody) String() string {
@@ -1779,6 +3056,11 @@ func (s *GetConnectionTicketResponseBody) SetAppInstanceGroupId(v string) *GetCo
 
 func (s *GetConnectionTicketResponseBody) SetAppInstanceId(v string) *GetConnectionTicketResponseBody {
 	s.AppInstanceId = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBody) SetAppInstancePersistentId(v string) *GetConnectionTicketResponseBody {
+	s.AppInstancePersistentId = &v
 	return s
 }
 
@@ -2040,6 +3322,176 @@ func (s *GetOtaTaskByTaskIdResponse) SetStatusCode(v int32) *GetOtaTaskByTaskIdR
 }
 
 func (s *GetOtaTaskByTaskIdResponse) SetBody(v *GetOtaTaskByTaskIdResponseBody) *GetOtaTaskByTaskIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetProjectPoliciesRequest struct {
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetProjectPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectPoliciesRequest) SetProjectId(v string) *GetProjectPoliciesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetProjectPoliciesResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetProjectPoliciesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetProjectPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectPoliciesResponseBody) SetCode(v string) *GetProjectPoliciesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBody) SetData(v *GetProjectPoliciesResponseBodyData) *GetProjectPoliciesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBody) SetMessage(v string) *GetProjectPoliciesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBody) SetRequestId(v string) *GetProjectPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBody) SetSuccess(v string) *GetProjectPoliciesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProjectPoliciesResponseBodyData struct {
+	Clipboard                    *int32  `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	FileTransfer                 *int32  `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	FrameRate                    *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	KeepAliveDuration            *int32  `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
+	MaxHours                     *int32  `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
+	MaxSessions                  *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SessionResolutionHeight      *int32  `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	SessionResolutionWidth       *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	SessionSpec                  *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	StreamingMode                *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	TerminalResolutionAdaptation *bool   `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
+}
+
+func (s GetProjectPoliciesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectPoliciesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetClipboard(v int32) *GetProjectPoliciesResponseBodyData {
+	s.Clipboard = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetFileTransfer(v int32) *GetProjectPoliciesResponseBodyData {
+	s.FileTransfer = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetFrameRate(v string) *GetProjectPoliciesResponseBodyData {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetKeepAliveDuration(v int32) *GetProjectPoliciesResponseBodyData {
+	s.KeepAliveDuration = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetMaxHours(v int32) *GetProjectPoliciesResponseBodyData {
+	s.MaxHours = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetMaxSessions(v int32) *GetProjectPoliciesResponseBodyData {
+	s.MaxSessions = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetProjectId(v string) *GetProjectPoliciesResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetSessionResolutionHeight(v int32) *GetProjectPoliciesResponseBodyData {
+	s.SessionResolutionHeight = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetSessionResolutionWidth(v int32) *GetProjectPoliciesResponseBodyData {
+	s.SessionResolutionWidth = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetSessionSpec(v string) *GetProjectPoliciesResponseBodyData {
+	s.SessionSpec = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetStreamingMode(v string) *GetProjectPoliciesResponseBodyData {
+	s.StreamingMode = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponseBodyData) SetTerminalResolutionAdaptation(v bool) *GetProjectPoliciesResponseBodyData {
+	s.TerminalResolutionAdaptation = &v
+	return s
+}
+
+type GetProjectPoliciesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetProjectPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProjectPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectPoliciesResponse) SetHeaders(v map[string]*string) *GetProjectPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProjectPoliciesResponse) SetStatusCode(v int32) *GetProjectPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetProjectPoliciesResponse) SetBody(v *GetProjectPoliciesResponseBody) *GetProjectPoliciesResponse {
 	s.Body = v
 	return s
 }
@@ -2650,15 +4102,239 @@ func (s *GetResourceRenewPriceResponse) SetBody(v *GetResourceRenewPriceResponse
 	return s
 }
 
+type ListAccessPagesRequest struct {
+	AccessPageId   *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SortType       *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+}
+
+func (s ListAccessPagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessPagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessPagesRequest) SetAccessPageId(v string) *ListAccessPagesRequest {
+	s.AccessPageId = &v
+	return s
+}
+
+func (s *ListAccessPagesRequest) SetAccessPageName(v string) *ListAccessPagesRequest {
+	s.AccessPageName = &v
+	return s
+}
+
+func (s *ListAccessPagesRequest) SetPageNumber(v int32) *ListAccessPagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAccessPagesRequest) SetPageSize(v int32) *ListAccessPagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAccessPagesRequest) SetProjectId(v string) *ListAccessPagesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListAccessPagesRequest) SetSortType(v string) *ListAccessPagesRequest {
+	s.SortType = &v
+	return s
+}
+
+type ListAccessPagesResponseBody struct {
+	Code       *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count      *string                            `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data       []*ListAccessPagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *string                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAccessPagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessPagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessPagesResponseBody) SetCode(v string) *ListAccessPagesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBody) SetCount(v string) *ListAccessPagesResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBody) SetData(v []*ListAccessPagesResponseBodyData) *ListAccessPagesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAccessPagesResponseBody) SetMessage(v string) *ListAccessPagesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBody) SetPageNumber(v string) *ListAccessPagesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBody) SetPageSize(v string) *ListAccessPagesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBody) SetRequestId(v string) *ListAccessPagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBody) SetSuccess(v string) *ListAccessPagesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAccessPagesResponseBodyData struct {
+	AccessMode      *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	AccessPageId    *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	AccessPageName  *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
+	AccessPageState *string `json:"AccessPageState,omitempty" xml:"AccessPageState,omitempty"`
+	AccessUrl       *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
+	ContentId       *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	ContentName     *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
+	EffectTime      *int32  `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Unit            *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	UrlExpireTime   *string `json:"UrlExpireTime,omitempty" xml:"UrlExpireTime,omitempty"`
+}
+
+func (s ListAccessPagesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessPagesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessPagesResponseBodyData) SetAccessMode(v string) *ListAccessPagesResponseBodyData {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetAccessPageId(v string) *ListAccessPagesResponseBodyData {
+	s.AccessPageId = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetAccessPageName(v string) *ListAccessPagesResponseBodyData {
+	s.AccessPageName = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetAccessPageState(v string) *ListAccessPagesResponseBodyData {
+	s.AccessPageState = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetAccessUrl(v string) *ListAccessPagesResponseBodyData {
+	s.AccessUrl = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetContentId(v string) *ListAccessPagesResponseBodyData {
+	s.ContentId = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetContentName(v string) *ListAccessPagesResponseBodyData {
+	s.ContentName = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetEffectTime(v int32) *ListAccessPagesResponseBodyData {
+	s.EffectTime = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetGmtCreate(v string) *ListAccessPagesResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetProjectId(v string) *ListAccessPagesResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetProjectName(v string) *ListAccessPagesResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetUnit(v string) *ListAccessPagesResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+func (s *ListAccessPagesResponseBodyData) SetUrlExpireTime(v string) *ListAccessPagesResponseBodyData {
+	s.UrlExpireTime = &v
+	return s
+}
+
+type ListAccessPagesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccessPagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAccessPagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessPagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessPagesResponse) SetHeaders(v map[string]*string) *ListAccessPagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAccessPagesResponse) SetStatusCode(v int32) *ListAccessPagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAccessPagesResponse) SetBody(v *ListAccessPagesResponseBody) *ListAccessPagesResponse {
+	s.Body = v
+	return s
+}
+
 type ListAppInstanceGroupRequest struct {
 	AppCenterImageId     *string   `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	AppInstanceGroupId   *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceGroupName *string   `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	BizRegionId          *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	NodeInstanceType     *string   `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
 	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductType          *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status               []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
@@ -2685,6 +4361,11 @@ func (s *ListAppInstanceGroupRequest) SetAppInstanceGroupName(v string) *ListApp
 	return s
 }
 
+func (s *ListAppInstanceGroupRequest) SetBizRegionId(v string) *ListAppInstanceGroupRequest {
+	s.BizRegionId = &v
+	return s
+}
+
 func (s *ListAppInstanceGroupRequest) SetNodeInstanceType(v string) *ListAppInstanceGroupRequest {
 	s.NodeInstanceType = &v
 	return s
@@ -2702,11 +4383,6 @@ func (s *ListAppInstanceGroupRequest) SetPageSize(v int32) *ListAppInstanceGroup
 
 func (s *ListAppInstanceGroupRequest) SetProductType(v string) *ListAppInstanceGroupRequest {
 	s.ProductType = &v
-	return s
-}
-
-func (s *ListAppInstanceGroupRequest) SetRegionId(v string) *ListAppInstanceGroupRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3761,6 +5437,230 @@ func (s *ListOtaTaskResponse) SetBody(v *ListOtaTaskResponseBody) *ListOtaTaskRe
 	return s
 }
 
+type ListProjectsRequest struct {
+	PageNumber  *int32   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId   *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SortType    *string  `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	StateList   []*int32 `json:"StateList,omitempty" xml:"StateList,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsRequest) SetPageNumber(v int32) *ListProjectsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetPageSize(v int32) *ListProjectsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetProjectId(v string) *ListProjectsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetProjectName(v string) *ListProjectsRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetSortType(v string) *ListProjectsRequest {
+	s.SortType = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetStateList(v []*int32) *ListProjectsRequest {
+	s.StateList = v
+	return s
+}
+
+type ListProjectsResponseBody struct {
+	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data       []*ListProjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBody) SetCode(v string) *ListProjectsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetData(v []*ListProjectsResponseBodyData) *ListProjectsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetMessage(v string) *ListProjectsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetPageNumber(v int32) *ListProjectsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetPageSize(v int32) *ListProjectsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetSuccess(v string) *ListProjectsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetTotalCount(v int32) *ListProjectsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProjectsResponseBodyData struct {
+	AccessPageId   []*int64 `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty" type:"Repeated"`
+	AvailableHours *int32   `json:"AvailableHours,omitempty" xml:"AvailableHours,omitempty"`
+	ContentId      *string  `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	ContentName    *string  `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
+	CreateTime     *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	InUseSessions  *int64   `json:"InUseSessions,omitempty" xml:"InUseSessions,omitempty"`
+	MaxHours       *int64   `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
+	MaxSessions    *int64   `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	ProjectId      *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName    *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectState   *string  `json:"ProjectState,omitempty" xml:"ProjectState,omitempty"`
+	SessionSpec    *string  `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+}
+
+func (s ListProjectsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyData) SetAccessPageId(v []*int64) *ListProjectsResponseBodyData {
+	s.AccessPageId = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetAvailableHours(v int32) *ListProjectsResponseBodyData {
+	s.AvailableHours = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetContentId(v string) *ListProjectsResponseBodyData {
+	s.ContentId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetContentName(v string) *ListProjectsResponseBodyData {
+	s.ContentName = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetCreateTime(v string) *ListProjectsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetDescription(v string) *ListProjectsResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetInUseSessions(v int64) *ListProjectsResponseBodyData {
+	s.InUseSessions = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetMaxHours(v int64) *ListProjectsResponseBodyData {
+	s.MaxHours = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetMaxSessions(v int64) *ListProjectsResponseBodyData {
+	s.MaxSessions = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetProjectId(v string) *ListProjectsResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetProjectName(v string) *ListProjectsResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetProjectState(v string) *ListProjectsResponseBodyData {
+	s.ProjectState = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetSessionSpec(v string) *ListProjectsResponseBodyData {
+	s.SessionSpec = &v
+	return s
+}
+
+type ListProjectsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectsResponse) SetStatusCode(v int32) *ListProjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
+	s.Body = v
+	return s
+}
+
 type ListRegionsResponseBody struct {
 	RegionModels []*ListRegionsResponseBodyRegionModels `json:"RegionModels,omitempty" xml:"RegionModels,omitempty" type:"Repeated"`
 	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3826,6 +5726,307 @@ func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
 }
 
 func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSessionPackagesRequest struct {
+	PageNumber         *int32   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId          *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SessionPackageId   *string  `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	SessionPackageName *string  `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
+	SortType           *string  `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	StateList          []*int32 `json:"StateList,omitempty" xml:"StateList,omitempty" type:"Repeated"`
+}
+
+func (s ListSessionPackagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionPackagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionPackagesRequest) SetPageNumber(v int32) *ListSessionPackagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSessionPackagesRequest) SetPageSize(v int32) *ListSessionPackagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSessionPackagesRequest) SetProjectId(v string) *ListSessionPackagesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListSessionPackagesRequest) SetSessionPackageId(v string) *ListSessionPackagesRequest {
+	s.SessionPackageId = &v
+	return s
+}
+
+func (s *ListSessionPackagesRequest) SetSessionPackageName(v string) *ListSessionPackagesRequest {
+	s.SessionPackageName = &v
+	return s
+}
+
+func (s *ListSessionPackagesRequest) SetSortType(v string) *ListSessionPackagesRequest {
+	s.SortType = &v
+	return s
+}
+
+func (s *ListSessionPackagesRequest) SetStateList(v []*int32) *ListSessionPackagesRequest {
+	s.StateList = v
+	return s
+}
+
+type ListSessionPackagesResponseBody struct {
+	Data       []*ListSessionPackagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSessionPackagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionPackagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionPackagesResponseBody) SetData(v []*ListSessionPackagesResponseBodyData) *ListSessionPackagesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBody) SetPageNumber(v int32) *ListSessionPackagesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBody) SetPageSize(v int32) *ListSessionPackagesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBody) SetRequestId(v string) *ListSessionPackagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBody) SetTotalCount(v int64) *ListSessionPackagesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSessionPackagesResponseBodyData struct {
+	AvailableHours       *int64                                             `json:"AvailableHours,omitempty" xml:"AvailableHours,omitempty"`
+	ChargeType           *string                                            `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DeleteStatus         *int32                                             `json:"DeleteStatus,omitempty" xml:"DeleteStatus,omitempty"`
+	GmtCreate            *string                                            `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModifiedTime      *string                                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	InstanceObject       *ListSessionPackagesResponseBodyDataInstanceObject `json:"InstanceObject,omitempty" xml:"InstanceObject,omitempty" type:"Struct"`
+	MaxHours             *int64                                             `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
+	MaxSessions          *int64                                             `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	ProjectId            *string                                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName          *string                                            `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Region               *string                                            `json:"Region,omitempty" xml:"Region,omitempty"`
+	SessionPackageId     *string                                            `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	SessionPackageName   *string                                            `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
+	SessionPackageTypeId *string                                            `json:"SessionPackageTypeId,omitempty" xml:"SessionPackageTypeId,omitempty"`
+	SessionSpec          *string                                            `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	SessionUsageRate     *int64                                             `json:"SessionUsageRate,omitempty" xml:"SessionUsageRate,omitempty"`
+	State                *int32                                             `json:"State,omitempty" xml:"State,omitempty"`
+	UserIdentification   *int64                                             `json:"UserIdentification,omitempty" xml:"UserIdentification,omitempty"`
+}
+
+func (s ListSessionPackagesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionPackagesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetAvailableHours(v int64) *ListSessionPackagesResponseBodyData {
+	s.AvailableHours = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetChargeType(v string) *ListSessionPackagesResponseBodyData {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetDeleteStatus(v int32) *ListSessionPackagesResponseBodyData {
+	s.DeleteStatus = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetGmtCreate(v string) *ListSessionPackagesResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetGmtModifiedTime(v string) *ListSessionPackagesResponseBodyData {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetInstanceObject(v *ListSessionPackagesResponseBodyDataInstanceObject) *ListSessionPackagesResponseBodyData {
+	s.InstanceObject = v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetMaxHours(v int64) *ListSessionPackagesResponseBodyData {
+	s.MaxHours = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetMaxSessions(v int64) *ListSessionPackagesResponseBodyData {
+	s.MaxSessions = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetProjectId(v string) *ListSessionPackagesResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetProjectName(v string) *ListSessionPackagesResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetRegion(v string) *ListSessionPackagesResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetSessionPackageId(v string) *ListSessionPackagesResponseBodyData {
+	s.SessionPackageId = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetSessionPackageName(v string) *ListSessionPackagesResponseBodyData {
+	s.SessionPackageName = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetSessionPackageTypeId(v string) *ListSessionPackagesResponseBodyData {
+	s.SessionPackageTypeId = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetSessionSpec(v string) *ListSessionPackagesResponseBodyData {
+	s.SessionSpec = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetSessionUsageRate(v int64) *ListSessionPackagesResponseBodyData {
+	s.SessionUsageRate = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetState(v int32) *ListSessionPackagesResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyData) SetUserIdentification(v int64) *ListSessionPackagesResponseBodyData {
+	s.UserIdentification = &v
+	return s
+}
+
+type ListSessionPackagesResponseBodyDataInstanceObject struct {
+	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalTime    *int64  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	UsedTime     *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+}
+
+func (s ListSessionPackagesResponseBodyDataInstanceObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionPackagesResponseBodyDataInstanceObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetExpiredTime(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetInstanceId(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetInstanceType(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetResourceId(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetResourceType(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetStartTime(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetTotalTime(v int64) *ListSessionPackagesResponseBodyDataInstanceObject {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetUsedTime(v int64) *ListSessionPackagesResponseBodyDataInstanceObject {
+	s.UsedTime = &v
+	return s
+}
+
+type ListSessionPackagesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSessionPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSessionPackagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionPackagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionPackagesResponse) SetHeaders(v map[string]*string) *ListSessionPackagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSessionPackagesResponse) SetStatusCode(v int32) *ListSessionPackagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSessionPackagesResponse) SetBody(v *ListSessionPackagesResponseBody) *ListSessionPackagesResponse {
 	s.Body = v
 	return s
 }
@@ -3976,6 +6177,99 @@ func (s *LogOffAllSessionsInAppInstanceGroupResponse) SetStatusCode(v int32) *Lo
 }
 
 func (s *LogOffAllSessionsInAppInstanceGroupResponse) SetBody(v *LogOffAllSessionsInAppInstanceGroupResponseBody) *LogOffAllSessionsInAppInstanceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type MigrateSessionPackageRequest struct {
+	DestProjectId    *string `json:"DestProjectId,omitempty" xml:"DestProjectId,omitempty"`
+	SessionPackageId *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	SourceProjectId  *string `json:"SourceProjectId,omitempty" xml:"SourceProjectId,omitempty"`
+}
+
+func (s MigrateSessionPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrateSessionPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MigrateSessionPackageRequest) SetDestProjectId(v string) *MigrateSessionPackageRequest {
+	s.DestProjectId = &v
+	return s
+}
+
+func (s *MigrateSessionPackageRequest) SetSessionPackageId(v string) *MigrateSessionPackageRequest {
+	s.SessionPackageId = &v
+	return s
+}
+
+func (s *MigrateSessionPackageRequest) SetSourceProjectId(v string) *MigrateSessionPackageRequest {
+	s.SourceProjectId = &v
+	return s
+}
+
+type MigrateSessionPackageResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MigrateSessionPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrateSessionPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MigrateSessionPackageResponseBody) SetCode(v string) *MigrateSessionPackageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MigrateSessionPackageResponseBody) SetMessage(v string) *MigrateSessionPackageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MigrateSessionPackageResponseBody) SetRequestId(v string) *MigrateSessionPackageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MigrateSessionPackageResponseBody) SetSuccess(v bool) *MigrateSessionPackageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MigrateSessionPackageResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MigrateSessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MigrateSessionPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrateSessionPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MigrateSessionPackageResponse) SetHeaders(v map[string]*string) *MigrateSessionPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MigrateSessionPackageResponse) SetStatusCode(v int32) *MigrateSessionPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MigrateSessionPackageResponse) SetBody(v *MigrateSessionPackageResponseBody) *MigrateSessionPackageResponse {
 	s.Body = v
 	return s
 }
@@ -4575,6 +6869,141 @@ func (s *ModifyNodePoolAttributeResponse) SetBody(v *ModifyNodePoolAttributeResp
 	return s
 }
 
+type ModifyProjectPolicyRequest struct {
+	Clipboard                    *int32  `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	FileTransfer                 *int32  `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	FrameRate                    *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	KeepAliveDuration            *int32  `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
+	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SessionResolutionHeight      *int32  `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	SessionResolutionWidth       *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	StreamingMode                *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	TerminalResolutionAdaptation *bool   `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
+}
+
+func (s ModifyProjectPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyProjectPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyProjectPolicyRequest) SetClipboard(v int32) *ModifyProjectPolicyRequest {
+	s.Clipboard = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyRequest) SetFileTransfer(v int32) *ModifyProjectPolicyRequest {
+	s.FileTransfer = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyRequest) SetFrameRate(v int32) *ModifyProjectPolicyRequest {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyRequest) SetKeepAliveDuration(v int32) *ModifyProjectPolicyRequest {
+	s.KeepAliveDuration = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyRequest) SetProjectId(v string) *ModifyProjectPolicyRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyRequest) SetSessionResolutionHeight(v int32) *ModifyProjectPolicyRequest {
+	s.SessionResolutionHeight = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyRequest) SetSessionResolutionWidth(v int32) *ModifyProjectPolicyRequest {
+	s.SessionResolutionWidth = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyRequest) SetStreamingMode(v string) *ModifyProjectPolicyRequest {
+	s.StreamingMode = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyRequest) SetTerminalResolutionAdaptation(v bool) *ModifyProjectPolicyRequest {
+	s.TerminalResolutionAdaptation = &v
+	return s
+}
+
+type ModifyProjectPolicyResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyProjectPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyProjectPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyProjectPolicyResponseBody) SetCode(v string) *ModifyProjectPolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyResponseBody) SetData(v string) *ModifyProjectPolicyResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyResponseBody) SetMessage(v string) *ModifyProjectPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyResponseBody) SetRequestId(v string) *ModifyProjectPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyResponseBody) SetSuccess(v string) *ModifyProjectPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyProjectPolicyResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyProjectPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyProjectPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyProjectPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyProjectPolicyResponse) SetHeaders(v map[string]*string) *ModifyProjectPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyProjectPolicyResponse) SetStatusCode(v int32) *ModifyProjectPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyProjectPolicyResponse) SetBody(v *ModifyProjectPolicyResponseBody) *ModifyProjectPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyTenantConfigRequest struct {
 	AppInstanceGroupExpireRemind *bool `json:"AppInstanceGroupExpireRemind,omitempty" xml:"AppInstanceGroupExpireRemind,omitempty"`
 }
@@ -4725,6 +7154,94 @@ func (s *PageListAppInstanceGroupUserResponse) SetBody(v *PageListAppInstanceGro
 	return s
 }
 
+type RefreshAccessUrlRequest struct {
+	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+}
+
+func (s RefreshAccessUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshAccessUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshAccessUrlRequest) SetAccessPageId(v string) *RefreshAccessUrlRequest {
+	s.AccessPageId = &v
+	return s
+}
+
+type RefreshAccessUrlResponseBody struct {
+	AccessUrl *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RefreshAccessUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshAccessUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshAccessUrlResponseBody) SetAccessUrl(v string) *RefreshAccessUrlResponseBody {
+	s.AccessUrl = &v
+	return s
+}
+
+func (s *RefreshAccessUrlResponseBody) SetCode(v string) *RefreshAccessUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RefreshAccessUrlResponseBody) SetMessage(v string) *RefreshAccessUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RefreshAccessUrlResponseBody) SetRequestId(v string) *RefreshAccessUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RefreshAccessUrlResponseBody) SetSuccess(v string) *RefreshAccessUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RefreshAccessUrlResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefreshAccessUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshAccessUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshAccessUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshAccessUrlResponse) SetHeaders(v map[string]*string) *RefreshAccessUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshAccessUrlResponse) SetStatusCode(v int32) *RefreshAccessUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefreshAccessUrlResponse) SetBody(v *RefreshAccessUrlResponseBody) *RefreshAccessUrlResponse {
+	s.Body = v
+	return s
+}
+
 type RenewAppInstanceGroupRequest struct {
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
@@ -4836,11 +7353,111 @@ func (s *RenewAppInstanceGroupResponse) SetBody(v *RenewAppInstanceGroupResponse
 	return s
 }
 
+type RenewSessionPackageRequest struct {
+	Period           *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit       *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	SessionPackageId *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+}
+
+func (s RenewSessionPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewSessionPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewSessionPackageRequest) SetPeriod(v int32) *RenewSessionPackageRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RenewSessionPackageRequest) SetPeriodUnit(v string) *RenewSessionPackageRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RenewSessionPackageRequest) SetSessionPackageId(v string) *RenewSessionPackageRequest {
+	s.SessionPackageId = &v
+	return s
+}
+
+type RenewSessionPackageResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SessionPackageId *int64  `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	Success          *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RenewSessionPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewSessionPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewSessionPackageResponseBody) SetCode(v string) *RenewSessionPackageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RenewSessionPackageResponseBody) SetMessage(v string) *RenewSessionPackageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RenewSessionPackageResponseBody) SetRequestId(v string) *RenewSessionPackageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RenewSessionPackageResponseBody) SetSessionPackageId(v int64) *RenewSessionPackageResponseBody {
+	s.SessionPackageId = &v
+	return s
+}
+
+func (s *RenewSessionPackageResponseBody) SetSuccess(v string) *RenewSessionPackageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RenewSessionPackageResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenewSessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RenewSessionPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewSessionPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewSessionPackageResponse) SetHeaders(v map[string]*string) *RenewSessionPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewSessionPackageResponse) SetStatusCode(v int32) *RenewSessionPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewSessionPackageResponse) SetBody(v *RenewSessionPackageResponseBody) *RenewSessionPackageResponse {
+	s.Body = v
+	return s
+}
+
 type UnbindRequest struct {
-	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	EndUserId          *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	AppInstanceGroupId      *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	EndUserId               *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	ProductType             *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s UnbindRequest) String() string {
@@ -4858,6 +7475,11 @@ func (s *UnbindRequest) SetAppInstanceGroupId(v string) *UnbindRequest {
 
 func (s *UnbindRequest) SetAppInstanceId(v string) *UnbindRequest {
 	s.AppInstanceId = &v
+	return s
+}
+
+func (s *UnbindRequest) SetAppInstancePersistentId(v string) *UnbindRequest {
+	s.AppInstancePersistentId = &v
 	return s
 }
 
@@ -4913,6 +7535,93 @@ func (s *UnbindResponse) SetStatusCode(v int32) *UnbindResponse {
 }
 
 func (s *UnbindResponse) SetBody(v *UnbindResponseBody) *UnbindResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAccessPageStateRequest struct {
+	AccessPageId    *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	AccessPageState *int32  `json:"AccessPageState,omitempty" xml:"AccessPageState,omitempty"`
+}
+
+func (s UpdateAccessPageStateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccessPageStateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccessPageStateRequest) SetAccessPageId(v string) *UpdateAccessPageStateRequest {
+	s.AccessPageId = &v
+	return s
+}
+
+func (s *UpdateAccessPageStateRequest) SetAccessPageState(v int32) *UpdateAccessPageStateRequest {
+	s.AccessPageState = &v
+	return s
+}
+
+type UpdateAccessPageStateResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAccessPageStateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccessPageStateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccessPageStateResponseBody) SetCode(v string) *UpdateAccessPageStateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAccessPageStateResponseBody) SetMessage(v string) *UpdateAccessPageStateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAccessPageStateResponseBody) SetRequestId(v string) *UpdateAccessPageStateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAccessPageStateResponseBody) SetSuccess(v string) *UpdateAccessPageStateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAccessPageStateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAccessPageStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAccessPageStateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccessPageStateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccessPageStateResponse) SetHeaders(v map[string]*string) *UpdateAccessPageStateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAccessPageStateResponse) SetStatusCode(v int32) *UpdateAccessPageStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAccessPageStateResponse) SetBody(v *UpdateAccessPageStateResponseBody) *UpdateAccessPageStateResponse {
 	s.Body = v
 	return s
 }
@@ -5025,6 +7734,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -5050,6 +7760,110 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AccessPageGetAclWithOptions(request *AccessPageGetAclRequest, runtime *util.RuntimeOptions) (_result *AccessPageGetAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
+		query["AccessPageId"] = request.AccessPageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AccessPageGetAcl"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AccessPageGetAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AccessPageGetAcl(request *AccessPageGetAclRequest) (_result *AccessPageGetAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AccessPageGetAclResponse{}
+	_body, _err := client.AccessPageGetAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AccessPageSetAclWithOptions(request *AccessPageSetAclRequest, runtime *util.RuntimeOptions) (_result *AccessPageSetAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessMode)) {
+		query["AccessMode"] = request.AccessMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
+		query["AccessPageId"] = request.AccessPageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessPageName)) {
+		query["AccessPageName"] = request.AccessPageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectTime)) {
+		query["EffectTime"] = request.EffectTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Unit)) {
+		query["Unit"] = request.Unit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AccessPageSetAcl"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AccessPageSetAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AccessPageSetAcl(request *AccessPageSetAclRequest) (_result *AccessPageSetAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AccessPageSetAclResponse{}
+	_body, _err := client.AccessPageSetAclWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5117,6 +7931,130 @@ func (client *Client) ApproveOtaTask(request *ApproveOtaTaskRequest) (_result *A
 	return _result, _err
 }
 
+func (client *Client) AskSessionPackagePriceWithOptions(request *AskSessionPackagePriceRequest, runtime *util.RuntimeOptions) (_result *AskSessionPackagePriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxSessions)) {
+		query["MaxSessions"] = request.MaxSessions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionPackageType)) {
+		query["SessionPackageType"] = request.SessionPackageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionSpec)) {
+		query["SessionSpec"] = request.SessionSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionType)) {
+		query["SessionType"] = request.SessionType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AskSessionPackagePrice"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AskSessionPackagePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AskSessionPackagePrice(request *AskSessionPackagePriceRequest) (_result *AskSessionPackagePriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AskSessionPackagePriceResponse{}
+	_body, _err := client.AskSessionPackagePriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AskSessionPackageRenewPriceWithOptions(request *AskSessionPackageRenewPriceRequest, runtime *util.RuntimeOptions) (_result *AskSessionPackageRenewPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionPackageId)) {
+		query["SessionPackageId"] = request.SessionPackageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AskSessionPackageRenewPrice"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AskSessionPackageRenewPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AskSessionPackageRenewPrice(request *AskSessionPackageRenewPriceRequest) (_result *AskSessionPackageRenewPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AskSessionPackageRenewPriceResponse{}
+	_body, _err := client.AskSessionPackageRenewPriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AuthorizeInstanceGroupWithOptions(request *AuthorizeInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *AuthorizeInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5173,6 +8111,86 @@ func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequ
 	return _result, _err
 }
 
+func (client *Client) BuySessionPackageWithOptions(request *BuySessionPackageRequest, runtime *util.RuntimeOptions) (_result *BuySessionPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxSessions)) {
+		query["MaxSessions"] = request.MaxSessions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionPackageName)) {
+		query["SessionPackageName"] = request.SessionPackageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionPackageType)) {
+		query["SessionPackageType"] = request.SessionPackageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionSpec)) {
+		query["SessionSpec"] = request.SessionSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionType)) {
+		query["SessionType"] = request.SessionType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BuySessionPackage"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BuySessionPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BuySessionPackage(request *BuySessionPackageRequest) (_result *BuySessionPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BuySessionPackageResponse{}
+	_body, _err := client.BuySessionPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelOtaTaskWithOptions(request *CancelOtaTaskRequest, runtime *util.RuntimeOptions) (_result *CancelOtaTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5214,6 +8232,70 @@ func (client *Client) CancelOtaTask(request *CancelOtaTaskRequest) (_result *Can
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelOtaTaskResponse{}
 	_body, _err := client.CancelOtaTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAccessPageWithOptions(request *CreateAccessPageRequest, runtime *util.RuntimeOptions) (_result *CreateAccessPageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPageName)) {
+		query["AccessPageName"] = request.AccessPageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudEnvId)) {
+		query["CloudEnvId"] = request.CloudEnvId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectTime)) {
+		query["EffectTime"] = request.EffectTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Unit)) {
+		query["Unit"] = request.Unit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccessPage"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAccessPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAccessPage(request *CreateAccessPageRequest) (_result *CreateAccessPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAccessPageResponse{}
+	_body, _err := client.CreateAccessPageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5419,6 +8501,142 @@ func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAp
 	return _result, _err
 }
 
+func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Clipboard)) {
+		query["Clipboard"] = request.Clipboard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudEnvId)) {
+		query["CloudEnvId"] = request.CloudEnvId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentId)) {
+		query["ContentId"] = request.ContentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTransfer)) {
+		query["FileTransfer"] = request.FileTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FrameRate)) {
+		query["FrameRate"] = request.FrameRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepAliveDuration)) {
+		query["KeepAliveDuration"] = request.KeepAliveDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionResolutionHeight)) {
+		query["SessionResolutionHeight"] = request.SessionResolutionHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionResolutionWidth)) {
+		query["SessionResolutionWidth"] = request.SessionResolutionWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionSpec)) {
+		query["SessionSpec"] = request.SessionSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamingMode)) {
+		query["StreamingMode"] = request.StreamingMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminalResolutionAdaptation)) {
+		query["TerminalResolutionAdaptation"] = request.TerminalResolutionAdaptation
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProject"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAccessPageWithOptions(request *DeleteAccessPageRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessPageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
+		query["AccessPageId"] = request.AccessPageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccessPage"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccessPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAccessPage(request *DeleteAccessPageRequest) (_result *DeleteAccessPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccessPageResponse{}
+	_body, _err := client.DeleteAccessPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAppInstanceGroupWithOptions(request *DeleteAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5519,6 +8737,102 @@ func (client *Client) DeleteAppInstances(request *DeleteAppInstancesRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProject"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DeleteProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAccessPageSessionWithOptions(request *GetAccessPageSessionRequest, runtime *util.RuntimeOptions) (_result *GetAccessPageSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
+		query["AccessPageId"] = request.AccessPageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessPageToken)) {
+		query["AccessPageToken"] = request.AccessPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalUserId)) {
+		query["ExternalUserId"] = request.ExternalUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccessPageSession"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAccessPageSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAccessPageSession(request *GetAccessPageSessionRequest) (_result *GetAccessPageSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAccessPageSessionResponse{}
+	_body, _err := client.GetAccessPageSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAppInstanceGroupWithOptions(request *GetAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *GetAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5583,6 +8897,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 	if !tea.BoolValue(util.IsUnset(request.AppInstanceId)) {
 		body["AppInstanceId"] = request.AppInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppInstancePersistentId)) {
+		body["AppInstancePersistentId"] = request.AppInstancePersistentId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AppStartParam)) {
@@ -5735,6 +9053,50 @@ func (client *Client) GetOtaTaskByTaskId(request *GetOtaTaskByTaskIdRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) GetProjectPoliciesWithOptions(request *GetProjectPoliciesRequest, runtime *util.RuntimeOptions) (_result *GetProjectPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProjectPolicies"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetProjectPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProjectPolicies(request *GetProjectPoliciesRequest) (_result *GetProjectPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProjectPoliciesResponse{}
+	_body, _err := client.GetProjectPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetResourcePriceWithOptions(request *GetResourcePriceRequest, runtime *util.RuntimeOptions) (_result *GetResourcePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5863,6 +9225,70 @@ func (client *Client) GetResourceRenewPrice(request *GetResourceRenewPriceReques
 	return _result, _err
 }
 
+func (client *Client) ListAccessPagesWithOptions(request *ListAccessPagesRequest, runtime *util.RuntimeOptions) (_result *ListAccessPagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
+		query["AccessPageId"] = request.AccessPageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessPageName)) {
+		query["AccessPageName"] = request.AccessPageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccessPages"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAccessPagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAccessPages(request *ListAccessPagesRequest) (_result *ListAccessPagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAccessPagesResponse{}
+	_body, _err := client.ListAccessPagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *ListAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5881,6 +9307,10 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 		query["AppInstanceGroupName"] = request.AppInstanceGroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeInstanceType)) {
 		query["NodeInstanceType"] = request.NodeInstanceType
 	}
@@ -5895,10 +9325,6 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
 		query["ProductType"] = request.ProductType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
 	}
 
 	body := map[string]interface{}{}
@@ -6135,6 +9561,70 @@ func (client *Client) ListOtaTask(request *ListOtaTaskRequest) (_result *ListOta
 	return _result, _err
 }
 
+func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StateList)) {
+		query["StateList"] = request.StateList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjects"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.ListProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -6161,6 +9651,74 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
 	_body, _err := client.ListRegionsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSessionPackagesWithOptions(request *ListSessionPackagesRequest, runtime *util.RuntimeOptions) (_result *ListSessionPackagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionPackageId)) {
+		query["SessionPackageId"] = request.SessionPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionPackageName)) {
+		query["SessionPackageName"] = request.SessionPackageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StateList)) {
+		query["StateList"] = request.StateList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSessionPackages"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSessionPackagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSessionPackages(request *ListSessionPackagesRequest) (_result *ListSessionPackagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSessionPackagesResponse{}
+	_body, _err := client.ListSessionPackagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6242,6 +9800,58 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroup(request *LogOffAllSess
 	runtime := &util.RuntimeOptions{}
 	_result = &LogOffAllSessionsInAppInstanceGroupResponse{}
 	_body, _err := client.LogOffAllSessionsInAppInstanceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MigrateSessionPackageWithOptions(request *MigrateSessionPackageRequest, runtime *util.RuntimeOptions) (_result *MigrateSessionPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestProjectId)) {
+		body["DestProjectId"] = request.DestProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionPackageId)) {
+		body["SessionPackageId"] = request.SessionPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceProjectId)) {
+		body["SourceProjectId"] = request.SourceProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MigrateSessionPackage"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MigrateSessionPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MigrateSessionPackage(request *MigrateSessionPackageRequest) (_result *MigrateSessionPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MigrateSessionPackageResponse{}
+	_body, _err := client.MigrateSessionPackageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6415,6 +10025,82 @@ func (client *Client) ModifyNodePoolAttribute(request *ModifyNodePoolAttributeRe
 	return _result, _err
 }
 
+func (client *Client) ModifyProjectPolicyWithOptions(request *ModifyProjectPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyProjectPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Clipboard)) {
+		query["Clipboard"] = request.Clipboard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTransfer)) {
+		query["FileTransfer"] = request.FileTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FrameRate)) {
+		query["FrameRate"] = request.FrameRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepAliveDuration)) {
+		query["KeepAliveDuration"] = request.KeepAliveDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionResolutionHeight)) {
+		query["SessionResolutionHeight"] = request.SessionResolutionHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionResolutionWidth)) {
+		query["SessionResolutionWidth"] = request.SessionResolutionWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamingMode)) {
+		query["StreamingMode"] = request.StreamingMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminalResolutionAdaptation)) {
+		query["TerminalResolutionAdaptation"] = request.TerminalResolutionAdaptation
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyProjectPolicy"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyProjectPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyProjectPolicy(request *ModifyProjectPolicyRequest) (_result *ModifyProjectPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyProjectPolicyResponse{}
+	_body, _err := client.ModifyProjectPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyTenantConfigWithOptions(request *ModifyTenantConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyTenantConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6515,6 +10201,50 @@ func (client *Client) PageListAppInstanceGroupUser(request *PageListAppInstanceG
 	return _result, _err
 }
 
+func (client *Client) RefreshAccessUrlWithOptions(request *RefreshAccessUrlRequest, runtime *util.RuntimeOptions) (_result *RefreshAccessUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
+		query["AccessPageId"] = request.AccessPageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshAccessUrl"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshAccessUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshAccessUrl(request *RefreshAccessUrlRequest) (_result *RefreshAccessUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshAccessUrlResponse{}
+	_body, _err := client.RefreshAccessUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RenewAppInstanceGroupWithOptions(request *RenewAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *RenewAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6579,6 +10309,58 @@ func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupReques
 	return _result, _err
 }
 
+func (client *Client) RenewSessionPackageWithOptions(request *RenewSessionPackageRequest, runtime *util.RuntimeOptions) (_result *RenewSessionPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionPackageId)) {
+		query["SessionPackageId"] = request.SessionPackageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewSessionPackage"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenewSessionPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenewSessionPackage(request *RenewSessionPackageRequest) (_result *RenewSessionPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenewSessionPackageResponse{}
+	_body, _err := client.RenewSessionPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.RuntimeOptions) (_result *UnbindResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6591,6 +10373,10 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.Ru
 
 	if !tea.BoolValue(util.IsUnset(request.AppInstanceId)) {
 		body["AppInstanceId"] = request.AppInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppInstancePersistentId)) {
+		body["AppInstancePersistentId"] = request.AppInstancePersistentId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
@@ -6628,6 +10414,54 @@ func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindResponse{}
 	_body, _err := client.UnbindWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAccessPageStateWithOptions(request *UpdateAccessPageStateRequest, runtime *util.RuntimeOptions) (_result *UpdateAccessPageStateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
+		query["AccessPageId"] = request.AccessPageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessPageState)) {
+		query["AccessPageState"] = request.AccessPageState
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAccessPageState"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAccessPageStateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAccessPageState(request *UpdateAccessPageStateRequest) (_result *UpdateAccessPageStateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAccessPageStateResponse{}
+	_body, _err := client.UpdateAccessPageStateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
