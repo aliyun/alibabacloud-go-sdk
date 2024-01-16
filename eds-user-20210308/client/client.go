@@ -12,6 +12,35 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type GroupResources struct {
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GroupResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupResources) GoString() string {
+	return s.String()
+}
+
+func (s *GroupResources) SetRegion(v string) *GroupResources {
+	s.Region = &v
+	return s
+}
+
+func (s *GroupResources) SetResourceId(v string) *GroupResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GroupResources) SetResourceType(v string) *GroupResources {
+	s.ResourceType = &v
+	return s
+}
+
 type WaIdPermissions struct {
 	Code           *string            `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsBasicChild   *bool              `json:"IsBasicChild,omitempty" xml:"IsBasicChild,omitempty"`
@@ -429,7 +458,8 @@ type CreateUsersRequestUsers struct {
 	// The password of the end user.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// Mobile numbers are not supported on the international site (alibabacloud.com).
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
 	// The remarks of the end user.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
@@ -469,6 +499,11 @@ func (s *CreateUsersRequestUsers) SetPassword(v string) *CreateUsersRequestUsers
 
 func (s *CreateUsersRequestUsers) SetPhone(v string) *CreateUsersRequestUsers {
 	s.Phone = &v
+	return s
+}
+
+func (s *CreateUsersRequestUsers) SetRealNickName(v string) *CreateUsersRequestUsers {
+	s.RealNickName = &v
 	return s
 }
 
@@ -533,7 +568,8 @@ type CreateUsersResponseBodyCreateResultCreatedUsers struct {
 	// The name of the end user.
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The mobile number of the end user.
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
 	// The remarks of the end user.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
@@ -558,6 +594,11 @@ func (s *CreateUsersResponseBodyCreateResultCreatedUsers) SetEndUserId(v string)
 
 func (s *CreateUsersResponseBodyCreateResultCreatedUsers) SetPhone(v string) *CreateUsersResponseBodyCreateResultCreatedUsers {
 	s.Phone = &v
+	return s
+}
+
+func (s *CreateUsersResponseBodyCreateResultCreatedUsers) SetRealNickName(v string) *CreateUsersResponseBodyCreateResultCreatedUsers {
+	s.RealNickName = &v
 	return s
 }
 
