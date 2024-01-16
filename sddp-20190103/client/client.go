@@ -1557,7 +1557,7 @@ func (s *DescribeColumnsRequest) SetTableName(v string) *DescribeColumnsRequest 
 type DescribeColumnsResponseBody struct {
 	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of data in the column of the table.
+	// A list of columns.
 	Items []*DescribeColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -1601,7 +1601,7 @@ func (s *DescribeColumnsResponseBody) SetTotalCount(v int32) *DescribeColumnsRes
 }
 
 type DescribeColumnsResponseBodyItems struct {
-	// The beginning of the time range during which data in the column of the table is created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the data in the column of the table is created. Unit: milliseconds.
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The type of data in the column of the table.
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
@@ -1610,19 +1610,20 @@ type DescribeColumnsResponseBodyItems struct {
 	// The ID of the instance to which data in the column of the table belongs.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the instance to which data in the column of the table belongs.
-	InstanceName *string                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	ModelTags    []*DescribeColumnsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// A list of tags for data that hits the recognition model.
+	ModelTags []*DescribeColumnsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	// The name of the column of the table.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the sensitivity level for data in the column of the table. Valid values:
+	// The name of the sensitivity level for asset. Valid values:
 	//
-	// *   **N/A**: No sensitive data is detected.
+	// *   **N/A**: indicates that no sensitive data is detected.
 	// *   **S1**: indicates the low sensitivity level.
 	// *   **S2**: indicates the medium sensitivity level.
 	// *   **S3**: indicates the high sensitivity level.
 	// *   **S4**: indicates the highest sensitivity level.
 	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	// The ID of the sensitivity level for data in the column of the table. Valid values:
+	// The ID of the sensitivity level of the asset. Valid values:
 	//
 	// *   **1**: N/A
 	// *   **2**: S1
@@ -1649,7 +1650,7 @@ type DescribeColumnsResponseBodyItems struct {
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	// The name of the sensitivity level for data in the column of the table. Valid values:
 	//
-	// *   **N/A**: No sensitive data is detected.
+	// *   **N/A**: indicates that no sensitive data is detected.
 	// *   **S1**: indicates the low sensitivity level.
 	// *   **S2**: indicates the medium sensitivity level.
 	// *   **S3**: indicates the high sensitivity level.
@@ -1659,9 +1660,9 @@ type DescribeColumnsResponseBodyItems struct {
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the sensitive data detection rule that data in the column of the table hits.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The name of the sensitivity level of the data that hits the sensitive data detection rule. Valid values:
+	// The name of the sensitivity level. Valid values:
 	//
-	// *   **N/A**: No sensitive data is detected.
+	// *   **N/A**: indicates that no sensitive data is detected.
 	// *   **S1**: indicates the low sensitivity level.
 	// *   **S2**: indicates the medium sensitivity level.
 	// *   **S3**: indicates the high sensitivity level.
@@ -1669,8 +1670,8 @@ type DescribeColumnsResponseBodyItems struct {
 	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
 	// Indicates whether the column contains sensitive data. Valid values:
 	//
-	// *   true: the column contains sensitive data.
-	// *   false: the column does not contain sensitive data.
+	// *   true
+	// *   false
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
 	// The ID of the table.
 	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
@@ -1787,7 +1788,17 @@ func (s *DescribeColumnsResponseBodyItems) SetTableName(v string) *DescribeColum
 }
 
 type DescribeColumnsResponseBodyItemsModelTags struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tag ID.
+	//
+	// *   **101**: sensitive personal information
+	// *   **102**: personal information
+	// *   **103**: important information
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tag name.
+	//
+	// *   Sensitive personal information
+	// *   Personal information
+	// *   Important information
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -5985,7 +5996,8 @@ type DescribeEventsRequest struct {
 	// The ID of the account that triggered the anomalous event.
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The username of the RAM user.
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WarnLevel *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
 func (s DescribeEventsRequest) String() string {
@@ -6068,6 +6080,11 @@ func (s *DescribeEventsRequest) SetUserId(v int64) *DescribeEventsRequest {
 
 func (s *DescribeEventsRequest) SetUserName(v string) *DescribeEventsRequest {
 	s.UserName = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetWarnLevel(v int32) *DescribeEventsRequest {
+	s.WarnLevel = &v
 	return s
 }
 
@@ -7086,7 +7103,7 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 type DescribeOssObjectDetailRequest struct {
 	// The ID of the OSS object.
 	//
-	// > You can call the **DescribeOssObjects** operation to obtain the ID of the OSS object.
+	// >  You can call the [DescribeOssObjects](~~410152~~) operation to obtain the ID of the OSS object.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
@@ -7149,7 +7166,7 @@ type DescribeOssObjectDetailResponseBodyOssObjectDetail struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the sensitivity level for the OSS object.
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// An array consisting of the sensitive data detection rules that the OSS object hits.
+	// A list of the sensitive data detection rules that the OSS object hits.
 	RuleList []*DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
@@ -7195,9 +7212,10 @@ type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList struct {
 	// The type of the OSS object.
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The number of times that the OSS object hits the sensitive data detection rule.
-	Count     *int64                                                                 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// A list of tags for data that hits the recognition model.
 	ModelTags []*DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
-	// The sensitivity level of the OSS object.
+	// The ID of the sensitivity level of the OSS object.
 	//
 	// *   **1**: No sensitive data is detected.
 	// *   **2**: indicates the low sensitivity level.
@@ -7250,7 +7268,17 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetRuleName
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tag ID.
+	//
+	// *   **101**: sensitive personal information
+	// *   **102**: personal information
+	// *   **103**: important information
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tag name.
+	//
+	// *   Sensitive personal information
+	// *   Personal information
+	// *   Important information
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -7495,7 +7523,8 @@ func (s *DescribeOssObjectDetailV2Response) SetBody(v *DescribeOssObjectDetailV2
 
 type DescribeOssObjectsRequest struct {
 	// The page number of the page to return.
-	CurrentPage      *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The code of the file type.
 	FileCategoryCode *int64 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
 	// The ID of the instance to which the OSS object belongs.
 	//
@@ -7603,7 +7632,7 @@ func (s *DescribeOssObjectsRequest) SetTemplateId(v int64) *DescribeOssObjectsRe
 type DescribeOssObjectsResponseBody struct {
 	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of the OSS objects.
+	// A list of OSS objects.
 	Items []*DescribeOssObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -7647,13 +7676,15 @@ func (s *DescribeOssObjectsResponseBody) SetTotalCount(v int32) *DescribeOssObje
 }
 
 type DescribeOssObjectsResponseBodyItems struct {
-	// The name of the OSS bucket.
+	// The name of the bucket.
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The type ID of the OSS object. Valid values include **900001**, **800015**, or **800005**, which indicates the MP4 file, PDF file, or OSS configuration file, respectively.
+	// The type of the OSS object. Valid values include **900001**, **800015**, or **800005**, which indicates the MP4 file, PDF file, or OSS configuration file, respectively.
 	Category *int64 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The file type of the OSS object.
-	CategoryName     *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	FileCategoryCode *int64  `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
+	// The name of the file type.
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The code of the file type.
+	FileCategoryCode *int64 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
+	// The name of the file type.
 	FileCategoryName *string `json:"FileCategoryName,omitempty" xml:"FileCategoryName,omitempty"`
 	// The file ID of the OSS object.
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
@@ -7665,7 +7696,7 @@ type DescribeOssObjectsResponseBodyItems struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID of the OSS object.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The sensitivity level of the OSS object. Valid values:
+	// The ID of the sensitivity level of the OSS object. Valid values:
 	//
 	// *   **1**: N/A, which indicates that no sensitive data is detected.
 	// *   **2**: S1, which indicates the low sensitivity level.
@@ -7677,7 +7708,7 @@ type DescribeOssObjectsResponseBodyItems struct {
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
 	// The number of rules that are hit.
 	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// An array that consists of the rules.
+	// A list of rules.
 	RuleList []*DescribeOssObjectsResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 	// The number of fields that are hit.
 	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
@@ -7778,7 +7809,7 @@ type DescribeOssObjectsResponseBodyItemsRuleList struct {
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The search keyword. Fuzzy match is supported.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sensitivity level of the OSS object. Valid values:
+	// The ID of the sensitivity level of the OSS object. Valid values:
 	//
 	// *   **1**: N/A, which indicates that no sensitive data is detected.
 	// *   **2**: S1, which indicates the low sensitivity level.
@@ -9189,6 +9220,7 @@ func (s *DescribeTemplateAllRulesResponse) SetBody(v *DescribeTemplateAllRulesRe
 }
 
 type DescribeUserStatusRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
@@ -9271,14 +9303,17 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	// The ID of the instance within the current account.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of instances within the current account.
-	InstanceNum        *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	// The total number of instances.
 	InstanceTotalCount *int64 `json:"InstanceTotalCount,omitempty" xml:"InstanceTotalCount,omitempty"`
 	// Indicates whether the data security lab feature is enabled. Valid values:
 	//
 	// *   **1**: yes
 	// *   **0**: no
-	LabStatus      *int32 `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
-	OssTotalSize   *int64 `json:"OssTotalSize,omitempty" xml:"OssTotalSize,omitempty"`
+	LabStatus *int32 `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
+	// OSS total storage capacity. Unit: Bytes.
+	OssTotalSize *int64 `json:"OssTotalSize,omitempty" xml:"OssTotalSize,omitempty"`
+	// Accumulate the number of days to protect user assets.
 	ProtectionDays *int32 `json:"ProtectionDays,omitempty" xml:"ProtectionDays,omitempty"`
 	// Indicates whether DSC is purchased. Valid values:
 	//
@@ -9295,7 +9330,11 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	Trail         *bool `json:"Trail,omitempty" xml:"Trail,omitempty"`
+	Trail *bool `json:"Trail,omitempty" xml:"Trail,omitempty"`
+	// Indicates whether the agent audit feature is used. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
 	UseAgentAudit *bool `json:"UseAgentAudit,omitempty" xml:"UseAgentAudit,omitempty"`
 	// The number of instances that are used.
 	UseInstanceNum *int32 `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
@@ -10201,6 +10240,7 @@ func (s *ModifyEventTypeStatusResponse) SetBody(v *ModifyEventTypeStatusResponse
 }
 
 type ModifyReportTaskStatusRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
@@ -11456,8 +11496,10 @@ func (client *Client) DescribeCategoryTemplateRuleList(request *DescribeCategory
 
 /**
  * You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
- * # Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ## [](#)Precautions
+ * The DescribeColumns operation is changed to DescribeColumnsV2. We recommend that you call the DescribeColumnsV2 operation when you develop your applications.
+ * ## [](#qps)Limits
+ * Each Alibaba Cloud account can call this operation up to 10 times per second. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeColumnsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11546,8 +11588,10 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 
 /**
  * You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
- * # Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ## [](#)Precautions
+ * The DescribeColumns operation is changed to DescribeColumnsV2. We recommend that you call the DescribeColumnsV2 operation when you develop your applications.
+ * ## [](#qps)Limits
+ * Each Alibaba Cloud account can call this operation up to 10 times per second. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeColumnsRequest
  * @return DescribeColumnsResponse
@@ -12645,6 +12689,10 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 		query["UserName"] = request.UserName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WarnLevel)) {
+		query["WarnLevel"] = request.WarnLevel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12894,9 +12942,11 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 }
 
 /**
- * You can call this operation to query the details of an OSS object. This helps you locate sensitive data detected in OSS.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
+ * ## [](#)Precautions
+ * The DescribeOssObjectDetail operation is chagned to DescribeOssObjectDetailV2. We recommend that you call the DescribeOssObjectDetailV2 operation when you develop your applications.
+ * ## [](#qps)Limits
+ * Each Alibaba Cloud account can call this operation up to 10 times per second. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeOssObjectDetailRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12940,9 +12990,11 @@ func (client *Client) DescribeOssObjectDetailWithOptions(request *DescribeOssObj
 }
 
 /**
- * You can call this operation to query the details of an OSS object. This helps you locate sensitive data detected in OSS.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
+ * ## [](#)Precautions
+ * The DescribeOssObjectDetail operation is chagned to DescribeOssObjectDetailV2. We recommend that you call the DescribeOssObjectDetailV2 operation when you develop your applications.
+ * ## [](#qps)Limits
+ * Each Alibaba Cloud account can call this operation up to 10 times per second. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeOssObjectDetailRequest
  * @return DescribeOssObjectDetailResponse
