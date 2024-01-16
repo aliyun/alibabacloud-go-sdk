@@ -32,7 +32,7 @@ func (s *CreateTokenRequest) SetAgentKey(v string) *CreateTokenRequest {
 type CreateTokenResponseBody struct {
 	Code           *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data           *CreateTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *string                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -56,7 +56,7 @@ func (s *CreateTokenResponseBody) SetData(v *CreateTokenResponseBodyData) *Creat
 	return s
 }
 
-func (s *CreateTokenResponseBody) SetHttpStatusCode(v string) *CreateTokenResponseBody {
+func (s *CreateTokenResponseBody) SetHttpStatusCode(v int32) *CreateTokenResponseBody {
 	s.HttpStatusCode = &v
 	return s
 }
