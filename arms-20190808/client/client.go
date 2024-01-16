@@ -4946,6 +4946,11 @@ type CreateEnvironmentRequest struct {
 	// *   ECS: Elastic Compute Service
 	// *   Cloud: cloud service
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	// type of managed：
+	// - none： not managed. default value of prometheus for ACK.
+	// - agent：managed agent. default value of  promehtues for ASK/ACS/AckOne.
+	// - agent-exproter： maanged agent and exporter. default of prometheus for Cloud.
+	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
@@ -4984,6 +4989,11 @@ func (s *CreateEnvironmentRequest) SetEnvironmentSubType(v string) *CreateEnviro
 
 func (s *CreateEnvironmentRequest) SetEnvironmentType(v string) *CreateEnvironmentRequest {
 	s.EnvironmentType = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetManagedType(v string) *CreateEnvironmentRequest {
+	s.ManagedType = &v
 	return s
 }
 
@@ -5091,6 +5101,235 @@ func (s *CreateEnvironmentResponse) SetStatusCode(v int32) *CreateEnvironmentRes
 }
 
 func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *CreateEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGrafanaWorkspaceRequest struct {
+	AliyunLang              *string                              `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	Description             *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	GrafanaVersion          *string                              `json:"GrafanaVersion,omitempty" xml:"GrafanaVersion,omitempty"`
+	GrafanaWorkspaceEdition *string                              `json:"GrafanaWorkspaceEdition,omitempty" xml:"GrafanaWorkspaceEdition,omitempty"`
+	GrafanaWorkspaceName    *string                              `json:"GrafanaWorkspaceName,omitempty" xml:"GrafanaWorkspaceName,omitempty"`
+	Password                *string                              `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId                *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId         *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags                    []*CreateGrafanaWorkspaceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s CreateGrafanaWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGrafanaWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetAliyunLang(v string) *CreateGrafanaWorkspaceRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetDescription(v string) *CreateGrafanaWorkspaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetGrafanaVersion(v string) *CreateGrafanaWorkspaceRequest {
+	s.GrafanaVersion = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetGrafanaWorkspaceEdition(v string) *CreateGrafanaWorkspaceRequest {
+	s.GrafanaWorkspaceEdition = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetGrafanaWorkspaceName(v string) *CreateGrafanaWorkspaceRequest {
+	s.GrafanaWorkspaceName = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetPassword(v string) *CreateGrafanaWorkspaceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetRegionId(v string) *CreateGrafanaWorkspaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetResourceGroupId(v string) *CreateGrafanaWorkspaceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetTags(v []*CreateGrafanaWorkspaceRequestTags) *CreateGrafanaWorkspaceRequest {
+	s.Tags = v
+	return s
+}
+
+type CreateGrafanaWorkspaceRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateGrafanaWorkspaceRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGrafanaWorkspaceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGrafanaWorkspaceRequestTags) SetKey(v string) *CreateGrafanaWorkspaceRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequestTags) SetValue(v string) *CreateGrafanaWorkspaceRequestTags {
+	s.Value = &v
+	return s
+}
+
+type CreateGrafanaWorkspaceShrinkRequest struct {
+	AliyunLang              *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GrafanaVersion          *string `json:"GrafanaVersion,omitempty" xml:"GrafanaVersion,omitempty"`
+	GrafanaWorkspaceEdition *string `json:"GrafanaWorkspaceEdition,omitempty" xml:"GrafanaWorkspaceEdition,omitempty"`
+	GrafanaWorkspaceName    *string `json:"GrafanaWorkspaceName,omitempty" xml:"GrafanaWorkspaceName,omitempty"`
+	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId         *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagsShrink              *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s CreateGrafanaWorkspaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGrafanaWorkspaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetAliyunLang(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetDescription(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetGrafanaVersion(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.GrafanaVersion = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetGrafanaWorkspaceEdition(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.GrafanaWorkspaceEdition = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetGrafanaWorkspaceName(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.GrafanaWorkspaceName = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetPassword(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetRegionId(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetResourceGroupId(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetTagsShrink(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type CreateGrafanaWorkspaceResponseBody struct {
+	Code      *int32            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GrafanaWorkspace `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string           `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s CreateGrafanaWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGrafanaWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGrafanaWorkspaceResponseBody) SetCode(v int32) *CreateGrafanaWorkspaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceResponseBody) SetData(v *GrafanaWorkspace) *CreateGrafanaWorkspaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceResponseBody) SetMessage(v string) *CreateGrafanaWorkspaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceResponseBody) SetRequestId(v string) *CreateGrafanaWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceResponseBody) SetSuccess(v bool) *CreateGrafanaWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceResponseBody) SetTraceId(v string) *CreateGrafanaWorkspaceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CreateGrafanaWorkspaceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGrafanaWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGrafanaWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGrafanaWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGrafanaWorkspaceResponse) SetHeaders(v map[string]*string) *CreateGrafanaWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceResponse) SetStatusCode(v int32) *CreateGrafanaWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceResponse) SetBody(v *CreateGrafanaWorkspaceResponseBody) *CreateGrafanaWorkspaceResponse {
 	s.Body = v
 	return s
 }
@@ -12506,6 +12745,105 @@ func (s *DeleteGrafanaResourceResponse) SetBody(v *DeleteGrafanaResourceResponse
 	return s
 }
 
+type DeleteGrafanaWorkspaceRequest struct {
+	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteGrafanaWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGrafanaWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGrafanaWorkspaceRequest) SetGrafanaWorkspaceId(v string) *DeleteGrafanaWorkspaceRequest {
+	s.GrafanaWorkspaceId = &v
+	return s
+}
+
+func (s *DeleteGrafanaWorkspaceRequest) SetRegionId(v string) *DeleteGrafanaWorkspaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteGrafanaWorkspaceResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DeleteGrafanaWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGrafanaWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGrafanaWorkspaceResponseBody) SetCode(v int32) *DeleteGrafanaWorkspaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteGrafanaWorkspaceResponseBody) SetData(v bool) *DeleteGrafanaWorkspaceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteGrafanaWorkspaceResponseBody) SetMessage(v string) *DeleteGrafanaWorkspaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteGrafanaWorkspaceResponseBody) SetRequestId(v string) *DeleteGrafanaWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteGrafanaWorkspaceResponseBody) SetSuccess(v bool) *DeleteGrafanaWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteGrafanaWorkspaceResponseBody) SetTraceId(v string) *DeleteGrafanaWorkspaceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteGrafanaWorkspaceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGrafanaWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGrafanaWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGrafanaWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGrafanaWorkspaceResponse) SetHeaders(v map[string]*string) *DeleteGrafanaWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGrafanaWorkspaceResponse) SetStatusCode(v int32) *DeleteGrafanaWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGrafanaWorkspaceResponse) SetBody(v *DeleteGrafanaWorkspaceResponseBody) *DeleteGrafanaWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIMRobotRequest struct {
 	// The ID of the IM chatbot.
 	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
@@ -19067,6 +19405,112 @@ func (s *GetExploreUrlResponse) SetBody(v *GetExploreUrlResponseBody) *GetExplor
 	return s
 }
 
+type GetGrafanaWorkspaceRequest struct {
+	AliyunLang         *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetGrafanaWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGrafanaWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGrafanaWorkspaceRequest) SetAliyunLang(v string) *GetGrafanaWorkspaceRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceRequest) SetGrafanaWorkspaceId(v string) *GetGrafanaWorkspaceRequest {
+	s.GrafanaWorkspaceId = &v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceRequest) SetRegionId(v string) *GetGrafanaWorkspaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetGrafanaWorkspaceResponseBody struct {
+	Code    *int32            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GrafanaWorkspace `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string           `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s GetGrafanaWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGrafanaWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGrafanaWorkspaceResponseBody) SetCode(v int32) *GetGrafanaWorkspaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceResponseBody) SetData(v *GrafanaWorkspace) *GetGrafanaWorkspaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceResponseBody) SetMessage(v string) *GetGrafanaWorkspaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceResponseBody) SetRequestId(v string) *GetGrafanaWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceResponseBody) SetSuccess(v bool) *GetGrafanaWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceResponseBody) SetTraceId(v string) *GetGrafanaWorkspaceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type GetGrafanaWorkspaceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGrafanaWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGrafanaWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGrafanaWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGrafanaWorkspaceResponse) SetHeaders(v map[string]*string) *GetGrafanaWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceResponse) SetStatusCode(v int32) *GetGrafanaWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGrafanaWorkspaceResponse) SetBody(v *GetGrafanaWorkspaceResponseBody) *GetGrafanaWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
 type GetIntegrationStateRequest struct {
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Integration *string `json:"Integration,omitempty" xml:"Integration,omitempty"`
@@ -25400,6 +25844,7 @@ type InitEnvironmentRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// Environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	ManagedType   *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -25419,6 +25864,11 @@ func (s *InitEnvironmentRequest) SetAliyunLang(v string) *InitEnvironmentRequest
 
 func (s *InitEnvironmentRequest) SetEnvironmentId(v string) *InitEnvironmentRequest {
 	s.EnvironmentId = &v
+	return s
+}
+
+func (s *InitEnvironmentRequest) SetManagedType(v string) *InitEnvironmentRequest {
+	s.ManagedType = &v
 	return s
 }
 
@@ -42016,6 +42466,236 @@ func (s *UpdateEnvironmentResponse) SetBody(v *UpdateEnvironmentResponseBody) *U
 	return s
 }
 
+type UpdateGrafanaWorkspaceRequest struct {
+	AliyunLang           *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GrafanaWorkspaceId   *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	GrafanaWorkspaceName *string `json:"GrafanaWorkspaceName,omitempty" xml:"GrafanaWorkspaceName,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateGrafanaWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGrafanaWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGrafanaWorkspaceRequest) SetAliyunLang(v string) *UpdateGrafanaWorkspaceRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceRequest) SetDescription(v string) *UpdateGrafanaWorkspaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceRequest) SetGrafanaWorkspaceId(v string) *UpdateGrafanaWorkspaceRequest {
+	s.GrafanaWorkspaceId = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceRequest) SetGrafanaWorkspaceName(v string) *UpdateGrafanaWorkspaceRequest {
+	s.GrafanaWorkspaceName = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceRequest) SetRegionId(v string) *UpdateGrafanaWorkspaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateGrafanaWorkspaceResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s UpdateGrafanaWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGrafanaWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGrafanaWorkspaceResponseBody) SetCode(v int32) *UpdateGrafanaWorkspaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceResponseBody) SetData(v bool) *UpdateGrafanaWorkspaceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceResponseBody) SetMessage(v string) *UpdateGrafanaWorkspaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceResponseBody) SetRequestId(v string) *UpdateGrafanaWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceResponseBody) SetSuccess(v bool) *UpdateGrafanaWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceResponseBody) SetTraceId(v string) *UpdateGrafanaWorkspaceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateGrafanaWorkspaceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGrafanaWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGrafanaWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGrafanaWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGrafanaWorkspaceResponse) SetHeaders(v map[string]*string) *UpdateGrafanaWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceResponse) SetStatusCode(v int32) *UpdateGrafanaWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceResponse) SetBody(v *UpdateGrafanaWorkspaceResponseBody) *UpdateGrafanaWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGrafanaWorkspaceVersionRequest struct {
+	AliyunLang         *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	GrafanaVersion     *string `json:"GrafanaVersion,omitempty" xml:"GrafanaVersion,omitempty"`
+	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateGrafanaWorkspaceVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGrafanaWorkspaceVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGrafanaWorkspaceVersionRequest) SetAliyunLang(v string) *UpdateGrafanaWorkspaceVersionRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionRequest) SetGrafanaVersion(v string) *UpdateGrafanaWorkspaceVersionRequest {
+	s.GrafanaVersion = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionRequest) SetGrafanaWorkspaceId(v string) *UpdateGrafanaWorkspaceVersionRequest {
+	s.GrafanaWorkspaceId = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionRequest) SetRegionId(v string) *UpdateGrafanaWorkspaceVersionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateGrafanaWorkspaceVersionResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s UpdateGrafanaWorkspaceVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGrafanaWorkspaceVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponseBody) SetCode(v int32) *UpdateGrafanaWorkspaceVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponseBody) SetData(v bool) *UpdateGrafanaWorkspaceVersionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponseBody) SetMessage(v string) *UpdateGrafanaWorkspaceVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponseBody) SetRequestId(v string) *UpdateGrafanaWorkspaceVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponseBody) SetSuccess(v bool) *UpdateGrafanaWorkspaceVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponseBody) SetTraceId(v string) *UpdateGrafanaWorkspaceVersionResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateGrafanaWorkspaceVersionResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGrafanaWorkspaceVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGrafanaWorkspaceVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGrafanaWorkspaceVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponse) SetHeaders(v map[string]*string) *UpdateGrafanaWorkspaceVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponse) SetStatusCode(v int32) *UpdateGrafanaWorkspaceVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGrafanaWorkspaceVersionResponse) SetBody(v *UpdateGrafanaWorkspaceVersionResponseBody) *UpdateGrafanaWorkspaceVersionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIntegrationRequest struct {
 	// Specifies whether to automatically clear alert events. Valid values:
 	//
@@ -46833,6 +47513,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		query["EnvironmentType"] = request.EnvironmentType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ManagedType)) {
+		query["ManagedType"] = request.ManagedType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -46872,6 +47556,88 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEnvironmentResponse{}
 	_body, _err := client.CreateEnvironmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGrafanaWorkspaceWithOptions(tmpReq *CreateGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *CreateGrafanaWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateGrafanaWorkspaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaVersion)) {
+		query["GrafanaVersion"] = request.GrafanaVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceEdition)) {
+		query["GrafanaWorkspaceEdition"] = request.GrafanaWorkspaceEdition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceName)) {
+		query["GrafanaWorkspaceName"] = request.GrafanaWorkspaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGrafanaWorkspace"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGrafanaWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGrafanaWorkspace(request *CreateGrafanaWorkspaceRequest) (_result *CreateGrafanaWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGrafanaWorkspaceResponse{}
+	_body, _err := client.CreateGrafanaWorkspaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49106,6 +49872,54 @@ func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceReques
 	return _result, _err
 }
 
+func (client *Client) DeleteGrafanaWorkspaceWithOptions(request *DeleteGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *DeleteGrafanaWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceId)) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGrafanaWorkspace"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGrafanaWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGrafanaWorkspace(request *DeleteGrafanaWorkspaceRequest) (_result *DeleteGrafanaWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGrafanaWorkspaceResponse{}
+	_body, _err := client.DeleteGrafanaWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteIMRobotWithOptions(request *DeleteIMRobotRequest, runtime *util.RuntimeOptions) (_result *DeleteIMRobotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51182,6 +51996,58 @@ func (client *Client) GetExploreUrl(request *GetExploreUrlRequest) (_result *Get
 	return _result, _err
 }
 
+func (client *Client) GetGrafanaWorkspaceWithOptions(request *GetGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *GetGrafanaWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceId)) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGrafanaWorkspace"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGrafanaWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGrafanaWorkspace(request *GetGrafanaWorkspaceRequest) (_result *GetGrafanaWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGrafanaWorkspaceResponse{}
+	_body, _err := client.GetGrafanaWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetIntegrationStateWithOptions(request *GetIntegrationStateRequest, runtime *util.RuntimeOptions) (_result *GetIntegrationStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52543,6 +53409,10 @@ func (client *Client) InitEnvironmentWithOptions(request *InitEnvironmentRequest
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
 		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagedType)) {
+		query["ManagedType"] = request.ManagedType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -57683,6 +58553,122 @@ func (client *Client) UpdateEnvironment(request *UpdateEnvironmentRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEnvironmentResponse{}
 	_body, _err := client.UpdateEnvironmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGrafanaWorkspaceWithOptions(request *UpdateGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *UpdateGrafanaWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceId)) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceName)) {
+		query["GrafanaWorkspaceName"] = request.GrafanaWorkspaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGrafanaWorkspace"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGrafanaWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGrafanaWorkspace(request *UpdateGrafanaWorkspaceRequest) (_result *UpdateGrafanaWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGrafanaWorkspaceResponse{}
+	_body, _err := client.UpdateGrafanaWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGrafanaWorkspaceVersionWithOptions(request *UpdateGrafanaWorkspaceVersionRequest, runtime *util.RuntimeOptions) (_result *UpdateGrafanaWorkspaceVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaVersion)) {
+		query["GrafanaVersion"] = request.GrafanaVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceId)) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGrafanaWorkspaceVersion"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGrafanaWorkspaceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGrafanaWorkspaceVersion(request *UpdateGrafanaWorkspaceVersionRequest) (_result *UpdateGrafanaWorkspaceVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGrafanaWorkspaceVersionResponse{}
+	_body, _err := client.UpdateGrafanaWorkspaceVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
