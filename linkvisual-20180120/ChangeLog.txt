@@ -1,3 +1,6 @@
+2024-01-16 Version: v2.2.1
+- Generated golang 2018-01-20 for Linkvisual.
+
 2024-01-16 Version: v2.2.0
 - Generated golang 2018-01-20 for Linkvisual.
 
