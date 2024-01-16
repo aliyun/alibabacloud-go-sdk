@@ -13,8 +13,19 @@ import (
 )
 
 type BatchModifyInstanceStatusRequest struct {
-	Active       *int32  `json:"Active,omitempty" xml:"Active,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to start or stop the playbook.
+	//
+	// *   **0**: stops the playbook.
+	// *   **1**: starts the playbook.
+	Active *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The playbook UUID. If you want to specify multiple playbooks, separate the playbook UUIDs with commas (,).
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -42,6 +53,7 @@ func (s *BatchModifyInstanceStatusRequest) SetPlaybookUuid(v string) *BatchModif
 }
 
 type BatchModifyInstanceStatusResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -88,10 +100,23 @@ func (s *BatchModifyInstanceStatusResponse) SetBody(v *BatchModifyInstanceStatus
 }
 
 type ComparePlaybooksRequest struct {
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NewPlaybookReleaseId *int32  `json:"NewPlaybookReleaseId,omitempty" xml:"NewPlaybookReleaseId,omitempty"`
-	OldPlaybookReleaseId *int32  `json:"OldPlaybookReleaseId,omitempty" xml:"OldPlaybookReleaseId,omitempty"`
-	PlaybookUuid         *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the second version.
+	//
+	// >  You can call the [DescribePopApiVersionList](~~DescribePopApiVersionList~~) operation to query the UUIDs of versions.
+	NewPlaybookReleaseId *int32 `json:"NewPlaybookReleaseId,omitempty" xml:"NewPlaybookReleaseId,omitempty"`
+	// The UUID of the first version.
+	//
+	// >  You can call the [DescribePopApiVersionList](~~DescribePopApiVersionList~~) operation to query the UUIDs of versions.
+	OldPlaybookReleaseId *int32 `json:"OldPlaybookReleaseId,omitempty" xml:"OldPlaybookReleaseId,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
+	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
 func (s ComparePlaybooksRequest) String() string {
@@ -123,8 +148,10 @@ func (s *ComparePlaybooksRequest) SetPlaybookUuid(v string) *ComparePlaybooksReq
 }
 
 type ComparePlaybooksResponseBody struct {
+	// The comparison result.
 	CompareResult *ComparePlaybooksResponseBodyCompareResult `json:"CompareResult,omitempty" xml:"CompareResult,omitempty" type:"Struct"`
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ComparePlaybooksResponseBody) String() string {
@@ -146,9 +173,15 @@ func (s *ComparePlaybooksResponseBody) SetRequestId(v string) *ComparePlaybooksR
 }
 
 type ComparePlaybooksResponseBodyCompareResult struct {
+	// The description of the comparison result.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	New         *bool   `json:"New,omitempty" xml:"New,omitempty"`
-	Same        *bool   `json:"Same,omitempty" xml:"Same,omitempty"`
+	// Indicates whether the second version provides more information than the first version. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	New *bool `json:"New,omitempty" xml:"New,omitempty"`
+	// Indicates whether the configurations of the two versions are the same. Valid values: **true** and **false**.
+	Same *bool `json:"Same,omitempty" xml:"Same,omitempty"`
 }
 
 func (s ComparePlaybooksResponseBodyCompareResult) String() string {
@@ -204,9 +237,15 @@ func (s *ComparePlaybooksResponse) SetBody(v *ComparePlaybooksResponseBody) *Com
 }
 
 type CreatePlaybookRequest struct {
+	// The description of the playbook.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the playbook.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s CreatePlaybookRequest) String() string {
@@ -233,8 +272,10 @@ func (s *CreatePlaybookRequest) SetLang(v string) *CreatePlaybookRequest {
 }
 
 type CreatePlaybookResponseBody struct {
-	Data      *CreatePlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *CreatePlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePlaybookResponseBody) String() string {
@@ -256,6 +297,7 @@ func (s *CreatePlaybookResponseBody) SetRequestId(v string) *CreatePlaybookRespo
 }
 
 type CreatePlaybookResponseBodyData struct {
+	// The UUID of the playbook.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -302,10 +344,21 @@ func (s *CreatePlaybookResponse) SetBody(v *CreatePlaybookResponseBody) *CreateP
 }
 
 type DebugPlaybookRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	Record       *string `json:"Record,omitempty" xml:"Record,omitempty"`
-	Taskflow     *string `json:"Taskflow,omitempty" xml:"Taskflow,omitempty"`
+	// The input parameters that you use to debug the playbook. You can define the parameters based on your business requirements.
+	Record *string `json:"Record,omitempty" xml:"Record,omitempty"`
+	// The XML configuration of the playbook.
+	//
+	// >  You can call the [DescribePlaybook](~~DescribePlaybook~~) operation to query the XML configuration of the playbook.
+	Taskflow *string `json:"Taskflow,omitempty" xml:"Taskflow,omitempty"`
 }
 
 func (s DebugPlaybookRequest) String() string {
@@ -337,7 +390,9 @@ func (s *DebugPlaybookRequest) SetTaskflow(v string) *DebugPlaybookRequest {
 }
 
 type DebugPlaybookResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The UUID of the debugging task. You can use the UUID to query the result and other details of the debugging task.
 	RequestUuid *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
 }
 
@@ -389,8 +444,15 @@ func (s *DebugPlaybookResponse) SetBody(v *DebugPlaybookResponseBody) *DebugPlay
 }
 
 type DeleteComponentAssetRequest struct {
-	AssetId *int64  `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the asset.
+	//
+	// >  You can call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to query the ID.
+	AssetId *int64 `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// The language of the content within the request and the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteComponentAssetRequest) String() string {
@@ -412,6 +474,7 @@ func (s *DeleteComponentAssetRequest) SetLang(v string) *DeleteComponentAssetReq
 }
 
 type DeleteComponentAssetResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -458,7 +521,14 @@ func (s *DeleteComponentAssetResponse) SetBody(v *DeleteComponentAssetResponseBo
 }
 
 type DeletePlaybookRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -481,6 +551,7 @@ func (s *DeletePlaybookRequest) SetPlaybookUuid(v string) *DeletePlaybookRequest
 }
 
 type DeletePlaybookResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -527,6 +598,10 @@ func (s *DeletePlaybookResponse) SetBody(v *DeletePlaybookResponseBody) *DeleteP
 }
 
 type DescribeApiListRequest struct {
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -544,8 +619,10 @@ func (s *DescribeApiListRequest) SetLang(v string) *DescribeApiListRequest {
 }
 
 type DescribeApiListResponseBody struct {
-	ApiList   []*DescribeApiListResponseBodyApiList `json:"ApiList,omitempty" xml:"ApiList,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the service.
+	ApiList []*DescribeApiListResponseBodyApiList `json:"ApiList,omitempty" xml:"ApiList,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApiListResponseBody) String() string {
@@ -567,8 +644,11 @@ func (s *DescribeApiListResponseBody) SetRequestId(v string) *DescribeApiListRes
 }
 
 type DescribeApiListResponseBodyApiList struct {
-	DocUrl      *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
-	PopCode     *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
+	// The link to the API references of the Alibaba Cloud service.
+	DocUrl *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
+	// The POP code of the Alibaba Cloud service.
+	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
+	// The name of the Alibaba Cloud service.
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 }
 
@@ -625,8 +705,13 @@ func (s *DescribeApiListResponse) SetBody(v *DescribeApiListResponseBody) *Descr
 }
 
 type DescribeComponentAssetFormRequest struct {
+	// The component name.
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeComponentAssetFormRequest) String() string {
@@ -648,8 +733,15 @@ func (s *DescribeComponentAssetFormRequest) SetLang(v string) *DescribeComponent
 }
 
 type DescribeComponentAssetFormResponseBody struct {
+	// The metadata of the asset in the component. The value is a JSON array and contains the following fields:
+	//
+	// *   **name**: the parameter name.
+	// *   **defaultValue**: the default parameter value.
+	// *   **description**: the parameter description.
+	// *   **required**: indicates whether the parameter is required. Valid values: **true** and **false**.
 	ComponentAssetForm *string `json:"ComponentAssetForm,omitempty" xml:"ComponentAssetForm,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeComponentAssetFormResponseBody) String() string {
@@ -700,8 +792,13 @@ func (s *DescribeComponentAssetFormResponse) SetBody(v *DescribeComponentAssetFo
 }
 
 type DescribeComponentAssetsRequest struct {
+	// The name of the component.
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeComponentAssetsRequest) String() string {
@@ -723,8 +820,10 @@ func (s *DescribeComponentAssetsRequest) SetLang(v string) *DescribeComponentAss
 }
 
 type DescribeComponentAssetsResponseBody struct {
+	// The information about the assets.
 	ComponentAssets []*DescribeComponentAssetsResponseBodyComponentAssets `json:"ComponentAssets,omitempty" xml:"ComponentAssets,omitempty" type:"Repeated"`
-	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeComponentAssetsResponseBody) String() string {
@@ -746,13 +845,22 @@ func (s *DescribeComponentAssetsResponseBody) SetRequestId(v string) *DescribeCo
 }
 
 type DescribeComponentAssetsResponseBodyComponentAssets struct {
-	AssetUuid     *string `json:"AssetUuid,omitempty" xml:"AssetUuid,omitempty"`
+	// The UUID of the asset.
+	AssetUuid *string `json:"AssetUuid,omitempty" xml:"AssetUuid,omitempty"`
+	// The name of the component to which the asset belongs.
 	Componentname *string `json:"Componentname,omitempty" xml:"Componentname,omitempty"`
-	GmtCreate     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Params        *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The time when the asset was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the asset was modified. The time is in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The UUID of the asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the asset.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configurations of the asset in the JSON string format. DescribeComponentAssetForm
+	//
+	// >  For more information, see [DescribeComponentAssetForm](~~DescribeComponentAssetForm~~).
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 }
 
 func (s DescribeComponentAssetsResponseBodyComponentAssets) String() string {
@@ -828,7 +936,14 @@ func (s *DescribeComponentAssetsResponse) SetBody(v *DescribeComponentAssetsResp
 }
 
 type DescribeComponentListRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -851,8 +966,10 @@ func (s *DescribeComponentListRequest) SetPlaybookUuid(v string) *DescribeCompon
 }
 
 type DescribeComponentListResponseBody struct {
+	// The information about the components. The value is a JSON array.
 	Components *string `json:"Components,omitempty" xml:"Components,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeComponentListResponseBody) String() string {
@@ -903,7 +1020,14 @@ func (s *DescribeComponentListResponse) SetBody(v *DescribeComponentListResponse
 }
 
 type DescribeComponentPlaybookRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -926,8 +1050,10 @@ func (s *DescribeComponentPlaybookRequest) SetPlaybookUuid(v string) *DescribeCo
 }
 
 type DescribeComponentPlaybookResponseBody struct {
+	// The information about the predefined components.
 	Playbooks []*DescribeComponentPlaybookResponseBodyPlaybooks `json:"Playbooks,omitempty" xml:"Playbooks,omitempty" type:"Repeated"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeComponentPlaybookResponseBody) String() string {
@@ -949,8 +1075,13 @@ func (s *DescribeComponentPlaybookResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeComponentPlaybookResponseBodyPlaybooks struct {
+	// The description of the predefined component.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the predefined component.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The input parameter configuration of the playbook. The value is a JSON array.
+	//
+	// >  For more information, see [DescribePlaybookInputOutput](~~DescribePlaybookInputOutput~~).
 	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
 }
 
@@ -1007,6 +1138,10 @@ func (s *DescribeComponentPlaybookResponse) SetBody(v *DescribeComponentPlaybook
 }
 
 type DescribeComponentsJsRequest struct {
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -1024,8 +1159,10 @@ func (s *DescribeComponentsJsRequest) SetLang(v string) *DescribeComponentsJsReq
 }
 
 type DescribeComponentsJsResponseBody struct {
+	// The configuration of the JavaScript file for the component.
 	ComponentsJs *string `json:"ComponentsJs,omitempty" xml:"ComponentsJs,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeComponentsJsResponseBody) String() string {
@@ -1076,9 +1213,17 @@ func (s *DescribeComponentsJsResponse) SetBody(v *DescribeComponentsJsResponseBo
 }
 
 type DescribeDistinctReleasesRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	TaskflowMd5  *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
+	// The MD5 value of the playbook XML configuration.
+	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
 }
 
 func (s DescribeDistinctReleasesRequest) String() string {
@@ -1105,8 +1250,10 @@ func (s *DescribeDistinctReleasesRequest) SetTaskflowMd5(v string) *DescribeDist
 }
 
 type DescribeDistinctReleasesResponseBody struct {
-	Records   []*DescribeDistinctReleasesResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The version information.
+	Records []*DescribeDistinctReleasesResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDistinctReleasesResponseBody) String() string {
@@ -1128,7 +1275,9 @@ func (s *DescribeDistinctReleasesResponseBody) SetRequestId(v string) *DescribeD
 }
 
 type DescribeDistinctReleasesResponseBodyRecords struct {
+	// The version description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The MD5 value of the playbook XML configuration.
 	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
 }
 
@@ -1180,8 +1329,15 @@ func (s *DescribeDistinctReleasesResponse) SetBody(v *DescribeDistinctReleasesRe
 }
 
 type DescribeEnumItemsRequest struct {
+	// The type of the enumeration item. Valid values:
+	//
+	// *   **process**: scenarios
 	EnumType *string `json:"EnumType,omitempty" xml:"EnumType,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese (default)
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeEnumItemsRequest) String() string {
@@ -1203,8 +1359,10 @@ func (s *DescribeEnumItemsRequest) SetLang(v string) *DescribeEnumItemsRequest {
 }
 
 type DescribeEnumItemsResponseBody struct {
-	Data      []*DescribeEnumItemsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the enumeration item.
+	Data []*DescribeEnumItemsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEnumItemsResponseBody) String() string {
@@ -1226,7 +1384,9 @@ func (s *DescribeEnumItemsResponseBody) SetRequestId(v string) *DescribeEnumItem
 }
 
 type DescribeEnumItemsResponseBodyData struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the enumeration item.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the enumeration item.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1278,10 +1438,24 @@ func (s *DescribeEnumItemsResponse) SetBody(v *DescribeEnumItemsResponseBody) *D
 }
 
 type DescribeExecutePlaybooksRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ParamType    *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The language of the content within the request and the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The input parameter type of the playbook.
+	//
+	// *   **template-ip**
+	// *   **template-file**
+	// *   **template-process**
+	// *   **custom**
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The playbook name. Fuzzy search is supported.
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeExecutePlaybooksRequest) String() string {
@@ -1313,8 +1487,10 @@ func (s *DescribeExecutePlaybooksRequest) SetUuid(v string) *DescribeExecutePlay
 }
 
 type DescribeExecutePlaybooksResponseBody struct {
+	// The playbook.
 	PlaybookMetrics []*DescribeExecutePlaybooksResponseBodyPlaybookMetrics `json:"PlaybookMetrics,omitempty" xml:"PlaybookMetrics,omitempty" type:"Repeated"`
-	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeExecutePlaybooksResponseBody) String() string {
@@ -1336,11 +1512,23 @@ func (s *DescribeExecutePlaybooksResponseBody) SetRequestId(v string) *DescribeE
 }
 
 type DescribeExecutePlaybooksResponseBodyPlaybookMetrics struct {
+	// The playbook description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The playbook name.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The configuration of the input parameter. The value is a JSON array.
+	//
+	// >  For more information, see [DescribePlaybookInputOutput](~~DescribePlaybookInputOutput~~).
 	ParamConfig *string `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty"`
-	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The input parameter type of the playbook.
+	//
+	// *   **template-ip**
+	// *   **template-file**
+	// *   **template-process**
+	// *   **custom**
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The playbook UUID.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeExecutePlaybooksResponseBodyPlaybookMetrics) String() string {
@@ -1406,7 +1594,14 @@ func (s *DescribeExecutePlaybooksResponse) SetBody(v *DescribeExecutePlaybooksRe
 }
 
 type DescribeFieldRequest struct {
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The key of the global configuration. Valid values:
+	//
+	// *   **soar_filed_tags**: queries the input template of the playbook.
 	QueryKey *string `json:"QueryKey,omitempty" xml:"QueryKey,omitempty"`
 }
 
@@ -1429,8 +1624,11 @@ func (s *DescribeFieldRequest) SetQueryKey(v string) *DescribeFieldRequest {
 }
 
 type DescribeFieldResponseBody struct {
-	Fields    *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration content.
+	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// The name of the global configuration.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1487,7 +1685,14 @@ func (s *DescribeFieldResponse) SetBody(v *DescribeFieldResponseBody) *DescribeF
 }
 
 type DescribeLatestRecordSchemaRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -1510,8 +1715,10 @@ func (s *DescribeLatestRecordSchemaRequest) SetPlaybookUuid(v string) *DescribeL
 }
 
 type DescribeLatestRecordSchemaResponseBody struct {
+	// The output structure information of the playbook.
 	PlaybookNodeSchema *DescribeLatestRecordSchemaResponseBodyPlaybookNodeSchema `json:"PlaybookNodeSchema,omitempty" xml:"PlaybookNodeSchema,omitempty" type:"Struct"`
-	RequestId          *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLatestRecordSchemaResponseBody) String() string {
@@ -1533,6 +1740,7 @@ func (s *DescribeLatestRecordSchemaResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeLatestRecordSchemaResponseBodyPlaybookNodeSchema struct {
+	// The structure information.
 	NodeSchema []*DescribeLatestRecordSchemaResponseBodyPlaybookNodeSchemaNodeSchema `json:"NodeSchema,omitempty" xml:"NodeSchema,omitempty" type:"Repeated"`
 }
 
@@ -1550,10 +1758,14 @@ func (s *DescribeLatestRecordSchemaResponseBodyPlaybookNodeSchema) SetNodeSchema
 }
 
 type DescribeLatestRecordSchemaResponseBodyPlaybookNodeSchemaNodeSchema struct {
-	ActionName    *string   `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	ComponentName *string   `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	NodeName      *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	OutputFields  []*string `json:"OutputFields,omitempty" xml:"OutputFields,omitempty" type:"Repeated"`
+	// The action name of the component.
+	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// The name of the component.
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The name of the node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The output fields.
+	OutputFields []*string `json:"OutputFields,omitempty" xml:"OutputFields,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLatestRecordSchemaResponseBodyPlaybookNodeSchemaNodeSchema) String() string {
@@ -1614,8 +1826,16 @@ func (s *DescribeLatestRecordSchemaResponse) SetBody(v *DescribeLatestRecordSche
 }
 
 type DescribeNodeParamTagsRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NodeName     *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -1643,8 +1863,10 @@ func (s *DescribeNodeParamTagsRequest) SetPlaybookUuid(v string) *DescribeNodePa
 }
 
 type DescribeNodeParamTagsResponseBody struct {
+	// The configuration of the recommended path.
 	ParamReferredPaths []*DescribeNodeParamTagsResponseBodyParamReferredPaths `json:"ParamReferredPaths,omitempty" xml:"ParamReferredPaths,omitempty" type:"Repeated"`
-	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNodeParamTagsResponseBody) String() string {
@@ -1666,7 +1888,9 @@ func (s *DescribeNodeParamTagsResponseBody) SetRequestId(v string) *DescribeNode
 }
 
 type DescribeNodeParamTagsResponseBodyParamReferredPaths struct {
-	ParamName    *string   `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// The name of the upstream node.
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// The paths.
 	ReferredPath []*string `json:"ReferredPath,omitempty" xml:"ReferredPath,omitempty" type:"Repeated"`
 }
 
@@ -1718,8 +1942,16 @@ func (s *DescribeNodeParamTagsResponse) SetBody(v *DescribeNodeParamTagsResponse
 }
 
 type DescribeNodeUsedInfosRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NodeName     *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The node name of the component.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -1747,8 +1979,15 @@ func (s *DescribeNodeUsedInfosRequest) SetPlaybookUuid(v string) *DescribeNodeUs
 }
 
 type DescribeNodeUsedInfosResponseBody struct {
+	// The node reference information. The value is in the JSON format and contains the following fields:
+	//
+	// *   **action**: the referencing action. This field contains the following information:
+	//
+	//     *   **name**: the name of the referencing node.
+	//     *   **inputParams**: the parameter settings of the referencing node.
 	NodeUsedInfos *string `json:"NodeUsedInfos,omitempty" xml:"NodeUsedInfos,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNodeUsedInfosResponseBody) String() string {
@@ -1799,10 +2038,22 @@ func (s *DescribeNodeUsedInfosResponse) SetBody(v *DescribeNodeUsedInfosResponse
 }
 
 type DescribePlaybookRequest struct {
-	DebugFlag    *int32  `json:"DebugFlag,omitempty" xml:"DebugFlag,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The flag that indicates whether the playbook is of the debugging or published version. Valid values:
+	//
+	// *   **1**: playbook of the debugging version
+	// *   **0**: playbook of the published version
+	DebugFlag *int32 `json:"DebugFlag,omitempty" xml:"DebugFlag,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	TaskflowMd5  *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
+	// The MD5 hash value of the playbook.
+	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
 }
 
 func (s DescribePlaybookRequest) String() string {
@@ -1834,8 +2085,10 @@ func (s *DescribePlaybookRequest) SetTaskflowMd5(v string) *DescribePlaybookRequ
 }
 
 type DescribePlaybookResponseBody struct {
-	Playbook  *DescribePlaybookResponseBodyPlaybook `json:"Playbook,omitempty" xml:"Playbook,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configuration of the playbook.
+	Playbook *DescribePlaybookResponseBodyPlaybook `json:"Playbook,omitempty" xml:"Playbook,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePlaybookResponseBody) String() string {
@@ -1857,21 +2110,44 @@ func (s *DescribePlaybookResponseBody) SetRequestId(v string) *DescribePlaybookR
 }
 
 type DescribePlaybookResponseBodyPlaybook struct {
-	Creator                  *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName              *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	FailExeNum               *int32  `json:"FailExeNum,omitempty" xml:"FailExeNum,omitempty"`
-	GmtCreate                *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified              *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InputParams              *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
-	LastExeTime              *int64  `json:"LastExeTime,omitempty" xml:"LastExeTime,omitempty"`
-	Modifier                 *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	OnlineActive             *bool   `json:"OnlineActive,omitempty" xml:"OnlineActive,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the playbook.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The description of the playbook.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the playbook.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The number of times that the playbook failed to be run.
+	FailExeNum *int32 `json:"FailExeNum,omitempty" xml:"FailExeNum,omitempty"`
+	// The creation time of the playbook. The value is a 13-digit timestamp.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time of the playbook. The value is a 13-digit timestamp.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The input parameter configuration of the playbook. The value is a JSON array.
+	//
+	// >  For more information, see [DescribePlaybookInputOutput](~~DescribePlaybookInputOutput~~).
+	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	// The time when the playbook was last run. The value is a 13-digit timestamp.
+	LastExeTime *int64 `json:"LastExeTime,omitempty" xml:"LastExeTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to modify the playbook.
+	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The status of the playbook. Valid values:
+	//
+	// *   **0**: disabled
+	// *   **1**: enabled
+	OnlineActive *bool `json:"OnlineActive,omitempty" xml:"OnlineActive,omitempty"`
+	// The MD5 hash value in the latest published version of the playbook.
 	OnlineReleaseTaskflowMd5 *string `json:"OnlineReleaseTaskflowMd5,omitempty" xml:"OnlineReleaseTaskflowMd5,omitempty"`
-	OwnType                  *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	PlaybookUuid             *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	SuccessExeNum            *int32  `json:"SuccessExeNum,omitempty" xml:"SuccessExeNum,omitempty"`
-	Taskflow                 *string `json:"Taskflow,omitempty" xml:"Taskflow,omitempty"`
+	// The type of the playbook. Valid values:
+	//
+	// *   **preset**: predefined playbook
+	// *   **user**: custom playbook
+	OwnType *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	// The UUID of the playbook.
+	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// The number of times that the playbook was successfully run.
+	SuccessExeNum *int32 `json:"SuccessExeNum,omitempty" xml:"SuccessExeNum,omitempty"`
+	// The XML configuration of the playbook.
+	Taskflow *string `json:"Taskflow,omitempty" xml:"Taskflow,omitempty"`
 }
 
 func (s DescribePlaybookResponseBodyPlaybook) String() string {
@@ -1987,7 +2263,14 @@ func (s *DescribePlaybookResponse) SetBody(v *DescribePlaybookResponseBody) *Des
 }
 
 type DescribePlaybookInputOutputRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -2010,8 +2293,10 @@ func (s *DescribePlaybookInputOutputRequest) SetPlaybookUuid(v string) *Describe
 }
 
 type DescribePlaybookInputOutputResponseBody struct {
-	Config    *DescribePlaybookInputOutputResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations.
+	Config *DescribePlaybookInputOutputResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePlaybookInputOutputResponseBody) String() string {
@@ -2033,9 +2318,19 @@ func (s *DescribePlaybookInputOutputResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribePlaybookInputOutputResponseBodyConfig struct {
-	InputParams  *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	ExeConfig *string `json:"ExeConfig,omitempty" xml:"ExeConfig,omitempty"`
+	// The input parameter configuration of the playbook. The value is a JSON array.
+	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	// The output parameter configuration. This parameter is unavailable and is always left empty.
 	OutputParams *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
-	ParamType    *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The input parameter type of the playbook. Valid values:
+	//
+	// *   **template-ip**
+	// *   **template-file**
+	// *   **template-process**
+	// *   **custom**
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The UUID of the playbook.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -2045,6 +2340,11 @@ func (s DescribePlaybookInputOutputResponseBodyConfig) String() string {
 
 func (s DescribePlaybookInputOutputResponseBodyConfig) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePlaybookInputOutputResponseBodyConfig) SetExeConfig(v string) *DescribePlaybookInputOutputResponseBodyConfig {
+	s.ExeConfig = &v
+	return s
 }
 
 func (s *DescribePlaybookInputOutputResponseBodyConfig) SetInputParams(v string) *DescribePlaybookInputOutputResponseBodyConfig {
@@ -2097,7 +2397,14 @@ func (s *DescribePlaybookInputOutputResponse) SetBody(v *DescribePlaybookInputOu
 }
 
 type DescribePlaybookMetricsRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -2120,8 +2427,10 @@ func (s *DescribePlaybookMetricsRequest) SetPlaybookUuid(v string) *DescribePlay
 }
 
 type DescribePlaybookMetricsResponseBody struct {
-	Metrics   *DescribePlaybookMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the playbook.
+	Metrics *DescribePlaybookMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePlaybookMetricsResponseBody) String() string {
@@ -2143,16 +2452,32 @@ func (s *DescribePlaybookMetricsResponseBody) SetRequestId(v string) *DescribePl
 }
 
 type DescribePlaybookMetricsResponseBodyMetrics struct {
-	Active       *int32  `json:"Active,omitempty" xml:"Active,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	FailNum      *int32  `json:"FailNum,omitempty" xml:"FailNum,omitempty"`
-	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	HistoryMd5   *int32  `json:"HistoryMd5,omitempty" xml:"HistoryMd5,omitempty"`
-	LastRuntime  *int64  `json:"LastRuntime,omitempty" xml:"LastRuntime,omitempty"`
-	OwnType      *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	// The status of the playbook. Valid values:
+	//
+	// *   **1**: enabled
+	// *   **0**: disabled
+	Active *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The description of the playbook.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the playbook.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The number of the tasks that are created for the playbook and failed to run.
+	FailNum *int32 `json:"FailNum,omitempty" xml:"FailNum,omitempty"`
+	// The time when the playbook was created. The value is a 13-digit timestamp.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The number of historical versions of the playbook.
+	HistoryMd5 *int32 `json:"HistoryMd5,omitempty" xml:"HistoryMd5,omitempty"`
+	// The time when the playbook was last run. The value is a 13-digit timestamp.
+	LastRuntime *int64 `json:"LastRuntime,omitempty" xml:"LastRuntime,omitempty"`
+	// The type of the playbook. Valid values:
+	//
+	// *   **preset**: predefined playbook
+	// *   **user**: custom playbook
+	OwnType *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	// The UUID of the playbook.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	SuccNum      *int32  `json:"SuccNum,omitempty" xml:"SuccNum,omitempty"`
+	// The number of the tasks that are created for the playbook and were successfully run.
+	SuccNum *int32 `json:"SuccNum,omitempty" xml:"SuccNum,omitempty"`
 }
 
 func (s DescribePlaybookMetricsResponseBodyMetrics) String() string {
@@ -2243,8 +2568,16 @@ func (s *DescribePlaybookMetricsResponse) SetBody(v *DescribePlaybookMetricsResp
 }
 
 type DescribePlaybookNodesOutputRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NodeName     *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the component node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -2272,8 +2605,10 @@ func (s *DescribePlaybookNodesOutputRequest) SetPlaybookUuid(v string) *Describe
 }
 
 type DescribePlaybookNodesOutputResponseBody struct {
+	// The output data of the component node.
 	PlaybookNodesOutput *DescribePlaybookNodesOutputResponseBodyPlaybookNodesOutput `json:"PlaybookNodesOutput,omitempty" xml:"PlaybookNodesOutput,omitempty" type:"Struct"`
-	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePlaybookNodesOutputResponseBody) String() string {
@@ -2295,7 +2630,9 @@ func (s *DescribePlaybookNodesOutputResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribePlaybookNodesOutputResponseBodyPlaybookNodesOutput struct {
-	NodeName   *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The name of the component node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The historical output data of the component node. The value is in the JSON string format. If no data is found, the parameter is left empty.
 	NodeOutput *string `json:"NodeOutput,omitempty" xml:"NodeOutput,omitempty"`
 }
 
@@ -2347,6 +2684,10 @@ func (s *DescribePlaybookNodesOutputResponse) SetBody(v *DescribePlaybookNodesOu
 }
 
 type DescribePlaybookNumberMetricsRequest struct {
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -2364,8 +2705,10 @@ func (s *DescribePlaybookNumberMetricsRequest) SetLang(v string) *DescribePlaybo
 }
 
 type DescribePlaybookNumberMetricsResponseBody struct {
-	Metrics   *DescribePlaybookNumberMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics.
+	Metrics *DescribePlaybookNumberMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePlaybookNumberMetricsResponseBody) String() string {
@@ -2387,8 +2730,10 @@ func (s *DescribePlaybookNumberMetricsResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribePlaybookNumberMetricsResponseBodyMetrics struct {
+	// The number of enabled playbooks.
 	StartUpNum *int32 `json:"StartUpNum,omitempty" xml:"StartUpNum,omitempty"`
-	TotalNum   *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of playbooks.
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s DescribePlaybookNumberMetricsResponseBodyMetrics) String() string {
@@ -2439,9 +2784,18 @@ func (s *DescribePlaybookNumberMetricsResponse) SetBody(v *DescribePlaybookNumbe
 }
 
 type DescribePlaybookReleasesRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Default value: 1. Pages start from page 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. If you do not specify the PageSize parameter, 10 entries are returned by default.
+	//
+	// >  We recommend that you do not leave this parameter empty.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -2474,9 +2828,12 @@ func (s *DescribePlaybookReleasesRequest) SetPlaybookUuid(v string) *DescribePla
 }
 
 type DescribePlaybookReleasesResponseBody struct {
-	Page      *DescribePlaybookReleasesResponseBodyPage      `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	Records   []*DescribePlaybookReleasesResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination information.
+	Page *DescribePlaybookReleasesResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The information about the playbook version.
+	Records []*DescribePlaybookReleasesResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePlaybookReleasesResponseBody) String() string {
@@ -2503,8 +2860,11 @@ func (s *DescribePlaybookReleasesResponseBody) SetRequestId(v string) *DescribeP
 }
 
 type DescribePlaybookReleasesResponseBodyPage struct {
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2532,11 +2892,17 @@ func (s *DescribePlaybookReleasesResponseBodyPage) SetTotalCount(v int32) *Descr
 }
 
 type DescribePlaybookReleasesResponseBodyRecords struct {
-	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to publish the version.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The description of the layer version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the version was created. The value is a 13-digit timestamp.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the version was modified. The value is a 13-digit timestamp.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The record ID.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The MD5 value configured for the published version of the playbook.
 	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
 }
 
@@ -2608,15 +2974,39 @@ func (s *DescribePlaybookReleasesResponse) SetBody(v *DescribePlaybookReleasesRe
 }
 
 type DescribePlaybooksRequest struct {
-	Active       *int32  `json:"Active,omitempty" xml:"Active,omitempty"`
-	EndMillis    *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnType      *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the playbook. Valid values:
+	//
+	// *   **1**: enabled
+	// *   **0**: disabled
+	Active *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The end of the time range to query. The value is a 13-digit timestamp.
+	EndMillis *int64 `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the playbook.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the playbook. Valid values:
+	//
+	// *   **preset**: predefined playbook
+	// *   **user**: custom playbook
+	OwnType *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	// The page number. Default value: 1. Pages start from page 1.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. If you leave this parameter empty, 10 entries are returned on each page.
+	//
+	// >  We recommend that you do not leave this parameter empty.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can use the UUID to query the information about a specific playbook.
+	//
+	// *   You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	StartMillis  *int64  `json:"StartMillis,omitempty" xml:"StartMillis,omitempty"`
+	// The beginning of the time range to query. The value is a 13-digit timestamp.
+	StartMillis *int64 `json:"StartMillis,omitempty" xml:"StartMillis,omitempty"`
 }
 
 func (s DescribePlaybooksRequest) String() string {
@@ -2673,9 +3063,12 @@ func (s *DescribePlaybooksRequest) SetStartMillis(v int64) *DescribePlaybooksReq
 }
 
 type DescribePlaybooksResponseBody struct {
-	Page      *DescribePlaybooksResponseBodyPage        `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The pagination information.
+	Page *DescribePlaybooksResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The list of playbooks.
 	Playbooks []*DescribePlaybooksResponseBodyPlaybooks `json:"Playbooks,omitempty" xml:"Playbooks,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePlaybooksResponseBody) String() string {
@@ -2702,8 +3095,11 @@ func (s *DescribePlaybooksResponseBody) SetRequestId(v string) *DescribePlaybook
 }
 
 type DescribePlaybooksResponseBodyPage struct {
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2731,11 +3127,23 @@ func (s *DescribePlaybooksResponseBodyPage) SetTotalCount(v int32) *DescribePlay
 }
 
 type DescribePlaybooksResponseBodyPlaybooks struct {
-	Active       *int32  `json:"Active,omitempty" xml:"Active,omitempty"`
-	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	LastRuntime  *int64  `json:"LastRuntime,omitempty" xml:"LastRuntime,omitempty"`
-	OwnType      *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	// The playbook status. Valid values:
+	//
+	// *   **1**: The playbook is started.
+	// *   **0**: The playbook is stopped.
+	Active *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The display name of the playbook.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the playbook was created. The value is a 13-digit timestamp.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the playbook was last run. The value is a 13-digit timestamp.
+	LastRuntime *int64 `json:"LastRuntime,omitempty" xml:"LastRuntime,omitempty"`
+	// The type of the playbook. Valid values:
+	//
+	// *   **preset**: predefined playbook
+	// *   **user**: custom playbook
+	OwnType *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	// The UUID of the playbook.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -2807,10 +3215,18 @@ func (s *DescribePlaybooksResponse) SetBody(v *DescribePlaybooksResponseBody) *D
 }
 
 type DescribePopApiRequest struct {
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The operation name of the Alibaba Cloud service.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The version number of the API.
+	//
+	// >  You can call the [DescribePopApiVersionList](~~DescribePopApiVersionList~~) operation to query the version number.
 	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	Env        *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	PopCode    *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
+	// The environment in which the API operation parameter is used. Set the value to online.
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The POP code of the Alibaba Cloud service.
+	//
+	// >  You can call the [DescribeApiList](~~DescribeApiList~~) operation to query the POP code.
+	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
 }
 
 func (s DescribePopApiRequest) String() string {
@@ -2842,11 +3258,16 @@ func (s *DescribePopApiRequest) SetPopCode(v string) *DescribePopApiRequest {
 }
 
 type DescribePopApiResponseBody struct {
-	ApiName         *string                                      `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The name of the API.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The information about the API.
 	OpenApiMetaList []*DescribePopApiResponseBodyOpenApiMetaList `json:"OpenApiMetaList,omitempty" xml:"OpenApiMetaList,omitempty" type:"Repeated"`
-	PopCode         *string                                      `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
-	RequestId       *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Version         *string                                      `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The POP code of the Alibaba Cloud service.
+	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The version of the API.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribePopApiResponseBody) String() string {
@@ -2883,11 +3304,24 @@ func (s *DescribePopApiResponseBody) SetVersion(v string) *DescribePopApiRespons
 }
 
 type DescribePopApiResponseBodyOpenApiMetaList struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The example value.
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Required     *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The parameter name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the parameter is required.
+	//
+	// *   true
+	// *   false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// The data type of the parameter field. Valid values:
+	//
+	// *   **string**
+	// *   **boolean**
+	// *   **integer**
+	// *   **long**
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribePopApiResponseBodyOpenApiMetaList) String() string {
@@ -2953,11 +3387,23 @@ func (s *DescribePopApiResponse) SetBody(v *DescribePopApiResponseBody) *Describ
 }
 
 type DescribePopApiItemListRequest struct {
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The API operation name of the Alibaba Cloud service. Fuzzy match is supported.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The version number of the API.
+	//
+	// >  You can call the [DescribePopApiVersionList](~~DescribePopApiVersionList~~) operation to query the version number.
 	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	Env        *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PopCode    *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
+	// The environment in which the API operation parameters are used. Set the value to online.
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The POP code of the Alibaba Cloud service.
+	//
+	// >  You can call the [DescribeApiList](~~DescribeApiList~~) operation to query the POP code.
+	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
 }
 
 func (s DescribePopApiItemListRequest) String() string {
@@ -2994,11 +3440,16 @@ func (s *DescribePopApiItemListRequest) SetPopCode(v string) *DescribePopApiItem
 }
 
 type DescribePopApiItemListResponseBody struct {
-	Names     []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
-	PopCode   *string   `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64    `json:"Total,omitempty" xml:"Total,omitempty"`
-	Version   *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The names of API operations.
+	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// The POP code of the Alibaba Cloud service.
+	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The version number of the API for the Alibaba Cloud service.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribePopApiItemListResponseBody) String() string {
@@ -3064,8 +3515,16 @@ func (s *DescribePopApiItemListResponse) SetBody(v *DescribePopApiItemListRespon
 }
 
 type DescribePopApiVersionListRequest struct {
-	Env     *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The environment in which the API operation parameters are used. Set the value to **online**.
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The POP code of the Alibaba Cloud service.
+	//
+	// >  You can call the [DescribeApiList](~~DescribeApiList~~) operation to query the POP code.
 	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
 }
 
@@ -3093,9 +3552,13 @@ func (s *DescribePopApiVersionListRequest) SetPopCode(v string) *DescribePopApiV
 }
 
 type DescribePopApiVersionListResponseBody struct {
-	PopCode     *string                                             `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
-	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total       *int32                                              `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The POP code of the Alibaba Cloud service.
+	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The information about the versions of API operations.
 	VersionList []*DescribePopApiVersionListResponseBodyVersionList `json:"VersionList,omitempty" xml:"VersionList,omitempty" type:"Repeated"`
 }
 
@@ -3128,8 +3591,11 @@ func (s *DescribePopApiVersionListResponseBody) SetVersionList(v []*DescribePopA
 }
 
 type DescribePopApiVersionListResponseBodyVersionList struct {
+	// The name of the API operation.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The POP code of the Alibaba Cloud service.
 	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
+	// The version number of the API for the Alibaba Cloud service.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -3186,24 +3652,79 @@ func (s *DescribePopApiVersionListResponse) SetBody(v *DescribePopApiVersionList
 }
 
 type DescribeProcessTasksRequest struct {
-	Direction           *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EntityName          *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	EntityType          *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	OrderField          *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	PageNumber          *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ParamContent        *string `json:"ParamContent,omitempty" xml:"ParamContent,omitempty"`
-	ProcessActionEnd    *int64  `json:"ProcessActionEnd,omitempty" xml:"ProcessActionEnd,omitempty"`
-	ProcessActionStart  *int64  `json:"ProcessActionStart,omitempty" xml:"ProcessActionStart,omitempty"`
-	ProcessRemoveEnd    *int64  `json:"ProcessRemoveEnd,omitempty" xml:"ProcessRemoveEnd,omitempty"`
-	ProcessRemoveStart  *int64  `json:"ProcessRemoveStart,omitempty" xml:"ProcessRemoveStart,omitempty"`
+	// The sort order. Valid values:
+	//
+	// *   **desc** (default)
+	// *   **asc**
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The name of the handling entity.
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The type of the handling entity. Valid values:
+	//
+	// *   **ip**
+	// *   **file**
+	// *   **process**
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The field that you use to sort the result.
+	//
+	// >  You can obtain the field from the response result.
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The page number. Default value: 1. Pages start from page 1.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. If you do not specify the PageSize parameter, 10 entries are returned by default.
+	//
+	// >  We recommend that you do not leave this parameter empty.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The handling entity, handling scenario, or handling parameter that is used for fuzzy match.
+	ParamContent *string `json:"ParamContent,omitempty" xml:"ParamContent,omitempty"`
+	// The end of the time range for a handling task. The value is a 13-digit timestamp.
+	ProcessActionEnd *int64 `json:"ProcessActionEnd,omitempty" xml:"ProcessActionEnd,omitempty"`
+	// The beginning of the time range for a handling task. The value is a 13-digit timestamp.
+	ProcessActionStart *int64 `json:"ProcessActionStart,omitempty" xml:"ProcessActionStart,omitempty"`
+	// The end of the time range for an unblocking task. The value is a 13-digit timestamp.
+	ProcessRemoveEnd *int64 `json:"ProcessRemoveEnd,omitempty" xml:"ProcessRemoveEnd,omitempty"`
+	// The beginning of the time range for an unblocking task. The value is a 13-digit timestamp.
+	ProcessRemoveStart *int64 `json:"ProcessRemoveStart,omitempty" xml:"ProcessRemoveStart,omitempty"`
+	// The UUID of the handling policy.
+	//
+	// >  You can call the [ListDisposeStrategy](~~2584440~~) operation to query the UUID of the handling policy.
 	ProcessStrategyUuid *string `json:"ProcessStrategyUuid,omitempty" xml:"ProcessStrategyUuid,omitempty"`
-	SceneCode           *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	Scope               *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	YunCode             *string `json:"YunCode,omitempty" xml:"YunCode,omitempty"`
+	// The scenario code of the handling task.
+	//
+	// >  You can call the [DescribeEnumItems](~~DescribeEnumItems~~) operation to query the scenario code of the handling task. This parameter is available when you set **EnumType** to **process**.
+	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// The ID of the Alibaba Cloud account that is specified in the handling task.
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The triggering source of the handling task. The value is a string array. Valid values:
+	//
+	// *   **system**: triggered when you manually handle an event
+	// *   **custom**: triggered by an event based on an automatic response rule
+	// *   **custom_alert**: triggered by an alert based on an automatic response rule
+	// *   **soar-manual**: triggered when you use SOAR to manually run a playbook
+	// *   **soar-mdr**: triggered by Managed Security Service
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The unique identifier of the handling task.
+	//
+	// >  This parameter is used to query a specific task. You can obtain the value from the response result.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The status of the handling task. The value is a string. Valid values:
+	//
+	// *   **11**: being handled
+	// *   **21**: being blocked
+	// *   **22**: being quarantined
+	// *   **23**: completed
+	// *   **24**: added to the whitelist
+	// *   **20**: successful
+	// *   **90**: failed
+	// *   **91**: unblocking failed
+	// *   **92**: restoring quarantined files failed
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The cloud service that is associated with the handling task. The value is a string. Valid values:
+	//
+	// *   **WAF**: Web Application Firewall (WAF)
+	// *   **CFW**: Cloud Firewall
+	// *   **Aegis**: Security Center
+	YunCode *string `json:"YunCode,omitempty" xml:"YunCode,omitempty"`
 }
 
 func (s DescribeProcessTasksRequest) String() string {
@@ -3305,9 +3826,12 @@ func (s *DescribeProcessTasksRequest) SetYunCode(v string) *DescribeProcessTasks
 }
 
 type DescribeProcessTasksResponseBody struct {
-	Page         *DescribeProcessTasksResponseBodyPage           `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The pagination information.
+	Page *DescribeProcessTasksResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The handling tasks.
 	ProcessTasks []*DescribeProcessTasksResponseBodyProcessTasks `json:"ProcessTasks,omitempty" xml:"ProcessTasks,omitempty" type:"Repeated"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeProcessTasksResponseBody) String() string {
@@ -3334,8 +3858,11 @@ func (s *DescribeProcessTasksResponseBody) SetRequestId(v string) *DescribeProce
 }
 
 type DescribeProcessTasksResponseBodyPage struct {
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3363,22 +3890,38 @@ func (s *DescribeProcessTasksResponseBodyPage) SetTotalCount(v int32) *DescribeP
 }
 
 type DescribeProcessTasksResponseBodyProcessTasks struct {
-	Creator             *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	EntityName          *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	EntityType          *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	GmtCreateMillis     *int64  `json:"GmtCreateMillis,omitempty" xml:"GmtCreateMillis,omitempty"`
-	GmtModifiedMillis   *int64  `json:"GmtModifiedMillis,omitempty" xml:"GmtModifiedMillis,omitempty"`
-	InputParams         *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to submit the handling task.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The name of the handling entity.
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The type of the handling entity.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The creation time of the handling task. The value is a 13-digit timestamp.
+	GmtCreateMillis *int64 `json:"GmtCreateMillis,omitempty" xml:"GmtCreateMillis,omitempty"`
+	// The modification time of the handling task. The value is a 13-digit timestamp.
+	GmtModifiedMillis *int64 `json:"GmtModifiedMillis,omitempty" xml:"GmtModifiedMillis,omitempty"`
+	// The input parameter of the handling task.
+	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	// The ID of the associated policy.
 	ProcessStrategyUuid *string `json:"ProcessStrategyUuid,omitempty" xml:"ProcessStrategyUuid,omitempty"`
-	ProcessTime         *int64  `json:"ProcessTime,omitempty" xml:"ProcessTime,omitempty"`
-	RemoveTime          *int64  `json:"RemoveTime,omitempty" xml:"RemoveTime,omitempty"`
-	SceneCode           *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	SceneName           *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	Scope               *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus          *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	YunCode             *string `json:"YunCode,omitempty" xml:"YunCode,omitempty"`
+	// The delivery time of the handling task. The value is a 13-digit timestamp.
+	ProcessTime *int64 `json:"ProcessTime,omitempty" xml:"ProcessTime,omitempty"`
+	// The unblocking time of the handling task. The value is a 13-digit timestamp.
+	RemoveTime *int64 `json:"RemoveTime,omitempty" xml:"RemoveTime,omitempty"`
+	// The scenario code of the handling task.
+	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// The scenario name of the handling task.
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// The ID of the Alibaba Cloud account that is specified in the handling task.
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The submission source of the handling task.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The unique identifier of the handling task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The status of the handling task.
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The code of the cloud service that is associated with the handling task.
+	YunCode *string `json:"YunCode,omitempty" xml:"YunCode,omitempty"`
 }
 
 func (s DescribeProcessTasksResponseBodyProcessTasks) String() string {
@@ -3499,10 +4042,21 @@ func (s *DescribeProcessTasksResponse) SetBody(v *DescribeProcessTasksResponseBo
 }
 
 type DescribeSoarRecordActionOutputListRequest struct {
+	// The UUID of the component action.
+	//
+	// >  You can call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) operation to query the UUID.
 	ActionUuid *string `json:"ActionUuid,omitempty" xml:"ActionUuid,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Default value: 1. Pages start from page 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. If you leave this parameter empty, 10 entries are returned on each page.
+	//
+	// >  We recommend that you do not leave this parameter empty.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeSoarRecordActionOutputListRequest) String() string {
@@ -3534,11 +4088,18 @@ func (s *DescribeSoarRecordActionOutputListRequest) SetPageSize(v int32) *Descri
 }
 
 type DescribeSoarRecordActionOutputListResponseBody struct {
+	// The data that is returned when the component action is performed. The value is a JSON array.
+	//
+	// >  The format of the output data is determined by the component that is configured when the playbook is written.
 	ActionOutputs *string `json:"ActionOutputs,omitempty" xml:"ActionOutputs,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of pages returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSoarRecordActionOutputListResponseBody) String() string {
@@ -3604,8 +4165,15 @@ func (s *DescribeSoarRecordActionOutputListResponse) SetBody(v *DescribeSoarReco
 }
 
 type DescribeSoarRecordInOutputRequest struct {
+	// The UUID of the component action.
+	//
+	// >  You can call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) operation to query the UUIDs of component actions.
 	ActionUuid *string `json:"ActionUuid,omitempty" xml:"ActionUuid,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeSoarRecordInOutputRequest) String() string {
@@ -3627,8 +4195,10 @@ func (s *DescribeSoarRecordInOutputRequest) SetLang(v string) *DescribeSoarRecor
 }
 
 type DescribeSoarRecordInOutputResponseBody struct {
+	// The execution result of the component action.
 	InOutputInfo *string `json:"InOutputInfo,omitempty" xml:"InOutputInfo,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSoarRecordInOutputResponseBody) String() string {
@@ -3679,15 +4249,35 @@ func (s *DescribeSoarRecordInOutputResponse) SetBody(v *DescribeSoarRecordInOutp
 }
 
 type DescribeSoarRecordsRequest struct {
-	EndMillis    *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The end of the time range to query. The value is a 13-digit timestamp.
+	EndMillis *int64 `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Default value: 1. Pages start from page 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. If you do not specify the PageSize parameter, 10 entries are returned by default.
+	//
+	// >  We recommend that you do not leave this parameter empty.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	StartMillis  *int64  `json:"StartMillis,omitempty" xml:"StartMillis,omitempty"`
-	TaskStatus   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskflowMd5  *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
-	TriggerUser  *string `json:"TriggerUser,omitempty" xml:"TriggerUser,omitempty"`
+	// The beginning of the time range to query. The value is a 13-byte timestamp.
+	StartMillis *int64 `json:"StartMillis,omitempty" xml:"StartMillis,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   **success**
+	// *   **failed**
+	// *   **inprogress**
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The MD5 value of the playbook.
+	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to execute the task.
+	TriggerUser *string `json:"TriggerUser,omitempty" xml:"TriggerUser,omitempty"`
 }
 
 func (s DescribeSoarRecordsRequest) String() string {
@@ -3744,8 +4334,11 @@ func (s *DescribeSoarRecordsRequest) SetTriggerUser(v string) *DescribeSoarRecor
 }
 
 type DescribeSoarRecordsResponseBody struct {
-	Page               *DescribeSoarRecordsResponseBodyPage                 `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination information.
+	Page *DescribeSoarRecordsResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution records.
 	SoarExecuteRecords []*DescribeSoarRecordsResponseBodySoarExecuteRecords `json:"SoarExecuteRecords,omitempty" xml:"SoarExecuteRecords,omitempty" type:"Repeated"`
 }
 
@@ -3773,8 +4366,11 @@ func (s *DescribeSoarRecordsResponseBody) SetSoarExecuteRecords(v []*DescribeSoa
 }
 
 type DescribeSoarRecordsResponseBodyPage struct {
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3802,18 +4398,41 @@ func (s *DescribeSoarRecordsResponseBodyPage) SetTotalCount(v int32) *DescribeSo
 }
 
 type DescribeSoarRecordsResponseBodySoarExecuteRecords struct {
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ErrorMsg      *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RawEventReq   *string `json:"RawEventReq,omitempty" xml:"RawEventReq,omitempty"`
-	RequestUuid   *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
+	// The end of the time range to query. The value is a 13-digit timestamp.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error message of the task. If the task is successful, this field is empty.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The request parameters of the task.
+	RawEventReq *string `json:"RawEventReq,omitempty" xml:"RawEventReq,omitempty"`
+	// The request ID of the task. The value is unique.
+	RequestUuid *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
+	// The returned information about the playbook. You can define the value in the playbook.
 	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TaskflowMd5   *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
-	TriggerType   *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	TriggerUser   *string `json:"TriggerUser,omitempty" xml:"TriggerUser,omitempty"`
+	// The beginning of the time range to query. The value is a 13-byte timestamp.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	// *   **running**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the task. The value is the same as the playbook UUID.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// *   **general**: a common task
+	// *   **standard**: a component task
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The MD5 value of the playbook.
+	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// *   **debug**: a debugging task
+	// *   **manual**: a manual task
+	// *   **siem**: a task that is triggered by an event or alert
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to execute the task.
+	TriggerUser *string `json:"TriggerUser,omitempty" xml:"TriggerUser,omitempty"`
 }
 
 func (s DescribeSoarRecordsResponseBodySoarExecuteRecords) String() string {
@@ -3914,7 +4533,12 @@ func (s *DescribeSoarRecordsResponse) SetBody(v *DescribeSoarRecordsResponseBody
 }
 
 type DescribeSoarTaskAndActionsRequest struct {
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response.
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The playbook UUID.
 	RequestUuid *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
 }
 
@@ -3937,8 +4561,10 @@ func (s *DescribeSoarTaskAndActionsRequest) SetRequestUuid(v string) *DescribeSo
 }
 
 type DescribeSoarTaskAndActionsResponseBody struct {
-	Details   *DescribeSoarTaskAndActionsResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Struct"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution details of each task.
+	Details *DescribeSoarTaskAndActionsResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSoarTaskAndActionsResponseBody) String() string {
@@ -3960,20 +4586,42 @@ func (s *DescribeSoarTaskAndActionsResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeSoarTaskAndActionsResponseBodyDetails struct {
-	Actions       []*DescribeSoarTaskAndActionsResponseBodyDetailsActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	EndTime       *int64                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ErrorMsg      *string                                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RawEventReq   *string                                                 `json:"RawEventReq,omitempty" xml:"RawEventReq,omitempty"`
-	RequestUuid   *string                                                 `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
-	ResultLevel   *string                                                 `json:"ResultLevel,omitempty" xml:"ResultLevel,omitempty"`
-	ResultMessage *string                                                 `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	StartTime     *int64                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskFlowMd5   *string                                                 `json:"TaskFlowMd5,omitempty" xml:"TaskFlowMd5,omitempty"`
-	TaskName      *string                                                 `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskTenantId  *string                                                 `json:"TaskTenantId,omitempty" xml:"TaskTenantId,omitempty"`
-	TriggerType   *string                                                 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	TriggerUser   *string                                                 `json:"TriggerUser,omitempty" xml:"TriggerUser,omitempty"`
+	// The list of component actions during the running of the playbook.
+	Actions []*DescribeSoarTaskAndActionsResponseBodyDetailsActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// The end of the time range during which the playbook is run. The value is a 13-digit timestamp.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error message of the task. If the task is successful, this field is empty.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The request parameters of the task.
+	RawEventReq *string `json:"RawEventReq,omitempty" xml:"RawEventReq,omitempty"`
+	// The request ID of the task. The value is unique.
+	RequestUuid *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
+	// The flag of the task. For debugging tasks, the value is **DEBUG**. For other tasks, the parameter is left empty.
+	ResultLevel *string `json:"ResultLevel,omitempty" xml:"ResultLevel,omitempty"`
+	// The returned information about the playbook. You can define the value in the playbook.
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// The beginning of the time range during which the playbook is run. The value is a 13-digit timestamp.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	// *   **running**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The MD5 value of the playbook.
+	TaskFlowMd5 *string `json:"TaskFlowMd5,omitempty" xml:"TaskFlowMd5,omitempty"`
+	// The name of the task. The value is the same as the playbook UUID.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the task belongs.
+	TaskTenantId *string `json:"TaskTenantId,omitempty" xml:"TaskTenantId,omitempty"`
+	// The task type. Valid values:
+	//
+	// *   **debug**: a debugging task
+	// *   **manual**: a manual task
+	// *   **siem**: an event-triggered task
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the Alibaba Cloud account that triggers the task.
+	TriggerUser *string `json:"TriggerUser,omitempty" xml:"TriggerUser,omitempty"`
 }
 
 func (s DescribeSoarTaskAndActionsResponseBodyDetails) String() string {
@@ -4055,17 +4703,34 @@ func (s *DescribeSoarTaskAndActionsResponseBodyDetails) SetTriggerUser(v string)
 }
 
 type DescribeSoarTaskAndActionsResponseBodyDetailsActions struct {
-	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionUuid  *string `json:"ActionUuid,omitempty" xml:"ActionUuid,omitempty"`
-	AssetName   *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	Component   *string `json:"Component,omitempty" xml:"Component,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	NodeName    *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The action name of the component.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The UUID of the component execution record.
+	ActionUuid *string `json:"ActionUuid,omitempty" xml:"ActionUuid,omitempty"`
+	// The name of the asset that is used by the component.
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The component name.
+	Component *string `json:"Component,omitempty" xml:"Component,omitempty"`
+	// The end of the time range during which the component is run. The value is a 13-digit timestamp.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The custom name of the node in the component.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The request ID of the task. The value is unique.
 	RequestUuid *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskStatus  *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The beginning of the time range during which the component is run. The value is a 13-digit timestamp.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The running result of the component. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the task. The value is the same as the playbook UUID.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The status of the triggered component action.
+	//
+	// >  This parameter is disabled and left empty.
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to execute the task.
 	TriggerUser *string `json:"TriggerUser,omitempty" xml:"TriggerUser,omitempty"`
 }
 
@@ -4167,6 +4832,7 @@ func (s *DescribeSoarTaskAndActionsResponse) SetBody(v *DescribeSoarTaskAndActio
 }
 
 type DescribeSophonCommandsRequest struct {
+	// The name of the command. Fuzzy match is supported.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -4184,8 +4850,10 @@ func (s *DescribeSophonCommandsRequest) SetName(v string) *DescribeSophonCommand
 }
 
 type DescribeSophonCommandsResponseBody struct {
-	Data      []*DescribeSophonCommandsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The commands.
+	Data []*DescribeSophonCommandsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSophonCommandsResponseBody) String() string {
@@ -4207,9 +4875,13 @@ func (s *DescribeSophonCommandsResponseBody) SetRequestId(v string) *DescribeSop
 }
 
 type DescribeSophonCommandsResponseBodyData struct {
-	Description *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName *string                                              `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Name        *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the command.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the command.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The name of the command.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter configurations.
 	ParamConfig []*DescribeSophonCommandsResponseBodyDataParamConfig `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
 }
 
@@ -4242,10 +4914,17 @@ func (s *DescribeSophonCommandsResponseBodyData) SetParamConfig(v []*DescribeSop
 }
 
 type DescribeSophonCommandsResponseBodyDataParamConfig struct {
+	// The regular expression that is used to check the format of the parameter value. If the parameter is left empty, the check is not performed.
 	CheckField *string `json:"CheckField,omitempty" xml:"CheckField,omitempty"`
-	Field      *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	Necessary  *bool   `json:"Necessary,omitempty" xml:"Necessary,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the parameter.
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// Indicates whether the parameter is required. Valid values:
+	//
+	// *   **true** (default)
+	// *   **false**
+	Necessary *bool `json:"Necessary,omitempty" xml:"Necessary,omitempty"`
+	// The value of the parameter.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeSophonCommandsResponseBodyDataParamConfig) String() string {
@@ -4306,7 +4985,14 @@ func (s *DescribeSophonCommandsResponse) SetBody(v *DescribeSophonCommandsRespon
 }
 
 type DescriberPython3ScriptLogsRequest struct {
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID that is returned when the Python3 script is run.
+	//
+	// >  You can call the [RunPython3Script](~~RunPython3Script~~) operation to query the UUID.
 	RequestUuid *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
 }
 
@@ -4329,7 +5015,9 @@ func (s *DescriberPython3ScriptLogsRequest) SetRequestUuid(v string) *DescriberP
 }
 
 type DescriberPython3ScriptLogsResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The operational logs of the Python3 script.
 	RunResult *string `json:"RunResult,omitempty" xml:"RunResult,omitempty"`
 }
 
@@ -4381,8 +5069,13 @@ func (s *DescriberPython3ScriptLogsResponse) SetBody(v *DescriberPython3ScriptLo
 }
 
 type ModifyComponentAssetRequest struct {
+	// The configuration of the asset. The value is a JSON object.
 	AssetConfig *string `json:"AssetConfig,omitempty" xml:"AssetConfig,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response.
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s ModifyComponentAssetRequest) String() string {
@@ -4404,6 +5097,7 @@ func (s *ModifyComponentAssetRequest) SetLang(v string) *ModifyComponentAssetReq
 }
 
 type ModifyComponentAssetResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4450,11 +5144,21 @@ func (s *ModifyComponentAssetResponse) SetBody(v *ModifyComponentAssetResponseBo
 }
 
 type ModifyPlaybookRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The description of the playbook.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the playbook.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	Taskflow     *string `json:"Taskflow,omitempty" xml:"Taskflow,omitempty"`
+	// The XML configuration of the playbook.
+	Taskflow *string `json:"Taskflow,omitempty" xml:"Taskflow,omitempty"`
 }
 
 func (s ModifyPlaybookRequest) String() string {
@@ -4491,6 +5195,7 @@ func (s *ModifyPlaybookRequest) SetTaskflow(v string) *ModifyPlaybookRequest {
 }
 
 type ModifyPlaybookResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4537,10 +5242,26 @@ func (s *ModifyPlaybookResponse) SetBody(v *ModifyPlaybookResponseBody) *ModifyP
 }
 
 type ModifyPlaybookInputOutputRequest struct {
-	InputParams  *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ExeConfig *string `json:"ExeConfig,omitempty" xml:"ExeConfig,omitempty"`
+	// The configuration of the input parameters. The value is a JSON array.
+	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	// The language of the content within the request and response.
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The configuration of the output parameters. This parameter is unavailable. Leave it empty.
 	OutputParams *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
-	ParamType    *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The input parameter type.
+	//
+	// *   **template-ip**
+	// *   **template-file**
+	// *   **template-process**
+	// *   **custom**
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -4550,6 +5271,11 @@ func (s ModifyPlaybookInputOutputRequest) String() string {
 
 func (s ModifyPlaybookInputOutputRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPlaybookInputOutputRequest) SetExeConfig(v string) *ModifyPlaybookInputOutputRequest {
+	s.ExeConfig = &v
+	return s
 }
 
 func (s *ModifyPlaybookInputOutputRequest) SetInputParams(v string) *ModifyPlaybookInputOutputRequest {
@@ -4578,6 +5304,7 @@ func (s *ModifyPlaybookInputOutputRequest) SetPlaybookUuid(v string) *ModifyPlay
 }
 
 type ModifyPlaybookInputOutputResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4624,8 +5351,19 @@ func (s *ModifyPlaybookInputOutputResponse) SetBody(v *ModifyPlaybookInputOutput
 }
 
 type ModifyPlaybookInstanceStatusRequest struct {
-	Active       *int32  `json:"Active,omitempty" xml:"Active,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The playbook status. Valid values:
+	//
+	// *   **1**: starts the playbook.
+	// *   **0**: stops the playbook.
+	Active *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -4653,6 +5391,7 @@ func (s *ModifyPlaybookInstanceStatusRequest) SetPlaybookUuid(v string) *ModifyP
 }
 
 type ModifyPlaybookInstanceStatusResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4699,7 +5438,11 @@ func (s *ModifyPlaybookInstanceStatusResponse) SetBody(v *ModifyPlaybookInstance
 }
 
 type PublishPlaybookRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the released version.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -4722,6 +5465,7 @@ func (s *PublishPlaybookRequest) SetPlaybookUuid(v string) *PublishPlaybookReque
 }
 
 type PublishPlaybookResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4768,6 +5512,10 @@ func (s *PublishPlaybookResponse) SetBody(v *PublishPlaybookResponseBody) *Publi
 }
 
 type QueryTreeDataRequest struct {
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -4785,7 +5533,9 @@ func (s *QueryTreeDataRequest) SetLang(v string) *QueryTreeDataRequest {
 }
 
 type QueryTreeDataResponseBody struct {
+	// The returned information about the playbook. The value is a JSON string.
 	Playbooks *string `json:"Playbooks,omitempty" xml:"Playbooks,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4837,9 +5587,18 @@ func (s *QueryTreeDataResponse) SetBody(v *QueryTreeDataResponseBody) *QueryTree
 }
 
 type RenamePlaybookNodeRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NewNodeName  *string `json:"NewNodeName,omitempty" xml:"NewNodeName,omitempty"`
-	OldNodeName  *string `json:"OldNodeName,omitempty" xml:"OldNodeName,omitempty"`
+	// The language of the content within the request and the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The new name of the node.
+	NewNodeName *string `json:"NewNodeName,omitempty" xml:"NewNodeName,omitempty"`
+	// The original name of the node.
+	OldNodeName *string `json:"OldNodeName,omitempty" xml:"OldNodeName,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -4872,8 +5631,10 @@ func (s *RenamePlaybookNodeRequest) SetPlaybookUuid(v string) *RenamePlaybookNod
 }
 
 type RenamePlaybookNodeResponseBody struct {
+	// The returned new name of the node.
 	RenameResult *string `json:"RenameResult,omitempty" xml:"RenameResult,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RenamePlaybookNodeResponseBody) String() string {
@@ -4924,9 +5685,19 @@ func (s *RenamePlaybookNodeResponse) SetBody(v *RenamePlaybookNodeResponseBody) 
 }
 
 type RevertPlaybookReleaseRequest struct {
-	IsPublish     *bool   `json:"IsPublish,omitempty" xml:"IsPublish,omitempty"`
-	PlayReleaseId *int32  `json:"PlayReleaseId,omitempty" xml:"PlayReleaseId,omitempty"`
-	PlaybookUuid  *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// Specifies whether to directly publish the new playbook after the rollback.
+	//
+	// *   **true** (default)
+	// *   **false**
+	IsPublish *bool `json:"IsPublish,omitempty" xml:"IsPublish,omitempty"`
+	// The version of the playbook that you want to publish.
+	//
+	// >  You can call the [DescribePlaybookReleases](~~DescribePlaybookReleases~~) operation to query the playbook version.
+	PlayReleaseId *int32 `json:"PlayReleaseId,omitempty" xml:"PlayReleaseId,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
 func (s RevertPlaybookReleaseRequest) String() string {
@@ -4953,6 +5724,7 @@ func (s *RevertPlaybookReleaseRequest) SetPlaybookUuid(v string) *RevertPlaybook
 }
 
 type RevertPlaybookReleaseResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4999,9 +5771,15 @@ func (s *RevertPlaybookReleaseResponse) SetBody(v *RevertPlaybookReleaseResponse
 }
 
 type RunPython3ScriptRequest struct {
-	NodeName     *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Params       *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The name of the node in the playbook.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The input parameters of the Python3 script.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// The Python3 script.
 	PythonScript *string `json:"PythonScript,omitempty" xml:"PythonScript,omitempty"`
 }
 
@@ -5034,7 +5812,9 @@ func (s *RunPython3ScriptRequest) SetPythonScript(v string) *RunPython3ScriptReq
 }
 
 type RunPython3ScriptResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution result of the Python3 script.
 	RunResult *string `json:"RunResult,omitempty" xml:"RunResult,omitempty"`
 }
 
@@ -5086,7 +5866,11 @@ func (s *RunPython3ScriptResponse) SetBody(v *RunPython3ScriptResponseBody) *Run
 }
 
 type TriggerPlaybookRequest struct {
-	InputParam   *string `json:"InputParam,omitempty" xml:"InputParam,omitempty"`
+	// The input parameters of the playbook.
+	InputParam *string `json:"InputParam,omitempty" xml:"InputParam,omitempty"`
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -5109,7 +5893,9 @@ func (s *TriggerPlaybookRequest) SetPlaybookUuid(v string) *TriggerPlaybookReque
 }
 
 type TriggerPlaybookResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The running UUID of the playbook. This parameter is used to query the running result of the playbook.
 	TriggerUuid *string `json:"TriggerUuid,omitempty" xml:"TriggerUuid,omitempty"`
 }
 
@@ -5161,8 +5947,15 @@ func (s *TriggerPlaybookResponse) SetBody(v *TriggerPlaybookResponseBody) *Trigg
 }
 
 type TriggerProcessTaskRequest struct {
+	// The type of the action. Valid values:
+	//
+	// *   **remove**: cancels blocking or isolation.
+	// *   **retry**: submits the task again.
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the handling task.
+	//
+	// >  You can call the [DescribeProcessTasks](~~DescribeProcessTasks~~) operation to query the IDs of handling tasks.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s TriggerProcessTaskRequest) String() string {
@@ -5184,6 +5977,7 @@ func (s *TriggerProcessTaskRequest) SetTaskId(v string) *TriggerProcessTaskReque
 }
 
 type TriggerProcessTaskResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5230,11 +6024,23 @@ func (s *TriggerProcessTaskResponse) SetBody(v *TriggerProcessTaskResponseBody) 
 }
 
 type TriggerSophonPlaybookRequest struct {
-	CommandName  *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
-	InputParams  *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	// The name of the command that you want to trigger.
+	//
+	// >  You can call the [DescribeSophonCommands](~~DescribeSophonCommands~~) operation to query the command name.
+	CommandName *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+	// The input parameters of the command or playbook that you want to trigger.
+	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	// The custom ID. If you do not specify this parameter when the playbook is triggered, a random ID is generated for fault locating and troubleshooting.
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	TriggerType  *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The task type. Valid values:
+	//
+	// *   **command**
+	// *   **playbook**
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The UUID of the playbook.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s TriggerSophonPlaybookRequest) String() string {
@@ -5271,8 +6077,10 @@ func (s *TriggerSophonPlaybookRequest) SetUuid(v string) *TriggerSophonPlaybookR
 }
 
 type TriggerSophonPlaybookResponseBody struct {
-	Data      *TriggerSophonPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details that is returned after the command or playbook is triggered.
+	Data *TriggerSophonPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TriggerSophonPlaybookResponseBody) String() string {
@@ -5294,6 +6102,7 @@ func (s *TriggerSophonPlaybookResponseBody) SetRequestId(v string) *TriggerSopho
 }
 
 type TriggerSophonPlaybookResponseBodyData struct {
+	// The custom ID. If you do not specify this parameter when the playbook is triggered, a random ID is generated for fault locating and troubleshooting.
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 }
 
@@ -5340,8 +6149,12 @@ func (s *TriggerSophonPlaybookResponse) SetBody(v *TriggerSophonPlaybookResponse
 }
 
 type VerifyPlaybookRequest struct {
+	// The playbook UUID.
+	//
+	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	TaskFlow     *string `json:"TaskFlow,omitempty" xml:"TaskFlow,omitempty"`
+	// The XML configuration of the playbook.
+	TaskFlow *string `json:"TaskFlow,omitempty" xml:"TaskFlow,omitempty"`
 }
 
 func (s VerifyPlaybookRequest) String() string {
@@ -5363,8 +6176,10 @@ func (s *VerifyPlaybookRequest) SetTaskFlow(v string) *VerifyPlaybookRequest {
 }
 
 type VerifyPlaybookResponseBody struct {
+	// The result of the verification.
 	CheckTaskInfos []*VerifyPlaybookResponseBodyCheckTaskInfos `json:"CheckTaskInfos,omitempty" xml:"CheckTaskInfos,omitempty" type:"Repeated"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s VerifyPlaybookResponseBody) String() string {
@@ -5386,8 +6201,15 @@ func (s *VerifyPlaybookResponseBody) SetRequestId(v string) *VerifyPlaybookRespo
 }
 
 type VerifyPlaybookResponseBodyCheckTaskInfos struct {
-	Detail    *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The error message returned when the playbook does not pass the check.
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The name of the node in the playbook.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The severity level of the verification information. Valid values:
+	//
+	// *   warn: An issue may occur during playbook running.
+	// *   error: The playbook cannot be compiled.
+	// *   remind: The publishing and running of the playbook are not affected. We recommend that you optimize the playbook format.
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
@@ -5444,6 +6266,7 @@ func (s *VerifyPlaybookResponse) SetBody(v *VerifyPlaybookResponseBody) *VerifyP
 }
 
 type VerifyPythonFileRequest struct {
+	// The Python code snippet.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
@@ -5461,8 +6284,10 @@ func (s *VerifyPythonFileRequest) SetContent(v string) *VerifyPythonFileRequest 
 }
 
 type VerifyPythonFileResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Syntax    []*VerifyPythonFileResponseBodySyntax `json:"Syntax,omitempty" xml:"Syntax,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The verification result. If the parameter is left empty, the syntax of the code snippet is correct.
+	Syntax []*VerifyPythonFileResponseBodySyntax `json:"Syntax,omitempty" xml:"Syntax,omitempty" type:"Repeated"`
 }
 
 func (s VerifyPythonFileResponseBody) String() string {
@@ -5484,12 +6309,21 @@ func (s *VerifyPythonFileResponseBody) SetSyntax(v []*VerifyPythonFileResponseBo
 }
 
 type VerifyPythonFileResponseBodySyntax struct {
-	EndColumn       *int32  `json:"EndColumn,omitempty" xml:"EndColumn,omitempty"`
-	EndLineNumber   *int32  `json:"EndLineNumber,omitempty" xml:"EndLineNumber,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Severity        *int32  `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	StartColumn     *int32  `json:"StartColumn,omitempty" xml:"StartColumn,omitempty"`
-	StartLineNumber *int32  `json:"StartLineNumber,omitempty" xml:"StartLineNumber,omitempty"`
+	// The number that indicates the end column of the error code.
+	EndColumn *int32 `json:"EndColumn,omitempty" xml:"EndColumn,omitempty"`
+	// The number that indicates the end line of the error code.
+	EndLineNumber *int32 `json:"EndLineNumber,omitempty" xml:"EndLineNumber,omitempty"`
+	// The error message for the error code.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The severity level of the error code. Valid values:
+	//
+	// *   4: moderate
+	// *   8: serious
+	Severity *int32 `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The number that indicates the start column of the error code.
+	StartColumn *int32 `json:"StartColumn,omitempty" xml:"StartColumn,omitempty"`
+	// The number that indicates the start line of the error code.
+	StartLineNumber *int32 `json:"StartLineNumber,omitempty" xml:"StartLineNumber,omitempty"`
 }
 
 func (s VerifyPythonFileResponseBodySyntax) String() string {
@@ -7238,6 +8072,10 @@ func (client *Client) ModifyPlaybookInputOutputWithOptions(request *ModifyPlaybo
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExeConfig)) {
+		body["ExeConfig"] = request.ExeConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InputParams)) {
 		body["InputParams"] = request.InputParams
 	}
@@ -7542,6 +8380,13 @@ func (client *Client) RevertPlaybookRelease(request *RevertPlaybookReleaseReques
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+ *
+ * @param request RunPython3ScriptRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RunPython3ScriptResponse
+ */
 func (client *Client) RunPython3ScriptWithOptions(request *RunPython3ScriptRequest, runtime *util.RuntimeOptions) (_result *RunPython3ScriptResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7587,6 +8432,12 @@ func (client *Client) RunPython3ScriptWithOptions(request *RunPython3ScriptReque
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+ *
+ * @param request RunPython3ScriptRequest
+ * @return RunPython3ScriptResponse
+ */
 func (client *Client) RunPython3Script(request *RunPython3ScriptRequest) (_result *RunPython3ScriptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RunPython3ScriptResponse{}
@@ -7598,6 +8449,13 @@ func (client *Client) RunPython3Script(request *RunPython3ScriptRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+ *
+ * @param request TriggerPlaybookRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TriggerPlaybookResponse
+ */
 func (client *Client) TriggerPlaybookWithOptions(request *TriggerPlaybookRequest, runtime *util.RuntimeOptions) (_result *TriggerPlaybookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7635,6 +8493,12 @@ func (client *Client) TriggerPlaybookWithOptions(request *TriggerPlaybookRequest
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+ *
+ * @param request TriggerPlaybookRequest
+ * @return TriggerPlaybookResponse
+ */
 func (client *Client) TriggerPlaybook(request *TriggerPlaybookRequest) (_result *TriggerPlaybookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TriggerPlaybookResponse{}
@@ -7696,6 +8560,13 @@ func (client *Client) TriggerProcessTask(request *TriggerProcessTaskRequest) (_r
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+ *
+ * @param request TriggerSophonPlaybookRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TriggerSophonPlaybookResponse
+ */
 func (client *Client) TriggerSophonPlaybookWithOptions(request *TriggerSophonPlaybookRequest, runtime *util.RuntimeOptions) (_result *TriggerSophonPlaybookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7745,6 +8616,12 @@ func (client *Client) TriggerSophonPlaybookWithOptions(request *TriggerSophonPla
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+ *
+ * @param request TriggerSophonPlaybookRequest
+ * @return TriggerSophonPlaybookResponse
+ */
 func (client *Client) TriggerSophonPlaybook(request *TriggerSophonPlaybookRequest) (_result *TriggerSophonPlaybookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TriggerSophonPlaybookResponse{}
