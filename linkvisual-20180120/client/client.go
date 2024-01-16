@@ -1757,6 +1757,7 @@ func (s *CreateEventRecordPlanResponse) SetBody(v *CreateEventRecordPlanResponse
 
 type CreateGbDeviceRequest struct {
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	DeviceType       *int32  `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	GbId             *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
 	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -1776,6 +1777,11 @@ func (s CreateGbDeviceRequest) GoString() string {
 
 func (s *CreateGbDeviceRequest) SetDescription(v string) *CreateGbDeviceRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateGbDeviceRequest) SetDeviceName(v string) *CreateGbDeviceRequest {
+	s.DeviceName = &v
 	return s
 }
 
@@ -3578,6 +3584,105 @@ func (s *DeleteFaceUserPictureResponse) SetBody(v *DeleteFaceUserPictureResponse
 	return s
 }
 
+type DeleteGbDeviceRequest struct {
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s DeleteGbDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGbDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGbDeviceRequest) SetDeviceName(v string) *DeleteGbDeviceRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *DeleteGbDeviceRequest) SetIotId(v string) *DeleteGbDeviceRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *DeleteGbDeviceRequest) SetIotInstanceId(v string) *DeleteGbDeviceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeleteGbDeviceRequest) SetProductKey(v string) *DeleteGbDeviceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type DeleteGbDeviceResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteGbDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGbDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGbDeviceResponseBody) SetCode(v string) *DeleteGbDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteGbDeviceResponseBody) SetErrorMessage(v string) *DeleteGbDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteGbDeviceResponseBody) SetRequestId(v string) *DeleteGbDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteGbDeviceResponseBody) SetSuccess(v bool) *DeleteGbDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteGbDeviceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGbDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGbDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGbDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGbDeviceResponse) SetHeaders(v map[string]*string) *DeleteGbDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGbDeviceResponse) SetStatusCode(v int32) *DeleteGbDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGbDeviceResponse) SetBody(v *DeleteGbDeviceResponseBody) *DeleteGbDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteLocalFileUploadJobRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -4603,6 +4708,140 @@ func (s *DetectUserFaceByUrlResponse) SetStatusCode(v int32) *DetectUserFaceByUr
 }
 
 func (s *DetectUserFaceByUrlResponse) SetBody(v *DetectUserFaceByUrlResponseBody) *DetectUserFaceByUrlResponse {
+	s.Body = v
+	return s
+}
+
+type EnableGbSubDeviceRequest struct {
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SubDeviceId   *string `json:"SubDeviceId,omitempty" xml:"SubDeviceId,omitempty"`
+}
+
+func (s EnableGbSubDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableGbSubDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableGbSubDeviceRequest) SetDeviceName(v string) *EnableGbSubDeviceRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceRequest) SetIotId(v string) *EnableGbSubDeviceRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceRequest) SetIotInstanceId(v string) *EnableGbSubDeviceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceRequest) SetProductKey(v string) *EnableGbSubDeviceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceRequest) SetSubDeviceId(v string) *EnableGbSubDeviceRequest {
+	s.SubDeviceId = &v
+	return s
+}
+
+type EnableGbSubDeviceResponseBody struct {
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *EnableGbSubDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableGbSubDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableGbSubDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableGbSubDeviceResponseBody) SetCode(v string) *EnableGbSubDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceResponseBody) SetData(v *EnableGbSubDeviceResponseBodyData) *EnableGbSubDeviceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *EnableGbSubDeviceResponseBody) SetErrorMessage(v string) *EnableGbSubDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceResponseBody) SetRequestId(v string) *EnableGbSubDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceResponseBody) SetSuccess(v bool) *EnableGbSubDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableGbSubDeviceResponseBodyData struct {
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s EnableGbSubDeviceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableGbSubDeviceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *EnableGbSubDeviceResponseBodyData) SetDeviceName(v string) *EnableGbSubDeviceResponseBodyData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceResponseBodyData) SetProductKey(v string) *EnableGbSubDeviceResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+type EnableGbSubDeviceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableGbSubDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableGbSubDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableGbSubDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableGbSubDeviceResponse) SetHeaders(v map[string]*string) *EnableGbSubDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableGbSubDeviceResponse) SetStatusCode(v int32) *EnableGbSubDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableGbSubDeviceResponse) SetBody(v *EnableGbSubDeviceResponseBody) *EnableGbSubDeviceResponse {
 	s.Body = v
 	return s
 }
@@ -9568,6 +9807,187 @@ func (s *QueryFaceUserIdByCustomUserIdResponse) SetBody(v *QueryFaceUserIdByCust
 	return s
 }
 
+type QueryGbSubDeviceListRequest struct {
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageStart     *int32  `json:"PageStart,omitempty" xml:"PageStart,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s QueryGbSubDeviceListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGbSubDeviceListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGbSubDeviceListRequest) SetDeviceName(v string) *QueryGbSubDeviceListRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListRequest) SetIotId(v string) *QueryGbSubDeviceListRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListRequest) SetIotInstanceId(v string) *QueryGbSubDeviceListRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListRequest) SetPageSize(v int32) *QueryGbSubDeviceListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListRequest) SetPageStart(v int32) *QueryGbSubDeviceListRequest {
+	s.PageStart = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListRequest) SetProductKey(v string) *QueryGbSubDeviceListRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type QueryGbSubDeviceListResponseBody struct {
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryGbSubDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryGbSubDeviceListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGbSubDeviceListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGbSubDeviceListResponseBody) SetCode(v string) *QueryGbSubDeviceListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBody) SetData(v *QueryGbSubDeviceListResponseBodyData) *QueryGbSubDeviceListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBody) SetErrorMessage(v string) *QueryGbSubDeviceListResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBody) SetRequestId(v string) *QueryGbSubDeviceListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBody) SetSuccess(v bool) *QueryGbSubDeviceListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryGbSubDeviceListResponseBodyData struct {
+	GbSubDeviceList []*QueryGbSubDeviceListResponseBodyDataGbSubDeviceList `json:"GbSubDeviceList,omitempty" xml:"GbSubDeviceList,omitempty" type:"Repeated"`
+	Total           *int32                                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryGbSubDeviceListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGbSubDeviceListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGbSubDeviceListResponseBodyData) SetGbSubDeviceList(v []*QueryGbSubDeviceListResponseBodyDataGbSubDeviceList) *QueryGbSubDeviceListResponseBodyData {
+	s.GbSubDeviceList = v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBodyData) SetTotal(v int32) *QueryGbSubDeviceListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QueryGbSubDeviceListResponseBodyDataGbSubDeviceList struct {
+	DeviceEnable *int32  `json:"DeviceEnable,omitempty" xml:"DeviceEnable,omitempty"`
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId        *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	ProductKey   *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s QueryGbSubDeviceListResponseBodyDataGbSubDeviceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGbSubDeviceListResponseBodyDataGbSubDeviceList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList) SetDeviceEnable(v int32) *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList {
+	s.DeviceEnable = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList) SetDeviceId(v string) *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList) SetDeviceName(v string) *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList) SetIotId(v string) *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList) SetProductKey(v string) *QueryGbSubDeviceListResponseBodyDataGbSubDeviceList {
+	s.ProductKey = &v
+	return s
+}
+
+type QueryGbSubDeviceListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryGbSubDeviceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryGbSubDeviceListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGbSubDeviceListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGbSubDeviceListResponse) SetHeaders(v map[string]*string) *QueryGbSubDeviceListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponse) SetStatusCode(v int32) *QueryGbSubDeviceListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryGbSubDeviceListResponse) SetBody(v *QueryGbSubDeviceListResponseBody) *QueryGbSubDeviceListResponse {
+	s.Body = v
+	return s
+}
+
 type QueryLiveStreamingRequest struct {
 	CacheDuration    *int32  `json:"CacheDuration,omitempty" xml:"CacheDuration,omitempty"`
 	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
@@ -14015,6 +14435,105 @@ func (s *QueryVoiceIntercomResponse) SetBody(v *QueryVoiceIntercomResponseBody) 
 	return s
 }
 
+type RefreshGbSubDeviceListRequest struct {
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s RefreshGbSubDeviceListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshGbSubDeviceListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshGbSubDeviceListRequest) SetDeviceName(v string) *RefreshGbSubDeviceListRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *RefreshGbSubDeviceListRequest) SetIotId(v string) *RefreshGbSubDeviceListRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *RefreshGbSubDeviceListRequest) SetIotInstanceId(v string) *RefreshGbSubDeviceListRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *RefreshGbSubDeviceListRequest) SetProductKey(v string) *RefreshGbSubDeviceListRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type RefreshGbSubDeviceListResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RefreshGbSubDeviceListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshGbSubDeviceListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshGbSubDeviceListResponseBody) SetCode(v string) *RefreshGbSubDeviceListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RefreshGbSubDeviceListResponseBody) SetErrorMessage(v string) *RefreshGbSubDeviceListResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RefreshGbSubDeviceListResponseBody) SetRequestId(v string) *RefreshGbSubDeviceListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RefreshGbSubDeviceListResponseBody) SetSuccess(v bool) *RefreshGbSubDeviceListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RefreshGbSubDeviceListResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefreshGbSubDeviceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshGbSubDeviceListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshGbSubDeviceListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshGbSubDeviceListResponse) SetHeaders(v map[string]*string) *RefreshGbSubDeviceListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshGbSubDeviceListResponse) SetStatusCode(v int32) *RefreshGbSubDeviceListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefreshGbSubDeviceListResponse) SetBody(v *RefreshGbSubDeviceListResponseBody) *RefreshGbSubDeviceListResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveFaceDeviceFromDeviceGroupRequest struct {
 	DeviceGroupId *string `json:"DeviceGroupId,omitempty" xml:"DeviceGroupId,omitempty"`
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
@@ -15472,6 +15991,123 @@ func (s *UpdateFaceUserGroupAndDeviceGroupRelationResponse) SetBody(v *UpdateFac
 	return s
 }
 
+type UpdateGbDeviceRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	GbId          *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Password      *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s UpdateGbDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGbDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGbDeviceRequest) SetDescription(v string) *UpdateGbDeviceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateGbDeviceRequest) SetDeviceName(v string) *UpdateGbDeviceRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *UpdateGbDeviceRequest) SetGbId(v string) *UpdateGbDeviceRequest {
+	s.GbId = &v
+	return s
+}
+
+func (s *UpdateGbDeviceRequest) SetIotId(v string) *UpdateGbDeviceRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *UpdateGbDeviceRequest) SetIotInstanceId(v string) *UpdateGbDeviceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateGbDeviceRequest) SetPassword(v string) *UpdateGbDeviceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateGbDeviceRequest) SetProductKey(v string) *UpdateGbDeviceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type UpdateGbDeviceResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGbDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGbDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGbDeviceResponseBody) SetCode(v string) *UpdateGbDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGbDeviceResponseBody) SetErrorMessage(v string) *UpdateGbDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateGbDeviceResponseBody) SetRequestId(v string) *UpdateGbDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGbDeviceResponseBody) SetSuccess(v bool) *UpdateGbDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGbDeviceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGbDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGbDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGbDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGbDeviceResponse) SetHeaders(v map[string]*string) *UpdateGbDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGbDeviceResponse) SetStatusCode(v int32) *UpdateGbDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGbDeviceResponse) SetBody(v *UpdateGbDeviceResponseBody) *UpdateGbDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateInstanceInternetProtocolRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	IpVersion     *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
@@ -16905,6 +17541,10 @@ func (client *Client) CreateGbDeviceWithOptions(request *CreateGbDeviceRequest, 
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
 		query["DeviceType"] = request.DeviceType
 	}
@@ -17799,6 +18439,62 @@ func (client *Client) DeleteFaceUserPicture(request *DeleteFaceUserPictureReques
 	return _result, _err
 }
 
+func (client *Client) DeleteGbDeviceWithOptions(request *DeleteGbDeviceRequest, runtime *util.RuntimeOptions) (_result *DeleteGbDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGbDevice"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGbDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGbDevice(request *DeleteGbDeviceRequest) (_result *DeleteGbDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGbDeviceResponse{}
+	_body, _err := client.DeleteGbDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteLocalFileUploadJobWithOptions(request *DeleteLocalFileUploadJobRequest, runtime *util.RuntimeOptions) (_result *DeleteLocalFileUploadJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18268,6 +18964,66 @@ func (client *Client) DetectUserFaceByUrl(request *DetectUserFaceByUrlRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectUserFaceByUrlResponse{}
 	_body, _err := client.DetectUserFaceByUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableGbSubDeviceWithOptions(request *EnableGbSubDeviceRequest, runtime *util.RuntimeOptions) (_result *EnableGbSubDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubDeviceId)) {
+		query["SubDeviceId"] = request.SubDeviceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableGbSubDevice"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableGbSubDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableGbSubDevice(request *EnableGbSubDeviceRequest) (_result *EnableGbSubDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableGbSubDeviceResponse{}
+	_body, _err := client.EnableGbSubDeviceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19931,6 +20687,70 @@ func (client *Client) QueryFaceUserIdByCustomUserId(request *QueryFaceUserIdByCu
 	return _result, _err
 }
 
+func (client *Client) QueryGbSubDeviceListWithOptions(request *QueryGbSubDeviceListRequest, runtime *util.RuntimeOptions) (_result *QueryGbSubDeviceListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageStart)) {
+		query["PageStart"] = request.PageStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryGbSubDeviceList"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryGbSubDeviceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryGbSubDeviceList(request *QueryGbSubDeviceListRequest) (_result *QueryGbSubDeviceListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryGbSubDeviceListResponse{}
+	_body, _err := client.QueryGbSubDeviceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryLiveStreamingWithOptions(request *QueryLiveStreamingRequest, runtime *util.RuntimeOptions) (_result *QueryLiveStreamingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21407,6 +22227,62 @@ func (client *Client) QueryVoiceIntercom(request *QueryVoiceIntercomRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) RefreshGbSubDeviceListWithOptions(request *RefreshGbSubDeviceListRequest, runtime *util.RuntimeOptions) (_result *RefreshGbSubDeviceListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshGbSubDeviceList"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshGbSubDeviceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshGbSubDeviceList(request *RefreshGbSubDeviceListRequest) (_result *RefreshGbSubDeviceListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshGbSubDeviceListResponse{}
+	_body, _err := client.RefreshGbSubDeviceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveFaceDeviceFromDeviceGroupWithOptions(request *RemoveFaceDeviceFromDeviceGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveFaceDeviceFromDeviceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22164,6 +23040,74 @@ func (client *Client) UpdateFaceUserGroupAndDeviceGroupRelation(request *UpdateF
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFaceUserGroupAndDeviceGroupRelationResponse{}
 	_body, _err := client.UpdateFaceUserGroupAndDeviceGroupRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGbDeviceWithOptions(request *UpdateGbDeviceRequest, runtime *util.RuntimeOptions) (_result *UpdateGbDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GbId)) {
+		query["GbId"] = request.GbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGbDevice"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGbDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGbDevice(request *UpdateGbDeviceRequest) (_result *UpdateGbDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGbDeviceResponse{}
+	_body, _err := client.UpdateGbDeviceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
