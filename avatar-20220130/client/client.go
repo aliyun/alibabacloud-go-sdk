@@ -407,6 +407,93 @@ func (s *ClientStartResponse) SetBody(v *ClientStartResponseBody) *ClientStartRe
 	return s
 }
 
+type ClientUnbindDeviceRequest struct {
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	TenantId *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ClientUnbindDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientUnbindDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClientUnbindDeviceRequest) SetDeviceId(v string) *ClientUnbindDeviceRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ClientUnbindDeviceRequest) SetTenantId(v int64) *ClientUnbindDeviceRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ClientUnbindDeviceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ClientUnbindDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientUnbindDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClientUnbindDeviceResponseBody) SetCode(v string) *ClientUnbindDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ClientUnbindDeviceResponseBody) SetMessage(v string) *ClientUnbindDeviceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ClientUnbindDeviceResponseBody) SetRequestId(v string) *ClientUnbindDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ClientUnbindDeviceResponseBody) SetSuccess(v bool) *ClientUnbindDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ClientUnbindDeviceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClientUnbindDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClientUnbindDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientUnbindDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClientUnbindDeviceResponse) SetHeaders(v map[string]*string) *ClientUnbindDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClientUnbindDeviceResponse) SetStatusCode(v int32) *ClientUnbindDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClientUnbindDeviceResponse) SetBody(v *ClientUnbindDeviceResponseBody) *ClientUnbindDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type CloseTimedResetOperateRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TenantId   *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -6402,6 +6489,54 @@ func (client *Client) ClientStart(request *ClientStartRequest) (_result *ClientS
 	runtime := &util.RuntimeOptions{}
 	_result = &ClientStartResponse{}
 	_body, _err := client.ClientStartWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ClientUnbindDeviceWithOptions(request *ClientUnbindDeviceRequest, runtime *util.RuntimeOptions) (_result *ClientUnbindDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClientUnbindDevice"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClientUnbindDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClientUnbindDevice(request *ClientUnbindDeviceRequest) (_result *ClientUnbindDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClientUnbindDeviceResponse{}
+	_body, _err := client.ClientUnbindDeviceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
