@@ -11651,9 +11651,10 @@ func (s *DescribePurchasedApiGroupDetailResponse) SetBody(v *DescribePurchasedAp
 }
 
 type DescribePurchasedApiGroupsRequest struct {
-	GroupIds   *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	GroupIds      *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribePurchasedApiGroupsRequest) String() string {
@@ -11676,6 +11677,11 @@ func (s *DescribePurchasedApiGroupsRequest) SetPageNumber(v int32) *DescribePurc
 
 func (s *DescribePurchasedApiGroupsRequest) SetPageSize(v int32) *DescribePurchasedApiGroupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePurchasedApiGroupsRequest) SetSecurityToken(v string) *DescribePurchasedApiGroupsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -21725,6 +21731,10 @@ func (client *Client) DescribePurchasedApiGroupsWithOptions(request *DescribePur
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
