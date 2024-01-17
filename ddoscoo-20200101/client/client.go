@@ -11632,6 +11632,122 @@ func (s *DescribePortAutoCcStatusResponse) SetBody(v *DescribePortAutoCcStatusRe
 	return s
 }
 
+type DescribePortCcAttackTopIPRequest struct {
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Limit          *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+}
+
+func (s DescribePortCcAttackTopIPRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePortCcAttackTopIPRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePortCcAttackTopIPRequest) SetIp(v string) *DescribePortCcAttackTopIPRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribePortCcAttackTopIPRequest) SetLimit(v int64) *DescribePortCcAttackTopIPRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribePortCcAttackTopIPRequest) SetPort(v string) *DescribePortCcAttackTopIPRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribePortCcAttackTopIPRequest) SetStartTimestamp(v int64) *DescribePortCcAttackTopIPRequest {
+	s.StartTimestamp = &v
+	return s
+}
+
+type DescribePortCcAttackTopIPResponseBody struct {
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TopIp     []*DescribePortCcAttackTopIPResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
+}
+
+func (s DescribePortCcAttackTopIPResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePortCcAttackTopIPResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePortCcAttackTopIPResponseBody) SetRequestId(v string) *DescribePortCcAttackTopIPResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePortCcAttackTopIPResponseBody) SetTopIp(v []*DescribePortCcAttackTopIPResponseBodyTopIp) *DescribePortCcAttackTopIPResponseBody {
+	s.TopIp = v
+	return s
+}
+
+type DescribePortCcAttackTopIPResponseBodyTopIp struct {
+	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	Pv     *int64  `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	SrcIp  *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+}
+
+func (s DescribePortCcAttackTopIPResponseBodyTopIp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePortCcAttackTopIPResponseBodyTopIp) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePortCcAttackTopIPResponseBodyTopIp) SetAreaId(v string) *DescribePortCcAttackTopIPResponseBodyTopIp {
+	s.AreaId = &v
+	return s
+}
+
+func (s *DescribePortCcAttackTopIPResponseBodyTopIp) SetPv(v int64) *DescribePortCcAttackTopIPResponseBodyTopIp {
+	s.Pv = &v
+	return s
+}
+
+func (s *DescribePortCcAttackTopIPResponseBodyTopIp) SetSrcIp(v string) *DescribePortCcAttackTopIPResponseBodyTopIp {
+	s.SrcIp = &v
+	return s
+}
+
+type DescribePortCcAttackTopIPResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePortCcAttackTopIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePortCcAttackTopIPResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePortCcAttackTopIPResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePortCcAttackTopIPResponse) SetHeaders(v map[string]*string) *DescribePortCcAttackTopIPResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePortCcAttackTopIPResponse) SetStatusCode(v int32) *DescribePortCcAttackTopIPResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePortCcAttackTopIPResponse) SetBody(v *DescribePortCcAttackTopIPResponseBody) *DescribePortCcAttackTopIPResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePortConnsCountRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
@@ -13198,6 +13314,7 @@ func (s *DescribeSchedulerRulesResponseBodySchedulerRulesParamParamData) SetClou
 }
 
 type DescribeSchedulerRulesResponseBodySchedulerRulesRules struct {
+	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RestoreDelay *int32  `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
@@ -13213,6 +13330,11 @@ func (s DescribeSchedulerRulesResponseBodySchedulerRulesRules) String() string {
 
 func (s DescribeSchedulerRulesResponseBodySchedulerRulesRules) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSchedulerRulesResponseBodySchedulerRulesRules) SetLine(v string) *DescribeSchedulerRulesResponseBodySchedulerRulesRules {
+	s.Line = &v
+	return s
 }
 
 func (s *DescribeSchedulerRulesResponseBodySchedulerRulesRules) SetPriority(v int32) *DescribeSchedulerRulesResponseBodySchedulerRulesRules {
@@ -15625,7 +15747,8 @@ type DescribeWebCcProtectSwitchResponseBodyProtectSwitchList struct {
 	//
 	// *   **0**: disabled
 	// *   **1**: enabled
-	CcEnable *int32 `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
+	CcEnable       *int32  `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
+	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
 	// The mode of the Frequency Control policy. Valid values:
 	//
 	// *   **default**: Normal
@@ -15682,6 +15805,11 @@ func (s *DescribeWebCcProtectSwitchResponseBodyProtectSwitchList) SetCcCustomRul
 
 func (s *DescribeWebCcProtectSwitchResponseBodyProtectSwitchList) SetCcEnable(v int32) *DescribeWebCcProtectSwitchResponseBodyProtectSwitchList {
 	s.CcEnable = &v
+	return s
+}
+
+func (s *DescribeWebCcProtectSwitchResponseBodyProtectSwitchList) SetCcGlobalSwitch(v string) *DescribeWebCcProtectSwitchResponseBodyProtectSwitchList {
+	s.CcGlobalSwitch = &v
 	return s
 }
 
@@ -16107,7 +16235,8 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList
 
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList struct {
 	// The match content.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content     *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentList []*string `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
 	// The match field.
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
 	// The custom HTTP header.
@@ -16128,6 +16257,11 @@ func (s DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListC
 
 func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList) SetContent(v string) *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList {
 	s.Content = &v
+	return s
+}
+
+func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList) SetContentList(v []*string) *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList {
+	s.ContentList = v
 	return s
 }
 
@@ -16171,6 +16305,140 @@ func (s *DescribeWebPreciseAccessRuleResponse) SetStatusCode(v int32) *DescribeW
 }
 
 func (s *DescribeWebPreciseAccessRuleResponse) SetBody(v *DescribeWebPreciseAccessRuleResponseBody) *DescribeWebPreciseAccessRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWebReportTopIpRequest struct {
+	Domain    *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Top       *int32  `json:"Top,omitempty" xml:"Top,omitempty"`
+}
+
+func (s DescribeWebReportTopIpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebReportTopIpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebReportTopIpRequest) SetDomain(v string) *DescribeWebReportTopIpRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpRequest) SetEndTime(v int64) *DescribeWebReportTopIpRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpRequest) SetInterval(v int32) *DescribeWebReportTopIpRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpRequest) SetQueryType(v string) *DescribeWebReportTopIpRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpRequest) SetStartTime(v int64) *DescribeWebReportTopIpRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpRequest) SetTop(v int32) *DescribeWebReportTopIpRequest {
+	s.Top = &v
+	return s
+}
+
+type DescribeWebReportTopIpResponseBody struct {
+	DataList  []*DescribeWebReportTopIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeWebReportTopIpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebReportTopIpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebReportTopIpResponseBody) SetDataList(v []*DescribeWebReportTopIpResponseBodyDataList) *DescribeWebReportTopIpResponseBody {
+	s.DataList = v
+	return s
+}
+
+func (s *DescribeWebReportTopIpResponseBody) SetRequestId(v string) *DescribeWebReportTopIpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeWebReportTopIpResponseBodyDataList struct {
+	AreaId   *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Isp      *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeWebReportTopIpResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebReportTopIpResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebReportTopIpResponseBodyDataList) SetAreaId(v string) *DescribeWebReportTopIpResponseBodyDataList {
+	s.AreaId = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpResponseBodyDataList) SetCount(v int64) *DescribeWebReportTopIpResponseBodyDataList {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpResponseBodyDataList) SetIsp(v string) *DescribeWebReportTopIpResponseBodyDataList {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpResponseBodyDataList) SetSourceIp(v string) *DescribeWebReportTopIpResponseBodyDataList {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeWebReportTopIpResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWebReportTopIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWebReportTopIpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebReportTopIpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebReportTopIpResponse) SetHeaders(v map[string]*string) *DescribeWebReportTopIpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebReportTopIpResponse) SetStatusCode(v int32) *DescribeWebReportTopIpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebReportTopIpResponse) SetBody(v *DescribeWebReportTopIpResponseBody) *DescribeWebReportTopIpResponse {
 	s.Body = v
 	return s
 }
@@ -25738,6 +26006,62 @@ func (client *Client) DescribePortAutoCcStatus(request *DescribePortAutoCcStatus
 	return _result, _err
 }
 
+func (client *Client) DescribePortCcAttackTopIPWithOptions(request *DescribePortCcAttackTopIPRequest, runtime *util.RuntimeOptions) (_result *DescribePortCcAttackTopIPResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePortCcAttackTopIP"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePortCcAttackTopIPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePortCcAttackTopIP(request *DescribePortCcAttackTopIPRequest) (_result *DescribePortCcAttackTopIPResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePortCcAttackTopIPResponse{}
+	_body, _err := client.DescribePortCcAttackTopIPWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribePortConnsCountWithOptions(request *DescribePortConnsCountRequest, runtime *util.RuntimeOptions) (_result *DescribePortConnsCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27623,6 +27947,70 @@ func (client *Client) DescribeWebPreciseAccessRule(request *DescribeWebPreciseAc
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebPreciseAccessRuleResponse{}
 	_body, _err := client.DescribeWebPreciseAccessRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWebReportTopIpWithOptions(request *DescribeWebReportTopIpRequest, runtime *util.RuntimeOptions) (_result *DescribeWebReportTopIpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Top)) {
+		query["Top"] = request.Top
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebReportTopIp"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebReportTopIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWebReportTopIp(request *DescribeWebReportTopIpRequest) (_result *DescribeWebReportTopIpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWebReportTopIpResponse{}
+	_body, _err := client.DescribeWebReportTopIpWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
