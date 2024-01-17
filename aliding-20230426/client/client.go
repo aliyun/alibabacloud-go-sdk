@@ -10948,6 +10948,186 @@ func (s *DeleteWorkspaceMembersResponse) SetBody(v *DeleteWorkspaceMembersRespon
 	return s
 }
 
+type ExecuteBatchTaskHeaders struct {
+	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ExecuteBatchTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ExecuteBatchTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteBatchTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteBatchTaskHeaders) SetCommonHeaders(v map[string]*string) *ExecuteBatchTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExecuteBatchTaskHeaders) SetAccountContext(v *ExecuteBatchTaskHeadersAccountContext) *ExecuteBatchTaskHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ExecuteBatchTaskHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ExecuteBatchTaskHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteBatchTaskHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteBatchTaskHeadersAccountContext) SetAccountId(v string) *ExecuteBatchTaskHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ExecuteBatchTaskShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ExecuteBatchTaskShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteBatchTaskShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteBatchTaskShrinkHeaders) SetCommonHeaders(v map[string]*string) *ExecuteBatchTaskShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExecuteBatchTaskShrinkHeaders) SetAccountContextShrink(v string) *ExecuteBatchTaskShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ExecuteBatchTaskRequest struct {
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	OutResult           *string `json:"OutResult,omitempty" xml:"OutResult,omitempty"`
+	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	TaskInformationList *string `json:"TaskInformationList,omitempty" xml:"TaskInformationList,omitempty"`
+}
+
+func (s ExecuteBatchTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteBatchTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteBatchTaskRequest) SetAppType(v string) *ExecuteBatchTaskRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskRequest) SetOutResult(v string) *ExecuteBatchTaskRequest {
+	s.OutResult = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskRequest) SetRemark(v string) *ExecuteBatchTaskRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskRequest) SetSystemToken(v string) *ExecuteBatchTaskRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskRequest) SetTaskInformationList(v string) *ExecuteBatchTaskRequest {
+	s.TaskInformationList = &v
+	return s
+}
+
+type ExecuteBatchTaskResponseBody struct {
+	FailNumber      *int32  `json:"failNumber,omitempty" xml:"failNumber,omitempty"`
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SuccessNumber   *int32  `json:"successNumber,omitempty" xml:"successNumber,omitempty"`
+	Total           *int32  `json:"total,omitempty" xml:"total,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ExecuteBatchTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteBatchTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteBatchTaskResponseBody) SetFailNumber(v int32) *ExecuteBatchTaskResponseBody {
+	s.FailNumber = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskResponseBody) SetRequestId(v string) *ExecuteBatchTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskResponseBody) SetSuccessNumber(v int32) *ExecuteBatchTaskResponseBody {
+	s.SuccessNumber = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskResponseBody) SetTotal(v int32) *ExecuteBatchTaskResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskResponseBody) SetVendorRequestId(v string) *ExecuteBatchTaskResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskResponseBody) SetVendorType(v string) *ExecuteBatchTaskResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ExecuteBatchTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecuteBatchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecuteBatchTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteBatchTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteBatchTaskResponse) SetHeaders(v map[string]*string) *ExecuteBatchTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteBatchTaskResponse) SetStatusCode(v int32) *ExecuteBatchTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteBatchTaskResponse) SetBody(v *ExecuteBatchTaskResponseBody) *ExecuteBatchTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ExecutePlatformTaskHeaders struct {
 	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *ExecutePlatformTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -11709,6 +11889,670 @@ func (s *GetAllSheetsResponse) SetStatusCode(v int32) *GetAllSheetsResponse {
 }
 
 func (s *GetAllSheetsResponse) SetBody(v *GetAllSheetsResponseBody) *GetAllSheetsResponse {
+	s.Body = v
+	return s
+}
+
+type GetCorpAccomplishmentTasksHeaders struct {
+	CommonHeaders  map[string]*string                               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetCorpAccomplishmentTasksHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetCorpAccomplishmentTasksHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpAccomplishmentTasksHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpAccomplishmentTasksHeaders) SetCommonHeaders(v map[string]*string) *GetCorpAccomplishmentTasksHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksHeaders) SetAccountContext(v *GetCorpAccomplishmentTasksHeadersAccountContext) *GetCorpAccomplishmentTasksHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetCorpAccomplishmentTasksHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetCorpAccomplishmentTasksHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpAccomplishmentTasksHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpAccomplishmentTasksHeadersAccountContext) SetAccountId(v string) *GetCorpAccomplishmentTasksHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetCorpAccomplishmentTasksShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetCorpAccomplishmentTasksShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpAccomplishmentTasksShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpAccomplishmentTasksShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetCorpAccomplishmentTasksShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksShrinkHeaders) SetAccountContextShrink(v string) *GetCorpAccomplishmentTasksShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetCorpAccomplishmentTasksRequest struct {
+	AppTypes          *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
+	CorpId            *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	CreateFromTimeGMT *int64  `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT   *int64  `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessCodes      *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	Token             *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetCorpAccomplishmentTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpAccomplishmentTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetAppTypes(v string) *GetCorpAccomplishmentTasksRequest {
+	s.AppTypes = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetCorpId(v string) *GetCorpAccomplishmentTasksRequest {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetCreateFromTimeGMT(v int64) *GetCorpAccomplishmentTasksRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetCreateToTimeGMT(v int64) *GetCorpAccomplishmentTasksRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetKeyword(v string) *GetCorpAccomplishmentTasksRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetLanguage(v string) *GetCorpAccomplishmentTasksRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetPageNumber(v int32) *GetCorpAccomplishmentTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetPageSize(v int32) *GetCorpAccomplishmentTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetProcessCodes(v string) *GetCorpAccomplishmentTasksRequest {
+	s.ProcessCodes = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksRequest) SetToken(v string) *GetCorpAccomplishmentTasksRequest {
+	s.Token = &v
+	return s
+}
+
+type GetCorpAccomplishmentTasksResponseBody struct {
+	Data            []*GetCorpAccomplishmentTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64                                        `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64                                        `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                                       `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                                       `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetCorpAccomplishmentTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpAccomplishmentTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBody) SetData(v []*GetCorpAccomplishmentTasksResponseBodyData) *GetCorpAccomplishmentTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBody) SetPageNumber(v int64) *GetCorpAccomplishmentTasksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBody) SetRequestId(v string) *GetCorpAccomplishmentTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBody) SetTotalCount(v int64) *GetCorpAccomplishmentTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBody) SetVendorRequestId(v string) *GetCorpAccomplishmentTasksResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBody) SetVendorType(v string) *GetCorpAccomplishmentTasksResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetCorpAccomplishmentTasksResponseBodyData struct {
+	ActiveTimeGMT               *string `json:"ActiveTimeGMT,omitempty" xml:"ActiveTimeGMT,omitempty"`
+	ActualActionerId            *string `json:"ActualActionerId,omitempty" xml:"ActualActionerId,omitempty"`
+	AppType                     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateTimeGMT               *string `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	FinishTimeGMT               *string `json:"FinishTimeGMT,omitempty" xml:"FinishTimeGMT,omitempty"`
+	OriginatorEmail             *string `json:"OriginatorEmail,omitempty" xml:"OriginatorEmail,omitempty"`
+	OriginatorId                *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	OriginatorName              *string `json:"OriginatorName,omitempty" xml:"OriginatorName,omitempty"`
+	OriginatorNameInEnglish     *string `json:"OriginatorNameInEnglish,omitempty" xml:"OriginatorNameInEnglish,omitempty"`
+	OriginatorNickName          *string `json:"OriginatorNickName,omitempty" xml:"OriginatorNickName,omitempty"`
+	OriginatorNickNameInEnglish *string `json:"OriginatorNickNameInEnglish,omitempty" xml:"OriginatorNickNameInEnglish,omitempty"`
+	OriginatorPhoto             *string `json:"OriginatorPhoto,omitempty" xml:"OriginatorPhoto,omitempty"`
+	OutResult                   *string `json:"OutResult,omitempty" xml:"OutResult,omitempty"`
+	OutResultName               *string `json:"OutResultName,omitempty" xml:"OutResultName,omitempty"`
+	ProcessInstanceId           *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	Title                       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetCorpAccomplishmentTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpAccomplishmentTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetActiveTimeGMT(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.ActiveTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetActualActionerId(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.ActualActionerId = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetAppType(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetCreateTimeGMT(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.CreateTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetFinishTimeGMT(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.FinishTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOriginatorEmail(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OriginatorEmail = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOriginatorId(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOriginatorName(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OriginatorName = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOriginatorNameInEnglish(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OriginatorNameInEnglish = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOriginatorNickName(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OriginatorNickName = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOriginatorNickNameInEnglish(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OriginatorNickNameInEnglish = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOriginatorPhoto(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OriginatorPhoto = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOutResult(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OutResult = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetOutResultName(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.OutResultName = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetProcessInstanceId(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponseBodyData) SetTitle(v string) *GetCorpAccomplishmentTasksResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+type GetCorpAccomplishmentTasksResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCorpAccomplishmentTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCorpAccomplishmentTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpAccomplishmentTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpAccomplishmentTasksResponse) SetHeaders(v map[string]*string) *GetCorpAccomplishmentTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponse) SetStatusCode(v int32) *GetCorpAccomplishmentTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCorpAccomplishmentTasksResponse) SetBody(v *GetCorpAccomplishmentTasksResponseBody) *GetCorpAccomplishmentTasksResponse {
+	s.Body = v
+	return s
+}
+
+type GetCorpTasksHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetCorpTasksHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetCorpTasksHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpTasksHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpTasksHeaders) SetCommonHeaders(v map[string]*string) *GetCorpTasksHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetCorpTasksHeaders) SetAccountContext(v *GetCorpTasksHeadersAccountContext) *GetCorpTasksHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetCorpTasksHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetCorpTasksHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpTasksHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpTasksHeadersAccountContext) SetAccountId(v string) *GetCorpTasksHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetCorpTasksShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetCorpTasksShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpTasksShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpTasksShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetCorpTasksShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetCorpTasksShrinkHeaders) SetAccountContextShrink(v string) *GetCorpTasksShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetCorpTasksRequest struct {
+	AppTypes          *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
+	CorpId            *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	CreateFromTimeGMT *int64  `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT   *int64  `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessCodes      *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	Token             *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetCorpTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpTasksRequest) SetAppTypes(v string) *GetCorpTasksRequest {
+	s.AppTypes = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetCorpId(v string) *GetCorpTasksRequest {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetCreateFromTimeGMT(v int64) *GetCorpTasksRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetCreateToTimeGMT(v int64) *GetCorpTasksRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetKeyword(v string) *GetCorpTasksRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetLanguage(v string) *GetCorpTasksRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetPageNumber(v int32) *GetCorpTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetPageSize(v int32) *GetCorpTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetProcessCodes(v string) *GetCorpTasksRequest {
+	s.ProcessCodes = &v
+	return s
+}
+
+func (s *GetCorpTasksRequest) SetToken(v string) *GetCorpTasksRequest {
+	s.Token = &v
+	return s
+}
+
+type GetCorpTasksResponseBody struct {
+	Data            []*GetCorpTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64                          `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64                          `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                         `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                         `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetCorpTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpTasksResponseBody) SetData(v []*GetCorpTasksResponseBodyData) *GetCorpTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCorpTasksResponseBody) SetPageNumber(v int64) *GetCorpTasksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBody) SetRequestId(v string) *GetCorpTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBody) SetTotalCount(v int64) *GetCorpTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBody) SetVendorRequestId(v string) *GetCorpTasksResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBody) SetVendorType(v string) *GetCorpTasksResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetCorpTasksResponseBodyData struct {
+	ActiveTimeGMT               *string `json:"ActiveTimeGMT,omitempty" xml:"ActiveTimeGMT,omitempty"`
+	ActualActionerId            *string `json:"ActualActionerId,omitempty" xml:"ActualActionerId,omitempty"`
+	AppType                     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateTimeGMT               *string `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	FinishTimeGMT               *string `json:"FinishTimeGMT,omitempty" xml:"FinishTimeGMT,omitempty"`
+	OriginatorEmail             *string `json:"OriginatorEmail,omitempty" xml:"OriginatorEmail,omitempty"`
+	OriginatorId                *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	OriginatorName              *string `json:"OriginatorName,omitempty" xml:"OriginatorName,omitempty"`
+	OriginatorNameInEnglish     *string `json:"OriginatorNameInEnglish,omitempty" xml:"OriginatorNameInEnglish,omitempty"`
+	OriginatorNickName          *string `json:"OriginatorNickName,omitempty" xml:"OriginatorNickName,omitempty"`
+	OriginatorNickNameEn        *string `json:"OriginatorNickNameEn,omitempty" xml:"OriginatorNickNameEn,omitempty"`
+	OriginatorNickNameInEnglish *string `json:"OriginatorNickNameInEnglish,omitempty" xml:"OriginatorNickNameInEnglish,omitempty"`
+	OriginatorPhoto             *string `json:"OriginatorPhoto,omitempty" xml:"OriginatorPhoto,omitempty"`
+	OutResult                   *string `json:"OutResult,omitempty" xml:"OutResult,omitempty"`
+	OutResultName               *string `json:"OutResultName,omitempty" xml:"OutResultName,omitempty"`
+	ProcessInstanceId           *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	Status                      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId                      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType                    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Title                       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	TitleInEnglish              *string `json:"TitleInEnglish,omitempty" xml:"TitleInEnglish,omitempty"`
+}
+
+func (s GetCorpTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpTasksResponseBodyData) SetActiveTimeGMT(v string) *GetCorpTasksResponseBodyData {
+	s.ActiveTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetActualActionerId(v string) *GetCorpTasksResponseBodyData {
+	s.ActualActionerId = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetAppType(v string) *GetCorpTasksResponseBodyData {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetCreateTimeGMT(v string) *GetCorpTasksResponseBodyData {
+	s.CreateTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetFinishTimeGMT(v string) *GetCorpTasksResponseBodyData {
+	s.FinishTimeGMT = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOriginatorEmail(v string) *GetCorpTasksResponseBodyData {
+	s.OriginatorEmail = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOriginatorId(v string) *GetCorpTasksResponseBodyData {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOriginatorName(v string) *GetCorpTasksResponseBodyData {
+	s.OriginatorName = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOriginatorNameInEnglish(v string) *GetCorpTasksResponseBodyData {
+	s.OriginatorNameInEnglish = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOriginatorNickName(v string) *GetCorpTasksResponseBodyData {
+	s.OriginatorNickName = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOriginatorNickNameEn(v string) *GetCorpTasksResponseBodyData {
+	s.OriginatorNickNameEn = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOriginatorNickNameInEnglish(v string) *GetCorpTasksResponseBodyData {
+	s.OriginatorNickNameInEnglish = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOriginatorPhoto(v string) *GetCorpTasksResponseBodyData {
+	s.OriginatorPhoto = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOutResult(v string) *GetCorpTasksResponseBodyData {
+	s.OutResult = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetOutResultName(v string) *GetCorpTasksResponseBodyData {
+	s.OutResultName = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetProcessInstanceId(v string) *GetCorpTasksResponseBodyData {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetStatus(v string) *GetCorpTasksResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetTaskId(v string) *GetCorpTasksResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetTaskType(v string) *GetCorpTasksResponseBodyData {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetTitle(v string) *GetCorpTasksResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *GetCorpTasksResponseBodyData) SetTitleInEnglish(v string) *GetCorpTasksResponseBodyData {
+	s.TitleInEnglish = &v
+	return s
+}
+
+type GetCorpTasksResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCorpTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCorpTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCorpTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCorpTasksResponse) SetHeaders(v map[string]*string) *GetCorpTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCorpTasksResponse) SetStatusCode(v int32) *GetCorpTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCorpTasksResponse) SetBody(v *GetCorpTasksResponseBody) *GetCorpTasksResponse {
 	s.Body = v
 	return s
 }
@@ -16853,6 +17697,293 @@ func (s *GetNodesResponse) SetBody(v *GetNodesResponseBody) *GetNodesResponse {
 	return s
 }
 
+type GetNotifyMeHeaders struct {
+	CommonHeaders  map[string]*string                `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetNotifyMeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetNotifyMeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNotifyMeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetNotifyMeHeaders) SetCommonHeaders(v map[string]*string) *GetNotifyMeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetNotifyMeHeaders) SetAccountContext(v *GetNotifyMeHeadersAccountContext) *GetNotifyMeHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetNotifyMeHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetNotifyMeHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNotifyMeHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetNotifyMeHeadersAccountContext) SetAccountId(v string) *GetNotifyMeHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetNotifyMeShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetNotifyMeShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNotifyMeShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetNotifyMeShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetNotifyMeShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetNotifyMeShrinkHeaders) SetAccountContextShrink(v string) *GetNotifyMeShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetNotifyMeRequest struct {
+	AppTypes                  *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
+	CorpId                    *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	CreateFromTimeGMT         *int64  `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT           *int64  `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	InstanceCreateFromTimeGMT *int64  `json:"InstanceCreateFromTimeGMT,omitempty" xml:"InstanceCreateFromTimeGMT,omitempty"`
+	InstanceCreateToTimeGMT   *int64  `json:"InstanceCreateToTimeGMT,omitempty" xml:"InstanceCreateToTimeGMT,omitempty"`
+	Keyword                   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Language                  *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber                *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessCodes              *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	Token                     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetNotifyMeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNotifyMeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNotifyMeRequest) SetAppTypes(v string) *GetNotifyMeRequest {
+	s.AppTypes = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetCorpId(v string) *GetNotifyMeRequest {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetCreateFromTimeGMT(v int64) *GetNotifyMeRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetCreateToTimeGMT(v int64) *GetNotifyMeRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetInstanceCreateFromTimeGMT(v int64) *GetNotifyMeRequest {
+	s.InstanceCreateFromTimeGMT = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetInstanceCreateToTimeGMT(v int64) *GetNotifyMeRequest {
+	s.InstanceCreateToTimeGMT = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetKeyword(v string) *GetNotifyMeRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetLanguage(v string) *GetNotifyMeRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetPageNumber(v int32) *GetNotifyMeRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetPageSize(v int32) *GetNotifyMeRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetProcessCodes(v string) *GetNotifyMeRequest {
+	s.ProcessCodes = &v
+	return s
+}
+
+func (s *GetNotifyMeRequest) SetToken(v string) *GetNotifyMeRequest {
+	s.Token = &v
+	return s
+}
+
+type GetNotifyMeResponseBody struct {
+	Data            []*GetNotifyMeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64                         `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64                         `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                        `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                        `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetNotifyMeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNotifyMeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNotifyMeResponseBody) SetData(v []*GetNotifyMeResponseBodyData) *GetNotifyMeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetNotifyMeResponseBody) SetPageNumber(v int64) *GetNotifyMeResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBody) SetRequestId(v string) *GetNotifyMeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBody) SetTotalCount(v int64) *GetNotifyMeResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBody) SetVendorRequestId(v string) *GetNotifyMeResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBody) SetVendorType(v string) *GetNotifyMeResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetNotifyMeResponseBodyData struct {
+	ActivityId      *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	AppType         *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CorpId          *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	CreateTimeGMT   *string `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	CreatorUserId   *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	FormInstanceId  *string `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	InstStatus      *string `json:"InstStatus,omitempty" xml:"InstStatus,omitempty"`
+	MobileUrl       *string `json:"MobileUrl,omitempty" xml:"MobileUrl,omitempty"`
+	ModifiedTimeGMT *string `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
+}
+
+func (s GetNotifyMeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNotifyMeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetNotifyMeResponseBodyData) SetActivityId(v string) *GetNotifyMeResponseBodyData {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBodyData) SetAppType(v string) *GetNotifyMeResponseBodyData {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBodyData) SetCorpId(v string) *GetNotifyMeResponseBodyData {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBodyData) SetCreateTimeGMT(v string) *GetNotifyMeResponseBodyData {
+	s.CreateTimeGMT = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBodyData) SetCreatorUserId(v string) *GetNotifyMeResponseBodyData {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBodyData) SetFormInstanceId(v string) *GetNotifyMeResponseBodyData {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBodyData) SetInstStatus(v string) *GetNotifyMeResponseBodyData {
+	s.InstStatus = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBodyData) SetMobileUrl(v string) *GetNotifyMeResponseBodyData {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *GetNotifyMeResponseBodyData) SetModifiedTimeGMT(v string) *GetNotifyMeResponseBodyData {
+	s.ModifiedTimeGMT = &v
+	return s
+}
+
+type GetNotifyMeResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNotifyMeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetNotifyMeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNotifyMeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNotifyMeResponse) SetHeaders(v map[string]*string) *GetNotifyMeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNotifyMeResponse) SetStatusCode(v int32) *GetNotifyMeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetNotifyMeResponse) SetBody(v *GetNotifyMeResponseBody) *GetNotifyMeResponse {
+	s.Body = v
+	return s
+}
+
 type GetOpenUrlHeaders struct {
 	CommonHeaders  map[string]*string               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetOpenUrlHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -18650,6 +19781,257 @@ func (s *GetReportUnReadCountResponse) SetBody(v *GetReportUnReadCountResponseBo
 	return s
 }
 
+type GetRunningTasksHeaders struct {
+	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetRunningTasksHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetRunningTasksHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRunningTasksHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetRunningTasksHeaders) SetCommonHeaders(v map[string]*string) *GetRunningTasksHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetRunningTasksHeaders) SetAccountContext(v *GetRunningTasksHeadersAccountContext) *GetRunningTasksHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetRunningTasksHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetRunningTasksHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRunningTasksHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetRunningTasksHeadersAccountContext) SetAccountId(v string) *GetRunningTasksHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetRunningTasksShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetRunningTasksShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRunningTasksShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetRunningTasksShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetRunningTasksShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetRunningTasksShrinkHeaders) SetAccountContextShrink(v string) *GetRunningTasksShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetRunningTasksRequest struct {
+	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ProcessCodes      *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	SystemToken       *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s GetRunningTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRunningTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRunningTasksRequest) SetAppType(v string) *GetRunningTasksRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetRunningTasksRequest) SetLanguage(v string) *GetRunningTasksRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetRunningTasksRequest) SetProcessCodes(v string) *GetRunningTasksRequest {
+	s.ProcessCodes = &v
+	return s
+}
+
+func (s *GetRunningTasksRequest) SetProcessInstanceId(v string) *GetRunningTasksRequest {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *GetRunningTasksRequest) SetSystemToken(v string) *GetRunningTasksRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type GetRunningTasksResponseBody struct {
+	RequestId       *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          []*GetRunningTasksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	VendorRequestId *string                              `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                              `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetRunningTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRunningTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRunningTasksResponseBody) SetRequestId(v string) *GetRunningTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBody) SetResult(v []*GetRunningTasksResponseBodyResult) *GetRunningTasksResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetRunningTasksResponseBody) SetVendorRequestId(v string) *GetRunningTasksResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBody) SetVendorType(v string) *GetRunningTasksResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetRunningTasksResponseBodyResult struct {
+	ActiveTimeGMT     *string `json:"ActiveTimeGMT,omitempty" xml:"ActiveTimeGMT,omitempty"`
+	ActivityId        *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ActualActionerId  *string `json:"ActualActionerId,omitempty" xml:"ActualActionerId,omitempty"`
+	CreateTimeGMT     *string `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	FinishTimeGMT     *string `json:"FinishTimeGMT,omitempty" xml:"FinishTimeGMT,omitempty"`
+	OriginatorId      *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Title             *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	TitleInEnglish    *string `json:"TitleInEnglish,omitempty" xml:"TitleInEnglish,omitempty"`
+}
+
+func (s GetRunningTasksResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRunningTasksResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetActiveTimeGMT(v string) *GetRunningTasksResponseBodyResult {
+	s.ActiveTimeGMT = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetActivityId(v string) *GetRunningTasksResponseBodyResult {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetActualActionerId(v string) *GetRunningTasksResponseBodyResult {
+	s.ActualActionerId = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetCreateTimeGMT(v string) *GetRunningTasksResponseBodyResult {
+	s.CreateTimeGMT = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetFinishTimeGMT(v string) *GetRunningTasksResponseBodyResult {
+	s.FinishTimeGMT = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetOriginatorId(v string) *GetRunningTasksResponseBodyResult {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetProcessInstanceId(v string) *GetRunningTasksResponseBodyResult {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetStatus(v string) *GetRunningTasksResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetTaskId(v string) *GetRunningTasksResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetTaskType(v string) *GetRunningTasksResponseBodyResult {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetTitle(v string) *GetRunningTasksResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *GetRunningTasksResponseBodyResult) SetTitleInEnglish(v string) *GetRunningTasksResponseBodyResult {
+	s.TitleInEnglish = &v
+	return s
+}
+
+type GetRunningTasksResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRunningTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRunningTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRunningTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRunningTasksResponse) SetHeaders(v map[string]*string) *GetRunningTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRunningTasksResponse) SetStatusCode(v int32) *GetRunningTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRunningTasksResponse) SetBody(v *GetRunningTasksResponseBody) *GetRunningTasksResponse {
+	s.Body = v
+	return s
+}
+
 type GetSheetHeaders struct {
 	CommonHeaders  map[string]*string             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetSheetHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -19749,6 +21131,424 @@ func (s *GetSubscribedCalendarResponse) SetStatusCode(v int32) *GetSubscribedCal
 }
 
 func (s *GetSubscribedCalendarResponse) SetBody(v *GetSubscribedCalendarResponseBody) *GetSubscribedCalendarResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskCopiesHeaders struct {
+	CommonHeaders  map[string]*string                  `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetTaskCopiesHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetTaskCopiesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskCopiesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskCopiesHeaders) SetCommonHeaders(v map[string]*string) *GetTaskCopiesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetTaskCopiesHeaders) SetAccountContext(v *GetTaskCopiesHeadersAccountContext) *GetTaskCopiesHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetTaskCopiesHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetTaskCopiesHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskCopiesHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskCopiesHeadersAccountContext) SetAccountId(v string) *GetTaskCopiesHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetTaskCopiesShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetTaskCopiesShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskCopiesShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskCopiesShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetTaskCopiesShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetTaskCopiesShrinkHeaders) SetAccountContextShrink(v string) *GetTaskCopiesShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetTaskCopiesRequest struct {
+	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateFromTimeGMT *int64  `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT   *int64  `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessCodes      *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	SystemToken       *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s GetTaskCopiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskCopiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskCopiesRequest) SetAppType(v string) *GetTaskCopiesRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetTaskCopiesRequest) SetCreateFromTimeGMT(v int64) *GetTaskCopiesRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *GetTaskCopiesRequest) SetCreateToTimeGMT(v int64) *GetTaskCopiesRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *GetTaskCopiesRequest) SetKeyword(v string) *GetTaskCopiesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetTaskCopiesRequest) SetLanguage(v string) *GetTaskCopiesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetTaskCopiesRequest) SetPageNumber(v int32) *GetTaskCopiesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetTaskCopiesRequest) SetPageSize(v int32) *GetTaskCopiesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetTaskCopiesRequest) SetProcessCodes(v string) *GetTaskCopiesRequest {
+	s.ProcessCodes = &v
+	return s
+}
+
+func (s *GetTaskCopiesRequest) SetSystemToken(v string) *GetTaskCopiesRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type GetTaskCopiesResponseBody struct {
+	Data            []*GetTaskCopiesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64                           `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                          `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                          `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetTaskCopiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskCopiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskCopiesResponseBody) SetData(v []*GetTaskCopiesResponseBodyData) *GetTaskCopiesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBody) SetPageNumber(v int64) *GetTaskCopiesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBody) SetRequestId(v string) *GetTaskCopiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBody) SetTotalCount(v int64) *GetTaskCopiesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBody) SetVendorRequestId(v string) *GetTaskCopiesResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBody) SetVendorType(v string) *GetTaskCopiesResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetTaskCopiesResponseBodyData struct {
+	ActionExecutorId          []*string                                                `json:"ActionExecutorId,omitempty" xml:"ActionExecutorId,omitempty" type:"Repeated"`
+	ActionExecutorName        []*string                                                `json:"ActionExecutorName,omitempty" xml:"ActionExecutorName,omitempty" type:"Repeated"`
+	AppType                   *string                                                  `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CarbonActivityId          *string                                                  `json:"CarbonActivityId,omitempty" xml:"CarbonActivityId,omitempty"`
+	CreateTimeGMT             *string                                                  `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	CurrentActivityInstances  []*GetTaskCopiesResponseBodyDataCurrentActivityInstances `json:"CurrentActivityInstances,omitempty" xml:"CurrentActivityInstances,omitempty" type:"Repeated"`
+	DataMap                   map[string]interface{}                                   `json:"DataMap,omitempty" xml:"DataMap,omitempty"`
+	DataType                  *string                                                  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	FinishTimeGMT             *string                                                  `json:"FinishTimeGMT,omitempty" xml:"FinishTimeGMT,omitempty"`
+	FormInstanceId            *string                                                  `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	FormUuid                  *string                                                  `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	InstanceValue             *string                                                  `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
+	ModifiedTimeGMT           *string                                                  `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
+	OriginatorAvatar          *string                                                  `json:"OriginatorAvatar,omitempty" xml:"OriginatorAvatar,omitempty"`
+	OriginatorDisplayName     *string                                                  `json:"OriginatorDisplayName,omitempty" xml:"OriginatorDisplayName,omitempty"`
+	OriginatorId              *string                                                  `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	ProcessApprovedResult     *string                                                  `json:"ProcessApprovedResult,omitempty" xml:"ProcessApprovedResult,omitempty"`
+	ProcessApprovedResultText *string                                                  `json:"ProcessApprovedResultText,omitempty" xml:"ProcessApprovedResultText,omitempty"`
+	ProcessCode               *string                                                  `json:"ProcessCode,omitempty" xml:"ProcessCode,omitempty"`
+	ProcessId                 *int64                                                   `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessInstanceId         *string                                                  `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	ProcessInstanceStatus     *string                                                  `json:"ProcessInstanceStatus,omitempty" xml:"ProcessInstanceStatus,omitempty"`
+	ProcessInstanceStatusText *string                                                  `json:"ProcessInstanceStatusText,omitempty" xml:"ProcessInstanceStatusText,omitempty"`
+	ProcessName               *string                                                  `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	SerialNumber              *string                                                  `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Title                     *string                                                  `json:"Title,omitempty" xml:"Title,omitempty"`
+	Version                   *int64                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetTaskCopiesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskCopiesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetActionExecutorId(v []*string) *GetTaskCopiesResponseBodyData {
+	s.ActionExecutorId = v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetActionExecutorName(v []*string) *GetTaskCopiesResponseBodyData {
+	s.ActionExecutorName = v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetAppType(v string) *GetTaskCopiesResponseBodyData {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetCarbonActivityId(v string) *GetTaskCopiesResponseBodyData {
+	s.CarbonActivityId = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetCreateTimeGMT(v string) *GetTaskCopiesResponseBodyData {
+	s.CreateTimeGMT = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetCurrentActivityInstances(v []*GetTaskCopiesResponseBodyDataCurrentActivityInstances) *GetTaskCopiesResponseBodyData {
+	s.CurrentActivityInstances = v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetDataMap(v map[string]interface{}) *GetTaskCopiesResponseBodyData {
+	s.DataMap = v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetDataType(v string) *GetTaskCopiesResponseBodyData {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetFinishTimeGMT(v string) *GetTaskCopiesResponseBodyData {
+	s.FinishTimeGMT = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetFormInstanceId(v string) *GetTaskCopiesResponseBodyData {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetFormUuid(v string) *GetTaskCopiesResponseBodyData {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetInstanceValue(v string) *GetTaskCopiesResponseBodyData {
+	s.InstanceValue = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetModifiedTimeGMT(v string) *GetTaskCopiesResponseBodyData {
+	s.ModifiedTimeGMT = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetOriginatorAvatar(v string) *GetTaskCopiesResponseBodyData {
+	s.OriginatorAvatar = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetOriginatorDisplayName(v string) *GetTaskCopiesResponseBodyData {
+	s.OriginatorDisplayName = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetOriginatorId(v string) *GetTaskCopiesResponseBodyData {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetProcessApprovedResult(v string) *GetTaskCopiesResponseBodyData {
+	s.ProcessApprovedResult = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetProcessApprovedResultText(v string) *GetTaskCopiesResponseBodyData {
+	s.ProcessApprovedResultText = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetProcessCode(v string) *GetTaskCopiesResponseBodyData {
+	s.ProcessCode = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetProcessId(v int64) *GetTaskCopiesResponseBodyData {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetProcessInstanceId(v string) *GetTaskCopiesResponseBodyData {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetProcessInstanceStatus(v string) *GetTaskCopiesResponseBodyData {
+	s.ProcessInstanceStatus = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetProcessInstanceStatusText(v string) *GetTaskCopiesResponseBodyData {
+	s.ProcessInstanceStatusText = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetProcessName(v string) *GetTaskCopiesResponseBodyData {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetSerialNumber(v string) *GetTaskCopiesResponseBodyData {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetTitle(v string) *GetTaskCopiesResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyData) SetVersion(v int64) *GetTaskCopiesResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type GetTaskCopiesResponseBodyDataCurrentActivityInstances struct {
+	ActivityId             *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ActivityInstanceStatus *string `json:"ActivityInstanceStatus,omitempty" xml:"ActivityInstanceStatus,omitempty"`
+	ActivityName           *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	ActivityNameInEnglish  *string `json:"ActivityNameInEnglish,omitempty" xml:"ActivityNameInEnglish,omitempty"`
+	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetTaskCopiesResponseBodyDataCurrentActivityInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskCopiesResponseBodyDataCurrentActivityInstances) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskCopiesResponseBodyDataCurrentActivityInstances) SetActivityId(v string) *GetTaskCopiesResponseBodyDataCurrentActivityInstances {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyDataCurrentActivityInstances) SetActivityInstanceStatus(v string) *GetTaskCopiesResponseBodyDataCurrentActivityInstances {
+	s.ActivityInstanceStatus = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyDataCurrentActivityInstances) SetActivityName(v string) *GetTaskCopiesResponseBodyDataCurrentActivityInstances {
+	s.ActivityName = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyDataCurrentActivityInstances) SetActivityNameInEnglish(v string) *GetTaskCopiesResponseBodyDataCurrentActivityInstances {
+	s.ActivityNameInEnglish = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponseBodyDataCurrentActivityInstances) SetId(v int64) *GetTaskCopiesResponseBodyDataCurrentActivityInstances {
+	s.Id = &v
+	return s
+}
+
+type GetTaskCopiesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskCopiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskCopiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskCopiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskCopiesResponse) SetHeaders(v map[string]*string) *GetTaskCopiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskCopiesResponse) SetStatusCode(v int32) *GetTaskCopiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskCopiesResponse) SetBody(v *GetTaskCopiesResponseBody) *GetTaskCopiesResponse {
 	s.Body = v
 	return s
 }
@@ -22056,6 +23856,263 @@ func (s *InviteUsersResponse) SetStatusCode(v int32) *InviteUsersResponse {
 }
 
 func (s *InviteUsersResponse) SetBody(v *InviteUsersResponseBody) *InviteUsersResponse {
+	s.Body = v
+	return s
+}
+
+type ListApplicationHeaders struct {
+	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListApplicationHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListApplicationHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationHeaders) SetCommonHeaders(v map[string]*string) *ListApplicationHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListApplicationHeaders) SetAccountContext(v *ListApplicationHeadersAccountContext) *ListApplicationHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListApplicationHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListApplicationHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationHeadersAccountContext) SetAccountId(v string) *ListApplicationHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListApplicationShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListApplicationShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListApplicationShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListApplicationShrinkHeaders) SetAccountContextShrink(v string) *ListApplicationShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListApplicationRequest struct {
+	AppFilter            *string `json:"AppFilter,omitempty" xml:"AppFilter,omitempty"`
+	AppNameSearchKeyword *string `json:"AppNameSearchKeyword,omitempty" xml:"AppNameSearchKeyword,omitempty"`
+	CorpId               *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Token                *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s ListApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationRequest) SetAppFilter(v string) *ListApplicationRequest {
+	s.AppFilter = &v
+	return s
+}
+
+func (s *ListApplicationRequest) SetAppNameSearchKeyword(v string) *ListApplicationRequest {
+	s.AppNameSearchKeyword = &v
+	return s
+}
+
+func (s *ListApplicationRequest) SetCorpId(v string) *ListApplicationRequest {
+	s.CorpId = &v
+	return s
+}
+
+func (s *ListApplicationRequest) SetPageNumber(v int32) *ListApplicationRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApplicationRequest) SetPageSize(v int32) *ListApplicationRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApplicationRequest) SetToken(v string) *ListApplicationRequest {
+	s.Token = &v
+	return s
+}
+
+type ListApplicationResponseBody struct {
+	Data            []*ListApplicationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64                             `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64                             `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                            `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                            `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationResponseBody) SetData(v []*ListApplicationResponseBodyData) *ListApplicationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListApplicationResponseBody) SetPageNumber(v int64) *ListApplicationResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApplicationResponseBody) SetRequestId(v string) *ListApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApplicationResponseBody) SetTotalCount(v int64) *ListApplicationResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListApplicationResponseBody) SetVendorRequestId(v string) *ListApplicationResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListApplicationResponseBody) SetVendorType(v string) *ListApplicationResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListApplicationResponseBodyData struct {
+	AppConfig         *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	ApplicationStatus *string `json:"ApplicationStatus,omitempty" xml:"ApplicationStatus,omitempty"`
+	CorpId            *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	CreatorUserId     *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Icon              *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Inexistence       *string `json:"Inexistence,omitempty" xml:"Inexistence,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SubCorpId         *string `json:"SubCorpId,omitempty" xml:"SubCorpId,omitempty"`
+}
+
+func (s ListApplicationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationResponseBodyData) SetAppConfig(v string) *ListApplicationResponseBodyData {
+	s.AppConfig = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetAppType(v string) *ListApplicationResponseBodyData {
+	s.AppType = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetApplicationStatus(v string) *ListApplicationResponseBodyData {
+	s.ApplicationStatus = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetCorpId(v string) *ListApplicationResponseBodyData {
+	s.CorpId = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetCreatorUserId(v string) *ListApplicationResponseBodyData {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetDescription(v string) *ListApplicationResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetIcon(v string) *ListApplicationResponseBodyData {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetInexistence(v string) *ListApplicationResponseBodyData {
+	s.Inexistence = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetName(v string) *ListApplicationResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyData) SetSubCorpId(v string) *ListApplicationResponseBodyData {
+	s.SubCorpId = &v
+	return s
+}
+
+type ListApplicationResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationResponse) SetHeaders(v map[string]*string) *ListApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplicationResponse) SetStatusCode(v int32) *ListApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApplicationResponse) SetBody(v *ListApplicationResponseBody) *ListApplicationResponse {
 	s.Body = v
 	return s
 }
@@ -25074,6 +27131,308 @@ func (s *ListTableDataByFormInstanceIdTableIdResponse) SetStatusCode(v int32) *L
 }
 
 func (s *ListTableDataByFormInstanceIdTableIdResponse) SetBody(v *ListTableDataByFormInstanceIdTableIdResponseBody) *ListTableDataByFormInstanceIdTableIdResponse {
+	s.Body = v
+	return s
+}
+
+type ListTeamsHeaders struct {
+	CommonHeaders  map[string]*string              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListTeamsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListTeamsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsHeaders) SetCommonHeaders(v map[string]*string) *ListTeamsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTeamsHeaders) SetAccountContext(v *ListTeamsHeadersAccountContext) *ListTeamsHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListTeamsHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListTeamsHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsHeadersAccountContext) SetAccountId(v string) *ListTeamsHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListTeamsShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListTeamsShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListTeamsShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTeamsShrinkHeaders) SetAccountContextShrink(v string) *ListTeamsShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListTeamsRequest struct {
+	MaxResults    *int32                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TenantContext *ListTeamsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s ListTeamsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsRequest) SetMaxResults(v int32) *ListTeamsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTeamsRequest) SetNextToken(v string) *ListTeamsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTeamsRequest) SetTenantContext(v *ListTeamsRequestTenantContext) *ListTeamsRequest {
+	s.TenantContext = v
+	return s
+}
+
+type ListTeamsRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s ListTeamsRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsRequestTenantContext) SetTenantId(v string) *ListTeamsRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type ListTeamsShrinkRequest struct {
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s ListTeamsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsShrinkRequest) SetMaxResults(v int32) *ListTeamsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTeamsShrinkRequest) SetNextToken(v string) *ListTeamsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTeamsShrinkRequest) SetTenantContextShrink(v string) *ListTeamsShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type ListTeamsResponseBody struct {
+	NextToken       *string                       `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId       *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Teams           []*ListTeamsResponseBodyTeams `json:"teams,omitempty" xml:"teams,omitempty" type:"Repeated"`
+	VendorRequestId *string                       `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                       `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListTeamsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsResponseBody) SetNextToken(v string) *ListTeamsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTeamsResponseBody) SetRequestId(v string) *ListTeamsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTeamsResponseBody) SetTeams(v []*ListTeamsResponseBodyTeams) *ListTeamsResponseBody {
+	s.Teams = v
+	return s
+}
+
+func (s *ListTeamsResponseBody) SetVendorRequestId(v string) *ListTeamsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListTeamsResponseBody) SetVendorType(v string) *ListTeamsResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListTeamsResponseBodyTeams struct {
+	CorpId       *string                         `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	Cover        *string                         `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	CreateTime   *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId    *string                         `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Description  *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	Icon         *ListTeamsResponseBodyTeamsIcon `json:"Icon,omitempty" xml:"Icon,omitempty" type:"Struct"`
+	ModifiedTime *string                         `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ModifierId   *string                         `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	Name         *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	TeamId       *string                         `json:"TeamId,omitempty" xml:"TeamId,omitempty"`
+}
+
+func (s ListTeamsResponseBodyTeams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsResponseBodyTeams) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsResponseBodyTeams) SetCorpId(v string) *ListTeamsResponseBodyTeams {
+	s.CorpId = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetCover(v string) *ListTeamsResponseBodyTeams {
+	s.Cover = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetCreateTime(v string) *ListTeamsResponseBodyTeams {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetCreatorId(v string) *ListTeamsResponseBodyTeams {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetDescription(v string) *ListTeamsResponseBodyTeams {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetIcon(v *ListTeamsResponseBodyTeamsIcon) *ListTeamsResponseBodyTeams {
+	s.Icon = v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetModifiedTime(v string) *ListTeamsResponseBodyTeams {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetModifierId(v string) *ListTeamsResponseBodyTeams {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetName(v string) *ListTeamsResponseBodyTeams {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeams) SetTeamId(v string) *ListTeamsResponseBodyTeams {
+	s.TeamId = &v
+	return s
+}
+
+type ListTeamsResponseBodyTeamsIcon struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTeamsResponseBodyTeamsIcon) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsResponseBodyTeamsIcon) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsResponseBodyTeamsIcon) SetType(v string) *ListTeamsResponseBodyTeamsIcon {
+	s.Type = &v
+	return s
+}
+
+func (s *ListTeamsResponseBodyTeamsIcon) SetValue(v string) *ListTeamsResponseBodyTeamsIcon {
+	s.Value = &v
+	return s
+}
+
+type ListTeamsResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTeamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTeamsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTeamsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTeamsResponse) SetHeaders(v map[string]*string) *ListTeamsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTeamsResponse) SetStatusCode(v int32) *ListTeamsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTeamsResponse) SetBody(v *ListTeamsResponseBody) *ListTeamsResponse {
 	s.Body = v
 	return s
 }
@@ -31964,6 +34323,186 @@ func (s *ReceiverListReportResponse) SetBody(v *ReceiverListReportResponseBody) 
 	return s
 }
 
+type RedirectTaskHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *RedirectTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s RedirectTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RedirectTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RedirectTaskHeaders) SetCommonHeaders(v map[string]*string) *RedirectTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RedirectTaskHeaders) SetAccountContext(v *RedirectTaskHeadersAccountContext) *RedirectTaskHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type RedirectTaskHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s RedirectTaskHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RedirectTaskHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *RedirectTaskHeadersAccountContext) SetAccountId(v string) *RedirectTaskHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type RedirectTaskShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s RedirectTaskShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RedirectTaskShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RedirectTaskShrinkHeaders) SetCommonHeaders(v map[string]*string) *RedirectTaskShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RedirectTaskShrinkHeaders) SetAccountContextShrink(v string) *RedirectTaskShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type RedirectTaskRequest struct {
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	ByManager           *string `json:"ByManager,omitempty" xml:"ByManager,omitempty"`
+	Language            *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	NowActionExecutorId *string `json:"NowActionExecutorId,omitempty" xml:"NowActionExecutorId,omitempty"`
+	ProcessInstanceId   *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	TaskId              *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s RedirectTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RedirectTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RedirectTaskRequest) SetAppType(v string) *RedirectTaskRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *RedirectTaskRequest) SetByManager(v string) *RedirectTaskRequest {
+	s.ByManager = &v
+	return s
+}
+
+func (s *RedirectTaskRequest) SetLanguage(v string) *RedirectTaskRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *RedirectTaskRequest) SetNowActionExecutorId(v string) *RedirectTaskRequest {
+	s.NowActionExecutorId = &v
+	return s
+}
+
+func (s *RedirectTaskRequest) SetProcessInstanceId(v string) *RedirectTaskRequest {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *RedirectTaskRequest) SetRemark(v string) *RedirectTaskRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *RedirectTaskRequest) SetSystemToken(v string) *RedirectTaskRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *RedirectTaskRequest) SetTaskId(v int64) *RedirectTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type RedirectTaskResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s RedirectTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RedirectTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RedirectTaskResponseBody) SetRequestId(v string) *RedirectTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RedirectTaskResponseBody) SetVendorRequestId(v string) *RedirectTaskResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *RedirectTaskResponseBody) SetVendorType(v string) *RedirectTaskResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type RedirectTaskResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RedirectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RedirectTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RedirectTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RedirectTaskResponse) SetHeaders(v map[string]*string) *RedirectTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RedirectTaskResponse) SetStatusCode(v int32) *RedirectTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RedirectTaskResponse) SetBody(v *RedirectTaskResponseBody) *RedirectTaskResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveAttendeeHeaders struct {
 	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *RemoveAttendeeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -32784,6 +35323,186 @@ func (s *SaveFormDataResponse) SetStatusCode(v int32) *SaveFormDataResponse {
 }
 
 func (s *SaveFormDataResponse) SetBody(v *SaveFormDataResponseBody) *SaveFormDataResponse {
+	s.Body = v
+	return s
+}
+
+type SaveFormRemarkHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SaveFormRemarkHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SaveFormRemarkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormRemarkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormRemarkHeaders) SetCommonHeaders(v map[string]*string) *SaveFormRemarkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SaveFormRemarkHeaders) SetAccountContext(v *SaveFormRemarkHeadersAccountContext) *SaveFormRemarkHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SaveFormRemarkHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SaveFormRemarkHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormRemarkHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormRemarkHeadersAccountContext) SetAccountId(v string) *SaveFormRemarkHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SaveFormRemarkShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SaveFormRemarkShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormRemarkShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormRemarkShrinkHeaders) SetCommonHeaders(v map[string]*string) *SaveFormRemarkShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SaveFormRemarkShrinkHeaders) SetAccountContextShrink(v string) *SaveFormRemarkShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SaveFormRemarkRequest struct {
+	AppType        *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AtUserId       *string `json:"AtUserId,omitempty" xml:"AtUserId,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	FormInstanceId *string `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ReplyId        *int64  `json:"ReplyId,omitempty" xml:"ReplyId,omitempty"`
+	SystemToken    *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s SaveFormRemarkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormRemarkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormRemarkRequest) SetAppType(v string) *SaveFormRemarkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *SaveFormRemarkRequest) SetAtUserId(v string) *SaveFormRemarkRequest {
+	s.AtUserId = &v
+	return s
+}
+
+func (s *SaveFormRemarkRequest) SetContent(v string) *SaveFormRemarkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SaveFormRemarkRequest) SetFormInstanceId(v string) *SaveFormRemarkRequest {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *SaveFormRemarkRequest) SetLanguage(v string) *SaveFormRemarkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SaveFormRemarkRequest) SetReplyId(v int64) *SaveFormRemarkRequest {
+	s.ReplyId = &v
+	return s
+}
+
+func (s *SaveFormRemarkRequest) SetSystemToken(v string) *SaveFormRemarkRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type SaveFormRemarkResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          *int64  `json:"result,omitempty" xml:"result,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SaveFormRemarkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormRemarkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormRemarkResponseBody) SetRequestId(v string) *SaveFormRemarkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveFormRemarkResponseBody) SetResult(v int64) *SaveFormRemarkResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *SaveFormRemarkResponseBody) SetVendorRequestId(v string) *SaveFormRemarkResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SaveFormRemarkResponseBody) SetVendorType(v string) *SaveFormRemarkResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SaveFormRemarkResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveFormRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveFormRemarkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormRemarkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormRemarkResponse) SetHeaders(v map[string]*string) *SaveFormRemarkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveFormRemarkResponse) SetStatusCode(v int32) *SaveFormRemarkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveFormRemarkResponse) SetBody(v *SaveFormRemarkResponseBody) *SaveFormRemarkResponse {
 	s.Body = v
 	return s
 }
@@ -44777,6 +47496,83 @@ func (client *Client) DeleteWorkspaceMembers(request *DeleteWorkspaceMembersRequ
 	return _result, _err
 }
 
+func (client *Client) ExecuteBatchTaskWithOptions(request *ExecuteBatchTaskRequest, tmpHeader *ExecuteBatchTaskHeaders, runtime *util.RuntimeOptions) (_result *ExecuteBatchTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &ExecuteBatchTaskShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutResult)) {
+		body["OutResult"] = request.OutResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskInformationList)) {
+		body["TaskInformationList"] = request.TaskInformationList
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteBatchTask"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/executeBatchTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteBatchTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecuteBatchTask(request *ExecuteBatchTaskRequest) (_result *ExecuteBatchTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ExecuteBatchTaskHeaders{}
+	_result = &ExecuteBatchTaskResponse{}
+	_body, _err := client.ExecuteBatchTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ExecutePlatformTaskWithOptions(request *ExecutePlatformTaskRequest, tmpHeader *ExecutePlatformTaskHeaders, runtime *util.RuntimeOptions) (_result *ExecutePlatformTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45100,6 +47896,200 @@ func (client *Client) GetAllSheets(request *GetAllSheetsRequest) (_result *GetAl
 	headers := &GetAllSheetsHeaders{}
 	_result = &GetAllSheetsResponse{}
 	_body, _err := client.GetAllSheetsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCorpAccomplishmentTasksWithOptions(request *GetCorpAccomplishmentTasksRequest, tmpHeader *GetCorpAccomplishmentTasksHeaders, runtime *util.RuntimeOptions) (_result *GetCorpAccomplishmentTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetCorpAccomplishmentTasksShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppTypes)) {
+		body["AppTypes"] = request.AppTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
+		body["CorpId"] = request.CorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessCodes)) {
+		body["ProcessCodes"] = request.ProcessCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCorpAccomplishmentTasks"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getCorpAccomplishmentTasks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCorpAccomplishmentTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCorpAccomplishmentTasks(request *GetCorpAccomplishmentTasksRequest) (_result *GetCorpAccomplishmentTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetCorpAccomplishmentTasksHeaders{}
+	_result = &GetCorpAccomplishmentTasksResponse{}
+	_body, _err := client.GetCorpAccomplishmentTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCorpTasksWithOptions(request *GetCorpTasksRequest, tmpHeader *GetCorpTasksHeaders, runtime *util.RuntimeOptions) (_result *GetCorpTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetCorpTasksShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppTypes)) {
+		body["AppTypes"] = request.AppTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
+		body["CorpId"] = request.CorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessCodes)) {
+		body["ProcessCodes"] = request.ProcessCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCorpTasks"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getCorpTasks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCorpTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCorpTasks(request *GetCorpTasksRequest) (_result *GetCorpTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetCorpTasksHeaders{}
+	_result = &GetCorpTasksResponse{}
+	_body, _err := client.GetCorpTasksWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46342,6 +49332,111 @@ func (client *Client) GetNodes(request *GetNodesRequest) (_result *GetNodesRespo
 	return _result, _err
 }
 
+func (client *Client) GetNotifyMeWithOptions(request *GetNotifyMeRequest, tmpHeader *GetNotifyMeHeaders, runtime *util.RuntimeOptions) (_result *GetNotifyMeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetNotifyMeShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppTypes)) {
+		body["AppTypes"] = request.AppTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
+		body["CorpId"] = request.CorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceCreateFromTimeGMT)) {
+		body["InstanceCreateFromTimeGMT"] = request.InstanceCreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceCreateToTimeGMT)) {
+		body["InstanceCreateToTimeGMT"] = request.InstanceCreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessCodes)) {
+		body["ProcessCodes"] = request.ProcessCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNotifyMe"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getNotifyMe"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetNotifyMeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetNotifyMe(request *GetNotifyMeRequest) (_result *GetNotifyMeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetNotifyMeHeaders{}
+	_result = &GetNotifyMeResponse{}
+	_body, _err := client.GetNotifyMeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOpenUrlWithOptions(request *GetOpenUrlRequest, tmpHeader *GetOpenUrlHeaders, runtime *util.RuntimeOptions) (_result *GetOpenUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46814,6 +49909,83 @@ func (client *Client) GetReportUnReadCount(request *GetReportUnReadCountRequest)
 	return _result, _err
 }
 
+func (client *Client) GetRunningTasksWithOptions(request *GetRunningTasksRequest, tmpHeader *GetRunningTasksHeaders, runtime *util.RuntimeOptions) (_result *GetRunningTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetRunningTasksShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessCodes)) {
+		body["ProcessCodes"] = request.ProcessCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessInstanceId)) {
+		body["ProcessInstanceId"] = request.ProcessInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRunningTasks"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getRunningTasks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRunningTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRunningTasks(request *GetRunningTasksRequest) (_result *GetRunningTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetRunningTasksHeaders{}
+	_result = &GetRunningTasksResponse{}
+	_body, _err := client.GetRunningTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSheetWithOptions(tmpReq *GetSheetRequest, tmpHeader *GetSheetHeaders, runtime *util.RuntimeOptions) (_result *GetSheetResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -47026,6 +50198,99 @@ func (client *Client) GetSubscribedCalendar(request *GetSubscribedCalendarReques
 	headers := &GetSubscribedCalendarHeaders{}
 	_result = &GetSubscribedCalendarResponse{}
 	_body, _err := client.GetSubscribedCalendarWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskCopiesWithOptions(request *GetTaskCopiesRequest, tmpHeader *GetTaskCopiesHeaders, runtime *util.RuntimeOptions) (_result *GetTaskCopiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetTaskCopiesShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessCodes)) {
+		body["ProcessCodes"] = request.ProcessCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskCopies"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getTaskCopies"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskCopiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskCopies(request *GetTaskCopiesRequest) (_result *GetTaskCopiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetTaskCopiesHeaders{}
+	_result = &GetTaskCopiesResponse{}
+	_body, _err := client.GetTaskCopiesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47697,6 +50962,87 @@ func (client *Client) InviteUsers(request *InviteUsersRequest) (_result *InviteU
 	return _result, _err
 }
 
+func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest, tmpHeader *ListApplicationHeaders, runtime *util.RuntimeOptions) (_result *ListApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &ListApplicationShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppFilter)) {
+		body["AppFilter"] = request.AppFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppNameSearchKeyword)) {
+		body["AppNameSearchKeyword"] = request.AppNameSearchKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
+		body["CorpId"] = request.CorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplication"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/listApplication"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApplication(request *ListApplicationRequest) (_result *ListApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListApplicationHeaders{}
+	_result = &ListApplicationResponse{}
+	_body, _err := client.ListApplicationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListCalendarsWithOptions(tmpReq *ListCalendarsRequest, tmpHeader *ListCalendarsHeaders, runtime *util.RuntimeOptions) (_result *ListCalendarsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -48346,6 +51692,81 @@ func (client *Client) ListTableDataByFormInstanceIdTableId(request *ListTableDat
 	headers := &ListTableDataByFormInstanceIdTableIdHeaders{}
 	_result = &ListTableDataByFormInstanceIdTableIdResponse{}
 	_body, _err := client.ListTableDataByFormInstanceIdTableIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTeamsWithOptions(tmpReq *ListTeamsRequest, tmpHeader *ListTeamsHeaders, runtime *util.RuntimeOptions) (_result *ListTeamsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTeamsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &ListTeamsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTeams"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v2/documents/listTeams"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTeamsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListTeamsHeaders{}
+	_result = &ListTeamsResponse{}
+	_body, _err := client.ListTeamsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50010,6 +53431,95 @@ func (client *Client) ReceiverListReport(request *ReceiverListReportRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) RedirectTaskWithOptions(request *RedirectTaskRequest, tmpHeader *RedirectTaskHeaders, runtime *util.RuntimeOptions) (_result *RedirectTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &RedirectTaskShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ByManager)) {
+		body["ByManager"] = request.ByManager
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NowActionExecutorId)) {
+		body["NowActionExecutorId"] = request.NowActionExecutorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessInstanceId)) {
+		body["ProcessInstanceId"] = request.ProcessInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RedirectTask"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/redirectTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RedirectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RedirectTask(request *RedirectTaskRequest) (_result *RedirectTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RedirectTaskHeaders{}
+	_result = &RedirectTaskResponse{}
+	_body, _err := client.RedirectTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveAttendeeWithOptions(tmpReq *RemoveAttendeeRequest, tmpHeader *RemoveAttendeeHeaders, runtime *util.RuntimeOptions) (_result *RemoveAttendeeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -50313,6 +53823,91 @@ func (client *Client) SaveFormData(request *SaveFormDataRequest) (_result *SaveF
 	headers := &SaveFormDataHeaders{}
 	_result = &SaveFormDataResponse{}
 	_body, _err := client.SaveFormDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveFormRemarkWithOptions(request *SaveFormRemarkRequest, tmpHeader *SaveFormRemarkHeaders, runtime *util.RuntimeOptions) (_result *SaveFormRemarkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &SaveFormRemarkShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AtUserId)) {
+		body["AtUserId"] = request.AtUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormInstanceId)) {
+		body["FormInstanceId"] = request.FormInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplyId)) {
+		body["ReplyId"] = request.ReplyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveFormRemark"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/saveFormRemark"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveFormRemarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveFormRemark(request *SaveFormRemarkRequest) (_result *SaveFormRemarkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SaveFormRemarkHeaders{}
+	_result = &SaveFormRemarkResponse{}
+	_body, _err := client.SaveFormRemarkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
