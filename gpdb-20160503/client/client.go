@@ -16945,6 +16945,8 @@ type QueryContentRequest struct {
 	Collection           *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName             *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl              *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	Filter               *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	Metrics              *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -16975,6 +16977,16 @@ func (s *QueryContentRequest) SetContent(v string) *QueryContentRequest {
 
 func (s *QueryContentRequest) SetDBInstanceId(v string) *QueryContentRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetFileName(v string) *QueryContentRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetFileUrl(v string) *QueryContentRequest {
+	s.FileUrl = &v
 	return s
 }
 
@@ -17018,12 +17030,102 @@ func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentReque
 	return s
 }
 
+type QueryContentAdvanceRequest struct {
+	Collection           *string   `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content              *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId         *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName             *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrlObject        io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Filter               *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Metrics              *string   `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace            *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword    *string   `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TopK                 *int32    `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UseFullTextRetrieval *bool     `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
+}
+
+func (s QueryContentAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContentAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentAdvanceRequest) SetCollection(v string) *QueryContentAdvanceRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetContent(v string) *QueryContentAdvanceRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetDBInstanceId(v string) *QueryContentAdvanceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetFileName(v string) *QueryContentAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetFileUrlObject(v io.Reader) *QueryContentAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetFilter(v string) *QueryContentAdvanceRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetMetrics(v string) *QueryContentAdvanceRequest {
+	s.Metrics = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetNamespace(v string) *QueryContentAdvanceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetNamespacePassword(v string) *QueryContentAdvanceRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetOwnerId(v int64) *QueryContentAdvanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetRegionId(v string) *QueryContentAdvanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetTopK(v int32) *QueryContentAdvanceRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetUseFullTextRetrieval(v bool) *QueryContentAdvanceRequest {
+	s.UseFullTextRetrieval = &v
+	return s
+}
+
 type QueryContentResponseBody struct {
 	EmbeddingTokens *string                          `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
 	Matches         *QueryContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
 	Message         *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId       *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status          *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Usage           *QueryContentResponseBodyUsage   `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s QueryContentResponseBody) String() string {
@@ -17059,6 +17161,11 @@ func (s *QueryContentResponseBody) SetStatus(v string) *QueryContentResponseBody
 	return s
 }
 
+func (s *QueryContentResponseBody) SetUsage(v *QueryContentResponseBodyUsage) *QueryContentResponseBody {
+	s.Usage = v
+	return s
+}
+
 type QueryContentResponseBodyMatches struct {
 	MatchList []*QueryContentResponseBodyMatchesMatchList `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
 }
@@ -17079,6 +17186,7 @@ func (s *QueryContentResponseBodyMatches) SetMatchList(v []*QueryContentResponse
 type QueryContentResponseBodyMatchesMatchList struct {
 	Content         *string                                         `json:"Content,omitempty" xml:"Content,omitempty"`
 	FileName        *string                                         `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileURL         *string                                         `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
 	Id              *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
 	LoaderMetadata  *string                                         `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
 	Metadata        map[string]*string                              `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
@@ -17102,6 +17210,11 @@ func (s *QueryContentResponseBodyMatchesMatchList) SetContent(v string) *QueryCo
 
 func (s *QueryContentResponseBodyMatchesMatchList) SetFileName(v string) *QueryContentResponseBodyMatchesMatchList {
 	s.FileName = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetFileURL(v string) *QueryContentResponseBodyMatchesMatchList {
+	s.FileURL = &v
 	return s
 }
 
@@ -17149,6 +17262,29 @@ func (s QueryContentResponseBodyMatchesMatchListVector) GoString() string {
 
 func (s *QueryContentResponseBodyMatchesMatchListVector) SetVectorList(v []*float64) *QueryContentResponseBodyMatchesMatchListVector {
 	s.VectorList = v
+	return s
+}
+
+type QueryContentResponseBodyUsage struct {
+	EmbeddingEntries *string `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
+	EmbeddingTokens  *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+}
+
+func (s QueryContentResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContentResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBodyUsage) SetEmbeddingEntries(v string) *QueryContentResponseBodyUsage {
+	s.EmbeddingEntries = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyUsage) SetEmbeddingTokens(v string) *QueryContentResponseBodyUsage {
+	s.EmbeddingTokens = &v
 	return s
 }
 
@@ -26685,6 +26821,14 @@ func (client *Client) QueryContentWithOptions(request *QueryContentRequest, runt
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
 	}
@@ -26748,6 +26892,112 @@ func (client *Client) QueryContent(request *QueryContentRequest) (_result *Query
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, runtime *util.RuntimeOptions) (_result *QueryContentResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("gpdb"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	queryContentReq := &QueryContentRequest{}
+	openapiutil.Convert(request, queryContentReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		queryContentReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	queryContentResp, _err := client.QueryContentWithOptions(queryContentReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = queryContentResp
 	return _result, _err
 }
 
