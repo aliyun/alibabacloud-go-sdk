@@ -768,13 +768,16 @@ type CreateNatFirewallControlPolicyRequest struct {
 	//
 	// *   **out**: outbound traffic
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+	// The domain name resolution method of the access control policy. By default, the access control policy is enabled after the policy is created. Valid values:
 	//
-	// *   **0**: Fully qualified domain name (FQDN)-based resolution
+	// *   **0**: fully qualified domain name (FQDN)-based resolution
 	// *   **1**: Domain Name System (DNS)-based dynamic resolution
 	// *   **2**: FQDN and DNS-based dynamic resolution
 	DomainResolveType *int32 `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	EndTime           *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+	//
+	// >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP version supported by the access control policy. Valid values:
 	//
 	// *   **4**: IPv4 (default)
@@ -788,7 +791,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The new priority of the access control policy.
+	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority.
 	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
 	// The protocol type in the access control policy.
 	//
@@ -803,11 +806,34 @@ type CreateNatFirewallControlPolicyRequest struct {
 	//
 	// *   **true**
 	// *   **false**
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
+	//
+	// *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
+	// *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
+	//
+	// >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+	//
+	// *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
+	//
+	// >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+	//
+	// >  If RepeatType is set to Permanent or None, RepeatEndTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+	//
+	// >  If RepeatType is set to Permanent or None, RepeatStartTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// Valid values:
@@ -827,7 +853,10 @@ type CreateNatFirewallControlPolicyRequest struct {
 	// *   **net**: source CIDR block
 	// *   **group**: source address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+	//
+	// >  If RepeatType is set to Permanent, StartTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s CreateNatFirewallControlPolicyRequest) String() string {
@@ -959,9 +988,9 @@ func (s *CreateNatFirewallControlPolicyRequest) SetStartTime(v int64) *CreateNat
 }
 
 type CreateNatFirewallControlPolicyResponseBody struct {
-	// The UUID of the access control policy.
+	// The unique ID of the access control policy.
 	//
-	// > If you want to modify an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+	// >  To modify an access control policy, you must specify the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy operation to obtain the ID.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -8303,8 +8332,14 @@ func (s *DescribeRiskEventPayloadResponse) SetBody(v *DescribeRiskEventPayloadRe
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListRequest struct {
-	FirewallId              *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	Lang                    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The instance ID of the VPC firewall.
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the routing policy.
 	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
 }
 
@@ -8332,8 +8367,10 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetTrFirewallRout
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListResponseBody struct {
+	// The route tables.
 	PolicyAssociationBackupConfigs []*DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs `json:"PolicyAssociationBackupConfigs,omitempty" xml:"PolicyAssociationBackupConfigs,omitempty" type:"Repeated"`
-	RequestId                      *string                                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeTrFirewallPolicyBackUpAssociationListResponseBody) String() string {
@@ -8355,10 +8392,15 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBody) SetRequestId
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs struct {
-	CandidateId          *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
-	CandidateName        *string `json:"CandidateName,omitempty" xml:"CandidateName,omitempty"`
-	CandidateType        *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
-	CurrentRouteTableId  *string `json:"CurrentRouteTableId,omitempty" xml:"CurrentRouteTableId,omitempty"`
+	// The ID of the traffic redirection instance.
+	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	// The name of the traffic redirection instance.
+	CandidateName *string `json:"CandidateName,omitempty" xml:"CandidateName,omitempty"`
+	// The type of the traffic redirection instance.
+	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+	// The route table that is used after traffic redirection.
+	CurrentRouteTableId *string `json:"CurrentRouteTableId,omitempty" xml:"CurrentRouteTableId,omitempty"`
+	// The ID of the route table.
 	OriginalRouteTableId *string `json:"OriginalRouteTableId,omitempty" xml:"OriginalRouteTableId,omitempty"`
 }
 
@@ -10849,11 +10891,18 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	//
 	// > If you do not specify this parameter, access control policies of all protocol types are queried.
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after the policy is created. Valid values:
+	// The status of the access control policy. Valid values:
 	//
-	// *   **true**: The access control policy is enabled.
-	// *   **false**: The access control policy is disabled.
-	Release    *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// *   **true**: enabled
+	// *   **false**: disabled
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Fuzzy match is supported.
 	//
@@ -10942,7 +10991,7 @@ func (s *DescribeVpcFirewallControlPolicyRequest) SetVpcFirewallId(v string) *De
 }
 
 type DescribeVpcFirewallControlPolicyResponseBody struct {
-	// The information about the access control policies.
+	// The access control policies.
 	Policys []*DescribeVpcFirewallControlPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10977,14 +11026,14 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values:
 	//
 	// *   **accept**: allows the traffic.
-	// *   **drop**: blocks the traffic.
+	// *   **drop**: denies the traffic.
 	// *   **log**: monitors the traffic.
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The unique ID of the access control policy.
+	// The UUID of the access control policy.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// The application ID in the access control policy.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The application type in the access control policy. Valid values:
+	// The application types supported by the access control policy. We recommend that you specify ApplicationNameList. Valid values:
 	//
 	// *   **HTTP**
 	// *   **HTTPS**
@@ -11000,16 +11049,18 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **Memcache**
 	// *   **SSL**
 	// *   **ANY**: all application types
-	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application types supported by the access control policy.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	CreateTime          *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the access control policy was created. The value is a UNIX timestamp. Unit: seconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination port in the access control policy.
 	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
 	// The name of the destination port address book in the access control policy.
 	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	// An array that consists of the ports in the destination port address book of the access control policy.
+	// The ports in the destination port address book of the access control policy.
 	DestPortGroupPorts []*string `json:"DestPortGroupPorts,omitempty" xml:"DestPortGroupPorts,omitempty" type:"Repeated"`
 	// The type of the destination port in the access control policy. Valid values:
 	//
@@ -11022,7 +11073,7 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   If **DestinationType** is set to `domain`, the value of this parameter is a domain name.
 	// *   If **DestinationType** is set to `group`, the value of this parameter is an address book name.
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// An array that consists of the CIDR blocks in the destination address book of the access control policy.
+	// The CIDR blocks in the destination address book of the access control policy.
 	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
 	// The type of the destination address book in the access control policy. Valid values:
 	//
@@ -11035,13 +11086,18 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **group**: address book
 	// *   **domain**: domain name
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	HitLastTime     *int64  `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
+	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+	//
+	// >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
+	HitLastTime *int64 `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	// The number of hits for the access control policy.
 	HitTimes *int64 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
-	MemberUid  *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The time when the access control policy was modified. The value is a UNIX timestamp. Unit: seconds.
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The priority of the access control policy.
 	//
 	// The priority value starts from 1. A smaller priority value indicates a higher priority.
@@ -11053,31 +11109,58 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **ICMP**
 	// *   **ANY**: all protocol types
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Indicates whether the access control policy is enabled. By default, an access control policy is enabled after the policy is created. Valid values:
+	// Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
 	//
-	// *   **true**: The access control policy is enabled.
-	// *   **false**: The access control policy is disabled.
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	// *   **true**
+	// *   **false**
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
+	//
+	// *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
+	// *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
+	//
+	// >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+	//
+	// *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
+	//
+	// >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+	//
+	// >  If RepeatType is set to Permanent or None, RepeatEndTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must be specified.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+	//
+	// >  If RepeatType is set to Permanent or None, RepeatStartTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
 	// *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block.
 	// *   If **SourceType** is set to `group`, the value of this parameter is an address book name.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// An array that consists of the CIDR blocks in the source address book of the access control policy.
+	// The CIDR blocks in the source address book of the access control policy.
 	SourceGroupCidrs []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
-	// The type of the source address in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
+	// The type of the source address book in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
 	SourceGroupType *string `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
 	// The type of the source address in the access control policy. Valid values:
 	//
 	// *   **net**: CIDR block
 	// *   **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpreadCnt  *int64  `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses × Number of destination addresses (number of CIDR blocks or domain names) × Number of applications × Number of port ranges.
+	SpreadCnt *int64 `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+	//
+	// >  If RepeatType is set to Permanent, StartTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must be specified.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVpcFirewallControlPolicyResponseBodyPolicys) String() string {
@@ -13586,10 +13669,24 @@ func (s *ModifyDefaultIPSConfigResponse) SetBody(v *ModifyDefaultIPSConfigRespon
 }
 
 type ModifyFirewallV2RoutePolicySwitchRequest struct {
-	FirewallId                        *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	Lang                              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ShouldRecover                     *string `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
-	TrFirewallRoutePolicyId           *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+	// The instance ID of the virtual private cloud (VPC) firewall.
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to restore the traffic redirection configurations. Valid values:
+	//
+	// *   true: roll back
+	// *   false: withdraw
+	ShouldRecover *string `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
+	// The ID of the routing policy.
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+	// The status of the routing policy. Valid values:
+	//
+	// *   open: enabled
+	// *   close: disabled
 	TrFirewallRoutePolicySwitchStatus *string `json:"TrFirewallRoutePolicySwitchStatus,omitempty" xml:"TrFirewallRoutePolicySwitchStatus,omitempty"`
 }
 
@@ -13627,6 +13724,7 @@ func (s *ModifyFirewallV2RoutePolicySwitchRequest) SetTrFirewallRoutePolicySwitc
 }
 
 type ModifyFirewallV2RoutePolicySwitchResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14881,7 +14979,7 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	//
 	// If you want to modify the configurations of an access control policy, you must provide the unique ID of the policy. You can call the [DescribeVpcFirewallControlPolicy](~~159758~~) operation to query the ID.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The application type in the access control policy.
+	// The application type used in the access control policy.
 	//
 	// Valid values:
 	//
@@ -14901,7 +14999,8 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// *   Memcache
 	// *   SSL
 	// *   ANY: all application types
-	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application names.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -14936,7 +15035,10 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// *   **group**: address book
 	// *   **domain**: domain name
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+	//
+	// >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the response.
 	//
 	// Valid values:
@@ -14957,11 +15059,34 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	//
 	// *   **true**: enables the access control policy.
 	// *   **false**: disables the access control policy.
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
+	//
+	// *   If you set RepeatType to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[].
+	// *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+	//
+	// >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+	//
+	// *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+	//
+	// >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+	//
+	// >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+	//
+	// >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// Valid values:
@@ -14981,7 +15106,10 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// *   **net**: CIDR block
 	// *   **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+	//
+	// >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The instance ID of the VPC firewall. You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
 	//
 	// *   If the VPC firewall is used to protect a CEN instance, the value of this parameter must be the ID of the CEN instance.
@@ -15917,6 +16045,87 @@ func (s *PutEnableFwSwitchResponse) SetBody(v *PutEnableFwSwitchResponseBody) *P
 	return s
 }
 
+type ReleasePostInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ReleasePostInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleasePostInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleasePostInstanceRequest) SetInstanceId(v string) *ReleasePostInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ReleasePostInstanceResponseBody struct {
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	ReleaseStatus  *bool   `json:"ReleaseStatus,omitempty" xml:"ReleaseStatus,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReleasePostInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleasePostInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleasePostInstanceResponseBody) SetHttpStatusCode(v int32) *ReleasePostInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ReleasePostInstanceResponseBody) SetReleaseStatus(v bool) *ReleasePostInstanceResponseBody {
+	s.ReleaseStatus = &v
+	return s
+}
+
+func (s *ReleasePostInstanceResponseBody) SetRequestId(v string) *ReleasePostInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReleasePostInstanceResponseBody) SetSuccess(v bool) *ReleasePostInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReleasePostInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleasePostInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleasePostInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleasePostInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleasePostInstanceResponse) SetHeaders(v map[string]*string) *ReleasePostInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleasePostInstanceResponse) SetStatusCode(v int32) *ReleasePostInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleasePostInstanceResponse) SetBody(v *ReleasePostInstanceResponseBody) *ReleasePostInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ResetVpcFirewallRuleHitCountRequest struct {
 	// The ID of the access control policy.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
@@ -16432,7 +16641,7 @@ func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFir
 }
 
 /**
- * You can use this operation to create an access control policy to allow, deny, or monitor traffic that passes through a NAT firewall.
+ * You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
  *
  * @param request CreateNatFirewallControlPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -16564,7 +16773,7 @@ func (client *Client) CreateNatFirewallControlPolicyWithOptions(request *CreateN
 }
 
 /**
- * You can use this operation to create an access control policy to allow, deny, or monitor traffic that passes through a NAT firewall.
+ * You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
  *
  * @param request CreateNatFirewallControlPolicyRequest
  * @return CreateNatFirewallControlPolicyResponse
@@ -22316,6 +22525,50 @@ func (client *Client) PutEnableFwSwitch(request *PutEnableFwSwitchRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &PutEnableFwSwitchResponse{}
 	_body, _err := client.PutEnableFwSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReleasePostInstanceWithOptions(request *ReleasePostInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleasePostInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleasePostInstance"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleasePostInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleasePostInstance(request *ReleasePostInstanceRequest) (_result *ReleasePostInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleasePostInstanceResponse{}
+	_body, _err := client.ReleasePostInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
