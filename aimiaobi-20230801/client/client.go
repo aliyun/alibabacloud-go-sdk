@@ -5220,6 +5220,188 @@ func (s *SubmitAsyncTaskResponse) SetBody(v *SubmitAsyncTaskResponseBody) *Submi
 	return s
 }
 
+type UpdateGeneratedContentRequest struct {
+	AgentKey    *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content     *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentText *string   `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
+	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Keywords    []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	Prompt      *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Title       *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateGeneratedContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGeneratedContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGeneratedContentRequest) SetAgentKey(v string) *UpdateGeneratedContentRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentRequest) SetContent(v string) *UpdateGeneratedContentRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentRequest) SetContentText(v string) *UpdateGeneratedContentRequest {
+	s.ContentText = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentRequest) SetId(v int64) *UpdateGeneratedContentRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentRequest) SetKeywords(v []*string) *UpdateGeneratedContentRequest {
+	s.Keywords = v
+	return s
+}
+
+func (s *UpdateGeneratedContentRequest) SetPrompt(v string) *UpdateGeneratedContentRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentRequest) SetTitle(v string) *UpdateGeneratedContentRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateGeneratedContentShrinkRequest struct {
+	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentText    *string `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	KeywordsShrink *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateGeneratedContentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGeneratedContentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGeneratedContentShrinkRequest) SetAgentKey(v string) *UpdateGeneratedContentShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentShrinkRequest) SetContent(v string) *UpdateGeneratedContentShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentShrinkRequest) SetContentText(v string) *UpdateGeneratedContentShrinkRequest {
+	s.ContentText = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentShrinkRequest) SetId(v int64) *UpdateGeneratedContentShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentShrinkRequest) SetKeywordsShrink(v string) *UpdateGeneratedContentShrinkRequest {
+	s.KeywordsShrink = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentShrinkRequest) SetPrompt(v string) *UpdateGeneratedContentShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentShrinkRequest) SetTitle(v string) *UpdateGeneratedContentShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateGeneratedContentResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGeneratedContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGeneratedContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGeneratedContentResponseBody) SetCode(v string) *UpdateGeneratedContentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentResponseBody) SetData(v bool) *UpdateGeneratedContentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentResponseBody) SetHttpStatusCode(v int32) *UpdateGeneratedContentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentResponseBody) SetMessage(v string) *UpdateGeneratedContentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentResponseBody) SetRequestId(v string) *UpdateGeneratedContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentResponseBody) SetSuccess(v bool) *UpdateGeneratedContentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGeneratedContentResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGeneratedContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGeneratedContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGeneratedContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGeneratedContentResponse) SetHeaders(v map[string]*string) *UpdateGeneratedContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGeneratedContentResponse) SetStatusCode(v int32) *UpdateGeneratedContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGeneratedContentResponse) SetBody(v *UpdateGeneratedContentResponseBody) *UpdateGeneratedContentResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMaterialDocumentRequest struct {
 	AgentKey    *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Author      *string   `json:"Author,omitempty" xml:"Author,omitempty"`
@@ -7102,6 +7284,82 @@ func (client *Client) SubmitAsyncTask(request *SubmitAsyncTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAsyncTaskResponse{}
 	_body, _err := client.SubmitAsyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGeneratedContentWithOptions(tmpReq *UpdateGeneratedContentRequest, runtime *util.RuntimeOptions) (_result *UpdateGeneratedContentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGeneratedContentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Keywords)) {
+		request.KeywordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keywords, tea.String("Keywords"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentText)) {
+		body["ContentText"] = request.ContentText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeywordsShrink)) {
+		body["Keywords"] = request.KeywordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGeneratedContent"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGeneratedContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGeneratedContent(request *UpdateGeneratedContentRequest) (_result *UpdateGeneratedContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGeneratedContentResponse{}
+	_body, _err := client.UpdateGeneratedContentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
