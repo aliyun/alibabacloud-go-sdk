@@ -12243,7 +12243,8 @@ func (s *DescribeDomainStatisticsResponseBodyStatistics) SetStatistic(v []*Descr
 
 type DescribeDomainStatisticsResponseBodyStatisticsStatistic struct {
 	// The number of DNS requests.
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count      *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
@@ -12258,6 +12259,11 @@ func (s DescribeDomainStatisticsResponseBodyStatisticsStatistic) GoString() stri
 
 func (s *DescribeDomainStatisticsResponseBodyStatisticsStatistic) SetCount(v int64) *DescribeDomainStatisticsResponseBodyStatisticsStatistic {
 	s.Count = &v
+	return s
+}
+
+func (s *DescribeDomainStatisticsResponseBodyStatisticsStatistic) SetDomainName(v string) *DescribeDomainStatisticsResponseBodyStatisticsStatistic {
+	s.DomainName = &v
 	return s
 }
 
@@ -12443,8 +12449,9 @@ type DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic struct {
 	// The number of queries.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainType            *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	ResolveAnalysisStatus *string `json:"resolveAnalysisStatus,omitempty" xml:"resolveAnalysisStatus,omitempty"`
 }
 
 func (s DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic) String() string {
@@ -12467,6 +12474,11 @@ func (s *DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic) SetDoma
 
 func (s *DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic) SetDomainType(v string) *DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic {
 	s.DomainType = &v
+	return s
+}
+
+func (s *DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic) SetResolveAnalysisStatus(v string) *DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic {
+	s.ResolveAnalysisStatus = &v
 	return s
 }
 
