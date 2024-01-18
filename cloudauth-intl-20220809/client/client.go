@@ -3183,6 +3183,7 @@ type InitializeRequest struct {
 	FlowType          *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
 	IdFaceQuality     *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
 	IdSpoof           *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
+	LanguageConfig    *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
 	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
 	MerchantUserId    *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
 	MetaInfo          *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
@@ -3258,6 +3259,11 @@ func (s *InitializeRequest) SetIdFaceQuality(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetIdSpoof(v string) *InitializeRequest {
 	s.IdSpoof = &v
+	return s
+}
+
+func (s *InitializeRequest) SetLanguageConfig(v string) *InitializeRequest {
+	s.LanguageConfig = &v
 	return s
 }
 
@@ -4747,6 +4753,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.IdSpoof)) {
 		query["IdSpoof"] = request.IdSpoof
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageConfig)) {
+		query["LanguageConfig"] = request.LanguageConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
