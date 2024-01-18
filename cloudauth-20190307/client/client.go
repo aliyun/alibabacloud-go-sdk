@@ -1145,6 +1145,7 @@ type DescribeFaceVerifyResponseBodyResultObject struct {
 	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
 	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	Success      *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	UserInfo     *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
 func (s DescribeFaceVerifyResponseBodyResultObject) String() string {
@@ -1187,6 +1188,11 @@ func (s *DescribeFaceVerifyResponseBodyResultObject) SetSubCode(v string) *Descr
 
 func (s *DescribeFaceVerifyResponseBodyResultObject) SetSuccess(v string) *DescribeFaceVerifyResponseBodyResultObject {
 	s.Success = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyResponseBodyResultObject) SetUserInfo(v string) *DescribeFaceVerifyResponseBodyResultObject {
+	s.UserInfo = &v
 	return s
 }
 
@@ -2460,6 +2466,7 @@ type InitFaceVerifyRequest struct {
 	OuterOrderNo               *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
 	ProcedurePriority          *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
 	ProductCode                *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RarelyCharacters           *string `json:"RarelyCharacters,omitempty" xml:"RarelyCharacters,omitempty"`
 	ReadImg                    *string `json:"ReadImg,omitempty" xml:"ReadImg,omitempty"`
 	ReturnUrl                  *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	SceneId                    *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
@@ -2599,6 +2606,11 @@ func (s *InitFaceVerifyRequest) SetProcedurePriority(v string) *InitFaceVerifyRe
 
 func (s *InitFaceVerifyRequest) SetProductCode(v string) *InitFaceVerifyRequest {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetRarelyCharacters(v string) *InitFaceVerifyRequest {
+	s.RarelyCharacters = &v
 	return s
 }
 
@@ -4684,6 +4696,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RarelyCharacters)) {
+		query["RarelyCharacters"] = request.RarelyCharacters
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReadImg)) {
