@@ -13963,7 +13963,9 @@ type GetSparkAppAttemptLogRequest struct {
 	// > You can call the [ListSparkAppAttempts](~~455887~~) operation to query the information about the retry attempts of a Spark application, including the retry log IDs.
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
 	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
-	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
+	LogLength  *int64  `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s GetSparkAppAttemptLogRequest) String() string {
@@ -13981,6 +13983,16 @@ func (s *GetSparkAppAttemptLogRequest) SetAttemptId(v string) *GetSparkAppAttemp
 
 func (s *GetSparkAppAttemptLogRequest) SetLogLength(v int64) *GetSparkAppAttemptLogRequest {
 	s.LogLength = &v
+	return s
+}
+
+func (s *GetSparkAppAttemptLogRequest) SetPageNumber(v int32) *GetSparkAppAttemptLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetSparkAppAttemptLogRequest) SetPageSize(v string) *GetSparkAppAttemptLogRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -14016,6 +14028,7 @@ type GetSparkAppAttemptLogResponseBodyData struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
+	LogSize    *int32  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	// The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
@@ -14040,6 +14053,11 @@ func (s *GetSparkAppAttemptLogResponseBodyData) SetDBClusterId(v string) *GetSpa
 
 func (s *GetSparkAppAttemptLogResponseBodyData) SetLogContent(v string) *GetSparkAppAttemptLogResponseBodyData {
 	s.LogContent = &v
+	return s
+}
+
+func (s *GetSparkAppAttemptLogResponseBodyData) SetLogSize(v int32) *GetSparkAppAttemptLogResponseBodyData {
+	s.LogSize = &v
 	return s
 }
 
@@ -14183,7 +14201,9 @@ type GetSparkAppLogRequest struct {
 	// >  You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
-	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
+	LogLength  *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s GetSparkAppLogRequest) String() string {
@@ -14206,6 +14226,16 @@ func (s *GetSparkAppLogRequest) SetDBClusterId(v string) *GetSparkAppLogRequest 
 
 func (s *GetSparkAppLogRequest) SetLogLength(v int64) *GetSparkAppLogRequest {
 	s.LogLength = &v
+	return s
+}
+
+func (s *GetSparkAppLogRequest) SetPageNumber(v int32) *GetSparkAppLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetSparkAppLogRequest) SetPageSize(v int32) *GetSparkAppLogRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -14239,6 +14269,7 @@ type GetSparkAppLogResponseBodyData struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
+	LogSize    *int32  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	// The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
@@ -14258,6 +14289,11 @@ func (s *GetSparkAppLogResponseBodyData) SetDBClusterId(v string) *GetSparkAppLo
 
 func (s *GetSparkAppLogResponseBodyData) SetLogContent(v string) *GetSparkAppLogResponseBodyData {
 	s.LogContent = &v
+	return s
+}
+
+func (s *GetSparkAppLogResponseBodyData) SetLogSize(v int32) *GetSparkAppLogResponseBodyData {
+	s.LogSize = &v
 	return s
 }
 
@@ -24150,6 +24186,15 @@ func (client *Client) GetSparkAppAttemptLogWithOptions(request *GetSparkAppAttem
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AttemptId)) {
 		body["AttemptId"] = request.AttemptId
@@ -24160,7 +24205,8 @@ func (client *Client) GetSparkAppAttemptLogWithOptions(request *GetSparkAppAttem
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSparkAppAttemptLog"),
@@ -24251,6 +24297,14 @@ func (client *Client) GetSparkAppLogWithOptions(request *GetSparkAppLogRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	body := map[string]interface{}{}
