@@ -1133,6 +1133,105 @@ func (s *FetchImageTaskResponse) SetBody(v *FetchImageTaskResponseBody) *FetchIm
 	return s
 }
 
+type GenerateFileUrlByKeyRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	FileKey  *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+}
+
+func (s GenerateFileUrlByKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateFileUrlByKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateFileUrlByKeyRequest) SetAgentKey(v string) *GenerateFileUrlByKeyRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GenerateFileUrlByKeyRequest) SetFileKey(v string) *GenerateFileUrlByKeyRequest {
+	s.FileKey = &v
+	return s
+}
+
+type GenerateFileUrlByKeyResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenerateFileUrlByKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateFileUrlByKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateFileUrlByKeyResponseBody) SetCode(v string) *GenerateFileUrlByKeyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateFileUrlByKeyResponseBody) SetData(v string) *GenerateFileUrlByKeyResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GenerateFileUrlByKeyResponseBody) SetHttpStatusCode(v int32) *GenerateFileUrlByKeyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GenerateFileUrlByKeyResponseBody) SetMessage(v string) *GenerateFileUrlByKeyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateFileUrlByKeyResponseBody) SetRequestId(v string) *GenerateFileUrlByKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateFileUrlByKeyResponseBody) SetSuccess(v bool) *GenerateFileUrlByKeyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateFileUrlByKeyResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateFileUrlByKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateFileUrlByKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateFileUrlByKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateFileUrlByKeyResponse) SetHeaders(v map[string]*string) *GenerateFileUrlByKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateFileUrlByKeyResponse) SetStatusCode(v int32) *GenerateFileUrlByKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateFileUrlByKeyResponse) SetBody(v *GenerateFileUrlByKeyResponseBody) *GenerateFileUrlByKeyResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateImageTaskRequest struct {
 	AgentKey      *string                                  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	ArticleTaskId *string                                  `json:"ArticleTaskId,omitempty" xml:"ArticleTaskId,omitempty"`
@@ -1374,6 +1473,140 @@ func (s *GenerateImageTaskResponse) SetStatusCode(v int32) *GenerateImageTaskRes
 }
 
 func (s *GenerateImageTaskResponse) SetBody(v *GenerateImageTaskResponseBody) *GenerateImageTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateUploadConfigRequest struct {
+	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	FileName  *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	ParentDir *string `json:"ParentDir,omitempty" xml:"ParentDir,omitempty"`
+}
+
+func (s GenerateUploadConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUploadConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUploadConfigRequest) SetAgentKey(v string) *GenerateUploadConfigRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GenerateUploadConfigRequest) SetFileName(v string) *GenerateUploadConfigRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *GenerateUploadConfigRequest) SetParentDir(v string) *GenerateUploadConfigRequest {
+	s.ParentDir = &v
+	return s
+}
+
+type GenerateUploadConfigResponseBody struct {
+	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GenerateUploadConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenerateUploadConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUploadConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUploadConfigResponseBody) SetCode(v string) *GenerateUploadConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateUploadConfigResponseBody) SetData(v *GenerateUploadConfigResponseBodyData) *GenerateUploadConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateUploadConfigResponseBody) SetHttpStatusCode(v int32) *GenerateUploadConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GenerateUploadConfigResponseBody) SetMessage(v string) *GenerateUploadConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateUploadConfigResponseBody) SetRequestId(v string) *GenerateUploadConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateUploadConfigResponseBody) SetSuccess(v bool) *GenerateUploadConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateUploadConfigResponseBodyData struct {
+	FileKey   *string                `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	FormDatas map[string]interface{} `json:"FormDatas,omitempty" xml:"FormDatas,omitempty"`
+	PostUrl   *string                `json:"PostUrl,omitempty" xml:"PostUrl,omitempty"`
+}
+
+func (s GenerateUploadConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUploadConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUploadConfigResponseBodyData) SetFileKey(v string) *GenerateUploadConfigResponseBodyData {
+	s.FileKey = &v
+	return s
+}
+
+func (s *GenerateUploadConfigResponseBodyData) SetFormDatas(v map[string]interface{}) *GenerateUploadConfigResponseBodyData {
+	s.FormDatas = v
+	return s
+}
+
+func (s *GenerateUploadConfigResponseBodyData) SetPostUrl(v string) *GenerateUploadConfigResponseBodyData {
+	s.PostUrl = &v
+	return s
+}
+
+type GenerateUploadConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateUploadConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateUploadConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUploadConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUploadConfigResponse) SetHeaders(v map[string]*string) *GenerateUploadConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateUploadConfigResponse) SetStatusCode(v int32) *GenerateUploadConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateUploadConfigResponse) SetBody(v *GenerateUploadConfigResponseBody) *GenerateUploadConfigResponse {
 	s.Body = v
 	return s
 }
@@ -5074,6 +5307,295 @@ func (s *SaveMaterialDocumentResponse) SetBody(v *SaveMaterialDocumentResponseBo
 	return s
 }
 
+type SearchNewsRequest struct {
+	AgentKey       *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	FilterNotNull  *bool     `json:"FilterNotNull,omitempty" xml:"FilterNotNull,omitempty"`
+	IncludeContent *bool     `json:"IncludeContent,omitempty" xml:"IncludeContent,omitempty"`
+	Page           *int32    `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Query          *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	SearchSources  []*string `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+}
+
+func (s SearchNewsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchNewsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchNewsRequest) SetAgentKey(v string) *SearchNewsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SearchNewsRequest) SetFilterNotNull(v bool) *SearchNewsRequest {
+	s.FilterNotNull = &v
+	return s
+}
+
+func (s *SearchNewsRequest) SetIncludeContent(v bool) *SearchNewsRequest {
+	s.IncludeContent = &v
+	return s
+}
+
+func (s *SearchNewsRequest) SetPage(v int32) *SearchNewsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *SearchNewsRequest) SetPageSize(v int32) *SearchNewsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchNewsRequest) SetQuery(v string) *SearchNewsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SearchNewsRequest) SetSearchSources(v []*string) *SearchNewsRequest {
+	s.SearchSources = v
+	return s
+}
+
+type SearchNewsShrinkRequest struct {
+	AgentKey            *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	FilterNotNull       *bool   `json:"FilterNotNull,omitempty" xml:"FilterNotNull,omitempty"`
+	IncludeContent      *bool   `json:"IncludeContent,omitempty" xml:"IncludeContent,omitempty"`
+	Page                *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Query               *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	SearchSourcesShrink *string `json:"SearchSources,omitempty" xml:"SearchSources,omitempty"`
+}
+
+func (s SearchNewsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchNewsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchNewsShrinkRequest) SetAgentKey(v string) *SearchNewsShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SearchNewsShrinkRequest) SetFilterNotNull(v bool) *SearchNewsShrinkRequest {
+	s.FilterNotNull = &v
+	return s
+}
+
+func (s *SearchNewsShrinkRequest) SetIncludeContent(v bool) *SearchNewsShrinkRequest {
+	s.IncludeContent = &v
+	return s
+}
+
+func (s *SearchNewsShrinkRequest) SetPage(v int32) *SearchNewsShrinkRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *SearchNewsShrinkRequest) SetPageSize(v int32) *SearchNewsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchNewsShrinkRequest) SetQuery(v string) *SearchNewsShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SearchNewsShrinkRequest) SetSearchSourcesShrink(v string) *SearchNewsShrinkRequest {
+	s.SearchSourcesShrink = &v
+	return s
+}
+
+type SearchNewsResponseBody struct {
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Current        *int32                        `json:"Current,omitempty" xml:"Current,omitempty"`
+	Data           []*SearchNewsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Size           *int32                        `json:"Size,omitempty" xml:"Size,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total          *int32                        `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s SearchNewsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchNewsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchNewsResponseBody) SetCode(v string) *SearchNewsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchNewsResponseBody) SetCurrent(v int32) *SearchNewsResponseBody {
+	s.Current = &v
+	return s
+}
+
+func (s *SearchNewsResponseBody) SetData(v []*SearchNewsResponseBodyData) *SearchNewsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SearchNewsResponseBody) SetHttpStatusCode(v int32) *SearchNewsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SearchNewsResponseBody) SetMessage(v string) *SearchNewsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SearchNewsResponseBody) SetRequestId(v string) *SearchNewsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchNewsResponseBody) SetSize(v int32) *SearchNewsResponseBody {
+	s.Size = &v
+	return s
+}
+
+func (s *SearchNewsResponseBody) SetSuccess(v bool) *SearchNewsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SearchNewsResponseBody) SetTotal(v int32) *SearchNewsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type SearchNewsResponseBodyData struct {
+	Author           *string   `json:"Author,omitempty" xml:"Author,omitempty"`
+	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	DocUuid          *string   `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	ImageUrls        []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	PubTime          *string   `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	SearchSource     *string   `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	SearchSourceName *string   `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	Source           *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	Summary          *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tag              *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Title            *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateTime       *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Url              *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SearchNewsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchNewsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchNewsResponseBodyData) SetAuthor(v string) *SearchNewsResponseBodyData {
+	s.Author = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetContent(v string) *SearchNewsResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetDocUuid(v string) *SearchNewsResponseBodyData {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetImageUrls(v []*string) *SearchNewsResponseBodyData {
+	s.ImageUrls = v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetPubTime(v string) *SearchNewsResponseBodyData {
+	s.PubTime = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetSearchSource(v string) *SearchNewsResponseBodyData {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetSearchSourceName(v string) *SearchNewsResponseBodyData {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetSource(v string) *SearchNewsResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetSummary(v string) *SearchNewsResponseBodyData {
+	s.Summary = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetTag(v string) *SearchNewsResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetTitle(v string) *SearchNewsResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetUpdateTime(v string) *SearchNewsResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchNewsResponseBodyData) SetUrl(v string) *SearchNewsResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type SearchNewsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchNewsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchNewsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchNewsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchNewsResponse) SetHeaders(v map[string]*string) *SearchNewsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchNewsResponse) SetStatusCode(v int32) *SearchNewsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchNewsResponse) SetBody(v *SearchNewsResponseBody) *SearchNewsResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitAsyncTaskRequest struct {
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	TaskCode        *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
@@ -6183,6 +6705,56 @@ func (client *Client) FetchImageTask(request *FetchImageTaskRequest) (_result *F
 	return _result, _err
 }
 
+func (client *Client) GenerateFileUrlByKeyWithOptions(request *GenerateFileUrlByKeyRequest, runtime *util.RuntimeOptions) (_result *GenerateFileUrlByKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileKey)) {
+		body["FileKey"] = request.FileKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateFileUrlByKey"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateFileUrlByKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateFileUrlByKey(request *GenerateFileUrlByKeyRequest) (_result *GenerateFileUrlByKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateFileUrlByKeyResponse{}
+	_body, _err := client.GenerateFileUrlByKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GenerateImageTaskWithOptions(tmpReq *GenerateImageTaskRequest, runtime *util.RuntimeOptions) (_result *GenerateImageTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6244,6 +6816,60 @@ func (client *Client) GenerateImageTask(request *GenerateImageTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateImageTaskResponse{}
 	_body, _err := client.GenerateImageTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateUploadConfigWithOptions(request *GenerateUploadConfigRequest, runtime *util.RuntimeOptions) (_result *GenerateUploadConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentDir)) {
+		body["ParentDir"] = request.ParentDir
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateUploadConfig"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateUploadConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateUploadConfig(request *GenerateUploadConfigRequest) (_result *GenerateUploadConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateUploadConfigResponse{}
+	_body, _err := client.GenerateUploadConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7222,6 +7848,82 @@ func (client *Client) SaveMaterialDocument(request *SaveMaterialDocumentRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveMaterialDocumentResponse{}
 	_body, _err := client.SaveMaterialDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchNewsWithOptions(tmpReq *SearchNewsRequest, runtime *util.RuntimeOptions) (_result *SearchNewsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SearchNewsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SearchSources)) {
+		request.SearchSourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchSources, tea.String("SearchSources"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterNotNull)) {
+		body["FilterNotNull"] = request.FilterNotNull
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeContent)) {
+		body["IncludeContent"] = request.IncludeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		body["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchSourcesShrink)) {
+		body["SearchSources"] = request.SearchSourcesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchNews"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchNewsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchNews(request *SearchNewsRequest) (_result *SearchNewsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchNewsResponse{}
+	_body, _err := client.SearchNewsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
