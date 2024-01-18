@@ -431,17 +431,15 @@ func (s *CreateConsumerGroupRequest) SetTag(v []*CreateConsumerGroupRequestTag) 
 }
 
 type CreateConsumerGroupRequestTag struct {
-	// The key of tag N.
+	// The tag key.
 	//
-	// *   Valid values of N: 1 to 20.
 	// *   You must specify this parameter.
-	// *   The tag key can be up to 128 characters in length and cannot contain [http:// or https://](http://https://。). The tag key cannot start with acs: or aliyun.
+	// *   The tag key can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
-	// *   Valid values of N: 1 to 20.
 	// *   You can leave this parameter empty.
-	// *   The tag value can be 1 to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	// *   The tag value can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1170,7 +1168,7 @@ type CreateTopicRequest struct {
 	//
 	// > If you set this parameter to **1**, data loss may occur. Exercise caution when you configure this parameter.
 	ReplicationFactor *int64 `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	// The tags.
+	// The tags that you want to add to the topic.
 	Tag []*CreateTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The topic name.
 	//
@@ -1244,17 +1242,15 @@ func (s *CreateTopicRequest) SetTopic(v string) *CreateTopicRequest {
 }
 
 type CreateTopicRequestTag struct {
-	// The key of tag N.
+	// The tag key.
 	//
-	// *   Valid values of N: 1 to 20.
-	// *   If this parameter is left empty, the keys of all tags are matched.
-	// *   The tag key can be up to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	// *   If you do not specify this parameter, the keys of all tags are matched.
+	// *   The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
-	// *   Valid values of N: 1 to 20.
-	// *   This parameter can be left empty.
-	// *   The tag value can be up to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	// *   You can leave this parameter empty.
+	// *   The tag value must be 1 to 128 characters in length and cannot contain http:// or https://. The tag value cannot start with aliyun or acs:.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3180,9 +3176,9 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// *   **4**: the Internet and VPCs
 	// *   **5**: VPCs
 	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The disk size of the instance.
+	// The disk size of the instance. Unit: GB
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The disk type of the instance. Unit: GB Valid values:
+	// The disk type. Valid values:
 	//
 	// *   **0**: ultra disk
 	// *   **1**: standard SSD
@@ -3199,7 +3195,7 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
 	// *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	// The expiration time. Unit: milliseconds.
+	// The time when the instance expires. Unit: milliseconds.
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -3229,7 +3225,7 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	SaslDomainEndpoint *string `json:"SaslDomainEndpoint,omitempty" xml:"SaslDomainEndpoint,omitempty"`
 	// The security group to which the instance belongs.
 	//
-	// *   If the instance is deployed by using the ApsaraMQ for Kafka console or calling the [StartInstance](~~157786~~) operation without a security group configured, the returned value is empty.
+	// *   If the instance is deployed by using the ApsaraMQ for Kafka console or calling the [StartInstance](~~157786~~) operation without a security group configured, no value is returned.
 	// *   If the instance is deployed by calling the [StartInstance](~~157786~~) operation with a security group configured, the return value is the configured security group.
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
 	// The status of the instance. Valid values:
@@ -3279,9 +3275,9 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	UsedTopicCount *int32 `json:"UsedTopicCount,omitempty" xml:"UsedTopicCount,omitempty"`
 	// The vSwitch ID of the instance.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the instance belongs.
+	// The ID of the virtual private cloud (VPC) in which the instance is deployed.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance.
+	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -4265,15 +4261,15 @@ type ListTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which the resource is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource. A resource ID complies with the following rules:
+	// The resource ID. The following items describe the formats of resource IDs:
 	//
-	// *   The resource ID of an instance is the value of the instanceId parameter.
-	// *   The resource ID of a topic is the value of the Kafka_alikafka_instanceId_topic parameter.
-	// *   The resource ID of a group is the value of the Kafka_alikafka_instanceId_consumerGroup parameter.
+	// *   Instance ID: instanceId
+	// *   Topic ID: Kafka_alikafka_instanceId_topic
+	// *   Group ID: Kafka_alikafka_instanceId_consumerGroup
 	//
-	// For example, the resources whose tags you want to query include the alikafka_post-cn-v0h1fgs2xxxx instance, the test-topic topic, and the test-consumer-group group. In this case, their resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group.
+	// For example, you create an instance whose ID is alikafka_post-cn-v0h1fgs2xxxx, a topic whose name is test-topic, and a group whose ID is test-consumer-group. In this case, the resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group.
 	//
-	// >  You must set at least one of the **ResourceId** and **Tag** parameters to query the tags of a specified resource. Otherwise, the request fails.
+	// >  You must specify one of the **ResourceId** and **Tag** parameters to query the tags that are attached to a resource. Otherwise, the call fails.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource whose tags you want to query. The value is an enumerated value. Valid values:
 	//
@@ -4281,7 +4277,7 @@ type ListTagResourcesRequest struct {
 	// *   **TOPIC**
 	// *   **CONSUMERGROUP**
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag list.
+	// The tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -4321,15 +4317,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 type ListTagResourcesRequestTag struct {
 	// The tag key.
 	//
-	// *   Valid values of N: 1 to 20.
-	// *   If this parameter is not configured, all tag keys are matched.
-	// *   The tag key can be up to 128 characters in length. The tag value cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	// *   If you leave this parameter empty, the keys of all tags are matched.
+	// *   The tag key must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag key cannot contain http:// or https://.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// *   Valid values of N: 1 to 20.
-	// *   If the Key parameter is not configured, you cannot configure this parameter. If this parameter is not configured, all tag values are matched.
-	// *   The tag value can be 1 to 128 characters in length. The tag value cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	// *   If you do not specify the tag key, you cannot specify the tag value. If you leave this parameter empty, the values of all tags are matched.
+	// *   The tag value must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag value cannot contain http:// or https://.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4481,10 +4475,10 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type ModifyInstanceNameRequest struct {
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance. Valid values:
+	// The instance name. Valid values:
 	//
 	// *   The name can contain only letters, digits, hyphens (-), and underscores (\_).
-	// *   The name must be 3 to 64 characters in length. If the name that you specify contains more than 64 characters, the system automatically truncates the name to 64 characters.
+	// *   The name must be 3 to 64 characters in length. A name that contains more than 64 characters is automatically truncated.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The region ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -4514,13 +4508,13 @@ func (s *ModifyInstanceNameRequest) SetRegionId(v string) *ModifyInstanceNameReq
 }
 
 type ModifyInstanceNameResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The HTTP status code. The status code 200 indicates that the call is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4799,6 +4793,224 @@ func (s *ModifyTopicRemarkResponse) SetBody(v *ModifyTopicRemarkResponseBody) *M
 	return s
 }
 
+type QueryMessageRequest struct {
+	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Offset     *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Partition  *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	QueryType  *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s QueryMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageRequest) SetBeginTime(v int64) *QueryMessageRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *QueryMessageRequest) SetInstanceId(v string) *QueryMessageRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryMessageRequest) SetOffset(v string) *QueryMessageRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *QueryMessageRequest) SetPartition(v string) *QueryMessageRequest {
+	s.Partition = &v
+	return s
+}
+
+func (s *QueryMessageRequest) SetQueryType(v string) *QueryMessageRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryMessageRequest) SetRegionId(v string) *QueryMessageRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryMessageRequest) SetTopic(v string) *QueryMessageRequest {
+	s.Topic = &v
+	return s
+}
+
+type QueryMessageResponseBody struct {
+	Code        *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message     *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageList []*QueryMessageResponseBodyMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageResponseBody) SetCode(v int32) *QueryMessageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMessageResponseBody) SetMessage(v string) *QueryMessageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMessageResponseBody) SetMessageList(v []*QueryMessageResponseBodyMessageList) *QueryMessageResponseBody {
+	s.MessageList = v
+	return s
+}
+
+func (s *QueryMessageResponseBody) SetRequestId(v string) *QueryMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMessageResponseBody) SetSuccess(v bool) *QueryMessageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryMessageResponseBodyMessageList struct {
+	Checksum            *int64  `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
+	Key                 *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyTruncated        *bool   `json:"KeyTruncated,omitempty" xml:"KeyTruncated,omitempty"`
+	Offset              *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Partition           *int64  `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	SerializedKeySize   *int32  `json:"SerializedKeySize,omitempty" xml:"SerializedKeySize,omitempty"`
+	SerializedValueSize *int32  `json:"SerializedValueSize,omitempty" xml:"SerializedValueSize,omitempty"`
+	Timestamp           *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	TimestampType       *string `json:"TimestampType,omitempty" xml:"TimestampType,omitempty"`
+	Topic               *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	TruncatedKeySize    *int32  `json:"TruncatedKeySize,omitempty" xml:"TruncatedKeySize,omitempty"`
+	TruncatedValueSize  *int32  `json:"TruncatedValueSize,omitempty" xml:"TruncatedValueSize,omitempty"`
+	Value               *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueTruncated      *bool   `json:"ValueTruncated,omitempty" xml:"ValueTruncated,omitempty"`
+}
+
+func (s QueryMessageResponseBodyMessageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageResponseBodyMessageList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetChecksum(v int64) *QueryMessageResponseBodyMessageList {
+	s.Checksum = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetKey(v string) *QueryMessageResponseBodyMessageList {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetKeyTruncated(v bool) *QueryMessageResponseBodyMessageList {
+	s.KeyTruncated = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetOffset(v int64) *QueryMessageResponseBodyMessageList {
+	s.Offset = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetPartition(v int64) *QueryMessageResponseBodyMessageList {
+	s.Partition = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetSerializedKeySize(v int32) *QueryMessageResponseBodyMessageList {
+	s.SerializedKeySize = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetSerializedValueSize(v int32) *QueryMessageResponseBodyMessageList {
+	s.SerializedValueSize = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetTimestamp(v int64) *QueryMessageResponseBodyMessageList {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetTimestampType(v string) *QueryMessageResponseBodyMessageList {
+	s.TimestampType = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetTopic(v string) *QueryMessageResponseBodyMessageList {
+	s.Topic = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetTruncatedKeySize(v int32) *QueryMessageResponseBodyMessageList {
+	s.TruncatedKeySize = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetTruncatedValueSize(v int32) *QueryMessageResponseBodyMessageList {
+	s.TruncatedValueSize = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetValue(v string) *QueryMessageResponseBodyMessageList {
+	s.Value = &v
+	return s
+}
+
+func (s *QueryMessageResponseBodyMessageList) SetValueTruncated(v bool) *QueryMessageResponseBodyMessageList {
+	s.ValueTruncated = &v
+	return s
+}
+
+type QueryMessageResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageResponse) SetHeaders(v map[string]*string) *QueryMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMessageResponse) SetStatusCode(v int32) *QueryMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMessageResponse) SetBody(v *QueryMessageResponseBody) *QueryMessageResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseInstanceRequest struct {
 	// Specifies whether to immediately release the physical resources of the instance. Valid values:
 	//
@@ -4903,27 +5115,33 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 }
 
 type StartInstanceRequest struct {
-	// The initial configuration of the instance. The value must be a valid JSON string.
+	// The initial configurations of ApsaraMQ for Kafka. The value must be a valid JSON string.
 	//
-	// If you do not specify a value for this parameter, the value is left empty by default.
+	// If you do not specify this parameter, it is left empty.
 	//
 	// The following parameters can be configured for **Config**:
 	//
 	// *   **enable.vpc_sasl_ssl**: specifies whether to enable VPC transmission encryption. Valid values:
 	//
-	//     *   **true**: enables VPC transmission encryption. If VPC transmission encryption is enabled, you must also enable the access control list (ACL) feature.
-	//     *   **false**: disables VPC transmission encryption. This is the default value.
+	//     *   **true**: enables VPC transmission encryption. If you enable VPC transmission encryption, you must also enable access control list (ACL).
+	//     *   **false**: disables VPC transmission encryption. By default, VPC transmission encryption is disabled.
 	//
 	// *   **enable.acl**: specifies whether to enable ACL. Valid values:
 	//
-	//     *   **true**: enables the ACL feature.
-	//     *   **false**: disables the ACL feature. This is the default value.
+	//     *   **true**: enables ACL.
+	//     *   **false**: disables ACL. By default, ACL is disabled.
 	//
-	// *   **kafka.log.retention.hours**: the maximum period for which messages can be retained when the remaining disk space is sufficient. Unit: hours. Valid values: 24 to 480. Default value: **72**. When the disk usage reaches 85%, the system deletes messages in the order in which they are stored, starting from the earliest stored message. This ensures that the performance of the service is not degraded.
+	// *   **kafka.log.retention.hours**: the maximum message retention period when the disk capacity is sufficient. Unit: hours. Valid values: 24 to 480. Default value: **72**. When the disk usage reaches 85%, the disk capacity is considered insufficient and the system deletes messages in the order in which they are stored to ensure service availability.
 	//
-	// *   **kafka.message.max.bytes**: the maximum size of messages that Message Queue for Apache Kafka can send and receive. Unit: bytes. Valid values: 1048576 to 10485760. Default value: **1048576**. Before you change the maximum message size to a new value, make sure that the new value matches the configuration on the producers and consumers in the instance.
-	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CrossZone *bool   `json:"CrossZone,omitempty" xml:"CrossZone,omitempty"`
+	// *   **kafka.message.max.bytes**: the maximum size of messages that ApsaraMQ for Kafka can send and receive. Unit: bytes. Valid values: 1048576 to 10485760. Default value: **1048576**. Before you change the value of this parameter, make sure that the new value matches the corresponding configurations on the producers and consumers.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Specifies whether cross-zone deployment is required. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: true.
+	CrossZone *bool `json:"CrossZone,omitempty" xml:"CrossZone,omitempty"`
 	// The deployment mode of the instance. Valid values:
 	//
 	// *   **vpc**: deploys the instance that allows access only from a VPC.
@@ -4967,11 +5185,19 @@ type StartInstanceRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The security group of the instance.
 	//
-	// If you do not configure this parameter, Message Queue for Apache Kafka automatically configures a security group for the instance. If you want to configure this parameter, you must create a security group for the instance in advance. For more information, see [Create a security group](~~25468~~).
+	// If you do not specify this parameter, ApsaraMQ for Kafka automatically configures a security group for your instance. If you specify this parameter, you must create a security group in advance. For more information, see [Create a security group](~~25468~~).
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The zones among which you want to deploy the instance.
+	// The two-dimensional arrays that consist of the candidate set for primary zones and the candidate set for secondary zones.
+	//
+	// *   If you set CrossZone to true and specify Zone H and Zone F as the candidate set for primary zones and Zone K as the candidate set for secondary zones, set this parameter to `[[\"zoneh\",\"zonef\"],[\"zonek\"]]`.
+	//
+	//     **
+	//
+	//     **Note** If you specify multiple zones as the primary or secondary zones, the system deploys the instance in one of the zones without prioritizing them. For example, if you set this parameter to `[[\"zoneh\",\"zonef\"],[\"zonek\"]]`, the primary zone in which the instance is deployed can be Zone H or Zone F, and the secondary zone is Zone K.
+	//
+	// *   If you set CrossZone to false and want to deploy the instance in Zone K, set this parameter to `[[\"zonek\"],[]]`. In this case, the value of this parameter must still be two-dimensional arrays, but the array that specifies the candidate for secondary zones is left empty.
 	SelectedZones *string `json:"SelectedZones,omitempty" xml:"SelectedZones,omitempty"`
-	// The version number of the instance. Valid values: 0.10.2 and 2.2.0.
+	// The version of ApsaraMQ for Kafka. Valid values: 0.10.2 and 2.2.0.
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
 	// The mobile phone number of the alert contact.
 	UserPhoneNum *string `json:"UserPhoneNum,omitempty" xml:"UserPhoneNum,omitempty"`
@@ -5181,7 +5407,7 @@ type TagResourcesRequest struct {
 	//
 	// >  The value of this parameter is not case-sensitive.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags that you want to associate with the instances.
+	// The tags that you want to add.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -5219,7 +5445,15 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// *   You must specify this parameter.
+	// *   The tag key must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// *   You can leave this parameter empty.
+	// *   The tag value must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag key cannot contain http:// or https://.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5303,7 +5537,7 @@ type UntagResourcesRequest struct {
 	//
 	// >  The value of this parameter is not case-sensitive.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag that you want to attach to the specified resource.
+	// The tag key.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -5774,7 +6008,7 @@ func (s *UpdateConsumerOffsetResponse) SetBody(v *UpdateConsumerOffsetResponseBo
 }
 
 type UpdateInstanceConfigRequest struct {
-	// The configuration of the instance that you want to update. The value must be a valid JSON string.
+	// The configurations that you want to update for the ApsaraMQ for Kafka instance. The value must be a valid JSON string.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -5806,13 +6040,13 @@ func (s *UpdateInstanceConfigRequest) SetRegionId(v string) *UpdateInstanceConfi
 }
 
 type UpdateInstanceConfigResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The HTTP status code. The status code 200 indicates that the call is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5869,6 +6103,118 @@ func (s *UpdateInstanceConfigResponse) SetStatusCode(v int32) *UpdateInstanceCon
 }
 
 func (s *UpdateInstanceConfigResponse) SetBody(v *UpdateInstanceConfigResponseBody) *UpdateInstanceConfigResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTopicConfigRequest struct {
+	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateTopicConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTopicConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTopicConfigRequest) SetConfig(v string) *UpdateTopicConfigRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdateTopicConfigRequest) SetInstanceId(v string) *UpdateTopicConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateTopicConfigRequest) SetRegionId(v string) *UpdateTopicConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateTopicConfigRequest) SetTopic(v string) *UpdateTopicConfigRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *UpdateTopicConfigRequest) SetValue(v string) *UpdateTopicConfigRequest {
+	s.Value = &v
+	return s
+}
+
+type UpdateTopicConfigResponseBody struct {
+	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTopicConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTopicConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTopicConfigResponseBody) SetCode(v int64) *UpdateTopicConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponseBody) SetData(v string) *UpdateTopicConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponseBody) SetMessage(v string) *UpdateTopicConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponseBody) SetRequestId(v string) *UpdateTopicConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponseBody) SetSuccess(v bool) *UpdateTopicConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTopicConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTopicConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTopicConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTopicConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTopicConfigResponse) SetHeaders(v map[string]*string) *UpdateTopicConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTopicConfigResponse) SetStatusCode(v int32) *UpdateTopicConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponse) SetBody(v *UpdateTopicConfigResponseBody) *UpdateTopicConfigResponse {
 	s.Body = v
 	return s
 }
@@ -8014,6 +8360,46 @@ func (client *Client) ModifyTopicRemark(request *ModifyTopicRemarkRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) QueryMessageWithOptions(request *QueryMessageRequest, runtime *util.RuntimeOptions) (_result *QueryMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMessage"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMessage(request *QueryMessageRequest) (_result *QueryMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMessageResponse{}
+	_body, _err := client.QueryMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You cannot call this operation to release a subscription Message Queue for Apache Kafka instance.
  *
@@ -8566,9 +8952,69 @@ func (client *Client) UpdateInstanceConfig(request *UpdateInstanceConfigRequest)
 	return _result, _err
 }
 
+func (client *Client) UpdateTopicConfigWithOptions(request *UpdateTopicConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateTopicConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		query["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTopicConfig"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTopicConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTopicConfig(request *UpdateTopicConfigRequest) (_result *UpdateTopicConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTopicConfigResponse{}
+	_body, _err := client.UpdateTopicConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ## **Permissions**
- * A RAM user must be granted the required permissions before the RAM user call the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
+ * A RAM user must be granted the required permissions before the RAM user calls the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
  * |API|Action|Resource|
  * |---|---|---|
  * |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|
@@ -8622,7 +9068,7 @@ func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstance
 
 /**
  * ## **Permissions**
- * A RAM user must be granted the required permissions before the RAM user call the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
+ * A RAM user must be granted the required permissions before the RAM user calls the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
  * |API|Action|Resource|
  * |---|---|---|
  * |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|
