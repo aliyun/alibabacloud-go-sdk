@@ -1,3 +1,6 @@
+2024-01-18 Version: v2.1.0
+- Generated golang 2018-01-16 for linkedmall.
+
 2023-03-10 Version: v2.0.2
 - Add QuerySellerLicense.
 

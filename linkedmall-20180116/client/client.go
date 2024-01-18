@@ -21081,6 +21081,181 @@ func (s *QueryItemInventoryV2Response) SetBody(v *QueryItemInventoryV2ResponseBo
 	return s
 }
 
+type QueryItemNextCycleRestrictionRequest struct {
+	BizId    *string   `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	LmItemId []*string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty" type:"Repeated"`
+	SubBizId *string   `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
+}
+
+func (s QueryItemNextCycleRestrictionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemNextCycleRestrictionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemNextCycleRestrictionRequest) SetBizId(v string) *QueryItemNextCycleRestrictionRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionRequest) SetLmItemId(v []*string) *QueryItemNextCycleRestrictionRequest {
+	s.LmItemId = v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionRequest) SetSubBizId(v string) *QueryItemNextCycleRestrictionRequest {
+	s.SubBizId = &v
+	return s
+}
+
+type QueryItemNextCycleRestrictionShrinkRequest struct {
+	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	LmItemIdShrink *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	SubBizId       *string `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
+}
+
+func (s QueryItemNextCycleRestrictionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemNextCycleRestrictionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemNextCycleRestrictionShrinkRequest) SetBizId(v string) *QueryItemNextCycleRestrictionShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionShrinkRequest) SetLmItemIdShrink(v string) *QueryItemNextCycleRestrictionShrinkRequest {
+	s.LmItemIdShrink = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionShrinkRequest) SetSubBizId(v string) *QueryItemNextCycleRestrictionShrinkRequest {
+	s.SubBizId = &v
+	return s
+}
+
+type QueryItemNextCycleRestrictionResponseBody struct {
+	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     []*QueryItemNextCycleRestrictionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryItemNextCycleRestrictionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemNextCycleRestrictionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBody) SetCode(v string) *QueryItemNextCycleRestrictionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBody) SetMessage(v string) *QueryItemNextCycleRestrictionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBody) SetModel(v []*QueryItemNextCycleRestrictionResponseBodyModel) *QueryItemNextCycleRestrictionResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBody) SetRequestId(v string) *QueryItemNextCycleRestrictionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBody) SetSuccess(v bool) *QueryItemNextCycleRestrictionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryItemNextCycleRestrictionResponseBodyModel struct {
+	BeginTime           *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ItemId              *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId            *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	Quantity            *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	RestrictionQuantity *int32  `json:"RestrictionQuantity,omitempty" xml:"RestrictionQuantity,omitempty"`
+}
+
+func (s QueryItemNextCycleRestrictionResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemNextCycleRestrictionResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBodyModel) SetBeginTime(v int64) *QueryItemNextCycleRestrictionResponseBodyModel {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBodyModel) SetEndTime(v int64) *QueryItemNextCycleRestrictionResponseBodyModel {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBodyModel) SetItemId(v int64) *QueryItemNextCycleRestrictionResponseBodyModel {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBodyModel) SetLmItemId(v string) *QueryItemNextCycleRestrictionResponseBodyModel {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBodyModel) SetQuantity(v int32) *QueryItemNextCycleRestrictionResponseBodyModel {
+	s.Quantity = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponseBodyModel) SetRestrictionQuantity(v int32) *QueryItemNextCycleRestrictionResponseBodyModel {
+	s.RestrictionQuantity = &v
+	return s
+}
+
+type QueryItemNextCycleRestrictionResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryItemNextCycleRestrictionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryItemNextCycleRestrictionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemNextCycleRestrictionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemNextCycleRestrictionResponse) SetHeaders(v map[string]*string) *QueryItemNextCycleRestrictionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponse) SetStatusCode(v int32) *QueryItemNextCycleRestrictionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryItemNextCycleRestrictionResponse) SetBody(v *QueryItemNextCycleRestrictionResponseBody) *QueryItemNextCycleRestrictionResponse {
+	s.Body = v
+	return s
+}
+
 type QueryLogisticsRequest struct {
 	AccountType           *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	BizId                 *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
@@ -42625,6 +42800,66 @@ func (client *Client) QueryItemInventoryV2(request *QueryItemInventoryV2Request)
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryItemInventoryV2Response{}
 	_body, _err := client.QueryItemInventoryV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryItemNextCycleRestrictionWithOptions(tmpReq *QueryItemNextCycleRestrictionRequest, runtime *util.RuntimeOptions) (_result *QueryItemNextCycleRestrictionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryItemNextCycleRestrictionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LmItemId)) {
+		request.LmItemIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LmItemId, tea.String("LmItemId"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubBizId)) {
+		query["SubBizId"] = request.SubBizId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LmItemIdShrink)) {
+		body["LmItemId"] = request.LmItemIdShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryItemNextCycleRestriction"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryItemNextCycleRestrictionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryItemNextCycleRestriction(request *QueryItemNextCycleRestrictionRequest) (_result *QueryItemNextCycleRestrictionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryItemNextCycleRestrictionResponse{}
+	_body, _err := client.QueryItemNextCycleRestrictionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
