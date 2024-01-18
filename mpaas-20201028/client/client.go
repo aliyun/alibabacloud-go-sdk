@@ -15756,10 +15756,13 @@ func (s *PushBroadcastResponse) SetBody(v *PushBroadcastResponseBody) *PushBroad
 }
 
 type PushMultipleRequest struct {
+	ActivityContentState interface{}                     `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string                         `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
 	AppId                *string                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ChannelId            *string                         `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	Classification       *string                         `json:"Classification,omitempty" xml:"Classification,omitempty"`
 	DeliveryType         *int64                          `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate        *int64                          `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
 	ExpiredSeconds       *int64                          `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
 	ExtendedParams       *string                         `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
 	MiChannelId          *string                         `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
@@ -15783,6 +15786,16 @@ func (s PushMultipleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PushMultipleRequest) SetActivityContentState(v interface{}) *PushMultipleRequest {
+	s.ActivityContentState = v
+	return s
+}
+
+func (s *PushMultipleRequest) SetActivityEvent(v string) *PushMultipleRequest {
+	s.ActivityEvent = &v
+	return s
+}
+
 func (s *PushMultipleRequest) SetAppId(v string) *PushMultipleRequest {
 	s.AppId = &v
 	return s
@@ -15800,6 +15813,11 @@ func (s *PushMultipleRequest) SetClassification(v string) *PushMultipleRequest {
 
 func (s *PushMultipleRequest) SetDeliveryType(v int64) *PushMultipleRequest {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *PushMultipleRequest) SetDismissalDate(v int64) *PushMultipleRequest {
+	s.DismissalDate = &v
 	return s
 }
 
@@ -15904,10 +15922,13 @@ func (s *PushMultipleRequestTargetMsg) SetTemplateKeyValue(v string) *PushMultip
 }
 
 type PushMultipleShrinkRequest struct {
+	ActivityContentState       interface{}                           `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent              *string                               `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
 	AppId                      *string                               `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ChannelId                  *string                               `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	Classification             *string                               `json:"Classification,omitempty" xml:"Classification,omitempty"`
 	DeliveryType               *int64                                `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate              *int64                                `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
 	ExpiredSeconds             *int64                                `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
 	ExtendedParams             *string                               `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
 	MiChannelId                *string                               `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
@@ -15931,6 +15952,16 @@ func (s PushMultipleShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PushMultipleShrinkRequest) SetActivityContentState(v interface{}) *PushMultipleShrinkRequest {
+	s.ActivityContentState = v
+	return s
+}
+
+func (s *PushMultipleShrinkRequest) SetActivityEvent(v string) *PushMultipleShrinkRequest {
+	s.ActivityEvent = &v
+	return s
+}
+
 func (s *PushMultipleShrinkRequest) SetAppId(v string) *PushMultipleShrinkRequest {
 	s.AppId = &v
 	return s
@@ -15948,6 +15979,11 @@ func (s *PushMultipleShrinkRequest) SetClassification(v string) *PushMultipleShr
 
 func (s *PushMultipleShrinkRequest) SetDeliveryType(v int64) *PushMultipleShrinkRequest {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *PushMultipleShrinkRequest) SetDismissalDate(v int64) *PushMultipleShrinkRequest {
+	s.DismissalDate = &v
 	return s
 }
 
@@ -16327,11 +16363,14 @@ func (s *PushReportResponse) SetBody(v *PushReportResponseBody) *PushReportRespo
 }
 
 type PushSimpleRequest struct {
+	ActivityContentState interface{}            `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string                `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
 	AppId                *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ChannelId            *string                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	Classification       *string                `json:"Classification,omitempty" xml:"Classification,omitempty"`
 	Content              *string                `json:"Content,omitempty" xml:"Content,omitempty"`
 	DeliveryType         *int64                 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate        *int64                 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
 	ExpiredSeconds       *int64                 `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
 	ExtendedParams       *string                `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
 	IconUrls             *string                `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
@@ -16363,6 +16402,16 @@ func (s PushSimpleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PushSimpleRequest) SetActivityContentState(v interface{}) *PushSimpleRequest {
+	s.ActivityContentState = v
+	return s
+}
+
+func (s *PushSimpleRequest) SetActivityEvent(v string) *PushSimpleRequest {
+	s.ActivityEvent = &v
+	return s
+}
+
 func (s *PushSimpleRequest) SetAppId(v string) *PushSimpleRequest {
 	s.AppId = &v
 	return s
@@ -16385,6 +16434,11 @@ func (s *PushSimpleRequest) SetContent(v string) *PushSimpleRequest {
 
 func (s *PushSimpleRequest) SetDeliveryType(v int64) *PushSimpleRequest {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *PushSimpleRequest) SetDismissalDate(v int64) *PushSimpleRequest {
+	s.DismissalDate = &v
 	return s
 }
 
@@ -16494,32 +16548,35 @@ func (s *PushSimpleRequest) SetWorkspaceId(v string) *PushSimpleRequest {
 }
 
 type PushSimpleShrinkRequest struct {
-	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId                  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification             *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	Content                    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DeliveryType               *int64  `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	ExpiredSeconds             *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams             *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	IconUrls                   *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
-	ImageUrls                  *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	MiChannelId                *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType                 *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction                 *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	PushStyle                  *int32  `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
-	Silent                     *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	SmsSignName                *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsStrategy                *int32  `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
-	SmsTemplateCode            *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam           *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	StrategyContent            *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType               *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TargetMsgkey               *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
-	TaskName                   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	ThirdChannelCategoryShrink *string `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
-	Title                      *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Uri                        *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId                *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ActivityContentState       interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent              *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
+	AppId                      *string     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId                  *string     `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification             *string     `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	Content                    *string     `json:"Content,omitempty" xml:"Content,omitempty"`
+	DeliveryType               *int64      `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate              *int64      `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	ExpiredSeconds             *int64      `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams             *string     `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	IconUrls                   *string     `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
+	ImageUrls                  *string     `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	MiChannelId                *string     `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyType                 *string     `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction                 *int64      `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	PushStyle                  *int32      `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
+	Silent                     *int64      `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	SmsSignName                *string     `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsStrategy                *int32      `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
+	SmsTemplateCode            *string     `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParam           *string     `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	StrategyContent            *string     `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType               *int32      `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	TargetMsgkey               *string     `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
+	TaskName                   *string     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	ThirdChannelCategoryShrink *string     `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
+	Title                      *string     `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uri                        *string     `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	WorkspaceId                *string     `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushSimpleShrinkRequest) String() string {
@@ -16528,6 +16585,16 @@ func (s PushSimpleShrinkRequest) String() string {
 
 func (s PushSimpleShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PushSimpleShrinkRequest) SetActivityContentState(v interface{}) *PushSimpleShrinkRequest {
+	s.ActivityContentState = v
+	return s
+}
+
+func (s *PushSimpleShrinkRequest) SetActivityEvent(v string) *PushSimpleShrinkRequest {
+	s.ActivityEvent = &v
+	return s
 }
 
 func (s *PushSimpleShrinkRequest) SetAppId(v string) *PushSimpleShrinkRequest {
@@ -16552,6 +16619,11 @@ func (s *PushSimpleShrinkRequest) SetContent(v string) *PushSimpleShrinkRequest 
 
 func (s *PushSimpleShrinkRequest) SetDeliveryType(v int64) *PushSimpleShrinkRequest {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *PushSimpleShrinkRequest) SetDismissalDate(v int64) *PushSimpleShrinkRequest {
+	s.DismissalDate = &v
 	return s
 }
 
@@ -16754,10 +16826,13 @@ func (s *PushSimpleResponse) SetBody(v *PushSimpleResponseBody) *PushSimpleRespo
 }
 
 type PushTemplateRequest struct {
+	ActivityContentState interface{}            `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string                `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
 	AppId                *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ChannelId            *string                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	Classification       *string                `json:"Classification,omitempty" xml:"Classification,omitempty"`
 	DeliveryType         *int64                 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate        *int64                 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
 	ExpiredSeconds       *int64                 `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
 	ExtendedParams       *string                `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
 	MiChannelId          *string                `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
@@ -16786,6 +16861,16 @@ func (s PushTemplateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PushTemplateRequest) SetActivityContentState(v interface{}) *PushTemplateRequest {
+	s.ActivityContentState = v
+	return s
+}
+
+func (s *PushTemplateRequest) SetActivityEvent(v string) *PushTemplateRequest {
+	s.ActivityEvent = &v
+	return s
+}
+
 func (s *PushTemplateRequest) SetAppId(v string) *PushTemplateRequest {
 	s.AppId = &v
 	return s
@@ -16803,6 +16888,11 @@ func (s *PushTemplateRequest) SetClassification(v string) *PushTemplateRequest {
 
 func (s *PushTemplateRequest) SetDeliveryType(v int64) *PushTemplateRequest {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *PushTemplateRequest) SetDismissalDate(v int64) *PushTemplateRequest {
+	s.DismissalDate = &v
 	return s
 }
 
@@ -16897,28 +16987,31 @@ func (s *PushTemplateRequest) SetWorkspaceId(v string) *PushTemplateRequest {
 }
 
 type PushTemplateShrinkRequest struct {
-	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId                  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification             *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	DeliveryType               *int64  `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	ExpiredSeconds             *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams             *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId                *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType                 *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction                 *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	Silent                     *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	SmsSignName                *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsStrategy                *int32  `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
-	SmsTemplateCode            *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam           *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	StrategyContent            *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType               *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TargetMsgkey               *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
-	TaskName                   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateKeyValue           *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
-	TemplateName               *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	ThirdChannelCategoryShrink *string `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
-	WorkspaceId                *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ActivityContentState       interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent              *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
+	AppId                      *string     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId                  *string     `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification             *string     `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	DeliveryType               *int64      `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate              *int64      `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	ExpiredSeconds             *int64      `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams             *string     `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId                *string     `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyType                 *string     `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction                 *int64      `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	Silent                     *int64      `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	SmsSignName                *string     `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsStrategy                *int32      `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
+	SmsTemplateCode            *string     `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParam           *string     `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	StrategyContent            *string     `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType               *int32      `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	TargetMsgkey               *string     `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
+	TaskName                   *string     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateKeyValue           *string     `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	TemplateName               *string     `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	ThirdChannelCategoryShrink *string     `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
+	WorkspaceId                *string     `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushTemplateShrinkRequest) String() string {
@@ -16927,6 +17020,16 @@ func (s PushTemplateShrinkRequest) String() string {
 
 func (s PushTemplateShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PushTemplateShrinkRequest) SetActivityContentState(v interface{}) *PushTemplateShrinkRequest {
+	s.ActivityContentState = v
+	return s
+}
+
+func (s *PushTemplateShrinkRequest) SetActivityEvent(v string) *PushTemplateShrinkRequest {
+	s.ActivityEvent = &v
+	return s
 }
 
 func (s *PushTemplateShrinkRequest) SetAppId(v string) *PushTemplateShrinkRequest {
@@ -16946,6 +17049,11 @@ func (s *PushTemplateShrinkRequest) SetClassification(v string) *PushTemplateShr
 
 func (s *PushTemplateShrinkRequest) SetDeliveryType(v int64) *PushTemplateShrinkRequest {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *PushTemplateShrinkRequest) SetDismissalDate(v int64) *PushTemplateShrinkRequest {
+	s.DismissalDate = &v
 	return s
 }
 
@@ -29316,6 +29424,14 @@ func (client *Client) PushMultipleWithOptions(tmpReq *PushMultipleRequest, runti
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActivityContentState)) {
+		body["ActivityContentState"] = request.ActivityContentState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ActivityEvent)) {
+		body["ActivityEvent"] = request.ActivityEvent
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
@@ -29330,6 +29446,10 @@ func (client *Client) PushMultipleWithOptions(tmpReq *PushMultipleRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.DeliveryType)) {
 		body["DeliveryType"] = request.DeliveryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DismissalDate)) {
+		body["DismissalDate"] = request.DismissalDate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExpiredSeconds)) {
@@ -29522,6 +29642,14 @@ func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActivityContentState)) {
+		body["ActivityContentState"] = request.ActivityContentState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ActivityEvent)) {
+		body["ActivityEvent"] = request.ActivityEvent
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
@@ -29540,6 +29668,10 @@ func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.DeliveryType)) {
 		body["DeliveryType"] = request.DeliveryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DismissalDate)) {
+		body["DismissalDate"] = request.DismissalDate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExpiredSeconds)) {
@@ -29672,6 +29804,14 @@ func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runti
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActivityContentState)) {
+		body["ActivityContentState"] = request.ActivityContentState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ActivityEvent)) {
+		body["ActivityEvent"] = request.ActivityEvent
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
@@ -29686,6 +29826,10 @@ func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.DeliveryType)) {
 		body["DeliveryType"] = request.DeliveryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DismissalDate)) {
+		body["DismissalDate"] = request.DismissalDate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExpiredSeconds)) {
