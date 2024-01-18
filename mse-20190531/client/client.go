@@ -2492,6 +2492,7 @@ type AddGatewayRouteRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the destination service. Valid values:
 	//
 	// *   Single
@@ -2544,6 +2545,11 @@ func (s AddGatewayRouteRequest) GoString() string {
 
 func (s *AddGatewayRouteRequest) SetAcceptLanguage(v string) *AddGatewayRouteRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetDescription(v string) *AddGatewayRouteRequest {
+	s.Description = &v
 	return s
 }
 
@@ -3136,6 +3142,7 @@ type AddGatewayRouteShrinkRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the destination service. Valid values:
 	//
 	// *   Single
@@ -3188,6 +3195,11 @@ func (s AddGatewayRouteShrinkRequest) GoString() string {
 
 func (s *AddGatewayRouteShrinkRequest) SetAcceptLanguage(v string) *AddGatewayRouteShrinkRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetDescription(v string) *AddGatewayRouteShrinkRequest {
+	s.Description = &v
 	return s
 }
 
@@ -4641,7 +4653,8 @@ type AddServiceSourceRequest struct {
 	//
 	// *   K8s: ACK cluster
 	// *   NACOS: MSE Nacos instance
-	Source                    *string                                             `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The list of security groups to be authorized. You can specify security groups to allow backend services to access data sources that you create.
 	ToAuthorizeSecurityGroups []*AddServiceSourceRequestToAuthorizeSecurityGroups `json:"ToAuthorizeSecurityGroups,omitempty" xml:"ToAuthorizeSecurityGroups,omitempty" type:"Repeated"`
 	// The type of the service source.
 	//
@@ -4752,8 +4765,11 @@ func (s *AddServiceSourceRequestIngressOptionsRequest) SetWatchNamespace(v strin
 }
 
 type AddServiceSourceRequestToAuthorizeSecurityGroups struct {
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The description of the authorization record.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The authorized port range of the security group. You can select multiple port ranges. Separate each port range with a comma (,).
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -4803,7 +4819,8 @@ type AddServiceSourceShrinkRequest struct {
 	//
 	// *   K8s: ACK cluster
 	// *   NACOS: MSE Nacos instance
-	Source                          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The list of security groups to be authorized. You can specify security groups to allow backend services to access data sources that you create.
 	ToAuthorizeSecurityGroupsShrink *string `json:"ToAuthorizeSecurityGroups,omitempty" xml:"ToAuthorizeSecurityGroups,omitempty"`
 	// The type of the service source.
 	//
@@ -6289,33 +6306,9 @@ type CreateClusterRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The billing method.
+	// The billing method. Valid values: PREPAY and POSTPAY.
 	//
-	// Valid values:
-	//
-	// *   PREPAY
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the subscription billing method
-	//
-	//     <!-- -->
-	//
-	// *   POSTPAY
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the pay-as-you-go billing method
-	//
-	//     <!-- -->
+	// Ignore this parameter for serverless instances.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The engine specifications. Valid values:
 	//
@@ -6331,50 +6324,76 @@ type CreateClusterRequest struct {
 	//
 	// *   `MSE_SC_1_2_60_c`: 1 vCPU and 2 GB of memory
 	// *   `MSE_SC_2_4_60_c`: 2 vCPUs and 4 GB of memory
+	//
+	// \[Serverless Edition]
+	//
+	// Ignore this parameter or set this parameter to `MSE_SC_SERVERLESS`.
 	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
 	// The type of the instance. Valid values: ZooKeeper and Nacos-Ans.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The engine version of the instance. Valid values:
 	//
-	// \[Professional version]
+	// \[Professional Edition]
 	//
-	// *   `NACOS_2_0_0`: Nacos 2.0.0
-	// *   `ZooKeeper_3_8_0`: ZooKeeper 3.8.0
+	// *   `NACOS_2_0_0`
+	// *   `ZooKeeper_3_8_0`
 	//
 	// \[Developer Edition]
 	//
-	// *   `NACOS_2_0_0`: Nacos 2.0.0
-	// *   `ZooKeeper_3_8_0`: ZooKeeper 3.8.0
-	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
-	// The network connection type. Valid values:
+	// *   `NACOS_2_0_0`
+	// *   `ZooKeeper_3_8_0`
 	//
-	// *   slb
-	// *   eni
+	// \[Serverless Edition]
+	//
+	// *   `NACOS_2_0_0`
+	// *   `ZooKeeper_3_8_0`
+	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
+	// The network connection type. Valid values: `slb` or `single_eni`. For instances of the Developer Edition in some regions, only the value `single_eni` is supported.
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
 	// Deprecated
-	// The type of the disk. Valid values:
-	//
-	// *   alicloud-disk-ssd
-	// *   alicloud-disk-essd-pl1
+	// This parameter is obsolete.
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// Specifies whether to enable Internet access (Elastic IP Address) if ConnectionType is set to `single_eni`.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	EipEnabled *bool `json:"EipEnabled,omitempty" xml:"EipEnabled,omitempty"`
 	// The number of nodes in the instance. Valid values: 1 to 9.
 	//
 	// \[Professional Edition]
 	//
-	// *   The number of nodes in an instance is greater than or equal to 3 and must be an odd number.
+	// *   The value must be greater than or equal to 3 and must be an odd number.
 	//
 	// \[Developer Edition]
 	//
-	// *   Only one node can be deployed for an instance.
+	// *   The value must be 1.
+	//
+	// \[Serverless Edition]
+	//
+	// Ignore this parameter.
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The name of the MSE instance.
+	// The custom name of the instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Configure this parameter unless otherwise specified. Valid values:
 	//
 	// *   `mse_pro`: Professional Edition
-	// *   `mse_dev`: Developer Edition.
+	// *   `mse_dev`: Developer Edition
+	// *   `mse_dev`: Serverless Edition
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	// The network type of the MSE instance. Valid values:
 	//
@@ -6382,19 +6401,14 @@ type CreateClusterRequest struct {
 	// *   `pubnet`: Internet
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// Deprecated
-	// The specifications of the internal-facing SLB instance. Valid values:
-	//
-	// *   `slb.s1.small`
-	// *   `slb.s3.medium`
+	// This parameter is obsolete.
 	PrivateSlbSpecification *string `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
-	// The public bandwidth. Unit: Mbit/s. This parameter is required.\
-	// Valid values: 0 to 5000. A value of 0 indicates no access to the Internet.
+	// This parameter is valid only if the ConnectionType parameter is set to `slb`. The value 0 indicates that the Server Load Balancer (SLB) instance is not connected over the Internet. A value greater than 1 indicates the fixed bandwidth that is used to access the SLB instance over the Internet. Unit: Mbit/s.
+	//
+	// Valid values: 0 to 5000.
 	PubNetworkFlow *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 	// Deprecated
-	// The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
-	//
-	// *   `slb.s1.small`
-	// *   `slb.s3.medium`
+	// This parameter is obsolete.
 	PubSlbSpecification *string `json:"PubSlbSpecification,omitempty" xml:"PubSlbSpecification,omitempty"`
 	// The region where the instance resides. Examples:
 	//
@@ -6408,14 +6422,14 @@ type CreateClusterRequest struct {
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	// The ID of the resource group. For the details of resource groups, see [View basic information of a resource group](~~457230~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the security group to which the instance belongs. This parameter is valid only when the ConnectionType parameter is set to `single_eni`.
+	// The type of the security group to which the instance belongs. This parameter is valid only if the ConnectionType parameter is set to `single_eni`.
 	//
 	// Valid values:
 	//
 	// *   enterprise
 	// *   normal
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
-	// The list of the tags that you want to add.
+	// The tags to add to the resource. You can specify up to 20 tags.
 	Tag []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -6542,9 +6556,9 @@ func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
 }
 
 type CreateClusterRequestTag struct {
-	// The key of a tag.
+	// The key of tag N to add to the resource.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag.
+	// The value of tag N to add to the resource.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14790,17 +14804,18 @@ type GetGatewayResponseBodyData struct {
 	// The specifications of the gateway.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The status of the gateway. Valid values:
-	// * 0: The gateway is being created.
-	// * 1: The gateway fails to be created.
-	// * 2: The gateway is running.
-	// * 3: The gateway is changing.
-	// * 4: The gateway is scaling down.
-	// * 6: The gateway is scaling up.
-	// * 8: The gateway is being deleted.
-	// * 10: The gateway is restarting.
-	// * 11: The gateway is being rebuilt.
-	// * 12: The gateway is updating.
-	// * 13: The gateway fails to be updated.
+	//
+	// *   0: The gateway is being created.
+	// *   1: The gateway fails to be created.
+	// *   2: The gateway is running.
+	// *   3: The gateway is changing.
+	// *   4: The gateway is scaling in.
+	// *   6: The gateway is scaling out.
+	// *   8: The gateway is being deleted.
+	// *   10: The gateway is restarting.
+	// *   11: The gateway is being rebuilt.
+	// *   12: The gateway is updating.
+	// *   13: The gateway fails to be updated.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The description of the status.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
@@ -15980,6 +15995,7 @@ type GetGatewayRouteDetailResponseBodyData struct {
 	DefaultServiceId *int64 `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
 	// The default service name.
 	DefaultServiceName *string `json:"DefaultServiceName,omitempty" xml:"DefaultServiceName,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination service type.
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The information about service mocking.
@@ -16070,6 +16086,11 @@ func (s *GetGatewayRouteDetailResponseBodyData) SetDefaultServiceId(v int64) *Ge
 
 func (s *GetGatewayRouteDetailResponseBodyData) SetDefaultServiceName(v string) *GetGatewayRouteDetailResponseBodyData {
 	s.DefaultServiceName = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDescription(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.Description = &v
 	return s
 }
 
@@ -16762,7 +16783,8 @@ type GetGatewayRouteDetailResponseBodyDataRouteServices struct {
 	// The protocol type.
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	// The service name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The namespace.
@@ -16776,7 +16798,8 @@ type GetGatewayRouteDetailResponseBodyDataRouteServices struct {
 	// The port number of the service.
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	// The source type of the service.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType         *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	UnhealthyEndpoints []*string `json:"UnhealthyEndpoints,omitempty" xml:"UnhealthyEndpoints,omitempty" type:"Repeated"`
 	// The service version.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -16796,6 +16819,11 @@ func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetAgreementType(v 
 
 func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetGroupName(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
 	s.GroupName = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetHealthStatus(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.HealthStatus = &v
 	return s
 }
 
@@ -16831,6 +16859,11 @@ func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetServicePort(v in
 
 func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetSourceType(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
 	s.SourceType = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetUnhealthyEndpoints(v []*string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.UnhealthyEndpoints = v
 	return s
 }
 
@@ -24342,13 +24375,13 @@ type ListCircuitBreakerRulesResponseBodyDataResult struct {
 	HalfOpenBaseAmountPerStep *int32 `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
 	// The number of circuit breaking recovery steps.
 	HalfOpenRecoveryStepNum *int32 `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
-	// The maximum response time (RT). Unit: milliseconds. If the RT of a request is greater than the value of this parameter, a slow call is counted. If you set Strategy to 0, you must specify this parameter.
+	// The maximum RT. Unit: milliseconds. If the RT of a request is greater than the value of this parameter, a slow call is counted. If you set Strategy to 0, you must specify this parameter.
 	MaxAllowedRtMs *int32 `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
 	// The minimum number of requests to trigger circuit breaking. If the number of requests in the current time window is less than the value of this parameter, circuit breaking is not triggered even if the circuit breaking rule is met.
 	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
 	// The microservice namespace to which the application belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region where the cluster resides.
+	// The region in which the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the interface to which the rule is applicable. The interface name must be the same as the name on the interface details page in the console.
 	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
@@ -25463,6 +25496,7 @@ type ListClustersRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The alias of the instance. Fuzzy match is supported.
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
+	KeyId            *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The number of the page to return.
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
@@ -25492,6 +25526,11 @@ func (s *ListClustersRequest) SetAcceptLanguage(v string) *ListClustersRequest {
 
 func (s *ListClustersRequest) SetClusterAliasName(v string) *ListClustersRequest {
 	s.ClusterAliasName = &v
+	return s
+}
+
+func (s *ListClustersRequest) SetKeyId(v string) *ListClustersRequest {
+	s.KeyId = &v
 	return s
 }
 
@@ -27241,7 +27280,7 @@ func (s *ListFlowRulesResponseBodyData) SetTotalSize(v int32) *ListFlowRulesResp
 type ListFlowRulesResponseBodyDataResult struct {
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The throttling effect.
 	//
@@ -27295,16 +27334,16 @@ type ListFlowRulesResponseBodyDataResult struct {
 	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
 	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
 	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
-	// The statistical dimension. The value 1 indicates the number of accepted requests.
+	// The statistical dimension. The value 1 indicates that the number of accepted requests is used for statistics.
 	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region ID.
+	// The ID of the region in which the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the interface resource.
 	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The throttling threshold.
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
@@ -28880,6 +28919,7 @@ type ListGatewayDomainRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The type of the domain name.
@@ -28896,6 +28936,11 @@ func (s ListGatewayDomainRequest) GoString() string {
 
 func (s *ListGatewayDomainRequest) SetAcceptLanguage(v string) *ListGatewayDomainRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayDomainRequest) SetDomainName(v string) *ListGatewayDomainRequest {
+	s.DomainName = &v
 	return s
 }
 
@@ -29199,6 +29244,7 @@ func (s *ListGatewayRouteRequest) SetPageSize(v int32) *ListGatewayRouteRequest 
 }
 
 type ListGatewayRouteRequestFilterParams struct {
+	// Deprecated
 	// The default service ID.
 	DefaultServiceId *int64 `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
 	// The domain ID.
@@ -29211,6 +29257,7 @@ type ListGatewayRouteRequestFilterParams struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The name of the gateway.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The order.
 	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
 	// The status.
@@ -29252,6 +29299,11 @@ func (s *ListGatewayRouteRequestFilterParams) SetGatewayUniqueId(v string) *List
 
 func (s *ListGatewayRouteRequestFilterParams) SetName(v string) *ListGatewayRouteRequestFilterParams {
 	s.Name = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequestFilterParams) SetPath(v string) *ListGatewayRouteRequestFilterParams {
+	s.Path = &v
 	return s
 }
 
@@ -29904,7 +29956,8 @@ type ListGatewayRouteResponseBodyDataResultRouteServices struct {
 	// The type of the protocol.
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	// The transcoder of the Dubbo protocol.
 	HttpDubboTranscoder *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder `json:"HttpDubboTranscoder,omitempty" xml:"HttpDubboTranscoder,omitempty" type:"Struct"`
 	// The name.
@@ -29920,7 +29973,8 @@ type ListGatewayRouteResponseBodyDataResultRouteServices struct {
 	// The Dubbo port number.
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	// The source type.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType         *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	UnhealthyEndpoints []*string `json:"UnhealthyEndpoints,omitempty" xml:"UnhealthyEndpoints,omitempty" type:"Repeated"`
 	// The version of the service.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -29940,6 +29994,11 @@ func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetAgreementType(v
 
 func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetGroupName(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
 	s.GroupName = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetHealthStatus(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.HealthStatus = &v
 	return s
 }
 
@@ -29980,6 +30039,11 @@ func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetServicePort(v i
 
 func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetSourceType(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
 	s.SourceType = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetUnhealthyEndpoints(v []*string) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.UnhealthyEndpoints = v
 	return s
 }
 
@@ -32672,7 +32736,8 @@ type ListNacosHistoryConfigsResponseBodyHistoryItems struct {
 	// The timestamp when the configuration was last modified.
 	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	// The format of the configuration file.
-	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	OpType  *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	SrcUser *string `json:"SrcUser,omitempty" xml:"SrcUser,omitempty"`
 }
 
 func (s ListNacosHistoryConfigsResponseBodyHistoryItems) String() string {
@@ -32710,6 +32775,11 @@ func (s *ListNacosHistoryConfigsResponseBodyHistoryItems) SetLastModifiedTime(v 
 
 func (s *ListNacosHistoryConfigsResponseBodyHistoryItems) SetOpType(v string) *ListNacosHistoryConfigsResponseBodyHistoryItems {
 	s.OpType = &v
+	return s
+}
+
+func (s *ListNacosHistoryConfigsResponseBodyHistoryItems) SetSrcUser(v string) *ListNacosHistoryConfigsResponseBodyHistoryItems {
+	s.SrcUser = &v
 	return s
 }
 
@@ -33029,6 +33099,7 @@ type ListSSLCertRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	CertName       *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 }
@@ -33043,6 +33114,11 @@ func (s ListSSLCertRequest) GoString() string {
 
 func (s *ListSSLCertRequest) SetAcceptLanguage(v string) *ListSSLCertRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListSSLCertRequest) SetCertName(v string) *ListSSLCertRequest {
+	s.CertName = &v
 	return s
 }
 
@@ -33403,7 +33479,7 @@ func (s *ListSecurityGroupRuleRequest) SetGatewayUniqueId(v string) *ListSecurit
 type ListSecurityGroupRuleResponseBody struct {
 	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data []*ListSecurityGroupRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -33464,11 +33540,11 @@ type ListSecurityGroupRuleResponseBodyData struct {
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The time when the instance was created.
+	// The creation time.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the instance configuration was last modified.
+	// The last modification time.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The authorization record ID of the security group.
+	// The ID of the security group authorization record.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The protocol type.
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
@@ -34585,7 +34661,7 @@ func (s *ModifyGovernanceKubernetesClusterRequest) SetRegionId(v string) *Modify
 }
 
 type ModifyGovernanceKubernetesClusterRequestNamespaceInfos struct {
-	// The microservice namespace.If you do not specify this parameter, Microservice Governance is not enabled for the namespace.
+	// The microservice namespace. If you do not specify this parameter, Microservice Governance is not enabled for the namespace.
 	MseNamespace *string `json:"MseNamespace,omitempty" xml:"MseNamespace,omitempty"`
 	// The name of the Kubernetes namespace.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -43732,6 +43808,7 @@ type UpdateGatewayRouteRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination service type.
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The information about service mocking.
@@ -43750,6 +43827,7 @@ type UpdateGatewayRouteRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The ID of the route.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Deprecated
 	// The name of the route.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The route matching conditions.
@@ -43772,6 +43850,11 @@ func (s UpdateGatewayRouteRequest) GoString() string {
 
 func (s *UpdateGatewayRouteRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetDescription(v string) *UpdateGatewayRouteRequest {
+	s.Description = &v
 	return s
 }
 
@@ -44352,6 +44435,7 @@ type UpdateGatewayRouteShrinkRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination service type.
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The information about service mocking.
@@ -44370,6 +44454,7 @@ type UpdateGatewayRouteShrinkRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The ID of the route.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Deprecated
 	// The name of the route.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The route matching conditions.
@@ -44392,6 +44477,11 @@ func (s UpdateGatewayRouteShrinkRequest) GoString() string {
 
 func (s *UpdateGatewayRouteShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteShrinkRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetDescription(v string) *UpdateGatewayRouteShrinkRequest {
+	s.Description = &v
 	return s
 }
 
@@ -50069,6 +50159,10 @@ func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest,
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
@@ -56438,6 +56532,10 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 		query["ClusterAliasName"] = request.ClusterAliasName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		query["PageNum"] = request.PageNum
 	}
@@ -57054,6 +57152,10 @@ func (client *Client) ListGatewayDomainWithOptions(request *ListGatewayDomainReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
@@ -57822,6 +57924,10 @@ func (client *Client) ListSSLCertWithOptions(request *ListSSLCertRequest, runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
@@ -61087,6 +61193,10 @@ func (client *Client) UpdateGatewayRouteWithOptions(tmpReq *UpdateGatewayRouteRe
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
