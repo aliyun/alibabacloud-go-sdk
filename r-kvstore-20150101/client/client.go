@@ -23,8 +23,12 @@ type AddShardingNodeRequest struct {
 	// The business information. This is an additional parameter.
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The ID of the coupon.
-	CouponNo   *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	ForceTrans *bool   `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Specifies whether to enable forced transmission during a configuration change. Valid values:
+	//
+	// *   **false** (default): Before the configuration change, the system checks the minor version of the instance. If the minor version of the instance is outdated, an error is reported. You must update the minor version of the instance and try again.
+	// *   **true**: The system skips the version check and directly performs the configuration change.
+	ForceTrans *bool `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
 	// The ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -34,12 +38,11 @@ type AddShardingNodeRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The number of data shards that you want to add. Default value: **1**.
 	//
-	// >
-	//
-	// *   A cluster instance must contain 2 to 256 data shards. You can add a maximum of 64 data shards at a time.
+	// >  The instance can contain 2 to 256 data shards. You can add up to 64 data shards at a time. Make sure that the number of shards does not exceed this limit.
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	// The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
 	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+	// The vSwitch ID. You can specify a different vSwitch within the same virtual private cloud (VPC). In this case, the new data shards are created in the specified vSwitch. If you do not specify this parameter, the new data shards are created in the original vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -1186,7 +1189,8 @@ type CreateInstanceRequest struct {
 	//
 	// *   **PrePaid**: subscription
 	// *   **PostPaid**: pay-as-you-go
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
 	// The operation that you want to perform. Set the value to **AllocateInstancePublicConnection**.
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
@@ -1330,6 +1334,11 @@ func (s *CreateInstanceRequest) SetCapacity(v int64) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetChargeType(v string) *CreateInstanceRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetClusterBackupId(v string) *CreateInstanceRequest {
+	s.ClusterBackupId = &v
 	return s
 }
 
@@ -1978,7 +1987,8 @@ type CreateTairInstanceRequest struct {
 	// *   **PostPaid**: pay-as-you-go
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
 	// The coupon code.
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// Specifies whether to perform a dry run. Default value: false. Valid values:
@@ -2128,6 +2138,11 @@ func (s *CreateTairInstanceRequest) SetChargeType(v string) *CreateTairInstanceR
 
 func (s *CreateTairInstanceRequest) SetClientToken(v string) *CreateTairInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetClusterBackupId(v string) *CreateTairInstanceRequest {
+	s.ClusterBackupId = &v
 	return s
 }
 
@@ -2792,6 +2807,10 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteShardingNodeRequest struct {
+	// Specifies whether to enable forced transmission during a configuration change. Valid values:
+	//
+	// *   **false** (default): Before the configuration change, the system checks the minor version of the instance. If the minor version of the instance is outdated, an error is reported. You must update the minor version of the instance and try again.
+	// *   **true**: The system skips the version check and directly performs the configuration change.
 	ForceTrans *bool `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4928,7 +4947,8 @@ func (s *DescribeBackupTasksResponse) SetBody(v *DescribeBackupTasksResponseBody
 
 type DescribeBackupsRequest struct {
 	// The ID of the backup file.
-	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupId    *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupJobId *int32 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance whose backup files you want to query.
@@ -4963,6 +4983,11 @@ func (s DescribeBackupsRequest) GoString() string {
 
 func (s *DescribeBackupsRequest) SetBackupId(v int32) *DescribeBackupsRequest {
 	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetBackupJobId(v int32) *DescribeBackupsRequest {
+	s.BackupJobId = &v
 	return s
 }
 
@@ -5717,6 +5742,330 @@ func (s *DescribeCacheAnalysisReportListResponse) SetStatusCode(v int32) *Descri
 }
 
 func (s *DescribeCacheAnalysisReportListResponse) SetBody(v *DescribeCacheAnalysisReportListResponseBody) *DescribeCacheAnalysisReportListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClusterBackupListRequest struct {
+	ClusterBackupId      *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeClusterBackupListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupListRequest) SetClusterBackupId(v string) *DescribeClusterBackupListRequest {
+	s.ClusterBackupId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetEndTime(v string) *DescribeClusterBackupListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetInstanceId(v string) *DescribeClusterBackupListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetOwnerAccount(v string) *DescribeClusterBackupListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetOwnerId(v int64) *DescribeClusterBackupListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetPageNumber(v int32) *DescribeClusterBackupListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetPageSize(v int32) *DescribeClusterBackupListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetRegionId(v string) *DescribeClusterBackupListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetResourceOwnerAccount(v string) *DescribeClusterBackupListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetResourceOwnerId(v int64) *DescribeClusterBackupListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetSecurityToken(v string) *DescribeClusterBackupListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListRequest) SetStartTime(v string) *DescribeClusterBackupListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeClusterBackupListResponseBody struct {
+	ClusterBackups []*DescribeClusterBackupListResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
+	MaxResults     *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	PageNumber     *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeClusterBackupListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupListResponseBody) SetClusterBackups(v []*DescribeClusterBackupListResponseBodyClusterBackups) *DescribeClusterBackupListResponseBody {
+	s.ClusterBackups = v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBody) SetMaxResults(v int32) *DescribeClusterBackupListResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBody) SetPageNumber(v int32) *DescribeClusterBackupListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBody) SetPageSize(v int32) *DescribeClusterBackupListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBody) SetRequestId(v string) *DescribeClusterBackupListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeClusterBackupListResponseBodyClusterBackups struct {
+	Backups                []*DescribeClusterBackupListResponseBodyClusterBackupsBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Repeated"`
+	ClusterBackupEndTime   *string                                                       `json:"ClusterBackupEndTime,omitempty" xml:"ClusterBackupEndTime,omitempty"`
+	ClusterBackupId        *string                                                       `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
+	ClusterBackupMode      *string                                                       `json:"ClusterBackupMode,omitempty" xml:"ClusterBackupMode,omitempty"`
+	ClusterBackupSize      *string                                                       `json:"ClusterBackupSize,omitempty" xml:"ClusterBackupSize,omitempty"`
+	ClusterBackupStartTime *string                                                       `json:"ClusterBackupStartTime,omitempty" xml:"ClusterBackupStartTime,omitempty"`
+	ClusterBackupStatus    *string                                                       `json:"ClusterBackupStatus,omitempty" xml:"ClusterBackupStatus,omitempty"`
+	IsAvail                *int32                                                        `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	Progress               *string                                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ShardClassMemory       *int32                                                        `json:"ShardClassMemory,omitempty" xml:"ShardClassMemory,omitempty"`
+}
+
+func (s DescribeClusterBackupListResponseBodyClusterBackups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupListResponseBodyClusterBackups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetBackups(v []*DescribeClusterBackupListResponseBodyClusterBackupsBackups) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.Backups = v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetClusterBackupEndTime(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.ClusterBackupEndTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetClusterBackupId(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.ClusterBackupId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetClusterBackupMode(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.ClusterBackupMode = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetClusterBackupSize(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.ClusterBackupSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetClusterBackupStartTime(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.ClusterBackupStartTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetClusterBackupStatus(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.ClusterBackupStatus = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetIsAvail(v int32) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.IsAvail = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetProgress(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetShardClassMemory(v int32) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.ShardClassMemory = &v
+	return s
+}
+
+type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
+	BackupDownloadURL         *string                                                              `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	BackupEndTime             *string                                                              `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupId                  *string                                                              `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupIntranetDownloadURL *string                                                              `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
+	BackupName                *string                                                              `json:"BackupName,omitempty" xml:"BackupName,omitempty"`
+	BackupSize                *string                                                              `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime           *string                                                              `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus              *string                                                              `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	Engine                    *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExtraInfo                 *DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	InstanceName              *string                                                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsAvail                   *string                                                              `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+}
+
+func (s DescribeClusterBackupListResponseBodyClusterBackupsBackups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupListResponseBodyClusterBackupsBackups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetBackupDownloadURL(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.BackupDownloadURL = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetBackupEndTime(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.BackupEndTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetBackupId(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetBackupIntranetDownloadURL(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.BackupIntranetDownloadURL = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetBackupName(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.BackupName = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetBackupSize(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.BackupSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetBackupStartTime(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.BackupStartTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetBackupStatus(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.BackupStatus = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetEngine(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetExtraInfo(v *DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetInstanceName(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetIsAvail(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.IsAvail = &v
+	return s
+}
+
+type DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo struct {
+	CustinsDbVersion *string `json:"CustinsDbVersion,omitempty" xml:"CustinsDbVersion,omitempty"`
+}
+
+func (s DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo) SetCustinsDbVersion(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo {
+	s.CustinsDbVersion = &v
+	return s
+}
+
+type DescribeClusterBackupListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClusterBackupListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClusterBackupListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupListResponse) SetHeaders(v map[string]*string) *DescribeClusterBackupListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponse) SetStatusCode(v int32) *DescribeClusterBackupListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponse) SetBody(v *DescribeClusterBackupListResponseBody) *DescribeClusterBackupListResponse {
 	s.Body = v
 	return s
 }
@@ -11078,7 +11427,10 @@ type DescribeIntranetAttributeResponseBody struct {
 	//
 	// > If no extra internal bandwidth is purchased, this parameter is not returned.
 	BandwidthExpireTime *string `json:"BandwidthExpireTime,omitempty" xml:"BandwidthExpireTime,omitempty"`
-	BandwidthPrePaid    *string `json:"BandwidthPrePaid,omitempty" xml:"BandwidthPrePaid,omitempty"`
+	// The billing methods of unexpired bandwith plans. Valid values:
+	// - **0**: Pay-as-you-go
+	// - **1**: Subscription
+	BandwidthPrePaid *string `json:"BandwidthPrePaid,omitempty" xml:"BandwidthPrePaid,omitempty"`
 	// The time when the extra internal bandwidth that you purchased for temporary use expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// > If no extra internal bandwidth for temporary use is purchased or the extra internal bandwidth that you purchased for temporary use has expired, **0** is returned for this parameter.
@@ -12514,8 +12866,9 @@ type DescribePriceResponseBodyOrder struct {
 	// The original price of the order.
 	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// Details about promotion rule IDs.
-	RuleIds          *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	ShowDiscountInfo *bool                                  `json:"ShowDiscountInfo,omitempty" xml:"ShowDiscountInfo,omitempty"`
+	RuleIds *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	// Indicates whether the discount information is displayed.
+	ShowDiscountInfo *bool `json:"ShowDiscountInfo,omitempty" xml:"ShowDiscountInfo,omitempty"`
 	// The transaction price of the order.
 	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
@@ -12712,9 +13065,9 @@ type DescribePriceResponseBodySubOrdersSubOrder struct {
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list price of the order.
+	// The original price of the order.
 	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The ID of the promotion rule.
+	// The rule IDs.
 	RuleIds *DescribePriceResponseBodySubOrdersSubOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
 	// The final price of the order.
 	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
@@ -14516,6 +14869,7 @@ func (s *DescribeZonesRequest) SetSecurityToken(v string) *DescribeZonesRequest 
 }
 
 type DescribeZonesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The queried zones.
 	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
@@ -22020,6 +22374,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["ChargeType"] = request.ChargeType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterBackupId)) {
+		query["ClusterBackupId"] = request.ClusterBackupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConnectionStringPrefix)) {
 		query["ConnectionStringPrefix"] = request.ConnectionStringPrefix
 	}
@@ -22362,6 +22720,10 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterBackupId)) {
+		query["ClusterBackupId"] = request.ClusterBackupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CouponNo)) {
@@ -23533,6 +23895,10 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 		query["BackupId"] = request.BackupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BackupJobId)) {
+		query["BackupJobId"] = request.BackupJobId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -23813,6 +24179,46 @@ func (client *Client) DescribeCacheAnalysisReportList(request *DescribeCacheAnal
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCacheAnalysisReportListResponse{}
 	_body, _err := client.DescribeCacheAnalysisReportListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterBackupListWithOptions(request *DescribeClusterBackupListRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterBackupListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterBackupList"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClusterBackupListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterBackupList(request *DescribeClusterBackupListRequest) (_result *DescribeClusterBackupListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClusterBackupListResponse{}
+	_body, _err := client.DescribeClusterBackupListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27138,7 +27544,7 @@ func (client *Client) GrantAccountPrivilege(request *GrantAccountPrivilegeReques
 }
 
 /**
- * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
+ * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis] (~~184337~~).
  *
  * @param request InitializeKvstorePermissionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27198,7 +27604,7 @@ func (client *Client) InitializeKvstorePermissionWithOptions(request *Initialize
 }
 
 /**
- * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
+ * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis] (~~184337~~).
  *
  * @param request InitializeKvstorePermissionRequest
  * @return InitializeKvstorePermissionResponse
@@ -29431,7 +29837,7 @@ func (client *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (
 }
 
 /**
- * > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId** parameter are added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+ * > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
  *
  * @param request ModifySecurityGroupConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29495,7 +29901,7 @@ func (client *Client) ModifySecurityGroupConfigurationWithOptions(request *Modif
 }
 
 /**
- * > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId** parameter are added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+ * > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
  *
  * @param request ModifySecurityGroupConfigurationRequest
  * @return ModifySecurityGroupConfigurationResponse
