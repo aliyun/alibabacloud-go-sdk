@@ -4929,8 +4929,7 @@ func (s *CreateEnvServiceMonitorResponse) SetBody(v *CreateEnvServiceMonitorResp
 type CreateEnvironmentRequest struct {
 	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
-	// For Cloud type environments, the current field value is RegionId.
+	// The ID of the resource bound to the environment, such as the container ID or VPC ID. For a Cloud environment, specify the region ID.
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
 	// The name of the environment.
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
@@ -4947,15 +4946,15 @@ type CreateEnvironmentRequest struct {
 	// *   Cloud: cloud service
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
 	// type of managed：
-	// - none： not managed. default value of prometheus for ACK.
-	// - agent：managed agent. default value of  promehtues for ASK/ACS/AckOne.
-	// - agent-exproter： maanged agent and exporter. default of prometheus for Cloud.
+	// - none: not managed. default value of prometheus for ACK.
+	// - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
+	// - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
 	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags to add to the instance.
+	// The tags of the instance. You can specify this parameter to manage tags for the instance.
 	Tags []*CreateEnvironmentRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -8402,8 +8401,8 @@ type CreatePrometheusInstanceRequest struct {
 	// - ecs: Prometheus for ECS
 	// - global-view: Global Aggregation Instance
 	// - aliyun-cs: Prometheus Instance for Container Service
-	// - cloud-product：Prometheus for cloud monitor
-	// - cloud-monitor：Prometheus for enterprise cloud monitor
+	// - cloud-product: Prometheus for cloud monitor
+	// - cloud-monitor: Prometheus for enterprise cloud monitor
 	// - flink: Prometheus for FLink
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
@@ -25840,11 +25839,16 @@ func (s *ImportAppAlertRulesResponse) SetBody(v *ImportAppAlertRulesResponseBody
 }
 
 type InitEnvironmentRequest struct {
-	// Locale, the default is Chinese zh.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// Environment ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	ManagedType   *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
+	// type of managed:
+	//
+	// - none: not managed. default value of prometheus for ACK.
+	// - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
+	// - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
+	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -25878,13 +25882,13 @@ func (s *InitEnvironmentRequest) SetRegionId(v string) *InitEnvironmentRequest {
 }
 
 type InitEnvironmentResponseBody struct {
-	// The status code.
+	// The status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The result of the operation.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
