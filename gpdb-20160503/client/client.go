@@ -130,6 +130,117 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 	return s
 }
 
+type CancelUploadDocumentJobRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CancelUploadDocumentJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUploadDocumentJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUploadDocumentJobRequest) SetCollection(v string) *CancelUploadDocumentJobRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobRequest) SetDBInstanceId(v string) *CancelUploadDocumentJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobRequest) SetJobId(v string) *CancelUploadDocumentJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobRequest) SetNamespace(v string) *CancelUploadDocumentJobRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobRequest) SetNamespacePassword(v string) *CancelUploadDocumentJobRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobRequest) SetOwnerId(v int64) *CancelUploadDocumentJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobRequest) SetRegionId(v string) *CancelUploadDocumentJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CancelUploadDocumentJobResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CancelUploadDocumentJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUploadDocumentJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUploadDocumentJobResponseBody) SetMessage(v string) *CancelUploadDocumentJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobResponseBody) SetRequestId(v string) *CancelUploadDocumentJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobResponseBody) SetStatus(v string) *CancelUploadDocumentJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CancelUploadDocumentJobResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelUploadDocumentJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelUploadDocumentJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUploadDocumentJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUploadDocumentJobResponse) SetHeaders(v map[string]*string) *CancelUploadDocumentJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelUploadDocumentJobResponse) SetStatusCode(v int32) *CancelUploadDocumentJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelUploadDocumentJobResponse) SetBody(v *CancelUploadDocumentJobResponseBody) *CancelUploadDocumentJobResponse {
+	s.Body = v
+	return s
+}
+
 type CancelUpsertCollectionDataJobRequest struct {
 	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -13864,6 +13975,229 @@ func (s *DownloadSQLLogsRecordsResponse) SetBody(v *DownloadSQLLogsRecordsRespon
 	return s
 }
 
+type GetUploadDocumentJobRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetUploadDocumentJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadDocumentJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadDocumentJobRequest) SetCollection(v string) *GetUploadDocumentJobRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobRequest) SetDBInstanceId(v string) *GetUploadDocumentJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobRequest) SetJobId(v string) *GetUploadDocumentJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobRequest) SetNamespace(v string) *GetUploadDocumentJobRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobRequest) SetNamespacePassword(v string) *GetUploadDocumentJobRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobRequest) SetOwnerId(v int64) *GetUploadDocumentJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobRequest) SetRegionId(v string) *GetUploadDocumentJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetUploadDocumentJobResponseBody struct {
+	ChunkResult *GetUploadDocumentJobResponseBodyChunkResult `json:"ChunkResult,omitempty" xml:"ChunkResult,omitempty" type:"Struct"`
+	Job         *GetUploadDocumentJobResponseBodyJob         `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Usage       *GetUploadDocumentJobResponseBodyUsage       `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s GetUploadDocumentJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadDocumentJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadDocumentJobResponseBody) SetChunkResult(v *GetUploadDocumentJobResponseBodyChunkResult) *GetUploadDocumentJobResponseBody {
+	s.ChunkResult = v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBody) SetJob(v *GetUploadDocumentJobResponseBodyJob) *GetUploadDocumentJobResponseBody {
+	s.Job = v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBody) SetMessage(v string) *GetUploadDocumentJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBody) SetRequestId(v string) *GetUploadDocumentJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBody) SetStatus(v string) *GetUploadDocumentJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBody) SetUsage(v *GetUploadDocumentJobResponseBodyUsage) *GetUploadDocumentJobResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetUploadDocumentJobResponseBodyChunkResult struct {
+	ChunkFileUrl      *string `json:"ChunkFileUrl,omitempty" xml:"ChunkFileUrl,omitempty"`
+	PlainChunkFileUrl *string `json:"PlainChunkFileUrl,omitempty" xml:"PlainChunkFileUrl,omitempty"`
+}
+
+func (s GetUploadDocumentJobResponseBodyChunkResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadDocumentJobResponseBodyChunkResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadDocumentJobResponseBodyChunkResult) SetChunkFileUrl(v string) *GetUploadDocumentJobResponseBodyChunkResult {
+	s.ChunkFileUrl = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBodyChunkResult) SetPlainChunkFileUrl(v string) *GetUploadDocumentJobResponseBodyChunkResult {
+	s.PlainChunkFileUrl = &v
+	return s
+}
+
+type GetUploadDocumentJobResponseBodyJob struct {
+	Completed  *bool   `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// Job ID。
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Progress   *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetUploadDocumentJobResponseBodyJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadDocumentJobResponseBodyJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadDocumentJobResponseBodyJob) SetCompleted(v bool) *GetUploadDocumentJobResponseBodyJob {
+	s.Completed = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBodyJob) SetCreateTime(v string) *GetUploadDocumentJobResponseBodyJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBodyJob) SetError(v string) *GetUploadDocumentJobResponseBodyJob {
+	s.Error = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBodyJob) SetId(v string) *GetUploadDocumentJobResponseBodyJob {
+	s.Id = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBodyJob) SetProgress(v int32) *GetUploadDocumentJobResponseBodyJob {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBodyJob) SetStatus(v string) *GetUploadDocumentJobResponseBodyJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBodyJob) SetUpdateTime(v string) *GetUploadDocumentJobResponseBodyJob {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetUploadDocumentJobResponseBodyUsage struct {
+	EmbeddingTokens *int32 `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+}
+
+func (s GetUploadDocumentJobResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadDocumentJobResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadDocumentJobResponseBodyUsage) SetEmbeddingTokens(v int32) *GetUploadDocumentJobResponseBodyUsage {
+	s.EmbeddingTokens = &v
+	return s
+}
+
+type GetUploadDocumentJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUploadDocumentJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUploadDocumentJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadDocumentJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadDocumentJobResponse) SetHeaders(v map[string]*string) *GetUploadDocumentJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponse) SetStatusCode(v int32) *GetUploadDocumentJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponse) SetBody(v *GetUploadDocumentJobResponseBody) *GetUploadDocumentJobResponse {
+	s.Body = v
+	return s
+}
+
 type GetUpsertCollectionDataJobRequest struct {
 	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -19200,6 +19534,391 @@ func (s *UpgradeDBVersionResponse) SetBody(v *UpgradeDBVersionResponseBody) *Upg
 	return s
 }
 
+type UploadDocumentAsyncRequest struct {
+	ChunkOverlap       *int32                 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	ChunkSize          *int32                 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	Collection         *string                `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId       *string                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DocumentLoaderName *string                `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
+	DryRun             *bool                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	FileName           *string                `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl            *string                `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Metadata           map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Namespace          *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword  *string                `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId            *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId           *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Separators         []*string              `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	TextSplitterName   *string                `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
+	ZhTitleEnhance     *bool                  `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
+}
+
+func (s UploadDocumentAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocumentAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocumentAsyncRequest) SetChunkOverlap(v int32) *UploadDocumentAsyncRequest {
+	s.ChunkOverlap = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetChunkSize(v int32) *UploadDocumentAsyncRequest {
+	s.ChunkSize = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetCollection(v string) *UploadDocumentAsyncRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetDBInstanceId(v string) *UploadDocumentAsyncRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetDocumentLoaderName(v string) *UploadDocumentAsyncRequest {
+	s.DocumentLoaderName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetDryRun(v bool) *UploadDocumentAsyncRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetFileName(v string) *UploadDocumentAsyncRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetFileUrl(v string) *UploadDocumentAsyncRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetMetadata(v map[string]interface{}) *UploadDocumentAsyncRequest {
+	s.Metadata = v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetNamespace(v string) *UploadDocumentAsyncRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetNamespacePassword(v string) *UploadDocumentAsyncRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetOwnerId(v int64) *UploadDocumentAsyncRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetRegionId(v string) *UploadDocumentAsyncRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetSeparators(v []*string) *UploadDocumentAsyncRequest {
+	s.Separators = v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetTextSplitterName(v string) *UploadDocumentAsyncRequest {
+	s.TextSplitterName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetZhTitleEnhance(v bool) *UploadDocumentAsyncRequest {
+	s.ZhTitleEnhance = &v
+	return s
+}
+
+type UploadDocumentAsyncAdvanceRequest struct {
+	ChunkOverlap       *int32                 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	ChunkSize          *int32                 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	Collection         *string                `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId       *string                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DocumentLoaderName *string                `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
+	DryRun             *bool                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	FileName           *string                `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrlObject      io.Reader              `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Metadata           map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Namespace          *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword  *string                `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId            *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId           *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Separators         []*string              `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	TextSplitterName   *string                `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
+	ZhTitleEnhance     *bool                  `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
+}
+
+func (s UploadDocumentAsyncAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocumentAsyncAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetChunkOverlap(v int32) *UploadDocumentAsyncAdvanceRequest {
+	s.ChunkOverlap = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetChunkSize(v int32) *UploadDocumentAsyncAdvanceRequest {
+	s.ChunkSize = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetCollection(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetDBInstanceId(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetDocumentLoaderName(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.DocumentLoaderName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetDryRun(v bool) *UploadDocumentAsyncAdvanceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetFileName(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetFileUrlObject(v io.Reader) *UploadDocumentAsyncAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetMetadata(v map[string]interface{}) *UploadDocumentAsyncAdvanceRequest {
+	s.Metadata = v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetNamespace(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetNamespacePassword(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetOwnerId(v int64) *UploadDocumentAsyncAdvanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetRegionId(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetSeparators(v []*string) *UploadDocumentAsyncAdvanceRequest {
+	s.Separators = v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetTextSplitterName(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.TextSplitterName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetZhTitleEnhance(v bool) *UploadDocumentAsyncAdvanceRequest {
+	s.ZhTitleEnhance = &v
+	return s
+}
+
+type UploadDocumentAsyncShrinkRequest struct {
+	ChunkOverlap       *int32  `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	ChunkSize          *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	Collection         *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DocumentLoaderName *string `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
+	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	MetadataShrink     *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword  *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SeparatorsShrink   *string `json:"Separators,omitempty" xml:"Separators,omitempty"`
+	TextSplitterName   *string `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
+	ZhTitleEnhance     *bool   `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
+}
+
+func (s UploadDocumentAsyncShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocumentAsyncShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetChunkOverlap(v int32) *UploadDocumentAsyncShrinkRequest {
+	s.ChunkOverlap = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetChunkSize(v int32) *UploadDocumentAsyncShrinkRequest {
+	s.ChunkSize = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetCollection(v string) *UploadDocumentAsyncShrinkRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetDBInstanceId(v string) *UploadDocumentAsyncShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetDocumentLoaderName(v string) *UploadDocumentAsyncShrinkRequest {
+	s.DocumentLoaderName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetDryRun(v bool) *UploadDocumentAsyncShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetFileName(v string) *UploadDocumentAsyncShrinkRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetFileUrl(v string) *UploadDocumentAsyncShrinkRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetMetadataShrink(v string) *UploadDocumentAsyncShrinkRequest {
+	s.MetadataShrink = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetNamespace(v string) *UploadDocumentAsyncShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetNamespacePassword(v string) *UploadDocumentAsyncShrinkRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetOwnerId(v int64) *UploadDocumentAsyncShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetRegionId(v string) *UploadDocumentAsyncShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetSeparatorsShrink(v string) *UploadDocumentAsyncShrinkRequest {
+	s.SeparatorsShrink = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetTextSplitterName(v string) *UploadDocumentAsyncShrinkRequest {
+	s.TextSplitterName = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetZhTitleEnhance(v bool) *UploadDocumentAsyncShrinkRequest {
+	s.ZhTitleEnhance = &v
+	return s
+}
+
+type UploadDocumentAsyncResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UploadDocumentAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocumentAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocumentAsyncResponseBody) SetJobId(v string) *UploadDocumentAsyncResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncResponseBody) SetMessage(v string) *UploadDocumentAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncResponseBody) SetRequestId(v string) *UploadDocumentAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncResponseBody) SetStatus(v string) *UploadDocumentAsyncResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UploadDocumentAsyncResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadDocumentAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadDocumentAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocumentAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocumentAsyncResponse) SetHeaders(v map[string]*string) *UploadDocumentAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadDocumentAsyncResponse) SetStatusCode(v int32) *UploadDocumentAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncResponse) SetBody(v *UploadDocumentAsyncResponseBody) *UploadDocumentAsyncResponse {
+	s.Body = v
+	return s
+}
+
 type UpsertChunksRequest struct {
 	Collection        *string                          `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	DBInstanceId      *string                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -19932,6 +20651,76 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateInstancePublicConnectionResponse{}
 	_body, _err := client.AllocateInstancePublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelUploadDocumentJobWithOptions(request *CancelUploadDocumentJobRequest, runtime *util.RuntimeOptions) (_result *CancelUploadDocumentJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		body["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		body["NamespacePassword"] = request.NamespacePassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelUploadDocumentJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelUploadDocumentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelUploadDocumentJob(request *CancelUploadDocumentJobRequest) (_result *CancelUploadDocumentJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelUploadDocumentJobResponse{}
+	_body, _err := client.CancelUploadDocumentJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25249,6 +26038,76 @@ func (client *Client) DownloadSQLLogsRecords(request *DownloadSQLLogsRecordsRequ
 	return _result, _err
 }
 
+func (client *Client) GetUploadDocumentJobWithOptions(request *GetUploadDocumentJobRequest, runtime *util.RuntimeOptions) (_result *GetUploadDocumentJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		body["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		body["NamespacePassword"] = request.NamespacePassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUploadDocumentJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUploadDocumentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUploadDocumentJob(request *GetUploadDocumentJobRequest) (_result *GetUploadDocumentJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUploadDocumentJobResponse{}
+	_body, _err := client.GetUploadDocumentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetUpsertCollectionDataJobWithOptions(request *GetUpsertCollectionDataJobRequest, runtime *util.RuntimeOptions) (_result *GetUpsertCollectionDataJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28103,6 +28962,228 @@ func (client *Client) UpgradeDBVersion(request *UpgradeDBVersionRequest) (_resul
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadDocumentAsyncWithOptions(tmpReq *UploadDocumentAsyncRequest, runtime *util.RuntimeOptions) (_result *UploadDocumentAsyncResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UploadDocumentAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Metadata)) {
+		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, tea.String("Metadata"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Separators)) {
+		request.SeparatorsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Separators, tea.String("Separators"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChunkOverlap)) {
+		body["ChunkOverlap"] = request.ChunkOverlap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChunkSize)) {
+		body["ChunkSize"] = request.ChunkSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		body["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentLoaderName)) {
+		body["DocumentLoaderName"] = request.DocumentLoaderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetadataShrink)) {
+		body["Metadata"] = request.MetadataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		body["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SeparatorsShrink)) {
+		body["Separators"] = request.SeparatorsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextSplitterName)) {
+		body["TextSplitterName"] = request.TextSplitterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZhTitleEnhance)) {
+		body["ZhTitleEnhance"] = request.ZhTitleEnhance
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadDocumentAsync"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadDocumentAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadDocumentAsync(request *UploadDocumentAsyncRequest) (_result *UploadDocumentAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadDocumentAsyncResponse{}
+	_body, _err := client.UploadDocumentAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdvanceRequest, runtime *util.RuntimeOptions) (_result *UploadDocumentAsyncResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("gpdb"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	uploadDocumentAsyncReq := &UploadDocumentAsyncRequest{}
+	openapiutil.Convert(request, uploadDocumentAsyncReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		uploadDocumentAsyncReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	uploadDocumentAsyncResp, _err := client.UploadDocumentAsyncWithOptions(uploadDocumentAsyncReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = uploadDocumentAsyncResp
 	return _result, _err
 }
 
