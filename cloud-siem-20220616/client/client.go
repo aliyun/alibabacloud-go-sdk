@@ -111,13 +111,33 @@ func (s *DataProductListLogMapValueExtraParameters) SetValue(v string) *DataProd
 }
 
 type AddDataSourceRequest struct {
-	AccountId                *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode                *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	DataSourceInstanceName   *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider.
+	//
+	// Valid values:
+	//
+	// *   qcloud
+	// *   hcloud
+	// *   aliyun
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The name of the data source.
+	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
+	// The parameters of the data source. Set this parameter to a JSON array.
 	DataSourceInstanceParams *string `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty"`
+	// The remarks on the data source.
 	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
-	DataSourceType           *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   obs: Huawei Cloud Object Storage Service (OBS)
+	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddDataSourceRequest) String() string {
@@ -164,8 +184,10 @@ func (s *AddDataSourceRequest) SetRegionId(v string) *AddDataSourceRequest {
 }
 
 type AddDataSourceResponseBody struct {
-	Data      *AddDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *AddDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddDataSourceResponseBody) String() string {
@@ -187,7 +209,9 @@ func (s *AddDataSourceResponseBody) SetRequestId(v string) *AddDataSourceRespons
 }
 
 type AddDataSourceResponseBodyData struct {
-	Count                *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of data sources that are added. The value 1 indicates that data source is added, and a value less than or equal to 0 indicates that the data source failed to be added.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 }
 
@@ -239,12 +263,25 @@ func (s *AddDataSourceResponse) SetBody(v *AddDataSourceResponseBody) *AddDataSo
 }
 
 type AddDataSourceLogRequest struct {
-	AccountId              *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode              *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	DataSourceInstanceId   *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	// The parameters of the data source. Set this parameter to a JSON array.
 	DataSourceInstanceLogs *string `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty"`
-	LogCode                *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The log code.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddDataSourceLogRequest) String() string {
@@ -286,8 +323,10 @@ func (s *AddDataSourceLogRequest) SetRegionId(v string) *AddDataSourceLogRequest
 }
 
 type AddDataSourceLogResponseBody struct {
-	Data      *AddDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *AddDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddDataSourceLogResponseBody) String() string {
@@ -309,7 +348,9 @@ func (s *AddDataSourceLogResponseBody) SetRequestId(v string) *AddDataSourceLogR
 }
 
 type AddDataSourceLogResponseBodyData struct {
-	Count         *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of logs that are added. The value 1 indicates that the log is added, and a value less than or equal to 0 indicates that the log failed to be added.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 }
 
@@ -361,8 +402,13 @@ func (s *AddDataSourceLogResponse) SetBody(v *AddDataSourceLogResponseBody) *Add
 }
 
 type AddUserRequest struct {
-	AddedUserId *int64  `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	AddedUserId *int64 `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddUserRequest) String() string {
@@ -384,7 +430,9 @@ func (s *AddUserRequest) SetRegionId(v string) *AddUserRequest {
 }
 
 type AddUserResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the Alibaba Cloud account is added to the threat analysis feature.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -436,13 +484,26 @@ func (s *AddUserResponse) SetBody(v *AddUserResponseBody) *AddUserResponse {
 }
 
 type AddUserSourceLogConfigRequest struct {
-	Deleted        *int32  `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	DisPlayLine    *string `json:"DisPlayLine,omitempty" xml:"DisPlayLine,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	SourceLogInfo  *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
+	// Specifies whether to add logs or delete added logs. Valid values:
+	//
+	// *   \-1: deletes added logs.
+	// *   0: adds logs.
+	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The display details of the Logstore.
+	DisPlayLine *string `json:"DisPlayLine,omitempty" xml:"DisPlayLine,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The log code.
+	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The details of the Logstore that you want to use in the JSON string format.
+	SourceLogInfo *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
+	// The code of the cloud service.
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s AddUserSourceLogConfigRequest) String() string {
@@ -489,8 +550,10 @@ func (s *AddUserSourceLogConfigRequest) SetSubUserId(v int64) *AddUserSourceLogC
 }
 
 type AddUserSourceLogConfigResponseBody struct {
-	Data      *AddUserSourceLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *AddUserSourceLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddUserSourceLogConfigResponseBody) String() string {
@@ -512,14 +575,22 @@ func (s *AddUserSourceLogConfigResponseBody) SetRequestId(v string) *AddUserSour
 }
 
 type AddUserSourceLogConfigResponseBodyData struct {
-	DiplayLine     *string `json:"DiplayLine,omitempty" xml:"DiplayLine,omitempty"`
-	Displayed      *bool   `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
-	Imported       *bool   `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The display details of the Logstore.
+	DiplayLine *string `json:"DiplayLine,omitempty" xml:"DiplayLine,omitempty"`
+	// Indicates whether the details of added logs are returned. Valid values: true false
+	Displayed *bool `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
+	// Indicates whether the logs are added to the threat analysis feature. Valid values: true false
+	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The log code.
+	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The code of the cloud service.
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
 func (s AddUserSourceLogConfigResponseBodyData) String() string {
@@ -600,7 +671,9 @@ func (s *AddUserSourceLogConfigResponse) SetBody(v *AddUserSourceLogConfigRespon
 }
 
 type BatchJobCheckRequest struct {
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The id of task.
 	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
 }
 
@@ -623,12 +696,21 @@ func (s *BatchJobCheckRequest) SetSubmitId(v string) *BatchJobCheckRequest {
 }
 
 type BatchJobCheckResponseBody struct {
-	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *BatchJobCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrCode   *string                        `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *BatchJobCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchJobCheckResponseBody) String() string {
@@ -670,13 +752,20 @@ func (s *BatchJobCheckResponseBody) SetSuccess(v bool) *BatchJobCheckResponseBod
 }
 
 type BatchJobCheckResponseBodyData struct {
-	ConfigId    *string                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the task configuration.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The list of error task.
 	ErrTaskList []*BatchJobCheckResponseBodyDataErrTaskList `json:"ErrTaskList,omitempty" xml:"ErrTaskList,omitempty" type:"Repeated"`
-	FailedCount *int32                                      `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	FinishCount *int32                                      `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	FolderId    *string                                     `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	TaskCount   *int32                                      `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
-	TaskStatus  *string                                     `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The number of custom route entries that failed to be added.
+	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The number of scan tasks that are complete.
+	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
+	// The ID of the folder.
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The number of existing tasks that are created to add logs within the data source.
+	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	// The status of task.
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s BatchJobCheckResponseBodyData) String() string {
@@ -723,8 +812,10 @@ func (s *BatchJobCheckResponseBodyData) SetTaskStatus(v string) *BatchJobCheckRe
 }
 
 type BatchJobCheckResponseBodyDataErrTaskList struct {
+	// The list of product.
 	ProductList []*BatchJobCheckResponseBodyDataErrTaskListProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	UserId      *int64                                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The account id of aliyun.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s BatchJobCheckResponseBodyDataErrTaskList) String() string {
@@ -746,8 +837,10 @@ func (s *BatchJobCheckResponseBodyDataErrTaskList) SetUserId(v int64) *BatchJobC
 }
 
 type BatchJobCheckResponseBodyDataErrTaskListProductList struct {
-	LogList     []*BatchJobCheckResponseBodyDataErrTaskListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	ProductCode *string                                                       `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The list of log.
+	LogList []*BatchJobCheckResponseBodyDataErrTaskListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
+	// The code of the product.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s BatchJobCheckResponseBodyDataErrTaskListProductList) String() string {
@@ -769,12 +862,18 @@ func (s *BatchJobCheckResponseBodyDataErrTaskListProductList) SetProductCode(v s
 }
 
 type BatchJobCheckResponseBodyDataErrTaskListProductListLogList struct {
-	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	LogCode             *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The log code.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The pattern of SLS log store name.
 	LogStoreNamePattern *string `json:"LogStoreNamePattern,omitempty" xml:"LogStoreNamePattern,omitempty"`
-	ProductCode         *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProjectNamePattern  *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
-	RegionCode          *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// The code of product.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The pattern of SLS project name.
+	ProjectNamePattern *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 }
 
 func (s BatchJobCheckResponseBodyDataErrTaskListProductListLogList) String() string {
@@ -845,8 +944,13 @@ func (s *BatchJobCheckResponse) SetBody(v *BatchJobCheckResponseBody) *BatchJobC
 }
 
 type BatchJobSubmitRequest struct {
+	// The detail config of task.
 	JsonConfig *string `json:"JsonConfig,omitempty" xml:"JsonConfig,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s BatchJobSubmitRequest) String() string {
@@ -868,12 +972,21 @@ func (s *BatchJobSubmitRequest) SetRegionId(v string) *BatchJobSubmitRequest {
 }
 
 type BatchJobSubmitResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *BatchJobSubmitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrCode   *string                         `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *BatchJobSubmitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchJobSubmitResponseBody) String() string {
@@ -915,10 +1028,14 @@ func (s *BatchJobSubmitResponseBody) SetSuccess(v bool) *BatchJobSubmitResponseB
 }
 
 type BatchJobSubmitResponseBodyData struct {
-	ConfigId   *string                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the task configuration.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The list of task configure.
 	ConfigList []*BatchJobSubmitResponseBodyDataConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	SubmitId   *string                                     `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-	TaskCount  *int32                                      `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	// The id of task.
+	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
+	// The number of existing tasks that are created to add logs within the data source.
+	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
 }
 
 func (s BatchJobSubmitResponseBodyData) String() string {
@@ -950,8 +1067,10 @@ func (s *BatchJobSubmitResponseBodyData) SetTaskCount(v int32) *BatchJobSubmitRe
 }
 
 type BatchJobSubmitResponseBodyDataConfigList struct {
+	// The list of product.
 	ProductList []*BatchJobSubmitResponseBodyDataConfigListProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	UserId      *int64                                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The account id of aliyun.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s BatchJobSubmitResponseBodyDataConfigList) String() string {
@@ -973,8 +1092,10 @@ func (s *BatchJobSubmitResponseBodyDataConfigList) SetUserId(v int64) *BatchJobS
 }
 
 type BatchJobSubmitResponseBodyDataConfigListProductList struct {
-	LogList     []*BatchJobSubmitResponseBodyDataConfigListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	ProductCode *string                                                       `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The list of log.
+	LogList []*BatchJobSubmitResponseBodyDataConfigListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
+	// The code of the product.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s BatchJobSubmitResponseBodyDataConfigListProductList) String() string {
@@ -996,12 +1117,18 @@ func (s *BatchJobSubmitResponseBodyDataConfigListProductList) SetProductCode(v s
 }
 
 type BatchJobSubmitResponseBodyDataConfigListProductListLogList struct {
-	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	LogCode             *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The log code.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The pattern of SLS log store name.
 	LogStoreNamePattern *string `json:"LogStoreNamePattern,omitempty" xml:"LogStoreNamePattern,omitempty"`
-	ProductCode         *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProjectNamePattern  *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
-	RegionCode          *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// The code of product.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The pattern of SLS project name.
+	ProjectNamePattern *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 }
 
 func (s BatchJobSubmitResponseBodyDataConfigListProductListLogList) String() string {
@@ -1072,11 +1199,24 @@ func (s *BatchJobSubmitResponse) SetBody(v *BatchJobSubmitResponseBody) *BatchJo
 }
 
 type BindAccountRequest struct {
-	AccessId    *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The AccessKey ID of the cloud account.
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The username of the cloud account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CloudCode   *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The code of the cloud service provider.
+	//
+	// Valid values:
+	//
+	// *   qcloud
+	// *   hcloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s BindAccountRequest) String() string {
@@ -1113,8 +1253,10 @@ func (s *BindAccountRequest) SetRegionId(v string) *BindAccountRequest {
 }
 
 type BindAccountResponseBody struct {
-	Data      *BindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response parameters.
+	Data *BindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BindAccountResponseBody) String() string {
@@ -1136,6 +1278,7 @@ func (s *BindAccountResponseBody) SetRequestId(v string) *BindAccountResponseBod
 }
 
 type BindAccountResponseBodyData struct {
+	// The number of the cloud accounts that are added to the threat analysis feature. The value 1 indicates that the account is added, and a value less than or equal to 0 indicates that the account failed to be added.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -1404,11 +1547,23 @@ func (s *DeleteAutomateResponseConfigResponse) SetBody(v *DeleteAutomateResponse
 }
 
 type DeleteBindAccountRequest struct {
-	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The AccessKey ID of the cloud account.
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The ID of the cloud account.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	BindId    *int64  `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	// The ID generated when the account is added to the threat analysis feature. You can call the [ListBindAccount](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListBindAccount) operation to query the ID.
+	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteBindAccountRequest) String() string {
@@ -1445,8 +1600,10 @@ func (s *DeleteBindAccountRequest) SetRegionId(v string) *DeleteBindAccountReque
 }
 
 type DeleteBindAccountResponseBody struct {
-	Data      *DeleteBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DeleteBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteBindAccountResponseBody) String() string {
@@ -1468,6 +1625,7 @@ func (s *DeleteBindAccountResponseBody) SetRequestId(v string) *DeleteBindAccoun
 }
 
 type DeleteBindAccountResponseBodyData struct {
+	// The number of cloud accounts that are removed. The value 1 indicates that cloud account is removed, and a value less than or equal to 0 indicates that the cloud account failed to be removed.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -1617,10 +1775,21 @@ func (s *DeleteCustomizeRuleResponse) SetBody(v *DeleteCustomizeRuleResponseBody
 }
 
 type DeleteDataSourceRequest struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteDataSourceRequest) String() string {
@@ -1652,8 +1821,10 @@ func (s *DeleteDataSourceRequest) SetRegionId(v string) *DeleteDataSourceRequest
 }
 
 type DeleteDataSourceResponseBody struct {
-	Data      *DeleteDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DeleteDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDataSourceResponseBody) String() string {
@@ -1675,6 +1846,7 @@ func (s *DeleteDataSourceResponseBody) SetRequestId(v string) *DeleteDataSourceR
 }
 
 type DeleteDataSourceResponseBodyData struct {
+	// The number of data sources that are removed. The value 1 indicates that data source is removed, and a value less than or equal to 0 indicates that the data source failed to be removed.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -1721,11 +1893,23 @@ func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *Del
 }
 
 type DeleteDataSourceLogRequest struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	LogInstanceId        *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of logs.
+	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteDataSourceLogRequest) String() string {
@@ -1762,8 +1946,10 @@ func (s *DeleteDataSourceLogRequest) SetRegionId(v string) *DeleteDataSourceLogR
 }
 
 type DeleteDataSourceLogResponseBody struct {
-	Data      *DeleteDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DeleteDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDataSourceLogResponseBody) String() string {
@@ -1785,7 +1971,9 @@ func (s *DeleteDataSourceLogResponseBody) SetRequestId(v string) *DeleteDataSour
 }
 
 type DeleteDataSourceLogResponseBodyData struct {
-	Count         *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of logs that are removed. The value 1 indicates that the log is removed, and a value less than or equal to 0 indicates that the log failed to be removed.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 }
 
@@ -1922,8 +2110,13 @@ func (s *DeleteQuickQueryResponse) SetBody(v *DeleteQuickQueryResponseBody) *Del
 }
 
 type DeleteUserRequest struct {
-	AddedUserId *int64  `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	AddedUserId *int64 `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteUserRequest) String() string {
@@ -1945,7 +2138,12 @@ func (s *DeleteUserRequest) SetRegionId(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the Alibaba Cloud account is removed. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2227,6 +2425,10 @@ func (s *DescribeAggregateFunctionResponse) SetBody(v *DescribeAggregateFunction
 }
 
 type DescribeAlertSceneRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2244,11 +2446,19 @@ func (s *DescribeAlertSceneRequest) SetRegionId(v string) *DescribeAlertSceneReq
 }
 
 type DescribeAlertSceneResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAlertSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAlertSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertSceneResponseBody) String() string {
@@ -2285,13 +2495,20 @@ func (s *DescribeAlertSceneResponseBody) SetSuccess(v bool) *DescribeAlertSceneR
 }
 
 type DescribeAlertSceneResponseBodyData struct {
-	AlertName   *string                                      `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertNameId *string                                      `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
-	AlertTile   *string                                      `json:"AlertTile,omitempty" xml:"AlertTile,omitempty"`
-	AlertTileId *string                                      `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
-	AlertType   *string                                      `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeId *string                                      `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
-	Targets     []*DescribeAlertSceneResponseBodyDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// The name of the alert. The value varies based on the display language (Chinese or English) of the Security Center console.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The ID of the alert name.
+	AlertNameId *string `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
+	// The title of the alert notification. The value varies based on the display language (Chinese or English) of the Security Center console.
+	AlertTile *string `json:"AlertTile,omitempty" xml:"AlertTile,omitempty"`
+	// The ID of the alert title.
+	AlertTileId *string `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
+	// The type of the alert. The value varies based on the display language (Chinese or English) of the Security Center console.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The ID of the alert type.
+	AlertTypeId *string `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
+	// The information about the entities for which you need to add the alert to the whitelist.
+	Targets []*DescribeAlertSceneResponseBodyDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAlertSceneResponseBodyData) String() string {
@@ -2338,9 +2555,13 @@ func (s *DescribeAlertSceneResponseBodyData) SetTargets(v []*DescribeAlertSceneR
 }
 
 type DescribeAlertSceneResponseBodyDataTargets struct {
-	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The display name of the attribute for the entity.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attribute of the entity.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The right operand that is displayed by default in the whitelist rule.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The right operands supported by the whitelist rule.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -4933,6 +5154,10 @@ func (s *DescribeAttackTimeLineResponse) SetBody(v *DescribeAttackTimeLineRespon
 }
 
 type DescribeAuthRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4950,7 +5175,12 @@ func (s *DescribeAuthRequest) SetRegionId(v string) *DescribeAuthRequest {
 }
 
 type DescribeAuthResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the SIEM system is granted the required permissions. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6638,9 +6868,15 @@ func (s *DescribeCloudSiemEventsResponse) SetBody(v *DescribeCloudSiemEventsResp
 }
 
 type DescribeCsImportedProdStatusByUserRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The code of the cloud service.
 	SourceLogProd *string `json:"SourceLogProd,omitempty" xml:"SourceLogProd,omitempty"`
-	UserId        *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeCsImportedProdStatusByUserRequest) String() string {
@@ -6667,7 +6903,12 @@ func (s *DescribeCsImportedProdStatusByUserRequest) SetUserId(v int64) *Describe
 }
 
 type DescribeCsImportedProdStatusByUserResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the cloud service is activated for the account. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7430,10 +7671,21 @@ func (s *DescribeCustomizeRuleTestHistogramResponse) SetBody(v *DescribeCustomiz
 }
 
 type DescribeDataSourceInstanceRequest struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDataSourceInstanceRequest) String() string {
@@ -7465,8 +7717,10 @@ func (s *DescribeDataSourceInstanceRequest) SetRegionId(v string) *DescribeDataS
 }
 
 type DescribeDataSourceInstanceResponseBody struct {
-	Data      *DescribeDataSourceInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DescribeDataSourceInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDataSourceInstanceResponseBody) String() string {
@@ -7488,9 +7742,17 @@ func (s *DescribeDataSourceInstanceResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeDataSourceInstanceResponseBodyData struct {
-	AccountId                *string                                                               `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode                *string                                                               `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	DataSourceInstanceId     *string                                                               `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	// The parameters of the data source.
 	DataSourceInstanceParams []*DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty" type:"Repeated"`
 }
 
@@ -7523,7 +7785,9 @@ func (s *DescribeDataSourceInstanceResponseBodyData) SetDataSourceInstanceParams
 }
 
 type DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams struct {
-	ParaCode  *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
+	// The code of the parameter.
+	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
+	// The value of the parameter.
 	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
 }
 
@@ -7575,9 +7839,25 @@ func (s *DescribeDataSourceInstanceResponse) SetBody(v *DescribeDataSourceInstan
 }
 
 type DescribeDataSourceParametersRequest struct {
-	CloudCode      *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The code of the cloud service provider.
+	//
+	// Valid values:
+	//
+	// *   qcloud
+	// *   hcloud
+	// *   aliyun
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	// *   obs: Huawei Cloud Object Storage Service (OBS)
+	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDataSourceParametersRequest) String() string {
@@ -7604,8 +7884,10 @@ func (s *DescribeDataSourceParametersRequest) SetRegionId(v string) *DescribeDat
 }
 
 type DescribeDataSourceParametersResponseBody struct {
-	Data      []*DescribeDataSourceParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*DescribeDataSourceParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDataSourceParametersResponseBody) String() string {
@@ -7627,20 +7909,54 @@ func (s *DescribeDataSourceParametersResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeDataSourceParametersResponseBodyData struct {
-	CanEditted     *int32                                                    `json:"CanEditted,omitempty" xml:"CanEditted,omitempty"`
-	CloudCode      *string                                                   `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	DataSourceType *string                                                   `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DefaultValue   *string                                                   `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Disabled       *bool                                                     `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	FormatCheck    *string                                                   `json:"FormatCheck,omitempty" xml:"FormatCheck,omitempty"`
-	Hit            *string                                                   `json:"Hit,omitempty" xml:"Hit,omitempty"`
-	ParaCode       *string                                                   `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
-	ParaLevel      *int32                                                    `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
-	ParaName       *string                                                   `json:"ParaName,omitempty" xml:"ParaName,omitempty"`
-	ParaType       *string                                                   `json:"ParaType,omitempty" xml:"ParaType,omitempty"`
-	ParamValue     []*DescribeDataSourceParametersResponseBodyDataParamValue `json:"ParamValue,omitempty" xml:"ParamValue,omitempty" type:"Repeated"`
-	Required       *int32                                                    `json:"Required,omitempty" xml:"Required,omitempty"`
-	Title          *string                                                   `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Indicates whether the edit operation is supported. Valid values:
+	//
+	// *   0: no
+	// *   1: yes
+	CanEditted *int32 `json:"CanEditted,omitempty" xml:"CanEditted,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   obs: Huawei Cloud OBS
+	// *   wafApi: download API of Tencent Cloud WAF
+	// *   ckafka: Tencent Cloud CKafka
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The default value of the parameter.
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Indicates whether the modification operation is forbidden. Valid values:
+	//
+	// *   true
+	// *   false
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The method that is used to check the parameter format.
+	FormatCheck *string `json:"FormatCheck,omitempty" xml:"FormatCheck,omitempty"`
+	// The additional information.
+	Hit *string `json:"Hit,omitempty" xml:"Hit,omitempty"`
+	// The code of the parameter.
+	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
+	// The parameter level. Valid values:
+	//
+	// *   1: data source
+	// *   2: log
+	ParaLevel *int32 `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
+	// The name of the parameter.
+	ParaName *string `json:"ParaName,omitempty" xml:"ParaName,omitempty"`
+	// The data type of the parameter.
+	ParaType *string `json:"ParaType,omitempty" xml:"ParaType,omitempty"`
+	// The value of the parameter.
+	ParamValue []*DescribeDataSourceParametersResponseBodyDataParamValue `json:"ParamValue,omitempty" xml:"ParamValue,omitempty" type:"Repeated"`
+	// Indicates whether the parameter is required. Valid values:
+	//
+	// *   1: yes
+	// *   0: no
+	Required *int32 `json:"Required,omitempty" xml:"Required,omitempty"`
+	// The note on the parameter value.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeDataSourceParametersResponseBodyData) String() string {
@@ -7722,7 +8038,9 @@ func (s *DescribeDataSourceParametersResponseBodyData) SetTitle(v string) *Descr
 }
 
 type DescribeDataSourceParametersResponseBodyDataParamValue struct {
+	// The display value.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The actual value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8012,7 +8330,8 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	//
 	// *   2: Quick event handling is selected.
 	// *   1: Quick event handling is displayed but not selected.
-	OpLevel *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
+	OpLevel     *string       `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
+	ParamConfig []interface{} `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
 	// The opcode configuration.
 	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
 	// Indicates whether the playbook is intended for Web Application Firewall (WAF). Valid values:
@@ -8052,6 +8371,11 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) Set
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetOpLevel(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
 	s.OpLevel = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetParamConfig(v []interface{}) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
+	s.ParamConfig = v
 	return s
 }
 
@@ -8788,6 +9112,10 @@ func (s *DescribeEventDisposeResponse) SetBody(v *DescribeEventDisposeResponseBo
 }
 
 type DescribeImportedLogCountRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8805,8 +9133,10 @@ func (s *DescribeImportedLogCountRequest) SetRegionId(v string) *DescribeImporte
 }
 
 type DescribeImportedLogCountResponseBody struct {
-	Data      *DescribeImportedLogCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DescribeImportedLogCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImportedLogCountResponseBody) String() string {
@@ -8828,8 +9158,11 @@ func (s *DescribeImportedLogCountResponseBody) SetRequestId(v string) *DescribeI
 }
 
 type DescribeImportedLogCountResponseBodyData struct {
-	ImportedLogCount   *int32 `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
-	TotalLogCount      *int32 `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
+	// The number of logs that are added.
+	ImportedLogCount *int32 `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
+	// The total number of logs.
+	TotalLogCount *int32 `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
+	// The number of logs that are not added.
 	UnImportedLogCount *int32 `json:"UnImportedLogCount,omitempty" xml:"UnImportedLogCount,omitempty"`
 }
 
@@ -8886,7 +9219,12 @@ func (s *DescribeImportedLogCountResponse) SetBody(v *DescribeImportedLogCountRe
 }
 
 type DescribeJobStatusRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The id of collection task.
 	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
 }
 
@@ -8909,12 +9247,21 @@ func (s *DescribeJobStatusRequest) SetSubmitId(v string) *DescribeJobStatusReque
 }
 
 type DescribeJobStatusResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrCode   *string                            `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeJobStatusResponseBody) String() string {
@@ -8956,13 +9303,20 @@ func (s *DescribeJobStatusResponseBody) SetSuccess(v bool) *DescribeJobStatusRes
 }
 
 type DescribeJobStatusResponseBodyData struct {
-	ConfigId    *string                                         `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the task configuration.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The list of failed task.
 	ErrTaskList []*DescribeJobStatusResponseBodyDataErrTaskList `json:"ErrTaskList,omitempty" xml:"ErrTaskList,omitempty" type:"Repeated"`
-	FailedCount *int32                                          `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	FinishCount *int32                                          `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	FolderId    *string                                         `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	TaskCount   *int32                                          `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
-	TaskStatus  *string                                         `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The number of failed tasks.
+	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The number of scan tasks that are complete.
+	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
+	// The ID of the folder.
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The number of existing tasks that are created to add logs within the data source.
+	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	// The status of submitted task.
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s DescribeJobStatusResponseBodyData) String() string {
@@ -9009,8 +9363,10 @@ func (s *DescribeJobStatusResponseBodyData) SetTaskStatus(v string) *DescribeJob
 }
 
 type DescribeJobStatusResponseBodyDataErrTaskList struct {
+	// The list of product.
 	ProductList []*DescribeJobStatusResponseBodyDataErrTaskListProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	UserId      *int64                                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The account id of aliyun.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeJobStatusResponseBodyDataErrTaskList) String() string {
@@ -9032,8 +9388,10 @@ func (s *DescribeJobStatusResponseBodyDataErrTaskList) SetUserId(v int64) *Descr
 }
 
 type DescribeJobStatusResponseBodyDataErrTaskListProductList struct {
-	LogList     []*DescribeJobStatusResponseBodyDataErrTaskListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	ProductCode *string                                                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The list of log.
+	LogList []*DescribeJobStatusResponseBodyDataErrTaskListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
+	// The code of product.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s DescribeJobStatusResponseBodyDataErrTaskListProductList) String() string {
@@ -9055,12 +9413,18 @@ func (s *DescribeJobStatusResponseBodyDataErrTaskListProductList) SetProductCode
 }
 
 type DescribeJobStatusResponseBodyDataErrTaskListProductListLogList struct {
-	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	LogCode             *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The log code.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The pattern of SLS logstore name.
 	LogStoreNamePattern *string `json:"LogStoreNamePattern,omitempty" xml:"LogStoreNamePattern,omitempty"`
-	ProductCode         *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProjectNamePattern  *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
-	RegionCode          *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// The code of product.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The pattern of SLS project name.
+	ProjectNamePattern *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 }
 
 func (s DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) String() string {
@@ -9861,6 +10225,10 @@ func (s *DescribeOperatorsResponse) SetBody(v *DescribeOperatorsResponseBody) *D
 }
 
 type DescribeProdCountRequest struct {
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9878,8 +10246,10 @@ func (s *DescribeProdCountRequest) SetRegionId(v string) *DescribeProdCountReque
 }
 
 type DescribeProdCountResponseBody struct {
-	Data      *DescribeProdCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DescribeProdCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeProdCountResponseBody) String() string {
@@ -9901,8 +10271,11 @@ func (s *DescribeProdCountResponseBody) SetRequestId(v string) *DescribeProdCoun
 }
 
 type DescribeProdCountResponseBodyData struct {
+	// The number of Alibaba Cloud services.
 	AliyunProdCount *int32 `json:"AliyunProdCount,omitempty" xml:"AliyunProdCount,omitempty"`
+	// The number of Huawei Cloud services.
 	HcloudProdCount *int32 `json:"HcloudProdCount,omitempty" xml:"HcloudProdCount,omitempty"`
+	// The number of Tencent Cloud services.
 	QcloudProdCount *int32 `json:"QcloudProdCount,omitempty" xml:"QcloudProdCount,omitempty"`
 }
 
@@ -10097,6 +10470,10 @@ func (s *DescribeScopeUsersResponse) SetBody(v *DescribeScopeUsersResponseBody) 
 }
 
 type DescribeServiceStatusRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10114,7 +10491,12 @@ func (s *DescribeServiceStatusRequest) SetRegionId(v string) *DescribeServiceSta
 }
 
 type DescribeServiceStatusResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the threat analysis feature is authorized to access the resource directory. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10244,8 +10626,13 @@ func (s *DescribeStorageResponse) SetBody(v *DescribeStorageResponseBody) *Descr
 }
 
 type DescribeUserBuyStatusRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubUserId *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeUserBuyStatusRequest) String() string {
@@ -10267,8 +10654,10 @@ func (s *DescribeUserBuyStatusRequest) SetSubUserId(v int64) *DescribeUserBuySta
 }
 
 type DescribeUserBuyStatusResponseBody struct {
-	Data      *DescribeUserBuyStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DescribeUserBuyStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUserBuyStatusResponseBody) String() string {
@@ -10290,17 +10679,31 @@ func (s *DescribeUserBuyStatusResponseBody) SetRequestId(v string) *DescribeUser
 }
 
 type DescribeUserBuyStatusResponseBodyData struct {
-	CanBuy         *bool   `json:"CanBuy,omitempty" xml:"CanBuy,omitempty"`
-	Capacity       *int32  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	DurationDays   *int64  `json:"DurationDays,omitempty" xml:"DurationDays,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	MainUserName   *string `json:"MainUserName,omitempty" xml:"MainUserName,omitempty"`
-	MasterUserId   *int64  `json:"MasterUserId,omitempty" xml:"MasterUserId,omitempty"`
+	// Indicates whether the logon Alibaba Cloud account can be used to place orders for the threat analysis feature, such as purchase, upgrade, and specifications change orders. Valid values:
+	//
+	// *   true
+	// *   false
+	CanBuy *bool `json:"CanBuy,omitempty" xml:"CanBuy,omitempty"`
+	// The log storage capacity that is purchased for the threat analysis feature. Unit: GB.
+	Capacity *int32 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The number of days before the expiration time of the threat analysis feature.
+	DurationDays *int64 `json:"DurationDays,omitempty" xml:"DurationDays,omitempty"`
+	// The timestamp when the threat analysis feature expires. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The username of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	MainUserName *string `json:"MainUserName,omitempty" xml:"MainUserName,omitempty"`
+	// The ID of the management account of the resource directory.
+	MasterUserId *int64 `json:"MasterUserId,omitempty" xml:"MasterUserId,omitempty"`
+	// The display name of the management account of the resource directory.
 	MasterUserName *string `json:"MasterUserName,omitempty" xml:"MasterUserName,omitempty"`
-	SasInstanceId  *string `json:"SasInstanceId,omitempty" xml:"SasInstanceId,omitempty"`
-	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+	// The instance ID of Security Center.
+	SasInstanceId *string `json:"SasInstanceId,omitempty" xml:"SasInstanceId,omitempty"`
+	// The ID of the logon Alibaba Cloud account.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The username of the logon Alibaba Cloud account.
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
 func (s DescribeUserBuyStatusResponseBodyData) String() string {
@@ -10534,12 +10937,21 @@ func (s *DescribeWafScopeResponse) SetBody(v *DescribeWafScopeResponseBody) *Des
 }
 
 type DescribeWhiteRuleListRequest struct {
-	AlertName    *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertType    *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The name of the alert.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The type of the alert.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeWhiteRuleListRequest) String() string {
@@ -10581,11 +10993,19 @@ func (s *DescribeWhiteRuleListRequest) SetRegionId(v string) *DescribeWhiteRuleL
 }
 
 type DescribeWhiteRuleListResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeWhiteRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeWhiteRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeWhiteRuleListResponseBody) String() string {
@@ -10622,7 +11042,9 @@ func (s *DescribeWhiteRuleListResponseBody) SetSuccess(v bool) *DescribeWhiteRul
 }
 
 type DescribeWhiteRuleListResponseBodyData struct {
-	PageInfo     *DescribeWhiteRuleListResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeWhiteRuleListResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*DescribeWhiteRuleListResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -10645,9 +11067,12 @@ func (s *DescribeWhiteRuleListResponseBodyData) SetResponseData(v []*DescribeWhi
 }
 
 type DescribeWhiteRuleListResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeWhiteRuleListResponseBodyDataPageInfo) String() string {
@@ -10674,19 +11099,35 @@ func (s *DescribeWhiteRuleListResponseBodyDataPageInfo) SetTotalCount(v int64) *
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseData struct {
-	AlertName    *string                                                      `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertNameId  *string                                                      `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
-	AlertType    *string                                                      `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeId  *string                                                      `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
-	AlertUuid    *string                                                      `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	Aliuid       *int64                                                       `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	Expression   *DescribeWhiteRuleListResponseBodyDataResponseDataExpression `json:"Expression,omitempty" xml:"Expression,omitempty" type:"Struct"`
-	GmtCreate    *string                                                      `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *string                                                      `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id           *int64                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	IncidentUuid *string                                                      `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	Status       *int32                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubAliuid    *int64                                                       `json:"SubAliuid,omitempty" xml:"SubAliuid,omitempty"`
+	// The alert name.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The ID of the alert name.
+	AlertNameId *string `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
+	// The alert type.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The ID of the alert type.
+	AlertTypeId *string `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
+	// The UUID of the alert.
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The conditions in the rule. The value is a JSON array.
+	Expression *DescribeWhiteRuleListResponseBodyDataResponseDataExpression `json:"Expression,omitempty" xml:"Expression,omitempty" type:"Struct"`
+	// The time when the whitelist rule was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the whitelist rule was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the whitelist rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The status of the whitelist rule. Valid values:
+	//
+	// *   1: enabled
+	// *   0: disabled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the whitelist rule.
+	SubAliuid *int64 `json:"SubAliuid,omitempty" xml:"SubAliuid,omitempty"`
 }
 
 func (s DescribeWhiteRuleListResponseBodyDataResponseData) String() string {
@@ -10763,8 +11204,10 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetSubAliuid(v int64
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpression struct {
+	// The rule conditions.
 	Conditions []*DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	Logic      *string                                                                  `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The logical relationships among the rule conditions.
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
 }
 
 func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpression) String() string {
@@ -10786,11 +11229,26 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpression) SetLogic(v
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions struct {
-	IsNot    *bool                                                                       `json:"IsNot,omitempty" xml:"IsNot,omitempty"`
-	ItemId   *int32                                                                      `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	Left     *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft  `json:"Left,omitempty" xml:"Left,omitempty" type:"Struct"`
-	Operator *string                                                                     `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Right    *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight `json:"Right,omitempty" xml:"Right,omitempty" type:"Struct"`
+	// Indicates whether the result is inverted. Valid values:
+	//
+	// *   true
+	// *   false
+	IsNot *bool `json:"IsNot,omitempty" xml:"IsNot,omitempty"`
+	// The ID of the rule condition.
+	ItemId *int32 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The left operand of the rule condition.
+	Left *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft `json:"Left,omitempty" xml:"Left,omitempty" type:"Struct"`
+	// The logical operator of the rule condition. Valid values:
+	//
+	// *   `=`: equals to
+	// *   `<>`: does not equal to
+	// *   `in`: contains
+	// *   `not in`: does not contain
+	// *   `REGEXP`: matches a regular expression
+	// *   `NOT REGEXP`: does not match a regular expression
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The right operand of the rule condition.
+	Right *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight `json:"Right,omitempty" xml:"Right,omitempty" type:"Struct"`
 }
 
 func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) String() string {
@@ -10827,11 +11285,22 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) 
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft struct {
-	IsVar         *bool                  `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
-	Modifier      *string                `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// Indicates whether the left operand is a variable. Valid values:
+	//
+	// *   true: variable
+	// *   false: constant
+	IsVar *bool `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
+	// The remarks on the left operand.
+	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The key-value pair information of the remarks.
 	ModifierParam map[string]interface{} `json:"ModifierParam,omitempty" xml:"ModifierParam,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value         *string                `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Indicates whether the left operand is a constant. Valid values:
+	//
+	// *   true
+	// *   false
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The variable of the left operand.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) String() string {
@@ -10868,11 +11337,19 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLe
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight struct {
-	IsVar         *bool                  `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
-	Modifier      *string                `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// Indicates whether the right operand is a constant or a runtime variable that is obtained from the runtime context. Valid values:
+	//
+	// *   true: runtime variable
+	// *   false: constant
+	IsVar *bool `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
+	// The remarks on the right operand.
+	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The key-value pair information of the remarks.
 	ModifierParam map[string]interface{} `json:"ModifierParam,omitempty" xml:"ModifierParam,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value         *string                `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The data type of the right operand.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The right operand.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) String() string {
@@ -11241,6 +11718,10 @@ func (s *DoSelfDelegateResponse) SetBody(v *DoSelfDelegateResponseBody) *DoSelfD
 }
 
 type EnableAccessForCloudSiemRequest struct {
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11258,7 +11739,9 @@ func (s *EnableAccessForCloudSiemRequest) SetRegionId(v string) *EnableAccessFor
 }
 
 type EnableAccessForCloudSiemResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The data returned.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11310,6 +11793,10 @@ func (s *EnableAccessForCloudSiemResponse) SetBody(v *EnableAccessForCloudSiemRe
 }
 
 type EnableServiceForCloudSiemRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11327,7 +11814,12 @@ func (s *EnableServiceForCloudSiemRequest) SetRegionId(v string) *EnableServiceF
 }
 
 type EnableServiceForCloudSiemResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the threat analysis feature is authorized to access the resource directory. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11491,7 +11983,7 @@ func (s *GetCapacityResponse) SetBody(v *GetCapacityResponseBody) *GetCapacityRe
 type GetHistogramsRequest struct {
 	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// The SQL statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax and limits of search statements, see [Log search overview](https://help.aliyun.com/zh/sls/user-guide/search-syntax?spm=a2c4g.11186623.0.i2#concept-tnd-1jq-zdb).
+	// The SQL statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax and limits of search statements, see [Log search overview](~~29060~~).
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
@@ -12128,8 +12620,18 @@ func (s *GetStorageResponse) SetBody(v *GetStorageResponseBody) *GetStorageRespo
 }
 
 type ListAccountAccessIdRequest struct {
+	// The code of the cloud service provider.
+	//
+	// Valid values:
+	//
+	// *   qcloud
+	// *   hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAccountAccessIdRequest) String() string {
@@ -12151,11 +12653,19 @@ func (s *ListAccountAccessIdRequest) SetRegionId(v string) *ListAccountAccessIdR
 }
 
 type ListAccountAccessIdResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListAccountAccessIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*ListAccountAccessIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAccountAccessIdResponseBody) String() string {
@@ -12192,13 +12702,23 @@ func (s *ListAccountAccessIdResponseBody) SetSuccess(v bool) *ListAccountAccessI
 }
 
 type ListAccountAccessIdResponseBodyData struct {
-	AccessId    *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The AccessKey ID of the cloud account that is added to the threat analysis feature.
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The MD5 hash value of the AccessKey ID.
 	AccessIdMd5 *string `json:"AccessIdMd5,omitempty" xml:"AccessIdMd5,omitempty"`
-	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountStr  *string `json:"AccountStr,omitempty" xml:"AccountStr,omitempty"`
-	Bound       *int32  `json:"Bound,omitempty" xml:"Bound,omitempty"`
-	CloudCode   *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	SubUserId   *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The information about the cloud account to which the AccessKey ID belongs. The value is in the following format: Alibaba Cloud account ID|Alibaba Cloud account username|AccessKey ID.
+	AccountStr *string `json:"AccountStr,omitempty" xml:"AccountStr,omitempty"`
+	// Indicates whether the cloud account to which the AccessKey ID belongs is added to the threat analysis feature. Valid values:
+	//
+	// *   0: no
+	// *   1: yes
+	Bound *int32 `json:"Bound,omitempty" xml:"Bound,omitempty"`
+	// The code of the cloud service provider.
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to add the third-party cloud account.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s ListAccountAccessIdResponseBodyData) String() string {
@@ -12274,10 +12794,23 @@ func (s *ListAccountAccessIdResponse) SetBody(v *ListAccountAccessIdResponseBody
 }
 
 type ListAccountsByLogRequest struct {
-	CloudCode *string   `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	LogCodes  []*string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty" type:"Repeated"`
-	ProdCode  *string   `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The code that is used for multi-cloud environments.
+	//
+	// Valid values:
+	//
+	// *   qcloud
+	// *   hcloud
+	// *   aliyun
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The codes of logs. The value is a JSON array.
+	LogCodes []*string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty" type:"Repeated"`
+	// The code of the service.
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAccountsByLogRequest) String() string {
@@ -12309,8 +12842,10 @@ func (s *ListAccountsByLogRequest) SetRegionId(v string) *ListAccountsByLogReque
 }
 
 type ListAccountsByLogResponseBody struct {
-	Data      []*ListAccountsByLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListAccountsByLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAccountsByLogResponseBody) String() string {
@@ -12332,13 +12867,20 @@ func (s *ListAccountsByLogResponseBody) SetRequestId(v string) *ListAccountsByLo
 }
 
 type ListAccountsByLogResponseBodyData struct {
-	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The name of the cloud account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Imported    *int32  `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	LogCode     *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	MainUserId  *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	ProdCode    *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	SubUserId   *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// Indicates whether the account is added. Valid values: -1: yes -0: no
+	Imported *int32 `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	// The code of the log.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The code of the service.
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The ID of the Alibaba Cloud account for which the threat analysis feature is enabled.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s ListAccountsByLogResponseBodyData) String() string {
@@ -12414,6 +12956,10 @@ func (s *ListAccountsByLogResponse) SetBody(v *ListAccountsByLogResponseBody) *L
 }
 
 type ListAllProdsRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12431,8 +12977,10 @@ func (s *ListAllProdsRequest) SetRegionId(v string) *ListAllProdsRequest {
 }
 
 type ListAllProdsResponseBody struct {
-	Data      *ListAllProdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *ListAllProdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAllProdsResponseBody) String() string {
@@ -12454,10 +13002,14 @@ func (s *ListAllProdsResponseBody) SetRequestId(v string) *ListAllProdsResponseB
 }
 
 type ListAllProdsResponseBodyData struct {
-	CurrentPage *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProdList    []*ListAllProdsResponseBodyDataProdList `json:"ProdList,omitempty" xml:"ProdList,omitempty" type:"Repeated"`
-	TotalCount  *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The cloud services.
+	ProdList []*ListAllProdsResponseBodyDataProdList `json:"ProdList,omitempty" xml:"ProdList,omitempty" type:"Repeated"`
+	// The total number of logs.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAllProdsResponseBodyData) String() string {
@@ -12489,11 +13041,20 @@ func (s *ListAllProdsResponseBodyData) SetTotalCount(v int32) *ListAllProdsRespo
 }
 
 type ListAllProdsResponseBodyDataProdList struct {
-	CloudCode        *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	ImportedLogCount *int32  `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
-	ModifyTime       *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ProdCode         *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	TotalLogCount    *int32  `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The number of logs within the cloud service that are added to the threat analysis feature.
+	ImportedLogCount *int32 `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
+	// The time when the logs within the cloud service were last added to the threat analysis feature.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The code of the cloud service.
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The total number of logs within the cloud service.
+	TotalLogCount *int32 `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
 }
 
 func (s ListAllProdsResponseBodyDataProdList) String() string {
@@ -12886,8 +13447,17 @@ func (s *ListAutomateResponseConfigsResponse) SetBody(v *ListAutomateResponseCon
 }
 
 type ListBindAccountRequest struct {
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListBindAccountRequest) String() string {
@@ -12909,8 +13479,10 @@ func (s *ListBindAccountRequest) SetRegionId(v string) *ListBindAccountRequest {
 }
 
 type ListBindAccountResponseBody struct {
-	Data      []*ListBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBindAccountResponseBody) String() string {
@@ -12932,14 +13504,26 @@ func (s *ListBindAccountResponseBody) SetRequestId(v string) *ListBindAccountRes
 }
 
 type ListBindAccountResponseBodyData struct {
-	AccessId        *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	BindId          *int64  `json:"BindId,omitempty" xml:"BindId,omitempty"`
-	CloudCode       *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	CreateUser      *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	DataSourceCount *int64  `json:"DataSourceCount,omitempty" xml:"DataSourceCount,omitempty"`
-	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The AccessKey ID of the cloud account.
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The username of the cloud account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The ID that is generated when the cloud account is added.
+	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the account that is used to add the cloud account.
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The number of data sources that are added to the threat analysis feature within the cloud account.
+	DataSourceCount *int64 `json:"DataSourceCount,omitempty" xml:"DataSourceCount,omitempty"`
+	// The modification time.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
 
 func (s ListBindAccountResponseBodyData) String() string {
@@ -13020,9 +13604,21 @@ func (s *ListBindAccountResponse) SetBody(v *ListBindAccountResponseBody) *ListB
 }
 
 type ListBindDataSourcesRequest struct {
+	// The ID of the cloud account.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider.
+	//
+	// Valid values:
+	//
+	// *   qcloud
+	// *   hcloud
+	// *   aliyun
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListBindDataSourcesRequest) String() string {
@@ -13049,8 +13645,10 @@ func (s *ListBindDataSourcesRequest) SetRegionId(v string) *ListBindDataSourcesR
 }
 
 type ListBindDataSourcesResponseBody struct {
-	Data      []*ListBindDataSourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListBindDataSourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBindDataSourcesResponseBody) String() string {
@@ -13072,15 +13670,32 @@ func (s *ListBindDataSourcesResponseBody) SetRequestId(v string) *ListBindDataSo
 }
 
 type ListBindDataSourcesResponseBodyData struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The username of the cloud account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	DataSourceName       *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	DataSourceRemark     *string `json:"DataSourceRemark,omitempty" xml:"DataSourceRemark,omitempty"`
-	DataSourceType       *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	LogCount             *int32  `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	TaskCount            *int32  `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	// The name of the data source.
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The remarks on the data source.
+	DataSourceRemark *string `json:"DataSourceRemark,omitempty" xml:"DataSourceRemark,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   obs: Huawei Cloud Object Storage Service (OBS)
+	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The number of logs that are added within the data source.
+	LogCount *int32 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	// The number of existing tasks that are created to add logs within the data source.
+	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
 }
 
 func (s ListBindDataSourcesResponseBodyData) String() string {
@@ -14217,10 +14832,21 @@ func (s *ListCustomizeRuleTestResultResponse) SetBody(v *ListCustomizeRuleTestRe
 }
 
 type ListDataSourceLogsRequest struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code that is used for multi-cloud environments. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListDataSourceLogsRequest) String() string {
@@ -14252,8 +14878,10 @@ func (s *ListDataSourceLogsRequest) SetRegionId(v string) *ListDataSourceLogsReq
 }
 
 type ListDataSourceLogsResponseBody struct {
-	Data      *ListDataSourceLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *ListDataSourceLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDataSourceLogsResponseBody) String() string {
@@ -14275,13 +14903,24 @@ func (s *ListDataSourceLogsResponseBody) SetRequestId(v string) *ListDataSourceL
 }
 
 type ListDataSourceLogsResponseBodyData struct {
-	AccountId                *string                                                     `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode                *string                                                     `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	DataSourceInstanceId     *string                                                     `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	DataSourceInstanceLogs   []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty" type:"Repeated"`
-	DataSourceInstanceName   *string                                                     `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
-	DataSourceInstanceRemark *string                                                     `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
-	SubUserId                *int64                                                      `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code that is used for multi-cloud environments. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	// The logs of the data source.
+	DataSourceInstanceLogs []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty" type:"Repeated"`
+	// The name of the data source.
+	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
+	// The remarks of the data source.
+	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s ListDataSourceLogsResponseBodyData) String() string {
@@ -14328,11 +14967,19 @@ func (s *ListDataSourceLogsResponseBodyData) SetSubUserId(v int64) *ListDataSour
 }
 
 type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs struct {
-	LogCode       *string                                                              `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	LogInstanceId *string                                                              `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
-	LogMdsCode    *string                                                              `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
-	LogParams     []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams `json:"LogParams,omitempty" xml:"LogParams,omitempty" type:"Repeated"`
-	TaskStatus    *int32                                                               `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The code of the log.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The ID of the log. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+	// The display code of the log.
+	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
+	// The parameters of the log.
+	LogParams []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams `json:"LogParams,omitempty" xml:"LogParams,omitempty" type:"Repeated"`
+	// Indicates whether the task for which logs are collected is enabled. Valid values:
+	//
+	// *   1: yes
+	// *   0: no
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) String() string {
@@ -14369,7 +15016,9 @@ func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) SetTaskStatus
 }
 
 type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams struct {
-	ParaCode  *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
+	// The parameter code of the log.
+	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
+	// The parameter value of the log.
 	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
 }
 
@@ -14421,8 +15070,18 @@ func (s *ListDataSourceLogsResponse) SetBody(v *ListDataSourceLogsResponseBody) 
 }
 
 type ListDataSourceTypesRequest struct {
+	// The code of the third-party cloud service.
+	//
+	// Valid values:
+	//
+	// *   qcloud
+	// *   hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListDataSourceTypesRequest) String() string {
@@ -14444,8 +15103,10 @@ func (s *ListDataSourceTypesRequest) SetRegionId(v string) *ListDataSourceTypesR
 }
 
 type ListDataSourceTypesResponseBody struct {
-	Data      []*ListDataSourceTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListDataSourceTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDataSourceTypesResponseBody) String() string {
@@ -14467,7 +15128,13 @@ func (s *ListDataSourceTypesResponseBody) SetRequestId(v string) *ListDataSource
 }
 
 type ListDataSourceTypesResponseBodyData struct {
-	CloudCode      *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The code of the third-party cloud service.
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   obs: Huawei Cloud Object Storage Service (OBS)
+	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// *   ckafka: Tencent Cloud Kafka (CKafka)
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 }
 
@@ -15254,9 +15921,19 @@ func (s *ListDisposeStrategyResponse) SetBody(v *ListDisposeStrategyResponseBody
 }
 
 type ListImportedLogsByProdRequest struct {
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	ProdCode  *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The code of the cloud service.
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListImportedLogsByProdRequest) String() string {
@@ -15283,8 +15960,10 @@ func (s *ListImportedLogsByProdRequest) SetRegionId(v string) *ListImportedLogsB
 }
 
 type ListImportedLogsByProdResponseBody struct {
-	Data      []*ListImportedLogsByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListImportedLogsByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListImportedLogsByProdResponseBody) String() string {
@@ -15306,16 +15985,36 @@ func (s *ListImportedLogsByProdResponseBody) SetRequestId(v string) *ListImporte
 }
 
 type ListImportedLogsByProdResponseBodyData struct {
-	AutoImported        *int32  `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
-	CloudCode           *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	Imported            *int32  `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	ImportedUserCount   *int32  `json:"ImportedUserCount,omitempty" xml:"ImportedUserCount,omitempty"`
-	LogCode             *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	LogMdsCode          *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
-	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ProdCode            *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	TotalUserCount      *int32  `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
-	UnImportedUserCount *int32  `json:"UnImportedUserCount,omitempty" xml:"UnImportedUserCount,omitempty"`
+	// Indicates whether the log is automatically added to the threat analysis feature within newly added accounts. Valid values:
+	//
+	// *   1: yes
+	// *   0: no
+	AutoImported *int32 `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// Indicates whether the log is added to the threat analysis feature. Valid values:
+	//
+	// *   1: yes
+	// *   0: no
+	Imported *int32 `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	// The number of users who have added the log.
+	ImportedUserCount *int32 `json:"ImportedUserCount,omitempty" xml:"ImportedUserCount,omitempty"`
+	// The log code.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The display log code.
+	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
+	// The time when the log was last added.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The code of the cloud service to which the log belongs.
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The total number of users who have the log.
+	TotalUserCount *int32 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
+	// The number of users who have not added the log.
+	UnImportedUserCount *int32 `json:"UnImportedUserCount,omitempty" xml:"UnImportedUserCount,omitempty"`
 }
 
 func (s ListImportedLogsByProdResponseBodyData) String() string {
@@ -15509,10 +16208,17 @@ func (s *ListOperationResponse) SetBody(v *ListOperationResponseBody) *ListOpera
 }
 
 type ListProjectLogStoresRequest struct {
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The log code.
+	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The code of the cloud service.
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s ListProjectLogStoresRequest) String() string {
@@ -15544,8 +16250,10 @@ func (s *ListProjectLogStoresRequest) SetSubUserId(v int64) *ListProjectLogStore
 }
 
 type ListProjectLogStoresResponseBody struct {
-	Data      []*ListProjectLogStoresResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListProjectLogStoresResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListProjectLogStoresResponseBody) String() string {
@@ -15567,13 +16275,21 @@ func (s *ListProjectLogStoresResponseBody) SetRequestId(v string) *ListProjectLo
 }
 
 type ListProjectLogStoresResponseBodyData struct {
-	EndPoint    *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	LocalName   *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	LogStore    *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	MainUserId  *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubUserId   *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The endpoint of the Simple Log Service project.
+	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	// The name of the region in which the Simple Log Service project resides.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The name of the Simple Log Service Logstore.
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The name of the Simple Log Service project.
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The ID of the region in which the Simple Log Service project resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
@@ -15808,6 +16524,10 @@ func (s *ListQuickQueryResponse) SetBody(v *ListQuickQueryResponseBody) *ListQui
 }
 
 type ListRdUsersRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15825,8 +16545,10 @@ func (s *ListRdUsersRequest) SetRegionId(v string) *ListRdUsersRequest {
 }
 
 type ListRdUsersResponseBody struct {
-	Data      []*ListRdUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListRdUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRdUsersResponseBody) String() string {
@@ -15848,12 +16570,21 @@ func (s *ListRdUsersResponseBody) SetRequestId(v string) *ListRdUsersResponseBod
 }
 
 type ListRdUsersResponseBodyData struct {
-	DelegatedOrNot *bool   `json:"DelegatedOrNot,omitempty" xml:"DelegatedOrNot,omitempty"`
-	Joined         *bool   `json:"Joined,omitempty" xml:"Joined,omitempty"`
-	JoinedTime     *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
-	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+	// Indicates whether the account can be used to view the logs and alerts within the account.
+	DelegatedOrNot *bool `json:"DelegatedOrNot,omitempty" xml:"DelegatedOrNot,omitempty"`
+	// Indicates whether the account is added to the threat analysis feature for centralized management. Valid values:
+	//
+	// *   true
+	// *   false
+	Joined *bool `json:"Joined,omitempty" xml:"Joined,omitempty"`
+	// The time when the account was added to the threat analysis feature.
+	JoinedTime *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to perform operations supported by the threat analysis feature.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
 func (s ListRdUsersResponseBodyData) String() string {
@@ -15924,8 +16655,14 @@ func (s *ListRdUsersResponse) SetBody(v *ListRdUsersResponseBody) *ListRdUsersRe
 }
 
 type ListUserProdLogsRequest struct {
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The log code.
+	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The code of the cloud service.
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 }
 
@@ -15953,8 +16690,10 @@ func (s *ListUserProdLogsRequest) SetSourceProdCode(v string) *ListUserProdLogsR
 }
 
 type ListUserProdLogsResponseBody struct {
-	Data      []*ListUserProdLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListUserProdLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListUserProdLogsResponseBody) String() string {
@@ -15976,16 +16715,35 @@ func (s *ListUserProdLogsResponseBody) SetRequestId(v string) *ListUserProdLogsR
 }
 
 type ListUserProdLogsResponseBodyData struct {
-	DisplayLine    *string `json:"DisplayLine,omitempty" xml:"DisplayLine,omitempty"`
-	Displayed      *bool   `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
-	Imported       *bool   `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	IsDeleted      *int32  `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	SourceLogInfo  *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
+	// The display details of the Logstore.
+	DisplayLine *string `json:"DisplayLine,omitempty" xml:"DisplayLine,omitempty"`
+	// Indicates whether the details of the added log are returned. Valid values:
+	//
+	// *   true
+	// *   false
+	Displayed *bool `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
+	// Indicates whether the log is added to the threat analysis feature. Valid values:
+	//
+	// *   true
+	// *   false
+	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	// Indicates whether the log is added to the threat analysis feature. Valid values:
+	//
+	// *   0: yes
+	// *   1: no
+	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The log code.
+	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The details of the Logstore. The value is a JSON string.
+	SourceLogInfo *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
+	// The code of the cloud service.
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
 func (s ListUserProdLogsResponseBodyData) String() string {
@@ -16076,7 +16834,12 @@ func (s *ListUserProdLogsResponse) SetBody(v *ListUserProdLogsResponseBody) *Lis
 }
 
 type ListUsersByProdRequest struct {
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The code of the cloud service.
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 }
 
@@ -16099,8 +16862,10 @@ func (s *ListUsersByProdRequest) SetSourceProdCode(v string) *ListUsersByProdReq
 }
 
 type ListUsersByProdResponseBody struct {
-	Data      []*ListUsersByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*ListUsersByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListUsersByProdResponseBody) String() string {
@@ -16122,15 +16887,28 @@ func (s *ListUsersByProdResponseBody) SetRequestId(v string) *ListUsersByProdRes
 }
 
 type ListUsersByProdResponseBodyData struct {
-	CloudCode      *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	Imported       *bool   `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	LogMdsCode     *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
-	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	SourceLogName  *string `json:"SourceLogName,omitempty" xml:"SourceLogName,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// Indicates whether the log is added to the threat analysis feature.
+	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	// The display log code. The value is based on your console settings.
+	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The log code.
+	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	// The log name.
+	SourceLogName *string `json:"SourceLogName,omitempty" xml:"SourceLogName,omitempty"`
+	// The code of the cloud service.
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
 func (s ListUsersByProdResponseBodyData) String() string {
@@ -16216,12 +16994,26 @@ func (s *ListUsersByProdResponse) SetBody(v *ListUsersByProdResponseBody) *ListU
 }
 
 type ModifyBindAccountRequest struct {
-	AccessId    *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The AccessKey ID of the cloud account.
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The username of the cloud account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	BindId      *int64  `json:"BindId,omitempty" xml:"BindId,omitempty"`
-	CloudCode   *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID that is generated by the system when the account is added. You can call the ListBindAccount operation to query the ID.
+	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	// The code of the cloud service provider.
+	//
+	// Enumeration values:
+	//
+	// *   qcloud
+	// *   hcloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyBindAccountRequest) String() string {
@@ -16263,8 +17055,10 @@ func (s *ModifyBindAccountRequest) SetRegionId(v string) *ModifyBindAccountReque
 }
 
 type ModifyBindAccountResponseBody struct {
-	Data      *ModifyBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *ModifyBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyBindAccountResponseBody) String() string {
@@ -16286,6 +17080,7 @@ func (s *ModifyBindAccountResponseBody) SetRequestId(v string) *ModifyBindAccoun
 }
 
 type ModifyBindAccountResponseBodyData struct {
+	// The number of the accounts that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -16332,14 +17127,33 @@ func (s *ModifyBindAccountResponse) SetBody(v *ModifyBindAccountResponseBody) *M
 }
 
 type ModifyDataSourceRequest struct {
-	AccountId                *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode                *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	DataSourceInstanceId     *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	DataSourceInstanceName   *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	// The name of the data source.
+	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
+	// The parameters of the data source in the JSON string format.
 	DataSourceInstanceParams *string `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty"`
+	// The remarks on the data source.
 	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
-	DataSourceType           *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	// *   obs: Huawei Cloud Object Storage Service (OBS)
+	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDataSourceRequest) String() string {
@@ -16391,8 +17205,10 @@ func (s *ModifyDataSourceRequest) SetRegionId(v string) *ModifyDataSourceRequest
 }
 
 type ModifyDataSourceResponseBody struct {
-	Data      *ModifyDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *ModifyDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDataSourceResponseBody) String() string {
@@ -16414,7 +17230,9 @@ func (s *ModifyDataSourceResponseBody) SetRequestId(v string) *ModifyDataSourceR
 }
 
 type ModifyDataSourceResponseBodyData struct {
-	Count                *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of data sources that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 }
 
@@ -16466,14 +17284,33 @@ func (s *ModifyDataSourceResponse) SetBody(v *ModifyDataSourceResponseBody) *Mod
 }
 
 type ModifyDataSourceLogRequest struct {
-	AccountId              *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CloudCode              *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	DataSourceInstanceId   *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	// The ID of the cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// *   qcloud: Tencent Cloud
+	// *   aliyun: Alibaba Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	// The parameters of the data source. Set this parameter to a JSON string.
 	DataSourceInstanceLogs *string `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty"`
-	DataSourceType         *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	LogCode                *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	LogInstanceId          *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   obs: Huawei Cloud Object Storage Service (OBS)
+	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The log code.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) to query log IDs.
+	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDataSourceLogRequest) String() string {
@@ -16525,8 +17362,10 @@ func (s *ModifyDataSourceLogRequest) SetRegionId(v string) *ModifyDataSourceLogR
 }
 
 type ModifyDataSourceLogResponseBody struct {
-	Data      *ModifyDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *ModifyDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDataSourceLogResponseBody) String() string {
@@ -16548,7 +17387,9 @@ func (s *ModifyDataSourceLogResponseBody) SetRequestId(v string) *ModifyDataSour
 }
 
 type ModifyDataSourceLogResponseBodyData struct {
-	Count         *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of logs that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 }
 
@@ -18247,12 +19088,37 @@ func (s *ShowQuickAnalysisResponse) SetBody(v *ShowQuickAnalysisResponseBody) *S
 }
 
 type SubmitImportLogTasksRequest struct {
-	Accounts     *string `json:"Accounts,omitempty" xml:"Accounts,omitempty"`
-	AutoImported *int32  `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
-	CloudCode    *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	LogCodes     *string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty"`
-	ProdCode     *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The accounts that you want to add. The value is a JSON array. Valid values:
+	//
+	// *   AccountId: the IDs of the accounts.
+	//
+	// *   Imported: specifies whether to add the accounts. Valid values:
+	//
+	//     *   0: no
+	//     *   1: yes
+	Accounts *string `json:"Accounts,omitempty" xml:"Accounts,omitempty"`
+	// Specifies whether to automatically add the account for which the logging feature is configured. Valid values:
+	//
+	// *   1: yes
+	// *   0: no
+	AutoImported *int32 `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
+	// The code that is used for multi-cloud environments.
+	//
+	// Valid values:
+	//
+	// *   qcloud.
+	// *   hcloud.
+	// *   aliyun.
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The logs that you want to collect. The value is a JSON array.
+	LogCodes *string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty"`
+	// The code of the service.
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SubmitImportLogTasksRequest) String() string {
@@ -18294,8 +19160,10 @@ func (s *SubmitImportLogTasksRequest) SetRegionId(v string) *SubmitImportLogTask
 }
 
 type SubmitImportLogTasksResponseBody struct {
-	Data      *SubmitImportLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *SubmitImportLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitImportLogTasksResponseBody) String() string {
@@ -18317,6 +19185,7 @@ func (s *SubmitImportLogTasksResponseBody) SetRequestId(v string) *SubmitImportL
 }
 
 type SubmitImportLogTasksResponseBodyData struct {
+	// The number of log collection tasks that are submitted.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -18363,8 +19232,23 @@ func (s *SubmitImportLogTasksResponse) SetBody(v *SubmitImportLogTasksResponseBo
 }
 
 type SubmitJobsRequest struct {
+	// The parameters of the logs that you want to add. The value is a JSON array, which contains the following parameters:\
+	//
+	//
+	// *   SourceProdCode: the code of the cloud service.
+	//
+	// *   SourceLogCode: the code of the log.
+	//
+	// *   Deleted: specifies whether to add the log. Valid values:
+	//
+	//     *   0: yes
+	//     *   1: no
 	JsonParam *string `json:"JsonParam,omitempty" xml:"JsonParam,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SubmitJobsRequest) String() string {
@@ -18386,7 +19270,9 @@ func (s *SubmitJobsRequest) SetRegionId(v string) *SubmitJobsRequest {
 }
 
 type SubmitJobsResponseBody struct {
-	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The total number of tasks.
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
