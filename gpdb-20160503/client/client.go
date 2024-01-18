@@ -14153,7 +14153,8 @@ func (s *GetUploadDocumentJobResponseBodyJob) SetUpdateTime(v string) *GetUpload
 }
 
 type GetUploadDocumentJobResponseBodyUsage struct {
-	EmbeddingTokens *int32 `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	EmbeddingEntries *int32 `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
+	EmbeddingTokens  *int32 `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
 }
 
 func (s GetUploadDocumentJobResponseBodyUsage) String() string {
@@ -14162,6 +14163,11 @@ func (s GetUploadDocumentJobResponseBodyUsage) String() string {
 
 func (s GetUploadDocumentJobResponseBodyUsage) GoString() string {
 	return s.String()
+}
+
+func (s *GetUploadDocumentJobResponseBodyUsage) SetEmbeddingEntries(v int32) *GetUploadDocumentJobResponseBodyUsage {
+	s.EmbeddingEntries = &v
+	return s
 }
 
 func (s *GetUploadDocumentJobResponseBodyUsage) SetEmbeddingTokens(v int32) *GetUploadDocumentJobResponseBodyUsage {
