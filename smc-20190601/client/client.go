@@ -2979,6 +2979,7 @@ type ModifyReplicationJobAttributeRequest struct {
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
 	// The version number of the launch template.
 	LaunchTemplateVersion *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	LicenseType           *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
 	// The maximum number of images that are retained for an incremental migration job. Valid values: 1 to 10.
 	//
 	// This parameter is required if you set the `RunOnce` parameter to false.
@@ -2987,9 +2988,11 @@ type ModifyReplicationJobAttributeRequest struct {
 	//
 	// *   The name must be unique.
 	// *   The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetMode               *int32  `json:"NetMode,omitempty" xml:"NetMode,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ReplicationParameters *string `json:"ReplicationParameters,omitempty" xml:"ReplicationParameters,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The time when the migration job is executed. SMC starts the migration job at the specified time.
 	//
 	// Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. For example, 2018-01-01T12:00:00Z indicates 20:00:00 on January 1, 2018 (UTC+8).
@@ -3014,6 +3017,7 @@ type ModifyReplicationJobAttributeRequest struct {
 	//
 	// *   SMC does not allow you to migrate Windows servers or servers that run operating systems on the ARM architecture to Container Registry.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The time when the migration job expires. You can schedule the migration job to expire 7 to 90 days after the job is created.
 	//
 	// *   This parameter can be modified only if the migration job is in the Ready, Running, Stopped, InError, or Waiting state.
@@ -3023,6 +3027,7 @@ type ModifyReplicationJobAttributeRequest struct {
 	//
 	// By default, a migration job is valid for 30 days after it is created.
 	ValidTime *string `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ModifyReplicationJobAttributeRequest) String() string {
@@ -3098,6 +3103,11 @@ func (s *ModifyReplicationJobAttributeRequest) SetLaunchTemplateVersion(v string
 	return s
 }
 
+func (s *ModifyReplicationJobAttributeRequest) SetLicenseType(v string) *ModifyReplicationJobAttributeRequest {
+	s.LicenseType = &v
+	return s
+}
+
 func (s *ModifyReplicationJobAttributeRequest) SetMaxNumberOfImageToKeep(v int32) *ModifyReplicationJobAttributeRequest {
 	s.MaxNumberOfImageToKeep = &v
 	return s
@@ -3108,8 +3118,18 @@ func (s *ModifyReplicationJobAttributeRequest) SetName(v string) *ModifyReplicat
 	return s
 }
 
+func (s *ModifyReplicationJobAttributeRequest) SetNetMode(v int32) *ModifyReplicationJobAttributeRequest {
+	s.NetMode = &v
+	return s
+}
+
 func (s *ModifyReplicationJobAttributeRequest) SetOwnerId(v int64) *ModifyReplicationJobAttributeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetReplicationParameters(v string) *ModifyReplicationJobAttributeRequest {
+	s.ReplicationParameters = &v
 	return s
 }
 
@@ -3138,8 +3158,18 @@ func (s *ModifyReplicationJobAttributeRequest) SetTargetType(v string) *ModifyRe
 	return s
 }
 
+func (s *ModifyReplicationJobAttributeRequest) SetVSwitchId(v string) *ModifyReplicationJobAttributeRequest {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *ModifyReplicationJobAttributeRequest) SetValidTime(v string) *ModifyReplicationJobAttributeRequest {
 	s.ValidTime = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetVpcId(v string) *ModifyReplicationJobAttributeRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -4860,6 +4890,10 @@ func (client *Client) ModifyReplicationJobAttributeWithOptions(request *ModifyRe
 		query["LaunchTemplateVersion"] = request.LaunchTemplateVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LicenseType)) {
+		query["LicenseType"] = request.LicenseType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxNumberOfImageToKeep)) {
 		query["MaxNumberOfImageToKeep"] = request.MaxNumberOfImageToKeep
 	}
@@ -4868,8 +4902,16 @@ func (client *Client) ModifyReplicationJobAttributeWithOptions(request *ModifyRe
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NetMode)) {
+		query["NetMode"] = request.NetMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplicationParameters)) {
+		query["ReplicationParameters"] = request.ReplicationParameters
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -4892,8 +4934,16 @@ func (client *Client) ModifyReplicationJobAttributeWithOptions(request *ModifyRe
 		query["TargetType"] = request.TargetType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ValidTime)) {
 		query["ValidTime"] = request.ValidTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
