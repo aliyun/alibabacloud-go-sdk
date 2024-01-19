@@ -696,6 +696,249 @@ func (s *AddDesensitizationRuleResponse) SetBody(v *AddDesensitizationRuleRespon
 	return s
 }
 
+type AddInstanceRequest struct {
+	DataLinkName     *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
+	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	DatabaseUser     *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
+	DbaId            *int64  `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	DdlOnline        *int32  `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
+	EcsInstanceId    *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	EcsRegion        *string `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
+	EnableSellCommon *string `json:"EnableSellCommon,omitempty" xml:"EnableSellCommon,omitempty"`
+	EnableSellSitd   *string `json:"EnableSellSitd,omitempty" xml:"EnableSellSitd,omitempty"`
+	EnableSellStable *string `json:"EnableSellStable,omitempty" xml:"EnableSellStable,omitempty"`
+	EnableSellTrust  *string `json:"EnableSellTrust,omitempty" xml:"EnableSellTrust,omitempty"`
+	EnvType          *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	ExportTimeout    *int32  `json:"ExportTimeout,omitempty" xml:"ExportTimeout,omitempty"`
+	Host             *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceAlias    *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceSource   *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	QueryTimeout     *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	SafeRule         *string `json:"SafeRule,omitempty" xml:"SafeRule,omitempty"`
+	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	SkipTest         *bool   `json:"SkipTest,omitempty" xml:"SkipTest,omitempty"`
+	TemplateId       *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType     *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Tid              *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	UseDsql          *int32  `json:"UseDsql,omitempty" xml:"UseDsql,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s AddInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddInstanceRequest) SetDataLinkName(v string) *AddInstanceRequest {
+	s.DataLinkName = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetDatabasePassword(v string) *AddInstanceRequest {
+	s.DatabasePassword = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetDatabaseUser(v string) *AddInstanceRequest {
+	s.DatabaseUser = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetDbaId(v int64) *AddInstanceRequest {
+	s.DbaId = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetDdlOnline(v int32) *AddInstanceRequest {
+	s.DdlOnline = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetEcsInstanceId(v string) *AddInstanceRequest {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetEcsRegion(v string) *AddInstanceRequest {
+	s.EcsRegion = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetEnableSellCommon(v string) *AddInstanceRequest {
+	s.EnableSellCommon = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetEnableSellSitd(v string) *AddInstanceRequest {
+	s.EnableSellSitd = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetEnableSellStable(v string) *AddInstanceRequest {
+	s.EnableSellStable = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetEnableSellTrust(v string) *AddInstanceRequest {
+	s.EnableSellTrust = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetEnvType(v string) *AddInstanceRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetExportTimeout(v int32) *AddInstanceRequest {
+	s.ExportTimeout = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetHost(v string) *AddInstanceRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetInstanceAlias(v string) *AddInstanceRequest {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetInstanceSource(v string) *AddInstanceRequest {
+	s.InstanceSource = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetInstanceType(v string) *AddInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetNetworkType(v string) *AddInstanceRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetPort(v int32) *AddInstanceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetQueryTimeout(v int32) *AddInstanceRequest {
+	s.QueryTimeout = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetSafeRule(v string) *AddInstanceRequest {
+	s.SafeRule = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetSid(v string) *AddInstanceRequest {
+	s.Sid = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetSkipTest(v bool) *AddInstanceRequest {
+	s.SkipTest = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetTemplateId(v int64) *AddInstanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetTemplateType(v string) *AddInstanceRequest {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetTid(v int64) *AddInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetUseDsql(v int32) *AddInstanceRequest {
+	s.UseDsql = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetVpcId(v string) *AddInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+type AddInstanceResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddInstanceResponseBody) SetErrorCode(v string) *AddInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddInstanceResponseBody) SetErrorMessage(v string) *AddInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddInstanceResponseBody) SetRequestId(v string) *AddInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddInstanceResponseBody) SetSuccess(v bool) *AddInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddInstanceResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddInstanceResponse) SetHeaders(v map[string]*string) *AddInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddInstanceResponse) SetStatusCode(v int32) *AddInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddInstanceResponse) SetBody(v *AddInstanceResponseBody) *AddInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type AddLhMembersRequest struct {
 	// The information about the users to be added.
 	Members []*AddLhMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
@@ -36483,6 +36726,255 @@ func (s *ModifyDesensitizationStrategyResponse) SetBody(v *ModifyDesensitization
 	return s
 }
 
+type ModifyInstanceRequest struct {
+	DataLinkName     *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
+	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	DatabaseUser     *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
+	DbaId            *int64  `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	DdlOnline        *int32  `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
+	EcsInstanceId    *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	EcsRegion        *string `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
+	EnableSellCommon *string `json:"EnableSellCommon,omitempty" xml:"EnableSellCommon,omitempty"`
+	EnableSellSitd   *string `json:"EnableSellSitd,omitempty" xml:"EnableSellSitd,omitempty"`
+	EnableSellStable *string `json:"EnableSellStable,omitempty" xml:"EnableSellStable,omitempty"`
+	EnableSellTrust  *string `json:"EnableSellTrust,omitempty" xml:"EnableSellTrust,omitempty"`
+	EnvType          *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	ExportTimeout    *int32  `json:"ExportTimeout,omitempty" xml:"ExportTimeout,omitempty"`
+	Host             *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceAlias    *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSource   *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	QueryTimeout     *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	SafeRule         *string `json:"SafeRule,omitempty" xml:"SafeRule,omitempty"`
+	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	SkipTest         *bool   `json:"SkipTest,omitempty" xml:"SkipTest,omitempty"`
+	TemplateId       *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType     *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Tid              *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	UseDsql          *int32  `json:"UseDsql,omitempty" xml:"UseDsql,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ModifyInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceRequest) SetDataLinkName(v string) *ModifyInstanceRequest {
+	s.DataLinkName = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetDatabasePassword(v string) *ModifyInstanceRequest {
+	s.DatabasePassword = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetDatabaseUser(v string) *ModifyInstanceRequest {
+	s.DatabaseUser = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetDbaId(v int64) *ModifyInstanceRequest {
+	s.DbaId = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetDdlOnline(v int32) *ModifyInstanceRequest {
+	s.DdlOnline = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetEcsInstanceId(v string) *ModifyInstanceRequest {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetEcsRegion(v string) *ModifyInstanceRequest {
+	s.EcsRegion = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetEnableSellCommon(v string) *ModifyInstanceRequest {
+	s.EnableSellCommon = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetEnableSellSitd(v string) *ModifyInstanceRequest {
+	s.EnableSellSitd = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetEnableSellStable(v string) *ModifyInstanceRequest {
+	s.EnableSellStable = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetEnableSellTrust(v string) *ModifyInstanceRequest {
+	s.EnableSellTrust = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetEnvType(v string) *ModifyInstanceRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetExportTimeout(v int32) *ModifyInstanceRequest {
+	s.ExportTimeout = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetHost(v string) *ModifyInstanceRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetInstanceAlias(v string) *ModifyInstanceRequest {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetInstanceId(v string) *ModifyInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetInstanceSource(v string) *ModifyInstanceRequest {
+	s.InstanceSource = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetInstanceType(v string) *ModifyInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetNetworkType(v string) *ModifyInstanceRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetPort(v int32) *ModifyInstanceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetQueryTimeout(v int32) *ModifyInstanceRequest {
+	s.QueryTimeout = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetSafeRule(v string) *ModifyInstanceRequest {
+	s.SafeRule = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetSid(v string) *ModifyInstanceRequest {
+	s.Sid = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetSkipTest(v bool) *ModifyInstanceRequest {
+	s.SkipTest = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetTemplateId(v int64) *ModifyInstanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetTemplateType(v string) *ModifyInstanceRequest {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetTid(v int64) *ModifyInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetUseDsql(v int32) *ModifyInstanceRequest {
+	s.UseDsql = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetVpcId(v string) *ModifyInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+type ModifyInstanceResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceResponseBody) SetErrorCode(v string) *ModifyInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBody) SetErrorMessage(v string) *ModifyInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBody) SetRequestId(v string) *ModifyInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBody) SetSuccess(v bool) *ModifyInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceResponse) SetHeaders(v map[string]*string) *ModifyInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceResponse) SetStatusCode(v int32) *ModifyInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceResponse) SetBody(v *ModifyInstanceResponseBody) *ModifyInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type MoveTaskFlowToScenarioRequest struct {
 	// The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
@@ -43554,6 +44046,158 @@ func (client *Client) AddDesensitizationRule(request *AddDesensitizationRuleRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDesensitizationRuleResponse{}
 	_body, _err := client.AddDesensitizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddInstanceWithOptions(request *AddInstanceRequest, runtime *util.RuntimeOptions) (_result *AddInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataLinkName)) {
+		query["DataLinkName"] = request.DataLinkName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePassword)) {
+		query["DatabasePassword"] = request.DatabasePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseUser)) {
+		query["DatabaseUser"] = request.DatabaseUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbaId)) {
+		query["DbaId"] = request.DbaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdlOnline)) {
+		query["DdlOnline"] = request.DdlOnline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceId)) {
+		query["EcsInstanceId"] = request.EcsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsRegion)) {
+		query["EcsRegion"] = request.EcsRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellCommon)) {
+		query["EnableSellCommon"] = request.EnableSellCommon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellSitd)) {
+		query["EnableSellSitd"] = request.EnableSellSitd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellStable)) {
+		query["EnableSellStable"] = request.EnableSellStable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellTrust)) {
+		query["EnableSellTrust"] = request.EnableSellTrust
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportTimeout)) {
+		query["ExportTimeout"] = request.ExportTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceAlias)) {
+		query["InstanceAlias"] = request.InstanceAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSource)) {
+		query["InstanceSource"] = request.InstanceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryTimeout)) {
+		query["QueryTimeout"] = request.QueryTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SafeRule)) {
+		query["SafeRule"] = request.SafeRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipTest)) {
+		query["SkipTest"] = request.SkipTest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseDsql)) {
+		query["UseDsql"] = request.UseDsql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddInstance(request *AddInstanceRequest) (_result *AddInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddInstanceResponse{}
+	_body, _err := client.AddInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -53830,6 +54474,162 @@ func (client *Client) ModifyDesensitizationStrategy(request *ModifyDesensitizati
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDesensitizationStrategyResponse{}
 	_body, _err := client.ModifyDesensitizationStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataLinkName)) {
+		query["DataLinkName"] = request.DataLinkName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePassword)) {
+		query["DatabasePassword"] = request.DatabasePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseUser)) {
+		query["DatabaseUser"] = request.DatabaseUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbaId)) {
+		query["DbaId"] = request.DbaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdlOnline)) {
+		query["DdlOnline"] = request.DdlOnline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceId)) {
+		query["EcsInstanceId"] = request.EcsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsRegion)) {
+		query["EcsRegion"] = request.EcsRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellCommon)) {
+		query["EnableSellCommon"] = request.EnableSellCommon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellSitd)) {
+		query["EnableSellSitd"] = request.EnableSellSitd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellStable)) {
+		query["EnableSellStable"] = request.EnableSellStable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellTrust)) {
+		query["EnableSellTrust"] = request.EnableSellTrust
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportTimeout)) {
+		query["ExportTimeout"] = request.ExportTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceAlias)) {
+		query["InstanceAlias"] = request.InstanceAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSource)) {
+		query["InstanceSource"] = request.InstanceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryTimeout)) {
+		query["QueryTimeout"] = request.QueryTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SafeRule)) {
+		query["SafeRule"] = request.SafeRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipTest)) {
+		query["SkipTest"] = request.SkipTest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseDsql)) {
+		query["UseDsql"] = request.UseDsql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *ModifyInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceResponse{}
+	_body, _err := client.ModifyInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
