@@ -12,122 +12,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AddEnterpriseTagRequest struct {
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-}
-
-func (s AddEnterpriseTagRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnterpriseTagRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnterpriseTagRequest) SetAgentKey(v string) *AddEnterpriseTagRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *AddEnterpriseTagRequest) SetTagName(v string) *AddEnterpriseTagRequest {
-	s.TagName = &v
-	return s
-}
-
-type AddEnterpriseTagResponseBody struct {
-	Data      *AddEnterpriseTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                           `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AddEnterpriseTagResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnterpriseTagResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnterpriseTagResponseBody) SetData(v *AddEnterpriseTagResponseBodyData) *AddEnterpriseTagResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AddEnterpriseTagResponseBody) SetErrorCode(v string) *AddEnterpriseTagResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *AddEnterpriseTagResponseBody) SetErrorMsg(v string) *AddEnterpriseTagResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *AddEnterpriseTagResponseBody) SetRequestId(v string) *AddEnterpriseTagResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddEnterpriseTagResponseBody) SetSuccess(v bool) *AddEnterpriseTagResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddEnterpriseTagResponseBodyData struct {
-	TagId   *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-}
-
-func (s AddEnterpriseTagResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnterpriseTagResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnterpriseTagResponseBodyData) SetTagId(v int64) *AddEnterpriseTagResponseBodyData {
-	s.TagId = &v
-	return s
-}
-
-func (s *AddEnterpriseTagResponseBodyData) SetTagName(v string) *AddEnterpriseTagResponseBodyData {
-	s.TagName = &v
-	return s
-}
-
-type AddEnterpriseTagResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddEnterpriseTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddEnterpriseTagResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnterpriseTagResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnterpriseTagResponse) SetHeaders(v map[string]*string) *AddEnterpriseTagResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddEnterpriseTagResponse) SetStatusCode(v int32) *AddEnterpriseTagResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddEnterpriseTagResponse) SetBody(v *AddEnterpriseTagResponseBody) *AddEnterpriseTagResponse {
-	s.Body = v
-	return s
-}
-
 type CancelFineTuneJobRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -199,6 +83,81 @@ func (s *CancelFineTuneJobResponse) SetStatusCode(v int32) *CancelFineTuneJobRes
 }
 
 func (s *CancelFineTuneJobResponse) SetBody(v *CancelFineTuneJobResponseBody) *CancelFineTuneJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDocumentTagRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateDocumentTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocumentTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentTagRequest) SetAgentKey(v string) *CreateDocumentTagRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *CreateDocumentTagRequest) SetName(v string) *CreateDocumentTagRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateDocumentTagResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagId     *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s CreateDocumentTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocumentTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentTagResponseBody) SetRequestId(v string) *CreateDocumentTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDocumentTagResponseBody) SetTagId(v string) *CreateDocumentTagResponseBody {
+	s.TagId = &v
+	return s
+}
+
+type CreateDocumentTagResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDocumentTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocumentTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentTagResponse) SetHeaders(v map[string]*string) *CreateDocumentTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDocumentTagResponse) SetStatusCode(v int32) *CreateDocumentTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDocumentTagResponse) SetBody(v *CreateDocumentTagResponseBody) *CreateDocumentTagResponse {
 	s.Body = v
 	return s
 }
@@ -768,189 +727,152 @@ func (s *CreateTokenResponse) SetBody(v *CreateTokenResponseBody) *CreateTokenRe
 	return s
 }
 
-type DelEnterpriseTagRequest struct {
+type DeleteDocRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	TagId    *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	DocId    *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
 }
 
-func (s DelEnterpriseTagRequest) String() string {
+func (s DeleteDocRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DelEnterpriseTagRequest) GoString() string {
+func (s DeleteDocRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DelEnterpriseTagRequest) SetAgentKey(v string) *DelEnterpriseTagRequest {
+func (s *DeleteDocRequest) SetAgentKey(v string) *DeleteDocRequest {
 	s.AgentKey = &v
 	return s
 }
 
-func (s *DelEnterpriseTagRequest) SetTagId(v int64) *DelEnterpriseTagRequest {
-	s.TagId = &v
+func (s *DeleteDocRequest) SetDocId(v string) *DeleteDocRequest {
+	s.DocId = &v
 	return s
 }
 
-type DelEnterpriseTagResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+type DeleteDocResponseBody struct {
+	DocId     *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
-func (s DelEnterpriseTagResponseBody) String() string {
+func (s DeleteDocResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DelEnterpriseTagResponseBody) GoString() string {
+func (s DeleteDocResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DelEnterpriseTagResponseBody) SetData(v bool) *DelEnterpriseTagResponseBody {
-	s.Data = &v
+func (s *DeleteDocResponseBody) SetDocId(v string) *DeleteDocResponseBody {
+	s.DocId = &v
 	return s
 }
 
-func (s *DelEnterpriseTagResponseBody) SetErrorCode(v string) *DelEnterpriseTagResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DelEnterpriseTagResponseBody) SetErrorMsg(v string) *DelEnterpriseTagResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *DelEnterpriseTagResponseBody) SetRequestId(v string) *DelEnterpriseTagResponseBody {
+func (s *DeleteDocResponseBody) SetRequestId(v string) *DeleteDocResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DelEnterpriseTagResponseBody) SetSuccess(v bool) *DelEnterpriseTagResponseBody {
-	s.Success = &v
-	return s
+type DeleteDocResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDocResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type DelEnterpriseTagResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DelEnterpriseTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DelEnterpriseTagResponse) String() string {
+func (s DeleteDocResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DelEnterpriseTagResponse) GoString() string {
+func (s DeleteDocResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DelEnterpriseTagResponse) SetHeaders(v map[string]*string) *DelEnterpriseTagResponse {
+func (s *DeleteDocResponse) SetHeaders(v map[string]*string) *DeleteDocResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DelEnterpriseTagResponse) SetStatusCode(v int32) *DelEnterpriseTagResponse {
+func (s *DeleteDocResponse) SetStatusCode(v int32) *DeleteDocResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DelEnterpriseTagResponse) SetBody(v *DelEnterpriseTagResponseBody) *DelEnterpriseTagResponse {
+func (s *DeleteDocResponse) SetBody(v *DeleteDocResponseBody) *DeleteDocResponse {
 	s.Body = v
 	return s
 }
 
-type DeleteEnterpriseDataRequest struct {
+type DeleteDocumentTagRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	TagId    *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
-func (s DeleteEnterpriseDataRequest) String() string {
+func (s DeleteDocumentTagRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteEnterpriseDataRequest) GoString() string {
+func (s DeleteDocumentTagRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteEnterpriseDataRequest) SetAgentKey(v string) *DeleteEnterpriseDataRequest {
+func (s *DeleteDocumentTagRequest) SetAgentKey(v string) *DeleteDocumentTagRequest {
 	s.AgentKey = &v
 	return s
 }
 
-func (s *DeleteEnterpriseDataRequest) SetDataId(v string) *DeleteEnterpriseDataRequest {
-	s.DataId = &v
+func (s *DeleteDocumentTagRequest) SetTagId(v string) *DeleteDocumentTagRequest {
+	s.TagId = &v
 	return s
 }
 
-type DeleteEnterpriseDataResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Id of the request
+type DeleteDocumentTagResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TagId     *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
-func (s DeleteEnterpriseDataResponseBody) String() string {
+func (s DeleteDocumentTagResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteEnterpriseDataResponseBody) GoString() string {
+func (s DeleteDocumentTagResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteEnterpriseDataResponseBody) SetData(v bool) *DeleteEnterpriseDataResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteEnterpriseDataResponseBody) SetErrorCode(v string) *DeleteEnterpriseDataResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteEnterpriseDataResponseBody) SetErrorMsg(v string) *DeleteEnterpriseDataResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *DeleteEnterpriseDataResponseBody) SetRequestId(v string) *DeleteEnterpriseDataResponseBody {
+func (s *DeleteDocumentTagResponseBody) SetRequestId(v string) *DeleteDocumentTagResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DeleteEnterpriseDataResponseBody) SetSuccess(v bool) *DeleteEnterpriseDataResponseBody {
-	s.Success = &v
+func (s *DeleteDocumentTagResponseBody) SetTagId(v string) *DeleteDocumentTagResponseBody {
+	s.TagId = &v
 	return s
 }
 
-type DeleteEnterpriseDataResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEnterpriseDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type DeleteDocumentTagResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DeleteEnterpriseDataResponse) String() string {
+func (s DeleteDocumentTagResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteEnterpriseDataResponse) GoString() string {
+func (s DeleteDocumentTagResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteEnterpriseDataResponse) SetHeaders(v map[string]*string) *DeleteEnterpriseDataResponse {
+func (s *DeleteDocumentTagResponse) SetHeaders(v map[string]*string) *DeleteDocumentTagResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeleteEnterpriseDataResponse) SetStatusCode(v int32) *DeleteEnterpriseDataResponse {
+func (s *DeleteDocumentTagResponse) SetStatusCode(v int32) *DeleteDocumentTagResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DeleteEnterpriseDataResponse) SetBody(v *DeleteEnterpriseDataResponseBody) *DeleteEnterpriseDataResponse {
+func (s *DeleteDocumentTagResponse) SetBody(v *DeleteDocumentTagResponseBody) *DeleteDocumentTagResponse {
 	s.Body = v
 	return s
 }
@@ -1101,6 +1023,274 @@ func (s *DeleteServiceResponse) SetStatusCode(v int32) *DeleteServiceResponse {
 }
 
 func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDocRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DocId    *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+}
+
+func (s DescribeDocRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocRequest) SetAgentKey(v string) *DescribeDocRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DescribeDocRequest) SetDocId(v string) *DescribeDocRequest {
+	s.DocId = &v
+	return s
+}
+
+type DescribeDocResponseBody struct {
+	DocId      *string                        `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	FailReason *string                        `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	Name       *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId    *string                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RequestId  *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Size       *string                        `json:"Size,omitempty" xml:"Size,omitempty"`
+	Status     *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags       []*DescribeDocResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type       *string                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	UploadTime *string                        `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+}
+
+func (s DescribeDocResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponseBody) SetDocId(v string) *DescribeDocResponseBody {
+	s.DocId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetFailReason(v string) *DescribeDocResponseBody {
+	s.FailReason = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetName(v string) *DescribeDocResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetOwnerId(v string) *DescribeDocResponseBody {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetRequestId(v string) *DescribeDocResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetSize(v string) *DescribeDocResponseBody {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetStatus(v string) *DescribeDocResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetTags(v []*DescribeDocResponseBodyTags) *DescribeDocResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetType(v string) *DescribeDocResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetUploadTime(v string) *DescribeDocResponseBody {
+	s.UploadTime = &v
+	return s
+}
+
+type DescribeDocResponseBodyTags struct {
+	TagId   *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s DescribeDocResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponseBodyTags) SetTagId(v string) *DescribeDocResponseBodyTags {
+	s.TagId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyTags) SetTagName(v string) *DescribeDocResponseBodyTags {
+	s.TagName = &v
+	return s
+}
+
+type DescribeDocResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDocResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDocResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponse) SetHeaders(v map[string]*string) *DescribeDocResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDocResponse) SetStatusCode(v int32) *DescribeDocResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDocResponse) SetBody(v *DescribeDocResponseBody) *DescribeDocResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDocumentImportJobRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DescribeDocumentImportJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocumentImportJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocumentImportJobRequest) SetAgentKey(v string) *DescribeDocumentImportJobRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DescribeDocumentImportJobRequest) SetJobId(v string) *DescribeDocumentImportJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type DescribeDocumentImportJobResponseBody struct {
+	Docs      []*DescribeDocumentImportJobResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	JobId     *string                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDocumentImportJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocumentImportJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocumentImportJobResponseBody) SetDocs(v []*DescribeDocumentImportJobResponseBodyDocs) *DescribeDocumentImportJobResponseBody {
+	s.Docs = v
+	return s
+}
+
+func (s *DescribeDocumentImportJobResponseBody) SetJobId(v string) *DescribeDocumentImportJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeDocumentImportJobResponseBody) SetRequestId(v string) *DescribeDocumentImportJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDocumentImportJobResponseBody) SetStatus(v string) *DescribeDocumentImportJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeDocumentImportJobResponseBodyDocs struct {
+	DocId      *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDocumentImportJobResponseBodyDocs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocumentImportJobResponseBodyDocs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocumentImportJobResponseBodyDocs) SetDocId(v string) *DescribeDocumentImportJobResponseBodyDocs {
+	s.DocId = &v
+	return s
+}
+
+func (s *DescribeDocumentImportJobResponseBodyDocs) SetFailReason(v string) *DescribeDocumentImportJobResponseBodyDocs {
+	s.FailReason = &v
+	return s
+}
+
+func (s *DescribeDocumentImportJobResponseBodyDocs) SetName(v string) *DescribeDocumentImportJobResponseBodyDocs {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDocumentImportJobResponseBodyDocs) SetStatus(v string) *DescribeDocumentImportJobResponseBodyDocs {
+	s.Status = &v
+	return s
+}
+
+type DescribeDocumentImportJobResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDocumentImportJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDocumentImportJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocumentImportJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocumentImportJobResponse) SetHeaders(v map[string]*string) *DescribeDocumentImportJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDocumentImportJobResponse) SetStatusCode(v int32) *DescribeDocumentImportJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDocumentImportJobResponse) SetBody(v *DescribeDocumentImportJobResponseBody) *DescribeDocumentImportJobResponse {
 	s.Body = v
 	return s
 }
@@ -1356,528 +1546,6 @@ func (s *DescribeServiceResponse) SetBody(v *DescribeServiceResponseBody) *Descr
 	return s
 }
 
-type GetEnterpriseDataByDataIdRequest struct {
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s GetEnterpriseDataByDataIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataByDataIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataByDataIdRequest) SetAgentKey(v string) *GetEnterpriseDataByDataIdRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdRequest) SetDataId(v string) *GetEnterpriseDataByDataIdRequest {
-	s.DataId = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdRequest) SetOwnerId(v int64) *GetEnterpriseDataByDataIdRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type GetEnterpriseDataByDataIdResponseBody struct {
-	Data      *GetEnterpriseDataByDataIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                                    `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetEnterpriseDataByDataIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataByDataIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBody) SetData(v *GetEnterpriseDataByDataIdResponseBodyData) *GetEnterpriseDataByDataIdResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBody) SetErrorCode(v string) *GetEnterpriseDataByDataIdResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBody) SetErrorMsg(v string) *GetEnterpriseDataByDataIdResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBody) SetRequestId(v string) *GetEnterpriseDataByDataIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBody) SetSuccess(v bool) *GetEnterpriseDataByDataIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetEnterpriseDataByDataIdResponseBodyData struct {
-	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	DataName       *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	DataSize       *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	DataStatus     *string `json:"DataStatus,omitempty" xml:"DataStatus,omitempty"`
-	DataStatusCode *int32  `json:"DataStatusCode,omitempty" xml:"DataStatusCode,omitempty"`
-	DataType       *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	DataTypeCode   *int32  `json:"DataTypeCode,omitempty" xml:"DataTypeCode,omitempty"`
-	StatusDetail   *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	StoreType      *string `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
-	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UploadTime     *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
-}
-
-func (s GetEnterpriseDataByDataIdResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataByDataIdResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataId(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.DataId = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataName(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.DataName = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataSize(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.DataSize = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataStatus(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.DataStatus = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataStatusCode(v int32) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.DataStatusCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataType(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.DataType = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataTypeCode(v int32) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.DataTypeCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetStatusDetail(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.StatusDetail = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetStoreType(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.StoreType = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetTags(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.Tags = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponseBodyData) SetUploadTime(v string) *GetEnterpriseDataByDataIdResponseBodyData {
-	s.UploadTime = &v
-	return s
-}
-
-type GetEnterpriseDataByDataIdResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEnterpriseDataByDataIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEnterpriseDataByDataIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataByDataIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataByDataIdResponse) SetHeaders(v map[string]*string) *GetEnterpriseDataByDataIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponse) SetStatusCode(v int32) *GetEnterpriseDataByDataIdResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataByDataIdResponse) SetBody(v *GetEnterpriseDataByDataIdResponseBody) *GetEnterpriseDataByDataIdResponse {
-	s.Body = v
-	return s
-}
-
-type GetEnterpriseDataChunkRequest struct {
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-}
-
-func (s GetEnterpriseDataChunkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataChunkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataChunkRequest) SetAgentKey(v string) *GetEnterpriseDataChunkRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkRequest) SetDataId(v string) *GetEnterpriseDataChunkRequest {
-	s.DataId = &v
-	return s
-}
-
-type GetEnterpriseDataChunkResponseBody struct {
-	Data      []*GetEnterpriseDataChunkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                                   `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetEnterpriseDataChunkResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataChunkResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataChunkResponseBody) SetData(v []*GetEnterpriseDataChunkResponseBodyData) *GetEnterpriseDataChunkResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkResponseBody) SetErrorCode(v string) *GetEnterpriseDataChunkResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkResponseBody) SetErrorMsg(v string) *GetEnterpriseDataChunkResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkResponseBody) SetRequestId(v string) *GetEnterpriseDataChunkResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkResponseBody) SetSuccess(v bool) *GetEnterpriseDataChunkResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetEnterpriseDataChunkResponseBodyData struct {
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	TitlePath *string `json:"TitlePath,omitempty" xml:"TitlePath,omitempty"`
-}
-
-func (s GetEnterpriseDataChunkResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataChunkResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataChunkResponseBodyData) SetText(v string) *GetEnterpriseDataChunkResponseBodyData {
-	s.Text = &v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkResponseBodyData) SetTitle(v string) *GetEnterpriseDataChunkResponseBodyData {
-	s.Title = &v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkResponseBodyData) SetTitlePath(v string) *GetEnterpriseDataChunkResponseBodyData {
-	s.TitlePath = &v
-	return s
-}
-
-type GetEnterpriseDataChunkResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEnterpriseDataChunkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEnterpriseDataChunkResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataChunkResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataChunkResponse) SetHeaders(v map[string]*string) *GetEnterpriseDataChunkResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkResponse) SetStatusCode(v int32) *GetEnterpriseDataChunkResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataChunkResponse) SetBody(v *GetEnterpriseDataChunkResponseBody) *GetEnterpriseDataChunkResponse {
-	s.Body = v
-	return s
-}
-
-type GetEnterpriseDataPageImageRequest struct {
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-}
-
-func (s GetEnterpriseDataPageImageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataPageImageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataPageImageRequest) SetAgentKey(v string) *GetEnterpriseDataPageImageRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageRequest) SetDataId(v string) *GetEnterpriseDataPageImageRequest {
-	s.DataId = &v
-	return s
-}
-
-type GetEnterpriseDataPageImageResponseBody struct {
-	Data      []*GetEnterpriseDataPageImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetEnterpriseDataPageImageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataPageImageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataPageImageResponseBody) SetData(v []*GetEnterpriseDataPageImageResponseBodyData) *GetEnterpriseDataPageImageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponseBody) SetErrorCode(v string) *GetEnterpriseDataPageImageResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponseBody) SetErrorMsg(v string) *GetEnterpriseDataPageImageResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponseBody) SetRequestId(v string) *GetEnterpriseDataPageImageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponseBody) SetSuccess(v bool) *GetEnterpriseDataPageImageResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetEnterpriseDataPageImageResponseBodyData struct {
-	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	PageId   *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
-}
-
-func (s GetEnterpriseDataPageImageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataPageImageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataPageImageResponseBodyData) SetHeight(v int32) *GetEnterpriseDataPageImageResponseBodyData {
-	s.Height = &v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponseBodyData) SetImageUrl(v string) *GetEnterpriseDataPageImageResponseBodyData {
-	s.ImageUrl = &v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponseBodyData) SetPageId(v string) *GetEnterpriseDataPageImageResponseBodyData {
-	s.PageId = &v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponseBodyData) SetWidth(v int32) *GetEnterpriseDataPageImageResponseBodyData {
-	s.Width = &v
-	return s
-}
-
-type GetEnterpriseDataPageImageResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEnterpriseDataPageImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEnterpriseDataPageImageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataPageImageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataPageImageResponse) SetHeaders(v map[string]*string) *GetEnterpriseDataPageImageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponse) SetStatusCode(v int32) *GetEnterpriseDataPageImageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataPageImageResponse) SetBody(v *GetEnterpriseDataPageImageResponseBody) *GetEnterpriseDataPageImageResponse {
-	s.Body = v
-	return s
-}
-
-type GetEnterpriseDataParseResultRequest struct {
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-}
-
-func (s GetEnterpriseDataParseResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataParseResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataParseResultRequest) SetAgentKey(v string) *GetEnterpriseDataParseResultRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *GetEnterpriseDataParseResultRequest) SetDataId(v string) *GetEnterpriseDataParseResultRequest {
-	s.DataId = &v
-	return s
-}
-
-type GetEnterpriseDataParseResultResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetEnterpriseDataParseResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataParseResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataParseResultResponseBody) SetData(v string) *GetEnterpriseDataParseResultResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetEnterpriseDataParseResultResponseBody) SetErrorCode(v string) *GetEnterpriseDataParseResultResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataParseResultResponseBody) SetErrorMsg(v string) *GetEnterpriseDataParseResultResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetEnterpriseDataParseResultResponseBody) SetRequestId(v string) *GetEnterpriseDataParseResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEnterpriseDataParseResultResponseBody) SetSuccess(v bool) *GetEnterpriseDataParseResultResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetEnterpriseDataParseResultResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEnterpriseDataParseResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEnterpriseDataParseResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnterpriseDataParseResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnterpriseDataParseResultResponse) SetHeaders(v map[string]*string) *GetEnterpriseDataParseResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEnterpriseDataParseResultResponse) SetStatusCode(v int32) *GetEnterpriseDataParseResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetEnterpriseDataParseResultResponse) SetBody(v *GetEnterpriseDataParseResultResponseBody) *GetEnterpriseDataParseResultResponse {
-	s.Body = v
-	return s
-}
-
 type GetFileStoreUploadPolicyRequest struct {
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
@@ -2038,169 +1706,6 @@ func (s *GetFileStoreUploadPolicyResponse) SetStatusCode(v int32) *GetFileStoreU
 }
 
 func (s *GetFileStoreUploadPolicyResponse) SetBody(v *GetFileStoreUploadPolicyResponseBody) *GetFileStoreUploadPolicyResponse {
-	s.Body = v
-	return s
-}
-
-type GetImportTaskResultRequest struct {
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetImportTaskResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImportTaskResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetImportTaskResultRequest) SetAgentKey(v string) *GetImportTaskResultRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *GetImportTaskResultRequest) SetTaskId(v string) *GetImportTaskResultRequest {
-	s.TaskId = &v
-	return s
-}
-
-type GetImportTaskResultResponseBody struct {
-	Data      *GetImportTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetImportTaskResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImportTaskResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetImportTaskResultResponseBody) SetData(v *GetImportTaskResultResponseBodyData) *GetImportTaskResultResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBody) SetErrorCode(v string) *GetImportTaskResultResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBody) SetErrorMsg(v string) *GetImportTaskResultResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBody) SetRequestId(v string) *GetImportTaskResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBody) SetSuccess(v bool) *GetImportTaskResultResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetImportTaskResultResponseBodyData struct {
-	Details        []*GetImportTaskResultResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	TaskId         *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus     *int32                                        `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusText *string                                       `json:"TaskStatusText,omitempty" xml:"TaskStatusText,omitempty"`
-}
-
-func (s GetImportTaskResultResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImportTaskResultResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetImportTaskResultResponseBodyData) SetDetails(v []*GetImportTaskResultResponseBodyDataDetails) *GetImportTaskResultResponseBodyData {
-	s.Details = v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBodyData) SetTaskId(v string) *GetImportTaskResultResponseBodyData {
-	s.TaskId = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBodyData) SetTaskStatus(v int32) *GetImportTaskResultResponseBodyData {
-	s.TaskStatus = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBodyData) SetTaskStatusText(v string) *GetImportTaskResultResponseBodyData {
-	s.TaskStatusText = &v
-	return s
-}
-
-type GetImportTaskResultResponseBodyDataDetails struct {
-	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	DataName *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetImportTaskResultResponseBodyDataDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImportTaskResultResponseBodyDataDetails) GoString() string {
-	return s.String()
-}
-
-func (s *GetImportTaskResultResponseBodyDataDetails) SetDataId(v string) *GetImportTaskResultResponseBodyDataDetails {
-	s.DataId = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBodyDataDetails) SetDataName(v string) *GetImportTaskResultResponseBodyDataDetails {
-	s.DataName = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBodyDataDetails) SetErrorMsg(v string) *GetImportTaskResultResponseBodyDataDetails {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponseBodyDataDetails) SetSuccess(v bool) *GetImportTaskResultResponseBodyDataDetails {
-	s.Success = &v
-	return s
-}
-
-type GetImportTaskResultResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetImportTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetImportTaskResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImportTaskResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetImportTaskResultResponse) SetHeaders(v map[string]*string) *GetImportTaskResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetImportTaskResultResponse) SetStatusCode(v int32) *GetImportTaskResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetImportTaskResultResponse) SetBody(v *GetImportTaskResultResponseBody) *GetImportTaskResultResponse {
 	s.Body = v
 	return s
 }
@@ -2508,211 +2013,6 @@ func (s *GetText2ImageJobResponse) SetBody(v *GetText2ImageJobResponseBody) *Get
 	return s
 }
 
-type ImportEnterpriseDocumentRequest struct {
-	AgentKey     *string                                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataType     *int32                                         `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	DocumentList []*ImportEnterpriseDocumentRequestDocumentList `json:"DocumentList,omitempty" xml:"DocumentList,omitempty" type:"Repeated"`
-	OwnerId      *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StoreId      *int64                                         `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
-	Tags         []*string                                      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-}
-
-func (s ImportEnterpriseDocumentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportEnterpriseDocumentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImportEnterpriseDocumentRequest) SetAgentKey(v string) *ImportEnterpriseDocumentRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequest) SetDataType(v int32) *ImportEnterpriseDocumentRequest {
-	s.DataType = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequest) SetDocumentList(v []*ImportEnterpriseDocumentRequestDocumentList) *ImportEnterpriseDocumentRequest {
-	s.DocumentList = v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequest) SetOwnerId(v int64) *ImportEnterpriseDocumentRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequest) SetStoreId(v int64) *ImportEnterpriseDocumentRequest {
-	s.StoreId = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequest) SetTags(v []*string) *ImportEnterpriseDocumentRequest {
-	s.Tags = v
-	return s
-}
-
-type ImportEnterpriseDocumentRequestDocumentList struct {
-	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	FileCanDownload *bool   `json:"FileCanDownload,omitempty" xml:"FileCanDownload,omitempty"`
-	FileLink        *string `json:"FileLink,omitempty" xml:"FileLink,omitempty"`
-	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FilePreviewLink *string `json:"FilePreviewLink,omitempty" xml:"FilePreviewLink,omitempty"`
-}
-
-func (s ImportEnterpriseDocumentRequestDocumentList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportEnterpriseDocumentRequestDocumentList) GoString() string {
-	return s.String()
-}
-
-func (s *ImportEnterpriseDocumentRequestDocumentList) SetBizId(v string) *ImportEnterpriseDocumentRequestDocumentList {
-	s.BizId = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequestDocumentList) SetFileCanDownload(v bool) *ImportEnterpriseDocumentRequestDocumentList {
-	s.FileCanDownload = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequestDocumentList) SetFileLink(v string) *ImportEnterpriseDocumentRequestDocumentList {
-	s.FileLink = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequestDocumentList) SetFileName(v string) *ImportEnterpriseDocumentRequestDocumentList {
-	s.FileName = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentRequestDocumentList) SetFilePreviewLink(v string) *ImportEnterpriseDocumentRequestDocumentList {
-	s.FilePreviewLink = &v
-	return s
-}
-
-type ImportEnterpriseDocumentShrinkRequest struct {
-	AgentKey           *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataType           *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	DocumentListShrink *string `json:"DocumentList,omitempty" xml:"DocumentList,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StoreId            *int64  `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-}
-
-func (s ImportEnterpriseDocumentShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportEnterpriseDocumentShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImportEnterpriseDocumentShrinkRequest) SetAgentKey(v string) *ImportEnterpriseDocumentShrinkRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentShrinkRequest) SetDataType(v int32) *ImportEnterpriseDocumentShrinkRequest {
-	s.DataType = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentShrinkRequest) SetDocumentListShrink(v string) *ImportEnterpriseDocumentShrinkRequest {
-	s.DocumentListShrink = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentShrinkRequest) SetOwnerId(v int64) *ImportEnterpriseDocumentShrinkRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentShrinkRequest) SetStoreId(v int64) *ImportEnterpriseDocumentShrinkRequest {
-	s.StoreId = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentShrinkRequest) SetTagsShrink(v string) *ImportEnterpriseDocumentShrinkRequest {
-	s.TagsShrink = &v
-	return s
-}
-
-type ImportEnterpriseDocumentResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ImportEnterpriseDocumentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportEnterpriseDocumentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ImportEnterpriseDocumentResponseBody) SetData(v string) *ImportEnterpriseDocumentResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentResponseBody) SetErrorCode(v string) *ImportEnterpriseDocumentResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentResponseBody) SetErrorMsg(v string) *ImportEnterpriseDocumentResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentResponseBody) SetRequestId(v string) *ImportEnterpriseDocumentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentResponseBody) SetSuccess(v bool) *ImportEnterpriseDocumentResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ImportEnterpriseDocumentResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImportEnterpriseDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ImportEnterpriseDocumentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportEnterpriseDocumentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImportEnterpriseDocumentResponse) SetHeaders(v map[string]*string) *ImportEnterpriseDocumentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentResponse) SetStatusCode(v int32) *ImportEnterpriseDocumentResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ImportEnterpriseDocumentResponse) SetBody(v *ImportEnterpriseDocumentResponseBody) *ImportEnterpriseDocumentResponse {
-	s.Body = v
-	return s
-}
-
 type ImportUserDocumentRequest struct {
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
@@ -2849,6 +2149,392 @@ func (s *ImportUserDocumentResponse) SetStatusCode(v int32) *ImportUserDocumentR
 }
 
 func (s *ImportUserDocumentResponse) SetBody(v *ImportUserDocumentResponseBody) *ImportUserDocumentResponse {
+	s.Body = v
+	return s
+}
+
+type ListDocsRequest struct {
+	AgentKey *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNo   *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StoreId  *string   `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
+	TagIds   []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+}
+
+func (s ListDocsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsRequest) SetAgentKey(v string) *ListDocsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetName(v string) *ListDocsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetPageNo(v int32) *ListDocsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetPageSize(v int32) *ListDocsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetStoreId(v string) *ListDocsRequest {
+	s.StoreId = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetTagIds(v []*string) *ListDocsRequest {
+	s.TagIds = v
+	return s
+}
+
+type ListDocsShrinkRequest struct {
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNo       *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StoreId      *string `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
+	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
+}
+
+func (s ListDocsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsShrinkRequest) SetAgentKey(v string) *ListDocsShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetName(v string) *ListDocsShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetPageNo(v int32) *ListDocsShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetPageSize(v int32) *ListDocsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetStoreId(v string) *ListDocsShrinkRequest {
+	s.StoreId = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetTagIdsShrink(v string) *ListDocsShrinkRequest {
+	s.TagIdsShrink = &v
+	return s
+}
+
+type ListDocsResponseBody struct {
+	Docs      []*ListDocsResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	PageNo    *int32                      `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total     *int32                      `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListDocsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsResponseBody) SetDocs(v []*ListDocsResponseBodyDocs) *ListDocsResponseBody {
+	s.Docs = v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetPageNo(v int32) *ListDocsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetPageSize(v int32) *ListDocsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetRequestId(v string) *ListDocsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetTotal(v int32) *ListDocsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListDocsResponseBodyDocs struct {
+	DocId      *string                         `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	FailReason *string                         `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	Name       *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId    *string                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Size       *string                         `json:"Size,omitempty" xml:"Size,omitempty"`
+	Status     *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags       []*ListDocsResponseBodyDocsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type       *string                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	UploadTime *string                         `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+}
+
+func (s ListDocsResponseBodyDocs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsResponseBodyDocs) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsResponseBodyDocs) SetDocId(v string) *ListDocsResponseBodyDocs {
+	s.DocId = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocs) SetFailReason(v string) *ListDocsResponseBodyDocs {
+	s.FailReason = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocs) SetName(v string) *ListDocsResponseBodyDocs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocs) SetOwnerId(v string) *ListDocsResponseBodyDocs {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocs) SetSize(v string) *ListDocsResponseBodyDocs {
+	s.Size = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocs) SetStatus(v string) *ListDocsResponseBodyDocs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocs) SetTags(v []*ListDocsResponseBodyDocsTags) *ListDocsResponseBodyDocs {
+	s.Tags = v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocs) SetType(v string) *ListDocsResponseBodyDocs {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocs) SetUploadTime(v string) *ListDocsResponseBodyDocs {
+	s.UploadTime = &v
+	return s
+}
+
+type ListDocsResponseBodyDocsTags struct {
+	TagId   *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s ListDocsResponseBodyDocsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsResponseBodyDocsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsResponseBodyDocsTags) SetTagId(v string) *ListDocsResponseBodyDocsTags {
+	s.TagId = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyDocsTags) SetTagName(v string) *ListDocsResponseBodyDocsTags {
+	s.TagName = &v
+	return s
+}
+
+type ListDocsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDocsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDocsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsResponse) SetHeaders(v map[string]*string) *ListDocsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDocsResponse) SetStatusCode(v int32) *ListDocsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDocsResponse) SetBody(v *ListDocsResponseBody) *ListDocsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDocumentTagsRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TagId    *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s ListDocumentTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentTagsRequest) SetAgentKey(v string) *ListDocumentTagsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListDocumentTagsRequest) SetName(v string) *ListDocumentTagsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDocumentTagsRequest) SetPageNo(v int32) *ListDocumentTagsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDocumentTagsRequest) SetPageSize(v int32) *ListDocumentTagsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDocumentTagsRequest) SetTagId(v string) *ListDocumentTagsRequest {
+	s.TagId = &v
+	return s
+}
+
+type ListDocumentTagsResponseBody struct {
+	PageNo    *int32                                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagList   []*ListDocumentTagsResponseBodyTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	Total     *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListDocumentTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentTagsResponseBody) SetPageNo(v int32) *ListDocumentTagsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDocumentTagsResponseBody) SetPageSize(v int32) *ListDocumentTagsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDocumentTagsResponseBody) SetRequestId(v string) *ListDocumentTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDocumentTagsResponseBody) SetTagList(v []*ListDocumentTagsResponseBodyTagList) *ListDocumentTagsResponseBody {
+	s.TagList = v
+	return s
+}
+
+func (s *ListDocumentTagsResponseBody) SetTotal(v int32) *ListDocumentTagsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListDocumentTagsResponseBodyTagList struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s ListDocumentTagsResponseBodyTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentTagsResponseBodyTagList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentTagsResponseBodyTagList) SetName(v string) *ListDocumentTagsResponseBodyTagList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDocumentTagsResponseBodyTagList) SetTagId(v string) *ListDocumentTagsResponseBodyTagList {
+	s.TagId = &v
+	return s
+}
+
+type ListDocumentTagsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDocumentTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDocumentTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentTagsResponse) SetHeaders(v map[string]*string) *ListDocumentTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDocumentTagsResponse) SetStatusCode(v int32) *ListDocumentTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDocumentTagsResponse) SetBody(v *ListDocumentTagsResponseBody) *ListDocumentTagsResponse {
 	s.Body = v
 	return s
 }
@@ -3186,561 +2872,6 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 	return s
 }
 
-type QueryEnterpriseDataListRequest struct {
-	AgentKey  *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataName  *string   `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	PageNo    *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StoreType *string   `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
-	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-}
-
-func (s QueryEnterpriseDataListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataListRequest) SetAgentKey(v string) *QueryEnterpriseDataListRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListRequest) SetDataName(v string) *QueryEnterpriseDataListRequest {
-	s.DataName = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListRequest) SetPageNo(v int32) *QueryEnterpriseDataListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListRequest) SetPageSize(v int32) *QueryEnterpriseDataListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListRequest) SetStoreType(v string) *QueryEnterpriseDataListRequest {
-	s.StoreType = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListRequest) SetTags(v []*string) *QueryEnterpriseDataListRequest {
-	s.Tags = v
-	return s
-}
-
-type QueryEnterpriseDataListShrinkRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataName   *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StoreType  *string `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
-	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-}
-
-func (s QueryEnterpriseDataListShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataListShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataListShrinkRequest) SetAgentKey(v string) *QueryEnterpriseDataListShrinkRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListShrinkRequest) SetDataName(v string) *QueryEnterpriseDataListShrinkRequest {
-	s.DataName = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListShrinkRequest) SetPageNo(v int32) *QueryEnterpriseDataListShrinkRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListShrinkRequest) SetPageSize(v int32) *QueryEnterpriseDataListShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListShrinkRequest) SetStoreType(v string) *QueryEnterpriseDataListShrinkRequest {
-	s.StoreType = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListShrinkRequest) SetTagsShrink(v string) *QueryEnterpriseDataListShrinkRequest {
-	s.TagsShrink = &v
-	return s
-}
-
-type QueryEnterpriseDataListResponseBody struct {
-	Data      *QueryEnterpriseDataListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                                  `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryEnterpriseDataListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataListResponseBody) SetData(v *QueryEnterpriseDataListResponseBodyData) *QueryEnterpriseDataListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBody) SetErrorCode(v string) *QueryEnterpriseDataListResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBody) SetErrorMsg(v string) *QueryEnterpriseDataListResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBody) SetRequestId(v string) *QueryEnterpriseDataListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBody) SetSuccess(v bool) *QueryEnterpriseDataListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryEnterpriseDataListResponseBodyData struct {
-	List     []*QueryEnterpriseDataListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo   *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s QueryEnterpriseDataListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataListResponseBodyData) SetList(v []*QueryEnterpriseDataListResponseBodyDataList) *QueryEnterpriseDataListResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyData) SetPageNo(v int32) *QueryEnterpriseDataListResponseBodyData {
-	s.PageNo = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyData) SetPageSize(v int32) *QueryEnterpriseDataListResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyData) SetTotal(v int64) *QueryEnterpriseDataListResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type QueryEnterpriseDataListResponseBodyDataList struct {
-	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	DataName       *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	DataSize       *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	DataStatus     *string `json:"DataStatus,omitempty" xml:"DataStatus,omitempty"`
-	DataStatusCode *int32  `json:"DataStatusCode,omitempty" xml:"DataStatusCode,omitempty"`
-	DataType       *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	DataTypeCode   *int32  `json:"DataTypeCode,omitempty" xml:"DataTypeCode,omitempty"`
-	StatusDetail   *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	StoreType      *string `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
-	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UploadTime     *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
-}
-
-func (s QueryEnterpriseDataListResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataListResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataId(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.DataId = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataName(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.DataName = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataSize(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.DataSize = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataStatus(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.DataStatus = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataStatusCode(v int32) *QueryEnterpriseDataListResponseBodyDataList {
-	s.DataStatusCode = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataType(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.DataType = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataTypeCode(v int32) *QueryEnterpriseDataListResponseBodyDataList {
-	s.DataTypeCode = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetStatusDetail(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.StatusDetail = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetStoreType(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.StoreType = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetTags(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.Tags = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponseBodyDataList) SetUploadTime(v string) *QueryEnterpriseDataListResponseBodyDataList {
-	s.UploadTime = &v
-	return s
-}
-
-type QueryEnterpriseDataListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryEnterpriseDataListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryEnterpriseDataListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataListResponse) SetHeaders(v map[string]*string) *QueryEnterpriseDataListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponse) SetStatusCode(v int32) *QueryEnterpriseDataListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataListResponse) SetBody(v *QueryEnterpriseDataListResponseBody) *QueryEnterpriseDataListResponse {
-	s.Body = v
-	return s
-}
-
-type QueryEnterpriseDataTagRequest struct {
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-}
-
-func (s QueryEnterpriseDataTagRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataTagRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataTagRequest) SetAgentKey(v string) *QueryEnterpriseDataTagRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagRequest) SetDataId(v string) *QueryEnterpriseDataTagRequest {
-	s.DataId = &v
-	return s
-}
-
-type QueryEnterpriseDataTagResponseBody struct {
-	Data      []*QueryEnterpriseDataTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                                   `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryEnterpriseDataTagResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataTagResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataTagResponseBody) SetData(v []*QueryEnterpriseDataTagResponseBodyData) *QueryEnterpriseDataTagResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagResponseBody) SetErrorCode(v string) *QueryEnterpriseDataTagResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagResponseBody) SetErrorMsg(v string) *QueryEnterpriseDataTagResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagResponseBody) SetRequestId(v string) *QueryEnterpriseDataTagResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagResponseBody) SetSuccess(v bool) *QueryEnterpriseDataTagResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryEnterpriseDataTagResponseBodyData struct {
-	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	TagId   *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-}
-
-func (s QueryEnterpriseDataTagResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataTagResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataTagResponseBodyData) SetDataId(v string) *QueryEnterpriseDataTagResponseBodyData {
-	s.DataId = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagResponseBodyData) SetTagId(v int64) *QueryEnterpriseDataTagResponseBodyData {
-	s.TagId = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagResponseBodyData) SetTagName(v string) *QueryEnterpriseDataTagResponseBodyData {
-	s.TagName = &v
-	return s
-}
-
-type QueryEnterpriseDataTagResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryEnterpriseDataTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryEnterpriseDataTagResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseDataTagResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseDataTagResponse) SetHeaders(v map[string]*string) *QueryEnterpriseDataTagResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagResponse) SetStatusCode(v int32) *QueryEnterpriseDataTagResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryEnterpriseDataTagResponse) SetBody(v *QueryEnterpriseDataTagResponseBody) *QueryEnterpriseDataTagResponse {
-	s.Body = v
-	return s
-}
-
-type QueryEnterpriseTagListRequest struct {
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s QueryEnterpriseTagListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseTagListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseTagListRequest) SetAgentKey(v string) *QueryEnterpriseTagListRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListRequest) SetPageNo(v int32) *QueryEnterpriseTagListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListRequest) SetPageSize(v int32) *QueryEnterpriseTagListRequest {
-	s.PageSize = &v
-	return s
-}
-
-type QueryEnterpriseTagListResponseBody struct {
-	Data      *QueryEnterpriseTagListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryEnterpriseTagListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseTagListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseTagListResponseBody) SetData(v *QueryEnterpriseTagListResponseBodyData) *QueryEnterpriseTagListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponseBody) SetErrorCode(v string) *QueryEnterpriseTagListResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponseBody) SetErrorMsg(v string) *QueryEnterpriseTagListResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponseBody) SetRequestId(v string) *QueryEnterpriseTagListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponseBody) SetSuccess(v bool) *QueryEnterpriseTagListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryEnterpriseTagListResponseBodyData struct {
-	List     []*QueryEnterpriseTagListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo   *int32                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                        `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s QueryEnterpriseTagListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseTagListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseTagListResponseBodyData) SetList(v []*QueryEnterpriseTagListResponseBodyDataList) *QueryEnterpriseTagListResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponseBodyData) SetPageNo(v int32) *QueryEnterpriseTagListResponseBodyData {
-	s.PageNo = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponseBodyData) SetPageSize(v int32) *QueryEnterpriseTagListResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponseBodyData) SetTotal(v int64) *QueryEnterpriseTagListResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type QueryEnterpriseTagListResponseBodyDataList struct {
-	TagId   *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-}
-
-func (s QueryEnterpriseTagListResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseTagListResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseTagListResponseBodyDataList) SetTagId(v int64) *QueryEnterpriseTagListResponseBodyDataList {
-	s.TagId = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponseBodyDataList) SetTagName(v string) *QueryEnterpriseTagListResponseBodyDataList {
-	s.TagName = &v
-	return s
-}
-
-type QueryEnterpriseTagListResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryEnterpriseTagListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryEnterpriseTagListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEnterpriseTagListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEnterpriseTagListResponse) SetHeaders(v map[string]*string) *QueryEnterpriseTagListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponse) SetStatusCode(v int32) *QueryEnterpriseTagListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryEnterpriseTagListResponse) SetBody(v *QueryEnterpriseTagListResponseBody) *QueryEnterpriseTagListResponse {
-	s.Body = v
-	return s
-}
-
 type QueryUserDocumentRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
@@ -3863,232 +2994,124 @@ func (s *QueryUserDocumentResponse) SetBody(v *QueryUserDocumentResponseBody) *Q
 	return s
 }
 
-type SearchEnterpriseDataRequest struct {
-	AgentKey   *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataIdList []*string `json:"DataIdList,omitempty" xml:"DataIdList,omitempty" type:"Repeated"`
-	EnableRank *bool     `json:"EnableRank,omitempty" xml:"EnableRank,omitempty"`
-	OwnerId    *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Query      *string   `json:"Query,omitempty" xml:"Query,omitempty"`
-	StoreId    *int64    `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
-	TagIdList  []*int64  `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
+type SubmitDocumentImportJobRequest struct {
+	AgentKey *string                               `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Docs     []*SubmitDocumentImportJobRequestDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
 }
 
-func (s SearchEnterpriseDataRequest) String() string {
+func (s SubmitDocumentImportJobRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SearchEnterpriseDataRequest) GoString() string {
+func (s SubmitDocumentImportJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SearchEnterpriseDataRequest) SetAgentKey(v string) *SearchEnterpriseDataRequest {
+func (s *SubmitDocumentImportJobRequest) SetAgentKey(v string) *SubmitDocumentImportJobRequest {
 	s.AgentKey = &v
 	return s
 }
 
-func (s *SearchEnterpriseDataRequest) SetDataIdList(v []*string) *SearchEnterpriseDataRequest {
-	s.DataIdList = v
+func (s *SubmitDocumentImportJobRequest) SetDocs(v []*SubmitDocumentImportJobRequestDocs) *SubmitDocumentImportJobRequest {
+	s.Docs = v
 	return s
 }
 
-func (s *SearchEnterpriseDataRequest) SetEnableRank(v bool) *SearchEnterpriseDataRequest {
-	s.EnableRank = &v
-	return s
+type SubmitDocumentImportJobRequestDocs struct {
+	Name    *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *string   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StoreId *string   `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
+	TagIds  []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	Type    *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	URL     *string   `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
-func (s *SearchEnterpriseDataRequest) SetOwnerId(v int64) *SearchEnterpriseDataRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataRequest) SetQuery(v string) *SearchEnterpriseDataRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataRequest) SetStoreId(v int64) *SearchEnterpriseDataRequest {
-	s.StoreId = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataRequest) SetTagIdList(v []*int64) *SearchEnterpriseDataRequest {
-	s.TagIdList = v
-	return s
-}
-
-type SearchEnterpriseDataShrinkRequest struct {
-	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataIdListShrink *string `json:"DataIdList,omitempty" xml:"DataIdList,omitempty"`
-	EnableRank       *bool   `json:"EnableRank,omitempty" xml:"EnableRank,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	StoreId          *int64  `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
-	TagIdListShrink  *string `json:"TagIdList,omitempty" xml:"TagIdList,omitempty"`
-}
-
-func (s SearchEnterpriseDataShrinkRequest) String() string {
+func (s SubmitDocumentImportJobRequestDocs) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SearchEnterpriseDataShrinkRequest) GoString() string {
+func (s SubmitDocumentImportJobRequestDocs) GoString() string {
 	return s.String()
 }
 
-func (s *SearchEnterpriseDataShrinkRequest) SetAgentKey(v string) *SearchEnterpriseDataShrinkRequest {
-	s.AgentKey = &v
+func (s *SubmitDocumentImportJobRequestDocs) SetName(v string) *SubmitDocumentImportJobRequestDocs {
+	s.Name = &v
 	return s
 }
 
-func (s *SearchEnterpriseDataShrinkRequest) SetDataIdListShrink(v string) *SearchEnterpriseDataShrinkRequest {
-	s.DataIdListShrink = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataShrinkRequest) SetEnableRank(v bool) *SearchEnterpriseDataShrinkRequest {
-	s.EnableRank = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataShrinkRequest) SetOwnerId(v int64) *SearchEnterpriseDataShrinkRequest {
+func (s *SubmitDocumentImportJobRequestDocs) SetOwnerId(v string) *SubmitDocumentImportJobRequestDocs {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *SearchEnterpriseDataShrinkRequest) SetQuery(v string) *SearchEnterpriseDataShrinkRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataShrinkRequest) SetStoreId(v int64) *SearchEnterpriseDataShrinkRequest {
+func (s *SubmitDocumentImportJobRequestDocs) SetStoreId(v string) *SubmitDocumentImportJobRequestDocs {
 	s.StoreId = &v
 	return s
 }
 
-func (s *SearchEnterpriseDataShrinkRequest) SetTagIdListShrink(v string) *SearchEnterpriseDataShrinkRequest {
-	s.TagIdListShrink = &v
+func (s *SubmitDocumentImportJobRequestDocs) SetTagIds(v []*string) *SubmitDocumentImportJobRequestDocs {
+	s.TagIds = v
 	return s
 }
 
-type SearchEnterpriseDataResponseBody struct {
-	Data      []*SearchEnterpriseDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Id of the request
+func (s *SubmitDocumentImportJobRequestDocs) SetType(v string) *SubmitDocumentImportJobRequestDocs {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitDocumentImportJobRequestDocs) SetURL(v string) *SubmitDocumentImportJobRequestDocs {
+	s.URL = &v
+	return s
+}
+
+type SubmitDocumentImportJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
-func (s SearchEnterpriseDataResponseBody) String() string {
+func (s SubmitDocumentImportJobResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SearchEnterpriseDataResponseBody) GoString() string {
+func (s SubmitDocumentImportJobResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SearchEnterpriseDataResponseBody) SetData(v []*SearchEnterpriseDataResponseBodyData) *SearchEnterpriseDataResponseBody {
-	s.Data = v
+func (s *SubmitDocumentImportJobResponseBody) SetJobId(v string) *SubmitDocumentImportJobResponseBody {
+	s.JobId = &v
 	return s
 }
 
-func (s *SearchEnterpriseDataResponseBody) SetErrorCode(v string) *SearchEnterpriseDataResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataResponseBody) SetErrorMsg(v string) *SearchEnterpriseDataResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataResponseBody) SetRequestId(v string) *SearchEnterpriseDataResponseBody {
+func (s *SubmitDocumentImportJobResponseBody) SetRequestId(v string) *SubmitDocumentImportJobResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *SearchEnterpriseDataResponseBody) SetSuccess(v bool) *SearchEnterpriseDataResponseBody {
-	s.Success = &v
-	return s
+type SubmitDocumentImportJobResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitDocumentImportJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type SearchEnterpriseDataResponseBodyData struct {
-	DataId    *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	DataName  *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	TitlePath *string `json:"TitlePath,omitempty" xml:"TitlePath,omitempty"`
-}
-
-func (s SearchEnterpriseDataResponseBodyData) String() string {
+func (s SubmitDocumentImportJobResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SearchEnterpriseDataResponseBodyData) GoString() string {
+func (s SubmitDocumentImportJobResponse) GoString() string {
 	return s.String()
 }
 
-func (s *SearchEnterpriseDataResponseBodyData) SetDataId(v string) *SearchEnterpriseDataResponseBodyData {
-	s.DataId = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataResponseBodyData) SetDataName(v string) *SearchEnterpriseDataResponseBodyData {
-	s.DataName = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataResponseBodyData) SetScore(v string) *SearchEnterpriseDataResponseBodyData {
-	s.Score = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataResponseBodyData) SetSource(v string) *SearchEnterpriseDataResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataResponseBodyData) SetText(v string) *SearchEnterpriseDataResponseBodyData {
-	s.Text = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataResponseBodyData) SetTitle(v string) *SearchEnterpriseDataResponseBodyData {
-	s.Title = &v
-	return s
-}
-
-func (s *SearchEnterpriseDataResponseBodyData) SetTitlePath(v string) *SearchEnterpriseDataResponseBodyData {
-	s.TitlePath = &v
-	return s
-}
-
-type SearchEnterpriseDataResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchEnterpriseDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchEnterpriseDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchEnterpriseDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SearchEnterpriseDataResponse) SetHeaders(v map[string]*string) *SearchEnterpriseDataResponse {
+func (s *SubmitDocumentImportJobResponse) SetHeaders(v map[string]*string) *SubmitDocumentImportJobResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *SearchEnterpriseDataResponse) SetStatusCode(v int32) *SearchEnterpriseDataResponse {
+func (s *SubmitDocumentImportJobResponse) SetStatusCode(v int32) *SubmitDocumentImportJobResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *SearchEnterpriseDataResponse) SetBody(v *SearchEnterpriseDataResponseBody) *SearchEnterpriseDataResponse {
+func (s *SubmitDocumentImportJobResponse) SetBody(v *SubmitDocumentImportJobResponseBody) *SubmitDocumentImportJobResponse {
 	s.Body = v
 	return s
 }
@@ -4210,363 +3233,217 @@ func (s *SubmitText2ImageJobResponse) SetBody(v *SubmitText2ImageJobResponseBody
 	return s
 }
 
-type UpdateEnterpriseDataInfoRequest struct {
-	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	DataId          *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	DataName        *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	FilePreviewLink *string `json:"FilePreviewLink,omitempty" xml:"FilePreviewLink,omitempty"`
+type UpdateDocAttributeRequest struct {
+	AgentKey   *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DelAllTags *bool     `json:"DelAllTags,omitempty" xml:"DelAllTags,omitempty"`
+	DocId      *string   `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	TagIds     []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
-func (s UpdateEnterpriseDataInfoRequest) String() string {
+func (s UpdateDocAttributeRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateEnterpriseDataInfoRequest) GoString() string {
+func (s UpdateDocAttributeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEnterpriseDataInfoRequest) SetAgentKey(v string) *UpdateEnterpriseDataInfoRequest {
+func (s *UpdateDocAttributeRequest) SetAgentKey(v string) *UpdateDocAttributeRequest {
 	s.AgentKey = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoRequest) SetBizId(v string) *UpdateEnterpriseDataInfoRequest {
-	s.BizId = &v
+func (s *UpdateDocAttributeRequest) SetDelAllTags(v bool) *UpdateDocAttributeRequest {
+	s.DelAllTags = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoRequest) SetDataId(v string) *UpdateEnterpriseDataInfoRequest {
-	s.DataId = &v
+func (s *UpdateDocAttributeRequest) SetDocId(v string) *UpdateDocAttributeRequest {
+	s.DocId = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoRequest) SetDataName(v string) *UpdateEnterpriseDataInfoRequest {
-	s.DataName = &v
+func (s *UpdateDocAttributeRequest) SetName(v string) *UpdateDocAttributeRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoRequest) SetFilePreviewLink(v string) *UpdateEnterpriseDataInfoRequest {
-	s.FilePreviewLink = &v
+func (s *UpdateDocAttributeRequest) SetTagIds(v []*string) *UpdateDocAttributeRequest {
+	s.TagIds = v
 	return s
 }
 
-type UpdateEnterpriseDataInfoResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+type UpdateDocAttributeShrinkRequest struct {
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DelAllTags   *bool   `json:"DelAllTags,omitempty" xml:"DelAllTags,omitempty"`
+	DocId        *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
 }
 
-func (s UpdateEnterpriseDataInfoResponseBody) String() string {
+func (s UpdateDocAttributeShrinkRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateEnterpriseDataInfoResponseBody) GoString() string {
+func (s UpdateDocAttributeShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEnterpriseDataInfoResponseBody) SetData(v bool) *UpdateEnterpriseDataInfoResponseBody {
-	s.Data = &v
+func (s *UpdateDocAttributeShrinkRequest) SetAgentKey(v string) *UpdateDocAttributeShrinkRequest {
+	s.AgentKey = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoResponseBody) SetErrorCode(v string) *UpdateEnterpriseDataInfoResponseBody {
-	s.ErrorCode = &v
+func (s *UpdateDocAttributeShrinkRequest) SetDelAllTags(v bool) *UpdateDocAttributeShrinkRequest {
+	s.DelAllTags = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoResponseBody) SetErrorMsg(v string) *UpdateEnterpriseDataInfoResponseBody {
-	s.ErrorMsg = &v
+func (s *UpdateDocAttributeShrinkRequest) SetDocId(v string) *UpdateDocAttributeShrinkRequest {
+	s.DocId = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoResponseBody) SetRequestId(v string) *UpdateEnterpriseDataInfoResponseBody {
+func (s *UpdateDocAttributeShrinkRequest) SetName(v string) *UpdateDocAttributeShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDocAttributeShrinkRequest) SetTagIdsShrink(v string) *UpdateDocAttributeShrinkRequest {
+	s.TagIdsShrink = &v
+	return s
+}
+
+type UpdateDocAttributeResponseBody struct {
+	DocId     *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDocAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocAttributeResponseBody) SetDocId(v string) *UpdateDocAttributeResponseBody {
+	s.DocId = &v
+	return s
+}
+
+func (s *UpdateDocAttributeResponseBody) SetRequestId(v string) *UpdateDocAttributeResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoResponseBody) SetSuccess(v bool) *UpdateEnterpriseDataInfoResponseBody {
-	s.Success = &v
-	return s
+type UpdateDocAttributeResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDocAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type UpdateEnterpriseDataInfoResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateEnterpriseDataInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateEnterpriseDataInfoResponse) String() string {
+func (s UpdateDocAttributeResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateEnterpriseDataInfoResponse) GoString() string {
+func (s UpdateDocAttributeResponse) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEnterpriseDataInfoResponse) SetHeaders(v map[string]*string) *UpdateEnterpriseDataInfoResponse {
+func (s *UpdateDocAttributeResponse) SetHeaders(v map[string]*string) *UpdateDocAttributeResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoResponse) SetStatusCode(v int32) *UpdateEnterpriseDataInfoResponse {
+func (s *UpdateDocAttributeResponse) SetStatusCode(v int32) *UpdateDocAttributeResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *UpdateEnterpriseDataInfoResponse) SetBody(v *UpdateEnterpriseDataInfoResponseBody) *UpdateEnterpriseDataInfoResponse {
+func (s *UpdateDocAttributeResponse) SetBody(v *UpdateDocAttributeResponseBody) *UpdateDocAttributeResponse {
 	s.Body = v
 	return s
 }
 
-type UpdateEnterpriseDataTagRequest struct {
-	AgentKey *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataId   *string  `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Tags     []*int64 `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-}
-
-func (s UpdateEnterpriseDataTagRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEnterpriseDataTagRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEnterpriseDataTagRequest) SetAgentKey(v string) *UpdateEnterpriseDataTagRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagRequest) SetDataId(v string) *UpdateEnterpriseDataTagRequest {
-	s.DataId = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagRequest) SetTags(v []*int64) *UpdateEnterpriseDataTagRequest {
-	s.Tags = v
-	return s
-}
-
-type UpdateEnterpriseDataTagShrinkRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DataId     *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-}
-
-func (s UpdateEnterpriseDataTagShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEnterpriseDataTagShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEnterpriseDataTagShrinkRequest) SetAgentKey(v string) *UpdateEnterpriseDataTagShrinkRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagShrinkRequest) SetDataId(v string) *UpdateEnterpriseDataTagShrinkRequest {
-	s.DataId = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagShrinkRequest) SetTagsShrink(v string) *UpdateEnterpriseDataTagShrinkRequest {
-	s.TagsShrink = &v
-	return s
-}
-
-type UpdateEnterpriseDataTagResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateEnterpriseDataTagResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEnterpriseDataTagResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEnterpriseDataTagResponseBody) SetData(v bool) *UpdateEnterpriseDataTagResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagResponseBody) SetErrorCode(v string) *UpdateEnterpriseDataTagResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagResponseBody) SetErrorMsg(v string) *UpdateEnterpriseDataTagResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagResponseBody) SetRequestId(v string) *UpdateEnterpriseDataTagResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagResponseBody) SetSuccess(v bool) *UpdateEnterpriseDataTagResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateEnterpriseDataTagResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateEnterpriseDataTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateEnterpriseDataTagResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEnterpriseDataTagResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEnterpriseDataTagResponse) SetHeaders(v map[string]*string) *UpdateEnterpriseDataTagResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagResponse) SetStatusCode(v int32) *UpdateEnterpriseDataTagResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateEnterpriseDataTagResponse) SetBody(v *UpdateEnterpriseDataTagResponseBody) *UpdateEnterpriseDataTagResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateEnterpriseTagRequest struct {
+type UpdateDocumentTagRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	TagId    *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TagId    *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
-func (s UpdateEnterpriseTagRequest) String() string {
+func (s UpdateDocumentTagRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateEnterpriseTagRequest) GoString() string {
+func (s UpdateDocumentTagRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEnterpriseTagRequest) SetAgentKey(v string) *UpdateEnterpriseTagRequest {
+func (s *UpdateDocumentTagRequest) SetAgentKey(v string) *UpdateDocumentTagRequest {
 	s.AgentKey = &v
 	return s
 }
 
-func (s *UpdateEnterpriseTagRequest) SetTagId(v int64) *UpdateEnterpriseTagRequest {
+func (s *UpdateDocumentTagRequest) SetName(v string) *UpdateDocumentTagRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDocumentTagRequest) SetTagId(v string) *UpdateDocumentTagRequest {
 	s.TagId = &v
 	return s
 }
 
-func (s *UpdateEnterpriseTagRequest) SetTagName(v string) *UpdateEnterpriseTagRequest {
-	s.TagName = &v
-	return s
+type UpdateDocumentTagResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagId     *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
-type UpdateEnterpriseTagResponseBody struct {
-	Data      *UpdateEnterpriseTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateEnterpriseTagResponseBody) String() string {
+func (s UpdateDocumentTagResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateEnterpriseTagResponseBody) GoString() string {
+func (s UpdateDocumentTagResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEnterpriseTagResponseBody) SetData(v *UpdateEnterpriseTagResponseBodyData) *UpdateEnterpriseTagResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *UpdateEnterpriseTagResponseBody) SetErrorCode(v string) *UpdateEnterpriseTagResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateEnterpriseTagResponseBody) SetErrorMsg(v string) *UpdateEnterpriseTagResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *UpdateEnterpriseTagResponseBody) SetRequestId(v string) *UpdateEnterpriseTagResponseBody {
+func (s *UpdateDocumentTagResponseBody) SetRequestId(v string) *UpdateDocumentTagResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *UpdateEnterpriseTagResponseBody) SetSuccess(v bool) *UpdateEnterpriseTagResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateEnterpriseTagResponseBodyData struct {
-	TagId   *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-}
-
-func (s UpdateEnterpriseTagResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEnterpriseTagResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEnterpriseTagResponseBodyData) SetTagId(v int64) *UpdateEnterpriseTagResponseBodyData {
+func (s *UpdateDocumentTagResponseBody) SetTagId(v string) *UpdateDocumentTagResponseBody {
 	s.TagId = &v
 	return s
 }
 
-func (s *UpdateEnterpriseTagResponseBodyData) SetTagName(v string) *UpdateEnterpriseTagResponseBodyData {
-	s.TagName = &v
-	return s
+type UpdateDocumentTagResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type UpdateEnterpriseTagResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateEnterpriseTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateEnterpriseTagResponse) String() string {
+func (s UpdateDocumentTagResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateEnterpriseTagResponse) GoString() string {
+func (s UpdateDocumentTagResponse) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEnterpriseTagResponse) SetHeaders(v map[string]*string) *UpdateEnterpriseTagResponse {
+func (s *UpdateDocumentTagResponse) SetHeaders(v map[string]*string) *UpdateDocumentTagResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *UpdateEnterpriseTagResponse) SetStatusCode(v int32) *UpdateEnterpriseTagResponse {
+func (s *UpdateDocumentTagResponse) SetStatusCode(v int32) *UpdateDocumentTagResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *UpdateEnterpriseTagResponse) SetBody(v *UpdateEnterpriseTagResponseBody) *UpdateEnterpriseTagResponse {
+func (s *UpdateDocumentTagResponse) SetBody(v *UpdateDocumentTagResponseBody) *UpdateDocumentTagResponse {
 	s.Body = v
 	return s
 }
@@ -4618,54 +3495,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddEnterpriseTagWithOptions(request *AddEnterpriseTagRequest, runtime *util.RuntimeOptions) (_result *AddEnterpriseTagResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagName)) {
-		query["TagName"] = request.TagName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddEnterpriseTag"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddEnterpriseTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddEnterpriseTag(request *AddEnterpriseTagRequest) (_result *AddEnterpriseTagResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddEnterpriseTagResponse{}
-	_body, _err := client.AddEnterpriseTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CancelFineTuneJobWithOptions(request *CancelFineTuneJobRequest, runtime *util.RuntimeOptions) (_result *CancelFineTuneJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4709,6 +3538,54 @@ func (client *Client) CancelFineTuneJob(request *CancelFineTuneJobRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelFineTuneJobResponse{}
 	_body, _err := client.CancelFineTuneJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDocumentTagWithOptions(request *CreateDocumentTagRequest, runtime *util.RuntimeOptions) (_result *CreateDocumentTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDocumentTag"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDocumentTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDocumentTag(request *CreateDocumentTagRequest) (_result *CreateDocumentTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDocumentTagResponse{}
+	_body, _err := client.CreateDocumentTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4952,7 +3829,55 @@ func (client *Client) CreateToken(request *CreateTokenRequest) (_result *CreateT
 	return _result, _err
 }
 
-func (client *Client) DelEnterpriseTagWithOptions(request *DelEnterpriseTagRequest, runtime *util.RuntimeOptions) (_result *DelEnterpriseTagResponse, _err error) {
+func (client *Client) DeleteDocWithOptions(request *DeleteDocRequest, runtime *util.RuntimeOptions) (_result *DeleteDocResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		query["DocId"] = request.DocId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDoc"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDoc(request *DeleteDocRequest) (_result *DeleteDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDocResponse{}
+	_body, _err := client.DeleteDocWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDocumentTagWithOptions(request *DeleteDocumentTagRequest, runtime *util.RuntimeOptions) (_result *DeleteDocumentTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -4970,7 +3895,7 @@ func (client *Client) DelEnterpriseTagWithOptions(request *DelEnterpriseTagReque
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DelEnterpriseTag"),
+		Action:      tea.String("DeleteDocumentTag"),
 		Version:     tea.String("2023-06-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -4980,7 +3905,7 @@ func (client *Client) DelEnterpriseTagWithOptions(request *DelEnterpriseTagReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DelEnterpriseTagResponse{}
+	_result = &DeleteDocumentTagResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4989,58 +3914,10 @@ func (client *Client) DelEnterpriseTagWithOptions(request *DelEnterpriseTagReque
 	return _result, _err
 }
 
-func (client *Client) DelEnterpriseTag(request *DelEnterpriseTagRequest) (_result *DelEnterpriseTagResponse, _err error) {
+func (client *Client) DeleteDocumentTag(request *DeleteDocumentTagRequest) (_result *DeleteDocumentTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DelEnterpriseTagResponse{}
-	_body, _err := client.DelEnterpriseTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteEnterpriseDataWithOptions(request *DeleteEnterpriseDataRequest, runtime *util.RuntimeOptions) (_result *DeleteEnterpriseDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		query["DataId"] = request.DataId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteEnterpriseData"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteEnterpriseDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteEnterpriseData(request *DeleteEnterpriseDataRequest) (_result *DeleteEnterpriseDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteEnterpriseDataResponse{}
-	_body, _err := client.DeleteEnterpriseDataWithOptions(request, runtime)
+	_result = &DeleteDocumentTagResponse{}
+	_body, _err := client.DeleteDocumentTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5148,6 +4025,102 @@ func (client *Client) DeleteService(request *DeleteServiceRequest) (_result *Del
 	return _result, _err
 }
 
+func (client *Client) DescribeDocWithOptions(request *DescribeDocRequest, runtime *util.RuntimeOptions) (_result *DescribeDocResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		query["DocId"] = request.DocId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDoc"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDoc(request *DescribeDocRequest) (_result *DescribeDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDocResponse{}
+	_body, _err := client.DescribeDocWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDocumentImportJobWithOptions(request *DescribeDocumentImportJobRequest, runtime *util.RuntimeOptions) (_result *DescribeDocumentImportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDocumentImportJob"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDocumentImportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDocumentImportJob(request *DescribeDocumentImportJobRequest) (_result *DescribeDocumentImportJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDocumentImportJobResponse{}
+	_body, _err := client.DescribeDocumentImportJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeFineTuneJobWithOptions(request *DescribeFineTuneJobRequest, runtime *util.RuntimeOptions) (_result *DescribeFineTuneJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5248,202 +4221,6 @@ func (client *Client) DescribeService(request *DescribeServiceRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) GetEnterpriseDataByDataIdWithOptions(request *GetEnterpriseDataByDataIdRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDataByDataIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		query["DataId"] = request.DataId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEnterpriseDataByDataId"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetEnterpriseDataByDataIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEnterpriseDataByDataId(request *GetEnterpriseDataByDataIdRequest) (_result *GetEnterpriseDataByDataIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEnterpriseDataByDataIdResponse{}
-	_body, _err := client.GetEnterpriseDataByDataIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEnterpriseDataChunkWithOptions(request *GetEnterpriseDataChunkRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDataChunkResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		query["DataId"] = request.DataId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEnterpriseDataChunk"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetEnterpriseDataChunkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEnterpriseDataChunk(request *GetEnterpriseDataChunkRequest) (_result *GetEnterpriseDataChunkResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEnterpriseDataChunkResponse{}
-	_body, _err := client.GetEnterpriseDataChunkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEnterpriseDataPageImageWithOptions(request *GetEnterpriseDataPageImageRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDataPageImageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		query["DataId"] = request.DataId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEnterpriseDataPageImage"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetEnterpriseDataPageImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEnterpriseDataPageImage(request *GetEnterpriseDataPageImageRequest) (_result *GetEnterpriseDataPageImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEnterpriseDataPageImageResponse{}
-	_body, _err := client.GetEnterpriseDataPageImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEnterpriseDataParseResultWithOptions(request *GetEnterpriseDataParseResultRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDataParseResultResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		query["DataId"] = request.DataId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEnterpriseDataParseResult"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetEnterpriseDataParseResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEnterpriseDataParseResult(request *GetEnterpriseDataParseResultRequest) (_result *GetEnterpriseDataParseResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEnterpriseDataParseResultResponse{}
-	_body, _err := client.GetEnterpriseDataParseResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetFileStoreUploadPolicyWithOptions(request *GetFileStoreUploadPolicyRequest, runtime *util.RuntimeOptions) (_result *GetFileStoreUploadPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5493,54 +4270,6 @@ func (client *Client) GetFileStoreUploadPolicy(request *GetFileStoreUploadPolicy
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFileStoreUploadPolicyResponse{}
 	_body, _err := client.GetFileStoreUploadPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetImportTaskResultWithOptions(request *GetImportTaskResultRequest, runtime *util.RuntimeOptions) (_result *GetImportTaskResultResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
-		query["TaskId"] = request.TaskId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetImportTaskResult"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetImportTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetImportTaskResult(request *GetImportTaskResultRequest) (_result *GetImportTaskResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetImportTaskResultResponse{}
-	_body, _err := client.GetImportTaskResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5640,80 +4369,6 @@ func (client *Client) GetText2ImageJob(request *GetText2ImageJobRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ImportEnterpriseDocumentWithOptions(tmpReq *ImportEnterpriseDocumentRequest, runtime *util.RuntimeOptions) (_result *ImportEnterpriseDocumentResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ImportEnterpriseDocumentShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentList)) {
-		request.DocumentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentList, tea.String("DocumentList"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
-		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataType)) {
-		query["DataType"] = request.DataType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DocumentListShrink)) {
-		query["DocumentList"] = request.DocumentListShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StoreId)) {
-		query["StoreId"] = request.StoreId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
-		query["Tags"] = request.TagsShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ImportEnterpriseDocument"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ImportEnterpriseDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ImportEnterpriseDocument(request *ImportEnterpriseDocumentRequest) (_result *ImportEnterpriseDocumentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImportEnterpriseDocumentResponse{}
-	_body, _err := client.ImportEnterpriseDocumentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ImportUserDocumentWithOptions(request *ImportUserDocumentRequest, runtime *util.RuntimeOptions) (_result *ImportUserDocumentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5771,6 +4426,136 @@ func (client *Client) ImportUserDocument(request *ImportUserDocumentRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportUserDocumentResponse{}
 	_body, _err := client.ImportUserDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDocsWithOptions(tmpReq *ListDocsRequest, runtime *util.RuntimeOptions) (_result *ListDocsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDocsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
+		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreId)) {
+		query["StoreId"] = request.StoreId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
+		query["TagIds"] = request.TagIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDocs"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDocsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDocs(request *ListDocsRequest) (_result *ListDocsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDocsResponse{}
+	_body, _err := client.ListDocsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDocumentTagsWithOptions(request *ListDocumentTagsRequest, runtime *util.RuntimeOptions) (_result *ListDocumentTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagId)) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDocumentTags"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDocumentTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDocumentTags(request *ListDocumentTagsRequest) (_result *ListDocumentTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDocumentTagsResponse{}
+	_body, _err := client.ListDocumentTagsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5884,176 +4669,6 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 	return _result, _err
 }
 
-func (client *Client) QueryEnterpriseDataListWithOptions(tmpReq *QueryEnterpriseDataListRequest, runtime *util.RuntimeOptions) (_result *QueryEnterpriseDataListResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &QueryEnterpriseDataListShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
-		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataName)) {
-		query["DataName"] = request.DataName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
-		query["StoreType"] = request.StoreType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
-		query["Tags"] = request.TagsShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryEnterpriseDataList"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryEnterpriseDataListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryEnterpriseDataList(request *QueryEnterpriseDataListRequest) (_result *QueryEnterpriseDataListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryEnterpriseDataListResponse{}
-	_body, _err := client.QueryEnterpriseDataListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryEnterpriseDataTagWithOptions(request *QueryEnterpriseDataTagRequest, runtime *util.RuntimeOptions) (_result *QueryEnterpriseDataTagResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		query["DataId"] = request.DataId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryEnterpriseDataTag"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryEnterpriseDataTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryEnterpriseDataTag(request *QueryEnterpriseDataTagRequest) (_result *QueryEnterpriseDataTagResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryEnterpriseDataTagResponse{}
-	_body, _err := client.QueryEnterpriseDataTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryEnterpriseTagListWithOptions(request *QueryEnterpriseTagListRequest, runtime *util.RuntimeOptions) (_result *QueryEnterpriseTagListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryEnterpriseTagList"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryEnterpriseTagListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryEnterpriseTagList(request *QueryEnterpriseTagListRequest) (_result *QueryEnterpriseTagListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryEnterpriseTagListResponse{}
-	_body, _err := client.QueryEnterpriseTagListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryUserDocumentWithOptions(request *QueryUserDocumentRequest, runtime *util.RuntimeOptions) (_result *QueryUserDocumentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6106,55 +4721,25 @@ func (client *Client) QueryUserDocument(request *QueryUserDocumentRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) SearchEnterpriseDataWithOptions(tmpReq *SearchEnterpriseDataRequest, runtime *util.RuntimeOptions) (_result *SearchEnterpriseDataResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) SubmitDocumentImportJobWithOptions(request *SubmitDocumentImportJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDocumentImportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &SearchEnterpriseDataShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.DataIdList)) {
-		request.DataIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataIdList, tea.String("DataIdList"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.TagIdList)) {
-		request.TagIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIdList, tea.String("TagIdList"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DataIdListShrink)) {
-		query["DataIdList"] = request.DataIdListShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnableRank)) {
-		query["EnableRank"] = request.EnableRank
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Query)) {
-		query["Query"] = request.Query
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StoreId)) {
-		query["StoreId"] = request.StoreId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagIdListShrink)) {
-		query["TagIdList"] = request.TagIdListShrink
+	if !tea.BoolValue(util.IsUnset(request.Docs)) {
+		query["Docs"] = request.Docs
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("SearchEnterpriseData"),
+		Action:      tea.String("SubmitDocumentImportJob"),
 		Version:     tea.String("2023-06-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -6164,7 +4749,7 @@ func (client *Client) SearchEnterpriseDataWithOptions(tmpReq *SearchEnterpriseDa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchEnterpriseDataResponse{}
+	_result = &SubmitDocumentImportJobResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6173,10 +4758,10 @@ func (client *Client) SearchEnterpriseDataWithOptions(tmpReq *SearchEnterpriseDa
 	return _result, _err
 }
 
-func (client *Client) SearchEnterpriseData(request *SearchEnterpriseDataRequest) (_result *SearchEnterpriseDataResponse, _err error) {
+func (client *Client) SubmitDocumentImportJob(request *SubmitDocumentImportJobRequest) (_result *SubmitDocumentImportJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &SearchEnterpriseDataResponse{}
-	_body, _err := client.SearchEnterpriseDataWithOptions(request, runtime)
+	_result = &SubmitDocumentImportJobResponse{}
+	_body, _err := client.SubmitDocumentImportJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6256,75 +4841,15 @@ func (client *Client) SubmitText2ImageJob(request *SubmitText2ImageJobRequest) (
 	return _result, _err
 }
 
-func (client *Client) UpdateEnterpriseDataInfoWithOptions(request *UpdateEnterpriseDataInfoRequest, runtime *util.RuntimeOptions) (_result *UpdateEnterpriseDataInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BizId)) {
-		query["BizId"] = request.BizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		query["DataId"] = request.DataId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataName)) {
-		query["DataName"] = request.DataName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FilePreviewLink)) {
-		query["FilePreviewLink"] = request.FilePreviewLink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateEnterpriseDataInfo"),
-		Version:     tea.String("2023-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateEnterpriseDataInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateEnterpriseDataInfo(request *UpdateEnterpriseDataInfoRequest) (_result *UpdateEnterpriseDataInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateEnterpriseDataInfoResponse{}
-	_body, _err := client.UpdateEnterpriseDataInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateEnterpriseDataTagWithOptions(tmpReq *UpdateEnterpriseDataTagRequest, runtime *util.RuntimeOptions) (_result *UpdateEnterpriseDataTagResponse, _err error) {
+func (client *Client) UpdateDocAttributeWithOptions(tmpReq *UpdateDocAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateDocAttributeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &UpdateEnterpriseDataTagShrinkRequest{}
+	request := &UpdateDocAttributeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
-		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
+		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -6332,19 +4857,27 @@ func (client *Client) UpdateEnterpriseDataTagWithOptions(tmpReq *UpdateEnterpris
 		query["AgentKey"] = request.AgentKey
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		query["DataId"] = request.DataId
+	if !tea.BoolValue(util.IsUnset(request.DelAllTags)) {
+		query["DelAllTags"] = request.DelAllTags
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
-		query["Tags"] = request.TagsShrink
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		query["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
+		query["TagIds"] = request.TagIdsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("UpdateEnterpriseDataTag"),
+		Action:      tea.String("UpdateDocAttribute"),
 		Version:     tea.String("2023-06-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -6354,7 +4887,7 @@ func (client *Client) UpdateEnterpriseDataTagWithOptions(tmpReq *UpdateEnterpris
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateEnterpriseDataTagResponse{}
+	_result = &UpdateDocAttributeResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6363,10 +4896,10 @@ func (client *Client) UpdateEnterpriseDataTagWithOptions(tmpReq *UpdateEnterpris
 	return _result, _err
 }
 
-func (client *Client) UpdateEnterpriseDataTag(request *UpdateEnterpriseDataTagRequest) (_result *UpdateEnterpriseDataTagResponse, _err error) {
+func (client *Client) UpdateDocAttribute(request *UpdateDocAttributeRequest) (_result *UpdateDocAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &UpdateEnterpriseDataTagResponse{}
-	_body, _err := client.UpdateEnterpriseDataTagWithOptions(request, runtime)
+	_result = &UpdateDocAttributeResponse{}
+	_body, _err := client.UpdateDocAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6374,7 +4907,7 @@ func (client *Client) UpdateEnterpriseDataTag(request *UpdateEnterpriseDataTagRe
 	return _result, _err
 }
 
-func (client *Client) UpdateEnterpriseTagWithOptions(request *UpdateEnterpriseTagRequest, runtime *util.RuntimeOptions) (_result *UpdateEnterpriseTagResponse, _err error) {
+func (client *Client) UpdateDocumentTagWithOptions(request *UpdateDocumentTagRequest, runtime *util.RuntimeOptions) (_result *UpdateDocumentTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -6382,21 +4915,21 @@ func (client *Client) UpdateEnterpriseTagWithOptions(request *UpdateEnterpriseTa
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagId)) {
 		query["TagId"] = request.TagId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagName)) {
-		query["TagName"] = request.TagName
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("UpdateEnterpriseTag"),
+		Action:      tea.String("UpdateDocumentTag"),
 		Version:     tea.String("2023-06-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -6406,7 +4939,7 @@ func (client *Client) UpdateEnterpriseTagWithOptions(request *UpdateEnterpriseTa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateEnterpriseTagResponse{}
+	_result = &UpdateDocumentTagResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6415,10 +4948,10 @@ func (client *Client) UpdateEnterpriseTagWithOptions(request *UpdateEnterpriseTa
 	return _result, _err
 }
 
-func (client *Client) UpdateEnterpriseTag(request *UpdateEnterpriseTagRequest) (_result *UpdateEnterpriseTagResponse, _err error) {
+func (client *Client) UpdateDocumentTag(request *UpdateDocumentTagRequest) (_result *UpdateDocumentTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &UpdateEnterpriseTagResponse{}
-	_body, _err := client.UpdateEnterpriseTagWithOptions(request, runtime)
+	_result = &UpdateDocumentTagResponse{}
+	_body, _err := client.UpdateDocumentTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
