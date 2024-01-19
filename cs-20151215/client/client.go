@@ -2001,7 +2001,7 @@ type CreateClusterRequest struct {
 	//
 	// **Event center**: optional. By default, the event center feature is enabled.
 	//
-	// You can use Kubernetes event centers to store and query events, and configure alert rules. You can use the Logstores that are associated with Kubernetes event centers for free within 90 days. For more information, see [Create and use an event center](https://help.aliyun.com/document_detail/150476.html#task-2389213).
+	// You can use Kubernetes event centers to store and query events, and configure alert rules. You can use the Logstores that are associated with Kubernetes event centers for free within 90 days. For more information, see [Create and use an event center](~~150476~~).
 	//
 	// Enable the ack-node-problem-detector component in the following format: \[{"name":"ack-node-problem-detector","config":"{"sls_project_name":"your_sls_project_name"}"}].
 	Addons []*Addon `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
@@ -2299,7 +2299,7 @@ type CreateClusterRequest struct {
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 	// The container runtime. The default container runtime is Docker. containerd and Sandboxed-Container are also supported.
 	//
-	// For more information about how to select a proper container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
+	// For more information about how to select a proper container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](~~160313~~).
 	Runtime *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The ID of an existing security group. You need to choose between this parameter and the `is_enterprise_security_group` parameter. Cluster nodes are automatically added to the security group.
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
@@ -3012,10 +3012,12 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 type CreateClusterNodePoolRequest struct {
 	// The configuration of auto scaling.
 	AutoScaling *CreateClusterNodePoolRequestAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	// Deprecated
 	// This parameter is deprecated. Use the desired_size parameter instead.
 	//
 	// The number of nodes in the node pool.
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// Deprecated
 	// This parameter is deprecated.
 	//
 	// The configuration of the edge node pool.
@@ -3030,6 +3032,7 @@ type CreateClusterNodePoolRequest struct {
 	KubernetesConfig *CreateClusterNodePoolRequestKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
 	// The configuration of the managed node pool feature.
 	Management *CreateClusterNodePoolRequestManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
+	// Deprecated
 	// The maximum number of nodes that can be created in the edge node pool. You must specify a value that is equal to or larger than 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools of the ess type or default edge node pools.
 	MaxNodes   *int64                                  `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
 	NodeConfig *CreateClusterNodePoolRequestNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
@@ -3105,10 +3108,12 @@ func (s *CreateClusterNodePoolRequest) SetTeeConfig(v *CreateClusterNodePoolRequ
 }
 
 type CreateClusterNodePoolRequestAutoScaling struct {
+	// Deprecated
 	// This parameter is deprecated.
 	//
 	// The maximum bandwidth of the EIP. Unit: Mbit/s.
 	EipBandwidth *int64 `json:"eip_bandwidth,omitempty" xml:"eip_bandwidth,omitempty"`
+	// Deprecated
 	// This parameter is deprecated.
 	//
 	// The metering method of the EIP. Valid values:
@@ -3125,6 +3130,7 @@ type CreateClusterNodePoolRequestAutoScaling struct {
 	//
 	// Default value: `false`.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Deprecated
 	// This parameter is deprecated.
 	//
 	// Specifies whether to associate an elastic IP address (EIP) with the node pool. Valid values:
@@ -3463,6 +3469,7 @@ func (s *CreateClusterNodePoolRequestManagementAutoVulFixPolicy) SetVulLevel(v s
 }
 
 type CreateClusterNodePoolRequestManagementUpgradeConfig struct {
+	// Deprecated
 	// Indicates whether auto update is enabled. Valid values:
 	//
 	// *   `true`: enables auto upgrade.
@@ -3663,6 +3670,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// Default value: `release`.
 	ScalingPolicy *string `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	// Deprecated
 	// Specifies the ID of the security group to which you want to add the node pool. You must set this parameter or `security_group_ids`. We recommend that you set `security_group_ids`.
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The IDs of security groups to which you want to add the node pool. You must set this parameter or `security_group_id`. We recommend that you set `security_group_ids`. If you set both `security_group_id` and `security_group_ids`, `security_group_ids` is used.
@@ -4052,6 +4060,7 @@ func (s *CreateClusterNodePoolRequestTeeConfig) SetTeeEnable(v bool) *CreateClus
 type CreateClusterNodePoolResponseBody struct {
 	// The node pool ID.
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	RequestId  *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The ID of the task.
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
@@ -4066,6 +4075,11 @@ func (s CreateClusterNodePoolResponseBody) GoString() string {
 
 func (s *CreateClusterNodePoolResponseBody) SetNodepoolId(v string) *CreateClusterNodePoolResponseBody {
 	s.NodepoolId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolResponseBody) SetRequestId(v string) *CreateClusterNodePoolResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15901,8 +15915,10 @@ func (s *ModifyClusterNodePoolRequest) SetUpdateNodes(v bool) *ModifyClusterNode
 }
 
 type ModifyClusterNodePoolRequestAutoScaling struct {
+	// Deprecated
 	// The maximum bandwidth of the elastic IP address (EIP).
 	EipBandwidth *int64 `json:"eip_bandwidth,omitempty" xml:"eip_bandwidth,omitempty"`
+	// Deprecated
 	// The metering method of the EIP. Valid values:
 	//
 	// *   `PayByBandwidth`: pay-by-bandwidth.
@@ -15917,6 +15933,7 @@ type ModifyClusterNodePoolRequestAutoScaling struct {
 	//
 	// Default value: `false`.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Deprecated
 	// Specifies whether to associate an EIP with the node pool. Valid values:
 	//
 	// *   `true`: associates an EIP with the node pool.
@@ -15928,6 +15945,7 @@ type ModifyClusterNodePoolRequestAutoScaling struct {
 	MaxInstances *int64 `json:"max_instances,omitempty" xml:"max_instances,omitempty"`
 	// The minimum number of ECS instances that must be kept in the node pool.
 	MinInstances *int64 `json:"min_instances,omitempty" xml:"min_instances,omitempty"`
+	// Deprecated
 	// The instance types that can be used for the auto scaling of the node pool. Valid values:
 	//
 	// *   `cpu`: regular instance.
@@ -16007,7 +16025,8 @@ type ModifyClusterNodePoolRequestKubernetesConfig struct {
 	// The version of the container runtime.
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// The configurations of node taints.
-	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Taints        []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Unschedulable *bool    `json:"unschedulable,omitempty" xml:"unschedulable,omitempty"`
 	// The user-defined data of the node pool. For more information, see [Prepare user data](~~49121~~).
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
@@ -16047,6 +16066,11 @@ func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetRuntimeVersion(v strin
 
 func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetTaints(v []*Taint) *ModifyClusterNodePoolRequestKubernetesConfig {
 	s.Taints = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetUnschedulable(v bool) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.Unschedulable = &v
 	return s
 }
 
@@ -16210,6 +16234,7 @@ func (s *ModifyClusterNodePoolRequestManagementAutoVulFixPolicy) SetVulLevel(v s
 }
 
 type ModifyClusterNodePoolRequestManagementUpgradeConfig struct {
+	// Deprecated
 	// Specifies whether to enable auto update.
 	//
 	// *   true: enables auto update.
@@ -16700,6 +16725,7 @@ func (s *ModifyClusterNodePoolRequestTeeConfig) SetTeeEnable(v bool) *ModifyClus
 type ModifyClusterNodePoolResponseBody struct {
 	// The node pool ID.
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	RequestId  *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The task ID.
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
@@ -16714,6 +16740,11 @@ func (s ModifyClusterNodePoolResponseBody) GoString() string {
 
 func (s *ModifyClusterNodePoolResponseBody) SetNodepoolId(v string) *ModifyClusterNodePoolResponseBody {
 	s.NodepoolId = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolResponseBody) SetRequestId(v string) *ModifyClusterNodePoolResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -17194,6 +17225,7 @@ type RemoveNodePoolNodesRequest struct {
 	DrainNode *bool `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
 	// A list of instances that you want to remove.
 	InstanceIds []*string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty" type:"Repeated"`
+	// Deprecated
 	// A list of nodes that you want to remove.
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	// Specifies whether to release the nodes after they are removed. Valid values:
@@ -17246,6 +17278,7 @@ type RemoveNodePoolNodesShrinkRequest struct {
 	DrainNode *bool `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
 	// A list of instances that you want to remove.
 	InstanceIdsShrink *string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty"`
+	// Deprecated
 	// A list of nodes that you want to remove.
 	NodesShrink *string `json:"nodes,omitempty" xml:"nodes,omitempty"`
 	// Specifies whether to release the nodes after they are removed. Valid values:
@@ -20036,9 +20069,9 @@ func (client *Client) CreateAutoscalingConfig(ClusterId *string, request *Create
  * *   [Create an ACK managed cluster](~~90776~~)
  * *   [Create an ACK dedicated cluster](~~197620~~)
  * *   [Create an ACK Serverless cluster](~~144246~~)
- * *   [Create an ACK Edge cluster](128204)
+ * *   [Create an ACK Edge cluster](~~128204~~)
  * *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
- * *   [Create an ACK Pro cluster that supports sandboxed containers](140623)
+ * *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
  *
  * @param request CreateClusterRequest
  * @param headers map
@@ -20440,9 +20473,9 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
  * *   [Create an ACK managed cluster](~~90776~~)
  * *   [Create an ACK dedicated cluster](~~197620~~)
  * *   [Create an ACK Serverless cluster](~~144246~~)
- * *   [Create an ACK Edge cluster](128204)
+ * *   [Create an ACK Edge cluster](~~128204~~)
  * *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
- * *   [Create an ACK Pro cluster that supports sandboxed containers](140623)
+ * *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
  *
  * @param request CreateClusterRequest
  * @return CreateClusterResponse
