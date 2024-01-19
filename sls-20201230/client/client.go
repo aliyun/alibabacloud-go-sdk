@@ -5935,7 +5935,8 @@ type GetLogsV2Request struct {
 	// The beginning of the time range to query. The value is the log time that is specified when log data is written.
 	//
 	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	From      *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	Highlight *bool  `json:"highlight,omitempty" xml:"highlight,omitempty"`
 	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Minimum value: 0. Maximum value: 100. Default value: 100.
 	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
 	// The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
@@ -5979,6 +5980,11 @@ func (s *GetLogsV2Request) SetForward(v bool) *GetLogsV2Request {
 
 func (s *GetLogsV2Request) SetFrom(v int32) *GetLogsV2Request {
 	s.From = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetHighlight(v bool) *GetLogsV2Request {
+	s.Highlight = &v
 	return s
 }
 
@@ -6054,17 +6060,24 @@ func (s *GetLogsV2ResponseBody) SetMeta(v *GetLogsV2ResponseBodyMeta) *GetLogsV2
 
 type GetLogsV2ResponseBodyMeta struct {
 	// The SQL statement after | in the query statement.
-	AggQuery *string `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
+	AggQuery    *string   `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
+	ColumnTypes []*string `json:"columnTypes,omitempty" xml:"columnTypes,omitempty" type:"Repeated"`
 	// The number of rows that are returned.
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	Count    *int32   `json:"count,omitempty" xml:"count,omitempty"`
+	CpuCores *int32   `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	CpuSec   *float64 `json:"cpuSec,omitempty" xml:"cpuSec,omitempty"`
 	// The amount of time that is consumed by the request. Unit: milliseconds.
 	ElapsedMillisecond *int64 `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
 	// Indicates whether the query is an SQL query.
-	HasSQL *bool `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
+	HasSQL     *bool           `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
+	Highlights [][]*LogContent `json:"highlights,omitempty" xml:"highlights,omitempty" type:"Repeated"`
 	// Indicates whether the returned result is accurate.
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
 	// All keys in the query result.
-	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	Keys            []*string                                 `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	Limited         *int32                                    `json:"limited,omitempty" xml:"limited,omitempty"`
+	Mode            *int32                                    `json:"mode,omitempty" xml:"mode,omitempty"`
+	PhraseQueryInfo *GetLogsV2ResponseBodyMetaPhraseQueryInfo `json:"phraseQueryInfo,omitempty" xml:"phraseQueryInfo,omitempty" type:"Struct"`
 	// The number of logs that are processed in the request.
 	ProcessedBytes *int64 `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
 	// The number of rows that are processed in the request.
@@ -6073,7 +6086,8 @@ type GetLogsV2ResponseBodyMeta struct {
 	//
 	// *   Complete: The query was successful, and the complete result is returned.
 	// *   Incomplete: The query was successful, but the query result is incomplete. To obtain the complete result, you must call the operation again.
-	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	Progress  *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	ScanBytes *int64  `json:"scanBytes,omitempty" xml:"scanBytes,omitempty"`
 	// The type of observable data.
 	TelementryType *string `json:"telementryType,omitempty" xml:"telementryType,omitempty"`
 	// All terms in the query statement.
@@ -6095,8 +6109,23 @@ func (s *GetLogsV2ResponseBodyMeta) SetAggQuery(v string) *GetLogsV2ResponseBody
 	return s
 }
 
+func (s *GetLogsV2ResponseBodyMeta) SetColumnTypes(v []*string) *GetLogsV2ResponseBodyMeta {
+	s.ColumnTypes = v
+	return s
+}
+
 func (s *GetLogsV2ResponseBodyMeta) SetCount(v int32) *GetLogsV2ResponseBodyMeta {
 	s.Count = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetCpuCores(v int32) *GetLogsV2ResponseBodyMeta {
+	s.CpuCores = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetCpuSec(v float64) *GetLogsV2ResponseBodyMeta {
+	s.CpuSec = &v
 	return s
 }
 
@@ -6110,6 +6139,11 @@ func (s *GetLogsV2ResponseBodyMeta) SetHasSQL(v bool) *GetLogsV2ResponseBodyMeta
 	return s
 }
 
+func (s *GetLogsV2ResponseBodyMeta) SetHighlights(v [][]*LogContent) *GetLogsV2ResponseBodyMeta {
+	s.Highlights = v
+	return s
+}
+
 func (s *GetLogsV2ResponseBodyMeta) SetIsAccurate(v bool) *GetLogsV2ResponseBodyMeta {
 	s.IsAccurate = &v
 	return s
@@ -6117,6 +6151,21 @@ func (s *GetLogsV2ResponseBodyMeta) SetIsAccurate(v bool) *GetLogsV2ResponseBody
 
 func (s *GetLogsV2ResponseBodyMeta) SetKeys(v []*string) *GetLogsV2ResponseBodyMeta {
 	s.Keys = v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetLimited(v int32) *GetLogsV2ResponseBodyMeta {
+	s.Limited = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetMode(v int32) *GetLogsV2ResponseBodyMeta {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetPhraseQueryInfo(v *GetLogsV2ResponseBodyMetaPhraseQueryInfo) *GetLogsV2ResponseBodyMeta {
+	s.PhraseQueryInfo = v
 	return s
 }
 
@@ -6135,6 +6184,11 @@ func (s *GetLogsV2ResponseBodyMeta) SetProgress(v string) *GetLogsV2ResponseBody
 	return s
 }
 
+func (s *GetLogsV2ResponseBodyMeta) SetScanBytes(v int64) *GetLogsV2ResponseBodyMeta {
+	s.ScanBytes = &v
+	return s
+}
+
 func (s *GetLogsV2ResponseBodyMeta) SetTelementryType(v string) *GetLogsV2ResponseBodyMeta {
 	s.TelementryType = &v
 	return s
@@ -6147,6 +6201,41 @@ func (s *GetLogsV2ResponseBodyMeta) SetTerms(v []map[string]interface{}) *GetLog
 
 func (s *GetLogsV2ResponseBodyMeta) SetWhereQuery(v string) *GetLogsV2ResponseBodyMeta {
 	s.WhereQuery = &v
+	return s
+}
+
+type GetLogsV2ResponseBodyMetaPhraseQueryInfo struct {
+	BeginOffset *int64 `json:"beginOffset,omitempty" xml:"beginOffset,omitempty"`
+	EndOffset   *int64 `json:"endOffset,omitempty" xml:"endOffset,omitempty"`
+	EndTime     *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ScanAll     *bool  `json:"scanAll,omitempty" xml:"scanAll,omitempty"`
+}
+
+func (s GetLogsV2ResponseBodyMetaPhraseQueryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsV2ResponseBodyMetaPhraseQueryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsV2ResponseBodyMetaPhraseQueryInfo) SetBeginOffset(v int64) *GetLogsV2ResponseBodyMetaPhraseQueryInfo {
+	s.BeginOffset = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMetaPhraseQueryInfo) SetEndOffset(v int64) *GetLogsV2ResponseBodyMetaPhraseQueryInfo {
+	s.EndOffset = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMetaPhraseQueryInfo) SetEndTime(v int64) *GetLogsV2ResponseBodyMetaPhraseQueryInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMetaPhraseQueryInfo) SetScanAll(v bool) *GetLogsV2ResponseBodyMetaPhraseQueryInfo {
+	s.ScanAll = &v
 	return s
 }
 
@@ -14130,6 +14219,10 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		body["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Highlight)) {
+		body["highlight"] = request.Highlight
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Line)) {
