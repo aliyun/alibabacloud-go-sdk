@@ -2896,6 +2896,158 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 	return s
 }
 
+type CreateProjectLabelRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Color              *string `json:"color,omitempty" xml:"color,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s CreateProjectLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectLabelRequest) SetAccessToken(v string) *CreateProjectLabelRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateProjectLabelRequest) SetColor(v string) *CreateProjectLabelRequest {
+	s.Color = &v
+	return s
+}
+
+func (s *CreateProjectLabelRequest) SetDescription(v string) *CreateProjectLabelRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProjectLabelRequest) SetName(v string) *CreateProjectLabelRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectLabelRequest) SetOrganizationId(v string) *CreateProjectLabelRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *CreateProjectLabelRequest) SetRepositoryIdentity(v string) *CreateProjectLabelRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type CreateProjectLabelResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateProjectLabelResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateProjectLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectLabelResponseBody) SetErrorCode(v string) *CreateProjectLabelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateProjectLabelResponseBody) SetErrorMessage(v string) *CreateProjectLabelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateProjectLabelResponseBody) SetRequestId(v string) *CreateProjectLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProjectLabelResponseBody) SetResult(v *CreateProjectLabelResponseBodyResult) *CreateProjectLabelResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateProjectLabelResponseBody) SetSuccess(v bool) *CreateProjectLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProjectLabelResponseBodyResult struct {
+	Color       *string `json:"color,omitempty" xml:"color,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateProjectLabelResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectLabelResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectLabelResponseBodyResult) SetColor(v string) *CreateProjectLabelResponseBodyResult {
+	s.Color = &v
+	return s
+}
+
+func (s *CreateProjectLabelResponseBodyResult) SetDescription(v string) *CreateProjectLabelResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProjectLabelResponseBodyResult) SetId(v string) *CreateProjectLabelResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectLabelResponseBodyResult) SetName(v string) *CreateProjectLabelResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+type CreateProjectLabelResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProjectLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProjectLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectLabelResponse) SetHeaders(v map[string]*string) *CreateProjectLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectLabelResponse) SetStatusCode(v int32) *CreateProjectLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProjectLabelResponse) SetBody(v *CreateProjectLabelResponseBody) *CreateProjectLabelResponse {
+	s.Body = v
+	return s
+}
+
 type CreateProtectdBranchRequest struct {
 	AccessToken         *string                                         `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	AllowMergeRoles     []*int32                                        `json:"allowMergeRoles,omitempty" xml:"allowMergeRoles,omitempty" type:"Repeated"`
@@ -8547,6 +8699,122 @@ func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
 }
 
 func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteProjectLabelRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s DeleteProjectLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectLabelRequest) SetAccessToken(v string) *DeleteProjectLabelRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeleteProjectLabelRequest) SetOrganizationId(v string) *DeleteProjectLabelRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *DeleteProjectLabelRequest) SetRepositoryIdentity(v string) *DeleteProjectLabelRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type DeleteProjectLabelResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *DeleteProjectLabelResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteProjectLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectLabelResponseBody) SetErrorCode(v string) *DeleteProjectLabelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteProjectLabelResponseBody) SetErrorMessage(v string) *DeleteProjectLabelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteProjectLabelResponseBody) SetRequestId(v string) *DeleteProjectLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteProjectLabelResponseBody) SetResult(v *DeleteProjectLabelResponseBodyResult) *DeleteProjectLabelResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DeleteProjectLabelResponseBody) SetSuccess(v bool) *DeleteProjectLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteProjectLabelResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteProjectLabelResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectLabelResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectLabelResponseBodyResult) SetResult(v bool) *DeleteProjectLabelResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type DeleteProjectLabelResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProjectLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProjectLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectLabelResponse) SetHeaders(v map[string]*string) *DeleteProjectLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectLabelResponse) SetStatusCode(v int32) *DeleteProjectLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteProjectLabelResponse) SetBody(v *DeleteProjectLabelResponseBody) *DeleteProjectLabelResponse {
 	s.Body = v
 	return s
 }
@@ -19098,6 +19366,134 @@ func (s *JoinPipelineGroupResponse) SetBody(v *JoinPipelineGroupResponseBody) *J
 	return s
 }
 
+type LinkMergeRequestLabelRequest struct {
+	AccessToken        *string   `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	LabelIds           []*string `json:"labelIds,omitempty" xml:"labelIds,omitempty" type:"Repeated"`
+	LocalId            *int64    `json:"localId,omitempty" xml:"localId,omitempty"`
+	OrganizationId     *string   `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string   `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s LinkMergeRequestLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LinkMergeRequestLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LinkMergeRequestLabelRequest) SetAccessToken(v string) *LinkMergeRequestLabelRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *LinkMergeRequestLabelRequest) SetLabelIds(v []*string) *LinkMergeRequestLabelRequest {
+	s.LabelIds = v
+	return s
+}
+
+func (s *LinkMergeRequestLabelRequest) SetLocalId(v int64) *LinkMergeRequestLabelRequest {
+	s.LocalId = &v
+	return s
+}
+
+func (s *LinkMergeRequestLabelRequest) SetOrganizationId(v string) *LinkMergeRequestLabelRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *LinkMergeRequestLabelRequest) SetRepositoryIdentity(v string) *LinkMergeRequestLabelRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type LinkMergeRequestLabelResponseBody struct {
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *LinkMergeRequestLabelResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s LinkMergeRequestLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LinkMergeRequestLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LinkMergeRequestLabelResponseBody) SetErrorCode(v string) *LinkMergeRequestLabelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *LinkMergeRequestLabelResponseBody) SetErrorMessage(v string) *LinkMergeRequestLabelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *LinkMergeRequestLabelResponseBody) SetRequestId(v string) *LinkMergeRequestLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LinkMergeRequestLabelResponseBody) SetResult(v *LinkMergeRequestLabelResponseBodyResult) *LinkMergeRequestLabelResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *LinkMergeRequestLabelResponseBody) SetSuccess(v bool) *LinkMergeRequestLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type LinkMergeRequestLabelResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s LinkMergeRequestLabelResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LinkMergeRequestLabelResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *LinkMergeRequestLabelResponseBodyResult) SetResult(v bool) *LinkMergeRequestLabelResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type LinkMergeRequestLabelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LinkMergeRequestLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LinkMergeRequestLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LinkMergeRequestLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LinkMergeRequestLabelResponse) SetHeaders(v map[string]*string) *LinkMergeRequestLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LinkMergeRequestLabelResponse) SetStatusCode(v int32) *LinkMergeRequestLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LinkMergeRequestLabelResponse) SetBody(v *LinkMergeRequestLabelResponseBody) *LinkMergeRequestLabelResponse {
+	s.Body = v
+	return s
+}
+
 type ListApplicationMembersRequest struct {
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
@@ -21339,6 +21735,146 @@ func (s *ListMergeRequestFilesReadsResponse) SetBody(v *ListMergeRequestFilesRea
 	return s
 }
 
+type ListMergeRequestLabelsRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	LocalId            *int64  `json:"localId,omitempty" xml:"localId,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s ListMergeRequestLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestLabelsRequest) SetAccessToken(v string) *ListMergeRequestLabelsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsRequest) SetLocalId(v int64) *ListMergeRequestLabelsRequest {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsRequest) SetOrganizationId(v string) *ListMergeRequestLabelsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsRequest) SetRepositoryIdentity(v string) *ListMergeRequestLabelsRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type ListMergeRequestLabelsResponseBody struct {
+	ErrorCode    *string                                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListMergeRequestLabelsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListMergeRequestLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestLabelsResponseBody) SetErrorCode(v string) *ListMergeRequestLabelsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponseBody) SetErrorMessage(v string) *ListMergeRequestLabelsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponseBody) SetRequestId(v string) *ListMergeRequestLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponseBody) SetResult(v []*ListMergeRequestLabelsResponseBodyResult) *ListMergeRequestLabelsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponseBody) SetSuccess(v bool) *ListMergeRequestLabelsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMergeRequestLabelsResponseBodyResult struct {
+	Color       *string `json:"color,omitempty" xml:"color,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListMergeRequestLabelsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestLabelsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestLabelsResponseBodyResult) SetColor(v string) *ListMergeRequestLabelsResponseBodyResult {
+	s.Color = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponseBodyResult) SetDescription(v string) *ListMergeRequestLabelsResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponseBodyResult) SetId(v string) *ListMergeRequestLabelsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponseBodyResult) SetName(v string) *ListMergeRequestLabelsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+type ListMergeRequestLabelsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMergeRequestLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMergeRequestLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestLabelsResponse) SetHeaders(v map[string]*string) *ListMergeRequestLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponse) SetStatusCode(v int32) *ListMergeRequestLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMergeRequestLabelsResponse) SetBody(v *ListMergeRequestLabelsResponseBody) *ListMergeRequestLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type ListMergeRequestPatchSetsRequest struct {
 	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	LocalId            *int64  `json:"localId,omitempty" xml:"localId,omitempty"`
@@ -23479,6 +24015,188 @@ func (s *ListPipelinesResponse) SetStatusCode(v int32) *ListPipelinesResponse {
 }
 
 func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipelinesResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectLabelsRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrderBy            *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page               *int32  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+	Search             *string `json:"search,omitempty" xml:"search,omitempty"`
+	Sort               *string `json:"sort,omitempty" xml:"sort,omitempty"`
+	WithCounts         *bool   `json:"withCounts,omitempty" xml:"withCounts,omitempty"`
+}
+
+func (s ListProjectLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectLabelsRequest) SetAccessToken(v string) *ListProjectLabelsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListProjectLabelsRequest) SetOrderBy(v string) *ListProjectLabelsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListProjectLabelsRequest) SetOrganizationId(v string) *ListProjectLabelsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListProjectLabelsRequest) SetPage(v int32) *ListProjectLabelsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListProjectLabelsRequest) SetPageSize(v int64) *ListProjectLabelsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectLabelsRequest) SetRepositoryIdentity(v string) *ListProjectLabelsRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+func (s *ListProjectLabelsRequest) SetSearch(v string) *ListProjectLabelsRequest {
+	s.Search = &v
+	return s
+}
+
+func (s *ListProjectLabelsRequest) SetSort(v string) *ListProjectLabelsRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListProjectLabelsRequest) SetWithCounts(v bool) *ListProjectLabelsRequest {
+	s.WithCounts = &v
+	return s
+}
+
+type ListProjectLabelsResponseBody struct {
+	ErrorCode    *string                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListProjectLabelsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListProjectLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectLabelsResponseBody) SetErrorCode(v string) *ListProjectLabelsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBody) SetErrorMessage(v string) *ListProjectLabelsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBody) SetRequestId(v string) *ListProjectLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBody) SetResult(v []*ListProjectLabelsResponseBodyResult) *ListProjectLabelsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBody) SetSuccess(v bool) *ListProjectLabelsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBody) SetTotal(v int64) *ListProjectLabelsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListProjectLabelsResponseBodyResult struct {
+	Color                  *string `json:"color,omitempty" xml:"color,omitempty"`
+	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                     *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name                   *string `json:"name,omitempty" xml:"name,omitempty"`
+	OpenMergeRequestsCount *int64  `json:"openMergeRequestsCount,omitempty" xml:"openMergeRequestsCount,omitempty"`
+}
+
+func (s ListProjectLabelsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectLabelsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectLabelsResponseBodyResult) SetColor(v string) *ListProjectLabelsResponseBodyResult {
+	s.Color = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBodyResult) SetDescription(v string) *ListProjectLabelsResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBodyResult) SetId(v string) *ListProjectLabelsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBodyResult) SetName(v string) *ListProjectLabelsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponseBodyResult) SetOpenMergeRequestsCount(v int64) *ListProjectLabelsResponseBodyResult {
+	s.OpenMergeRequestsCount = &v
+	return s
+}
+
+type ListProjectLabelsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProjectLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectLabelsResponse) SetHeaders(v map[string]*string) *ListProjectLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectLabelsResponse) SetStatusCode(v int32) *ListProjectLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectLabelsResponse) SetBody(v *ListProjectLabelsResponseBody) *ListProjectLabelsResponse {
 	s.Body = v
 	return s
 }
@@ -35059,6 +35777,158 @@ func (s *UpdateProjectFieldResponse) SetBody(v *UpdateProjectFieldResponseBody) 
 	return s
 }
 
+type UpdateProjectLabelRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Color              *string `json:"color,omitempty" xml:"color,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s UpdateProjectLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectLabelRequest) SetAccessToken(v string) *UpdateProjectLabelRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateProjectLabelRequest) SetColor(v string) *UpdateProjectLabelRequest {
+	s.Color = &v
+	return s
+}
+
+func (s *UpdateProjectLabelRequest) SetDescription(v string) *UpdateProjectLabelRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProjectLabelRequest) SetName(v string) *UpdateProjectLabelRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateProjectLabelRequest) SetOrganizationId(v string) *UpdateProjectLabelRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *UpdateProjectLabelRequest) SetRepositoryIdentity(v string) *UpdateProjectLabelRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type UpdateProjectLabelResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdateProjectLabelResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateProjectLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectLabelResponseBody) SetErrorCode(v string) *UpdateProjectLabelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateProjectLabelResponseBody) SetErrorMessage(v string) *UpdateProjectLabelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateProjectLabelResponseBody) SetRequestId(v string) *UpdateProjectLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateProjectLabelResponseBody) SetResult(v *UpdateProjectLabelResponseBodyResult) *UpdateProjectLabelResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateProjectLabelResponseBody) SetSuccess(v bool) *UpdateProjectLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateProjectLabelResponseBodyResult struct {
+	Color       *string `json:"color,omitempty" xml:"color,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateProjectLabelResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectLabelResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectLabelResponseBodyResult) SetColor(v string) *UpdateProjectLabelResponseBodyResult {
+	s.Color = &v
+	return s
+}
+
+func (s *UpdateProjectLabelResponseBodyResult) SetDescription(v string) *UpdateProjectLabelResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProjectLabelResponseBodyResult) SetId(v string) *UpdateProjectLabelResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateProjectLabelResponseBodyResult) SetName(v string) *UpdateProjectLabelResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+type UpdateProjectLabelResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProjectLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateProjectLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectLabelResponse) SetHeaders(v map[string]*string) *UpdateProjectLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProjectLabelResponse) SetStatusCode(v int32) *UpdateProjectLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateProjectLabelResponse) SetBody(v *UpdateProjectLabelResponseBody) *UpdateProjectLabelResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateProjectMemberRequest struct {
 	RoleIdentifier   *string `json:"roleIdentifier,omitempty" xml:"roleIdentifier,omitempty"`
 	TargetIdentifier *string `json:"targetIdentifier,omitempty" xml:"targetIdentifier,omitempty"`
@@ -39540,6 +40410,74 @@ func (client *Client) CreateProject(organizationId *string, request *CreateProje
 	return _result, _err
 }
 
+func (client *Client) CreateProjectLabelWithOptions(request *CreateProjectLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProjectLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Color)) {
+		body["color"] = request.Color
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProjectLabel"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/labels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProjectLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProjectLabel(request *CreateProjectLabelRequest) (_result *CreateProjectLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateProjectLabelResponse{}
+	_body, _err := client.CreateProjectLabelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateProtectdBranchWithOptions(repositoryId *string, request *CreateProtectdBranchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProtectdBranchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41425,6 +42363,60 @@ func (client *Client) DeleteProject(organizationId *string, request *DeleteProje
 	headers := make(map[string]*string)
 	_result = &DeleteProjectResponse{}
 	_body, _err := client.DeleteProjectWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProjectLabelWithOptions(labelId *string, request *DeleteProjectLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProjectLabel"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/labels/" + tea.StringValue(openapiutil.GetEncodeParam(labelId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteProjectLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProjectLabel(labelId *string, request *DeleteProjectLabelRequest) (_result *DeleteProjectLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteProjectLabelResponse{}
+	_body, _err := client.DeleteProjectLabelWithOptions(labelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44152,6 +45144,70 @@ func (client *Client) JoinPipelineGroup(organizationId *string, request *JoinPip
 	return _result, _err
 }
 
+func (client *Client) LinkMergeRequestLabelWithOptions(request *LinkMergeRequestLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LinkMergeRequestLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalId)) {
+		query["localId"] = request.LocalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelIds)) {
+		body["labelIds"] = request.LabelIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LinkMergeRequestLabel"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/merge_requests/link_labels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LinkMergeRequestLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LinkMergeRequestLabel(request *LinkMergeRequestLabelRequest) (_result *LinkMergeRequestLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &LinkMergeRequestLabelResponse{}
+	_body, _err := client.LinkMergeRequestLabelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListApplicationMembersWithOptions(appName *string, request *ListApplicationMembersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListApplicationMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44695,6 +45751,64 @@ func (client *Client) ListMergeRequestFilesReads(request *ListMergeRequestFilesR
 	headers := make(map[string]*string)
 	_result = &ListMergeRequestFilesReadsResponse{}
 	_body, _err := client.ListMergeRequestFilesReadsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestLabelsWithOptions(request *ListMergeRequestLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMergeRequestLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalId)) {
+		query["localId"] = request.LocalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMergeRequestLabels"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/merge_requests/labels"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMergeRequestLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestLabels(request *ListMergeRequestLabelsRequest) (_result *ListMergeRequestLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMergeRequestLabelsResponse{}
+	_body, _err := client.ListMergeRequestLabelsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45397,6 +46511,84 @@ func (client *Client) ListPipelines(organizationId *string, request *ListPipelin
 	headers := make(map[string]*string)
 	_result = &ListPipelinesResponse{}
 	_body, _err := client.ListPipelinesWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectLabelsWithOptions(request *ListProjectLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithCounts)) {
+		query["withCounts"] = request.WithCounts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectLabels"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/labels"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjectLabels(request *ListProjectLabelsRequest) (_result *ListProjectLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProjectLabelsResponse{}
+	_body, _err := client.ListProjectLabelsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49055,6 +50247,74 @@ func (client *Client) UpdateProjectField(organizationId *string, identifier *str
 	headers := make(map[string]*string)
 	_result = &UpdateProjectFieldResponse{}
 	_body, _err := client.UpdateProjectFieldWithOptions(organizationId, identifier, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateProjectLabelWithOptions(labelId *string, request *UpdateProjectLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Color)) {
+		body["color"] = request.Color
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProjectLabel"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/labels/" + tea.StringValue(openapiutil.GetEncodeParam(labelId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateProjectLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateProjectLabel(labelId *string, request *UpdateProjectLabelRequest) (_result *UpdateProjectLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateProjectLabelResponse{}
+	_body, _err := client.UpdateProjectLabelWithOptions(labelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
