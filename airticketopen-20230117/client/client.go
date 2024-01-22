@@ -11861,9 +11861,9 @@ func (client *Client) LuggageDirectWithOptions(tmpReq *LuggageDirectRequest, hea
 		request.FlightSegmentParamListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FlightSegmentParamList, tea.String("flight_segment_param_list"), tea.String("json"))
 	}
 
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FlightSegmentParamListShrink)) {
-		body["flight_segment_param_list"] = request.FlightSegmentParamListShrink
+		query["flight_segment_param_list"] = request.FlightSegmentParamListShrink
 	}
 
 	realHeaders := make(map[string]*string)
@@ -11881,7 +11881,7 @@ func (client *Client) LuggageDirectWithOptions(tmpReq *LuggageDirectRequest, hea
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
-		Body:    openapiutil.ParseToMap(body),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("LuggageDirect"),
@@ -11891,7 +11891,7 @@ func (client *Client) LuggageDirectWithOptions(tmpReq *LuggageDirectRequest, hea
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &LuggageDirectResponse{}
@@ -12541,9 +12541,9 @@ func (client *Client) TransitVisaWithOptions(tmpReq *TransitVisaRequest, headers
 		request.FlightSegmentParamListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FlightSegmentParamList, tea.String("flight_segment_param_list"), tea.String("json"))
 	}
 
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FlightSegmentParamListShrink)) {
-		body["flight_segment_param_list"] = request.FlightSegmentParamListShrink
+		query["flight_segment_param_list"] = request.FlightSegmentParamListShrink
 	}
 
 	realHeaders := make(map[string]*string)
@@ -12561,7 +12561,7 @@ func (client *Client) TransitVisaWithOptions(tmpReq *TransitVisaRequest, headers
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
-		Body:    openapiutil.ParseToMap(body),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TransitVisa"),
@@ -12571,7 +12571,7 @@ func (client *Client) TransitVisaWithOptions(tmpReq *TransitVisaRequest, headers
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TransitVisaResponse{}
