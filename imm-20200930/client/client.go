@@ -484,10 +484,11 @@ func (s *Body) SetConfidence(v float32) *Body {
 }
 
 type Boundary struct {
-	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int64 `json:"Left,omitempty" xml:"Left,omitempty"`
-	Top    *int64 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height  *int64        `json:"Height,omitempty" xml:"Height,omitempty"`
+	Left    *int64        `json:"Left,omitempty" xml:"Left,omitempty"`
+	Polygon []*PointInt64 `json:"Polygon,omitempty" xml:"Polygon,omitempty" type:"Repeated"`
+	Top     *int64        `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width   *int64        `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s Boundary) String() string {
@@ -505,6 +506,11 @@ func (s *Boundary) SetHeight(v int64) *Boundary {
 
 func (s *Boundary) SetLeft(v int64) *Boundary {
 	s.Left = &v
+	return s
+}
+
+func (s *Boundary) SetPolygon(v []*PointInt64) *Boundary {
+	s.Polygon = v
 	return s
 }
 
@@ -1044,6 +1050,52 @@ func (s *Dataset) SetUpdateTime(v string) *Dataset {
 	return s
 }
 
+type Element struct {
+	ElementContents []*ElementContent `json:"ElementContents,omitempty" xml:"ElementContents,omitempty" type:"Repeated"`
+}
+
+func (s Element) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Element) GoString() string {
+	return s.String()
+}
+
+func (s *Element) SetElementContents(v []*ElementContent) *Element {
+	s.ElementContents = v
+	return s
+}
+
+type ElementContent struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	URL     *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ElementContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ElementContent) GoString() string {
+	return s.String()
+}
+
+func (s *ElementContent) SetContent(v string) *ElementContent {
+	s.Content = &v
+	return s
+}
+
+func (s *ElementContent) SetType(v string) *ElementContent {
+	s.Type = &v
+	return s
+}
+
+func (s *ElementContent) SetURL(v string) *ElementContent {
+	s.URL = &v
+	return s
+}
+
 type FastFailPolicy struct {
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 }
@@ -1459,6 +1511,7 @@ type File struct {
 	Duration                              *float64               `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ETag                                  *string                `json:"ETag,omitempty" xml:"ETag,omitempty"`
 	EXIF                                  *string                `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
+	Elements                              []*Element             `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
 	FigureCount                           *int64                 `json:"FigureCount,omitempty" xml:"FigureCount,omitempty"`
 	Figures                               []*Figure              `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
 	FileAccessTime                        *string                `json:"FileAccessTime,omitempty" xml:"FileAccessTime,omitempty"`
@@ -1476,6 +1529,7 @@ type File struct {
 	LatLong                               *string                `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
 	MediaType                             *string                `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	OCRContents                           []*OCRContents         `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
+	OCRTexts                              *string                `json:"OCRTexts,omitempty" xml:"OCRTexts,omitempty"`
 	OSSCRC64                              *string                `json:"OSSCRC64,omitempty" xml:"OSSCRC64,omitempty"`
 	OSSDeleteMarker                       *string                `json:"OSSDeleteMarker,omitempty" xml:"OSSDeleteMarker,omitempty"`
 	OSSExpiration                         *string                `json:"OSSExpiration,omitempty" xml:"OSSExpiration,omitempty"`
@@ -1496,6 +1550,7 @@ type File struct {
 	ProduceTime                           *string                `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
 	ProgramCount                          *int64                 `json:"ProgramCount,omitempty" xml:"ProgramCount,omitempty"`
 	ProjectName                           *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SemanticTypes                         []*string              `json:"SemanticTypes,omitempty" xml:"SemanticTypes,omitempty" type:"Repeated"`
 	ServerSideDataEncryption              *string                `json:"ServerSideDataEncryption,omitempty" xml:"ServerSideDataEncryption,omitempty"`
 	ServerSideEncryption                  *string                `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
 	ServerSideEncryptionCustomerAlgorithm *string                `json:"ServerSideEncryptionCustomerAlgorithm,omitempty" xml:"ServerSideEncryptionCustomerAlgorithm,omitempty"`
@@ -1642,6 +1697,11 @@ func (s *File) SetEXIF(v string) *File {
 	return s
 }
 
+func (s *File) SetElements(v []*Element) *File {
+	s.Elements = v
+	return s
+}
+
 func (s *File) SetFigureCount(v int64) *File {
 	s.FigureCount = &v
 	return s
@@ -1724,6 +1784,11 @@ func (s *File) SetMediaType(v string) *File {
 
 func (s *File) SetOCRContents(v []*OCRContents) *File {
 	s.OCRContents = v
+	return s
+}
+
+func (s *File) SetOCRTexts(v string) *File {
+	s.OCRTexts = &v
 	return s
 }
 
@@ -1824,6 +1889,11 @@ func (s *File) SetProgramCount(v int64) *File {
 
 func (s *File) SetProjectName(v string) *File {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *File) SetSemanticTypes(v []*string) *File {
+	s.SemanticTypes = v
 	return s
 }
 
@@ -2592,6 +2662,29 @@ func (s *Optimization) SetLearningRate(v float32) *Optimization {
 
 func (s *Optimization) SetOptimizer(v string) *Optimization {
 	s.Optimizer = &v
+	return s
+}
+
+type PointInt64 struct {
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s PointInt64) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PointInt64) GoString() string {
+	return s.String()
+}
+
+func (s *PointInt64) SetX(v int64) *PointInt64 {
+	s.X = &v
+	return s
+}
+
+func (s *PointInt64) SetY(v int64) *PointInt64 {
+	s.Y = &v
 	return s
 }
 
@@ -12088,6 +12181,7 @@ func (s *DetectTextAnomalyResponse) SetBody(v *DetectTextAnomalyResponseBody) *D
 type ExtractDocumentTextRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceType       *string           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
@@ -12109,6 +12203,11 @@ func (s *ExtractDocumentTextRequest) SetProjectName(v string) *ExtractDocumentTe
 	return s
 }
 
+func (s *ExtractDocumentTextRequest) SetSourceType(v string) *ExtractDocumentTextRequest {
+	s.SourceType = &v
+	return s
+}
+
 func (s *ExtractDocumentTextRequest) SetSourceURI(v string) *ExtractDocumentTextRequest {
 	s.SourceURI = &v
 	return s
@@ -12117,6 +12216,7 @@ func (s *ExtractDocumentTextRequest) SetSourceURI(v string) *ExtractDocumentText
 type ExtractDocumentTextShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceType             *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
@@ -12135,6 +12235,11 @@ func (s *ExtractDocumentTextShrinkRequest) SetCredentialConfigShrink(v string) *
 
 func (s *ExtractDocumentTextShrinkRequest) SetProjectName(v string) *ExtractDocumentTextShrinkRequest {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *ExtractDocumentTextShrinkRequest) SetSourceType(v string) *ExtractDocumentTextShrinkRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -21775,6 +21880,10 @@ func (client *Client) ExtractDocumentTextWithOptions(tmpReq *ExtractDocumentText
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
