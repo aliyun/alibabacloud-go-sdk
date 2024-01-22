@@ -12,8 +12,4438 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AclConfig struct {
+	AclEntries []*AclEntryConfig `json:"aclEntries,omitempty" xml:"aclEntries,omitempty" type:"Repeated"`
+}
+
+func (s AclConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AclConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AclConfig) SetAclEntries(v []*AclEntryConfig) *AclConfig {
+	s.AclEntries = v
+	return s
+}
+
+type AclEntryConfig struct {
+	Entry *string `json:"entry,omitempty" xml:"entry,omitempty"`
+}
+
+func (s AclEntryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AclEntryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AclEntryConfig) SetEntry(v string) *AclEntryConfig {
+	s.Entry = &v
+	return s
+}
+
+type Application struct {
+	RequestId               *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ApplicationID           *string                  `json:"applicationID,omitempty" xml:"applicationID,omitempty"`
+	ApplicationId           *string                  `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
+	ApplicationName         *string                  `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
+	Args                    *string                  `json:"args,omitempty" xml:"args,omitempty"`
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	Command                 *string                  `json:"command,omitempty" xml:"command,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomDomainName        *string                  `json:"customDomainName,omitempty" xml:"customDomainName,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnableAppMetric         *bool                    `json:"enableAppMetric,omitempty" xml:"enableAppMetric,omitempty"`
+	EnableArmsAdvanced      *bool                    `json:"enableArmsAdvanced,omitempty" xml:"enableArmsAdvanced,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	GpuMemorySize           *int32                   `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	HttpTriggerConfig       *HTTPTriggerConfig       `json:"httpTriggerConfig,omitempty" xml:"httpTriggerConfig,omitempty"`
+	ImageConfig             *ImageConfig             `json:"imageConfig,omitempty" xml:"imageConfig,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
+	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InternetAccess          *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime        *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	LayersArnV2             []*string                `json:"layersArnV2,omitempty" xml:"layersArnV2,omitempty" type:"Repeated"`
+	LivenessProbe           *Probe                   `json:"livenessProbe,omitempty" xml:"livenessProbe,omitempty"`
+	LogConfig               *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Namespace               *string                  `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	NamespaceID             *string                  `json:"namespaceID,omitempty" xml:"namespaceID,omitempty"`
+	NamespaceName           *string                  `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	ScaleConfig             *ScaleConfig             `json:"scaleConfig,omitempty" xml:"scaleConfig,omitempty"`
+	SlsConfig               *SLSConfig               `json:"slsConfig,omitempty" xml:"slsConfig,omitempty"`
+	StartupProbe            *Probe                   `json:"startupProbe,omitempty" xml:"startupProbe,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	UrlInternet             *string                  `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	UrlIntranet             *string                  `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
+	Version                 *Version                 `json:"version,omitempty" xml:"version,omitempty"`
+	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+}
+
+func (s Application) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Application) GoString() string {
+	return s.String()
+}
+
+func (s *Application) SetRequestId(v string) *Application {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Application) SetApplicationID(v string) *Application {
+	s.ApplicationID = &v
+	return s
+}
+
+func (s *Application) SetApplicationId(v string) *Application {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *Application) SetApplicationName(v string) *Application {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *Application) SetArgs(v string) *Application {
+	s.Args = &v
+	return s
+}
+
+func (s *Application) SetCaPort(v int32) *Application {
+	s.CaPort = &v
+	return s
+}
+
+func (s *Application) SetCodeChecksum(v string) *Application {
+	s.CodeChecksum = &v
+	return s
+}
+
+func (s *Application) SetCodeSize(v int64) *Application {
+	s.CodeSize = &v
+	return s
+}
+
+func (s *Application) SetCommand(v string) *Application {
+	s.Command = &v
+	return s
+}
+
+func (s *Application) SetCpu(v float32) *Application {
+	s.Cpu = &v
+	return s
+}
+
+func (s *Application) SetCreatedTime(v string) *Application {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *Application) SetCustomDNS(v *CustomDNS) *Application {
+	s.CustomDNS = v
+	return s
+}
+
+func (s *Application) SetCustomDomainName(v string) *Application {
+	s.CustomDomainName = &v
+	return s
+}
+
+func (s *Application) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *Application {
+	s.CustomHealthCheckConfig = v
+	return s
+}
+
+func (s *Application) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *Application {
+	s.CustomRuntimeConfig = v
+	return s
+}
+
+func (s *Application) SetDescription(v string) *Application {
+	s.Description = &v
+	return s
+}
+
+func (s *Application) SetDiskSize(v int32) *Application {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *Application) SetEnableAppMetric(v bool) *Application {
+	s.EnableAppMetric = &v
+	return s
+}
+
+func (s *Application) SetEnableArmsAdvanced(v bool) *Application {
+	s.EnableArmsAdvanced = &v
+	return s
+}
+
+func (s *Application) SetEnvironmentVariables(v map[string]*string) *Application {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *Application) SetGpuMemorySize(v int32) *Application {
+	s.GpuMemorySize = &v
+	return s
+}
+
+func (s *Application) SetHandler(v string) *Application {
+	s.Handler = &v
+	return s
+}
+
+func (s *Application) SetHttpTriggerConfig(v *HTTPTriggerConfig) *Application {
+	s.HttpTriggerConfig = v
+	return s
+}
+
+func (s *Application) SetImageConfig(v *ImageConfig) *Application {
+	s.ImageConfig = v
+	return s
+}
+
+func (s *Application) SetInitializationTimeout(v int32) *Application {
+	s.InitializationTimeout = &v
+	return s
+}
+
+func (s *Application) SetInitializer(v string) *Application {
+	s.Initializer = &v
+	return s
+}
+
+func (s *Application) SetInstanceConcurrency(v int32) *Application {
+	s.InstanceConcurrency = &v
+	return s
+}
+
+func (s *Application) SetInstanceLifecycleConfig(v *InstanceLifecycleConfig) *Application {
+	s.InstanceLifecycleConfig = v
+	return s
+}
+
+func (s *Application) SetInstanceSoftConcurrency(v int32) *Application {
+	s.InstanceSoftConcurrency = &v
+	return s
+}
+
+func (s *Application) SetInstanceType(v string) *Application {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *Application) SetInternetAccess(v bool) *Application {
+	s.InternetAccess = &v
+	return s
+}
+
+func (s *Application) SetLastModifiedTime(v string) *Application {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *Application) SetLayers(v []*string) *Application {
+	s.Layers = v
+	return s
+}
+
+func (s *Application) SetLayersArnV2(v []*string) *Application {
+	s.LayersArnV2 = v
+	return s
+}
+
+func (s *Application) SetLivenessProbe(v *Probe) *Application {
+	s.LivenessProbe = v
+	return s
+}
+
+func (s *Application) SetLogConfig(v *LogConfig) *Application {
+	s.LogConfig = v
+	return s
+}
+
+func (s *Application) SetMemorySize(v int32) *Application {
+	s.MemorySize = &v
+	return s
+}
+
+func (s *Application) SetNamespace(v string) *Application {
+	s.Namespace = &v
+	return s
+}
+
+func (s *Application) SetNamespaceID(v string) *Application {
+	s.NamespaceID = &v
+	return s
+}
+
+func (s *Application) SetNamespaceName(v string) *Application {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *Application) SetNasConfig(v *NASConfig) *Application {
+	s.NasConfig = v
+	return s
+}
+
+func (s *Application) SetOssMountConfig(v *OSSMountConfig) *Application {
+	s.OssMountConfig = v
+	return s
+}
+
+func (s *Application) SetRuntime(v string) *Application {
+	s.Runtime = &v
+	return s
+}
+
+func (s *Application) SetScaleConfig(v *ScaleConfig) *Application {
+	s.ScaleConfig = v
+	return s
+}
+
+func (s *Application) SetSlsConfig(v *SLSConfig) *Application {
+	s.SlsConfig = v
+	return s
+}
+
+func (s *Application) SetStartupProbe(v *Probe) *Application {
+	s.StartupProbe = v
+	return s
+}
+
+func (s *Application) SetTimeout(v int32) *Application {
+	s.Timeout = &v
+	return s
+}
+
+func (s *Application) SetTracingConfig(v *TracingConfig) *Application {
+	s.TracingConfig = v
+	return s
+}
+
+func (s *Application) SetUrlInternet(v string) *Application {
+	s.UrlInternet = &v
+	return s
+}
+
+func (s *Application) SetUrlIntranet(v string) *Application {
+	s.UrlIntranet = &v
+	return s
+}
+
+func (s *Application) SetVersion(v *Version) *Application {
+	s.Version = v
+	return s
+}
+
+func (s *Application) SetVpcConfig(v *VPCConfig) *Application {
+	s.VpcConfig = v
+	return s
+}
+
+type ApplicationStatus struct {
+	InstanceCount *int64       `json:"instanceCount,omitempty" xml:"instanceCount,omitempty"`
+	ScaleConfig   *ScaleConfig `json:"scaleConfig,omitempty" xml:"scaleConfig,omitempty"`
+}
+
+func (s ApplicationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplicationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *ApplicationStatus) SetInstanceCount(v int64) *ApplicationStatus {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *ApplicationStatus) SetScaleConfig(v *ScaleConfig) *ApplicationStatus {
+	s.ScaleConfig = v
+	return s
+}
+
+type ApplicationWithStatus struct {
+	Application *Application       `json:"application,omitempty" xml:"application,omitempty"`
+	Status      *ApplicationStatus `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ApplicationWithStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplicationWithStatus) GoString() string {
+	return s.String()
+}
+
+func (s *ApplicationWithStatus) SetApplication(v *Application) *ApplicationWithStatus {
+	s.Application = v
+	return s
+}
+
+func (s *ApplicationWithStatus) SetStatus(v *ApplicationStatus) *ApplicationWithStatus {
+	s.Status = v
+	return s
+}
+
+type ArmsConfig struct {
+	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
+	AppId        *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	LicenseKey   *string `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
+}
+
+func (s ArmsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ArmsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ArmsConfig) SetAgentVersion(v string) *ArmsConfig {
+	s.AgentVersion = &v
+	return s
+}
+
+func (s *ArmsConfig) SetAppId(v string) *ArmsConfig {
+	s.AppId = &v
+	return s
+}
+
+func (s *ArmsConfig) SetLicenseKey(v string) *ArmsConfig {
+	s.LicenseKey = &v
+	return s
+}
+
+type BuildPipeline struct {
+	ApplicationId   *string                     `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ApplicationName *string                     `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	BuildConfig     *BuildPipelineBuildConfig   `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
+	CodeConfig      *BuildPipelineCodeConfig    `json:"CodeConfig,omitempty" xml:"CodeConfig,omitempty" type:"Struct"`
+	DeployConfig    *BuildPipelineDeployConfig  `json:"DeployConfig,omitempty" xml:"DeployConfig,omitempty" type:"Struct"`
+	Enabled         *bool                       `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ImageConfig     *BuildPipelineImageConfig   `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty" type:"Struct"`
+	PackageConfig   *BuildPipelinePackageConfig `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty" type:"Struct"`
+	TriggerConfig   *BuildPipelineTriggerConfig `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty" type:"Struct"`
+}
+
+func (s BuildPipeline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipeline) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipeline) SetApplicationId(v string) *BuildPipeline {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *BuildPipeline) SetApplicationName(v string) *BuildPipeline {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *BuildPipeline) SetBuildConfig(v *BuildPipelineBuildConfig) *BuildPipeline {
+	s.BuildConfig = v
+	return s
+}
+
+func (s *BuildPipeline) SetCodeConfig(v *BuildPipelineCodeConfig) *BuildPipeline {
+	s.CodeConfig = v
+	return s
+}
+
+func (s *BuildPipeline) SetDeployConfig(v *BuildPipelineDeployConfig) *BuildPipeline {
+	s.DeployConfig = v
+	return s
+}
+
+func (s *BuildPipeline) SetEnabled(v bool) *BuildPipeline {
+	s.Enabled = &v
+	return s
+}
+
+func (s *BuildPipeline) SetImageConfig(v *BuildPipelineImageConfig) *BuildPipeline {
+	s.ImageConfig = v
+	return s
+}
+
+func (s *BuildPipeline) SetPackageConfig(v *BuildPipelinePackageConfig) *BuildPipeline {
+	s.PackageConfig = v
+	return s
+}
+
+func (s *BuildPipeline) SetTriggerConfig(v *BuildPipelineTriggerConfig) *BuildPipeline {
+	s.TriggerConfig = v
+	return s
+}
+
+type BuildPipelineBuildConfig struct {
+	BeforeBuildCommand *string       `json:"BeforeBuildCommand,omitempty" xml:"BeforeBuildCommand,omitempty"`
+	BuildType          *string       `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	DockerfilePath     *string       `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
+	RunCommand         *string       `json:"RunCommand,omitempty" xml:"RunCommand,omitempty"`
+	RuntimeType        *string       `json:"RuntimeType,omitempty" xml:"RuntimeType,omitempty"`
+	RuntimeVersion     *string       `json:"RuntimeVersion,omitempty" xml:"RuntimeVersion,omitempty"`
+	TomcatConfig       *TomcatConfig `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	WorkingDir         *string       `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+}
+
+func (s BuildPipelineBuildConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineBuildConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineBuildConfig) SetBeforeBuildCommand(v string) *BuildPipelineBuildConfig {
+	s.BeforeBuildCommand = &v
+	return s
+}
+
+func (s *BuildPipelineBuildConfig) SetBuildType(v string) *BuildPipelineBuildConfig {
+	s.BuildType = &v
+	return s
+}
+
+func (s *BuildPipelineBuildConfig) SetDockerfilePath(v string) *BuildPipelineBuildConfig {
+	s.DockerfilePath = &v
+	return s
+}
+
+func (s *BuildPipelineBuildConfig) SetRunCommand(v string) *BuildPipelineBuildConfig {
+	s.RunCommand = &v
+	return s
+}
+
+func (s *BuildPipelineBuildConfig) SetRuntimeType(v string) *BuildPipelineBuildConfig {
+	s.RuntimeType = &v
+	return s
+}
+
+func (s *BuildPipelineBuildConfig) SetRuntimeVersion(v string) *BuildPipelineBuildConfig {
+	s.RuntimeVersion = &v
+	return s
+}
+
+func (s *BuildPipelineBuildConfig) SetTomcatConfig(v *TomcatConfig) *BuildPipelineBuildConfig {
+	s.TomcatConfig = v
+	return s
+}
+
+func (s *BuildPipelineBuildConfig) SetWorkingDir(v string) *BuildPipelineBuildConfig {
+	s.WorkingDir = &v
+	return s
+}
+
+type BuildPipelineCodeConfig struct {
+	AccountId    *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	BranchName   *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	CommitId     *string `json:"CommitId,omitempty" xml:"CommitId,omitempty"`
+	CommitUrl    *string `json:"CommitUrl,omitempty" xml:"CommitUrl,omitempty"`
+	Provider     *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	RepoFullName *string `json:"RepoFullName,omitempty" xml:"RepoFullName,omitempty"`
+	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+}
+
+func (s BuildPipelineCodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineCodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineCodeConfig) SetAccountId(v string) *BuildPipelineCodeConfig {
+	s.AccountId = &v
+	return s
+}
+
+func (s *BuildPipelineCodeConfig) SetBranchName(v string) *BuildPipelineCodeConfig {
+	s.BranchName = &v
+	return s
+}
+
+func (s *BuildPipelineCodeConfig) SetCommitId(v string) *BuildPipelineCodeConfig {
+	s.CommitId = &v
+	return s
+}
+
+func (s *BuildPipelineCodeConfig) SetCommitUrl(v string) *BuildPipelineCodeConfig {
+	s.CommitUrl = &v
+	return s
+}
+
+func (s *BuildPipelineCodeConfig) SetProvider(v string) *BuildPipelineCodeConfig {
+	s.Provider = &v
+	return s
+}
+
+func (s *BuildPipelineCodeConfig) SetRepoFullName(v string) *BuildPipelineCodeConfig {
+	s.RepoFullName = &v
+	return s
+}
+
+func (s *BuildPipelineCodeConfig) SetRepoId(v string) *BuildPipelineCodeConfig {
+	s.RepoId = &v
+	return s
+}
+
+type BuildPipelineDeployConfig struct {
+	AlwaysAllocateCPU      *bool   `json:"AlwaysAllocateCPU,omitempty" xml:"AlwaysAllocateCPU,omitempty"`
+	MaximumInstanceCount   *int32  `json:"MaximumInstanceCount,omitempty" xml:"MaximumInstanceCount,omitempty"`
+	MinimumInstanceCount   *int32  `json:"MinimumInstanceCount,omitempty" xml:"MinimumInstanceCount,omitempty"`
+	UpdateApplicationInput *string `json:"UpdateApplicationInput,omitempty" xml:"UpdateApplicationInput,omitempty"`
+}
+
+func (s BuildPipelineDeployConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineDeployConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineDeployConfig) SetAlwaysAllocateCPU(v bool) *BuildPipelineDeployConfig {
+	s.AlwaysAllocateCPU = &v
+	return s
+}
+
+func (s *BuildPipelineDeployConfig) SetMaximumInstanceCount(v int32) *BuildPipelineDeployConfig {
+	s.MaximumInstanceCount = &v
+	return s
+}
+
+func (s *BuildPipelineDeployConfig) SetMinimumInstanceCount(v int32) *BuildPipelineDeployConfig {
+	s.MinimumInstanceCount = &v
+	return s
+}
+
+func (s *BuildPipelineDeployConfig) SetUpdateApplicationInput(v string) *BuildPipelineDeployConfig {
+	s.UpdateApplicationInput = &v
+	return s
+}
+
+type BuildPipelineImageConfig struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Repository   *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
+}
+
+func (s BuildPipelineImageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineImageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineImageConfig) SetInstanceType(v string) *BuildPipelineImageConfig {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *BuildPipelineImageConfig) SetNamespace(v string) *BuildPipelineImageConfig {
+	s.Namespace = &v
+	return s
+}
+
+func (s *BuildPipelineImageConfig) SetRepository(v string) *BuildPipelineImageConfig {
+	s.Repository = &v
+	return s
+}
+
+type BuildPipelinePackageConfig struct {
+	PackageName    *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	PackageType    *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUrl     *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+}
+
+func (s BuildPipelinePackageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelinePackageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelinePackageConfig) SetPackageName(v string) *BuildPipelinePackageConfig {
+	s.PackageName = &v
+	return s
+}
+
+func (s *BuildPipelinePackageConfig) SetPackageType(v string) *BuildPipelinePackageConfig {
+	s.PackageType = &v
+	return s
+}
+
+func (s *BuildPipelinePackageConfig) SetPackageUrl(v string) *BuildPipelinePackageConfig {
+	s.PackageUrl = &v
+	return s
+}
+
+func (s *BuildPipelinePackageConfig) SetPackageVersion(v string) *BuildPipelinePackageConfig {
+	s.PackageVersion = &v
+	return s
+}
+
+type BuildPipelineTriggerConfig struct {
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s BuildPipelineTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineTriggerConfig) SetBranchName(v string) *BuildPipelineTriggerConfig {
+	s.BranchName = &v
+	return s
+}
+
+func (s *BuildPipelineTriggerConfig) SetType(v string) *BuildPipelineTriggerConfig {
+	s.Type = &v
+	return s
+}
+
+type BuildPipelineRun struct {
+	BuildConfig    *BuildPipelineRunBuildConfig   `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
+	BuildDuration  *int64                         `json:"BuildDuration,omitempty" xml:"BuildDuration,omitempty"`
+	CodeConfig     *BuildPipelineRunCodeConfig    `json:"CodeConfig,omitempty" xml:"CodeConfig,omitempty" type:"Struct"`
+	CreateTime     *int64                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeployConfig   *BuildPipelineRunDeployConfig  `json:"DeployConfig,omitempty" xml:"DeployConfig,omitempty" type:"Struct"`
+	DeployDuration *int64                         `json:"DeployDuration,omitempty" xml:"DeployDuration,omitempty"`
+	EndTime        *int64                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ImageConfig    *BuildPipelineRunImageConfig   `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty" type:"Struct"`
+	PackageConfig  *BuildPipelineRunPackageConfig `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty" type:"Struct"`
+	PipelineId     *string                        `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PipelineRunId  *string                        `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	StartTime      *int64                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status         *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Steps          []*BuildPipelineRunSteps       `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	VersionId      *string                        `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	WaitDuration   *int64                         `json:"WaitDuration,omitempty" xml:"WaitDuration,omitempty"`
+}
+
+func (s BuildPipelineRun) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRun) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRun) SetBuildConfig(v *BuildPipelineRunBuildConfig) *BuildPipelineRun {
+	s.BuildConfig = v
+	return s
+}
+
+func (s *BuildPipelineRun) SetBuildDuration(v int64) *BuildPipelineRun {
+	s.BuildDuration = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetCodeConfig(v *BuildPipelineRunCodeConfig) *BuildPipelineRun {
+	s.CodeConfig = v
+	return s
+}
+
+func (s *BuildPipelineRun) SetCreateTime(v int64) *BuildPipelineRun {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetDeployConfig(v *BuildPipelineRunDeployConfig) *BuildPipelineRun {
+	s.DeployConfig = v
+	return s
+}
+
+func (s *BuildPipelineRun) SetDeployDuration(v int64) *BuildPipelineRun {
+	s.DeployDuration = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetEndTime(v int64) *BuildPipelineRun {
+	s.EndTime = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetImageConfig(v *BuildPipelineRunImageConfig) *BuildPipelineRun {
+	s.ImageConfig = v
+	return s
+}
+
+func (s *BuildPipelineRun) SetPackageConfig(v *BuildPipelineRunPackageConfig) *BuildPipelineRun {
+	s.PackageConfig = v
+	return s
+}
+
+func (s *BuildPipelineRun) SetPipelineId(v string) *BuildPipelineRun {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetPipelineRunId(v string) *BuildPipelineRun {
+	s.PipelineRunId = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetStartTime(v int64) *BuildPipelineRun {
+	s.StartTime = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetStatus(v string) *BuildPipelineRun {
+	s.Status = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetSteps(v []*BuildPipelineRunSteps) *BuildPipelineRun {
+	s.Steps = v
+	return s
+}
+
+func (s *BuildPipelineRun) SetVersionId(v string) *BuildPipelineRun {
+	s.VersionId = &v
+	return s
+}
+
+func (s *BuildPipelineRun) SetWaitDuration(v int64) *BuildPipelineRun {
+	s.WaitDuration = &v
+	return s
+}
+
+type BuildPipelineRunBuildConfig struct {
+	BeforeBuildCommand *string                             `json:"BeforeBuildCommand,omitempty" xml:"BeforeBuildCommand,omitempty"`
+	BuildType          *string                             `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	DockerfilePath     *string                             `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
+	RunCommand         *string                             `json:"RunCommand,omitempty" xml:"RunCommand,omitempty"`
+	RuntimeType        *string                             `json:"RuntimeType,omitempty" xml:"RuntimeType,omitempty"`
+	RuntimeVersion     *string                             `json:"RuntimeVersion,omitempty" xml:"RuntimeVersion,omitempty"`
+	TomcatConfig       *TomcatConfig                       `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	Trigger            *BuildPipelineRunBuildConfigTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	WorkingDir         *string                             `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+}
+
+func (s BuildPipelineRunBuildConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRunBuildConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRunBuildConfig) SetBeforeBuildCommand(v string) *BuildPipelineRunBuildConfig {
+	s.BeforeBuildCommand = &v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfig) SetBuildType(v string) *BuildPipelineRunBuildConfig {
+	s.BuildType = &v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfig) SetDockerfilePath(v string) *BuildPipelineRunBuildConfig {
+	s.DockerfilePath = &v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfig) SetRunCommand(v string) *BuildPipelineRunBuildConfig {
+	s.RunCommand = &v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfig) SetRuntimeType(v string) *BuildPipelineRunBuildConfig {
+	s.RuntimeType = &v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfig) SetRuntimeVersion(v string) *BuildPipelineRunBuildConfig {
+	s.RuntimeVersion = &v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfig) SetTomcatConfig(v *TomcatConfig) *BuildPipelineRunBuildConfig {
+	s.TomcatConfig = v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfig) SetTrigger(v *BuildPipelineRunBuildConfigTrigger) *BuildPipelineRunBuildConfig {
+	s.Trigger = v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfig) SetWorkingDir(v string) *BuildPipelineRunBuildConfig {
+	s.WorkingDir = &v
+	return s
+}
+
+type BuildPipelineRunBuildConfigTrigger struct {
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s BuildPipelineRunBuildConfigTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRunBuildConfigTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRunBuildConfigTrigger) SetBranchName(v string) *BuildPipelineRunBuildConfigTrigger {
+	s.BranchName = &v
+	return s
+}
+
+func (s *BuildPipelineRunBuildConfigTrigger) SetType(v string) *BuildPipelineRunBuildConfigTrigger {
+	s.Type = &v
+	return s
+}
+
+type BuildPipelineRunCodeConfig struct {
+	AccountId    *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	BranchName   *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	CommitId     *string `json:"CommitId,omitempty" xml:"CommitId,omitempty"`
+	CommitUrl    *string `json:"CommitUrl,omitempty" xml:"CommitUrl,omitempty"`
+	OrgId        *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Provider     *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	RepoFullName *string `json:"RepoFullName,omitempty" xml:"RepoFullName,omitempty"`
+	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+}
+
+func (s BuildPipelineRunCodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRunCodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRunCodeConfig) SetAccountId(v string) *BuildPipelineRunCodeConfig {
+	s.AccountId = &v
+	return s
+}
+
+func (s *BuildPipelineRunCodeConfig) SetBranchName(v string) *BuildPipelineRunCodeConfig {
+	s.BranchName = &v
+	return s
+}
+
+func (s *BuildPipelineRunCodeConfig) SetCommitId(v string) *BuildPipelineRunCodeConfig {
+	s.CommitId = &v
+	return s
+}
+
+func (s *BuildPipelineRunCodeConfig) SetCommitUrl(v string) *BuildPipelineRunCodeConfig {
+	s.CommitUrl = &v
+	return s
+}
+
+func (s *BuildPipelineRunCodeConfig) SetOrgId(v string) *BuildPipelineRunCodeConfig {
+	s.OrgId = &v
+	return s
+}
+
+func (s *BuildPipelineRunCodeConfig) SetProvider(v string) *BuildPipelineRunCodeConfig {
+	s.Provider = &v
+	return s
+}
+
+func (s *BuildPipelineRunCodeConfig) SetRepoFullName(v string) *BuildPipelineRunCodeConfig {
+	s.RepoFullName = &v
+	return s
+}
+
+func (s *BuildPipelineRunCodeConfig) SetRepoId(v string) *BuildPipelineRunCodeConfig {
+	s.RepoId = &v
+	return s
+}
+
+type BuildPipelineRunDeployConfig struct {
+	AlwaysAllocateCPU      *bool   `json:"AlwaysAllocateCPU,omitempty" xml:"AlwaysAllocateCPU,omitempty"`
+	MaximumInstanceCount   *int32  `json:"MaximumInstanceCount,omitempty" xml:"MaximumInstanceCount,omitempty"`
+	MinimumInstanceCount   *int32  `json:"MinimumInstanceCount,omitempty" xml:"MinimumInstanceCount,omitempty"`
+	UpdateApplicationInput *string `json:"UpdateApplicationInput,omitempty" xml:"UpdateApplicationInput,omitempty"`
+}
+
+func (s BuildPipelineRunDeployConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRunDeployConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRunDeployConfig) SetAlwaysAllocateCPU(v bool) *BuildPipelineRunDeployConfig {
+	s.AlwaysAllocateCPU = &v
+	return s
+}
+
+func (s *BuildPipelineRunDeployConfig) SetMaximumInstanceCount(v int32) *BuildPipelineRunDeployConfig {
+	s.MaximumInstanceCount = &v
+	return s
+}
+
+func (s *BuildPipelineRunDeployConfig) SetMinimumInstanceCount(v int32) *BuildPipelineRunDeployConfig {
+	s.MinimumInstanceCount = &v
+	return s
+}
+
+func (s *BuildPipelineRunDeployConfig) SetUpdateApplicationInput(v string) *BuildPipelineRunDeployConfig {
+	s.UpdateApplicationInput = &v
+	return s
+}
+
+type BuildPipelineRunImageConfig struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Repository   *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
+}
+
+func (s BuildPipelineRunImageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRunImageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRunImageConfig) SetInstanceType(v string) *BuildPipelineRunImageConfig {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *BuildPipelineRunImageConfig) SetNamespace(v string) *BuildPipelineRunImageConfig {
+	s.Namespace = &v
+	return s
+}
+
+func (s *BuildPipelineRunImageConfig) SetRepository(v string) *BuildPipelineRunImageConfig {
+	s.Repository = &v
+	return s
+}
+
+type BuildPipelineRunPackageConfig struct {
+	PackageName    *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	PackageType    *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUrl     *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+}
+
+func (s BuildPipelineRunPackageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRunPackageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRunPackageConfig) SetPackageName(v string) *BuildPipelineRunPackageConfig {
+	s.PackageName = &v
+	return s
+}
+
+func (s *BuildPipelineRunPackageConfig) SetPackageType(v string) *BuildPipelineRunPackageConfig {
+	s.PackageType = &v
+	return s
+}
+
+func (s *BuildPipelineRunPackageConfig) SetPackageUrl(v string) *BuildPipelineRunPackageConfig {
+	s.PackageUrl = &v
+	return s
+}
+
+func (s *BuildPipelineRunPackageConfig) SetPackageVersion(v string) *BuildPipelineRunPackageConfig {
+	s.PackageVersion = &v
+	return s
+}
+
+type BuildPipelineRunSteps struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Result      *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s BuildPipelineRunSteps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRunSteps) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRunSteps) SetDescription(v string) *BuildPipelineRunSteps {
+	s.Description = &v
+	return s
+}
+
+func (s *BuildPipelineRunSteps) SetDuration(v int64) *BuildPipelineRunSteps {
+	s.Duration = &v
+	return s
+}
+
+func (s *BuildPipelineRunSteps) SetEndTime(v int64) *BuildPipelineRunSteps {
+	s.EndTime = &v
+	return s
+}
+
+func (s *BuildPipelineRunSteps) SetId(v string) *BuildPipelineRunSteps {
+	s.Id = &v
+	return s
+}
+
+func (s *BuildPipelineRunSteps) SetName(v string) *BuildPipelineRunSteps {
+	s.Name = &v
+	return s
+}
+
+func (s *BuildPipelineRunSteps) SetResult(v string) *BuildPipelineRunSteps {
+	s.Result = &v
+	return s
+}
+
+func (s *BuildPipelineRunSteps) SetStartTime(v int64) *BuildPipelineRunSteps {
+	s.StartTime = &v
+	return s
+}
+
+func (s *BuildPipelineRunSteps) SetStatus(v string) *BuildPipelineRunSteps {
+	s.Status = &v
+	return s
+}
+
+type BuildPipelineRunLogLine struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Offset  *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+}
+
+func (s BuildPipelineRunLogLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuildPipelineRunLogLine) GoString() string {
+	return s.String()
+}
+
+func (s *BuildPipelineRunLogLine) SetContent(v string) *BuildPipelineRunLogLine {
+	s.Content = &v
+	return s
+}
+
+func (s *BuildPipelineRunLogLine) SetOffset(v int64) *BuildPipelineRunLogLine {
+	s.Offset = &v
+	return s
+}
+
+type CertConfig struct {
+	CertName    *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	Certificate *string `json:"certificate,omitempty" xml:"certificate,omitempty"`
+	PrivateKey  *string `json:"privateKey,omitempty" xml:"privateKey,omitempty"`
+}
+
+func (s CertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CertConfig) SetCertName(v string) *CertConfig {
+	s.CertName = &v
+	return s
+}
+
+func (s *CertConfig) SetCertificate(v string) *CertConfig {
+	s.Certificate = &v
+	return s
+}
+
+func (s *CertConfig) SetPrivateKey(v string) *CertConfig {
+	s.PrivateKey = &v
+	return s
+}
+
+type CreateApplicationInput struct {
+	ApplicationName         *string                  `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
+	Args                    *string                  `json:"args,omitempty" xml:"args,omitempty"`
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	Code                    *InputCodeLocation       `json:"code,omitempty" xml:"code,omitempty"`
+	Command                 *string                  `json:"command,omitempty" xml:"command,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	GpuMemorySize           *int32                   `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	HttpTriggerConfig       *HTTPTriggerConfig       `json:"httpTriggerConfig,omitempty" xml:"httpTriggerConfig,omitempty"`
+	ImageConfig             *ImageConfig             `json:"imageConfig,omitempty" xml:"imageConfig,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
+	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InternetAccess          *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	LivenessProbe           *Probe                   `json:"livenessProbe,omitempty" xml:"livenessProbe,omitempty"`
+	LogConfig               *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NamespaceID             *string                  `json:"namespaceID,omitempty" xml:"namespaceID,omitempty"`
+	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	ScaleConfig             *ScaleConfig             `json:"scaleConfig,omitempty" xml:"scaleConfig,omitempty"`
+	SlsConfig               *SLSConfig               `json:"slsConfig,omitempty" xml:"slsConfig,omitempty"`
+	StartupProbe            *Probe                   `json:"startupProbe,omitempty" xml:"startupProbe,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+}
+
+func (s CreateApplicationInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationInput) SetApplicationName(v string) *CreateApplicationInput {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetArgs(v string) *CreateApplicationInput {
+	s.Args = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetCaPort(v int32) *CreateApplicationInput {
+	s.CaPort = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetCode(v *InputCodeLocation) *CreateApplicationInput {
+	s.Code = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetCommand(v string) *CreateApplicationInput {
+	s.Command = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetCpu(v float32) *CreateApplicationInput {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetCustomDNS(v *CustomDNS) *CreateApplicationInput {
+	s.CustomDNS = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *CreateApplicationInput {
+	s.CustomHealthCheckConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *CreateApplicationInput {
+	s.CustomRuntimeConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetDescription(v string) *CreateApplicationInput {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetDiskSize(v int32) *CreateApplicationInput {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetEnvironmentVariables(v map[string]*string) *CreateApplicationInput {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetGpuMemorySize(v int32) *CreateApplicationInput {
+	s.GpuMemorySize = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetHandler(v string) *CreateApplicationInput {
+	s.Handler = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetHttpTriggerConfig(v *HTTPTriggerConfig) *CreateApplicationInput {
+	s.HttpTriggerConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetImageConfig(v *ImageConfig) *CreateApplicationInput {
+	s.ImageConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetInitializationTimeout(v int32) *CreateApplicationInput {
+	s.InitializationTimeout = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetInitializer(v string) *CreateApplicationInput {
+	s.Initializer = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetInstanceConcurrency(v int32) *CreateApplicationInput {
+	s.InstanceConcurrency = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetInstanceLifecycleConfig(v *InstanceLifecycleConfig) *CreateApplicationInput {
+	s.InstanceLifecycleConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetInstanceSoftConcurrency(v int32) *CreateApplicationInput {
+	s.InstanceSoftConcurrency = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetInstanceType(v string) *CreateApplicationInput {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetInternetAccess(v bool) *CreateApplicationInput {
+	s.InternetAccess = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetLayers(v []*string) *CreateApplicationInput {
+	s.Layers = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetLivenessProbe(v *Probe) *CreateApplicationInput {
+	s.LivenessProbe = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetLogConfig(v *LogConfig) *CreateApplicationInput {
+	s.LogConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetMemorySize(v int32) *CreateApplicationInput {
+	s.MemorySize = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetNamespaceID(v string) *CreateApplicationInput {
+	s.NamespaceID = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetNasConfig(v *NASConfig) *CreateApplicationInput {
+	s.NasConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetOssMountConfig(v *OSSMountConfig) *CreateApplicationInput {
+	s.OssMountConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetRuntime(v string) *CreateApplicationInput {
+	s.Runtime = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetScaleConfig(v *ScaleConfig) *CreateApplicationInput {
+	s.ScaleConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetSlsConfig(v *SLSConfig) *CreateApplicationInput {
+	s.SlsConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetStartupProbe(v *Probe) *CreateApplicationInput {
+	s.StartupProbe = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetTimeout(v int32) *CreateApplicationInput {
+	s.Timeout = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetTracingConfig(v *TracingConfig) *CreateApplicationInput {
+	s.TracingConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetVpcConfig(v *VPCConfig) *CreateApplicationInput {
+	s.VpcConfig = v
+	return s
+}
+
+type CreateCustomDomainInput struct {
+	ApplicationName *string     `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
+	CertConfig      *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	DomainName      *string     `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	KeepFullPath    *bool       `json:"keepFullPath,omitempty" xml:"keepFullPath,omitempty"`
+	NamespaceID     *string     `json:"namespaceID,omitempty" xml:"namespaceID,omitempty"`
+	Protocol        *string     `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	TlsConfig       *TLSConfig  `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig       *WAFConfig  `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
+}
+
+func (s CreateCustomDomainInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomDomainInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomDomainInput) SetApplicationName(v string) *CreateCustomDomainInput {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetCertConfig(v *CertConfig) *CreateCustomDomainInput {
+	s.CertConfig = v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetDomainName(v string) *CreateCustomDomainInput {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetKeepFullPath(v bool) *CreateCustomDomainInput {
+	s.KeepFullPath = &v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetNamespaceID(v string) *CreateCustomDomainInput {
+	s.NamespaceID = &v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetProtocol(v string) *CreateCustomDomainInput {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetTlsConfig(v *TLSConfig) *CreateCustomDomainInput {
+	s.TlsConfig = v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetWafConfig(v *WAFConfig) *CreateCustomDomainInput {
+	s.WafConfig = v
+	return s
+}
+
+type CreateSlsIndexRequest struct {
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s CreateSlsIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlsIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlsIndexRequest) SetLogstore(v string) *CreateSlsIndexRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *CreateSlsIndexRequest) SetProject(v string) *CreateSlsIndexRequest {
+	s.Project = &v
+	return s
+}
+
+type CreateSlsIndexResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LogStore  *string `json:"logStore,omitempty" xml:"logStore,omitempty"`
+	Project   *string `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s CreateSlsIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlsIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlsIndexResponse) SetRequestId(v string) *CreateSlsIndexResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSlsIndexResponse) SetLogStore(v string) *CreateSlsIndexResponse {
+	s.LogStore = &v
+	return s
+}
+
+func (s *CreateSlsIndexResponse) SetProject(v string) *CreateSlsIndexResponse {
+	s.Project = &v
+	return s
+}
+
+type CreateSlsResourceResponse struct {
+	LogStore  *string `json:"logStore,omitempty" xml:"logStore,omitempty"`
+	Project   *string `json:"project,omitempty" xml:"project,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateSlsResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlsResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlsResourceResponse) SetLogStore(v string) *CreateSlsResourceResponse {
+	s.LogStore = &v
+	return s
+}
+
+func (s *CreateSlsResourceResponse) SetProject(v string) *CreateSlsResourceResponse {
+	s.Project = &v
+	return s
+}
+
+func (s *CreateSlsResourceResponse) SetRequestId(v string) *CreateSlsResourceResponse {
+	s.RequestId = &v
+	return s
+}
+
+type CustomDNS struct {
+	DnsOptions  []*DNSOption `json:"dnsOptions,omitempty" xml:"dnsOptions,omitempty" type:"Repeated"`
+	NameServers []*string    `json:"nameServers,omitempty" xml:"nameServers,omitempty" type:"Repeated"`
+	Searches    []*string    `json:"searches,omitempty" xml:"searches,omitempty" type:"Repeated"`
+}
+
+func (s CustomDNS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomDNS) GoString() string {
+	return s.String()
+}
+
+func (s *CustomDNS) SetDnsOptions(v []*DNSOption) *CustomDNS {
+	s.DnsOptions = v
+	return s
+}
+
+func (s *CustomDNS) SetNameServers(v []*string) *CustomDNS {
+	s.NameServers = v
+	return s
+}
+
+func (s *CustomDNS) SetSearches(v []*string) *CustomDNS {
+	s.Searches = v
+	return s
+}
+
+type CustomDomain struct {
+	AccountId        *string     `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	ApiVersion       *string     `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	CertConfig       *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	CreatedTime      *string     `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DomainName       *string     `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	KeepFullPath     *bool       `json:"keepFullPath,omitempty" xml:"keepFullPath,omitempty"`
+	LastModifiedTime *string     `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	NamespaceID      *string     `json:"namespaceID,omitempty" xml:"namespaceID,omitempty"`
+	Protocol         *string     `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	RequestId        *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SubdomainCount   *string     `json:"subdomainCount,omitempty" xml:"subdomainCount,omitempty"`
+	TlsConfig        *TLSConfig  `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig        *WAFConfig  `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
+}
+
+func (s CustomDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomDomain) GoString() string {
+	return s.String()
+}
+
+func (s *CustomDomain) SetAccountId(v string) *CustomDomain {
+	s.AccountId = &v
+	return s
+}
+
+func (s *CustomDomain) SetApiVersion(v string) *CustomDomain {
+	s.ApiVersion = &v
+	return s
+}
+
+func (s *CustomDomain) SetCertConfig(v *CertConfig) *CustomDomain {
+	s.CertConfig = v
+	return s
+}
+
+func (s *CustomDomain) SetCreatedTime(v string) *CustomDomain {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CustomDomain) SetDomainName(v string) *CustomDomain {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CustomDomain) SetKeepFullPath(v bool) *CustomDomain {
+	s.KeepFullPath = &v
+	return s
+}
+
+func (s *CustomDomain) SetLastModifiedTime(v string) *CustomDomain {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *CustomDomain) SetNamespaceID(v string) *CustomDomain {
+	s.NamespaceID = &v
+	return s
+}
+
+func (s *CustomDomain) SetProtocol(v string) *CustomDomain {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CustomDomain) SetRequestId(v string) *CustomDomain {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CustomDomain) SetSubdomainCount(v string) *CustomDomain {
+	s.SubdomainCount = &v
+	return s
+}
+
+func (s *CustomDomain) SetTlsConfig(v *TLSConfig) *CustomDomain {
+	s.TlsConfig = v
+	return s
+}
+
+func (s *CustomDomain) SetWafConfig(v *WAFConfig) *CustomDomain {
+	s.WafConfig = v
+	return s
+}
+
+type CustomHealthCheckConfig struct {
+	FailureThreshold    *int32  `json:"failureThreshold,omitempty" xml:"failureThreshold,omitempty"`
+	HttpGetUrl          *string `json:"httpGetUrl,omitempty" xml:"httpGetUrl,omitempty"`
+	InitialDelaySeconds *int32  `json:"initialDelaySeconds,omitempty" xml:"initialDelaySeconds,omitempty"`
+	PeriodSeconds       *int32  `json:"periodSeconds,omitempty" xml:"periodSeconds,omitempty"`
+	SuccessThreshold    *int32  `json:"successThreshold,omitempty" xml:"successThreshold,omitempty"`
+	TimeoutSeconds      *int32  `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
+}
+
+func (s CustomHealthCheckConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomHealthCheckConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CustomHealthCheckConfig) SetFailureThreshold(v int32) *CustomHealthCheckConfig {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetHttpGetUrl(v string) *CustomHealthCheckConfig {
+	s.HttpGetUrl = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetInitialDelaySeconds(v int32) *CustomHealthCheckConfig {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetPeriodSeconds(v int32) *CustomHealthCheckConfig {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetSuccessThreshold(v int32) *CustomHealthCheckConfig {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetTimeoutSeconds(v int32) *CustomHealthCheckConfig {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+type CustomRuntimeConfig struct {
+	Args    []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
+	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
+}
+
+func (s CustomRuntimeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomRuntimeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CustomRuntimeConfig) SetArgs(v []*string) *CustomRuntimeConfig {
+	s.Args = v
+	return s
+}
+
+func (s *CustomRuntimeConfig) SetCommand(v []*string) *CustomRuntimeConfig {
+	s.Command = v
+	return s
+}
+
+type DNSOption struct {
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s DNSOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DNSOption) GoString() string {
+	return s.String()
+}
+
+func (s *DNSOption) SetName(v string) *DNSOption {
+	s.Name = &v
+	return s
+}
+
+func (s *DNSOption) SetValue(v string) *DNSOption {
+	s.Value = &v
+	return s
+}
+
+type GetApplicationLogsInput struct {
+	BackwardLine *int64  `json:"backwardLine,omitempty" xml:"backwardLine,omitempty"`
+	EndTime      *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ForwardLine  *int64  `json:"forwardLine,omitempty" xml:"forwardLine,omitempty"`
+	InstanceID   *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	IsTail       *bool   `json:"isTail,omitempty" xml:"isTail,omitempty"`
+	Match        *string `json:"match,omitempty" xml:"match,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
+	Offset       *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	PackID       *string `json:"packID,omitempty" xml:"packID,omitempty"`
+	PackMeta     *string `json:"packMeta,omitempty" xml:"packMeta,omitempty"`
+	StartTime    *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Timestamp    *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	VersionID    *string `json:"versionID,omitempty" xml:"versionID,omitempty"`
+}
+
+func (s GetApplicationLogsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationLogsInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationLogsInput) SetBackwardLine(v int64) *GetApplicationLogsInput {
+	s.BackwardLine = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetEndTime(v int64) *GetApplicationLogsInput {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetForwardLine(v int64) *GetApplicationLogsInput {
+	s.ForwardLine = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetInstanceID(v string) *GetApplicationLogsInput {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetIsTail(v bool) *GetApplicationLogsInput {
+	s.IsTail = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetMatch(v string) *GetApplicationLogsInput {
+	s.Match = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetMessage(v string) *GetApplicationLogsInput {
+	s.Message = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetOffset(v int64) *GetApplicationLogsInput {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetPackID(v string) *GetApplicationLogsInput {
+	s.PackID = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetPackMeta(v string) *GetApplicationLogsInput {
+	s.PackMeta = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetStartTime(v int64) *GetApplicationLogsInput {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetTimestamp(v string) *GetApplicationLogsInput {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetApplicationLogsInput) SetVersionID(v string) *GetApplicationLogsInput {
+	s.VersionID = &v
+	return s
+}
+
+type GetApplicationLogsOutput struct {
+	LogEntrys  []*LogEntry `json:"logEntrys,omitempty" xml:"logEntrys,omitempty" type:"Repeated"`
+	NextOffset *int64      `json:"nextOffset,omitempty" xml:"nextOffset,omitempty"`
+	RequestId  *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetApplicationLogsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationLogsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationLogsOutput) SetLogEntrys(v []*LogEntry) *GetApplicationLogsOutput {
+	s.LogEntrys = v
+	return s
+}
+
+func (s *GetApplicationLogsOutput) SetNextOffset(v int64) *GetApplicationLogsOutput {
+	s.NextOffset = &v
+	return s
+}
+
+func (s *GetApplicationLogsOutput) SetRequestId(v string) *GetApplicationLogsOutput {
+	s.RequestId = &v
+	return s
+}
+
+type GetInstanceLogsInput struct {
+	BackwardLine *int64  `json:"backwardLine,omitempty" xml:"backwardLine,omitempty"`
+	EndTime      *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ForwardLine  *int64  `json:"forwardLine,omitempty" xml:"forwardLine,omitempty"`
+	IsTail       *bool   `json:"isTail,omitempty" xml:"isTail,omitempty"`
+	Match        *string `json:"match,omitempty" xml:"match,omitempty"`
+	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
+	Offset       *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	PackID       *string `json:"packID,omitempty" xml:"packID,omitempty"`
+	PackMeta     *string `json:"packMeta,omitempty" xml:"packMeta,omitempty"`
+	StartTime    *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Timestamp    *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	VersionID    *string `json:"versionID,omitempty" xml:"versionID,omitempty"`
+}
+
+func (s GetInstanceLogsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceLogsInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceLogsInput) SetBackwardLine(v int64) *GetInstanceLogsInput {
+	s.BackwardLine = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetEndTime(v int64) *GetInstanceLogsInput {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetForwardLine(v int64) *GetInstanceLogsInput {
+	s.ForwardLine = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetIsTail(v bool) *GetInstanceLogsInput {
+	s.IsTail = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetMatch(v string) *GetInstanceLogsInput {
+	s.Match = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetMessage(v string) *GetInstanceLogsInput {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetOffset(v int64) *GetInstanceLogsInput {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetPackID(v string) *GetInstanceLogsInput {
+	s.PackID = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetPackMeta(v string) *GetInstanceLogsInput {
+	s.PackMeta = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetStartTime(v int64) *GetInstanceLogsInput {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetTimestamp(v string) *GetInstanceLogsInput {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetInstanceLogsInput) SetVersionID(v string) *GetInstanceLogsInput {
+	s.VersionID = &v
+	return s
+}
+
+type GetInstanceLogsOutput struct {
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetInstanceLogsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceLogsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceLogsOutput) SetData(v string) *GetInstanceLogsOutput {
+	s.Data = &v
+	return s
+}
+
+func (s *GetInstanceLogsOutput) SetRequestId(v string) *GetInstanceLogsOutput {
+	s.RequestId = &v
+	return s
+}
+
+type GetPerRequestLogsInput struct {
+	EndTime     *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ErrorType   *string `json:"errorType,omitempty" xml:"errorType,omitempty"`
+	ForwardLine *int64  `json:"forwardLine,omitempty" xml:"forwardLine,omitempty"`
+	InstanceID  *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	IsColdStart *bool   `json:"isColdStart,omitempty" xml:"isColdStart,omitempty"`
+	RequestID   *string `json:"requestID,omitempty" xml:"requestID,omitempty"`
+	StartTime   *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Timestamp   *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s GetPerRequestLogsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPerRequestLogsInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetPerRequestLogsInput) SetEndTime(v int64) *GetPerRequestLogsInput {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetPerRequestLogsInput) SetErrorType(v string) *GetPerRequestLogsInput {
+	s.ErrorType = &v
+	return s
+}
+
+func (s *GetPerRequestLogsInput) SetForwardLine(v int64) *GetPerRequestLogsInput {
+	s.ForwardLine = &v
+	return s
+}
+
+func (s *GetPerRequestLogsInput) SetInstanceID(v string) *GetPerRequestLogsInput {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *GetPerRequestLogsInput) SetIsColdStart(v bool) *GetPerRequestLogsInput {
+	s.IsColdStart = &v
+	return s
+}
+
+func (s *GetPerRequestLogsInput) SetRequestID(v string) *GetPerRequestLogsInput {
+	s.RequestID = &v
+	return s
+}
+
+func (s *GetPerRequestLogsInput) SetStartTime(v int64) *GetPerRequestLogsInput {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetPerRequestLogsInput) SetTimestamp(v string) *GetPerRequestLogsInput {
+	s.Timestamp = &v
+	return s
+}
+
+type GetPerRequestLogsOutput struct {
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetPerRequestLogsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPerRequestLogsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetPerRequestLogsOutput) SetData(v string) *GetPerRequestLogsOutput {
+	s.Data = &v
+	return s
+}
+
+func (s *GetPerRequestLogsOutput) SetRequestId(v string) *GetPerRequestLogsOutput {
+	s.RequestId = &v
+	return s
+}
+
+type GetQuotaOutput struct {
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InstanceLimit *int64  `json:"instanceLimit,omitempty" xml:"instanceLimit,omitempty"`
+	InstanceUsed  *int64  `json:"instanceUsed,omitempty" xml:"instanceUsed,omitempty"`
+}
+
+func (s GetQuotaOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaOutput) SetRequestId(v string) *GetQuotaOutput {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQuotaOutput) SetInstanceLimit(v int64) *GetQuotaOutput {
+	s.InstanceLimit = &v
+	return s
+}
+
+func (s *GetQuotaOutput) SetInstanceUsed(v int64) *GetQuotaOutput {
+	s.InstanceUsed = &v
+	return s
+}
+
+type HTTPTriggerConfig struct {
+	AclConfig          *AclConfig  `json:"aclConfig,omitempty" xml:"aclConfig,omitempty"`
+	AuthConfig         interface{} `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	AuthType           *string     `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool       `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	SafeMode           *bool       `json:"safeMode,omitempty" xml:"safeMode,omitempty"`
+}
+
+func (s HTTPTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HTTPTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HTTPTriggerConfig) SetAclConfig(v *AclConfig) *HTTPTriggerConfig {
+	s.AclConfig = v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetAuthConfig(v interface{}) *HTTPTriggerConfig {
+	s.AuthConfig = v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetAuthType(v string) *HTTPTriggerConfig {
+	s.AuthType = &v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetDisableURLInternet(v bool) *HTTPTriggerConfig {
+	s.DisableURLInternet = &v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetSafeMode(v bool) *HTTPTriggerConfig {
+	s.SafeMode = &v
+	return s
+}
+
+type ImageConfig struct {
+	AccelerationType *string `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
+	Image            *string `json:"image,omitempty" xml:"image,omitempty"`
+	InstanceID       *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+}
+
+func (s ImageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ImageConfig) SetAccelerationType(v string) *ImageConfig {
+	s.AccelerationType = &v
+	return s
+}
+
+func (s *ImageConfig) SetImage(v string) *ImageConfig {
+	s.Image = &v
+	return s
+}
+
+func (s *ImageConfig) SetInstanceID(v string) *ImageConfig {
+	s.InstanceID = &v
+	return s
+}
+
+type InputCodeLocation struct {
+	OssBucketName *string `json:"ossBucketName,omitempty" xml:"ossBucketName,omitempty"`
+	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
+	ZipFile       *string `json:"zipFile,omitempty" xml:"zipFile,omitempty"`
+}
+
+func (s InputCodeLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InputCodeLocation) GoString() string {
+	return s.String()
+}
+
+func (s *InputCodeLocation) SetOssBucketName(v string) *InputCodeLocation {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *InputCodeLocation) SetOssObjectName(v string) *InputCodeLocation {
+	s.OssObjectName = &v
+	return s
+}
+
+func (s *InputCodeLocation) SetZipFile(v string) *InputCodeLocation {
+	s.ZipFile = &v
+	return s
+}
+
+type InstanceExecAuthorizationInput struct {
+	Options *InstanceExecAuthorizationInputOptions `json:"options,omitempty" xml:"options,omitempty"`
+}
+
+func (s InstanceExecAuthorizationInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceExecAuthorizationInput) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceExecAuthorizationInput) SetOptions(v *InstanceExecAuthorizationInputOptions) *InstanceExecAuthorizationInput {
+	s.Options = v
+	return s
+}
+
+type InstanceExecAuthorizationInputOptions struct {
+	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
+	Stderr  *bool     `json:"stderr,omitempty" xml:"stderr,omitempty"`
+	Stdin   *bool     `json:"stdin,omitempty" xml:"stdin,omitempty"`
+	Stdout  *bool     `json:"stdout,omitempty" xml:"stdout,omitempty"`
+	Tty     *bool     `json:"tty,omitempty" xml:"tty,omitempty"`
+}
+
+func (s InstanceExecAuthorizationInputOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceExecAuthorizationInputOptions) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceExecAuthorizationInputOptions) SetCommand(v []*string) *InstanceExecAuthorizationInputOptions {
+	s.Command = v
+	return s
+}
+
+func (s *InstanceExecAuthorizationInputOptions) SetStderr(v bool) *InstanceExecAuthorizationInputOptions {
+	s.Stderr = &v
+	return s
+}
+
+func (s *InstanceExecAuthorizationInputOptions) SetStdin(v bool) *InstanceExecAuthorizationInputOptions {
+	s.Stdin = &v
+	return s
+}
+
+func (s *InstanceExecAuthorizationInputOptions) SetStdout(v bool) *InstanceExecAuthorizationInputOptions {
+	s.Stdout = &v
+	return s
+}
+
+func (s *InstanceExecAuthorizationInputOptions) SetTty(v bool) *InstanceExecAuthorizationInputOptions {
+	s.Tty = &v
+	return s
+}
+
+type InstanceExecAuthorizationOutput struct {
+	AccessKeyId   *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	AccountId     *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	Authorization *string `json:"authorization,omitempty" xml:"authorization,omitempty"`
+	Date          *string `json:"date,omitempty" xml:"date,omitempty"`
+	Endpoint      *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	RequestId     *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s InstanceExecAuthorizationOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceExecAuthorizationOutput) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceExecAuthorizationOutput) SetAccessKeyId(v string) *InstanceExecAuthorizationOutput {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *InstanceExecAuthorizationOutput) SetAccountId(v string) *InstanceExecAuthorizationOutput {
+	s.AccountId = &v
+	return s
+}
+
+func (s *InstanceExecAuthorizationOutput) SetAuthorization(v string) *InstanceExecAuthorizationOutput {
+	s.Authorization = &v
+	return s
+}
+
+func (s *InstanceExecAuthorizationOutput) SetDate(v string) *InstanceExecAuthorizationOutput {
+	s.Date = &v
+	return s
+}
+
+func (s *InstanceExecAuthorizationOutput) SetEndpoint(v string) *InstanceExecAuthorizationOutput {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *InstanceExecAuthorizationOutput) SetRequestId(v string) *InstanceExecAuthorizationOutput {
+	s.RequestId = &v
+	return s
+}
+
+type InstanceInfo struct {
+	ImageUrl   *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	VersionId  *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+}
+
+func (s InstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceInfo) SetImageUrl(v string) *InstanceInfo {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *InstanceInfo) SetInstanceId(v string) *InstanceInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *InstanceInfo) SetStatus(v string) *InstanceInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *InstanceInfo) SetVersionId(v string) *InstanceInfo {
+	s.VersionId = &v
+	return s
+}
+
+type InstanceLifecycleConfig struct {
+	PreFreeze *LifecycleHook `json:"preFreeze,omitempty" xml:"preFreeze,omitempty"`
+	PreStop   *LifecycleHook `json:"preStop,omitempty" xml:"preStop,omitempty"`
+}
+
+func (s InstanceLifecycleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceLifecycleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceLifecycleConfig) SetPreFreeze(v *LifecycleHook) *InstanceLifecycleConfig {
+	s.PreFreeze = v
+	return s
+}
+
+func (s *InstanceLifecycleConfig) SetPreStop(v *LifecycleHook) *InstanceLifecycleConfig {
+	s.PreStop = v
+	return s
+}
+
+type InstanceMetricInfo struct {
+	ApplicationID   *string  `json:"applicationID,omitempty" xml:"applicationID,omitempty"`
+	CpuPercent      *float32 `json:"cpuPercent,omitempty" xml:"cpuPercent,omitempty"`
+	CpuQuotaPercent *float32 `json:"cpuQuotaPercent,omitempty" xml:"cpuQuotaPercent,omitempty"`
+	InstanceID      *string  `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	MemoryLimitMB   *float32 `json:"memoryLimitMB,omitempty" xml:"memoryLimitMB,omitempty"`
+	MemoryUsageMB   *float32 `json:"memoryUsageMB,omitempty" xml:"memoryUsageMB,omitempty"`
+	Timestamp       *int64   `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s InstanceMetricInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceMetricInfo) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceMetricInfo) SetApplicationID(v string) *InstanceMetricInfo {
+	s.ApplicationID = &v
+	return s
+}
+
+func (s *InstanceMetricInfo) SetCpuPercent(v float32) *InstanceMetricInfo {
+	s.CpuPercent = &v
+	return s
+}
+
+func (s *InstanceMetricInfo) SetCpuQuotaPercent(v float32) *InstanceMetricInfo {
+	s.CpuQuotaPercent = &v
+	return s
+}
+
+func (s *InstanceMetricInfo) SetInstanceID(v string) *InstanceMetricInfo {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *InstanceMetricInfo) SetMemoryLimitMB(v float32) *InstanceMetricInfo {
+	s.MemoryLimitMB = &v
+	return s
+}
+
+func (s *InstanceMetricInfo) SetMemoryUsageMB(v float32) *InstanceMetricInfo {
+	s.MemoryUsageMB = &v
+	return s
+}
+
+func (s *InstanceMetricInfo) SetTimestamp(v int64) *InstanceMetricInfo {
+	s.Timestamp = &v
+	return s
+}
+
+type JaegerConfig struct {
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+}
+
+func (s JaegerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JaegerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JaegerConfig) SetEndpoint(v string) *JaegerConfig {
+	s.Endpoint = &v
+	return s
+}
+
+type LifecycleHook struct {
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	Timeout *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s LifecycleHook) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LifecycleHook) GoString() string {
+	return s.String()
+}
+
+func (s *LifecycleHook) SetHandler(v string) *LifecycleHook {
+	s.Handler = &v
+	return s
+}
+
+func (s *LifecycleHook) SetTimeout(v int32) *LifecycleHook {
+	s.Timeout = &v
+	return s
+}
+
+type ListApplicationVersionsOutput struct {
+	Direction *string    `json:"direction,omitempty" xml:"direction,omitempty"`
+	NextToken *string    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Versions  []*Version `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+}
+
+func (s ListApplicationVersionsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationVersionsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationVersionsOutput) SetDirection(v string) *ListApplicationVersionsOutput {
+	s.Direction = &v
+	return s
+}
+
+func (s *ListApplicationVersionsOutput) SetNextToken(v string) *ListApplicationVersionsOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListApplicationVersionsOutput) SetRequestId(v string) *ListApplicationVersionsOutput {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApplicationVersionsOutput) SetVersions(v []*Version) *ListApplicationVersionsOutput {
+	s.Versions = v
+	return s
+}
+
+type ListApplicationsOutput struct {
+	Applications []*Application `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
+	NextToken    *string        `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId    *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListApplicationsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsOutput) SetApplications(v []*Application) *ListApplicationsOutput {
+	s.Applications = v
+	return s
+}
+
+func (s *ListApplicationsOutput) SetNextToken(v string) *ListApplicationsOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListApplicationsOutput) SetRequestId(v string) *ListApplicationsOutput {
+	s.RequestId = &v
+	return s
+}
+
+type ListApplicationsWithStatusOutput struct {
+	Applications []*ApplicationWithStatus `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
+	NextToken    *string                  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId    *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListApplicationsWithStatusOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithStatusOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithStatusOutput) SetApplications(v []*ApplicationWithStatus) *ListApplicationsWithStatusOutput {
+	s.Applications = v
+	return s
+}
+
+func (s *ListApplicationsWithStatusOutput) SetNextToken(v string) *ListApplicationsWithStatusOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListApplicationsWithStatusOutput) SetRequestId(v string) *ListApplicationsWithStatusOutput {
+	s.RequestId = &v
+	return s
+}
+
+type ListCustomDomainOutput struct {
+	CustomDomains []*CustomDomain `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
+	NextToken     *string         `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId     *string         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListCustomDomainOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomDomainOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomDomainOutput) SetCustomDomains(v []*CustomDomain) *ListCustomDomainOutput {
+	s.CustomDomains = v
+	return s
+}
+
+func (s *ListCustomDomainOutput) SetNextToken(v string) *ListCustomDomainOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListCustomDomainOutput) SetRequestId(v string) *ListCustomDomainOutput {
+	s.RequestId = &v
+	return s
+}
+
+type ListInstancesMetricsOutput struct {
+	RequestId   *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MetricsList []*InstanceMetricInfo `json:"metricsList,omitempty" xml:"metricsList,omitempty" type:"Repeated"`
+	PageNumber  *int32                `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int32                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	TotalCount  *int32                `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListInstancesMetricsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesMetricsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesMetricsOutput) SetRequestId(v string) *ListInstancesMetricsOutput {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstancesMetricsOutput) SetMetricsList(v []*InstanceMetricInfo) *ListInstancesMetricsOutput {
+	s.MetricsList = v
+	return s
+}
+
+func (s *ListInstancesMetricsOutput) SetPageNumber(v int32) *ListInstancesMetricsOutput {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstancesMetricsOutput) SetPageSize(v int32) *ListInstancesMetricsOutput {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesMetricsOutput) SetTotalCount(v int32) *ListInstancesMetricsOutput {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInstancesOutput struct {
+	CurrentError  *string                   `json:"currentError,omitempty" xml:"currentError,omitempty"`
+	Instances     []*InstanceInfo           `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	RequestId     *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VersionStatus map[string]*VersionStatus `json:"versionStatus,omitempty" xml:"versionStatus,omitempty"`
+}
+
+func (s ListInstancesOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesOutput) SetCurrentError(v string) *ListInstancesOutput {
+	s.CurrentError = &v
+	return s
+}
+
+func (s *ListInstancesOutput) SetInstances(v []*InstanceInfo) *ListInstancesOutput {
+	s.Instances = v
+	return s
+}
+
+func (s *ListInstancesOutput) SetRequestId(v string) *ListInstancesOutput {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstancesOutput) SetVersionStatus(v map[string]*VersionStatus) *ListInstancesOutput {
+	s.VersionStatus = v
+	return s
+}
+
+type ListMetricsOutput struct {
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Metrics   map[string][]*MetricInfo `json:"metrics,omitempty" xml:"metrics,omitempty"`
+}
+
+func (s ListMetricsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricsOutput) SetRequestId(v string) *ListMetricsOutput {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMetricsOutput) SetMetrics(v map[string][]*MetricInfo) *ListMetricsOutput {
+	s.Metrics = v
+	return s
+}
+
+type ListStaticsQueryResponse struct {
+	Length  *int64         `json:"length,omitempty" xml:"length,omitempty"`
+	Sort    *string        `json:"sort,omitempty" xml:"sort,omitempty"`
+	Statics []*StaticsInfo `json:"statics,omitempty" xml:"statics,omitempty" type:"Repeated"`
+}
+
+func (s ListStaticsQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStaticsQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListStaticsQueryResponse) SetLength(v int64) *ListStaticsQueryResponse {
+	s.Length = &v
+	return s
+}
+
+func (s *ListStaticsQueryResponse) SetSort(v string) *ListStaticsQueryResponse {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListStaticsQueryResponse) SetStatics(v []*StaticsInfo) *ListStaticsQueryResponse {
+	s.Statics = v
+	return s
+}
+
+type LogConfig struct {
+	EnableInstanceMetrics *bool   `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
+	EnableRequestMetrics  *bool   `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
+	LogBeginRule          *string `json:"logBeginRule,omitempty" xml:"logBeginRule,omitempty"`
+	Logstore              *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Project               *string `json:"project,omitempty" xml:"project,omitempty"`
+	PushToUserSLS         *bool   `json:"pushToUserSLS,omitempty" xml:"pushToUserSLS,omitempty"`
+}
+
+func (s LogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *LogConfig) SetEnableInstanceMetrics(v bool) *LogConfig {
+	s.EnableInstanceMetrics = &v
+	return s
+}
+
+func (s *LogConfig) SetEnableRequestMetrics(v bool) *LogConfig {
+	s.EnableRequestMetrics = &v
+	return s
+}
+
+func (s *LogConfig) SetLogBeginRule(v string) *LogConfig {
+	s.LogBeginRule = &v
+	return s
+}
+
+func (s *LogConfig) SetLogstore(v string) *LogConfig {
+	s.Logstore = &v
+	return s
+}
+
+func (s *LogConfig) SetProject(v string) *LogConfig {
+	s.Project = &v
+	return s
+}
+
+func (s *LogConfig) SetPushToUserSLS(v bool) *LogConfig {
+	s.PushToUserSLS = &v
+	return s
+}
+
+type LogEntry struct {
+	InstanceID *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	Message    *string `json:"message,omitempty" xml:"message,omitempty"`
+	Offset     *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	PackID     *string `json:"packID,omitempty" xml:"packID,omitempty"`
+	PackMeta   *string `json:"packMeta,omitempty" xml:"packMeta,omitempty"`
+	Qualifier  *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Timestamp  *int32  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	VersionID  *string `json:"versionID,omitempty" xml:"versionID,omitempty"`
+}
+
+func (s LogEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogEntry) GoString() string {
+	return s.String()
+}
+
+func (s *LogEntry) SetInstanceID(v string) *LogEntry {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *LogEntry) SetMessage(v string) *LogEntry {
+	s.Message = &v
+	return s
+}
+
+func (s *LogEntry) SetOffset(v int64) *LogEntry {
+	s.Offset = &v
+	return s
+}
+
+func (s *LogEntry) SetPackID(v string) *LogEntry {
+	s.PackID = &v
+	return s
+}
+
+func (s *LogEntry) SetPackMeta(v string) *LogEntry {
+	s.PackMeta = &v
+	return s
+}
+
+func (s *LogEntry) SetQualifier(v string) *LogEntry {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *LogEntry) SetTimestamp(v int32) *LogEntry {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *LogEntry) SetVersionID(v string) *LogEntry {
+	s.VersionID = &v
+	return s
+}
+
+type MetricInfo struct {
+	Average   *float32 `json:"Average,omitempty" xml:"Average,omitempty"`
+	Count     *float32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Maximum   *float32 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	Minimum   *float32 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	Sum       *float32 `json:"Sum,omitempty" xml:"Sum,omitempty"`
+	Timestamp *int64   `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Value     *float32 `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s MetricInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetricInfo) GoString() string {
+	return s.String()
+}
+
+func (s *MetricInfo) SetAverage(v float32) *MetricInfo {
+	s.Average = &v
+	return s
+}
+
+func (s *MetricInfo) SetCount(v float32) *MetricInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *MetricInfo) SetMaximum(v float32) *MetricInfo {
+	s.Maximum = &v
+	return s
+}
+
+func (s *MetricInfo) SetMinimum(v float32) *MetricInfo {
+	s.Minimum = &v
+	return s
+}
+
+func (s *MetricInfo) SetSum(v float32) *MetricInfo {
+	s.Sum = &v
+	return s
+}
+
+func (s *MetricInfo) SetTimestamp(v int64) *MetricInfo {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *MetricInfo) SetValue(v float32) *MetricInfo {
+	s.Value = &v
+	return s
+}
+
+type NASConfig struct {
+	MountPoints []*NASMountConfig `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+}
+
+func (s NASConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NASConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NASConfig) SetMountPoints(v []*NASMountConfig) *NASConfig {
+	s.MountPoints = v
+	return s
+}
+
+type NASMountConfig struct {
+	EnableTLS  *bool   `json:"enableTLS,omitempty" xml:"enableTLS,omitempty"`
+	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
+}
+
+func (s NASMountConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NASMountConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NASMountConfig) SetEnableTLS(v bool) *NASMountConfig {
+	s.EnableTLS = &v
+	return s
+}
+
+func (s *NASMountConfig) SetMountDir(v string) *NASMountConfig {
+	s.MountDir = &v
+	return s
+}
+
+func (s *NASMountConfig) SetServerAddr(v string) *NASMountConfig {
+	s.ServerAddr = &v
+	return s
+}
+
+type OSSMountConfig struct {
+	MountPoints []*OSSMountPoint `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+}
+
+func (s OSSMountConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSMountConfig) GoString() string {
+	return s.String()
+}
+
+func (s *OSSMountConfig) SetMountPoints(v []*OSSMountPoint) *OSSMountConfig {
+	s.MountPoints = v
+	return s
+}
+
+type OSSMountPoint struct {
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+}
+
+func (s OSSMountPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSMountPoint) GoString() string {
+	return s.String()
+}
+
+func (s *OSSMountPoint) SetBucketName(v string) *OSSMountPoint {
+	s.BucketName = &v
+	return s
+}
+
+func (s *OSSMountPoint) SetBucketPath(v string) *OSSMountPoint {
+	s.BucketPath = &v
+	return s
+}
+
+func (s *OSSMountPoint) SetEndpoint(v string) *OSSMountPoint {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *OSSMountPoint) SetMountDir(v string) *OSSMountPoint {
+	s.MountDir = &v
+	return s
+}
+
+func (s *OSSMountPoint) SetReadOnly(v bool) *OSSMountPoint {
+	s.ReadOnly = &v
+	return s
+}
+
+type PolicyItem struct {
+	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s PolicyItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PolicyItem) GoString() string {
+	return s.String()
+}
+
+func (s *PolicyItem) SetKey(v string) *PolicyItem {
+	s.Key = &v
+	return s
+}
+
+func (s *PolicyItem) SetOperator(v string) *PolicyItem {
+	s.Operator = &v
+	return s
+}
+
+func (s *PolicyItem) SetType(v string) *PolicyItem {
+	s.Type = &v
+	return s
+}
+
+func (s *PolicyItem) SetValue(v string) *PolicyItem {
+	s.Value = &v
+	return s
+}
+
+type PriceEstimateFeature struct {
+	AppType               *string  `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CpuCore               *float32 `json:"CpuCore,omitempty" xml:"CpuCore,omitempty"`
+	CpuStrategy           *string  `json:"CpuStrategy,omitempty" xml:"CpuStrategy,omitempty"`
+	EnvType               *string  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	HighLoadInstanceCount *int64   `json:"HighLoadInstanceCount,omitempty" xml:"HighLoadInstanceCount,omitempty"`
+	HighLoadQps           *float32 `json:"HighLoadQps,omitempty" xml:"HighLoadQps,omitempty"`
+	HighLoadSeconds       *int64   `json:"HighLoadSeconds,omitempty" xml:"HighLoadSeconds,omitempty"`
+	InstanceQps           *float32 `json:"InstanceQps,omitempty" xml:"InstanceQps,omitempty"`
+	InternetOutboundGiB   *float32 `json:"InternetOutboundGiB,omitempty" xml:"InternetOutboundGiB,omitempty"`
+	LowLoadInstanceCount  *int64   `json:"LowLoadInstanceCount,omitempty" xml:"LowLoadInstanceCount,omitempty"`
+	LowLoadQps            *float32 `json:"LowLoadQps,omitempty" xml:"LowLoadQps,omitempty"`
+	LowLoadSeconds        *int64   `json:"LowLoadSeconds,omitempty" xml:"LowLoadSeconds,omitempty"`
+	MaxInstanceCount      *int64   `json:"MaxInstanceCount,omitempty" xml:"MaxInstanceCount,omitempty"`
+	MemoryGiB             *float32 `json:"MemoryGiB,omitempty" xml:"MemoryGiB,omitempty"`
+	MinInstanceCount      *int64   `json:"MinInstanceCount,omitempty" xml:"MinInstanceCount,omitempty"`
+	NoneLoadInstanceCount *int64   `json:"NoneLoadInstanceCount,omitempty" xml:"NoneLoadInstanceCount,omitempty"`
+	NoneLoadSeconds       *int64   `json:"NoneLoadSeconds,omitempty" xml:"NoneLoadSeconds,omitempty"`
+	RegionId              *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s PriceEstimateFeature) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PriceEstimateFeature) GoString() string {
+	return s.String()
+}
+
+func (s *PriceEstimateFeature) SetAppType(v string) *PriceEstimateFeature {
+	s.AppType = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetCpuCore(v float32) *PriceEstimateFeature {
+	s.CpuCore = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetCpuStrategy(v string) *PriceEstimateFeature {
+	s.CpuStrategy = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetEnvType(v string) *PriceEstimateFeature {
+	s.EnvType = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetHighLoadInstanceCount(v int64) *PriceEstimateFeature {
+	s.HighLoadInstanceCount = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetHighLoadQps(v float32) *PriceEstimateFeature {
+	s.HighLoadQps = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetHighLoadSeconds(v int64) *PriceEstimateFeature {
+	s.HighLoadSeconds = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetInstanceQps(v float32) *PriceEstimateFeature {
+	s.InstanceQps = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetInternetOutboundGiB(v float32) *PriceEstimateFeature {
+	s.InternetOutboundGiB = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetLowLoadInstanceCount(v int64) *PriceEstimateFeature {
+	s.LowLoadInstanceCount = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetLowLoadQps(v float32) *PriceEstimateFeature {
+	s.LowLoadQps = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetLowLoadSeconds(v int64) *PriceEstimateFeature {
+	s.LowLoadSeconds = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetMaxInstanceCount(v int64) *PriceEstimateFeature {
+	s.MaxInstanceCount = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetMemoryGiB(v float32) *PriceEstimateFeature {
+	s.MemoryGiB = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetMinInstanceCount(v int64) *PriceEstimateFeature {
+	s.MinInstanceCount = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetNoneLoadInstanceCount(v int64) *PriceEstimateFeature {
+	s.NoneLoadInstanceCount = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetNoneLoadSeconds(v int64) *PriceEstimateFeature {
+	s.NoneLoadSeconds = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetRegionId(v string) *PriceEstimateFeature {
+	s.RegionId = &v
+	return s
+}
+
+type PriceEstimateOutput struct {
+	Apps       []*PriceEstimateOutputApps  `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	Items      []*PriceEstimateOutputItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	TotalPrice *float32                    `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
+}
+
+func (s PriceEstimateOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PriceEstimateOutput) GoString() string {
+	return s.String()
+}
+
+func (s *PriceEstimateOutput) SetApps(v []*PriceEstimateOutputApps) *PriceEstimateOutput {
+	s.Apps = v
+	return s
+}
+
+func (s *PriceEstimateOutput) SetItems(v []*PriceEstimateOutputItems) *PriceEstimateOutput {
+	s.Items = v
+	return s
+}
+
+func (s *PriceEstimateOutput) SetTotalPrice(v float32) *PriceEstimateOutput {
+	s.TotalPrice = &v
+	return s
+}
+
+type PriceEstimateOutputApps struct {
+	Feature *PriceEstimateFeature            `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	Id      *int64                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Usages  []*PriceEstimateOutputAppsUsages `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Repeated"`
+}
+
+func (s PriceEstimateOutputApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PriceEstimateOutputApps) GoString() string {
+	return s.String()
+}
+
+func (s *PriceEstimateOutputApps) SetFeature(v *PriceEstimateFeature) *PriceEstimateOutputApps {
+	s.Feature = v
+	return s
+}
+
+func (s *PriceEstimateOutputApps) SetId(v int64) *PriceEstimateOutputApps {
+	s.Id = &v
+	return s
+}
+
+func (s *PriceEstimateOutputApps) SetUsages(v []*PriceEstimateOutputAppsUsages) *PriceEstimateOutputApps {
+	s.Usages = v
+	return s
+}
+
+type PriceEstimateOutputAppsUsages struct {
+	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Id     *string  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Unit   *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s PriceEstimateOutputAppsUsages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PriceEstimateOutputAppsUsages) GoString() string {
+	return s.String()
+}
+
+func (s *PriceEstimateOutputAppsUsages) SetAmount(v float32) *PriceEstimateOutputAppsUsages {
+	s.Amount = &v
+	return s
+}
+
+func (s *PriceEstimateOutputAppsUsages) SetId(v string) *PriceEstimateOutputAppsUsages {
+	s.Id = &v
+	return s
+}
+
+func (s *PriceEstimateOutputAppsUsages) SetUnit(v string) *PriceEstimateOutputAppsUsages {
+	s.Unit = &v
+	return s
+}
+
+type PriceEstimateOutputItems struct {
+	Amount *float32                         `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Count  *int64                           `json:"Count,omitempty" xml:"Count,omitempty"`
+	Id     *string                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	Price  *float32                         `json:"Price,omitempty" xml:"Price,omitempty"`
+	Steps  []*PriceEstimateOutputItemsSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	Type   *string                          `json:"Type,omitempty" xml:"Type,omitempty"`
+	Unit   *string                          `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s PriceEstimateOutputItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PriceEstimateOutputItems) GoString() string {
+	return s.String()
+}
+
+func (s *PriceEstimateOutputItems) SetAmount(v float32) *PriceEstimateOutputItems {
+	s.Amount = &v
+	return s
+}
+
+func (s *PriceEstimateOutputItems) SetCount(v int64) *PriceEstimateOutputItems {
+	s.Count = &v
+	return s
+}
+
+func (s *PriceEstimateOutputItems) SetId(v string) *PriceEstimateOutputItems {
+	s.Id = &v
+	return s
+}
+
+func (s *PriceEstimateOutputItems) SetPrice(v float32) *PriceEstimateOutputItems {
+	s.Price = &v
+	return s
+}
+
+func (s *PriceEstimateOutputItems) SetSteps(v []*PriceEstimateOutputItemsSteps) *PriceEstimateOutputItems {
+	s.Steps = v
+	return s
+}
+
+func (s *PriceEstimateOutputItems) SetType(v string) *PriceEstimateOutputItems {
+	s.Type = &v
+	return s
+}
+
+func (s *PriceEstimateOutputItems) SetUnit(v string) *PriceEstimateOutputItems {
+	s.Unit = &v
+	return s
+}
+
+type PriceEstimateOutputItemsSteps struct {
+	Begin     *int64    `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	End       *int64    `json:"End,omitempty" xml:"End,omitempty"`
+	Price     *float32  `json:"Price,omitempty" xml:"Price,omitempty"`
+	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	Unit      *string   `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s PriceEstimateOutputItemsSteps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PriceEstimateOutputItemsSteps) GoString() string {
+	return s.String()
+}
+
+func (s *PriceEstimateOutputItemsSteps) SetBegin(v int64) *PriceEstimateOutputItemsSteps {
+	s.Begin = &v
+	return s
+}
+
+func (s *PriceEstimateOutputItemsSteps) SetEnd(v int64) *PriceEstimateOutputItemsSteps {
+	s.End = &v
+	return s
+}
+
+func (s *PriceEstimateOutputItemsSteps) SetPrice(v float32) *PriceEstimateOutputItemsSteps {
+	s.Price = &v
+	return s
+}
+
+func (s *PriceEstimateOutputItemsSteps) SetRegionIds(v []*string) *PriceEstimateOutputItemsSteps {
+	s.RegionIds = v
+	return s
+}
+
+func (s *PriceEstimateOutputItemsSteps) SetUnit(v string) *PriceEstimateOutputItemsSteps {
+	s.Unit = &v
+	return s
+}
+
+type Probe struct {
+	FailureThreshold    *int32             `json:"failureThreshold,omitempty" xml:"failureThreshold,omitempty"`
+	InitialDelaySeconds *int32             `json:"initialDelaySeconds,omitempty" xml:"initialDelaySeconds,omitempty"`
+	PeriodSeconds       *int32             `json:"periodSeconds,omitempty" xml:"periodSeconds,omitempty"`
+	ProbeHandler        *ProbeProbeHandler `json:"probeHandler,omitempty" xml:"probeHandler,omitempty" type:"Struct"`
+	TimeoutSeconds      *int32             `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
+}
+
+func (s Probe) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Probe) GoString() string {
+	return s.String()
+}
+
+func (s *Probe) SetFailureThreshold(v int32) *Probe {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *Probe) SetInitialDelaySeconds(v int32) *Probe {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *Probe) SetPeriodSeconds(v int32) *Probe {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *Probe) SetProbeHandler(v *ProbeProbeHandler) *Probe {
+	s.ProbeHandler = v
+	return s
+}
+
+func (s *Probe) SetTimeoutSeconds(v int32) *Probe {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+type ProbeProbeHandler struct {
+	HttpGet   *ProbeProbeHandlerHttpGet   `json:"httpGet,omitempty" xml:"httpGet,omitempty" type:"Struct"`
+	TcpSocket *ProbeProbeHandlerTcpSocket `json:"tcpSocket,omitempty" xml:"tcpSocket,omitempty" type:"Struct"`
+}
+
+func (s ProbeProbeHandler) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProbeProbeHandler) GoString() string {
+	return s.String()
+}
+
+func (s *ProbeProbeHandler) SetHttpGet(v *ProbeProbeHandlerHttpGet) *ProbeProbeHandler {
+	s.HttpGet = v
+	return s
+}
+
+func (s *ProbeProbeHandler) SetTcpSocket(v *ProbeProbeHandlerTcpSocket) *ProbeProbeHandler {
+	s.TcpSocket = v
+	return s
+}
+
+type ProbeProbeHandlerHttpGet struct {
+	HttpHeaders []*ProbeProbeHandlerHttpGetHttpHeaders `json:"httpHeaders,omitempty" xml:"httpHeaders,omitempty" type:"Repeated"`
+	Path        *string                                `json:"path,omitempty" xml:"path,omitempty"`
+	Port        *int32                                 `json:"port,omitempty" xml:"port,omitempty"`
+}
+
+func (s ProbeProbeHandlerHttpGet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProbeProbeHandlerHttpGet) GoString() string {
+	return s.String()
+}
+
+func (s *ProbeProbeHandlerHttpGet) SetHttpHeaders(v []*ProbeProbeHandlerHttpGetHttpHeaders) *ProbeProbeHandlerHttpGet {
+	s.HttpHeaders = v
+	return s
+}
+
+func (s *ProbeProbeHandlerHttpGet) SetPath(v string) *ProbeProbeHandlerHttpGet {
+	s.Path = &v
+	return s
+}
+
+func (s *ProbeProbeHandlerHttpGet) SetPort(v int32) *ProbeProbeHandlerHttpGet {
+	s.Port = &v
+	return s
+}
+
+type ProbeProbeHandlerHttpGetHttpHeaders struct {
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ProbeProbeHandlerHttpGetHttpHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProbeProbeHandlerHttpGetHttpHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ProbeProbeHandlerHttpGetHttpHeaders) SetName(v string) *ProbeProbeHandlerHttpGetHttpHeaders {
+	s.Name = &v
+	return s
+}
+
+func (s *ProbeProbeHandlerHttpGetHttpHeaders) SetValue(v string) *ProbeProbeHandlerHttpGetHttpHeaders {
+	s.Value = &v
+	return s
+}
+
+type ProbeProbeHandlerTcpSocket struct {
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+}
+
+func (s ProbeProbeHandlerTcpSocket) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProbeProbeHandlerTcpSocket) GoString() string {
+	return s.String()
+}
+
+func (s *ProbeProbeHandlerTcpSocket) SetPort(v int32) *ProbeProbeHandlerTcpSocket {
+	s.Port = &v
+	return s
+}
+
+type PublishApplicationVersionInput struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s PublishApplicationVersionInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishApplicationVersionInput) GoString() string {
+	return s.String()
+}
+
+func (s *PublishApplicationVersionInput) SetDescription(v string) *PublishApplicationVersionInput {
+	s.Description = &v
+	return s
+}
+
+type RoutePolicy struct {
+	Condition   *string       `json:"condition,omitempty" xml:"condition,omitempty"`
+	PolicyItems []*PolicyItem `json:"policyItems,omitempty" xml:"policyItems,omitempty" type:"Repeated"`
+}
+
+func (s RoutePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RoutePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *RoutePolicy) SetCondition(v string) *RoutePolicy {
+	s.Condition = &v
+	return s
+}
+
+func (s *RoutePolicy) SetPolicyItems(v []*PolicyItem) *RoutePolicy {
+	s.PolicyItems = v
+	return s
+}
+
+type SLSConfig struct {
+	CollectConfigs []*SLSConfigCollectConfigs `json:"collectConfigs,omitempty" xml:"collectConfigs,omitempty" type:"Repeated"`
+}
+
+func (s SLSConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SLSConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SLSConfig) SetCollectConfigs(v []*SLSConfigCollectConfigs) *SLSConfig {
+	s.CollectConfigs = v
+	return s
+}
+
+type SLSConfigCollectConfigs struct {
+	LogPath      *string `json:"logPath,omitempty" xml:"logPath,omitempty"`
+	LogType      *string `json:"logType,omitempty" xml:"logType,omitempty"`
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	LogtailName  *string `json:"logtailName,omitempty" xml:"logtailName,omitempty"`
+	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+}
+
+func (s SLSConfigCollectConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SLSConfigCollectConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *SLSConfigCollectConfigs) SetLogPath(v string) *SLSConfigCollectConfigs {
+	s.LogPath = &v
+	return s
+}
+
+func (s *SLSConfigCollectConfigs) SetLogType(v string) *SLSConfigCollectConfigs {
+	s.LogType = &v
+	return s
+}
+
+func (s *SLSConfigCollectConfigs) SetLogstoreName(v string) *SLSConfigCollectConfigs {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *SLSConfigCollectConfigs) SetLogtailName(v string) *SLSConfigCollectConfigs {
+	s.LogtailName = &v
+	return s
+}
+
+func (s *SLSConfigCollectConfigs) SetProjectName(v string) *SLSConfigCollectConfigs {
+	s.ProjectName = &v
+	return s
+}
+
+type ScaleConfig struct {
+	AlwaysAllocateCPU    *bool   `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	MaximumInstanceCount *int64  `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
+	MinimumInstanceCount *int64  `json:"minimumInstanceCount,omitempty" xml:"minimumInstanceCount,omitempty"`
+	RequestId            *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ScaleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleConfig) SetAlwaysAllocateCPU(v bool) *ScaleConfig {
+	s.AlwaysAllocateCPU = &v
+	return s
+}
+
+func (s *ScaleConfig) SetMaximumInstanceCount(v int64) *ScaleConfig {
+	s.MaximumInstanceCount = &v
+	return s
+}
+
+func (s *ScaleConfig) SetMinimumInstanceCount(v int64) *ScaleConfig {
+	s.MinimumInstanceCount = &v
+	return s
+}
+
+func (s *ScaleConfig) SetRequestId(v string) *ScaleConfig {
+	s.RequestId = &v
+	return s
+}
+
+type SourceCodeAccount struct {
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s SourceCodeAccount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceCodeAccount) GoString() string {
+	return s.String()
+}
+
+func (s *SourceCodeAccount) SetAvatarUrl(v string) *SourceCodeAccount {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *SourceCodeAccount) SetId(v string) *SourceCodeAccount {
+	s.Id = &v
+	return s
+}
+
+func (s *SourceCodeAccount) SetName(v string) *SourceCodeAccount {
+	s.Name = &v
+	return s
+}
+
+type SourceCodeRepo struct {
+	FullName *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s SourceCodeRepo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceCodeRepo) GoString() string {
+	return s.String()
+}
+
+func (s *SourceCodeRepo) SetFullName(v string) *SourceCodeRepo {
+	s.FullName = &v
+	return s
+}
+
+func (s *SourceCodeRepo) SetId(v string) *SourceCodeRepo {
+	s.Id = &v
+	return s
+}
+
+func (s *SourceCodeRepo) SetName(v string) *SourceCodeRepo {
+	s.Name = &v
+	return s
+}
+
+type SourceCodeRepoBranch struct {
+	CommitId *string `json:"CommitId,omitempty" xml:"CommitId,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s SourceCodeRepoBranch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceCodeRepoBranch) GoString() string {
+	return s.String()
+}
+
+func (s *SourceCodeRepoBranch) SetCommitId(v string) *SourceCodeRepoBranch {
+	s.CommitId = &v
+	return s
+}
+
+func (s *SourceCodeRepoBranch) SetName(v string) *SourceCodeRepoBranch {
+	s.Name = &v
+	return s
+}
+
+type StaticsInfo struct {
+	ActiveCPUUsage     *int64   `json:"activeCPUUsage,omitempty" xml:"activeCPUUsage,omitempty"`
+	Cost               *float32 `json:"cost,omitempty" xml:"cost,omitempty"`
+	DiskUsage          *int64   `json:"diskUsage,omitempty" xml:"diskUsage,omitempty"`
+	FunctionName       *string  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuUsage           *int64   `json:"gpuUsage,omitempty" xml:"gpuUsage,omitempty"`
+	IdleCPUUsage       *int64   `json:"idleCPUUsage,omitempty" xml:"idleCPUUsage,omitempty"`
+	InstanceTrafficOut *int64   `json:"instanceTrafficOut,omitempty" xml:"instanceTrafficOut,omitempty"`
+	Invocations        *int64   `json:"invocations,omitempty" xml:"invocations,omitempty"`
+	InvokeCDNOut       *int64   `json:"invokeCDNOut,omitempty" xml:"invokeCDNOut,omitempty"`
+	InvokeInternetOut  *int64   `json:"invokeInternetOut,omitempty" xml:"invokeInternetOut,omitempty"`
+	MemoryUsage        *int64   `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
+	Region             *string  `json:"region,omitempty" xml:"region,omitempty"`
+	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+}
+
+func (s StaticsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StaticsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *StaticsInfo) SetActiveCPUUsage(v int64) *StaticsInfo {
+	s.ActiveCPUUsage = &v
+	return s
+}
+
+func (s *StaticsInfo) SetCost(v float32) *StaticsInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *StaticsInfo) SetDiskUsage(v int64) *StaticsInfo {
+	s.DiskUsage = &v
+	return s
+}
+
+func (s *StaticsInfo) SetFunctionName(v string) *StaticsInfo {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *StaticsInfo) SetGpuUsage(v int64) *StaticsInfo {
+	s.GpuUsage = &v
+	return s
+}
+
+func (s *StaticsInfo) SetIdleCPUUsage(v int64) *StaticsInfo {
+	s.IdleCPUUsage = &v
+	return s
+}
+
+func (s *StaticsInfo) SetInstanceTrafficOut(v int64) *StaticsInfo {
+	s.InstanceTrafficOut = &v
+	return s
+}
+
+func (s *StaticsInfo) SetInvocations(v int64) *StaticsInfo {
+	s.Invocations = &v
+	return s
+}
+
+func (s *StaticsInfo) SetInvokeCDNOut(v int64) *StaticsInfo {
+	s.InvokeCDNOut = &v
+	return s
+}
+
+func (s *StaticsInfo) SetInvokeInternetOut(v int64) *StaticsInfo {
+	s.InvokeInternetOut = &v
+	return s
+}
+
+func (s *StaticsInfo) SetMemoryUsage(v int64) *StaticsInfo {
+	s.MemoryUsage = &v
+	return s
+}
+
+func (s *StaticsInfo) SetRegion(v string) *StaticsInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *StaticsInfo) SetServiceName(v string) *StaticsInfo {
+	s.ServiceName = &v
+	return s
+}
+
+type TLSConfig struct {
+	CipherSuites []*string `json:"cipherSuites,omitempty" xml:"cipherSuites,omitempty" type:"Repeated"`
+	MaxVersion   *string   `json:"maxVersion,omitempty" xml:"maxVersion,omitempty"`
+	MinVersion   *string   `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
+}
+
+func (s TLSConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TLSConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TLSConfig) SetCipherSuites(v []*string) *TLSConfig {
+	s.CipherSuites = v
+	return s
+}
+
+func (s *TLSConfig) SetMaxVersion(v string) *TLSConfig {
+	s.MaxVersion = &v
+	return s
+}
+
+func (s *TLSConfig) SetMinVersion(v string) *TLSConfig {
+	s.MinVersion = &v
+	return s
+}
+
+type TomcatConfig struct {
+	ContextPath           *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
+	MaxThreads            *int32  `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
+	Port                  *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	UriEncoding           *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
+	UseBodyEncodingForUri *bool   `json:"UseBodyEncodingForUri,omitempty" xml:"UseBodyEncodingForUri,omitempty"`
+	Version               *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s TomcatConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TomcatConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TomcatConfig) SetContextPath(v string) *TomcatConfig {
+	s.ContextPath = &v
+	return s
+}
+
+func (s *TomcatConfig) SetMaxThreads(v int32) *TomcatConfig {
+	s.MaxThreads = &v
+	return s
+}
+
+func (s *TomcatConfig) SetPort(v int32) *TomcatConfig {
+	s.Port = &v
+	return s
+}
+
+func (s *TomcatConfig) SetUriEncoding(v string) *TomcatConfig {
+	s.UriEncoding = &v
+	return s
+}
+
+func (s *TomcatConfig) SetUseBodyEncodingForUri(v bool) *TomcatConfig {
+	s.UseBodyEncodingForUri = &v
+	return s
+}
+
+func (s *TomcatConfig) SetVersion(v string) *TomcatConfig {
+	s.Version = &v
+	return s
+}
+
+type TracingConfig struct {
+	JaegerConfig *JaegerConfig `json:"jaegerConfig,omitempty" xml:"jaegerConfig,omitempty"`
+	Params       interface{}   `json:"params,omitempty" xml:"params,omitempty"`
+	Type         *string       `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s TracingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TracingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TracingConfig) SetJaegerConfig(v *JaegerConfig) *TracingConfig {
+	s.JaegerConfig = v
+	return s
+}
+
+func (s *TracingConfig) SetParams(v interface{}) *TracingConfig {
+	s.Params = v
+	return s
+}
+
+func (s *TracingConfig) SetType(v string) *TracingConfig {
+	s.Type = &v
+	return s
+}
+
+type TrafficConfig struct {
+	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
+	CreatedTime             *string             `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	LastModifiedTime        *string             `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	RequestId               *string             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResolvePolicy           *string             `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy             *RoutePolicy        `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
+	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
+}
+
+func (s TrafficConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrafficConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TrafficConfig) SetAdditionalVersionWeight(v map[string]*float32) *TrafficConfig {
+	s.AdditionalVersionWeight = v
+	return s
+}
+
+func (s *TrafficConfig) SetCreatedTime(v string) *TrafficConfig {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *TrafficConfig) SetLastModifiedTime(v string) *TrafficConfig {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *TrafficConfig) SetRequestId(v string) *TrafficConfig {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TrafficConfig) SetResolvePolicy(v string) *TrafficConfig {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *TrafficConfig) SetRoutePolicy(v *RoutePolicy) *TrafficConfig {
+	s.RoutePolicy = v
+	return s
+}
+
+func (s *TrafficConfig) SetVersionId(v string) *TrafficConfig {
+	s.VersionId = &v
+	return s
+}
+
+type UpdateApplicationInput struct {
+	Args                    *string                  `json:"args,omitempty" xml:"args,omitempty"`
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	Code                    *InputCodeLocation       `json:"code,omitempty" xml:"code,omitempty"`
+	Command                 *string                  `json:"command,omitempty" xml:"command,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EffectiveImmediately    *bool                    `json:"effectiveImmediately,omitempty" xml:"effectiveImmediately,omitempty"`
+	EnableAppMetric         *bool                    `json:"enableAppMetric,omitempty" xml:"enableAppMetric,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	GpuMemorySize           *int32                   `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	HttpTriggerConfig       *HTTPTriggerConfig       `json:"httpTriggerConfig,omitempty" xml:"httpTriggerConfig,omitempty"`
+	ImageConfig             *ImageConfig             `json:"imageConfig,omitempty" xml:"imageConfig,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
+	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InternetAccess          *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	LivenessProbe           *Probe                   `json:"livenessProbe,omitempty" xml:"livenessProbe,omitempty"`
+	LogConfig               *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	ScaleConfig             *ScaleConfig             `json:"scaleConfig,omitempty" xml:"scaleConfig,omitempty"`
+	SlsConfig               *SLSConfig               `json:"slsConfig,omitempty" xml:"slsConfig,omitempty"`
+	StartupProbe            *Probe                   `json:"startupProbe,omitempty" xml:"startupProbe,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+}
+
+func (s UpdateApplicationInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationInput) SetArgs(v string) *UpdateApplicationInput {
+	s.Args = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetCaPort(v int32) *UpdateApplicationInput {
+	s.CaPort = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetCode(v *InputCodeLocation) *UpdateApplicationInput {
+	s.Code = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetCommand(v string) *UpdateApplicationInput {
+	s.Command = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetCpu(v float32) *UpdateApplicationInput {
+	s.Cpu = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetCustomDNS(v *CustomDNS) *UpdateApplicationInput {
+	s.CustomDNS = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *UpdateApplicationInput {
+	s.CustomHealthCheckConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *UpdateApplicationInput {
+	s.CustomRuntimeConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetDescription(v string) *UpdateApplicationInput {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetDiskSize(v int32) *UpdateApplicationInput {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetEffectiveImmediately(v bool) *UpdateApplicationInput {
+	s.EffectiveImmediately = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetEnableAppMetric(v bool) *UpdateApplicationInput {
+	s.EnableAppMetric = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetEnvironmentVariables(v map[string]*string) *UpdateApplicationInput {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetGpuMemorySize(v int32) *UpdateApplicationInput {
+	s.GpuMemorySize = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetHandler(v string) *UpdateApplicationInput {
+	s.Handler = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetHttpTriggerConfig(v *HTTPTriggerConfig) *UpdateApplicationInput {
+	s.HttpTriggerConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetImageConfig(v *ImageConfig) *UpdateApplicationInput {
+	s.ImageConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetInitializationTimeout(v int32) *UpdateApplicationInput {
+	s.InitializationTimeout = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetInitializer(v string) *UpdateApplicationInput {
+	s.Initializer = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetInstanceConcurrency(v int32) *UpdateApplicationInput {
+	s.InstanceConcurrency = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetInstanceLifecycleConfig(v *InstanceLifecycleConfig) *UpdateApplicationInput {
+	s.InstanceLifecycleConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetInstanceSoftConcurrency(v int32) *UpdateApplicationInput {
+	s.InstanceSoftConcurrency = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetInstanceType(v string) *UpdateApplicationInput {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetInternetAccess(v bool) *UpdateApplicationInput {
+	s.InternetAccess = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetLayers(v []*string) *UpdateApplicationInput {
+	s.Layers = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetLivenessProbe(v *Probe) *UpdateApplicationInput {
+	s.LivenessProbe = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetLogConfig(v *LogConfig) *UpdateApplicationInput {
+	s.LogConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetMemorySize(v int32) *UpdateApplicationInput {
+	s.MemorySize = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetNasConfig(v *NASConfig) *UpdateApplicationInput {
+	s.NasConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetOssMountConfig(v *OSSMountConfig) *UpdateApplicationInput {
+	s.OssMountConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetRuntime(v string) *UpdateApplicationInput {
+	s.Runtime = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetScaleConfig(v *ScaleConfig) *UpdateApplicationInput {
+	s.ScaleConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetSlsConfig(v *SLSConfig) *UpdateApplicationInput {
+	s.SlsConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetStartupProbe(v *Probe) *UpdateApplicationInput {
+	s.StartupProbe = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetTimeout(v int32) *UpdateApplicationInput {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetTracingConfig(v *TracingConfig) *UpdateApplicationInput {
+	s.TracingConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetVpcConfig(v *VPCConfig) *UpdateApplicationInput {
+	s.VpcConfig = v
+	return s
+}
+
+type UpdateApplicationScaleConfigInput struct {
+	AlwaysAllocateCPU    *bool  `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	MaximumInstanceCount *int64 `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
+	MinimumInstanceCount *int64 `json:"minimumInstanceCount,omitempty" xml:"minimumInstanceCount,omitempty"`
+}
+
+func (s UpdateApplicationScaleConfigInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationScaleConfigInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationScaleConfigInput) SetAlwaysAllocateCPU(v bool) *UpdateApplicationScaleConfigInput {
+	s.AlwaysAllocateCPU = &v
+	return s
+}
+
+func (s *UpdateApplicationScaleConfigInput) SetMaximumInstanceCount(v int64) *UpdateApplicationScaleConfigInput {
+	s.MaximumInstanceCount = &v
+	return s
+}
+
+func (s *UpdateApplicationScaleConfigInput) SetMinimumInstanceCount(v int64) *UpdateApplicationScaleConfigInput {
+	s.MinimumInstanceCount = &v
+	return s
+}
+
+type UpdateApplicationTrafficConfigInput struct {
+	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
+	ResolvePolicy           *string             `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy             *RoutePolicy        `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
+	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
+}
+
+func (s UpdateApplicationTrafficConfigInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationTrafficConfigInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationTrafficConfigInput) SetAdditionalVersionWeight(v map[string]*float32) *UpdateApplicationTrafficConfigInput {
+	s.AdditionalVersionWeight = v
+	return s
+}
+
+func (s *UpdateApplicationTrafficConfigInput) SetResolvePolicy(v string) *UpdateApplicationTrafficConfigInput {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *UpdateApplicationTrafficConfigInput) SetRoutePolicy(v *RoutePolicy) *UpdateApplicationTrafficConfigInput {
+	s.RoutePolicy = v
+	return s
+}
+
+func (s *UpdateApplicationTrafficConfigInput) SetVersionId(v string) *UpdateApplicationTrafficConfigInput {
+	s.VersionId = &v
+	return s
+}
+
+type UpdateAttributesInput struct {
+	Description       *string            `json:"description,omitempty" xml:"description,omitempty"`
+	HttpTriggerConfig *HTTPTriggerConfig `json:"httpTriggerConfig,omitempty" xml:"httpTriggerConfig,omitempty"`
+	VersionID         *string            `json:"versionID,omitempty" xml:"versionID,omitempty"`
+}
+
+func (s UpdateAttributesInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAttributesInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAttributesInput) SetDescription(v string) *UpdateAttributesInput {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAttributesInput) SetHttpTriggerConfig(v *HTTPTriggerConfig) *UpdateAttributesInput {
+	s.HttpTriggerConfig = v
+	return s
+}
+
+func (s *UpdateAttributesInput) SetVersionID(v string) *UpdateAttributesInput {
+	s.VersionID = &v
+	return s
+}
+
+type UpdateCustomDomainInput struct {
+	ApplicationID   *string     `json:"applicationID,omitempty" xml:"applicationID,omitempty"`
+	ApplicationName *string     `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
+	CertConfig      *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	KeepFullPath    *bool       `json:"keepFullPath,omitempty" xml:"keepFullPath,omitempty"`
+	NamespaceID     *string     `json:"namespaceID,omitempty" xml:"namespaceID,omitempty"`
+	Protocol        *string     `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	TlsConfig       *TLSConfig  `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig       *WAFConfig  `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
+}
+
+func (s UpdateCustomDomainInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomDomainInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomDomainInput) SetApplicationID(v string) *UpdateCustomDomainInput {
+	s.ApplicationID = &v
+	return s
+}
+
+func (s *UpdateCustomDomainInput) SetApplicationName(v string) *UpdateCustomDomainInput {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *UpdateCustomDomainInput) SetCertConfig(v *CertConfig) *UpdateCustomDomainInput {
+	s.CertConfig = v
+	return s
+}
+
+func (s *UpdateCustomDomainInput) SetKeepFullPath(v bool) *UpdateCustomDomainInput {
+	s.KeepFullPath = &v
+	return s
+}
+
+func (s *UpdateCustomDomainInput) SetNamespaceID(v string) *UpdateCustomDomainInput {
+	s.NamespaceID = &v
+	return s
+}
+
+func (s *UpdateCustomDomainInput) SetProtocol(v string) *UpdateCustomDomainInput {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateCustomDomainInput) SetTlsConfig(v *TLSConfig) *UpdateCustomDomainInput {
+	s.TlsConfig = v
+	return s
+}
+
+func (s *UpdateCustomDomainInput) SetWafConfig(v *WAFConfig) *UpdateCustomDomainInput {
+	s.WafConfig = v
+	return s
+}
+
+type VPCConfig struct {
+	AnytunnelViaENI *bool     `json:"anytunnelViaENI,omitempty" xml:"anytunnelViaENI,omitempty"`
+	Role            *string   `json:"role,omitempty" xml:"role,omitempty"`
+	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s VPCConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VPCConfig) GoString() string {
+	return s.String()
+}
+
+func (s *VPCConfig) SetAnytunnelViaENI(v bool) *VPCConfig {
+	s.AnytunnelViaENI = &v
+	return s
+}
+
+func (s *VPCConfig) SetRole(v string) *VPCConfig {
+	s.Role = &v
+	return s
+}
+
+func (s *VPCConfig) SetSecurityGroupId(v string) *VPCConfig {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *VPCConfig) SetVSwitchIds(v []*string) *VPCConfig {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *VPCConfig) SetVpcId(v string) *VPCConfig {
+	s.VpcId = &v
+	return s
+}
+
+type Version struct {
+	CreatedTime      *string  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string  `json:"description,omitempty" xml:"description,omitempty"`
+	Image            *string  `json:"image,omitempty" xml:"image,omitempty"`
+	LastModifiedTime *string  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	RequestId        *string  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VersionId        *string  `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	Weight           *float64 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s Version) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Version) GoString() string {
+	return s.String()
+}
+
+func (s *Version) SetCreatedTime(v string) *Version {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *Version) SetDescription(v string) *Version {
+	s.Description = &v
+	return s
+}
+
+func (s *Version) SetImage(v string) *Version {
+	s.Image = &v
+	return s
+}
+
+func (s *Version) SetLastModifiedTime(v string) *Version {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *Version) SetRequestId(v string) *Version {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Version) SetVersionId(v string) *Version {
+	s.VersionId = &v
+	return s
+}
+
+func (s *Version) SetWeight(v float64) *Version {
+	s.Weight = &v
+	return s
+}
+
+type VersionStatus struct {
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s VersionStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VersionStatus) GoString() string {
+	return s.String()
+}
+
+func (s *VersionStatus) SetErrorMessage(v string) *VersionStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *VersionStatus) SetStatus(v string) *VersionStatus {
+	s.Status = &v
+	return s
+}
+
+type WAFConfig struct {
+	EnableWAF *bool `json:"enableWAF,omitempty" xml:"enableWAF,omitempty"`
+}
+
+func (s WAFConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WAFConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WAFConfig) SetEnableWAF(v bool) *WAFConfig {
+	s.EnableWAF = &v
+	return s
+}
+
 type AbortAndRollbackChangeOrderRequest struct {
-	// ba386059-69b1-4e65-b1e5-0682d9fa\*\*\*\*
+	// The ID of the request.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -31,30 +4461,26 @@ func (s *AbortAndRollbackChangeOrderRequest) SetChangeOrderId(v string) *AbortAn
 }
 
 type AbortAndRollbackChangeOrderResponseBody struct {
+	// Indicates whether the change order was terminated or the application was rolled back. Valid values:
+	//
+	// *   **true**: The change order was terminated or the application was rolled back.
+	// *   **false**: The change order could not be terminated or the application could not be rolled back.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the change order.
+	Data *AbortAndRollbackChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the change order.
-	Data *AbortAndRollbackChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the change order was terminated or the application was rolled back. Valid values:
-	//
-	// *   **true**: The change order was terminated or the application was rolled back.
-	// *   **false**: The change order could not be terminated or the application could not be rolled back.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. It is used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the change order.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -102,7 +4528,10 @@ func (s *AbortAndRollbackChangeOrderResponseBody) SetTraceId(v string) *AbortAnd
 }
 
 type AbortAndRollbackChangeOrderResponseBodyData struct {
-	// The ID of the change order.
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -149,7 +4578,7 @@ func (s *AbortAndRollbackChangeOrderResponse) SetBody(v *AbortAndRollbackChangeO
 }
 
 type AbortChangeOrderRequest struct {
-	// be2e1c76-682b-4897-98d3-1d8d6478\*\*\*\*
+	// The ID of the request.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -167,30 +4596,26 @@ func (s *AbortChangeOrderRequest) SetChangeOrderId(v string) *AbortChangeOrderRe
 }
 
 type AbortChangeOrderResponseBody struct {
+	// Indicates whether the change order was terminated. Valid values:
+	//
+	// *   **true**: The change order was terminated.
+	// *   **false**: The change order could not be terminated.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the change order.
+	Data *AbortChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *AbortChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the change order was terminated. Valid values:
-	//
-	// *   **true**: The change order was terminated.
-	// *   **false**: The change order could not be terminated.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned data.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -238,7 +4663,10 @@ func (s *AbortChangeOrderResponseBody) SetTraceId(v string) *AbortChangeOrderRes
 }
 
 type AbortChangeOrderResponseBodyData struct {
-	// The ID of the change order.
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -285,9 +4713,12 @@ func (s *AbortChangeOrderResponse) SetBody(v *AbortChangeOrderResponseBody) *Abo
 }
 
 type BatchStartApplicationsRequest struct {
-	// ebf491f0-c1a5-45e2-b2c4-710dbe2a\*\*\*\*
+	// The returned message.
+	//
+	// *   **success** is returned when the request succeeds.
+	// *   An error code is returned when the request fails.
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// cn-shanghai
+	// The ID of the request.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -310,33 +4741,23 @@ func (s *BatchStartApplicationsRequest) SetNamespaceId(v string) *BatchStartAppl
 }
 
 type BatchStartApplicationsResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *BatchStartApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
 	// *   If the request is successful, this parameter is not returned.****
 	// *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	//
-	// *   **success** is returned when the request succeeds.
-	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *BatchStartApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates whether the specified applications are successfully started. Valid values:
 	//
 	// *   **true**
 	// *   **false**
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned data.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the trace. It is used to query the details of a request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the change order.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -384,7 +4805,12 @@ func (s *BatchStartApplicationsResponseBody) SetTraceId(v string) *BatchStartApp
 }
 
 type BatchStartApplicationsResponseBodyData struct {
-	// The ID of the change order.
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: indicates that the request was successful.
+	// *   **3xx**: indicates that the request was redirected.
+	// *   **4xx**: indicates that the request was invalid.
+	// *   **5xx**: indicates that a server error occurred.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -431,9 +4857,9 @@ func (s *BatchStartApplicationsResponse) SetBody(v *BatchStartApplicationsRespon
 }
 
 type BatchStopApplicationsRequest struct {
-	// ebf491f0-c1a5-45e2-b2c4-710dbe2a\*\*\*\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\*\*\*\*
+	// The ID of the request.
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// cn-shanghai
+	// ebf491f0-c1a5-45e2-b2c4-710dbe2a\*\*\*\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\*\*\*\*
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -456,33 +4882,29 @@ func (s *BatchStopApplicationsRequest) SetNamespaceId(v string) *BatchStopApplic
 }
 
 type BatchStopApplicationsResponseBody struct {
+	// Indicates whether the specified applications are stopped. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the change order.
+	Data *BatchStopApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *BatchStopApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. It can be used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
 	// *   **success** is returned when the request succeeds.
 	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the specified applications are stopped. Valid values:
-	//
-	// *   **true**
-	// *   **false**
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned data.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -530,7 +4952,10 @@ func (s *BatchStopApplicationsResponseBody) SetTraceId(v string) *BatchStopAppli
 }
 
 type BatchStopApplicationsResponseBodyData struct {
-	// The ID of the change order.
+	// The error code.
+	//
+	// *   If the request is successful, this parameter is not returned.****
+	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -891,7 +5316,8 @@ type CreateApplicationRequest struct {
 	// This is a test description.
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	// test
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
 	// true
 	AssociateEip *bool `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
 	// true
@@ -910,6 +5336,7 @@ type CreateApplicationRequest struct {
 	Deploy *bool `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableEbpf           *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
 	// \[{"name":"envtmp","value":"0"}]
 	Envs             *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	ImagePullSecrets *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
@@ -948,6 +5375,7 @@ type CreateApplicationRequest struct {
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	// 1.0.0
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	Php            *string `json:"Php,omitempty" xml:"Php,omitempty"`
 	// /usr/local/etc/php/conf.d/arms.ini
 	PhpArmsConfigLocation *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
 	// k1=v1
@@ -965,7 +5393,8 @@ type CreateApplicationRequest struct {
 	// {"exec":{"command":\["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
 	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	// 1
-	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Replicas   *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SaeVersion *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
 	// sg-wz969ngg2e49q5i4\*\*\*\*
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// \[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
@@ -1014,6 +5443,11 @@ func (s *CreateApplicationRequest) SetAppName(v string) *CreateApplicationReques
 	return s
 }
 
+func (s *CreateApplicationRequest) SetAppSource(v string) *CreateApplicationRequest {
+	s.AppSource = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetAssociateEip(v bool) *CreateApplicationRequest {
 	s.AssociateEip = &v
 	return s
@@ -1056,6 +5490,11 @@ func (s *CreateApplicationRequest) SetDeploy(v bool) *CreateApplicationRequest {
 
 func (s *CreateApplicationRequest) SetEdasContainerVersion(v string) *CreateApplicationRequest {
 	s.EdasContainerVersion = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetEnableEbpf(v string) *CreateApplicationRequest {
+	s.EnableEbpf = &v
 	return s
 }
 
@@ -1164,6 +5603,11 @@ func (s *CreateApplicationRequest) SetPackageVersion(v string) *CreateApplicatio
 	return s
 }
 
+func (s *CreateApplicationRequest) SetPhp(v string) *CreateApplicationRequest {
+	s.Php = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetPhpArmsConfigLocation(v string) *CreateApplicationRequest {
 	s.PhpArmsConfigLocation = &v
 	return s
@@ -1216,6 +5660,11 @@ func (s *CreateApplicationRequest) SetReadiness(v string) *CreateApplicationRequ
 
 func (s *CreateApplicationRequest) SetReplicas(v int32) *CreateApplicationRequest {
 	s.Replicas = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSaeVersion(v string) *CreateApplicationRequest {
+	s.SaeVersion = &v
 	return s
 }
 
@@ -1390,22 +5839,14 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 }
 
 type CreateApplicationScalingRuleRequest struct {
-	// 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// \-1
-	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// 3
-	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	// true
-	ScalingRuleEnable *bool `json:"ScalingRuleEnable,omitempty" xml:"ScalingRuleEnable,omitempty"`
-	// {"maxReplicas":3,"minReplicas":1,"metrics":\[{"metricType":"CPU","metricTargetAverageUtilization":20},{"metricType":"MEMORY","metricTargetAverageUtilization":30},{"metricType":"tcpActiveConn","metricTargetAverageUtilization":20},{"metricType":"SLB_QPS","MetricTargetAverageUtilization":25,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"},{"metricType":"SLB_RT","MetricTargetAverageUtilization":35,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"}],"scaleUpRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":0},"scaleDownRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":300}}
-	ScalingRuleMetric *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
-	// timer-0800-2100
-	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	// {"beginDate":null,"endDate":null,"period":"\* \* \*","schedules":\[{"atTime":"08:00","targetReplicas":10},{"atTime":"20:00","targetReplicas":3}]}
-	ScalingRuleTimer *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
-	// timing
-	ScalingRuleType *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
+	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	MinReadyInstanceRatio *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	ScalingRuleEnable     *bool   `json:"ScalingRuleEnable,omitempty" xml:"ScalingRuleEnable,omitempty"`
+	ScalingRuleMetric     *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
+	ScalingRuleName       *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
+	ScalingRuleTimer      *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
+	ScalingRuleType       *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleRequest) String() string {
@@ -1457,16 +5898,13 @@ func (s *CreateApplicationScalingRuleRequest) SetScalingRuleType(v string) *Crea
 }
 
 type CreateApplicationScalingRuleResponseBody struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *CreateApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorCode *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                                       `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBody) String() string {
@@ -1513,31 +5951,15 @@ func (s *CreateApplicationScalingRuleResponseBody) SetTraceId(v string) *CreateA
 }
 
 type CreateApplicationScalingRuleResponseBodyData struct {
-	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the auto scaling policy was created. Unit: milliseconds.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the auto scaling policy was last disabled.
-	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
-	// The details of the metric-based auto scaling policy.
-	Metric *CreateApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	// Indicates whether the auto scaling policy is enabled. Valid values:
-	//
-	// *   **true**: enabled
-	// *   **false**: disabled
-	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	// The name of the auto scaling policy.
-	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	// The type of the auto scaling policy. Valid values:
-	//
-	// *   **timing**: the scheduled auto scaling policy.
-	// *   **metric**: the metric-based auto scaling policy.
-	// *   **mix**: the hybrid auto scaling policy.
-	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	// The details of the scheduled auto scaling policy.
-	Timer *CreateApplicationScalingRuleResponseBodyDataTimer `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
-	// The time when the auto scaling policy was updated. Unit: milliseconds.
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AppId            *string                                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime       *int64                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastDisableTime  *int64                                              `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	Metric           *CreateApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	ScaleRuleEnabled *bool                                               `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	ScaleRuleName    *string                                             `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	ScaleRuleType    *string                                             `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	Timer            *CreateApplicationScalingRuleResponseBodyDataTimer  `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
+	UpdateTime       *int64                                              `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyData) String() string {
@@ -1594,12 +6016,9 @@ func (s *CreateApplicationScalingRuleResponseBodyData) SetUpdateTime(v int64) *C
 }
 
 type CreateApplicationScalingRuleResponseBodyDataMetric struct {
-	// The maximum number of instances.
-	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	// The list of metrics that are used to trigger the auto scaling policy.
-	Metrics []*CreateApplicationScalingRuleResponseBodyDataMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// The minimum number of instances.
-	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	MaxReplicas *int32                                                       `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	Metrics     []*CreateApplicationScalingRuleResponseBodyDataMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	MinReplicas *int32                                                       `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyDataMetric) String() string {
@@ -1626,22 +6045,12 @@ func (s *CreateApplicationScalingRuleResponseBodyDataMetric) SetMinReplicas(v in
 }
 
 type CreateApplicationScalingRuleResponseBodyDataMetricMetrics struct {
-	// The limit on the metric.
-	//
-	// *   The limit on the CPU utilization. Unit: percentage.
-	// *   The limit on the memory usage. Unit: percentage.
-	// *   The limit on the average number of active TCP connections per second.
-	// *   The limit on the QPS of the Internet-facing SLB instance.
-	// *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
-	MetricTargetAverageUtilization *int32 `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
-	// The metric that is used to trigger the auto scaling policy. Valid values:
-	//
-	// *   **CPU**: the CPU utilization.
-	// *   **MEMORY**: the memory usage.
-	// *   **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
-	// *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
-	// *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	SlbId                          *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbLogstore                    *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
+	SlbProject                     *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	Vport                          *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
@@ -1662,34 +6071,30 @@ func (s *CreateApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricTyp
 	return s
 }
 
+func (s *CreateApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbId(v string) *CreateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbId = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbLogstore(v string) *CreateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbLogstore = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbProject(v string) *CreateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbProject = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataMetricMetrics) SetVport(v string) *CreateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.Vport = &v
+	return s
+}
+
 type CreateApplicationScalingRuleResponseBodyDataTimer struct {
-	// The start date of the validity period of the scheduled auto scaling policy.
-	//
-	// *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
-	// *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
-	BeginDate *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
-	// The end date of the validity period of the scheduled auto scaling policy.
-	//
-	// *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
-	// *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The days on which the scheduled auto scaling policy takes effect. Valid values:
-	//
-	// *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
-	//
-	// *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
-	//
-	//     *   **Sun**: Sunday
-	//     *   **Mon**: Monday
-	//     *   **Tue**: Tuesday
-	//     *   **Wed**: Wednesday
-	//     *   **Thu**: Thursday
-	//     *   **Fri**: Friday
-	//     *   **Sat**: Saturday
-	//
-	// *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The points in time when the auto scaling policy is triggered within one day.
+	BeginDate *string                                                       `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
+	EndDate   *string                                                       `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Period    *string                                                       `json:"Period,omitempty" xml:"Period,omitempty"`
 	Schedules []*CreateApplicationScalingRuleResponseBodyDataTimerSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
 }
 
@@ -1722,10 +6127,10 @@ func (s *CreateApplicationScalingRuleResponseBodyDataTimer) SetSchedules(v []*Cr
 }
 
 type CreateApplicationScalingRuleResponseBodyDataTimerSchedules struct {
-	// The point in time. Format: **Hour:Minute**.
-	AtTime *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
-	// The expected number of instances.
-	TargetReplicas *int32 `json:"TargetReplicas,omitempty" xml:"TargetReplicas,omitempty"`
+	AtTime         *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	MaxReplicas    *int32  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	MinReplicas    *int32  `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	TargetReplicas *int32  `json:"TargetReplicas,omitempty" xml:"TargetReplicas,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyDataTimerSchedules) String() string {
@@ -1738,6 +6143,16 @@ func (s CreateApplicationScalingRuleResponseBodyDataTimerSchedules) GoString() s
 
 func (s *CreateApplicationScalingRuleResponseBodyDataTimerSchedules) SetAtTime(v string) *CreateApplicationScalingRuleResponseBodyDataTimerSchedules {
 	s.AtTime = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataTimerSchedules) SetMaxReplicas(v int32) *CreateApplicationScalingRuleResponseBodyDataTimerSchedules {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataTimerSchedules) SetMinReplicas(v int32) *CreateApplicationScalingRuleResponseBodyDataTimerSchedules {
+	s.MinReplicas = &v
 	return s
 }
 
@@ -1778,9 +6193,9 @@ func (s *CreateApplicationScalingRuleResponse) SetBody(v *CreateApplicationScali
 type CreateConfigMapRequest struct {
 	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// cn-hangzhou
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -1813,30 +6228,26 @@ func (s *CreateConfigMapRequest) SetNamespaceId(v string) *CreateConfigMapReques
 }
 
 type CreateConfigMapResponseBody struct {
+	// Indicates whether the ConfigMap instance was created. Valid values:
+	//
+	// *   **true**: The instance was created.
+	// *   **false**: The call failed to be created.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the ConfigMap instance that was created.
+	Data *CreateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the call was successful.
 	// *   **3xx**: indicates that the call was redirected.
 	// *   **4xx**: indicates that the call failed.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
-	Data *CreateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
-	//
-	// *   If the call is successful, the **ErrorCode** parameter is not returned.
-	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ConfigMap instance was created. Valid values:
-	//
-	// *   **true**: The instance was created.
-	// *   **false**: The call failed to be created.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. The ID is used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned information.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned result.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -1884,7 +6295,10 @@ func (s *CreateConfigMapResponseBody) SetTraceId(v string) *CreateConfigMapRespo
 }
 
 type CreateConfigMapResponseBodyData struct {
-	// The ID of the ConfigMap instance that was created.
+	// The returned error code. Valid values:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ConfigMapId *int64 `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
 }
 
@@ -1932,15 +6346,15 @@ func (s *CreateConfigMapResponse) SetBody(v *CreateConfigMapResponseBody) *Creat
 
 type CreateGreyTagRouteRequest struct {
 	AlbRules *string `json:"AlbRules,omitempty" xml:"AlbRules,omitempty"`
-	// 7802c49a-67bc-4167-8369-9a9c003c\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Canary Release - Regions
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// \[{"condition":"OR","group":"DUBBO","items":\[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
-	DubboRules *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
 	// dubbo-echo
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// \[{"condition":"OR","items":\[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the request.
+	DubboRules *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
+	// Canary Release - Regions
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// \[{"condition":"OR","group":"DUBBO","items":\[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
 	ScRules *string `json:"ScRules,omitempty" xml:"ScRules,omitempty"`
 }
 
@@ -1983,30 +6397,26 @@ func (s *CreateGreyTagRouteRequest) SetScRules(v string) *CreateGreyTagRouteRequ
 }
 
 type CreateGreyTagRouteResponseBody struct {
+	// Indicates whether the information of the change order was queried. Valid values:
+	//
+	// *   **true**: The information was queried.
+	// *   **false**: The information failed to be queried.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the canary release rule. The ID is globally unique.
+	Data *CreateGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: The call was successful.
 	// *   **3xx**: The call was redirected.
 	// *   **4xx**: The call failed.
 	// *   **5xx**: A server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the canary release rule.
-	Data *CreateGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
-	//
-	// *   If the call is successful, the **ErrorCode** parameter is not returned.
-	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information of the change order was queried. Valid values:
-	//
-	// *   **true**: The information was queried.
-	// *   **false**: The information failed to be queried.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The trace ID that is used to query the details of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned information.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the canary release rule.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -2054,7 +6464,10 @@ func (s *CreateGreyTagRouteResponseBody) SetTraceId(v string) *CreateGreyTagRout
 }
 
 type CreateGreyTagRouteResponseBodyData struct {
-	// The ID of the canary release rule. The ID is globally unique.
+	// The returned error code. Valid values:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
 }
 
@@ -2101,25 +6514,16 @@ func (s *CreateGreyTagRouteResponse) SetBody(v *CreateGreyTagRouteResponseBody) 
 }
 
 type CreateIngressRequest struct {
-	// 188077086902\*\*\*\*\_176993d\*\*\*\*\_181437\*\*\*\*\_108724\*\*\*\*
-	CertId  *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
-	// {"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080}
-	DefaultRule *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
-	// ingress-for-sae-test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 80
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// HTTP
+	CertId           *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIds          *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	DefaultRule      *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// clb
-	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	// cn-beijing:sae-test
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// \[{"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2\*\*\*\*","containerPort":8080,"domain":"sae.site","path":"/path2"}]
-	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// lb-uf6hucc7inlqrtcq5\*\*\*\*
-	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	LoadBalanceType  *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Rules            *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	SlbId            *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
 }
 
 func (s CreateIngressRequest) String() string {
@@ -2181,31 +6585,13 @@ func (s *CreateIngressRequest) SetSlbId(v string) *CreateIngressRequest {
 }
 
 type CreateIngressResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request failed.
-	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *CreateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the routing rule was created. Valid values:
-	//
-	// *   **true**: indicates that the rule was created.
-	// *   **false**: indicates that the rule could not be created.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                        `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s CreateIngressResponseBody) String() string {
@@ -2252,7 +6638,6 @@ func (s *CreateIngressResponseBody) SetTraceId(v string) *CreateIngressResponseB
 }
 
 type CreateIngressResponseBodyData struct {
-	// The ID of the routing rule.
 	IngressId *int64 `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
 }
 
@@ -2299,60 +6684,225 @@ func (s *CreateIngressResponse) SetBody(v *CreateIngressResponseBody) *CreateIng
 }
 
 type CreateJobRequest struct {
-	AcrAssumeRoleArn              *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	AcrInstanceId                 *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AppDescription                *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppName                       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AutoConfig                    *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
-	BackoffLimit                  *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
-	Command                       *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs                   *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConcurrencyPolicy             *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
-	ConfigMapMountDesc            *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	Cpu                           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CustomHostAlias               *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableImageAccl               *bool   `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
-	Envs                          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImagePullSecrets              *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	ImageUrl                      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs                  *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions               *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                           *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	Memory                        *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MountDesc                     *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	MountHost                     *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	NamespaceId                   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NasId                         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OssAkId                       *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	OssAkSecret                   *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	OssMountDescs                 *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
-	PackageType                   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	PackageUrl                    *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion                *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PhpConfig                     *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	PhpConfigLocation             *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	PostStart                     *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                       *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	ProgrammingLanguage           *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	Python                        *string `json:"Python,omitempty" xml:"Python,omitempty"`
-	PythonModules                 *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	RefAppId                      *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
-	Replicas                      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	SecurityGroupId               *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Slice                         *bool   `json:"Slice,omitempty" xml:"Slice,omitempty"`
-	SliceEnvs                     *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
-	SlsConfigs                    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	TerminationGracePeriodSeconds *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	Timeout                       *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Timezone                      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TomcatConfig                  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	TriggerConfig                 *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
-	VSwitchId                     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	WarStartOptions               *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	WebContainer                  *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
-	Workload                      *string `json:"Workload,omitempty" xml:"Workload,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) required for a RAM role to obtain images across accounts. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](~~223585~~).
+	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	// The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
+	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	// The description of the template. The description cannot exceed 1,024 characters in length.
+	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	// The name of the job template. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot exceed 36 characters in length.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Specifies whether to automatically configure the network environment. Take note of the following rules:
+	//
+	// *   **true**: The network environment is automatically configured by SAE when the application is created. In this case, the values of the **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId** parameters are ignored.
+	// *   **false**: The network environment is manually configured based on your settings when the application is created.
+	AutoConfig *bool `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
+	// The number of times the job is retried.
+	BackoffLimit *int64 `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	// The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
+	//
+	//     command:
+	//           - echo
+	//           - abc
+	//           - >
+	//           - file0
+	//
+	// In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. You can specify the name in one of the following formats:
+	//
+	// `["a","b"]`
+	//
+	// In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
+	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	// The concurrency policy of the job. Take note of the following rules:
+	//
+	// *   **Forbid**: Prohibits concurrent running. If the previous job is not completed, no new job is created.
+	// *   **Allow**: Allows concurrent running.
+	// *   **Replace**: If the previous job is not completed when the time to create a new job is reached, the new job replaces the previous job.
+	ConcurrencyPolicy *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
+	// The description of the **ConfigMap** instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](~~176917~~) operation to obtain the ID.
+	// *   **key**: the key.
+	//
+	// > You can use the `sae-sys-configmap-all` key to mount all keys.
+	//
+	// *   **mountPath**: the mount path in the container.
+	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	// The CPU specifications that are required for each instance. Unit: millicores. You cannot set this parameter to 0. Valid values:
+	//
+	// *   500
+	// *   1000
+	// *   2000
+	// *   4000
+	// *   8000
+	// *   16000
+	// *   32000
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The custom mappings between hostnames and IP addresses in the container. Take note of the following rules:
+	//
+	// *   **hostName**: the domain name or hostname.
+	// *   **ip**: the IP address.
+	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableImageAccl      *bool   `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
+	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](~~176914~~). Take note of the following rules:
+	//
+	// *   Customize
+	//
+	//     *   **name**: the name of the environment variable.
+	//     *   **value**: the value of the environment variable.
+	//
+	// *   Reference ConfigMap
+	//
+	//     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+	//     *   **configMapId**: the ConfigMap ID.
+	//     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The ID of the corresponding Secret.
+	ImagePullSecrets *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
+	// The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	// The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	// The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+	//
+	// *   **Open JDK 8**
+	// *   **Open JDK 7**
+	// *   **Dragonwell 11**
+	// *   **Dragonwell 8**
+	// *   **openjdk-8u191-jdk-alpine3.9**
+	// *   **openjdk-7u201-jdk-alpine3.9**
+	//
+	// This parameter is not returned if the **PackageType** parameter is set to **Image**.
+	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	// The size of memory required by each instance. Unit: MB. You cannot set this parameter to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	//
+	// *   Set the value to 1024 when Cpu is set to 500 or 1000.
+	// *   Set the value to 2048 when Cpu is set to 500, 1000 or 2000.
+	// *   Set the value to 4096 when Cpu is set to 1000, 2000, or 4000.
+	// *   Set the value to 8192 when Cpu is set to 2000, 4000, or 8000.
+	// *   Set the value to 12288 when Cpu is set to 12000.
+	// *   Set the value to 16384 when Cpu is set to 4000, 8000, or 16000.
+	// *   Set the value to 24576 when Cpu is set to 12000.
+	// *   Set the value to 32768 when Cpu is set to 16000.
+	// *   Set the value to 65536 when Cpu is set to 8000, 16000, or 32000.
+	// *   Set the value to 131072 when Cpu is set to 32000.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The configurations for mounting the NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **MountDesc** parameter in the requests. If you want to unmount the NAS file system, you must set the **MountDesc** values in the subsequent requests to an empty string ("").
+	MountDesc *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
+	// The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
+	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	// The ID of the Serverless App Engine (SAE) namespace. The ID can contain only lowercase letters and hyphens (-). It must start with a lowercase letter.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the Apsara File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
+	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	// The AccessKey secret that is used to read data from and write data to OSS buckets.
+	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	// Information of the Object Storage Service (OSS) bucket mounted to the application. The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **bucketName**: the name of the OSS bucket.
+	//
+	// *   **bucketPath**: the directory or object in OSS. If the specified directory or object does not exist, an error is returned.
+	//
+	// *   **mountPath**: the directory of the container in SAE. If the path already exists, the newly specified path overwrites the previous one. If the path does not exist, it is created.
+	//
+	// *   **readOnly**: specifies whether to only allow the container path to read data from the OSS directory. Valid values:
+	//
+	//     *   **true**: The container path only has read permission on the OSS directory.
+	//     *   **false**: The application has read and write permissions.
+	OssMountDescs *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	// The type of the deployment package. Take note of the following rules:
+	//
+	// *   If you deploy the application by using a Java Archive (JAR) package, you can set this parameter to **FatJar**, **War**, or **Image**.
+	// *   If you deploy the application by using a PHP package, you can set this parameter to one of the following values:
+	//
+	// **PhpZip** **IMAGE_PHP\_5\_4** **IMAGE_PHP\_5\_4\_ALPINE** **IMAGE_PHP\_5\_5** **IMAGE_PHP\_5\_5\_ALPINE** **IMAGE_PHP\_5\_6** **IMAGE_PHP\_5\_6\_ALPINE** **IMAGE_PHP\_7\_0** **IMAGE_PHP\_7\_0\_ALPINE** **IMAGE_PHP\_7\_1** **IMAGE_PHP\_7\_1\_ALPINE** **IMAGE_PHP\_7\_2** **IMAGE_PHP\_7\_2\_ALPINE** **IMAGE_PHP\_7\_3** **IMAGE_PHP\_7\_3\_ALPINE**
+	//
+	// *   If you deploy the application by using a **Python** package, you can set this parameter to **PythonZip** or **Image**:
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// The address of the deployment package. This parameter is required if you set **PackageType** to **FatJar**, **War**, or **PythonZip**.
+	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	// The version of the deployment package. This parameter is required if you set **PackageType** to **FatJar**, **War**, or **PythonZip**.
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The details of the PHP configuration file.
+	PhpConfig *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	// The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
+	PhpConfigLocation *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	// The script that is run immediately after the container is started. Example: `{"exec":{"command":\["sh","-c","echo hello"\]}}`
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The script that is run before the container is stopped. Example: `{"exec":{"command":\["sh","-c","echo hello"\]}}`
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The programming language. Valid values: **java**, **php**, **python**, and **shell**.
+	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	// The Python environment. Set the value to **PYTHON 3.9.15**.
+	Python *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	// The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If the package does not contain this file and you do not configure custom dependencies in the package, specify the dependencies that you want to install in the text box.
+	PythonModules *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	// The ID of the job that you reference.
+	RefAppId *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
+	// The number of concurrent instances.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// Specifies whether to enable job sharding.
+	Slice *bool `json:"Slice,omitempty" xml:"Slice,omitempty"`
+	// The parameters of job sharding.
+	SliceEnvs *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
+	// The logging configurations of Log Service.
+	//
+	// *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	// *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	//
+	// The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **projectName**: the name of the Log Service project.
+	// *   **logDir**: the path in which logs are stored.
+	// *   **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+	// *   **logstoreName**: the name of the Logstore in Log Service.
+	// *   **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+	//
+	// If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
+	//
+	// > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
+	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	// The timeout period. Unit: seconds.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The time zone. Default value: **Asia/Shanghai**.
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The Tomcat configuration. If you want to cancel this configuration, set this parameter to "" or "{}". The following variables are included in the configuration: Take note of the following rules:
+	//
+	// *   **port**: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not specify this parameter, the default port number 8080 is used.
+	// *   **contextPath**: the path. Default value: /. This value indicates the root directory.
+	// *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+	// *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: UTF-8, ISO-8859-1, GBK, and GB2312.************ If you do not specify this parameter, the default value **ISO-8859-1** is used.
+	// *   **useBodyEncoding**: specifies whether to use the encoding scheme specified in the request body for URI query parameters. Default value: true.
+	TomcatConfig  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	TriggerConfig *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	// The vSwitch to which the elastic network interface (ENI) of the application instance is connected. The vSwitch must be located in the VPC specified by the VpcId parameter. The SAE namespace is bound with this vSwitch. The default value is the ID of the vSwitch that is bound to the namespace.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) that corresponds to the SAE namespace. In SAE, once correspondence is configured between a namespace and a VPC, the namespace cannot correspond to other VPCs. When the SAE application is created within the namespace, the application is bound with the VPC. Multiple namespaces can correspond to the same VPC. The default value is the ID of the VPC that is bound to the namespace.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](~~96677~~).
+	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	// The version of the Tomcat container on which the deployment package depends. Valid values:
+	//
+	// *   **apache-tomcat-7.0.91**
+	// *   **apache-tomcat-8.5.42**
+	//
+	// This parameter is not returned if the **PackageType** parameter is set to **Image**.
+	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	// Set the value to `job`.
+	Workload *string `json:"Workload,omitempty" xml:"Workload,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -2634,13 +7184,34 @@ func (s *CreateJobRequest) SetWorkload(v string) *CreateJobRequest {
 }
 
 type CreateJobResponseBody struct {
-	Code      *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                    `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code. Take note of the following rules:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response.
+	Data *CreateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request failed. Take note of the following rules:
+	//
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information that is returned. Take note of the following rules:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the application deployment is successful. Take note of the following rules:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s CreateJobResponseBody) String() string {
@@ -2687,7 +7258,9 @@ func (s *CreateJobResponseBody) SetTraceId(v string) *CreateJobResponseBody {
 }
 
 type CreateJobResponseBodyData struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the change order. It can be used to query the task status.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -2739,13 +7312,19 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateNamespaceRequest struct {
-	EnableMicroRegistration *bool   `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
-	NameSpaceShortId        *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// desc
+	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
+	// The returned message.
+	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
+	// The name of the namespace.
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// cn-beijing:test
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: indicates that the request was successful.
+	// *   **3xx**: indicates that the request was redirected.
+	// *   **4xx**: indicates that the request was invalid.
+	// *   **5xx**: indicates that a server error occurred.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// name
+	// cn-beijing:test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -2783,28 +7362,17 @@ func (s *CreateNamespaceRequest) SetNamespaceName(v string) *CreateNamespaceRequ
 }
 
 type CreateNamespaceResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// The ID of the trace. It can be used to query the details of a request.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information of the namespace.
+	// The region where the namespace resides.
 	Data *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// name
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The description of the namespace.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the namespace was created. Valid values:
-	//
-	// *   **true**: indicates that the namespace was created.
-	// *   **false**: indicates that the namespace could not be created.
+	// The information of the namespace.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. It can be used to query the details of a request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
@@ -2854,15 +7422,16 @@ func (s *CreateNamespaceResponseBody) SetTraceId(v string) *CreateNamespaceRespo
 }
 
 type CreateNamespaceResponseBodyData struct {
-	EnableMicroRegistration *bool   `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
-	NameSpaceShortId        *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// The description of the namespace.
+	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
+	// desc
+	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
+	// The information of the namespace.
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// The ID of the namespace.
+	// The ID of the request.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The name of the namespace.
+	// cn-beijing:test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The region where the namespace resides.
+	// name
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2934,10 +7503,10 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 }
 
 type CreateSecretRequest struct {
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	SecretData  *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
-	SecretName  *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	SecretType  *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	NamespaceId *string                        `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SecretData  *CreateSecretRequestSecretData `json:"SecretData,omitempty" xml:"SecretData,omitempty" type:"Struct"`
+	SecretName  *string                        `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType  *string                        `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
 }
 
 func (s CreateSecretRequest) String() string {
@@ -2953,8 +7522,8 @@ func (s *CreateSecretRequest) SetNamespaceId(v string) *CreateSecretRequest {
 	return s
 }
 
-func (s *CreateSecretRequest) SetSecretData(v string) *CreateSecretRequest {
-	s.SecretData = &v
+func (s *CreateSecretRequest) SetSecretData(v *CreateSecretRequestSecretData) *CreateSecretRequest {
+	s.SecretData = v
 	return s
 }
 
@@ -2964,6 +7533,58 @@ func (s *CreateSecretRequest) SetSecretName(v string) *CreateSecretRequest {
 }
 
 func (s *CreateSecretRequest) SetSecretType(v string) *CreateSecretRequest {
+	s.SecretType = &v
+	return s
+}
+
+type CreateSecretRequestSecretData struct {
+	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+}
+
+func (s CreateSecretRequestSecretData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretRequestSecretData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretRequestSecretData) SetSecretData(v string) *CreateSecretRequestSecretData {
+	s.SecretData = &v
+	return s
+}
+
+type CreateSecretShrinkRequest struct {
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SecretDataShrink *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	SecretName       *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType       *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+}
+
+func (s CreateSecretShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretShrinkRequest) SetNamespaceId(v string) *CreateSecretShrinkRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateSecretShrinkRequest) SetSecretDataShrink(v string) *CreateSecretShrinkRequest {
+	s.SecretDataShrink = &v
+	return s
+}
+
+func (s *CreateSecretShrinkRequest) SetSecretName(v string) *CreateSecretShrinkRequest {
+	s.SecretName = &v
+	return s
+}
+
+func (s *CreateSecretShrinkRequest) SetSecretType(v string) *CreateSecretShrinkRequest {
 	s.SecretType = &v
 	return s
 }
@@ -3068,7 +7689,7 @@ func (s *CreateSecretResponse) SetBody(v *CreateSecretResponseBody) *CreateSecre
 }
 
 type DeleteApplicationRequest struct {
-	// 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*
+	// The ID of the request.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -3086,33 +7707,29 @@ func (s *DeleteApplicationRequest) SetAppId(v string) *DeleteApplicationRequest 
 }
 
 type DeleteApplicationResponseBody struct {
+	// Indicates whether the application is deleted. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the change order that is used to query the task execution status.
+	Data *DeleteApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: The request is successful.
 	// *   **3xx**: A redirection message is returned.
 	// *   **4xx**: The request is invalid.
 	// *   **5xx**: A server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned results.
-	Data *DeleteApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code that is returned if the request fails.
-	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information about the values of this parameter, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The trace ID that is used to query details of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
 	// *   If the request is successful, **success** is returned.
 	// *   If an error occurred, the error code is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application is deleted. Valid values:
-	//
-	// *   **true**
-	// *   **false**
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query details of the request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned results.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -3160,7 +7777,10 @@ func (s *DeleteApplicationResponseBody) SetTraceId(v string) *DeleteApplicationR
 }
 
 type DeleteApplicationResponseBodyData struct {
-	// The ID of the change order that is used to query the task execution status.
+	// The error code that is returned if the request fails.
+	//
+	// *   If the request is successful, this parameter is not returned.****
+	// *   This parameter is returned only if the request failed.**** For more information about the values of this parameter, see the "**Error codes**" section of this topic.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -3207,9 +7827,9 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 }
 
 type DeleteApplicationScalingRuleRequest struct {
-	// 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*
+	// The ID of the request.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// timer-0800-2100
+	// The ID of the trace. The ID is used to query the details of a request.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 }
 
@@ -3235,11 +7855,9 @@ type DeleteApplicationScalingRuleResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DeleteApplicationScalingRuleResponseBody) String() string {
@@ -3449,7 +8067,7 @@ func (s *DeleteConfigMapResponse) SetBody(v *DeleteConfigMapResponseBody) *Delet
 }
 
 type DeleteGreyTagRouteRequest struct {
-	// 1
+	// The ID of the request.
 	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
 }
 
@@ -3467,33 +8085,29 @@ func (s *DeleteGreyTagRouteRequest) SetGreyTagRouteId(v int64) *DeleteGreyTagRou
 }
 
 type DeleteGreyTagRouteResponseBody struct {
+	// Indicates whether the information of the change order was queried. Valid values:
+	//
+	// *   **true**: The information was queried.
+	// *   **false**: The information failed to be queried.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the canary release rule. The ID is globally unique.
+	Data *DeleteGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: The call was successful.
 	// *   **3xx**: The call was redirected.
 	// *   **4xx**: The call failed.
 	// *   **5xx**: A server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the canary release rule.
-	Data *DeleteGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
-	//
-	// *   If the call is successful, the **ErrorCode** parameter is not returned.
-	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned information. Valid values:
 	//
 	// *   success: If the call is successful, **success** is returned.
 	// *   An error code: If the call fails, an error code is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information of the change order was queried. Valid values:
-	//
-	// *   **true**: The information was queried.
-	// *   **false**: The information failed to be queried.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the canary release rule.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -3541,7 +8155,10 @@ func (s *DeleteGreyTagRouteResponseBody) SetTraceId(v string) *DeleteGreyTagRout
 }
 
 type DeleteGreyTagRouteResponseBodyData struct {
-	// The ID of the canary release rule. The ID is globally unique.
+	// The returned error code. Valid values:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
 }
 
@@ -3588,7 +8205,9 @@ func (s *DeleteGreyTagRouteResponse) SetBody(v *DeleteGreyTagRouteResponseBody) 
 }
 
 type DeleteHistoryJobRequest struct {
+	// The ID of the job template to which the job that you want to delete belongs.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the job.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -3611,13 +8230,34 @@ func (s *DeleteHistoryJobRequest) SetJobId(v string) *DeleteHistoryJobRequest {
 }
 
 type DeleteHistoryJobResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code. Valid values:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned information. Valid values:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// Indicates whether the job was deleted. Valid values:
+	//
+	// *   **true**: The job was deleted.
+	// *   **false**: The job failed to be deleted.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DeleteHistoryJobResponseBody) String() string {
@@ -3829,6 +8469,7 @@ func (s *DeleteIngressResponse) SetBody(v *DeleteIngressResponseBody) *DeleteIng
 }
 
 type DeleteJobRequest struct {
+	// The ID of the job template that you want to delete.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -3846,13 +8487,34 @@ func (s *DeleteJobRequest) SetAppId(v string) *DeleteJobRequest {
 }
 
 type DeleteJobResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code that is returned. Take note of the following rules:
+	//
+	// *   The **ErrorCode** parameter is not returned if the request is successful.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The additional information that is returned. Valid values:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// Indicates whether the application is deleted. Valid values:
+	//
+	// *   **true**: The namespaces were obtained.
+	// *   **false**: no
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DeleteJobResponseBody) String() string {
@@ -4045,8 +8707,10 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 }
 
 type DeleteSecretRequest struct {
+	// The ID of the namespace in which the Secret resides. By default, the namespace ID is the same as the region ID.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	SecretId    *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	// The ID of the Secret to be deleted. You can call the [ListSecrets](~~466929~~) operation to view the Secret IDs.
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
 func (s DeleteSecretRequest) String() string {
@@ -4068,13 +8732,34 @@ func (s *DeleteSecretRequest) SetSecretId(v int64) *DeleteSecretRequest {
 }
 
 type DeleteSecretResponseBody struct {
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DeleteSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                       `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response.
+	Data *DeleteSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Valid values:
+	//
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information that is returned. Valid values:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the Secret is successfully deleted. Valid values:
+	//
+	// *   **true**: The instance was deleted.
+	// *   **false**: The instance failed to be deleted.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DeleteSecretResponseBody) String() string {
@@ -4121,6 +8806,7 @@ func (s *DeleteSecretResponseBody) SetTraceId(v string) *DeleteSecretResponseBod
 }
 
 type DeleteSecretResponseBodyData struct {
+	// The ID of the deleted Secret.
 	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
@@ -4167,100 +8853,274 @@ func (s *DeleteSecretResponse) SetBody(v *DeleteSecretResponseBody) *DeleteSecre
 }
 
 type DeployApplicationRequest struct {
-	// acs:ram::123456789012\*\*\*\*:role/adminrole
+	// The Alibaba Cloud Resource Name (ARN) required for a RAM role to obtain images across accounts. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](~~223585~~).
 	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	// cri-xxxxxx
+	// The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	// 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// true
+	// Specifies whether to associate an EIP with the node pool. Take note of the following rules:
+	//
+	// *   **true**: The EIP is associated with the application instance.
+	// *   **false**: The EIP is not associated with the application instance.
 	AssociateEip *bool `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	// true
+	// Specifies whether to automatically enable an auto scaling policy for the application. Take note of the following rules:
+	//
+	// *   **true**: turns on Logon-free Sharing
+	// *   **false**: turns off Logon-free Sharing
 	AutoEnableApplicationScalingRule *bool `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
-	// 10
+	// The interval between batches during a batch release. Unit: minutes.
 	BatchWaitTime *int32 `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	// Start Applications
+	// The description of the change order.
 	ChangeOrderDesc *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
-	// sleep
+	// The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
+	//
+	//     command:
+	//           - echo
+	//           - abc
+	//           - >
+	//           - file0
+	//
+	// In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// 1d
+	// The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. You can specify the name in one of the following formats:
+	//
+	// `["a","b"]`
+	//
+	// In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	// \[{"configMapId":16,"key":"test","mountPath":"/tmp"}]
+	// The description of the **ConfigMap** instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](~~176917~~) operation to obtain the ID.
+	// *   **key**: the key.
+	//
+	// > You can use `sae-sys-configmap-all` to mount all keys.
+	//
+	// *   **mountPath**: the mount path in the container.
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	// \[{"hostName":"samplehost","ip":"127.0.0.1"}]
+	Cpu                *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The custom mappings between hostnames and IP addresses in the container. Take note of the following rules:
+	//
+	// *   **hostName**: the domain name or hostname.
+	// *   **ip**: the IP address.
 	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	Deploy          *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	// 3.5.3
+	// This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication** operation to manage a running application, the application is immediately redeployed.
+	//
+	// *   **true** (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
+	// *   **false**: specifies that the system only enables the new configurations.
+	Deploy *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	// false
+	// Indicates whether access to Application High Availability Service (AHAS) is enabled. Take note of the following rules:
+	//
+	// *   **true**: Access to AHAS is enabled.
+	// *   **false**: Access to AHAS is disabled.
 	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	// false
+	// Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Take note of the following rules:
+	//
+	// *   **true**: The canary release rules are enabled.
+	// *   **false**: The canary release rules are disabled.
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	// \[{"name":"envtmp","value":"0"}]
-	Envs             *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](~~176914~~). Take note of the following rules:
+	//
+	// *   Customize
+	//
+	//     *   **name**: the name of the environment variable.
+	//     *   **value**: the value of the environment variable.
+	//
+	// *   Reference ConfigMap
+	//
+	//     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+	//     *   **configMapId**: the ConfigMap ID.
+	//     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The ID of the corresponding Secret.
 	ImagePullSecrets *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
+	// The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// \-Xms4G -Xmx4G
+	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	// custom-option
+	// The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	// Open JDK 8
-	Jdk          *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	// The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+	//
+	// *   **Open JDK 8**
+	// *   **Open JDK 7**
+	// *   **Dragonwell 11**
+	// *   **Dragonwell 8**
+	// *   **openjdk-8u191-jdk-alpine3.9**
+	// *   **openjdk-7u201-jdk-alpine3.9**
+	//
+	// This parameter is not returned if the **PackageType** parameter is set to **Image**.
+	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	// The logging configurations of Message Queue for Apache Kafka. Take note of the following rules:
+	//
+	// *   **kafkaEndpoint**: the endpoint of the Message Queue for Apache Kafka API.
+	// *   **kafkaInstanceId**: the ID of the Message Queue for Apache Kafka instance.
+	// *   **kafkaConfigs**: One or more logging configurations of Message Queue for Apache Kafka. For information about sample values and parameters, see the request parameter **KafkaLogfileConfig** in this topic.
 	KafkaConfigs *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
-	// {"exec":{"command":\["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
-	Liveness          *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	// The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
+	//
+	// *   Example of **exec**: `{"exec":{"command":\["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
+	// *   Sample code of the **httpGet** method: `{"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+	// *   Sample code of the **tcpSocket** method: `{"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+	//
+	// > You can use only one method to perform the health check.
+	//
+	// The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **exec.command**: the health check command.
+	// *   **httpGet.path**: the request path.
+	// *   **httpGet.scheme**: the protocol that is used to perform the health check. Valid values: **HTTP** and **HTTPS**.
+	// *   **httpGet.isContainKeyWord**: indicates whether the response contains keywords. Valid values: **true** and **false**. If this field is not returned, the advanced settings are not used.
+	// *   **httpGet.keyWord**: the custom keyword. This parameter is available only if the **isContainKeyWord** field is returned.
+	// *   **tcpSocket.port**: the port that is used to check the status of TCP connections.
+	// *   **initialDelaySeconds**: the delay of the health check. Default value: 10. Unit: seconds.
+	// *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
+	// *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
+	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Memory   *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The Nacos registry. Valid values:
+	//
+	// *   **0**: SAE built-in Nacos registry
+	// *   **1**: self-managed Nacos registry
+	// *   **2** : MSE Nacos registry
 	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	// \-1
+	// The percentage of the minimum number of available instances. Take note of the following rules:
+	//
+	// *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+	// *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+	//
+	// > When both **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of **MinReadyInstanceRatio**** takes precedence. For example, if **MinReadyInstances** is set to **5, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// 1
+	// The minimum number of available instances. Special values:
+	//
+	// *   If you set the value to **0**, business interruptions occur when the application is updated.
+	// *   If you set the value to \*\*-1\*\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+	//
+	// > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	// \[{mountPath: "/tmp", nasPath: "/"}]
+	// The configurations for mounting the NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **MountDesc** parameter in the requests. If you want to unmount the NAS file system, you must set the **MountDesc** values in the subsequent requests to an empty string ("").
 	MountDesc *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	// 10d3b4bc9\*\*\*\*.com
-	MountHost  *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	// The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
+	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	// The configurations of mounting the NAS file system. Take note of the following rules:
+	//
+	// *   **mountPath**: the mount path of the container.
+	// *   **readOnly**: If you set the value to **false**, the application has the read and write permissions.
+	// *   **nasId**: the ID of the NAS file system.
+	// *   **mountDomain**: the domain name of the mount target. For more information, see [DescribeMountTargets](~~62626~~).
+	// *   **nasPath**: the directory in the NAS file system.
 	NasConfigs *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
-	// 10d3b4\*\*\*\*
+	// The ID of the Apsara File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
 	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	// xxxxxx
+	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
 	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	// xxxxxx
+	// The AccessKey secret that is used to read data from and write data to OSS buckets.
 	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	// \[{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
+	// Information of the Object Storage Service (OSS) bucket mounted to the application. The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **bucketName**: the name of the OSS bucket.
+	//
+	// *   **bucketPath**: the directory or object in OSS. If the specified directory or object does not exist, an error is returned.
+	//
+	// *   **mountPath**: the directory of the container in SAE. If the path already exists, the newly specified path overwrites the previous one. If the path does not exist, it is created.
+	//
+	// *   **readOnly**: specifies whether to only allow the container path to read data from the OSS directory. Valid values:
+	//
+	//     *   **true**: The container path only has read permission on the OSS directory.
+	//     *   **false**: The application has read and write permissions.
 	OssMountDescs *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
 	PackageType   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// http://myoss.oss-cn-hangzhou.aliyuncs.com/my-buc/2019-06-30/\*\*\*\*.jar
+	// The address of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PythonZip**.
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// 1.0.1
+	// The version of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PythonZip**.
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// /usr/local/etc/php/conf.d/arms.ini
+	Php            *string `json:"Php,omitempty" xml:"Php,omitempty"`
+	// The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file. SAE automatically generates the corresponding configuration file. No manual operations are required.
 	PhpArmsConfigLocation *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
-	// k1=v1
+	// The details of the PHP configuration file.
 	PhpConfig *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	// /usr/local/etc/php/php.ini
+	// The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
 	PhpConfigLocation *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	// {"exec":{"command":\["sh","-c","echo hello"]}}
+	// The script that is run immediately after the container is started. Example: `{"exec":{"command":\["sh","-c","echo hello"\]}}`
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// {"exec":{"command":\["sh","-c","echo hello"]}}
-	PreStop          *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The script that is run before the container is stopped. Example: `{"exec":{"command":\["sh","-c","echo hello"\]}}`
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The configurations of Kubernetes Service-based service registration and discovery. Take note of the following rules:
+	//
+	// *   **serviceName**: the name of the Alibaba Cloud service. Format: `<Custom content>-<Namespace ID>`. `-<Namespace ID>` is automatically specified based on the namespace in which an application resides and cannot be changed. For example, if you select the default namespace in the China (Beijing) region, `-cn-beijing-default` is automatically specified.
+	// *   **namespaceId**: the namespace ID.
+	// *   **portAndProtocol**: the port number and protocol. Valid values of the port number: 1 to 65535. Valid values of the protocol: **TCP** and **UDP**.
+	// *   **enable**: enables the Kubernetes Service-based registration and discovery feature.
 	PvtzDiscoverySvc *string `json:"PvtzDiscoverySvc,omitempty" xml:"PvtzDiscoverySvc,omitempty"`
-	Python           *string `json:"Python,omitempty" xml:"Python,omitempty"`
-	PythonModules    *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	// {"exec":{"command":\["sleep","6s"]},"initialDelaySeconds":15,"timeoutSeconds":12}
-	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	// \[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
+	// The Python environment. Set the value to **PYTHON 3.9.15**.
+	Python *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	// The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If the package does not contain this file and you do not configure custom dependencies in the package, specify the dependencies that you want to install in the text box.
+	PythonModules *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	// The details of the health check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. Containers that fail health checks cannot receive traffic from Server Load Balancer (SLB) instances. You can use the **exec**, **httpGet**, or **tcpSocket** method to perform health checks. For more information, see the description of the **Liveness** parameter.
+	//
+	// > You can use only one method to perform the health check.
+	Readiness       *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The logging configurations of Log Service.
+	//
+	// *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	// *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	//
+	// The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **projectName**: the name of the Log Service project.
+	// *   **logDir**: the path in which logs are stored.
+	// *   **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+	// *   **logstoreName**: the name of the Logstore in Log Service.
+	// *   **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+	//
+	// If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
+	//
+	// > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
 	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	// 10
+	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
 	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	// Asia/Shanghai
+	// The time zone. Default value: **Asia/Shanghai**.
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
+	// The Tomcat configuration. If you want to cancel this configuration, set this parameter to "" or "{}". The following variables are included in the configuration: Take note of the following rules:
+	//
+	// *   **port**: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not specify this parameter, the default port number 8080 is used.
+	// *   **contextPath**: the path. Default value: /. This value indicates the root directory.
+	// *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+	// *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: UTF-8, ISO-8859-1, GBK, and GB2312.************ If you do not specify this parameter, the default value **ISO-8859-1** is used.
+	// *   **useBodyEncoding**: specifies whether to use the encoding scheme specified in the request body for URI query parameters. Default value: true.
 	TomcatConfig *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	// {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
+	// The deployment policy. If the minimum number of available instances is 1, the value of the **UpdateStrategy** parameter is an empty string (""). If the minimum number of available instances is greater than 1, the following strategies can be configured:
+	//
+	// *   The application is deployed on an instance. The remaining instances are automatically classified into two release batches whose interval is set to 1. In this case, the parameter is set to `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`.
+	// *   The application is deployed on an instance. The remaining instances are manually classified into two release batches. In this case, the parameter is set to `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`.
+	// *   All instances are automatically classified into two release batches. The application is deployed on the instances of the two batches in parallel. In this case, the parameter is set to `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
+	//
+	// The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **type**: the type of the release policy. Valid values: **GrayBatchUpdate** and **BatchUpdate**.
+	//
+	// *   **batchUpdate**: the phased release policy.
+	//
+	//     *   **batch**: the number of release batches.
+	//     *   **releaseType**: the processing method for the batches. Valid values: **auto** and **manual**.
+	//     *   **batchWaitTime**: the interval between release batches. Unit: seconds.
+	//
+	// *   **grayUpdate**: the number of release batches in the phased release after a canary release. This parameter is returned only if the **type** parameter is set to **GrayBatchUpdate**.
 	UpdateStrategy *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	// CATALINA_OPTS=\\"$CATALINA_OPTS $Options\\" catalina.sh run
+	VSwitchId      *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](~~96677~~).
 	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	// apache-tomcat-7.0.91
+	// The version of the Tomcat container on which the deployment package depends. Valid values:
+	//
+	// *   **apache-tomcat-7.0.91**
+	// *   **apache-tomcat-8.5.42**
+	//
+	// This parameter is not returned if the **PackageType** parameter is set to **Image**.
 	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
@@ -4319,6 +9179,11 @@ func (s *DeployApplicationRequest) SetCommandArgs(v string) *DeployApplicationRe
 
 func (s *DeployApplicationRequest) SetConfigMapMountDesc(v string) *DeployApplicationRequest {
 	s.ConfigMapMountDesc = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetCpu(v int32) *DeployApplicationRequest {
+	s.Cpu = &v
 	return s
 }
 
@@ -4387,6 +9252,11 @@ func (s *DeployApplicationRequest) SetLiveness(v string) *DeployApplicationReque
 	return s
 }
 
+func (s *DeployApplicationRequest) SetMemory(v int32) *DeployApplicationRequest {
+	s.Memory = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetMicroRegistration(v string) *DeployApplicationRequest {
 	s.MicroRegistration = &v
 	return s
@@ -4452,6 +9322,11 @@ func (s *DeployApplicationRequest) SetPackageVersion(v string) *DeployApplicatio
 	return s
 }
 
+func (s *DeployApplicationRequest) SetPhp(v string) *DeployApplicationRequest {
+	s.Php = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetPhpArmsConfigLocation(v string) *DeployApplicationRequest {
 	s.PhpArmsConfigLocation = &v
 	return s
@@ -4497,6 +9372,16 @@ func (s *DeployApplicationRequest) SetReadiness(v string) *DeployApplicationRequ
 	return s
 }
 
+func (s *DeployApplicationRequest) SetReplicas(v int32) *DeployApplicationRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetSecurityGroupId(v string) *DeployApplicationRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetSlsConfigs(v string) *DeployApplicationRequest {
 	s.SlsConfigs = &v
 	return s
@@ -4522,6 +9407,11 @@ func (s *DeployApplicationRequest) SetUpdateStrategy(v string) *DeployApplicatio
 	return s
 }
 
+func (s *DeployApplicationRequest) SetVSwitchId(v string) *DeployApplicationRequest {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetWarStartOptions(v string) *DeployApplicationRequest {
 	s.WarStartOptions = &v
 	return s
@@ -4533,30 +9423,33 @@ func (s *DeployApplicationRequest) SetWebContainer(v string) *DeployApplicationR
 }
 
 type DeployApplicationResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code. Take note of the following rules:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response.
 	Data *DeployApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when the method fails to be called.
+	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information that is returned. Take note of the following rules:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application deployment is successful. Valid values:
+	// Indicates whether the application deployment is successful. Take note of the following rules:
 	//
 	// *   **true**
 	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -4604,11 +9497,11 @@ func (s *DeployApplicationResponseBody) SetTraceId(v string) *DeployApplicationR
 }
 
 type DeployApplicationResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The ID of the change order. It can be used to query the task status.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// Specifies whether approval is required when a RAM user performs release. Valid values:
+	// Specifies whether approval is required when a RAM user performs release. Take note of the following rules:
 	//
 	// *   **true**
 	// *   **false**
@@ -5114,7 +10007,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the application.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
 	// Indicates whether an elastic IP address (EIP) is associated with the application instance. Valid values:
 	//
 	// *   **true**: The EIP is associated with the application instance.
@@ -5267,7 +10161,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
 	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
 	// The ID of the microservice application.
-	MseApplicationId *string `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
+	MseApplicationId   *string `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
+	MseApplicationName *string `json:"MseApplicationName,omitempty" xml:"MseApplicationName,omitempty"`
 	// The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NasConfigs  *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
@@ -5305,6 +10200,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	// The version of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar** or **War**.
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	Php            *string `json:"Php,omitempty" xml:"Php,omitempty"`
 	// The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file.
 	//
 	// SAE automatically generates the corresponding configuration file. No manual operations are required.
@@ -5428,6 +10324,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetAppId(v string) *Describe
 
 func (s *DescribeApplicationConfigResponseBodyData) SetAppName(v string) *DescribeApplicationConfigResponseBodyData {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetAppSource(v string) *DescribeApplicationConfigResponseBodyData {
+	s.AppSource = &v
 	return s
 }
 
@@ -5556,6 +10457,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetMseApplicationId(v string
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetMseApplicationName(v string) *DescribeApplicationConfigResponseBodyData {
+	s.MseApplicationName = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetNamespaceId(v string) *DescribeApplicationConfigResponseBodyData {
 	s.NamespaceId = &v
 	return s
@@ -5598,6 +10504,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetPackageUrl(v string) *Des
 
 func (s *DescribeApplicationConfigResponseBodyData) SetPackageVersion(v string) *DescribeApplicationConfigResponseBodyData {
 	s.PackageVersion = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetPhp(v string) *DescribeApplicationConfigResponseBodyData {
+	s.Php = &v
 	return s
 }
 
@@ -6716,7 +11627,9 @@ type DescribeApplicationScalingRuleResponseBodyData struct {
 	// The time when the auto scaling policy was last disabled.
 	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
 	// The details of the metric-based auto scaling policy.
-	Metric *DescribeApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	Metric                *DescribeApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	MinReadyInstanceRatio *int32                                                `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32                                                `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	// Indicates whether the auto scaling policy is enabled. Valid values:
 	//
 	// *   **true**: enabled
@@ -6761,6 +11674,16 @@ func (s *DescribeApplicationScalingRuleResponseBodyData) SetLastDisableTime(v in
 
 func (s *DescribeApplicationScalingRuleResponseBodyData) SetMetric(v *DescribeApplicationScalingRuleResponseBodyDataMetric) *DescribeApplicationScalingRuleResponseBodyData {
 	s.Metric = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetMinReadyInstanceRatio(v int32) *DescribeApplicationScalingRuleResponseBodyData {
+	s.MinReadyInstanceRatio = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetMinReadyInstances(v int32) *DescribeApplicationScalingRuleResponseBodyData {
+	s.MinReadyInstances = &v
 	return s
 }
 
@@ -6858,7 +11781,11 @@ type DescribeApplicationScalingRuleResponseBodyDataMetricMetrics struct {
 	// *   **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
 	// *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
 	// *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	MetricType  *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
+	SlbProject  *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	Vport       *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
 }
 
 func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
@@ -6876,6 +11803,26 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricT
 
 func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricType(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics {
 	s.MetricType = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbId(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbId = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbLogstore(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbLogstore = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbProject(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbProject = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) SetVport(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.Vport = &v
 	return s
 }
 
@@ -7147,7 +12094,9 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataTimer) SetSchedules(v []*
 
 type DescribeApplicationScalingRuleResponseBodyDataTimerSchedules struct {
 	// The point in time. Format: **Hour:Minute**.
-	AtTime *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	AtTime      *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	MaxReplicas *int32  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	MinReplicas *int32  `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 	// The expected number of instances.
 	TargetReplicas *int32 `json:"TargetReplicas,omitempty" xml:"TargetReplicas,omitempty"`
 }
@@ -7162,6 +12111,16 @@ func (s DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) GoString()
 
 func (s *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) SetAtTime(v string) *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules {
 	s.AtTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) SetMaxReplicas(v int32) *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) SetMinReplicas(v int32) *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules {
+	s.MinReplicas = &v
 	return s
 }
 
@@ -7320,7 +12279,9 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules stru
 	// The time when the auto scaling policy was last disabled.
 	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
 	// The details of the metric-based auto scaling policy.
-	Metric *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	Metric                *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	MinReadyInstanceRatio *int32                                                                        `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32                                                                        `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	// Indicates whether the auto scaling policy is enabled. Valid values:
 	//
 	// *   **true**: enabled
@@ -7365,6 +12326,16 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules)
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetMetric(v *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
 	s.Metric = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetMinReadyInstanceRatio(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
+	s.MinReadyInstanceRatio = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetMinReadyInstances(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
+	s.MinReadyInstances = &v
 	return s
 }
 
@@ -7462,7 +12433,11 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetri
 	// *   **tcpActiveConn**: the average number of active TCP connections per second of an application instance in 30 seconds.
 	// *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
 	// *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	MetricType  *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
+	SlbProject  *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	Vport       *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) String() string {
@@ -7480,6 +12455,26 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesM
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) SetMetricType(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics {
 	s.MetricType = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) SetSlbId(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics {
+	s.SlbId = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) SetSlbLogstore(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics {
+	s.SlbLogstore = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) SetSlbProject(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics {
+	s.SlbProject = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) SetVport(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics {
+	s.Vport = &v
 	return s
 }
 
@@ -7832,7 +12827,7 @@ func (s *DescribeApplicationScalingRulesResponse) SetBody(v *DescribeApplication
 }
 
 type DescribeApplicationSlbsRequest struct {
-	// 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*
+	// The ID of the request.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -7850,33 +12845,29 @@ func (s *DescribeApplicationSlbsRequest) SetAppId(v string) *DescribeApplication
 }
 
 type DescribeApplicationSlbsResponseBody struct {
+	// Indicates whether the information about the SLB instances that are associated with an application was obtained successfully. Valid values:
+	//
+	// *   **true**: indicates that the information was obtained successfully.
+	// *   **false**: indicates that the information failed to be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Configurations of internal-facing SLB instances.
+	Data *DescribeApplicationSlbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *DescribeApplicationSlbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. It can be used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
 	// *   **success** is returned when the request succeeds.
 	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information about the SLB instances that are associated with an application was obtained successfully. Valid values:
-	//
-	// *   **true**: indicates that the information was obtained successfully.
-	// *   **false**: indicates that the information failed to be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned data.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -7924,19 +12915,22 @@ func (s *DescribeApplicationSlbsResponseBody) SetTraceId(v string) *DescribeAppl
 }
 
 type DescribeApplicationSlbsResponseBodyData struct {
-	// Configurations of Internet-facing SLB instances.
+	// The ID of the SSL certificate issued by Alibaba Cloud.
 	Internet []*DescribeApplicationSlbsResponseBodyDataInternet `json:"Internet,omitempty" xml:"Internet,omitempty" type:"Repeated"`
-	// The IP address of the Internet-facing SLB instance.
+	// The ID of the Internet-facing SLB instance.
 	InternetIp         *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	InternetSlbExpired *bool   `json:"InternetSlbExpired,omitempty" xml:"InternetSlbExpired,omitempty"`
-	// The ID of the Internet-facing SLB instance.
+	// Configurations of Internet-facing SLB instances.
 	InternetSlbId *string `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
-	// Configurations of internal-facing SLB instances.
+	// The ID of the SSL certificate issued by Alibaba Cloud.
 	Intranet []*DescribeApplicationSlbsResponseBodyDataIntranet `json:"Intranet,omitempty" xml:"Intranet,omitempty" type:"Repeated"`
-	// The IP address of the internal-facing SLB instance.
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	IntranetIp         *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	IntranetSlbExpired *bool   `json:"IntranetSlbExpired,omitempty" xml:"IntranetSlbExpired,omitempty"`
-	// The ID of the internal-facing SLB instance.
+	// The IP address of the internal-facing SLB instance.
 	IntranetSlbId *string `json:"IntranetSlbId,omitempty" xml:"IntranetSlbId,omitempty"`
 }
 
@@ -7989,13 +12983,13 @@ func (s *DescribeApplicationSlbsResponseBodyData) SetIntranetSlbId(v string) *De
 }
 
 type DescribeApplicationSlbsResponseBodyDataInternet struct {
-	// The ID of the SSL certificate issued by Alibaba Cloud.
-	HttpsCertId *string `json:"HttpsCertId,omitempty" xml:"HttpsCertId,omitempty"`
-	// The port specified for the SLB listener.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The supported protocol.
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	HttpsCertId *string `json:"HttpsCertId,omitempty" xml:"HttpsCertId,omitempty"`
+	// The ID of the internal-facing SLB instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The container port.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The port specified for the SLB listener.
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
@@ -8028,13 +13022,13 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetTargetPort(v int32)
 }
 
 type DescribeApplicationSlbsResponseBodyDataIntranet struct {
-	// The ID of the SSL certificate issued by Alibaba Cloud.
-	HttpsCertId *string `json:"HttpsCertId,omitempty" xml:"HttpsCertId,omitempty"`
-	// The port specified for the SLB listener.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The supported protocol.
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	HttpsCertId *string `json:"HttpsCertId,omitempty" xml:"HttpsCertId,omitempty"`
+	// The IP address of the Internet-facing SLB instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The container port.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The port specified for the SLB listener.
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
@@ -8709,9 +13703,9 @@ func (s *DescribeChangeOrderResponse) SetBody(v *DescribeChangeOrderResponseBody
 }
 
 type DescribeComponentsRequest struct {
-	// d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// TOMCAT
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the request.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -8734,30 +13728,26 @@ func (s *DescribeComponentsRequest) SetType(v string) *DescribeComponentsRequest
 }
 
 type DescribeComponentsResponseBody struct {
+	// Indicates whether the component version was obtained. Valid values:
+	//
+	// *   **true**: indicates that the component version was obtained.
+	// *   **false**: indicates that the component version could not be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The component type.
+	Data []*DescribeComponentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the component.
-	Data []*DescribeComponentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the component version was obtained. Valid values:
-	//
-	// *   **true**: indicates that the component version was obtained.
-	// *   **false**: indicates that the component version could not be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. It is used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the component.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -8805,16 +13795,19 @@ func (s *DescribeComponentsResponseBody) SetTraceId(v string) *DescribeComponent
 }
 
 type DescribeComponentsResponseBodyData struct {
-	// The description of the component.
-	ComponentDescription *string `json:"ComponentDescription,omitempty" xml:"ComponentDescription,omitempty"`
-	// The ID of the component.
-	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
 	// Indicates whether the component is expired. Valid values:
 	//
 	// *   **true**: The component is expired.
 	// *   **false**: The component is not expired.
+	ComponentDescription *string `json:"ComponentDescription,omitempty" xml:"ComponentDescription,omitempty"`
+	// The description of the component.
+	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The component type.
+	// The ID of the component.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -8876,7 +13869,7 @@ func (s *DescribeComponentsResponse) SetBody(v *DescribeComponentsResponseBody) 
 }
 
 type DescribeConfigMapRequest struct {
-	// 1
+	// The ID of the request.
 	ConfigMapId *int64 `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
 }
 
@@ -8894,33 +13887,29 @@ func (s *DescribeConfigMapRequest) SetConfigMapId(v int64) *DescribeConfigMapReq
 }
 
 type DescribeConfigMapResponseBody struct {
+	// Indicates whether the details of the ConfigMap instance were obtained. Valid values:
+	//
+	// *   **true**: The details were obtained.
+	// *   **false**: The details failed to be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the instance was last modified.
+	Data *DescribeConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the call was successful.
 	// *   **3xx**: indicates that the call was redirected.
 	// *   **4xx**: indicates that the call failed.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
-	Data *DescribeConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
-	//
-	// *   If the call is successful, the **ErrorCode** parameter is not returned.
-	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned information. Valid values:
 	//
 	// *   If the call is successful, **success** is returned.
 	// *   If the call fails, an error code is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the details of the ConfigMap instance were obtained. Valid values:
-	//
-	// *   **true**: The details were obtained.
-	// *   **false**: The details failed to be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned result.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -8968,25 +13957,28 @@ func (s *DescribeConfigMapResponseBody) SetTraceId(v string) *DescribeConfigMapR
 }
 
 type DescribeConfigMapResponseBodyData struct {
-	// The ID of the ConfigMap instance.
+	// The name of the ConfigMap instance.
 	ConfigMapId *int64 `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
-	// The time when the instance was created.
+	// The application that is associated with the instance.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the namespace to which the instance belongs.
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The time when the instance was created.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The returned error code. Valid values:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the instance.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The name of the application.
+	RelateApps []*DescribeConfigMapResponseBodyDataRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
 	// The data of ConfigMap key-value pairs. Format:
 	//
 	// {"k1":"v1", "k2":"v2"}
 	//
 	// k specifies a key and v specifies a value. For more information, see [Manage and use configurations](~~171326~~).
-	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The description of the instance.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the ConfigMap instance.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace to which the instance belongs.
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The application that is associated with the instance.
-	RelateApps []*DescribeConfigMapResponseBodyDataRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	// The time when the instance was last modified.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -9039,9 +14031,9 @@ func (s *DescribeConfigMapResponseBodyData) SetUpdateTime(v int64) *DescribeConf
 }
 
 type DescribeConfigMapResponseBodyDataRelateApps struct {
-	// The ID of the application.
+	// The ID of the ConfigMap instance.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The ID of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -9175,9 +14167,12 @@ func (s *DescribeConfigurationPriceResponseBody) SetTraceId(v string) *DescribeC
 }
 
 type DescribeConfigurationPriceResponseBodyData struct {
-	BagUsage *DescribeConfigurationPriceResponseBodyDataBagUsage `json:"BagUsage,omitempty" xml:"BagUsage,omitempty" type:"Struct"`
-	Order    *DescribeConfigurationPriceResponseBodyDataOrder    `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	Rules    []*DescribeConfigurationPriceResponseBodyDataRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	BagUsage     *DescribeConfigurationPriceResponseBodyDataBagUsage     `json:"BagUsage,omitempty" xml:"BagUsage,omitempty" type:"Struct"`
+	CpuMemPrice  *DescribeConfigurationPriceResponseBodyDataCpuMemPrice  `json:"CpuMemPrice,omitempty" xml:"CpuMemPrice,omitempty" type:"Struct"`
+	Order        *DescribeConfigurationPriceResponseBodyDataOrder        `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	RequestPrice *DescribeConfigurationPriceResponseBodyDataRequestPrice `json:"RequestPrice,omitempty" xml:"RequestPrice,omitempty" type:"Struct"`
+	Rules        []*DescribeConfigurationPriceResponseBodyDataRules      `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TrafficPrice *DescribeConfigurationPriceResponseBodyDataTrafficPrice `json:"TrafficPrice,omitempty" xml:"TrafficPrice,omitempty" type:"Struct"`
 }
 
 func (s DescribeConfigurationPriceResponseBodyData) String() string {
@@ -9193,13 +14188,28 @@ func (s *DescribeConfigurationPriceResponseBodyData) SetBagUsage(v *DescribeConf
 	return s
 }
 
+func (s *DescribeConfigurationPriceResponseBodyData) SetCpuMemPrice(v *DescribeConfigurationPriceResponseBodyDataCpuMemPrice) *DescribeConfigurationPriceResponseBodyData {
+	s.CpuMemPrice = v
+	return s
+}
+
 func (s *DescribeConfigurationPriceResponseBodyData) SetOrder(v *DescribeConfigurationPriceResponseBodyDataOrder) *DescribeConfigurationPriceResponseBodyData {
 	s.Order = v
 	return s
 }
 
+func (s *DescribeConfigurationPriceResponseBodyData) SetRequestPrice(v *DescribeConfigurationPriceResponseBodyDataRequestPrice) *DescribeConfigurationPriceResponseBodyData {
+	s.RequestPrice = v
+	return s
+}
+
 func (s *DescribeConfigurationPriceResponseBodyData) SetRules(v []*DescribeConfigurationPriceResponseBodyDataRules) *DescribeConfigurationPriceResponseBodyData {
 	s.Rules = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyData) SetTrafficPrice(v *DescribeConfigurationPriceResponseBodyDataTrafficPrice) *DescribeConfigurationPriceResponseBodyData {
+	s.TrafficPrice = v
 	return s
 }
 
@@ -9223,6 +14233,87 @@ func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) SetCpu(v float32) *
 
 func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) SetMem(v float32) *DescribeConfigurationPriceResponseBodyDataBagUsage {
 	s.Mem = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataCpuMemPrice struct {
+	Order *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder   `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	Rules []*DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataCpuMemPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataCpuMemPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPrice) SetOrder(v *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) *DescribeConfigurationPriceResponseBodyDataCpuMemPrice {
+	s.Order = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPrice) SetRules(v []*DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules) *DescribeConfigurationPriceResponseBodyDataCpuMemPrice {
+	s.Rules = v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder struct {
+	DiscountAmount *float32  `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	OriginalAmount *float32  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	RuleIds        []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	TradeAmount    *float32  `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) SetDiscountAmount(v float32) *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) SetOriginalAmount(v float32) *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) SetRuleIds(v []*string) *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder {
+	s.RuleIds = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) SetTradeAmount(v float32) *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder {
+	s.TradeAmount = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules struct {
+	Name       *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleDescId *float32 `json:"RuleDescId,omitempty" xml:"RuleDescId,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules) SetName(v string) *DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules) SetRuleDescId(v float32) *DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules {
+	s.RuleDescId = &v
 	return s
 }
 
@@ -9261,6 +14352,87 @@ func (s *DescribeConfigurationPriceResponseBodyDataOrder) SetTradeAmount(v float
 	return s
 }
 
+type DescribeConfigurationPriceResponseBodyDataRequestPrice struct {
+	Order *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder   `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	Rules []*DescribeConfigurationPriceResponseBodyDataRequestPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataRequestPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataRequestPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRequestPrice) SetOrder(v *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) *DescribeConfigurationPriceResponseBodyDataRequestPrice {
+	s.Order = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRequestPrice) SetRules(v []*DescribeConfigurationPriceResponseBodyDataRequestPriceRules) *DescribeConfigurationPriceResponseBodyDataRequestPrice {
+	s.Rules = v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataRequestPriceOrder struct {
+	DiscountAmount *float32  `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	OriginalAmount *float32  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	RuleIds        []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	TradeAmount    *float32  `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) SetDiscountAmount(v float32) *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) SetOriginalAmount(v float32) *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) SetRuleIds(v []*string) *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder {
+	s.RuleIds = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) SetTradeAmount(v float32) *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder {
+	s.TradeAmount = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataRequestPriceRules struct {
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleDescId *int64  `json:"RuleDescId,omitempty" xml:"RuleDescId,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataRequestPriceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataRequestPriceRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceRules) SetName(v string) *DescribeConfigurationPriceResponseBodyDataRequestPriceRules {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceRules) SetRuleDescId(v int64) *DescribeConfigurationPriceResponseBodyDataRequestPriceRules {
+	s.RuleDescId = &v
+	return s
+}
+
 type DescribeConfigurationPriceResponseBodyDataRules struct {
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RuleDescId *int64  `json:"RuleDescId,omitempty" xml:"RuleDescId,omitempty"`
@@ -9280,6 +14452,87 @@ func (s *DescribeConfigurationPriceResponseBodyDataRules) SetName(v string) *Des
 }
 
 func (s *DescribeConfigurationPriceResponseBodyDataRules) SetRuleDescId(v int64) *DescribeConfigurationPriceResponseBodyDataRules {
+	s.RuleDescId = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataTrafficPrice struct {
+	Order *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder   `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	Rules []*DescribeConfigurationPriceResponseBodyDataTrafficPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataTrafficPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataTrafficPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataTrafficPrice) SetOrder(v *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) *DescribeConfigurationPriceResponseBodyDataTrafficPrice {
+	s.Order = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataTrafficPrice) SetRules(v []*DescribeConfigurationPriceResponseBodyDataTrafficPriceRules) *DescribeConfigurationPriceResponseBodyDataTrafficPrice {
+	s.Rules = v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder struct {
+	DiscountAmount *float32  `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	OriginalAmount *float32  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	RuleIds        []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	TradeAmount    *float32  `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) SetDiscountAmount(v float32) *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) SetOriginalAmount(v float32) *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) SetRuleIds(v []*string) *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder {
+	s.RuleIds = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) SetTradeAmount(v float32) *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder {
+	s.TradeAmount = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataTrafficPriceRules struct {
+	Name       *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleDescId *float32 `json:"RuleDescId,omitempty" xml:"RuleDescId,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataTrafficPriceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataTrafficPriceRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceRules) SetName(v string) *DescribeConfigurationPriceResponseBodyDataTrafficPriceRules {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceRules) SetRuleDescId(v float32) *DescribeConfigurationPriceResponseBodyDataTrafficPriceRules {
 	s.RuleDescId = &v
 	return s
 }
@@ -9953,7 +15206,7 @@ func (s *DescribeGreyTagRouteResponse) SetBody(v *DescribeGreyTagRouteResponseBo
 }
 
 type DescribeIngressRequest struct {
-	// 87
+	// The returned data.
 	IngressId *int64 `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
 }
 
@@ -9971,30 +15224,16 @@ func (s *DescribeIngressRequest) SetIngressId(v int64) *DescribeIngressRequest {
 }
 
 type DescribeIngressResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *DescribeIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The port specified for the SLB listener.
+	Data      *DescribeIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the namespace.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The ID of the SLB instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the configurations of the routing rule were queried successfully. Valid values:
-	//
-	// *   **true**: indicates that the query was successful.
-	// *   **false**: indicates that the query failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The name of the routing rule.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -10042,39 +15281,40 @@ func (s *DescribeIngressResponseBody) SetTraceId(v string) *DescribeIngressRespo
 }
 
 type DescribeIngressResponseBodyData struct {
-	// The ID of the certificate.
+	// The name of the application specified in the default rule.
 	CertId  *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
-	// The default rule.
+	// The forwarding rules.
 	DefaultRule *DescribeIngressResponseBodyDataDefaultRule `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty" type:"Struct"`
 	// The name of the routing rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the routing rule.
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: indicates that the request was successful.
+	// *   **3xx**: indicates that the request was redirected.
+	// *   **4xx**: indicates that the request was invalid.
+	// *   **5xx**: indicates that a server error occurred.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The port specified for the SLB listener.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The protocol used to forward requests. Valid values:
-	//
-	// *   **HTTP**: used when the application needs to identify the transmitted data.
-	// *   **HTTPS**: used when the application requires encrypted data transmission.
+	// The default rule.
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The type of the SLB instance based on the processing capabilities. Valid values:
+	// Indicates whether the configurations of the routing rule were queried successfully. Valid values:
 	//
-	// *   **clb**: the Classic Load Balancer (CLB) instance.
-	// *   **alb**: the Application Load Balancer (ALB) instance.
+	// *   **true**: indicates that the query was successful.
+	// *   **false**: indicates that the query failed.
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	// The name of the routing rule.
+	// The ID of the application specified in the default rule.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace.
+	// The ID of the certificate.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The forwarding rules.
+	// The ID of the application specified in the forwarding rule.
 	Rules []*DescribeIngressResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The ID of the SLB instance.
-	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
 	// The type of the SLB instance based on the IP address. Valid values:
 	//
 	// *   **internet**: the Internet-facing SLB instance.
 	// *   **intranet**: the internal-facing SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The container port of the application specified in the default rule.
 	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
@@ -10152,12 +15392,12 @@ func (s *DescribeIngressResponseBodyData) SetSlbType(v string) *DescribeIngressR
 }
 
 type DescribeIngressResponseBodyDataDefaultRule struct {
-	// The ID of the application specified in the default rule.
+	// The domain name of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application specified in the default rule.
+	// The container port of the application specified in the forwarding rule.
 	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
-	// The container port of the application specified in the default rule.
+	// The name of the application specified in the forwarding rule.
 	ContainerPort *int32 `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
 }
 
@@ -10190,17 +15430,27 @@ func (s *DescribeIngressResponseBodyDataDefaultRule) SetContainerPort(v int32) *
 }
 
 type DescribeIngressResponseBodyDataRules struct {
-	// The ID of the application specified in the forwarding rule.
+	// The protocol used to forward requests. Valid values:
+	//
+	// *   **HTTP**: used when the application needs to identify the transmitted data.
+	// *   **HTTPS**: used when the application requires encrypted data transmission.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application specified in the forwarding rule.
+	// The path of the URL.
 	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
-	// The container port of the application specified in the forwarding rule.
+	// The ID of the routing rule.
 	ContainerPort *int32 `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
-	// The domain name of the application.
+	// The type of the SLB instance based on the processing capabilities. Valid values:
+	//
+	// *   **clb**: the Classic Load Balancer (CLB) instance.
+	// *   **alb**: the Application Load Balancer (ALB) instance.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The path of the URL.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RewritePath *string `json:"RewritePath,omitempty" xml:"RewritePath,omitempty"`
 }
 
 func (s DescribeIngressResponseBodyDataRules) String() string {
@@ -10241,6 +15491,11 @@ func (s *DescribeIngressResponseBodyDataRules) SetPath(v string) *DescribeIngres
 	return s
 }
 
+func (s *DescribeIngressResponseBodyDataRules) SetRewritePath(v string) *DescribeIngressResponseBodyDataRules {
+	s.RewritePath = &v
+	return s
+}
+
 type DescribeIngressResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -10271,7 +15526,7 @@ func (s *DescribeIngressResponse) SetBody(v *DescribeIngressResponseBody) *Descr
 }
 
 type DescribeInstanceLogRequest struct {
-	// \*\*\*\*\*\*-d700e680-aa4d-4ec1-afc2-6566b5ff4d7a-85d44d4bfc-\*\*\*\*\*
+	// The ID of the request.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -10289,33 +15544,32 @@ func (s *DescribeInstanceLogRequest) SetInstanceId(v string) *DescribeInstanceLo
 }
 
 type DescribeInstanceLogResponseBody struct {
+	// Indicates whether the log of the instance was obtained. Valid values:
+	//
+	// *   **true**: indicates that the log was obtained.
+	// *   **false**: indicates that the log could not be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The log of the instance.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
 	// *   **success** is returned when the request succeeds.
 	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the log of the instance was obtained. Valid values:
-	//
-	// *   **true**: indicates that the log was obtained.
-	// *   **false**: indicates that the log could not be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The log of the instance.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -10551,7 +15805,9 @@ func (s *DescribeInstanceSpecificationsResponse) SetBody(v *DescribeInstanceSpec
 }
 
 type DescribeJobRequest struct {
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The job ID.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -10574,13 +15830,31 @@ func (s *DescribeJobRequest) SetJobId(v string) *DescribeJobRequest {
 }
 
 type DescribeJobResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                      `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the application.
+	Data *DescribeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Take note of the following rules:
+	//
+	// *   If the call is successful, **ErrorCode** is not returned.
+	// *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the configurations of an application were obtained. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribeJobResponseBody) String() string {
@@ -10627,68 +15901,233 @@ func (s *DescribeJobResponseBody) SetTraceId(v string) *DescribeJobResponseBody 
 }
 
 type DescribeJobResponseBodyData struct {
-	AcrAssumeRoleArn     *string                                          `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	AcrInstanceId        *string                                          `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AppDescription       *string                                          `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppId                *string                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName              *string                                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BackoffLimit         *int64                                           `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
-	Command              *string                                          `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs          *string                                          `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConcurrencyPolicy    *string                                          `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
-	ConfigMapMountDesc   []*DescribeJobResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
-	Cpu                  *int32                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CustomHostAlias      *string                                          `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	EdasContainerVersion *string                                          `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	Envs                 *string                                          `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImagePullSecrets     *string                                          `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	ImageUrl             *string                                          `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs         *string                                          `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions      *string                                          `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                  *string                                          `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	Memory               *int32                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MountDesc            []*DescribeJobResponseBodyDataMountDesc          `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
-	MountHost            *string                                          `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	NamespaceId          *string                                          `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NasConfigs           *string                                          `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
-	// NAS ID。
-	NasId                         *string                                     `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OssAkId                       *string                                     `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	OssAkSecret                   *string                                     `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	OssMountDescs                 []*DescribeJobResponseBodyDataOssMountDescs `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
-	PackageType                   *string                                     `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	PackageUrl                    *string                                     `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion                *string                                     `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PhpConfig                     *string                                     `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	PhpConfigLocation             *string                                     `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	PostStart                     *string                                     `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                       *string                                     `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	ProgrammingLanguage           *string                                     `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	PublicWebHookUrls             []*string                                   `json:"PublicWebHookUrls,omitempty" xml:"PublicWebHookUrls,omitempty" type:"Repeated"`
-	Python                        *string                                     `json:"Python,omitempty" xml:"Python,omitempty"`
-	PythonModules                 *string                                     `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	RefAppId                      *string                                     `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
-	RefedAppIds                   []*string                                   `json:"RefedAppIds,omitempty" xml:"RefedAppIds,omitempty" type:"Repeated"`
-	RegionId                      *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Replicas                      *int32                                      `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	SecurityGroupId               *string                                     `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Slice                         *bool                                       `json:"Slice,omitempty" xml:"Slice,omitempty"`
-	SliceEnvs                     *string                                     `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
-	SlsConfigs                    *string                                     `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	Suspend                       *bool                                       `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
-	Tags                          []*DescribeJobResponseBodyDataTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TerminationGracePeriodSeconds *int32                                      `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	Timeout                       *int64                                      `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Timezone                      *string                                     `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TomcatConfig                  *string                                     `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	TriggerConfig                 *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
-	// vSwitch ID。
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Pull images across Alibaba Cloud accounts](~~190675~~) and [Grant permissions across Alibaba Cloud accounts by using a RAM role](~~223585~~).
+	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	// The ID of the Container Registry Enterprise Edition instance.
+	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	// The description of the application.
+	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of times that the job was retried.
+	BackoffLimit *int64 `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	// The command that is used to start the image. The command must be an existing executable object in the container. Example:
+	//
+	//     command:
+	//           - echo
+	//           - abc
+	//           - >
+	//           - file0
+	//
+	// In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The arguments of the image startup command. This parameter contains the arguments that are required for **Command**. Format:
+	//
+	// `["a","b"]`
+	//
+	// In the preceding **Command** example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. If this parameter does not exist in the Command parameter, you do not need to configure it.
+	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	// The concurrency policy of the job. Valid values:
+	//
+	// *   **Forbid**: Concurrent running is prohibited. If the previous job is not completed, no new job is created.
+	// *   **Allow**: Concurrent running is allowed.
+	// *   **Replace**: If the previous job is not completed when the time to create a new job is reached, the new job replaces the previous job.
+	ConcurrencyPolicy *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
+	// The details of the ConfigMap.
+	ConfigMapMountDesc []*DescribeJobResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
+	// The CPU specifications required for each instance. Unit: millicore. This parameter cannot be set to 0. Valid values:
+	//
+	// *   **500**
+	// *   **1000**
+	// *   **2000**
+	// *   **4000**
+	// *   **8000**
+	// *   **16000**
+	// *   **32000**
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The custom mapping between the hostname and IP address in the container. Valid values:
+	//
+	// *   **hostName**: the domain name or hostname.
+	// *   **ip**: the IP address.
+	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](~~176914~~). Valid values:
+	//
+	// *   Custom configuration
+	//
+	//     *   **name**: the name of the environment variable.
+	//     *   **value**: the value of the environment variable.
+	//
+	// *   Reference a ConfigMap
+	//
+	//     *   **name**: the name of the environment variable. You can reference one or all keys. To reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+	//     *   **configMapId**: the ID of the ConfigMap.
+	//     *   **key**: the key. If you want to reference all keys, you do not need to configure this parameter.
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The ID of the corresponding secret.
+	ImagePullSecrets *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
+	// The URL of the image. This parameter is returned only if **PackageType** is set to **Image**.
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	// The option settings in the JAR package. The settings are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	// The version of the Java Development Kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+	//
+	// *   **Open JDK 8**
+	// *   **Open JDK 7**
+	// *   **Dragonwell 11**
+	// *   **Dragonwell 8**
+	// *   **openjdk-8u191-jdk-alpine3.9**
+	// *   **openjdk-7u201-jdk-alpine3.9**
+	//
+	// This parameter is not returned if **PackageType** is set to **Image**.
+	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	// The size of memory that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	//
+	// *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
+	// *   This parameter is set to **2048** if the Cpu parameter is set to 500, 1000, or 2000.
+	// *   This parameter is set to **4096** if the Cpu parameter is set to 1000, 2000, or 4000.
+	// *   This parameter is set to **8192** if the Cpu parameter is set to 2000, 4000, or 8000.
+	// *   This parameter is set to **12288** if the Cpu parameter is set to 12000.
+	// *   This parameter is set to **16384** if the Cpu parameter is set to 4000, 8000, or 16000.
+	// *   This parameter is set to **24567** if the Cpu parameter is set to 12000.
+	// *   This parameter is set to **32768** if the Cpu parameter is set to 16000.
+	// *   This parameter is set to **65536** if the Cpu parameter is set to 8000, 16000, or 32000.
+	// *   This parameter is set to **131072** if the Cpu parameter is set to 32000.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The details of the mounted NAS file system.
+	MountDesc []*DescribeJobResponseBodyDataMountDesc `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
+	// The mount target of the NAS file system in the VPC in which the application is deployed. If you do not need to modify this configuration during the deployment, configure **MountHost** only in the first request. If you need to remove this configuration, leave **MountHost** empty in the request.
+	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	// The namespace ID.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The configurations for mounting the NAS file system.
+	NasConfigs *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
+	// The ID of the NAS file system.
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS).
+	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	// The AccessKey secret that is used to read data from and write data to OSS.
+	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	// The description of mounted OSS buckets.
+	OssMountDescs []*DescribeJobResponseBodyDataOssMountDescs `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
+	// The type of the deployment package. Valid values:
+	//
+	// *   If you deploy the application by using a Java Archive (JAR) package, this parameter is set to **FatJar**, **War**, or **Image**.
+	//
+	// *   If you deploy the application by using a PHP package, this parameter is set to one of the following values:
+	//
+	//     *   **PhpZip**
+	//     *   **IMAGE_PHP\_5\_4**
+	//     *   **IMAGE_PHP\_5\_4\_ALPINE**
+	//     *   **IMAGE_PHP\_5\_5**
+	//     *   **IMAGE_PHP\_5\_5\_ALPINE**
+	//     *   **IMAGE_PHP\_5\_6**
+	//     *   **IMAGE_PHP\_5\_6\_ALPINE**
+	//     *   **IMAGE_PHP\_7\_0**
+	//     *   **IMAGE_PHP\_7\_0\_ALPINE**
+	//     *   **IMAGE_PHP\_7\_1**
+	//     *   **IMAGE_PHP\_7\_1\_ALPINE**
+	//     *   **IMAGE_PHP\_7\_2**
+	//     *   **IMAGE_PHP\_7\_2\_ALPINE**
+	//     *   **IMAGE_PHP\_7\_3**
+	//     *   **IMAGE_PHP\_7\_3\_ALPINE**
+	//
+	// *   If you deploy the application by using a Pythhon package, this parameter is set to **PythonZip** or **Image**.
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// The URL of the deployment package. This parameter is returned only if **PackageType** is set to **FatJar** or **War**.
+	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	// The version of the deployment package. This parameter is required only if **PackageType** is set to **FatJar** or **War**.
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The details of the PHP configuration file.
+	PhpConfig *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	// The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
+	PhpConfigLocation *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	// The script that is run immediately after the container is started. Example: `{"exec":{"command":\["cat","/etc/group"\]}}`
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The script that is run before the container is stopped. Example: `{"exec":{"command":\["cat","/etc/group"\]}}`
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The programming language that is used to create the application. Valid values:
+	//
+	// *   **java**: Java
+	// *   **php**: PHP
+	// *   **python**: Python
+	// *   **other**: other programming languages, such as C++, Go, .NET, and Node.js.
+	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	// The Internet request URLs of one-time jobs.
+	PublicWebHookUrls []*string `json:"PublicWebHookUrls,omitempty" xml:"PublicWebHookUrls,omitempty" type:"Repeated"`
+	// The Python environment. PYTHON 3.9.15 is supported.
+	Python *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	// The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If no software package is configured, you can specify dependencies based on your business requirements.
+	PythonModules *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	// The ID of the job template that you reference.
+	RefAppId *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
+	// The IDs of the referenced job templates.
+	RefedAppIds []*string `json:"RefedAppIds,omitempty" xml:"RefedAppIds,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of application instances.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// Indicates whether job sharding is enabled.
+	Slice *bool `json:"Slice,omitempty" xml:"Slice,omitempty"`
+	// The parameters of job sharding.
+	SliceEnvs *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
+	// The logging configurations of Log Service.
+	//
+	// *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	// *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	//
+	// Parameter description:
+	//
+	// *   **projectName**: the name of the Log Service project.
+	// *   **logDir**: the path in which logs are stored.
+	// *   **logType**: the log type. **stdout**: the standard output (stdout) log of the container. Only one stdout value for this parameter can be specified. If this parameter is not configured, file logs are collected.
+	// *   **logstoreName**: the name of the Logstore in Log Service.
+	// *   **logtailName**: the name of the Logtail in Log Service. If this parameter is not configured, a new Logtail is created.
+	//
+	// If you do not need to modify the logging configurations when you deploy the application, configure **SlsConfigs** only in the first request. If you no longer need to use Log Service, leave **SlsConfigs** empty in the request.
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// Indicates whether the job template is suspended.
+	Suspend *bool `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
+	// The tags.
+	Tags []*DescribeJobResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
+	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	// The timeout period for the job. Unit: seconds.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The time zone. Default value: **Asia/Shanghai**.
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The Tomcat configuration. If you want to delete the configuration, set this parameter to {} or leave this parameter empty. Parameter description:
+	//
+	// *   **port**: the port number. Valid values: 1024 to 65535. The root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If this parameter is not configured, the default value 8080 is used.
+	// *   **contextPath**: the path. Default value: /. The value indicates the root directory.
+	// *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+	// *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If this parameter is not configured, the default value **ISO-8859-1** is used.
+	// *   **useBodyEncoding**: indicates whether to use the encoding scheme that is specified by **BodyEncoding for URL**. Default value: **true**.
+	TomcatConfig  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	TriggerConfig *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	// The vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
-	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcWebHookUrls  []*string `json:"VpcWebHookUrls,omitempty" xml:"VpcWebHookUrls,omitempty" type:"Repeated"`
-	WarStartOptions *string   `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	WebContainer    *string   `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The internal request URLs for one-time jobs.
+	VpcWebHookUrls []*string `json:"VpcWebHookUrls,omitempty" xml:"VpcWebHookUrls,omitempty" type:"Repeated"`
+	// The option settings in the WAR package. The settings are used to start the application container. The default startup command is `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
+	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	// The version of the Tomcat container on which the deployment package depends. The following versions are supported:
+	//
+	// *   **apache-tomcat-7.0.91**
+	// *   **apache-tomcat-8.5.42**
+	//
+	// This parameter is not returned if **PackageType** is set to **Image**.
+	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s DescribeJobResponseBodyData) String() string {
@@ -10995,11 +16434,14 @@ func (s *DescribeJobResponseBodyData) SetWebContainer(v string) *DescribeJobResp
 }
 
 type DescribeJobResponseBodyDataConfigMapMountDesc struct {
-	// ConfigMap ID。
-	ConfigMapId   *int64  `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
+	// The ConfigMap ID.
+	ConfigMapId *int64 `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
+	// The ConfigMap name.
 	ConfigMapName *string `json:"ConfigMapName,omitempty" xml:"ConfigMapName,omitempty"`
-	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	MountPath     *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The key-value pair that is stored in the ConfigMap.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The path on which the NAS file system is mounted.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s DescribeJobResponseBodyDataConfigMapMountDesc) String() string {
@@ -11031,8 +16473,10 @@ func (s *DescribeJobResponseBodyDataConfigMapMountDesc) SetMountPath(v string) *
 }
 
 type DescribeJobResponseBodyDataMountDesc struct {
+	// The path on which the NAS file system is mounted.
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	NasPath   *string `json:"NasPath,omitempty" xml:"NasPath,omitempty"`
+	// The directory in the NAS file system.
+	NasPath *string `json:"NasPath,omitempty" xml:"NasPath,omitempty"`
 }
 
 func (s DescribeJobResponseBodyDataMountDesc) String() string {
@@ -11054,10 +16498,17 @@ func (s *DescribeJobResponseBodyDataMountDesc) SetNasPath(v string) *DescribeJob
 }
 
 type DescribeJobResponseBodyDataOssMountDescs struct {
+	// The bucket name.
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The directory or object in OSS. If the specified directory or object does not exist, an error is returned.
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	MountPath  *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// The path of the container in SAE. The parameter value that you specified overwrites the original value. If the specified path does not exist, SAE automatically creates the path.
+	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
+	// Indicates whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+	//
+	// *   **true**: The application has the read-only permission.
+	// *   **false**: The application has read and write permissions.
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
 func (s DescribeJobResponseBodyDataOssMountDescs) String() string {
@@ -11089,7 +16540,9 @@ func (s *DescribeJobResponseBodyDataOssMountDescs) SetReadOnly(v bool) *Describe
 }
 
 type DescribeJobResponseBodyDataTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11141,10 +16594,19 @@ func (s *DescribeJobResponse) SetBody(v *DescribeJobResponseBody) *DescribeJobRe
 }
 
 type DescribeJobHistoryRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The ID of the job template.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return on each page. Valid values: 0 to 10000.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// *   **0**: The job is not executed.
+	// *   **1**: The job is executed.
+	// *   **2**: The job fails to be executed.
+	// *   **3**: The job is being executed.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeJobHistoryRequest) String() string {
@@ -11176,13 +16638,34 @@ func (s *DescribeJobHistoryRequest) SetState(v string) *DescribeJobHistoryReques
 }
 
 type DescribeJobHistoryResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeJobHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                             `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code returned. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *DescribeJobHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Take note of the following rules:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Take note of the following rules:
+	//
+	// *   If the call is successful, **success** is returned.
+	// *   If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribeJobHistoryResponseBody) String() string {
@@ -11229,10 +16712,14 @@ func (s *DescribeJobHistoryResponseBody) SetTraceId(v string) *DescribeJobHistor
 }
 
 type DescribeJobHistoryResponseBodyData struct {
-	CurrentPage *int64                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Jobs        []*DescribeJobHistoryResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	PageSize    *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalSize   *int64                                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The jobs.
+	Jobs []*DescribeJobHistoryResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. Valid values: 0 to 10000.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of jobs.
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s DescribeJobHistoryResponseBodyData) String() string {
@@ -11264,14 +16751,27 @@ func (s *DescribeJobHistoryResponseBodyData) SetTotalSize(v int64) *DescribeJobH
 }
 
 type DescribeJobHistoryResponseBodyDataJobs struct {
-	Active         *int64  `json:"Active,omitempty" xml:"Active,omitempty"`
-	CompletionTime *int64  `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	Failed         *int64  `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	Succeeded      *int64  `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	// The number of running instances.
+	Active *int64 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The time when the job was executed.
+	CompletionTime *int64 `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	// The number of instances that failed to run.
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// The job ID.
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The message returned if exceptions occur during job running.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the job was created.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// *   **0**: The job was not executed.
+	// *   **1**: The job was executed.
+	// *   **2**: The job failed to be executed.
+	// *   **3**: The job is being executed.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The number of instances that are successfully run.
+	Succeeded *int64 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
 }
 
 func (s DescribeJobHistoryResponseBodyDataJobs) String() string {
@@ -11352,7 +16852,9 @@ func (s *DescribeJobHistoryResponse) SetBody(v *DescribeJobHistoryResponseBody) 
 }
 
 type DescribeJobStatusRequest struct {
+	// The ID of the job template.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The job ID.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -11375,13 +16877,34 @@ func (s *DescribeJobStatusRequest) SetJobId(v string) *DescribeJobStatusRequest 
 }
 
 type DescribeJobStatusResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                            `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Take note of the following rules:
+	//
+	// *   **ErrorCode** is not returned if the request succeeds.
+	// *   **ErrorCode** is returned if the request fails. For more information, see the "**Error codes**" section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message. Take note of the following rules:
+	//
+	// *   If the call is successful, **success** is returned.
+	// *   If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribeJobStatusResponseBody) String() string {
@@ -11428,14 +16951,30 @@ func (s *DescribeJobStatusResponseBody) SetTraceId(v string) *DescribeJobStatusR
 }
 
 type DescribeJobStatusResponseBodyData struct {
-	Active         *int64  `json:"Active,omitempty" xml:"Active,omitempty"`
-	CompletionTime *int64  `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	Failed         *int64  `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	Succeeded      *int64  `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	// The number of running instances.
+	Active *int64 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The time when the job was executed.
+	CompletionTime *int64 `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	// The number of instances that failed to run.
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// The job ID.
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The returned message. Take note of the following rules:
+	//
+	// *   If the call is successful, **success** is returned.
+	// *   If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the job was created.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// *   **0**: The job is not executed.
+	// *   **1**: The job was executed.
+	// *   **2**: The job failed to be executed.
+	// *   **3**: The job is being executed.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The number of instances that are successfully run.
+	Succeeded *int64 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
 }
 
 func (s DescribeJobStatusResponseBodyData) String() string {
@@ -11517,7 +17056,7 @@ func (s *DescribeJobStatusResponse) SetBody(v *DescribeJobStatusResponseBody) *D
 
 type DescribeNamespaceRequest struct {
 	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// cn-beijing:test
+	// The description of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -11540,33 +17079,27 @@ func (s *DescribeNamespaceRequest) SetNamespaceId(v string) *DescribeNamespaceRe
 }
 
 type DescribeNamespaceResponseBody struct {
+	// The ID of the trace. It can be used to query the details of a request.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information of the namespace.
+	Data *DescribeNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the region.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the namespace.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information of the namespace.
-	Data *DescribeNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	//
-	// *   **success** is returned when the request succeeds.
-	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information of the namespace was queried successfully. Valid values:
-	//
-	// *   **true**: indicates that the query was successful.
-	// *   **false**: indicates that the query failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -11616,13 +17149,13 @@ func (s *DescribeNamespaceResponseBody) SetTraceId(v string) *DescribeNamespaceR
 type DescribeNamespaceResponseBodyData struct {
 	EnableMicroRegistration *bool   `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
 	NameSpaceShortId        *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// The description of the namespace.
+	// The ID of the request.
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// The ID of the namespace. The information of the default namespace cannot be queried or modified. The default namespace cannot be deleted.
+	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The name of the namespace.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The ID of the region.
+	// cn-beijing:test
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12441,7 +17974,7 @@ func (s *DescribeNamespacesResponse) SetBody(v *DescribeNamespacesResponseBody) 
 }
 
 type DescribePipelineRequest struct {
-	// 917660ba-5092-44ca-b8e0-80012c96\*\*\*\*
+	// The ID of the batch. You can call the [DescribeChangeOrder](~~126617~~) operation to obtain the ID.
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 }
 
@@ -12461,28 +17994,28 @@ func (s *DescribePipelineRequest) SetPipelineId(v string) *DescribePipelineReque
 type DescribePipelineResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The batch information.
 	Data *DescribePipelineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The message returned for the operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the batch information was obtained. Valid values:
 	//
-	// *   **true**: indicates that the information was obtained.
-	// *   **false**: indicates that the information could not be obtained.
+	// *   **true**: The information was queried.
+	// *   **false**: The image failed to be found.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -12543,9 +18076,9 @@ type DescribePipelineResponseBodyData struct {
 	// The batch status. Valid values:
 	//
 	// *   **0**: The batch is prepared for processing.
-	// *   **1**: The batch is being processed.
-	// *   **2**: The batch was processed.
-	// *   **3**: The batch could not be processed.
+	// *   **1**: The task is being executed.
+	// *   **2**: successful
+	// *   **3**: The processing failed in this stage.
 	// *   **6**: The batch processing was terminated.
 	// *   **10**: The batch could not be processed due to a system exception.
 	PipelineStatus *int32 `json:"PipelineStatus,omitempty" xml:"PipelineStatus,omitempty"`
@@ -12619,8 +18152,8 @@ type DescribePipelineResponseBodyDataStageList struct {
 	// The status of the batch processing stage. Valid values:
 	//
 	// *   **0**: The batch is prepared for this processing stage.
-	// *   **1**: The processing stage is in progress.
-	// *   **2**: The processing stage was complete.
+	// *   **1**: The task is being executed.
+	// *   **2**: successful
 	// *   **3**: The processing failed in this stage.
 	// *   **6**: The processing stage was terminated.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -12676,7 +18209,7 @@ type DescribePipelineResponseBodyDataStageListTaskList struct {
 	// Indicates whether a running task can be manually skipped. Valid values:
 	//
 	// *   **true**: The running task can be skipped.
-	// *   **false**: The running task cannot be skipped.
+	// *   **false**: The zone does not allow you to change the network type of an ApsaraDB for Redis instance from classic network to VPC.
 	ShowManualIgnore *bool `json:"ShowManualIgnore,omitempty" xml:"ShowManualIgnore,omitempty"`
 	// The ID of the stage.
 	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
@@ -12684,7 +18217,7 @@ type DescribePipelineResponseBodyDataStageListTaskList struct {
 	//
 	// *   **0**: The task is prepared for execution.
 	// *   **1**: The task is being executed.
-	// *   **2**: The task was executed.
+	// *   **2**: successful
 	// *   **3**: The task could not be executed.
 	// *   **5**: The task is pending retry.
 	// *   **6**: The task was terminated.
@@ -12954,8 +18487,10 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSecretRequest struct {
+	// The ID of the namespace in which the Secret instance resides. By default, the namespace ID is the same as the region ID.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	SecretId    *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	// The ID of the Secret instance to be queried. You can call the [ListSecrets](~~466929~~) operation to view the IDs of Secrete instances.
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
 func (s DescribeSecretRequest) String() string {
@@ -12977,13 +18512,34 @@ func (s *DescribeSecretRequest) SetSecretId(v int64) *DescribeSecretRequest {
 }
 
 type DescribeSecretResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                         `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response.
+	Data *DescribeSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Valid values:
+	//
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see **Error codes** in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information that is returned. Valid values:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the details of the Secret instance are successfully queried. Valid values:
+	//
+	// *   **true**: The information was queried.
+	// *   **false**: The image failed to be found.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribeSecretResponseBody) String() string {
@@ -13030,14 +18586,22 @@ func (s *DescribeSecretResponseBody) SetTraceId(v string) *DescribeSecretRespons
 }
 
 type DescribeSecretResponseBodyData struct {
-	CreateTime  *int64                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	NamespaceId *string                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RelateApps  []*DescribeSecretResponseBodyDataRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	SecretData  map[string]*string                          `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
-	SecretId    *int64                                      `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	SecretName  *string                                     `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	SecretType  *string                                     `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	UpdateTime  *int64                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the task was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The associated application.
+	RelateApps []*DescribeSecretResponseBodyDataRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
+	// Secret key-value pair data.
+	SecretData map[string]*string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	// The ID of the Secret instance.
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	// The name of the Secret instance.
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The type of the Secret instance.
+	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	// The time when the task was updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeSecretResponseBodyData) String() string {
@@ -13089,7 +18653,9 @@ func (s *DescribeSecretResponseBodyData) SetUpdateTime(v int64) *DescribeSecretR
 }
 
 type DescribeSecretResponseBodyDataRelateApps struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -13141,9 +18707,9 @@ func (s *DescribeSecretResponse) SetBody(v *DescribeSecretResponseBody) *Describ
 }
 
 type DisableApplicationScalingRuleRequest struct {
-	// 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// timer-0800-2100
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the request.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 }
 
@@ -13169,11 +18735,10 @@ type DisableApplicationScalingRuleResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The ID of the trace. The ID is used to query the details of a request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DisableApplicationScalingRuleResponseBody) String() string {
@@ -13244,9 +18809,9 @@ func (s *DisableApplicationScalingRuleResponse) SetBody(v *DisableApplicationSca
 }
 
 type EnableApplicationScalingRuleRequest struct {
-	// 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// timer-0800-2100
+	// The name of the auto scaling policy.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 }
 
@@ -13269,13 +18834,31 @@ func (s *EnableApplicationScalingRuleRequest) SetScalingRuleName(v string) *Enab
 }
 
 type EnableApplicationScalingRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Take note of the following rules:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned if the request failed. Take note of the following rules:
+	//
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The additional information that is returned. Take note of the following rules:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// Specifies whether the instances are successfully restarted. Take note of the following rules:
+	//
+	// *   **true**
+	// *   **false**: The restart failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -13576,11 +19159,27 @@ func (s *GetArmsTopNMetricRequest) SetStartTime(v int64) *GetArmsTopNMetricReque
 }
 
 type GetArmsTopNMetricResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetArmsTopNMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The following limits are imposed on the ID:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of applications.
+	Data []*GetArmsTopNMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The additional information that is returned. The following limits are imposed on the ID:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
+	//
+	// *   **true**: The namespaces were obtained.
+	// *   **false**: no
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetArmsTopNMetricResponseBody) String() string {
@@ -13617,12 +19216,18 @@ func (s *GetArmsTopNMetricResponseBody) SetSuccess(v bool) *GetArmsTopNMetricRes
 }
 
 type GetArmsTopNMetricResponseBodyData struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Error    *int64  `json:"Error,omitempty" xml:"Error,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The total number of requests.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of errors.
+	Error *int64 `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Rt       *int64  `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// The average response time. Unit: milliseconds.
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
 }
 
 func (s GetArmsTopNMetricResponseBodyData) String() string {
@@ -13716,11 +19321,27 @@ func (s *GetAvailabilityMetricRequest) SetRegionId(v string) *GetAvailabilityMet
 }
 
 type GetAvailabilityMetricResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetAvailabilityMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The following limits are imposed on the ID:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data entries returned.
+	Data []*GetAvailabilityMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The additional information that is returned. The following limits are imposed on the ID:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
+	//
+	// *   **true**: The namespaces were obtained.
+	// *   **false**: no
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAvailabilityMetricResponseBody) String() string {
@@ -13757,13 +19378,23 @@ func (s *GetAvailabilityMetricResponseBody) SetSuccess(v bool) *GetAvailabilityM
 }
 
 type GetAvailabilityMetricResponseBodyData struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EnableAutoscale *int64  `json:"EnableAutoscale,omitempty" xml:"EnableAutoscale,omitempty"`
-	ErrorInstances  *int64  `json:"ErrorInstances,omitempty" xml:"ErrorInstances,omitempty"`
-	Instances       *int64  `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Runnings        *int64  `json:"Runnings,omitempty" xml:"Runnings,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Indicates whether an auto scaling policy is enabled. The following limits are imposed on the ID:
+	//
+	// *   **1**: An auto scaling policy is enabled.
+	// *   **0**: No auto scaling policy is enabled.
+	EnableAutoscale *int64 `json:"EnableAutoscale,omitempty" xml:"EnableAutoscale,omitempty"`
+	// The number of abnormal instances.
+	ErrorInstances *int64 `json:"ErrorInstances,omitempty" xml:"ErrorInstances,omitempty"`
+	// The expected number of instances.
+	Instances *int64 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The current number of instances.
+	Runnings *int64 `json:"Runnings,omitempty" xml:"Runnings,omitempty"`
 }
 
 func (s GetAvailabilityMetricResponseBodyData) String() string {
@@ -13874,11 +19505,27 @@ func (s *GetChangeOrderMetricRequest) SetRegionId(v string) *GetChangeOrderMetri
 }
 
 type GetChangeOrderMetricResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetChangeOrderMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The following limits are imposed on the ID:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of applications.
+	Data []*GetChangeOrderMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The additional information that is returned. The following limits are imposed on the ID:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the microservice list was obtained. The following limits are imposed on the ID:
+	//
+	// *   **true**: The namespaces were obtained.
+	// *   **false**: no
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetChangeOrderMetricResponseBody) String() string {
@@ -13915,12 +19562,18 @@ func (s *GetChangeOrderMetricResponseBody) SetSuccess(v bool) *GetChangeOrderMet
 }
 
 type GetChangeOrderMetricResponseBodyData struct {
-	AppId        *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Error        *int64   `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of abnormal change orders.
+	Error *int64 `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The percentage of change failures.
 	ErrorPercent *float32 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
-	Name         *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId     *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Total        *int64   `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The total number of change orders.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetChangeOrderMetricResponseBodyData) String() string {
@@ -14014,11 +19667,27 @@ func (s *GetScaleAppMetricRequest) SetRegionId(v string) *GetScaleAppMetricReque
 }
 
 type GetScaleAppMetricResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetScaleAppMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The following limits are imposed on the ID:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of applications.
+	Data []*GetScaleAppMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The additional information that is returned. The following limits are imposed on the ID:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the microservice list was obtained. The following limits are imposed on the ID:
+	//
+	// *   **true**: The namespaces were obtained.
+	// *   **false**: no
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetScaleAppMetricResponseBody) String() string {
@@ -14055,11 +19724,16 @@ func (s *GetScaleAppMetricResponseBody) SetSuccess(v bool) *GetScaleAppMetricRes
 }
 
 type GetScaleAppMetricResponseBodyData struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	MaxReplicas *int64  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Runnings    *int64  `json:"Runnings,omitempty" xml:"Runnings,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The maximum number of instances.
+	MaxReplicas *int64 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The current number of instances.
+	Runnings *int64 `json:"Runnings,omitempty" xml:"Runnings,omitempty"`
 }
 
 func (s GetScaleAppMetricResponseBodyData) String() string {
@@ -14160,11 +19834,27 @@ func (s *GetWarningEventMetricRequest) SetStartTime(v int64) *GetWarningEventMet
 }
 
 type GetWarningEventMetricResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetWarningEventMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The following limits are imposed on the ID:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of applications.
+	Data []*GetWarningEventMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The additional information that is returned. The following limits are imposed on the ID:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
+	//
+	// *   **true**: The namespaces were obtained.
+	// *   **false**: no
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetWarningEventMetricResponseBody) String() string {
@@ -14201,10 +19891,14 @@ func (s *GetWarningEventMetricResponseBody) SetSuccess(v bool) *GetWarningEventM
 }
 
 type GetWarningEventMetricResponseBodyData struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	WarningCount *int64  `json:"WarningCount,omitempty" xml:"WarningCount,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of Warning events.
+	WarningCount *int64 `json:"WarningCount,omitempty" xml:"WarningCount,omitempty"`
 }
 
 func (s GetWarningEventMetricResponseBodyData) String() string {
@@ -14265,21 +19959,30 @@ func (s *GetWarningEventMetricResponse) SetBody(v *GetWarningEventMetricResponse
 }
 
 type ListAppEventsRequest struct {
-	// f7730764-d88f-4b9a-8d8e-cd8efbfe\*\*\*\*
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 1
+	// The page number of the page to return.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Warning
+	// The type of the event. Valid values:
+	//
+	// *   **Warning**: an alert.
+	// *   **Normal**: a normal event.
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// cn-beijing
+	// The namespace ID.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Pod
+	// The type of the object. Valid values:
+	//
+	// *   **Deployment**: an application.
+	// *   **Pod**: an application instance.
+	// *   **Service**: a Server Load Balancer (SLB) instance.
+	// *   **HorizontalPodAutoscaler**: an auto scaling policy.
+	// *   **CloneSet**: an application.
 	ObjectKind *string `json:"ObjectKind,omitempty" xml:"ObjectKind,omitempty"`
-	// errew-b86bf540-b4dc-47d8-a42f-b4997c14bd8f-5595cbddd6-x\*\*\*\*
+	// The name of the object. Fuzzy search by prefix is supported.
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// 10
+	// The number of entries to return on each page. Valid values: 0 to 10000.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Started
+	// The cause of the event. Fuzzy search by prefix is supported.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -14334,26 +20037,26 @@ func (s *ListAppEventsRequest) SetReason(v string) *ListAppEventsRequest {
 type ListAppEventsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of events.
+	// The events.
 	Data *ListAppEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the call failed. Take note of the following rules:
 	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the events that occurred in an application were obtained. Valid values:
+	// Indicates whether the events that occurred in the application were queried. Valid values:
 	//
-	// *   **true**: indicates that the events were obtained.
-	// *   **false**: indicates that the events could not be obtained.
+	// *   **true**: The events were queried.
+	// *   **false**: The events failed to be queried.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14396,13 +20099,13 @@ func (s *ListAppEventsResponseBody) SetSuccess(v bool) *ListAppEventsResponseBod
 }
 
 type ListAppEventsResponseBodyData struct {
-	// The list of events.
+	// The events.
 	AppEventEntity []*ListAppEventsResponseBodyDataAppEventEntity `json:"AppEventEntity,omitempty" xml:"AppEventEntity,omitempty" type:"Repeated"`
 	// The number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of events that occurred in the application.
+	// The total number of events that occurred in an application.
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
@@ -14435,19 +20138,19 @@ func (s *ListAppEventsResponseBodyData) SetTotalSize(v int32) *ListAppEventsResp
 }
 
 type ListAppEventsResponseBodyDataAppEventEntity struct {
-	// The type of the event.
+	// The type of the event. Valid values:
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The timestamp of the first occurrence of an event.
+	// The timestamp of the first occurrence of the event.
 	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
-	// The timestamp of the last occurrence of an event.
+	// The timestamp of the last occurrence of the event.
 	LastTimestamp *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	// The description of the event.
+	// The information about the event.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The type of the object.
 	ObjectKind *string `json:"ObjectKind,omitempty" xml:"ObjectKind,omitempty"`
 	// The name of the object.
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The reason why the event occurred.
+	// The cause of the event.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -14524,13 +20227,13 @@ func (s *ListAppEventsResponse) SetBody(v *ListAppEventsResponseBody) *ListAppEv
 }
 
 type ListAppServicesPageRequest struct {
-	// 6dcc8c9e-d3da-478a-a066-86dcf820\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 1
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the request.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 9999
+	// The returned information.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// springCloud
+	// 9999
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
@@ -14563,30 +20266,20 @@ func (s *ListAppServicesPageRequest) SetServiceType(v string) *ListAppServicesPa
 }
 
 type ListAppServicesPageResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the call was successful.
-	// *   **3xx**: indicates that the call was redirected.
-	// *   **4xx**: indicates that the call failed.
-	// *   **5xx**: indicates that a server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of microservices.
+	// The total number of pages returned.
 	Data []*ListAppServicesPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned error code. Valid values:
-	//
-	// - If the call is successful, the **ErrorCode** parameter is not returned.
-	// - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the microservice list was obtained. Valid values:
 	//
 	// *   **true**: The list was obtained.
 	// *   **false**: The list failed to be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The details of microservices.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the trace. The ID is used to query the details of a request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The page number of the current page.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -14634,15 +20327,15 @@ func (s *ListAppServicesPageResponseBody) SetTraceId(v string) *ListAppServicesP
 }
 
 type ListAppServicesPageResponseBodyData struct {
-	// The page number of the current page.
-	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The page number of the returned page.
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Valid values: 0 to 9999.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The returned result.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The name of the application.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The version of the service. You can create a custom version.
 	Result []*ListAppServicesPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of pages returned.
+	// The number of entries returned per page. Valid values: 0 to 9999.
 	TotalSize *string `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
@@ -14680,17 +20373,25 @@ func (s *ListAppServicesPageResponseBodyData) SetTotalSize(v string) *ListAppSer
 }
 
 type ListAppServicesPageResponseBodyDataResult struct {
-	// The ID of the application.
-	EdasAppId *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
-	// The name of the application.
-	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
 	// The group to which the service belongs. You can create a custom group.
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	EdasAppId *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
 	// The total number of instances.
-	InstanceNum *int64 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: indicates that the call was successful.
+	// *   **3xx**: indicates that the call was redirected.
+	// *   **4xx**: indicates that the call failed.
+	// *   **5xx**: indicates that a server error occurred.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	// The name of the service.
+	InstanceNum *int64 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	// The returned error code. Valid values:
+	//
+	// - If the call is successful, the **ErrorCode** parameter is not returned.
+	// - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The version of the service. You can create a custom version.
+	// The ID of the application.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -14762,7 +20463,7 @@ func (s *ListAppServicesPageResponse) SetBody(v *ListAppServicesPageResponseBody
 }
 
 type ListAppVersionsRequest struct {
-	// 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*
+	// The returned message.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -14780,29 +20481,29 @@ func (s *ListAppVersionsRequest) SetAppId(v string) *ListAppVersionsRequest {
 }
 
 type ListAppVersionsResponseBody struct {
+	// Indicates whether the historical versions of the application were obtained. Valid values:
+	//
+	// *   **true**: indicates that the historical versions of the application were obtained.
+	// *   **false**: indicates that the historical versions of the application could not be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The deployment method of the application. Valid values:
+	//
+	// *   **image**: indicates that the application was deployed by using an image.
+	// *   **upload**: indicates that the application was deployed by uploading a WAR or JAR package.
+	// *   **url**: indicates that the application was deployed by specifying the URL of a WAR or JAR package.
+	Data []*ListAppVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the versions.
-	Data []*ListAppVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information about the versions.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the historical versions of the application were obtained. Valid values:
-	//
-	// *   **true**: indicates that the historical versions of the application were obtained.
-	// *   **false**: indicates that the historical versions of the application could not be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAppVersionsResponseBody) String() string {
@@ -14844,20 +20545,19 @@ func (s *ListAppVersionsResponseBody) SetSuccess(v bool) *ListAppVersionsRespons
 }
 
 type ListAppVersionsResponseBodyData struct {
-	// The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **url**.
-	BuildPackageUrl *string `json:"BuildPackageUrl,omitempty" xml:"BuildPackageUrl,omitempty"`
-	// The time when the application was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the version.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The deployment method of the application. Valid values:
-	//
-	// *   **image**: indicates that the application was deployed by using an image.
-	// *   **upload**: indicates that the application was deployed by uploading a WAR or JAR package.
-	// *   **url**: indicates that the application was deployed by specifying the URL of a WAR or JAR package.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// *   The address of the image. This parameter is returned when the **Type** parameter is set to **image**.
 	// *   The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **upload**.
+	BuildPackageUrl *string `json:"BuildPackageUrl,omitempty" xml:"BuildPackageUrl,omitempty"`
+	// The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **url**.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the application was created.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the version.
 	WarUrl *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
 }
 
@@ -14924,23 +20624,32 @@ func (s *ListAppVersionsResponse) SetBody(v *ListAppVersionsResponseBody) *ListA
 }
 
 type ListApplicationsRequest struct {
-	// demo-app
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 1
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: indicates that the request was successful.
+	// *   **3xx**: indicates that the request was redirected.
+	// *   **4xx**: indicates that the request was invalid.
+	// *   **5xx**: indicates that a server error occurred.
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
+	// The number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// appName
+	// true
 	FieldType *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	// demo-app
+	// The ID of the region.
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// cn-beijing:demo
+	// 1
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// runnings
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 20
+	// Indicates whether the application is being deleted. Valid values:
+	//
+	// *   **true**: The application is being deleted.
+	// *   **false**: The application is not being deleted.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// true
+	// The returned message.
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// \[{"key":"key","value":"value"}]
+	// The list of applications.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -14954,6 +20663,11 @@ func (s ListApplicationsRequest) GoString() string {
 
 func (s *ListApplicationsRequest) SetAppName(v string) *ListApplicationsRequest {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetAppSource(v string) *ListApplicationsRequest {
+	s.AppSource = &v
 	return s
 }
 
@@ -14998,34 +20712,23 @@ func (s *ListApplicationsRequest) SetTags(v string) *ListApplicationsRequest {
 }
 
 type ListApplicationsResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// Queries applications.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of the returned page.
+	// 20
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The information about applications.
+	// The number of the returned page.
 	Data *ListApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// - The **ErrorCode** parameter is not returned when the request succeeds.
-	// - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The number of entries returned on each page.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 20
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// cn-beijing:demo
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The number of entries returned on each page.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of applications was obtained. Valid values:
-	//
-	// *   **true**: indicates that the list was obtained.
-	// *   **false**: indicates that the list could not be obtained.
+	// 1
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of applications.
+	// demo-app
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
@@ -15083,13 +20786,13 @@ func (s *ListApplicationsResponseBody) SetTotalSize(v int32) *ListApplicationsRe
 }
 
 type ListApplicationsResponseBodyData struct {
-	// The list of applications.
+	// The description of the application.
 	Applications []*ListApplicationsResponseBodyDataApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The number of the returned page.
+	// The number of application instances.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned on each page.
+	// The tags of the application.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of applications.
+	// The information about applications.
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
@@ -15122,26 +20825,25 @@ func (s *ListApplicationsResponseBodyData) SetTotalSize(v int32) *ListApplicatio
 }
 
 type ListApplicationsResponseBodyDataApplications struct {
-	// Indicates whether the application is being deleted. Valid values:
-	//
-	// *   **true**: The application is being deleted.
-	// *   **false**: The application is not being deleted.
+	// demo-app
 	AppDeletingStatus *bool `json:"AppDeletingStatus,omitempty" xml:"AppDeletingStatus,omitempty"`
-	// The description of the application.
+	// \[{"key":"key","value":"value"}]
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// The ID of the application.
+	// The total number of applications.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The ID of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The number of application instances.
+	Cpu     *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The total number of applications.
 	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	// The ID of the namespace.
+	Mem       *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// demo-app
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of running instances.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The value of the tag.
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
-	// The tags of the application.
+	// cn-beijing:demo
 	Tags []*ListApplicationsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -15173,8 +20875,18 @@ func (s *ListApplicationsResponseBodyDataApplications) SetAppName(v string) *Lis
 	return s
 }
 
+func (s *ListApplicationsResponseBodyDataApplications) SetCpu(v int32) *ListApplicationsResponseBodyDataApplications {
+	s.Cpu = &v
+	return s
+}
+
 func (s *ListApplicationsResponseBodyDataApplications) SetInstances(v int32) *ListApplicationsResponseBodyDataApplications {
 	s.Instances = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetMem(v int32) *ListApplicationsResponseBodyDataApplications {
+	s.Mem = &v
 	return s
 }
 
@@ -15199,9 +20911,9 @@ func (s *ListApplicationsResponseBodyDataApplications) SetTags(v []*ListApplicat
 }
 
 type ListApplicationsResponseBodyDataApplicationsTags struct {
-	// The key of the tag.
+	// appName
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The key of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15253,17 +20965,17 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 }
 
 type ListChangeOrdersRequest struct {
-	// 145341c-9708-4967-b3ec-24933767\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 2
-	CoStatus *string `json:"CoStatus,omitempty" xml:"CoStatus,omitempty"`
-	// CoCreateApp
-	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the request.
+	CoStatus *string `json:"CoStatus,omitempty" xml:"CoStatus,omitempty"`
+	// 2
+	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
 	// 20
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// CoCreateApp
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// test
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -15306,30 +21018,26 @@ func (s *ListChangeOrdersRequest) SetPageSize(v int32) *ListChangeOrdersRequest 
 }
 
 type ListChangeOrdersResponseBody struct {
+	// Indicates whether the list of change orders was obtained. Valid values:
+	//
+	// *   **true**: indicates that the list was obtained.
+	// *   **false**: indicates that the list could not be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of the returned page.
+	Data *ListChangeOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about change orders.
-	Data *ListChangeOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of change orders was obtained. Valid values:
-	//
-	// *   **true**: indicates that the list was obtained.
-	// *   **false**: indicates that the list could not be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. It is used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about change orders.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -15377,13 +21085,27 @@ func (s *ListChangeOrdersResponseBody) SetTraceId(v string) *ListChangeOrdersRes
 }
 
 type ListChangeOrdersResponseBodyData struct {
-	// The list of change orders.
+	// The status of the change order. Valid values:
+	//
+	// *   **0**: The change order is being prepared.
+	// *   **1**: The change order is being executed.
+	// *   **2**: The change order was executed.
+	// *   **3**: The change order could not be executed.
+	// *   **6**: The change order was terminated.
+	// *   **8**: The execution process is pending. You must manually determine the release batch.
+	// *   **9**: The execution process is pending. SAE will automatically determine the release batch.
+	// *   **10**: The change order could not be executed due to a system exception.
+	// *   **11**: The change order is pending approval.
+	// *   **12**: The change order is approved and is pending execution.
 	ChangeOrderList []*ListChangeOrdersResponseBodyDataChangeOrderList `json:"ChangeOrderList,omitempty" xml:"ChangeOrderList,omitempty" type:"Repeated"`
-	// The number of the returned page.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of change orders.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of change orders.
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
@@ -15416,19 +21138,23 @@ func (s *ListChangeOrdersResponseBodyData) SetTotalSize(v int32) *ListChangeOrde
 }
 
 type ListChangeOrdersResponseBodyDataChangeOrderList struct {
-	// The ID of the application.
+	// The number of entries returned on each page.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of release batches.
+	// The ID of the user who created the change order.
 	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
+	// The ID of the group.
+	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
 	// The mode in which the release batches are determined. Valid values:
 	//
 	// *   **auto**: SAE automatically determines the release batches.
 	// *   **manual**: You must manually determine the release batches.
-	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The ID of the change order.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The change type, which corresponds to the **CoTypeCode** parameter.
+	// The ID of the application.
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
+	// The ID of the change order.
+	CoTypeCode *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
+	// The ID of the user.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The code of the change type. Valid values:
 	//
 	// *   **CoBindSlb**: associates an SLB instance with the application.
@@ -15451,33 +21177,18 @@ type ListChangeOrdersResponseBodyDataChangeOrderList struct {
 	// *   **CoRestartInstances**: restarts the instances.
 	// *   **CoDeleteInstances**: deletes the instances.
 	// *   **CoScaleInAppWithInstances**: reduces the number of the specified application instances.
-	CoTypeCode *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
-	// The time when the change order was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the change order.
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The description about the application.
+	// The change type, which corresponds to the **CoTypeCode** parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the change order was completed.
+	// The time when the change order was created.
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the group.
+	// The description about the application.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The source of the change order.
+	// The number of release batches.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status of the change order. Valid values:
-	//
-	// *   **0**: The change order is being prepared.
-	// *   **1**: The change order is being executed.
-	// *   **2**: The change order was executed.
-	// *   **3**: The change order could not be executed.
-	// *   **6**: The change order was terminated.
-	// *   **8**: The execution process is pending. You must manually determine the release batch.
-	// *   **9**: The execution process is pending. SAE will automatically determine the release batch.
-	// *   **10**: The change order could not be executed due to a system exception.
-	// *   **11**: The change order is pending approval.
-	// *   **12**: The change order is approved and is pending execution.
+	// The time when the change order was completed.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the user.
+	// The source of the change order.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -15589,7 +21300,7 @@ func (s *ListChangeOrdersResponse) SetBody(v *ListChangeOrdersResponseBody) *Lis
 }
 
 type ListConsumedServicesRequest struct {
-	// b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*
+	// The ID of the request.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -15607,33 +21318,29 @@ func (s *ListConsumedServicesRequest) SetAppId(v string) *ListConsumedServicesRe
 }
 
 type ListConsumedServicesResponseBody struct {
+	// Indicates whether the microservice list was obtained. Valid values:
+	//
+	// *   **true**: The list was obtained.
+	// *   **false**: The list failed to be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The type of the published service.
+	Data []*ListConsumedServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the call was successful.
 	// *   **3xx**: indicates that the call was redirected.
 	// *   **4xx**: indicates that the call failed.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the microservices.
-	Data []*ListConsumedServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned error code. Valid values:
-	//
-	// *   If the call is successful, the **ErrorCode** parameter is not returned.
-	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned information. Valid values:
 	//
 	// *   If the call is successful, **success** is returned.
 	// *   If the call fails, an error code is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the microservice list was obtained. Valid values:
-	//
-	// *   **true**: The list was obtained.
-	// *   **false**: The list failed to be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the microservices.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -15681,19 +21388,22 @@ func (s *ListConsumedServicesResponseBody) SetTraceId(v string) *ListConsumedSer
 }
 
 type ListConsumedServicesResponseBodyData struct {
-	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// A reserved parameter.
-	Group2Ip *string `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	// The service group that corresponds to the published service.
-	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The subscription address of the service.
-	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The name of the published service.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the published service.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Group2Ip *string `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
 	// The version of the published service
+	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The name of the published service.
+	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+	// The returned error code. Valid values:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service group that corresponds to the published service.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the application.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -16316,9 +22026,9 @@ func (s *ListGreyTagRouteResponse) SetBody(v *ListGreyTagRouteResponseBody) *Lis
 }
 
 type ListIngressesRequest struct {
-	// bbf3a590-6d13-46fe-8ca9-c947a20b\*\*\*\*
+	// The list of routing rules.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// cn-beijing
+	// The returned data.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -16341,33 +22051,16 @@ func (s *ListIngressesRequest) SetNamespaceId(v string) *ListIngressesRequest {
 }
 
 type ListIngressesResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *ListIngressesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// - The **ErrorCode** parameter is not returned when the request succeeds.
-	// - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	//
-	// *   **success** is returned when the request succeeds.
-	// *   An error code is returned when the request fails.
+	// The port specified for the SLB listener.
+	Data      *ListIngressesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the namespace.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The ID of the SLB instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of routing rules was obtained. Valid values:
-	//
-	// *   **true**: indicates that the list was obtained.
-	// *   **false**: indicates that the list could not be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The name of the routing rule.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -16415,7 +22108,10 @@ func (s *ListIngressesResponseBody) SetTraceId(v string) *ListIngressesResponseB
 }
 
 type ListIngressesResponseBodyData struct {
-	// The list of routing rules.
+	// The type of the SLB instance based on the IP address. Valid values:
+	//
+	// *   **internet**: the Internet-facing SLB instance.
+	// *   **intranet**: the internal-facing SLB instance.
 	IngressList []*ListIngressesResponseBodyDataIngressList `json:"IngressList,omitempty" xml:"IngressList,omitempty" type:"Repeated"`
 }
 
@@ -16433,35 +22129,44 @@ func (s *ListIngressesResponseBodyData) SetIngressList(v []*ListIngressesRespons
 }
 
 type ListIngressesResponseBodyDataIngressList struct {
-	// The ID of the certificate.
+	// The error code.
+	//
+	// - The **ErrorCode** parameter is not returned when the request succeeds.
+	// - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	CertId  *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
-	// The name of the routing rule.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the routing rule.
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The port specified for the SLB listener.
-	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The protocol used to forward requests. Valid values:
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the list of routing rules was obtained. Valid values:
 	//
-	// *   **HTTP**: used when the application needs to identify the transmitted data.
-	// *   **HTTPS**: used when the application requires encrypted data transmission.
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// *   **true**: indicates that the list was obtained.
+	// *   **false**: indicates that the list could not be obtained.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The type of the SLB instance based on the processing capabilities. Valid values:
 	//
 	// *   **clb**: the Classic Load Balancer (CLB) instance.
 	// *   **alb**: the Application Load Balancer (ALB) instance.
-	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	// The name of the routing rule.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace.
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The ID of the SLB instance.
-	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The type of the SLB instance based on the IP address. Valid values:
+	ListenerPort       *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol   *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	LoadBalanceType    *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	MseGatewayId       *string `json:"MseGatewayId,omitempty" xml:"MseGatewayId,omitempty"`
+	MseGatewayPort     *string `json:"MseGatewayPort,omitempty" xml:"MseGatewayPort,omitempty"`
+	MseGatewayProtocol *string `json:"MseGatewayProtocol,omitempty" xml:"MseGatewayProtocol,omitempty"`
+	// The HTTP status code. Valid values:
 	//
-	// *   **internet**: the Internet-facing SLB instance.
-	// *   **intranet**: the internal-facing SLB instance.
+	// *   **2xx**: indicates that the request was successful.
+	// *   **3xx**: indicates that the request was redirected.
+	// *   **4xx**: indicates that the request was invalid.
+	// *   **5xx**: indicates that a server error occurred.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the routing rule.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the certificate.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The protocol used to forward requests. Valid values:
+	//
+	// *   **HTTP**: used when the application needs to identify the transmitted data.
+	// *   **HTTPS**: used when the application requires encrypted data transmission.
 	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
@@ -16505,6 +22210,21 @@ func (s *ListIngressesResponseBodyDataIngressList) SetListenerProtocol(v string)
 
 func (s *ListIngressesResponseBodyDataIngressList) SetLoadBalanceType(v string) *ListIngressesResponseBodyDataIngressList {
 	s.LoadBalanceType = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressList) SetMseGatewayId(v string) *ListIngressesResponseBodyDataIngressList {
+	s.MseGatewayId = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressList) SetMseGatewayPort(v string) *ListIngressesResponseBodyDataIngressList {
+	s.MseGatewayPort = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressList) SetMseGatewayProtocol(v string) *ListIngressesResponseBodyDataIngressList {
+	s.MseGatewayProtocol = &v
 	return s
 }
 
@@ -16558,16 +22278,38 @@ func (s *ListIngressesResponse) SetBody(v *ListIngressesResponseBody) *ListIngre
 }
 
 type ListJobsRequest struct {
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	FieldType   *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	FieldValue  *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	// The name of the job template.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of the page to return. The parameter value is a positive integer that is greater than or equal to 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The dimension by which applications are filtered. Valid values:
+	//
+	// *   **appName**: Applications are filtered by job template name.
+	// *   **appIds**: Applications are filtered by job template ID.
+	FieldType *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
+	// Enter the name and ID of the job template.
+	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	// The namespace ID.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	OrderBy     *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Reverse     *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Workload    *string `json:"Workload,omitempty" xml:"Workload,omitempty"`
+	// Specifies how applications are sorted. Valid values:
+	//
+	// *   **running**: The applications are sorted based on the number of running instances.
+	// *   **instances**: The applications are sorted based on the number of destination instances.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The number of entries to return on each page. Valid value: 0 to 200.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to sort the field names that are passed by **OrderBy** in ascending order. Valid values:
+	//
+	// *   **true**: in ascending order
+	// *   **false**: in descending order
+	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The tags that are displayed in a JSON string. Valid values:
+	//
+	// *   **key**: the tag key
+	// *   **value**: the tag value
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Set the value to `job`.
+	Workload *string `json:"Workload,omitempty" xml:"Workload,omitempty"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -16629,15 +22371,35 @@ func (s *ListJobsRequest) SetWorkload(v string) *ListJobsRequest {
 }
 
 type ListJobsResponseBody struct {
-	Code        *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	CurrentPage *int32                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        *ListJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode   *string                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message     *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize    *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalSize   *int32                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The job templates.
+	Data *ListJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Take note of the following rules:
+	//
+	// *   If the call is successful, **ErrorCode** is not returned.
+	// *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the applications were obtained. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of job templates.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -16694,10 +22456,14 @@ func (s *ListJobsResponseBody) SetTotalSize(v int32) *ListJobsResponseBody {
 }
 
 type ListJobsResponseBodyData struct {
+	// The job templates.
 	Applications []*ListJobsResponseBodyDataApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	CurrentPage  *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize     *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalSize    *int32                                  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of job templates.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListJobsResponseBodyData) String() string {
@@ -16729,23 +22495,46 @@ func (s *ListJobsResponseBodyData) SetTotalSize(v int32) *ListJobsResponseBodyDa
 }
 
 type ListJobsResponseBodyDataApplications struct {
-	Active               *int64                                      `json:"Active,omitempty" xml:"Active,omitempty"`
-	AppDescription       *string                                     `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppId                *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName              *string                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CompletionTime       *int64                                      `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	Cpu                  *int32                                      `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Failed               *int64                                      `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	LastChangeorderState *string                                     `json:"LastChangeorderState,omitempty" xml:"LastChangeorderState,omitempty"`
-	LastJobState         *string                                     `json:"LastJobState,omitempty" xml:"LastJobState,omitempty"`
-	LastStartTime        *int64                                      `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
-	Mem                  *int32                                      `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	NamespaceId          *string                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RegionId             *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Succeeded            *int64                                      `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
-	Suspend              *bool                                       `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
-	Tags                 []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TriggerConfig        *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	// The number of running instances.
+	Active *int64 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The description of the job template.
+	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	// The ID of the job template.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the job template.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The time when the job was last completed.
+	CompletionTime *int64 `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	Cpu            *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of instances that failed to run.
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// Indicates whether the latest change order was executed. Valid values:
+	//
+	// *   **0**: The latest change order failed to be executed.
+	// *   **1**: The latest change order was executed.
+	LastChangeorderState *string `json:"LastChangeorderState,omitempty" xml:"LastChangeorderState,omitempty"`
+	// The running status of the latest job. Valid values:
+	//
+	// *   **0**: The job is not executed.
+	// *   **1**: The job was executed.
+	// *   **2**: The job failed to be executed.
+	// *   **3**: The job is being executed.
+	LastJobState *string `json:"LastJobState,omitempty" xml:"LastJobState,omitempty"`
+	// The time when the job was last started.
+	LastStartTime *int64  `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	Mem           *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The namespace ID.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of instances that were successfully run.
+	Succeeded *int64 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	// Indicates whether the job template is suspended.
+	Suspend *bool `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
+	// The tag of the job template.
+	Tags          []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TriggerConfig *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataApplications) String() string {
@@ -16811,6 +22600,11 @@ func (s *ListJobsResponseBodyDataApplications) SetMem(v int32) *ListJobsResponse
 	return s
 }
 
+func (s *ListJobsResponseBodyDataApplications) SetMessage(v string) *ListJobsResponseBodyDataApplications {
+	s.Message = &v
+	return s
+}
+
 func (s *ListJobsResponseBodyDataApplications) SetNamespaceId(v string) *ListJobsResponseBodyDataApplications {
 	s.NamespaceId = &v
 	return s
@@ -16842,7 +22636,9 @@ func (s *ListJobsResponseBodyDataApplications) SetTriggerConfig(v string) *ListJ
 }
 
 type ListJobsResponseBodyDataApplicationsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16894,11 +22690,11 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListLogConfigsRequest struct {
-	// 56f77b65-788d-442a-9885-7f20d91f\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// 10
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the request.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -16926,33 +22722,29 @@ func (s *ListLogConfigsRequest) SetPageSize(v int32) *ListLogConfigsRequest {
 }
 
 type ListLogConfigsResponseBody struct {
+	// Indicates whether the logging configurations of an application were obtained. Valid values:
+	//
+	// *   **true**: indicates that the configurations were obtained.
+	// *   **false**: indicates that the configurations could not be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of logging configurations.
+	Data *ListLogConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The logging configurations.
-	Data *ListLogConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. It can be used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
 	// *   **success** is returned when the request succeeds.
 	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the logging configurations of an application were obtained. Valid values:
-	//
-	// *   **true**: indicates that the configurations were obtained.
-	// *   **false**: indicates that the configurations could not be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The logging configurations.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -17000,13 +22792,16 @@ func (s *ListLogConfigsResponseBody) SetTraceId(v string) *ListLogConfigsRespons
 }
 
 type ListLogConfigsResponseBodyData struct {
-	// The number of the returned page.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The details of logging configurations.
-	LogConfigs []*ListLogConfigsResponseBodyDataLogConfigs `json:"LogConfigs,omitempty" xml:"LogConfigs,omitempty" type:"Repeated"`
-	// The number of entries returned on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The name of the Log Service configuration.
+	LogConfigs []*ListLogConfigsResponseBodyDataLogConfigs `json:"LogConfigs,omitempty" xml:"LogConfigs,omitempty" type:"Repeated"`
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries returned on each page.
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
@@ -17039,21 +22834,21 @@ func (s *ListLogConfigsResponseBodyData) SetTotalSize(v int32) *ListLogConfigsRe
 }
 
 type ListLogConfigsResponseBodyDataLogConfigs struct {
-	// The name of the Log Service configuration.
-	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	// The time when the configuration was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The path of logs.
-	LogDir *string `json:"LogDir,omitempty" xml:"LogDir,omitempty"`
-	// The type of the log. Set this value to **file_log**.
-	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the Logstore in Log Service.
-	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
-	// The ID of the Log Service project.
-	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
 	// The storage type of logs.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the Logstore in Log Service.
+	LogDir *string `json:"LogDir,omitempty" xml:"LogDir,omitempty"`
+	// The ID of the region.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The number of the returned page.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the configuration was created.
+	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
+	// The type of the log. Set this value to **file_log**.
+	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	// The ID of the Log Service project.
 	StoreType *string `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
 }
 
@@ -17691,7 +23486,7 @@ func (s *ListNamespacedConfigMapsResponse) SetBody(v *ListNamespacedConfigMapsRe
 }
 
 type ListPublishedServicesRequest struct {
-	// b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*
+	// The ID of the request.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -17709,33 +23504,29 @@ func (s *ListPublishedServicesRequest) SetAppId(v string) *ListPublishedServices
 }
 
 type ListPublishedServicesResponseBody struct {
+	// Indicates whether the microservice list was obtained. Valid values:
+	//
+	// *   **true**: The list was obtained.
+	// *   **false**: The list failed to be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The type of the published service.
+	Data []*ListPublishedServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the call was successful.
 	// *   **3xx**: indicates that the call was redirected.
 	// *   **4xx**: indicates that the call failed.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the microservices.
-	Data []*ListPublishedServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned error code. Valid values:
-	//
-	// *   If the call is successful, the **ErrorCode** parameter is not returned.
-	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. It is used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned information. Valid values:
 	//
 	// *   If the call is successful, **success** is returned.
 	// *   If the call fails, an error code is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the microservice list was obtained. Valid values:
-	//
-	// *   **true**: The list was obtained.
-	// *   **false**: The list failed to be obtained.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the microservices.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -17783,19 +23574,22 @@ func (s *ListPublishedServicesResponseBody) SetTraceId(v string) *ListPublishedS
 }
 
 type ListPublishedServicesResponseBodyData struct {
-	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The reserved parameter. This parameter does not take effect.
-	Group2Ip *string `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	// The service group that corresponds to the consumed service.
-	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The subscription address of the service.
-	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The name of the published service.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the published service.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Group2Ip *string `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
 	// The version of the published services.
+	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The name of the published service.
+	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+	// The returned error code. Valid values:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service group that corresponds to the consumed service.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the application.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -17872,6 +23666,7 @@ func (s *ListPublishedServicesResponse) SetBody(v *ListPublishedServicesResponse
 }
 
 type ListSecretsRequest struct {
+	// The ID of the namespace in which the Secrets reside. By default, the namespace ID is the same as the region ID.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -17889,13 +23684,34 @@ func (s *ListSecretsRequest) SetNamespaceId(v string) *ListSecretsRequest {
 }
 
 type ListSecretsResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListSecretsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                      `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *ListSecretsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Take note of the following rules:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message. Take note of the following rules:
+	//
+	// *   If the call is successful, **success** is returned.
+	// *   If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s ListSecretsResponseBody) String() string {
@@ -17942,6 +23758,7 @@ func (s *ListSecretsResponseBody) SetTraceId(v string) *ListSecretsResponseBody 
 }
 
 type ListSecretsResponseBodyData struct {
+	// The Secrets.
 	Secrets []*ListSecretsResponseBodyDataSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
@@ -17959,13 +23776,22 @@ func (s *ListSecretsResponseBodyData) SetSecrets(v []*ListSecretsResponseBodyDat
 }
 
 type ListSecretsResponseBodyDataSecrets struct {
-	CreateTime  *int64                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	NamespaceId *string                                         `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RelateApps  []*ListSecretsResponseBodyDataSecretsRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	SecretId    *int64                                          `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	SecretName  *string                                         `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	SecretType  *string                                         `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	UpdateTime  *int64                                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the Secret was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The namespace ID.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The associated applications.
+	RelateApps []*ListSecretsResponseBodyDataSecretsRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
+	// The Secret ID.
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	// The Secret name.
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The Secret type.
+	//
+	// Set the value to **kubernetes.io/dockerconfigjson**. The value indicates the secret for the username and password of the image repository and is used for authentication when images are pulled during application deployment.
+	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	// The time when the Secret was updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListSecretsResponseBodyDataSecrets) String() string {
@@ -18012,7 +23838,9 @@ func (s *ListSecretsResponseBodyDataSecrets) SetUpdateTime(v int64) *ListSecrets
 }
 
 type ListSecretsResponseBodyDataSecretsRelateApps struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -18524,9 +24352,9 @@ func (s *QueryResourceStaticsResponse) SetBody(v *QueryResourceStaticsResponseBo
 }
 
 type ReduceApplicationCapacityByInstanceIdsRequest struct {
-	// 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*
+	// The ID of the instance. Separate multiple instances with commas (,).
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -18551,31 +24379,31 @@ func (s *ReduceApplicationCapacityByInstanceIdsRequest) SetInstanceIds(v string)
 type ReduceApplicationCapacityByInstanceIdsResponseBody struct {
 	// The HTTP status code.
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information of the change order.
+	// The information about the change process.
 	Data *ReduceApplicationCapacityByInstanceIdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information that is returned. Take note of the following rules:
 	//
-	// *   **success** is returned when the request succeeds.
-	// *   An error code is returned when the request fails.
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether information of the change order is successfully queried. Valid values:
+	// Indicates whether the information of the change order was queried. Take note of the following rules:
 	//
-	// *   **true**
-	// *   **false**
+	// *   **true**: The information was queried.
+	// *   **false**: The image failed to be found.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -18623,7 +24451,7 @@ func (s *ReduceApplicationCapacityByInstanceIdsResponseBody) SetTraceId(v string
 }
 
 type ReduceApplicationCapacityByInstanceIdsResponseBodyData struct {
-	// The ID of the change order.
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -18670,15 +24498,28 @@ func (s *ReduceApplicationCapacityByInstanceIdsResponse) SetBody(v *ReduceApplic
 }
 
 type RescaleApplicationRequest struct {
-	// 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// true
+	// Specifies whether to automatically enable an auto scaling policy for the application. Take note of the following rules:
+	//
+	// *   **true**: turns on Logon-free Sharing
+	// *   **false**: turns off Logon-free Sharing
 	AutoEnableApplicationScalingRule *bool `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
-	// \-1
+	// The percentage of the minimum number of available instances. Take note of the following rules:
+	//
+	// *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+	// *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+	//
+	// > When **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of MinReadyInstanceRatio** takes precedence.**** For example, if **MinReadyInstances** is set to **5, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// 1
+	// The minimum number of available instances. Special values:
+	//
+	// *   If you set the value to **0**, business interruptions occur when the application is updated.
+	// *   If you set the value to \*\*-1\*\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+	//
+	// > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	// 5
+	// The expected number of instances.
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 }
 
@@ -18716,25 +24557,25 @@ func (s *RescaleApplicationRequest) SetReplicas(v int32) *RescaleApplicationRequ
 }
 
 type RescaleApplicationResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code. Take note of the following rules:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response.
 	Data *RescaleApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The message returned for the operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application is successfully scaled. Valid values:
+	// Indicates whether the application is successfully scaled. Take note of the following rules:
 	//
 	// *   **true**
 	// *   **false**
@@ -18827,11 +24668,11 @@ func (s *RescaleApplicationResponse) SetBody(v *RescaleApplicationResponseBody) 
 }
 
 type RescaleApplicationVerticallyRequest struct {
-	// 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 1000
+	// The destination CPU specification. Unit: millicore.
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// 2048
+	// The destination memory size. Unit: MB.
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
@@ -18859,30 +24700,30 @@ func (s *RescaleApplicationVerticallyRequest) SetMemory(v string) *RescaleApplic
 }
 
 type RescaleApplicationVerticallyResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code. Take note of the following rules:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response.
 	Data *RescaleApplicationVerticallyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The message returned for the operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instance specifications are changed. Valid values:
+	// Indicates whether the instance specifications are changed. Take note of the following rules:
 	//
 	// *   **true**
 	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -18977,11 +24818,22 @@ func (s *RescaleApplicationVerticallyResponse) SetBody(v *RescaleApplicationVert
 }
 
 type RestartApplicationRequest struct {
-	// 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// \-1
+	// The ID of the application.
+	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AutoEnableApplicationScalingRule *bool   `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
+	// The percentage of the minimum number of available instances. Take note of the following rules:
+	//
+	// *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+	// *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+	//
+	// > When **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of \*\*MinReadyInstanceRatio** takes precedence.**** For example, if **MinReadyInstances** is set to **5\*\*, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// 1
+	// The minimum number of available instances. Special values:
+	//
+	// *   If you set the value to **0**, business interruptions occur when the application is updated.
+	// *   If you set the value to \*\*-1\*\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+	//
+	// > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 }
 
@@ -18998,6 +24850,11 @@ func (s *RestartApplicationRequest) SetAppId(v string) *RestartApplicationReques
 	return s
 }
 
+func (s *RestartApplicationRequest) SetAutoEnableApplicationScalingRule(v bool) *RestartApplicationRequest {
+	s.AutoEnableApplicationScalingRule = &v
+	return s
+}
+
 func (s *RestartApplicationRequest) SetMinReadyInstanceRatio(v int32) *RestartApplicationRequest {
 	s.MinReadyInstanceRatio = &v
 	return s
@@ -19009,33 +24866,33 @@ func (s *RestartApplicationRequest) SetMinReadyInstances(v int32) *RestartApplic
 }
 
 type RestartApplicationResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code. Take note of the following rules:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response.
 	Data *RestartApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information that is returned. Take note of the following rules:
 	//
-	// *   If the request is successful, **success** is returned.
-	// *   An error message is returned when the request fails.
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instance is successfully restarted. Valid values:
+	// Indicates whether the instance is successfully restarted. Take note of the following rules:
 	//
 	// *   **true**
 	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -19083,7 +24940,7 @@ func (s *RestartApplicationResponseBody) SetTraceId(v string) *RestartApplicatio
 }
 
 type RestartApplicationResponseBodyData struct {
-	// The ID of the change order.
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -19130,9 +24987,9 @@ func (s *RestartApplicationResponse) SetBody(v *RestartApplicationResponseBody) 
 }
 
 type RestartInstancesRequest struct {
-	// 1daa7236-3844-4f36-b39a-605b0cc0\*\*\*\*
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// mysae-1daa7236-3844-4f36-b39a-605b0cc0caa6-\*\*\*\*\*
+	// The ID of the instance to be restarted. Separate multiple instance IDs with commas (,).
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -19155,33 +25012,33 @@ func (s *RestartInstancesRequest) SetInstanceIds(v string) *RestartInstancesRequ
 }
 
 type RestartInstancesResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code. Take note of the following rules:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the application.
 	Data *RestartInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information that is returned. Take note of the following rules:
 	//
-	// *   If the request is successful, **success** is returned.
-	// *   An error code is returned when the request fails.
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the instances are successfully restarted. Valid values:
+	// Specifies whether the instances are successfully restarted. Take note of the following rules:
 	//
 	// *   **true**
 	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -19276,19 +25133,56 @@ func (s *RestartInstancesResponse) SetBody(v *RestartInstancesResponseBody) *Res
 }
 
 type RollbackApplicationRequest struct {
-	// 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// true
+	// Specifies whether to automatically enable an auto scaling policy for the application. Take note of the following rules:
+	//
+	// *   **true**: turns on Logon-free Sharing
+	// *   **false**: turns off Logon-free Sharing
 	AutoEnableApplicationScalingRule *string `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
-	// 10
+	// The wait time between batches. Unit: seconds.
 	BatchWaitTime *int32 `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	// \-1
+	// The percentage of the minimum number of available instances. Take note of the following rules:
+	//
+	// *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+	// *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+	//
+	// > When both **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of **MinReadyInstanceRatio** takes precedence.** For example, if **MinReadyInstances** is set to **5, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// 1
+	// The minimum number of available instances. Take note of the following rules:
+	//
+	// *   If you set the value to **0**, business interruptions occur when the application is updated.
+	// *   If you set the value to \*\*-1\*\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+	//
+	// > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	// {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
+	// The deployment policy. If the minimum number of available instances is 1, the value of the **UpdateStrategy** parameter is an empty string (""). If the minimum number of available instances is larger than 1, specify this parameter based on your requirements. Examples:
+	//
+	// *   Perform canary release for one instance and release the remaining instances in two batches automatically with a one-minute interval between the deployment of each instance:
+	//
+	//     `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`
+	//
+	// *   Perform canary release for one instance and release the remaining instances in two batches manually:
+	//
+	//     `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`
+	//
+	// *   Release the instances in two batches automatically with no interval between the deployment of each instance:
+	//
+	//     `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
+	//
+	// The following table describes the parameters that are used in the preceding statements.
+	//
+	// *   **type**: the type of the release policy. Valid values: **GrayBatchUpdate** and **BatchUpdate**.
+	//
+	// *   **batchUpdate**: the phased release policy.
+	//
+	//     *   **batch**: the number of release batches.
+	//     *   **releaseType**: the processing method for the batches. Valid values: **auto** and **manual**.
+	//     *   **batchWaitTime**: the interval between release batches. Unit: seconds.
+	//
+	// *   **grayUpdate**: the number of release batches in the phased release after a canary release. This parameter is returned only if the **type** parameter is set to **GrayBatchUpdate**.
 	UpdateStrategy *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	// 0026ff7f-2b57-4127-bdd0-9bf202bb9\*\*\*\*
+	// The ID of the application version. Call the [ListAppVersions](~~162054~~) operation to obtain the version ID.
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -19336,30 +25230,30 @@ func (s *RollbackApplicationRequest) SetVersionId(v string) *RollbackApplication
 }
 
 type RollbackApplicationResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code. Take note of the following rules:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response.
 	Data *RollbackApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The message returned for the operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application is successfully rolled back. Valid values:
+	// Indicates whether the application is successfully rolled back. Take note of the following rules:
 	//
 	// *   **true**
 	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -19407,9 +25301,9 @@ func (s *RollbackApplicationResponseBody) SetTraceId(v string) *RollbackApplicat
 }
 
 type RollbackApplicationResponseBodyData struct {
-	// The ID of the change order.
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// Specifies whether approval is required when a RAM user performs release. Valid values:
+	// Specifies whether approval is required when a RAM user performs release. Take note of the following rules:
 	//
 	// *   **true**
 	// *   **false**
@@ -19464,7 +25358,7 @@ func (s *RollbackApplicationResponse) SetBody(v *RollbackApplicationResponseBody
 }
 
 type StartApplicationRequest struct {
-	// 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -19484,31 +25378,31 @@ func (s *StartApplicationRequest) SetAppId(v string) *StartApplicationRequest {
 type StartApplicationResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *StartApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned. Take note of the following rules:
 	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
+	// *   If the call is successful, **ErrorCode** is not returned.
+	// *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The returned message. Take note of the following rules:
 	//
-	// *   **success** is returned when the request succeeds.
-	// *   An error code is returned when the request fails.
+	// *   If the call is successful, **success** is returned.
+	// *   If the call fails, an error code is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the application is started. Valid values:
 	//
 	// *   **true**
 	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -19603,7 +25497,10 @@ func (s *StartApplicationResponse) SetBody(v *StartApplicationResponseBody) *Sta
 }
 
 type StopApplicationRequest struct {
-	// 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*
+	// The returned message.
+	//
+	// *   **success** is returned when the request succeeds.
+	// *   An error code is returned when the request fails.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -19621,33 +25518,23 @@ func (s *StopApplicationRequest) SetAppId(v string) *StopApplicationRequest {
 }
 
 type StopApplicationResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *StopApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
 	// *   If the request is successful, this parameter is not returned.****
 	// *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	//
-	// *   **success** is returned when the request succeeds.
-	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *StopApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates whether the specified application is stopped. Valid values:
 	//
 	// *   **true**
 	// *   **false**
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned data.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the trace. It can be used to query the details of a request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the change order.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -19695,7 +25582,12 @@ func (s *StopApplicationResponseBody) SetTraceId(v string) *StopApplicationRespo
 }
 
 type StopApplicationResponseBodyData struct {
-	// The ID of the change order.
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: indicates that the request was successful.
+	// *   **3xx**: indicates that the request was redirected.
+	// *   **4xx**: indicates that the request was invalid.
+	// *   **5xx**: indicates that a server error occurred.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -19742,8 +25634,10 @@ func (s *StopApplicationResponse) SetBody(v *StopApplicationResponseBody) *StopA
 }
 
 type SuspendJobRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Suspend *bool   `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
+	// The ID of the job template.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to suspend the job template.
+	Suspend *bool `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
 }
 
 func (s SuspendJobRequest) String() string {
@@ -19765,13 +25659,34 @@ func (s *SuspendJobRequest) SetSuspend(v bool) *SuspendJobRequest {
 }
 
 type SuspendJobResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Whether the execution is successful.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned. Valid values:
+	//
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The additional information that is returned. Valid values:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// Indicates whether the job was executed. Valid values:
+	//
+	// *   **true**: The job was executed.
+	// *   **false**: The job failed to be executed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s SuspendJobResponseBody) String() string {
@@ -19847,13 +25762,13 @@ func (s *SuspendJobResponse) SetBody(v *SuspendJobResponseBody) *SuspendJobRespo
 }
 
 type TagResourcesRequest struct {
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// \["d42921c4-5433-4abd-8075-0e536f8b\*\*\*\*"]
-	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// application
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// \[{"key":"k1","value":"v1"}]
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// \["d42921c4-5433-4abd-8075-0e536f8b\*\*\*\*"]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -19886,30 +25801,29 @@ func (s *TagResourcesRequest) SetTags(v string) *TagResourcesRequest {
 }
 
 type TagResourcesResponseBody struct {
+	// Indicates whether tags were added to the specified resources successfully. Valid values:
+	//
+	// *   **true**: indicates that tags were added to the specified resources successfully.
+	// *   **false**: indicates that tags could not be added to the specified resources.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates that the operation was successful.
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether tags were added to the specified resources successfully. Valid values:
-	//
-	// *   **true**: indicates that tags were added to the specified resources successfully.
-	// *   **false**: indicates that tags could not be added to the specified resources.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. It can be used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates that the operation was successful.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -19986,11 +25900,11 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnbindSlbRequest struct {
-	// 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*
+	// true
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// true
 	Internet *bool `json:"Internet,omitempty" xml:"Internet,omitempty"`
-	// true
+	// The ID of the request.
 	Intranet *bool `json:"Intranet,omitempty" xml:"Intranet,omitempty"`
 }
 
@@ -20018,33 +25932,29 @@ func (s *UnbindSlbRequest) SetIntranet(v bool) *UnbindSlbRequest {
 }
 
 type UnbindSlbResponseBody struct {
+	// Indicates whether the internal-facing or Internet-facing SLB instance was disassociated successfully. Valid values:
+	//
+	// *   **true**: The SLB instance was disassociated successfully.
+	// *   **false**: The SLB instance could not be disassociated.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the change order. It can be used to query the task status.
+	Data *UnbindSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *UnbindSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. It can be used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
 	// *   **success** is returned when the request succeeds.
 	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the internal-facing or Internet-facing SLB instance was disassociated successfully. Valid values:
-	//
-	// *   **true**: The SLB instance was disassociated successfully.
-	// *   **false**: The SLB instance could not be disassociated.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned data.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -20092,7 +26002,10 @@ func (s *UnbindSlbResponseBody) SetTraceId(v string) *UnbindSlbResponseBody {
 }
 
 type UnbindSlbResponseBodyData struct {
-	// The ID of the change order. It can be used to query the task status.
+	// The error code.
+	//
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -20285,9 +26198,9 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAppSecurityGroupRequest struct {
-	// 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// sg-wz969ngg2e49q5i4\*\*\*\*
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the request.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -20310,31 +26223,30 @@ func (s *UpdateAppSecurityGroupRequest) SetSecurityGroupId(v string) *UpdateAppS
 }
 
 type UpdateAppSecurityGroupResponseBody struct {
+	// Indicates whether the security group of the application is successfully updated. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
-	//
-	// *   If the request is successful, this parameter is not returned.****
-	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. It can be used to query details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
 	// *   If the request is successful, **success** is returned.
 	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the security group of the application is successfully updated. Valid values:
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
 	//
-	// *   **true**
-	// *   **false**
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query details of a request.
+	// *   If the request is successful, this parameter is not returned.****
+	// *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -20505,17 +26417,105 @@ func (s *UpdateApplicationDescriptionResponse) SetBody(v *UpdateApplicationDescr
 }
 
 type UpdateApplicationScalingRuleRequest struct {
-	// 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// \-1
+	// The percentage of the minimum number of available instances. Take note of the following rules:
+	//
+	// *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. This is the default value.
+	// *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if you set this parameter to **50**, and five instances are available, the minimum number of available instances is 3.
+	//
+	// > When **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of \*\*MinReadyInstanceRatio** takes precedence.**** For example, if **MinReadyInstances** is set to **5\*\*, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// 3
+	// The minimum number of available instances. Take note of the following rules:
+	//
+	// *   If you set the value to **0**, business interruptions occur when the auto-scaling policy is updated.
+	// *   If you set the value to \*\*-1\*\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+	//
+	// > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	// {"maxReplicas":3,"minReplicas":1,"metrics":\[{"metricType":"CPU","metricTargetAverageUtilization":20},{"metricType":"MEMORY","metricTargetAverageUtilization":30},{"metricType":"tcpActiveConn","metricTargetAverageUtilization":20},{"metricType":"SLB_QPS","MetricTargetAverageUtilization":25,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"},{"metricType":"SLB_RT","MetricTargetAverageUtilization":35,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"}],"scaleUpRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":0},"scaleDownRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":300}}
+	// The configurations of the metric-based auto scaling policy. This parameter is required if you set the ScalingRuleType parameter to metric.
+	//
+	// Parameter description:
+	//
+	// *   **maxReplicas**: the maximum number of instances in the application.
+	//
+	// *   **minReplicas**: the minimum number of instances in the application.
+	//
+	// *   **metricType**: the metric that is used to trigger the auto scaling policy.
+	//
+	//     *   **CPU**: the CPU utilization.
+	//     *   **MEMORY**: the memory usage.
+	//     *   **tcpActiveConn**: the average number of active TCP connections in an application instance within 30 seconds.
+	//     *   **SLB_QPS**: the average queries per second (QPS) of the Internet-facing Server Load Balancer (SLB) instance associated with an application instance within 15 seconds.
+	//     *   **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
+	//
+	// *   **metricTargetAverageUtilization**: the limit on the metric specified by the **metricType** parameter.
+	//
+	//     *   The limit on the CPU utilization. Unit: percentage.
+	//     *   The limit on the memory usage. Unit: percentage.
+	//     *   The limit on the average number of active TCP connections per second.
+	//     *   The limit on the QPS of the Internet-facing SLB instance.
+	//     *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
+	//
+	// *   **SlbProject**: the Log Service project.
+	//
+	// *   **SlbLogstore**: the Log Service Logstore.
+	//
+	// *   **Vport**: the listener port for the SLB instance. HTTP and HTTPS are supported.
+	//
+	// *   **scaleUpRules**: the scale-out rule.
+	//
+	// *   **scaleDownRules**: the scale-in rule.
+	//
+	// *   **step**: the scale-out or scale-in step size. The maximum number of instances that can be added or removed per unit time.
+	//
+	// *   **disabled**: specifies whether to disable the application scale-in. If you set this parameter to true, the application instances are never scaled in. This prevents business risks during peak hours.
+	//
+	//     *   **true**: disables the application scale-in.
+	//     *   **false**: enables the application scale-in. Default value: false.
+	//
+	// *   **stabilizationWindowSeconds**: the cooldown period during which the system is stable and does not perform scale-out or scale-in operations. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
+	//
+	// > You can specify one or more metrics as the trigger conditions of the auto scaling policy. If you specify multiple metrics, the application is scaled out when the value of a metric is greater than or equal to the limit. The number of application instances after the scale-out cannot exceed the configured maximum number of application instances. If the values of all the metrics are less than the limits, the application is scaled in. The number of instances after the scale-in cannot be less than the configured minimum number of application instances.
 	ScalingRuleMetric *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
-	// timer-0800-2100
+	// The name of the auto scaling policy. The name must start with a lowercase letter and can contain only lowercase letters, digits, and hyphens (-). The name cannot exceed 32 characters in length.
+	//
+	// > You cannot change the names of created policies.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	// {"beginDate":null,"endDate":null,"period":"\* \* \*","schedules":\[{"atTime":"08:00","targetReplicas":10},{"atTime":"20:00","targetReplicas":3}]}
+	// The configurations of the scheduled auto scaling policy. This parameter is required when you set the ScalingRuleType parameter to timing or when you want to create a scheduled auto scaling policy by using an SDK.
+	//
+	// Parameter description:
+	//
+	// *   **beginDate** and **endDate**: specify the validity period of the scheduled auto scaling policy. **beginDate** specifies the start date and **endDate** specifies the end date. Take note of the following rules:
+	//
+	//     *   If you set the two parameters to **null**, the scheduled auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
+	//     *   If you set the two parameters to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if you set **beginDate** to **2021-03-25** and **endDate** to **2021-04-25**, the auto scaling policy is valid for one month.
+	//
+	// *   **period**: specifies the frequency at which the scheduled auto scaling policy is executed. Valid values:
+	//
+	//     *   **\* \* \***: The scheduled auto scaling policy is executed at a specified point in time every day.
+	//
+	//     *   **\* \* Fri,Mon**: The scheduled auto scaling policy is executed at a specified point in time on one or more specified days of each week. GMT+8 is used. Valid values:
+	//
+	//         *   **Sun**
+	//         *   **Mon**
+	//         *   **Tue**
+	//         *   **Wed**
+	//         *   **Thu**
+	//         *   **Fri**
+	//         *   **Sat**
+	//
+	//     *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
+	//
+	// *   **schedules**: specifies the points in time at which the auto scaling policy is triggered and the number of application instances that are retained during the corresponding period of time. You can specify up to 20 points in time. Parameter description:
+	//
+	//     *   **atTime**: the point in time at which the policy is triggered. Format: **Hour:Minute**. Example: **08:00**.
+	//
+	//     *   **targetReplicas**: specifies the number of application instances that you want to maintain by using this policy. You can also set the value to the minimum number of available instances required for each application release. Valid values: 1 to 50.
+	//
+	//         **
+	//
+	//         **Note**Make sure that at least **one** instance is available during the application deployment and rollback to prevent your business from being interrupted. If you set the value to **0**, business interruptions occur when the application is updated.
 	ScalingRuleTimer *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
 }
 
@@ -20558,15 +26558,33 @@ func (s *UpdateApplicationScalingRuleRequest) SetScalingRuleTimer(v string) *Upd
 }
 
 type UpdateApplicationScalingRuleResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data      *UpdateApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The returned result.
+	Data *UpdateApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Take note of the following rules:
+	//
+	// *   If the call is successful, **ErrorCode** is not returned.
+	// *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message. Take note of the following rules:
+	//
+	// *   If the call is successful, **success** is returned.
+	// *   If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// Specifies whether the instances are successfully restarted. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -20614,7 +26632,7 @@ func (s *UpdateApplicationScalingRuleResponseBody) SetTraceId(v string) *UpdateA
 }
 
 type UpdateApplicationScalingRuleResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The time when the auto scaling policy was created. Unit: milliseconds.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -20622,18 +26640,18 @@ type UpdateApplicationScalingRuleResponseBodyData struct {
 	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
 	// The details of the metric-based auto scaling policy.
 	Metric *UpdateApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	// Indicates whether the auto scaling policy is enabled. Valid values:
+	// Specifies whether to enable the auto scaling policy. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// *   **true**: The auto scaling policy is enabled.
+	// *   **false**: The auto scaling policy is disabled.
 	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
 	// The name of the auto scaling policy.
 	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
 	// The type of the auto scaling policy. Valid values:
 	//
-	// *   **timing**: the scheduled auto scaling policy.
-	// *   **metric**: the metric-based auto scaling policy.
-	// *   **mix**: the hybrid auto scaling policy.
+	// *   **timing**: a scheduled auto scaling policy
+	// *   **metric**: a metric-based auto scaling policy
+	// *   **mix**: a hybrid auto scaling policy
 	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
 	// The details of the scheduled auto scaling policy.
 	Timer *UpdateApplicationScalingRuleResponseBodyDataTimer `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
@@ -20697,7 +26715,7 @@ func (s *UpdateApplicationScalingRuleResponseBodyData) SetUpdateTime(v int64) *U
 type UpdateApplicationScalingRuleResponseBodyDataMetric struct {
 	// The maximum number of instances.
 	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	// The list of metrics that are used to trigger the auto scaling policy.
+	// The metrics that are used to trigger the auto scaling policy.
 	Metrics []*UpdateApplicationScalingRuleResponseBodyDataMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 	// The minimum number of instances.
 	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
@@ -20739,10 +26757,14 @@ type UpdateApplicationScalingRuleResponseBodyDataMetricMetrics struct {
 	//
 	// *   **CPU**: the CPU utilization.
 	// *   **MEMORY**: the memory usage.
-	// *   **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
-	// *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
-	// *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// *   **tcpActiveConn**: the average number of active TCP connections of an application instance within 30 seconds.
+	// *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance within 15 seconds.
+	// *   **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
+	MetricType  *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
+	SlbProject  *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	Vport       *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
@@ -20763,34 +26785,54 @@ func (s *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricTyp
 	return s
 }
 
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbId(v string) *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbId = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbLogstore(v string) *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbLogstore = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) SetSlbProject(v string) *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.SlbProject = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) SetVport(v string) *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.Vport = &v
+	return s
+}
+
 type UpdateApplicationScalingRuleResponseBodyDataTimer struct {
 	// The start date of the validity period of the scheduled auto scaling policy. Parameter description:
 	//
-	// *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
-	// *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
+	// *   If **BeginDate** and **EndDate** are set to **null**, the auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
+	// *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the auto scaling policy is valid for one month.
 	BeginDate *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
-	// The end date of the validity period of the scheduled auto scaling policy. Parameter description:
+	// The end date of the validity period of the scheduled auto scaling policy. Take note of the following rules:
 	//
-	// *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
-	// *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
+	// *   If **BeginDate** and **EndDate** are set to **null**, the auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
+	// *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the auto scaling policy is valid for one month.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The days on which the scheduled auto scaling policy takes effect. Valid values:
+	// The frequency at which the scheduled auto scaling policy is executed. Valid values:
 	//
-	// *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
+	// *   **\* \* \***: The scheduled auto scaling policy is executed at a specified point in time every day.
 	//
-	// *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+	// *   **\* \* Fri,Mon**: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each week. GMT+8 is used. Valid values:
 	//
-	//     *   **Sun**: Sunday
-	//     *   **Mon**: Monday
-	//     *   **Tue**: Tuesday
-	//     *   **Wed**: Wednesday
-	//     *   **Thu**: Thursday
-	//     *   **Fri**: Friday
-	//     *   **Sat**: Saturday
+	//     *   **Sun**
+	//     *   **Mon**
+	//     *   **Tue**
+	//     *   **Wed**
+	//     *   **Thu**
+	//     *   **Fri**
+	//     *   **Sat**
 	//
-	// *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
+	// *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The points in time when the auto scaling policy is triggered within one day.
+	// The points in time at which the auto scaling policy is triggered within one day.
 	Schedules []*UpdateApplicationScalingRuleResponseBodyDataTimerSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
 }
 
@@ -20824,7 +26866,9 @@ func (s *UpdateApplicationScalingRuleResponseBodyDataTimer) SetSchedules(v []*Up
 
 type UpdateApplicationScalingRuleResponseBodyDataTimerSchedules struct {
 	// The point in time. Format: **Hour:Minute**.
-	AtTime *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	AtTime      *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	MaxReplicas *int32  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	MinReplicas *int32  `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 	// The expected number of instances.
 	TargetReplicas *int32 `json:"TargetReplicas,omitempty" xml:"TargetReplicas,omitempty"`
 }
@@ -20839,6 +26883,16 @@ func (s UpdateApplicationScalingRuleResponseBodyDataTimerSchedules) GoString() s
 
 func (s *UpdateApplicationScalingRuleResponseBodyDataTimerSchedules) SetAtTime(v string) *UpdateApplicationScalingRuleResponseBodyDataTimerSchedules {
 	s.AtTime = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataTimerSchedules) SetMaxReplicas(v int32) *UpdateApplicationScalingRuleResponseBodyDataTimerSchedules {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataTimerSchedules) SetMinReplicas(v int32) *UpdateApplicationScalingRuleResponseBodyDataTimerSchedules {
+	s.MinReplicas = &v
 	return s
 }
 
@@ -20976,7 +27030,7 @@ func (s *UpdateApplicationVswitchesResponse) SetBody(v *UpdateApplicationVswitch
 }
 
 type UpdateConfigMapRequest struct {
-	// 1
+	// The ID of the request.
 	ConfigMapId *int64  `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
 	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -21006,30 +27060,26 @@ func (s *UpdateConfigMapRequest) SetDescription(v string) *UpdateConfigMapReques
 }
 
 type UpdateConfigMapResponseBody struct {
+	// Indicates whether the ConfigMap instance was updated. Valid values:
+	//
+	// *   **true**: The instance was updated.
+	// *   **false**: The instance failed to be updated.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the ConfigMap instance.
+	Data *UpdateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx:**: indicates that the call was successful.
 	// *   **3xx**: indicates that the call was redirected.
 	// *   **4xx**: indicates that the call failed.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
-	Data *UpdateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
-	//
-	// *   If the call is successful, the **ErrorCode** parameter is not returned.
-	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ConfigMap instance was updated. Valid values:
-	//
-	// *   **true**: The instance was updated.
-	// *   **false**: The instance failed to be updated.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. The ID is used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned information.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned result.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -21077,7 +27127,10 @@ func (s *UpdateConfigMapResponseBody) SetTraceId(v string) *UpdateConfigMapRespo
 }
 
 type UpdateConfigMapResponseBodyData struct {
-	// The ID of the ConfigMap instance.
+	// The returned error code. Valid values:
+	//
+	// *   If the call is successful, the **ErrorCode** parameter is not returned.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ConfigMapId *string `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
 }
 
@@ -21287,23 +27340,15 @@ func (s *UpdateGreyTagRouteResponse) SetBody(v *UpdateGreyTagRouteResponseBody) 
 }
 
 type UpdateIngressRequest struct {
-	// 188077086902\*\*\*\*\_176993d\*\*\*\*\_181437\*\*\*\*\_108724\*\*\*\*
-	CertId  *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
-	// {"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080}
-	DefaultRule *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
-	// ingress-sae-test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 87
-	IngressId *int64 `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
-	// 443
-	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// HTTP
+	CertId           *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIds          *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	DefaultRule      *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IngressId        *int64  `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
+	ListenerPort     *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// clb
-	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	// \[{"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2\*\*\*\*","containerPort":8080,"domain":"sae.site","path":"/path2"}]
-	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	LoadBalanceType  *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	Rules            *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
 func (s UpdateIngressRequest) String() string {
@@ -21360,31 +27405,13 @@ func (s *UpdateIngressRequest) SetRules(v string) *UpdateIngressRequest {
 }
 
 type UpdateIngressResponseBody struct {
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *UpdateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the configurations of the routing rule were updated. Valid values:
-	//
-	// *   **true**: The configurations were updated.
-	// *   **false**: The configurations could not be updated.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace.
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                        `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s UpdateIngressResponseBody) String() string {
@@ -21431,7 +27458,6 @@ func (s *UpdateIngressResponseBody) SetTraceId(v string) *UpdateIngressResponseB
 }
 
 type UpdateIngressResponseBodyData struct {
-	// The ID of the routing rule.
 	IngressId *int64 `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
 }
 
@@ -21478,51 +27504,178 @@ func (s *UpdateIngressResponse) SetBody(v *UpdateIngressResponseBody) *UpdateIng
 }
 
 type UpdateJobRequest struct {
-	AcrAssumeRoleArn              *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	AcrInstanceId                 *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AppId                         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BackoffLimit                  *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
-	Command                       *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs                   *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConcurrencyPolicy             *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
-	ConfigMapMountDesc            *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	CustomHostAlias               *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableImageAccl               *bool   `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
-	Envs                          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImagePullSecrets              *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	ImageUrl                      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs                  *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions               *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                           *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	MountDesc                     *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	MountHost                     *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	NasId                         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OssAkId                       *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	OssAkSecret                   *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	OssMountDescs                 *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
-	PackageUrl                    *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion                *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	Php                           *string `json:"Php,omitempty" xml:"Php,omitempty"`
-	PhpConfig                     *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	PhpConfigLocation             *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	PostStart                     *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                       *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	ProgrammingLanguage           *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	Python                        *string `json:"Python,omitempty" xml:"Python,omitempty"`
-	PythonModules                 *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	RefAppId                      *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
-	Replicas                      *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Slice                         *bool   `json:"Slice,omitempty" xml:"Slice,omitempty"`
-	SliceEnvs                     *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
-	SlsConfigs                    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	TerminationGracePeriodSeconds *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	Timeout                       *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Timezone                      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TomcatConfig                  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	TriggerConfig                 *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
-	WarStartOptions               *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	WebContainer                  *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](~~223585~~).
+	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	// The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
+	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of times the job is retried.
+	BackoffLimit *int64 `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	// The command that is used to start the image. The command must be an existing executable object in the container. Example:
+	//
+	//     command:
+	//           - echo
+	//           - abc
+	//           - >
+	//           - file0
+	//
+	// In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. The name must meet the following format requirements:
+	//
+	// `["a","b"]`
+	//
+	// In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
+	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	// The concurrency policy of the job. Valid values:
+	//
+	// *   **Forbid**: Prohibits concurrent running. If the previous job is not completed, no new job is created.
+	// *   **Allow**: Allows concurrent running.
+	// *   **Replace**: If the previous job is not completed when the time to create a new job is reached, the new job replaces the previous job.
+	ConcurrencyPolicy *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
+	// The description of the **ConfigMap** instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following parameters are involved:
+	//
+	// *   **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](~~176917~~) operation to obtain the ID.
+	// *   **key**: the key.
+	//
+	// > You can use the `sae-sys-configmap-all` key to mount all keys.
+	//
+	// *   **mountPath**: the mount path.
+	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	// The custom mappings between hostnames and IP addresses in the container. Valid values:
+	//
+	// *   **hostName**: the domain name or hostname.
+	// *   **ip**: the IP address.
+	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableImageAccl      *bool   `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
+	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](~~176914~~). Valid values:
+	//
+	// *   Configure custom environment variables
+	//
+	//     *   **name**: the name of the environment variable.
+	//     *   **value**: the value of the environment variable.
+	//
+	// *   Reference ConfigMap
+	//
+	//     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+	//     *   **configMapId**: the ConfigMap ID.
+	//     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The ID of the corresponding Secret.
+	ImagePullSecrets *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
+	// The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	// The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	// The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+	//
+	// *   **Open JDK 8**
+	// *   **Open JDK 7**
+	// *   **Dragonwell 11**
+	// *   **Dragonwell 8**
+	// *   **openjdk-8u191-jdk-alpine3.9**
+	// *   **openjdk-7u201-jdk-alpine3.9**
+	//
+	// This parameter is not returned if the **PackageType** parameter is set to **Image**.
+	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	// The configurations for mounting the NAS file system. If you do not need to modify the NAS configurations when you deploy the application, configure **MountDesc** only in the first request. If you no longer need to use NAS, leave **MountDesc** empty in the request.
+	MountDesc *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
+	// The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
+	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	// The ID of the Apsara File Storage NAS file system. If you do not need to modify the NAS configurations when you deploy the application, configure **NasId** only in the first request. If you no longer need to use NAS, leave **NasId** empty in the request.
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// The AccessKey ID that is used to read data from and write data to OSS.
+	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	// The AccessKey secret that is used to read data from and write data to OSS.
+	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	// The information about the mounted Object Storage Service (OSS) bucket. The following parameters are involved:
+	//
+	// *   **bucketName**: the name of the OSS bucket.
+	//
+	// *   **bucketPath**: the directory or object in OSS. If the specified directory or object does not exist, an error is returned.
+	//
+	// *   **mountPath**: the directory of the container in SAE. If the path already exists, the newly specified path overwrites the previous one. If the path does not exist, it is created.
+	//
+	// *   **readOnly**: specifies whether to only allow the container path to read data from the OSS directory. Valid values:
+	//
+	//     *   **true**: The container path only has read permission on the OSS directory.
+	//     *   **false**: The application has read and write permissions.
+	OssMountDescs *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	// The address of the deployment package. This parameter is required if you set **PackageType** to **FatJar**, **War**, or **PythonZip**.
+	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	// The version of the deployment package. This parameter is required if you set **PackageType** to **FatJar**, **War**, or **PythonZip**.
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The ID of Container Registry Enterprise Edition instance N.
+	Php *string `json:"Php,omitempty" xml:"Php,omitempty"`
+	// The details of the PHP configuration file.
+	PhpConfig *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	// The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
+	PhpConfigLocation *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	// The script to be run after the container is started. Example: `{"exec":{"command":\["sh","-c","echo hello"\]}}`
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The script that is run before the container is stopped. Example: `{"exec":{"command":\["sh","-c","echo hello"\]}}`
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The programming language. Valid values: **java**, **php**, **python**, and **shell**.
+	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	// The Python environment. Set the value to **PYTHON 3.9.15**.
+	Python *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	// The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If the package does not contain this file and you do not configure custom dependencies in the package, specify the dependencies that you want to install in the text box.
+	PythonModules *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	// The ID of the job that you reference.
+	RefAppId *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
+	// The number of concurrent instances.
+	Replicas *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// Specifies whether to enable job sharding.
+	Slice *bool `json:"Slice,omitempty" xml:"Slice,omitempty"`
+	// The parameters of job sharding.
+	SliceEnvs *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
+	// The configurations of Log Service.
+	//
+	// *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	// *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	//
+	// The following parameters are involved:
+	//
+	// *   **projectName**: the name of the Log Service project.
+	// *   **logDir**: the path in which logs are stored.
+	// *   **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+	// *   **logstoreName**: the name of the Logstore in Log Service.
+	// *   **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+	//
+	// If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
+	//
+	// > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
+	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	// The timeout period. Unit: seconds.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The time zone. Default value: **Asia/Shanghai**.
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The Tomcat configuration. If you want to delete the configuration, set this parameter to {} or leave this parameter empty. Valid values:
+	//
+	// *   **port**: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not specify this parameter, the default port number 8080 is used.
+	// *   **contextPath**: the path. Default value: /. This value indicates the root directory.
+	// *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+	// *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and GB2312. If you do not specify this parameter, the default value **ISO-8859-1** is used.
+	// *   **useBodyEncoding**: specifies whether to use the encoding scheme that is specified by **BodyEncoding for URL**. Default value: **true**.
+	TomcatConfig  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	TriggerConfig *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	// The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](~~96677~~).
+	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	// The version of the Tomcat container on which the deployment package depends. The following versions are supported:
+	//
+	// *   **apache-tomcat-7.0.91**
+	// *   **apache-tomcat-8.5.42**
+	//
+	// This parameter is not returned if the **PackageType** parameter is set to **Image**.
+	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s UpdateJobRequest) String() string {
@@ -21759,13 +27912,34 @@ func (s *UpdateJobRequest) SetWebContainer(v string) *UpdateJobRequest {
 }
 
 type UpdateJobResponseBody struct {
-	Code      *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                    `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response.
+	Data *UpdateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Valid values:
+	//
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information that is returned. Valid values:
+	//
+	// *   success: If the call is successful, **success** is returned.
+	// *   An error code: If the call fails, an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the application deployment is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s UpdateJobResponseBody) String() string {
@@ -21812,7 +27986,9 @@ func (s *UpdateJobResponseBody) SetTraceId(v string) *UpdateJobResponseBody {
 }
 
 type UpdateJobResponseBodyData struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the change order. It can be used to query the task status.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -21864,13 +28040,14 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 }
 
 type UpdateNamespaceRequest struct {
-	EnableMicroRegistration *bool   `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
-	NameSpaceShortId        *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// desc
+	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
+	// The short ID of the namespace. You do not need to specify a region ID. We recommend that you configure this parameter. The value of this parameter can be up to 20 characters in length and can contain only lowercase letters and digits.
+	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
+	// The description of the namespace. The description cannot exceed 100 characters in length.
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// cn-beijing:test
+	// The long ID of the namespace. If you configure this parameter, the long ID take effects and the value of the NameSpaceShortId parameter is ignored. To ensure compatibility, we recommend that you specify a short namespace ID. A long namespace ID follows the `<RegionId>:<NamespaceId>` format. The `NamespaceId` variable can contain only lowercase letters and digits. Example: `cn-beijing:test`. The value of the NamespaceId variable cannot exceed 32 characters in length. For more information about **RegionId**, you can call the [DescribeRegions](~~126213~~) operation to obtain the IDs of regions supported by SAE.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// name
+	// The name of the namespace. The name cannot exceed 64 characters in length.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -21910,28 +28087,28 @@ func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequ
 type UpdateNamespaceResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// *   **2xx**: indicates that the request was successful.
-	// *   **3xx**: indicates that the request was redirected.
-	// *   **4xx**: indicates that the request was invalid.
-	// *   **5xx**: indicates that a server error occurred.
+	// *   **2xx**: The call was successful.
+	// *   **3xx**: The call was redirected.
+	// *   **4xx**: The call failed.
+	// *   **5xx**: A server error occurred.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information of the namespace.
 	Data *UpdateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned. Take note of the following rules:
 	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+	// *   The **ErrorCode** parameter is not returned if the request succeeds.
+	// *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The message returned for the operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information of the namespace was updated. Valid values:
+	// Indicates whether the information about the namespace was updated. Valid values:
 	//
-	// *   **true**: indicates that the information was updated.
-	// *   **false**: indicates that the information could not be updated.
+	// *   **true**: The instance was updated.
+	// *   **false**: The instance failed to be updated.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -21979,8 +28156,9 @@ func (s *UpdateNamespaceResponseBody) SetTraceId(v string) *UpdateNamespaceRespo
 }
 
 type UpdateNamespaceResponseBodyData struct {
-	EnableMicroRegistration *bool   `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
-	NameSpaceShortId        *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
+	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
+	// The short ID of the namespace.
+	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	// The description of the namespace.
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	// The ID of the namespace.
@@ -22060,9 +28238,9 @@ func (s *UpdateNamespaceResponse) SetBody(v *UpdateNamespaceResponseBody) *Updat
 
 type UpdateNamespaceVpcRequest struct {
 	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// cn-beijing:test
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// vpc-2ze0i263cnn311nvj\*\*\*\*
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the request.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -22090,31 +28268,30 @@ func (s *UpdateNamespaceVpcRequest) SetVpcId(v string) *UpdateNamespaceVpcReques
 }
 
 type UpdateNamespaceVpcResponseBody struct {
+	// Indicates whether the VPC information was updated. Valid values:
+	//
+	// *   **true**: indicates that the information was updated.
+	// *   **false**: indicates that the information could not be updated.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code. Valid values:
 	//
 	// *   **2xx**: indicates that the request was successful.
 	// *   **3xx**: indicates that the request was redirected.
 	// *   **4xx**: indicates that the request was invalid.
 	// *   **5xx**: indicates that a server error occurred.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
-	//
-	// *   The **ErrorCode** parameter is not returned when the request succeeds.
-	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the trace. It can be used to query the details of a request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
 	// *   **success** is returned when the request succeeds.
 	// *   An error code is returned when the request fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the VPC information was updated. Valid values:
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
 	//
-	// *   **true**: indicates that the information was updated.
-	// *   **false**: indicates that the information could not be updated.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// *   The **ErrorCode** parameter is not returned when the request succeeds.
+	// *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -22186,9 +28363,9 @@ func (s *UpdateNamespaceVpcResponse) SetBody(v *UpdateNamespaceVpcResponseBody) 
 }
 
 type UpdateSecretRequest struct {
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	SecretData  *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
-	SecretId    *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	NamespaceId *string                        `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SecretData  *UpdateSecretRequestSecretData `json:"SecretData,omitempty" xml:"SecretData,omitempty" type:"Struct"`
+	SecretId    *int64                         `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
 func (s UpdateSecretRequest) String() string {
@@ -22204,12 +28381,58 @@ func (s *UpdateSecretRequest) SetNamespaceId(v string) *UpdateSecretRequest {
 	return s
 }
 
-func (s *UpdateSecretRequest) SetSecretData(v string) *UpdateSecretRequest {
-	s.SecretData = &v
+func (s *UpdateSecretRequest) SetSecretData(v *UpdateSecretRequestSecretData) *UpdateSecretRequest {
+	s.SecretData = v
 	return s
 }
 
 func (s *UpdateSecretRequest) SetSecretId(v int64) *UpdateSecretRequest {
+	s.SecretId = &v
+	return s
+}
+
+type UpdateSecretRequestSecretData struct {
+	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+}
+
+func (s UpdateSecretRequestSecretData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretRequestSecretData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretRequestSecretData) SetSecretData(v string) *UpdateSecretRequestSecretData {
+	s.SecretData = &v
+	return s
+}
+
+type UpdateSecretShrinkRequest struct {
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SecretDataShrink *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	SecretId         *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+}
+
+func (s UpdateSecretShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretShrinkRequest) SetNamespaceId(v string) *UpdateSecretShrinkRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateSecretShrinkRequest) SetSecretDataShrink(v string) *UpdateSecretShrinkRequest {
+	s.SecretDataShrink = &v
+	return s
+}
+
+func (s *UpdateSecretShrinkRequest) SetSecretId(v int64) *UpdateSecretShrinkRequest {
 	s.SecretId = &v
 	return s
 }
@@ -22682,6 +28905,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["AppName"] = request.AppName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppSource)) {
+		query["AppSource"] = request.AppSource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoConfig)) {
 		query["AutoConfig"] = request.AutoConfig
 	}
@@ -22708,6 +28935,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.EdasContainerVersion)) {
 		query["EdasContainerVersion"] = request.EdasContainerVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableEbpf)) {
+		query["EnableEbpf"] = request.EnableEbpf
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Envs)) {
@@ -22822,6 +29053,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["Replicas"] = request.Replicas
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SaeVersion)) {
+		query["SaeVersion"] = request.SaeVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
@@ -22883,6 +29118,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		body["OssMountDescs"] = request.OssMountDescs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Php)) {
+		body["Php"] = request.Php
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PhpConfig)) {
 		body["PhpConfig"] = request.PhpConfig
 	}
@@ -22925,11 +29164,11 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 }
 
 /**
- * *   You can create up to five auto scaling policies for one application.
- * *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
- * *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
- * *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
- * *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+ * The HTTP status code. Take note of the following rules:
+ * *   **2xx**: The call was successful.
+ * *   **3xx**: The call was redirected.
+ * *   **4xx**: The call failed.
+ * *   **5xx**: A server error occurred.
  *
  * @param request CreateApplicationScalingRuleRequest
  * @param headers map
@@ -22999,11 +29238,11 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 }
 
 /**
- * *   You can create up to five auto scaling policies for one application.
- * *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
- * *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
- * *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
- * *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+ * The HTTP status code. Take note of the following rules:
+ * *   **2xx**: The call was successful.
+ * *   **3xx**: The call was redirected.
+ * *   **4xx**: The call failed.
+ * *   **5xx**: A server error occurred.
  *
  * @param request CreateApplicationScalingRuleRequest
  * @return CreateApplicationScalingRuleResponse
@@ -23566,14 +29805,24 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSecretResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSecretResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateSecretShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecretData)) {
+		request.SecretDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecretData, tea.String("SecretData"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretDataShrink)) {
+		query["SecretData"] = request.SecretDataShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
@@ -23584,15 +29833,9 @@ func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, head
 		query["SecretType"] = request.SecretType
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SecretData)) {
-		body["SecretData"] = request.SecretData
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSecret"),
@@ -24090,6 +30333,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 		query["CommandArgs"] = request.CommandArgs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		query["Cpu"] = request.Cpu
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomHostAlias)) {
 		query["CustomHostAlias"] = request.CustomHostAlias
 	}
@@ -24140,6 +30387,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
 		query["Liveness"] = request.Liveness
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Memory)) {
+		query["Memory"] = request.Memory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MicroRegistration)) {
@@ -24214,6 +30465,14 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 		query["Readiness"] = request.Readiness
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SlsConfigs)) {
 		query["SlsConfigs"] = request.SlsConfigs
 	}
@@ -24232,6 +30491,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.UpdateStrategy)) {
 		query["UpdateStrategy"] = request.UpdateStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WarStartOptions)) {
@@ -24265,6 +30528,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.OssMountDescs)) {
 		body["OssMountDescs"] = request.OssMountDescs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Php)) {
+		body["Php"] = request.Php
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhpConfig)) {
@@ -26318,6 +32585,10 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 		query["AppName"] = request.AppName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppSource)) {
+		query["AppSource"] = request.AppSource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -27011,7 +33282,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 }
 
 /**
- * >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+ * > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -27042,7 +33313,7 @@ func (client *Client) OpenSaeServiceWithOptions(headers map[string]*string, runt
 }
 
 /**
- * >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+ * > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
  *
  * @return OpenSaeServiceResponse
  */
@@ -27278,6 +33549,10 @@ func (client *Client) RestartApplicationWithOptions(request *RestartApplicationR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoEnableApplicationScalingRule)) {
+		query["AutoEnableApplicationScalingRule"] = request.AutoEnableApplicationScalingRule
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
@@ -27861,7 +34136,8 @@ func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDes
 }
 
 /**
- * If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+ * ##
+ * If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the whitelist.
  *
  * @param request UpdateApplicationScalingRuleRequest
  * @param headers map
@@ -27923,7 +34199,8 @@ func (client *Client) UpdateApplicationScalingRuleWithOptions(request *UpdateApp
 }
 
 /**
- * If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+ * ##
+ * If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the whitelist.
  *
  * @param request UpdateApplicationScalingRuleRequest
  * @return UpdateApplicationScalingRuleResponse
@@ -28528,29 +34805,33 @@ func (client *Client) UpdateNamespaceVpc(request *UpdateNamespaceVpcRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) UpdateSecretWithOptions(request *UpdateSecretRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSecretResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateSecretWithOptions(tmpReq *UpdateSecretRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSecretResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateSecretShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecretData)) {
+		request.SecretDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecretData, tea.String("SecretData"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretDataShrink)) {
+		query["SecretData"] = request.SecretDataShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecretId)) {
 		query["SecretId"] = request.SecretId
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SecretData)) {
-		body["SecretData"] = request.SecretData
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSecret"),
