@@ -619,7 +619,8 @@ type CreateListenerRequest struct {
 	//
 	// *   **true**
 	// *   **false** (default)
-	ProxyProtocolEnabled  *bool                                       `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	// Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
 	ProxyProtocolV2Config *CreateListenerRequestProxyProtocolV2Config `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty" type:"Struct"`
 	// The region ID of the NLB instance.
 	//
@@ -770,9 +771,21 @@ func (s *CreateListenerRequest) SetTag(v []*CreateListenerRequestTag) *CreateLis
 }
 
 type CreateListenerRequestProxyProtocolV2Config struct {
-	Ppv2PrivateLinkEpIdEnabled  *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass the Ppv2PrivateLinkEpId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	Ppv2PrivateLinkEpIdEnabled *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass the PrivateLinkEpsId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
 	Ppv2PrivateLinkEpsIdEnabled *bool `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
-	Ppv2VpcIdEnabled            *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass the VpcId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	Ppv2VpcIdEnabled *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
 }
 
 func (s CreateListenerRequestProxyProtocolV2Config) String() string {
@@ -894,7 +907,8 @@ type CreateListenerShrinkRequest struct {
 	//
 	// *   **true**
 	// *   **false** (default)
-	ProxyProtocolEnabled        *bool   `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	// Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
 	ProxyProtocolV2ConfigShrink *string `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty"`
 	// The region ID of the NLB instance.
 	//
@@ -3317,7 +3331,8 @@ type GetListenerAttributeResponseBody struct {
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	ProxyProtocolEnabled  *bool                                                  `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	// Indicates whether the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
 	ProxyProtocolV2Config *GetListenerAttributeResponseBodyProxyProtocolV2Config `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty" type:"Struct"`
 	// The ID of the region where the NLB instance is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3471,9 +3486,21 @@ func (s *GetListenerAttributeResponseBody) SetTags(v []*GetListenerAttributeResp
 }
 
 type GetListenerAttributeResponseBodyProxyProtocolV2Config struct {
-	Ppv2PrivateLinkEpIdEnabled  *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	// Indicates whether the Proxy protocol passes the PrivateLinkEpId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Ppv2PrivateLinkEpIdEnabled *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	// Indicates whether the Proxy protocol passes the PrivateLinkEpsId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	Ppv2PrivateLinkEpsIdEnabled *bool `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
-	Ppv2VpcIdEnabled            *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
+	// Indicates whether the Proxy protocol passes the VpcId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Ppv2VpcIdEnabled *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBodyProxyProtocolV2Config) String() string {
@@ -3500,9 +3527,9 @@ func (s *GetListenerAttributeResponseBodyProxyProtocolV2Config) SetPpv2VpcIdEnab
 }
 
 type GetListenerAttributeResponseBodyTags struct {
-	// The key of the tag that you want to remove. You can remove up to 20 tags in each call.
+	// The tag key.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -4653,7 +4680,7 @@ func (s *ListListenersRequestTag) SetValue(v string) *ListListenersRequestTag {
 }
 
 type ListListenersResponseBody struct {
-	// The list of listeners.
+	// A list of listeners.
 	Listeners []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -4704,8 +4731,8 @@ func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersRespons
 type ListListenersResponseBodyListeners struct {
 	// Indicates whether Application-Layer Protocol Negotiation (ALPN) is enabled. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// *   **true**
+	// *   **false**
 	AlpnEnabled *bool `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
 	// The ALPN policy. Valid values:
 	//
@@ -4714,74 +4741,75 @@ type ListListenersResponseBodyListeners struct {
 	// *   **HTTP2Preferred**
 	// *   **HTTP2Optional**
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// The list of CA certificates.
+	// A list of CA certificates.
 	//
 	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	// Indicates whether mutual authentication is enabled. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// The list of server certificates.
+	// The server certificate.
 	//
 	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The last port in the listening port range.
+	// The last port in the listener port range.
 	EndPort *string `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds. Valid values: **1** to **900**. Default value: **900**.
+	// The timeout period of idle connections. Unit: seconds. Valid values: **1** to **900**. Default value: **900**.
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The name of the listener.
 	//
 	// The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The listening port.
+	// The information about the listener port of your server.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The listening protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+	// The listener protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The status of the listener. Valid values:
 	//
-	// *   **Provisioning**
-	// *   **Running**
-	// *   **Configuring**
-	// *   **Stopping**
-	// *   **Stopped**
-	// *   **Starting**
-	// *   **Deleting**
-	// *   **Deleted**
+	// *   **Provisioning**: The listener is being created.
+	// *   **Running**: The listener is running.
+	// *   **Configuring**: The listener is being configured.
+	// *   **Stopping**: The listener is being stopped.
+	// *   **Stopped**: The listener is stopped.
+	// *   **Starting**: The listener is being started.
+	// *   **Deleting**: The listener is being deleted.
+	// *   **Deleted**: The listener is deleted.
 	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
-	// The ID of the NLB instance.
+	// The CLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The maximum size of a TCP segment. Unit: bytes. Valid values: **0** to **1500**. **0** indicates that the maximum segment size remains unchanged.
+	// The size of the largest TCP packet segment. Unit: bytes. Valid values: **0** to **1500**. **0** indicates that the Mss value of TCP packets remains unchanged.
 	//
-	// >  This parameter is supported only by listeners that use SSL over TCP.
+	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	Mss *int32 `json:"Mss,omitempty" xml:"Mss,omitempty"`
-	// Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+	// Indicates whether the Proxy protocol passes source client IP addresses to backend servers. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
-	ProxyProtocolEnabled  *bool                                                    `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	// *   **true**
+	// *   **false**
+	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	// Indicates whether the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
 	ProxyProtocolV2Config *ListListenersResponseBodyListenersProxyProtocolV2Config `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty" type:"Struct"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the NLB instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Indicates whether fine-grained monitoring is enabled. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// *   **true**
+	// *   **false**
 	SecSensorEnabled *bool `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	// The ID of the security policy.
 	//
 	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The ID of the server group.
+	// The server group ID.
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The first port in the listening port range.
+	// The first port in the listener port range.
 	StartPort *string `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
-	// The tag key.
+	// A list of tags.
 	Tags []*ListListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -4909,9 +4937,21 @@ func (s *ListListenersResponseBodyListeners) SetTags(v []*ListListenersResponseB
 }
 
 type ListListenersResponseBodyListenersProxyProtocolV2Config struct {
-	Ppv2PrivateLinkEpIdEnabled  *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	// Indicates whether the Proxy protocol passes the PrivateLinkEpId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Ppv2PrivateLinkEpIdEnabled *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	// Indicates whether the Proxy protocol passes the PrivateLinkEpsId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	Ppv2PrivateLinkEpsIdEnabled *bool `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
-	Ppv2VpcIdEnabled            *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
+	// Indicates whether the Proxy protocol passes the VpcId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Ppv2VpcIdEnabled *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
 }
 
 func (s ListListenersResponseBodyListenersProxyProtocolV2Config) String() string {
@@ -4938,11 +4978,9 @@ func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2VpcIdEn
 }
 
 type ListListenersResponseBodyListenersTags struct {
-	// The key of the tag.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag option.
-	//
-	// The value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8301,7 +8339,8 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	ProxyProtocolEnabled  *bool                                                `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	// Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
 	ProxyProtocolV2Config *UpdateListenerAttributeRequestProxyProtocolV2Config `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty" type:"Struct"`
 	// The ID of the region where the NLB instance is deployed.
 	//
@@ -8419,9 +8458,21 @@ func (s *UpdateListenerAttributeRequest) SetServerGroupId(v string) *UpdateListe
 }
 
 type UpdateListenerAttributeRequestProxyProtocolV2Config struct {
-	Ppv2PrivateLinkEpIdEnabled  *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass the PrivateLinkEpId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Ppv2PrivateLinkEpIdEnabled *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass the PrivateLinkEpsId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	Ppv2PrivateLinkEpsIdEnabled *bool `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
-	Ppv2VpcIdEnabled            *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass the VpcId parameter to backend servers. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Ppv2VpcIdEnabled *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
 }
 
 func (s UpdateListenerAttributeRequestProxyProtocolV2Config) String() string {
@@ -8500,7 +8551,8 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	ProxyProtocolEnabled        *bool   `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	// Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
 	ProxyProtocolV2ConfigShrink *string `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty"`
 	// The ID of the region where the NLB instance is deployed.
 	//
