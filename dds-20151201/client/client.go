@@ -2987,11 +2987,11 @@ func (s *DescribeActiveOperationTaskTypeResponse) SetBody(v *DescribeActiveOpera
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	// Specifies whether the task can be canceled.
+	// Specifies whether the task can be canceled. Valid values: -**0**: The task cannot be canceled. -**1**: The task can be canceled.
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Specifies whether the time can be changed. Valid values: -**0**: The time cannot be changed. **1**: The time can be changed.
+	// Specifies whether the time can be modified. Valid values: -**0**: The time cannot be modified. -**1**: The time can be modified.
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The change type.
+	// The type of configuration change. Valid values: -**all** (default): All O\&M tasks are returned. -**S0**: O\&M tasks that are executed for exception fixing are returned. -**S1**: O\&M tasks that are executed for regular O\&M are returned.
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
 	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
@@ -2999,13 +2999,13 @@ type DescribeActiveOperationTasksRequest struct {
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Valid values: **30, 50, and 100**. Default value: **30**.
+	// The number of entries to return on each page. Valid values: **30, 50, and 100**. Default value: **30**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the service.
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region of the instance.
+	// The region of the instance. If you set the Region parameter to all, all tasks created within your Alibaba Cloud account are queried. In this case, you must also set the TaskType parameter to all.
 	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3099,7 +3099,7 @@ func (s *DescribeActiveOperationTasksRequest) SetTaskType(v string) *DescribeAct
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
-	// The list of O\&M tasks.
+	// The O\&M tasks.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3145,60 +3145,60 @@ func (s *DescribeActiveOperationTasksResponseBody) SetTotalRecordCount(v int32) 
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
-	// N/A
+	// None
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Indicates whether the time can be changed. Valid values:
+	// Indicates whether the change is allowed.
 	//
-	// *   **0**: The time cannot be changed.
-	// *   **1**: The time can be changed.
+	// *   **0**: The change is not allowed.
+	// *   **1**: The change is allowed.
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The change type.
+	// The change level of the O\&M task.
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// N/A
+	// None
 	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
-	// The change type in Chinese.
+	// The task type in English.
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
 	// The time when the task was created.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// N/A
+	// None
 	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
 	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The version of the database engine.
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The end time of the task.
+	// The end time of the O\&M task.
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// N/A
+	// None
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
-	// N/A
+	// None
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
-	// The description of the task.
+	// The description of the instance.
 	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The time when the task was modified. The time is displayed in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the O\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
 	// The region of the instance.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The result information. This parameter can be ignored.
+	// The result information. The value of this parameter can be ignored.
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The start time of the task. The time is displayed in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the O\&M task started to run. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// N/A
+	// None
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The names of the subinstances.
+	// The subinstances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	// The time when the task was interrupted. The time is displayed in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in Coordinated Universal Time (UTC).
+	// The point in time when the switchover is performed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC. Service interruptions may occur during switchover.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The type of the task.
+	// The task type.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// N/A
+	// None
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	// The type of the task in Chinese.
+	// The task type in Chinese.
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 
@@ -3593,24 +3593,29 @@ func (s *DescribeAuditPolicyResponse) SetBody(v *DescribeAuditPolicyResponseBody
 }
 
 type DescribeAuditRecordsRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database to be queried. By default, all databases are queried.
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
 	// > The end time must be within 24 hours from the start time. Otherwise, the query fails.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The form of the audit log that the operation returns. Default value: File. Valid values:
+	// The form of the audit log that the operation returns. Valid values:
 	//
-	// *   **File** triggers the generation of audit logs. If this parameter is set to File, only common parameters are returned.
-	// *   **Stream**: returns data streams.
+	// *   **File**: triggers the generation of audit logs. If this parameter is set to File, only common parameters are returned.
+	// *   **Stream** (default): returns data streams.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The ID of the mongos node or shard node whose parameter modification records you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
+	// The logical relationship between multiple keywords. Valid values:
 	//
-	// > This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+	// *   **or**
+	// *   **and** (default value)
+	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
+	// The ID of the mongos node or shard node in the instance.
+	//
+	// > This parameter takes effect only when you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The order of time in which the log entries to return are sorted. Valid values:
 	//
@@ -3619,17 +3624,17 @@ type DescribeAuditRecordsRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Valid values: any non-zero positive integer. Default value: 1.
+	// The page number of the page to return. The valid value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return per page. Default value: 30. Valid values: **30**, **50**, and **100**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keywords that are used for queries. Separate multiple keywords with spaces. The maximum number of keywords is 10.
+	// The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
 	QueryKeywords        *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The account of the database. If you do not specify this parameter, this operation returns records of all accounts.
+	// The user of the database. If you do not specify this parameter, this operation returns records of all users.
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -3658,6 +3663,11 @@ func (s *DescribeAuditRecordsRequest) SetEndTime(v string) *DescribeAuditRecords
 
 func (s *DescribeAuditRecordsRequest) SetForm(v string) *DescribeAuditRecordsRequest {
 	s.Form = &v
+	return s
+}
+
+func (s *DescribeAuditRecordsRequest) SetLogicalOperator(v string) *DescribeAuditRecordsRequest {
+	s.LogicalOperator = &v
 	return s
 }
 
@@ -3723,7 +3733,7 @@ type DescribeAuditRecordsResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The maximum number of entries on the current page.
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
@@ -3784,7 +3794,7 @@ type DescribeAuditRecordsResponseBodyItemsSQLRecord struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The name of the database.
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The time when the statement was executed. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the statement was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	// The IP addresses of the client.
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
@@ -3796,7 +3806,7 @@ type DescribeAuditRecordsResponseBodyItemsSQLRecord struct {
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The ID of the thread.
 	ThreadID *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
-	// The execution time of the statement. Unit: microseconds.
+	// The duration of the statement execution. Unit: microseconds.
 	TotalExecutionTimes *int64 `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
 }
 
@@ -3912,13 +3922,16 @@ type DescribeAvailabilityZonesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 节点数，只适用于副本集。
+	// The number of nodes. This parameter is available only for replica set instances.
 	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	// The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The storage type of the instance. cloud: The system displays only zones in which cloud disk-based instances can be deployed. local: The system displays only zones in which local disk-based instances can be deployed. default or null: The system displays only zones in which cloud disk-based and local disk-based instances can be deployed.
+	// The storage type of the instance.
+	// - **cloud**: The system displays only zones in which cloud disk-based instances can be deployed.
+	// - **local**: The system displays only zones in which local disk-based instances can be deployed.
+	// - **default** or null: The system displays only zones in which cloud disk-based and local disk-based instances can be deployed.
 	StorageSupport *string `json:"StorageSupport,omitempty" xml:"StorageSupport,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
@@ -3927,11 +3940,8 @@ type DescribeAvailabilityZonesRequest struct {
 	// *   **cloud_essd3**: PL3 ESSD
 	// *   **local_ssd**: Local SSD
 	//
-	// >
-	//
-	// *   Instances that run MongoDB 4.4 or later support only cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
-	//
-	// *   Instances that run MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
+	// > *   Instances that run MongoDB 4.4 or later support only cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
+	// > *   Instances that run MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query available zones.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -4069,7 +4079,7 @@ type DescribeAvailabilityZonesResponseBodyAvailableZones struct {
 	//
 	// The return value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is **cn-hangzhou-h**, the following values are returned for the ZoneName parameter:
 	//
-	// *   If the value of the **AcceptLanguage** parameter is **zh**, ** H** is returned for the ZoneName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **zh**, **H** is returned for the ZoneName parameter.
 	// *   If the value of the **AcceptLanguage** parameter is **en**, **Hangzhou Zone H** is returned for the ZoneName parameter.
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
@@ -5080,7 +5090,7 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 type DescribeBackupsRequest struct {
 	// The ID of the backup set. You can call the [CreateBackup](~~62171~~) operation to obtain the value of this parameter.
 	//
-	// If you set the DBInstanceId parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shards. Multiple , with commas (,) in the middle.
+	// If you set the DBInstanceId parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shards. Separate them with commas (,) in the middle.
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The ID of the instance.
 	//
@@ -5460,7 +5470,7 @@ type DescribeClusterBackupsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The page number of the page returned.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries returned.
+	// The number of entries to return on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5791,7 +5801,7 @@ type DescribeClusterRecoverTimeResponseBodyRestoreRanges struct {
 	RestoreEndTime *string `json:"RestoreEndTime,omitempty" xml:"RestoreEndTime,omitempty"`
 	// The method used to restore data. Valid values:
 	//
-	// *   \*\* PointInTime\*\* (default): Data is restored based on point in time
+	// *   **PointInTime** (default): Data is restored based on point in time
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 }
 
@@ -7079,7 +7089,7 @@ func (s *DescribeDBInstanceEncryptionKeyResponse) SetBody(v *DescribeDBInstanceE
 }
 
 type DescribeDBInstanceMonitorRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7121,9 +7131,9 @@ func (s *DescribeDBInstanceMonitorRequest) SetResourceOwnerId(v int64) *Describe
 }
 
 type DescribeDBInstanceMonitorResponseBody struct {
-	// The collection frequency of monitoring data. The value is **1** or **300**. Unit: seconds.
+	// The collection frequency of monitoring data for the instance. Valid value: **5**. Unit: seconds.
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8249,7 +8259,7 @@ type DescribeDBInstancesResponseBodyDBInstancesDBInstance struct {
 	// *   **eu-central-1c**: Frankfurt Zone C.
 	//
 	// > *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-	// > *   This parameter is returned only if you use the Chine site (aliyun.com).
+	// > *   This parameter is returned only if you use the China site (aliyun.com).
 	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
 	// The kind code of the instance. Valid values:
 	//
@@ -8308,7 +8318,7 @@ type DescribeDBInstancesResponseBodyDBInstancesDBInstance struct {
 	// *   **eu-central-1c**: Frankfurt Zone C.
 	//
 	// > *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-	// > *   This parameter is returned only if you use the Chine site (aliyun.com).
+	// > *   This parameter is returned only if you use the China site (aliyun.com).
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	// The details of the shard node.
 	//
@@ -9203,6 +9213,11 @@ type DescribeErrorLogRecordsRequest struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time and within 24 hours from the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The logical relationship between multiple keywords. Valid values:
+	//
+	// *   **or**
+	// *   **and** (default value)
+	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// The ID of the mongos node or shard node whose error logs you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
 	//
 	// >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
@@ -9213,6 +9228,8 @@ type DescribeErrorLogRecordsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: **30** to **100**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
+	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	// The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -9251,6 +9268,11 @@ func (s *DescribeErrorLogRecordsRequest) SetEndTime(v string) *DescribeErrorLogR
 	return s
 }
 
+func (s *DescribeErrorLogRecordsRequest) SetLogicalOperator(v string) *DescribeErrorLogRecordsRequest {
+	s.LogicalOperator = &v
+	return s
+}
+
 func (s *DescribeErrorLogRecordsRequest) SetNodeId(v string) *DescribeErrorLogRecordsRequest {
 	s.NodeId = &v
 	return s
@@ -9273,6 +9295,11 @@ func (s *DescribeErrorLogRecordsRequest) SetPageNumber(v int32) *DescribeErrorLo
 
 func (s *DescribeErrorLogRecordsRequest) SetPageSize(v int32) *DescribeErrorLogRecordsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeErrorLogRecordsRequest) SetQueryKeywords(v string) *DescribeErrorLogRecordsRequest {
+	s.QueryKeywords = &v
 	return s
 }
 
@@ -9388,7 +9415,7 @@ type DescribeErrorLogRecordsResponseBodyItemsLogRecords struct {
 	ConnInfo *string `json:"ConnInfo,omitempty" xml:"ConnInfo,omitempty"`
 	// The content of the log entry.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the log entry was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss***Z format. The time is displayed in UTC.
+	// The time when the log entry was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the log entry.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -10892,7 +10919,7 @@ func (s *DescribeMongoDBLogConfigRequest) SetResourceOwnerId(v int64) *DescribeM
 }
 
 type DescribeMongoDBLogConfigResponseBody struct {
-	// Indicates whether the audit log feature is enabled. Valid values:
+	// Indicates whether to enable the audit log feature.
 	//
 	// *   **true**: The audit log feature is enabled.
 	// *   **false**: The audit log feature is disabled.
@@ -13242,6 +13269,11 @@ type DescribeRunningLogRecordsRequest struct {
 	//
 	// >  The end time must be later than the start time and within 24 hours from the start time. Otherwise, the query fails.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The logical relationship among multiple keywords.
+	//
+	// *   **or**
+	// *   **and** (default value)
+	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// The ID of the mongos node or shard node whose operational logs you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
 	//
 	// >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
@@ -13257,6 +13289,8 @@ type DescribeRunningLogRecordsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: **30** to **100**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
+	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -13297,6 +13331,11 @@ func (s *DescribeRunningLogRecordsRequest) SetEndTime(v string) *DescribeRunning
 	return s
 }
 
+func (s *DescribeRunningLogRecordsRequest) SetLogicalOperator(v string) *DescribeRunningLogRecordsRequest {
+	s.LogicalOperator = &v
+	return s
+}
+
 func (s *DescribeRunningLogRecordsRequest) SetNodeId(v string) *DescribeRunningLogRecordsRequest {
 	s.NodeId = &v
 	return s
@@ -13324,6 +13363,11 @@ func (s *DescribeRunningLogRecordsRequest) SetPageNumber(v int32) *DescribeRunni
 
 func (s *DescribeRunningLogRecordsRequest) SetPageSize(v int32) *DescribeRunningLogRecordsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRunningLogRecordsRequest) SetQueryKeywords(v string) *DescribeRunningLogRecordsRequest {
+	s.QueryKeywords = &v
 	return s
 }
 
@@ -13428,7 +13472,7 @@ func (s *DescribeRunningLogRecordsResponseBodyItems) SetLogRecords(v []*Describe
 }
 
 type DescribeRunningLogRecordsResponseBodyItemsLogRecords struct {
-	// The category of the log entry. Valid values:
+	// The category of the log entry.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The connection information of the log entry.
 	ConnInfo *string `json:"ConnInfo,omitempty" xml:"ConnInfo,omitempty"`
@@ -14113,13 +14157,13 @@ func (s *DescribeShardingNetworkAddressResponse) SetBody(v *DescribeShardingNetw
 }
 
 type DescribeSlowLogRecordsRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the `NodeId` parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
 	// >
 	//
@@ -14127,6 +14171,11 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// *   The end time must be within 24 hours from the start time. Otherwise, the query fails.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The logical relationship among multiple keywords.
+	//
+	// *   **or**
+	// *   **and** (default value)
+	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// The ID of the shard node.
 	//
 	// > This parameter is required only when you specify the `DBInstanceId` parameter to the ID of a sharded cluster instance.
@@ -14138,15 +14187,17 @@ type DescribeSlowLogRecordsRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+	// The page number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: **30** to **100**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.
+	// The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
+	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
+	// The ID of the resource group to which the instances you want to query belong.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -14170,6 +14221,11 @@ func (s *DescribeSlowLogRecordsRequest) SetDBName(v string) *DescribeSlowLogReco
 
 func (s *DescribeSlowLogRecordsRequest) SetEndTime(v string) *DescribeSlowLogRecordsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetLogicalOperator(v string) *DescribeSlowLogRecordsRequest {
+	s.LogicalOperator = &v
 	return s
 }
 
@@ -14203,6 +14259,11 @@ func (s *DescribeSlowLogRecordsRequest) SetPageSize(v int32) *DescribeSlowLogRec
 	return s
 }
 
+func (s *DescribeSlowLogRecordsRequest) SetQueryKeywords(v string) *DescribeSlowLogRecordsRequest {
+	s.QueryKeywords = &v
+	return s
+}
+
 func (s *DescribeSlowLogRecordsRequest) SetResourceGroupId(v string) *DescribeSlowLogRecordsRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -14226,13 +14287,13 @@ func (s *DescribeSlowLogRecordsRequest) SetStartTime(v string) *DescribeSlowLogR
 type DescribeSlowLogRecordsResponseBody struct {
 	// The database engine.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Details of the slow query logs.
+	// An array that consists of the information about each slow query.
 	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number of the returned page. The value is a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of slow query log entries returned on the page.
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
@@ -14300,7 +14361,7 @@ type DescribeSlowLogRecordsResponseBodyItemsLogRecords struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The number of documents that are scanned during the operation.
 	DocsExamined *int64 `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
-	// The start time of the operation. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time of the operation. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
 	// The host IP address that is used to connect to the database.
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
@@ -15713,7 +15774,7 @@ type ModifyAuditPolicyRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the audit log feature. Valid values:
 	//
-	// *   **Trail**: the free trial edition
+	// *   **Trial**: the free trial edition
 	// *   **Standard**: the official edition
 	//
 	// >  Default value: **Trial**. Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. We recommend that you set this parameter to **Standard**.
@@ -16014,8 +16075,8 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	//
 	// >  You need only to specify the prefix of the connection string. The content other than the prefix cannot be modified.
 	NewConnectionString *string `json:"NewConnectionString,omitempty" xml:"NewConnectionString,omitempty"`
-	// this parameter can be used. The new port should be within the range of 1000 to 65535.
-	// >When the DBInstanceId parameter is passed in as a cloud disk instance ID
+	// The new port. The new port ranges from 1000 to 65535.
+	// >This parameter is available only when the DBInstanceId parameter is set to a cloud-disk instance ID.
 	NewPort *int32 `json:"NewPort,omitempty" xml:"NewPort,omitempty"`
 	// The ID of the mongos in the specified sharded cluster instance. Only one mongos ID can be specified in each call.
 	//
@@ -16701,7 +16762,7 @@ type ModifyDBInstanceSSLRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The operation on the SSL feature. Valid values: Valid values:
+	// The operation on the SSL feature. Valid values:
 	//
 	// *   **Open**: enables SSL encryption.
 	// *   **Close**: disables SSL encryption.
@@ -19854,7 +19915,7 @@ type TransformToPrePaidRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
+	// The subscription duration of the instance. Unit: months. Valid values: **1**, **2**, **3**, **4**, **5**, **6**, **7**, **8**, **9**, **12**, **24**, and **36**.
 	Period               *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -22336,6 +22397,10 @@ func (client *Client) DescribeAuditRecordsWithOptions(request *DescribeAuditReco
 		query["Form"] = request.Form
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogicalOperator)) {
+		query["LogicalOperator"] = request.LogicalOperator
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
 		query["NodeId"] = request.NodeId
 	}
@@ -23954,6 +24019,10 @@ func (client *Client) DescribeErrorLogRecordsWithOptions(request *DescribeErrorL
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogicalOperator)) {
+		query["LogicalOperator"] = request.LogicalOperator
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
 		query["NodeId"] = request.NodeId
 	}
@@ -23972,6 +24041,10 @@ func (client *Client) DescribeErrorLogRecordsWithOptions(request *DescribeErrorL
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
+		query["QueryKeywords"] = request.QueryKeywords
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -25236,6 +25309,10 @@ func (client *Client) DescribeRunningLogRecordsWithOptions(request *DescribeRunn
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogicalOperator)) {
+		query["LogicalOperator"] = request.LogicalOperator
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
 		query["NodeId"] = request.NodeId
 	}
@@ -25258,6 +25335,10 @@ func (client *Client) DescribeRunningLogRecordsWithOptions(request *DescribeRunn
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
+		query["QueryKeywords"] = request.QueryKeywords
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -25552,6 +25633,10 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogicalOperator)) {
+		query["LogicalOperator"] = request.LogicalOperator
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
 		query["NodeId"] = request.NodeId
 	}
@@ -25574,6 +25659,10 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
+		query["QueryKeywords"] = request.QueryKeywords
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -26787,10 +26876,10 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 }
 
 /**
- * >  This operation is applicable only to the ApsaraDB for MongoDB console of the previous version due to the change in the frequency at which the monitoring data of an ApsaraDB for MongoDB instance is collected.
+ * >  This operation is applicable only to the ApsaraDB for MongoDB console of the previous version due to the change in the feature of adjusting collection intervals of monitoring data.
  * Before you call this operation, make sure that the following requirements are met:
- * *   The instance is a replica set or sharded cluster instance.
- * *   The instance runs MongoDB 3.4 (the latest minor version) or 4.0.
+ * *   A replica set or sharded cluster instance is used.
+ * *   MongoDB 3.4 (the latest minor version) or MongoDB 4.0 is selected.
  *
  * @param request ModifyDBInstanceMonitorRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26850,10 +26939,10 @@ func (client *Client) ModifyDBInstanceMonitorWithOptions(request *ModifyDBInstan
 }
 
 /**
- * >  This operation is applicable only to the ApsaraDB for MongoDB console of the previous version due to the change in the frequency at which the monitoring data of an ApsaraDB for MongoDB instance is collected.
+ * >  This operation is applicable only to the ApsaraDB for MongoDB console of the previous version due to the change in the feature of adjusting collection intervals of monitoring data.
  * Before you call this operation, make sure that the following requirements are met:
- * *   The instance is a replica set or sharded cluster instance.
- * *   The instance runs MongoDB 3.4 (the latest minor version) or 4.0.
+ * *   A replica set or sharded cluster instance is used.
+ * *   MongoDB 3.4 (the latest minor version) or MongoDB 4.0 is selected.
  *
  * @param request ModifyDBInstanceMonitorRequest
  * @return ModifyDBInstanceMonitorResponse
@@ -27058,7 +27147,7 @@ func (client *Client) ModifyDBInstanceNetworkType(request *ModifyDBInstanceNetwo
  * Before you call this operation, make sure that the following requirements are met:
  * *   The instance is in the running state.
  * *   The instance is a replica set instance.
- * *   The engine version of the instance is \\<ph props="intl">3.4 or 4.0\\</ph>\\<ph props="china">3.4, 4.0, or 4.2\\</ph>.
+ * *   The engine version of the instance is 3.4 or 4.0.
  * >  When you enable or disable SSL encryption or update the SSL certificate, the instance restarts. We recommend that you call this operation during off-peak hours.
  *
  * @param request ModifyDBInstanceSSLRequest
@@ -27123,7 +27212,7 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
  * Before you call this operation, make sure that the following requirements are met:
  * *   The instance is in the running state.
  * *   The instance is a replica set instance.
- * *   The engine version of the instance is \\<ph props="intl">3.4 or 4.0\\</ph>\\<ph props="china">3.4, 4.0, or 4.2\\</ph>.
+ * *   The engine version of the instance is 3.4 or 4.0.
  * >  When you enable or disable SSL encryption or update the SSL certificate, the instance restarts. We recommend that you call this operation during off-peak hours.
  *
  * @param request ModifyDBInstanceSSLRequest
@@ -27973,7 +28062,6 @@ func (client *Client) ModifyNodeSpecBatch(request *ModifyNodeSpecBatchRequest) (
 }
 
 /**
- * ### Precautions
  * *   The instance must be in the Running state when you call this operation.
  * *   If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](~~67618~~) operation to query the parameters that take effect only after the instance is restarted.
  *
@@ -28047,7 +28135,6 @@ func (client *Client) ModifyParametersWithOptions(request *ModifyParametersReque
 }
 
 /**
- * ### Precautions
  * *   The instance must be in the Running state when you call this operation.
  * *   If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](~~67618~~) operation to query the parameters that take effect only after the instance is restarted.
  *
