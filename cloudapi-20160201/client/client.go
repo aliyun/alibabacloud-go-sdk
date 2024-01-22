@@ -3772,9 +3772,10 @@ func (s *DescribeApiResponse) SetBody(v *DescribeApiResponseBody) *DescribeApiRe
 }
 
 type DescribeApiDocRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApiDocRequest) String() string {
@@ -3792,6 +3793,11 @@ func (s *DescribeApiDocRequest) SetApiId(v string) *DescribeApiDocRequest {
 
 func (s *DescribeApiDocRequest) SetGroupId(v string) *DescribeApiDocRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApiDocRequest) SetSecurityToken(v string) *DescribeApiDocRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -4523,12 +4529,13 @@ func (s *DescribeApiDocResponse) SetBody(v *DescribeApiDocResponseBody) *Describ
 }
 
 type DescribeApiDocsRequest struct {
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StageName  *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApiDocsRequest) String() string {
@@ -4561,6 +4568,11 @@ func (s *DescribeApiDocsRequest) SetPageNumber(v int32) *DescribeApiDocsRequest 
 
 func (s *DescribeApiDocsRequest) SetPageSize(v int32) *DescribeApiDocsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApiDocsRequest) SetSecurityToken(v string) *DescribeApiDocsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -5293,10 +5305,11 @@ func (s *DescribeApiGroupDetailResponse) SetBody(v *DescribeApiGroupDetailRespon
 }
 
 type DescribeApiGroupsRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeApiGroupsRequest) String() string {
@@ -5324,6 +5337,11 @@ func (s *DescribeApiGroupsRequest) SetPageNumber(v int32) *DescribeApiGroupsRequ
 
 func (s *DescribeApiGroupsRequest) SetPageSize(v int32) *DescribeApiGroupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApiGroupsRequest) SetSecurityToken(v string) *DescribeApiGroupsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -19885,6 +19903,10 @@ func (client *Client) DescribeApiDocWithOptions(request *DescribeApiDocRequest, 
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -19947,6 +19969,10 @@ func (client *Client) DescribeApiDocsWithOptions(request *DescribeApiDocsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -20175,6 +20201,10 @@ func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsReq
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
