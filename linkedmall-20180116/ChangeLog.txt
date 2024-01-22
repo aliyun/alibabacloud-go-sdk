@@ -1,3 +1,6 @@
+2024-01-22 Version: v2.3.0
+- Generated golang 2018-01-16 for linkedmall.
+
 2024-01-19 Version: v2.2.0
 - Generated golang 2018-01-16 for linkedmall.
 
