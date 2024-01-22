@@ -5049,7 +5049,10 @@ func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest 
 type DescribeBackupsResponseBody struct {
 	AccessDeniedDetail *DescribeBackupsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// Details of the backup files.
-	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	Backups         *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	FreeSize        *int64                              `json:"FreeSize,omitempty" xml:"FreeSize,omitempty"`
+	FullStorageSize *int64                              `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
+	LogStorageSize  *int64                              `json:"LogStorageSize,omitempty" xml:"LogStorageSize,omitempty"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned on each page.
@@ -5075,6 +5078,21 @@ func (s *DescribeBackupsResponseBody) SetAccessDeniedDetail(v *DescribeBackupsRe
 
 func (s *DescribeBackupsResponseBody) SetBackups(v *DescribeBackupsResponseBodyBackups) *DescribeBackupsResponseBody {
 	s.Backups = v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetFreeSize(v int64) *DescribeBackupsResponseBody {
+	s.FreeSize = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetFullStorageSize(v int64) *DescribeBackupsResponseBody {
+	s.FullStorageSize = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetLogStorageSize(v int64) *DescribeBackupsResponseBody {
+	s.LogStorageSize = &v
 	return s
 }
 
@@ -5830,11 +5848,14 @@ func (s *DescribeClusterBackupListRequest) SetStartTime(v string) *DescribeClust
 }
 
 type DescribeClusterBackupListResponseBody struct {
-	ClusterBackups []*DescribeClusterBackupListResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
-	MaxResults     *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	PageNumber     *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ClusterBackups  []*DescribeClusterBackupListResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
+	FreeSize        *int64                                                 `json:"FreeSize,omitempty" xml:"FreeSize,omitempty"`
+	FullStorageSize *int64                                                 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
+	LogStorageSize  *int64                                                 `json:"LogStorageSize,omitempty" xml:"LogStorageSize,omitempty"`
+	MaxResults      *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	PageNumber      *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeClusterBackupListResponseBody) String() string {
@@ -5847,6 +5868,21 @@ func (s DescribeClusterBackupListResponseBody) GoString() string {
 
 func (s *DescribeClusterBackupListResponseBody) SetClusterBackups(v []*DescribeClusterBackupListResponseBodyClusterBackups) *DescribeClusterBackupListResponseBody {
 	s.ClusterBackups = v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBody) SetFreeSize(v int64) *DescribeClusterBackupListResponseBody {
+	s.FreeSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBody) SetFullStorageSize(v int64) *DescribeClusterBackupListResponseBody {
+	s.FullStorageSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBody) SetLogStorageSize(v int64) *DescribeClusterBackupListResponseBody {
+	s.LogStorageSize = &v
 	return s
 }
 
