@@ -12,6 +12,87 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ApplyScalingGroupRequest struct {
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Format   *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ApplyScalingGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyScalingGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyScalingGroupRequest) SetContent(v string) *ApplyScalingGroupRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *ApplyScalingGroupRequest) SetFormat(v string) *ApplyScalingGroupRequest {
+	s.Format = &v
+	return s
+}
+
+func (s *ApplyScalingGroupRequest) SetRegionId(v string) *ApplyScalingGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ApplyScalingGroupResponseBody struct {
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s ApplyScalingGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyScalingGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyScalingGroupResponseBody) SetRequestId(v string) *ApplyScalingGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyScalingGroupResponseBody) SetScalingGroupId(v string) *ApplyScalingGroupResponseBody {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type ApplyScalingGroupResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyScalingGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyScalingGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyScalingGroupResponse) SetHeaders(v map[string]*string) *ApplyScalingGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyScalingGroupResponse) SetStatusCode(v int32) *ApplyScalingGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyScalingGroupResponse) SetBody(v *ApplyScalingGroupResponseBody) *ApplyScalingGroupResponse {
+	s.Body = v
+	return s
+}
+
 type AttachAlbServerGroupsRequest struct {
 	// Details of the ALB server group.
 	AlbServerGroups []*AttachAlbServerGroupsRequestAlbServerGroups `json:"AlbServerGroups,omitempty" xml:"AlbServerGroups,omitempty" type:"Repeated"`
@@ -1822,7 +1903,21 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	// *   Always: pulls images each time.
 	// *   IfNotPresent: pulls images only if no on-premises images are available. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
 	// *   Never: never pulls images. On-premises images are always used.
-	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	ImagePullPolicy                        *string   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	LifecyclePostStartHandlerExecs         []*string `json:"LifecyclePostStartHandlerExecs,omitempty" xml:"LifecyclePostStartHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePostStartHandlerHttpGetHost   *string   `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	LifecyclePostStartHandlerHttpGetPath   *string   `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	LifecyclePostStartHandlerHttpGetPort   *int32    `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+	LifecyclePostStartHandlerHttpGetScheme *string   `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	LifecyclePostStartHandlerTcpSocketHost *string   `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	LifecyclePostStartHandlerTcpSocketPort *int32    `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	LifecyclePreStopHandlerExecs           []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePreStopHandlerHttpGetHost     *string   `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	LifecyclePreStopHandlerHttpGetPath     *string   `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	LifecyclePreStopHandlerHttpGetPort     *int32    `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	LifecyclePreStopHandlerHttpGetScheme   *string   `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	LifecyclePreStopHandlerTcpSocketHost   *string   `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	LifecyclePreStopHandlerTcpSocketPort   *int32    `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
 	// The memory size of the container. Unit: GiB.
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The name of the container image.
@@ -1907,6 +2002,76 @@ func (s *CreateEciScalingConfigurationRequestContainers) SetImage(v string) *Cre
 
 func (s *CreateEciScalingConfigurationRequestContainers) SetImagePullPolicy(v string) *CreateEciScalingConfigurationRequestContainers {
 	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerExecs(v []*string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerExecs = v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerHttpGetHost(v string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerHttpGetPath(v string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerHttpGetPort(v int32) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerHttpGetScheme(v string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerTcpSocketHost(v string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerTcpSocketPort(v int32) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerTcpSocketPort = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerExecs(v []*string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerExecs = v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerHttpGetHost(v string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerHttpGetPath(v string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerHttpGetPort(v int32) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerHttpGetScheme(v string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerTcpSocketHost(v string) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerTcpSocketPort(v int32) *CreateEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerTcpSocketPort = &v
 	return s
 }
 
@@ -8441,7 +8606,21 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	// *   Always: Image pulling is performed each time.
 	// *   IfNotPresent: Image pulling is performed only if on-premises images are unavailable. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
 	// *   Never: On-premises images are always used. Image pulling is not performed.
-	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	ImagePullPolicy                        *string   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	LifecyclePostStartHandlerExecs         []*string `json:"LifecyclePostStartHandlerExecs,omitempty" xml:"LifecyclePostStartHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePostStartHandlerHttpGetHost   *string   `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	LifecyclePostStartHandlerHttpGetPath   *string   `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	LifecyclePostStartHandlerHttpGetPort   *int32    `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+	LifecyclePostStartHandlerHttpGetScheme *string   `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	LifecyclePostStartHandlerTcpSocketHost *string   `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	LifecyclePostStartHandlerTcpSocketPort *int32    `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	LifecyclePreStopHandlerExecs           []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePreStopHandlerHttpGetHost     *string   `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	LifecyclePreStopHandlerHttpGetPath     *string   `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	LifecyclePreStopHandlerHttpGetPort     *int32    `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	LifecyclePreStopHandlerHttpGetScheme   *string   `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	LifecyclePreStopHandlerTcpSocketHost   *string   `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	LifecyclePreStopHandlerTcpSocketPort   *int32    `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
 	// The commands that are run in the container when you use the CLI to perform probes.
 	LivenessProbeExecCommands []*string `json:"LivenessProbeExecCommands,omitempty" xml:"LivenessProbeExecCommands,omitempty" type:"Repeated"`
 	// The minimum number of consecutive failures for a probe to be considered failed after having been successful.
@@ -8567,6 +8746,76 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContai
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetImagePullPolicy(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
 	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePostStartHandlerExecs(v []*string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePostStartHandlerExecs = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePostStartHandlerHttpGetHost(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePostStartHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePostStartHandlerHttpGetPath(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePostStartHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePostStartHandlerHttpGetPort(v int32) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePostStartHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePostStartHandlerHttpGetScheme(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePostStartHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePostStartHandlerTcpSocketHost(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePostStartHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePostStartHandlerTcpSocketPort(v int32) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePostStartHandlerTcpSocketPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePreStopHandlerExecs(v []*string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePreStopHandlerExecs = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePreStopHandlerHttpGetHost(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePreStopHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePreStopHandlerHttpGetPath(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePreStopHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePreStopHandlerHttpGetPort(v int32) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePreStopHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePreStopHandlerHttpGetScheme(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePreStopHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePreStopHandlerTcpSocketHost(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePreStopHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) SetLifecyclePreStopHandlerTcpSocketPort(v int32) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers {
+	s.LifecyclePreStopHandlerTcpSocketPort = &v
 	return s
 }
 
@@ -16521,7 +16770,21 @@ type ModifyEciScalingConfigurationRequestContainers struct {
 	// *   Always: pulls images each time.
 	// *   IfNotPresent: pulls images only if no on-premises images are available. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
 	// *   Never: never pulls images. On-premises images are always used.
-	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	ImagePullPolicy                        *string   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	LifecyclePostStartHandlerExecs         []*string `json:"LifecyclePostStartHandlerExecs,omitempty" xml:"LifecyclePostStartHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePostStartHandlerHttpGetHost   *string   `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	LifecyclePostStartHandlerHttpGetPath   *string   `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	LifecyclePostStartHandlerHttpGetPort   *int32    `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+	LifecyclePostStartHandlerHttpGetScheme *string   `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	LifecyclePostStartHandlerTcpSocketHost *string   `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	LifecyclePostStartHandlerTcpSocketPort *int32    `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	LifecyclePreStopHandlerExecs           []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePreStopHandlerHttpGetHost     *string   `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	LifecyclePreStopHandlerHttpGetPath     *string   `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	LifecyclePreStopHandlerHttpGetPort     *int32    `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	LifecyclePreStopHandlerHttpGetScheme   *string   `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	LifecyclePreStopHandlerTcpSocketHost   *string   `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	LifecyclePreStopHandlerTcpSocketPort   *int32    `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
 	// The memory size of the container. Unit: GiB.
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The name of the container image.
@@ -16601,6 +16864,76 @@ func (s *ModifyEciScalingConfigurationRequestContainers) SetImage(v string) *Mod
 
 func (s *ModifyEciScalingConfigurationRequestContainers) SetImagePullPolicy(v string) *ModifyEciScalingConfigurationRequestContainers {
 	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerExecs(v []*string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerExecs = v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerHttpGetHost(v string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerHttpGetPath(v string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerHttpGetPort(v int32) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerHttpGetScheme(v string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerTcpSocketHost(v string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePostStartHandlerTcpSocketPort(v int32) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePostStartHandlerTcpSocketPort = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerExecs(v []*string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerExecs = v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerHttpGetHost(v string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerHttpGetPath(v string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerHttpGetPort(v int32) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerHttpGetScheme(v string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerTcpSocketHost(v string) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestContainers) SetLifecyclePreStopHandlerTcpSocketPort(v int32) *ModifyEciScalingConfigurationRequestContainers {
+	s.LifecyclePreStopHandlerTcpSocketPort = &v
 	return s
 }
 
@@ -22471,6 +22804,58 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyScalingGroupWithOptions(request *ApplyScalingGroupRequest, runtime *util.RuntimeOptions) (_result *ApplyScalingGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Format)) {
+		query["Format"] = request.Format
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyScalingGroup"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyScalingGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyScalingGroup(request *ApplyScalingGroupRequest) (_result *ApplyScalingGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyScalingGroupResponse{}
+	_body, _err := client.ApplyScalingGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
