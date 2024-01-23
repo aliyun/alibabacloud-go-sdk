@@ -458,13 +458,13 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type GetInstanceResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code that is returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
+	// The HTTP status code returned.
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the instance.
+	// The information about the instance.
 	Instance *GetInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -645,11 +645,11 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     <!-- -->
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The number of compute nodes. In a typical configuration, a node has 16 vCPUs and 32 GB of memory.
+	// The number of compute nodes. In a typical configuration, a node has 16 CPU cores and 32 GB of memory.
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" xml:"ComputeNodeCount,omitempty"`
-	// The number of vCPUs.
+	// The number of CPU cores.
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The creation time.
+	// The time when the instance was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The amount of data that can be stored in the disk of the Standard storage class. Unit: GB.
 	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
@@ -659,13 +659,11 @@ type GetInstanceResponseBodyInstance struct {
 	Endpoints []*GetInstanceResponseBodyInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The expiration time. This parameter is invalid for pay-as-you-go instances.
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// 网关节点数量。
+	// The number of gateway nodes.
 	GatewayCount *int64 `json:"GatewayCount,omitempty" xml:"GatewayCount,omitempty"`
-	// 网关cpu资源。
-	// 单位：core。
+	// The number of CPU cores of the gateway. Unit: core.
 	GatewayCpu *int64 `json:"GatewayCpu,omitempty" xml:"GatewayCpu,omitempty"`
-	// 网关内存资源。
-	// 单位：GB。
+	// The size of memory resources of the gateway. Unit: GB.
 	GatewayMemory *int64 `json:"GatewayMemory,omitempty" xml:"GatewayMemory,omitempty"`
 	// The billing method of the instance.
 	//
@@ -776,11 +774,57 @@ type GetInstanceResponseBodyInstance struct {
 	// The ID of the primary instance.
 	LeaderInstanceId *string `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
 	// The memory size. Unit: GB.
-	Memory   *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplicaRole *string `json:"ReplicaRole,omitempty" xml:"ReplicaRole,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The reason for the suspension.
+	//
+	// Valid values:
+	//
+	// *   Indebet
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instance has an overdue payment
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   Manual
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instance is manually suspended
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   Overdue
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instance has expired
+	//
+	//     <!-- -->
+	//
+	//     .
 	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
 	// The instance tag.
 	Tags []*GetInstanceResponseBodyInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -908,6 +952,11 @@ func (s *GetInstanceResponseBodyInstance) SetRegionId(v string) *GetInstanceResp
 	return s
 }
 
+func (s *GetInstanceResponseBodyInstance) SetReplicaRole(v string) *GetInstanceResponseBodyInstance {
+	s.ReplicaRole = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyInstance) SetResourceGroupId(v string) *GetInstanceResponseBodyInstance {
 	s.ResourceGroupId = &v
 	return s
@@ -1018,9 +1067,9 @@ type GetInstanceResponseBodyInstanceEndpoints struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC to which the instance belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of VPC to which the instance belongs.
+	// The ID of the instance that is deployed in the VPC.
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -1068,9 +1117,9 @@ func (s *GetInstanceResponseBodyInstanceEndpoints) SetVpcInstanceId(v string) *G
 }
 
 type GetInstanceResponseBodyInstanceTags struct {
-	// The tag key.
+	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1988,16 +2037,16 @@ func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeI
 type ScaleInstanceRequest struct {
 	// The infrequent access (IA) storage space of the instance. Unit: GB.
 	//
-	// > This parameter is invalid for pay-as-you-go instances.
+	// > Ignore this parameter for pay-as-you-go instances.
 	ColdStorageSize *int64 `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
 	// The specifications of the instance. Valid values:
 	//
-	// *   8-core 32 GB (number of compute Nodes: 1)
-	// *   16-core 64 GB (number of compute nodes: 1)
-	// *   32-core 128 GB (number of compute nodes: 2)
-	// *   64-core 256 GB (number of compute nodes: 4)
-	// *   96-core 384 GB (number of compute nodes: 6)
-	// *   128-core 512 GB (number of compute nodes: 8)
+	// *   8-core 32GB (number of compute nodes: 1)
+	// *   16-core 64GB (number of compute nodes: 1)
+	// *   32-core 128GB (number of compute nodes: 2)
+	// *   64-core 256GB (number of compute nodes: 4)
+	// *   96-core 384GB (number of compute nodes: 6)
+	// *   128-core 512GB (number of compute nodes: 8)
 	// *   Others
 	//
 	// >
@@ -2006,10 +2055,13 @@ type ScaleInstanceRequest struct {
 	//
 	// *   If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
 	//
-	// *   This parameter is invalid for shared instances.
+	// *   This parameter is invalid for Hologres Shared Cluster instances.
 	//
-	// *   The specifications of 8-core 32 GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
-	Cpu          *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// *   The specifications of 8-core 32GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
+	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The number of gateways. Valid values: 2 to 50.
+	//
+	// > This parameter is required only for virtual warehouse instances.
 	GatewayCount *int64 `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
 	// The specification change type. Valid values:
 	//
@@ -2024,7 +2076,7 @@ type ScaleInstanceRequest struct {
 	ScaleType *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
 	// The standard storage space of the instance. Unit: GB.
 	//
-	// > This parameter is invalid for pay-as-you-go instances.
+	// > Ignore this parameter for pay-as-you-go instances.
 	StorageSize *int64 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
 }
 
@@ -3147,8 +3199,8 @@ func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanc
 
 /**
  * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
- * *   For more information about the billing details of Hologres, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
- * *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resources of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade and downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications?spm=a2c63.p38356.0.0.2bb57c8dbVt68U).
+ * *   For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+ * *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
  *
  * @param request ScaleInstanceRequest
  * @param headers map
@@ -3207,8 +3259,8 @@ func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *Scal
 
 /**
  * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
- * *   For more information about the billing details of Hologres, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
- * *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resources of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade and downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications?spm=a2c63.p38356.0.0.2bb57c8dbVt68U).
+ * *   For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+ * *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
  *
  * @param request ScaleInstanceRequest
  * @return ScaleInstanceResponse
