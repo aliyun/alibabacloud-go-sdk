@@ -8830,9 +8830,14 @@ func (s *DescribeInstanceDetailsResponse) SetBody(v *DescribeInstanceDetailsResp
 }
 
 type DescribeInstanceExtRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page. For example, to query the returned results on the first page, set the value to **1**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeInstanceExtRequest) String() string {
@@ -8859,9 +8864,12 @@ func (s *DescribeInstanceExtRequest) SetPageSize(v string) *DescribeInstanceExtR
 }
 
 type DescribeInstanceExtResponseBody struct {
+	// The information about the instance.
 	InstanceExtSpecs []*DescribeInstanceExtResponseBodyInstanceExtSpecs `json:"InstanceExtSpecs,omitempty" xml:"InstanceExtSpecs,omitempty" type:"Repeated"`
-	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount       *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of queried instances.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstanceExtResponseBody) String() string {
@@ -8888,11 +8896,25 @@ func (s *DescribeInstanceExtResponseBody) SetTotalCount(v int64) *DescribeInstan
 }
 
 type DescribeInstanceExtResponseBodyInstanceExtSpecs struct {
-	FunctionVersion *int64  `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NormalBandwidth *int64  `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
-	ProductPlan     *int64  `json:"ProductPlan,omitempty" xml:"ProductPlan,omitempty"`
-	ServicePartner  *string `json:"ServicePartner,omitempty" xml:"ServicePartner,omitempty"`
+	// The function plan. Valid values:
+	//
+	// *   **0**: Standard
+	// *   **1**: Enhanced
+	FunctionVersion *int64 `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
+	// The instance ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The clean bandwidth. Unit: Mbit/s.
+	NormalBandwidth *int64 `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
+	// The type of the instance. Valid value:
+	//
+	// *   **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+	// *   **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+	// *   **2**: Anti-DDoS Premium instance of the CMA mitigation plan
+	// *   **3**: Anti-DDoS Premium instance of the Secure Chinese Mainland Acceleration (Sec-CMA) plan
+	// *   **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	ProductPlan *int64 `json:"ProductPlan,omitempty" xml:"ProductPlan,omitempty"`
+	// The Internet service provider (ISP) line resource of the Anti-DDoS Pro instance.
+	ServicePartner *string `json:"ServicePartner,omitempty" xml:"ServicePartner,omitempty"`
 }
 
 func (s DescribeInstanceExtResponseBodyInstanceExtSpecs) String() string {
@@ -10907,6 +10929,7 @@ type DescribeNetworkRulesResponseBodyNetworkRules struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// An array that consists of IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
+	Remark      *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DescribeNetworkRulesResponseBodyNetworkRules) String() string {
@@ -10944,6 +10967,11 @@ func (s *DescribeNetworkRulesResponseBodyNetworkRules) SetProtocol(v string) *De
 
 func (s *DescribeNetworkRulesResponseBodyNetworkRules) SetRealServers(v []*string) *DescribeNetworkRulesResponseBodyNetworkRules {
 	s.RealServers = v
+	return s
+}
+
+func (s *DescribeNetworkRulesResponseBodyNetworkRules) SetRemark(v string) *DescribeNetworkRulesResponseBodyNetworkRules {
+	s.Remark = &v
 	return s
 }
 
@@ -13402,12 +13430,25 @@ func (s *DescribeSchedulerRulesResponse) SetBody(v *DescribeSchedulerRulesRespon
 }
 
 type DescribeSlaEventListRequest struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Page      *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The page number.
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the service Valid values:
+	//
+	// *   **cn**: Anti-DDoS Pro
+	// *   **cn-hongkong**: Anti-DDoS Premium
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSlaEventListRequest) String() string {
@@ -13449,9 +13490,12 @@ func (s *DescribeSlaEventListRequest) SetStartTime(v int64) *DescribeSlaEventLis
 }
 
 type DescribeSlaEventListResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlaEvent  []*DescribeSlaEventListResponseBodySlaEvent `json:"SlaEvent,omitempty" xml:"SlaEvent,omitempty" type:"Repeated"`
-	Total     *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The destination rate limit events.
+	SlaEvent []*DescribeSlaEventListResponseBodySlaEvent `json:"SlaEvent,omitempty" xml:"SlaEvent,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeSlaEventListResponseBody) String() string {
@@ -13478,10 +13522,17 @@ func (s *DescribeSlaEventListResponseBody) SetTotal(v int64) *DescribeSlaEventLi
 }
 
 type DescribeSlaEventListResponseBodySlaEvent struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range. Unit: seconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The IP address of the instance.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The region to which the destination IP address belongs. Valid values:
+	//
+	// *   **cn**: a region in the Chinese mainland
+	// *   **cn-hongkong**: China (Hong Kong)
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The beginning of the time range. Unit: seconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSlaEventListResponseBodySlaEvent) String() string {
