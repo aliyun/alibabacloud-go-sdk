@@ -4945,7 +4945,7 @@ type CreateEnvironmentRequest struct {
 	// *   ECS: Elastic Compute Service
 	// *   Cloud: cloud service
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
-	// type of managed：
+	// type of managed:
 	// - none: not managed. default value of prometheus for ACK.
 	// - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
 	// - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
@@ -14655,6 +14655,7 @@ type DescribeAddonReleaseResponseBodyDataRelease struct {
 	InstallUserId *string `json:"InstallUserId,omitempty" xml:"InstallUserId,omitempty"`
 	// Language.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Managed  *bool   `json:"Managed,omitempty" xml:"Managed,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Release ID.
@@ -14728,6 +14729,11 @@ func (s *DescribeAddonReleaseResponseBodyDataRelease) SetInstallUserId(v string)
 
 func (s *DescribeAddonReleaseResponseBodyDataRelease) SetLanguage(v string) *DescribeAddonReleaseResponseBodyDataRelease {
 	s.Language = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetManaged(v bool) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.Managed = &v
 	return s
 }
 
@@ -16547,6 +16553,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// This is the latest version of Feature.
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	Managed       *bool   `json:"Managed,omitempty" xml:"Managed,omitempty"`
 	// Name of Feature.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Installation status of Feature.
@@ -16595,6 +16602,11 @@ func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetLanguage(v string
 
 func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetLatestVersion(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
 	s.LatestVersion = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetManaged(v bool) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Managed = &v
 	return s
 }
 
@@ -25844,7 +25856,6 @@ type InitEnvironmentRequest struct {
 	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// type of managed:
-	//
 	// - none: not managed. default value of prometheus for ACK.
 	// - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
 	// - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
@@ -26086,6 +26097,7 @@ type InstallAddonResponseBodyData struct {
 	InstallUserId *string `json:"InstallUserId,omitempty" xml:"InstallUserId,omitempty"`
 	// Language.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Managed  *bool   `json:"Managed,omitempty" xml:"Managed,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Release ID.
@@ -26159,6 +26171,11 @@ func (s *InstallAddonResponseBodyData) SetInstallUserId(v string) *InstallAddonR
 
 func (s *InstallAddonResponseBodyData) SetLanguage(v string) *InstallAddonResponseBodyData {
 	s.Language = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetManaged(v bool) *InstallAddonResponseBodyData {
+	s.Managed = &v
 	return s
 }
 
@@ -27144,6 +27161,7 @@ type ListAddonReleasesResponseBodyDataReleases struct {
 	InstallUserId *string `json:"InstallUserId,omitempty" xml:"InstallUserId,omitempty"`
 	// Language.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Managed  *bool   `json:"Managed,omitempty" xml:"Managed,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Release ID.
@@ -27217,6 +27235,11 @@ func (s *ListAddonReleasesResponseBodyDataReleases) SetInstallUserId(v string) *
 
 func (s *ListAddonReleasesResponseBodyDataReleases) SetLanguage(v string) *ListAddonReleasesResponseBodyDataReleases {
 	s.Language = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetManaged(v bool) *ListAddonReleasesResponseBodyDataReleases {
+	s.Managed = &v
 	return s
 }
 
@@ -30009,6 +30032,7 @@ type ListEnvironmentFeaturesResponseBodyData struct {
 	Icon          *string            `json:"Icon,omitempty" xml:"Icon,omitempty"`
 	Language      *string            `json:"Language,omitempty" xml:"Language,omitempty"`
 	LatestVersion *string            `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	Managed       *bool              `json:"Managed,omitempty" xml:"Managed,omitempty"`
 	Name          *string            `json:"Name,omitempty" xml:"Name,omitempty"`
 	Status        *string            `json:"Status,omitempty" xml:"Status,omitempty"`
 	Version       *string            `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -30054,6 +30078,11 @@ func (s *ListEnvironmentFeaturesResponseBodyData) SetLanguage(v string) *ListEnv
 
 func (s *ListEnvironmentFeaturesResponseBodyData) SetLatestVersion(v string) *ListEnvironmentFeaturesResponseBodyData {
 	s.LatestVersion = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetManaged(v bool) *ListEnvironmentFeaturesResponseBodyData {
+	s.Managed = &v
 	return s
 }
 
@@ -30323,6 +30352,7 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	GrafanaFolderUid *string `json:"GrafanaFolderUid,omitempty" xml:"GrafanaFolderUid,omitempty"`
 	// Latest Release create time.
 	LatestReleaseCreateTime *string `json:"LatestReleaseCreateTime,omitempty" xml:"LatestReleaseCreateTime,omitempty"`
+	ManagedType             *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// Prometheus ID.
 	PrometheusId *int64 `json:"PrometheusId,omitempty" xml:"PrometheusId,omitempty"`
 	// Prometheus instance ID.
@@ -30419,6 +30449,11 @@ func (s *ListEnvironmentsResponseBodyDataEnvironments) SetGrafanaFolderUid(v str
 
 func (s *ListEnvironmentsResponseBodyDataEnvironments) SetLatestReleaseCreateTime(v string) *ListEnvironmentsResponseBodyDataEnvironments {
 	s.LatestReleaseCreateTime = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetManagedType(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.ManagedType = &v
 	return s
 }
 
