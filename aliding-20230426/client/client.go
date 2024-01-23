@@ -5999,6 +5999,279 @@ func (s *CreateOrgHonorTemplateResponse) SetBody(v *CreateOrgHonorTemplateRespon
 	return s
 }
 
+type CreatePersonalTodoTaskHeaders struct {
+	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreatePersonalTodoTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreatePersonalTodoTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskHeaders) SetCommonHeaders(v map[string]*string) *CreatePersonalTodoTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskHeaders) SetAccountContext(v *CreatePersonalTodoTaskHeadersAccountContext) *CreatePersonalTodoTaskHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreatePersonalTodoTaskHeadersAccountContext struct {
+	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
+}
+
+func (s CreatePersonalTodoTaskHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskHeadersAccountContext) SetUserToken(v string) *CreatePersonalTodoTaskHeadersAccountContext {
+	s.UserToken = &v
+	return s
+}
+
+type CreatePersonalTodoTaskShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreatePersonalTodoTaskShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreatePersonalTodoTaskShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskShrinkHeaders) SetAccountContextShrink(v string) *CreatePersonalTodoTaskShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreatePersonalTodoTaskRequest struct {
+	Description    *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	DueTime        *int64                                      `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	ExecutorIds    []*string                                   `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	NotifyConfigs  *CreatePersonalTodoTaskRequestNotifyConfigs `json:"NotifyConfigs,omitempty" xml:"NotifyConfigs,omitempty" type:"Struct"`
+	ParticipantIds []*string                                   `json:"ParticipantIds,omitempty" xml:"ParticipantIds,omitempty" type:"Repeated"`
+	Subject        *string                                     `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TenantContext  *CreatePersonalTodoTaskRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s CreatePersonalTodoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskRequest) SetDescription(v string) *CreatePersonalTodoTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskRequest) SetDueTime(v int64) *CreatePersonalTodoTaskRequest {
+	s.DueTime = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskRequest) SetExecutorIds(v []*string) *CreatePersonalTodoTaskRequest {
+	s.ExecutorIds = v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskRequest) SetNotifyConfigs(v *CreatePersonalTodoTaskRequestNotifyConfigs) *CreatePersonalTodoTaskRequest {
+	s.NotifyConfigs = v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskRequest) SetParticipantIds(v []*string) *CreatePersonalTodoTaskRequest {
+	s.ParticipantIds = v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskRequest) SetSubject(v string) *CreatePersonalTodoTaskRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskRequest) SetTenantContext(v *CreatePersonalTodoTaskRequestTenantContext) *CreatePersonalTodoTaskRequest {
+	s.TenantContext = v
+	return s
+}
+
+type CreatePersonalTodoTaskRequestNotifyConfigs struct {
+	DingNotify *string `json:"DingNotify,omitempty" xml:"DingNotify,omitempty"`
+}
+
+func (s CreatePersonalTodoTaskRequestNotifyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskRequestNotifyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskRequestNotifyConfigs) SetDingNotify(v string) *CreatePersonalTodoTaskRequestNotifyConfigs {
+	s.DingNotify = &v
+	return s
+}
+
+type CreatePersonalTodoTaskRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreatePersonalTodoTaskRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskRequestTenantContext) SetTenantId(v string) *CreatePersonalTodoTaskRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CreatePersonalTodoTaskShrinkRequest struct {
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DueTime              *int64  `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	ExecutorIdsShrink    *string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty"`
+	NotifyConfigsShrink  *string `json:"NotifyConfigs,omitempty" xml:"NotifyConfigs,omitempty"`
+	ParticipantIdsShrink *string `json:"ParticipantIds,omitempty" xml:"ParticipantIds,omitempty"`
+	Subject              *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TenantContextShrink  *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s CreatePersonalTodoTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskShrinkRequest) SetDescription(v string) *CreatePersonalTodoTaskShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskShrinkRequest) SetDueTime(v int64) *CreatePersonalTodoTaskShrinkRequest {
+	s.DueTime = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskShrinkRequest) SetExecutorIdsShrink(v string) *CreatePersonalTodoTaskShrinkRequest {
+	s.ExecutorIdsShrink = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskShrinkRequest) SetNotifyConfigsShrink(v string) *CreatePersonalTodoTaskShrinkRequest {
+	s.NotifyConfigsShrink = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskShrinkRequest) SetParticipantIdsShrink(v string) *CreatePersonalTodoTaskShrinkRequest {
+	s.ParticipantIdsShrink = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskShrinkRequest) SetSubject(v string) *CreatePersonalTodoTaskShrinkRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskShrinkRequest) SetTenantContextShrink(v string) *CreatePersonalTodoTaskShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type CreatePersonalTodoTaskResponseBody struct {
+	CreatedTime     *int64  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TaskId          *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreatePersonalTodoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskResponseBody) SetCreatedTime(v int64) *CreatePersonalTodoTaskResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskResponseBody) SetRequestId(v string) *CreatePersonalTodoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskResponseBody) SetTaskId(v string) *CreatePersonalTodoTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskResponseBody) SetVendorRequestId(v string) *CreatePersonalTodoTaskResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskResponseBody) SetVendorType(v string) *CreatePersonalTodoTaskResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CreatePersonalTodoTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePersonalTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePersonalTodoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePersonalTodoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePersonalTodoTaskResponse) SetHeaders(v map[string]*string) *CreatePersonalTodoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskResponse) SetStatusCode(v int32) *CreatePersonalTodoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskResponse) SetBody(v *CreatePersonalTodoTaskResponseBody) *CreatePersonalTodoTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateReportHeaders struct {
 	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CreateReportHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -45598,6 +45871,109 @@ func (client *Client) CreateOrgHonorTemplate(request *CreateOrgHonorTemplateRequ
 	headers := &CreateOrgHonorTemplateHeaders{}
 	_result = &CreateOrgHonorTemplateResponse{}
 	_body, _err := client.CreateOrgHonorTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePersonalTodoTaskWithOptions(tmpReq *CreatePersonalTodoTaskRequest, tmpHeader *CreatePersonalTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *CreatePersonalTodoTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePersonalTodoTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CreatePersonalTodoTaskShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExecutorIds)) {
+		request.ExecutorIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutorIds, tea.String("ExecutorIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NotifyConfigs)) {
+		request.NotifyConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NotifyConfigs, tea.String("NotifyConfigs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ParticipantIds)) {
+		request.ParticipantIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParticipantIds, tea.String("ParticipantIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DueTime)) {
+		body["DueTime"] = request.DueTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutorIdsShrink)) {
+		body["ExecutorIds"] = request.ExecutorIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfigsShrink)) {
+		body["NotifyConfigs"] = request.NotifyConfigsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParticipantIdsShrink)) {
+		body["ParticipantIds"] = request.ParticipantIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["Subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePersonalTodoTask"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/task/createPersonalTodoTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePersonalTodoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePersonalTodoTask(request *CreatePersonalTodoTaskRequest) (_result *CreatePersonalTodoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreatePersonalTodoTaskHeaders{}
+	_result = &CreatePersonalTodoTaskResponse{}
+	_body, _err := client.CreatePersonalTodoTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
