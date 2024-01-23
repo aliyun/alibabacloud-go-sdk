@@ -216,9 +216,10 @@ func (s *BatchQueryMotionShopTaskStatusResponseBodyData) SetTasks(v []*BatchQuer
 }
 
 type BatchQueryMotionShopTaskStatusResponseBodyDataTasks struct {
-	Result *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Status *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId *string                                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	ErrorMessage *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result       *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Status       *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId       *string                                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s BatchQueryMotionShopTaskStatusResponseBodyDataTasks) String() string {
@@ -227,6 +228,11 @@ func (s BatchQueryMotionShopTaskStatusResponseBodyDataTasks) String() string {
 
 func (s BatchQueryMotionShopTaskStatusResponseBodyDataTasks) GoString() string {
 	return s.String()
+}
+
+func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasks) SetErrorMessage(v string) *BatchQueryMotionShopTaskStatusResponseBodyDataTasks {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasks) SetResult(v *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult) *BatchQueryMotionShopTaskStatusResponseBodyDataTasks {
@@ -1937,10 +1943,11 @@ func (s *ListMotionShopTasksResponseBody) SetTotal(v int32) *ListMotionShopTasks
 }
 
 type ListMotionShopTasksResponseBodyData struct {
-	Material *ListMotionShopTasksResponseBodyDataMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
-	Result   *ListMotionShopTasksResponseBodyDataResult   `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Status   *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId   *string                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	ErrorMessage *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Material     *ListMotionShopTasksResponseBodyDataMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
+	Result       *ListMotionShopTasksResponseBodyDataResult   `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Status       *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId       *string                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListMotionShopTasksResponseBodyData) String() string {
@@ -1949,6 +1956,11 @@ func (s ListMotionShopTasksResponseBodyData) String() string {
 
 func (s ListMotionShopTasksResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListMotionShopTasksResponseBodyData) SetErrorMessage(v string) *ListMotionShopTasksResponseBodyData {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *ListMotionShopTasksResponseBodyData) SetMaterial(v *ListMotionShopTasksResponseBodyDataMaterial) *ListMotionShopTasksResponseBodyData {
