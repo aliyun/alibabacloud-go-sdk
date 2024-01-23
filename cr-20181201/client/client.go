@@ -8721,7 +8721,9 @@ type ListEventCenterRecordRequest struct {
 	// The number of the page to return.
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The ID of the event notification rule.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
@@ -8751,6 +8753,16 @@ func (s *ListEventCenterRecordRequest) SetPageNo(v int32) *ListEventCenterRecord
 
 func (s *ListEventCenterRecordRequest) SetPageSize(v int32) *ListEventCenterRecordRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListEventCenterRecordRequest) SetRepoName(v string) *ListEventCenterRecordRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListEventCenterRecordRequest) SetRepoNamespaceName(v string) *ListEventCenterRecordRequest {
+	s.RepoNamespaceName = &v
 	return s
 }
 
@@ -9291,6 +9303,7 @@ type ListInstanceEndpointRequest struct {
 	// *   `Registry`: the image repository.
 	// *   `Chart`: a Helm chart.
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	Summary    *bool   `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s ListInstanceEndpointRequest) String() string {
@@ -9308,6 +9321,11 @@ func (s *ListInstanceEndpointRequest) SetInstanceId(v string) *ListInstanceEndpo
 
 func (s *ListInstanceEndpointRequest) SetModuleName(v string) *ListInstanceEndpointRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *ListInstanceEndpointRequest) SetSummary(v bool) *ListInstanceEndpointRequest {
+	s.Summary = &v
 	return s
 }
 
@@ -17303,6 +17321,10 @@ func (client *Client) ListInstanceEndpointWithOptions(request *ListInstanceEndpo
 
 	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
 		query["ModuleName"] = request.ModuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Summary)) {
+		query["Summary"] = request.Summary
 	}
 
 	req := &openapi.OpenApiRequest{
