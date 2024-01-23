@@ -11528,9 +11528,7 @@ func (s *GetDBTaskSQLJobLogResponse) SetBody(v *GetDBTaskSQLJobLogResponseBody) 
 }
 
 type GetDBTopologyRequest struct {
-	// The ID of the logical database.
-	//
-	// > You can call the [ListLogicDatabases](~~141874~~) operation to query the ID of the logical database.
+	// The ID of the logical database. You can call the [ListLogicDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogicdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to query the ID of the logical database.
 	LogicDbId *int64 `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
 	// The ID of the tenant.
 	//
@@ -11557,15 +11555,18 @@ func (s *GetDBTopologyRequest) SetTid(v int64) *GetDBTopologyRequest {
 }
 
 type GetDBTopologyResponseBody struct {
-	// The topology of the logical database.
+	// The topology of the data table.
 	DBTopology *GetDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
 	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**: The request is successful.
+	// *   **false**: The request fails.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11603,30 +11604,28 @@ func (s *GetDBTopologyResponseBody) SetSuccess(v bool) *GetDBTopologyResponseBod
 }
 
 type GetDBTopologyResponseBodyDBTopology struct {
-	// The alias of the logical database.
+	// The alias of the access point.
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The topologies of the physical database shards.
+	// The list of database splitting topology information.
 	DBTopologyInfoList []*GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList `json:"DBTopologyInfoList,omitempty" xml:"DBTopologyInfoList,omitempty" type:"Repeated"`
-	// The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The type of the environment to which the logical database belongs. Valid values:
+	// The type of the environment in which the database instance is deployed. Valid values:
 	//
-	// *   **product**: production environment
-	// *   **dev**: development environment
-	// *   **pre**: pre-release environment
-	// *   **test**: test environment
-	// *   **sit**: system integration testing (SIT) environment
-	// *   **uat**: user acceptance testing (UAT) environment
-	// *   **pet**: stress testing environment
-	// *   **stag**: staging environment
-	//
-	// > For more information, see [Change the environment type of an instance](~~163309~~).
+	// *   product: production environment
+	// *   dev: development environment
+	// *   pre: pre-release environment
+	// *   test: test environment
+	// *   sit: system integration testing (SIT) environment
+	// *   uat: user acceptance testing (UAT) environment
+	// *   pet: stress testing environment
+	// *   stag: staging environment
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The ID of the logical database.
 	LogicDbId *int64 `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
-	// The name of the logical database.
+	// Logical database name.
 	LogicDbName *string `json:"LogicDbName,omitempty" xml:"LogicDbName,omitempty"`
-	// The name that is used to search for the logical database.
+	// The name of the saved search.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -11678,40 +11677,31 @@ type GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList struct {
 	//
 	// > If the database is a PostgreSQL database, the value of this parameter is the name of the database.
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The ID of the logical database.
+	// The ID of the database for which the schema design is executed.
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The type of the environment to which the logical database belongs. Valid values:
+	// The type of the environment to which the database belongs. Valid values:
 	//
-	// *   **product**: production environment
-	// *   **dev**: development environment
-	// *   **pre**: pre-release environment
-	// *   **test**: test environment
-	// *   **sit**: SIT environment
-	// *   **uat**: UAT environment
-	// *   **pet**: stress testing environment
-	// *   **stag**: staging environment
-	//
-	// > For more information, see [Change the environment type of an instance](~~163309~~).
+	// *   product: production environment
+	// *   dev: development environment
+	// *   pre: staging environment
+	// *   test: test environment
+	// *   sit: SIT environment
+	// *   uat: user acceptance testing (UAT) environment
+	// *   pet: stress testing environment
+	// *   stag: STAG environment
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the instance in which the logical database resides.
+	// The ID of the instance. The valid value is returned if you call the ListInstances operation. The instance ID is not the ID of the RDS instance.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the resource related to the instance. The resource corresponds with the database instance type returned in the InstanceSource parameter.
-	//
-	// *   If the value of the InstanceSource parameter is RDS, the ID of an ApsaraDB RDS instance is returned.
-	// *   If the value of the InstanceSource parameter is ECS_OWN, the ID of a self-managed database that is hosted on an Elastic Compute Service (ECS) instance is returned.
-	// *   If the value of the InstanceSource parameter is PUBLIC_OWN, an empty string is returned.
-	// *   If the value of the InstanceSource parameter is VPC_ID, the ID of a self-managed database instance in a virtual private cloud (VPC) that is connected over Express Connect circuits is returned.
-	// *   If the value of the InstanceSource parameter is GATEWAY, the ID of a database instance connected by using a database gateway is returned.
+	// Instance resource ID.
 	InstanceResourceId *string `json:"InstanceResourceId,omitempty" xml:"InstanceResourceId,omitempty"`
-	// The type of the database instance. Valid values:
+	// The source of the database instance. Valid values:
 	//
-	// *   **RDS**: an ApsaraDB RDS instance.
-	// *   **ECS_OWN**: a self-managed database that is hosted on an ECS instance.
-	// *   **PUBLIC_OWN**: a self-managed database instance that is connected over the Internet.
-	// *   **VPC_ID**: a self-managed database instance in a VPC that is connected over Express Connect circuits.
-	// *   **GATEWAY**: a database instance connected by using a database gateway.
+	// *   **PUBLIC_OWN:** a self-managed database instance that is deployed on the Internet
+	// *   **RDS:** an ApsaraDB RDS instance
+	// *   **ECS_OWN:** a self-managed database that is deployed on an Elastic Compute Service (ECS) instance
+	// *   **VPC_IDC:** a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC)
 	InstanceSource *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
 	// The ID of the region in which the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -11719,7 +11709,7 @@ type GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList struct {
 	//
 	// > If the database is a PostgreSQL database, the value of this parameter is the name of the database schema.
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name that is used to search for the database.
+	// The name of the saved search.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
