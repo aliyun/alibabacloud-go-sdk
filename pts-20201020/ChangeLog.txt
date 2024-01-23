@@ -1,3 +1,6 @@
+2024-01-23 Version: v2.1.0
+- Generated golang 2020-10-20 for PTS.
+
 2023-05-11 Version: v2.0.4
 - Supported listing PTS reports.
 

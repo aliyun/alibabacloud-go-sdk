@@ -949,6 +949,306 @@ func (s *GetJMeterLogsResponse) SetBody(v *GetJMeterLogsResponseBody) *GetJMeter
 	return s
 }
 
+type GetJMeterReportDetailsRequest struct {
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+}
+
+func (s GetJMeterReportDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJMeterReportDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJMeterReportDetailsRequest) SetReportId(v string) *GetJMeterReportDetailsRequest {
+	s.ReportId = &v
+	return s
+}
+
+type GetJMeterReportDetailsResponseBody struct {
+	Code               *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	CodeKey            *string                                                 `json:"CodeKey,omitempty" xml:"CodeKey,omitempty"`
+	DocumentUrl        *string                                                 `json:"DocumentUrl,omitempty" xml:"DocumentUrl,omitempty"`
+	DynamicCtx         *string                                                 `json:"DynamicCtx,omitempty" xml:"DynamicCtx,omitempty"`
+	HttpStatusCode     *int32                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	ReportOverView     *GetJMeterReportDetailsResponseBodyReportOverView       `json:"ReportOverView,omitempty" xml:"ReportOverView,omitempty" type:"Struct"`
+	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SamplerMetricsList []*GetJMeterReportDetailsResponseBodySamplerMetricsList `json:"SamplerMetricsList,omitempty" xml:"SamplerMetricsList,omitempty" type:"Repeated"`
+	SceneMetrics       *GetJMeterReportDetailsResponseBodySceneMetrics         `json:"SceneMetrics,omitempty" xml:"SceneMetrics,omitempty" type:"Struct"`
+	Success            *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetJMeterReportDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJMeterReportDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetCode(v string) *GetJMeterReportDetailsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetCodeKey(v string) *GetJMeterReportDetailsResponseBody {
+	s.CodeKey = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetDocumentUrl(v string) *GetJMeterReportDetailsResponseBody {
+	s.DocumentUrl = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetDynamicCtx(v string) *GetJMeterReportDetailsResponseBody {
+	s.DynamicCtx = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetHttpStatusCode(v int32) *GetJMeterReportDetailsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetMessage(v string) *GetJMeterReportDetailsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetReportOverView(v *GetJMeterReportDetailsResponseBodyReportOverView) *GetJMeterReportDetailsResponseBody {
+	s.ReportOverView = v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetRequestId(v string) *GetJMeterReportDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetSamplerMetricsList(v []*GetJMeterReportDetailsResponseBodySamplerMetricsList) *GetJMeterReportDetailsResponseBody {
+	s.SamplerMetricsList = v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetSceneMetrics(v *GetJMeterReportDetailsResponseBodySceneMetrics) *GetJMeterReportDetailsResponseBody {
+	s.SceneMetrics = v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBody) SetSuccess(v bool) *GetJMeterReportDetailsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetJMeterReportDetailsResponseBodyReportOverView struct {
+	AgentCount *int32  `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ReportId   *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportName *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Vum        *int64  `json:"Vum,omitempty" xml:"Vum,omitempty"`
+}
+
+func (s GetJMeterReportDetailsResponseBodyReportOverView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJMeterReportDetailsResponseBodyReportOverView) GoString() string {
+	return s.String()
+}
+
+func (s *GetJMeterReportDetailsResponseBodyReportOverView) SetAgentCount(v int32) *GetJMeterReportDetailsResponseBodyReportOverView {
+	s.AgentCount = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodyReportOverView) SetEndTime(v string) *GetJMeterReportDetailsResponseBodyReportOverView {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodyReportOverView) SetReportId(v string) *GetJMeterReportDetailsResponseBodyReportOverView {
+	s.ReportId = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodyReportOverView) SetReportName(v string) *GetJMeterReportDetailsResponseBodyReportOverView {
+	s.ReportName = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodyReportOverView) SetStartTime(v string) *GetJMeterReportDetailsResponseBodyReportOverView {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodyReportOverView) SetVum(v int64) *GetJMeterReportDetailsResponseBodyReportOverView {
+	s.Vum = &v
+	return s
+}
+
+type GetJMeterReportDetailsResponseBodySamplerMetricsList struct {
+	AllCount       *int64   `json:"AllCount,omitempty" xml:"AllCount,omitempty"`
+	ApiName        *string  `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AvgRt          *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
+	AvgTps         *float64 `json:"AvgTps,omitempty" xml:"AvgTps,omitempty"`
+	FailCountReq   *int64   `json:"FailCountReq,omitempty" xml:"FailCountReq,omitempty"`
+	MaxRt          *float64 `json:"MaxRt,omitempty" xml:"MaxRt,omitempty"`
+	MinRt          *float64 `json:"MinRt,omitempty" xml:"MinRt,omitempty"`
+	Seg75Rt        *float64 `json:"Seg75Rt,omitempty" xml:"Seg75Rt,omitempty"`
+	Seg90Rt        *float64 `json:"Seg90Rt,omitempty" xml:"Seg90Rt,omitempty"`
+	Seg99Rt        *float64 `json:"Seg99Rt,omitempty" xml:"Seg99Rt,omitempty"`
+	SuccessRateReq *float64 `json:"SuccessRateReq,omitempty" xml:"SuccessRateReq,omitempty"`
+}
+
+func (s GetJMeterReportDetailsResponseBodySamplerMetricsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJMeterReportDetailsResponseBodySamplerMetricsList) GoString() string {
+	return s.String()
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetAllCount(v int64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.AllCount = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetApiName(v string) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.ApiName = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetAvgRt(v float64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.AvgRt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetAvgTps(v float64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.AvgTps = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetFailCountReq(v int64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.FailCountReq = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetMaxRt(v float64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.MaxRt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetMinRt(v float64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.MinRt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetSeg75Rt(v float64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.Seg75Rt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetSeg90Rt(v float64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.Seg90Rt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetSeg99Rt(v float64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.Seg99Rt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySamplerMetricsList) SetSuccessRateReq(v float64) *GetJMeterReportDetailsResponseBodySamplerMetricsList {
+	s.SuccessRateReq = &v
+	return s
+}
+
+type GetJMeterReportDetailsResponseBodySceneMetrics struct {
+	AllCount       *int64   `json:"AllCount,omitempty" xml:"AllCount,omitempty"`
+	AvgRt          *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
+	AvgTps         *float64 `json:"AvgTps,omitempty" xml:"AvgTps,omitempty"`
+	FailCountReq   *int64   `json:"FailCountReq,omitempty" xml:"FailCountReq,omitempty"`
+	Seg90Rt        *float64 `json:"Seg90Rt,omitempty" xml:"Seg90Rt,omitempty"`
+	Seg99Rt        *float64 `json:"Seg99Rt,omitempty" xml:"Seg99Rt,omitempty"`
+	SuccessRateReq *float64 `json:"SuccessRateReq,omitempty" xml:"SuccessRateReq,omitempty"`
+}
+
+func (s GetJMeterReportDetailsResponseBodySceneMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJMeterReportDetailsResponseBodySceneMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *GetJMeterReportDetailsResponseBodySceneMetrics) SetAllCount(v int64) *GetJMeterReportDetailsResponseBodySceneMetrics {
+	s.AllCount = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySceneMetrics) SetAvgRt(v float64) *GetJMeterReportDetailsResponseBodySceneMetrics {
+	s.AvgRt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySceneMetrics) SetAvgTps(v float64) *GetJMeterReportDetailsResponseBodySceneMetrics {
+	s.AvgTps = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySceneMetrics) SetFailCountReq(v int64) *GetJMeterReportDetailsResponseBodySceneMetrics {
+	s.FailCountReq = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySceneMetrics) SetSeg90Rt(v float64) *GetJMeterReportDetailsResponseBodySceneMetrics {
+	s.Seg90Rt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySceneMetrics) SetSeg99Rt(v float64) *GetJMeterReportDetailsResponseBodySceneMetrics {
+	s.Seg99Rt = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponseBodySceneMetrics) SetSuccessRateReq(v float64) *GetJMeterReportDetailsResponseBodySceneMetrics {
+	s.SuccessRateReq = &v
+	return s
+}
+
+type GetJMeterReportDetailsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJMeterReportDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetJMeterReportDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJMeterReportDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJMeterReportDetailsResponse) SetHeaders(v map[string]*string) *GetJMeterReportDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponse) SetStatusCode(v int32) *GetJMeterReportDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJMeterReportDetailsResponse) SetBody(v *GetJMeterReportDetailsResponseBody) *GetJMeterReportDetailsResponse {
+	s.Body = v
+	return s
+}
+
 type GetJMeterSampleMetricsRequest struct {
 	BeginTime *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -1318,9 +1618,12 @@ type GetJMeterSceneRunningDataResponseBodyRunningData struct {
 	AgentIdList    []*string                `json:"AgentIdList,omitempty" xml:"AgentIdList,omitempty" type:"Repeated"`
 	AllSampleStat  map[string]interface{}   `json:"AllSampleStat,omitempty" xml:"AllSampleStat,omitempty"`
 	Concurrency    *int32                   `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	ErrorMessage   *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HasError       *bool                    `json:"HasError,omitempty" xml:"HasError,omitempty"`
 	HasReport      *bool                    `json:"HasReport,omitempty" xml:"HasReport,omitempty"`
 	HoldFor        *int32                   `json:"HoldFor,omitempty" xml:"HoldFor,omitempty"`
 	IsDebugging    *bool                    `json:"IsDebugging,omitempty" xml:"IsDebugging,omitempty"`
+	ReportId       *string                  `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	SampleStatList []map[string]interface{} `json:"SampleStatList,omitempty" xml:"SampleStatList,omitempty" type:"Repeated"`
 	SceneId        *string                  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SceneName      *string                  `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
@@ -1358,6 +1661,16 @@ func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetConcurrency(v int3
 	return s
 }
 
+func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetErrorMessage(v string) *GetJMeterSceneRunningDataResponseBodyRunningData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetHasError(v bool) *GetJMeterSceneRunningDataResponseBodyRunningData {
+	s.HasError = &v
+	return s
+}
+
 func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetHasReport(v bool) *GetJMeterSceneRunningDataResponseBodyRunningData {
 	s.HasReport = &v
 	return s
@@ -1370,6 +1683,11 @@ func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetHoldFor(v int32) *
 
 func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetIsDebugging(v bool) *GetJMeterSceneRunningDataResponseBodyRunningData {
 	s.IsDebugging = &v
+	return s
+}
+
+func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetReportId(v string) *GetJMeterSceneRunningDataResponseBodyRunningData {
+	s.ReportId = &v
 	return s
 }
 
@@ -1502,30 +1820,31 @@ func (s *GetOpenJMeterSceneResponseBody) SetSuccess(v bool) *GetOpenJMeterSceneR
 }
 
 type GetOpenJMeterSceneResponseBodyScene struct {
-	AgentCount                  *int32                                             `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
-	BaseInfo                    *GetOpenJMeterSceneResponseBodySceneBaseInfo       `json:"BaseInfo,omitempty" xml:"BaseInfo,omitempty" type:"Struct"`
-	Concurrency                 *int32                                             `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	ConstantThroughputTimerType *string                                            `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
-	DnsCacheConfig              *GetOpenJMeterSceneResponseBodySceneDnsCacheConfig `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
-	Duration                    *int32                                             `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EnvironmentId               *string                                            `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	FileList                    []*GetOpenJMeterSceneResponseBodySceneFileList     `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	IsVpcTest                   *bool                                              `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
-	MaxRps                      *int32                                             `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
-	Mode                        *string                                            `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Pool                        *string                                            `json:"Pool,omitempty" xml:"Pool,omitempty"`
-	RampUp                      *int32                                             `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
-	RegionId                    *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SceneId                     *string                                            `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName                   *string                                            `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	SecurityGroupId             *string                                            `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	StartConcurrency            *int32                                             `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
-	StartRps                    *int32                                             `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
-	Steps                       *int32                                             `json:"Steps,omitempty" xml:"Steps,omitempty"`
-	SyncTimerType               *string                                            `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
-	TestFile                    *string                                            `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
-	VSwitchId                   *string                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                       *string                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AgentCount                  *int32                                                  `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	BaseInfo                    *GetOpenJMeterSceneResponseBodySceneBaseInfo            `json:"BaseInfo,omitempty" xml:"BaseInfo,omitempty" type:"Struct"`
+	Concurrency                 *int32                                                  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	ConstantThroughputTimerType *string                                                 `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
+	DnsCacheConfig              *GetOpenJMeterSceneResponseBodySceneDnsCacheConfig      `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
+	Duration                    *int32                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnvironmentId               *string                                                 `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	FileList                    []*GetOpenJMeterSceneResponseBodySceneFileList          `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	IsVpcTest                   *bool                                                   `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
+	MaxRps                      *int32                                                  `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
+	Mode                        *string                                                 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Pool                        *string                                                 `json:"Pool,omitempty" xml:"Pool,omitempty"`
+	RampUp                      *int32                                                  `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
+	RegionId                    *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionalCondition           []*GetOpenJMeterSceneResponseBodySceneRegionalCondition `json:"RegionalCondition,omitempty" xml:"RegionalCondition,omitempty" type:"Repeated"`
+	SceneId                     *string                                                 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName                   *string                                                 `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SecurityGroupId             *string                                                 `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StartConcurrency            *int32                                                  `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
+	StartRps                    *int32                                                  `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
+	Steps                       *int32                                                  `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	SyncTimerType               *string                                                 `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
+	TestFile                    *string                                                 `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
+	VSwitchId                   *string                                                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                       *string                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetOpenJMeterSceneResponseBodyScene) String() string {
@@ -1603,6 +1922,11 @@ func (s *GetOpenJMeterSceneResponseBodyScene) SetRampUp(v int32) *GetOpenJMeterS
 
 func (s *GetOpenJMeterSceneResponseBodyScene) SetRegionId(v string) *GetOpenJMeterSceneResponseBodyScene {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetOpenJMeterSceneResponseBodyScene) SetRegionalCondition(v []*GetOpenJMeterSceneResponseBodySceneRegionalCondition) *GetOpenJMeterSceneResponseBodyScene {
+	s.RegionalCondition = v
 	return s
 }
 
@@ -1782,6 +2106,29 @@ func (s *GetOpenJMeterSceneResponseBodySceneFileList) SetMd5(v string) *GetOpenJ
 
 func (s *GetOpenJMeterSceneResponseBodySceneFileList) SetSplitCsv(v bool) *GetOpenJMeterSceneResponseBodySceneFileList {
 	s.SplitCsv = &v
+	return s
+}
+
+type GetOpenJMeterSceneResponseBodySceneRegionalCondition struct {
+	Amount *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s GetOpenJMeterSceneResponseBodySceneRegionalCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpenJMeterSceneResponseBodySceneRegionalCondition) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpenJMeterSceneResponseBodySceneRegionalCondition) SetAmount(v int32) *GetOpenJMeterSceneResponseBodySceneRegionalCondition {
+	s.Amount = &v
+	return s
+}
+
+func (s *GetOpenJMeterSceneResponseBodySceneRegionalCondition) SetRegion(v string) *GetOpenJMeterSceneResponseBodySceneRegionalCondition {
+	s.Region = &v
 	return s
 }
 
@@ -5689,6 +6036,7 @@ type ListOpenJMeterScenesResponseBodyJMeterScene struct {
 	DurationStr *string `json:"DurationStr,omitempty" xml:"DurationStr,omitempty"`
 	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SceneName   *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListOpenJMeterScenesResponseBodyJMeterScene) String() string {
@@ -5711,6 +6059,11 @@ func (s *ListOpenJMeterScenesResponseBodyJMeterScene) SetSceneId(v string) *List
 
 func (s *ListOpenJMeterScenesResponseBodyJMeterScene) SetSceneName(v string) *ListOpenJMeterScenesResponseBodyJMeterScene {
 	s.SceneName = &v
+	return s
+}
+
+func (s *ListOpenJMeterScenesResponseBodyJMeterScene) SetStatus(v string) *ListOpenJMeterScenesResponseBodyJMeterScene {
+	s.Status = &v
 	return s
 }
 
@@ -6547,30 +6900,31 @@ func (s *SaveOpenJMeterSceneRequest) SetOpenJMeterScene(v *SaveOpenJMeterSceneRe
 }
 
 type SaveOpenJMeterSceneRequestOpenJMeterScene struct {
-	AgentCount                  *int32                                                       `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
-	Concurrency                 *int32                                                       `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	ConstantThroughputTimerType *string                                                      `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
-	DnsCacheConfig              *SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig     `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
-	Duration                    *int32                                                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EnvironmentId               *string                                                      `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	FileList                    []*SaveOpenJMeterSceneRequestOpenJMeterSceneFileList         `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	IsVpcTest                   *bool                                                        `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
-	JMeterProperties            []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties `json:"JMeterProperties,omitempty" xml:"JMeterProperties,omitempty" type:"Repeated"`
-	JmeterPluginLabel           *string                                                      `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
-	MaxRps                      *int32                                                       `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
-	Mode                        *string                                                      `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	RampUp                      *int32                                                       `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
-	RegionId                    *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SceneId                     *string                                                      `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName                   *string                                                      `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	SecurityGroupId             *string                                                      `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	StartConcurrency            *int32                                                       `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
-	StartRps                    *int32                                                       `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
-	Steps                       *int32                                                       `json:"Steps,omitempty" xml:"Steps,omitempty"`
-	SyncTimerType               *string                                                      `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
-	TestFile                    *string                                                      `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
-	VSwitchId                   *string                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                       *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AgentCount                  *int32                                                        `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	Concurrency                 *int32                                                        `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	ConstantThroughputTimerType *string                                                       `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
+	DnsCacheConfig              *SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig      `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
+	Duration                    *int32                                                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnvironmentId               *string                                                       `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	FileList                    []*SaveOpenJMeterSceneRequestOpenJMeterSceneFileList          `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	IsVpcTest                   *bool                                                         `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
+	JMeterProperties            []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties  `json:"JMeterProperties,omitempty" xml:"JMeterProperties,omitempty" type:"Repeated"`
+	JmeterPluginLabel           *string                                                       `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
+	MaxRps                      *int32                                                        `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
+	Mode                        *string                                                       `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	RampUp                      *int32                                                        `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
+	RegionId                    *string                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionalCondition           []*SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition `json:"RegionalCondition,omitempty" xml:"RegionalCondition,omitempty" type:"Repeated"`
+	SceneId                     *string                                                       `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName                   *string                                                       `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SecurityGroupId             *string                                                       `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StartConcurrency            *int32                                                        `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
+	StartRps                    *int32                                                        `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
+	Steps                       *int32                                                        `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	SyncTimerType               *string                                                       `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
+	TestFile                    *string                                                       `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
+	VSwitchId                   *string                                                       `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                       *string                                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SaveOpenJMeterSceneRequestOpenJMeterScene) String() string {
@@ -6648,6 +7002,11 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetRampUp(v int32) *SaveOpen
 
 func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetRegionId(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetRegionalCondition(v []*SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition) *SaveOpenJMeterSceneRequestOpenJMeterScene {
+	s.RegionalCondition = v
 	return s
 }
 
@@ -6803,6 +7162,29 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties) SetName(v st
 
 func (s *SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties) SetValue(v string) *SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties {
 	s.Value = &v
+	return s
+}
+
+type SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition struct {
+	Amount *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition) GoString() string {
+	return s.String()
+}
+
+func (s *SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition) SetAmount(v int32) *SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition {
+	s.Amount = &v
+	return s
+}
+
+func (s *SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition) SetRegion(v string) *SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition {
+	s.Region = &v
 	return s
 }
 
@@ -8959,6 +9341,50 @@ func (client *Client) GetJMeterLogs(request *GetJMeterLogsRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetJMeterLogsResponse{}
 	_body, _err := client.GetJMeterLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetJMeterReportDetailsWithOptions(request *GetJMeterReportDetailsRequest, runtime *util.RuntimeOptions) (_result *GetJMeterReportDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJMeterReportDetails"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJMeterReportDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetJMeterReportDetails(request *GetJMeterReportDetailsRequest) (_result *GetJMeterReportDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetJMeterReportDetailsResponse{}
+	_body, _err := client.GetJMeterReportDetailsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
