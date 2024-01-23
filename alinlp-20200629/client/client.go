@@ -5010,6 +5010,239 @@ func (s *PostMSConvSearchTokenGeneratedResponse) SetBody(v *PostMSConvSearchToke
 	return s
 }
 
+type PostMSDataProcessingCountRequest struct {
+	DataIds      []*string `json:"DataIds,omitempty" xml:"DataIds,omitempty" type:"Repeated"`
+	DataImportId *int64    `json:"DataImportId,omitempty" xml:"DataImportId,omitempty"`
+	ServiceId    *int64    `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s PostMSDataProcessingCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSDataProcessingCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSDataProcessingCountRequest) SetDataIds(v []*string) *PostMSDataProcessingCountRequest {
+	s.DataIds = v
+	return s
+}
+
+func (s *PostMSDataProcessingCountRequest) SetDataImportId(v int64) *PostMSDataProcessingCountRequest {
+	s.DataImportId = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountRequest) SetServiceId(v int64) *PostMSDataProcessingCountRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type PostMSDataProcessingCountShrinkRequest struct {
+	DataIdsShrink *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
+	DataImportId  *int64  `json:"DataImportId,omitempty" xml:"DataImportId,omitempty"`
+	ServiceId     *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s PostMSDataProcessingCountShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSDataProcessingCountShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSDataProcessingCountShrinkRequest) SetDataIdsShrink(v string) *PostMSDataProcessingCountShrinkRequest {
+	s.DataIdsShrink = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountShrinkRequest) SetDataImportId(v int64) *PostMSDataProcessingCountShrinkRequest {
+	s.DataImportId = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountShrinkRequest) SetServiceId(v int64) *PostMSDataProcessingCountShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type PostMSDataProcessingCountResponseBody struct {
+	Code           *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *PostMSDataProcessingCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Msg            *string                                    `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PostMSDataProcessingCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSDataProcessingCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSDataProcessingCountResponseBody) SetCode(v int32) *PostMSDataProcessingCountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBody) SetData(v *PostMSDataProcessingCountResponseBodyData) *PostMSDataProcessingCountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBody) SetHttpStatusCode(v int32) *PostMSDataProcessingCountResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBody) SetMsg(v string) *PostMSDataProcessingCountResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBody) SetRequestId(v string) *PostMSDataProcessingCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBody) SetSuccess(v bool) *PostMSDataProcessingCountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PostMSDataProcessingCountResponseBodyData struct {
+	DataProcessedStatuses []*PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses `json:"DataProcessedStatuses,omitempty" xml:"DataProcessedStatuses,omitempty" type:"Repeated"`
+	Status                *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s PostMSDataProcessingCountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSDataProcessingCountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSDataProcessingCountResponseBodyData) SetDataProcessedStatuses(v []*PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) *PostMSDataProcessingCountResponseBodyData {
+	s.DataProcessedStatuses = v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBodyData) SetStatus(v string) *PostMSDataProcessingCountResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses struct {
+	ChunkNum      *string                                                                        `json:"ChunkNum,omitempty" xml:"ChunkNum,omitempty"`
+	DataId        *string                                                                        `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ErrorDataList []*PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList `json:"ErrorDataList,omitempty" xml:"ErrorDataList,omitempty" type:"Repeated"`
+	OpStatus      map[string]*int32                                                              `json:"OpStatus,omitempty" xml:"OpStatus,omitempty"`
+	Status        *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	VersionValue  *string                                                                        `json:"VersionValue,omitempty" xml:"VersionValue,omitempty"`
+}
+
+func (s PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) SetChunkNum(v string) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses {
+	s.ChunkNum = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) SetDataId(v string) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses {
+	s.DataId = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) SetErrorDataList(v []*PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses {
+	s.ErrorDataList = v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) SetOpStatus(v map[string]*int32) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses {
+	s.OpStatus = v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) SetStatus(v string) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses {
+	s.Status = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) SetVersionValue(v string) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses {
+	s.VersionValue = &v
+	return s
+}
+
+type PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList struct {
+	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	OpType    *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+}
+
+func (s PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList) SetCount(v int32) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList {
+	s.Count = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList) SetErrorCode(v string) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList) SetOpType(v string) *PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList {
+	s.OpType = &v
+	return s
+}
+
+type PostMSDataProcessingCountResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PostMSDataProcessingCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PostMSDataProcessingCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSDataProcessingCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSDataProcessingCountResponse) SetHeaders(v map[string]*string) *PostMSDataProcessingCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponse) SetStatusCode(v int32) *PostMSDataProcessingCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PostMSDataProcessingCountResponse) SetBody(v *PostMSDataProcessingCountResponseBody) *PostMSDataProcessingCountResponse {
+	s.Body = v
+	return s
+}
+
 type PostMSSearchEnhanceRequest struct {
 	Body             *string                `json:"Body,omitempty" xml:"Body,omitempty"`
 	CustomConfigInfo map[string]interface{} `json:"CustomConfigInfo,omitempty" xml:"CustomConfigInfo,omitempty"`
@@ -8669,6 +8902,64 @@ func (client *Client) PostMSConvSearchTokenGenerated() (_result *PostMSConvSearc
 	runtime := &util.RuntimeOptions{}
 	_result = &PostMSConvSearchTokenGeneratedResponse{}
 	_body, _err := client.PostMSConvSearchTokenGeneratedWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PostMSDataProcessingCountWithOptions(tmpReq *PostMSDataProcessingCountRequest, runtime *util.RuntimeOptions) (_result *PostMSDataProcessingCountResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PostMSDataProcessingCountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataIds)) {
+		request.DataIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataIds, tea.String("DataIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataIdsShrink)) {
+		body["DataIds"] = request.DataIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataImportId)) {
+		body["DataImportId"] = request.DataImportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PostMSDataProcessingCount"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PostMSDataProcessingCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PostMSDataProcessingCount(request *PostMSDataProcessingCountRequest) (_result *PostMSDataProcessingCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PostMSDataProcessingCountResponse{}
+	_body, _err := client.PostMSDataProcessingCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
