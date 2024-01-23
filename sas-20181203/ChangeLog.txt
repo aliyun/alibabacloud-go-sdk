@@ -1,3 +1,6 @@
+2024-01-23 Version: v2.22.4
+- Generated golang 2018-12-03 for Sas.
+
 2024-01-22 Version: v2.22.3
 - Generated golang 2018-12-03 for Sas.
 
