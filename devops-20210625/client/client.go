@@ -22038,6 +22038,7 @@ type ListMergeRequestsRequest struct {
 	AuthorIds      *string `json:"authorIds,omitempty" xml:"authorIds,omitempty"`
 	Filter         *string `json:"filter,omitempty" xml:"filter,omitempty"`
 	GroupIds       *string `json:"groupIds,omitempty" xml:"groupIds,omitempty"`
+	LabelIds       *string `json:"labelIds,omitempty" xml:"labelIds,omitempty"`
 	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
@@ -22074,6 +22075,11 @@ func (s *ListMergeRequestsRequest) SetFilter(v string) *ListMergeRequestsRequest
 
 func (s *ListMergeRequestsRequest) SetGroupIds(v string) *ListMergeRequestsRequest {
 	s.GroupIds = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetLabelIds(v string) *ListMergeRequestsRequest {
+	s.LabelIds = &v
 	return s
 }
 
@@ -22178,6 +22184,7 @@ type ListMergeRequestsResponseBodyResult struct {
 	DetailUrl                 *string                                           `json:"detailUrl,omitempty" xml:"detailUrl,omitempty"`
 	Id                        *int64                                            `json:"id,omitempty" xml:"id,omitempty"`
 	Iid                       *int64                                            `json:"iid,omitempty" xml:"iid,omitempty"`
+	Labels                    []*ListMergeRequestsResponseBodyResultLabels      `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	LocalId                   *int64                                            `json:"localId,omitempty" xml:"localId,omitempty"`
 	MrBizId                   *string                                           `json:"mrBizId,omitempty" xml:"mrBizId,omitempty"`
 	NameWithNamespace         *string                                           `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
@@ -22241,6 +22248,11 @@ func (s *ListMergeRequestsResponseBodyResult) SetId(v int64) *ListMergeRequestsR
 
 func (s *ListMergeRequestsResponseBodyResult) SetIid(v int64) *ListMergeRequestsResponseBodyResult {
 	s.Iid = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetLabels(v []*ListMergeRequestsResponseBodyResultLabels) *ListMergeRequestsResponseBodyResult {
+	s.Labels = v
 	return s
 }
 
@@ -22393,6 +22405,41 @@ func (s *ListMergeRequestsResponseBodyResultAuthor) SetState(v string) *ListMerg
 
 func (s *ListMergeRequestsResponseBodyResultAuthor) SetUsername(v string) *ListMergeRequestsResponseBodyResultAuthor {
 	s.Username = &v
+	return s
+}
+
+type ListMergeRequestsResponseBodyResultLabels struct {
+	Color       *string `json:"color,omitempty" xml:"color,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListMergeRequestsResponseBodyResultLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestsResponseBodyResultLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestsResponseBodyResultLabels) SetColor(v string) *ListMergeRequestsResponseBodyResultLabels {
+	s.Color = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultLabels) SetDescription(v string) *ListMergeRequestsResponseBodyResultLabels {
+	s.Description = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultLabels) SetId(v string) *ListMergeRequestsResponseBodyResultLabels {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultLabels) SetName(v string) *ListMergeRequestsResponseBodyResultLabels {
+	s.Name = &v
 	return s
 }
 
@@ -32382,7 +32429,11 @@ func (s *MergeMergeRequestResponseBody) SetSuccess(v bool) *MergeMergeRequestRes
 }
 
 type MergeMergeRequestResponseBodyResult struct {
-	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+	BizId          *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	LocalId        *int64  `json:"localId,omitempty" xml:"localId,omitempty"`
+	MergedRevision *string `json:"mergedRevision,omitempty" xml:"mergedRevision,omitempty"`
+	ProjectId      *int64  `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	Result         *bool   `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s MergeMergeRequestResponseBodyResult) String() string {
@@ -32391,6 +32442,26 @@ func (s MergeMergeRequestResponseBodyResult) String() string {
 
 func (s MergeMergeRequestResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *MergeMergeRequestResponseBodyResult) SetBizId(v string) *MergeMergeRequestResponseBodyResult {
+	s.BizId = &v
+	return s
+}
+
+func (s *MergeMergeRequestResponseBodyResult) SetLocalId(v int64) *MergeMergeRequestResponseBodyResult {
+	s.LocalId = &v
+	return s
+}
+
+func (s *MergeMergeRequestResponseBodyResult) SetMergedRevision(v string) *MergeMergeRequestResponseBodyResult {
+	s.MergedRevision = &v
+	return s
+}
+
+func (s *MergeMergeRequestResponseBodyResult) SetProjectId(v int64) *MergeMergeRequestResponseBodyResult {
+	s.ProjectId = &v
+	return s
 }
 
 func (s *MergeMergeRequestResponseBodyResult) SetResult(v bool) *MergeMergeRequestResponseBodyResult {
@@ -45894,6 +45965,10 @@ func (client *Client) ListMergeRequestsWithOptions(request *ListMergeRequestsReq
 
 	if !tea.BoolValue(util.IsUnset(request.GroupIds)) {
 		query["groupIds"] = request.GroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelIds)) {
+		query["labelIds"] = request.LabelIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
