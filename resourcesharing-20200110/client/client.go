@@ -221,7 +221,8 @@ type AssociateResourceShareRequest struct {
 	// The ID of the resource share.
 	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 	// The information about the resources.
-	Resources []*AssociateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	Resources        []*AssociateResourceShareRequestResources        `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	TargetProperties []*AssociateResourceShareRequestTargetProperties `json:"TargetProperties,omitempty" xml:"TargetProperties,omitempty" type:"Repeated"`
 	// The information about the principals.
 	Targets []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
@@ -246,6 +247,11 @@ func (s *AssociateResourceShareRequest) SetResourceShareId(v string) *AssociateR
 
 func (s *AssociateResourceShareRequest) SetResources(v []*AssociateResourceShareRequestResources) *AssociateResourceShareRequest {
 	s.Resources = v
+	return s
+}
+
+func (s *AssociateResourceShareRequest) SetTargetProperties(v []*AssociateResourceShareRequestTargetProperties) *AssociateResourceShareRequest {
+	s.TargetProperties = v
 	return s
 }
 
@@ -286,6 +292,29 @@ func (s *AssociateResourceShareRequestResources) SetResourceId(v string) *Associ
 
 func (s *AssociateResourceShareRequestResources) SetResourceType(v string) *AssociateResourceShareRequestResources {
 	s.ResourceType = &v
+	return s
+}
+
+type AssociateResourceShareRequestTargetProperties struct {
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+}
+
+func (s AssociateResourceShareRequestTargetProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateResourceShareRequestTargetProperties) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateResourceShareRequestTargetProperties) SetProperty(v string) *AssociateResourceShareRequestTargetProperties {
+	s.Property = &v
+	return s
+}
+
+func (s *AssociateResourceShareRequestTargetProperties) SetTargetId(v string) *AssociateResourceShareRequestTargetProperties {
+	s.TargetId = &v
 	return s
 }
 
@@ -679,7 +708,8 @@ type CreateResourceShareRequest struct {
 	// The name can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
 	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
 	// The information about the shared resources.
-	Resources []*CreateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	Resources        []*CreateResourceShareRequestResources        `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	TargetProperties []*CreateResourceShareRequestTargetProperties `json:"TargetProperties,omitempty" xml:"TargetProperties,omitempty" type:"Repeated"`
 	// The information about the principals.
 	Targets []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
@@ -709,6 +739,11 @@ func (s *CreateResourceShareRequest) SetResourceShareName(v string) *CreateResou
 
 func (s *CreateResourceShareRequest) SetResources(v []*CreateResourceShareRequestResources) *CreateResourceShareRequest {
 	s.Resources = v
+	return s
+}
+
+func (s *CreateResourceShareRequest) SetTargetProperties(v []*CreateResourceShareRequestTargetProperties) *CreateResourceShareRequest {
+	s.TargetProperties = v
 	return s
 }
 
@@ -749,6 +784,29 @@ func (s *CreateResourceShareRequestResources) SetResourceId(v string) *CreateRes
 
 func (s *CreateResourceShareRequestResources) SetResourceType(v string) *CreateResourceShareRequestResources {
 	s.ResourceType = &v
+	return s
+}
+
+type CreateResourceShareRequestTargetProperties struct {
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+}
+
+func (s CreateResourceShareRequestTargetProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceShareRequestTargetProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceShareRequestTargetProperties) SetProperty(v string) *CreateResourceShareRequestTargetProperties {
+	s.Property = &v
+	return s
+}
+
+func (s *CreateResourceShareRequestTargetProperties) SetTargetId(v string) *CreateResourceShareRequestTargetProperties {
+	s.TargetId = &v
 	return s
 }
 
@@ -3614,6 +3672,10 @@ func (client *Client) AssociateResourceShareWithOptions(request *AssociateResour
 		query["Resources"] = request.Resources
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TargetProperties)) {
+		query["TargetProperties"] = request.TargetProperties
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Targets)) {
 		query["Targets"] = request.Targets
 	}
@@ -3836,6 +3898,10 @@ func (client *Client) CreateResourceShareWithOptions(request *CreateResourceShar
 
 	if !tea.BoolValue(util.IsUnset(request.Resources)) {
 		query["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetProperties)) {
+		query["TargetProperties"] = request.TargetProperties
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Targets)) {
