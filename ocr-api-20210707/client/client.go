@@ -5155,6 +5155,7 @@ type RecognizeHandwritingRequest struct {
 	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
 	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Paragraph      *bool     `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
 	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5184,6 +5185,11 @@ func (s *RecognizeHandwritingRequest) SetOutputCharInfo(v bool) *RecognizeHandwr
 
 func (s *RecognizeHandwritingRequest) SetOutputTable(v bool) *RecognizeHandwritingRequest {
 	s.OutputTable = &v
+	return s
+}
+
+func (s *RecognizeHandwritingRequest) SetParagraph(v bool) *RecognizeHandwritingRequest {
+	s.Paragraph = &v
 	return s
 }
 
@@ -10744,6 +10750,10 @@ func (client *Client) RecognizeHandwritingWithOptions(request *RecognizeHandwrit
 
 	if !tea.BoolValue(util.IsUnset(request.OutputTable)) {
 		query["OutputTable"] = request.OutputTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Paragraph)) {
+		query["Paragraph"] = request.Paragraph
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
