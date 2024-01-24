@@ -18,12 +18,13 @@ type CreateAppRequest struct {
 	Authentication *CreateAppRequestAuthentication `json:"authentication,omitempty" xml:"authentication,omitempty" type:"Struct"`
 	ChargeType     *string                         `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// 应用备注
-	Description *string                    `json:"description,omitempty" xml:"description,omitempty"`
-	Network     []*CreateAppRequestNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Repeated"`
-	QuotaInfo   *CreateAppRequestQuotaInfo `json:"quotaInfo,omitempty" xml:"quotaInfo,omitempty" type:"Struct"`
-	RegionId    *string                    `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Version     *string                    `json:"version,omitempty" xml:"version,omitempty"`
-	DryRun      *bool                      `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	Description    *string                           `json:"description,omitempty" xml:"description,omitempty"`
+	Network        []*CreateAppRequestNetwork        `json:"network,omitempty" xml:"network,omitempty" type:"Repeated"`
+	PrivateNetwork []*CreateAppRequestPrivateNetwork `json:"privateNetwork,omitempty" xml:"privateNetwork,omitempty" type:"Repeated"`
+	QuotaInfo      *CreateAppRequestQuotaInfo        `json:"quotaInfo,omitempty" xml:"quotaInfo,omitempty" type:"Struct"`
+	RegionId       *string                           `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Version        *string                           `json:"version,omitempty" xml:"version,omitempty"`
+	DryRun         *bool                             `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateAppRequest) String() string {
@@ -56,6 +57,11 @@ func (s *CreateAppRequest) SetDescription(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetNetwork(v []*CreateAppRequestNetwork) *CreateAppRequest {
 	s.Network = v
+	return s
+}
+
+func (s *CreateAppRequest) SetPrivateNetwork(v []*CreateAppRequestPrivateNetwork) *CreateAppRequest {
+	s.PrivateNetwork = v
 	return s
 }
 
@@ -179,6 +185,70 @@ func (s *CreateAppRequestNetworkWhiteIpGroup) SetGroupName(v string) *CreateAppR
 }
 
 func (s *CreateAppRequestNetworkWhiteIpGroup) SetIps(v []*string) *CreateAppRequestNetworkWhiteIpGroup {
+	s.Ips = v
+	return s
+}
+
+type CreateAppRequestPrivateNetwork struct {
+	Enabled       *bool                                         `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	PvlEndpointId *string                                       `json:"pvlEndpointId,omitempty" xml:"pvlEndpointId,omitempty"`
+	Type          *string                                       `json:"type,omitempty" xml:"type,omitempty"`
+	VpcId         *string                                       `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	WhiteIpGroup  []*CreateAppRequestPrivateNetworkWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppRequestPrivateNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestPrivateNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestPrivateNetwork) SetEnabled(v bool) *CreateAppRequestPrivateNetwork {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAppRequestPrivateNetwork) SetPvlEndpointId(v string) *CreateAppRequestPrivateNetwork {
+	s.PvlEndpointId = &v
+	return s
+}
+
+func (s *CreateAppRequestPrivateNetwork) SetType(v string) *CreateAppRequestPrivateNetwork {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateAppRequestPrivateNetwork) SetVpcId(v string) *CreateAppRequestPrivateNetwork {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateAppRequestPrivateNetwork) SetWhiteIpGroup(v []*CreateAppRequestPrivateNetworkWhiteIpGroup) *CreateAppRequestPrivateNetwork {
+	s.WhiteIpGroup = v
+	return s
+}
+
+type CreateAppRequestPrivateNetworkWhiteIpGroup struct {
+	GroupName *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips       []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppRequestPrivateNetworkWhiteIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestPrivateNetworkWhiteIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestPrivateNetworkWhiteIpGroup) SetGroupName(v string) *CreateAppRequestPrivateNetworkWhiteIpGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateAppRequestPrivateNetworkWhiteIpGroup) SetIps(v []*string) *CreateAppRequestPrivateNetworkWhiteIpGroup {
 	s.Ips = v
 	return s
 }
@@ -940,10 +1010,14 @@ func (s *ListAppsResponse) SetBody(v *ListAppsResponseBody) *ListAppsResponse {
 }
 
 type UpdateAppRequest struct {
+	ApplyReason    *string                         `json:"applyReason,omitempty" xml:"applyReason,omitempty"`
 	Authentication *UpdateAppRequestAuthentication `json:"authentication,omitempty" xml:"authentication,omitempty" type:"Struct"`
+	ContactInfo    *string                         `json:"contactInfo,omitempty" xml:"contactInfo,omitempty"`
 	// 应用备注
-	Description *string                    `json:"description,omitempty" xml:"description,omitempty"`
-	Network     []*UpdateAppRequestNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Repeated"`
+	Description    *string                           `json:"description,omitempty" xml:"description,omitempty"`
+	LimiterInfo    *UpdateAppRequestLimiterInfo      `json:"limiterInfo,omitempty" xml:"limiterInfo,omitempty" type:"Struct"`
+	Network        []*UpdateAppRequestNetwork        `json:"network,omitempty" xml:"network,omitempty" type:"Repeated"`
+	PrivateNetwork []*UpdateAppRequestPrivateNetwork `json:"privateNetwork,omitempty" xml:"privateNetwork,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAppRequest) String() string {
@@ -954,8 +1028,18 @@ func (s UpdateAppRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateAppRequest) SetApplyReason(v string) *UpdateAppRequest {
+	s.ApplyReason = &v
+	return s
+}
+
 func (s *UpdateAppRequest) SetAuthentication(v *UpdateAppRequestAuthentication) *UpdateAppRequest {
 	s.Authentication = v
+	return s
+}
+
+func (s *UpdateAppRequest) SetContactInfo(v string) *UpdateAppRequest {
+	s.ContactInfo = &v
 	return s
 }
 
@@ -964,8 +1048,18 @@ func (s *UpdateAppRequest) SetDescription(v string) *UpdateAppRequest {
 	return s
 }
 
+func (s *UpdateAppRequest) SetLimiterInfo(v *UpdateAppRequestLimiterInfo) *UpdateAppRequest {
+	s.LimiterInfo = v
+	return s
+}
+
 func (s *UpdateAppRequest) SetNetwork(v []*UpdateAppRequestNetwork) *UpdateAppRequest {
 	s.Network = v
+	return s
+}
+
+func (s *UpdateAppRequest) SetPrivateNetwork(v []*UpdateAppRequestPrivateNetwork) *UpdateAppRequest {
+	s.PrivateNetwork = v
 	return s
 }
 
@@ -1006,6 +1100,58 @@ func (s *UpdateAppRequestAuthenticationBasicAuth) SetPassword(v string) *UpdateA
 
 func (s *UpdateAppRequestAuthenticationBasicAuth) SetUsername(v string) *UpdateAppRequestAuthenticationBasicAuth {
 	s.Username = &v
+	return s
+}
+
+type UpdateAppRequestLimiterInfo struct {
+	Limiters []*UpdateAppRequestLimiterInfoLimiters `json:"limiters,omitempty" xml:"limiters,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAppRequestLimiterInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppRequestLimiterInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppRequestLimiterInfo) SetLimiters(v []*UpdateAppRequestLimiterInfoLimiters) *UpdateAppRequestLimiterInfo {
+	s.Limiters = v
+	return s
+}
+
+type UpdateAppRequestLimiterInfoLimiters struct {
+	MaxValue *int32    `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	MinValue *int32    `json:"minValue,omitempty" xml:"minValue,omitempty"`
+	Type     *string   `json:"type,omitempty" xml:"type,omitempty"`
+	Values   []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAppRequestLimiterInfoLimiters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppRequestLimiterInfoLimiters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppRequestLimiterInfoLimiters) SetMaxValue(v int32) *UpdateAppRequestLimiterInfoLimiters {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *UpdateAppRequestLimiterInfoLimiters) SetMinValue(v int32) *UpdateAppRequestLimiterInfoLimiters {
+	s.MinValue = &v
+	return s
+}
+
+func (s *UpdateAppRequestLimiterInfoLimiters) SetType(v string) *UpdateAppRequestLimiterInfoLimiters {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateAppRequestLimiterInfoLimiters) SetValues(v []*string) *UpdateAppRequestLimiterInfoLimiters {
+	s.Values = v
 	return s
 }
 
@@ -1069,6 +1215,70 @@ func (s *UpdateAppRequestNetworkWhiteIpGroup) SetGroupName(v string) *UpdateAppR
 }
 
 func (s *UpdateAppRequestNetworkWhiteIpGroup) SetIps(v []*string) *UpdateAppRequestNetworkWhiteIpGroup {
+	s.Ips = v
+	return s
+}
+
+type UpdateAppRequestPrivateNetwork struct {
+	Enabled       *bool                                         `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	PvlEndpointId *string                                       `json:"pvlEndpointId,omitempty" xml:"pvlEndpointId,omitempty"`
+	Type          *string                                       `json:"type,omitempty" xml:"type,omitempty"`
+	VpcId         *string                                       `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	WhiteIpGroup  []*UpdateAppRequestPrivateNetworkWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAppRequestPrivateNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppRequestPrivateNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppRequestPrivateNetwork) SetEnabled(v bool) *UpdateAppRequestPrivateNetwork {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateAppRequestPrivateNetwork) SetPvlEndpointId(v string) *UpdateAppRequestPrivateNetwork {
+	s.PvlEndpointId = &v
+	return s
+}
+
+func (s *UpdateAppRequestPrivateNetwork) SetType(v string) *UpdateAppRequestPrivateNetwork {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateAppRequestPrivateNetwork) SetVpcId(v string) *UpdateAppRequestPrivateNetwork {
+	s.VpcId = &v
+	return s
+}
+
+func (s *UpdateAppRequestPrivateNetwork) SetWhiteIpGroup(v []*UpdateAppRequestPrivateNetworkWhiteIpGroup) *UpdateAppRequestPrivateNetwork {
+	s.WhiteIpGroup = v
+	return s
+}
+
+type UpdateAppRequestPrivateNetworkWhiteIpGroup struct {
+	GroupName *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips       []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAppRequestPrivateNetworkWhiteIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppRequestPrivateNetworkWhiteIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppRequestPrivateNetworkWhiteIpGroup) SetGroupName(v string) *UpdateAppRequestPrivateNetworkWhiteIpGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateAppRequestPrivateNetworkWhiteIpGroup) SetIps(v []*string) *UpdateAppRequestPrivateNetworkWhiteIpGroup {
 	s.Ips = v
 	return s
 }
@@ -1218,6 +1428,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.Network)) {
 		body["network"] = request.Network
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateNetwork)) {
+		body["privateNetwork"] = request.PrivateNetwork
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.QuotaInfo)) {
@@ -1504,16 +1718,32 @@ func (client *Client) UpdateAppWithOptions(appName *string, request *UpdateAppRe
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplyReason)) {
+		body["applyReason"] = request.ApplyReason
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Authentication)) {
 		body["authentication"] = request.Authentication
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactInfo)) {
+		body["contactInfo"] = request.ContactInfo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LimiterInfo)) {
+		body["limiterInfo"] = request.LimiterInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Network)) {
 		body["network"] = request.Network
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateNetwork)) {
+		body["privateNetwork"] = request.PrivateNetwork
 	}
 
 	req := &openapi.OpenApiRequest{
