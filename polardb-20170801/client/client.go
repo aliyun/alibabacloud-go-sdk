@@ -7721,12 +7721,12 @@ func (s *DescribeDBClusterAuditLogCollectorRequest) SetResourceOwnerId(v int64) 
 }
 
 type DescribeDBClusterAuditLogCollectorResponseBody struct {
-	// The status of SQL data collector. Valid values:
+	// The status of SQL collector. Valid values:
 	//
-	// *   Enable: SQL data collector is enabled.
-	// *   Disabled: SQL data collector is disabled.
+	// *   Enable
+	// *   Disabled
 	CollectorStatus *string `json:"CollectorStatus,omitempty" xml:"CollectorStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13397,7 +13397,8 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	// *   **standby**: the secondary cluster
 	//
 	// > A GDN consists of one primary cluster and up to four secondary clusters.
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	// The storage space that is occupied by the cluster. Unit: bytes.
 	StorageUsed *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
 }
@@ -13472,6 +13473,11 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetReplicaLag(v st
 
 func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetRole(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
 	s.Role = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetServerlessType(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.ServerlessType = &v
 	return s
 }
 
@@ -14510,7 +14516,8 @@ type DescribeMetaListRequest struct {
 	// *   **100**
 	//
 	//     Default value: **30**.
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region in which the instance resides. You can call the [DescribeDBClusterAttribute](~~2319132~~) operation to query the region ID of the instance.
 	RegionCode           *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -17551,18 +17558,29 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 }
 
 type DescribeVSwitchesRequest struct {
+	// The dedicated cluster ID.
+	//
+	// >  You must specify at least one of the **VpcId** and **DedicatedHostGroupId** parameters.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The page number of the page to return. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Maximum value: 50. Default value: 50.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region where the vSwitch belongs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the vSwitch belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the virtual private type (VPC) to which the vSwitch belongs.
+	//
+	// >  You must specify at least one of the **VpcId** and **DedicatedHostGroupId** parameters.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone to which the vSwitch belongs.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeVSwitchesRequest) String() string {
@@ -17634,11 +17652,16 @@ func (s *DescribeVSwitchesRequest) SetZoneId(v string) *DescribeVSwitchesRequest
 }
 
 type DescribeVSwitchesResponseBody struct {
-	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VSwitchs   []*DescribeVSwitchesResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The details of the vSwitch.
+	VSwitchs []*DescribeVSwitchesResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -17675,14 +17698,28 @@ func (s *DescribeVSwitchesResponseBody) SetVSwitchs(v []*DescribeVSwitchesRespon
 }
 
 type DescribeVSwitchesResponseBodyVSwitchs struct {
-	AvailableIpAddressCount *int64  `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	CidrBlock               *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsDefault               *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	IzNo                    *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchName             *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// The number of available IP addresses in the vSwitch.
+	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The descriptions of the vSwitch.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The zone to which the NAT gateway belongs.
+	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The status of the vSwitch. Valid values:
+	//
+	// *   **Pending**: The vSwitch is being configured.
+	// *   **Available**: The vSwitch is available.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyVSwitchs) String() string {
@@ -17763,6 +17800,7 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 }
 
 type DisableDBClusterServerlessRequest struct {
+	// The cluster ID.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -17804,8 +17842,10 @@ func (s *DisableDBClusterServerlessRequest) SetResourceOwnerId(v int64) *Disable
 }
 
 type DisableDBClusterServerlessResponseBody struct {
+	// The ID of the serverless cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DisableDBClusterServerlessResponseBody) String() string {
@@ -17856,17 +17896,24 @@ func (s *DisableDBClusterServerlessResponse) SetBody(v *DisableDBClusterServerle
 }
 
 type EnableDBClusterServerlessRequest struct {
+	// The cluster ID.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ScaleApRoNumMax      *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
-	ScaleApRoNumMin      *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
-	ScaleMax             *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	ScaleMin             *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	ScaleRoNumMax        *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
-	ScaleRoNumMin        *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
+	// The maximum number of stable AP read-only nodes. Valid values: 0 to 7.
+	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
+	// The minimum number of stable AP read-only nodes. Valid values: 0 to 7.
+	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
+	// The maximum number of PCUs per node for scaling. Valid values: 1 to 8 PCUs.
+	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum number of PolarDB capacity units (PCUs) per node for scaling. Valid values: 1 to 8 PCUs.
+	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 7.
+	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 7.
+	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
 }
 
 func (s EnableDBClusterServerlessRequest) String() string {
@@ -17933,8 +17980,10 @@ func (s *EnableDBClusterServerlessRequest) SetScaleRoNumMin(v string) *EnableDBC
 }
 
 type EnableDBClusterServerlessResponseBody struct {
+	// The ID of the serverless cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableDBClusterServerlessResponseBody) String() string {
@@ -19483,17 +19532,46 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 }
 
 type ModifyDBClusterRequest struct {
-	CompressStorage      *string `json:"CompressStorage,omitempty" xml:"CompressStorage,omitempty"`
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DataSyncMode         *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
+	// Enable storage compression function. The value of this parameter is ON.
+	CompressStorage *string `json:"CompressStorage,omitempty" xml:"CompressStorage,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the DescribeDBClusters operation to query information about all PolarDB clusters that are deployed in a specified region, such as cluster IDs.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The method used to replicate data across zones. Valid values:
+	//
+	// *   **AsyncSync**: the asynchronous mode.
+	// *   **SemiSync**: the semi-synchronous mode.
+	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
+	// The fault scenario that you want to simulate for the cluster.
+	//
+	// *   Set the value to **0**. The value 0 indicates the scenario in which the primary zone of the cluster fails.
+	//
+	// >
+	//
+	// *   This parameter takes effect only when you set the `StandbyHAMode` parameter to 0.
+	//
+	// *   If you set this parameter to 0, all compute nodes deployed in the primary zone are unavailable. In this case, the switchover degrades the cluster performance.
 	FaultSimulateMode    *string `json:"FaultSimulateMode,omitempty" xml:"FaultSimulateMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StandbyHAMode        *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
-	StorageAutoScale     *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	StorageUpperBound    *int64  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+	// Specifies whether to enable the cross-zone automatic switchover mode. Valid values:
+	//
+	// *   **ON**: Enable the cross-zone automatic switchover mode.
+	// *   **OFF**: Disable the cross-zone automatic switchover mode.
+	// *   **0**: Enable the customer drill mode.
+	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
+	// Specifies whether to enable automatic storage scaling for the cluster of Standard Edition. Valid values:
+	//
+	// *   Enable
+	// *   Disable
+	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
+	// The maximum storage capacity of the cluster of Standard Edition in automatic scaling. Unit: GB.
+	//
+	// >  The maximum value of this parameter is 32000.
+	StorageUpperBound *int64 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
 }
 
 func (s ModifyDBClusterRequest) String() string {
@@ -19560,6 +19638,7 @@ func (s *ModifyDBClusterRequest) SetStorageUpperBound(v int64) *ModifyDBClusterR
 }
 
 type ModifyDBClusterResponseBody struct {
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
