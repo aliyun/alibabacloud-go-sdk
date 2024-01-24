@@ -3624,10 +3624,6 @@ func (client *Client) CardOcrWithOptions(request *CardOcrRequest, runtime *util.
 		query["IdFaceQuality"] = request.IdFaceQuality
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
-		query["IdOcrPictureBase64"] = request.IdOcrPictureBase64
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureUrl)) {
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
 	}
@@ -3652,8 +3648,14 @@ func (client *Client) CardOcrWithOptions(request *CardOcrRequest, runtime *util.
 		query["Spoof"] = request.Spoof
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
+		body["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CardOcr"),
