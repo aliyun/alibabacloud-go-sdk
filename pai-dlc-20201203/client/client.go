@@ -563,6 +563,7 @@ type EcsSpec struct {
 	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	IsAvailable     *bool   `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
 	Memory          *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s EcsSpec) String() string {
@@ -605,6 +606,11 @@ func (s *EcsSpec) SetIsAvailable(v bool) *EcsSpec {
 
 func (s *EcsSpec) SetMemory(v int32) *EcsSpec {
 	s.Memory = &v
+	return s
+}
+
+func (s *EcsSpec) SetResourceType(v string) *EcsSpec {
+	s.ResourceType = &v
 	return s
 }
 
@@ -1130,6 +1136,7 @@ type JobItem struct {
 	ResourceId          *string               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceLevel       *string               `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
 	ResourceName        *string               `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType        *string               `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Settings            *JobSettings          `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	Status              *string               `json:"Status,omitempty" xml:"Status,omitempty"`
 	SubStatus           *string               `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
@@ -1258,6 +1265,11 @@ func (s *JobItem) SetResourceLevel(v string) *JobItem {
 
 func (s *JobItem) SetResourceName(v string) *JobItem {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *JobItem) SetResourceType(v string) *JobItem {
+	s.ResourceType = &v
 	return s
 }
 
@@ -2962,6 +2974,7 @@ type GetJobResponseBody struct {
 	RequestId        *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceId       *string                          `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceLevel    *string                          `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	ResourceType     *string                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	RestartTimes     *string                          `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
 	Settings         *JobSettings                     `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	Status           *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -3106,6 +3119,11 @@ func (s *GetJobResponseBody) SetResourceId(v string) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetResourceLevel(v string) *GetJobResponseBody {
 	s.ResourceLevel = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetResourceType(v string) *GetJobResponseBody {
+	s.ResourceType = &v
 	return s
 }
 
@@ -4185,9 +4203,11 @@ func (s *GetWebTerminalResponse) SetBody(v *GetWebTerminalResponseBody) *GetWebT
 
 type ListEcsSpecsRequest struct {
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	InstanceTypes   *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
 	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SortBy          *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
@@ -4204,6 +4224,11 @@ func (s *ListEcsSpecsRequest) SetAcceleratorType(v string) *ListEcsSpecsRequest 
 	return s
 }
 
+func (s *ListEcsSpecsRequest) SetInstanceTypes(v string) *ListEcsSpecsRequest {
+	s.InstanceTypes = &v
+	return s
+}
+
 func (s *ListEcsSpecsRequest) SetOrder(v string) *ListEcsSpecsRequest {
 	s.Order = &v
 	return s
@@ -4216,6 +4241,11 @@ func (s *ListEcsSpecsRequest) SetPageNumber(v int32) *ListEcsSpecsRequest {
 
 func (s *ListEcsSpecsRequest) SetPageSize(v int32) *ListEcsSpecsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListEcsSpecsRequest) SetResourceType(v string) *ListEcsSpecsRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -6121,6 +6151,10 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 		query["AcceleratorType"] = request.AcceleratorType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceTypes)) {
+		query["InstanceTypes"] = request.InstanceTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
 		query["Order"] = request.Order
 	}
@@ -6131,6 +6165,10 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
