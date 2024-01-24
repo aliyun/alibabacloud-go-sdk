@@ -1356,6 +1356,71 @@ func (s *Permission) SetResourceType(v string) *Permission {
 	return s
 }
 
+type QueueInfo struct {
+	GmtEnqueuedTime         *string `json:"GmtEnqueuedTime,omitempty" xml:"GmtEnqueuedTime,omitempty"`
+	GmtPositionModifiedTime *string `json:"GmtPositionModifiedTime,omitempty" xml:"GmtPositionModifiedTime,omitempty"`
+	Position                *int64  `json:"Position,omitempty" xml:"Position,omitempty"`
+	Priority                *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	QueueStrategy           *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	QuotaId                 *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	WorkloadId              *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	WorkloadType            *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
+	WorkspaceId             *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueueInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueueInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueueInfo) SetGmtEnqueuedTime(v string) *QueueInfo {
+	s.GmtEnqueuedTime = &v
+	return s
+}
+
+func (s *QueueInfo) SetGmtPositionModifiedTime(v string) *QueueInfo {
+	s.GmtPositionModifiedTime = &v
+	return s
+}
+
+func (s *QueueInfo) SetPosition(v int64) *QueueInfo {
+	s.Position = &v
+	return s
+}
+
+func (s *QueueInfo) SetPriority(v int64) *QueueInfo {
+	s.Priority = &v
+	return s
+}
+
+func (s *QueueInfo) SetQueueStrategy(v string) *QueueInfo {
+	s.QueueStrategy = &v
+	return s
+}
+
+func (s *QueueInfo) SetQuotaId(v string) *QueueInfo {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *QueueInfo) SetWorkloadId(v string) *QueueInfo {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *QueueInfo) SetWorkloadType(v string) *QueueInfo {
+	s.WorkloadType = &v
+	return s
+}
+
+func (s *QueueInfo) SetWorkspaceId(v string) *QueueInfo {
+	s.WorkspaceId = &v
+	return s
+}
+
 type Quota struct {
 	AllocateStrategy  *string            `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
 	CreatorId         *string            `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
@@ -2766,11 +2831,12 @@ func (s *CreateQuotaResponse) SetBody(v *CreateQuotaResponseBody) *CreateQuotaRe
 }
 
 type CreateResourceGroupRequest struct {
-	ComputingResourceProvider *string  `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
-	Description               *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                      *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceType              *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	UserVpc                   *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	ComputingResourceProvider *string                          `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
+	Description               *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                      *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceType              *string                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag                       []*CreateResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserVpc                   *UserVpc                         `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 
 func (s CreateResourceGroupRequest) String() string {
@@ -2801,8 +2867,36 @@ func (s *CreateResourceGroupRequest) SetResourceType(v string) *CreateResourceGr
 	return s
 }
 
+func (s *CreateResourceGroupRequest) SetTag(v []*CreateResourceGroupRequestTag) *CreateResourceGroupRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateResourceGroupRequest) SetUserVpc(v *UserVpc) *CreateResourceGroupRequest {
 	s.UserVpc = v
+	return s
+}
+
+type CreateResourceGroupRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateResourceGroupRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceGroupRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceGroupRequestTag) SetKey(v string) *CreateResourceGroupRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequestTag) SetValue(v string) *CreateResourceGroupRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -2871,6 +2965,7 @@ type CreateTrainingJobRequest struct {
 	OutputChannels         []*CreateTrainingJobRequestOutputChannels  `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
 	RoleArn                *string                                    `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	Scheduler              *CreateTrainingJobRequestScheduler         `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
+	Settings               *CreateTrainingJobRequestSettings          `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
 	TrainingJobDescription *string                                    `json:"TrainingJobDescription,omitempty" xml:"TrainingJobDescription,omitempty"`
 	TrainingJobName        *string                                    `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
 	UserVpc                *CreateTrainingJobRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
@@ -2942,6 +3037,11 @@ func (s *CreateTrainingJobRequest) SetRoleArn(v string) *CreateTrainingJobReques
 
 func (s *CreateTrainingJobRequest) SetScheduler(v *CreateTrainingJobRequestScheduler) *CreateTrainingJobRequest {
 	s.Scheduler = v
+	return s
+}
+
+func (s *CreateTrainingJobRequest) SetSettings(v *CreateTrainingJobRequestSettings) *CreateTrainingJobRequest {
+	s.Settings = v
 	return s
 }
 
@@ -3168,7 +3268,43 @@ func (s *CreateTrainingJobRequestScheduler) SetMaxRunningTimeInSeconds(v int64) 
 	return s
 }
 
+type CreateTrainingJobRequestSettings struct {
+	AIMasterType                    *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
+	EnableErrorMonitoringInAIMaster *bool   `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	ErrorMonitoringArgs             *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
+	Priority                        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s CreateTrainingJobRequestSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobRequestSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobRequestSettings) SetAIMasterType(v string) *CreateTrainingJobRequestSettings {
+	s.AIMasterType = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestSettings) SetEnableErrorMonitoringInAIMaster(v bool) *CreateTrainingJobRequestSettings {
+	s.EnableErrorMonitoringInAIMaster = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestSettings) SetErrorMonitoringArgs(v string) *CreateTrainingJobRequestSettings {
+	s.ErrorMonitoringArgs = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestSettings) SetPriority(v int32) *CreateTrainingJobRequestSettings {
+	s.Priority = &v
+	return s
+}
+
 type CreateTrainingJobRequestUserVpc struct {
+	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
 	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
@@ -3181,6 +3317,11 @@ func (s CreateTrainingJobRequestUserVpc) String() string {
 
 func (s CreateTrainingJobRequestUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTrainingJobRequestUserVpc) SetDefaultRoute(v string) *CreateTrainingJobRequestUserVpc {
+	s.DefaultRoute = &v
+	return s
 }
 
 func (s *CreateTrainingJobRequestUserVpc) SetExtendedCIDRs(v []*string) *CreateTrainingJobRequestUserVpc {
@@ -4079,7 +4220,8 @@ func (s *GetQuotaResponse) SetBody(v *GetQuotaResponseBody) *GetQuotaResponse {
 }
 
 type GetResourceGroupRequest struct {
-	IsAIWorkspaceDataEnabled *bool `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
+	IsAIWorkspaceDataEnabled *bool                         `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
+	Tag                      []*GetResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetResourceGroupRequest) String() string {
@@ -4095,19 +4237,72 @@ func (s *GetResourceGroupRequest) SetIsAIWorkspaceDataEnabled(v bool) *GetResour
 	return s
 }
 
+func (s *GetResourceGroupRequest) SetTag(v []*GetResourceGroupRequestTag) *GetResourceGroupRequest {
+	s.Tag = v
+	return s
+}
+
+type GetResourceGroupRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetResourceGroupRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupRequestTag) SetKey(v string) *GetResourceGroupRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetResourceGroupRequestTag) SetValue(v string) *GetResourceGroupRequestTag {
+	s.Value = &v
+	return s
+}
+
+type GetResourceGroupShrinkRequest struct {
+	IsAIWorkspaceDataEnabled *bool   `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
+	TagShrink                *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetResourceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupShrinkRequest) SetIsAIWorkspaceDataEnabled(v bool) *GetResourceGroupShrinkRequest {
+	s.IsAIWorkspaceDataEnabled = &v
+	return s
+}
+
+func (s *GetResourceGroupShrinkRequest) SetTagShrink(v string) *GetResourceGroupShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
 type GetResourceGroupResponseBody struct {
-	ClusterID                 *string  `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
-	ComputingResourceProvider *string  `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
-	CreatorID                 *string  `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	GmtCreatedTime            *string  `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtModifiedTime           *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name                      *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId                 *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceType              *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status                    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportRDMA               *bool    `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
-	UserVpc                   *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
-	WorkspaceID               *string  `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
+	ClusterID                 *string                             `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
+	ComputingResourceProvider *string                             `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
+	CreatorID                 *string                             `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	Description               *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreatedTime            *string                             `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtModifiedTime           *string                             `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Name                      *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId                 *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceType              *string                             `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status                    *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportRDMA               *bool                               `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+	Tags                      []*GetResourceGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UserVpc                   *UserVpc                            `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	WorkspaceID               *string                             `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
 }
 
 func (s GetResourceGroupResponseBody) String() string {
@@ -4130,6 +4325,11 @@ func (s *GetResourceGroupResponseBody) SetComputingResourceProvider(v string) *G
 
 func (s *GetResourceGroupResponseBody) SetCreatorID(v string) *GetResourceGroupResponseBody {
 	s.CreatorID = &v
+	return s
+}
+
+func (s *GetResourceGroupResponseBody) SetDescription(v string) *GetResourceGroupResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -4168,6 +4368,11 @@ func (s *GetResourceGroupResponseBody) SetSupportRDMA(v bool) *GetResourceGroupR
 	return s
 }
 
+func (s *GetResourceGroupResponseBody) SetTags(v []*GetResourceGroupResponseBodyTags) *GetResourceGroupResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *GetResourceGroupResponseBody) SetUserVpc(v *UserVpc) *GetResourceGroupResponseBody {
 	s.UserVpc = v
 	return s
@@ -4175,6 +4380,29 @@ func (s *GetResourceGroupResponseBody) SetUserVpc(v *UserVpc) *GetResourceGroupR
 
 func (s *GetResourceGroupResponseBody) SetWorkspaceID(v string) *GetResourceGroupResponseBody {
 	s.WorkspaceID = &v
+	return s
+}
+
+type GetResourceGroupResponseBodyTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetResourceGroupResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupResponseBodyTags) SetTagKey(v string) *GetResourceGroupResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetResourceGroupResponseBodyTags) SetTagValue(v string) *GetResourceGroupResponseBodyTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -4207,26 +4435,85 @@ func (s *GetResourceGroupResponse) SetBody(v *GetResourceGroupResponseBody) *Get
 	return s
 }
 
+type GetResourceGroupMachineGroupRequest struct {
+	Tag []*GetResourceGroupMachineGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceGroupMachineGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupMachineGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupMachineGroupRequest) SetTag(v []*GetResourceGroupMachineGroupRequestTag) *GetResourceGroupMachineGroupRequest {
+	s.Tag = v
+	return s
+}
+
+type GetResourceGroupMachineGroupRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetResourceGroupMachineGroupRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupMachineGroupRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupMachineGroupRequestTag) SetKey(v string) *GetResourceGroupMachineGroupRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupRequestTag) SetValue(v string) *GetResourceGroupMachineGroupRequestTag {
+	s.Value = &v
+	return s
+}
+
+type GetResourceGroupMachineGroupShrinkRequest struct {
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetResourceGroupMachineGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupMachineGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupMachineGroupShrinkRequest) SetTagShrink(v string) *GetResourceGroupMachineGroupShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
 type GetResourceGroupMachineGroupResponseBody struct {
-	Cpu                 *string   `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	DefaultDriver       *string   `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
-	EcsCount            *int64    `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsSpec             *string   `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	GmtCreatedTime      *string   `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtExpiredTime      *string   `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
-	GmtModifiedTime     *string   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	GmtStartedTime      *string   `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
-	Gpu                 *string   `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuType             *string   `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
-	MachineGroupID      *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	Memory              *string   `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	PaymentDuration     *string   `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	PaymentDurationUnit *string   `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	PaymentType         *string   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	RequestId           *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupID     *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportedDrivers    []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
+	Cpu                 *string                                         `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DefaultDriver       *string                                         `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
+	EcsCount            *int64                                          `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec             *string                                         `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	GmtCreatedTime      *string                                         `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtExpiredTime      *string                                         `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	GmtModifiedTime     *string                                         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtStartedTime      *string                                         `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
+	Gpu                 *string                                         `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuType             *string                                         `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	MachineGroupID      *string                                         `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	Memory              *string                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Name                *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	PaymentDuration     *string                                         `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	PaymentDurationUnit *string                                         `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	PaymentType         *string                                         `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	RequestId           *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupID     *string                                         `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	Status              *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportedDrivers    []*string                                       `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
+	Tags                []*GetResourceGroupMachineGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetResourceGroupMachineGroupResponseBody) String() string {
@@ -4297,6 +4584,11 @@ func (s *GetResourceGroupMachineGroupResponseBody) SetMemory(v string) *GetResou
 	return s
 }
 
+func (s *GetResourceGroupMachineGroupResponseBody) SetName(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.Name = &v
+	return s
+}
+
 func (s *GetResourceGroupMachineGroupResponseBody) SetPaymentDuration(v string) *GetResourceGroupMachineGroupResponseBody {
 	s.PaymentDuration = &v
 	return s
@@ -4329,6 +4621,34 @@ func (s *GetResourceGroupMachineGroupResponseBody) SetStatus(v string) *GetResou
 
 func (s *GetResourceGroupMachineGroupResponseBody) SetSupportedDrivers(v []*string) *GetResourceGroupMachineGroupResponseBody {
 	s.SupportedDrivers = v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetTags(v []*GetResourceGroupMachineGroupResponseBodyTags) *GetResourceGroupMachineGroupResponseBody {
+	s.Tags = v
+	return s
+}
+
+type GetResourceGroupMachineGroupResponseBodyTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetResourceGroupMachineGroupResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupMachineGroupResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupMachineGroupResponseBodyTags) SetTagKey(v string) *GetResourceGroupMachineGroupResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBodyTags) SetTagValue(v string) *GetResourceGroupMachineGroupResponseBodyTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -4552,6 +4872,7 @@ type GetTrainingJobResponseBody struct {
 	RequestId              *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoleArn                *string                                        `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	Scheduler              *GetTrainingJobResponseBodyScheduler           `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
+	Settings               *GetTrainingJobResponseBodySettings            `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
 	Status                 *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusTransitions      []*GetTrainingJobResponseBodyStatusTransitions `json:"StatusTransitions,omitempty" xml:"StatusTransitions,omitempty" type:"Repeated"`
 	TrainingJobDescription *string                                        `json:"TrainingJobDescription,omitempty" xml:"TrainingJobDescription,omitempty"`
@@ -4678,6 +4999,11 @@ func (s *GetTrainingJobResponseBody) SetRoleArn(v string) *GetTrainingJobRespons
 
 func (s *GetTrainingJobResponseBody) SetScheduler(v *GetTrainingJobResponseBodyScheduler) *GetTrainingJobResponseBody {
 	s.Scheduler = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetSettings(v *GetTrainingJobResponseBodySettings) *GetTrainingJobResponseBody {
+	s.Settings = v
 	return s
 }
 
@@ -5076,6 +5402,41 @@ func (s GetTrainingJobResponseBodyScheduler) GoString() string {
 
 func (s *GetTrainingJobResponseBodyScheduler) SetMaxRunningTimeInSeconds(v int64) *GetTrainingJobResponseBodyScheduler {
 	s.MaxRunningTimeInSeconds = &v
+	return s
+}
+
+type GetTrainingJobResponseBodySettings struct {
+	AIMasterType                    *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
+	EnableErrorMonitoringInAIMaster *bool   `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	ErrorMonitoringArgs             *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
+	Priority                        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodySettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodySettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodySettings) SetAIMasterType(v string) *GetTrainingJobResponseBodySettings {
+	s.AIMasterType = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodySettings) SetEnableErrorMonitoringInAIMaster(v bool) *GetTrainingJobResponseBodySettings {
+	s.EnableErrorMonitoringInAIMaster = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodySettings) SetErrorMonitoringArgs(v string) *GetTrainingJobResponseBodySettings {
+	s.ErrorMonitoringArgs = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodySettings) SetPriority(v int32) *GetTrainingJobResponseBodySettings {
+	s.Priority = &v
 	return s
 }
 
@@ -5613,6 +5974,7 @@ func (s *ListAlgorithmsResponse) SetBody(v *ListAlgorithmsResponseBody) *ListAlg
 
 type ListQuotasRequest struct {
 	Labels        *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LayoutMode    *string `json:"LayoutMode,omitempty" xml:"LayoutMode,omitempty"`
 	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -5635,6 +5997,11 @@ func (s ListQuotasRequest) GoString() string {
 
 func (s *ListQuotasRequest) SetLabels(v string) *ListQuotasRequest {
 	s.Labels = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetLayoutMode(v string) *ListQuotasRequest {
+	s.LayoutMode = &v
 	return s
 }
 
@@ -6844,6 +7211,7 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) SetStatus(v 
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsUserVpc struct {
+	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
 	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
@@ -6856,6 +7224,11 @@ func (s ListTrainingJobsResponseBodyTrainingJobsUserVpc) String() string {
 
 func (s ListTrainingJobsResponseBodyTrainingJobsUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsUserVpc) SetDefaultRoute(v string) *ListTrainingJobsResponseBodyTrainingJobsUserVpc {
+	s.DefaultRoute = &v
+	return s
 }
 
 func (s *ListTrainingJobsResponseBodyTrainingJobsUserVpc) SetExtendedCIDRs(v []*string) *ListTrainingJobsResponseBodyTrainingJobsUserVpc {
@@ -7191,8 +7564,9 @@ func (s *UpdateAlgorithmVersionResponse) SetBody(v *UpdateAlgorithmVersionRespon
 }
 
 type UpdateQuotaRequest struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Labels      []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Description   *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels        []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	QueueStrategy *string  `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
 }
 
 func (s UpdateQuotaRequest) String() string {
@@ -7210,6 +7584,11 @@ func (s *UpdateQuotaRequest) SetDescription(v string) *UpdateQuotaRequest {
 
 func (s *UpdateQuotaRequest) SetLabels(v []*Label) *UpdateQuotaRequest {
 	s.Labels = v
+	return s
+}
+
+func (s *UpdateQuotaRequest) SetQueueStrategy(v string) *UpdateQuotaRequest {
+	s.QueueStrategy = &v
 	return s
 }
 
@@ -7267,8 +7646,10 @@ func (s *UpdateQuotaResponse) SetBody(v *UpdateQuotaResponseBody) *UpdateQuotaRe
 }
 
 type UpdateResourceGroupRequest struct {
-	Unbind  *bool    `json:"Unbind,omitempty" xml:"Unbind,omitempty"`
-	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Unbind      *bool    `json:"Unbind,omitempty" xml:"Unbind,omitempty"`
+	UserVpc     *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 
 func (s UpdateResourceGroupRequest) String() string {
@@ -7277,6 +7658,16 @@ func (s UpdateResourceGroupRequest) String() string {
 
 func (s UpdateResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateResourceGroupRequest) SetDescription(v string) *UpdateResourceGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateResourceGroupRequest) SetName(v string) *UpdateResourceGroupRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *UpdateResourceGroupRequest) SetUnbind(v bool) *UpdateResourceGroupRequest {
@@ -7706,6 +8097,10 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 		body["ResourceType"] = request.ResourceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
 		body["UserVpc"] = request.UserVpc
 	}
@@ -7798,6 +8193,10 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 
 	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
 		body["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Settings)) {
+		body["Settings"] = request.Settings
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrainingJobDescription)) {
@@ -8202,14 +8601,24 @@ func (client *Client) GetQuota(QuotaId *string) (_result *GetQuotaResponse, _err
 	return _result, _err
 }
 
-func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, request *GetResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, tmpReq *GetResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetResourceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IsAIWorkspaceDataEnabled)) {
 		query["IsAIWorkspaceDataEnabled"] = request.IsAIWorkspaceDataEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8248,9 +8657,25 @@ func (client *Client) GetResourceGroup(ResourceGroupID *string, request *GetReso
 	return _result, _err
 }
 
-func (client *Client) GetResourceGroupMachineGroupWithOptions(MachineGroupID *string, ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupMachineGroupResponse, _err error) {
+func (client *Client) GetResourceGroupMachineGroupWithOptions(MachineGroupID *string, ResourceGroupID *string, tmpReq *GetResourceGroupMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupMachineGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetResourceGroupMachineGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResourceGroupMachineGroup"),
@@ -8272,11 +8697,11 @@ func (client *Client) GetResourceGroupMachineGroupWithOptions(MachineGroupID *st
 	return _result, _err
 }
 
-func (client *Client) GetResourceGroupMachineGroup(MachineGroupID *string, ResourceGroupID *string) (_result *GetResourceGroupMachineGroupResponse, _err error) {
+func (client *Client) GetResourceGroupMachineGroup(MachineGroupID *string, ResourceGroupID *string, request *GetResourceGroupMachineGroupRequest) (_result *GetResourceGroupMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetResourceGroupMachineGroupResponse{}
-	_body, _err := client.GetResourceGroupMachineGroupWithOptions(MachineGroupID, ResourceGroupID, headers, runtime)
+	_body, _err := client.GetResourceGroupMachineGroupWithOptions(MachineGroupID, ResourceGroupID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8610,6 +9035,10 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutMode)) {
+		query["LayoutMode"] = request.LayoutMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
@@ -9290,6 +9719,10 @@ func (client *Client) UpdateQuotaWithOptions(QuotaId *string, request *UpdateQuo
 		body["Labels"] = request.Labels
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QueueStrategy)) {
+		body["QueueStrategy"] = request.QueueStrategy
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -9332,6 +9765,14 @@ func (client *Client) UpdateResourceGroupWithOptions(ResourceGroupID *string, re
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Unbind)) {
 		body["Unbind"] = request.Unbind
 	}
