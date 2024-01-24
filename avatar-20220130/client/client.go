@@ -3840,6 +3840,7 @@ type StartInstanceRequest struct {
 	Channel        *StartInstanceRequestChannel        `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Struct"`
 	CommandRequest *StartInstanceRequestCommandRequest `json:"CommandRequest,omitempty" xml:"CommandRequest,omitempty" type:"Struct"`
 	TenantId       *int64                              `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TextRequest    *StartInstanceRequestTextRequest    `json:"TextRequest,omitempty" xml:"TextRequest,omitempty" type:"Struct"`
 	User           *StartInstanceRequestUser           `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -3873,6 +3874,11 @@ func (s *StartInstanceRequest) SetCommandRequest(v *StartInstanceRequestCommandR
 
 func (s *StartInstanceRequest) SetTenantId(v int64) *StartInstanceRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *StartInstanceRequest) SetTextRequest(v *StartInstanceRequestTextRequest) *StartInstanceRequest {
+	s.TextRequest = v
 	return s
 }
 
@@ -3922,7 +3928,9 @@ func (s *StartInstanceRequestChannel) SetType(v string) *StartInstanceRequestCha
 }
 
 type StartInstanceRequestCommandRequest struct {
-	AlphaSwitch *bool `json:"AlphaSwitch,omitempty" xml:"AlphaSwitch,omitempty"`
+	AlphaSwitch        *bool   `json:"AlphaSwitch,omitempty" xml:"AlphaSwitch,omitempty"`
+	BackGroundImageUrl *string `json:"BackGroundImageUrl,omitempty" xml:"BackGroundImageUrl,omitempty"`
+	Locate             *int32  `json:"Locate,omitempty" xml:"Locate,omitempty"`
 }
 
 func (s StartInstanceRequestCommandRequest) String() string {
@@ -3935,6 +3943,51 @@ func (s StartInstanceRequestCommandRequest) GoString() string {
 
 func (s *StartInstanceRequestCommandRequest) SetAlphaSwitch(v bool) *StartInstanceRequestCommandRequest {
 	s.AlphaSwitch = &v
+	return s
+}
+
+func (s *StartInstanceRequestCommandRequest) SetBackGroundImageUrl(v string) *StartInstanceRequestCommandRequest {
+	s.BackGroundImageUrl = &v
+	return s
+}
+
+func (s *StartInstanceRequestCommandRequest) SetLocate(v int32) *StartInstanceRequestCommandRequest {
+	s.Locate = &v
+	return s
+}
+
+type StartInstanceRequestTextRequest struct {
+	PitchRate  *int32  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume     *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s StartInstanceRequestTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstanceRequestTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstanceRequestTextRequest) SetPitchRate(v int32) *StartInstanceRequestTextRequest {
+	s.PitchRate = &v
+	return s
+}
+
+func (s *StartInstanceRequestTextRequest) SetSpeechRate(v int32) *StartInstanceRequestTextRequest {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *StartInstanceRequestTextRequest) SetVoice(v string) *StartInstanceRequestTextRequest {
+	s.Voice = &v
+	return s
+}
+
+func (s *StartInstanceRequestTextRequest) SetVolume(v int32) *StartInstanceRequestTextRequest {
+	s.Volume = &v
 	return s
 }
 
@@ -3967,6 +4020,7 @@ type StartInstanceShrinkRequest struct {
 	ChannelShrink        *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	CommandRequestShrink *string `json:"CommandRequest,omitempty" xml:"CommandRequest,omitempty"`
 	TenantId             *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TextRequestShrink    *string `json:"TextRequest,omitempty" xml:"TextRequest,omitempty"`
 	UserShrink           *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -4000,6 +4054,11 @@ func (s *StartInstanceShrinkRequest) SetCommandRequestShrink(v string) *StartIns
 
 func (s *StartInstanceShrinkRequest) SetTenantId(v int64) *StartInstanceShrinkRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *StartInstanceShrinkRequest) SetTextRequestShrink(v string) *StartInstanceShrinkRequest {
+	s.TextRequestShrink = &v
 	return s
 }
 
@@ -7593,6 +7652,10 @@ func (client *Client) StartInstanceWithOptions(tmpReq *StartInstanceRequest, run
 		request.CommandRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommandRequest, tea.String("CommandRequest"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TextRequest)) {
+		request.TextRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TextRequest, tea.String("TextRequest"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.User)) {
 		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.User, tea.String("User"), tea.String("json"))
 	}
@@ -7616,6 +7679,10 @@ func (client *Client) StartInstanceWithOptions(tmpReq *StartInstanceRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
 		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextRequestShrink)) {
+		query["TextRequest"] = request.TextRequestShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserShrink)) {
