@@ -4016,6 +4016,188 @@ func (s *QueryBenefitGrantResultResponse) SetBody(v *QueryBenefitGrantResultResp
 	return s
 }
 
+type QueryFinanceUserInfoRequest struct {
+	ActivityId *int64 `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	UserId     *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryFinanceUserInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFinanceUserInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFinanceUserInfoRequest) SetActivityId(v int64) *QueryFinanceUserInfoRequest {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoRequest) SetUserId(v int64) *QueryFinanceUserInfoRequest {
+	s.UserId = &v
+	return s
+}
+
+type QueryFinanceUserInfoResponseBody struct {
+	ErrorCode *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Ext       map[string]*string                      `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Header    *QueryFinanceUserInfoResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Result    *QueryFinanceUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryFinanceUserInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFinanceUserInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFinanceUserInfoResponseBody) SetErrorCode(v string) *QueryFinanceUserInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBody) SetErrorMsg(v string) *QueryFinanceUserInfoResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBody) SetExt(v map[string]*string) *QueryFinanceUserInfoResponseBody {
+	s.Ext = v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBody) SetHeader(v *QueryFinanceUserInfoResponseBodyHeader) *QueryFinanceUserInfoResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBody) SetResult(v *QueryFinanceUserInfoResponseBodyResult) *QueryFinanceUserInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBody) SetSuccess(v bool) *QueryFinanceUserInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryFinanceUserInfoResponseBodyHeader struct {
+	CostTime       *int64  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	InnerErrorCode *string `json:"InnerErrorCode,omitempty" xml:"InnerErrorCode,omitempty"`
+	InnerErrorMsg  *string `json:"InnerErrorMsg,omitempty" xml:"InnerErrorMsg,omitempty"`
+	// RPC ID
+	RpcId   *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s QueryFinanceUserInfoResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFinanceUserInfoResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFinanceUserInfoResponseBodyHeader) SetCostTime(v int64) *QueryFinanceUserInfoResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBodyHeader) SetInnerErrorCode(v string) *QueryFinanceUserInfoResponseBodyHeader {
+	s.InnerErrorCode = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBodyHeader) SetInnerErrorMsg(v string) *QueryFinanceUserInfoResponseBodyHeader {
+	s.InnerErrorMsg = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBodyHeader) SetRpcId(v string) *QueryFinanceUserInfoResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBodyHeader) SetTraceId(v string) *QueryFinanceUserInfoResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBodyHeader) SetVersion(v string) *QueryFinanceUserInfoResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type QueryFinanceUserInfoResponseBodyResult struct {
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalIncomeAmount     *int64  `json:"TotalIncomeAmount,omitempty" xml:"TotalIncomeAmount,omitempty"`
+	UserPageType          *string `json:"UserPageType,omitempty" xml:"UserPageType,omitempty"`
+	YesterdayIncomeAmount *int64  `json:"YesterdayIncomeAmount,omitempty" xml:"YesterdayIncomeAmount,omitempty"`
+}
+
+func (s QueryFinanceUserInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFinanceUserInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFinanceUserInfoResponseBodyResult) SetRequestId(v string) *QueryFinanceUserInfoResponseBodyResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBodyResult) SetTotalIncomeAmount(v int64) *QueryFinanceUserInfoResponseBodyResult {
+	s.TotalIncomeAmount = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBodyResult) SetUserPageType(v string) *QueryFinanceUserInfoResponseBodyResult {
+	s.UserPageType = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponseBodyResult) SetYesterdayIncomeAmount(v int64) *QueryFinanceUserInfoResponseBodyResult {
+	s.YesterdayIncomeAmount = &v
+	return s
+}
+
+type QueryFinanceUserInfoResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryFinanceUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryFinanceUserInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFinanceUserInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFinanceUserInfoResponse) SetHeaders(v map[string]*string) *QueryFinanceUserInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponse) SetStatusCode(v int32) *QueryFinanceUserInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryFinanceUserInfoResponse) SetBody(v *QueryFinanceUserInfoResponseBody) *QueryFinanceUserInfoResponse {
+	s.Body = v
+	return s
+}
+
 type QueryOrderRequest struct {
 	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	ChannelTradeId *string `json:"ChannelTradeId,omitempty" xml:"ChannelTradeId,omitempty"`
@@ -7068,6 +7250,54 @@ func (client *Client) QueryBenefitGrantResult(request *QueryBenefitGrantResultRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBenefitGrantResultResponse{}
 	_body, _err := client.QueryBenefitGrantResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryFinanceUserInfoWithOptions(request *QueryFinanceUserInfoRequest, runtime *util.RuntimeOptions) (_result *QueryFinanceUserInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActivityId)) {
+		body["ActivityId"] = request.ActivityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryFinanceUserInfo"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryFinanceUserInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryFinanceUserInfo(request *QueryFinanceUserInfoRequest) (_result *QueryFinanceUserInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryFinanceUserInfoResponse{}
+	_body, _err := client.QueryFinanceUserInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
