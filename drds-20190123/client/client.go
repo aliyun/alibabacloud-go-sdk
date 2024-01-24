@@ -13,9 +13,12 @@ import (
 )
 
 type ChangeAccountPasswordRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The name of the member account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The new password.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
 func (s ChangeAccountPasswordRequest) String() string {
@@ -42,8 +45,10 @@ func (s *ChangeAccountPasswordRequest) SetPassword(v string) *ChangeAccountPassw
 }
 
 type ChangeAccountPasswordResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeAccountPasswordResponseBody) String() string {
@@ -94,10 +99,16 @@ func (s *ChangeAccountPasswordResponse) SetBody(v *ChangeAccountPasswordResponse
 }
 
 type ChangeInstanceAzoneRequest struct {
+	ChangeVSwitch *bool `json:"ChangeVSwitch,omitempty" xml:"ChangeVSwitch,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	DrdsRegionId   *string `json:"DrdsRegionId,omitempty" xml:"DrdsRegionId,omitempty"`
-	OriginAzoneId  *string `json:"OriginAzoneId,omitempty" xml:"OriginAzoneId,omitempty"`
-	TargetAzoneId  *string `json:"TargetAzoneId,omitempty" xml:"TargetAzoneId,omitempty"`
+	// The ID of the region.
+	DrdsRegionId *string `json:"DrdsRegionId,omitempty" xml:"DrdsRegionId,omitempty"`
+	NewVSwitch   *string `json:"NewVSwitch,omitempty" xml:"NewVSwitch,omitempty"`
+	// The source zone of the PolarDB-X 1.0 instance.
+	OriginAzoneId *string `json:"OriginAzoneId,omitempty" xml:"OriginAzoneId,omitempty"`
+	// The destination zone to which you want to modify
+	TargetAzoneId *string `json:"TargetAzoneId,omitempty" xml:"TargetAzoneId,omitempty"`
 }
 
 func (s ChangeInstanceAzoneRequest) String() string {
@@ -108,6 +119,11 @@ func (s ChangeInstanceAzoneRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChangeInstanceAzoneRequest) SetChangeVSwitch(v bool) *ChangeInstanceAzoneRequest {
+	s.ChangeVSwitch = &v
+	return s
+}
+
 func (s *ChangeInstanceAzoneRequest) SetDrdsInstanceId(v string) *ChangeInstanceAzoneRequest {
 	s.DrdsInstanceId = &v
 	return s
@@ -115,6 +131,11 @@ func (s *ChangeInstanceAzoneRequest) SetDrdsInstanceId(v string) *ChangeInstance
 
 func (s *ChangeInstanceAzoneRequest) SetDrdsRegionId(v string) *ChangeInstanceAzoneRequest {
 	s.DrdsRegionId = &v
+	return s
+}
+
+func (s *ChangeInstanceAzoneRequest) SetNewVSwitch(v string) *ChangeInstanceAzoneRequest {
+	s.NewVSwitch = &v
 	return s
 }
 
@@ -129,8 +150,10 @@ func (s *ChangeInstanceAzoneRequest) SetTargetAzoneId(v string) *ChangeInstanceA
 }
 
 type ChangeInstanceAzoneResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeInstanceAzoneResponseBody) String() string {
@@ -181,7 +204,9 @@ func (s *ChangeInstanceAzoneResponse) SetBody(v *ChangeInstanceAzoneResponseBody
 }
 
 type CheckDrdsDbNameRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// DRDS database name
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// DRDS instance ID
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -204,9 +229,12 @@ func (s *CheckDrdsDbNameRequest) SetDrdsInstanceId(v string) *CheckDrdsDbNameReq
 }
 
 type CheckDrdsDbNameResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the DRDS database name is valid. Valid values: true: The database name is valid. false: the database name is invalid.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckDrdsDbNameResponseBody) String() string {
@@ -262,7 +290,9 @@ func (s *CheckDrdsDbNameResponse) SetBody(v *CheckDrdsDbNameResponseBody) *Check
 }
 
 type CheckExpandStatusRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the PolarDB-X database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -285,9 +315,12 @@ func (s *CheckExpandStatusRequest) SetDrdsInstanceId(v string) *CheckExpandStatu
 }
 
 type CheckExpandStatusResponseBody struct {
-	Data      *CheckExpandStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result of the verification.
+	Data *CheckExpandStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckExpandStatusResponseBody) String() string {
@@ -314,8 +347,10 @@ func (s *CheckExpandStatusResponseBody) SetSuccess(v bool) *CheckExpandStatusRes
 }
 
 type CheckExpandStatusResponseBodyData struct {
-	IsActive *bool   `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
-	Msg      *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Indicates whether scale-out operations can be performed on the database.
+	IsActive *bool `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
+	// The additional information.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 }
 
 func (s CheckExpandStatusResponseBodyData) String() string {
@@ -366,7 +401,9 @@ func (s *CheckExpandStatusResponse) SetBody(v *CheckExpandStatusResponseBody) *C
 }
 
 type CheckSqlAuditEnableStatusRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -389,9 +426,15 @@ func (s *CheckSqlAuditEnableStatusRequest) SetDrdsInstanceId(v string) *CheckSql
 }
 
 type CheckSqlAuditEnableStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status of the SQL audit feature. Valid values:
+	//
+	// *   enabled: The SQL audit feature is enabled.
+	// *   disabled: The SQL audit feature is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckSqlAuditEnableStatusResponseBody) String() string {
@@ -447,17 +490,30 @@ func (s *CheckSqlAuditEnableStatusResponse) SetBody(v *CheckSqlAuditEnableStatus
 }
 
 type CreateDrdsDBRequest struct {
-	AccountName          *string                               `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbInstType           *string                               `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DbInstanceIsCreating *bool                                 `json:"DbInstanceIsCreating,omitempty" xml:"DbInstanceIsCreating,omitempty"`
-	DbName               *string                               `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId       *string                               `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Encode               *string                               `json:"Encode,omitempty" xml:"Encode,omitempty"`
-	InstDbName           []*CreateDrdsDBRequestInstDbName      `json:"InstDbName,omitempty" xml:"InstDbName,omitempty" type:"Repeated"`
-	Password             *string                               `json:"Password,omitempty" xml:"Password,omitempty"`
-	RdsInstance          []*string                             `json:"RdsInstance,omitempty" xml:"RdsInstance,omitempty" type:"Repeated"`
-	RdsSuperAccount      []*CreateDrdsDBRequestRdsSuperAccount `json:"RdsSuperAccount,omitempty" xml:"RdsSuperAccount,omitempty" type:"Repeated"`
-	Type                 *string                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the account that has permissions to access all databases on the ApsaraDB RDS for MySQL instance.
+	//
+	// This parameter is required only when the Type parameter is set to VERTICAL.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The type of the storage instances that are used by the PolarDB-X 1.0 database. Set the value to RDS.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// Specifies whether the required ApsaraDB RDS for MySQL instance is being created.
+	DbInstanceIsCreating *bool `json:"DbInstanceIsCreating,omitempty" xml:"DbInstanceIsCreating,omitempty"`
+	// The name of the PolarDB-X 1.0 database you want to create.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance on which you want to create the database.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The encoding method that is used by the database.
+	Encode     *string                          `json:"Encode,omitempty" xml:"Encode,omitempty"`
+	InstDbName []*CreateDrdsDBRequestInstDbName `json:"InstDbName,omitempty" xml:"InstDbName,omitempty" type:"Repeated"`
+	// The password that is used to log on to the database.
+	Password        *string                               `json:"Password,omitempty" xml:"Password,omitempty"`
+	RdsInstance     []*string                             `json:"RdsInstance,omitempty" xml:"RdsInstance,omitempty" type:"Repeated"`
+	RdsSuperAccount []*CreateDrdsDBRequestRdsSuperAccount `json:"RdsSuperAccount,omitempty" xml:"RdsSuperAccount,omitempty" type:"Repeated"`
+	// The partitioning mode of the database. Valid values:
+	//
+	// *   **HORIZONTAL**: The database is horizontally partitioned (sharded).
+	// *   **VERTICAL**: The database is vertically partitioned.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateDrdsDBRequest) String() string {
@@ -524,6 +580,7 @@ func (s *CreateDrdsDBRequest) SetType(v string) *CreateDrdsDBRequest {
 }
 
 type CreateDrdsDBRequestInstDbName struct {
+	// The ID of the ApsaraDB RDS for MySQL instance on which the databases need to be vertically partitioned. This parameter is required only when the Type parameter is set to VERTICAL.
 	DbInstanceId *string   `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	ShardDbName  []*string `json:"ShardDbName,omitempty" xml:"ShardDbName,omitempty" type:"Repeated"`
 }
@@ -547,9 +604,12 @@ func (s *CreateDrdsDBRequestInstDbName) SetShardDbName(v []*string) *CreateDrdsD
 }
 
 type CreateDrdsDBRequestRdsSuperAccount struct {
-	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The account name of the super administrator that is used to connect to the ApsaraDB RDS for MySQL instance.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The ID of ApsaraDB RDS instance.
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The password of the super administrator account that is used to connect to the ApsaraDB RDS instance.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
 func (s CreateDrdsDBRequestRdsSuperAccount) String() string {
@@ -576,8 +636,10 @@ func (s *CreateDrdsDBRequestRdsSuperAccount) SetPassword(v string) *CreateDrdsDB
 }
 
 type CreateDrdsDBResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDrdsDBResponseBody) String() string {
@@ -628,24 +690,76 @@ func (s *CreateDrdsDBResponse) SetBody(v *CreateDrdsDBResponseBody) *CreateDrdsD
 }
 
 type CreateDrdsInstanceRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Duration        *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceSeries  *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
-	IsAutoRenew     *bool   `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
-	MasterInstId    *string `json:"MasterInstId,omitempty" xml:"MasterInstId,omitempty"`
-	MySQLVersion    *int32  `json:"MySQLVersion,omitempty" xml:"MySQLVersion,omitempty"`
-	PayType         *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PricingCycle    *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Quantity        *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies the client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies the description of the instance. The description must meet the following requirements:
+	//
+	// *   The description cannot contain the prefix http:// or https://.
+	// *   The description must start with a letter or a Chinese character, and can contain uppercase and lowercase letters, Chinese characters, digits, underscores (\_), and hyphens (-).
+	// *   The description must be 2 to 256 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies the purchase duration of the subscription instance.
+	//
+	// *   If the PricingCycle parameter is set to year, the value range of the Duration parameter is 1 to 3.
+	// *   If the PricingCycle parameter is set to month, the value range of the Duration parameter is 1 to 9.
+	//
+	// >  This parameter only takes effect when the PayType parameter is set to drdsPre.
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Specifies the instance type of the instance. Valid values:
+	//
+	// *   **drds.sn2.4c16g**: The instance is of the Starter Edition.
+	// *   **drds.sn2.8c32g**: The instance is of the Standard Edition
+	// *   **drds.sn2.16c64g**: The instance is of the Enterprise Edition.
+	InstanceSeries *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
+	// Specifies whether to enable automatic renewal. Valid values:
+	//
+	// *   **true**: If the PricingCycle parameter is set to month, the subscription is automatically renewed for one month. If the PricingCycle parameter is set to year, the subscription is automatically renewed for one year.
+	// *   **false**: The auto-renewal feature is disabled for the instance.
+	//
+	// >  This parameter only takes effect when the PayType parameter is set to drdsPre.
+	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// Specifies the ID of the primary instance. This parameter is only required when you create a read-only instance.
+	MasterInstId *string `json:"MasterInstId,omitempty" xml:"MasterInstId,omitempty"`
+	// Specifies the MySQL version that is supported by the instance. Valid values:
+	//
+	// *   **5**: The instance is fully compatible with MySQL 5.x. This value is the default value.
+	// *   **8**: The instance is fully compatible with MySQL 8.0.
+	//
+	// >  This parameter only takes effect when you create a primary instance. By default, the MySQL version of the read-only instance is the same as that of the primary instance.
+	MySQLVersion *int32 `json:"MySQLVersion,omitempty" xml:"MySQLVersion,omitempty"`
+	// Specifies the billing method of the instance. Valid values:
+	//
+	// *   **drdsPre**: The instance uses the subscription billing method.
+	// *   **drdsPost**: The instance uses the pay-as-you-go billing method.
+	// *   **drdsRo**: By default, the pay-as-you-go billing method is used when you create read-only instances.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Specifies the unit of the subscription duration of the subscription instance. Valid values:
+	//
+	// *   **year**: The unit of the subscription duration is year.
+	// *   **month**: The unit of the subscription duration is month.
+	//
+	// >  This parameter is required if you set the PayType parameter to drdsPre.
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// Specifies the number of instances to be created. You can set the value only to 1. The value specifies that you can create one instance each time.
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// Specifies the region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies the ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Specification   *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId       *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	IsHa            *bool   `json:"isHa,omitempty" xml:"isHa,omitempty"`
+	// Specifies the specification code of the instance. The value consists of the instance type and the specified instance specification. For example, you can set the value to drds.sn2.4c16g.8c32g.
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// Specifies the type of the instance. Set the value to PRIVATE. The value PRIVATE specifies that the instance is a dedicated instance.
+	//
+	// >  You can also set the value to 1 to specify that the instance is a dedicated instance.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Specifies the ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Specifies the ID of the vSwitch.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// Specifies the zone ID of the instance.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Specifies whether the instance is a high-availability instance.
+	IsHa *bool `json:"isHa,omitempty" xml:"isHa,omitempty"`
 }
 
 func (s CreateDrdsInstanceRequest) String() string {
@@ -747,9 +861,12 @@ func (s *CreateDrdsInstanceRequest) SetIsHa(v bool) *CreateDrdsInstanceRequest {
 }
 
 type CreateDrdsInstanceResponseBody struct {
-	Data      *CreateDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the details of the result.
+	Data *CreateDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDrdsInstanceResponseBody) String() string {
@@ -776,8 +893,10 @@ func (s *CreateDrdsInstanceResponseBody) SetSuccess(v bool) *CreateDrdsInstanceR
 }
 
 type CreateDrdsInstanceResponseBodyData struct {
+	// Indicates the ID of the instance.
 	DrdsInstanceIdList *CreateDrdsInstanceResponseBodyDataDrdsInstanceIdList `json:"DrdsInstanceIdList,omitempty" xml:"DrdsInstanceIdList,omitempty" type:"Struct"`
-	OrderId            *int64                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Indicates the ID of the order.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateDrdsInstanceResponseBodyData) String() string {
@@ -845,10 +964,13 @@ func (s *CreateDrdsInstanceResponse) SetBody(v *CreateDrdsInstanceResponseBody) 
 }
 
 type CreateInstanceAccountRequest struct {
-	AccountName    *string                                    `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbPrivilege    []*CreateInstanceAccountRequestDbPrivilege `json:"DbPrivilege,omitempty" xml:"DbPrivilege,omitempty" type:"Repeated"`
-	DrdsInstanceId *string                                    `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Password       *string                                    `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The username of the account you want to create.
+	AccountName *string                                    `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DbPrivilege []*CreateInstanceAccountRequestDbPrivilege `json:"DbPrivilege,omitempty" xml:"DbPrivilege,omitempty" type:"Repeated"`
+	// The ID of the PolarDB-X 1.0 instance for which you want to create the account.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The password of the account you want to create.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
 func (s CreateInstanceAccountRequest) String() string {
@@ -880,7 +1002,9 @@ func (s *CreateInstanceAccountRequest) SetPassword(v string) *CreateInstanceAcco
 }
 
 type CreateInstanceAccountRequestDbPrivilege struct {
-	DbName    *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database that you want to manage by using the account to create.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The permissions that you want to grant to the account to manage the database.
 	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
 }
 
@@ -903,8 +1027,10 @@ func (s *CreateInstanceAccountRequestDbPrivilege) SetPrivilege(v string) *Create
 }
 
 type CreateInstanceAccountResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceAccountResponseBody) String() string {
@@ -955,8 +1081,10 @@ func (s *CreateInstanceAccountResponse) SetBody(v *CreateInstanceAccountResponse
 }
 
 type CreateInstanceInternetAddressRequest struct {
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region to which the DRDS instance belongs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateInstanceInternetAddressRequest) String() string {
@@ -978,10 +1106,16 @@ func (s *CreateInstanceInternetAddressRequest) SetRegionId(v string) *CreateInst
 }
 
 type CreateInstanceInternetAddressResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned when the activity fails.
+	//
+	// >  This parameter appears only when an error occurs during the API call.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the public IP address was created.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceInternetAddressResponseBody) String() string {
@@ -1042,7 +1176,9 @@ func (s *CreateInstanceInternetAddressResponse) SetBody(v *CreateInstanceInterne
 }
 
 type CreateOrderForRdsRequest struct {
-	Params   *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The JSON string that contains the order details. For more information, see [CreateDBInstance](~~26228~~).
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1065,9 +1201,12 @@ func (s *CreateOrderForRdsRequest) SetRegionId(v string) *CreateOrderForRdsReque
 }
 
 type CreateOrderForRdsResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the purchased RDS instance.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateOrderForRdsResponseBody) String() string {
@@ -1123,12 +1262,18 @@ func (s *CreateOrderForRdsResponse) SetBody(v *CreateOrderForRdsResponseBody) *C
 }
 
 type CreateShardTaskRequest struct {
-	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId  *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the DRDS database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the DRDS instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the region where the resource group resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the source table.
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	// The name of the destination table.
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	TaskType        *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The type of the task. Valid values:`  SHARD_TO_SINGLE `,`  SINGLE_TO_SHARD `,`  SHARD_TO_SHARD `.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s CreateShardTaskRequest) String() string {
@@ -1170,9 +1315,12 @@ func (s *CreateShardTaskRequest) SetTaskType(v string) *CreateShardTaskRequest {
 }
 
 type CreateShardTaskResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Task creation result
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result of the operation.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateShardTaskResponseBody) String() string {
@@ -1228,6 +1376,7 @@ func (s *CreateShardTaskResponse) SetBody(v *CreateShardTaskResponseBody) *Creat
 }
 
 type DescribeBackMenuRequest struct {
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1245,9 +1394,12 @@ func (s *DescribeBackMenuRequest) SetDrdsInstanceId(v string) *DescribeBackMenuR
 }
 
 type DescribeBackMenuResponseBody struct {
-	List      *DescribeBackMenuResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The backup information list.
+	List *DescribeBackMenuResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackMenuResponseBody) String() string {
@@ -1291,8 +1443,13 @@ func (s *DescribeBackMenuResponseBodyList) SetList(v []*DescribeBackMenuResponse
 }
 
 type DescribeBackMenuResponseBodyListList struct {
+	// The backup method. Valid values:
+	//
+	// *   **Logic **: logical backup
+	// *   **phy**: physical backup
 	MenuName *string `json:"MenuName,omitempty" xml:"MenuName,omitempty"`
-	Support  *bool   `json:"Support,omitempty" xml:"Support,omitempty"`
+	// Indicates whether backup recovery is supported.
+	Support *bool `json:"Support,omitempty" xml:"Support,omitempty"`
 }
 
 func (s DescribeBackMenuResponseBodyListList) String() string {
@@ -1343,8 +1500,11 @@ func (s *DescribeBackMenuResponse) SetBody(v *DescribeBackMenuResponseBody) *Des
 }
 
 type DescribeBackupDbsRequest struct {
-	BackupId             *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	DrdsInstanceId       *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// Query by backup set ID
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of a DRDS instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// Query by restoration time.
 	PreferredRestoreTime *string `json:"PreferredRestoreTime,omitempty" xml:"PreferredRestoreTime,omitempty"`
 }
 
@@ -1372,9 +1532,12 @@ func (s *DescribeBackupDbsRequest) SetPreferredRestoreTime(v string) *DescribeBa
 }
 
 type DescribeBackupDbsResponseBody struct {
-	DbNames   *DescribeBackupDbsResponseBodyDbNames `json:"DbNames,omitempty" xml:"DbNames,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details about a database.
+	DbNames *DescribeBackupDbsResponseBodyDbNames `json:"DbNames,omitempty" xml:"DbNames,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupDbsResponseBody) String() string {
@@ -1447,6 +1610,7 @@ func (s *DescribeBackupDbsResponse) SetBody(v *DescribeBackupDbsResponseBody) *D
 }
 
 type DescribeBackupLocalRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1464,9 +1628,12 @@ func (s *DescribeBackupLocalRequest) SetDrdsInstanceId(v string) *DescribeBackup
 }
 
 type DescribeBackupLocalResponseBody struct {
+	// The information about the backup policy.
 	BackupPolicyDO *DescribeBackupLocalResponseBodyBackupPolicyDO `json:"BackupPolicyDO,omitempty" xml:"BackupPolicyDO,omitempty" type:"Struct"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupLocalResponseBody) String() string {
@@ -1493,24 +1660,45 @@ func (s *DescribeBackupLocalResponseBody) SetSuccess(v bool) *DescribeBackupLoca
 }
 
 type DescribeBackupLocalResponseBodyBackupPolicyDO struct {
-	BackupAppName             *string `json:"BackupAppName,omitempty" xml:"BackupAppName,omitempty"`
-	BackupDbName              *string `json:"BackupDbName,omitempty" xml:"BackupDbName,omitempty"`
-	BackupLevel               *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	BackupLog                 *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
-	BackupMode                *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	BackupPolicyMode          *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
-	BackupRetentionPeriod     *int64  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	DataBackupRetentionPeriod *int64  `json:"DataBackupRetentionPeriod,omitempty" xml:"DataBackupRetentionPeriod,omitempty"`
-	GmtCreate                 *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified               *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HighSpaceUsageProtection  *int64  `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	LocalLogRetentionHours    *int64  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	LocalLogRetentionSpace    *int64  `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	LogBackupRetentionPeriod  *int64  `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	NextBackupActuallyTime    *string `json:"NextBackupActuallyTime,omitempty" xml:"NextBackupActuallyTime,omitempty"`
-	PreferredBackupPeriod     *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupTime       *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// No value is returned.
+	BackupAppName *string `json:"BackupAppName,omitempty" xml:"BackupAppName,omitempty"`
+	// No value is returned.
+	BackupDbName *string `json:"BackupDbName,omitempty" xml:"BackupDbName,omitempty"`
+	// No value is returned.
+	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
+	// No value is returned.
+	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
+	// No value is returned.
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// No value is returned.
+	BackupPolicyMode *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
+	// No value is returned.
+	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// No value is returned.
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// No value is returned.
+	DataBackupRetentionPeriod *int64 `json:"DataBackupRetentionPeriod,omitempty" xml:"DataBackupRetentionPeriod,omitempty"`
+	// No value is returned.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// No value is returned.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the feature is enabled to forcibly delete binary log files if the used storage space of the instance exceeds 90% of the total storage space or the remaining storage space is less than 5 GB. Valid values:
+	//
+	// *   1: The feature is enabled.
+	// *   0: The feature is disabled.
+	HighSpaceUsageProtection *int64 `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
+	// The number of hours for which log backup files are retained on the instance. Valid values: 0 to 168. Default value: **18**. The value **0** indicates that log backup files are not retained.
+	LocalLogRetentionHours *int64 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
+	// The maximum storage usage that is allowed for local log files. Valid values: 0 to 50. Default value: 30.
+	LocalLogRetentionSpace *int64 `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
+	// No value is returned.
+	LogBackupRetentionPeriod *int64 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
+	// No value is returned.
+	NextBackupActuallyTime *string `json:"NextBackupActuallyTime,omitempty" xml:"NextBackupActuallyTime,omitempty"`
+	// No value is returned.
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// No value is returned.
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
 func (s DescribeBackupLocalResponseBodyBackupPolicyDO) String() string {
@@ -1641,6 +1829,7 @@ func (s *DescribeBackupLocalResponse) SetBody(v *DescribeBackupLocalResponseBody
 }
 
 type DescribeBackupPolicyRequest struct {
+	// The ID of the instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1658,9 +1847,12 @@ func (s *DescribeBackupPolicyRequest) SetDrdsInstanceId(v string) *DescribeBacku
 }
 
 type DescribeBackupPolicyResponseBody struct {
+	// The information about the backup policy.
 	BackupPolicyDO *DescribeBackupPolicyResponseBodyBackupPolicyDO `json:"BackupPolicyDO,omitempty" xml:"BackupPolicyDO,omitempty" type:"Struct"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -1687,24 +1879,62 @@ func (s *DescribeBackupPolicyResponseBody) SetSuccess(v bool) *DescribeBackupPol
 }
 
 type DescribeBackupPolicyResponseBodyBackupPolicyDO struct {
-	BackupAppName             *string `json:"BackupAppName,omitempty" xml:"BackupAppName,omitempty"`
-	BackupDbName              *string `json:"BackupDbName,omitempty" xml:"BackupDbName,omitempty"`
-	BackupLevel               *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	BackupLog                 *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
-	BackupMode                *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	BackupPolicyMode          *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
-	BackupRetentionPeriod     *int64  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	DataBackupRetentionPeriod *int64  `json:"DataBackupRetentionPeriod,omitempty" xml:"DataBackupRetentionPeriod,omitempty"`
-	GmtCreate                 *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified               *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HighSpaceUsageProtection  *int64  `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	LocalLogRetentionHours    *int64  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	LocalLogRetentionSpace    *int64  `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	LogBackupRetentionPeriod  *int64  `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	NextBackupActuallyTime    *string `json:"NextBackupActuallyTime,omitempty" xml:"NextBackupActuallyTime,omitempty"`
-	PreferredBackupPeriod     *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupTime       *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// No value is returned.
+	BackupAppName *string `json:"BackupAppName,omitempty" xml:"BackupAppName,omitempty"`
+	// No value is returned.
+	BackupDbName *string `json:"BackupDbName,omitempty" xml:"BackupDbName,omitempty"`
+	// The backup level. Valid values:
+	//
+	// *   **db**: database backup
+	// *   **instance**: instance backup
+	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
+	// Indicates whether the log backup feature is enabled. Valid values:
+	//
+	// *   **1**: The log backup feature is enabled.
+	// *   **0**: The log backup feature is disabled.
+	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
+	// The backup mode. Valid values:
+	//
+	// *   **logic**: logical backup
+	// *   **phy**: fast backup
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The type of the backup policy. Valid values:
+	//
+	// *   **DataBackupPolicy**: a data backup policy
+	// *   **LogBackupPolicy**: a log backup policy
+	BackupPolicyMode *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
+	// The retention period of backup files. Unit: days.
+	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// No value is returned.
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The retention period of data backup files. Unit: days.
+	DataBackupRetentionPeriod *int64 `json:"DataBackupRetentionPeriod,omitempty" xml:"DataBackupRetentionPeriod,omitempty"`
+	// No value is returned.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// No value is returned.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// No value is returned.
+	HighSpaceUsageProtection *int64 `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
+	// No value is returned.
+	LocalLogRetentionHours *int64 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
+	// No value is returned.
+	LocalLogRetentionSpace *int64 `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
+	// The retention period of log backup files. Unit: days.
+	LogBackupRetentionPeriod *int64 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
+	// No value is returned.
+	NextBackupActuallyTime *string `json:"NextBackupActuallyTime,omitempty" xml:"NextBackupActuallyTime,omitempty"`
+	// The backup cycle. You can specify multiple backup cycles. Separate multiple backup cycles with commas (,). Valid values:
+	//
+	// *   **0**: every Monday
+	// *   **1**: every Tuesday
+	// *   **2**: every Wednesday
+	// *   **3**: every Thursday
+	// *   **4**: every Friday
+	// *   **5**: every Saturday
+	// *   **6**: every Sunday
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// The time range in which a backup is performed. The time is displayed in UTC.
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBodyBackupPolicyDO) String() string {
@@ -1835,9 +2065,14 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 }
 
 type DescribeBackupSetsRequest struct {
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the query time which is in timestamp format (measured in millisecond) .
+	//
+	// >  The end time must be later than the start time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the query time which is in timestamp format (measured in millisecond).
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeBackupSetsRequest) String() string {
@@ -1864,9 +2099,12 @@ func (s *DescribeBackupSetsRequest) SetStartTime(v string) *DescribeBackupSetsRe
 }
 
 type DescribeBackupSetsResponseBody struct {
+	// The list of backup sets.
 	BackupSets *DescribeBackupSetsResponseBodyBackupSets `json:"BackupSets,omitempty" xml:"BackupSets,omitempty" type:"Struct"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupSetsResponseBody) String() string {
@@ -1910,17 +2148,44 @@ func (s *DescribeBackupSetsResponseBodyBackupSets) SetBackupSet(v []*DescribeBac
 }
 
 type DescribeBackupSetsResponseBodyBackupSetsBackupSet struct {
-	BackupConsitentTime *string                                                     `json:"BackupConsitentTime,omitempty" xml:"BackupConsitentTime,omitempty"`
-	BackupDbs           *DescribeBackupSetsResponseBodyBackupSetsBackupSetBackupDbs `json:"BackupDbs,omitempty" xml:"BackupDbs,omitempty" type:"Struct"`
-	BackupEndTime       *int64                                                      `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	BackupLevel         *string                                                     `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	BackupMode          *string                                                     `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	BackupStartTime     *int64                                                      `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	BackupTotalSize     *string                                                     `json:"BackupTotalSize,omitempty" xml:"BackupTotalSize,omitempty"`
-	BackupType          *string                                                     `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	EnableRecovery      *bool                                                       `json:"EnableRecovery,omitempty" xml:"EnableRecovery,omitempty"`
-	Id                  *string                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	Status              *int64                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Backup Recovery duration.
+	BackupConsitentTime *string `json:"BackupConsitentTime,omitempty" xml:"BackupConsitentTime,omitempty"`
+	// The list of backup databases.
+	BackupDbs *DescribeBackupSetsResponseBodyBackupSetsBackupSetBackupDbs `json:"BackupDbs,omitempty" xml:"BackupDbs,omitempty" type:"Struct"`
+	// The end of the backup time which is in timestamp format (measured in millisecond).
+	//
+	// >  0 indicates not finished.
+	BackupEndTime *int64 `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	// The level of the backup. Valid values:
+	//
+	// *   db: The database level.
+	// *   instance: the instance level.
+	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
+	// The backup method. Valid values:
+	//
+	// *   logic: the logical backup.
+	// *   phy: fast backup
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The beginning of the backup time which is in timestamp format (measured in millisecond).
+	BackupStartTime *int64 `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// The size of the backup set. Unit: MB.
+	BackupTotalSize *string `json:"BackupTotalSize,omitempty" xml:"BackupTotalSize,omitempty"`
+	// The type of the backup. Valid values:
+	//
+	// *   manual: indicates a manual backup.
+	// *   auto: indicates an automatic backup.
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// Indicates whether the backup set can be restored. Valid values:
+	EnableRecovery *bool `json:"EnableRecovery,omitempty" xml:"EnableRecovery,omitempty"`
+	// The ID of the data backup file you want to use.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the backup instance. Valid values:
+	//
+	// *   \-1: Failed
+	// *   0: Not started
+	// *   1: The storage instance is running.
+	// *   2: Success
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBackupSetsResponseBodyBackupSetsBackupSet) String() string {
@@ -2033,6 +2298,7 @@ func (s *DescribeBackupSetsResponse) SetBody(v *DescribeBackupSetsResponseBody) 
 }
 
 type DescribeBackupTimesRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -2050,9 +2316,12 @@ func (s *DescribeBackupTimesRequest) SetDrdsInstanceId(v string) *DescribeBackup
 }
 
 type DescribeBackupTimesResponseBody struct {
-	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates the information about the time range within which the data of the instance can be restored to a point in time.
 	RestoreTime *DescribeBackupTimesResponseBodyRestoreTime `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty" type:"Struct"`
-	Success     *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupTimesResponseBody) String() string {
@@ -2079,7 +2348,9 @@ func (s *DescribeBackupTimesResponseBody) SetSuccess(v bool) *DescribeBackupTime
 }
 
 type DescribeBackupTimesResponseBodyRestoreTime struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates the end time. The time is in the UNIX timestamp format. The time is in UTC. Unit: ms.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates the start time. The time is in the UNIX timestamp format. The time must be in UTC. Unit: ms.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2131,12 +2402,18 @@ func (s *DescribeBackupTimesResponse) SetBody(v *DescribeBackupTimesResponseBody
 }
 
 type DescribeBroadcastTablesRequest struct {
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query          *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The content of the query.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeBroadcastTablesRequest) String() string {
@@ -2178,13 +2455,20 @@ func (s *DescribeBroadcastTablesRequest) SetRegionId(v string) *DescribeBroadcas
 }
 
 type DescribeBroadcastTablesResponseBody struct {
-	IsShard    *bool                                      `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
-	List       []*DescribeBroadcastTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total      *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates whether the database is sharded.
+	IsShard *bool `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
+	// Indicates information about broadcast tables.
+	List []*DescribeBroadcastTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Indicates the page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Indicates the number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeBroadcastTablesResponseBody) String() string {
@@ -2231,12 +2515,28 @@ func (s *DescribeBroadcastTablesResponseBody) SetTotal(v int32) *DescribeBroadca
 }
 
 type DescribeBroadcastTablesResponseBodyList struct {
-	Broadcast     *bool   `json:"Broadcast,omitempty" xml:"Broadcast,omitempty"`
+	// Indicates whether a table is a broadcast table.
+	Broadcast *bool `json:"Broadcast,omitempty" xml:"Broadcast,omitempty"`
+	// Indicates the type of the broadcast table. Valid values:
+	//
+	// *   **1**: multi-write mode
+	// *   **2**: synchronous mode
 	BroadcastType *string `json:"BroadcastType,omitempty" xml:"BroadcastType,omitempty"`
-	DbInstType    *int32  `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	IsShard       *bool   `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
-	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Table         *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// Indicates the storage type of the database. Valid values:
+	//
+	// *   **0**: RDS
+	// *   **4**: PolarDB
+	DbInstType *int32 `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// Indicates whether the broadcast table was sharded.
+	IsShard *bool `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
+	// Indicates the activation state of the broadcast table. Valid values:
+	//
+	// *   **1**: The broadcast table is activated.
+	// *   **2**: The broadcast table is being activated.
+	// *   **3**: An exception occurs when the broadcast table is being activated.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates the name of the table.
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeBroadcastTablesResponseBodyList) String() string {
@@ -2307,11 +2607,16 @@ func (s *DescribeBroadcastTablesResponse) SetBody(v *DescribeBroadcastTablesResp
 }
 
 type DescribeDbInstanceDbsRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbInstType     *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DbInstanceId   *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The name of the privileged account of the PolarDB-X 1.0 instance. You do not need to specify this parameter if you have no privileged account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The engine type of the storage-layer databases. Valid values: **POLARDB** and **RDS**.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The ID of the instance in which the storage-layer databases are deployed.
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The password of the privileged account. You do not need to specify this parameter if you have no privileged account.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
 func (s DescribeDbInstanceDbsRequest) String() string {
@@ -2348,10 +2653,14 @@ func (s *DescribeDbInstanceDbsRequest) SetPassword(v string) *DescribeDbInstance
 }
 
 type DescribeDbInstanceDbsResponseBody struct {
+	// Indicates the information about the storage-layer databases.
 	Databases *DescribeDbInstanceDbsResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total     *string                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the total number of storage-layer databases.
+	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDbInstanceDbsResponseBody) String() string {
@@ -2400,9 +2709,16 @@ func (s *DescribeDbInstanceDbsResponseBodyDatabases) SetDatabase(v []*DescribeDb
 }
 
 type DescribeDbInstanceDbsResponseBodyDatabasesDatabase struct {
-	DbName      *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates the name of a storage-layer database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates the description of the storage-layer database.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates the state of the storage-layer database. Valid values:
+	//
+	// *   **0**: The database is being created.
+	// *   **1**: The database is available.
+	// *   **3**: The database is being deleted.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDbInstanceDbsResponseBodyDatabasesDatabase) String() string {
@@ -2458,11 +2774,18 @@ func (s *DescribeDbInstanceDbsResponse) SetBody(v *DescribeDbInstanceDbsResponse
 }
 
 type DescribeDbInstancesRequest struct {
-	DbInstType     *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// Storage layer type. Valid values: **POLARDB** or **RDS**.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The ID of a DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Search         *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the storage or cluster.
+	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
 }
 
 func (s DescribeDbInstancesRequest) String() string {
@@ -2493,14 +2816,21 @@ func (s *DescribeDbInstancesRequest) SetPageSize(v int32) *DescribeDbInstancesRe
 	return s
 }
 
+func (s *DescribeDbInstancesRequest) SetRegionId(v string) *DescribeDbInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeDbInstancesRequest) SetSearch(v string) *DescribeDbInstancesRequest {
 	s.Search = &v
 	return s
 }
 
 type DescribeDbInstancesResponseBody struct {
-	Items     *DescribeDbInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the instance.
+	Items *DescribeDbInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDbInstancesResponseBody) String() string {
@@ -2539,16 +2869,37 @@ func (s *DescribeDbInstancesResponseBodyItems) SetDBInstance(v []*DescribeDbInst
 }
 
 type DescribeDbInstancesResponseBodyItemsDBInstance struct {
-	DBInstanceDescription *string                                                             `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId          *string                                                             `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceStatus      *int32                                                              `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceType        *string                                                             `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	Engine                *string                                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string                                                             `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	InstanceNetworkType   *string                                                             `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	ReadOnlyDBInstanceId  *DescribeDbInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceId `json:"ReadOnlyDBInstanceId,omitempty" xml:"ReadOnlyDBInstanceId,omitempty" type:"Struct"`
-	RegionId              *string                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId                *string                                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The description of the storage instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The ID of the storage instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Storage layer instance status. Valid values:
+	//
+	// *   **0**: creating
+	// *   **1**: In use
+	// *   **3**: Deleting
+	// *   **5**: restarting
+	// *   **6**: upgrading /Downgrading
+	// *   **7**: Recovering
+	// *   **8**: switching the Internet and intranet
+	DBInstanceStatus *int32 `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The storage layer instance type.
+	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	// The engine of the storage instance.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the engine for the storage instance.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The network type of the storage layer. Valid values:
+	//
+	// *   **VPC**: VPC
+	// *   **CLASSIC **: Classic Network
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// The details about a read-only storage instance.
+	ReadOnlyDBInstanceId *DescribeDbInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceId `json:"ReadOnlyDBInstanceId,omitempty" xml:"ReadOnlyDBInstanceId,omitempty" type:"Struct"`
+	// The ID of the region where the storage instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the zone where the storage instance resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDbInstancesResponseBodyItemsDBInstance) String() string {
@@ -2656,7 +3007,9 @@ func (s *DescribeDbInstancesResponse) SetBody(v *DescribeDbInstancesResponseBody
 }
 
 type DescribeDrdsDBRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -2679,9 +3032,12 @@ func (s *DescribeDrdsDBRequest) SetDrdsInstanceId(v string) *DescribeDrdsDBReque
 }
 
 type DescribeDrdsDBResponseBody struct {
-	Data      *DescribeDrdsDBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the details about the database.
+	Data *DescribeDrdsDBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDBResponseBody) String() string {
@@ -2708,13 +3064,29 @@ func (s *DescribeDrdsDBResponseBody) SetSuccess(v bool) *DescribeDrdsDBResponseB
 }
 
 type DescribeDrdsDBResponseBodyData struct {
+	// Indicates the time when the database was created. The value is in the UNIX timestamp format. Unit: ms.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates the storage type of the database.
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	InstRole   *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
-	Mode       *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Schema     *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates the name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates the type of the instance in which the database is deployed. Valid values:
+	//
+	// *   **MASTER**: The instance is a primary instance.
+	// *   **SLAVE**: The instance is a read-only instance.
+	InstRole *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
+	// Indicates the database sharding method.
+	//
+	// *   **HORIZONTAL**: The database is horizontally sharded.
+	// *   **VERTICAL**: The database is vertically sharded.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Indicates the schema name of the database.
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// Indicates the state of the database. Valid values:
+	//
+	// *   **TO_BE_INIT**: The database is being created.
+	// *   **NORMAL**: The database is running.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDrdsDBResponseBodyData) String() string {
@@ -2790,8 +3162,11 @@ func (s *DescribeDrdsDBResponse) SetBody(v *DescribeDrdsDBResponseBody) *Describ
 }
 
 type DescribeDrdsDBClusterRequest struct {
-	DbInstanceId   *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB cluster.
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The name of the DRDS database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of a DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -2819,9 +3194,12 @@ func (s *DescribeDrdsDBClusterRequest) SetDrdsInstanceId(v string) *DescribeDrds
 }
 
 type DescribeDrdsDBClusterResponseBody struct {
+	// The details of each PolarDB cluster.
 	DbInstance *DescribeDrdsDBClusterResponseBodyDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Struct"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDBClusterResponseBody) String() string {
@@ -2848,20 +3226,40 @@ func (s *DescribeDrdsDBClusterResponseBody) SetSuccess(v bool) *DescribeDrdsDBCl
 }
 
 type DescribeDrdsDBClusterResponseBodyDbInstance struct {
-	DBInstanceId     *string                                               `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceStatus *string                                               `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBNodes          *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes   `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
-	DbInstType       *string                                               `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	Endpoints        *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	Engine           *string                                               `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion    *string                                               `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime       *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	NetworkType      *string                                               `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType          *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port             *int32                                                `json:"Port,omitempty" xml:"Port,omitempty"`
-	RdsInstType      *string                                               `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
-	ReadMode         *string                                               `json:"ReadMode,omitempty" xml:"ReadMode,omitempty"`
-	RemainDays       *string                                               `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	// The ID of the PolarDB cluster.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The status of the PolarDB instance.
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The information about the nodes in the PolarDB Cluster.
+	DBNodes *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
+	// The type of storage used by the DRDS database.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The endpoint of the PolarDB read /write splitting endpoint
+	Endpoints *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	// The type of the DRDS database storage engine.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the DRDS database storage engine.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The time when the PolarDB cluster expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The network type of the PolarDB cluster.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The billing method of the PolarDB cluster.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The PolarDB access port.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of RDS instance. PolarDB cluster does not support this parameter.
+	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	// This parameter specifies the Read mode when the database storage type is PolarDB.
+	//
+	// Valid values:
+	//
+	// *   **DEFAULT**: the default mode (that is, all read traffic is sent to the PolarDB read /write node).
+	// *   **CUSTOM**: Custom mode (you can customize the ratio of traffic sent to read /write nodes and read-only nodes).
+	// *   **BALANCE**: read balancing mode (the read traffic is automatically distributed by the read load module of the PolarDB cluster, which can also be understood as the read traffic being evenly distributed to each node).
+	ReadMode *string `json:"ReadMode,omitempty" xml:"ReadMode,omitempty"`
+	// The number of days remaining on the PolarDB for MySQL instance.
+	RemainDays *string `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 }
 
 func (s DescribeDrdsDBClusterResponseBodyDbInstance) String() string {
@@ -2960,10 +3358,17 @@ func (s *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes) SetDBNode(v []*Desc
 }
 
 type DescribeDrdsDBClusterResponseBodyDbInstanceDBNodesDBNode struct {
-	DBNodeId     *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	DBNodeRole   *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
+	// The ID of the node in the apsaradb for PolarDB cluster.
+	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// The role of a node in the apsaradb for PolarDB cluster. Valid values:
+	//
+	// *   **Reader**
+	// *   **Writer**
+	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
+	// The status of the nodes in the PolarDB cluster.
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the zone where the node of the PolarDB cluster resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDrdsDBClusterResponseBodyDbInstanceDBNodesDBNode) String() string {
@@ -3012,9 +3417,12 @@ func (s *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints) SetEndpoint(v []*
 }
 
 type DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint struct {
+	// The ID of the PolarDB connection address.
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	NodeIds    *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
-	ReadWeight *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
+	// The ID list of the nodes in the PolarDB connection string. Separate multiple nodes with commas (,).
+	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	// The read ratio of this connection address managed by the DRDS database.
+	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
 }
 
 func (s DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint) String() string {
@@ -3070,10 +3478,13 @@ func (s *DescribeDrdsDBClusterResponse) SetBody(v *DescribeDrdsDBClusterResponse
 }
 
 type DescribeDrdsDBIpWhiteListRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The database name.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The instance ID.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the whitelist group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDrdsDBIpWhiteListRequest) String() string {
@@ -3105,9 +3516,12 @@ func (s *DescribeDrdsDBIpWhiteListRequest) SetRegionId(v string) *DescribeDrdsDB
 }
 
 type DescribeDrdsDBIpWhiteListResponseBody struct {
+	// The IP address whitelist.
 	IpWhiteList *DescribeDrdsDBIpWhiteListResponseBodyIpWhiteList `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty" type:"Struct"`
-	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDBIpWhiteListResponseBody) String() string {
@@ -3180,10 +3594,16 @@ func (s *DescribeDrdsDBIpWhiteListResponse) SetBody(v *DescribeDrdsDBIpWhiteList
 }
 
 type DescribeDrdsDBsRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of databases to return on each page. Valid values: **30**, **50**, and **100**.
+	//
+	// Default value: **30**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region in which the PolarDB-X 1.0 instance is created.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDrdsDBsRequest) String() string {
@@ -3215,12 +3635,18 @@ func (s *DescribeDrdsDBsRequest) SetRegionId(v string) *DescribeDrdsDBsRequest {
 }
 
 type DescribeDrdsDBsResponseBody struct {
-	Data       *DescribeDrdsDBsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	PageNumber *string                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total      *string                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The list of returned databases.
+	Data *DescribeDrdsDBsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of databases returned on each page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of returned databases.
+	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDrdsDBsResponseBody) String() string {
@@ -3279,12 +3705,21 @@ func (s *DescribeDrdsDBsResponseBodyData) SetDb(v []*DescribeDrdsDBsResponseBody
 }
 
 type DescribeDrdsDBsResponseBodyDataDb struct {
+	// The time when the database is created. The value of this parameter is a UNIX timestamp. Unit: ms.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The type of the database. Valid values: **RDS** and **POLARDB**.
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Mode       *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Schema     *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The partitioning mode of the database. Valid values:
+	//
+	// *   **HORIZONTAL**: The database is horizontally partitioned.
+	// *   **VERTICAL**: The database is vertically partitioned.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The schema ID that is assigned to the partitioned database.
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The state of the database.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDrdsDBsResponseBodyDataDb) String() string {
@@ -3355,8 +3790,11 @@ func (s *DescribeDrdsDBsResponse) SetBody(v *DescribeDrdsDBsResponseBody) *Descr
 }
 
 type DescribeDrdsDbInstanceRequest struct {
-	DbInstanceId   *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the custom ApsaraDB RDS for MySQL instance that you want to query.
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -3384,9 +3822,12 @@ func (s *DescribeDrdsDbInstanceRequest) SetDrdsInstanceId(v string) *DescribeDrd
 }
 
 type DescribeDrdsDbInstanceResponseBody struct {
+	// The detailed information about the returned custom ApsaraDB RDS for MySQL instance.
 	DbInstance *DescribeDrdsDbInstanceResponseBodyDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Struct"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDbInstanceResponseBody) String() string {
@@ -3413,21 +3854,44 @@ func (s *DescribeDrdsDbInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsDbI
 }
 
 type DescribeDrdsDbInstanceResponseBodyDbInstance struct {
-	ConnectUrl        *string                                                        `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	DBInstanceId      *string                                                        `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceStatus  *string                                                        `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DbInstType        *string                                                        `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DmInstanceId      *string                                                        `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
-	Engine            *string                                                        `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion     *string                                                        `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime        *string                                                        `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	NetworkType       *string                                                        `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType           *string                                                        `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port              *int32                                                         `json:"Port,omitempty" xml:"Port,omitempty"`
-	RdsInstType       *string                                                        `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	// The URL used to connect to the custom ApsaraDB RDS for MySQL instance.
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// The ID of the ApsaraDB RDS for MySQL instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The state of the instance.
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The role of the instance. Valid values:
+	//
+	// *   **Primary**: The instance is a primary instance.
+	// *   **ReadOnly**: The instance is a read-only instance.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The ID of the resource.
+	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
+	// The engine of the database that is run on the instance. Valid value: **MySQL**.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version of the database that is run on the instance. Valid values: **5.7**.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The time when the custom ApsaraDB RDS for MySQL instance expires. The value of this parameter is a UNIX timestamp. Unit: seconds.
+	//
+	// >  This parameter is returned only when the custom ApsaraDB RDS for MySQL instance is a subscription instance.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The type of the network. Valid values: **VPC**.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The billing method of the custom ApsaraDB RDS for MySQL instance. Valid values:
+	//
+	// *   **Prepaid**: subscription
+	// *   **Postaid**: pay-as-you-go
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The port used to connect to the custom ApsaraDB RDS for MySQL instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the instance.
+	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	// The list of read-only ApsaraDB RDS for MySQL instances.
 	ReadOnlyInstances *DescribeDrdsDbInstanceResponseBodyDbInstanceReadOnlyInstances `json:"ReadOnlyInstances,omitempty" xml:"ReadOnlyInstances,omitempty" type:"Struct"`
-	ReadWeight        *int32                                                         `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
-	RemainDays        *string                                                        `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	// The read ratio of the instance.
+	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
+	// The number of remaining days before the instance expires.
+	RemainDays *string `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 }
 
 func (s DescribeDrdsDbInstanceResponseBodyDbInstance) String() string {
@@ -3531,21 +3995,36 @@ func (s *DescribeDrdsDbInstanceResponseBodyDbInstanceReadOnlyInstances) SetReadO
 }
 
 type DescribeDrdsDbInstanceResponseBodyDbInstanceReadOnlyInstancesReadOnlyInstance struct {
-	ConnectUrl       *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The URL used to connect to the read-only instance.
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// The ID of the read-only instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The state of the read-only instance.
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DbInstType       *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DmInstanceId     *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
-	Engine           *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion    *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RdsInstType      *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
-	ReadWeight       *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
-	RemainDays       *string `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
-	VersionAction    *int32  `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
+	// The role of the read-only instance.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The ID of the resource.
+	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
+	// The engine of the database that is run on the read-only instance.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version of the database that is run on the read-only instance.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The timestamp that indicates when the read-only instance expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The network type of the read-only instance.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The billing method of the read-only instance.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The port used to connect to the read-only instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the ApsaraDB RDS for MySQL instance.
+	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	// The read ratio of the read-only instance.
+	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
+	// The number of remaining days before the read-only instance expires.
+	RemainDays *string `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	// This parameter is unavailable for read-only instances.
+	VersionAction *int32 `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
 }
 
 func (s DescribeDrdsDbInstanceResponseBodyDbInstanceReadOnlyInstancesReadOnlyInstance) String() string {
@@ -3661,10 +4140,14 @@ func (s *DescribeDrdsDbInstanceResponse) SetBody(v *DescribeDrdsDbInstanceRespon
 }
 
 type DescribeDrdsDbInstancesRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDrdsDbInstancesRequest) String() string {
@@ -3696,12 +4179,18 @@ func (s *DescribeDrdsDbInstancesRequest) SetPageSize(v int32) *DescribeDrdsDbIns
 }
 
 type DescribeDrdsDbInstancesResponseBody struct {
+	// Indicates information about the ApsaraDB RDS for MySQL instances that are used to store the data of the specified database.
 	DbInstances *DescribeDrdsDbInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
-	PageNumber  *string                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *string                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total       *string                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates the page number of the returned page.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Indicates the number of entries returned per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the number of primary ApsaraDB RDS for MySQL instances.
+	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDrdsDbInstancesResponseBody) String() string {
@@ -3760,21 +4249,61 @@ func (s *DescribeDrdsDbInstancesResponseBodyDbInstances) SetDbInstance(v []*Desc
 }
 
 type DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstance struct {
-	ConnectUrl        *string                                                                    `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	DBInstanceId      *string                                                                    `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceStatus  *string                                                                    `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DbInstType        *string                                                                    `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DmInstanceId      *string                                                                    `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
-	Engine            *string                                                                    `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion     *string                                                                    `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime        *string                                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	NetworkType       *string                                                                    `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType           *string                                                                    `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port              *int32                                                                     `json:"Port,omitempty" xml:"Port,omitempty"`
-	RdsInstType       *string                                                                    `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	// Indicates the endpoint that is used to connect to an ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// Indicates the ID of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Indicates the state of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. Valid values:
+	//
+	// *   **0**: The ApsaraDB RDS for MySQL instance is being created.
+	// *   **1**: The ApsaraDB RDS for MySQL instance is running.
+	// *   **3**: The ApsaraDB RDS for MySQL instance is being deleted.
+	// *   **5**: The ApsaraDB RDS for MySQL instance is being restarted.
+	// *   **6**: The ApsaraDB RDS for MySQL instance is being upgraded or downgraded.
+	// *   **7**: The ApsaraDB RDS for MySQL instance is being backed up.
+	// *   **8**: The network type of the ApsaraDB RDS for MySQL instance is being changed.
+	// *   **9**: The ApsaraDB RDS for MySQL instance is being migrated.
+	// *   **11**: The data of the ApsaraDB RDS for MySQL instance is being migrated.
+	// *   **12**: A disaster-recovery instance is being generated.
+	// *   **13**: Data is being imported to the ApsaraDB RDS for MySQL instance.
+	// *   **14**: Data is being imported to the ApsaraDB RDS for MySQL instance from an another ApsaraDB RDS for MySQL instance.
+	// *   **15**: A failover is being performed.
+	// *   **16**: A temporary instance is being created.
+	// *   **17**: A network is being created for the ApsaraDB RDS for MySQL instance.
+	// *   **18**: The ApsaraDB RDS for MySQL instance is being cloned.
+	// *   **19**: The link is being changed.
+	// *   **20**: The read-only instances of the ApsaraDB RDS for MySQL instance are being migrated.
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// Indicates the type of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. The value is set to RDS.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// Indicates the ID of a resource.
+	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
+	// Indicates the engine of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Indicates the engine version of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// Indicates the point in time when the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Indicates the network type of the ApsaraDB RDS for MySQL instance.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// Indicates the billing method of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. Valid values:
+	//
+	// *   **drdsPre**: The instance uses the subscription billing method.
+	// *   **drdsPost**: The instance uses the pay-as-you-go billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Indicates the port that is used to connect to the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Indicates whether the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database is a primary instance or a read-only instance.
+	//
+	// *   **Primary**: The instance is a primary instance.
+	// *   **Readonly**: The instance is a read-only instance.
+	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	// Indicates information about the read-only instances of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
 	ReadOnlyInstances *DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstanceReadOnlyInstances `json:"ReadOnlyInstances,omitempty" xml:"ReadOnlyInstances,omitempty" type:"Struct"`
-	ReadWeight        *int32                                                                     `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
-	RemainDays        *int32                                                                     `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	// Indicates the read weight of the read-only instance.
+	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
+	// Indicates the number of remaining days before a subscription instance expires.
+	RemainDays *int32 `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 }
 
 func (s DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstance) String() string {
@@ -3878,20 +4407,56 @@ func (s *DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstanceReadOnlyInstanc
 }
 
 type DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstanceReadOnlyInstancesReadOnlyInstance struct {
-	ConnectUrl       *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// Indicates the endpoint that is used to connect to the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// Indicates the state of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. Valid values:
+	//
+	// *   **0**: The ApsaraDB RDS for MySQL instance is being created.
+	// *   **1**: The ApsaraDB RDS for MySQL instance is running.
+	// *   **3**: The ApsaraDB RDS for MySQL instance is being deleted.
+	// *   **5**: The ApsaraDB RDS for MySQL instance is being restarted.
+	// *   **6**: The ApsaraDB RDS for MySQL instance is being upgraded or downgraded.
+	// *   **7**: The ApsaraDB RDS for MySQL instance is being backed up.
+	// *   **8**: The network type of the ApsaraDB RDS for MySQL instance is being changed.
+	// *   **9**: The ApsaraDB RDS for MySQL instance is being migrated.
+	// *   **11**: The data of the ApsaraDB RDS for MySQL instance is being migrated.
+	// *   **12**: A disaster-recovery instance is being generated.
+	// *   **13**: Data is being imported to the ApsaraDB RDS for MySQL instance.
+	// *   **14**: Data is being imported to the ApsaraDB RDS for MySQL instance from an another ApsaraDB RDS for MySQL instance.
+	// *   **15**: A failover is being performed.
+	// *   **16**: A temporary instance is being created.
+	// *   **17**: A network is being created for the ApsaraDB RDS for MySQL instance.
+	// *   **18**: The ApsaraDB RDS for MySQL instance is being cloned.
+	// *   **19**: The link is being changed.
+	// *   **20**: The read-only instances of the ApsaraDB RDS for MySQL instance are being migrated.
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DbInstType       *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DmInstanceId     *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
-	Engine           *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion    *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceName     *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RdsInstType      *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
-	ReadWeight       *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
-	RemainDays       *int32  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	// Indicates the type of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. The value is set to RDS.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// Indicates the ID of a resource.
+	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
+	// Indicates the engine of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Indicates the engine version of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// Indicates the timestamp when the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Indicates the name of a read-only instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Indicates the network type of the read-only instance.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// Indicates the billing method of the read-only instance.
+	//
+	// *   **drdsPre**: The instance uses the subscription billing method.
+	// *   **drdsPost**: The instance uses the pay-as-you-go billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Indicates the port that is used to connect to the read-only instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Indicates the type of the read-only instance.
+	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	// Indicates the read weight of the read-only instance.
+	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
+	// Indicates the number of remaining days before the read-only instance expires.
+	RemainDays *int32 `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 }
 
 func (s DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstanceReadOnlyInstancesReadOnlyInstance) String() string {
@@ -4002,7 +4567,9 @@ func (s *DescribeDrdsDbInstancesResponse) SetBody(v *DescribeDrdsDbInstancesResp
 }
 
 type DescribeDrdsDbRdsNameListRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -4025,9 +4592,12 @@ func (s *DescribeDrdsDbRdsNameListRequest) SetDrdsInstanceId(v string) *Describe
 }
 
 type DescribeDrdsDbRdsNameListResponseBody struct {
+	// Indicates the instances that are used to store the data of a database.
 	InstanceNameList *DescribeDrdsDbRdsNameListResponseBodyInstanceNameList `json:"InstanceNameList,omitempty" xml:"InstanceNameList,omitempty" type:"Struct"`
-	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDbRdsNameListResponseBody) String() string {
@@ -4100,8 +4670,10 @@ func (s *DescribeDrdsDbRdsNameListResponse) SetBody(v *DescribeDrdsDbRdsNameList
 }
 
 type DescribeDrdsInstanceRequest struct {
+	// The ID of the instance that you want to query.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region in which the instance is created.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDrdsInstanceRequest) String() string {
@@ -4123,9 +4695,12 @@ func (s *DescribeDrdsInstanceRequest) SetRegionId(v string) *DescribeDrdsInstanc
 }
 
 type DescribeDrdsInstanceResponseBody struct {
-	Data      *DescribeDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the instance.
+	Data *DescribeDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsInstanceResponseBody) String() string {
@@ -4152,32 +4727,68 @@ func (s *DescribeDrdsInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsInsta
 }
 
 type DescribeDrdsInstanceResponseBodyData struct {
-	CommodityCode         *string                                                    `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	CreateTime            *int64                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description           *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	DrdsInstanceId        *string                                                    `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	ExpireDate            *int64                                                     `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	InstRole              *string                                                    `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
-	InstanceSeries        *string                                                    `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
-	InstanceSpec          *string                                                    `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	Label                 *string                                                    `json:"Label,omitempty" xml:"Label,omitempty"`
-	MachineType           *string                                                    `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	MasterInstanceId      *string                                                    `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
-	MysqlVersion          *int32                                                     `json:"MysqlVersion,omitempty" xml:"MysqlVersion,omitempty"`
-	NetworkType           *string                                                    `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OrderInstanceId       *string                                                    `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	ProductVersion        *string                                                    `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	// The commodity code of the instance.
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The timestamp that indicates when the instance is created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The timestamp that indicates when the instance expires.
+	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The role of the instance. Valid values:
+	//
+	// *   **MASTER**: The instance is a primary instance.
+	// *   **SLAVE**: The instance is a read-only instance to analyze complex queries
+	// *   **SLAVE_FLOW**: The instance is a read-only instance for high-concurrency scenarios
+	InstRole *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
+	// The instance series of the instance.
+	InstanceSeries *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
+	// The specification of the instance.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The tag of the instance. Valid values:
+	//
+	// *   **NORMAL**: The instance is a standard instance.
+	// *   **HA**: The instance is a high-availability (HA) instance.
+	// *   **VPC**: The instance is a VPC-based instance.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The machine type of the instance. The value of this parameter is **ecs**.
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// The ID of the primary instance.
+	//
+	// >  This parameter is returned only when the instance is a primary instance.
+	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
+	// The MySQL version that is supported by the instance.
+	MysqlVersion *int32 `json:"MysqlVersion,omitempty" xml:"MysqlVersion,omitempty"`
+	// The network type of the instance. Valid values: CLASSIC and VPC.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The ID of the purchased instance.
+	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// The version of .
+	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	// The details about each read-only instance that is associated with the instance.
 	ReadOnlyDBInstanceIds *DescribeDrdsInstanceResponseBodyDataReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
-	RegionId              *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status                *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageType           *string                                                    `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Type                  *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
-	Version               *int64                                                     `json:"Version,omitempty" xml:"Version,omitempty"`
-	VersionAction         *string                                                    `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
-	Vips                  *DescribeDrdsInstanceResponseBodyDataVips                  `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
-	VpcCloudInstanceId    *string                                                    `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	ZoneId                *string                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the region in which the instance is created.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs. The value of this parameter can be null.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The state of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the instance used for storage.
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The type of the instance. Valid values: PRIVATE and PUBLIC. The value of PRIVATE indicates that the instance is a dedicated instance. The value of PUBLIC indicates that the instance is a shared instance.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the instance. The value of this parameter is 0.
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Indicates whether the version of the instance can be upgraded.
+	VersionAction *string `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
+	// The list of returned virtual IP addresses (VIPs).
+	Vips *DescribeDrdsInstanceResponseBodyDataVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
+	// The ID of the instance that is deployed in the VPC.
+	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	// The ID of the zone in which the instance is located.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDrdsInstanceResponseBodyData) String() string {
@@ -4353,12 +4964,18 @@ func (s *DescribeDrdsInstanceResponseBodyDataVips) SetVip(v []*DescribeDrdsInsta
 }
 
 type DescribeDrdsInstanceResponseBodyDataVipsVip struct {
-	Dns        *string `json:"Dns,omitempty" xml:"Dns,omitempty"`
-	ExpireDays *int64  `json:"ExpireDays,omitempty" xml:"ExpireDays,omitempty"`
-	Port       *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId  *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The domain name that is mapped to the VIP.
+	Dns *string `json:"Dns,omitempty" xml:"Dns,omitempty"`
+	// The number of remaining days before the VIP expires.
+	ExpireDays *int64 `json:"ExpireDays,omitempty" xml:"ExpireDays,omitempty"`
+	// The ports that are opened on the VIP.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the VIP. Valid values: intranet and internet.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s DescribeDrdsInstanceResponseBodyDataVipsVip) String() string {
@@ -4429,12 +5046,20 @@ func (s *DescribeDrdsInstanceResponse) SetBody(v *DescribeDrdsInstanceResponseBo
 }
 
 type DescribeDrdsInstanceDbMonitorRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the Distributed Relational Database Service (DRDS) instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end time. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The performance monitoring metrics. You can specify one or more metrics for a query at a time. Separate multiple metric parameters with commas (,).
+	//
+	// >  For more information about the details of performance monitoring metrics, see [Database monitoring](~~186704~~).
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDrdsInstanceDbMonitorRequest) String() string {
@@ -4476,9 +5101,12 @@ func (s *DescribeDrdsInstanceDbMonitorRequest) SetStartTime(v int64) *DescribeDr
 }
 
 type DescribeDrdsInstanceDbMonitorResponseBody struct {
-	Data      []*DescribeDrdsInstanceDbMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of monitoring data.
+	Data []*DescribeDrdsInstanceDbMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsInstanceDbMonitorResponseBody) String() string {
@@ -4505,8 +5133,11 @@ func (s *DescribeDrdsInstanceDbMonitorResponseBody) SetSuccess(v bool) *Describe
 }
 
 type DescribeDrdsInstanceDbMonitorResponseBodyData struct {
-	Key    *string                                                `json:"Key,omitempty" xml:"Key,omitempty"`
-	Unit   *string                                                `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The name of the monitoring metric.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The unit of the monitoring metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The details about the value of monitoring data.
 	Values []*DescribeDrdsInstanceDbMonitorResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -4534,7 +5165,9 @@ func (s *DescribeDrdsInstanceDbMonitorResponseBodyData) SetValues(v []*DescribeD
 }
 
 type DescribeDrdsInstanceDbMonitorResponseBodyDataValues struct {
-	Date  *int64  `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The time point when the value of monitoring data was obtained. The value is in the UNIX timestamp format. Unit: ms.
+	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The data value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4586,6 +5219,7 @@ func (s *DescribeDrdsInstanceDbMonitorResponse) SetBody(v *DescribeDrdsInstanceD
 }
 
 type DescribeDrdsInstanceLevelTasksRequest struct {
+	// The ID of the PolarDB-X 1.0 instance of which the unfinished tasks you want to query.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -4603,9 +5237,12 @@ func (s *DescribeDrdsInstanceLevelTasksRequest) SetDrdsInstanceId(v string) *Des
 }
 
 type DescribeDrdsInstanceLevelTasksResponseBody struct {
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tasks     *DescribeDrdsInstanceLevelTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of returned unfinished tasks.
+	Tasks *DescribeDrdsInstanceLevelTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsInstanceLevelTasksResponseBody) String() string {
@@ -4649,17 +5286,33 @@ func (s *DescribeDrdsInstanceLevelTasksResponseBodyTasks) SetTask(v []*DescribeD
 }
 
 type DescribeDrdsInstanceLevelTasksResponseBodyTasksTask struct {
-	AllowCancel         *bool   `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	ErrMsg              *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Progress            *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates whether the task can be canceled.
+	AllowCancel *bool `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// The error message returned for the task.
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// The timestamp when the task is created.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The progress of the task. Valid values: 0 to 100.
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The description of the task progress.
 	ProgressDescription *string `json:"ProgressDescription,omitempty" xml:"ProgressDescription,omitempty"`
-	ShowProgress        *bool   `json:"ShowProgress,omitempty" xml:"ShowProgress,omitempty"`
-	TargetId            *int64  `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TaskName            *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskPhase           *string `json:"TaskPhase,omitempty" xml:"TaskPhase,omitempty"`
-	TaskStatus          *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskType            *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Indicates whether the progress of the task is displayed.
+	ShowProgress *bool `json:"ShowProgress,omitempty" xml:"ShowProgress,omitempty"`
+	// The ID of the task.
+	TargetId *int64 `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The phase of the task.
+	TaskPhase *string `json:"TaskPhase,omitempty" xml:"TaskPhase,omitempty"`
+	// The state of the task. Valid values:
+	//
+	// *   0: The task is being executed.
+	// *   1: The task is executed.
+	// *   2: The task failed to be executed.
+	// *   3: The task is canceled.
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The type of the task.
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeDrdsInstanceLevelTasksResponseBodyTasksTask) String() string {
@@ -4755,12 +5408,22 @@ func (s *DescribeDrdsInstanceLevelTasksResponse) SetBody(v *DescribeDrdsInstance
 }
 
 type DescribeDrdsInstanceMonitorRequest struct {
+	// The ID of the instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	PeriodMultiple *int32  `json:"PeriodMultiple,omitempty" xml:"PeriodMultiple,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end time of the query. Specify the value in the UNIX timestamp format. The timestamp must be in UTC. Unit: ms.
+	//
+	// >  If the time range that you specify is less than 1 hour, the monitoring data that is collected in a 1-hour period before the end time is returned.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The performance monitoring metrics. You can specify one or more metrics. Separate multiple metric names with commas (,).
+	//
+	// >  For more information about performance monitoring metrics, see [Monitor instances](~~186703~~).
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The multiple of the default time interval that you want to use to collect monitoring data. By default, the system collects monitoring data of resources at an interval of 1 minute. If you set the value of this parameter to 2, the system collects monitoring data of the instance at an interval of 2 minutes.
+	PeriodMultiple *int32 `json:"PeriodMultiple,omitempty" xml:"PeriodMultiple,omitempty"`
+	// The ID of the region where the instance is deployed.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of the query. Specify the value in the UNIX timestamp format. The timestamp must be in UTC. Unit: ms.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDrdsInstanceMonitorRequest) String() string {
@@ -4802,8 +5465,10 @@ func (s *DescribeDrdsInstanceMonitorRequest) SetStartTime(v int64) *DescribeDrds
 }
 
 type DescribeDrdsInstanceMonitorResponseBody struct {
-	Data      []*DescribeDrdsInstanceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result set of the query.
+	Data []*DescribeDrdsInstanceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDrdsInstanceMonitorResponseBody) String() string {
@@ -4825,10 +5490,14 @@ func (s *DescribeDrdsInstanceMonitorResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeDrdsInstanceMonitorResponseBodyData struct {
-	Key     *string                                              `json:"Key,omitempty" xml:"Key,omitempty"`
-	NodeNum *int32                                               `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	Unit    *string                                              `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Values  []*DescribeDrdsInstanceMonitorResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The name of the metric.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The number of nodes.
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The unit of the metric value.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The details of the monitoring data of the metric.
+	Values []*DescribeDrdsInstanceMonitorResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDrdsInstanceMonitorResponseBodyData) String() string {
@@ -4860,7 +5529,9 @@ func (s *DescribeDrdsInstanceMonitorResponseBodyData) SetValues(v []*DescribeDrd
 }
 
 type DescribeDrdsInstanceMonitorResponseBodyDataValues struct {
-	Date  *int64  `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The point in time when the value of the metric was collected. The value is in the UNIX timestamp format. The timestamp is displayed in UTC. Unit: ms.
+	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The value of the metric.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4912,8 +5583,10 @@ func (s *DescribeDrdsInstanceMonitorResponse) SetBody(v *DescribeDrdsInstanceMon
 }
 
 type DescribeDrdsInstanceVersionRequest struct {
+	// The ID of the PolarDB-X 1.0 instance whose version you want to query.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDrdsInstanceVersionRequest) String() string {
@@ -4935,9 +5608,12 @@ func (s *DescribeDrdsInstanceVersionRequest) SetRegionId(v string) *DescribeDrds
 }
 
 type DescribeDrdsInstanceVersionResponseBody struct {
-	Data      *DescribeDrdsInstanceVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details about the instance version.
+	Data *DescribeDrdsInstanceVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsInstanceVersionResponseBody) String() string {
@@ -4964,8 +5640,10 @@ func (s *DescribeDrdsInstanceVersionResponseBody) SetSuccess(v bool) *DescribeDr
 }
 
 type DescribeDrdsInstanceVersionResponseBodyData struct {
+	// The current version of the instance.
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
-	NewestVersion   *string `json:"NewestVersion,omitempty" xml:"NewestVersion,omitempty"`
+	// The latest version of the instance.
+	NewestVersion *string `json:"NewestVersion,omitempty" xml:"NewestVersion,omitempty"`
 }
 
 func (s DescribeDrdsInstanceVersionResponseBodyData) String() string {
@@ -5016,16 +5694,28 @@ func (s *DescribeDrdsInstanceVersionResponse) SetBody(v *DescribeDrdsInstanceVer
 }
 
 type DescribeDrdsInstancesRequest struct {
-	Description     *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expired         *bool                              `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Mix             *bool                              `json:"Mix,omitempty" xml:"Mix,omitempty"`
-	PageNumber      *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductVersion  *string                            `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	RegionId        *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The description of the instances.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether the instances that you want to query expire.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Specifies whether hybrid queries are supported.
+	Mix *bool `json:"Mix,omitempty" xml:"Mix,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of instances returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The version of the service.
+	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instances you want to query belong. The value of this parameter can be NULL.
 	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*DescribeDrdsInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Type            *string                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the instances that you want to query. Valid values:
+	//
+	// *   **0**: shared instances
+	// *   **1**: dedicated instances
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDrdsInstancesRequest) String() string {
@@ -5087,7 +5777,9 @@ func (s *DescribeDrdsInstancesRequest) SetType(v string) *DescribeDrdsInstancesR
 }
 
 type DescribeDrdsInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag configured for the instances you want to query.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag configured for the instances you want to query.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5110,11 +5802,16 @@ func (s *DescribeDrdsInstancesRequestTag) SetValue(v string) *DescribeDrdsInstan
 }
 
 type DescribeDrdsInstancesResponseBody struct {
-	Instances  *DescribeDrdsInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int32                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The list of returned instances.
+	Instances *DescribeDrdsInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of instances returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of instances returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDrdsInstancesResponseBody) String() string {
@@ -5168,32 +5865,76 @@ func (s *DescribeDrdsInstancesResponseBodyInstances) SetInstance(v []*DescribeDr
 }
 
 type DescribeDrdsInstancesResponseBodyInstancesInstance struct {
-	CommodityCode         *string                                                                  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	CreateTime            *int64                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description           *string                                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	DrdsInstanceId        *string                                                                  `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	ExpireDate            *int64                                                                   `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	InstRole              *string                                                                  `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
-	InstanceSeries        *string                                                                  `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
-	InstanceSpec          *string                                                                  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	Label                 *string                                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
-	MachineType           *string                                                                  `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	MasterInstanceId      *string                                                                  `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
-	NetworkType           *string                                                                  `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OrderInstanceId       *string                                                                  `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	ProductVersion        *string                                                                  `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	// The commodity code of the service.
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The timestamp that indicates when the instance is created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The timestamp that indicates when the instance expires.
+	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The role of the instance. Valid values:
+	//
+	// *   MASTER: The instance is a primary instance.
+	// *   SLAVE: The instance is a read-only instance to analyze complex queries.
+	// *   SLAVE_FLOW: The instance is a read-only instance for high-concurrency scenarios.
+	InstRole *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
+	// The instance series.
+	InstanceSeries *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
+	// The specification of the instance.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The tag of the instance. Valid values:
+	//
+	// *   **NORMAL**: The instance is a standard instance.
+	// *   **HA**: The instance is a high-availability (HA) instance.
+	// *   **VPC**: The instance is a VPC-based instance.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The machine type of the instance. Valid value: ecs.
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// The ID of the primary instance.
+	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
+	// The network type of the instance. Valid values:
+	//
+	// *   **CLASSIC**
+	// *   **VPC**
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The ID of the purchased instance.
+	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// The version of the service.
+	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	// The IDs of read-only instances that are associated with the instance.
 	ReadOnlyDBInstanceIds *DescribeDrdsInstancesResponseBodyInstancesInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
-	RegionId              *string                                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string                                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status                *string                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                  *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Version               *int64                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
-	VersionAction         *string                                                                  `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
-	Vips                  *DescribeDrdsInstancesResponseBodyInstancesInstanceVips                  `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
-	VpcCloudInstanceId    *string                                                                  `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	VpcId                 *string                                                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                *string                                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	Series                *string                                                                  `json:"series,omitempty" xml:"series,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the instance. Valid values:
+	//
+	// *   **PUBLIC**: The returned instance is a shared instance.
+	// *   **PRIVATE**: The returned instance is a dedicated instance.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the instance.
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Indicates whether the version of the instance can be upgraded.
+	VersionAction *string `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
+	// The list of returned virtual IP addresses (VIPs).
+	Vips *DescribeDrdsInstancesResponseBodyInstancesInstanceVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
+	// The ID of the instance that is deployed in the VPC.
+	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	// The ID of the VPC to which the instance belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone in which the resource is located.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **starter**: Starter Edition
+	// *   **enterprise**: Enterprise Edition
+	// *   **standard**: Standard Edition
+	Series *string `json:"series,omitempty" xml:"series,omitempty"`
 }
 
 func (s DescribeDrdsInstancesResponseBodyInstancesInstance) String() string {
@@ -5369,12 +6110,21 @@ func (s *DescribeDrdsInstancesResponseBodyInstancesInstanceVips) SetVip(v []*Des
 }
 
 type DescribeDrdsInstancesResponseBodyInstancesInstanceVipsVip struct {
-	IP        *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	Port      *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The virtual IP address.
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The ports that are opened on the VIP.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the VIP. Valid values:
+	//
+	// *   intranet: a private IP address
+	// *   internet: a public IP address
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	Dns       *string `json:"dns,omitempty" xml:"dns,omitempty"`
+	// The domain name that is mapped to the VIP.
+	Dns *string `json:"dns,omitempty" xml:"dns,omitempty"`
 }
 
 func (s DescribeDrdsInstancesResponseBodyInstancesInstanceVipsVip) String() string {
@@ -5445,10 +6195,17 @@ func (s *DescribeDrdsInstancesResponse) SetBody(v *DescribeDrdsInstancesResponse
 }
 
 type DescribeDrdsParamsRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	ParamLevel     *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of nodes whose parameters you want to query. Valid values:
+	//
+	// *   **INSTANCE: the instance level.**
+	// *   **DB**: the database level.
+	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// The ID of the region where the PolarDB-X 1.0 instance is created.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDrdsParamsRequest) String() string {
@@ -5480,9 +6237,12 @@ func (s *DescribeDrdsParamsRequest) SetRegionId(v string) *DescribeDrdsParamsReq
 }
 
 type DescribeDrdsParamsResponseBody struct {
-	List      []*DescribeDrdsParamsResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates information about parameters.
+	List []*DescribeDrdsParamsResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsParamsResponseBody) String() string {
@@ -5509,16 +6269,27 @@ func (s *DescribeDrdsParamsResponseBody) SetSuccess(v bool) *DescribeDrdsParamsR
 }
 
 type DescribeDrdsParamsResponseBodyList struct {
-	DbName            *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	NeedRestart       *bool   `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
+	// Indicates the name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates whether a restart is required.
+	NeedRestart *bool `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
+	// Indicates the default value of a parameter.
 	ParamDefaultValue *string `json:"ParamDefaultValue,omitempty" xml:"ParamDefaultValue,omitempty"`
-	ParamDesc         *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
-	ParamEnglishName  *string `json:"ParamEnglishName,omitempty" xml:"ParamEnglishName,omitempty"`
-	ParamLevel        *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	ParamName         *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	ParamRanges       *string `json:"ParamRanges,omitempty" xml:"ParamRanges,omitempty"`
-	ParamType         *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	ParamValue        *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+	// Indicates the description of the parameter.
+	ParamDesc *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	// Indicates the name of the parameter.
+	ParamEnglishName *string `json:"ParamEnglishName,omitempty" xml:"ParamEnglishName,omitempty"`
+	// Indicates the parameter level.
+	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// Indicates the name of the parameter.
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// Indicates the value range of the parameter.
+	ParamRanges *string `json:"ParamRanges,omitempty" xml:"ParamRanges,omitempty"`
+	// Indicates the type of the parameter.
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// Indicates the value of the parameter.
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+	// Indicates the name of the variable.
 	ParamVariableName *string `json:"ParamVariableName,omitempty" xml:"ParamVariableName,omitempty"`
 }
 
@@ -5615,6 +6386,9 @@ func (s *DescribeDrdsParamsResponse) SetBody(v *DescribeDrdsParamsResponseBody) 
 }
 
 type DescribeDrdsRdsInstancesRequest struct {
+	// The ID of the PolarDB-X instance.
+	//
+	// > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the information about instances in the specified account, such as the IDs of the instances.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -5632,9 +6406,12 @@ func (s *DescribeDrdsRdsInstancesRequest) SetDrdsInstanceId(v string) *DescribeD
 }
 
 type DescribeDrdsRdsInstancesResponseBody struct {
+	// The information about the custom ApsaraDB RDS for MySQL instances at the storage layer.
 	DbInstances *DescribeDrdsRdsInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
-	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsRdsInstancesResponseBody) String() string {
@@ -5678,22 +6455,83 @@ func (s *DescribeDrdsRdsInstancesResponseBodyDbInstances) SetDbInstance(v []*Des
 }
 
 type DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance struct {
-	ConnectUrl          *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	DBInstanceCPU       *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
+	// The internal endpoint of the custom ApsaraDB RDS for MySQL instance at the storage layer.
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// The number of CPU cores of the custom ApsaraDB RDS for MySQL instance at the storage layer.
+	DBInstanceCPU *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
+	// The instance family of the custom ApsaraDB RDS for MySQL instance at the storage layer. Valid values:
+	//
+	// *   **x**: general-purpose instance family
+	// *   **d**: dedicated instance family
+	// *   **h**: dedicated host instance family
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	DBInstanceId        *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceMemory    *int64  `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	DBInstanceStatus    *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceStorage   *int64  `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	DbInstType          *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DmInstanceId        *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
-	Engine              *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion       *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	NetworkType         *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType             *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port                *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RdsInstType         *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
-	ReadWeight          *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
+	// The ID of the custom ApsaraDB RDS for MySQL instance at the storage layer.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The memory size of the custom ApsaraDB RDS for MySQL instance at the storage layer. Unit: MB.
+	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	// The status of the custom ApsaraDB RDS for MySQL instance at the storage layer. Valid values:
+	//
+	// *   0: The instance is being created.
+	// *   1: The instance is running.
+	// *   3: The instance is being deleted.
+	// *   5: The instance is being restarted.
+	// *   6: The instance is being upgraded or downgraded.
+	// *   7: The instance is being backed up.
+	// *   8: The network type of the instance is being changed.
+	// *   9: The instance is being migrated.
+	// *   11: The data stored on the instance is being migrated.
+	// *   12: A disaster recovery instance is being generated.
+	// *   13: Data is being imported to the instance.
+	// *   14: Data is being imported from another RDS instance to the instance.
+	// *   15: A switchover is being performed.
+	// *   16: A temporary instance is being created.
+	// *   17: The network of the instance is being created.
+	// *   18: The instance is being cloned.
+	// *   19: The link is being changed.
+	// *   20: The read-only RDS instances of the instance are being migrated.
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The storage space of the custom ApsaraDB RDS for MySQL instance at the storage layer. Unit: GB.
+	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	// The type of the instance at the storage layer. The value is RDS.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The ID of the resource.
+	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
+	// The engine type of the custom ApsaraDB RDS for MySQL instance at the storage layer. The value is MySQL.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version of the custom ApsaraDB RDS for MySQL instance at the storage layer. The value is 8.0.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The lock mode of the RDS instance. Valid values:
+	//
+	// 0: The instance is not locked.
+	//
+	// 1: The instance is manually locked.
+	//
+	// 2: The instance is automatically locked if the instance expires.
+	//
+	// 3: The instance is automatically locked if the instance is rolled back.
+	//
+	// 4: The instance is automatically locked if the storage space of the instance reaches the upper limit.
+	//
+	// 5: The instance is automatically locked if the storage space of the read-only instances reaches the upper limit.
+	LockMode *int32 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The reason why the RDS instance is locked.
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The network type of the custom ApsaraDB RDS for MySQL instance at the storage layer. The value is VPC.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The billing method of the custom ApsaraDB RDS for MySQL instance at the storage layer. Valid values:
+	//
+	// *   Postpaid: pay-as-you-go
+	// *   Prepaid: subscription
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The port used to connect to the instance over an internal network.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the custom ApsaraDB RDS for MySQL instance at the storage layer. Valid values:
+	//
+	// *   Primary: primary instance
+	// *   Readonly: read-only instance
+	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	// The read and write weights of the custom ApsaraDB RDS for MySQL instance at the storage layer.
+	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
 }
 
 func (s DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) String() string {
@@ -5759,6 +6597,16 @@ func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetEngineVer
 	return s
 }
 
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetLockMode(v int32) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.LockMode = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetLockReason(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.LockReason = &v
+	return s
+}
+
 func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetNetworkType(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
 	s.NetworkType = &v
 	return s
@@ -5814,11 +6662,16 @@ func (s *DescribeDrdsRdsInstancesResponse) SetBody(v *DescribeDrdsRdsInstancesRe
 }
 
 type DescribeDrdsShardingDbsRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbNamePattern  *string `json:"DbNamePattern,omitempty" xml:"DbNamePattern,omitempty"`
+	// The name of the database whose shards you want to query.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The matching pattern of the database name.
+	DbNamePattern *string `json:"DbNamePattern,omitempty" xml:"DbNamePattern,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance whose database shards you want to query.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of database shards returned on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDrdsShardingDbsRequest) String() string {
@@ -5855,12 +6708,18 @@ func (s *DescribeDrdsShardingDbsRequest) SetPageSize(v int64) *DescribeDrdsShard
 }
 
 type DescribeDrdsShardingDbsResponseBody struct {
-	PageNumber  *string                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *string                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of database shards returned per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of returned database shards.
 	ShardingDbs *DescribeDrdsShardingDbsResponseBodyShardingDbs `json:"ShardingDbs,omitempty" xml:"ShardingDbs,omitempty" type:"Struct"`
-	Success     *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total       *string                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of returned database shards.
+	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDrdsShardingDbsResponseBody) String() string {
@@ -5919,19 +6778,32 @@ func (s *DescribeDrdsShardingDbsResponseBodyShardingDbs) SetShardingDb(v []*Desc
 }
 
 type DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb struct {
-	BlockingTimeout            *int32  `json:"BlockingTimeout,omitempty" xml:"BlockingTimeout,omitempty"`
-	ConnectUrl                 *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	ConnectionProperties       *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
-	DbInstanceId               *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	DbStatus                   *string `json:"DbStatus,omitempty" xml:"DbStatus,omitempty"`
-	DbType                     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	GroupName                  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IdleTimeOut                *int32  `json:"IdleTimeOut,omitempty" xml:"IdleTimeOut,omitempty"`
-	MaxPoolSize                *int32  `json:"MaxPoolSize,omitempty" xml:"MaxPoolSize,omitempty"`
-	MinPoolSize                *int32  `json:"MinPoolSize,omitempty" xml:"MinPoolSize,omitempty"`
-	PreparedStatementCacheSize *int32  `json:"PreparedStatementCacheSize,omitempty" xml:"PreparedStatementCacheSize,omitempty"`
-	ShardingDbName             *string `json:"ShardingDbName,omitempty" xml:"ShardingDbName,omitempty"`
-	UserName                   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The timeout period for a transaction to wait for the release of the data lock.
+	BlockingTimeout *int32 `json:"BlockingTimeout,omitempty" xml:"BlockingTimeout,omitempty"`
+	// The URL that is used to access the Apsara RDS for MySQL instance.
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// The properties of the connection string.
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// The ID of the Apsara RDS for MySQL instance that is used as the storage of the database shard.
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The status of the database.
+	DbStatus *string `json:"DbStatus,omitempty" xml:"DbStatus,omitempty"`
+	// The engine of the database.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The name of group on which the database shard is stored.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The timeout period of an idle connection.
+	IdleTimeOut *int32 `json:"IdleTimeOut,omitempty" xml:"IdleTimeOut,omitempty"`
+	// The maximum size of the connection pool.
+	MaxPoolSize *int32 `json:"MaxPoolSize,omitempty" xml:"MaxPoolSize,omitempty"`
+	// The minimum size of the connection pool.
+	MinPoolSize *int32 `json:"MinPoolSize,omitempty" xml:"MinPoolSize,omitempty"`
+	// The size of cache for the returned results.
+	PreparedStatementCacheSize *int32 `json:"PreparedStatementCacheSize,omitempty" xml:"PreparedStatementCacheSize,omitempty"`
+	// The name of the database shard.
+	ShardingDbName *string `json:"ShardingDbName,omitempty" xml:"ShardingDbName,omitempty"`
+	// The username that is used to connect to the ApsaraDB RDS for MySQL instance.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) String() string {
@@ -6037,13 +6909,20 @@ func (s *DescribeDrdsShardingDbsResponse) SetBody(v *DescribeDrdsShardingDbsResp
 }
 
 type DescribeDrdsSlowSqlsRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExeTime        *int64  `json:"ExeTime,omitempty" xml:"ExeTime,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time of the SQL query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The SQL execution time. Unit: ms.
+	ExeTime *int64 `json:"ExeTime,omitempty" xml:"ExeTime,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The end time of the SQL query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDrdsSlowSqlsRequest) String() string {
@@ -6090,12 +6969,18 @@ func (s *DescribeDrdsSlowSqlsRequest) SetStartTime(v int64) *DescribeDrdsSlowSql
 }
 
 type DescribeDrdsSlowSqlsResponseBody struct {
-	Items      *DescribeDrdsSlowSqlsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total      *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates the details of the slow SQL query.
+	Items *DescribeDrdsSlowSqlsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// Indicates the page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Indicates the number of entries returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the total number of entries.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDrdsSlowSqlsResponseBody) String() string {
@@ -6154,11 +7039,16 @@ func (s *DescribeDrdsSlowSqlsResponseBodyItems) SetItem(v []*DescribeDrdsSlowSql
 }
 
 type DescribeDrdsSlowSqlsResponseBodyItemsItem struct {
-	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	ResponseTime *int64  `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
-	Schema       *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	SendTime     *int64  `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
-	Sql          *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// Indicates the IP address of the execution machine.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Indicates the response time. Unit: ms.
+	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
+	// Indicates the name of the database.
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// Indicates the time when the slow SQL query was sent. Unit: ms.
+	SendTime *int64 `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
+	// Indicates the content of the slow SQL query.
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 }
 
 func (s DescribeDrdsSlowSqlsResponseBodyItemsItem) String() string {
@@ -6224,6 +7114,7 @@ func (s *DescribeDrdsSlowSqlsResponse) SetBody(v *DescribeDrdsSlowSqlsResponseBo
 }
 
 type DescribeDrdsSqlAuditStatusRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -6241,9 +7132,12 @@ func (s *DescribeDrdsSqlAuditStatusRequest) SetDrdsInstanceId(v string) *Describ
 }
 
 type DescribeDrdsSqlAuditStatusResponseBody struct {
-	Data      *DescribeDrdsSqlAuditStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned data set.
+	Data *DescribeDrdsSqlAuditStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsSqlAuditStatusResponseBody) String() string {
@@ -6287,13 +7181,26 @@ func (s *DescribeDrdsSqlAuditStatusResponseBodyData) SetData(v []*DescribeDrdsSq
 }
 
 type DescribeDrdsSqlAuditStatusResponseBodyDataData struct {
-	DbName            *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Detailed          *string `json:"Detailed,omitempty" xml:"Detailed,omitempty"`
-	Enabled           *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	ExtraAliUid       *int64  `json:"ExtraAliUid,omitempty" xml:"ExtraAliUid,omitempty"`
-	ExtraSlsLogStore  *string `json:"ExtraSlsLogStore,omitempty" xml:"ExtraSlsLogStore,omitempty"`
-	ExtraSlsProject   *string `json:"ExtraSlsProject,omitempty" xml:"ExtraSlsProject,omitempty"`
-	ExtraWriteEnabled *bool   `json:"ExtraWriteEnabled,omitempty" xml:"ExtraWriteEnabled,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates whether the complete report of the SQL audit is supported. Valid values: true and false.
+	Detailed *string `json:"Detailed,omitempty" xml:"Detailed,omitempty"`
+	// Indicates whether the SQL audit feature is enabled for the database. Valid values: true and false.
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The UID of the external delivery.
+	//
+	// > This parameter is returned only if external log delivery is enabled.
+	ExtraAliUid *int64 `json:"ExtraAliUid,omitempty" xml:"ExtraAliUid,omitempty"`
+	// The Log Service Logstore from which logs are delivered.
+	//
+	// > This parameter is returned only if external log delivery is enabled.
+	ExtraSlsLogStore *string `json:"ExtraSlsLogStore,omitempty" xml:"ExtraSlsLogStore,omitempty"`
+	// The Log Service project from which logs are delivered.
+	//
+	// > This parameter is returned only if external log delivery is enabled.
+	ExtraSlsProject *string `json:"ExtraSlsProject,omitempty" xml:"ExtraSlsProject,omitempty"`
+	// Indicates whether external log delivery is enabled. Valid values: true and false.
+	ExtraWriteEnabled *bool `json:"ExtraWriteEnabled,omitempty" xml:"ExtraWriteEnabled,omitempty"`
 }
 
 func (s DescribeDrdsSqlAuditStatusResponseBodyDataData) String() string {
@@ -6369,9 +7276,12 @@ func (s *DescribeDrdsSqlAuditStatusResponse) SetBody(v *DescribeDrdsSqlAuditStat
 }
 
 type DescribeDrdsTasksRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The type of tasks.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeDrdsTasksRequest) String() string {
@@ -6398,9 +7308,12 @@ func (s *DescribeDrdsTasksRequest) SetTaskType(v string) *DescribeDrdsTasksReque
 }
 
 type DescribeDrdsTasksResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tasks     *DescribeDrdsTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates information about the tasks.
+	Tasks *DescribeDrdsTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsTasksResponseBody) String() string {
@@ -6444,9 +7357,12 @@ func (s *DescribeDrdsTasksResponseBodyTasks) SetTask(v []*DescribeDrdsTasksRespo
 }
 
 type DescribeDrdsTasksResponseBodyTasksTask struct {
+	// Indicates the content of a task.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Id      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	State   *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Indicates the ID of the task.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates the state of the task.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeDrdsTasksResponseBodyTasksTask) String() string {
@@ -6502,7 +7418,9 @@ func (s *DescribeDrdsTasksResponse) SetBody(v *DescribeDrdsTasksResponseBody) *D
 }
 
 type DescribeExpandLogicTableInfoListRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -6525,9 +7443,12 @@ func (s *DescribeExpandLogicTableInfoListRequest) SetDrdsInstanceId(v string) *D
 }
 
 type DescribeExpandLogicTableInfoListResponseBody struct {
-	Data      *DescribeExpandLogicTableInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the result that is returned.
+	Data *DescribeExpandLogicTableInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeExpandLogicTableInfoListResponseBody) String() string {
@@ -6571,9 +7492,12 @@ func (s *DescribeExpandLogicTableInfoListResponseBodyData) SetData(v []*Describe
 }
 
 type DescribeExpandLogicTableInfoListResponseBodyDataData struct {
+	// Indicates the database sharding key.
 	ShardDbKey *string `json:"ShardDbKey,omitempty" xml:"ShardDbKey,omitempty"`
+	// Indicates the table sharding key.
 	ShardTbKey *string `json:"ShardTbKey,omitempty" xml:"ShardTbKey,omitempty"`
-	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Indicates the name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeExpandLogicTableInfoListResponseBodyDataData) String() string {
@@ -6629,7 +7553,9 @@ func (s *DescribeExpandLogicTableInfoListResponse) SetBody(v *DescribeExpandLogi
 }
 
 type DescribeHotDbListRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -6652,10 +7578,14 @@ func (s *DescribeHotDbListRequest) SetDrdsInstanceId(v string) *DescribeHotDbLis
 }
 
 type DescribeHotDbListResponseBody struct {
-	Data      *DescribeHotDbListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                            `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result that is returned.
+	Data *DescribeHotDbListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeHotDbListResponseBody) String() string {
@@ -6687,8 +7617,10 @@ func (s *DescribeHotDbListResponseBody) SetSuccess(v bool) *DescribeHotDbListRes
 }
 
 type DescribeHotDbListResponseBodyData struct {
-	List       *DescribeHotDbListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
-	RandomCode *string                                `json:"RandomCode,omitempty" xml:"RandomCode,omitempty"`
+	// The information about the databases on which hot-spot scale-out is performed.
+	List *DescribeHotDbListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	// The random number.
+	RandomCode *string `json:"RandomCode,omitempty" xml:"RandomCode,omitempty"`
 }
 
 func (s DescribeHotDbListResponseBodyData) String() string {
@@ -6727,8 +7659,9 @@ func (s *DescribeHotDbListResponseBodyDataList) SetInstanceDb(v []*DescribeHotDb
 }
 
 type DescribeHotDbListResponseBodyDataListInstanceDb struct {
-	HotDbList    *DescribeHotDbListResponseBodyDataListInstanceDbHotDbList `json:"HotDbList,omitempty" xml:"HotDbList,omitempty" type:"Struct"`
-	InstanceName *string                                                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	HotDbList *DescribeHotDbListResponseBodyDataListInstanceDbHotDbList `json:"HotDbList,omitempty" xml:"HotDbList,omitempty" type:"Struct"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
 func (s DescribeHotDbListResponseBodyDataListInstanceDb) String() string {
@@ -6796,7 +7729,9 @@ func (s *DescribeHotDbListResponse) SetBody(v *DescribeHotDbListResponseBody) *D
 }
 
 type DescribeInstDbLogInfoRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the DRDS database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -6819,9 +7754,12 @@ func (s *DescribeInstDbLogInfoRequest) SetDrdsInstanceId(v string) *DescribeInst
 }
 
 type DescribeInstDbLogInfoResponseBody struct {
+	// The time range for log query.
 	LogTimeRange *DescribeInstDbLogInfoResponseBodyLogTimeRange `json:"LogTimeRange,omitempty" xml:"LogTimeRange,omitempty" type:"Struct"`
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstDbLogInfoResponseBody) String() string {
@@ -6848,7 +7786,9 @@ func (s *DescribeInstDbLogInfoResponseBody) SetSuccess(v bool) *DescribeInstDbLo
 }
 
 type DescribeInstDbLogInfoResponseBodyLogTimeRange struct {
+	// The start time of the query time range.
 	SupportLatestTime *int64 `json:"SupportLatestTime,omitempty" xml:"SupportLatestTime,omitempty"`
+	// The end time of the task.
 	SupportOldestTime *int64 `json:"SupportOldestTime,omitempty" xml:"SupportOldestTime,omitempty"`
 }
 
@@ -6900,7 +7840,9 @@ func (s *DescribeInstDbLogInfoResponse) SetBody(v *DescribeInstDbLogInfoResponse
 }
 
 type DescribeInstDbSlsInfoRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -6923,9 +7865,12 @@ func (s *DescribeInstDbSlsInfoRequest) SetDrdsInstanceId(v string) *DescribeInst
 }
 
 type DescribeInstDbSlsInfoResponseBody struct {
+	// The details of the SQL audit.
 	AuditInfo *DescribeInstDbSlsInfoResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstDbSlsInfoResponseBody) String() string {
@@ -6952,8 +7897,10 @@ func (s *DescribeInstDbSlsInfoResponseBody) SetSuccess(v bool) *DescribeInstDbSl
 }
 
 type DescribeInstDbSlsInfoResponseBodyAuditInfo struct {
+	// The name of the LogStore.
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The name of the Log Service project.
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
 func (s DescribeInstDbSlsInfoResponseBodyAuditInfo) String() string {
@@ -7004,6 +7951,7 @@ func (s *DescribeInstDbSlsInfoResponse) SetBody(v *DescribeInstDbSlsInfoResponse
 }
 
 type DescribeInstanceAccountsRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7021,9 +7969,12 @@ func (s *DescribeInstanceAccountsRequest) SetDrdsInstanceId(v string) *DescribeI
 }
 
 type DescribeInstanceAccountsResponseBody struct {
+	// Indicates the information about the instance accounts.
 	InstanceAccounts *DescribeInstanceAccountsResponseBodyInstanceAccounts `json:"InstanceAccounts,omitempty" xml:"InstanceAccounts,omitempty" type:"Struct"`
-	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstanceAccountsResponseBody) String() string {
@@ -7067,11 +8018,19 @@ func (s *DescribeInstanceAccountsResponseBodyInstanceAccounts) SetInstanceAccoun
 }
 
 type DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount struct {
-	AccountName  *string                                                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountType  *int32                                                                           `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// Indicates the username of an instance account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Indicates the type of an instance account. Valid values:
+	//
+	// *   **0**: The instance account is a privileged account.
+	// *   **1**: The instance account is a standard account.
+	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// Indicates the information about the permissions of an account on a database.
 	DbPrivileges *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPrivileges `json:"DbPrivileges,omitempty" xml:"DbPrivileges,omitempty" type:"Struct"`
-	Description  *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	Host         *string                                                                          `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Indicates the description of an account. By default, if 0 is the value of the AccountType parameter, **Created by DRDS** is returned as the value of the Description parameter. If 1 is the value of the AccountType parameter, an empty string is returned as the value of the Description parameter. You can modify the description of an account on the Accounts page in the PolarDB-X console.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates an IP address that is allowed to access the database. The value **%** indicates that each IP address is allowed to access the database. \</note>
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 }
 
 func (s DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) String() string {
@@ -7125,7 +8084,14 @@ func (s *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPr
 }
 
 type DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPrivilegesDbPrivilege struct {
-	DbName    *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates the name of a database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates the permissions that an account is granted on the database. Valid values:
+	//
+	// *   **R**: The account is granted the permissions that are required to read the data of the database.
+	// *   **W**: The account is granted the permissions that are required to write data to the database.
+	// *   **DDL**: The account is granted the permissions that are required to perform DDL operations on the database.
+	// *   **DML**: The account is granted the permissions that are required to perform DML operations on the database.
 	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
 }
 
@@ -7177,6 +8143,7 @@ func (s *DescribeInstanceAccountsResponse) SetBody(v *DescribeInstanceAccountsRe
 }
 
 type DescribeInstanceSwitchAzoneRequest struct {
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7194,9 +8161,12 @@ func (s *DescribeInstanceSwitchAzoneRequest) SetDrdsInstanceId(v string) *Descri
 }
 
 type DescribeInstanceSwitchAzoneResponseBody struct {
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeInstanceSwitchAzoneResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the operation.
+	Result *DescribeInstanceSwitchAzoneResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstanceSwitchAzoneResponseBody) String() string {
@@ -7223,10 +8193,14 @@ func (s *DescribeInstanceSwitchAzoneResponseBody) SetSuccess(v bool) *DescribeIn
 }
 
 type DescribeInstanceSwitchAzoneResponseBodyResult struct {
-	OriginAzoneId *string                                                    `json:"OriginAzoneId,omitempty" xml:"OriginAzoneId,omitempty"`
-	RegionId      *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SwitchAble    *bool                                                      `json:"SwitchAble,omitempty" xml:"SwitchAble,omitempty"`
-	TargetAzones  *DescribeInstanceSwitchAzoneResponseBodyResultTargetAzones `json:"TargetAzones,omitempty" xml:"TargetAzones,omitempty" type:"Struct"`
+	// The ID of the source azoneId.
+	OriginAzoneId *string `json:"OriginAzoneId,omitempty" xml:"OriginAzoneId,omitempty"`
+	// regionId.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether the job can be switched.
+	SwitchAble *bool `json:"SwitchAble,omitempty" xml:"SwitchAble,omitempty"`
+	// Target azones.
+	TargetAzones *DescribeInstanceSwitchAzoneResponseBodyResultTargetAzones `json:"TargetAzones,omitempty" xml:"TargetAzones,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceSwitchAzoneResponseBodyResult) String() string {
@@ -7304,6 +8278,7 @@ func (s *DescribeInstanceSwitchAzoneResponse) SetBody(v *DescribeInstanceSwitchA
 }
 
 type DescribeInstanceSwitchNetworkRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7321,9 +8296,12 @@ func (s *DescribeInstanceSwitchNetworkRequest) SetDrdsInstanceId(v string) *Desc
 }
 
 type DescribeInstanceSwitchNetworkResponseBody struct {
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	VpcInfos  *DescribeInstanceSwitchNetworkResponseBodyVpcInfos `json:"VpcInfos,omitempty" xml:"VpcInfos,omitempty" type:"Struct"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the information about the virtual private cloud (VPC) in which the instance is deployed.
+	VpcInfos *DescribeInstanceSwitchNetworkResponseBodyVpcInfos `json:"VpcInfos,omitempty" xml:"VpcInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceSwitchNetworkResponseBody) String() string {
@@ -7367,9 +8345,13 @@ func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfos) SetVpcInfo(v []*Desc
 }
 
 type DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo struct {
-	RegionId     *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId        *string                                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName      *string                                                               `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// Indicates the ID of the region in which the instance is deployed.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates the ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Indicates the name of the VPC.
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// Indicates information about the vSwitch to which the instance is connected.
 	VswitchInfos *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfos `json:"VswitchInfos,omitempty" xml:"VswitchInfos,omitempty" type:"Struct"`
 }
 
@@ -7419,11 +8401,16 @@ func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfos) S
 }
 
 type DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo struct {
-	AzoneId       *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
-	DrdsSupported *bool   `json:"DrdsSupported,omitempty" xml:"DrdsSupported,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId     *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	VswitchName   *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
+	// Indicates the ID of the zone in which the instance is deployed.
+	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	// Indicates whether you can change the network type of the instance.
+	DrdsSupported *bool `json:"DrdsSupported,omitempty" xml:"DrdsSupported,omitempty"`
+	// Indicates the ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Indicates the ID of the vSwitch.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// Indicates the name of the vSwitch.
+	VswitchName *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
 }
 
 func (s DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo) String() string {
@@ -7489,9 +8476,12 @@ func (s *DescribeInstanceSwitchNetworkResponse) SetBody(v *DescribeInstanceSwitc
 }
 
 type DescribePreCheckResultRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the precheck task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribePreCheckResultRequest) String() string {
@@ -7518,9 +8508,12 @@ func (s *DescribePreCheckResultRequest) SetTaskId(v string) *DescribePreCheckRes
 }
 
 type DescribePreCheckResultResponseBody struct {
+	// Indicates the result of the precheck task.
 	PreCheckResult *DescribePreCheckResultResponseBodyPreCheckResult `json:"PreCheckResult,omitempty" xml:"PreCheckResult,omitempty" type:"Struct"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribePreCheckResultResponseBody) String() string {
@@ -7547,8 +8540,11 @@ func (s *DescribePreCheckResultResponseBody) SetSuccess(v bool) *DescribePreChec
 }
 
 type DescribePreCheckResultResponseBodyPreCheckResult struct {
-	PreCheckName  *string                                                          `json:"PreCheckName,omitempty" xml:"PreCheckName,omitempty"`
-	State         *string                                                          `json:"State,omitempty" xml:"State,omitempty"`
+	// Indicates the name of the precheck task.
+	PreCheckName *string `json:"PreCheckName,omitempty" xml:"PreCheckName,omitempty"`
+	// Indicates the state of the precheck task.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Indicates the details about the subtasks of the precheck task.
 	SubCheckItems []*DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems `json:"SubCheckItems,omitempty" xml:"SubCheckItems,omitempty" type:"Repeated"`
 }
 
@@ -7576,10 +8572,14 @@ func (s *DescribePreCheckResultResponseBodyPreCheckResult) SetSubCheckItems(v []
 }
 
 type DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems struct {
-	ErrorMsgCode     *string   `json:"ErrorMsgCode,omitempty" xml:"ErrorMsgCode,omitempty"`
-	ErrorMsgParams   []*string `json:"ErrorMsgParams,omitempty" xml:"ErrorMsgParams,omitempty" type:"Repeated"`
-	PreCheckItemName *string   `json:"PreCheckItemName,omitempty" xml:"PreCheckItemName,omitempty"`
-	State            *string   `json:"State,omitempty" xml:"State,omitempty"`
+	// Indicates the error code that is returned by a subtask.
+	ErrorMsgCode *string `json:"ErrorMsgCode,omitempty" xml:"ErrorMsgCode,omitempty"`
+	// Indicates an error message.
+	ErrorMsgParams []*string `json:"ErrorMsgParams,omitempty" xml:"ErrorMsgParams,omitempty" type:"Repeated"`
+	// Indicates the name of the subtask.
+	PreCheckItemName *string `json:"PreCheckItemName,omitempty" xml:"PreCheckItemName,omitempty"`
+	// Indicates the state of the subtask.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems) String() string {
@@ -7640,12 +8640,20 @@ func (s *DescribePreCheckResultResponse) SetBody(v *DescribePreCheckResultRespon
 }
 
 type DescribeRDSPerformanceRequest struct {
-	DbInstType     *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The type of the database engine.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The ID of the Distributed Relational Database Service (DRDS) instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Keys           *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
-	RdsInstanceId  *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end time of the query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The performance monitoring metrics. You can specify one or more metrics for a query at a time. Separate multiple metric parameters with commas (,).
+	//
+	// >  For more information about the details of performance monitoring metrics, see [Storage monitoring](~~186705~~).
+	Keys *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// The ID of the storage-layer ApsaraDB RDS for MySQL instance.
+	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
+	// The start time of the query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeRDSPerformanceRequest) String() string {
@@ -7687,9 +8695,12 @@ func (s *DescribeRDSPerformanceRequest) SetStartTime(v int64) *DescribeRDSPerfor
 }
 
 type DescribeRDSPerformanceResponseBody struct {
-	Data      []*DescribeRDSPerformanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result set of the query.
+	Data []*DescribeRDSPerformanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRDSPerformanceResponseBody) String() string {
@@ -7716,11 +8727,18 @@ func (s *DescribeRDSPerformanceResponseBody) SetSuccess(v bool) *DescribeRDSPerf
 }
 
 type DescribeRDSPerformanceResponseBodyData struct {
-	Key      *string                                         `json:"Key,omitempty" xml:"Key,omitempty"`
-	NodeName *string                                         `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodeNum  *int32                                          `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	Unit     *string                                         `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Values   []*DescribeRDSPerformanceResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The name of the monitoring metric.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the node.
+	//
+	// >  This parameter is returned only when the storage type of the database is PolarDB for MySQL. If the storage type of the database is ApsaraDB RDS for MySQL, this parameter is not returned.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The number of nodes.
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The unit of the monitoring metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The details of the monitoring metric data.
+	Values []*DescribeRDSPerformanceResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRDSPerformanceResponseBodyData) String() string {
@@ -7757,7 +8775,9 @@ func (s *DescribeRDSPerformanceResponseBodyData) SetValues(v []*DescribeRDSPerfo
 }
 
 type DescribeRDSPerformanceResponseBodyDataValues struct {
-	Date  *int64  `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The time point when the value of the monitoring metric was obtained. The value is in the UNIX timestamp format. The time is displayed in UTC. Unit: ms.
+	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The value of the monitoring metric.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7809,9 +8829,12 @@ func (s *DescribeRDSPerformanceResponse) SetBody(v *DescribeRDSPerformanceRespon
 }
 
 type DescribeRdsCommodityRequest struct {
-	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The commodity code of the service.
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	OrderType      *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The type of the order.
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 }
 
 func (s DescribeRdsCommodityRequest) String() string {
@@ -7838,9 +8861,12 @@ func (s *DescribeRdsCommodityRequest) SetOrderType(v string) *DescribeRdsCommodi
 }
 
 type DescribeRdsCommodityResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates the returned result.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates the ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRdsCommodityResponseBody) String() string {
@@ -7896,9 +8922,11 @@ func (s *DescribeRdsCommodityResponse) SetBody(v *DescribeRdsCommodityResponseBo
 }
 
 type DescribeRdsPerformanceSummaryRequest struct {
+	// The ID of a DRDS instance.
 	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	RdsInstanceId  []*string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty" type:"Repeated"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the streaming domain resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRdsPerformanceSummaryRequest) String() string {
@@ -7925,9 +8953,12 @@ func (s *DescribeRdsPerformanceSummaryRequest) SetRegionId(v string) *DescribeRd
 }
 
 type DescribeRdsPerformanceSummaryResponseBody struct {
+	// A collection of objects.
 	RdsPerformanceInfos []*DescribeRdsPerformanceSummaryResponseBodyRdsPerformanceInfos `json:"RdsPerformanceInfos,omitempty" xml:"RdsPerformanceInfos,omitempty" type:"Repeated"`
-	RequestId           *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRdsPerformanceSummaryResponseBody) String() string {
@@ -7954,12 +8985,18 @@ func (s *DescribeRdsPerformanceSummaryResponseBody) SetSuccess(v bool) *Describe
 }
 
 type DescribeRdsPerformanceSummaryResponseBodyRdsPerformanceInfos struct {
-	ActiveSessions *int32   `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
-	Cpu            *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Iops           *float32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
-	RdsId          *string  `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	SpaceUsage     *int64   `json:"SpaceUsage,omitempty" xml:"SpaceUsage,omitempty"`
-	TotalSessions  *int32   `json:"TotalSessions,omitempty" xml:"TotalSessions,omitempty"`
+	// The number of active sessions of the RDS instance.
+	ActiveSessions *int32 `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
+	// The CPU utilization of an RDS instance.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The IOPS of the RDS instance.
+	Iops *float32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
+	// The ID of an RDS instance.
+	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
+	// The disk usage of apsaradb for RDS. Unit: MB.
+	SpaceUsage *int64 `json:"SpaceUsage,omitempty" xml:"SpaceUsage,omitempty"`
+	// The total number of current RDS sessions.
+	TotalSessions *int32 `json:"TotalSessions,omitempty" xml:"TotalSessions,omitempty"`
 }
 
 func (s DescribeRdsPerformanceSummaryResponseBodyRdsPerformanceInfos) String() string {
@@ -8030,7 +9067,9 @@ func (s *DescribeRdsPerformanceSummaryResponse) SetBody(v *DescribeRdsPerformanc
 }
 
 type DescribeRdsSuperAccountInstancesRequest struct {
-	DbInstType     *string   `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The type of the ApsaraDB RDS for MySQL instances. Default value: **RDS**.
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	RdsInstance    []*string `json:"RdsInstance,omitempty" xml:"RdsInstance,omitempty" type:"Repeated"`
 }
@@ -8059,8 +9098,10 @@ func (s *DescribeRdsSuperAccountInstancesRequest) SetRdsInstance(v []*string) *D
 }
 
 type DescribeRdsSuperAccountInstancesResponseBody struct {
+	// The privileged accounts.
 	DbInstances *DescribeRdsSuperAccountInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
-	RequestId   *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRdsSuperAccountInstancesResponseBody) String() string {
@@ -8128,9 +9169,12 @@ func (s *DescribeRdsSuperAccountInstancesResponse) SetBody(v *DescribeRdsSuperAc
 }
 
 type DescribeRecycleBinStatusRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database that is created in the PolarDB-X 1.0 instance.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRecycleBinStatusRequest) String() string {
@@ -8157,9 +9201,15 @@ func (s *DescribeRecycleBinStatusRequest) SetRegionId(v string) *DescribeRecycle
 }
 
 type DescribeRecycleBinStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status of the table recycle bin. Valid values:
+	//
+	// *   disable: The table recycle bin is enabled.
+	// *   enable: The table recycle bin is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRecycleBinStatusResponseBody) String() string {
@@ -8215,9 +9265,12 @@ func (s *DescribeRecycleBinStatusResponse) SetBody(v *DescribeRecycleBinStatusRe
 }
 
 type DescribeRecycleBinTablesRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRecycleBinTablesRequest) String() string {
@@ -8244,9 +9297,12 @@ func (s *DescribeRecycleBinTablesRequest) SetRegionId(v string) *DescribeRecycle
 }
 
 type DescribeRecycleBinTablesResponseBody struct {
-	Data      []*DescribeRecycleBinTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The data object returned.
+	Data []*DescribeRecycleBinTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRecycleBinTablesResponseBody) String() string {
@@ -8273,9 +9329,12 @@ func (s *DescribeRecycleBinTablesResponseBody) SetSuccess(v bool) *DescribeRecyc
 }
 
 type DescribeRecycleBinTablesResponseBodyData struct {
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the table was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The original name of the table.
 	OriginalTableName *string `json:"OriginalTableName,omitempty" xml:"OriginalTableName,omitempty"`
-	TableName         *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeRecycleBinTablesResponseBodyData) String() string {
@@ -8331,11 +9390,20 @@ func (s *DescribeRecycleBinTablesResponse) SetBody(v *DescribeRecycleBinTablesRe
 }
 
 type DescribeRestoreOrderRequest struct {
-	BackupDbNames       *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
-	BackupId            *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupLevel         *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	BackupMode          *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	DrdsInstanceId      *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The name of the database involved in the backup.
+	BackupDbNames *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
+	// The ID of the backup set.
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The level of the backup. Valid values:
+	//
+	// *   **DB**: The database Level
+	// *   **instance **: instance level
+	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
+	// The backup mode. Valid values: **logic** or **phy**.
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The ID of the instance for which to modify the backup policy.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The preferred backup time.
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
@@ -8378,9 +9446,12 @@ func (s *DescribeRestoreOrderRequest) SetPreferredBackupTime(v string) *Describe
 }
 
 type DescribeRestoreOrderResponseBody struct {
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data object.
 	RestoreOrderDO *DescribeRestoreOrderResponseBodyRestoreOrderDO `json:"RestoreOrderDO,omitempty" xml:"RestoreOrderDO,omitempty" type:"Struct"`
-	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRestoreOrderResponseBody) String() string {
@@ -8407,9 +9478,12 @@ func (s *DescribeRestoreOrderResponseBody) SetSuccess(v bool) *DescribeRestoreOr
 }
 
 type DescribeRestoreOrderResponseBodyRestoreOrderDO struct {
-	DrdsOrderDOList  *DescribeRestoreOrderResponseBodyRestoreOrderDODrdsOrderDOList  `json:"DrdsOrderDOList,omitempty" xml:"DrdsOrderDOList,omitempty" type:"Struct"`
+	// The information of the restored order.
+	DrdsOrderDOList *DescribeRestoreOrderResponseBodyRestoreOrderDODrdsOrderDOList `json:"DrdsOrderDOList,omitempty" xml:"DrdsOrderDOList,omitempty" type:"Struct"`
+	// The ID of the restored apsaradb for PolarDB cluster.
 	PolarOrderDOList *DescribeRestoreOrderResponseBodyRestoreOrderDOPolarOrderDOList `json:"PolarOrderDOList,omitempty" xml:"PolarOrderDOList,omitempty" type:"Struct"`
-	RdsOrderDOList   *DescribeRestoreOrderResponseBodyRestoreOrderDORdsOrderDOList   `json:"RdsOrderDOList,omitempty" xml:"RdsOrderDOList,omitempty" type:"Struct"`
+	// The information of the restored RDS order.
+	RdsOrderDOList *DescribeRestoreOrderResponseBodyRestoreOrderDORdsOrderDOList `json:"RdsOrderDOList,omitempty" xml:"RdsOrderDOList,omitempty" type:"Struct"`
 }
 
 func (s DescribeRestoreOrderResponseBodyRestoreOrderDO) String() string {
@@ -8453,12 +9527,21 @@ func (s *DescribeRestoreOrderResponseBodyRestoreOrderDODrdsOrderDOList) SetDrdsO
 }
 
 type DescribeRestoreOrderResponseBodyRestoreOrderDODrdsOrderDOListDrdsOrderDOList struct {
-	AzoneId   *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
-	InstSpec  *string `json:"InstSpec,omitempty" xml:"InstSpec,omitempty"`
-	Network   *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the zone for which to query resources.
+	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	// The instance type of the instance.
+	InstSpec *string `json:"InstSpec,omitempty" xml:"InstSpec,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   **Classic **: Classic Network
+	// *   **vpc**: VPC
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the vSwitch in the VPC.
 	VSwtichId *string `json:"VSwtichId,omitempty" xml:"VSwtichId,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the VPC network.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRestoreOrderResponseBodyRestoreOrderDODrdsOrderDOListDrdsOrderDOList) String() string {
@@ -8517,14 +9600,25 @@ func (s *DescribeRestoreOrderResponseBodyRestoreOrderDOPolarOrderDOList) SetPola
 }
 
 type DescribeRestoreOrderResponseBodyRestoreOrderDOPolarOrderDOListPolarOrderDOList struct {
-	AzoneId           *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	// The zone ID of the node.
+	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	// The capacity of disk.
 	DbInstanceStorage *string `json:"DbInstanceStorage,omitempty" xml:"DbInstanceStorage,omitempty"`
-	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	InstanceClass     *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	Network           *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	Num               *int64  `json:"Num,omitempty" xml:"Num,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The storage engine of PolarDB.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The type of the instance.
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   **Classic**: Classic Network
+	// *   **vpc**: VPC
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The number of streams that were returned.
+	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The version of the operating system.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeRestoreOrderResponseBodyRestoreOrderDOPolarOrderDOListPolarOrderDOList) String() string {
@@ -8593,14 +9687,23 @@ func (s *DescribeRestoreOrderResponseBodyRestoreOrderDORdsOrderDOList) SetRdsOrd
 }
 
 type DescribeRestoreOrderResponseBodyRestoreOrderDORdsOrderDOListRdsOrderDOList struct {
-	AzoneId           *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	// The zone ID of the node.
+	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	// The capacity of disk.
 	DbInstanceStorage *string `json:"DbInstanceStorage,omitempty" xml:"DbInstanceStorage,omitempty"`
-	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	InstanceClass     *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	Network           *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	Num               *int64  `json:"Num,omitempty" xml:"Num,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The storage engine of the instance.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The instance type of the instance.
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The network type. Valid values: - **Classic **: Classic Network
+	// - **vpc**: VPC
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The number of streams that were returned.
+	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The version of the operating system.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeRestoreOrderResponseBodyRestoreOrderDORdsOrderDOListRdsOrderDOList) String() string {
@@ -8681,10 +9784,15 @@ func (s *DescribeRestoreOrderResponse) SetBody(v *DescribeRestoreOrderResponseBo
 }
 
 type DescribeShardTaskInfoRequest struct {
-	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId  *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the table that you want to convert or shard.
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	// The name of the table that is generated after you convert or shard the table.
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 }
 
@@ -8722,9 +9830,12 @@ func (s *DescribeShardTaskInfoRequest) SetTargetTableName(v string) *DescribeSha
 }
 
 type DescribeShardTaskInfoResponseBody struct {
-	Data      *DescribeShardTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the data that is returned.
+	Data *DescribeShardTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates the unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBody) String() string {
@@ -8751,17 +9862,28 @@ func (s *DescribeShardTaskInfoResponseBody) SetSuccess(v bool) *DescribeShardTas
 }
 
 type DescribeShardTaskInfoResponseBodyData struct {
-	Expired         *string                                          `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Full            *DescribeShardTaskInfoResponseBodyDataFull       `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
-	FullCheck       *DescribeShardTaskInfoResponseBodyDataFullCheck  `json:"FullCheck,omitempty" xml:"FullCheck,omitempty" type:"Struct"`
-	FullRevise      *DescribeShardTaskInfoResponseBodyDataFullRevise `json:"FullRevise,omitempty" xml:"FullRevise,omitempty" type:"Struct"`
-	Increment       *DescribeShardTaskInfoResponseBodyDataIncrement  `json:"Increment,omitempty" xml:"Increment,omitempty" type:"Struct"`
-	Progress        *string                                          `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Review          *DescribeShardTaskInfoResponseBodyDataReview     `json:"Review,omitempty" xml:"Review,omitempty" type:"Struct"`
-	SourceTableName *string                                          `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
-	Stage           *string                                          `json:"Stage,omitempty" xml:"Stage,omitempty"`
-	Status          *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetTableName *string                                          `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+	// Indicates the number of remaining days before the tasks to shard tables or convert tables expire.
+	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Indicates information about full migration tasks.
+	Full *DescribeShardTaskInfoResponseBodyDataFull `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
+	// Indicates information about full check tasks.
+	FullCheck *DescribeShardTaskInfoResponseBodyDataFullCheck `json:"FullCheck,omitempty" xml:"FullCheck,omitempty" type:"Struct"`
+	// Indicates information about full correction tasks.
+	FullRevise *DescribeShardTaskInfoResponseBodyDataFullRevise `json:"FullRevise,omitempty" xml:"FullRevise,omitempty" type:"Struct"`
+	// Indicates information about incremental data synchronization.
+	Increment *DescribeShardTaskInfoResponseBodyDataIncrement `json:"Increment,omitempty" xml:"Increment,omitempty" type:"Struct"`
+	// Indicates the incremental data synchronization progress.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates check tasks.
+	Review *DescribeShardTaskInfoResponseBodyDataReview `json:"Review,omitempty" xml:"Review,omitempty" type:"Struct"`
+	// Indicates the name of the table that you convert or shard.
+	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	// Indicates the current stage of the task.
+	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	// Indicates the state of the tasks to shard tables or convert tables.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates the name of the table after you convert or shard the table.
+	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBodyData) String() string {
@@ -8828,11 +9950,16 @@ func (s *DescribeShardTaskInfoResponseBodyData) SetTargetTableName(v string) *De
 }
 
 type DescribeShardTaskInfoResponseBodyDataFull struct {
-	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates the number of remaining days before the tasks expire.
+	Expired *int32 `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Indicates the progress of the tasks.
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates the start time when the tasks are performed.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
-	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+	// Indicates the number of tasks.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates the number of transactions processed by the database per second.
+	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBodyDataFull) String() string {
@@ -8869,11 +9996,16 @@ func (s *DescribeShardTaskInfoResponseBodyDataFull) SetTps(v int32) *DescribeSha
 }
 
 type DescribeShardTaskInfoResponseBodyDataFullCheck struct {
-	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates the number of remaining days before the tasks expire.
+	Expired *int32 `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Indicates the progress of the tasks.
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates the start time when the tasks are performed.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
-	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+	// Indicates the number of tasks.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates the number of transactions processed by the database per second.
+	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBodyDataFullCheck) String() string {
@@ -8910,11 +10042,16 @@ func (s *DescribeShardTaskInfoResponseBodyDataFullCheck) SetTps(v int32) *Descri
 }
 
 type DescribeShardTaskInfoResponseBodyDataFullRevise struct {
-	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates the number of remaining days before the tasks expire.
+	Expired *int32 `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Indicates the progress of the tasks.
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates the start time when the tasks are performed.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
-	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+	// Indicates the number of tasks.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates the number of transactions processed by the database per second.
+	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBodyDataFullRevise) String() string {
@@ -8951,9 +10088,12 @@ func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetTps(v int32) *Descr
 }
 
 type DescribeShardTaskInfoResponseBodyDataIncrement struct {
-	Delay     *int32  `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	// Indicates the latency of the incremental data synchronization.
+	Delay *int32 `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	// Indicates the start time when the incremental data synchronization is performed.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+	// Indicates the number of transactions processed by the database per second.
+	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBodyDataIncrement) String() string {
@@ -8980,11 +10120,16 @@ func (s *DescribeShardTaskInfoResponseBodyDataIncrement) SetTps(v int32) *Descri
 }
 
 type DescribeShardTaskInfoResponseBodyDataReview struct {
-	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates the number of remaining days before the tasks expire.
+	Expired *int32 `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Indicates the progress of the tasks.
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Indicates the start time when the tasks are performed.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
-	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+	// Indicates the number of tasks.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates the number of transactions processed by the database per second.
+	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBodyDataReview) String() string {
@@ -9050,6 +10195,7 @@ func (s *DescribeShardTaskInfoResponse) SetBody(v *DescribeShardTaskInfoResponse
 }
 
 type DescribeSqlFlashbakTaskRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -9067,9 +10213,12 @@ func (s *DescribeSqlFlashbakTaskRequest) SetDrdsInstanceId(v string) *DescribeSq
 }
 
 type DescribeSqlFlashbakTaskResponseBody struct {
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates the information about flashback tasks.
 	SqlFlashbackTasks *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasks `json:"SqlFlashbackTasks,omitempty" xml:"SqlFlashbackTasks,omitempty" type:"Struct"`
-	Success           *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSqlFlashbakTaskResponseBody) String() string {
@@ -9113,24 +10262,48 @@ func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasks) SetSqlFlashbackTa
 }
 
 type DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask struct {
-	DbName            *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DownloadUrl       *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	ExpireTime        *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GmtCreate         *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified       *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstId            *string `json:"InstId,omitempty" xml:"InstId,omitempty"`
-	RecallProgress    *int32  `json:"RecallProgress,omitempty" xml:"RecallProgress,omitempty"`
-	RecallRestoreType *int32  `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
-	RecallStatus      *int32  `json:"RecallStatus,omitempty" xml:"RecallStatus,omitempty"`
-	RecallType        *int32  `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
-	SearchEndTime     *int64  `json:"SearchEndTime,omitempty" xml:"SearchEndTime,omitempty"`
-	SearchStartTime   *int64  `json:"SearchStartTime,omitempty" xml:"SearchStartTime,omitempty"`
-	SqlCounter        *int64  `json:"SqlCounter,omitempty" xml:"SqlCounter,omitempty"`
-	SqlPk             *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
-	SqlType           *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	TableName         *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TraceId           *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// Indicates the name of the database on which a flashback task is performed.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates the download URL.
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// Indicates the time when the download URL expires.
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Indicates the point in time when the instance was created.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Indicates the point in time when the flashback task is performed.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates the ID of the primary key that corresponds to a table used in the flashback task.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates the ID of the instance.
+	InstId *string `json:"InstId,omitempty" xml:"InstId,omitempty"`
+	// Indicates the progress of the reverse call.
+	RecallProgress *int32 `json:"RecallProgress,omitempty" xml:"RecallProgress,omitempty"`
+	// Indicates the type of the flashback task. Valid values:
+	//
+	// *   **1**: image restoration
+	// *   **2**: reverse restoration
+	RecallRestoreType *int32 `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
+	// Indicates the status of the data recall task.
+	RecallStatus *int32 `json:"RecallStatus,omitempty" xml:"RecallStatus,omitempty"`
+	// Indicates the type of the reverse call. Valid values:
+	//
+	// *   **0**: exact search
+	// *   **1**: fuzzy search
+	RecallType *int32 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	// Indicates the start time of the reverse call.
+	SearchEndTime *int64 `json:"SearchEndTime,omitempty" xml:"SearchEndTime,omitempty"`
+	// Indicates the end time of the reverse call.
+	SearchStartTime *int64 `json:"SearchStartTime,omitempty" xml:"SearchStartTime,omitempty"`
+	// Indicates the number of data rows that are flashed back.
+	SqlCounter *int64 `json:"SqlCounter,omitempty" xml:"SqlCounter,omitempty"`
+	// Indicates the primary key specified in the SQL statements.
+	SqlPk *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
+	// Indicates the types of the SQL statements.
+	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// Indicates the name of the table that contains the data that are flashed back.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Indicates the ID of the trace of the SQL query.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) String() string {
@@ -9261,10 +10434,14 @@ func (s *DescribeSqlFlashbakTaskResponse) SetBody(v *DescribeSqlFlashbakTaskResp
 }
 
 type DescribeTableRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the region where the PolarDB-X 1.0 instance is created.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeTableRequest) String() string {
@@ -9296,9 +10473,12 @@ func (s *DescribeTableRequest) SetTableName(v string) *DescribeTableRequest {
 }
 
 type DescribeTableResponseBody struct {
-	Data      *DescribeTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the returned data.
+	Data *DescribeTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates the unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeTableResponseBody) String() string {
@@ -9325,6 +10505,7 @@ func (s *DescribeTableResponseBody) SetSuccess(v bool) *DescribeTableResponseBod
 }
 
 type DescribeTableResponseBodyData struct {
+	// Indicates the details about the table schema.
 	List []*DescribeTableResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -9342,12 +10523,18 @@ func (s *DescribeTableResponseBodyData) SetList(v []*DescribeTableResponseBodyDa
 }
 
 type DescribeTableResponseBodyDataList struct {
-	ColumnName  *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ColumnType  *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	Extra       *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Index       *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Indicates the name of a column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// Indicates the type of the column.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// Extra
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Indicates the primary key of the table.
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Indicates whether the column can be empty.
 	IsAllowNull *string `json:"IsAllowNull,omitempty" xml:"IsAllowNull,omitempty"`
-	IsPk        *string `json:"IsPk,omitempty" xml:"IsPk,omitempty"`
+	// Indicates whether the column is the primary key column of the table.
+	IsPk *string `json:"IsPk,omitempty" xml:"IsPk,omitempty"`
 }
 
 func (s DescribeTableResponseBodyDataList) String() string {
@@ -9418,13 +10605,20 @@ func (s *DescribeTableResponse) SetBody(v *DescribeTableResponseBody) *DescribeT
 }
 
 type DescribeTableListByTypeRequest struct {
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query          *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableType      *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field that you specify for your query.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of tables. Valid values:
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
 }
 
 func (s DescribeTableListByTypeRequest) String() string {
@@ -9471,12 +10665,18 @@ func (s *DescribeTableListByTypeRequest) SetTableType(v string) *DescribeTableLi
 }
 
 type DescribeTableListByTypeResponseBody struct {
-	List       []*DescribeTableListByTypeResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total      *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Indicates the information about tables.
+	List []*DescribeTableListByTypeResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Indicates the page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Indicates the number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates the unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the total number of returned tables.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeTableListByTypeResponseBody) String() string {
@@ -9518,7 +10718,9 @@ func (s *DescribeTableListByTypeResponseBody) SetTotal(v int32) *DescribeTableLi
 }
 
 type DescribeTableListByTypeResponseBodyList struct {
-	Property  *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// Indicates the property of a table.
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// Indicates the name of the table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -9570,12 +10772,18 @@ func (s *DescribeTableListByTypeResponse) SetBody(v *DescribeTableListByTypeResp
 }
 
 type DescribeTablesRequest struct {
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The name of the database whose tables you want to query.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query          *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of tables returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query condition. The value of this parameter is the ID of the PolarDB-X 1.0 instance.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeTablesRequest) String() string {
@@ -9617,12 +10825,18 @@ func (s *DescribeTablesRequest) SetRegionId(v string) *DescribeTablesRequest {
 }
 
 type DescribeTablesResponseBody struct {
-	List       []*DescribeTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total      *int32                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The list of returned tables.
+	List []*DescribeTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The number of returned pages.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of tables returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of returned tables.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeTablesResponseBody) String() string {
@@ -9664,14 +10878,28 @@ func (s *DescribeTablesResponseBody) SetTotal(v int32) *DescribeTablesResponseBo
 }
 
 type DescribeTablesResponseBodyList struct {
-	AllowFullTableScan *bool   `json:"AllowFullTableScan,omitempty" xml:"AllowFullTableScan,omitempty"`
-	Broadcast          *bool   `json:"Broadcast,omitempty" xml:"Broadcast,omitempty"`
-	DbInstType         *int32  `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	IsLocked           *bool   `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
-	IsShard            *bool   `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
-	ShardKey           *string `json:"ShardKey,omitempty" xml:"ShardKey,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Table              *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// Indicates whether full table scanning is allowed.
+	AllowFullTableScan *bool `json:"AllowFullTableScan,omitempty" xml:"AllowFullTableScan,omitempty"`
+	// Indicates whether the table is a replicated table.
+	Broadcast *bool `json:"Broadcast,omitempty" xml:"Broadcast,omitempty"`
+	// The type of the PolarDB-X 1.0 instance. Valid values:
+	//
+	// *   0: The instance is a dedicated instance.
+	// *   1: The instance is a shard instance.
+	DbInstType *int32 `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// Indicates whether the table is locked.
+	IsLocked *bool `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
+	// Indicates whether the table is sharded.
+	IsShard *bool `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
+	// The shard key of the table.
+	ShardKey *string `json:"ShardKey,omitempty" xml:"ShardKey,omitempty"`
+	// Indicates whether sharding tasks are performed on the table. Valid values:
+	//
+	// *   0: No sharding task is performed on the table.
+	// *   1: Sharding tasks are performed on the table.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the table.
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeTablesResponseBodyList) String() string {
@@ -9752,7 +10980,9 @@ func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *Describ
 }
 
 type DisableSqlAuditRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database for which you want to disable the SQL audit feature.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -9775,9 +11005,12 @@ func (s *DisableSqlAuditRequest) SetDrdsInstanceId(v string) *DisableSqlAuditReq
 }
 
 type DisableSqlAuditResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The return result.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableSqlAuditResponseBody) String() string {
@@ -9833,8 +11066,10 @@ func (s *DisableSqlAuditResponse) SetBody(v *DisableSqlAuditResponseBody) *Disab
 }
 
 type EnableInstanceIpv6AddressRequest struct {
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s EnableInstanceIpv6AddressRequest) String() string {
@@ -9856,7 +11091,9 @@ func (s *EnableInstanceIpv6AddressRequest) SetRegionId(v string) *EnableInstance
 }
 
 type EnableInstanceIpv6AddressResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The result of the request.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9908,10 +11145,17 @@ func (s *EnableInstanceIpv6AddressResponse) SetBody(v *EnableInstanceIpv6Address
 }
 
 type EnableSqlAuditRequest struct {
-	DbName               *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId       *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	IsRecall             *bool   `json:"IsRecall,omitempty" xml:"IsRecall,omitempty"`
-	RecallEndTimestamp   *string `json:"RecallEndTimestamp,omitempty" xml:"RecallEndTimestamp,omitempty"`
+	// The name of the database for which you want to enable the SQL audit feature.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// Specifies whether to backtrack historical SQL statements for auditing.
+	IsRecall *bool `json:"IsRecall,omitempty" xml:"IsRecall,omitempty"`
+	// The timestamp that indicates when the backtracking ends. Unit: milliseconds.
+	//
+	// > The end time of the backtracking must be later than the start time of the backtracking.
+	RecallEndTimestamp *string `json:"RecallEndTimestamp,omitempty" xml:"RecallEndTimestamp,omitempty"`
+	// The timestamp that indicates when the backtracking starts. Unit: milliseconds.
 	RecallStartTimestamp *string `json:"RecallStartTimestamp,omitempty" xml:"RecallStartTimestamp,omitempty"`
 }
 
@@ -9949,9 +11193,12 @@ func (s *EnableSqlAuditRequest) SetRecallStartTimestamp(v string) *EnableSqlAudi
 }
 
 type EnableSqlAuditResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indices whether the SQL audit feature is enabled.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableSqlAuditResponseBody) String() string {
@@ -10007,7 +11254,9 @@ func (s *EnableSqlAuditResponse) SetBody(v *EnableSqlAuditResponseBody) *EnableS
 }
 
 type EnableSqlFlashbackMatchSwitchRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database you want to back up.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the ApsaraDB RDS for PostgreSQL instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -10030,9 +11279,12 @@ func (s *EnableSqlFlashbackMatchSwitchRequest) SetDrdsInstanceId(v string) *Enab
 }
 
 type EnableSqlFlashbackMatchSwitchResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether SqlFlashbackMatchSwitch is enabled or not.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was sent successfully or not.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableSqlFlashbackMatchSwitchResponseBody) String() string {
@@ -10088,10 +11340,14 @@ func (s *EnableSqlFlashbackMatchSwitchResponse) SetBody(v *EnableSqlFlashbackMat
 }
 
 type FlashbackRecycleBinTableRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database to which the table belongs.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the instance to which the table belongs.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the logical table to be restored.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s FlashbackRecycleBinTableRequest) String() string {
@@ -10123,9 +11379,12 @@ func (s *FlashbackRecycleBinTableRequest) SetTableName(v string) *FlashbackRecyc
 }
 
 type FlashbackRecycleBinTableResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the deleted logical table is restored.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s FlashbackRecycleBinTableResponseBody) String() string {
@@ -10181,7 +11440,9 @@ func (s *FlashbackRecycleBinTableResponse) SetBody(v *FlashbackRecycleBinTableRe
 }
 
 type GetDrdsDbRdsRelationInfoRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the DRDS database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -10204,9 +11465,12 @@ func (s *GetDrdsDbRdsRelationInfoRequest) SetDrdsInstanceId(v string) *GetDrdsDb
 }
 
 type GetDrdsDbRdsRelationInfoResponseBody struct {
-	Data      []*GetDrdsDbRdsRelationInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The structure information about the storage instances of the DRDS database. Each entry corresponds to a primary storage instance.
+	Data []*GetDrdsDbRdsRelationInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDrdsDbRdsRelationInfoResponseBody) String() string {
@@ -10233,10 +11497,14 @@ func (s *GetDrdsDbRdsRelationInfoResponseBody) SetSuccess(v bool) *GetDrdsDbRdsR
 }
 
 type GetDrdsDbRdsRelationInfoResponseBodyData struct {
-	RdsInstanceId        *string   `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
+	// The ID of the storage instance.
+	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
+	// The IDs of the read-only storage instances.
 	ReadOnlyInstanceInfo []*string `json:"ReadOnlyInstanceInfo,omitempty" xml:"ReadOnlyInstanceInfo,omitempty" type:"Repeated"`
-	UsedInstanceId       *string   `json:"UsedInstanceId,omitempty" xml:"UsedInstanceId,omitempty"`
-	UsedInstanceType     *string   `json:"UsedInstanceType,omitempty" xml:"UsedInstanceType,omitempty"`
+	// The ID of the storage instance that is in use. If the specified instance in the request is a primary DRDS instance, the value of this parameter is the ID of the primary storage instance. If the specified instance in the request is a read-only DRDS instance, the value of this parameter is the ID of the secondary storage instance.
+	UsedInstanceId *string `json:"UsedInstanceId,omitempty" xml:"UsedInstanceId,omitempty"`
+	// The type of the storage instance that is in use.
+	UsedInstanceType *string `json:"UsedInstanceType,omitempty" xml:"UsedInstanceType,omitempty"`
 }
 
 func (s GetDrdsDbRdsRelationInfoResponseBodyData) String() string {
@@ -10297,9 +11565,12 @@ func (s *GetDrdsDbRdsRelationInfoResponse) SetBody(v *GetDrdsDbRdsRelationInfoRe
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Specify the token that is used to display the returned tags on multiple pages.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region in which the resource is located.
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to INSTANCE.
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -10338,7 +11609,9 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that you want to query.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that you want to query.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10361,9 +11634,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The token that is used to display the returned tags on multiple pages.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of returned tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -10413,10 +11690,14 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. The value of this parameter is fixed to INSTANCE.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -10477,11 +11758,44 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ManagePrivateRdsRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the custom ApsaraDB RDS instance at the storage layer.
+	//
+	// > You can call the [DescribeDrdsRdsInstances](~~215526~~) operation to query the details of all ApsaraDB RDS instances, including the ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Params         *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RdsAction      *string `json:"RdsAction,omitempty" xml:"RdsAction,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The JSON string that consists of request parameters and the values of the request parameters of an operation that you need to call for the custom ApsaraDB RDS instance. The value of a request parameter is of the STRING type. Example: `{NodeId:"1797****"}`.
+	//
+	// For more information about the request parameters and valid values of the request parameters of each operation, see the request parameter sections in the following topics:
+	//
+	// *   [DescribeDBInstanceAttribute](~~26231~~)
+	// *   [DescribeAvailableClasses](~~196546~~)
+	// *   [DescribeSQLCollectorPolicy](~~26292~~)
+	// *   [ModifySQLCollectorPolicy](~~26293~~)
+	// *   [DescribeParameters](~~26285~~)
+	// *   [ModifyParameter](~~26286~~)
+	// *   [DescribeDBInstanceHAConfig](~~26244~~)
+	// *   [SwitchDBInstanceHA](~~26251~~)
+	//
+	// > Among the required request parameters of the preceding operations, you do not need to specify the `Action` and `DBInstanceId` parameters. You must specify all the other required request parameters.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The operation that you want to perform on the custom ApsaraDB RDS instance. Valid values:
+	//
+	// *   **DescribeDBInstanceAttribute**: queries the details of the custom ApsaraDB RDS instance.
+	// *   **DescribeAvailableClasses**: queries the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+	// *   **DescribeSQLCollectorPolicy**: queries whether the SQL Explorer (SQL Audit) feature is enabled for custom ApsaraDB RDS instance.
+	// *   **ModifySQLCollectorPolicy**: enables or disables the SQL Explorer (SQL Audit) feature for the custom ApsaraDB RDS instance.
+	// *   **DescribeParameters**: queries the parameter settings of the custom ApsaraDB RDS instance.
+	// *   **ModifyParameter**: modifies the parameters of the custom ApsaraDB RDS instance.
+	// *   **DescribeDBInstanceHAConfig**: queries the high availability mode and data replication mode of the custom ApsaraDB RDS instance.
+	// *   **SwitchDBInstanceHA**: switches workloads between the primary and secondary custom ApsaraDB RDS instances.
+	RdsAction *string `json:"RdsAction,omitempty" xml:"RdsAction,omitempty"`
+	// The ID of the region in which the PolarDB-X 1.0 instance resides.
+	//
+	// > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of regions in which the instances reside.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ManagePrivateRdsRequest) String() string {
@@ -10518,9 +11832,12 @@ func (s *ManagePrivateRdsRequest) SetRegionId(v string) *ManagePrivateRdsRequest
 }
 
 type ManagePrivateRdsResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The parameter result set returned for the operation that is called for the custom ApsaraDB RDS instance.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ManagePrivateRdsResponseBody) String() string {
@@ -10576,8 +11893,11 @@ func (s *ManagePrivateRdsResponse) SetBody(v *ManagePrivateRdsResponseBody) *Man
 }
 
 type ModifyAccountDescriptionRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the member account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The description of the account.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the ApsaraDB RDS for PostgreSQL instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -10605,8 +11925,10 @@ func (s *ModifyAccountDescriptionRequest) SetDrdsInstanceId(v string) *ModifyAcc
 }
 
 type ModifyAccountDescriptionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was sent successfully or not.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyAccountDescriptionResponseBody) String() string {
@@ -10657,10 +11979,13 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 }
 
 type ModifyAccountPrivilegeRequest struct {
-	AccountName    *string                                     `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbPrivilege    []*ModifyAccountPrivilegeRequestDbPrivilege `json:"DbPrivilege,omitempty" xml:"DbPrivilege,omitempty" type:"Repeated"`
-	DrdsInstanceId *string                                     `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The username of the account that you want to modify.
+	AccountName *string                                     `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DbPrivilege []*ModifyAccountPrivilegeRequestDbPrivilege `json:"DbPrivilege,omitempty" xml:"DbPrivilege,omitempty" type:"Repeated"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the region in which the PolarDB-X 1.0 instance is located.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyAccountPrivilegeRequest) String() string {
@@ -10692,7 +12017,9 @@ func (s *ModifyAccountPrivilegeRequest) SetRegionId(v string) *ModifyAccountPriv
 }
 
 type ModifyAccountPrivilegeRequestDbPrivilege struct {
-	DbName    *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database that you want to manage by using the account to modify.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The permissions that you want to grant to the account.
 	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
 }
 
@@ -10715,8 +12042,10 @@ func (s *ModifyAccountPrivilegeRequestDbPrivilege) SetPrivilege(v string) *Modif
 }
 
 type ModifyAccountPrivilegeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyAccountPrivilegeResponseBody) String() string {
@@ -10767,7 +12096,9 @@ func (s *ModifyAccountPrivilegeResponse) SetBody(v *ModifyAccountPrivilegeRespon
 }
 
 type ModifyDrdsInstanceDescriptionRequest struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the DRDS instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -10790,8 +12121,10 @@ func (s *ModifyDrdsInstanceDescriptionRequest) SetDrdsInstanceId(v string) *Modi
 }
 
 type ModifyDrdsInstanceDescriptionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyDrdsInstanceDescriptionResponseBody) String() string {
@@ -10842,12 +12175,21 @@ func (s *ModifyDrdsInstanceDescriptionResponse) SetBody(v *ModifyDrdsInstanceDes
 }
 
 type ModifyDrdsIpWhiteListRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the DRDS database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the Message Queue for Apache Kafka instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The attribute of the IP address whitelist group.
 	GroupAttribute *string `json:"GroupAttribute,omitempty" xml:"GroupAttribute,omitempty"`
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IpWhiteList    *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
-	Mode           *bool   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The name of the IP address whitelist group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The modified whitelist. Separate multiple IP addresses with commas (,).
+	IpWhiteList *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
+	// Specifies the mode. Valid values:
+	//
+	// *   `True`: append modifications
+	// *   `False`: overwrite modification
+	Mode *bool `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s ModifyDrdsIpWhiteListRequest) String() string {
@@ -10889,8 +12231,10 @@ func (s *ModifyDrdsIpWhiteListRequest) SetMode(v bool) *ModifyDrdsIpWhiteListReq
 }
 
 type ModifyDrdsIpWhiteListResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyDrdsIpWhiteListResponseBody) String() string {
@@ -10941,11 +12285,16 @@ func (s *ModifyDrdsIpWhiteListResponse) SetBody(v *ModifyDrdsIpWhiteListResponse
 }
 
 type ModifyPolarDbReadWeightRequest struct {
-	DbInstanceId   *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbNodeIds      *string `json:"DbNodeIds,omitempty" xml:"DbNodeIds,omitempty"`
+	// Polar cluster ID.
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The node list in the destination apsaradb for PolarDB cluster. The nodes in each cluster are separated with commas (,) and colons (:).
+	DbNodeIds *string `json:"DbNodeIds,omitempty" xml:"DbNodeIds,omitempty"`
+	// The ID of a DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Weights        *string `json:"Weights,omitempty" xml:"Weights,omitempty"`
+	// The weight of the PolarDB cluster. Separate multiple weights with commas (,).
+	Weights *string `json:"Weights,omitempty" xml:"Weights,omitempty"`
 }
 
 func (s ModifyPolarDbReadWeightRequest) String() string {
@@ -10982,8 +12331,10 @@ func (s *ModifyPolarDbReadWeightRequest) SetWeights(v string) *ModifyPolarDbRead
 }
 
 type ModifyPolarDbReadWeightResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the database creation failure records were removed from the PolarDB-X instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyPolarDbReadWeightResponseBody) String() string {
@@ -11034,10 +12385,14 @@ func (s *ModifyPolarDbReadWeightResponse) SetBody(v *ModifyPolarDbReadWeightResp
 }
 
 type ModifyRdsReadWeightRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	InstanceNames  *string `json:"InstanceNames,omitempty" xml:"InstanceNames,omitempty"`
-	Weights        *string `json:"Weights,omitempty" xml:"Weights,omitempty"`
+	// The names of the ApsaraDB RDS for MySQL instances. Separate the names with commas (,).
+	InstanceNames *string `json:"InstanceNames,omitempty" xml:"InstanceNames,omitempty"`
+	// The weights of the ApsaraDB RDS for MySQL instances. Separate the weights with commas (,).
+	Weights *string `json:"Weights,omitempty" xml:"Weights,omitempty"`
 }
 
 func (s ModifyRdsReadWeightRequest) String() string {
@@ -11069,8 +12424,10 @@ func (s *ModifyRdsReadWeightRequest) SetWeights(v string) *ModifyRdsReadWeightRe
 }
 
 type ModifyRdsReadWeightResponseBody struct {
+	// Indicates the ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyRdsReadWeightResponseBody) String() string {
@@ -11121,9 +12478,19 @@ func (s *ModifyRdsReadWeightResponse) SetBody(v *ModifyRdsReadWeightResponseBody
 }
 
 type PutStartBackupRequest struct {
-	BackupDbNames  *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
-	BackupLevel    *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	BackupMode     *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// If you need to back up data at the database level, you must specify the list of databases to be backed up, and separate multiple databases with commas (,).
+	BackupDbNames *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
+	// The backup level. Valid values:
+	//
+	// *   instance: instance
+	// *   db: The database type.
+	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
+	// The backup mode. For more information, see [backup mode](~~108631~~) and the valid values are as follows:
+	//
+	// *   phy: fast backup
+	// *   logic: Consistent backup
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11156,9 +12523,12 @@ func (s *PutStartBackupRequest) SetDrdsInstanceId(v string) *PutStartBackupReque
 }
 
 type PutStartBackupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the backup task was submitted.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutStartBackupResponseBody) String() string {
@@ -11214,7 +12584,9 @@ func (s *PutStartBackupResponse) SetBody(v *PutStartBackupResponseBody) *PutStar
 }
 
 type RefreshDrdsAtomUrlRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the DRDS database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11237,9 +12609,12 @@ func (s *RefreshDrdsAtomUrlRequest) SetDrdsInstanceId(v string) *RefreshDrdsAtom
 }
 
 type RefreshDrdsAtomUrlResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the connection after refresh was successful.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RefreshDrdsAtomUrlResponseBody) String() string {
@@ -11295,8 +12670,10 @@ func (s *RefreshDrdsAtomUrlResponse) SetBody(v *RefreshDrdsAtomUrlResponseBody) 
 }
 
 type ReleaseInstanceInternetAddressRequest struct {
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region where the instance is located.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReleaseInstanceInternetAddressRequest) String() string {
@@ -11318,7 +12695,9 @@ func (s *ReleaseInstanceInternetAddressRequest) SetRegionId(v string) *ReleaseIn
 }
 
 type ReleaseInstanceInternetAddressResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The result returned by the current API.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11370,7 +12749,9 @@ func (s *ReleaseInstanceInternetAddressResponse) SetBody(v *ReleaseInstanceInter
 }
 
 type RemoveBackupsSetRequest struct {
-	BackupId       *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the backup set. You can call the [DescribeBackupSets](~~139331~~) interface to query the ID of a backup set.
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11393,9 +12774,12 @@ func (s *RemoveBackupsSetRequest) SetDrdsInstanceId(v string) *RemoveBackupsSetR
 }
 
 type RemoveBackupsSetResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether SQL audit was disabled for the DRDS database.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveBackupsSetResponseBody) String() string {
@@ -11451,7 +12835,9 @@ func (s *RemoveBackupsSetResponse) SetBody(v *RemoveBackupsSetResponseBody) *Rem
 }
 
 type RemoveDrdsDbRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database you want to back up.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the DRDS instance to which the destination database belongs.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11474,8 +12860,10 @@ func (s *RemoveDrdsDbRequest) SetDrdsInstanceId(v string) *RemoveDrdsDbRequest {
 }
 
 type RemoveDrdsDbResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveDrdsDbResponseBody) String() string {
@@ -11526,7 +12914,9 @@ func (s *RemoveDrdsDbResponse) SetBody(v *RemoveDrdsDbResponseBody) *RemoveDrdsD
 }
 
 type RemoveDrdsDbFailedRecordRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the DRDS database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the ApsaraDB RDS for PostgreSQL instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11549,9 +12939,12 @@ func (s *RemoveDrdsDbFailedRecordRequest) SetDrdsInstanceId(v string) *RemoveDrd
 }
 
 type RemoveDrdsDbFailedRecordResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the database creation failure records were deleted from the DRDS instance.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveDrdsDbFailedRecordResponseBody) String() string {
@@ -11607,6 +13000,7 @@ func (s *RemoveDrdsDbFailedRecordResponse) SetBody(v *RemoveDrdsDbFailedRecordRe
 }
 
 type RemoveDrdsInstanceRequest struct {
+	// The ID of the instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11624,8 +13018,10 @@ func (s *RemoveDrdsInstanceRequest) SetDrdsInstanceId(v string) *RemoveDrdsInsta
 }
 
 type RemoveDrdsInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveDrdsInstanceResponseBody) String() string {
@@ -11676,7 +13072,9 @@ func (s *RemoveDrdsInstanceResponse) SetBody(v *RemoveDrdsInstanceResponseBody) 
 }
 
 type RemoveInstanceAccountRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The name of the member account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The ID of the DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11699,8 +13097,10 @@ func (s *RemoveInstanceAccountRequest) SetDrdsInstanceId(v string) *RemoveInstan
 }
 
 type RemoveInstanceAccountResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveInstanceAccountResponseBody) String() string {
@@ -11751,10 +13151,14 @@ func (s *RemoveInstanceAccountResponse) SetBody(v *RemoveInstanceAccountResponse
 }
 
 type RemoveRecycleBinTableRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the logical table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s RemoveRecycleBinTableRequest) String() string {
@@ -11786,9 +13190,12 @@ func (s *RemoveRecycleBinTableRequest) SetTableName(v string) *RemoveRecycleBinT
 }
 
 type RemoveRecycleBinTableResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the table in the recycle bin is deleted.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveRecycleBinTableResponseBody) String() string {
@@ -11844,6 +13251,7 @@ func (s *RemoveRecycleBinTableResponse) SetBody(v *RemoveRecycleBinTableResponse
 }
 
 type RestartDrdsInstanceRequest struct {
+	// The ID of a DRDS instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11861,9 +13269,12 @@ func (s *RestartDrdsInstanceRequest) SetDrdsInstanceId(v string) *RestartDrdsIns
 }
 
 type RestartDrdsInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the database creation failure records were removed from the PolarDB-X instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RestartDrdsInstanceResponseBody) String() string {
@@ -11919,8 +13330,10 @@ func (s *RestartDrdsInstanceResponse) SetBody(v *RestartDrdsInstanceResponseBody
 }
 
 type RollbackInstanceVersionRequest struct {
+	// The instance ID.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RollbackInstanceVersionRequest) String() string {
@@ -11942,7 +13355,9 @@ func (s *RollbackInstanceVersionRequest) SetRegionId(v string) *RollbackInstance
 }
 
 type RollbackInstanceVersionResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the instance version was rolled back.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11994,10 +13409,14 @@ func (s *RollbackInstanceVersionResponse) SetBody(v *RollbackInstanceVersionResp
 }
 
 type SetBackupLocalRequest struct {
-	DrdsInstanceId           *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// Specifies whether to enable the feature to forcibly delete binary log files if the used storage space reaches 90% of the total storage space or the remaining storage space is less than 5 GB. Valid values: 1 and 0. A value of 1 specifies to enable this feature. A value of 0 specifies not to enable this feature.
 	HighSpaceUsageProtection *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	LocalLogRetentionHours   *string `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	LocalLogRetentionSpace   *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
+	// The number of hours for which log backup files are retained on the instance. Valid values: 0 to 168. Default value: 18. A value of 0 indicates that log backup files are not retained.
+	LocalLogRetentionHours *string `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
+	// The maximum storage space usage that is allowed for log files on the instance. Valid values: 0 to 50. Default value: 30.
+	LocalLogRetentionSpace *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
 }
 
 func (s SetBackupLocalRequest) String() string {
@@ -12029,9 +13448,12 @@ func (s *SetBackupLocalRequest) SetLocalLogRetentionSpace(v string) *SetBackupLo
 }
 
 type SetBackupLocalResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result returned.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetBackupLocalResponseBody) String() string {
@@ -12087,16 +13509,45 @@ func (s *SetBackupLocalResponse) SetBody(v *SetBackupLocalResponseBody) *SetBack
 }
 
 type SetBackupPolicyRequest struct {
-	BackupDbNames             *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
-	BackupLevel               *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	BackupLog                 *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
-	BackupMode                *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The databases to be backed up. Separate multiple databases with commas (,).
+	//
+	// >  This parameter takes effect only when the backup level is database level.
+	BackupDbNames *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
+	// The level of the backup. Valid values:
+	//
+	// *   db: The database type.
+	// *   instance: instance
+	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
+	// Specifies whether to enable log Backup. Valid values:
+	//
+	// *   1: enabled.
+	// *   0: disabled.
+	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
+	// The backup mode. Valid values:
+	//
+	// *   **Logic **: logical backup
+	// *   **phy**: physical backup
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The retention period of the backup data. Value range: 7 to 730.
 	DataBackupRetentionPeriod *string `json:"DataBackupRetentionPeriod,omitempty" xml:"DataBackupRetentionPeriod,omitempty"`
-	DrdsInstanceId            *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	LogBackupRetentionPeriod  *string `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	PreferredBackupEndTime    *string `json:"PreferredBackupEndTime,omitempty" xml:"PreferredBackupEndTime,omitempty"`
-	PreferredBackupPeriod     *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupStartTime  *string `json:"PreferredBackupStartTime,omitempty" xml:"PreferredBackupStartTime,omitempty"`
+	// The ID of the instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The log retention period. Valid values: 7 to 730. This value must be less than or equal to the number of data backup days.
+	LogBackupRetentionPeriod *string `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
+	// The end time of the backup.
+	PreferredBackupEndTime *string `json:"PreferredBackupEndTime,omitempty" xml:"PreferredBackupEndTime,omitempty"`
+	// The backup cycle. Valid values:
+	//
+	// *   0: Monday
+	// *   1: Tuesday
+	// *   2: Wednesday
+	// *   3: Thursday
+	// *   4: Friday
+	// *   5: Saturday
+	// *   6: Sunday
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// The start time of the backup.
+	PreferredBackupStartTime *string `json:"PreferredBackupStartTime,omitempty" xml:"PreferredBackupStartTime,omitempty"`
 }
 
 func (s SetBackupPolicyRequest) String() string {
@@ -12158,9 +13609,12 @@ func (s *SetBackupPolicyRequest) SetPreferredBackupStartTime(v string) *SetBacku
 }
 
 type SetBackupPolicyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the backup policy was successfully configured.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the database creation failure records were removed from the DRDS instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetBackupPolicyResponseBody) String() string {
@@ -12216,11 +13670,16 @@ func (s *SetBackupPolicyResponse) SetBody(v *SetBackupPolicyResponseBody) *SetBa
 }
 
 type SetupBroadcastTablesRequest struct {
-	Active         *bool     `json:"Active,omitempty" xml:"Active,omitempty"`
-	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableName      []*string `json:"TableName,omitempty" xml:"TableName,omitempty" type:"Repeated"`
+	// Specifies whether to activate a broadcast table for the database.
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The name of the database for which you want to configure a broadcast table.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the region in which the PolarDB-X 1.0 instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the table.
+	TableName []*string `json:"TableName,omitempty" xml:"TableName,omitempty" type:"Repeated"`
 }
 
 func (s SetupBroadcastTablesRequest) String() string {
@@ -12257,9 +13716,12 @@ func (s *SetupBroadcastTablesRequest) SetTableName(v []*string) *SetupBroadcastT
 }
 
 type SetupBroadcastTablesResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the broadcast table is configured.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetupBroadcastTablesResponseBody) String() string {
@@ -12315,10 +13777,16 @@ func (s *SetupBroadcastTablesResponse) SetBody(v *SetupBroadcastTablesResponseBo
 }
 
 type SetupDrdsParamsRequest struct {
-	Data           []*SetupDrdsParamsRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	DrdsInstanceId *string                       `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	ParamLevel     *string                       `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	RegionId       *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Data []*SetupDrdsParamsRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the PolarDB-X 1.0 instance for which you want to configure parameters.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The resource for which you want to configure parameters. Valid values:
+	//
+	// *   **INSTANCE**: Configure parameters for the instance.
+	// *   **DB**: Configure parameters for the databases of the instance.
+	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// The ID of the region in which the PolarDB-X 1.0 instance is located.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetupDrdsParamsRequest) String() string {
@@ -12350,10 +13818,19 @@ func (s *SetupDrdsParamsRequest) SetRegionId(v string) *SetupDrdsParamsRequest {
 }
 
 type SetupDrdsParamsRequestData struct {
-	DbName            *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	ParamRanges       *string `json:"ParamRanges,omitempty" xml:"ParamRanges,omitempty"`
-	ParamType         *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	ParamValue        *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+	// The name of the parameter that you want to configure for a database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The valid values of the parameter.
+	ParamRanges *string `json:"ParamRanges,omitempty" xml:"ParamRanges,omitempty"`
+	// The type of the parameter that you want to configure. Valid values:
+	//
+	// *   **ATOM**: the configuration item in the layer-3 data source.
+	// *   **CONFIG**: the configuration item in ConfigServer.
+	// *   **DIAMOND**: the configuration item in Diamond.
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The value of parameter that you want to configure.
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+	// The name of the parameter that you want to configure.
 	ParamVariableName *string `json:"ParamVariableName,omitempty" xml:"ParamVariableName,omitempty"`
 }
 
@@ -12391,9 +13868,12 @@ func (s *SetupDrdsParamsRequestData) SetParamVariableName(v string) *SetupDrdsPa
 }
 
 type SetupDrdsParamsResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned results.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetupDrdsParamsResponseBody) String() string {
@@ -12449,10 +13929,17 @@ func (s *SetupDrdsParamsResponse) SetBody(v *SetupDrdsParamsResponseBody) *Setup
 }
 
 type SetupRecycleBinStatusRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StatusAction   *string `json:"StatusAction,omitempty" xml:"StatusAction,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies the status of the table recycle bin. Valid values:
+	//
+	// *   enable: The table recycle bin is enabled.
+	// *   disable: The table recycle bin is disabled.
+	StatusAction *string `json:"StatusAction,omitempty" xml:"StatusAction,omitempty"`
 }
 
 func (s SetupRecycleBinStatusRequest) String() string {
@@ -12484,9 +13971,12 @@ func (s *SetupRecycleBinStatusRequest) SetStatusAction(v string) *SetupRecycleBi
 }
 
 type SetupRecycleBinStatusResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the table recycle bin is enabled.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetupRecycleBinStatusResponseBody) String() string {
@@ -12542,11 +14032,15 @@ func (s *SetupRecycleBinStatusResponse) SetBody(v *SetupRecycleBinStatusResponse
 }
 
 type SetupTableRequest struct {
-	AllowFullTableScan *bool     `json:"AllowFullTableScan,omitempty" xml:"AllowFullTableScan,omitempty"`
-	DbName             *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId     *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableName          []*string `json:"TableName,omitempty" xml:"TableName,omitempty" type:"Repeated"`
+	// Specifies whether to enable full table scan.
+	AllowFullTableScan *bool `json:"AllowFullTableScan,omitempty" xml:"AllowFullTableScan,omitempty"`
+	// The name of the database in which the table resides.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the DRDS instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the region where the streaming domain resides.
+	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TableName []*string `json:"TableName,omitempty" xml:"TableName,omitempty" type:"Repeated"`
 }
 
 func (s SetupTableRequest) String() string {
@@ -12583,9 +14077,12 @@ func (s *SetupTableRequest) SetTableName(v []*string) *SetupTableRequest {
 }
 
 type SetupTableResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Specifies whether to use a full table scan.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetupTableResponseBody) String() string {
@@ -12641,11 +14138,27 @@ func (s *SetupTableResponse) SetBody(v *SetupTableResponseBody) *SetupTableRespo
 }
 
 type StartRestoreRequest struct {
-	BackupDbNames       *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
-	BackupId            *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupLevel         *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	BackupMode          *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	DrdsInstanceId      *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The name of the database to be restored. Separate multiple databases with commas (,).
+	//
+	// >  If you do not specify any database name, all databases in the instance are restored by default.
+	BackupDbNames *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
+	// The ID of the DRDS backup set.
+	//
+	// >  If you do not specify this parameter, the system restores data by time (PreferredBackupTime).
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The level of the backup. Valid values:
+	//
+	// *   db: The database level.
+	// *   instance: the instance level.
+	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
+	// The backup method. Valid values:
+	//
+	// *   logic: the logical backup.
+	// *   phy: fast backup
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The ID of the DRDS instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The restoration time of the instance, in the format of`  yyyy-MM-dd HH:mm:ss `.
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
@@ -12688,9 +14201,12 @@ func (s *StartRestoreRequest) SetPreferredBackupTime(v string) *StartRestoreRequ
 }
 
 type StartRestoreResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether SQL audit was disabled for the DRDS database.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartRestoreResponseBody) String() string {
@@ -12746,11 +14262,19 @@ func (s *StartRestoreResponse) SetBody(v *StartRestoreResponseBody) *StartRestor
 }
 
 type SubmitCleanTaskRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database that is scaled out.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	ExpandType     *string `json:"ExpandType,omitempty" xml:"ExpandType,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ParentJobId    *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	// The scale-out type. Valid values:
+	//
+	// *   smooth_expand: smooth scale-out
+	// *   hot_expand: hot-spot scale-out
+	ExpandType *string `json:"ExpandType,omitempty" xml:"ExpandType,omitempty"`
+	// The job ID of the scale-out task. The value of this parameter is the same as that of the ParentJobId parameter.
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the scale-out task. This parameter is returned if you send a request for the smooth scale-out task.
+	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
 }
 
 func (s SubmitCleanTaskRequest) String() string {
@@ -12787,8 +14311,10 @@ func (s *SubmitCleanTaskRequest) SetParentJobId(v string) *SubmitCleanTaskReques
 }
 
 type SubmitCleanTaskResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitCleanTaskResponseBody) String() string {
@@ -12839,10 +14365,17 @@ func (s *SubmitCleanTaskResponse) SetBody(v *SubmitCleanTaskResponseBody) *Submi
 }
 
 type SubmitHotExpandPreCheckTaskRequest struct {
-	DbInstType     *string   `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	TableList      []*string `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
+	// The type of the database. Valid values:
+	//
+	// *   RDS
+	// *   PolarDB
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The name of the PolarDB-X database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The name of the table.
+	TableList []*string `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
 }
 
 func (s SubmitHotExpandPreCheckTaskRequest) String() string {
@@ -12874,10 +14407,14 @@ func (s *SubmitHotExpandPreCheckTaskRequest) SetTableList(v []*string) *SubmitHo
 }
 
 type SubmitHotExpandPreCheckTaskResponseBody struct {
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The result of the task.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SubmitHotExpandPreCheckTaskResponseBody) String() string {
@@ -12938,14 +14475,22 @@ func (s *SubmitHotExpandPreCheckTaskResponse) SetBody(v *SubmitHotExpandPreCheck
 }
 
 type SubmitHotExpandTaskRequest struct {
-	DbName               *string                                           `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId       *string                                           `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	ExtendedMapping      []*SubmitHotExpandTaskRequestExtendedMapping      `json:"ExtendedMapping,omitempty" xml:"ExtendedMapping,omitempty" type:"Repeated"`
-	InstanceDbMapping    []*SubmitHotExpandTaskRequestInstanceDbMapping    `json:"InstanceDbMapping,omitempty" xml:"InstanceDbMapping,omitempty" type:"Repeated"`
-	Mapping              []*SubmitHotExpandTaskRequestMapping              `json:"Mapping,omitempty" xml:"Mapping,omitempty" type:"Repeated"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The information about the database on which you want to perform hot-spot scale-out.
+	ExtendedMapping []*SubmitHotExpandTaskRequestExtendedMapping `json:"ExtendedMapping,omitempty" xml:"ExtendedMapping,omitempty" type:"Repeated"`
+	// The information about the instance to which the hot-spot database belongs.
+	InstanceDbMapping []*SubmitHotExpandTaskRequestInstanceDbMapping `json:"InstanceDbMapping,omitempty" xml:"InstanceDbMapping,omitempty" type:"Repeated"`
+	// The information about the hot-spot database.
+	Mapping []*SubmitHotExpandTaskRequestMapping `json:"Mapping,omitempty" xml:"Mapping,omitempty" type:"Repeated"`
+	// The information about the privileged account.
 	SupperAccountMapping []*SubmitHotExpandTaskRequestSupperAccountMapping `json:"SupperAccountMapping,omitempty" xml:"SupperAccountMapping,omitempty" type:"Repeated"`
-	TaskDesc             *string                                           `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
-	TaskName             *string                                           `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The description of the task.
+	TaskDesc *string `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
+	// The name of the task.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s SubmitHotExpandTaskRequest) String() string {
@@ -12997,7 +14542,9 @@ func (s *SubmitHotExpandTaskRequest) SetTaskName(v string) *SubmitHotExpandTaskR
 }
 
 type SubmitHotExpandTaskRequestExtendedMapping struct {
-	SrcDb         *string `json:"SrcDb,omitempty" xml:"SrcDb,omitempty"`
+	// The name of the source physical database.
+	SrcDb *string `json:"SrcDb,omitempty" xml:"SrcDb,omitempty"`
+	// The ID of the ApsaraDB RDS instance to which the source physical database belongs.
 	SrcInstanceId *string `json:"SrcInstanceId,omitempty" xml:"SrcInstanceId,omitempty"`
 }
 
@@ -13020,7 +14567,9 @@ func (s *SubmitHotExpandTaskRequestExtendedMapping) SetSrcInstanceId(v string) *
 }
 
 type SubmitHotExpandTaskRequestInstanceDbMapping struct {
-	DbList       *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	// The name of the hot-spot database.
+	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	// The name of the ApsaraDB RDS instance to which the hot-spot database belongs.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -13043,12 +14592,19 @@ func (s *SubmitHotExpandTaskRequestInstanceDbMapping) SetInstanceName(v string) 
 }
 
 type SubmitHotExpandTaskRequestMapping struct {
+	// The shard key used to split the database to which the associated table belongs.
 	DbShardColumn *string `json:"DbShardColumn,omitempty" xml:"DbShardColumn,omitempty"`
-	HotDbName     *string `json:"HotDbName,omitempty" xml:"HotDbName,omitempty"`
-	HotTableName  *string `json:"HotTableName,omitempty" xml:"HotTableName,omitempty"`
-	LogicTable    *string `json:"LogicTable,omitempty" xml:"LogicTable,omitempty"`
-	ShardDbValue  *string `json:"ShardDbValue,omitempty" xml:"ShardDbValue,omitempty"`
-	ShardTbValue  *string `json:"ShardTbValue,omitempty" xml:"ShardTbValue,omitempty"`
+	// The name of the hot-spot database.
+	HotDbName *string `json:"HotDbName,omitempty" xml:"HotDbName,omitempty"`
+	// The name of the hot-spot table. The name must be prefixed with the name of a logical table.
+	HotTableName *string `json:"HotTableName,omitempty" xml:"HotTableName,omitempty"`
+	// The name of the logical table on which you want to perform hot-spot scale-out.
+	LogicTable *string `json:"LogicTable,omitempty" xml:"LogicTable,omitempty"`
+	// The value of the shard key used to split a database.
+	ShardDbValue *string `json:"ShardDbValue,omitempty" xml:"ShardDbValue,omitempty"`
+	// The value of the shard key used to split a table.
+	ShardTbValue *string `json:"ShardTbValue,omitempty" xml:"ShardTbValue,omitempty"`
+	// The shard key used to split an associated table.
 	TbShardColumn *string `json:"TbShardColumn,omitempty" xml:"TbShardColumn,omitempty"`
 }
 
@@ -13096,8 +14652,11 @@ func (s *SubmitHotExpandTaskRequestMapping) SetTbShardColumn(v string) *SubmitHo
 }
 
 type SubmitHotExpandTaskRequestSupperAccountMapping struct {
-	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	SupperAccount  *string `json:"SupperAccount,omitempty" xml:"SupperAccount,omitempty"`
+	// The ID of the ApsaraDB RDS instance that has the privileged account.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The name of the privileged account of the ApsaraDB RDS instance.
+	SupperAccount *string `json:"SupperAccount,omitempty" xml:"SupperAccount,omitempty"`
+	// The password of the privileged account of the ApsaraDB RDS instance.
 	SupperPassword *string `json:"SupperPassword,omitempty" xml:"SupperPassword,omitempty"`
 }
 
@@ -13125,8 +14684,10 @@ func (s *SubmitHotExpandTaskRequestSupperAccountMapping) SetSupperPassword(v str
 }
 
 type SubmitHotExpandTaskResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitHotExpandTaskResponseBody) String() string {
@@ -13177,8 +14738,14 @@ func (s *SubmitHotExpandTaskResponse) SetBody(v *SubmitHotExpandTaskResponseBody
 }
 
 type SubmitSmoothExpandPreCheckRequest struct {
-	DbInstType     *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The type of the database. Valid values:
+	//
+	// *   RDS
+	// *   POLARDB
+	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+	// The name of the PolarDB-X database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -13206,10 +14773,14 @@ func (s *SubmitSmoothExpandPreCheckRequest) SetDrdsInstanceId(v string) *SubmitS
 }
 
 type SubmitSmoothExpandPreCheckResponseBody struct {
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The result of the precheck task.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the precheck task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SubmitSmoothExpandPreCheckResponseBody) String() string {
@@ -13270,7 +14841,9 @@ func (s *SubmitSmoothExpandPreCheckResponse) SetBody(v *SubmitSmoothExpandPreChe
 }
 
 type SubmitSmoothExpandPreCheckTaskRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the PolarDB-X 1.0 database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -13293,10 +14866,14 @@ func (s *SubmitSmoothExpandPreCheckTaskRequest) SetDrdsInstanceId(v string) *Sub
 }
 
 type SubmitSmoothExpandPreCheckTaskResponseBody struct {
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Indicates whether the precheck task was submitted.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SubmitSmoothExpandPreCheckTaskResponseBody) String() string {
@@ -13357,16 +14934,32 @@ func (s *SubmitSmoothExpandPreCheckTaskResponse) SetBody(v *SubmitSmoothExpandPr
 }
 
 type SubmitSqlFlashbackTaskRequest struct {
-	DbName            *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId    *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RecallRestoreType *int32  `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
-	RecallType        *int32  `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
-	SqlPk             *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
-	SqlType           *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TableName         *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TraceId           *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The name of the DRDS database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of a DRDS instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The time when the SQL flashback task ends.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The restoration type. Valid values:
+	//
+	// *   1: Image restoration
+	// *   0: reverse recovery
+	RecallRestoreType *int32 `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
+	// Exact match or fuzzy match. Valid values:
+	//
+	// *   0: the exact match.
+	// *   1: the fuzzy match.
+	RecallType *int32 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	// The primary key of flashback SQL.
+	SqlPk *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
+	// The type of the SQL statement. Valid values: INSERT, UPDATE, and DELETE. Separate multiple types with commas (,).
+	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// The start time of the flashback SQL statement.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the table where the flashback SQL operation was performed.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The Trace ID of the flashback SQL.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s SubmitSqlFlashbackTaskRequest) String() string {
@@ -13428,9 +15021,12 @@ func (s *SubmitSqlFlashbackTaskRequest) SetTraceId(v string) *SubmitSqlFlashback
 }
 
 type SubmitSqlFlashbackTaskResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the database creation failure records were removed from the DRDS instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the replication task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SubmitSqlFlashbackTaskResponseBody) String() string {
@@ -13486,9 +15082,12 @@ func (s *SubmitSqlFlashbackTaskResponse) SetBody(v *SubmitSqlFlashbackTaskRespon
 }
 
 type SwitchGlobalBroadcastTypeRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SwitchGlobalBroadcastTypeRequest) String() string {
@@ -13515,9 +15114,12 @@ func (s *SwitchGlobalBroadcastTypeRequest) SetRegionId(v string) *SwitchGlobalBr
 }
 
 type SwitchGlobalBroadcastTypeResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the mode of broadcast tables was switched from the multi-write mode to the asynchronous link mode.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SwitchGlobalBroadcastTypeResponseBody) String() string {
@@ -13573,8 +15175,10 @@ func (s *SwitchGlobalBroadcastTypeResponse) SetBody(v *SwitchGlobalBroadcastType
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The ID of the region in which the resource is located.
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to INSTANCE.
 	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -13608,7 +15212,9 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that you want to add.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that you want to add.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13631,8 +15237,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TagResourcesResponseBody) String() string {
@@ -13683,9 +15291,12 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Specifies whether to delete all tags of the resource.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The region ID of the instance.
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Set the value to INSTANCE.
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -13724,8 +15335,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the database creation failure records were removed from the DRDS instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UntagResourcesResponseBody) String() string {
@@ -13776,9 +15389,16 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateInstanceNetworkRequest struct {
-	ClassicExpiredDays     *int32  `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
-	DrdsInstanceId         *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RetainClassic          *bool   `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
+	// Specifies the retention period of the classic network endpoint. Unit: days.
+	ClassicExpiredDays *int32 `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// Specifies whether to retain the classic network endpoint.
+	RetainClassic *bool `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
+	// The network type of the PolarDB-X 1.0 instance. Valid values:
+	//
+	// *   vpc: Virtual Private Cloud (VPC)
+	// *   classic: classic network
 	SrcInstanceNetworkType *string `json:"SrcInstanceNetworkType,omitempty" xml:"SrcInstanceNetworkType,omitempty"`
 }
 
@@ -13811,8 +15431,10 @@ func (s *UpdateInstanceNetworkRequest) SetSrcInstanceNetworkType(v string) *Upda
 }
 
 type UpdateInstanceNetworkResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateInstanceNetworkResponseBody) String() string {
@@ -13863,12 +15485,28 @@ func (s *UpdateInstanceNetworkResponse) SetBody(v *UpdateInstanceNetworkResponse
 }
 
 type UpdatePrivateRdsClassRequest struct {
-	AutoUseCoupon  *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to use vouchers to offset the purchase fees. Valid values: **true** and **false**. Default value: false.
+	//
+	// > If you downgrade the specifications of an instance after you use the vouchers, the vouchers used for the purchase cannot be refunded.
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// The ID of the custom ApsaraDB RDS instance at the storage layer.
+	//
+	// > You can call the [DescribeDrdsRdsInstances](~~xxxx~~) operation to query the details of all ApsaraDB RDS instances at the storage layer of a PolarDB-X 1.0 instance, including the IDs of the ApsaraDB RDS instances.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PrePayDuration *int32  `json:"PrePayDuration,omitempty" xml:"PrePayDuration,omitempty"`
-	RdsClass       *string `json:"RdsClass,omitempty" xml:"RdsClass,omitempty"`
-	Storage        *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	// This parameter is discontinued.
+	PrePayDuration *int32 `json:"PrePayDuration,omitempty" xml:"PrePayDuration,omitempty"`
+	// The new instance type of the custom ApsaraDB RDS instance at the storage layer.
+	//
+	// > You can call the [DescribeAvailableClasses](~~196546~~) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+	RdsClass *string `json:"RdsClass,omitempty" xml:"RdsClass,omitempty"`
+	// The new storage capacity of the custom ApsaraDB RDS instance at the storage layer.
+	//
+	// > You can call the [DescribeAvailableClasses](~~196546~~) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
 }
 
 func (s UpdatePrivateRdsClassRequest) String() string {
@@ -13910,9 +15548,12 @@ func (s *UpdatePrivateRdsClassRequest) SetStorage(v string) *UpdatePrivateRdsCla
 }
 
 type UpdatePrivateRdsClassResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the order.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdatePrivateRdsClassResponseBody) String() string {
@@ -13968,9 +15609,18 @@ func (s *UpdatePrivateRdsClassResponse) SetBody(v *UpdatePrivateRdsClassResponse
 }
 
 type UpdateResourceGroupAttributeRequest struct {
-	DrdsInstanceId     *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the instance that you want to transfer.
+	//
+	// >  You can call the [DescribeDrdsInstances](~~139284~~) operation to view the details of the instances under the account, including the instance IDs.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the resource group that you want to specify.
+	//
+	// >  You can call the [ListResourceGroups](~~158855~~) operation to view the details of the resource groups, including the resource group IDs.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the instance you want to transfer is located.
+	//
+	// >  You can call the [DescribeDrdsInstances](~~139284~~) operation to view the details of the instances under the account, including the region IDs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateResourceGroupAttributeRequest) String() string {
@@ -13997,6 +15647,7 @@ func (s *UpdateResourceGroupAttributeRequest) SetRegionId(v string) *UpdateResou
 }
 
 type UpdateResourceGroupAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14043,9 +15694,12 @@ func (s *UpdateResourceGroupAttributeResponse) SetBody(v *UpdateResourceGroupAtt
 }
 
 type UpgradeHiStoreInstanceRequest struct {
-	DrdsInstanceId    *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the column-oriented storage instance.
 	HistoreInstanceId *string `json:"HistoreInstanceId,omitempty" xml:"HistoreInstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpgradeHiStoreInstanceRequest) String() string {
@@ -14072,7 +15726,9 @@ func (s *UpgradeHiStoreInstanceRequest) SetRegionId(v string) *UpgradeHiStoreIns
 }
 
 type UpgradeHiStoreInstanceResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates that the request was successful. An error message was returned if the request failed.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14124,9 +15780,12 @@ func (s *UpgradeHiStoreInstanceResponse) SetBody(v *UpgradeHiStoreInstanceRespon
 }
 
 type UpgradeInstanceVersionRequest struct {
+	// The ID of the PolarDB-X 1.0 instance that you want to upgrade.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Rpm            *string `json:"Rpm,omitempty" xml:"Rpm,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The version number of the PolarDB-X 1.0 instance. You can leave this parameter unspecified.
+	Rpm *string `json:"Rpm,omitempty" xml:"Rpm,omitempty"`
 }
 
 func (s UpgradeInstanceVersionRequest) String() string {
@@ -14153,7 +15812,9 @@ func (s *UpgradeInstanceVersionRequest) SetRpm(v string) *UpgradeInstanceVersion
 }
 
 type UpgradeInstanceVersionResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The result of the request.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14205,12 +15866,22 @@ func (s *UpgradeInstanceVersionResponse) SetBody(v *UpgradeInstanceVersionRespon
 }
 
 type ValidateShardTaskRequest struct {
-	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId  *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the PolarDB-X 1.0 instance.
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// The ID of the region where the PolarDB-X 1.0 instance is created.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the table or table shard on which you want to perform the task.
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	// The name of the table or table shard on which you perform the task.
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	TaskType        *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// *   **SINGLE_TO_SHARD**: converts a single table to a table shard.
+	// *   **SHARD_TO_SINGLE**: converts a table shard to a single table.
+	// *   **SHARD_TO_SHARD**: converts a table shard to another table shard.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s ValidateShardTaskRequest) String() string {
@@ -14252,9 +15923,12 @@ func (s *ValidateShardTaskRequest) SetTaskType(v string) *ValidateShardTaskReque
 }
 
 type ValidateShardTaskResponseBody struct {
-	List      []*ValidateShardTaskResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates the check results.
+	List []*ValidateShardTaskResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Indicates the ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ValidateShardTaskResponseBody) String() string {
@@ -14281,8 +15955,13 @@ func (s *ValidateShardTaskResponseBody) SetSuccess(v bool) *ValidateShardTaskRes
 }
 
 type ValidateShardTaskResponseBodyList struct {
-	Item   *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	Result *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates the name of a check item.
+	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// Indicates the result of the check item. Valid values:
+	//
+	// *   **0**: indicates the task is valid.
+	// *   **1**: indicates the task is invalid.
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ValidateShardTaskResponseBodyList) String() string {
@@ -14480,12 +16159,20 @@ func (client *Client) ChangeInstanceAzoneWithOptions(request *ChangeInstanceAzon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChangeVSwitch)) {
+		query["ChangeVSwitch"] = request.ChangeVSwitch
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
 		query["DrdsInstanceId"] = request.DrdsInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DrdsRegionId)) {
 		query["DrdsRegionId"] = request.DrdsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewVSwitch)) {
+		query["NewVSwitch"] = request.NewVSwitch
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OriginAzoneId)) {
@@ -14974,6 +16661,13 @@ func (client *Client) CreateInstanceInternetAddress(request *CreateInstanceInter
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
+ *
+ * @param request CreateOrderForRdsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateOrderForRdsResponse
+ */
 func (client *Client) CreateOrderForRdsWithOptions(request *CreateOrderForRdsRequest, runtime *util.RuntimeOptions) (_result *CreateOrderForRdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15011,6 +16705,12 @@ func (client *Client) CreateOrderForRdsWithOptions(request *CreateOrderForRdsReq
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
+ *
+ * @param request CreateOrderForRdsRequest
+ * @return CreateOrderForRdsResponse
+ */
 func (client *Client) CreateOrderForRds(request *CreateOrderForRdsRequest) (_result *CreateOrderForRdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrderForRdsResponse{}
@@ -15510,6 +17210,10 @@ func (client *Client) DescribeDbInstancesWithOptions(request *DescribeDbInstance
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Search)) {
@@ -16870,6 +18574,13 @@ func (client *Client) DescribeInstanceSwitchAzone(request *DescribeInstanceSwitc
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request DescribeInstanceSwitchNetworkRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeInstanceSwitchNetworkResponse
+ */
 func (client *Client) DescribeInstanceSwitchNetworkWithOptions(request *DescribeInstanceSwitchNetworkRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSwitchNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16903,6 +18614,12 @@ func (client *Client) DescribeInstanceSwitchNetworkWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request DescribeInstanceSwitchNetworkRequest
+ * @return DescribeInstanceSwitchNetworkResponse
+ */
 func (client *Client) DescribeInstanceSwitchNetwork(request *DescribeInstanceSwitchNetworkRequest) (_result *DescribeInstanceSwitchNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSwitchNetworkResponse{}
@@ -18706,6 +20423,14 @@ func (client *Client) RemoveDrdsDbFailedRecord(request *RemoveDrdsDbFailedRecord
 	return _result, _err
 }
 
+/**
+ * > *   You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
+ * >*   If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
+ *
+ * @param request RemoveDrdsInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveDrdsInstanceResponse
+ */
 func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *RemoveDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18739,6 +20464,13 @@ func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceR
 	return _result, _err
 }
 
+/**
+ * > *   You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
+ * >*   If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
+ *
+ * @param request RemoveDrdsInstanceRequest
+ * @return RemoveDrdsInstanceResponse
+ */
 func (client *Client) RemoveDrdsInstance(request *RemoveDrdsInstanceRequest) (_result *RemoveDrdsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveDrdsInstanceResponse{}
