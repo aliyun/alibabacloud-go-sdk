@@ -13,13 +13,20 @@ import (
 )
 
 type DataValue struct {
-	MasterUid       *int64  `json:"masterUid,omitempty" xml:"masterUid,omitempty"`
-	CInstanceId     *string `json:"cInstanceId,omitempty" xml:"cInstanceId,omitempty"`
-	AccessKey       *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	UserName        *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	Password        *string `json:"password,omitempty" xml:"password,omitempty"`
-	Deleted         *int64  `json:"deleted,omitempty" xml:"deleted,omitempty"`
-	CreateTimestamp *int64  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The Alibaba Cloud account ID or Resource Access Management (RAM) user to which the AccessKey pair that is used to create the static username and password belongs.
+	MasterUid *int64 `json:"masterUid,omitempty" xml:"masterUid,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	CInstanceId *string `json:"cInstanceId,omitempty" xml:"cInstanceId,omitempty"`
+	// The AccessKey ID that is used to create the static username and password.
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// The static username.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The static password.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The timestamp that indicates when the static username and password were deleted. Unit: milliseconds.
+	Deleted *int64 `json:"deleted,omitempty" xml:"deleted,omitempty"`
+	// The timestamp that indicates when the static username and password were created. Unit: milliseconds.
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 }
 
 func (s DataValue) String() string {
@@ -66,12 +73,28 @@ func (s *DataValue) SetCreateTimestamp(v int64) *DataValue {
 }
 
 type CreateAccountRequest struct {
+	// The AccessKey ID of your Alibaba Cloud account or RAM user. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+	//
+	// >  If you use the pair of static username and password that is created by using the Accesskey pair of a RAM user to access ApsaraMQ for RabbitMQ to send and receive messages, make sure that the RAM user is granted the required permissions. For more information, see [RAM policies](~~146559~~).
 	AccountAccessKey *string `json:"accountAccessKey,omitempty" xml:"accountAccessKey,omitempty"`
-	CreateTimestamp  *int64  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	InstanceId       *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	SecretSign       *string `json:"secretSign,omitempty" xml:"secretSign,omitempty"`
-	Signature        *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	UserName         *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The timestamp that indicates when the password is created. Unit: milliseconds.
+	//
+	// >  This timestamp is specified by you and is used to generate a static password. The timestamp is not the timestamp that indicates when the system generates the password.
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The ID of the instance for which you want to create a pair of static username and password.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The AccessKey secret signature. The system generates a static password based on the signature in the request, the AccessKey secret signature, and the username.
+	//
+	// The system uses the HMAC-SHA1 algorithm to generate the AccessKey secret signature based on the timestamp that indicates when the username is created and the AccessKey ID. For more information, see the **"Sample code on how to generate a signature"** section of this topic.
+	SecretSign *string `json:"secretSign,omitempty" xml:"secretSign,omitempty"`
+	// The signature. The system generates a static password based on the signature in the request, the AccessKey secret signature, and the username.
+	//
+	// The system uses the HMAC-SHA1 algorithm to generate the signature based on the timestamp that indicates when the username is created and the AccessKey ID. For more information, see the **"Sample code on how to generate a signature"** section of this topic.
+	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// The static username that you want to create.
+	//
+	// The value of this parameter is a Base64-encoded string that is generated based on the instance ID and AccessKey ID. For more information, see the "**Sample code on how to generate a username**" section of this topic.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s CreateAccountRequest) String() string {
@@ -113,11 +136,16 @@ func (s *CreateAccountRequest) SetUserName(v string) *CreateAccountRequest {
 }
 
 type CreateAccountResponseBody struct {
-	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *CreateAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAccountResponseBody) String() string {
@@ -154,13 +182,18 @@ func (s *CreateAccountResponseBody) SetSuccess(v bool) *CreateAccountResponseBod
 }
 
 type CreateAccountResponseBodyData struct {
-	// AccessKey ID。
-	AccessKey       *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	CreateTimeStamp *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MasterUId       *int64  `json:"MasterUId,omitempty" xml:"MasterUId,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The AccessKey ID that is used to create the password.
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The timestamp that indicates when the password was created. Unit: milliseconds.
+	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The Alibaba Cloud account ID or RAM user to which the AccessKey pair that is used to create the static username and password belongs.
+	MasterUId *int64 `json:"MasterUId,omitempty" xml:"MasterUId,omitempty"`
+	// The created static password.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The created static username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateAccountResponseBodyData) String() string {
@@ -231,13 +264,39 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateBindingRequest struct {
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
-	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
-	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The key-value pairs that are configured for the headers attributes of a message. One or more key-value pairs can be concatenated to configure the headers attributes of a message. You must specify the x-match attribute as one of the valid values. You can specify custom values for other attributes. Valid values of the x-match attribute:
+	//
+	// *   \*\*all: \*\*A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+	// *   \*\*any: \*\*A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	//
+	// Separate the attributes with semicolons (;). Separate the key and value of an attribute with a colon (:). Example: x-match:all;type:report;format:pdf. This parameter is available for only headers exchanges. You can set this parameter to an arbitrary value for other types of exchanges.
+	Argument *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
+	// The binding key.
+	//
+	// *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+	//     *   The binding key must be 1 to 255 characters in length.
+	//
+	// *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), asterisks (\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	//     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+	//     *   The binding key must be 1 to 255 characters in length.
+	BindingKey *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
+	// The type of the object that you want to bind to the source exchange. Valid values:
+	//
+	// *   \*\*0: \*\*Queue
+	// *   \*\*1: \*\*Exchange
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The name of the object that you want to bind to the source exchange. You must create the object in the ApsaraMQ for RabbitMQ console in advance. The vhost of the object is the same as the vhost to which the source exchange specified by **SourceExchange** belongs. The vhost of the source exchange is the one specified by **VirtualHost**.
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
-	VirtualHost     *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the source exchange. You must create the source exchange in the ApsaraMQ for RabbitMQ console in advance.
+	SourceExchange *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	// The virtual host (vhost) name. You must create the vhost in the ApsaraMQ for RabbitMQ console in advance. The object specified by **DestinationName** and the source exchange specified by **SourceExchange** must belong to the vhost.
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s CreateBindingRequest) String() string {
@@ -284,6 +343,7 @@ func (s *CreateBindingRequest) SetVirtualHost(v string) *CreateBindingRequest {
 }
 
 type CreateBindingResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -330,13 +390,35 @@ func (s *CreateBindingResponse) SetBody(v *CreateBindingResponseBody) *CreateBin
 }
 
 type CreateExchangeRequest struct {
+	// The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
 	AlternateExchange *string `json:"AlternateExchange,omitempty" xml:"AlternateExchange,omitempty"`
-	AutoDeleteState   *bool   `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	ExchangeName      *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
-	ExchangeType      *string `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Internal          *bool   `json:"Internal,omitempty" xml:"Internal,omitempty"`
-	VirtualHost       *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	// Specifies whether to automatically delete the exchange. Valid values:
+	//
+	// *   **true**: If the last queue that is bound to the exchange is unbound, the exchange is automatically deleted.
+	// *   **false**: If the last queue that is bound to the exchange is unbound, the exchange is not automatically deleted.
+	AutoDeleteState *bool `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
+	// The name of the exchange that you want to create. The exchange name must meet the following conventions:
+	//
+	// *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	// *   After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
+	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
+	// The exchange type. Valid values:
+	//
+	// *   **DIRECT**: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
+	// *   **TOPIC**: This type of exchange is similar to direct exchanges. An exchange of this type routes a message to one or more queues based on the results of the fuzzy match or multi-condition match between the routing key of the message and the binding keys of the current exchange.
+	// *   **FANOUT**: An exchange of this type routes all received messages to all queues bound to this exchange. You can use a fanout exchange to broadcast messages.
+	// *   **HEADERS**: This type of exchange is similar to direct exchanges. The only difference is that a headers exchange routes messages based on the headers attributes instead of routing keys. When you bind a headers exchange to a queue, you must configure binding attributes in the key-value format for the binding. When you send a message to a headers exchange, you must configure the headers attributes in the key-value format for the message. After a headers exchange receives a message, the exchange routes the message based on the matching results between the headers attributes of the message and the binding attributes of the bound queues.
+	// *   **X-CONSISTENT-HASH**: An exchange of this type allows you to perform hash calculations on routing keys or header values and use consistent hashing to route a message to different queues.
+	ExchangeType *string `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ for which you want to create an exchange.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the exchange is an internal exchange. Valid values:
+	//
+	// *   **false**
+	// *   **true**
+	Internal *bool `json:"Internal,omitempty" xml:"Internal,omitempty"`
+	// The name of the vhost to which the exchange that you want to create belongs.
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s CreateExchangeRequest) String() string {
@@ -383,6 +465,7 @@ func (s *CreateExchangeRequest) SetVirtualHost(v string) *CreateExchangeRequest 
 }
 
 type CreateExchangeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -429,21 +512,24 @@ func (s *CreateExchangeResponse) SetBody(v *CreateExchangeResponseBody) *CreateE
 }
 
 type CreateInstanceRequest struct {
-	AutoRenew          *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod    *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceType       *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxConnections     *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	MaxEipTps          *int64  `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
-	MaxPrivateTps      *int64  `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
-	PaymentType        *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodCycle        *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
-	QueueCapacity      *int32  `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
-	StorageSize        *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	SupportEip         *bool   `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
-	SupportTracing     *bool   `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
-	TracingStorageTime *int32  `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+	AutoRenew           *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod     *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceName        *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaxConnections      *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxEipTps           *int64  `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	MaxPrivateTps       *int64  `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
+	PaymentType         *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Period              *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodCycle         *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
+	QueueCapacity       *int32  `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
+	RenewStatus         *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
+	RenewalDurationUnit *string `json:"RenewalDurationUnit,omitempty" xml:"RenewalDurationUnit,omitempty"`
+	StorageSize         *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SupportEip          *bool   `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
+	SupportTracing      *bool   `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	TracingStorageTime  *int32  `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -466,6 +552,11 @@ func (s *CreateInstanceRequest) SetAutoRenewPeriod(v int32) *CreateInstanceReque
 
 func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
+	s.InstanceName = &v
 	return s
 }
 
@@ -506,6 +597,16 @@ func (s *CreateInstanceRequest) SetPeriodCycle(v string) *CreateInstanceRequest 
 
 func (s *CreateInstanceRequest) SetQueueCapacity(v int32) *CreateInstanceRequest {
 	s.QueueCapacity = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetRenewStatus(v string) *CreateInstanceRequest {
+	s.RenewStatus = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetRenewalDurationUnit(v string) *CreateInstanceRequest {
+	s.RenewalDurationUnit = &v
 	return s
 }
 
@@ -600,17 +701,48 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateQueueRequest struct {
-	AutoDeleteState      *bool   `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	AutoExpireState      *int64  `json:"AutoExpireState,omitempty" xml:"AutoExpireState,omitempty"`
-	DeadLetterExchange   *string `json:"DeadLetterExchange,omitempty" xml:"DeadLetterExchange,omitempty"`
+	// Specifies whether to automatically delete the queue. Valid values:
+	//
+	// *   true: The queue is automatically deleted. After the last consumer unsubscribes from the queue, the queue is automatically deleted.
+	// *   false: The queue is not automatically deleted.
+	AutoDeleteState *bool `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
+	// The validity period after which the queue is automatically deleted. If the queue is not accessed within the specified period of time, the queue is automatically deleted.
+	//
+	// Unit: milliseconds.
+	//
+	// >  You can use the feature that corresponds to this parameter only after you enable the feature. To enable the feature, [submit a ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex).
+	AutoExpireState *int64 `json:"AutoExpireState,omitempty" xml:"AutoExpireState,omitempty"`
+	// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
+	//
+	// If a consumer rejects a message that cannot be redelivered, ApsaraMQ for RabbitMQ routes the message to the specified dead-letter exchange. Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange for storage.
+	DeadLetterExchange *string `json:"DeadLetterExchange,omitempty" xml:"DeadLetterExchange,omitempty"`
+	// The dead-letter routing key. The key must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
 	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitempty" xml:"DeadLetterRoutingKey,omitempty"`
-	ExclusiveState       *bool   `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxLength            *int64  `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	MaximumPriority      *int32  `json:"MaximumPriority,omitempty" xml:"MaximumPriority,omitempty"`
-	MessageTTL           *int64  `json:"MessageTTL,omitempty" xml:"MessageTTL,omitempty"`
-	QueueName            *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	VirtualHost          *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	// Specifies whether the exchange is an exclusive exchange. Valid values:
+	//
+	// *   true: The exchange is an exclusive exchange. Only the connection that declares the exclusive exchange can use the exclusive exchange. After the connection is closed, the exclusive exchange is automatically deleted.
+	// *   false: The exchange is not an exclusive exchange.
+	ExclusiveState *bool `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance on which you want to create a queue.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is unavailable in the current version of ApsaraMQ for RabbitMQ.
+	//
+	// The maximum number of messages that can be stored in the queue. If this threshold is exceeded, the earliest stored messages in the queue are deleted.
+	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// Queue priorities are not supported. The value does not affect the call or return results.
+	MaximumPriority *int32 `json:"MaximumPriority,omitempty" xml:"MaximumPriority,omitempty"`
+	// The message time to live (TTL) of the queue.
+	//
+	// *   If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
+	// *   The message TTL must be set to a non-negative integer. The maximum message TTL is one day. Unit: milliseconds. For example, if the message TTL is 1,000 milliseconds, the message can be retained for up to 1 second in the queue.
+	MessageTTL *int64 `json:"MessageTTL,omitempty" xml:"MessageTTL,omitempty"`
+	// The name of the queue that you want to create.
+	//
+	// *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	// *   After the queue is created, you cannot change the name of the queue. If you want to change the name of the queue, delete the queue and create another queue.
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The name of the vhost to which the queue that you want to create belongs. The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s CreateQueueRequest) String() string {
@@ -677,6 +809,7 @@ func (s *CreateQueueRequest) SetVirtualHost(v string) *CreateQueueRequest {
 }
 
 type CreateQueueResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -723,7 +856,13 @@ func (s *CreateQueueResponse) SetBody(v *CreateQueueResponseBody) *CreateQueueRe
 }
 
 type CreateVirtualHostRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the vhost that you want to create. Valid values:
+	//
+	// *   The name can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slash (/), and at signs (@).
+	// *   The name must be 1 to 255 characters in length.
+	// *   After the vhost is created, you cannot change its name. If you want to change the name of a vhost, delete the vhost and create another vhost.
 	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
@@ -746,6 +885,7 @@ func (s *CreateVirtualHostRequest) SetVirtualHost(v string) *CreateVirtualHostRe
 }
 
 type CreateVirtualHostResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -792,8 +932,12 @@ func (s *CreateVirtualHostResponse) SetBody(v *CreateVirtualHostResponseBody) *C
 }
 
 type DeleteAccountRequest struct {
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The timestamp that indicates when the pair of static username and password that you want to delete was created. Unit: milliseconds.
+	//
+	// You can call the [ListAccounts](~~472730~~) operation to view the timestamp.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The pair of username and password that you want to delete.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DeleteAccountRequest) String() string {
@@ -815,11 +959,16 @@ func (s *DeleteAccountRequest) SetUserName(v string) *DeleteAccountRequest {
 }
 
 type DeleteAccountResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAccountResponseBody) String() string {
@@ -885,12 +1034,21 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 }
 
 type DeleteBindingRequest struct {
-	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
-	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The binding key.
+	BindingKey *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
+	// The type of the object that you want to unbind from the source exchange. Valid values:
+	//
+	// *   **QUEUE**
+	// *   **EXCHANGE**
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The name of the object that you want to unbind from the source exchange.
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
-	VirtualHost     *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the source exchange.
+	SourceExchange *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	// The vhost name.
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s DeleteBindingRequest) String() string {
@@ -932,6 +1090,7 @@ func (s *DeleteBindingRequest) SetVirtualHost(v string) *DeleteBindingRequest {
 }
 
 type DeleteBindingResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -978,9 +1137,12 @@ func (s *DeleteBindingResponse) SetBody(v *DeleteBindingResponseBody) *DeleteBin
 }
 
 type DeleteExchangeRequest struct {
+	// The name of the exchange that you want to delete.
 	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The vhost to which the exchange that you want to delete belongs.
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s DeleteExchangeRequest) String() string {
@@ -1007,6 +1169,7 @@ func (s *DeleteExchangeRequest) SetVirtualHost(v string) *DeleteExchangeRequest 
 }
 
 type DeleteExchangeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1053,8 +1216,11 @@ func (s *DeleteExchangeResponse) SetBody(v *DeleteExchangeResponseBody) *DeleteE
 }
 
 type DeleteQueueRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	QueueName   *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The queue name.
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The vhost name.
 	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
@@ -1082,6 +1248,7 @@ func (s *DeleteQueueRequest) SetVirtualHost(v string) *DeleteQueueRequest {
 }
 
 type DeleteQueueResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1128,7 +1295,9 @@ func (s *DeleteQueueResponse) SetBody(v *DeleteQueueResponseBody) *DeleteQueueRe
 }
 
 type DeleteVirtualHostRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance to which the vhost you want to delete belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the vhost that you want to delete.
 	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
@@ -1151,6 +1320,7 @@ func (s *DeleteVirtualHostRequest) SetVirtualHost(v string) *DeleteVirtualHostRe
 }
 
 type DeleteVirtualHostResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1197,6 +1367,7 @@ func (s *DeleteVirtualHostResponse) SetBody(v *DeleteVirtualHostResponseBody) *D
 }
 
 type GetMetadataAmountRequest struct {
+	// The ID of the ApsaraMQ for RabbitMQ instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1214,8 +1385,10 @@ func (s *GetMetadataAmountRequest) SetInstanceId(v string) *GetMetadataAmountReq
 }
 
 type GetMetadataAmountResponseBody struct {
-	Data      *GetMetadataAmountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *GetMetadataAmountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMetadataAmountResponseBody) String() string {
@@ -1237,12 +1410,18 @@ func (s *GetMetadataAmountResponseBody) SetRequestId(v string) *GetMetadataAmoun
 }
 
 type GetMetadataAmountResponseBodyData struct {
-	CurrentExchanges    *int32 `json:"CurrentExchanges,omitempty" xml:"CurrentExchanges,omitempty"`
-	CurrentQueues       *int32 `json:"CurrentQueues,omitempty" xml:"CurrentQueues,omitempty"`
+	// The number of created exchanges on the ApsaraMQ for RabbitMQ instance.
+	CurrentExchanges *int32 `json:"CurrentExchanges,omitempty" xml:"CurrentExchanges,omitempty"`
+	// The number of created queues on the ApsaraMQ for RabbitMQ instance.
+	CurrentQueues *int32 `json:"CurrentQueues,omitempty" xml:"CurrentQueues,omitempty"`
+	// The number of created vhosts on the ApsaraMQ for RabbitMQ instance.
 	CurrentVirtualHosts *int32 `json:"CurrentVirtualHosts,omitempty" xml:"CurrentVirtualHosts,omitempty"`
-	MaxExchanges        *int32 `json:"MaxExchanges,omitempty" xml:"MaxExchanges,omitempty"`
-	MaxQueues           *int32 `json:"MaxQueues,omitempty" xml:"MaxQueues,omitempty"`
-	MaxVirtualHosts     *int32 `json:"MaxVirtualHosts,omitempty" xml:"MaxVirtualHosts,omitempty"`
+	// The maximum number of exchanges that can be created on the ApsaraMQ for RabbitMQ instance.
+	MaxExchanges *int32 `json:"MaxExchanges,omitempty" xml:"MaxExchanges,omitempty"`
+	// The maximum number of queues that can be created on the ApsaraMQ for RabbitMQ instance.
+	MaxQueues *int32 `json:"MaxQueues,omitempty" xml:"MaxQueues,omitempty"`
+	// The maximum number of vhosts that can be created on the ApsaraMQ for RabbitMQ instance.
+	MaxVirtualHosts *int32 `json:"MaxVirtualHosts,omitempty" xml:"MaxVirtualHosts,omitempty"`
 }
 
 func (s GetMetadataAmountResponseBodyData) String() string {
@@ -1313,6 +1492,7 @@ func (s *GetMetadataAmountResponse) SetBody(v *GetMetadataAmountResponseBody) *G
 }
 
 type ListAccountsRequest struct {
+	// The ID of the ApsaraMQ for RabbitMQ instance for which you want to query the static username and password.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1330,11 +1510,16 @@ func (s *ListAccountsRequest) SetInstanceId(v string) *ListAccountsRequest {
 }
 
 type ListAccountsResponseBody struct {
-	Code      *int32                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the call is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAccountsResponseBody) String() string {
@@ -1400,9 +1585,15 @@ func (s *ListAccountsResponse) SetBody(v *ListAccountsResponseBody) *ListAccount
 }
 
 type ListBindingsRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return. Valid values:
+	//
+	// **1 to 100**
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The vhost name.
 	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
@@ -1435,8 +1626,10 @@ func (s *ListBindingsRequest) SetVirtualHost(v string) *ListBindingsRequest {
 }
 
 type ListBindingsResponseBody struct {
-	Data      *ListBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *ListBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBindingsResponseBody) String() string {
@@ -1458,9 +1651,12 @@ func (s *ListBindingsResponseBody) SetRequestId(v string) *ListBindingsResponseB
 }
 
 type ListBindingsResponseBodyData struct {
-	Bindings   []*ListBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
-	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The bindings.
+	Bindings []*ListBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListBindingsResponseBodyData) String() string {
@@ -1487,11 +1683,35 @@ func (s *ListBindingsResponseBodyData) SetNextToken(v string) *ListBindingsRespo
 }
 
 type ListBindingsResponseBodyDataBindings struct {
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
-	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
-	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The x-match attribute. Valid values:
+	//
+	// *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+	// *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	//
+	// This parameter is available only for headers exchanges.
+	Argument *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
+	// The binding key.
+	//
+	// *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+	//     *   The binding key must be 1 to 255 characters in length.
+	//
+	// *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), asterisks (\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	//     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+	//     *   The binding key must be 1 to 255 characters in length.
+	BindingKey *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
+	// The type of the object to which the source exchange is bound. Valid values:
+	//
+	// *   **QUEUE**
+	// *   **EXCHANGE**
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The name of the object to which the source exchange is bound.
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	// The name of the source exchange.
+	SourceExchange *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
 }
 
 func (s ListBindingsResponseBodyDataBindings) String() string {
@@ -1557,11 +1777,16 @@ func (s *ListBindingsResponse) SetBody(v *ListBindingsResponseBody) *ListBinding
 }
 
 type ListDownStreamBindingsRequest struct {
+	// The exchange name.
 	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance to which the exchange belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the vhost to which the exchange belongs.
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s ListDownStreamBindingsRequest) String() string {
@@ -1598,11 +1823,16 @@ func (s *ListDownStreamBindingsRequest) SetVirtualHost(v string) *ListDownStream
 }
 
 type ListDownStreamBindingsResponseBody struct {
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListDownStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *ListDownStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDownStreamBindingsResponseBody) String() string {
@@ -1639,9 +1869,12 @@ func (s *ListDownStreamBindingsResponseBody) SetSuccess(v bool) *ListDownStreamB
 }
 
 type ListDownStreamBindingsResponseBodyData struct {
-	Bindings   []*ListDownStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
-	MaxResults *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The bindings.
+	Bindings []*ListDownStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListDownStreamBindingsResponseBodyData) String() string {
@@ -1668,11 +1901,35 @@ func (s *ListDownStreamBindingsResponseBodyData) SetNextToken(v string) *ListDow
 }
 
 type ListDownStreamBindingsResponseBodyDataBindings struct {
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
-	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
-	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The x-match attribute. Valid values:
+	//
+	// *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+	// *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	//
+	// This parameter is available only for headers exchanges.
+	Argument *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
+	// The binding key.
+	//
+	// *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+	//     *   The binding key must be 1 to 255 characters in length.
+	//
+	// *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	//     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+	//     *   The binding key must be 1 to 255 characters in length.
+	BindingKey *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
+	// The type of the object to which the source exchange is bound. Valid values:
+	//
+	// *   **QUEUE**
+	// *   **EXCHANGE**
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The name of the object to which the source exchange is bound.
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	// The name of the source exchange.
+	SourceExchange *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
 }
 
 func (s ListDownStreamBindingsResponseBodyDataBindings) String() string {
@@ -1738,11 +1995,16 @@ func (s *ListDownStreamBindingsResponse) SetBody(v *ListDownStreamBindingsRespon
 }
 
 type ListExchangeUpStreamBindingsRequest struct {
+	// The exchange name.
 	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The virtual host (vhost) name.
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s ListExchangeUpStreamBindingsRequest) String() string {
@@ -1779,11 +2041,16 @@ func (s *ListExchangeUpStreamBindingsRequest) SetVirtualHost(v string) *ListExch
 }
 
 type ListExchangeUpStreamBindingsResponseBody struct {
-	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListExchangeUpStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *ListExchangeUpStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListExchangeUpStreamBindingsResponseBody) String() string {
@@ -1820,9 +2087,12 @@ func (s *ListExchangeUpStreamBindingsResponseBody) SetSuccess(v bool) *ListExcha
 }
 
 type ListExchangeUpStreamBindingsResponseBodyData struct {
-	Bindings   []*ListExchangeUpStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
-	MaxResults *int32                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The bindings.
+	Bindings []*ListExchangeUpStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListExchangeUpStreamBindingsResponseBodyData) String() string {
@@ -1849,11 +2119,35 @@ func (s *ListExchangeUpStreamBindingsResponseBodyData) SetNextToken(v string) *L
 }
 
 type ListExchangeUpStreamBindingsResponseBodyDataBindings struct {
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
-	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
-	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The x-match attribute. Valid values:
+	//
+	// *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+	// *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	//
+	// This parameter is available only for headers exchanges.
+	Argument *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
+	// The binding key.
+	//
+	// *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+	//     *   The binding key must be 1 to 255 characters in length.
+	//
+	// *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	//     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+	//     *   The binding key must be 1 to 255 characters in length.
+	BindingKey *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
+	// The type of the object to which the source exchange is bound. Valid values:
+	//
+	// *   **QUEUE**
+	// *   **EXCHANGE**
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The name of the object to which the source exchange is bound.
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	// The name of the source exchange.
+	SourceExchange *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
 }
 
 func (s ListExchangeUpStreamBindingsResponseBodyDataBindings) String() string {
@@ -1919,9 +2213,16 @@ func (s *ListExchangeUpStreamBindingsResponse) SetBody(v *ListExchangeUpStreamBi
 }
 
 type ListExchangesRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return. Valid values: **1 to 100**
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// *   If you call this operation for the first time or a next query is not required, leave this parameter empty.
+	// *   If a next query is to be sent, set the value to the value of `NextToken` that is returned from the previous request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The vhost name.
 	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
@@ -1954,8 +2255,10 @@ func (s *ListExchangesRequest) SetVirtualHost(v string) *ListExchangesRequest {
 }
 
 type ListExchangesResponseBody struct {
-	Data      *ListExchangesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *ListExchangesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListExchangesResponseBody) String() string {
@@ -1977,10 +2280,15 @@ func (s *ListExchangesResponseBody) SetRequestId(v string) *ListExchangesRespons
 }
 
 type ListExchangesResponseBodyData struct {
-	// Exchange。
-	Exchanges  []*ListExchangesResponseBodyDataExchanges `json:"Exchanges,omitempty" xml:"Exchanges,omitempty" type:"Repeated"`
-	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The exchanges.
+	Exchanges []*ListExchangesResponseBodyDataExchanges `json:"Exchanges,omitempty" xml:"Exchanges,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page.``
+	//
+	// *   If the value of this parameter is empty, the next query is not required and the token used to start the next query is unavailable.``
+	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.``
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListExchangesResponseBodyData) String() string {
@@ -2007,12 +2315,18 @@ func (s *ListExchangesResponseBodyData) SetNextToken(v string) *ListExchangesRes
 }
 
 type ListExchangesResponseBodyDataExchanges struct {
-	Attributes      map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	AutoDeleteState *bool                  `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	CreateTime      *int64                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExchangeType    *string                `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	VHostName       *string                `json:"VHostName,omitempty" xml:"VHostName,omitempty"`
+	// The attributes. This parameter is unavailable in the current version.
+	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// Indicates whether the exchange was automatically deleted.
+	AutoDeleteState *bool `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
+	// The timestamp that indicates when the exchange was created. Unit: milliseconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The exchange type.
+	ExchangeType *string `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
+	// The exchange name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The vhost name.
+	VHostName *string `json:"VHostName,omitempty" xml:"VHostName,omitempty"`
 }
 
 func (s ListExchangesResponseBodyDataExchanges) String() string {
@@ -2083,8 +2397,10 @@ func (s *ListExchangesResponse) SetBody(v *ListExchangesResponseBody) *ListExcha
 }
 
 type ListInstancesRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -2106,8 +2422,10 @@ func (s *ListInstancesRequest) SetNextToken(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	Data      *ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -2129,9 +2447,12 @@ func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyData struct {
-	Instances  []*ListInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The instances.
+	Instances []*ListInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListInstancesResponseBodyData) String() string {
@@ -2158,24 +2479,56 @@ func (s *ListInstancesResponseBodyData) SetNextToken(v string) *ListInstancesRes
 }
 
 type ListInstancesResponseBodyDataInstances struct {
-	AutoRenewInstance *bool                                         `json:"AutoRenewInstance,omitempty" xml:"AutoRenewInstance,omitempty"`
-	ClassicEndpoint   *string                                       `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
-	ExpireTime        *int64                                        `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId        *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName      *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType      *string                                       `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxEipTps         *int32                                        `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
-	MaxQueue          *int32                                        `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
-	MaxTps            *int32                                        `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
-	MaxVhost          *int32                                        `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
-	OrderCreateTime   *int64                                        `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
-	OrderType         *string                                       `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PrivateEndpoint   *string                                       `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
-	PublicEndpoint    *string                                       `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
-	Status            *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageSize       *int32                                        `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	SupportEIP        *bool                                         `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
-	Tags              []*ListInstancesResponseBodyDataInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Indicates whether the instance is automatically renewed.
+	AutoRenewInstance *bool `json:"AutoRenewInstance,omitempty" xml:"AutoRenewInstance,omitempty"`
+	// The endpoint that is used to access the instance over the classic network. This parameter is no longer available.
+	ClassicEndpoint *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
+	// The timestamp that indicates when the instance expires. Unit: milliseconds.
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The instance ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type.
+	//
+	// *   PROFESSIONAL: Professional Edition
+	// *   ENTERPRISE: Enterprise Edition
+	// *   VIP: Enterprise Platinum Edition
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The maximum number of Internet-based transactions per second (TPS) for the instance.
+	MaxEipTps *int32 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	// The maximum number of queues on the instance.
+	MaxQueue *int32 `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
+	// The maximum number of VPC-based TPS for the instance.
+	MaxTps *int32 `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
+	// The maximum number of vhosts on the instance.
+	MaxVhost *int32 `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
+	// The timestamp that indicates when the order was created. Unit: milliseconds.
+	OrderCreateTime *int64 `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
+	// The billing method. Valid values:
+	//
+	// *   PrePaid: the subscription billing method.
+	// *   POST_PAID: the pay-as-you-go billing method.
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The virtual private cloud (VPC) endpoint of the instance.
+	PrivateEndpoint *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
+	// The public endpoint of the instance.
+	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	// The instance status. Valid values:
+	//
+	// *   DEPLOYING: The instance is being deployed.
+	// *   EXPIRED: The instance is expired.
+	// *   SERVING: The instance is running.
+	// *   RELEASED: The instance is released.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The disk size. Unit: GB.
+	//
+	// >  For Professional Edition instances and Enterprise Edition instances, this parameter is unavailable and \*\*-1\*\* is returned.
+	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// Indicates whether the instance supports elastic IP addresses (EIPs).
+	SupportEIP *bool `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
+	// 标签列表。
+	Tags []*ListInstancesResponseBodyDataInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesResponseBodyDataInstances) String() string {
@@ -2277,7 +2630,9 @@ func (s *ListInstancesResponseBodyDataInstances) SetTags(v []*ListInstancesRespo
 }
 
 type ListInstancesResponseBodyDataInstancesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签键。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签值。
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2329,10 +2684,17 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListQueueConsumersRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	QueryCount  *int32  `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	Queue       *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of data entries to return. If you do not configure this parameter, the default value 1 is used.
+	//
+	// Valid values: 1 to 100.
+	QueryCount *int32 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// The name of the queue for which you want to query online consumers.
+	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The virtual host (vhost) name.
 	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
@@ -2370,8 +2732,10 @@ func (s *ListQueueConsumersRequest) SetVirtualHost(v string) *ListQueueConsumers
 }
 
 type ListQueueConsumersResponseBody struct {
-	Data      *ListQueueConsumersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *ListQueueConsumersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListQueueConsumersResponseBody) String() string {
@@ -2393,9 +2757,12 @@ func (s *ListQueueConsumersResponseBody) SetRequestId(v string) *ListQueueConsum
 }
 
 type ListQueueConsumersResponseBodyData struct {
-	Consumers  []*ListQueueConsumersResponseBodyDataConsumers `json:"Consumers,omitempty" xml:"Consumers,omitempty" type:"Repeated"`
-	MaxResults *int32                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The consumers.
+	Consumers []*ListQueueConsumersResponseBodyDataConsumers `json:"Consumers,omitempty" xml:"Consumers,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListQueueConsumersResponseBodyData) String() string {
@@ -2422,6 +2789,7 @@ func (s *ListQueueConsumersResponseBodyData) SetNextToken(v string) *ListQueueCo
 }
 
 type ListQueueConsumersResponseBodyDataConsumers struct {
+	// The consumer tag.
 	ConsumerTag *string `json:"ConsumerTag,omitempty" xml:"ConsumerTag,omitempty"`
 }
 
@@ -2468,10 +2836,15 @@ func (s *ListQueueConsumersResponse) SetBody(v *ListQueueConsumersResponseBody) 
 }
 
 type ListQueueUpStreamBindingsRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	QueueName   *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The queue name.
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The virtual host (vhost) name.
 	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
@@ -2509,8 +2882,10 @@ func (s *ListQueueUpStreamBindingsRequest) SetVirtualHost(v string) *ListQueueUp
 }
 
 type ListQueueUpStreamBindingsResponseBody struct {
-	Data      *ListQueueUpStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *ListQueueUpStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListQueueUpStreamBindingsResponseBody) String() string {
@@ -2532,9 +2907,12 @@ func (s *ListQueueUpStreamBindingsResponseBody) SetRequestId(v string) *ListQueu
 }
 
 type ListQueueUpStreamBindingsResponseBodyData struct {
-	Bindings   []*ListQueueUpStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
-	MaxResults *string                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The bindings.
+	Bindings []*ListQueueUpStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListQueueUpStreamBindingsResponseBodyData) String() string {
@@ -2561,11 +2939,35 @@ func (s *ListQueueUpStreamBindingsResponseBodyData) SetNextToken(v string) *List
 }
 
 type ListQueueUpStreamBindingsResponseBodyDataBindings struct {
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
-	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
-	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The x-match attribute. Valid values:
+	//
+	// *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+	// *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	//
+	// This parameter is available for only headers exchanges.
+	Argument *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
+	// The binding key.
+	//
+	// *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+	//     *   The binding key must be 1 to 255 characters in length.
+	//
+	// *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+	//
+	//     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	//     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+	//     *   The binding key must be 1 to 255 characters in length.
+	BindingKey *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
+	// The type of the object to which the source exchange is bound. Valid values:
+	//
+	// *   **QUEUE**
+	// *   **EXCHANGE**
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	// The name of the object to which the source exchange is bound.
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	// The name of the source exchange.
+	SourceExchange *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
 }
 
 func (s ListQueueUpStreamBindingsResponseBodyDataBindings) String() string {
@@ -2631,9 +3033,13 @@ func (s *ListQueueUpStreamBindingsResponse) SetBody(v *ListQueueUpStreamBindings
 }
 
 type ListQueuesRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The virtual host (vhost) name.
 	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
@@ -2666,8 +3072,10 @@ func (s *ListQueuesRequest) SetVirtualHost(v string) *ListQueuesRequest {
 }
 
 type ListQueuesResponseBody struct {
-	Data      *ListQueuesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *ListQueuesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListQueuesResponseBody) String() string {
@@ -2689,9 +3097,11 @@ func (s *ListQueuesResponseBody) SetRequestId(v string) *ListQueuesResponseBody 
 }
 
 type ListQueuesResponseBodyData struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Queue。
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The queues.
 	Queues []*ListQueuesResponseBodyDataQueues `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
 }
 
@@ -2719,14 +3129,22 @@ func (s *ListQueuesResponseBodyData) SetQueues(v []*ListQueuesResponseBodyDataQu
 }
 
 type ListQueuesResponseBodyDataQueues struct {
-	Attributes      map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	AutoDeleteState *bool                  `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	CreateTime      *int64                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExclusiveState  *bool                  `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
-	LastConsumeTime *int64                 `json:"LastConsumeTime,omitempty" xml:"LastConsumeTime,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	VHostName       *string                `json:"VHostName,omitempty" xml:"VHostName,omitempty"`
+	// The attributes.
+	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// Indicates whether the queue was automatically deleted.
+	AutoDeleteState *bool `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
+	// The time when the queue was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the queue is an exclusive queue.
+	ExclusiveState *bool `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
+	// The time when messages in the queue were last consumed.
+	LastConsumeTime *int64 `json:"LastConsumeTime,omitempty" xml:"LastConsumeTime,omitempty"`
+	// The queue name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The vhost name.
+	VHostName *string `json:"VHostName,omitempty" xml:"VHostName,omitempty"`
 }
 
 func (s ListQueuesResponseBodyDataQueues) String() string {
@@ -2807,9 +3225,12 @@ func (s *ListQueuesResponse) SetBody(v *ListQueuesResponseBody) *ListQueuesRespo
 }
 
 type ListVirtualHostsRequest struct {
+	// The ID of the ApsaraMQ for RabbitMQ instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return. Valid values: **1 to 100**
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListVirtualHostsRequest) String() string {
@@ -2836,8 +3257,10 @@ func (s *ListVirtualHostsRequest) SetNextToken(v string) *ListVirtualHostsReques
 }
 
 type ListVirtualHostsResponseBody struct {
-	Data      *ListVirtualHostsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *ListVirtualHostsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVirtualHostsResponseBody) String() string {
@@ -2859,9 +3282,11 @@ func (s *ListVirtualHostsResponseBody) SetRequestId(v string) *ListVirtualHostsR
 }
 
 type ListVirtualHostsResponseBodyData struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Vhost。
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The vhosts.
 	VirtualHosts []*ListVirtualHostsResponseBodyDataVirtualHosts `json:"VirtualHosts,omitempty" xml:"VirtualHosts,omitempty" type:"Repeated"`
 }
 
@@ -2889,6 +3314,7 @@ func (s *ListVirtualHostsResponseBodyData) SetVirtualHosts(v []*ListVirtualHosts
 }
 
 type ListVirtualHostsResponseBodyDataVirtualHosts struct {
+	// The vhost name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -2935,7 +3361,9 @@ func (s *ListVirtualHostsResponse) SetBody(v *ListVirtualHostsResponseBody) *Lis
 }
 
 type UpdateInstanceNameRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance for which you want to update the name.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new name of the instance. No limits are imposed on the value. We recommend that you set this parameter to a maximum of 64 characters in length.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -2958,11 +3386,16 @@ func (s *UpdateInstanceNameRequest) SetInstanceName(v string) *UpdateInstanceNam
 }
 
 type UpdateInstanceNameResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message that is returned when an error occurs during the update of the instance name.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned message that indicates the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateInstanceNameResponseBody) String() string {
@@ -3074,6 +3507,12 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ *
+ * @param request CreateAccountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAccountResponse
+ */
 func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3127,6 +3566,11 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
+/**
+ *
+ * @param request CreateAccountRequest
+ * @return CreateAccountResponse
+ */
 func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccountResponse{}
@@ -3292,6 +3736,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
 		query["InstanceType"] = request.InstanceType
 	}
@@ -3322,6 +3770,14 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.QueueCapacity)) {
 		query["QueueCapacity"] = request.QueueCapacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewStatus)) {
+		query["RenewStatus"] = request.RenewStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewalDurationUnit)) {
+		query["RenewalDurationUnit"] = request.RenewalDurationUnit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
@@ -3618,6 +4074,15 @@ func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *Del
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+ * *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+ *
+ * @param request DeleteExchangeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteExchangeResponse
+ */
 func (client *Client) DeleteExchangeWithOptions(request *DeleteExchangeRequest, runtime *util.RuntimeOptions) (_result *DeleteExchangeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3659,6 +4124,14 @@ func (client *Client) DeleteExchangeWithOptions(request *DeleteExchangeRequest, 
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+ * *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+ *
+ * @param request DeleteExchangeRequest
+ * @return DeleteExchangeResponse
+ */
 func (client *Client) DeleteExchange(request *DeleteExchangeRequest) (_result *DeleteExchangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteExchangeResponse{}
@@ -3722,6 +4195,13 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 	return _result, _err
 }
 
+/**
+ * Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+ *
+ * @param request DeleteVirtualHostRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteVirtualHostResponse
+ */
 func (client *Client) DeleteVirtualHostWithOptions(request *DeleteVirtualHostRequest, runtime *util.RuntimeOptions) (_result *DeleteVirtualHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3759,6 +4239,12 @@ func (client *Client) DeleteVirtualHostWithOptions(request *DeleteVirtualHostReq
 	return _result, _err
 }
 
+/**
+ * Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+ *
+ * @param request DeleteVirtualHostRequest
+ * @return DeleteVirtualHostResponse
+ */
 func (client *Client) DeleteVirtualHost(request *DeleteVirtualHostRequest) (_result *DeleteVirtualHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVirtualHostResponse{}
@@ -4054,6 +4540,13 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+/**
+ * ApsaraMQ for RabbitMQ allows you to query only online consumers.
+ *
+ * @param request ListQueueConsumersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListQueueConsumersResponse
+ */
 func (client *Client) ListQueueConsumersWithOptions(request *ListQueueConsumersRequest, runtime *util.RuntimeOptions) (_result *ListQueueConsumersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4083,6 +4576,12 @@ func (client *Client) ListQueueConsumersWithOptions(request *ListQueueConsumersR
 	return _result, _err
 }
 
+/**
+ * ApsaraMQ for RabbitMQ allows you to query only online consumers.
+ *
+ * @param request ListQueueConsumersRequest
+ * @return ListQueueConsumersResponse
+ */
 func (client *Client) ListQueueConsumers(request *ListQueueConsumersRequest) (_result *ListQueueConsumersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListQueueConsumersResponse{}
