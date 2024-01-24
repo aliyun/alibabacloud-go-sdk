@@ -4863,17 +4863,18 @@ func (s *GetInstanceRequest) SetInstanceId(v string) *GetInstanceRequest {
 }
 
 type GetInstanceResponseBody struct {
-	Code                  *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIssue         *string `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
-	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
-	InstanceStatus        *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	IsSuccess             *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	ModifiedTime          *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Code                  *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	CreateTime            *int64                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId            *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIssue         *string                        `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
+	InstanceName          *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceSpecification *string                        `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
+	InstanceStatus        *string                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	IsSuccess             *bool                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	ModifiedTime          *int64                         `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	RequestId             *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId       *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags                  []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -4936,6 +4937,34 @@ func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBod
 
 func (s *GetInstanceResponseBody) SetResourceGroupId(v string) *GetInstanceResponseBody {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetTags(v []*GetInstanceResponseBodyTags) *GetInstanceResponseBody {
+	s.Tags = v
+	return s
+}
+
+type GetInstanceResponseBodyTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetInstanceResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyTags) SetTagKey(v string) *GetInstanceResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyTags) SetTagValue(v string) *GetInstanceResponseBodyTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -9210,7 +9239,8 @@ type ListInstanceResponseBodyInstances struct {
 	// The region ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListInstanceResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListInstanceResponseBodyInstances) String() string {
@@ -9263,6 +9293,34 @@ func (s *ListInstanceResponseBodyInstances) SetRegionId(v string) *ListInstanceR
 
 func (s *ListInstanceResponseBodyInstances) SetResourceGroupId(v string) *ListInstanceResponseBodyInstances {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyInstances) SetTags(v []*ListInstanceResponseBodyInstancesTags) *ListInstanceResponseBodyInstances {
+	s.Tags = v
+	return s
+}
+
+type ListInstanceResponseBodyInstancesTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListInstanceResponseBodyInstancesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceResponseBodyInstancesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceResponseBodyInstancesTags) SetTagKey(v string) *ListInstanceResponseBodyInstancesTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyInstancesTags) SetTagValue(v string) *ListInstanceResponseBodyInstancesTags {
+	s.TagValue = &v
 	return s
 }
 
