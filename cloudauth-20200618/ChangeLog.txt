@@ -1,3 +1,6 @@
+2024-01-24 Version: v3.0.1
+- Update Tea.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2020-06-18 for Cloudauth.
 
