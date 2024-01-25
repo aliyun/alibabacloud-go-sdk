@@ -19,13 +19,13 @@ type AllocateAnycastEipAddressRequest struct {
 	//
 	// Default value: **1000**.
 	//
-	// >  The maximum bandwidth value is not a guaranteed value. It indicates the upper limit of bandwidth and is for reference only.
+	// > The maximum bandwidth is not a guaranteed service and is for reference only.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the Anycast EIP.
 	//
@@ -42,11 +42,12 @@ type AllocateAnycastEipAddressRequest struct {
 	// The name of the Anycast EIP.
 	//
 	// The name must be 0 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The access area of the Anycast EIP.
 	//
-	// Set the value to **international**, which specifies the regions outside the Chinese mainland.
+	// Set the value to **international**, which specifies the areas outside the Chinese mainland.
 	ServiceLocation *string `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
 }
 
@@ -101,9 +102,9 @@ func (s *AllocateAnycastEipAddressRequest) SetServiceLocation(v string) *Allocat
 type AllocateAnycastEipAddressResponseBody struct {
 	// The ID of the Anycast EIP.
 	AnycastId *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -131,9 +132,9 @@ func (s *AllocateAnycastEipAddressResponseBody) SetRequestId(v string) *Allocate
 }
 
 type AllocateAnycastEipAddressResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AllocateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AllocateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AllocateAnycastEipAddressResponse) String() string {
@@ -164,39 +165,40 @@ type AssociateAnycastEipAddressRequest struct {
 	AnycastId *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
 	// The association mode. Valid values:
 	//
-	// *   **Default**: the default mode. In this mode, cloud resources to be associated are set as default origin servers.
-	// *   **Normal**: the standard mode. In this mode, cloud resources to be associated are set as standard origin servers.
+	// *   **Default**: the default mode. In this mode, the endpoint to be associated serves as the default origin server.
+	// *   **Normal**: the standard mode. In this mode, the endpoint to be associated serves as a standard origin server.
 	//
-	// > You can associate an Anycast EIP with cloud resources in multiple regions. However, you can set only one cloud resource as the default origin server. Other cloud resources are set as standard origin servers. If you do not specify or add an access point, requests are forwarded to the default origin server.
+	// > You can associate endpoints in multiple regions with an Anycast EIP. However, only one endpoint can serve as the default origin server. Others serve as standard origin servers. If you do not specify or add an access point, requests are forwarded to the default origin server.\
 	//
-	// *   If this is your first time to associate an Anycast EIP with a cloud resource, set the value to **Default**.
+	//
+	// *   If this is your first time to associate an Anycast EIP with an endpoint, set the value to **Default**.
 	// *   If not, you can also set the value to **Default**, which specifies a new default origin server. In this case, the previous origin server functions as a standard origin server.
 	AssociationMode *string `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
-	// The ID of the cloud resource with which you want to associate the Anycast EIP.
+	// The ID of the endpoint with which you want to associate the Anycast EIP.
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
-	// The ID of the region where the cloud resource is deployed.
+	// The ID of the region where the endpoint is deployed.
 	//
-	// You can associate Anycast EIPs only with cloud resources in specific regions. You can call the [DescribeAnycastServerRegions](~~171939~~) operation to query the region IDs.
+	// You can associate Anycast EIPs only with endpoints in specific regions. You can call the [DescribeAnycastServerRegions](~~171939~~) operation to query the region IDs.
 	BindInstanceRegionId *string `json:"BindInstanceRegionId,omitempty" xml:"BindInstanceRegionId,omitempty"`
-	// The type of cloud resource with which you want to associate the Anycast EIP. Valid values:
+	// The type of endpoint with which you want to associate the Anycast EIP. Valid values:
 	//
-	// *   **SlbInstance**: an internal-facing Server Load Balancer (SLB) instance that is deployed in a virtual private cloud (VPC)
-	// *   **NetworkInterface**: an elastic network interface (ENI)
+	// *   **SlbInstance**: internal-facing Server Load Balancer (SLB) instance that is deployed in a virtual private cloud (VPC)
+	// *   **NetworkInterface**: elastic network interface (ENI)
 	BindInstanceType *string `json:"BindInstanceType,omitempty" xml:"BindInstanceType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck the request. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: prechecks the request. After the request passes the precheck, the Anycast EIP is not associated with the instance. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the API request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The information about the access points in associated access areas when you associate an Anycast EIP with a cloud resource.
+	// The information about the access points in associated access areas when you associate an Anycast EIP with an endpoint.
 	//
-	// If this is your first time to associate an Anycast EIP with a cloud resource, ignore this parameter. The system automatically associates all access areas.
+	// If this is your first time to associate an Anycast EIP with an endpoint, ignore this parameter. The system automatically associates all access areas.
 	//
 	// You can call the [DescribeAnycastPopLocations](~~171938~~) operation to query information about access points in supported access areas.
 	PopLocations []*AssociateAnycastEipAddressRequestPopLocations `json:"PopLocations,omitempty" xml:"PopLocations,omitempty" type:"Repeated"`
@@ -260,9 +262,9 @@ func (s *AssociateAnycastEipAddressRequest) SetPrivateIpAddress(v string) *Assoc
 }
 
 type AssociateAnycastEipAddressRequestPopLocations struct {
-	// The information about the access points in associated access areas when you associate an Anycast EIP with a cloud resource.
+	// The information about the access points in associated access areas when you associate an Anycast EIP with an endpoint.
 	//
-	// If this is your first time to associate an Anycast EIP with a cloud resource, ignore this parameter. The system automatically associates all access areas.
+	// If this is your first time to associate an Anycast EIP with an endpoint, ignore this parameter. The system automatically associates all access areas.
 	//
 	// You can call the [DescribeAnycastPopLocations](~~171938~~) operation to query information about access points in supported access areas.
 	PopLocation *string `json:"PopLocation,omitempty" xml:"PopLocation,omitempty"`
@@ -282,7 +284,7 @@ func (s *AssociateAnycastEipAddressRequestPopLocations) SetPopLocation(v string)
 }
 
 type AssociateAnycastEipAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -300,9 +302,9 @@ func (s *AssociateAnycastEipAddressResponseBody) SetRequestId(v string) *Associa
 }
 
 type AssociateAnycastEipAddressResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateAnycastEipAddressResponse) String() string {
@@ -331,13 +333,13 @@ func (s *AssociateAnycastEipAddressResponse) SetBody(v *AssociateAnycastEipAddre
 type DescribeAnycastEipAddressRequest struct {
 	// The ID of the Anycast EIP.
 	//
-	// >  You must specify at least one of **Ip** and **AnycastId**.
+	// > You must specify **Ip** or **AnycastId**.
 	AnycastId *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
-	// The ID of the cloud resource with which the Anycast EIP is associated.
+	// The ID of the endpoint with which the Anycast EIP is associated.
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
 	// The IP address of the Anycast EIP.
 	//
-	// >  You must specify at least one of **Ip** and **AnycastId**.
+	// > You must specify **Ip** or **AnycastId**.
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
@@ -367,7 +369,7 @@ func (s *DescribeAnycastEipAddressRequest) SetIp(v string) *DescribeAnycastEipAd
 type DescribeAnycastEipAddressResponseBody struct {
 	// The ID of the account to which the Anycast EIP belongs.
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The information about the cloud resource with which the Anycast EIP is associated.
+	// The information about the endpoint with which the Anycast EIP is associated.
 	AnycastEipBindInfoList []*DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList `json:"AnycastEipBindInfoList,omitempty" xml:"AnycastEipBindInfoList,omitempty" type:"Repeated"`
 	// The ID of the Anycast EIP.
 	AnycastId *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
@@ -380,7 +382,7 @@ type DescribeAnycastEipAddressResponseBody struct {
 	// *   **Normal**
 	// *   **FinancialLocked**
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The time when the Anycast EIP was created.
+	// The point in time at which the Anycast EIP was created.
 	//
 	// The time follows the ISO8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -399,13 +401,14 @@ type DescribeAnycastEipAddressResponseBody struct {
 	// The name of the Anycast EIP.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The area from which you can use the Anycast EIP to access the backend server over the Internet.
+	// The access area of the Anycast EIP.
 	//
 	// Only **international** may be returned, which indicates the areas outside the Chinese mainland.
 	ServiceLocation *string `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
-	// The status of the Anycast EIP. Valid values:
+	// The status of the Anycast EIP.
 	//
 	// *   **Associating**
 	// *   **Unassociating**
@@ -415,7 +418,7 @@ type DescribeAnycastEipAddressResponseBody struct {
 	// *   **Releasing**
 	// *   **Released**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag information.
+	// The information about the tags.
 	Tags []*DescribeAnycastEipAddressResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -515,31 +518,31 @@ func (s *DescribeAnycastEipAddressResponseBody) SetTags(v []*DescribeAnycastEipA
 type DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList struct {
 	// The association mode. Valid values:
 	//
-	// *   **Default**: the default mode. In this mode, associated cloud resources are set as default origin servers.
-	// *   **Normal**: the standard mode. In this mode, associated cloud resources are set as standard origin servers.
+	// *   **Default**: the default mode. In this mode, the associated endpoint serves as the default origin server.
+	// *   **Normal**: the standard mode. In this mode, the associated endpoint serves as a standard origin server.
 	AssociationMode *string `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
-	// The ID of the cloud resource with which the Anycast EIP is associated.
+	// The ID of the endpoint with which the Anycast EIP is associated.
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
-	// The ID of the region in which the cloud resource is deployed.
+	// The ID of the region in which the endpoint is deployed.
 	BindInstanceRegionId *string `json:"BindInstanceRegionId,omitempty" xml:"BindInstanceRegionId,omitempty"`
-	// The type of cloud resource with which the Anycast EIP is associated. Valid values:
+	// The type of endpoint with which the Anycast EIP is associated. Valid values:
 	//
-	// *   **SlbInstance**: an internal-facing Server Load Balancer (SLB) instance that is deployed in a virtual private cloud (VPC)
-	// *   **NetworkInterface**: an elastic network interface (ENI)
+	// *   **SlbInstance**: a CLB instance in a VPC.
+	// *   **NetworkInterface**: an elastic network interface (ENI).
 	BindInstanceType *string `json:"BindInstanceType,omitempty" xml:"BindInstanceType,omitempty"`
 	// The time when the Anycast EIP was associated.
 	//
-	// The time follows the ISO8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
 	BindTime *string `json:"BindTime,omitempty" xml:"BindTime,omitempty"`
 	// The information about the access points in associated access areas when you associate an Anycast EIP with a cloud resource.
 	//
-	// If this is your first time associating an Anycast EIP with a cloud resource, the system returns information about access points in all access areas.
+	// If this is your first time associating an Anycast EIP with an endpoint, the system returns information about access points in all access areas.
 	PopLocations []*DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations `json:"PopLocations,omitempty" xml:"PopLocations,omitempty" type:"Repeated"`
 	// The secondary private IP address of the associated ENI.
 	//
 	// This parameter is valid only when **BindInstanceType** is set to **NetworkInterface**.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The status of the cloud resource. Valid values:
+	// The status of the endpoint. Valid values:
 	//
 	// *   **BINDING**
 	// *   **BINDED**
@@ -600,7 +603,7 @@ func (s *DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList) SetStatus(
 type DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations struct {
 	// The information about the access points in associated access areas when you associate an Anycast EIP with a cloud resource.
 	//
-	// If this is your first time associating an Anycast EIP with a cloud resource, the system returns information about access points in all access areas.
+	// If this is your first time associating an Anycast EIP with an endpoint, the system returns information about access points in all access areas.
 	PopLocation *string `json:"PopLocation,omitempty" xml:"PopLocation,omitempty"`
 }
 
@@ -643,9 +646,9 @@ func (s *DescribeAnycastEipAddressResponseBodyTags) SetValue(v string) *Describe
 }
 
 type DescribeAnycastEipAddressResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAnycastEipAddressResponse) String() string {
@@ -674,7 +677,7 @@ func (s *DescribeAnycastEipAddressResponse) SetBody(v *DescribeAnycastEipAddress
 type DescribeAnycastPopLocationsRequest struct {
 	// The access area of the Anycast elastic IP address (EIP).
 	//
-	// Set the value to **international**, which specifies the regions outside the Chinese mainland.
+	// Set the value to **international**, which specifies the areas outside the Chinese mainland.
 	ServiceLocation *string `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
 }
 
@@ -696,7 +699,7 @@ type DescribeAnycastPopLocationsResponseBody struct {
 	AnycastPopLocationList []*DescribeAnycastPopLocationsResponseBodyAnycastPopLocationList `json:"AnycastPopLocationList,omitempty" xml:"AnycastPopLocationList,omitempty" type:"Repeated"`
 	// The number of access points.
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -749,9 +752,9 @@ func (s *DescribeAnycastPopLocationsResponseBodyAnycastPopLocationList) SetRegio
 }
 
 type DescribeAnycastPopLocationsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAnycastPopLocationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAnycastPopLocationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAnycastPopLocationsResponse) String() string {
@@ -780,7 +783,7 @@ func (s *DescribeAnycastPopLocationsResponse) SetBody(v *DescribeAnycastPopLocat
 type DescribeAnycastServerRegionsRequest struct {
 	// The access area from which you use the Anycast EIP to communicate with the Internet.
 	//
-	// Set the value to **international**, which specifies the regions outside the Chinese mainland.
+	// Set the value to **international**, which specifies the areas outside the Chinese mainland.
 	ServiceLocation *string `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
 }
 
@@ -798,11 +801,11 @@ func (s *DescribeAnycastServerRegionsRequest) SetServiceLocation(v string) *Desc
 }
 
 type DescribeAnycastServerRegionsResponseBody struct {
-	// The list of regions where you can associate Anycast EIPs with backend servers.
+	// The list of regions where you can associate Anycast EIPs with endpoints.
 	AnycastServerRegionList []*DescribeAnycastServerRegionsResponseBodyAnycastServerRegionList `json:"AnycastServerRegionList,omitempty" xml:"AnycastServerRegionList,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The number of returned entries.
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -855,9 +858,9 @@ func (s *DescribeAnycastServerRegionsResponseBodyAnycastServerRegionList) SetReg
 }
 
 type DescribeAnycastServerRegionsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAnycastServerRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAnycastServerRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAnycastServerRegionsResponse) String() string {
@@ -1306,9 +1309,9 @@ func (s *ListAnycastEipAddressesResponseBodyAnycastListTags) SetValue(v string) 
 }
 
 type ListAnycastEipAddressesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAnycastEipAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAnycastEipAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAnycastEipAddressesResponse) String() string {
@@ -1335,18 +1338,18 @@ func (s *ListAnycastEipAddressesResponse) SetBody(v *ListAnycastEipAddressesResp
 }
 
 type ListTagResourcesRequest struct {
-	// The number of entries to return on each page. Valid values:**1** to **50**. Default value: **50**.
+	// The number of entries per page. Valid values: **1** to **50**. Default value: **50**.
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-	// *   If a next query is to be sent, set the value to the value of **NextToken** that is returned in the last call.
+	// *   If this is your first query or no next queries are to be sent, ignore this parameter.
+	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the resource.
+	// The resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Set the value to **ANYCASTEIPADDRESS**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags
+	// The tag information.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1384,17 +1387,17 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of tag N to add to the resource. You can specify up to 20 tag keys. It cannot be an empty string.
+	// The key of tag N. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be a up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
 	//
-	// >  Specify at least one of **ResourceId.N** or **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
+	// > You must specify **ResourceId.N** or **Tag.N** (**Tag.N.Key** or **Tag.N.Value**).
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. You can specify up to 20 tag values. It can be an empty string.
+	// The value of tag N. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+	// It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
-	// >  Specify at least one of **ResourceId.N** or **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
+	// > You must specify **ResourceId.N** or **Tag.N** (**Tag.N.Key** or **Tag.N.Value**).
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1417,10 +1420,10 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If the **NextToken** parameter is empty, no next page exists.
-	// *   If the return value of **NextToken** is not empty, the value indicates the token that is used for the next query.
+	// *   If **NextToken** is empty, no next page exists.
+	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1454,11 +1457,11 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 type ListTagResourcesResponseBodyTagResources struct {
 	// The resource ID.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. Set the value to **ANYCASTEIPADDRESS**.
+	// The resource type. Only **ANYCASTEIPADDRESS** may be returned.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key.
+	// The key of tag N.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -1491,9 +1494,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -1556,7 +1559,7 @@ func (s *ModifyAnycastEipAddressAttributeRequest) SetName(v string) *ModifyAnyca
 }
 
 type ModifyAnycastEipAddressAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1574,9 +1577,9 @@ func (s *ModifyAnycastEipAddressAttributeResponseBody) SetRequestId(v string) *M
 }
 
 type ModifyAnycastEipAddressAttributeResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAnycastEipAddressAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAnycastEipAddressAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAnycastEipAddressAttributeResponse) String() string {
@@ -1630,7 +1633,7 @@ func (s *ModifyAnycastEipAddressSpecRequest) SetBandwidth(v string) *ModifyAnyca
 }
 
 type ModifyAnycastEipAddressSpecResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1648,9 +1651,9 @@ func (s *ModifyAnycastEipAddressSpecResponseBody) SetRequestId(v string) *Modify
 }
 
 type ModifyAnycastEipAddressSpecResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAnycastEipAddressSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAnycastEipAddressSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAnycastEipAddressSpecResponse) String() string {
@@ -1681,7 +1684,7 @@ type ReleaseAnycastEipAddressRequest struct {
 	AnycastId *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
@@ -1704,7 +1707,7 @@ func (s *ReleaseAnycastEipAddressRequest) SetClientToken(v string) *ReleaseAnyca
 }
 
 type ReleaseAnycastEipAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1722,9 +1725,9 @@ func (s *ReleaseAnycastEipAddressResponseBody) SetRequestId(v string) *ReleaseAn
 }
 
 type ReleaseAnycastEipAddressResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseAnycastEipAddressResponse) String() string {
@@ -1751,11 +1754,11 @@ func (s *ReleaseAnycastEipAddressResponse) SetBody(v *ReleaseAnycastEipAddressRe
 }
 
 type TagResourcesRequest struct {
-	// The list of resource IDs.
+	// The resource ID. You can specify at most 20 IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Set the value to **ANYCASTEIPADDRESS**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The tag information.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1785,15 +1788,15 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 type TagResourcesRequestTag struct {
 	// The key of tag N to add to the resource. You must enter at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
 	//
-	// >  When you call this operation, you must specify **Tag.N.Key**.
+	// > When you call this operation, **Tag.N.Key** is required.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N to add to the resource. You must enter at least one tag value and at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
-	// >  When you call this operation, you must specify **Tag.N.Value**.
+	// > When you call this operation, **Tag.N.Value** is required.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1845,9 +1848,9 @@ func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody 
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -1876,29 +1879,29 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UnassociateAnycastEipAddressRequest struct {
 	// The ID of the Anycast EIP.
 	AnycastId *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
-	// The ID of the cloud resource from which you want to disassociate the Anycast EIP.
+	// The ID of the endpoint from which you want to disassociate the Anycast EIP.
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
-	// The region where the cloud resource is deployed.
+	// The region where the endpoint is deployed.
 	BindInstanceRegionId *string `json:"BindInstanceRegionId,omitempty" xml:"BindInstanceRegionId,omitempty"`
-	// The type of cloud resource from which you want to disassociate the Anycast EIP. Valid values:
+	// The type of endpoint from which you want to disassociate the Anycast EIP. Valid values:
 	//
 	// *   **SlbInstance**: an internal-facing Server Load Balancer (SLB) instance that is deployed in a virtual private cloud (VPC)
-	// *   **NetworkInterface**: an elastic network interface (ENI)
+	// *   **NetworkInterface**: elastic network interface (ENI)
 	BindInstanceType *string `json:"BindInstanceType,omitempty" xml:"BindInstanceType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck the request. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: prechecks the request without disassociating the Anycast EIP. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the API request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The secondary private IP address of the ENI from which you want to disassociate the Anycast EIP.
 	//
-	// This parameter is valid only when you set **BindInstanceType** to **NetworkInterface**. If you do not set this parameter, the primary private IP address of the ENI is returned.
+	// This parameter is valid only when you set **BindInstanceType** to **NetworkInterface**. If you do not specify this parameter, the primary private IP address of the ENI is used.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
@@ -1946,7 +1949,7 @@ func (s *UnassociateAnycastEipAddressRequest) SetPrivateIpAddress(v string) *Una
 }
 
 type UnassociateAnycastEipAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1964,9 +1967,9 @@ func (s *UnassociateAnycastEipAddressResponseBody) SetRequestId(v string) *Unass
 }
 
 type UnassociateAnycastEipAddressResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnassociateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnassociateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnassociateAnycastEipAddressResponse) String() string {
@@ -1993,11 +1996,13 @@ func (s *UnassociateAnycastEipAddressResponse) SetBody(v *UnassociateAnycastEipA
 }
 
 type UntagResourcesRequest struct {
-	// The ID of the resource.
+	// The resource ID. You can specify up to 20 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Set the value to **ANYCASTEIPADDRESS**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys of the resource.
+	// The key of the tag that you want to remove. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	//
+	// A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain `http://` or `https://`.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -2027,7 +2032,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 type UntagResourcesResponseBody struct {
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
 	// **true**
 	//
@@ -2054,9 +2059,9 @@ func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseB
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -2211,9 +2216,9 @@ func (s *UpdateAnycastEipAddressAssociationsResponseBody) SetRequestId(v string)
 }
 
 type UpdateAnycastEipAddressAssociationsResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAnycastEipAddressAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAnycastEipAddressAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAnycastEipAddressAssociationsResponse) String() string {
