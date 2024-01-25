@@ -83,9 +83,9 @@ func (s *AdjustJMeterSceneSpeedResponseBody) SetSuccess(v bool) *AdjustJMeterSce
 }
 
 type AdjustJMeterSceneSpeedResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AdjustJMeterSceneSpeedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AdjustJMeterSceneSpeedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AdjustJMeterSceneSpeedResponse) String() string {
@@ -222,9 +222,9 @@ func (s *AdjustPtsSceneSpeedResponseBody) SetSuccess(v bool) *AdjustPtsSceneSpee
 }
 
 type AdjustPtsSceneSpeedResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AdjustPtsSceneSpeedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AdjustPtsSceneSpeedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AdjustPtsSceneSpeedResponse) String() string {
@@ -315,9 +315,9 @@ func (s *CreatePtsSceneResponseBody) SetSuccess(v bool) *CreatePtsSceneResponseB
 }
 
 type CreatePtsSceneResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePtsSceneResponse) String() string {
@@ -408,9 +408,9 @@ func (s *CreatePtsSceneBaseLineFromReportResponseBody) SetSuccess(v bool) *Creat
 }
 
 type CreatePtsSceneBaseLineFromReportResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePtsSceneBaseLineFromReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePtsSceneBaseLineFromReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePtsSceneBaseLineFromReportResponse) String() string {
@@ -495,9 +495,9 @@ func (s *DeletePtsSceneResponseBody) SetSuccess(v bool) *DeletePtsSceneResponseB
 }
 
 type DeletePtsSceneResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePtsSceneResponse) String() string {
@@ -582,9 +582,9 @@ func (s *DeletePtsSceneBaseLineResponseBody) SetSuccess(v bool) *DeletePtsSceneB
 }
 
 type DeletePtsSceneBaseLineResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePtsSceneBaseLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePtsSceneBaseLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePtsSceneBaseLineResponse) String() string {
@@ -686,9 +686,9 @@ func (s *DeletePtsScenesResponseBody) SetSuccess(v bool) *DeletePtsScenesRespons
 }
 
 type DeletePtsScenesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePtsScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePtsScenesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePtsScenesResponse) String() string {
@@ -762,9 +762,9 @@ func (s *GetAllRegionsResponseBody) SetSuccess(v bool) *GetAllRegionsResponseBod
 }
 
 type GetAllRegionsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAllRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAllRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAllRegionsResponse) String() string {
@@ -921,9 +921,9 @@ func (s *GetJMeterLogsResponseBody) SetTotalCount(v int64) *GetJMeterLogsRespons
 }
 
 type GetJMeterLogsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJMeterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJMeterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJMeterLogsResponse) String() string {
@@ -1221,9 +1221,9 @@ func (s *GetJMeterReportDetailsResponseBodySceneMetrics) SetSuccessRateReq(v flo
 }
 
 type GetJMeterReportDetailsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJMeterReportDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJMeterReportDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJMeterReportDetailsResponse) String() string {
@@ -1332,9 +1332,9 @@ func (s *GetJMeterSampleMetricsResponseBody) SetSuccess(v bool) *GetJMeterSample
 }
 
 type GetJMeterSampleMetricsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJMeterSampleMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJMeterSampleMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJMeterSampleMetricsResponse) String() string {
@@ -1515,9 +1515,9 @@ func (s *GetJMeterSamplingLogsResponseBody) SetTotalCount(v int64) *GetJMeterSam
 }
 
 type GetJMeterSamplingLogsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJMeterSamplingLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJMeterSamplingLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJMeterSamplingLogsResponse) String() string {
@@ -1727,9 +1727,9 @@ func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetVum(v int64) *GetJ
 }
 
 type GetJMeterSceneRunningDataResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJMeterSceneRunningDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJMeterSceneRunningDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJMeterSceneRunningDataResponse) String() string {
@@ -2133,9 +2133,9 @@ func (s *GetOpenJMeterSceneResponseBodySceneRegionalCondition) SetRegion(v strin
 }
 
 type GetOpenJMeterSceneResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOpenJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOpenJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOpenJMeterSceneResponse) String() string {
@@ -2375,9 +2375,9 @@ func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetTimestamp(v int64) *G
 }
 
 type GetPtsDebugSampleLogsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPtsDebugSampleLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPtsDebugSampleLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPtsDebugSampleLogsResponse) String() string {
@@ -3260,9 +3260,9 @@ func (s *GetPtsReportDetailsResponseBodySceneSnapShotRelationListFileParameterEx
 }
 
 type GetPtsReportDetailsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPtsReportDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPtsReportDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPtsReportDetailsResponse) String() string {
@@ -3412,9 +3412,9 @@ func (s *GetPtsReportsBySceneIdResponseBodyReportOverViewList) SetVum(v int64) *
 }
 
 type GetPtsReportsBySceneIdResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPtsReportsBySceneIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPtsReportsBySceneIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPtsReportsBySceneIdResponse) String() string {
@@ -4165,9 +4165,9 @@ func (s *GetPtsSceneResponseBodySceneRelationListFileParameterExplainList) SetFi
 }
 
 type GetPtsSceneResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPtsSceneResponse) String() string {
@@ -4435,9 +4435,9 @@ func (s *GetPtsSceneBaseLineResponseBodyBaselineSceneBaseline) SetSuccessRateReq
 }
 
 type GetPtsSceneBaseLineResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPtsSceneBaseLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPtsSceneBaseLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPtsSceneBaseLineResponse) String() string {
@@ -4813,9 +4813,9 @@ func (s *GetPtsSceneRunningDataResponseBodyChainMonitorDataListCheckPointResult)
 }
 
 type GetPtsSceneRunningDataResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPtsSceneRunningDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPtsSceneRunningDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPtsSceneRunningDataResponse) String() string {
@@ -4924,9 +4924,9 @@ func (s *GetPtsSceneRunningStatusResponseBody) SetSuccess(v bool) *GetPtsSceneRu
 }
 
 type GetPtsSceneRunningStatusResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPtsSceneRunningStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPtsSceneRunningStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPtsSceneRunningStatusResponse) String() string {
@@ -5088,9 +5088,9 @@ func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetVpcId(v string
 }
 
 type GetUserVpcSecurityGroupResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserVpcSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserVpcSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserVpcSecurityGroupResponse) String() string {
@@ -5258,9 +5258,9 @@ func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetVpcId(v string) *GetUserVp
 }
 
 type GetUserVpcVSwitchResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserVpcVSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserVpcVSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserVpcVSwitchResponse) String() string {
@@ -5446,9 +5446,9 @@ func (s *GetUserVpcsResponseBodyVpcs) SetVpcName(v string) *GetUserVpcsResponseB
 }
 
 type GetUserVpcsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserVpcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserVpcsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserVpcsResponse) String() string {
@@ -5716,9 +5716,9 @@ func (s *ListEnvsResponseBodyEnvsProperties) SetValue(v string) *ListEnvsRespons
 }
 
 type ListEnvsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEnvsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnvsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEnvsResponse) String() string {
@@ -5904,9 +5904,9 @@ func (s *ListJMeterReportsResponseBodyReports) SetVum(v int64) *ListJMeterReport
 }
 
 type ListJMeterReportsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJMeterReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJMeterReportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJMeterReportsResponse) String() string {
@@ -6068,9 +6068,9 @@ func (s *ListOpenJMeterScenesResponseBodyJMeterScene) SetStatus(v string) *ListO
 }
 
 type ListOpenJMeterScenesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOpenJMeterScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOpenJMeterScenesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOpenJMeterScenesResponse) String() string {
@@ -6256,9 +6256,9 @@ func (s *ListPtsReportsResponseBodyReports) SetVum(v int64) *ListPtsReportsRespo
 }
 
 type ListPtsReportsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPtsReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPtsReportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPtsReportsResponse) String() string {
@@ -6390,9 +6390,9 @@ func (s *ListPtsSceneResponseBodySceneViewList) SetSceneName(v string) *ListPtsS
 }
 
 type ListPtsSceneResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPtsSceneResponse) String() string {
@@ -6477,9 +6477,9 @@ func (s *ModifyPtsSceneResponseBody) SetSuccess(v bool) *ModifyPtsSceneResponseB
 }
 
 type ModifyPtsSceneResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyPtsSceneResponse) String() string {
@@ -6564,9 +6564,9 @@ func (s *RemoveEnvResponseBody) SetSuccess(v bool) *RemoveEnvResponseBody {
 }
 
 type RemoveEnvResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveEnvResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveEnvResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveEnvResponse) String() string {
@@ -6651,9 +6651,9 @@ func (s *RemoveOpenJMeterSceneResponseBody) SetSuccess(v bool) *RemoveOpenJMeter
 }
 
 type RemoveOpenJMeterSceneResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveOpenJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveOpenJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveOpenJMeterSceneResponse) String() string {
@@ -6854,9 +6854,9 @@ func (s *SaveEnvResponseBody) SetSuccess(v bool) *SaveEnvResponseBody {
 }
 
 type SaveEnvResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveEnvResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveEnvResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveEnvResponse) String() string {
@@ -7253,9 +7253,9 @@ func (s *SaveOpenJMeterSceneResponseBody) SetSuccess(v bool) *SaveOpenJMeterScen
 }
 
 type SaveOpenJMeterSceneResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveOpenJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveOpenJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveOpenJMeterSceneResponse) String() string {
@@ -7978,9 +7978,9 @@ func (s *SavePtsSceneResponseBody) SetSuccess(v bool) *SavePtsSceneResponseBody 
 }
 
 type SavePtsSceneResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SavePtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SavePtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SavePtsSceneResponse) String() string {
@@ -8071,9 +8071,9 @@ func (s *StartDebugPtsSceneResponseBody) SetSuccess(v bool) *StartDebugPtsSceneR
 }
 
 type StartDebugPtsSceneResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartDebugPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartDebugPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartDebugPtsSceneResponse) String() string {
@@ -8164,9 +8164,9 @@ func (s *StartDebuggingJMeterSceneResponseBody) SetSuccess(v bool) *StartDebuggi
 }
 
 type StartDebuggingJMeterSceneResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartDebuggingJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartDebuggingJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartDebuggingJMeterSceneResponse) String() string {
@@ -8257,9 +8257,9 @@ func (s *StartPtsSceneResponseBody) SetSuccess(v bool) *StartPtsSceneResponseBod
 }
 
 type StartPtsSceneResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartPtsSceneResponse) String() string {
@@ -8350,9 +8350,9 @@ func (s *StartTestingJMeterSceneResponseBody) SetSuccess(v bool) *StartTestingJM
 }
 
 type StartTestingJMeterSceneResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartTestingJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartTestingJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartTestingJMeterSceneResponse) String() string {
@@ -8443,9 +8443,9 @@ func (s *StopDebugPtsSceneResponseBody) SetSuccess(v bool) *StopDebugPtsSceneRes
 }
 
 type StopDebugPtsSceneResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopDebugPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopDebugPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopDebugPtsSceneResponse) String() string {
@@ -8530,9 +8530,9 @@ func (s *StopDebuggingJMeterSceneResponseBody) SetSuccess(v bool) *StopDebugging
 }
 
 type StopDebuggingJMeterSceneResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopDebuggingJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopDebuggingJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopDebuggingJMeterSceneResponse) String() string {
@@ -8617,9 +8617,9 @@ func (s *StopPtsSceneResponseBody) SetSuccess(v bool) *StopPtsSceneResponseBody 
 }
 
 type StopPtsSceneResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopPtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopPtsSceneResponse) String() string {
@@ -8704,9 +8704,9 @@ func (s *StopTestingJMeterSceneResponseBody) SetSuccess(v bool) *StopTestingJMet
 }
 
 type StopTestingJMeterSceneResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopTestingJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTestingJMeterSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopTestingJMeterSceneResponse) String() string {
@@ -8832,9 +8832,9 @@ func (s *UpdatePtsSceneBaseLineResponseBody) SetSuccess(v bool) *UpdatePtsSceneB
 }
 
 type UpdatePtsSceneBaseLineResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePtsSceneBaseLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePtsSceneBaseLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePtsSceneBaseLineResponse) String() string {
