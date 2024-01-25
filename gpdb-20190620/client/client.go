@@ -196,9 +196,9 @@ func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVpcIp(v string) *Descr
 }
 
 type DescribeDBInstanceForDmsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceForDmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceForDmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceForDmsResponse) String() string {
@@ -324,9 +324,9 @@ func (s *DescribeDBInstanceSecurityIpsResponseBodyResult) SetWhiteList(v []*stri
 }
 
 type DescribeDBInstanceSecurityIpsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceSecurityIpsResponse) String() string {
@@ -525,9 +525,9 @@ func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVpcIp(v string) *Des
 }
 
 type DescribeDBInstancesForDmsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstancesForDmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstancesForDmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstancesForDmsResponse) String() string {
@@ -636,9 +636,9 @@ func (s *ModifyDBInstanceSecurityIpsResponseBody) SetSuccess(v bool) *ModifyDBIn
 }
 
 type ModifyDBInstanceSecurityIpsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDBInstanceSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDBInstanceSecurityIpsResponse) String() string {
