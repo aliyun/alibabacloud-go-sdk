@@ -148,9 +148,9 @@ func (s *AddImageResponseBodyPicInfo) SetRegion(v string) *AddImageResponseBodyP
 }
 
 type AddImageResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddImageResponse) String() string {
@@ -241,9 +241,9 @@ func (s *DeleteImageResponseBody) SetSuccess(v bool) *DeleteImageResponseBody {
 }
 
 type DeleteImageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -400,13 +400,14 @@ func (s *SearchImageResponseBody) SetSuccess(v bool) *SearchImageResponseBody {
 }
 
 type SearchImageResponseBodyAuctions struct {
-	CategoryId     *int32  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CustomContent  *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
-	IntAttr        *int32  `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
-	PicName        *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	ProductId      *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	SortExprValues *string `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
-	StrAttr        *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	CategoryId     *int32   `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CustomContent  *string  `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
+	IntAttr        *int32   `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	PicName        *string  `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	ProductId      *string  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	SortExprValues *string  `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
+	StrAttr        *string  `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
 }
 
 func (s SearchImageResponseBodyAuctions) String() string {
@@ -439,6 +440,11 @@ func (s *SearchImageResponseBodyAuctions) SetPicName(v string) *SearchImageRespo
 
 func (s *SearchImageResponseBodyAuctions) SetProductId(v string) *SearchImageResponseBodyAuctions {
 	s.ProductId = &v
+	return s
+}
+
+func (s *SearchImageResponseBodyAuctions) SetScore(v float32) *SearchImageResponseBodyAuctions {
+	s.Score = &v
 	return s
 }
 
@@ -484,6 +490,7 @@ func (s *SearchImageResponseBodyHead) SetSearchTime(v int32) *SearchImageRespons
 type SearchImageResponseBodyPicInfo struct {
 	AllCategories []*SearchImageResponseBodyPicInfoAllCategories `json:"AllCategories,omitempty" xml:"AllCategories,omitempty" type:"Repeated"`
 	CategoryId    *int32                                         `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	MultiRegion   []*SearchImageResponseBodyPicInfoMultiRegion   `json:"MultiRegion,omitempty" xml:"MultiRegion,omitempty" type:"Repeated"`
 	Region        *string                                        `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -502,6 +509,11 @@ func (s *SearchImageResponseBodyPicInfo) SetAllCategories(v []*SearchImageRespon
 
 func (s *SearchImageResponseBodyPicInfo) SetCategoryId(v int32) *SearchImageResponseBodyPicInfo {
 	s.CategoryId = &v
+	return s
+}
+
+func (s *SearchImageResponseBodyPicInfo) SetMultiRegion(v []*SearchImageResponseBodyPicInfoMultiRegion) *SearchImageResponseBodyPicInfo {
+	s.MultiRegion = v
 	return s
 }
 
@@ -533,10 +545,27 @@ func (s *SearchImageResponseBodyPicInfoAllCategories) SetName(v string) *SearchI
 	return s
 }
 
+type SearchImageResponseBodyPicInfoMultiRegion struct {
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s SearchImageResponseBodyPicInfoMultiRegion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageResponseBodyPicInfoMultiRegion) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageResponseBodyPicInfoMultiRegion) SetRegion(v string) *SearchImageResponseBodyPicInfoMultiRegion {
+	s.Region = &v
+	return s
+}
+
 type SearchImageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchImageResponse) String() string {
@@ -602,18 +631,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddImageResponse{}
-	_body, _err := client.AddImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -691,11 +708,11 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteImageResponse, _err error) {
+func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteImageResponse{}
-	_body, _err := client.DeleteImageWithOptions(request, headers, runtime)
+	_result = &AddImageResponse{}
+	_body, _err := client.AddImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -745,11 +762,11 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, header
 	return _result, _err
 }
 
-func (client *Client) SearchImage(request *SearchImageRequest) (_result *SearchImageResponse, _err error) {
+func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SearchImageResponse{}
-	_body, _err := client.SearchImageWithOptions(request, headers, runtime)
+	_result = &DeleteImageResponse{}
+	_body, _err := client.DeleteImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -828,5 +845,17 @@ func (client *Client) SearchImageWithOptions(request *SearchImageRequest, header
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchImage(request *SearchImageRequest) (_result *SearchImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchImageResponse{}
+	_body, _err := client.SearchImageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }

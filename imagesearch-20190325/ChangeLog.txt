@@ -1,3 +1,6 @@
+2024-01-25 Version: v3.0.1
+- Update Tea.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2019-03-25 for ImageSearch.
 
