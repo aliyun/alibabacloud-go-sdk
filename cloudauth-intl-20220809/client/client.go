@@ -155,9 +155,9 @@ func (s *CardOcrResponseBodyResult) SetTransactionId(v string) *CardOcrResponseB
 }
 
 type CardOcrResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CardOcrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CardOcrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CardOcrResponse) String() string {
@@ -314,9 +314,9 @@ func (s *CheckResultResponseBodyResult) SetSubCode(v string) *CheckResultRespons
 }
 
 type CheckResultResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckResultResponse) String() string {
@@ -425,9 +425,9 @@ func (s *DeletePictureResponseBodyResult) SetTransactionId(v string) *DeletePict
 }
 
 type DeletePictureResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePictureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePictureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePictureResponse) String() string {
@@ -541,9 +541,9 @@ func (s *DeleteVerifyResultResponseBodyResult) SetTransactionId(v string) *Delet
 }
 
 type DeleteVerifyResultResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVerifyResultResponse) String() string {
@@ -658,9 +658,9 @@ func (s *DescribeAddressLabelsResponseBodyData) SetLabelList(v []*string) *Descr
 }
 
 type DescribeAddressLabelsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAddressLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAddressLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAddressLabelsResponse) String() string {
@@ -817,9 +817,9 @@ func (s *DescribeAddressOverviewResponseBodyData) SetTxsCount(v int64) *Describe
 }
 
 type DescribeAddressOverviewResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAddressOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAddressOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAddressOverviewResponse) String() string {
@@ -964,9 +964,9 @@ func (s *DescribeMaliciousAddressResponseBodyData) SetTag(v string) *DescribeMal
 }
 
 type DescribeMaliciousAddressResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMaliciousAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMaliciousAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeMaliciousAddressResponse) String() string {
@@ -1099,9 +1099,9 @@ func (s *DescribeRiskScoreResponseBodyData) SetScore(v int32) *DescribeRiskScore
 }
 
 type DescribeRiskScoreResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRiskScoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRiskScoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRiskScoreResponse) String() string {
@@ -1346,9 +1346,9 @@ func (s *DescribeTransactionsListResponseBodyDataOut) SetType(v int32) *Describe
 }
 
 type DescribeTransactionsListResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTransactionsListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTransactionsListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTransactionsListResponse) String() string {
@@ -1598,9 +1598,9 @@ func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTransactionCount(v int32)
 }
 
 type DescribeWeb3AddressLabelsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeWeb3AddressLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeWeb3AddressLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeWeb3AddressLabelsResponse) String() string {
@@ -1788,9 +1788,9 @@ func (s *DescribeWeb3RiskScoreResponseBodyDataRiskResults) SetType(v string) *De
 }
 
 type DescribeWeb3RiskScoreResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeWeb3RiskScoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeWeb3RiskScoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeWeb3RiskScoreResponse) String() string {
@@ -2252,9 +2252,9 @@ func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetT
 }
 
 type DescribeWeb3TransactionLabelsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeWeb3TransactionLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeWeb3TransactionLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeWeb3TransactionLabelsResponse) String() string {
@@ -2417,9 +2417,9 @@ func (s *DocOcrResponseBodyResult) SetTransactionId(v string) *DocOcrResponseBod
 }
 
 type DocOcrResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DocOcrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DocOcrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DocOcrResponse) String() string {
@@ -2606,9 +2606,9 @@ func (s *EkycVerifyResponseBodyResult) SetTransactionId(v string) *EkycVerifyRes
 }
 
 type EkycVerifyResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EkycVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EkycVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EkycVerifyResponse) String() string {
@@ -2741,9 +2741,9 @@ func (s *FaceCompareResponseBodyResult) SetTransactionId(v string) *FaceCompareR
 }
 
 type FaceCompareResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FaceCompareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FaceCompareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FaceCompareResponse) String() string {
@@ -2928,9 +2928,9 @@ func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetOcclusionResult(v string)
 }
 
 type FaceLivenessResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FaceLivenessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FaceLivenessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FaceLivenessResponse) String() string {
@@ -3027,9 +3027,9 @@ func (s *FraudResultCallBackResponseBody) SetSuccess(v bool) *FraudResultCallBac
 }
 
 type FraudResultCallBackResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FraudResultCallBackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FraudResultCallBackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FraudResultCallBackResponse) String() string {
@@ -3143,9 +3143,9 @@ func (s *Id2MetaVerifyIntlResponseBodyResult) SetBizCode(v string) *Id2MetaVerif
 }
 
 type Id2MetaVerifyIntlResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Id2MetaVerifyIntlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Id2MetaVerifyIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s Id2MetaVerifyIntlResponse) String() string {
@@ -3393,9 +3393,9 @@ func (s *InitializeResponseBodyResult) SetTransactionUrl(v string) *InitializeRe
 }
 
 type InitializeResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InitializeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitializeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitializeResponse) String() string {
@@ -3527,9 +3527,9 @@ func (s *Mobile3MetaVerifyIntlResponseBodyResult) SetSubCode(v string) *Mobile3M
 }
 
 type Mobile3MetaVerifyIntlResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Mobile3MetaVerifyIntlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Mobile3MetaVerifyIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s Mobile3MetaVerifyIntlResponse) String() string {
@@ -4533,10 +4533,6 @@ func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runt
 		query["Crop"] = request.Crop
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
-		query["FacePictureBase64"] = request.FacePictureBase64
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.FacePictureUrl)) {
 		query["FacePictureUrl"] = request.FacePictureUrl
 	}
@@ -4561,8 +4557,14 @@ func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runt
 		query["ProductCode"] = request.ProductCode
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
+		body["FacePictureBase64"] = request.FacePictureBase64
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FaceLiveness"),
