@@ -78,9 +78,9 @@ func (s *AttachApplication2ConnectorResponseBody) SetRequestId(v string) *Attach
 }
 
 type AttachApplication2ConnectorResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachApplication2ConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachApplication2ConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachApplication2ConnectorResponse) String() string {
@@ -201,9 +201,9 @@ func (s *CreateDynamicRouteResponseBody) SetRequestId(v string) *CreateDynamicRo
 }
 
 type CreateDynamicRouteResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDynamicRouteResponse) String() string {
@@ -329,9 +329,9 @@ func (s *CreatePrivateAccessApplicationResponseBody) SetRequestId(v string) *Cre
 }
 
 type CreatePrivateAccessApplicationResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePrivateAccessApplicationResponse) String() string {
@@ -362,6 +362,7 @@ type CreatePrivateAccessPolicyRequest struct {
 	ApplicationType      *string                                                 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	CustomUserAttributes []*CreatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeId    *string                                                 `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
 	Name                 *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	PolicyAction         *string                                                 `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	Priority             *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
@@ -400,6 +401,11 @@ func (s *CreatePrivateAccessPolicyRequest) SetCustomUserAttributes(v []*CreatePr
 
 func (s *CreatePrivateAccessPolicyRequest) SetDescription(v string) *CreatePrivateAccessPolicyRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreatePrivateAccessPolicyRequest) SetDeviceAttributeId(v string) *CreatePrivateAccessPolicyRequest {
+	s.DeviceAttributeId = &v
 	return s
 }
 
@@ -497,9 +503,9 @@ func (s *CreatePrivateAccessPolicyResponseBody) SetRequestId(v string) *CreatePr
 }
 
 type CreatePrivateAccessPolicyResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePrivateAccessPolicyResponse) String() string {
@@ -572,9 +578,9 @@ func (s *CreatePrivateAccessTagResponseBody) SetTagId(v string) *CreatePrivateAc
 }
 
 type CreatePrivateAccessTagResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePrivateAccessTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePrivateAccessTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePrivateAccessTagResponse) String() string {
@@ -965,9 +971,9 @@ func (s *CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount) SetPC(
 }
 
 type CreateRegistrationPolicyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRegistrationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRegistrationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRegistrationPolicyResponse) String() string {
@@ -1081,9 +1087,9 @@ func (s *CreateUserGroupResponseBody) SetUserGroupId(v string) *CreateUserGroupR
 }
 
 type CreateUserGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserGroupResponse) String() string {
@@ -1144,9 +1150,9 @@ func (s *DeleteDynamicRouteResponseBody) SetRequestId(v string) *DeleteDynamicRo
 }
 
 type DeleteDynamicRouteResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDynamicRouteResponse) String() string {
@@ -1207,9 +1213,9 @@ func (s *DeletePrivateAccessApplicationResponseBody) SetRequestId(v string) *Del
 }
 
 type DeletePrivateAccessApplicationResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePrivateAccessApplicationResponse) String() string {
@@ -1270,9 +1276,9 @@ func (s *DeletePrivateAccessPolicyResponseBody) SetRequestId(v string) *DeletePr
 }
 
 type DeletePrivateAccessPolicyResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePrivateAccessPolicyResponse) String() string {
@@ -1333,9 +1339,9 @@ func (s *DeletePrivateAccessTagResponseBody) SetRequestId(v string) *DeletePriva
 }
 
 type DeletePrivateAccessTagResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePrivateAccessTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePrivateAccessTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePrivateAccessTagResponse) String() string {
@@ -1396,9 +1402,9 @@ func (s *DeleteRegistrationPoliciesResponseBody) SetRequestId(v string) *DeleteR
 }
 
 type DeleteRegistrationPoliciesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRegistrationPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRegistrationPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRegistrationPoliciesResponse) String() string {
@@ -1459,9 +1465,9 @@ func (s *DeleteUserGroupResponseBody) SetRequestId(v string) *DeleteUserGroupRes
 }
 
 type DeleteUserGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserGroupResponse) String() string {
@@ -1553,9 +1559,9 @@ func (s *DetachApplication2ConnectorResponseBody) SetRequestId(v string) *Detach
 }
 
 type DetachApplication2ConnectorResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachApplication2ConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachApplication2ConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachApplication2ConnectorResponse) String() string {
@@ -1705,9 +1711,9 @@ func (s *GetDynamicRouteResponseBodyDynamicRoute) SetTagIds(v []*string) *GetDyn
 }
 
 type GetDynamicRouteResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDynamicRouteResponse) String() string {
@@ -1874,9 +1880,9 @@ func (s *GetPrivateAccessApplicationResponseBodyApplicationPortRanges) SetEnd(v 
 }
 
 type GetPrivateAccessApplicationResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPrivateAccessApplicationResponse) String() string {
@@ -1948,6 +1954,7 @@ type GetPrivateAccessPolicyResponseBodyPolicy struct {
 	CreateTime           *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CustomUserAttributes []*GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeId    *string                                                         `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
 	Name                 *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
 	PolicyAction         *string                                                         `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	PolicyId             *string                                                         `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
@@ -1988,6 +1995,11 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetCustomUserAttributes(v []*
 
 func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetDescription(v string) *GetPrivateAccessPolicyResponseBodyPolicy {
 	s.Description = &v
+	return s
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetDeviceAttributeId(v string) *GetPrivateAccessPolicyResponseBodyPolicy {
+	s.DeviceAttributeId = &v
 	return s
 }
 
@@ -2067,9 +2079,9 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes) SetValue(
 }
 
 type GetPrivateAccessPolicyResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPrivateAccessPolicyResponse) String() string {
@@ -2248,9 +2260,9 @@ func (s *GetRegistrationPolicyResponseBodyLimitDetailLimitCount) SetPC(v int32) 
 }
 
 type GetRegistrationPolicyResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRegistrationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRegistrationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRegistrationPolicyResponse) String() string {
@@ -2507,9 +2519,9 @@ func (s *GetUserDeviceResponseBodyDeviceHistoryUsers) SetUsername(v string) *Get
 }
 
 type GetUserDeviceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserDeviceResponse) String() string {
@@ -2652,9 +2664,9 @@ func (s *GetUserGroupResponseBodyUserGroupAttributes) SetValue(v string) *GetUse
 }
 
 type GetUserGroupResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserGroupResponse) String() string {
@@ -2826,9 +2838,9 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPo
 }
 
 type ListApplicationsForPrivateAccessPolicyResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListApplicationsForPrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationsForPrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessPolicyResponse) String() string {
@@ -3001,9 +3013,9 @@ func (s *ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRang
 }
 
 type ListApplicationsForPrivateAccessTagResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListApplicationsForPrivateAccessTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationsForPrivateAccessTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessTagResponse) String() string {
@@ -3253,9 +3265,9 @@ func (s *ListConnectorsResponseBodyConnectorsUpgradeTime) SetStart(v string) *Li
 }
 
 type ListConnectorsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConnectorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConnectorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConnectorsResponse) String() string {
@@ -3311,9 +3323,9 @@ func (s *ListDynamicRouteRegionsResponseBody) SetTotalNum(v int32) *ListDynamicR
 }
 
 type ListDynamicRouteRegionsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDynamicRouteRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDynamicRouteRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDynamicRouteRegionsResponse) String() string {
@@ -3517,9 +3529,9 @@ func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetTagIds(v []*string) *Lis
 }
 
 type ListDynamicRoutesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDynamicRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDynamicRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDynamicRoutesResponse) String() string {
@@ -3729,9 +3741,9 @@ func (s *ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications) Se
 }
 
 type ListExcessiveDeviceRegistrationApplicationsResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListExcessiveDeviceRegistrationApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExcessiveDeviceRegistrationApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListExcessiveDeviceRegistrationApplicationsResponse) String() string {
@@ -3927,9 +3939,9 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesC
 }
 
 type ListPolicesForPrivateAccessApplicationResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPolicesForPrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPolicesForPrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPolicesForPrivateAccessApplicationResponse) String() string {
@@ -4141,9 +4153,9 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttribut
 }
 
 type ListPolicesForPrivateAccessTagResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPolicesForPrivateAccessTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPolicesForPrivateAccessTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPolicesForPrivateAccessTagResponse) String() string {
@@ -4262,9 +4274,9 @@ func (s *ListPolicesForUserGroupResponseBodyUserGroupsPolices) SetPolicyType(v s
 }
 
 type ListPolicesForUserGroupResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPolicesForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPolicesForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPolicesForUserGroupResponse) String() string {
@@ -4286,6 +4298,134 @@ func (s *ListPolicesForUserGroupResponse) SetStatusCode(v int32) *ListPolicesFor
 }
 
 func (s *ListPolicesForUserGroupResponse) SetBody(v *ListPolicesForUserGroupResponseBody) *ListPolicesForUserGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListPopTrafficStatisticsRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListPopTrafficStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPopTrafficStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPopTrafficStatisticsRequest) SetEndTime(v string) *ListPopTrafficStatisticsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListPopTrafficStatisticsRequest) SetRegion(v string) *ListPopTrafficStatisticsRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ListPopTrafficStatisticsRequest) SetStartTime(v string) *ListPopTrafficStatisticsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListPopTrafficStatisticsResponseBody struct {
+	// Id of the request
+	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrafficData []*ListPopTrafficStatisticsResponseBodyTrafficData `json:"TrafficData,omitempty" xml:"TrafficData,omitempty" type:"Repeated"`
+}
+
+func (s ListPopTrafficStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPopTrafficStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPopTrafficStatisticsResponseBody) SetRequestId(v string) *ListPopTrafficStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPopTrafficStatisticsResponseBody) SetTrafficData(v []*ListPopTrafficStatisticsResponseBodyTrafficData) *ListPopTrafficStatisticsResponseBody {
+	s.TrafficData = v
+	return s
+}
+
+type ListPopTrafficStatisticsResponseBodyTrafficData struct {
+	Datapoints []*ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Repeated"`
+	MetricName *string                                                      `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+}
+
+func (s ListPopTrafficStatisticsResponseBodyTrafficData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPopTrafficStatisticsResponseBodyTrafficData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPopTrafficStatisticsResponseBodyTrafficData) SetDatapoints(v []*ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints) *ListPopTrafficStatisticsResponseBodyTrafficData {
+	s.Datapoints = v
+	return s
+}
+
+func (s *ListPopTrafficStatisticsResponseBodyTrafficData) SetMetricName(v string) *ListPopTrafficStatisticsResponseBodyTrafficData {
+	s.MetricName = &v
+	return s
+}
+
+type ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints struct {
+	Average  *float64 `json:"Average,omitempty" xml:"Average,omitempty"`
+	DateTime *string  `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+}
+
+func (s ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints) SetAverage(v float64) *ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints {
+	s.Average = &v
+	return s
+}
+
+func (s *ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints) SetDateTime(v string) *ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints {
+	s.DateTime = &v
+	return s
+}
+
+type ListPopTrafficStatisticsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPopTrafficStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPopTrafficStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPopTrafficStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPopTrafficStatisticsResponse) SetHeaders(v map[string]*string) *ListPopTrafficStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPopTrafficStatisticsResponse) SetStatusCode(v int32) *ListPopTrafficStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPopTrafficStatisticsResponse) SetBody(v *ListPopTrafficStatisticsResponseBody) *ListPopTrafficStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -4485,9 +4625,9 @@ func (s *ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges) SetEnd
 }
 
 type ListPrivateAccessApplicationsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPrivateAccessApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPrivateAccessApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsResponse) String() string {
@@ -4659,9 +4799,9 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesAp
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPrivateAccessApplicationsForDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPrivateAccessApplicationsForDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsForDynamicRouteResponse) String() string {
@@ -4688,14 +4828,16 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponse) SetBody(v *ListPr
 }
 
 type ListPrivateAccessPolicesRequest struct {
-	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CurrentPage   *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyAction  *string   `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyIds     []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagId         *string   `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	ApplicationId   *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ApplicationName *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PolicyAction    *string   `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	PolicyIds       []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	Status          *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagId           *string   `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName         *string   `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	// 用户组ID。取值来源：
 	// - [ListUserGroups](~~ListUserGroups~~)：批量查询用户组。
 	// - [CreateUserGroup](~~CreateUserGroup~~)：创建用户组。
@@ -4712,6 +4854,11 @@ func (s ListPrivateAccessPolicesRequest) GoString() string {
 
 func (s *ListPrivateAccessPolicesRequest) SetApplicationId(v string) *ListPrivateAccessPolicesRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesRequest) SetApplicationName(v string) *ListPrivateAccessPolicesRequest {
+	s.ApplicationName = &v
 	return s
 }
 
@@ -4747,6 +4894,11 @@ func (s *ListPrivateAccessPolicesRequest) SetStatus(v string) *ListPrivateAccess
 
 func (s *ListPrivateAccessPolicesRequest) SetTagId(v string) *ListPrivateAccessPolicesRequest {
 	s.TagId = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesRequest) SetTagName(v string) *ListPrivateAccessPolicesRequest {
+	s.TagName = &v
 	return s
 }
 
@@ -4790,6 +4942,7 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	CreateTime           *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CustomUserAttributes []*ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeId    *string                                                            `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
 	Name                 *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	PolicyAction         *string                                                            `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	PolicyId             *string                                                            `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
@@ -4830,6 +4983,11 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) SetCustomUserAttributes(v 
 
 func (s *ListPrivateAccessPolicesResponseBodyPolices) SetDescription(v string) *ListPrivateAccessPolicesResponseBodyPolices {
 	s.Description = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) SetDeviceAttributeId(v string) *ListPrivateAccessPolicesResponseBodyPolices {
+	s.DeviceAttributeId = &v
 	return s
 }
 
@@ -4909,9 +5067,9 @@ func (s *ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes) SetVal
 }
 
 type ListPrivateAccessPolicesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPrivateAccessPolicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPrivateAccessPolicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPrivateAccessPolicesResponse) String() string {
@@ -4938,13 +5096,26 @@ func (s *ListPrivateAccessPolicesResponse) SetBody(v *ListPrivateAccessPolicesRe
 }
 
 type ListPrivateAccessTagsRequest struct {
-	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CurrentPage   *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId      *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	SimpleMode    *bool     `json:"SimpleMode,omitempty" xml:"SimpleMode,omitempty"`
-	TagIds        []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The ID of the internal access application. You can obtain the application ID by calling the following operations:
+	//
+	// *   [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries all internal access applications.
+	// *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal access application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The page number. Valid values: 1 to 10000.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The name of the internal access tag. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries per page. Valid values: 1 to 1000.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the internal access policy. You can obtain the policy ID by calling the following operations:
+	//
+	// *   [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): queries all internal access policies.
+	// *   [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): creates an internal access policy.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Specifies whether to enable the simple query mode. A value of true specifies that policy IDs are not queried.
+	SimpleMode *bool `json:"SimpleMode,omitempty" xml:"SimpleMode,omitempty"`
+	// The IDs of internal access tags. You can specify up to 100 tag IDs.
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s ListPrivateAccessTagsRequest) String() string {
@@ -4991,9 +5162,12 @@ func (s *ListPrivateAccessTagsRequest) SetTagIds(v []*string) *ListPrivateAccess
 }
 
 type ListPrivateAccessTagsResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      []*ListPrivateAccessTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TotalNum  *int32                                   `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The internal access tags.
+	Tags []*ListPrivateAccessTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The total number of internal access tags.
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListPrivateAccessTagsResponseBody) String() string {
@@ -5020,13 +5194,23 @@ func (s *ListPrivateAccessTagsResponseBody) SetTotalNum(v int32) *ListPrivateAcc
 }
 
 type ListPrivateAccessTagsResponseBodyTags struct {
+	// The IDs of the internal access applications.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyIds      []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	TagId          *string   `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagType        *string   `json:"TagType,omitempty" xml:"TagType,omitempty"`
+	// The time when the internal access tag was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the internal access tag.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the internal access tag.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the internal access policies.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the internal access tag.
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The type of the internal access tag. Valid values:
+	//
+	// *   **Default**
+	// *   **Custom**
+	TagType *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
 }
 
 func (s ListPrivateAccessTagsResponseBodyTags) String() string {
@@ -5073,9 +5257,9 @@ func (s *ListPrivateAccessTagsResponseBodyTags) SetTagType(v string) *ListPrivat
 }
 
 type ListPrivateAccessTagsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPrivateAccessTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPrivateAccessTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPrivateAccessTagsResponse) String() string {
@@ -5206,9 +5390,9 @@ func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) SetT
 }
 
 type ListPrivateAccessTagsForDynamicRouteResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPrivateAccessTagsForDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPrivateAccessTagsForDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPrivateAccessTagsForDynamicRouteResponse) String() string {
@@ -5458,9 +5642,9 @@ func (s *ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount) SetP
 }
 
 type ListRegistrationPoliciesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRegistrationPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRegistrationPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRegistrationPoliciesResponse) String() string {
@@ -5673,9 +5857,9 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimit
 }
 
 type ListRegistrationPoliciesForUserGroupResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRegistrationPoliciesForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRegistrationPoliciesForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRegistrationPoliciesForUserGroupResponse) String() string {
@@ -5795,9 +5979,9 @@ func (s *ListSoftwareForUserDeviceResponseBodySoftware) SetVersions(v []*string)
 }
 
 type ListSoftwareForUserDeviceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSoftwareForUserDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSoftwareForUserDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSoftwareForUserDeviceResponse) String() string {
@@ -5928,9 +6112,9 @@ func (s *ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags) SetTag
 }
 
 type ListTagsForPrivateAccessApplicationResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagsForPrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagsForPrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagsForPrivateAccessApplicationResponse) String() string {
@@ -6062,9 +6246,9 @@ func (s *ListTagsForPrivateAccessPolicyResponseBodyPolicesTags) SetTagType(v str
 }
 
 type ListTagsForPrivateAccessPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagsForPrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagsForPrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagsForPrivateAccessPolicyResponse) String() string {
@@ -6400,9 +6584,9 @@ func (s *ListUserDevicesResponseBodyDevices) SetUsername(v string) *ListUserDevi
 }
 
 type ListUserDevicesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserDevicesResponse) String() string {
@@ -6582,9 +6766,9 @@ func (s *ListUserGroupsResponseBodyUserGroupsAttributes) SetValue(v string) *Lis
 }
 
 type ListUserGroupsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserGroupsResponse) String() string {
@@ -6751,9 +6935,9 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttrib
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserGroupsForPrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserGroupsForPrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserGroupsForPrivateAccessPolicyResponse) String() string {
@@ -6919,9 +7103,9 @@ func (s *ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttrib
 }
 
 type ListUserGroupsForRegistrationPolicyResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserGroupsForRegistrationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserGroupsForRegistrationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserGroupsForRegistrationPolicyResponse) String() string {
@@ -7048,9 +7232,9 @@ func (s *UpdateDynamicRouteResponseBody) SetRequestId(v string) *UpdateDynamicRo
 }
 
 type UpdateDynamicRouteResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDynamicRouteResponse) String() string {
@@ -7206,9 +7390,9 @@ func (s *UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplicat
 }
 
 type UpdateExcessiveDeviceRegistrationApplicationsStatusResponse struct {
-	Headers    map[string]*string                                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateExcessiveDeviceRegistrationApplicationsStatusResponse) String() string {
@@ -7334,9 +7518,9 @@ func (s *UpdatePrivateAccessApplicationResponseBody) SetRequestId(v string) *Upd
 }
 
 type UpdatePrivateAccessApplicationResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePrivateAccessApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePrivateAccessApplicationResponse) String() string {
@@ -7367,6 +7551,7 @@ type UpdatePrivateAccessPolicyRequest struct {
 	ApplicationType      *string                                                 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	CustomUserAttributes []*UpdatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeId    *string                                                 `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
 	ModifyType           *string                                                 `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	PolicyAction         *string                                                 `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	PolicyId             *string                                                 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
@@ -7406,6 +7591,11 @@ func (s *UpdatePrivateAccessPolicyRequest) SetCustomUserAttributes(v []*UpdatePr
 
 func (s *UpdatePrivateAccessPolicyRequest) SetDescription(v string) *UpdatePrivateAccessPolicyRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetDeviceAttributeId(v string) *UpdatePrivateAccessPolicyRequest {
+	s.DeviceAttributeId = &v
 	return s
 }
 
@@ -7502,9 +7692,9 @@ func (s *UpdatePrivateAccessPolicyResponseBody) SetRequestId(v string) *UpdatePr
 }
 
 type UpdatePrivateAccessPolicyResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePrivateAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePrivateAccessPolicyResponse) String() string {
@@ -7907,9 +8097,9 @@ func (s *UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount) SetPC(
 }
 
 type UpdateRegistrationPolicyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRegistrationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRegistrationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRegistrationPolicyResponse) String() string {
@@ -8143,9 +8333,9 @@ func (s *UpdateUserDevicesSharingStatusResponseBodyDevices) SetUsername(v string
 }
 
 type UpdateUserDevicesSharingStatusResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserDevicesSharingStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserDevicesSharingStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserDevicesSharingStatusResponse) String() string {
@@ -8379,9 +8569,9 @@ func (s *UpdateUserDevicesStatusResponseBodyDevices) SetUsername(v string) *Upda
 }
 
 type UpdateUserDevicesStatusResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserDevicesStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserDevicesStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserDevicesStatusResponse) String() string {
@@ -8495,9 +8685,9 @@ func (s *UpdateUserGroupResponseBody) SetRequestId(v string) *UpdateUserGroupRes
 }
 
 type UpdateUserGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserGroupResponse) String() string {
@@ -8799,6 +8989,10 @@ func (client *Client) CreatePrivateAccessPolicyWithOptions(request *CreatePrivat
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceAttributeId)) {
+		body["DeviceAttributeId"] = request.DeviceAttributeId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -9979,6 +10173,46 @@ func (client *Client) ListPolicesForUserGroup(request *ListPolicesForUserGroupRe
 	return _result, _err
 }
 
+func (client *Client) ListPopTrafficStatisticsWithOptions(request *ListPopTrafficStatisticsRequest, runtime *util.RuntimeOptions) (_result *ListPopTrafficStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPopTrafficStatistics"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPopTrafficStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPopTrafficStatistics(request *ListPopTrafficStatisticsRequest) (_result *ListPopTrafficStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPopTrafficStatisticsResponse{}
+	_body, _err := client.ListPopTrafficStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPrivateAccessApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessApplicationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10777,6 +11011,10 @@ func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivat
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceAttributeId)) {
+		body["DeviceAttributeId"] = request.DeviceAttributeId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
