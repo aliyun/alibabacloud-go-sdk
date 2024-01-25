@@ -1,3 +1,6 @@
+2024-01-25 Version: v4.6.0
+- Update Tea.
+
 2023-12-15 Version: v4.5.0
 - Generated golang 2016-07-14 for CloudAPI.
 
