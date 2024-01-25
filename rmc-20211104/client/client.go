@@ -13,11 +13,27 @@ import (
 )
 
 type ListResourceRelationshipsRequest struct {
-	MaxResults         *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	SourceRegionId     *string   `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	SourceResourceId   []*string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty" type:"Repeated"`
-	SourceResourceType *string   `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the resource whose associated resources you want to query.
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// The IDs of the resource whose associated resources you want to query.
+	//
+	// You can specify a maximum of 10 resource IDs.
+	SourceResourceId []*string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty" type:"Repeated"`
+	// The type of the resource whose associated resources you want to query.
+	SourceResourceType *string `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
+	// The types of the associated resources that you want to query.
+	//
+	// You can specify a maximum of 10 resource types.
 	TargetResourceType []*string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty" type:"Repeated"`
 }
 
@@ -60,9 +76,13 @@ func (s *ListResourceRelationshipsRequest) SetTargetResourceType(v []*string) *L
 }
 
 type ListResourceRelationshipsResponseBody struct {
-	MaxResults            *int32                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken             *string                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the associated resources.
 	ResourceRelationships []*ListResourceRelationshipsResponseBodyResourceRelationships `json:"ResourceRelationships,omitempty" xml:"ResourceRelationships,omitempty" type:"Repeated"`
 }
 
@@ -95,12 +115,19 @@ func (s *ListResourceRelationshipsResponseBody) SetResourceRelationships(v []*Li
 }
 
 type ListResourceRelationshipsResponseBodyResourceRelationships struct {
-	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	SourceRegionId     *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	SourceResourceId   *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The region ID of the specified resource.
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// The ID of the specified resource.
+	SourceResourceId *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
+	// The type of the specified resource.
 	SourceResourceType *string `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
-	TargetRegionId     *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	TargetResourceId   *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
+	// The region ID of the associated resource.
+	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+	// The ID of the associated resource.
+	TargetResourceId *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
+	// The type of the associated resource.
 	TargetResourceType *string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty"`
 }
 
@@ -148,9 +175,9 @@ func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetTargetRe
 }
 
 type ListResourceRelationshipsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceRelationshipsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceRelationshipsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceRelationshipsResponse) String() string {
@@ -177,11 +204,22 @@ func (s *ListResourceRelationshipsResponse) SetBody(v *ListResourceRelationships
 }
 
 type SearchResourcesRequest struct {
-	Filter          []*SearchResourcesRequestFilter      `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults      *int32                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SortCriterion   *SearchResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
+	// The filter conditions.
+	Filter []*SearchResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The method that is used to sort the entries.
+	SortCriterion *SearchResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
 }
 
 func (s SearchResourcesRequest) String() string {
@@ -218,9 +256,18 @@ func (s *SearchResourcesRequest) SetSortCriterion(v *SearchResourcesRequestSortC
 }
 
 type SearchResourcesRequestFilter struct {
-	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	// The key of the filter condition. Valid values:
+	//
+	// *   ResourceType: resource type
+	// *   RegionId: region ID
+	// *   ResourceId: resource ID
+	// *   ResourceGroupId: resource group ID
+	// *   ResourceName: resource name
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching method. Set the value to Equals. This value indicates that resources that match the filter conditions are queried.
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
 func (s SearchResourcesRequestFilter) String() string {
@@ -247,7 +294,14 @@ func (s *SearchResourcesRequestFilter) SetValue(v []*string) *SearchResourcesReq
 }
 
 type SearchResourcesRequestSortCriterion struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The attribute based on which the entries are sorted.
+	//
+	// The value `CreateTime` indicates the creation time of resources.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The order in which the entries are sorted. Valid values:
+	//
+	// *   ASC: The entries are sorted in ascending order. This value is the default value.
+	// *   DESC: The entries are sorted in descending order.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 }
 
@@ -270,11 +324,16 @@ func (s *SearchResourcesRequestSortCriterion) SetOrder(v string) *SearchResource
 }
 
 type SearchResourcesResponseBody struct {
-	Filters    []*SearchResourcesResponseBodyFilters   `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources  []*SearchResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The filter conditions.
+	Filters []*SearchResourcesResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The maximum number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the resources.
+	Resources []*SearchResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s SearchResourcesResponseBody) String() string {
@@ -311,9 +370,12 @@ func (s *SearchResourcesResponseBody) SetResources(v []*SearchResourcesResponseB
 }
 
 type SearchResourcesResponseBodyFilters struct {
-	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The key of the filter condition.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching method.
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s SearchResourcesResponseBodyFilters) String() string {
@@ -340,16 +402,32 @@ func (s *SearchResourcesResponseBodyFilters) SetValues(v []*string) *SearchResou
 }
 
 type SearchResourcesResponseBodyResources struct {
-	AccountId       *string                                     `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CreateTime      *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IpAddresses     []*string                                   `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	RegionId        *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      *string                                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName    *string                                     `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType    *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags            []*SearchResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ZoneId          *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The time when the resource was created.
+	//
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IP addresses.
+	//
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tags []*SearchResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The zone ID.
+	//
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s SearchResourcesResponseBodyResources) String() string {
@@ -411,7 +489,9 @@ func (s *SearchResourcesResponseBodyResources) SetZoneId(v string) *SearchResour
 }
 
 type SearchResourcesResponseBodyResourcesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -434,9 +514,9 @@ func (s *SearchResourcesResponseBodyResourcesTags) SetValue(v string) *SearchRes
 }
 
 type SearchResourcesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchResourcesResponse) String() string {
@@ -509,6 +589,40 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * This section provides the types of resources that can be queried. Two-way queries are supported. For example, you can query the disks (ACS::ECS::Disk) that are associated with a specific Elastic Compute Service (ECS) instance (ACS::ECS::Instance) or query the ECS instance that is associated with a specific disk.
+ * - For ECS instances, the following types of resources can be queried:    - ACS::ECS::Disk
+ *   - ACS::EIP::EipAddress
+ *   - ACS::VPC::VPC
+ *   - ACS::ECS::KeyPair
+ *   - ACS::ECS::SecurityGroup
+ *   - ACS::ECS::NetworkInterface
+ *   - ACS::ECS::Image
+ * - For virtual private clouds (VPCs), which are indicated by ACS::VPC::VPC, the following types of resources can be queried:    - ACS::ECS::Instance
+ *   - ACS::RDS::DBInstance
+ *   - ACS::SLB::LoadBalancer
+ *   - ACS::ALB::LoadBalancer
+ *   - ACS::Elasticsearch::Instance
+ *   - ACS::Redis::DBInstance
+ *   - ACS::PolarDB::DBCluster
+ *   - ACS::MongoDB::DBInstance
+ *   - ACS::DRDS::PolarDBXInstance
+ *   - ACS::EDAS::Cluster
+ *   - ACS::ECI::ContainerGroup
+ *   - ACS::ADB::DBCluster
+ *   - ACS::DRDS::DBInstance
+ *   - ACS::HBase::Cluster
+ *   - ACS::EMR::Cluster
+ * This topic provides an example on how to call the API operation to query the resources that are associated with the ECS instance `i-uf6imlgyr1nudhud****` in the China (Shanghai) region.
+ * ## Prerequisites
+ * Resource Meta Center (RMC) is enabled. For more information, see [Query resources that belong to different resource groups](~~310198~~).
+ * ## QPS limits
+ * You can call this API operation up to 20 times per second per account. Requests that exceed this limit will fail, and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param request ListResourceRelationshipsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListResourceRelationshipsResponse
+ */
 func (client *Client) ListResourceRelationshipsWithOptions(request *ListResourceRelationshipsRequest, runtime *util.RuntimeOptions) (_result *ListResourceRelationshipsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -562,6 +676,39 @@ func (client *Client) ListResourceRelationshipsWithOptions(request *ListResource
 	return _result, _err
 }
 
+/**
+ * This section provides the types of resources that can be queried. Two-way queries are supported. For example, you can query the disks (ACS::ECS::Disk) that are associated with a specific Elastic Compute Service (ECS) instance (ACS::ECS::Instance) or query the ECS instance that is associated with a specific disk.
+ * - For ECS instances, the following types of resources can be queried:    - ACS::ECS::Disk
+ *   - ACS::EIP::EipAddress
+ *   - ACS::VPC::VPC
+ *   - ACS::ECS::KeyPair
+ *   - ACS::ECS::SecurityGroup
+ *   - ACS::ECS::NetworkInterface
+ *   - ACS::ECS::Image
+ * - For virtual private clouds (VPCs), which are indicated by ACS::VPC::VPC, the following types of resources can be queried:    - ACS::ECS::Instance
+ *   - ACS::RDS::DBInstance
+ *   - ACS::SLB::LoadBalancer
+ *   - ACS::ALB::LoadBalancer
+ *   - ACS::Elasticsearch::Instance
+ *   - ACS::Redis::DBInstance
+ *   - ACS::PolarDB::DBCluster
+ *   - ACS::MongoDB::DBInstance
+ *   - ACS::DRDS::PolarDBXInstance
+ *   - ACS::EDAS::Cluster
+ *   - ACS::ECI::ContainerGroup
+ *   - ACS::ADB::DBCluster
+ *   - ACS::DRDS::DBInstance
+ *   - ACS::HBase::Cluster
+ *   - ACS::EMR::Cluster
+ * This topic provides an example on how to call the API operation to query the resources that are associated with the ECS instance `i-uf6imlgyr1nudhud****` in the China (Shanghai) region.
+ * ## Prerequisites
+ * Resource Meta Center (RMC) is enabled. For more information, see [Query resources that belong to different resource groups](~~310198~~).
+ * ## QPS limits
+ * You can call this API operation up to 20 times per second per account. Requests that exceed this limit will fail, and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param request ListResourceRelationshipsRequest
+ * @return ListResourceRelationshipsResponse
+ */
 func (client *Client) ListResourceRelationships(request *ListResourceRelationshipsRequest) (_result *ListResourceRelationshipsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceRelationshipsResponse{}
@@ -573,6 +720,18 @@ func (client *Client) ListResourceRelationships(request *ListResourceRelationshi
 	return _result, _err
 }
 
+/**
+ * For more information about resource types that support RMC, see [Resource types that support RMC](https://www.alibabacloud.com/help/en/resource-management/latest/resource-types-that-support-rmc).
+ * This topic provides an example on how to call the API operation to query the resources that can be accessed within the current account in the China (Hangzhou) region.
+ * ## Prerequisites
+ * Resource Meta Center (RMC) is enabled. For more information, see [Query resources that belong to different resource groups](~~310198~~).
+ * ## QPS limits
+ * You can call this API operation up to 20 times per second per account. Requests that exceed this limit will fail, and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param request SearchResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SearchResourcesResponse
+ */
 func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest, runtime *util.RuntimeOptions) (_result *SearchResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -595,7 +754,7 @@ func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SortCriterion))) {
+	if !tea.BoolValue(util.IsUnset(request.SortCriterion)) {
 		query["SortCriterion"] = request.SortCriterion
 	}
 
@@ -622,6 +781,17 @@ func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest
 	return _result, _err
 }
 
+/**
+ * For more information about resource types that support RMC, see [Resource types that support RMC](https://www.alibabacloud.com/help/en/resource-management/latest/resource-types-that-support-rmc).
+ * This topic provides an example on how to call the API operation to query the resources that can be accessed within the current account in the China (Hangzhou) region.
+ * ## Prerequisites
+ * Resource Meta Center (RMC) is enabled. For more information, see [Query resources that belong to different resource groups](~~310198~~).
+ * ## QPS limits
+ * You can call this API operation up to 20 times per second per account. Requests that exceed this limit will fail, and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param request SearchResourcesRequest
+ * @return SearchResourcesResponse
+ */
 func (client *Client) SearchResources(request *SearchResourcesRequest) (_result *SearchResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchResourcesResponse{}
