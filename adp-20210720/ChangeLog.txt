@@ -1,3 +1,6 @@
+2024-01-25 Version: v1.17.3
+- Update Tea.
+
 2023-12-06 Version: v1.17.2
 - Generated golang 2021-07-20 for adp.
 
