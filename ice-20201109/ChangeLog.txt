@@ -1,3 +1,6 @@
+2024-01-26 Version: v3.1.2
+- Generated golang 2020-11-09 for ICE.
+
 2024-01-03 Version: v3.1.1
 - Generated golang 2020-11-09 for ICE.
 
