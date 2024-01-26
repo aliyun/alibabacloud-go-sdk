@@ -394,7 +394,8 @@ func (s *CheckAccountForInnerResponse) SetBody(v *CheckAccountForInnerResponseBo
 }
 
 type CheckAoneAppAuditRequest struct {
-	AoneAppName *string `json:"AoneAppName,omitempty" xml:"AoneAppName,omitempty"`
+	AoneAppName   *string `json:"AoneAppName,omitempty" xml:"AoneAppName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CheckAoneAppAuditRequest) String() string {
@@ -407,6 +408,11 @@ func (s CheckAoneAppAuditRequest) GoString() string {
 
 func (s *CheckAoneAppAuditRequest) SetAoneAppName(v string) *CheckAoneAppAuditRequest {
 	s.AoneAppName = &v
+	return s
+}
+
+func (s *CheckAoneAppAuditRequest) SetSecurityToken(v string) *CheckAoneAppAuditRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -18243,6 +18249,10 @@ func (client *Client) CheckAoneAppAuditWithOptions(request *CheckAoneAppAuditReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AoneAppName)) {
 		query["AoneAppName"] = request.AoneAppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
