@@ -65,9 +65,9 @@ func (s *ApplyScalingGroupResponseBody) SetScalingGroupId(v string) *ApplyScalin
 }
 
 type ApplyScalingGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyScalingGroupResponse) String() string {
@@ -218,9 +218,9 @@ func (s *AttachAlbServerGroupsResponseBody) SetScalingActivityId(v string) *Atta
 }
 
 type AttachAlbServerGroupsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachAlbServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachAlbServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachAlbServerGroupsResponse) String() string {
@@ -330,9 +330,9 @@ func (s *AttachDBInstancesResponseBody) SetRequestId(v string) *AttachDBInstance
 }
 
 type AttachDBInstancesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachDBInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachDBInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachDBInstancesResponse) String() string {
@@ -480,9 +480,9 @@ func (s *AttachInstancesResponseBody) SetScalingActivityId(v string) *AttachInst
 }
 
 type AttachInstancesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachInstancesResponse) String() string {
@@ -636,9 +636,9 @@ func (s *AttachLoadBalancersResponseBody) SetScalingActivityId(v string) *Attach
 }
 
 type AttachLoadBalancersResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachLoadBalancersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachLoadBalancersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachLoadBalancersResponse) String() string {
@@ -801,9 +801,9 @@ func (s *AttachServerGroupsResponseBody) SetScalingActivityId(v string) *AttachS
 }
 
 type AttachServerGroupsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachServerGroupsResponse) String() string {
@@ -972,9 +972,9 @@ func (s *AttachVServerGroupsResponseBody) SetRequestId(v string) *AttachVServerG
 }
 
 type AttachVServerGroupsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachVServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachVServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachVServerGroupsResponse) String() string {
@@ -1065,9 +1065,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -1189,9 +1189,9 @@ func (s *CompleteLifecycleActionResponseBody) SetRequestId(v string) *CompleteLi
 }
 
 type CompleteLifecycleActionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CompleteLifecycleActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompleteLifecycleActionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompleteLifecycleActionResponse) String() string {
@@ -1430,9 +1430,9 @@ func (s *CreateAlarmResponseBody) SetRequestId(v string) *CreateAlarmResponseBod
 }
 
 type CreateAlarmResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAlarmResponse) String() string {
@@ -3179,9 +3179,9 @@ func (s *CreateEciScalingConfigurationResponseBody) SetScalingConfigurationId(v 
 }
 
 type CreateEciScalingConfigurationResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEciScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEciScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEciScalingConfigurationResponse) String() string {
@@ -3357,9 +3357,9 @@ func (s *CreateLifecycleHookResponseBody) SetRequestId(v string) *CreateLifecycl
 }
 
 type CreateLifecycleHookResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateLifecycleHookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLifecycleHookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLifecycleHookResponse) String() string {
@@ -3468,9 +3468,9 @@ func (s *CreateNotificationConfigurationResponseBody) SetRequestId(v string) *Cr
 }
 
 type CreateNotificationConfigurationResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateNotificationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNotificationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateNotificationConfigurationResponse) String() string {
@@ -3521,7 +3521,8 @@ type CreateScalingConfigurationRequest struct {
 	// *   Unlimited: unlimited mode
 	//
 	// For more information, see the "Performance modes" section in the "[Overview](~~59977~~)" topic.
-	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CreditSpecification *string                                              `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CustomPriorities    []*CreateScalingConfigurationRequestCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// The data disks.
 	DataDisks []*CreateScalingConfigurationRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
 	// The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
@@ -3726,6 +3727,11 @@ func (s *CreateScalingConfigurationRequest) SetCpu(v int32) *CreateScalingConfig
 
 func (s *CreateScalingConfigurationRequest) SetCreditSpecification(v string) *CreateScalingConfigurationRequest {
 	s.CreditSpecification = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequest) SetCustomPriorities(v []*CreateScalingConfigurationRequestCustomPriorities) *CreateScalingConfigurationRequest {
+	s.CustomPriorities = v
 	return s
 }
 
@@ -4144,6 +4150,29 @@ func (s *CreateScalingConfigurationRequestSystemDisk) SetSize(v int32) *CreateSc
 	return s
 }
 
+type CreateScalingConfigurationRequestCustomPriorities struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	VswitchId    *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s CreateScalingConfigurationRequestCustomPriorities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingConfigurationRequestCustomPriorities) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationRequestCustomPriorities) SetInstanceType(v string) *CreateScalingConfigurationRequestCustomPriorities {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestCustomPriorities) SetVswitchId(v string) *CreateScalingConfigurationRequestCustomPriorities {
+	s.VswitchId = &v
+	return s
+}
+
 type CreateScalingConfigurationRequestDataDisks struct {
 	// The ID of the automatic snapshot policy that you want to apply to the data disk.
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
@@ -4493,7 +4522,8 @@ type CreateScalingConfigurationShrinkRequest struct {
 	// *   Unlimited: unlimited mode
 	//
 	// For more information, see the "Performance modes" section in the "[Overview](~~59977~~)" topic.
-	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CreditSpecification *string                                                    `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CustomPriorities    []*CreateScalingConfigurationShrinkRequestCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// The data disks.
 	DataDisks []*CreateScalingConfigurationShrinkRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
 	// The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
@@ -4698,6 +4728,11 @@ func (s *CreateScalingConfigurationShrinkRequest) SetCpu(v int32) *CreateScaling
 
 func (s *CreateScalingConfigurationShrinkRequest) SetCreditSpecification(v string) *CreateScalingConfigurationShrinkRequest {
 	s.CreditSpecification = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequest) SetCustomPriorities(v []*CreateScalingConfigurationShrinkRequestCustomPriorities) *CreateScalingConfigurationShrinkRequest {
+	s.CustomPriorities = v
 	return s
 }
 
@@ -5116,6 +5151,29 @@ func (s *CreateScalingConfigurationShrinkRequestSystemDisk) SetSize(v int32) *Cr
 	return s
 }
 
+type CreateScalingConfigurationShrinkRequestCustomPriorities struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	VswitchId    *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s CreateScalingConfigurationShrinkRequestCustomPriorities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingConfigurationShrinkRequestCustomPriorities) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationShrinkRequestCustomPriorities) SetInstanceType(v string) *CreateScalingConfigurationShrinkRequestCustomPriorities {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestCustomPriorities) SetVswitchId(v string) *CreateScalingConfigurationShrinkRequestCustomPriorities {
+	s.VswitchId = &v
+	return s
+}
+
 type CreateScalingConfigurationShrinkRequestDataDisks struct {
 	// The ID of the automatic snapshot policy that you want to apply to the data disk.
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
@@ -5466,9 +5524,9 @@ func (s *CreateScalingConfigurationResponseBody) SetScalingConfigurationId(v str
 }
 
 type CreateScalingConfigurationResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateScalingConfigurationResponse) String() string {
@@ -6251,9 +6309,9 @@ func (s *CreateScalingGroupResponseBody) SetScalingGroupId(v string) *CreateScal
 }
 
 type CreateScalingGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateScalingGroupResponse) String() string {
@@ -6609,9 +6667,9 @@ func (s *CreateScalingRuleResponseBody) SetScalingRuleId(v string) *CreateScalin
 }
 
 type CreateScalingRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateScalingRuleResponse) String() string {
@@ -6824,9 +6882,9 @@ func (s *CreateScheduledTaskResponseBody) SetScheduledTaskId(v string) *CreateSc
 }
 
 type CreateScheduledTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateScheduledTaskResponse) String() string {
@@ -6905,9 +6963,9 @@ func (s *DeactivateScalingConfigurationResponseBody) SetRequestId(v string) *Dea
 }
 
 type DeactivateScalingConfigurationResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeactivateScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeactivateScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeactivateScalingConfigurationResponse) String() string {
@@ -6996,9 +7054,9 @@ func (s *DeleteAlarmResponseBody) SetRequestId(v string) *DeleteAlarmResponseBod
 }
 
 type DeleteAlarmResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAlarmResponse) String() string {
@@ -7086,9 +7144,9 @@ func (s *DeleteEciScalingConfigurationResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteEciScalingConfigurationResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEciScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEciScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEciScalingConfigurationResponse) String() string {
@@ -7185,9 +7243,9 @@ func (s *DeleteLifecycleHookResponseBody) SetRequestId(v string) *DeleteLifecycl
 }
 
 type DeleteLifecycleHookResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteLifecycleHookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLifecycleHookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteLifecycleHookResponse) String() string {
@@ -7287,9 +7345,9 @@ func (s *DeleteNotificationConfigurationResponseBody) SetRequestId(v string) *De
 }
 
 type DeleteNotificationConfigurationResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteNotificationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNotificationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteNotificationConfigurationResponse) String() string {
@@ -7370,9 +7428,9 @@ func (s *DeleteScalingConfigurationResponseBody) SetRequestId(v string) *DeleteS
 }
 
 type DeleteScalingConfigurationResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteScalingConfigurationResponse) String() string {
@@ -7475,9 +7533,9 @@ func (s *DeleteScalingGroupResponseBody) SetRequestId(v string) *DeleteScalingGr
 }
 
 type DeleteScalingGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteScalingGroupResponse) String() string {
@@ -7565,9 +7623,9 @@ func (s *DeleteScalingRuleResponseBody) SetRequestId(v string) *DeleteScalingRul
 }
 
 type DeleteScalingRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteScalingRuleResponse) String() string {
@@ -7655,9 +7713,9 @@ func (s *DeleteScheduledTaskResponseBody) SetRequestId(v string) *DeleteSchedule
 }
 
 type DeleteScheduledTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteScheduledTaskResponse) String() string {
@@ -7985,9 +8043,9 @@ func (s *DescribeAlarmsResponseBodyAlarmListExpressions) SetThreshold(v float32)
 }
 
 type DescribeAlarmsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAlarmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAlarmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAlarmsResponse) String() string {
@@ -9626,9 +9684,9 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolume
 }
 
 type DescribeEciScalingConfigurationsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEciScalingConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEciScalingConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEciScalingConfigurationsResponse) String() string {
@@ -9816,9 +9874,9 @@ func (s *DescribeLifecycleActionsResponseBodyLifecycleActions) SetLifecycleHookI
 }
 
 type DescribeLifecycleActionsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLifecycleActionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLifecycleActionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLifecycleActionsResponse) String() string {
@@ -10016,9 +10074,9 @@ func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) SetScalingGroupId(v s
 }
 
 type DescribeLifecycleHooksResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLifecycleHooksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLifecycleHooksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLifecycleHooksResponse) String() string {
@@ -10169,9 +10227,9 @@ func (s *DescribeLimitationResponseBody) SetRequestId(v string) *DescribeLimitat
 }
 
 type DescribeLimitationResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLimitationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLimitationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLimitationResponse) String() string {
@@ -10312,9 +10370,9 @@ func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfiguration
 }
 
 type DescribeNotificationConfigurationsResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNotificationConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNotificationConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNotificationConfigurationsResponse) String() string {
@@ -10398,9 +10456,9 @@ func (s *DescribeNotificationTypesResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeNotificationTypesResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNotificationTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNotificationTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNotificationTypesResponse) String() string {
@@ -10545,9 +10603,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetVpcUnavailable(v bool) *Describe
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -10898,9 +10956,9 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetTotalCapacit
 }
 
 type DescribeScalingActivitiesResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScalingActivitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScalingActivitiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScalingActivitiesResponse) String() string {
@@ -10995,9 +11053,9 @@ func (s *DescribeScalingActivityDetailResponseBody) SetScalingActivityId(v strin
 }
 
 type DescribeScalingActivityDetailResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScalingActivityDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScalingActivityDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScalingActivityDetailResponse) String() string {
@@ -11172,7 +11230,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
 	// *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
-	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CreditSpecification *string                                                                           `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CustomPriorities    []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// Details of the data disks.
 	DataDisks []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
 	// The ID of the dedicated host on which the ECS instance is created. Preemptible instances cannot be created on dedicated hosts. If you specify the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
@@ -11380,6 +11439,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetCrea
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetCreditSpecification(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.CreditSpecification = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetCustomPriorities(v []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.CustomPriorities = v
 	return s
 }
 
@@ -11688,6 +11752,29 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetZone
 	return s
 }
 
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	VswitchId    *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities) SetInstanceType(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities) SetVswitchId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities {
+	s.VswitchId = &v
+	return s
+}
+
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks struct {
 	// The ID of the automatic snapshot policy that is applied to the data disk.
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
@@ -11982,9 +12069,9 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsTags) Set
 }
 
 type DescribeScalingConfigurationsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScalingConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScalingConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScalingConfigurationsResponse) String() string {
@@ -12720,9 +12807,9 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroup
 }
 
 type DescribeScalingGroupsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScalingGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScalingGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScalingGroupsResponse) String() string {
@@ -13028,9 +13115,9 @@ func (s *DescribeScalingInstancesResponseBodyScalingInstances) SetZoneId(v strin
 }
 
 type DescribeScalingInstancesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScalingInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScalingInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScalingInstancesResponse) String() string {
@@ -13591,9 +13678,9 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesStepAdjustments) SetScaling
 }
 
 type DescribeScalingRulesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScalingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScalingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScalingRulesResponse) String() string {
@@ -13833,9 +13920,9 @@ func (s *DescribeScheduledTasksResponseBodyScheduledTasks) SetTaskEnabled(v bool
 }
 
 type DescribeScheduledTasksResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScheduledTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScheduledTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScheduledTasksResponse) String() string {
@@ -13977,9 +14064,9 @@ func (s *DetachAlbServerGroupsResponseBody) SetScalingActivityId(v string) *Deta
 }
 
 type DetachAlbServerGroupsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachAlbServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachAlbServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachAlbServerGroupsResponse) String() string {
@@ -14089,9 +14176,9 @@ func (s *DetachDBInstancesResponseBody) SetRequestId(v string) *DetachDBInstance
 }
 
 type DetachDBInstancesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachDBInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachDBInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachDBInstancesResponse) String() string {
@@ -14232,9 +14319,9 @@ func (s *DetachInstancesResponseBody) SetScalingActivityId(v string) *DetachInst
 }
 
 type DetachInstancesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachInstancesResponse) String() string {
@@ -14343,9 +14430,9 @@ func (s *DetachLoadBalancersResponseBody) SetScalingActivityId(v string) *Detach
 }
 
 type DetachLoadBalancersResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachLoadBalancersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachLoadBalancersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachLoadBalancersResponse) String() string {
@@ -14499,9 +14586,9 @@ func (s *DetachServerGroupsResponseBody) SetScalingActivityId(v string) *DetachS
 }
 
 type DetachServerGroupsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachServerGroupsResponse) String() string {
@@ -14661,9 +14748,9 @@ func (s *DetachVServerGroupsResponseBody) SetRequestId(v string) *DetachVServerG
 }
 
 type DetachVServerGroupsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachVServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachVServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachVServerGroupsResponse) String() string {
@@ -14745,9 +14832,9 @@ func (s *DisableAlarmResponseBody) SetRequestId(v string) *DisableAlarmResponseB
 }
 
 type DisableAlarmResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableAlarmResponse) String() string {
@@ -14834,9 +14921,9 @@ func (s *DisableScalingGroupResponseBody) SetRequestId(v string) *DisableScaling
 }
 
 type DisableScalingGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableScalingGroupResponse) String() string {
@@ -14918,9 +15005,9 @@ func (s *EnableAlarmResponseBody) SetRequestId(v string) *EnableAlarmResponseBod
 }
 
 type EnableAlarmResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableAlarmResponse) String() string {
@@ -15118,9 +15205,9 @@ func (s *EnableScalingGroupResponseBody) SetRequestId(v string) *EnableScalingGr
 }
 
 type EnableScalingGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableScalingGroupResponse) String() string {
@@ -15217,9 +15304,9 @@ func (s *EnterStandbyResponseBody) SetScalingActivityId(v string) *EnterStandbyR
 }
 
 type EnterStandbyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnterStandbyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnterStandbyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnterStandbyResponse) String() string {
@@ -15343,9 +15430,9 @@ func (s *ExecuteScalingRuleResponseBody) SetScalingActivityId(v string) *Execute
 }
 
 type ExecuteScalingRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteScalingRuleResponse) String() string {
@@ -15462,9 +15549,9 @@ func (s *ExitStandbyResponseBody) SetScalingActivityId(v string) *ExitStandbyRes
 }
 
 type ExitStandbyResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExitStandbyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExitStandbyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExitStandbyResponse) String() string {
@@ -15583,9 +15670,9 @@ func (s *ListTagKeysResponseBody) SetRequestId(v string) *ListTagKeysResponseBod
 }
 
 type ListTagKeysResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagKeysResponse) String() string {
@@ -15758,9 +15845,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -15884,9 +15971,9 @@ func (s *ListTagValuesResponseBody) SetValues(v []*string) *ListTagValuesRespons
 }
 
 type ListTagValuesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagValuesResponse) String() string {
@@ -16292,9 +16379,9 @@ func (s *ModifyAlarmResponseBody) SetRequestId(v string) *ModifyAlarmResponseBod
 }
 
 type ModifyAlarmResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAlarmResponse) String() string {
@@ -18065,9 +18152,9 @@ func (s *ModifyEciScalingConfigurationResponseBody) SetRequestId(v string) *Modi
 }
 
 type ModifyEciScalingConfigurationResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyEciScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyEciScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyEciScalingConfigurationResponse) String() string {
@@ -18243,9 +18330,9 @@ func (s *ModifyLifecycleHookResponseBody) SetRequestId(v string) *ModifyLifecycl
 }
 
 type ModifyLifecycleHookResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyLifecycleHookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyLifecycleHookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyLifecycleHookResponse) String() string {
@@ -18354,9 +18441,9 @@ func (s *ModifyNotificationConfigurationResponseBody) SetRequestId(v string) *Mo
 }
 
 type ModifyNotificationConfigurationResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyNotificationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNotificationConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyNotificationConfigurationResponse) String() string {
@@ -18401,7 +18488,8 @@ type ModifyScalingConfigurationRequest struct {
 	//
 	// *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
 	// *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
-	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CreditSpecification *string                                              `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CustomPriorities    []*ModifyScalingConfigurationRequestCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// The data disks.
 	DataDisks []*ModifyScalingConfigurationRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
 	// The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
@@ -18573,6 +18661,11 @@ func (s *ModifyScalingConfigurationRequest) SetCpu(v int32) *ModifyScalingConfig
 
 func (s *ModifyScalingConfigurationRequest) SetCreditSpecification(v string) *ModifyScalingConfigurationRequest {
 	s.CreditSpecification = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequest) SetCustomPriorities(v []*ModifyScalingConfigurationRequestCustomPriorities) *ModifyScalingConfigurationRequest {
+	s.CustomPriorities = v
 	return s
 }
 
@@ -18970,6 +19063,29 @@ func (s *ModifyScalingConfigurationRequestSystemDisk) SetSize(v int32) *ModifySc
 	return s
 }
 
+type ModifyScalingConfigurationRequestCustomPriorities struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	VswitchId    *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s ModifyScalingConfigurationRequestCustomPriorities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationRequestCustomPriorities) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationRequestCustomPriorities) SetInstanceType(v string) *ModifyScalingConfigurationRequestCustomPriorities {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestCustomPriorities) SetVswitchId(v string) *ModifyScalingConfigurationRequestCustomPriorities {
+	s.VswitchId = &v
+	return s
+}
+
 type ModifyScalingConfigurationRequestDataDisks struct {
 	// The ID of the automatic snapshot policy that you want to apply to the data disk.
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
@@ -19309,7 +19425,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	//
 	// *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
 	// *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
-	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CreditSpecification *string                                                    `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	CustomPriorities    []*ModifyScalingConfigurationShrinkRequestCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// The data disks.
 	DataDisks []*ModifyScalingConfigurationShrinkRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
 	// The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
@@ -19481,6 +19598,11 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetCpu(v int32) *ModifyScaling
 
 func (s *ModifyScalingConfigurationShrinkRequest) SetCreditSpecification(v string) *ModifyScalingConfigurationShrinkRequest {
 	s.CreditSpecification = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequest) SetCustomPriorities(v []*ModifyScalingConfigurationShrinkRequestCustomPriorities) *ModifyScalingConfigurationShrinkRequest {
+	s.CustomPriorities = v
 	return s
 }
 
@@ -19878,6 +20000,29 @@ func (s *ModifyScalingConfigurationShrinkRequestSystemDisk) SetSize(v int32) *Mo
 	return s
 }
 
+type ModifyScalingConfigurationShrinkRequestCustomPriorities struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	VswitchId    *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s ModifyScalingConfigurationShrinkRequestCustomPriorities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationShrinkRequestCustomPriorities) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestCustomPriorities) SetInstanceType(v string) *ModifyScalingConfigurationShrinkRequestCustomPriorities {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestCustomPriorities) SetVswitchId(v string) *ModifyScalingConfigurationShrinkRequestCustomPriorities {
+	s.VswitchId = &v
+	return s
+}
+
 type ModifyScalingConfigurationShrinkRequestDataDisks struct {
 	// The ID of the automatic snapshot policy that you want to apply to the data disk.
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
@@ -20217,9 +20362,9 @@ func (s *ModifyScalingConfigurationResponseBody) SetRequestId(v string) *ModifyS
 }
 
 type ModifyScalingConfigurationResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyScalingConfigurationResponse) String() string {
@@ -20597,9 +20742,9 @@ func (s *ModifyScalingGroupResponseBody) SetRequestId(v string) *ModifyScalingGr
 }
 
 type ModifyScalingGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyScalingGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyScalingGroupResponse) String() string {
@@ -20906,9 +21051,9 @@ func (s *ModifyScalingRuleResponseBody) SetRequestId(v string) *ModifyScalingRul
 }
 
 type ModifyScalingRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyScalingRuleResponse) String() string {
@@ -21116,9 +21261,9 @@ func (s *ModifyScheduledTaskResponseBody) SetRequestId(v string) *ModifySchedule
 }
 
 type ModifyScheduledTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyScheduledTaskResponse) String() string {
@@ -21219,9 +21364,9 @@ func (s *RebalanceInstancesResponseBody) SetScalingActivityId(v string) *Rebalan
 }
 
 type RebalanceInstancesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RebalanceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebalanceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RebalanceInstancesResponse) String() string {
@@ -21327,9 +21472,9 @@ func (s *RecordLifecycleActionHeartbeatResponseBody) SetRequestId(v string) *Rec
 }
 
 type RecordLifecycleActionHeartbeatResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecordLifecycleActionHeartbeatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecordLifecycleActionHeartbeatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecordLifecycleActionHeartbeatResponse) String() string {
@@ -21450,9 +21595,9 @@ func (s *RemoveInstancesResponseBody) SetScalingActivityId(v string) *RemoveInst
 }
 
 type RemoveInstancesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveInstancesResponse) String() string {
@@ -21550,9 +21695,9 @@ func (s *ResumeProcessesResponseBody) SetRequestId(v string) *ResumeProcessesRes
 }
 
 type ResumeProcessesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResumeProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResumeProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResumeProcessesResponse) String() string {
@@ -21884,9 +22029,9 @@ func (s *ScaleWithAdjustmentResponseBody) SetScalingActivityId(v string) *ScaleW
 }
 
 type ScaleWithAdjustmentResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ScaleWithAdjustmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ScaleWithAdjustmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ScaleWithAdjustmentResponse) String() string {
@@ -21978,9 +22123,9 @@ func (s *SetGroupDeletionProtectionResponseBody) SetRequestId(v string) *SetGrou
 }
 
 type SetGroupDeletionProtectionResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetGroupDeletionProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetGroupDeletionProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetGroupDeletionProtectionResponse) String() string {
@@ -22071,9 +22216,9 @@ func (s *SetInstanceHealthResponseBody) SetRequestId(v string) *SetInstanceHealt
 }
 
 type SetInstanceHealthResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetInstanceHealthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetInstanceHealthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetInstanceHealthResponse) String() string {
@@ -22165,9 +22310,9 @@ func (s *SetInstancesProtectionResponseBody) SetRequestId(v string) *SetInstance
 }
 
 type SetInstancesProtectionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetInstancesProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetInstancesProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetInstancesProtectionResponse) String() string {
@@ -22273,9 +22418,9 @@ func (s *SuspendProcessesResponseBody) SetRequestId(v string) *SuspendProcessesR
 }
 
 type SuspendProcessesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SuspendProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SuspendProcessesResponse) String() string {
@@ -22412,9 +22557,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -22522,9 +22667,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -22609,9 +22754,9 @@ func (s *VerifyAuthenticationResponseBody) SetRequestId(v string) *VerifyAuthent
 }
 
 type VerifyAuthenticationResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyAuthenticationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyAuthenticationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyAuthenticationResponse) String() string {
@@ -22690,9 +22835,9 @@ func (s *VerifyUserResponseBody) SetRequestId(v string) *VerifyUserResponseBody 
 }
 
 type VerifyUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyUserResponse) String() string {
@@ -24169,6 +24314,10 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 
 	if !tea.BoolValue(util.IsUnset(request.CreditSpecification)) {
 		query["CreditSpecification"] = request.CreditSpecification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomPriorities)) {
+		query["CustomPriorities"] = request.CustomPriorities
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DataDisks)) {
@@ -28497,6 +28646,10 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 
 	if !tea.BoolValue(util.IsUnset(request.CreditSpecification)) {
 		query["CreditSpecification"] = request.CreditSpecification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomPriorities)) {
+		query["CustomPriorities"] = request.CustomPriorities
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DataDisks)) {
