@@ -1,3 +1,7 @@
+2024-01-29 Version: v4.2.11
+- Update API GetGatewayRouteDetailupdate response param.
+
+
 2024-01-25 Version: v4.2.10
 - Generated golang 2019-05-31 for mse.
 
