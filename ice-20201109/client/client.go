@@ -6519,6 +6519,181 @@ func (s *GetAvatarTrainingJobResponse) SetBody(v *GetAvatarTrainingJobResponseBo
 	return s
 }
 
+type GetBatchMediaProducingJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetBatchMediaProducingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBatchMediaProducingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchMediaProducingJobRequest) SetJobId(v string) *GetBatchMediaProducingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetBatchMediaProducingJobResponseBody struct {
+	EditingBatchJob *GetBatchMediaProducingJobResponseBodyEditingBatchJob `json:"EditingBatchJob,omitempty" xml:"EditingBatchJob,omitempty" type:"Struct"`
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetBatchMediaProducingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBatchMediaProducingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchMediaProducingJobResponseBody) SetEditingBatchJob(v *GetBatchMediaProducingJobResponseBodyEditingBatchJob) *GetBatchMediaProducingJobResponseBody {
+	s.EditingBatchJob = v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBody) SetRequestId(v string) *GetBatchMediaProducingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
+	EditingConfig *string                                                           `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	Extend        *string                                                           `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	InputConfig   *string                                                           `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	JobId         *string                                                           `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OutputConfig  *string                                                           `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	Status        *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubJobList    []*GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList `json:"SubJobList,omitempty" xml:"SubJobList,omitempty" type:"Repeated"`
+	UserData      *string                                                           `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetBatchMediaProducingJobResponseBodyEditingBatchJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBatchMediaProducingJobResponseBodyEditingBatchJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetEditingConfig(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.EditingConfig = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetExtend(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.Extend = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetInputConfig(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetJobId(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetOutputConfig(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetStatus(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetSubJobList(v []*GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.SubJobList = v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetUserData(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.UserData = &v
+	return s
+}
+
+type GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaURL     *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) SetErrorCode(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) SetErrorMessage(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) SetJobId(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) SetMediaId(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) SetMediaURL(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList {
+	s.MediaURL = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList) SetStatus(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList {
+	s.Status = &v
+	return s
+}
+
+type GetBatchMediaProducingJobResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetBatchMediaProducingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetBatchMediaProducingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBatchMediaProducingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchMediaProducingJobResponse) SetHeaders(v map[string]*string) *GetBatchMediaProducingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponse) SetStatusCode(v int32) *GetBatchMediaProducingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponse) SetBody(v *GetBatchMediaProducingJobResponseBody) *GetBatchMediaProducingJobResponse {
+	s.Body = v
+	return s
+}
+
 type GetCategoriesRequest struct {
 	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	PageNo   *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
@@ -30353,6 +30528,99 @@ func (s *SubmitAvatarVideoJobResponse) SetBody(v *SubmitAvatarVideoJobResponseBo
 	return s
 }
 
+type SubmitBatchMediaProducingJobRequest struct {
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	OutputConfig  *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitBatchMediaProducingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBatchMediaProducingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBatchMediaProducingJobRequest) SetClientToken(v string) *SubmitBatchMediaProducingJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SubmitBatchMediaProducingJobRequest) SetEditingConfig(v string) *SubmitBatchMediaProducingJobRequest {
+	s.EditingConfig = &v
+	return s
+}
+
+func (s *SubmitBatchMediaProducingJobRequest) SetInputConfig(v string) *SubmitBatchMediaProducingJobRequest {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *SubmitBatchMediaProducingJobRequest) SetOutputConfig(v string) *SubmitBatchMediaProducingJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitBatchMediaProducingJobRequest) SetUserData(v string) *SubmitBatchMediaProducingJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitBatchMediaProducingJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitBatchMediaProducingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBatchMediaProducingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBatchMediaProducingJobResponseBody) SetJobId(v string) *SubmitBatchMediaProducingJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitBatchMediaProducingJobResponseBody) SetRequestId(v string) *SubmitBatchMediaProducingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitBatchMediaProducingJobResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitBatchMediaProducingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitBatchMediaProducingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBatchMediaProducingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBatchMediaProducingJobResponse) SetHeaders(v map[string]*string) *SubmitBatchMediaProducingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitBatchMediaProducingJobResponse) SetStatusCode(v int32) *SubmitBatchMediaProducingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitBatchMediaProducingJobResponse) SetBody(v *SubmitBatchMediaProducingJobResponseBody) *SubmitBatchMediaProducingJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitCustomizedVoiceJobRequest struct {
 	DemoAudioMediaURL *string `json:"DemoAudioMediaURL,omitempty" xml:"DemoAudioMediaURL,omitempty"`
 	VoiceId           *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
@@ -43213,6 +43481,50 @@ func (client *Client) GetAvatarTrainingJob(request *GetAvatarTrainingJobRequest)
 	return _result, _err
 }
 
+func (client *Client) GetBatchMediaProducingJobWithOptions(request *GetBatchMediaProducingJobRequest, runtime *util.RuntimeOptions) (_result *GetBatchMediaProducingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBatchMediaProducingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBatchMediaProducingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBatchMediaProducingJob(request *GetBatchMediaProducingJobRequest) (_result *GetBatchMediaProducingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBatchMediaProducingJobResponse{}
+	_body, _err := client.GetBatchMediaProducingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCategoriesWithOptions(request *GetCategoriesRequest, runtime *util.RuntimeOptions) (_result *GetCategoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48374,6 +48686,68 @@ func (client *Client) SubmitAvatarVideoJob(request *SubmitAvatarVideoJobRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAvatarVideoJobResponse{}
 	_body, _err := client.SubmitAvatarVideoJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitBatchMediaProducingJobWithOptions(request *SubmitBatchMediaProducingJobRequest, runtime *util.RuntimeOptions) (_result *SubmitBatchMediaProducingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EditingConfig)) {
+		body["EditingConfig"] = request.EditingConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputConfig)) {
+		body["InputConfig"] = request.InputConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitBatchMediaProducingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitBatchMediaProducingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitBatchMediaProducingJob(request *SubmitBatchMediaProducingJobRequest) (_result *SubmitBatchMediaProducingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitBatchMediaProducingJobResponse{}
+	_body, _err := client.SubmitBatchMediaProducingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
