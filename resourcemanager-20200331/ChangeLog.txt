@@ -1,3 +1,10 @@
+2024-01-29 Version: v3.2.0
+- Support API ListAssociatedTransferSetting.
+- Support API UpdateAssociatedTransferSetting.
+- Update API CreateResourceGroupadd Tag param.
+- Update API EnableAssociatedTransferupdate response param.
+
+
 2023-11-27 Version: v3.1.0
 - Generated golang 2020-03-31 for ResourceManager.
 
