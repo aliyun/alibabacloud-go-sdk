@@ -170,9 +170,9 @@ func (s *ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemL
 }
 
 type ActiveAggregateConfigRulesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ActiveAggregateConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ActiveAggregateConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ActiveAggregateConfigRulesResponse) String() string {
@@ -298,9 +298,9 @@ func (s *ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetS
 }
 
 type ActiveConfigRulesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ActiveConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ActiveConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ActiveConfigRulesResponse) String() string {
@@ -446,9 +446,9 @@ func (s *AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultO
 }
 
 type AttachAggregateConfigRuleToCompliancePackResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachAggregateConfigRuleToCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachAggregateConfigRuleToCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachAggregateConfigRuleToCompliancePackResponse) String() string {
@@ -585,9 +585,9 @@ func (s *AttachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRul
 }
 
 type AttachConfigRuleToCompliancePackResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachConfigRuleToCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachConfigRuleToCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachConfigRuleToCompliancePackResponse) String() string {
@@ -680,9 +680,9 @@ func (s *CopyCompliancePacksResponseBody) SetRequestId(v string) *CopyCompliance
 }
 
 type CopyCompliancePacksResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CopyCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CopyCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CopyCompliancePacksResponse) String() string {
@@ -773,9 +773,9 @@ func (s *CopyConfigRulesResponseBody) SetRequestId(v string) *CopyConfigRulesRes
 }
 
 type CopyConfigRulesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CopyConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CopyConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CopyConfigRulesResponse) String() string {
@@ -838,9 +838,9 @@ func (s *CreateAdvancedSearchFileResponseBody) SetRequestId(v string) *CreateAdv
 }
 
 type CreateAdvancedSearchFileResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAdvancedSearchFileResponse) String() string {
@@ -912,9 +912,9 @@ func (s *CreateAggregateAdvancedSearchFileResponseBody) SetRequestId(v string) *
 }
 
 type CreateAggregateAdvancedSearchFileResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAggregateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAggregateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAggregateAdvancedSearchFileResponse) String() string {
@@ -979,7 +979,8 @@ type CreateAggregateCompliancePackRequest struct {
 	// The tag value of the resource that you want to evaluate by using the compliance package.
 	//
 	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope   *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackRequest) String() string {
@@ -1052,6 +1053,11 @@ func (s *CreateAggregateCompliancePackRequest) SetTagKeyScope(v string) *CreateA
 
 func (s *CreateAggregateCompliancePackRequest) SetTagValueScope(v string) *CreateAggregateCompliancePackRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetTemplateContent(v string) *CreateAggregateCompliancePackRequest {
+	s.TemplateContent = &v
 	return s
 }
 
@@ -1184,7 +1190,8 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	// The tag value of the resource that you want to evaluate by using the compliance package.
 	//
 	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope   *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackShrinkRequest) String() string {
@@ -1260,6 +1267,11 @@ func (s *CreateAggregateCompliancePackShrinkRequest) SetTagValueScope(v string) 
 	return s
 }
 
+func (s *CreateAggregateCompliancePackShrinkRequest) SetTemplateContent(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.TemplateContent = &v
+	return s
+}
+
 type CreateAggregateCompliancePackResponseBody struct {
 	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
@@ -1286,9 +1298,9 @@ func (s *CreateAggregateCompliancePackResponseBody) SetRequestId(v string) *Crea
 }
 
 type CreateAggregateCompliancePackResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAggregateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAggregateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackResponse) String() string {
@@ -1488,9 +1500,9 @@ func (s *CreateAggregateConfigDeliveryChannelResponseBody) SetRequestId(v string
 }
 
 type CreateAggregateConfigDeliveryChannelResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAggregateConfigDeliveryChannelResponse) String() string {
@@ -1948,9 +1960,9 @@ func (s *CreateAggregateConfigRuleResponseBody) SetRequestId(v string) *CreateAg
 }
 
 type CreateAggregateConfigRuleResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAggregateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAggregateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAggregateConfigRuleResponse) String() string {
@@ -2090,9 +2102,9 @@ func (s *CreateAggregateRemediationResponseBody) SetRequestId(v string) *CreateA
 }
 
 type CreateAggregateRemediationResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAggregateRemediationResponse) String() string {
@@ -2132,6 +2144,7 @@ type CreateAggregatorRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the account group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FolderId    *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 }
 
 func (s CreateAggregatorRequest) String() string {
@@ -2164,6 +2177,11 @@ func (s *CreateAggregatorRequest) SetClientToken(v string) *CreateAggregatorRequ
 
 func (s *CreateAggregatorRequest) SetDescription(v string) *CreateAggregatorRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAggregatorRequest) SetFolderId(v string) *CreateAggregatorRequest {
+	s.FolderId = &v
 	return s
 }
 
@@ -2213,6 +2231,7 @@ type CreateAggregatorShrinkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the account group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FolderId    *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 }
 
 func (s CreateAggregatorShrinkRequest) String() string {
@@ -2248,6 +2267,11 @@ func (s *CreateAggregatorShrinkRequest) SetDescription(v string) *CreateAggregat
 	return s
 }
 
+func (s *CreateAggregatorShrinkRequest) SetFolderId(v string) *CreateAggregatorShrinkRequest {
+	s.FolderId = &v
+	return s
+}
+
 type CreateAggregatorResponseBody struct {
 	// The ID of the account group.
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
@@ -2274,9 +2298,9 @@ func (s *CreateAggregatorResponseBody) SetRequestId(v string) *CreateAggregatorR
 }
 
 type CreateAggregatorResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAggregatorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAggregatorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAggregatorResponse) String() string {
@@ -2337,7 +2361,8 @@ type CreateCompliancePackRequest struct {
 	// The tag value of the resource that you want to evaluate by using the compliance package.
 	//
 	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope   *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
 func (s CreateCompliancePackRequest) String() string {
@@ -2405,6 +2430,11 @@ func (s *CreateCompliancePackRequest) SetTagKeyScope(v string) *CreateCompliance
 
 func (s *CreateCompliancePackRequest) SetTagValueScope(v string) *CreateCompliancePackRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetTemplateContent(v string) *CreateCompliancePackRequest {
+	s.TemplateContent = &v
 	return s
 }
 
@@ -2533,7 +2563,8 @@ type CreateCompliancePackShrinkRequest struct {
 	// The tag value of the resource that you want to evaluate by using the compliance package.
 	//
 	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope   *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
 func (s CreateCompliancePackShrinkRequest) String() string {
@@ -2604,6 +2635,11 @@ func (s *CreateCompliancePackShrinkRequest) SetTagValueScope(v string) *CreateCo
 	return s
 }
 
+func (s *CreateCompliancePackShrinkRequest) SetTemplateContent(v string) *CreateCompliancePackShrinkRequest {
+	s.TemplateContent = &v
+	return s
+}
+
 type CreateCompliancePackResponseBody struct {
 	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
@@ -2630,9 +2666,9 @@ func (s *CreateCompliancePackResponseBody) SetRequestId(v string) *CreateComplia
 }
 
 type CreateCompliancePackResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCompliancePackResponse) String() string {
@@ -2823,9 +2859,9 @@ func (s *CreateConfigDeliveryChannelResponseBody) SetRequestId(v string) *Create
 }
 
 type CreateConfigDeliveryChannelResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateConfigDeliveryChannelResponse) String() string {
@@ -2852,26 +2888,26 @@ func (s *CreateConfigDeliveryChannelResponse) SetBody(v *CreateConfigDeliveryCha
 }
 
 type CreateConfigRuleRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
 	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	// *   ScheduledNotification: The rule is periodically triggered.
 	//
-	// > Separate two trigger mechanisms with commas (,).
+	// >  If a rule supports the preceding trigger types, separate the types with a comma (,).
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	// The rule description.
+	// The description of the rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the resource excluded from the compliance evaluations performed based on the rule. Separate multiple resource IDs with commas (,).
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
-	// > This parameter applies only to a managed rule.
+	// >  This parameter applies only to managed rules.
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The input parameters of the rule.
+	// The input parameter of the rule.
 	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The interval at which the rule is triggered. Valid values:
+	// The intervals at which the rule is triggered. Valid values:
 	//
 	// *   One_Hour: 1 hour.
 	// *   Three_Hours: 3 hours.
@@ -2879,48 +2915,48 @@ type CreateConfigRuleRequest struct {
 	// *   Twelve_Hours: 12 hours.
 	// *   TwentyFour_Hours (default): 24 hours.
 	//
-	// > This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
+	// >  This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
 	//
-	// > This parameter applies only to a managed rule.
+	// >  This parameter applies only to managed rules.
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
 	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
 	//
-	// > This parameter applies only to a managed rule.
+	// >  This parameter applies only to managed rules.
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	ResourceTypesScope []*string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
+	// The risk level of the resources that are not compliant with the rule. Valid values:
 	//
-	// *   1: high
-	// *   2: medium
-	// *   3: low
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The identifier of the rule.
+	// The ID of the rule.
 	//
 	// *   If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
 	// *   If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
 	//
 	// For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	// The type of the rule. Valid values:
+	// The type of the rule Valid values:
 	//
-	// *   ALIYUN: managed rule
-	// *   CUSTOM_FC: a custom rule
+	// *   ALIYUN: managed rule.
+	// *   CUSTOM_FC: custom rule.
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
-	// *   AND
-	// *   OR
+	// *   AND: logical AND
+	// *   OR: logical OR
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+	// The tag key used to filter resources. The rule applies only to the resources with a specified tag key.
 	//
-	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
-	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
@@ -3013,26 +3049,26 @@ func (s *CreateConfigRuleRequest) SetTagValueScope(v string) *CreateConfigRuleRe
 }
 
 type CreateConfigRuleShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
 	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	// *   ScheduledNotification: The rule is periodically triggered.
 	//
-	// > Separate two trigger mechanisms with commas (,).
+	// >  If a rule supports the preceding trigger types, separate the types with a comma (,).
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	// The rule description.
+	// The description of the rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the resource excluded from the compliance evaluations performed based on the rule. Separate multiple resource IDs with commas (,).
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
-	// > This parameter applies only to a managed rule.
+	// >  This parameter applies only to managed rules.
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The input parameters of the rule.
+	// The input parameter of the rule.
 	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The interval at which the rule is triggered. Valid values:
+	// The intervals at which the rule is triggered. Valid values:
 	//
 	// *   One_Hour: 1 hour.
 	// *   Three_Hours: 3 hours.
@@ -3040,48 +3076,48 @@ type CreateConfigRuleShrinkRequest struct {
 	// *   Twelve_Hours: 12 hours.
 	// *   TwentyFour_Hours (default): 24 hours.
 	//
-	// > This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
+	// >  This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
 	//
-	// > This parameter applies only to a managed rule.
+	// >  This parameter applies only to managed rules.
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
 	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
 	//
-	// > This parameter applies only to a managed rule.
+	// >  This parameter applies only to managed rules.
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	ResourceTypesScopeShrink *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
+	// The risk level of the resources that are not compliant with the rule. Valid values:
 	//
-	// *   1: high
-	// *   2: medium
-	// *   3: low
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The identifier of the rule.
+	// The ID of the rule.
 	//
 	// *   If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
 	// *   If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
 	//
 	// For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	// The type of the rule. Valid values:
+	// The type of the rule Valid values:
 	//
-	// *   ALIYUN: managed rule
-	// *   CUSTOM_FC: a custom rule
+	// *   ALIYUN: managed rule.
+	// *   CUSTOM_FC: custom rule.
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
-	// *   AND
-	// *   OR
+	// *   AND: logical AND
+	// *   OR: logical OR
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+	// The tag key used to filter resources. The rule applies only to the resources with a specified tag key.
 	//
-	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
-	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
@@ -3174,9 +3210,9 @@ func (s *CreateConfigRuleShrinkRequest) SetTagValueScope(v string) *CreateConfig
 }
 
 type CreateConfigRuleResponseBody struct {
-	// The rule ID.
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3199,9 +3235,9 @@ func (s *CreateConfigRuleResponseBody) SetRequestId(v string) *CreateConfigRuleR
 }
 
 type CreateConfigRuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateConfigRuleResponse) String() string {
@@ -3384,9 +3420,9 @@ func (s *CreateDeliveryChannelResponseBody) SetRequestId(v string) *CreateDelive
 }
 
 type CreateDeliveryChannelResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDeliveryChannelResponse) String() string {
@@ -3517,9 +3553,9 @@ func (s *CreateRemediationResponseBody) SetRequestId(v string) *CreateRemediatio
 }
 
 type CreateRemediationResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRemediationResponse) String() string {
@@ -3656,9 +3692,9 @@ func (s *DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleIte
 }
 
 type DeactiveAggregateConfigRulesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeactiveAggregateConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeactiveAggregateConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeactiveAggregateConfigRulesResponse) String() string {
@@ -3789,9 +3825,9 @@ func (s *DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) Se
 }
 
 type DeactiveConfigRulesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeactiveConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeactiveConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeactiveConfigRulesResponse) String() string {
@@ -3945,9 +3981,9 @@ func (s *DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResultO
 }
 
 type DeleteAggregateCompliancePacksResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAggregateCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAggregateCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAggregateCompliancePacksResponse) String() string {
@@ -4026,9 +4062,9 @@ func (s *DeleteAggregateConfigDeliveryChannelResponseBody) SetRequestId(v string
 }
 
 type DeleteAggregateConfigDeliveryChannelResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAggregateConfigDeliveryChannelResponse) String() string {
@@ -4165,9 +4201,9 @@ func (s *DeleteAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemL
 }
 
 type DeleteAggregateConfigRulesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAggregateConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAggregateConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAggregateConfigRulesResponse) String() string {
@@ -4286,9 +4322,9 @@ func (s *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) SetSuc
 }
 
 type DeleteAggregateRemediationsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAggregateRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAggregateRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAggregateRemediationsResponse) String() string {
@@ -4420,9 +4456,9 @@ func (s *DeleteAggregatorsResponseBodyOperateAggregatorsResultOperateAggregators
 }
 
 type DeleteAggregatorsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAggregatorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAggregatorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAggregatorsResponse) String() string {
@@ -4567,9 +4603,9 @@ func (s *DeleteCompliancePacksResponseBodyOperateCompliancePacksResultOperateCom
 }
 
 type DeleteCompliancePacksResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCompliancePacksResponse) String() string {
@@ -4641,9 +4677,9 @@ func (s *DeleteConfigDeliveryChannelResponseBody) SetRequestId(v string) *Delete
 }
 
 type DeleteConfigDeliveryChannelResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteConfigDeliveryChannelResponse) String() string {
@@ -4771,9 +4807,9 @@ func (s *DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetS
 }
 
 type DeleteConfigRulesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteConfigRulesResponse) String() string {
@@ -4883,9 +4919,9 @@ func (s *DeleteRemediationsResponseBodyRemediationDeleteResults) SetSuccess(v bo
 }
 
 type DeleteRemediationsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRemediationsResponse) String() string {
@@ -5067,9 +5103,9 @@ func (s *DescribeRemediationResponseBodyRemediation) SetRemediationType(v string
 }
 
 type DescribeRemediationResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRemediationResponse) String() string {
@@ -5215,9 +5251,9 @@ func (s *DetachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultO
 }
 
 type DetachAggregateConfigRuleToCompliancePackResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachAggregateConfigRuleToCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachAggregateConfigRuleToCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachAggregateConfigRuleToCompliancePackResponse) String() string {
@@ -5354,9 +5390,9 @@ func (s *DetachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRul
 }
 
 type DetachConfigRuleToCompliancePackResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachConfigRuleToCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachConfigRuleToCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachConfigRuleToCompliancePackResponse) String() string {
@@ -5611,9 +5647,9 @@ func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) SetIdentifi
 }
 
 type EvaluatePreConfigRulesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EvaluatePreConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EvaluatePreConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EvaluatePreConfigRulesResponse) String() string {
@@ -5701,9 +5737,9 @@ func (s *GenerateAggregateCompliancePackReportResponseBody) SetRequestId(v strin
 }
 
 type GenerateAggregateCompliancePackReportResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateAggregateCompliancePackReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateAggregateCompliancePackReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateAggregateCompliancePackReportResponse) String() string {
@@ -5798,9 +5834,9 @@ func (s *GenerateAggregateConfigRulesReportResponseBody) SetRequestId(v string) 
 }
 
 type GenerateAggregateConfigRulesReportResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateAggregateConfigRulesReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateAggregateConfigRulesReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateAggregateConfigRulesReportResponse) String() string {
@@ -5884,9 +5920,9 @@ func (s *GenerateAggregateResourceInventoryResponseBody) SetRequestId(v string) 
 }
 
 type GenerateAggregateResourceInventoryResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateAggregateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateAggregateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateAggregateResourceInventoryResponse) String() string {
@@ -5965,9 +6001,9 @@ func (s *GenerateCompliancePackReportResponseBody) SetRequestId(v string) *Gener
 }
 
 type GenerateCompliancePackReportResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateCompliancePackReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateCompliancePackReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateCompliancePackReportResponse) String() string {
@@ -6046,9 +6082,9 @@ func (s *GenerateConfigRulesReportResponseBody) SetRequestId(v string) *Generate
 }
 
 type GenerateConfigRulesReportResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateConfigRulesReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateConfigRulesReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateConfigRulesReportResponse) String() string {
@@ -6118,9 +6154,9 @@ func (s *GenerateResourceInventoryResponseBody) SetRequestId(v string) *Generate
 }
 
 type GenerateResourceInventoryResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateResourceInventoryResponse) String() string {
@@ -6207,9 +6243,9 @@ func (s *GetAdvancedSearchFileResponseBodyResourceSearch) SetStatus(v string) *G
 }
 
 type GetAdvancedSearchFileResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAdvancedSearchFileResponse) String() string {
@@ -6366,9 +6402,9 @@ func (s *GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResultA
 }
 
 type GetAggregateAccountComplianceByPackResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateAccountComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateAccountComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateAccountComplianceByPackResponse) String() string {
@@ -6477,9 +6513,9 @@ func (s *GetAggregateAdvancedSearchFileResponseBodyResourceSearch) SetStatus(v s
 }
 
 type GetAggregateAdvancedSearchFileResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateAdvancedSearchFileResponse) String() string {
@@ -6588,7 +6624,8 @@ type GetAggregateCompliancePackResponseBodyCompliancePack struct {
 	//
 	// *   ACTIVE: The compliance package was normal.
 	// *   CREATING: The compliance package was being created.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
 func (s GetAggregateCompliancePackResponseBodyCompliancePack) String() string {
@@ -6654,6 +6691,11 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetStatus(v strin
 	return s
 }
 
+func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetTemplateContent(v string) *GetAggregateCompliancePackResponseBodyCompliancePack {
+	s.TemplateContent = &v
+	return s
+}
+
 type GetAggregateCompliancePackResponseBodyCompliancePackConfigRules struct {
 	// The rule ID.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
@@ -6661,13 +6703,13 @@ type GetAggregateCompliancePackResponseBodyCompliancePackConfigRules struct {
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The input parameters of the rule.
 	ConfigRuleParameters []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The identifier of the managed rule.
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	// The types of the resources evaluated based on the rule. Multiple resource types are separated with commas (,).
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
 	// *   1: high
 	// *   2: medium
@@ -6725,8 +6767,8 @@ type GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRulePa
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 	// Indicates whether the input parameter is required. Valid values:
 	//
-	// *   true: The input parameter is required.
-	// *   false: The input parameter is optional.
+	// *   true
+	// *   false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -6800,9 +6842,9 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetTagValueS
 }
 
 type GetAggregateCompliancePackResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateCompliancePackResponse) String() string {
@@ -6933,9 +6975,9 @@ func (s *GetAggregateCompliancePackReportResponseBodyCompliancePackReport) SetRe
 }
 
 type GetAggregateCompliancePackReportResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateCompliancePackReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateCompliancePackReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateCompliancePackReportResponse) String() string {
@@ -7108,9 +7150,9 @@ func (s *GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSum
 }
 
 type GetAggregateComplianceSummaryResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateComplianceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateComplianceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateComplianceSummaryResponse) String() string {
@@ -7347,9 +7389,9 @@ func (s *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel) SetStatus
 }
 
 type GetAggregateConfigDeliveryChannelResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateConfigDeliveryChannelResponse) String() string {
@@ -8005,9 +8047,9 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMes
 }
 
 type GetAggregateConfigRuleResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponse) String() string {
@@ -8164,9 +8206,9 @@ func (s *GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceR
 }
 
 type GetAggregateConfigRuleComplianceByPackResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateConfigRuleComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateConfigRuleComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateConfigRuleComplianceByPackResponse) String() string {
@@ -8274,9 +8316,9 @@ func (s *GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries
 }
 
 type GetAggregateConfigRuleSummaryByRiskLevelResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateConfigRuleSummaryByRiskLevelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateConfigRuleSummaryByRiskLevelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateConfigRuleSummaryByRiskLevelResponse) String() string {
@@ -8412,9 +8454,9 @@ func (s *GetAggregateConfigRulesReportResponseBodyConfigRulesReport) SetReportUr
 }
 
 type GetAggregateConfigRulesReportResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateConfigRulesReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateConfigRulesReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateConfigRulesReportResponse) String() string {
@@ -8449,8 +8491,8 @@ type GetAggregateDiscoveredResourceRequest struct {
 	//
 	// For more information about how to query the ID of a region in which the resource resides, see [ListAggregateDiscoveredResources](~~411691~~).
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 账号组内待查询资源所属的阿里云账号ID。
-	// > 参数ResourceAccountId和ResourceOwnerId必须设置其中一个，推荐使用本参数。
+	// The ID of the Alibaba Cloud account to which the resources in the account group belong.
+	// > You can use either the `ResourceAccountId` or `ResourceOwnerId` parameter. We recommend that you use the ResourceAccountId parameter.
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// The resource ID.
 	//
@@ -8622,9 +8664,9 @@ func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) Set
 }
 
 type GetAggregateDiscoveredResourceResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateDiscoveredResourceResponse) String() string {
@@ -8788,9 +8830,9 @@ func (s *GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResultC
 }
 
 type GetAggregateResourceComplianceByConfigRuleResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceComplianceByConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceComplianceByConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceByConfigRuleResponse) String() string {
@@ -8903,9 +8945,9 @@ func (s *GetAggregateResourceComplianceByPackResponseBodyResourceComplianceResul
 }
 
 type GetAggregateResourceComplianceByPackResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceByPackResponse) String() string {
@@ -9055,9 +9097,9 @@ func (s *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult
 }
 
 type GetAggregateResourceComplianceGroupByRegionResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceComplianceGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceComplianceGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceGroupByRegionResponse) String() string {
@@ -9207,9 +9249,9 @@ func (s *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyCompliance
 }
 
 type GetAggregateResourceComplianceGroupByResourceTypeResponse struct {
-	Headers    map[string]*string                                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceComplianceGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceComplianceGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceGroupByResourceTypeResponse) String() string {
@@ -9485,9 +9527,9 @@ func (s *GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTim
 }
 
 type GetAggregateResourceComplianceTimelineResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceComplianceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceComplianceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceTimelineResponse) String() string {
@@ -9529,8 +9571,6 @@ type GetAggregateResourceConfigurationTimelineRequest struct {
 	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource in the account group belongs.
-	//
-	// > You can use either the ResourceAccountId or ResourceOwnerId parameter. We recommend that you use the ResourceAccountId parameter.
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// The resource ID.
 	//
@@ -9760,9 +9800,9 @@ func (s *GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurat
 }
 
 type GetAggregateResourceConfigurationTimelineResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceConfigurationTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceConfigurationTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceConfigurationTimelineResponse) String() string {
@@ -9900,9 +9940,9 @@ func (s *GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCo
 }
 
 type GetAggregateResourceCountsGroupByRegionResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceCountsGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceCountsGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByRegionResponse) String() string {
@@ -10038,9 +10078,9 @@ func (s *GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredReso
 }
 
 type GetAggregateResourceCountsGroupByResourceTypeResponse struct {
-	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceCountsGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceCountsGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByResourceTypeResponse) String() string {
@@ -10149,9 +10189,9 @@ func (s *GetAggregateResourceInventoryResponseBodyResourceInventory) SetStatus(v
 }
 
 type GetAggregateResourceInventoryResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregateResourceInventoryResponse) String() string {
@@ -10245,6 +10285,7 @@ type GetAggregatorResponseBodyAggregator struct {
 	AggregatorType *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
 	// The description of the account group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FolderId    *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 }
 
 func (s GetAggregatorResponseBodyAggregator) String() string {
@@ -10300,6 +10341,11 @@ func (s *GetAggregatorResponseBodyAggregator) SetDescription(v string) *GetAggre
 	return s
 }
 
+func (s *GetAggregatorResponseBodyAggregator) SetFolderId(v string) *GetAggregatorResponseBodyAggregator {
+	s.FolderId = &v
+	return s
+}
+
 type GetAggregatorResponseBodyAggregatorAggregatorAccounts struct {
 	// The ID of the member account.
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
@@ -10345,9 +10391,9 @@ func (s *GetAggregatorResponseBodyAggregatorAggregatorAccounts) SetRecorderStatu
 }
 
 type GetAggregatorResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAggregatorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAggregatorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAggregatorResponse) String() string {
@@ -10445,7 +10491,8 @@ type GetCompliancePackResponseBodyCompliancePack struct {
 	//
 	// *   ACTIVE: The compliance package is normal.
 	// *   CREATING: The compliance package is being created.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
 func (s GetCompliancePackResponseBodyCompliancePack) String() string {
@@ -10506,6 +10553,11 @@ func (s *GetCompliancePackResponseBodyCompliancePack) SetStatus(v string) *GetCo
 	return s
 }
 
+func (s *GetCompliancePackResponseBodyCompliancePack) SetTemplateContent(v string) *GetCompliancePackResponseBodyCompliancePack {
+	s.TemplateContent = &v
+	return s
+}
+
 type GetCompliancePackResponseBodyCompliancePackConfigRules struct {
 	// The rule ID.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
@@ -10513,13 +10565,13 @@ type GetCompliancePackResponseBodyCompliancePackConfigRules struct {
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The input parameters of the rule.
 	ConfigRuleParameters []*GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The identifier of the managed rule.
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	// The types of the resources evaluated based on the rule. Multiple resource types are separated with commas (,).
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
 	// *   1: high
 	// *   2: medium
@@ -10577,8 +10629,8 @@ type GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters 
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 	// Indicates whether the input parameter is required. Valid values:
 	//
-	// *   true: The input parameter is required.
-	// *   false: The input parameter is optional.
+	// *   true
+	// *   false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -10652,9 +10704,9 @@ func (s *GetCompliancePackResponseBodyCompliancePackScope) SetTagValueScope(v st
 }
 
 type GetCompliancePackResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCompliancePackResponse) String() string {
@@ -10776,9 +10828,9 @@ func (s *GetCompliancePackReportResponseBodyCompliancePackReport) SetReportUrl(v
 }
 
 type GetCompliancePackReportResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCompliancePackReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCompliancePackReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCompliancePackReportResponse) String() string {
@@ -10933,9 +10985,9 @@ func (s *GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByRes
 }
 
 type GetComplianceSummaryResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetComplianceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetComplianceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetComplianceSummaryResponse) String() string {
@@ -11156,9 +11208,9 @@ func (s *GetConfigDeliveryChannelResponseBodyDeliveryChannel) SetStatus(v int32)
 }
 
 type GetConfigDeliveryChannelResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigDeliveryChannelResponse) String() string {
@@ -11787,9 +11839,9 @@ func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMessageType(
 }
 
 type GetConfigRuleResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigRuleResponse) String() string {
@@ -11937,9 +11989,9 @@ func (s *GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConf
 }
 
 type GetConfigRuleComplianceByPackResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConfigRuleComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigRuleComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigRuleComplianceByPackResponse) String() string {
@@ -12027,9 +12079,9 @@ func (s *GetConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries) SetRisk
 }
 
 type GetConfigRuleSummaryByRiskLevelResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConfigRuleSummaryByRiskLevelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigRuleSummaryByRiskLevelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigRuleSummaryByRiskLevelResponse) String() string {
@@ -12149,9 +12201,9 @@ func (s *GetConfigRulesReportResponseBodyConfigRulesReport) SetReportUrl(v strin
 }
 
 type GetConfigRulesReportResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConfigRulesReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigRulesReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigRulesReportResponse) String() string {
@@ -12233,9 +12285,9 @@ func (s *GetConfigurationRecorderResponseBodyConfigurationRecorder) SetResourceT
 }
 
 type GetConfigurationRecorderResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigurationRecorderResponse) String() string {
@@ -12419,9 +12471,9 @@ func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetTags(v st
 }
 
 type GetDiscoveredResourceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDiscoveredResourceResponse) String() string {
@@ -12527,9 +12579,9 @@ func (s *GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceC
 }
 
 type GetDiscoveredResourceCountsGroupByRegionResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDiscoveredResourceCountsGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDiscoveredResourceCountsGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByRegionResponse) String() string {
@@ -12633,9 +12685,9 @@ func (s *GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredRes
 }
 
 type GetDiscoveredResourceCountsGroupByResourceTypeResponse struct {
-	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDiscoveredResourceCountsGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDiscoveredResourceCountsGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByResourceTypeResponse) String() string {
@@ -12686,7 +12738,11 @@ type GetIntegratedServiceStatusResponseBody struct {
 	//
 	// *   true
 	// *   false
-	Data            *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The types of the integrated events. Separate multiple event types with commas (,). Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: resource change event
+	// *   NonCompliantNotification: non-compliance event
 	IntegratedTypes *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -12716,9 +12772,9 @@ func (s *GetIntegratedServiceStatusResponseBody) SetRequestId(v string) *GetInte
 }
 
 type GetIntegratedServiceStatusResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIntegratedServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIntegratedServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIntegratedServiceStatusResponse) String() string {
@@ -12927,9 +12983,9 @@ func (s *GetManagedRuleResponseBodyManagedRuleSourceDetails) SetMessageType(v st
 }
 
 type GetManagedRuleResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetManagedRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetManagedRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetManagedRuleResponse) String() string {
@@ -13054,9 +13110,9 @@ func (s *GetRemediationTemplateResponseBodyRemediationTemplates) SetTemplateName
 }
 
 type GetRemediationTemplateResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRemediationTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRemediationTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRemediationTemplateResponse) String() string {
@@ -13195,9 +13251,9 @@ func (s *GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliance
 }
 
 type GetResourceComplianceByConfigRuleResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceComplianceByConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceComplianceByConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceComplianceByConfigRuleResponse) String() string {
@@ -13301,9 +13357,9 @@ func (s *GetResourceComplianceByPackResponseBodyResourceComplianceResult) SetTot
 }
 
 type GetResourceComplianceByPackResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceComplianceByPackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceComplianceByPackResponse) String() string {
@@ -13446,9 +13502,9 @@ func (s *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianc
 }
 
 type GetResourceComplianceGroupByRegionResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceComplianceGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceComplianceGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceComplianceGroupByRegionResponse) String() string {
@@ -13591,9 +13647,9 @@ func (s *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultCom
 }
 
 type GetResourceComplianceGroupByResourceTypeResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceComplianceGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceComplianceGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceComplianceGroupByResourceTypeResponse) String() string {
@@ -13839,9 +13895,9 @@ func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComp
 }
 
 type GetResourceComplianceTimelineResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceComplianceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceComplianceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceComplianceTimelineResponse) String() string {
@@ -14103,9 +14159,9 @@ func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeli
 }
 
 type GetResourceConfigurationTimelineResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceConfigurationTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceConfigurationTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceConfigurationTimelineResponse) String() string {
@@ -14192,9 +14248,9 @@ func (s *GetResourceInventoryResponseBodyResourceInventory) SetStatus(v string) 
 }
 
 type GetResourceInventoryResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceInventoryResponse) String() string {
@@ -14289,9 +14345,9 @@ func (s *GetSupportedResourceRelationConfigResponseBodyResourceRelationConfigLis
 }
 
 type GetSupportedResourceRelationConfigResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSupportedResourceRelationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSupportedResourceRelationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSupportedResourceRelationConfigResponse) String() string {
@@ -14487,9 +14543,9 @@ func (s *IgnoreAggregateEvaluationResultsResponseBody) SetRequestId(v string) *I
 }
 
 type IgnoreAggregateEvaluationResultsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IgnoreAggregateEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IgnoreAggregateEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s IgnoreAggregateEvaluationResultsResponse) String() string {
@@ -14665,9 +14721,9 @@ func (s *IgnoreEvaluationResultsResponseBody) SetRequestId(v string) *IgnoreEval
 }
 
 type IgnoreEvaluationResultsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IgnoreEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IgnoreEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s IgnoreEvaluationResultsResponse) String() string {
@@ -14887,9 +14943,9 @@ func (s *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliance
 }
 
 type ListAggregateCompliancePacksResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateCompliancePacksResponse) String() string {
@@ -15124,9 +15180,9 @@ func (s *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels) SetSta
 }
 
 type ListAggregateConfigDeliveryChannelsResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateConfigDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateConfigDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateConfigDeliveryChannelsResponse) String() string {
@@ -15509,9 +15565,9 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEv
 }
 
 type ListAggregateConfigRuleEvaluationResultsResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateConfigRuleEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateConfigRuleEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationResultsResponse) String() string {
@@ -15636,9 +15692,9 @@ func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResult
 }
 
 type ListAggregateConfigRuleEvaluationStatisticsResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateConfigRuleEvaluationStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateConfigRuleEvaluationStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationStatisticsResponse) String() string {
@@ -16064,9 +16120,9 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListTags) SetV
 }
 
 type ListAggregateConfigRulesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateConfigRulesResponse) String() string {
@@ -16102,8 +16158,9 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	// The `token` that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which the resource resides. Separate multiple region IDs with commas (,).
-	Regions           *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources in the account group belong.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// The status of the resource. Valid values:
 	//
 	// *   0: The resource is deleted.
@@ -16336,9 +16393,9 @@ func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesD
 }
 
 type ListAggregateDiscoveredResourcesResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateDiscoveredResourcesResponse) String() string {
@@ -16538,9 +16595,9 @@ func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataR
 }
 
 type ListAggregateRemediationExecutionsResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateRemediationExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateRemediationExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateRemediationExecutionsResponse) String() string {
@@ -16733,9 +16790,9 @@ func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationType(v
 }
 
 type ListAggregateRemediationsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateRemediationsResponse) String() string {
@@ -17070,9 +17127,9 @@ func (s *ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEval
 }
 
 type ListAggregateResourceEvaluationResultsResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateResourceEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateResourceEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateResourceEvaluationResultsResponse) String() string {
@@ -17399,9 +17456,9 @@ func (s *ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRela
 }
 
 type ListAggregateResourceRelationsResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateResourceRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateResourceRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateResourceRelationsResponse) String() string {
@@ -17521,9 +17578,9 @@ func (s *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResu
 }
 
 type ListAggregateResourcesByAdvancedSearchResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregateResourcesByAdvancedSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregateResourcesByAdvancedSearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregateResourcesByAdvancedSearchResponse) String() string {
@@ -17647,6 +17704,7 @@ type ListAggregatorsResponseBodyAggregatorsResultAggregators struct {
 	AggregatorType *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
 	// The description of the account group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FolderId    *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 }
 
 func (s ListAggregatorsResponseBodyAggregatorsResultAggregators) String() string {
@@ -17697,10 +17755,15 @@ func (s *ListAggregatorsResponseBodyAggregatorsResultAggregators) SetDescription
 	return s
 }
 
+func (s *ListAggregatorsResponseBodyAggregatorsResultAggregators) SetFolderId(v string) *ListAggregatorsResponseBodyAggregatorsResultAggregators {
+	s.FolderId = &v
+	return s
+}
+
 type ListAggregatorsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAggregatorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAggregatorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAggregatorsResponse) String() string {
@@ -18018,9 +18081,9 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 }
 
 type ListCompliancePackTemplatesResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCompliancePackTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCompliancePackTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCompliancePackTemplatesResponse) String() string {
@@ -18224,9 +18287,9 @@ func (s *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) Se
 }
 
 type ListCompliancePacksResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCompliancePacksResponse) String() string {
@@ -18445,9 +18508,9 @@ func (s *ListConfigDeliveryChannelsResponseBodyDeliveryChannels) SetStatus(v int
 }
 
 type ListConfigDeliveryChannelsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConfigDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConfigDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConfigDeliveryChannelsResponse) String() string {
@@ -18805,9 +18868,9 @@ func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationR
 }
 
 type ListConfigRuleEvaluationResultsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConfigRuleEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConfigRuleEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationResultsResponse) String() string {
@@ -18905,9 +18968,9 @@ func (s *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetTot
 }
 
 type ListConfigRuleEvaluationStatisticsResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConfigRuleEvaluationStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConfigRuleEvaluationStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationStatisticsResponse) String() string {
@@ -19046,7 +19109,7 @@ func (s *ListConfigRulesResponseBody) SetRequestId(v string) *ListConfigRulesRes
 }
 
 type ListConfigRulesResponseBodyConfigRules struct {
-	// The types of resources evaluated by the rule. Separate multiple resource types with commas (,).
+	// The rule list.
 	ConfigRuleList []*ListConfigRulesResponseBodyConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
 	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -19299,9 +19362,9 @@ func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) SetValue(v st
 }
 
 type ListConfigRulesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConfigRulesResponse) String() string {
@@ -19542,9 +19605,9 @@ func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscovered
 }
 
 type ListDiscoveredResourcesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDiscoveredResourcesResponse) String() string {
@@ -19596,6 +19659,10 @@ func (s *ListIntegratedServiceResponseBody) SetRequestId(v string) *ListIntegrat
 }
 
 type ListIntegratedServiceResponseBodyData struct {
+	// The types of the integrated events. Separate multiple event types with commas (,). Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: resource change event
+	// *   NonCompliantNotification: non-compliance event
 	IntegratedTypes *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
 	// The identifier of the cloud service. Valid values:
 	//
@@ -19641,9 +19708,9 @@ func (s *ListIntegratedServiceResponseBodyData) SetStatus(v bool) *ListIntegrate
 }
 
 type ListIntegratedServiceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIntegratedServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIntegratedServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIntegratedServiceResponse) String() string {
@@ -19895,9 +19962,9 @@ func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleListScope) SetCompli
 }
 
 type ListManagedRulesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListManagedRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListManagedRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListManagedRulesResponse) String() string {
@@ -20095,9 +20162,9 @@ func (s *ListPreManagedRulesResponseBodyManagedRules) SetResourceType(v string) 
 }
 
 type ListPreManagedRulesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPreManagedRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPreManagedRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPreManagedRulesResponse) String() string {
@@ -20279,9 +20346,9 @@ func (s *ListRemediationExecutionsResponseBodyRemediationExecutionDataRemediatio
 }
 
 type ListRemediationExecutionsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRemediationExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRemediationExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRemediationExecutionsResponse) String() string {
@@ -20441,9 +20508,9 @@ func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetTemplateNa
 }
 
 type ListRemediationTemplatesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRemediationTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRemediationTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRemediationTemplatesResponse) String() string {
@@ -20655,9 +20722,9 @@ func (s *ListRemediationsResponseBodyRemediations) SetRemediationType(v string) 
 }
 
 type ListRemediationsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRemediationsResponse) String() string {
@@ -20989,9 +21056,9 @@ func (s *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationRes
 }
 
 type ListResourceEvaluationResultsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceEvaluationResultsResponse) String() string {
@@ -21304,9 +21371,9 @@ func (s *ListResourceRelationsResponseBodyResourceRelationsResourceRelationList)
 }
 
 type ListResourceRelationsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceRelationsResponse) String() string {
@@ -21419,9 +21486,9 @@ func (s *ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) S
 }
 
 type ListResourcesByAdvancedSearchResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourcesByAdvancedSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourcesByAdvancedSearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourcesByAdvancedSearchResponse) String() string {
@@ -21583,9 +21650,9 @@ func (s *ListSupportedProductsResponseBodyProductsResourceTypeList) SetTypePageL
 }
 
 type ListSupportedProductsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSupportedProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSupportedProductsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSupportedProductsResponse) String() string {
@@ -21843,9 +21910,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -21937,9 +22004,9 @@ func (s *PutEvaluationsResponseBody) SetResult(v bool) *PutEvaluationsResponseBo
 }
 
 type PutEvaluationsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PutEvaluationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutEvaluationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutEvaluationsResponse) String() string {
@@ -22099,9 +22166,9 @@ func (s *RevertAggregateEvaluationResultsResponseBody) SetRequestId(v string) *R
 }
 
 type RevertAggregateEvaluationResultsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevertAggregateEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevertAggregateEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevertAggregateEvaluationResultsResponse) String() string {
@@ -22245,9 +22312,9 @@ func (s *RevertEvaluationResultsResponseBody) SetRequestId(v string) *RevertEval
 }
 
 type RevertEvaluationResultsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevertEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevertEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevertEvaluationResultsResponse) String() string {
@@ -22352,9 +22419,9 @@ func (s *StartAggregateConfigRuleEvaluationResponseBody) SetResult(v bool) *Star
 }
 
 type StartAggregateConfigRuleEvaluationResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartAggregateConfigRuleEvaluationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartAggregateConfigRuleEvaluationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartAggregateConfigRuleEvaluationResponse) String() string {
@@ -22447,9 +22514,9 @@ func (s *StartAggregateRemediationResponseBody) SetRequestId(v string) *StartAgg
 }
 
 type StartAggregateRemediationResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartAggregateRemediationResponse) String() string {
@@ -22545,9 +22612,9 @@ func (s *StartConfigRuleEvaluationResponseBody) SetResult(v bool) *StartConfigRu
 }
 
 type StartConfigRuleEvaluationResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartConfigRuleEvaluationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartConfigRuleEvaluationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartConfigRuleEvaluationResponse) String() string {
@@ -22629,9 +22696,9 @@ func (s *StartConfigurationRecorderResponseBodyConfigurationRecorder) SetResourc
 }
 
 type StartConfigurationRecorderResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartConfigurationRecorderResponse) String() string {
@@ -22706,9 +22773,9 @@ func (s *StartRemediationResponseBody) SetRequestId(v string) *StartRemediationR
 }
 
 type StartRemediationResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartRemediationResponse) String() string {
@@ -22763,9 +22830,9 @@ func (s *StopConfigurationRecorderResponseBody) SetStopConfigurationRecorderResu
 }
 
 type StopConfigurationRecorderResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopConfigurationRecorderResponse) String() string {
@@ -22933,9 +23000,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -23037,9 +23104,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -23403,9 +23470,9 @@ func (s *UpdateAggregateCompliancePackResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateAggregateCompliancePackResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAggregateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAggregateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAggregateCompliancePackResponse) String() string {
@@ -23611,9 +23678,9 @@ func (s *UpdateAggregateConfigDeliveryChannelResponseBody) SetRequestId(v string
 }
 
 type UpdateAggregateConfigDeliveryChannelResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAggregateConfigDeliveryChannelResponse) String() string {
@@ -24045,9 +24112,9 @@ func (s *UpdateAggregateConfigRuleResponseBody) SetRequestId(v string) *UpdateAg
 }
 
 type UpdateAggregateConfigRuleResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAggregateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAggregateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAggregateConfigRuleResponse) String() string {
@@ -24177,9 +24244,9 @@ func (s *UpdateAggregateRemediationResponseBody) SetRequestId(v string) *UpdateA
 }
 
 type UpdateAggregateRemediationResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAggregateRemediationResponse) String() string {
@@ -24381,9 +24448,9 @@ func (s *UpdateAggregatorResponseBody) SetRequestId(v string) *UpdateAggregatorR
 }
 
 type UpdateAggregatorResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAggregatorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAggregatorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAggregatorResponse) String() string {
@@ -24729,9 +24796,9 @@ func (s *UpdateCompliancePackResponseBody) SetRequestId(v string) *UpdateComplia
 }
 
 type UpdateCompliancePackResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCompliancePackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCompliancePackResponse) String() string {
@@ -24928,9 +24995,9 @@ func (s *UpdateConfigDeliveryChannelResponseBody) SetRequestId(v string) *Update
 }
 
 type UpdateConfigDeliveryChannelResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateConfigDeliveryChannelResponse) String() string {
@@ -25282,9 +25349,9 @@ func (s *UpdateConfigRuleResponseBody) SetRequestId(v string) *UpdateConfigRuleR
 }
 
 type UpdateConfigRuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateConfigRuleResponse) String() string {
@@ -25384,9 +25451,9 @@ func (s *UpdateConfigurationRecorderResponseBodyConfigurationRecorder) SetResour
 }
 
 type UpdateConfigurationRecorderResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateConfigurationRecorderResponse) String() string {
@@ -25577,9 +25644,9 @@ func (s *UpdateDeliveryChannelResponseBody) SetRequestId(v string) *UpdateDelive
 }
 
 type UpdateDeliveryChannelResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDeliveryChannelResponse) String() string {
@@ -25606,6 +25673,10 @@ func (s *UpdateDeliveryChannelResponse) SetBody(v *UpdateDeliveryChannelResponse
 }
 
 type UpdateIntegratedServiceStatusRequest struct {
+	// The types of the integrated events. Separate multiple event types with commas (,). Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: resource change event
+	// *   NonCompliantNotification: non-compliance event
 	IntegratedTypes *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
 	// The product code of the cloud product. Valid values:
 	//
@@ -25660,9 +25731,9 @@ func (s *UpdateIntegratedServiceStatusResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateIntegratedServiceStatusResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateIntegratedServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIntegratedServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateIntegratedServiceStatusResponse) String() string {
@@ -25790,9 +25861,9 @@ func (s *UpdateRemediationResponseBody) SetRequestId(v string) *UpdateRemediatio
 }
 
 type UpdateRemediationResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRemediationResponse) String() string {
@@ -26381,6 +26452,10 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
+		body["TemplateContent"] = request.TemplateContent
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -26802,6 +26877,10 @@ func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorReques
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -26914,6 +26993,10 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 
 	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
 		body["TagValueScope"] = request.TagValueScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
+		body["TemplateContent"] = request.TemplateContent
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27055,10 +27138,8 @@ func (client *Client) CreateConfigDeliveryChannel(request *CreateConfigDeliveryC
 }
 
 /**
- * ### Limits
- * You can use an ordinary account to create up to 200 rules.
- * ### Usage notes
- * This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
+ * ## Limits
+ * You can use a common account to create up to 200 rules.
  *
  * @param tmpReq CreateConfigRuleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27168,10 +27249,8 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 }
 
 /**
- * ### Limits
- * You can use an ordinary account to create up to 200 rules.
- * ### Usage notes
- * This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
+ * ## Limits
+ * You can use a common account to create up to 200 rules.
  *
  * @param request CreateConfigRuleRequest
  * @return CreateConfigRuleResponse
@@ -29833,7 +29912,11 @@ func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29842,7 +29925,7 @@ func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, ru
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
