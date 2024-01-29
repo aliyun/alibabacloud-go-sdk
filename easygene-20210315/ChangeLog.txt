@@ -1,3 +1,8 @@
+2024-01-29 Version: v1.2.0
+- Support API TagApp.
+- Update API ListTemplatesupdate response param.
+
+
 2024-01-12 Version: v1.1.2
 - Generated golang 2021-03-15 for EasyGene.
 
