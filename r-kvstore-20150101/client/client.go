@@ -16675,6 +16675,7 @@ func (s *ModifyAuditLogConfigResponse) SetBody(v *ModifyAuditLogConfigResponseBo
 }
 
 type ModifyBackupPolicyRequest struct {
+	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// Enables or disables the data flashback feature for the instance. Valid values:
 	//
 	// *   **1**: enables the data flashback feature. You must also enable AOF persistence by setting `appendonly` to `yes` in the parameter settings of the instance. Then, you can use the data flashback feature.
@@ -16715,6 +16716,11 @@ func (s ModifyBackupPolicyRequest) String() string {
 
 func (s ModifyBackupPolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyBackupPolicyRequest) SetBackupRetentionPeriod(v int32) *ModifyBackupPolicyRequest {
+	s.BackupRetentionPeriod = &v
+	return s
 }
 
 func (s *ModifyBackupPolicyRequest) SetEnableBackupLog(v int32) *ModifyBackupPolicyRequest {
@@ -19767,7 +19773,8 @@ type RenewInstanceRequest struct {
 	// *   **false**: disables automatic payment.
 	//
 	// If you select false, you must choose **Expenses** > **Renewal Management** in the top navigation bar. In the left-side navigation pane, click **Orders**. Find the specified order and pay for it.
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The ID of the promotional event or business information.
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The storage capacity of the instance. Unit: MB. When you renew the instance, you can specify this parameter to change specifications of the instance.
@@ -19805,6 +19812,11 @@ func (s RenewInstanceRequest) GoString() string {
 
 func (s *RenewInstanceRequest) SetAutoPay(v bool) *RenewInstanceRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *RenewInstanceRequest) SetAutoRenew(v bool) *RenewInstanceRequest {
+	s.AutoRenew = &v
 	return s
 }
 
@@ -28256,6 +28268,10 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupRetentionPeriod)) {
+		query["BackupRetentionPeriod"] = request.BackupRetentionPeriod
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableBackupLog)) {
 		query["EnableBackupLog"] = request.EnableBackupLog
 	}
@@ -30404,6 +30420,10 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BusinessInfo)) {

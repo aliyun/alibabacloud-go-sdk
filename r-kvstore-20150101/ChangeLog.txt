@@ -1,3 +1,8 @@
+2024-01-30 Version: v3.5.4
+- Update API ModifyBackupPolicyadd BackupRetentionPeriod param.
+- Update API RenewInstanceadd AutoRenew param.
+
+
 2024-01-29 Version: v3.5.3
 - Update API CreateTairInstanceadd SlaveReadOnlyCount param.
 - Update API DescribeBackupsupdate response param.
