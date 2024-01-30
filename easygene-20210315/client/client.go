@@ -1783,6 +1783,81 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 	return s
 }
 
+type DeleteEntityRequest struct {
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+}
+
+func (s DeleteEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEntityRequest) SetEntityType(v string) *DeleteEntityRequest {
+	s.EntityType = &v
+	return s
+}
+
+func (s *DeleteEntityRequest) SetWorkspace(v string) *DeleteEntityRequest {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteEntityResponseBody struct {
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEntityResponseBody) SetHostId(v string) *DeleteEntityResponseBody {
+	s.HostId = &v
+	return s
+}
+
+func (s *DeleteEntityResponseBody) SetRequestId(v string) *DeleteEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEntityResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEntityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEntityResponse) SetHeaders(v map[string]*string) *DeleteEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEntityResponse) SetStatusCode(v int32) *DeleteEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEntityResponse) SetBody(v *DeleteEntityResponseBody) *DeleteEntityResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEntityItemsRequest struct {
 	EntityNames []*string `json:"EntityNames,omitempty" xml:"EntityNames,omitempty" type:"Repeated"`
 	EntityType  *string   `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
@@ -9306,6 +9381,54 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppResponse{}
 	_body, _err := client.DeleteAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEntityWithOptions(request *DeleteEntityRequest, runtime *util.RuntimeOptions) (_result *DeleteEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEntity"),
+		Version:     tea.String("2021-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEntity(request *DeleteEntityRequest) (_result *DeleteEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEntityResponse{}
+	_body, _err := client.DeleteEntityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
