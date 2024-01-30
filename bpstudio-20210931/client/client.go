@@ -12,6 +12,174 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AppFailBackRequest struct {
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+}
+
+func (s AppFailBackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppFailBackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AppFailBackRequest) SetApplicationId(v string) *AppFailBackRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+type AppFailBackResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AppFailBackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppFailBackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AppFailBackResponseBody) SetCode(v string) *AppFailBackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AppFailBackResponseBody) SetData(v int32) *AppFailBackResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AppFailBackResponseBody) SetMessage(v string) *AppFailBackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AppFailBackResponseBody) SetRequestId(v string) *AppFailBackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AppFailBackResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AppFailBackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AppFailBackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppFailBackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AppFailBackResponse) SetHeaders(v map[string]*string) *AppFailBackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AppFailBackResponse) SetStatusCode(v int32) *AppFailBackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AppFailBackResponse) SetBody(v *AppFailBackResponseBody) *AppFailBackResponse {
+	s.Body = v
+	return s
+}
+
+type AppFailOverRequest struct {
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	FailZone      *string `json:"FailZone,omitempty" xml:"FailZone,omitempty"`
+}
+
+func (s AppFailOverRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppFailOverRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AppFailOverRequest) SetApplicationId(v string) *AppFailOverRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *AppFailOverRequest) SetFailZone(v string) *AppFailOverRequest {
+	s.FailZone = &v
+	return s
+}
+
+type AppFailOverResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AppFailOverResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppFailOverResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AppFailOverResponseBody) SetCode(v string) *AppFailOverResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AppFailOverResponseBody) SetData(v int32) *AppFailOverResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AppFailOverResponseBody) SetMessage(v string) *AppFailOverResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AppFailOverResponseBody) SetRequestId(v string) *AppFailOverResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AppFailOverResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AppFailOverResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AppFailOverResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppFailOverResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AppFailOverResponse) SetHeaders(v map[string]*string) *AppFailOverResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AppFailOverResponse) SetStatusCode(v int32) *AppFailOverResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AppFailOverResponse) SetBody(v *AppFailOverResponseBody) *AppFailOverResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
 	// The ID of the new resource group.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
@@ -84,9 +252,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -324,9 +492,9 @@ func (s *CreateApplicationResponseBody) SetRequestId(v string) *CreateApplicatio
 }
 
 type CreateApplicationResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateApplicationResponse) String() string {
@@ -410,9 +578,9 @@ func (s *DeleteApplicationResponseBody) SetRequestId(v string) *DeleteApplicatio
 }
 
 type DeleteApplicationResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteApplicationResponse) String() string {
@@ -503,9 +671,9 @@ func (s *DeployApplicationResponseBody) SetRequestId(v string) *DeployApplicatio
 }
 
 type DeployApplicationResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeployApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeployApplicationResponse) String() string {
@@ -719,9 +887,9 @@ func (s *ExecuteOperationASyncResponseBody) SetRequestId(v string) *ExecuteOpera
 }
 
 type ExecuteOperationASyncResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteOperationASyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteOperationASyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteOperationASyncResponse) String() string {
@@ -1170,9 +1338,9 @@ func (s *GetApplicationResponseBodyDataResourceList) SetStatus(v string) *GetApp
 }
 
 type GetApplicationResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetApplicationResponse) String() string {
@@ -1302,9 +1470,9 @@ func (s *GetExecuteOperationResultResponseBodyData) SetStatus(v string) *GetExec
 }
 
 type GetExecuteOperationResultResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetExecuteOperationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetExecuteOperationResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetExecuteOperationResultResponse) String() string {
@@ -1326,6 +1494,174 @@ func (s *GetExecuteOperationResultResponse) SetStatusCode(v int32) *GetExecuteOp
 }
 
 func (s *GetExecuteOperationResultResponse) SetBody(v *GetExecuteOperationResultResponseBody) *GetExecuteOperationResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetFoTaskStatusRequest struct {
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetFoTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoTaskStatusRequest) SetTaskId(v int32) *GetFoTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetFoTaskStatusResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetFoTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoTaskStatusResponseBody) SetCode(v string) *GetFoTaskStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFoTaskStatusResponseBody) SetData(v string) *GetFoTaskStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetFoTaskStatusResponseBody) SetMessage(v string) *GetFoTaskStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFoTaskStatusResponseBody) SetRequestId(v string) *GetFoTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFoTaskStatusResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFoTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFoTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoTaskStatusResponse) SetHeaders(v map[string]*string) *GetFoTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFoTaskStatusResponse) SetStatusCode(v int32) *GetFoTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFoTaskStatusResponse) SetBody(v *GetFoTaskStatusResponseBody) *GetFoTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetPotentialFailZonesRequest struct {
+	IsPlanId *bool   `json:"IsPlanId,omitempty" xml:"IsPlanId,omitempty"`
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+}
+
+func (s GetPotentialFailZonesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPotentialFailZonesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPotentialFailZonesRequest) SetIsPlanId(v bool) *GetPotentialFailZonesRequest {
+	s.IsPlanId = &v
+	return s
+}
+
+func (s *GetPotentialFailZonesRequest) SetObjectId(v string) *GetPotentialFailZonesRequest {
+	s.ObjectId = &v
+	return s
+}
+
+type GetPotentialFailZonesResponseBody struct {
+	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPotentialFailZonesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPotentialFailZonesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPotentialFailZonesResponseBody) SetCode(v string) *GetPotentialFailZonesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPotentialFailZonesResponseBody) SetData(v []*string) *GetPotentialFailZonesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPotentialFailZonesResponseBody) SetMessage(v string) *GetPotentialFailZonesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPotentialFailZonesResponseBody) SetRequestId(v string) *GetPotentialFailZonesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPotentialFailZonesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPotentialFailZonesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPotentialFailZonesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPotentialFailZonesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPotentialFailZonesResponse) SetHeaders(v map[string]*string) *GetPotentialFailZonesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPotentialFailZonesResponse) SetStatusCode(v int32) *GetPotentialFailZonesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPotentialFailZonesResponse) SetBody(v *GetPotentialFailZonesResponseBody) *GetPotentialFailZonesResponse {
 	s.Body = v
 	return s
 }
@@ -1501,9 +1837,9 @@ func (s *GetTemplateResponseBodyDataVariables) SetVariable(v string) *GetTemplat
 }
 
 type GetTemplateResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTemplateResponse) String() string {
@@ -1640,9 +1976,9 @@ func (s *GetTokenResponseBodyData) SetSnapshotBucket(v string) *GetTokenResponse
 }
 
 type GetTokenResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTokenResponse) String() string {
@@ -1668,6 +2004,87 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 	return s
 }
 
+type InitAppFailOverRequest struct {
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+}
+
+func (s InitAppFailOverRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitAppFailOverRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitAppFailOverRequest) SetApplicationId(v string) *InitAppFailOverRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+type InitAppFailOverResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InitAppFailOverResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitAppFailOverResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitAppFailOverResponseBody) SetCode(v string) *InitAppFailOverResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InitAppFailOverResponseBody) SetData(v int32) *InitAppFailOverResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *InitAppFailOverResponseBody) SetMessage(v string) *InitAppFailOverResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InitAppFailOverResponseBody) SetRequestId(v string) *InitAppFailOverResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InitAppFailOverResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitAppFailOverResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InitAppFailOverResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitAppFailOverResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitAppFailOverResponse) SetHeaders(v map[string]*string) *InitAppFailOverResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitAppFailOverResponse) SetStatusCode(v int32) *InitAppFailOverResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitAppFailOverResponse) SetBody(v *InitAppFailOverResponseBody) *InitAppFailOverResponse {
+	s.Body = v
+	return s
+}
+
 type ListApplicationRequest struct {
 	// Keywords in the app name
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
@@ -1679,8 +2096,10 @@ type ListApplicationRequest struct {
 	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The status of the applications to be returned.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListApplicationRequest) String() string {
@@ -1716,8 +2135,18 @@ func (s *ListApplicationRequest) SetResourceGroupId(v string) *ListApplicationRe
 	return s
 }
 
+func (s *ListApplicationRequest) SetResourceId(v string) *ListApplicationRequest {
+	s.ResourceId = &v
+	return s
+}
+
 func (s *ListApplicationRequest) SetStatus(v string) *ListApplicationRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListApplicationRequest) SetTemplateId(v string) *ListApplicationRequest {
+	s.TemplateId = &v
 	return s
 }
 
@@ -1828,9 +2257,9 @@ func (s *ListApplicationResponseBodyData) SetStatus(v string) *ListApplicationRe
 }
 
 type ListApplicationResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListApplicationResponse) String() string {
@@ -1857,7 +2286,7 @@ func (s *ListApplicationResponse) SetBody(v *ListApplicationResponseBody) *ListA
 }
 
 type ListFoCreatedAppsResponseBody struct {
-	Code    *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data    []*ListFoCreatedAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
@@ -1872,7 +2301,7 @@ func (s ListFoCreatedAppsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListFoCreatedAppsResponseBody) SetCode(v int32) *ListFoCreatedAppsResponseBody {
+func (s *ListFoCreatedAppsResponseBody) SetCode(v string) *ListFoCreatedAppsResponseBody {
 	s.Code = &v
 	return s
 }
@@ -1893,10 +2322,10 @@ func (s *ListFoCreatedAppsResponseBody) SetRequestId(v string) *ListFoCreatedApp
 }
 
 type ListFoCreatedAppsResponseBodyData struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ReportUrl     *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListFoCreatedAppsResponseBodyData) String() string {
@@ -1907,8 +2336,8 @@ func (s ListFoCreatedAppsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListFoCreatedAppsResponseBodyData) SetAppId(v string) *ListFoCreatedAppsResponseBodyData {
-	s.AppId = &v
+func (s *ListFoCreatedAppsResponseBodyData) SetApplicationId(v string) *ListFoCreatedAppsResponseBodyData {
+	s.ApplicationId = &v
 	return s
 }
 
@@ -1928,9 +2357,9 @@ func (s *ListFoCreatedAppsResponseBodyData) SetTitle(v string) *ListFoCreatedApp
 }
 
 type ListFoCreatedAppsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFoCreatedAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFoCreatedAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFoCreatedAppsResponse) String() string {
@@ -2120,9 +2549,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -2328,9 +2757,9 @@ func (s *ListTemplateResponseBodyData) SetTemplateId(v string) *ListTemplateResp
 }
 
 type ListTemplateResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTemplateResponse) String() string {
@@ -2421,9 +2850,9 @@ func (s *ReleaseApplicationResponseBody) SetRequestId(v string) *ReleaseApplicat
 }
 
 type ReleaseApplicationResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseApplicationResponse) String() string {
@@ -2514,9 +2943,9 @@ func (s *ValidateApplicationResponseBody) SetRequestId(v string) *ValidateApplic
 }
 
 type ValidateApplicationResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ValidateApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValidateApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ValidateApplicationResponse) String() string {
@@ -2607,9 +3036,9 @@ func (s *ValuateApplicationResponseBody) SetRequestId(v string) *ValuateApplicat
 }
 
 type ValuateApplicationResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ValuateApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValuateApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ValuateApplicationResponse) String() string {
@@ -2975,9 +3404,9 @@ func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetType(v string)
 }
 
 type ValuateTemplateResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ValuateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValuateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ValuateTemplateResponse) String() string {
@@ -3043,6 +3472,98 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AppFailBackWithOptions(request *AppFailBackRequest, runtime *util.RuntimeOptions) (_result *AppFailBackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AppFailBack"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AppFailBackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AppFailBack(request *AppFailBackRequest) (_result *AppFailBackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AppFailBackResponse{}
+	_body, _err := client.AppFailBackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AppFailOverWithOptions(request *AppFailOverRequest, runtime *util.RuntimeOptions) (_result *AppFailOverResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailZone)) {
+		body["FailZone"] = request.FailZone
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AppFailOver"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AppFailOverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AppFailOver(request *AppFailOverRequest) (_result *AppFailOverResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AppFailOverResponse{}
+	_body, _err := client.AppFailOverWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3461,6 +3982,98 @@ func (client *Client) GetExecuteOperationResult(request *GetExecuteOperationResu
 	return _result, _err
 }
 
+func (client *Client) GetFoTaskStatusWithOptions(request *GetFoTaskStatusRequest, runtime *util.RuntimeOptions) (_result *GetFoTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFoTaskStatus"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFoTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFoTaskStatus(request *GetFoTaskStatusRequest) (_result *GetFoTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFoTaskStatusResponse{}
+	_body, _err := client.GetFoTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPotentialFailZonesWithOptions(request *GetPotentialFailZonesRequest, runtime *util.RuntimeOptions) (_result *GetPotentialFailZonesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsPlanId)) {
+		body["IsPlanId"] = request.IsPlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		body["ObjectId"] = request.ObjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPotentialFailZones"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPotentialFailZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPotentialFailZones(request *GetPotentialFailZonesRequest) (_result *GetPotentialFailZonesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPotentialFailZonesResponse{}
+	_body, _err := client.GetPotentialFailZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3574,6 +4187,50 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	return _result, _err
 }
 
+func (client *Client) InitAppFailOverWithOptions(request *InitAppFailOverRequest, runtime *util.RuntimeOptions) (_result *InitAppFailOverResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitAppFailOver"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitAppFailOverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitAppFailOver(request *InitAppFailOverRequest) (_result *InitAppFailOverResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitAppFailOverResponse{}
+	_body, _err := client.InitAppFailOverWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest, runtime *util.RuntimeOptions) (_result *ListApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3600,8 +4257,16 @@ func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["ResourceId"] = request.ResourceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
 	}
 
 	req := &openapi.OpenApiRequest{
