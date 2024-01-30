@@ -5339,6 +5339,7 @@ type CreateIntegrationRequest struct {
 	IntegrationName        *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
 	IntegrationProductType *string `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
 	RecoverTime            *int64  `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateIntegrationRequest) String() string {
@@ -5371,6 +5372,11 @@ func (s *CreateIntegrationRequest) SetIntegrationProductType(v string) *CreateIn
 
 func (s *CreateIntegrationRequest) SetRecoverTime(v int64) *CreateIntegrationRequest {
 	s.RecoverTime = &v
+	return s
+}
+
+func (s *CreateIntegrationRequest) SetRegionId(v string) *CreateIntegrationRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -16244,6 +16250,7 @@ type DescribeEnvironmentResponseBodyData struct {
 	GrafanaFolderUid *string `json:"GrafanaFolderUid,omitempty" xml:"GrafanaFolderUid,omitempty"`
 	// The URL of the Grafana directory.
 	GrafanaFolderUrl *string `json:"GrafanaFolderUrl,omitempty" xml:"GrafanaFolderUrl,omitempty"`
+	ManagedType      *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// The ID of the Prometheus instance.
 	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
 	// The name of the Prometheus instance.
@@ -16340,6 +16347,11 @@ func (s *DescribeEnvironmentResponseBodyData) SetGrafanaFolderUid(v string) *Des
 
 func (s *DescribeEnvironmentResponseBodyData) SetGrafanaFolderUrl(v string) *DescribeEnvironmentResponseBodyData {
 	s.GrafanaFolderUrl = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetManagedType(v string) *DescribeEnvironmentResponseBodyData {
+	s.ManagedType = &v
 	return s
 }
 
@@ -30327,7 +30339,8 @@ func (s *ListEnvironmentFeaturesResponse) SetBody(v *ListEnvironmentFeaturesResp
 
 type ListEnvironmentsRequest struct {
 	// Name of Addon.
-	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	AddonName      *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
 	// Environment type, AddonName or EnvironmentType must be at least one.
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
 	// The region ID.
@@ -30348,6 +30361,11 @@ func (s ListEnvironmentsRequest) GoString() string {
 
 func (s *ListEnvironmentsRequest) SetAddonName(v string) *ListEnvironmentsRequest {
 	s.AddonName = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetBindResourceId(v string) *ListEnvironmentsRequest {
+	s.BindResourceId = &v
 	return s
 }
 
@@ -30398,7 +30416,8 @@ func (s *ListEnvironmentsRequestTag) SetValue(v string) *ListEnvironmentsRequest
 
 type ListEnvironmentsShrinkRequest struct {
 	// Name of Addon.
-	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	AddonName      *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
 	// Environment type, AddonName or EnvironmentType must be at least one.
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
 	// The region ID.
@@ -30419,6 +30438,11 @@ func (s ListEnvironmentsShrinkRequest) GoString() string {
 
 func (s *ListEnvironmentsShrinkRequest) SetAddonName(v string) *ListEnvironmentsShrinkRequest {
 	s.AddonName = &v
+	return s
+}
+
+func (s *ListEnvironmentsShrinkRequest) SetBindResourceId(v string) *ListEnvironmentsShrinkRequest {
+	s.BindResourceId = &v
 	return s
 }
 
@@ -46260,6 +46284,14 @@ func (client *Client) AddGrafana(request *AddGrafanaRequest) (_result *AddGrafan
 	return _result, _err
 }
 
+/**
+ * @deprecated : AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+ *
+ * @param request AddIntegrationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddIntegrationResponse
+ */
+// Deprecated
 func (client *Client) AddIntegrationWithOptions(request *AddIntegrationRequest, runtime *util.RuntimeOptions) (_result *AddIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46301,6 +46333,13 @@ func (client *Client) AddIntegrationWithOptions(request *AddIntegrationRequest, 
 	return _result, _err
 }
 
+/**
+ * @deprecated : AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+ *
+ * @param request AddIntegrationRequest
+ * @return AddIntegrationResponse
+ */
+// Deprecated
 func (client *Client) AddIntegration(request *AddIntegrationRequest) (_result *AddIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddIntegrationResponse{}
@@ -47884,6 +47923,11 @@ func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoRecover)) {
 		body["AutoRecover"] = request.AutoRecover
@@ -47906,7 +47950,8 @@ func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationReq
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateIntegration"),
@@ -50198,6 +50243,14 @@ func (client *Client) DeleteIMRobot(request *DeleteIMRobotRequest) (_result *Del
 	return _result, _err
 }
 
+/**
+ * @deprecated : DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+ *
+ * @param request DeleteIntegrationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteIntegrationResponse
+ */
+// Deprecated
 func (client *Client) DeleteIntegrationWithOptions(request *DeleteIntegrationRequest, runtime *util.RuntimeOptions) (_result *DeleteIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50239,6 +50292,13 @@ func (client *Client) DeleteIntegrationWithOptions(request *DeleteIntegrationReq
 	return _result, _err
 }
 
+/**
+ * @deprecated : DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+ *
+ * @param request DeleteIntegrationRequest
+ * @return DeleteIntegrationResponse
+ */
+// Deprecated
 func (client *Client) DeleteIntegration(request *DeleteIntegrationRequest) (_result *DeleteIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIntegrationResponse{}
@@ -52282,6 +52342,14 @@ func (client *Client) GetGrafanaWorkspace(request *GetGrafanaWorkspaceRequest) (
 	return _result, _err
 }
 
+/**
+ * @deprecated : GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+ *
+ * @param request GetIntegrationStateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetIntegrationStateResponse
+ */
+// Deprecated
 func (client *Client) GetIntegrationStateWithOptions(request *GetIntegrationStateRequest, runtime *util.RuntimeOptions) (_result *GetIntegrationStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52323,6 +52391,13 @@ func (client *Client) GetIntegrationStateWithOptions(request *GetIntegrationStat
 	return _result, _err
 }
 
+/**
+ * @deprecated : GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+ *
+ * @param request GetIntegrationStateRequest
+ * @return GetIntegrationStateResponse
+ */
+// Deprecated
 func (client *Client) GetIntegrationState(request *GetIntegrationStateRequest) (_result *GetIntegrationStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIntegrationStateResponse{}
@@ -54819,6 +54894,10 @@ func (client *Client) ListEnvironmentsWithOptions(tmpReq *ListEnvironmentsReques
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AddonName)) {
 		query["AddonName"] = request.AddonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindResourceId)) {
+		query["BindResourceId"] = request.BindResourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentType)) {
