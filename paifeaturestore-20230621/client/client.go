@@ -877,6 +877,58 @@ func (s *CreateModelFeatureResponse) SetBody(v *CreateModelFeatureResponseBody) 
 	return s
 }
 
+type CreateModelFeatureTrainingSetFGTableResponseBody struct {
+	TrainingSetFGTableName *string `json:"TrainingSetFGTableName,omitempty" xml:"TrainingSetFGTableName,omitempty"`
+	RequestId              *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateModelFeatureTrainingSetFGTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelFeatureTrainingSetFGTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelFeatureTrainingSetFGTableResponseBody) SetTrainingSetFGTableName(v string) *CreateModelFeatureTrainingSetFGTableResponseBody {
+	s.TrainingSetFGTableName = &v
+	return s
+}
+
+func (s *CreateModelFeatureTrainingSetFGTableResponseBody) SetRequestId(v string) *CreateModelFeatureTrainingSetFGTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateModelFeatureTrainingSetFGTableResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateModelFeatureTrainingSetFGTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateModelFeatureTrainingSetFGTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelFeatureTrainingSetFGTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelFeatureTrainingSetFGTableResponse) SetHeaders(v map[string]*string) *CreateModelFeatureTrainingSetFGTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateModelFeatureTrainingSetFGTableResponse) SetStatusCode(v int32) *CreateModelFeatureTrainingSetFGTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateModelFeatureTrainingSetFGTableResponse) SetBody(v *CreateModelFeatureTrainingSetFGTableResponseBody) *CreateModelFeatureTrainingSetFGTableResponse {
+	s.Body = v
+	return s
+}
+
 type CreateProjectRequest struct {
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1323,6 +1375,104 @@ func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
 }
 
 func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
+	s.Body = v
+	return s
+}
+
+type ExportModelFeatureTrainingSetFGTableRequest struct {
+	TrainingSetFgConfig *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig `json:"TrainingSetFgConfig,omitempty" xml:"TrainingSetFgConfig,omitempty" type:"Struct"`
+}
+
+func (s ExportModelFeatureTrainingSetFGTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportModelFeatureTrainingSetFGTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableRequest) SetTrainingSetFgConfig(v *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) *ExportModelFeatureTrainingSetFGTableRequest {
+	s.TrainingSetFgConfig = v
+	return s
+}
+
+type ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig struct {
+	FgJsonName *string                           `json:"FgJsonName,omitempty" xml:"FgJsonName,omitempty"`
+	JarName    *string                           `json:"JarName,omitempty" xml:"JarName,omitempty"`
+	Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+}
+
+func (s ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) SetFgJsonName(v string) *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig {
+	s.FgJsonName = &v
+	return s
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) SetJarName(v string) *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig {
+	s.JarName = &v
+	return s
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) SetPartitions(v map[string]map[string]interface{}) *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig {
+	s.Partitions = v
+	return s
+}
+
+type ExportModelFeatureTrainingSetFGTableResponseBody struct {
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ExportModelFeatureTrainingSetFGTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportModelFeatureTrainingSetFGTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableResponseBody) SetTaskId(v string) *ExportModelFeatureTrainingSetFGTableResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableResponseBody) SetRequestId(v string) *ExportModelFeatureTrainingSetFGTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportModelFeatureTrainingSetFGTableResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportModelFeatureTrainingSetFGTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportModelFeatureTrainingSetFGTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportModelFeatureTrainingSetFGTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableResponse) SetHeaders(v map[string]*string) *ExportModelFeatureTrainingSetFGTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableResponse) SetStatusCode(v int32) *ExportModelFeatureTrainingSetFGTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportModelFeatureTrainingSetFGTableResponse) SetBody(v *ExportModelFeatureTrainingSetFGTableResponseBody) *ExportModelFeatureTrainingSetFGTableResponse {
 	s.Body = v
 	return s
 }
@@ -2384,6 +2534,316 @@ func (s *GetModelFeatureResponse) SetStatusCode(v int32) *GetModelFeatureRespons
 }
 
 func (s *GetModelFeatureResponse) SetBody(v *GetModelFeatureResponseBody) *GetModelFeatureResponse {
+	s.Body = v
+	return s
+}
+
+type GetModelFeatureFGFeatureResponseBody struct {
+	LookupFeatures   []*GetModelFeatureFGFeatureResponseBodyLookupFeatures   `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
+	RawFeatures      []*GetModelFeatureFGFeatureResponseBodyRawFeatures      `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Reserves         []*string                                               `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
+	SequenceFeatures []*GetModelFeatureFGFeatureResponseBodySequenceFeatures `json:"SequenceFeatures,omitempty" xml:"SequenceFeatures,omitempty" type:"Repeated"`
+}
+
+func (s GetModelFeatureFGFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelFeatureFGFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelFeatureFGFeatureResponseBody) SetLookupFeatures(v []*GetModelFeatureFGFeatureResponseBodyLookupFeatures) *GetModelFeatureFGFeatureResponseBody {
+	s.LookupFeatures = v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBody) SetRawFeatures(v []*GetModelFeatureFGFeatureResponseBodyRawFeatures) *GetModelFeatureFGFeatureResponseBody {
+	s.RawFeatures = v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBody) SetRequestId(v string) *GetModelFeatureFGFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBody) SetReserves(v []*string) *GetModelFeatureFGFeatureResponseBody {
+	s.Reserves = v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBody) SetSequenceFeatures(v []*GetModelFeatureFGFeatureResponseBodySequenceFeatures) *GetModelFeatureFGFeatureResponseBody {
+	s.SequenceFeatures = v
+	return s
+}
+
+type GetModelFeatureFGFeatureResponseBodyLookupFeatures struct {
+	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	KeyFeatureDomain *string `json:"KeyFeatureDomain,omitempty" xml:"KeyFeatureDomain,omitempty"`
+	KeyFeatureName   *string `json:"KeyFeatureName,omitempty" xml:"KeyFeatureName,omitempty"`
+	MapFeatureDomain *string `json:"MapFeatureDomain,omitempty" xml:"MapFeatureDomain,omitempty"`
+	MapFeatureName   *string `json:"MapFeatureName,omitempty" xml:"MapFeatureName,omitempty"`
+	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s GetModelFeatureFGFeatureResponseBodyLookupFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelFeatureFGFeatureResponseBodyLookupFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) SetDefaultValue(v string) *GetModelFeatureFGFeatureResponseBodyLookupFeatures {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) SetFeatureName(v string) *GetModelFeatureFGFeatureResponseBodyLookupFeatures {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) SetKeyFeatureDomain(v string) *GetModelFeatureFGFeatureResponseBodyLookupFeatures {
+	s.KeyFeatureDomain = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) SetKeyFeatureName(v string) *GetModelFeatureFGFeatureResponseBodyLookupFeatures {
+	s.KeyFeatureName = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) SetMapFeatureDomain(v string) *GetModelFeatureFGFeatureResponseBodyLookupFeatures {
+	s.MapFeatureDomain = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) SetMapFeatureName(v string) *GetModelFeatureFGFeatureResponseBodyLookupFeatures {
+	s.MapFeatureName = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) SetValueType(v string) *GetModelFeatureFGFeatureResponseBodyLookupFeatures {
+	s.ValueType = &v
+	return s
+}
+
+type GetModelFeatureFGFeatureResponseBodyRawFeatures struct {
+	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	FeatureDomain    *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	FeatureType      *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
+	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s GetModelFeatureFGFeatureResponseBodyRawFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelFeatureFGFeatureResponseBodyRawFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyRawFeatures) SetDefaultValue(v string) *GetModelFeatureFGFeatureResponseBodyRawFeatures {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyRawFeatures) SetFeatureDomain(v string) *GetModelFeatureFGFeatureResponseBodyRawFeatures {
+	s.FeatureDomain = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyRawFeatures) SetFeatureName(v string) *GetModelFeatureFGFeatureResponseBodyRawFeatures {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyRawFeatures) SetFeatureType(v string) *GetModelFeatureFGFeatureResponseBodyRawFeatures {
+	s.FeatureType = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyRawFeatures) SetInputFeatureName(v string) *GetModelFeatureFGFeatureResponseBodyRawFeatures {
+	s.InputFeatureName = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodyRawFeatures) SetValueType(v string) *GetModelFeatureFGFeatureResponseBodyRawFeatures {
+	s.ValueType = &v
+	return s
+}
+
+type GetModelFeatureFGFeatureResponseBodySequenceFeatures struct {
+	AttributeDelim *string                                                            `json:"AttributeDelim,omitempty" xml:"AttributeDelim,omitempty"`
+	FeatureName    *string                                                            `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	SequenceDelim  *string                                                            `json:"SequenceDelim,omitempty" xml:"SequenceDelim,omitempty"`
+	SequenceLength *int64                                                             `json:"SequenceLength,omitempty" xml:"SequenceLength,omitempty"`
+	SubFeatures    []*GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures `json:"SubFeatures,omitempty" xml:"SubFeatures,omitempty" type:"Repeated"`
+}
+
+func (s GetModelFeatureFGFeatureResponseBodySequenceFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelFeatureFGFeatureResponseBodySequenceFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) SetAttributeDelim(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeatures {
+	s.AttributeDelim = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) SetFeatureName(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeatures {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) SetSequenceDelim(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeatures {
+	s.SequenceDelim = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) SetSequenceLength(v int64) *GetModelFeatureFGFeatureResponseBodySequenceFeatures {
+	s.SequenceLength = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) SetSubFeatures(v []*GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) *GetModelFeatureFGFeatureResponseBodySequenceFeatures {
+	s.SubFeatures = v
+	return s
+}
+
+type GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures struct {
+	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	FeatureDomain    *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	FeatureType      *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
+	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) SetDefaultValue(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) SetFeatureDomain(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures {
+	s.FeatureDomain = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) SetFeatureName(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) SetFeatureType(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures {
+	s.FeatureType = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) SetInputFeatureName(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures {
+	s.InputFeatureName = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) SetValueType(v string) *GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures {
+	s.ValueType = &v
+	return s
+}
+
+type GetModelFeatureFGFeatureResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetModelFeatureFGFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetModelFeatureFGFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelFeatureFGFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelFeatureFGFeatureResponse) SetHeaders(v map[string]*string) *GetModelFeatureFGFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponse) SetStatusCode(v int32) *GetModelFeatureFGFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetModelFeatureFGFeatureResponse) SetBody(v *GetModelFeatureFGFeatureResponseBody) *GetModelFeatureFGFeatureResponse {
+	s.Body = v
+	return s
+}
+
+type GetModelFeatureFGInfoResponseBody struct {
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetModelFeatureFGInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelFeatureFGInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelFeatureFGInfoResponseBody) SetContent(v string) *GetModelFeatureFGInfoResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *GetModelFeatureFGInfoResponseBody) SetRequestId(v string) *GetModelFeatureFGInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetModelFeatureFGInfoResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetModelFeatureFGInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetModelFeatureFGInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelFeatureFGInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelFeatureFGInfoResponse) SetHeaders(v map[string]*string) *GetModelFeatureFGInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetModelFeatureFGInfoResponse) SetStatusCode(v int32) *GetModelFeatureFGInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetModelFeatureFGInfoResponse) SetBody(v *GetModelFeatureFGInfoResponseBody) *GetModelFeatureFGInfoResponse {
 	s.Body = v
 	return s
 }
@@ -4576,6 +5036,116 @@ func (s *ListLabelTablesResponse) SetBody(v *ListLabelTablesResponseBody) *ListL
 	return s
 }
 
+type ListModelFeatureAvailableFeaturesRequest struct {
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+}
+
+func (s ListModelFeatureAvailableFeaturesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelFeatureAvailableFeaturesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelFeatureAvailableFeaturesRequest) SetFeatureName(v string) *ListModelFeatureAvailableFeaturesRequest {
+	s.FeatureName = &v
+	return s
+}
+
+type ListModelFeatureAvailableFeaturesResponseBody struct {
+	AvaliableFeatures []*ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures `json:"AvaliableFeatures,omitempty" xml:"AvaliableFeatures,omitempty" type:"Repeated"`
+	TotalCount        *int64                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId         *string                                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListModelFeatureAvailableFeaturesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelFeatureAvailableFeaturesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponseBody) SetAvaliableFeatures(v []*ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures) *ListModelFeatureAvailableFeaturesResponseBody {
+	s.AvaliableFeatures = v
+	return s
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponseBody) SetTotalCount(v int64) *ListModelFeatureAvailableFeaturesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponseBody) SetRequestId(v string) *ListModelFeatureAvailableFeaturesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures struct {
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures) SetName(v string) *ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures {
+	s.Name = &v
+	return s
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures) SetSourceName(v string) *ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures) SetSourceType(v string) *ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures) SetType(v string) *ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures {
+	s.Type = &v
+	return s
+}
+
+type ListModelFeatureAvailableFeaturesResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListModelFeatureAvailableFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListModelFeatureAvailableFeaturesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelFeatureAvailableFeaturesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponse) SetHeaders(v map[string]*string) *ListModelFeatureAvailableFeaturesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponse) SetStatusCode(v int32) *ListModelFeatureAvailableFeaturesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListModelFeatureAvailableFeaturesResponse) SetBody(v *ListModelFeatureAvailableFeaturesResponseBody) *ListModelFeatureAvailableFeaturesResponse {
+	s.Body = v
+	return s
+}
+
 type ListModelFeaturesRequest struct {
 	ModelFeatureIds []*string `json:"ModelFeatureIds,omitempty" xml:"ModelFeatureIds,omitempty" type:"Repeated"`
 	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -6024,6 +6594,338 @@ func (s *UpdateModelFeatureResponse) SetBody(v *UpdateModelFeatureResponseBody) 
 	return s
 }
 
+type UpdateModelFeatureFGFeatureRequest struct {
+	LookupFeatures   []*UpdateModelFeatureFGFeatureRequestLookupFeatures   `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
+	RawFeatures      []*UpdateModelFeatureFGFeatureRequestRawFeatures      `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	Reserves         []*string                                             `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
+	SequenceFeatures []*UpdateModelFeatureFGFeatureRequestSequenceFeatures `json:"SequenceFeatures,omitempty" xml:"SequenceFeatures,omitempty" type:"Repeated"`
+}
+
+func (s UpdateModelFeatureFGFeatureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGFeatureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGFeatureRequest) SetLookupFeatures(v []*UpdateModelFeatureFGFeatureRequestLookupFeatures) *UpdateModelFeatureFGFeatureRequest {
+	s.LookupFeatures = v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequest) SetRawFeatures(v []*UpdateModelFeatureFGFeatureRequestRawFeatures) *UpdateModelFeatureFGFeatureRequest {
+	s.RawFeatures = v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequest) SetReserves(v []*string) *UpdateModelFeatureFGFeatureRequest {
+	s.Reserves = v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequest) SetSequenceFeatures(v []*UpdateModelFeatureFGFeatureRequestSequenceFeatures) *UpdateModelFeatureFGFeatureRequest {
+	s.SequenceFeatures = v
+	return s
+}
+
+type UpdateModelFeatureFGFeatureRequestLookupFeatures struct {
+	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	KeyFeatureDomain *string `json:"KeyFeatureDomain,omitempty" xml:"KeyFeatureDomain,omitempty"`
+	KeyFeatureName   *string `json:"KeyFeatureName,omitempty" xml:"KeyFeatureName,omitempty"`
+	MapFeatureDomain *string `json:"MapFeatureDomain,omitempty" xml:"MapFeatureDomain,omitempty"`
+	MapFeatureName   *string `json:"MapFeatureName,omitempty" xml:"MapFeatureName,omitempty"`
+	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s UpdateModelFeatureFGFeatureRequestLookupFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGFeatureRequestLookupFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) SetDefaultValue(v string) *UpdateModelFeatureFGFeatureRequestLookupFeatures {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) SetFeatureName(v string) *UpdateModelFeatureFGFeatureRequestLookupFeatures {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) SetKeyFeatureDomain(v string) *UpdateModelFeatureFGFeatureRequestLookupFeatures {
+	s.KeyFeatureDomain = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) SetKeyFeatureName(v string) *UpdateModelFeatureFGFeatureRequestLookupFeatures {
+	s.KeyFeatureName = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) SetMapFeatureDomain(v string) *UpdateModelFeatureFGFeatureRequestLookupFeatures {
+	s.MapFeatureDomain = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) SetMapFeatureName(v string) *UpdateModelFeatureFGFeatureRequestLookupFeatures {
+	s.MapFeatureName = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) SetValueType(v string) *UpdateModelFeatureFGFeatureRequestLookupFeatures {
+	s.ValueType = &v
+	return s
+}
+
+type UpdateModelFeatureFGFeatureRequestRawFeatures struct {
+	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	FeatureDomain    *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	FeatureType      *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
+	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s UpdateModelFeatureFGFeatureRequestRawFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGFeatureRequestRawFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestRawFeatures) SetDefaultValue(v string) *UpdateModelFeatureFGFeatureRequestRawFeatures {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestRawFeatures) SetFeatureDomain(v string) *UpdateModelFeatureFGFeatureRequestRawFeatures {
+	s.FeatureDomain = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestRawFeatures) SetFeatureName(v string) *UpdateModelFeatureFGFeatureRequestRawFeatures {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestRawFeatures) SetFeatureType(v string) *UpdateModelFeatureFGFeatureRequestRawFeatures {
+	s.FeatureType = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestRawFeatures) SetInputFeatureName(v string) *UpdateModelFeatureFGFeatureRequestRawFeatures {
+	s.InputFeatureName = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestRawFeatures) SetValueType(v string) *UpdateModelFeatureFGFeatureRequestRawFeatures {
+	s.ValueType = &v
+	return s
+}
+
+type UpdateModelFeatureFGFeatureRequestSequenceFeatures struct {
+	AttributeDelim *string                                                          `json:"AttributeDelim,omitempty" xml:"AttributeDelim,omitempty"`
+	FeatureName    *string                                                          `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	SequenceDelim  *string                                                          `json:"SequenceDelim,omitempty" xml:"SequenceDelim,omitempty"`
+	SequenceLength *int64                                                           `json:"SequenceLength,omitempty" xml:"SequenceLength,omitempty"`
+	SubFeatures    []*UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures `json:"SubFeatures,omitempty" xml:"SubFeatures,omitempty" type:"Repeated"`
+}
+
+func (s UpdateModelFeatureFGFeatureRequestSequenceFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGFeatureRequestSequenceFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeatures) SetAttributeDelim(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeatures {
+	s.AttributeDelim = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeatures) SetFeatureName(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeatures {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeatures) SetSequenceDelim(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeatures {
+	s.SequenceDelim = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeatures) SetSequenceLength(v int64) *UpdateModelFeatureFGFeatureRequestSequenceFeatures {
+	s.SequenceLength = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeatures) SetSubFeatures(v []*UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) *UpdateModelFeatureFGFeatureRequestSequenceFeatures {
+	s.SubFeatures = v
+	return s
+}
+
+type UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures struct {
+	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	FeatureDomain    *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	FeatureType      *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
+	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) SetDefaultValue(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) SetFeatureDomain(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures {
+	s.FeatureDomain = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) SetFeatureName(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) SetFeatureType(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures {
+	s.FeatureType = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) SetInputFeatureName(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures {
+	s.InputFeatureName = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) SetValueType(v string) *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures {
+	s.ValueType = &v
+	return s
+}
+
+type UpdateModelFeatureFGFeatureResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateModelFeatureFGFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGFeatureResponseBody) SetRequestId(v string) *UpdateModelFeatureFGFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateModelFeatureFGFeatureResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateModelFeatureFGFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateModelFeatureFGFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGFeatureResponse) SetHeaders(v map[string]*string) *UpdateModelFeatureFGFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureResponse) SetStatusCode(v int32) *UpdateModelFeatureFGFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGFeatureResponse) SetBody(v *UpdateModelFeatureFGFeatureResponseBody) *UpdateModelFeatureFGFeatureResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateModelFeatureFGInfoRequest struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s UpdateModelFeatureFGInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGInfoRequest) SetContent(v string) *UpdateModelFeatureFGInfoRequest {
+	s.Content = &v
+	return s
+}
+
+type UpdateModelFeatureFGInfoResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateModelFeatureFGInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGInfoResponseBody) SetRequestId(v string) *UpdateModelFeatureFGInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateModelFeatureFGInfoResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateModelFeatureFGInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateModelFeatureFGInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelFeatureFGInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelFeatureFGInfoResponse) SetHeaders(v map[string]*string) *UpdateModelFeatureFGInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateModelFeatureFGInfoResponse) SetStatusCode(v int32) *UpdateModelFeatureFGInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateModelFeatureFGInfoResponse) SetBody(v *UpdateModelFeatureFGInfoResponseBody) *UpdateModelFeatureFGInfoResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateProjectRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -6791,6 +7693,42 @@ func (client *Client) CreateModelFeature(InstanceId *string, request *CreateMode
 	return _result, _err
 }
 
+func (client *Client) CreateModelFeatureTrainingSetFGTableWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelFeatureTrainingSetFGTableResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateModelFeatureTrainingSetFGTable"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/trainingsetfgtable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateModelFeatureTrainingSetFGTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateModelFeatureTrainingSetFGTable(InstanceId *string, ModelFeatureId *string) (_result *CreateModelFeatureTrainingSetFGTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelFeatureTrainingSetFGTableResponse{}
+	_body, _err := client.CreateModelFeatureTrainingSetFGTableWithOptions(InstanceId, ModelFeatureId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateProjectWithOptions(InstanceId *string, request *CreateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7119,6 +8057,52 @@ func (client *Client) DeleteProject(InstanceId *string, ProjectId *string) (_res
 	return _result, _err
 }
 
+func (client *Client) ExportModelFeatureTrainingSetFGTableWithOptions(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetFGTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExportModelFeatureTrainingSetFGTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TrainingSetFgConfig)) {
+		body["TrainingSetFgConfig"] = request.TrainingSetFgConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportModelFeatureTrainingSetFGTable"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/action/exporttrainingsetfgtable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportModelFeatureTrainingSetFGTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportModelFeatureTrainingSetFGTable(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetFGTableRequest) (_result *ExportModelFeatureTrainingSetFGTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExportModelFeatureTrainingSetFGTableResponse{}
+	_body, _err := client.ExportModelFeatureTrainingSetFGTableWithOptions(InstanceId, ModelFeatureId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ExportModelFeatureTrainingSetTableWithOptions(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExportModelFeatureTrainingSetTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7418,6 +8402,78 @@ func (client *Client) GetModelFeature(InstanceId *string, ModelFeatureId *string
 	headers := make(map[string]*string)
 	_result = &GetModelFeatureResponse{}
 	_body, _err := client.GetModelFeatureWithOptions(InstanceId, ModelFeatureId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetModelFeatureFGFeatureWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelFeatureFGFeatureResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetModelFeatureFGFeature"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/fgfeature"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetModelFeatureFGFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetModelFeatureFGFeature(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureFGFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelFeatureFGFeatureResponse{}
+	_body, _err := client.GetModelFeatureFGFeatureWithOptions(InstanceId, ModelFeatureId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetModelFeatureFGInfoWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelFeatureFGInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetModelFeatureFGInfo"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/fginfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetModelFeatureFGInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetModelFeatureFGInfo(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureFGInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelFeatureFGInfoResponse{}
+	_body, _err := client.GetModelFeatureFGInfoWithOptions(InstanceId, ModelFeatureId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8179,6 +9235,52 @@ func (client *Client) ListLabelTables(InstanceId *string, request *ListLabelTabl
 	return _result, _err
 }
 
+func (client *Client) ListModelFeatureAvailableFeaturesWithOptions(InstanceId *string, ModelFeatureId *string, request *ListModelFeatureAvailableFeaturesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelFeatureAvailableFeaturesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeatureName)) {
+		query["FeatureName"] = request.FeatureName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListModelFeatureAvailableFeatures"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/availablefeatures"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListModelFeatureAvailableFeaturesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListModelFeatureAvailableFeatures(InstanceId *string, ModelFeatureId *string, request *ListModelFeatureAvailableFeaturesRequest) (_result *ListModelFeatureAvailableFeaturesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListModelFeatureAvailableFeaturesResponse{}
+	_body, _err := client.ListModelFeatureAvailableFeaturesWithOptions(InstanceId, ModelFeatureId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListModelFeaturesWithOptions(InstanceId *string, tmpReq *ListModelFeaturesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelFeaturesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -8794,6 +9896,110 @@ func (client *Client) UpdateModelFeature(InstanceId *string, ModelFeatureId *str
 	headers := make(map[string]*string)
 	_result = &UpdateModelFeatureResponse{}
 	_body, _err := client.UpdateModelFeatureWithOptions(InstanceId, ModelFeatureId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateModelFeatureFGFeatureWithOptions(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGFeatureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelFeatureFGFeatureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LookupFeatures)) {
+		body["LookupFeatures"] = request.LookupFeatures
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RawFeatures)) {
+		body["RawFeatures"] = request.RawFeatures
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reserves)) {
+		body["Reserves"] = request.Reserves
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceFeatures)) {
+		body["SequenceFeatures"] = request.SequenceFeatures
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateModelFeatureFGFeature"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/fgfeature"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateModelFeatureFGFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateModelFeatureFGFeature(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGFeatureRequest) (_result *UpdateModelFeatureFGFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateModelFeatureFGFeatureResponse{}
+	_body, _err := client.UpdateModelFeatureFGFeatureWithOptions(InstanceId, ModelFeatureId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateModelFeatureFGInfoWithOptions(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelFeatureFGInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateModelFeatureFGInfo"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/fginfo"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateModelFeatureFGInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateModelFeatureFGInfo(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGInfoRequest) (_result *UpdateModelFeatureFGInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateModelFeatureFGInfoResponse{}
+	_body, _err := client.UpdateModelFeatureFGInfoWithOptions(InstanceId, ModelFeatureId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
