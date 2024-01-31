@@ -41713,6 +41713,7 @@ type UpdateClusterSpecRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AutoPay        *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The destination engine specifications.
@@ -41722,7 +41723,8 @@ type UpdateClusterSpecRequest struct {
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The MSE version.
-	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
+	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
+	PubNetworkFlow *int32  `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 }
 
 func (s UpdateClusterSpecRequest) String() string {
@@ -41735,6 +41737,11 @@ func (s UpdateClusterSpecRequest) GoString() string {
 
 func (s *UpdateClusterSpecRequest) SetAcceptLanguage(v string) *UpdateClusterSpecRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateClusterSpecRequest) SetAutoPay(v bool) *UpdateClusterSpecRequest {
+	s.AutoPay = &v
 	return s
 }
 
@@ -41760,6 +41767,11 @@ func (s *UpdateClusterSpecRequest) SetInstanceId(v string) *UpdateClusterSpecReq
 
 func (s *UpdateClusterSpecRequest) SetMseVersion(v string) *UpdateClusterSpecRequest {
 	s.MseVersion = &v
+	return s
+}
+
+func (s *UpdateClusterSpecRequest) SetPubNetworkFlow(v int32) *UpdateClusterSpecRequest {
+	s.PubNetworkFlow = &v
 	return s
 }
 
@@ -60474,6 +60486,10 @@ func (client *Client) UpdateClusterSpecWithOptions(request *UpdateClusterSpecReq
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
 	}
@@ -60492,6 +60508,10 @@ func (client *Client) UpdateClusterSpecWithOptions(request *UpdateClusterSpecReq
 
 	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
 		query["MseVersion"] = request.MseVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PubNetworkFlow)) {
+		query["PubNetworkFlow"] = request.PubNetworkFlow
 	}
 
 	req := &openapi.OpenApiRequest{
