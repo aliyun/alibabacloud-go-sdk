@@ -1,3 +1,8 @@
+2024-01-31 Version: v5.4.0
+- Support API GetClientSourceIp.
+- Support API OpenComputeEngine.
+
+
 2024-01-15 Version: v5.3.0
 - Generated golang 2020-06-15 for hitsdb.
 
