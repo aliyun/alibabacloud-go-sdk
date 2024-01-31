@@ -11960,9 +11960,11 @@ type DescribePriceResponseBodyOrder struct {
 	// The currency.
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The discount amount of the order.
-	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	DiscountAmount     *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	OptionalPromotions *string `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty"`
 	// The original price of the order.
 	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	PromDetailList *string `json:"PromDetailList,omitempty" xml:"PromDetailList,omitempty"`
 	// The rules of the order.
 	RuleIds *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
 	// Indicates whether the information of the discount is displayed.
@@ -11994,8 +11996,18 @@ func (s *DescribePriceResponseBodyOrder) SetDiscountAmount(v string) *DescribePr
 	return s
 }
 
+func (s *DescribePriceResponseBodyOrder) SetOptionalPromotions(v string) *DescribePriceResponseBodyOrder {
+	s.OptionalPromotions = &v
+	return s
+}
+
 func (s *DescribePriceResponseBodyOrder) SetOriginalAmount(v string) *DescribePriceResponseBodyOrder {
 	s.OriginalAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrder) SetPromDetailList(v string) *DescribePriceResponseBodyOrder {
+	s.PromDetailList = &v
 	return s
 }
 
@@ -18915,7 +18927,8 @@ type RenewDBInstanceRequest struct {
 	// *   **false**: disables automatic payment. You must perform the following operations to pay for the instance: Payment instructions: Log on to the console. In the upper-right corner, click **Billing Management** and select **Billing Management** from the drop-down list. The Billing Management page appears. In the left-side navigation pane, click **Bills**. On the Unpaid tab, click Make a Payment in the Actions column corresponding to the bill you want to pay.
 	//
 	// Default value: **true**.
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The business information.
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -18942,6 +18955,11 @@ func (s RenewDBInstanceRequest) GoString() string {
 
 func (s *RenewDBInstanceRequest) SetAutoPay(v bool) *RenewDBInstanceRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *RenewDBInstanceRequest) SetAutoRenew(v bool) *RenewDBInstanceRequest {
+	s.AutoRenew = &v
 	return s
 }
 
@@ -28630,6 +28648,10 @@ func (client *Client) RenewDBInstanceWithOptions(request *RenewDBInstanceRequest
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BusinessInfo)) {
