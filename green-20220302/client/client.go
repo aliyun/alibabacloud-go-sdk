@@ -294,9 +294,9 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetTe
 }
 
 type DescribeFileModerationResultResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFileModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFileModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponse) String() string {
@@ -439,9 +439,9 @@ func (s *DescribeImageModerationResultResponseBodyDataResult) SetLabel(v string)
 }
 
 type DescribeImageModerationResultResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeImageModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeImageModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeImageModerationResultResponse) String() string {
@@ -628,9 +628,9 @@ func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetRiskWords(v []*st
 }
 
 type DescribeImageResultExtResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeImageResultExtResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeImageResultExtResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeImageResultExtResponse) String() string {
@@ -751,9 +751,9 @@ func (s *DescribeUploadTokenResponseBodyData) SetSecurityToken(v string) *Descri
 }
 
 type DescribeUploadTokenResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUploadTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUploadTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUploadTokenResponse) String() string {
@@ -775,6 +775,168 @@ func (s *DescribeUploadTokenResponse) SetStatusCode(v int32) *DescribeUploadToke
 }
 
 func (s *DescribeUploadTokenResponse) SetBody(v *DescribeUploadTokenResponseBody) *DescribeUploadTokenResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUrlModerationResultRequest struct {
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+}
+
+func (s DescribeUrlModerationResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlModerationResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlModerationResultRequest) SetReqId(v string) *DescribeUrlModerationResultRequest {
+	s.ReqId = &v
+	return s
+}
+
+type DescribeUrlModerationResultResponseBody struct {
+	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeUrlModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                                      `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUrlModerationResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlModerationResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlModerationResultResponseBody) SetCode(v int32) *DescribeUrlModerationResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponseBody) SetData(v *DescribeUrlModerationResultResponseBodyData) *DescribeUrlModerationResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponseBody) SetMsg(v string) *DescribeUrlModerationResultResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponseBody) SetRequestId(v string) *DescribeUrlModerationResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUrlModerationResultResponseBodyData struct {
+	DataId    *string                                               `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ExtraInfo *DescribeUrlModerationResultResponseBodyDataExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	ReqId     *string                                               `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	Result    []*DescribeUrlModerationResultResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUrlModerationResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlModerationResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlModerationResultResponseBodyData) SetDataId(v string) *DescribeUrlModerationResultResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponseBodyData) SetExtraInfo(v *DescribeUrlModerationResultResponseBodyDataExtraInfo) *DescribeUrlModerationResultResponseBodyData {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponseBodyData) SetReqId(v string) *DescribeUrlModerationResultResponseBodyData {
+	s.ReqId = &v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponseBodyData) SetResult(v []*DescribeUrlModerationResultResponseBodyDataResult) *DescribeUrlModerationResultResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type DescribeUrlModerationResultResponseBodyDataExtraInfo struct {
+	IcpNo   *string `json:"IcpNo,omitempty" xml:"IcpNo,omitempty"`
+	IcpType *string `json:"IcpType,omitempty" xml:"IcpType,omitempty"`
+}
+
+func (s DescribeUrlModerationResultResponseBodyDataExtraInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlModerationResultResponseBodyDataExtraInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlModerationResultResponseBodyDataExtraInfo) SetIcpNo(v string) *DescribeUrlModerationResultResponseBodyDataExtraInfo {
+	s.IcpNo = &v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponseBodyDataExtraInfo) SetIcpType(v string) *DescribeUrlModerationResultResponseBodyDataExtraInfo {
+	s.IcpType = &v
+	return s
+}
+
+type DescribeUrlModerationResultResponseBodyDataResult struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s DescribeUrlModerationResultResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlModerationResultResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlModerationResultResponseBodyDataResult) SetConfidence(v float32) *DescribeUrlModerationResultResponseBodyDataResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponseBodyDataResult) SetLabel(v string) *DescribeUrlModerationResultResponseBodyDataResult {
+	s.Label = &v
+	return s
+}
+
+type DescribeUrlModerationResultResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUrlModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUrlModerationResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlModerationResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlModerationResultResponse) SetHeaders(v map[string]*string) *DescribeUrlModerationResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponse) SetStatusCode(v int32) *DescribeUrlModerationResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUrlModerationResultResponse) SetBody(v *DescribeUrlModerationResultResponseBody) *DescribeUrlModerationResultResponse {
 	s.Body = v
 	return s
 }
@@ -856,9 +1018,9 @@ func (s *FileModerationResponseBodyData) SetTaskId(v string) *FileModerationResp
 }
 
 type FileModerationResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FileModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FileModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FileModerationResponse) String() string {
@@ -966,9 +1128,9 @@ func (s *ImageAsyncModerationResponseBodyData) SetReqId(v string) *ImageAsyncMod
 }
 
 type ImageAsyncModerationResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImageAsyncModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageAsyncModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageAsyncModerationResponse) String() string {
@@ -1099,9 +1261,9 @@ func (s *ImageModerationResponseBodyDataResult) SetLabel(v string) *ImageModerat
 }
 
 type ImageModerationResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImageModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageModerationResponse) String() string {
@@ -1221,9 +1383,9 @@ func (s *TextModerationResponseBodyData) SetReason(v string) *TextModerationResp
 }
 
 type TextModerationResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TextModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TextModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TextModerationResponse) String() string {
@@ -1413,9 +1575,9 @@ func (s *TextModerationPlusResponseBodyDataResultCustomizedHit) SetLibName(v str
 }
 
 type TextModerationPlusResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TextModerationPlusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TextModerationPlusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TextModerationPlusResponse) String() string {
@@ -1437,6 +1599,117 @@ func (s *TextModerationPlusResponse) SetStatusCode(v int32) *TextModerationPlusR
 }
 
 func (s *TextModerationPlusResponse) SetBody(v *TextModerationPlusResponseBody) *TextModerationPlusResponse {
+	s.Body = v
+	return s
+}
+
+type UrlAsyncModerationRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s UrlAsyncModerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UrlAsyncModerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UrlAsyncModerationRequest) SetService(v string) *UrlAsyncModerationRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *UrlAsyncModerationRequest) SetServiceParameters(v string) *UrlAsyncModerationRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type UrlAsyncModerationResponseBody struct {
+	Code *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UrlAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg  *string                             `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UrlAsyncModerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UrlAsyncModerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UrlAsyncModerationResponseBody) SetCode(v int32) *UrlAsyncModerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UrlAsyncModerationResponseBody) SetData(v *UrlAsyncModerationResponseBodyData) *UrlAsyncModerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UrlAsyncModerationResponseBody) SetMsg(v string) *UrlAsyncModerationResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *UrlAsyncModerationResponseBody) SetRequestId(v string) *UrlAsyncModerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UrlAsyncModerationResponseBodyData struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ReqId  *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+}
+
+func (s UrlAsyncModerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UrlAsyncModerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UrlAsyncModerationResponseBodyData) SetDataId(v string) *UrlAsyncModerationResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *UrlAsyncModerationResponseBodyData) SetReqId(v string) *UrlAsyncModerationResponseBodyData {
+	s.ReqId = &v
+	return s
+}
+
+type UrlAsyncModerationResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UrlAsyncModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UrlAsyncModerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UrlAsyncModerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UrlAsyncModerationResponse) SetHeaders(v map[string]*string) *UrlAsyncModerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UrlAsyncModerationResponse) SetStatusCode(v int32) *UrlAsyncModerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UrlAsyncModerationResponse) SetBody(v *UrlAsyncModerationResponseBody) *UrlAsyncModerationResponse {
 	s.Body = v
 	return s
 }
@@ -1518,9 +1791,9 @@ func (s *VideoModerationResponseBodyData) SetTaskId(v string) *VideoModerationRe
 }
 
 type VideoModerationResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VideoModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoModerationResponse) String() string {
@@ -1600,9 +1873,9 @@ func (s *VideoModerationCancelResponseBody) SetRequestId(v string) *VideoModerat
 }
 
 type VideoModerationCancelResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VideoModerationCancelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoModerationCancelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoModerationCancelResponse) String() string {
@@ -1979,9 +2252,9 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) Se
 }
 
 type VideoModerationResultResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VideoModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoModerationResultResponse) String() string {
@@ -2084,9 +2357,9 @@ func (s *VoiceModerationResponseBodyData) SetTaskId(v string) *VoiceModerationRe
 }
 
 type VoiceModerationResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VoiceModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceModerationResponse) String() string {
@@ -2166,9 +2439,9 @@ func (s *VoiceModerationCancelResponseBody) SetRequestId(v string) *VoiceModerat
 }
 
 type VoiceModerationCancelResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VoiceModerationCancelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceModerationCancelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceModerationCancelResponse) String() string {
@@ -2372,9 +2645,9 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetUrl(v string) *Vo
 }
 
 type VoiceModerationResultResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VoiceModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceModerationResultResponse) String() string {
@@ -2640,6 +2913,50 @@ func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenRespons
 	return _result, _err
 }
 
+func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUrlModerationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeUrlModerationResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		body["ReqId"] = request.ReqId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUrlModerationResult"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUrlModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUrlModerationResult(request *DescribeUrlModerationResultRequest) (_result *DescribeUrlModerationResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUrlModerationResultResponse{}
+	_body, _err := client.DescribeUrlModerationResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) FileModerationWithOptions(request *FileModerationRequest, runtime *util.RuntimeOptions) (_result *FileModerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2873,6 +3190,54 @@ func (client *Client) TextModerationPlus(request *TextModerationPlusRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &TextModerationPlusResponse{}
 	_body, _err := client.TextModerationPlusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UrlAsyncModerationWithOptions(request *UrlAsyncModerationRequest, runtime *util.RuntimeOptions) (_result *UrlAsyncModerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		query["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		query["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UrlAsyncModeration"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UrlAsyncModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UrlAsyncModeration(request *UrlAsyncModerationRequest) (_result *UrlAsyncModerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UrlAsyncModerationResponse{}
+	_body, _err := client.UrlAsyncModerationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
