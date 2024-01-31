@@ -1041,6 +1041,588 @@ func (s *CreateBranchResponse) SetBody(v *CreateBranchResponseBody) *CreateBranc
 	return s
 }
 
+type CreateCheckRunRequest struct {
+	AccessToken        *string                             `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Annotations        []*CreateCheckRunRequestAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	CompletedAt        *string                             `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	Conclusion         *string                             `json:"conclusion,omitempty" xml:"conclusion,omitempty"`
+	DetailsUrl         *string                             `json:"detailsUrl,omitempty" xml:"detailsUrl,omitempty"`
+	ExternalId         *string                             `json:"externalId,omitempty" xml:"externalId,omitempty"`
+	HeadSha            *string                             `json:"headSha,omitempty" xml:"headSha,omitempty"`
+	Name               *string                             `json:"name,omitempty" xml:"name,omitempty"`
+	Output             *CreateCheckRunRequestOutput        `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	StartedAt          *string                             `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	Status             *string                             `json:"status,omitempty" xml:"status,omitempty"`
+	OrganizationId     *string                             `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string                             `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s CreateCheckRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunRequest) SetAccessToken(v string) *CreateCheckRunRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetAnnotations(v []*CreateCheckRunRequestAnnotations) *CreateCheckRunRequest {
+	s.Annotations = v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetCompletedAt(v string) *CreateCheckRunRequest {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetConclusion(v string) *CreateCheckRunRequest {
+	s.Conclusion = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetDetailsUrl(v string) *CreateCheckRunRequest {
+	s.DetailsUrl = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetExternalId(v string) *CreateCheckRunRequest {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetHeadSha(v string) *CreateCheckRunRequest {
+	s.HeadSha = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetName(v string) *CreateCheckRunRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetOutput(v *CreateCheckRunRequestOutput) *CreateCheckRunRequest {
+	s.Output = v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetStartedAt(v string) *CreateCheckRunRequest {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetStatus(v string) *CreateCheckRunRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetOrganizationId(v string) *CreateCheckRunRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *CreateCheckRunRequest) SetRepositoryIdentity(v string) *CreateCheckRunRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type CreateCheckRunRequestAnnotations struct {
+	AnnotationLevel *string `json:"annotationLevel,omitempty" xml:"annotationLevel,omitempty"`
+	EndColumn       *int64  `json:"endColumn,omitempty" xml:"endColumn,omitempty"`
+	EndLine         *int64  `json:"endLine,omitempty" xml:"endLine,omitempty"`
+	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	RawDetails      *string `json:"rawDetails,omitempty" xml:"rawDetails,omitempty"`
+	StartColumn     *int64  `json:"startColumn,omitempty" xml:"startColumn,omitempty"`
+	StartLine       *int64  `json:"startLine,omitempty" xml:"startLine,omitempty"`
+	Title           *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateCheckRunRequestAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunRequestAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetAnnotationLevel(v string) *CreateCheckRunRequestAnnotations {
+	s.AnnotationLevel = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetEndColumn(v int64) *CreateCheckRunRequestAnnotations {
+	s.EndColumn = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetEndLine(v int64) *CreateCheckRunRequestAnnotations {
+	s.EndLine = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetMessage(v string) *CreateCheckRunRequestAnnotations {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetPath(v string) *CreateCheckRunRequestAnnotations {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetRawDetails(v string) *CreateCheckRunRequestAnnotations {
+	s.RawDetails = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetStartColumn(v int64) *CreateCheckRunRequestAnnotations {
+	s.StartColumn = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetStartLine(v int64) *CreateCheckRunRequestAnnotations {
+	s.StartLine = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestAnnotations) SetTitle(v string) *CreateCheckRunRequestAnnotations {
+	s.Title = &v
+	return s
+}
+
+type CreateCheckRunRequestOutput struct {
+	Images  []*CreateCheckRunRequestOutputImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Summary *string                              `json:"summary,omitempty" xml:"summary,omitempty"`
+	Text    *string                              `json:"text,omitempty" xml:"text,omitempty"`
+	Title   *string                              `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateCheckRunRequestOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunRequestOutput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunRequestOutput) SetImages(v []*CreateCheckRunRequestOutputImages) *CreateCheckRunRequestOutput {
+	s.Images = v
+	return s
+}
+
+func (s *CreateCheckRunRequestOutput) SetSummary(v string) *CreateCheckRunRequestOutput {
+	s.Summary = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestOutput) SetText(v string) *CreateCheckRunRequestOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestOutput) SetTitle(v string) *CreateCheckRunRequestOutput {
+	s.Title = &v
+	return s
+}
+
+type CreateCheckRunRequestOutputImages struct {
+	Alt      *string `json:"alt,omitempty" xml:"alt,omitempty"`
+	Caption  *string `json:"caption,omitempty" xml:"caption,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+}
+
+func (s CreateCheckRunRequestOutputImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunRequestOutputImages) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunRequestOutputImages) SetAlt(v string) *CreateCheckRunRequestOutputImages {
+	s.Alt = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestOutputImages) SetCaption(v string) *CreateCheckRunRequestOutputImages {
+	s.Caption = &v
+	return s
+}
+
+func (s *CreateCheckRunRequestOutputImages) SetImageUrl(v string) *CreateCheckRunRequestOutputImages {
+	s.ImageUrl = &v
+	return s
+}
+
+type CreateCheckRunResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateCheckRunResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateCheckRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunResponseBody) SetErrorCode(v string) *CreateCheckRunResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBody) SetErrorMessage(v string) *CreateCheckRunResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBody) SetRequestId(v string) *CreateCheckRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBody) SetResult(v *CreateCheckRunResponseBodyResult) *CreateCheckRunResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateCheckRunResponseBody) SetSuccess(v bool) *CreateCheckRunResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCheckRunResponseBodyResult struct {
+	Annotations []*CreateCheckRunResponseBodyResultAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	CheckSuite  *CreateCheckRunResponseBodyResultCheckSuite    `json:"checkSuite,omitempty" xml:"checkSuite,omitempty" type:"Struct"`
+	CompletedAt *string                                        `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	Conclusion  *string                                        `json:"conclusion,omitempty" xml:"conclusion,omitempty"`
+	CreatedAt   *string                                        `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DetailsUrl  *string                                        `json:"detailsUrl,omitempty" xml:"detailsUrl,omitempty"`
+	ExternalId  *string                                        `json:"externalId,omitempty" xml:"externalId,omitempty"`
+	HeadSha     *string                                        `json:"headSha,omitempty" xml:"headSha,omitempty"`
+	Id          *int64                                         `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	Output      *CreateCheckRunResponseBodyResultOutput        `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	StartedAt   *string                                        `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	Status      *string                                        `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt   *string                                        `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	Writer      *CreateCheckRunResponseBodyResultWriter        `json:"writer,omitempty" xml:"writer,omitempty" type:"Struct"`
+}
+
+func (s CreateCheckRunResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetAnnotations(v []*CreateCheckRunResponseBodyResultAnnotations) *CreateCheckRunResponseBodyResult {
+	s.Annotations = v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetCheckSuite(v *CreateCheckRunResponseBodyResultCheckSuite) *CreateCheckRunResponseBodyResult {
+	s.CheckSuite = v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetCompletedAt(v string) *CreateCheckRunResponseBodyResult {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetConclusion(v string) *CreateCheckRunResponseBodyResult {
+	s.Conclusion = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetCreatedAt(v string) *CreateCheckRunResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetDetailsUrl(v string) *CreateCheckRunResponseBodyResult {
+	s.DetailsUrl = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetExternalId(v string) *CreateCheckRunResponseBodyResult {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetHeadSha(v string) *CreateCheckRunResponseBodyResult {
+	s.HeadSha = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetId(v int64) *CreateCheckRunResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetName(v string) *CreateCheckRunResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetOutput(v *CreateCheckRunResponseBodyResultOutput) *CreateCheckRunResponseBodyResult {
+	s.Output = v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetStartedAt(v string) *CreateCheckRunResponseBodyResult {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetStatus(v string) *CreateCheckRunResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetUpdatedAt(v string) *CreateCheckRunResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResult) SetWriter(v *CreateCheckRunResponseBodyResultWriter) *CreateCheckRunResponseBodyResult {
+	s.Writer = v
+	return s
+}
+
+type CreateCheckRunResponseBodyResultAnnotations struct {
+	AnnotationLevel *string `json:"annotationLevel,omitempty" xml:"annotationLevel,omitempty"`
+	EndColumn       *int64  `json:"endColumn,omitempty" xml:"endColumn,omitempty"`
+	EndLine         *int64  `json:"endLine,omitempty" xml:"endLine,omitempty"`
+	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	RawDetails      *string `json:"rawDetails,omitempty" xml:"rawDetails,omitempty"`
+	StartColumn     *int64  `json:"startColumn,omitempty" xml:"startColumn,omitempty"`
+	StartLine       *int64  `json:"startLine,omitempty" xml:"startLine,omitempty"`
+	Title           *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateCheckRunResponseBodyResultAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunResponseBodyResultAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetAnnotationLevel(v string) *CreateCheckRunResponseBodyResultAnnotations {
+	s.AnnotationLevel = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetEndColumn(v int64) *CreateCheckRunResponseBodyResultAnnotations {
+	s.EndColumn = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetEndLine(v int64) *CreateCheckRunResponseBodyResultAnnotations {
+	s.EndLine = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetId(v int64) *CreateCheckRunResponseBodyResultAnnotations {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetMessage(v string) *CreateCheckRunResponseBodyResultAnnotations {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetPath(v string) *CreateCheckRunResponseBodyResultAnnotations {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetRawDetails(v string) *CreateCheckRunResponseBodyResultAnnotations {
+	s.RawDetails = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetStartColumn(v int64) *CreateCheckRunResponseBodyResultAnnotations {
+	s.StartColumn = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetStartLine(v int64) *CreateCheckRunResponseBodyResultAnnotations {
+	s.StartLine = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultAnnotations) SetTitle(v string) *CreateCheckRunResponseBodyResultAnnotations {
+	s.Title = &v
+	return s
+}
+
+type CreateCheckRunResponseBodyResultCheckSuite struct {
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s CreateCheckRunResponseBodyResultCheckSuite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunResponseBodyResultCheckSuite) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunResponseBodyResultCheckSuite) SetId(v int64) *CreateCheckRunResponseBodyResultCheckSuite {
+	s.Id = &v
+	return s
+}
+
+type CreateCheckRunResponseBodyResultOutput struct {
+	Images  []*CreateCheckRunResponseBodyResultOutputImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Summary *string                                         `json:"summary,omitempty" xml:"summary,omitempty"`
+	Text    *string                                         `json:"text,omitempty" xml:"text,omitempty"`
+	Title   *string                                         `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateCheckRunResponseBodyResultOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunResponseBodyResultOutput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunResponseBodyResultOutput) SetImages(v []*CreateCheckRunResponseBodyResultOutputImages) *CreateCheckRunResponseBodyResultOutput {
+	s.Images = v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultOutput) SetSummary(v string) *CreateCheckRunResponseBodyResultOutput {
+	s.Summary = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultOutput) SetText(v string) *CreateCheckRunResponseBodyResultOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultOutput) SetTitle(v string) *CreateCheckRunResponseBodyResultOutput {
+	s.Title = &v
+	return s
+}
+
+type CreateCheckRunResponseBodyResultOutputImages struct {
+	Alt      *string `json:"alt,omitempty" xml:"alt,omitempty"`
+	Caption  *string `json:"caption,omitempty" xml:"caption,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+}
+
+func (s CreateCheckRunResponseBodyResultOutputImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunResponseBodyResultOutputImages) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunResponseBodyResultOutputImages) SetAlt(v string) *CreateCheckRunResponseBodyResultOutputImages {
+	s.Alt = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultOutputImages) SetCaption(v string) *CreateCheckRunResponseBodyResultOutputImages {
+	s.Caption = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultOutputImages) SetImageUrl(v string) *CreateCheckRunResponseBodyResultOutputImages {
+	s.ImageUrl = &v
+	return s
+}
+
+type CreateCheckRunResponseBodyResultWriter struct {
+	Id      *string `json:"id,omitempty" xml:"id,omitempty"`
+	LogoUrl *string `json:"logoUrl,omitempty" xml:"logoUrl,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Slug    *string `json:"slug,omitempty" xml:"slug,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateCheckRunResponseBodyResultWriter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunResponseBodyResultWriter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunResponseBodyResultWriter) SetId(v string) *CreateCheckRunResponseBodyResultWriter {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultWriter) SetLogoUrl(v string) *CreateCheckRunResponseBodyResultWriter {
+	s.LogoUrl = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultWriter) SetName(v string) *CreateCheckRunResponseBodyResultWriter {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultWriter) SetSlug(v string) *CreateCheckRunResponseBodyResultWriter {
+	s.Slug = &v
+	return s
+}
+
+func (s *CreateCheckRunResponseBodyResultWriter) SetType(v string) *CreateCheckRunResponseBodyResultWriter {
+	s.Type = &v
+	return s
+}
+
+type CreateCheckRunResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCheckRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCheckRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCheckRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCheckRunResponse) SetHeaders(v map[string]*string) *CreateCheckRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCheckRunResponse) SetStatusCode(v int32) *CreateCheckRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCheckRunResponse) SetBody(v *CreateCheckRunResponseBody) *CreateCheckRunResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCommitStatusRequest struct {
 	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	Context            *string `json:"context,omitempty" xml:"context,omitempty"`
@@ -10915,6 +11497,405 @@ func (s *GetBranchInfoResponse) SetBody(v *GetBranchInfoResponseBody) *GetBranch
 	return s
 }
 
+type GetCheckRunRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	CheckRunId         *int64  `json:"checkRunId,omitempty" xml:"checkRunId,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s GetCheckRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunRequest) SetAccessToken(v string) *GetCheckRunRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetCheckRunRequest) SetCheckRunId(v int64) *GetCheckRunRequest {
+	s.CheckRunId = &v
+	return s
+}
+
+func (s *GetCheckRunRequest) SetOrganizationId(v string) *GetCheckRunRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetCheckRunRequest) SetRepositoryIdentity(v string) *GetCheckRunRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type GetCheckRunResponseBody struct {
+	ErrorCode    *string                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                        `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetCheckRunResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetCheckRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunResponseBody) SetErrorCode(v string) *GetCheckRunResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBody) SetErrorMessage(v string) *GetCheckRunResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBody) SetRequestId(v string) *GetCheckRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBody) SetResult(v *GetCheckRunResponseBodyResult) *GetCheckRunResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetCheckRunResponseBody) SetSuccess(v bool) *GetCheckRunResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCheckRunResponseBodyResult struct {
+	Annotations []*GetCheckRunResponseBodyResultAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	CheckSuite  *GetCheckRunResponseBodyResultCheckSuite    `json:"checkSuite,omitempty" xml:"checkSuite,omitempty" type:"Struct"`
+	CompletedAt *string                                     `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	Conclusion  *string                                     `json:"conclusion,omitempty" xml:"conclusion,omitempty"`
+	CreatedAt   *string                                     `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DetailsUrl  *string                                     `json:"detailsUrl,omitempty" xml:"detailsUrl,omitempty"`
+	ExternalId  *string                                     `json:"externalId,omitempty" xml:"externalId,omitempty"`
+	HeadSha     *string                                     `json:"headSha,omitempty" xml:"headSha,omitempty"`
+	Id          *int64                                      `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string                                     `json:"name,omitempty" xml:"name,omitempty"`
+	Output      *GetCheckRunResponseBodyResultOutput        `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	StartedAt   *string                                     `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	Status      *string                                     `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt   *string                                     `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	Writer      *GetCheckRunResponseBodyResultWriter        `json:"writer,omitempty" xml:"writer,omitempty" type:"Struct"`
+}
+
+func (s GetCheckRunResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunResponseBodyResult) SetAnnotations(v []*GetCheckRunResponseBodyResultAnnotations) *GetCheckRunResponseBodyResult {
+	s.Annotations = v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetCheckSuite(v *GetCheckRunResponseBodyResultCheckSuite) *GetCheckRunResponseBodyResult {
+	s.CheckSuite = v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetCompletedAt(v string) *GetCheckRunResponseBodyResult {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetConclusion(v string) *GetCheckRunResponseBodyResult {
+	s.Conclusion = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetCreatedAt(v string) *GetCheckRunResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetDetailsUrl(v string) *GetCheckRunResponseBodyResult {
+	s.DetailsUrl = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetExternalId(v string) *GetCheckRunResponseBodyResult {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetHeadSha(v string) *GetCheckRunResponseBodyResult {
+	s.HeadSha = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetId(v int64) *GetCheckRunResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetName(v string) *GetCheckRunResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetOutput(v *GetCheckRunResponseBodyResultOutput) *GetCheckRunResponseBodyResult {
+	s.Output = v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetStartedAt(v string) *GetCheckRunResponseBodyResult {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetStatus(v string) *GetCheckRunResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetUpdatedAt(v string) *GetCheckRunResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResult) SetWriter(v *GetCheckRunResponseBodyResultWriter) *GetCheckRunResponseBodyResult {
+	s.Writer = v
+	return s
+}
+
+type GetCheckRunResponseBodyResultAnnotations struct {
+	AnnotationLevel *string `json:"annotationLevel,omitempty" xml:"annotationLevel,omitempty"`
+	EndColumn       *int64  `json:"endColumn,omitempty" xml:"endColumn,omitempty"`
+	EndLine         *int64  `json:"endLine,omitempty" xml:"endLine,omitempty"`
+	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	RawDetails      *string `json:"rawDetails,omitempty" xml:"rawDetails,omitempty"`
+	StartColumn     *int64  `json:"startColumn,omitempty" xml:"startColumn,omitempty"`
+	StartLine       *int64  `json:"startLine,omitempty" xml:"startLine,omitempty"`
+	Title           *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s GetCheckRunResponseBodyResultAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunResponseBodyResultAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetAnnotationLevel(v string) *GetCheckRunResponseBodyResultAnnotations {
+	s.AnnotationLevel = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetEndColumn(v int64) *GetCheckRunResponseBodyResultAnnotations {
+	s.EndColumn = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetEndLine(v int64) *GetCheckRunResponseBodyResultAnnotations {
+	s.EndLine = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetId(v int64) *GetCheckRunResponseBodyResultAnnotations {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetMessage(v string) *GetCheckRunResponseBodyResultAnnotations {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetPath(v string) *GetCheckRunResponseBodyResultAnnotations {
+	s.Path = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetRawDetails(v string) *GetCheckRunResponseBodyResultAnnotations {
+	s.RawDetails = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetStartColumn(v int64) *GetCheckRunResponseBodyResultAnnotations {
+	s.StartColumn = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetStartLine(v int64) *GetCheckRunResponseBodyResultAnnotations {
+	s.StartLine = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultAnnotations) SetTitle(v string) *GetCheckRunResponseBodyResultAnnotations {
+	s.Title = &v
+	return s
+}
+
+type GetCheckRunResponseBodyResultCheckSuite struct {
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s GetCheckRunResponseBodyResultCheckSuite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunResponseBodyResultCheckSuite) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunResponseBodyResultCheckSuite) SetId(v int64) *GetCheckRunResponseBodyResultCheckSuite {
+	s.Id = &v
+	return s
+}
+
+type GetCheckRunResponseBodyResultOutput struct {
+	Images  []*GetCheckRunResponseBodyResultOutputImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Summary *string                                      `json:"summary,omitempty" xml:"summary,omitempty"`
+	Text    *string                                      `json:"text,omitempty" xml:"text,omitempty"`
+	Title   *string                                      `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s GetCheckRunResponseBodyResultOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunResponseBodyResultOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunResponseBodyResultOutput) SetImages(v []*GetCheckRunResponseBodyResultOutputImages) *GetCheckRunResponseBodyResultOutput {
+	s.Images = v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultOutput) SetSummary(v string) *GetCheckRunResponseBodyResultOutput {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultOutput) SetText(v string) *GetCheckRunResponseBodyResultOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultOutput) SetTitle(v string) *GetCheckRunResponseBodyResultOutput {
+	s.Title = &v
+	return s
+}
+
+type GetCheckRunResponseBodyResultOutputImages struct {
+	Alt      *string `json:"alt,omitempty" xml:"alt,omitempty"`
+	Caption  *string `json:"caption,omitempty" xml:"caption,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+}
+
+func (s GetCheckRunResponseBodyResultOutputImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunResponseBodyResultOutputImages) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunResponseBodyResultOutputImages) SetAlt(v string) *GetCheckRunResponseBodyResultOutputImages {
+	s.Alt = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultOutputImages) SetCaption(v string) *GetCheckRunResponseBodyResultOutputImages {
+	s.Caption = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultOutputImages) SetImageUrl(v string) *GetCheckRunResponseBodyResultOutputImages {
+	s.ImageUrl = &v
+	return s
+}
+
+type GetCheckRunResponseBodyResultWriter struct {
+	Id      *string `json:"id,omitempty" xml:"id,omitempty"`
+	LogoUrl *string `json:"logoUrl,omitempty" xml:"logoUrl,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Slug    *string `json:"slug,omitempty" xml:"slug,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetCheckRunResponseBodyResultWriter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunResponseBodyResultWriter) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunResponseBodyResultWriter) SetId(v string) *GetCheckRunResponseBodyResultWriter {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultWriter) SetLogoUrl(v string) *GetCheckRunResponseBodyResultWriter {
+	s.LogoUrl = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultWriter) SetName(v string) *GetCheckRunResponseBodyResultWriter {
+	s.Name = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultWriter) SetSlug(v string) *GetCheckRunResponseBodyResultWriter {
+	s.Slug = &v
+	return s
+}
+
+func (s *GetCheckRunResponseBodyResultWriter) SetType(v string) *GetCheckRunResponseBodyResultWriter {
+	s.Type = &v
+	return s
+}
+
+type GetCheckRunResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCheckRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCheckRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckRunResponse) SetHeaders(v map[string]*string) *GetCheckRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCheckRunResponse) SetStatusCode(v int32) *GetCheckRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCheckRunResponse) SetBody(v *GetCheckRunResponseBody) *GetCheckRunResponse {
+	s.Body = v
+	return s
+}
+
 type GetCodeupOrganizationRequest struct {
 	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 }
@@ -19805,6 +20786,417 @@ func (s *ListApplicationsResponse) SetStatusCode(v int32) *ListApplicationsRespo
 }
 
 func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *ListApplicationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCheckRunsRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page               *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Ref                *string `json:"ref,omitempty" xml:"ref,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s ListCheckRunsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsRequest) SetAccessToken(v string) *ListCheckRunsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListCheckRunsRequest) SetOrganizationId(v string) *ListCheckRunsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListCheckRunsRequest) SetPage(v int64) *ListCheckRunsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListCheckRunsRequest) SetPageSize(v int64) *ListCheckRunsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckRunsRequest) SetRef(v string) *ListCheckRunsRequest {
+	s.Ref = &v
+	return s
+}
+
+func (s *ListCheckRunsRequest) SetRepositoryIdentity(v string) *ListCheckRunsRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type ListCheckRunsResponseBody struct {
+	ErrorCode    *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListCheckRunsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListCheckRunsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsResponseBody) SetErrorCode(v string) *ListCheckRunsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBody) SetErrorMessage(v string) *ListCheckRunsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBody) SetRequestId(v string) *ListCheckRunsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBody) SetResult(v []*ListCheckRunsResponseBodyResult) *ListCheckRunsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListCheckRunsResponseBody) SetSuccess(v bool) *ListCheckRunsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCheckRunsResponseBodyResult struct {
+	Annotations []*ListCheckRunsResponseBodyResultAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	CheckSuite  *ListCheckRunsResponseBodyResultCheckSuite    `json:"checkSuite,omitempty" xml:"checkSuite,omitempty" type:"Struct"`
+	CompletedAt *string                                       `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	Conclusion  *string                                       `json:"conclusion,omitempty" xml:"conclusion,omitempty"`
+	CreatedAt   *string                                       `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DetailsUrl  *string                                       `json:"detailsUrl,omitempty" xml:"detailsUrl,omitempty"`
+	ExternalId  *string                                       `json:"externalId,omitempty" xml:"externalId,omitempty"`
+	HeadSha     *string                                       `json:"headSha,omitempty" xml:"headSha,omitempty"`
+	Id          *int64                                        `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+	Output      *ListCheckRunsResponseBodyResultOutput        `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	StartedAt   *string                                       `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	Status      *string                                       `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt   *string                                       `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	Writer      *ListCheckRunsResponseBodyResultWriter        `json:"writer,omitempty" xml:"writer,omitempty" type:"Struct"`
+}
+
+func (s ListCheckRunsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetAnnotations(v []*ListCheckRunsResponseBodyResultAnnotations) *ListCheckRunsResponseBodyResult {
+	s.Annotations = v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetCheckSuite(v *ListCheckRunsResponseBodyResultCheckSuite) *ListCheckRunsResponseBodyResult {
+	s.CheckSuite = v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetCompletedAt(v string) *ListCheckRunsResponseBodyResult {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetConclusion(v string) *ListCheckRunsResponseBodyResult {
+	s.Conclusion = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetCreatedAt(v string) *ListCheckRunsResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetDetailsUrl(v string) *ListCheckRunsResponseBodyResult {
+	s.DetailsUrl = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetExternalId(v string) *ListCheckRunsResponseBodyResult {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetHeadSha(v string) *ListCheckRunsResponseBodyResult {
+	s.HeadSha = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetId(v int64) *ListCheckRunsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetName(v string) *ListCheckRunsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetOutput(v *ListCheckRunsResponseBodyResultOutput) *ListCheckRunsResponseBodyResult {
+	s.Output = v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetStartedAt(v string) *ListCheckRunsResponseBodyResult {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetStatus(v string) *ListCheckRunsResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetUpdatedAt(v string) *ListCheckRunsResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResult) SetWriter(v *ListCheckRunsResponseBodyResultWriter) *ListCheckRunsResponseBodyResult {
+	s.Writer = v
+	return s
+}
+
+type ListCheckRunsResponseBodyResultAnnotations struct {
+	AnnotationLevel *string `json:"annotationLevel,omitempty" xml:"annotationLevel,omitempty"`
+	EndColumn       *int64  `json:"endColumn,omitempty" xml:"endColumn,omitempty"`
+	EndLine         *int64  `json:"endLine,omitempty" xml:"endLine,omitempty"`
+	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	RawDetails      *string `json:"rawDetails,omitempty" xml:"rawDetails,omitempty"`
+	StartColumn     *int64  `json:"startColumn,omitempty" xml:"startColumn,omitempty"`
+	StartLine       *int64  `json:"startLine,omitempty" xml:"startLine,omitempty"`
+	Title           *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s ListCheckRunsResponseBodyResultAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsResponseBodyResultAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetAnnotationLevel(v string) *ListCheckRunsResponseBodyResultAnnotations {
+	s.AnnotationLevel = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetEndColumn(v int64) *ListCheckRunsResponseBodyResultAnnotations {
+	s.EndColumn = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetEndLine(v int64) *ListCheckRunsResponseBodyResultAnnotations {
+	s.EndLine = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetId(v int64) *ListCheckRunsResponseBodyResultAnnotations {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetMessage(v string) *ListCheckRunsResponseBodyResultAnnotations {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetPath(v string) *ListCheckRunsResponseBodyResultAnnotations {
+	s.Path = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetRawDetails(v string) *ListCheckRunsResponseBodyResultAnnotations {
+	s.RawDetails = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetStartColumn(v int64) *ListCheckRunsResponseBodyResultAnnotations {
+	s.StartColumn = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetStartLine(v int64) *ListCheckRunsResponseBodyResultAnnotations {
+	s.StartLine = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultAnnotations) SetTitle(v string) *ListCheckRunsResponseBodyResultAnnotations {
+	s.Title = &v
+	return s
+}
+
+type ListCheckRunsResponseBodyResultCheckSuite struct {
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s ListCheckRunsResponseBodyResultCheckSuite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsResponseBodyResultCheckSuite) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsResponseBodyResultCheckSuite) SetId(v int64) *ListCheckRunsResponseBodyResultCheckSuite {
+	s.Id = &v
+	return s
+}
+
+type ListCheckRunsResponseBodyResultOutput struct {
+	Images  []*ListCheckRunsResponseBodyResultOutputImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Summary *string                                        `json:"summary,omitempty" xml:"summary,omitempty"`
+	Text    *string                                        `json:"text,omitempty" xml:"text,omitempty"`
+	Title   *string                                        `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s ListCheckRunsResponseBodyResultOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsResponseBodyResultOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsResponseBodyResultOutput) SetImages(v []*ListCheckRunsResponseBodyResultOutputImages) *ListCheckRunsResponseBodyResultOutput {
+	s.Images = v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultOutput) SetSummary(v string) *ListCheckRunsResponseBodyResultOutput {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultOutput) SetText(v string) *ListCheckRunsResponseBodyResultOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultOutput) SetTitle(v string) *ListCheckRunsResponseBodyResultOutput {
+	s.Title = &v
+	return s
+}
+
+type ListCheckRunsResponseBodyResultOutputImages struct {
+	Alt      *string `json:"alt,omitempty" xml:"alt,omitempty"`
+	Caption  *string `json:"caption,omitempty" xml:"caption,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+}
+
+func (s ListCheckRunsResponseBodyResultOutputImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsResponseBodyResultOutputImages) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsResponseBodyResultOutputImages) SetAlt(v string) *ListCheckRunsResponseBodyResultOutputImages {
+	s.Alt = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultOutputImages) SetCaption(v string) *ListCheckRunsResponseBodyResultOutputImages {
+	s.Caption = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultOutputImages) SetImageUrl(v string) *ListCheckRunsResponseBodyResultOutputImages {
+	s.ImageUrl = &v
+	return s
+}
+
+type ListCheckRunsResponseBodyResultWriter struct {
+	Id      *string `json:"id,omitempty" xml:"id,omitempty"`
+	LogoUrl *string `json:"logoUrl,omitempty" xml:"logoUrl,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Slug    *string `json:"slug,omitempty" xml:"slug,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListCheckRunsResponseBodyResultWriter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsResponseBodyResultWriter) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsResponseBodyResultWriter) SetId(v string) *ListCheckRunsResponseBodyResultWriter {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultWriter) SetLogoUrl(v string) *ListCheckRunsResponseBodyResultWriter {
+	s.LogoUrl = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultWriter) SetName(v string) *ListCheckRunsResponseBodyResultWriter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultWriter) SetSlug(v string) *ListCheckRunsResponseBodyResultWriter {
+	s.Slug = &v
+	return s
+}
+
+func (s *ListCheckRunsResponseBodyResultWriter) SetType(v string) *ListCheckRunsResponseBodyResultWriter {
+	s.Type = &v
+	return s
+}
+
+type ListCheckRunsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCheckRunsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCheckRunsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckRunsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckRunsResponse) SetHeaders(v map[string]*string) *ListCheckRunsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCheckRunsResponse) SetStatusCode(v int32) *ListCheckRunsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCheckRunsResponse) SetBody(v *ListCheckRunsResponseBody) *ListCheckRunsResponse {
 	s.Body = v
 	return s
 }
@@ -34212,6 +35604,588 @@ func (s *UpdateApplicationResponse) SetBody(v *UpdateApplicationResponseBody) *U
 	return s
 }
 
+type UpdateCheckRunRequest struct {
+	AccessToken        *string                             `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Annotations        []*UpdateCheckRunRequestAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	CompletedAt        *string                             `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	Conclusion         *string                             `json:"conclusion,omitempty" xml:"conclusion,omitempty"`
+	DetailsUrl         *string                             `json:"detailsUrl,omitempty" xml:"detailsUrl,omitempty"`
+	ExternalId         *string                             `json:"externalId,omitempty" xml:"externalId,omitempty"`
+	Name               *string                             `json:"name,omitempty" xml:"name,omitempty"`
+	Output             *UpdateCheckRunRequestOutput        `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	StartedAt          *string                             `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	Status             *string                             `json:"status,omitempty" xml:"status,omitempty"`
+	CheckRunId         *int64                              `json:"checkRunId,omitempty" xml:"checkRunId,omitempty"`
+	OrganizationId     *string                             `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string                             `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s UpdateCheckRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunRequest) SetAccessToken(v string) *UpdateCheckRunRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetAnnotations(v []*UpdateCheckRunRequestAnnotations) *UpdateCheckRunRequest {
+	s.Annotations = v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetCompletedAt(v string) *UpdateCheckRunRequest {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetConclusion(v string) *UpdateCheckRunRequest {
+	s.Conclusion = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetDetailsUrl(v string) *UpdateCheckRunRequest {
+	s.DetailsUrl = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetExternalId(v string) *UpdateCheckRunRequest {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetName(v string) *UpdateCheckRunRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetOutput(v *UpdateCheckRunRequestOutput) *UpdateCheckRunRequest {
+	s.Output = v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetStartedAt(v string) *UpdateCheckRunRequest {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetStatus(v string) *UpdateCheckRunRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetCheckRunId(v int64) *UpdateCheckRunRequest {
+	s.CheckRunId = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetOrganizationId(v string) *UpdateCheckRunRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequest) SetRepositoryIdentity(v string) *UpdateCheckRunRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type UpdateCheckRunRequestAnnotations struct {
+	AnnotationLevel *string `json:"annotationLevel,omitempty" xml:"annotationLevel,omitempty"`
+	EndColumn       *int64  `json:"endColumn,omitempty" xml:"endColumn,omitempty"`
+	EndLine         *int64  `json:"endLine,omitempty" xml:"endLine,omitempty"`
+	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	RawDetails      *string `json:"rawDetails,omitempty" xml:"rawDetails,omitempty"`
+	StartColumn     *int64  `json:"startColumn,omitempty" xml:"startColumn,omitempty"`
+	StartLine       *int64  `json:"startLine,omitempty" xml:"startLine,omitempty"`
+	Title           *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s UpdateCheckRunRequestAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunRequestAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetAnnotationLevel(v string) *UpdateCheckRunRequestAnnotations {
+	s.AnnotationLevel = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetEndColumn(v int64) *UpdateCheckRunRequestAnnotations {
+	s.EndColumn = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetEndLine(v int64) *UpdateCheckRunRequestAnnotations {
+	s.EndLine = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetMessage(v string) *UpdateCheckRunRequestAnnotations {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetPath(v string) *UpdateCheckRunRequestAnnotations {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetRawDetails(v string) *UpdateCheckRunRequestAnnotations {
+	s.RawDetails = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetStartColumn(v int64) *UpdateCheckRunRequestAnnotations {
+	s.StartColumn = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetStartLine(v int64) *UpdateCheckRunRequestAnnotations {
+	s.StartLine = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestAnnotations) SetTitle(v string) *UpdateCheckRunRequestAnnotations {
+	s.Title = &v
+	return s
+}
+
+type UpdateCheckRunRequestOutput struct {
+	Images  []*UpdateCheckRunRequestOutputImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Summary *string                              `json:"summary,omitempty" xml:"summary,omitempty"`
+	Text    *string                              `json:"text,omitempty" xml:"text,omitempty"`
+	Title   *string                              `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s UpdateCheckRunRequestOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunRequestOutput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunRequestOutput) SetImages(v []*UpdateCheckRunRequestOutputImages) *UpdateCheckRunRequestOutput {
+	s.Images = v
+	return s
+}
+
+func (s *UpdateCheckRunRequestOutput) SetSummary(v string) *UpdateCheckRunRequestOutput {
+	s.Summary = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestOutput) SetText(v string) *UpdateCheckRunRequestOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestOutput) SetTitle(v string) *UpdateCheckRunRequestOutput {
+	s.Title = &v
+	return s
+}
+
+type UpdateCheckRunRequestOutputImages struct {
+	Alt      *string `json:"alt,omitempty" xml:"alt,omitempty"`
+	Caption  *string `json:"caption,omitempty" xml:"caption,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+}
+
+func (s UpdateCheckRunRequestOutputImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunRequestOutputImages) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunRequestOutputImages) SetAlt(v string) *UpdateCheckRunRequestOutputImages {
+	s.Alt = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestOutputImages) SetCaption(v string) *UpdateCheckRunRequestOutputImages {
+	s.Caption = &v
+	return s
+}
+
+func (s *UpdateCheckRunRequestOutputImages) SetImageUrl(v string) *UpdateCheckRunRequestOutputImages {
+	s.ImageUrl = &v
+	return s
+}
+
+type UpdateCheckRunResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdateCheckRunResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateCheckRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunResponseBody) SetErrorCode(v string) *UpdateCheckRunResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBody) SetErrorMessage(v string) *UpdateCheckRunResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBody) SetRequestId(v string) *UpdateCheckRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBody) SetResult(v *UpdateCheckRunResponseBodyResult) *UpdateCheckRunResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBody) SetSuccess(v bool) *UpdateCheckRunResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCheckRunResponseBodyResult struct {
+	Annotations []*UpdateCheckRunResponseBodyResultAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	CheckSuite  *UpdateCheckRunResponseBodyResultCheckSuite    `json:"checkSuite,omitempty" xml:"checkSuite,omitempty" type:"Struct"`
+	CompletedAt *string                                        `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	Conclusion  *string                                        `json:"conclusion,omitempty" xml:"conclusion,omitempty"`
+	CreatedAt   *string                                        `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DetailsUrl  *string                                        `json:"detailsUrl,omitempty" xml:"detailsUrl,omitempty"`
+	ExternalId  *string                                        `json:"externalId,omitempty" xml:"externalId,omitempty"`
+	HeadSha     *string                                        `json:"headSha,omitempty" xml:"headSha,omitempty"`
+	Id          *int64                                         `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	Output      *UpdateCheckRunResponseBodyResultOutput        `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	StartedAt   *string                                        `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	Status      *string                                        `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt   *string                                        `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	Writer      *UpdateCheckRunResponseBodyResultWriter        `json:"writer,omitempty" xml:"writer,omitempty" type:"Struct"`
+}
+
+func (s UpdateCheckRunResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetAnnotations(v []*UpdateCheckRunResponseBodyResultAnnotations) *UpdateCheckRunResponseBodyResult {
+	s.Annotations = v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetCheckSuite(v *UpdateCheckRunResponseBodyResultCheckSuite) *UpdateCheckRunResponseBodyResult {
+	s.CheckSuite = v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetCompletedAt(v string) *UpdateCheckRunResponseBodyResult {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetConclusion(v string) *UpdateCheckRunResponseBodyResult {
+	s.Conclusion = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetCreatedAt(v string) *UpdateCheckRunResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetDetailsUrl(v string) *UpdateCheckRunResponseBodyResult {
+	s.DetailsUrl = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetExternalId(v string) *UpdateCheckRunResponseBodyResult {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetHeadSha(v string) *UpdateCheckRunResponseBodyResult {
+	s.HeadSha = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetId(v int64) *UpdateCheckRunResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetName(v string) *UpdateCheckRunResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetOutput(v *UpdateCheckRunResponseBodyResultOutput) *UpdateCheckRunResponseBodyResult {
+	s.Output = v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetStartedAt(v string) *UpdateCheckRunResponseBodyResult {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetStatus(v string) *UpdateCheckRunResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetUpdatedAt(v string) *UpdateCheckRunResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResult) SetWriter(v *UpdateCheckRunResponseBodyResultWriter) *UpdateCheckRunResponseBodyResult {
+	s.Writer = v
+	return s
+}
+
+type UpdateCheckRunResponseBodyResultAnnotations struct {
+	AnnotationLevel *string `json:"annotationLevel,omitempty" xml:"annotationLevel,omitempty"`
+	EndColumn       *int64  `json:"endColumn,omitempty" xml:"endColumn,omitempty"`
+	EndLine         *int64  `json:"endLine,omitempty" xml:"endLine,omitempty"`
+	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	RawDetails      *string `json:"rawDetails,omitempty" xml:"rawDetails,omitempty"`
+	StartColumn     *int64  `json:"startColumn,omitempty" xml:"startColumn,omitempty"`
+	StartLine       *int64  `json:"startLine,omitempty" xml:"startLine,omitempty"`
+	Title           *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s UpdateCheckRunResponseBodyResultAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunResponseBodyResultAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetAnnotationLevel(v string) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.AnnotationLevel = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetEndColumn(v int64) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.EndColumn = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetEndLine(v int64) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.EndLine = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetId(v int64) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetMessage(v string) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetPath(v string) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetRawDetails(v string) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.RawDetails = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetStartColumn(v int64) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.StartColumn = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetStartLine(v int64) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.StartLine = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultAnnotations) SetTitle(v string) *UpdateCheckRunResponseBodyResultAnnotations {
+	s.Title = &v
+	return s
+}
+
+type UpdateCheckRunResponseBodyResultCheckSuite struct {
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s UpdateCheckRunResponseBodyResultCheckSuite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunResponseBodyResultCheckSuite) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunResponseBodyResultCheckSuite) SetId(v int64) *UpdateCheckRunResponseBodyResultCheckSuite {
+	s.Id = &v
+	return s
+}
+
+type UpdateCheckRunResponseBodyResultOutput struct {
+	Images  []*UpdateCheckRunResponseBodyResultOutputImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Summary *string                                         `json:"summary,omitempty" xml:"summary,omitempty"`
+	Text    *string                                         `json:"text,omitempty" xml:"text,omitempty"`
+	Title   *string                                         `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s UpdateCheckRunResponseBodyResultOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunResponseBodyResultOutput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunResponseBodyResultOutput) SetImages(v []*UpdateCheckRunResponseBodyResultOutputImages) *UpdateCheckRunResponseBodyResultOutput {
+	s.Images = v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultOutput) SetSummary(v string) *UpdateCheckRunResponseBodyResultOutput {
+	s.Summary = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultOutput) SetText(v string) *UpdateCheckRunResponseBodyResultOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultOutput) SetTitle(v string) *UpdateCheckRunResponseBodyResultOutput {
+	s.Title = &v
+	return s
+}
+
+type UpdateCheckRunResponseBodyResultOutputImages struct {
+	Alt      *string `json:"alt,omitempty" xml:"alt,omitempty"`
+	Caption  *string `json:"caption,omitempty" xml:"caption,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+}
+
+func (s UpdateCheckRunResponseBodyResultOutputImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunResponseBodyResultOutputImages) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunResponseBodyResultOutputImages) SetAlt(v string) *UpdateCheckRunResponseBodyResultOutputImages {
+	s.Alt = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultOutputImages) SetCaption(v string) *UpdateCheckRunResponseBodyResultOutputImages {
+	s.Caption = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultOutputImages) SetImageUrl(v string) *UpdateCheckRunResponseBodyResultOutputImages {
+	s.ImageUrl = &v
+	return s
+}
+
+type UpdateCheckRunResponseBodyResultWriter struct {
+	Id      *string `json:"id,omitempty" xml:"id,omitempty"`
+	LogoUrl *string `json:"logoUrl,omitempty" xml:"logoUrl,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Slug    *string `json:"slug,omitempty" xml:"slug,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateCheckRunResponseBodyResultWriter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunResponseBodyResultWriter) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunResponseBodyResultWriter) SetId(v string) *UpdateCheckRunResponseBodyResultWriter {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultWriter) SetLogoUrl(v string) *UpdateCheckRunResponseBodyResultWriter {
+	s.LogoUrl = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultWriter) SetName(v string) *UpdateCheckRunResponseBodyResultWriter {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultWriter) SetSlug(v string) *UpdateCheckRunResponseBodyResultWriter {
+	s.Slug = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponseBodyResultWriter) SetType(v string) *UpdateCheckRunResponseBodyResultWriter {
+	s.Type = &v
+	return s
+}
+
+type UpdateCheckRunResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCheckRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCheckRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckRunResponse) SetHeaders(v map[string]*string) *UpdateCheckRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCheckRunResponse) SetStatusCode(v int32) *UpdateCheckRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCheckRunResponse) SetBody(v *UpdateCheckRunResponseBody) *UpdateCheckRunResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFileRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	BranchName     *string `json:"branchName,omitempty" xml:"branchName,omitempty"`
@@ -39849,6 +41823,102 @@ func (client *Client) CreateBranch(repositoryId *string, request *CreateBranchRe
 	return _result, _err
 }
 
+func (client *Client) CreateCheckRunWithOptions(request *CreateCheckRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCheckRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Annotations)) {
+		body["annotations"] = request.Annotations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompletedAt)) {
+		body["completedAt"] = request.CompletedAt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Conclusion)) {
+		body["conclusion"] = request.Conclusion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetailsUrl)) {
+		body["detailsUrl"] = request.DetailsUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalId)) {
+		body["externalId"] = request.ExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HeadSha)) {
+		body["headSha"] = request.HeadSha
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		body["output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartedAt)) {
+		body["startedAt"] = request.StartedAt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCheckRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/check_runs/create_check_run"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCheckRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCheckRun(request *CreateCheckRunRequest) (_result *CreateCheckRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCheckRunResponse{}
+	_body, _err := client.CreateCheckRunWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateCommitStatusWithOptions(request *CreateCommitStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCommitStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43383,6 +45453,64 @@ func (client *Client) GetBranchInfo(repositoryId *string, request *GetBranchInfo
 	return _result, _err
 }
 
+func (client *Client) GetCheckRunWithOptions(request *GetCheckRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCheckRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckRunId)) {
+		query["checkRunId"] = request.CheckRunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCheckRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/check_runs/get_check_run"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCheckRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCheckRun(request *GetCheckRunRequest) (_result *GetCheckRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCheckRunResponse{}
+	_body, _err := client.GetCheckRunWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCodeupOrganizationWithOptions(identity *string, request *GetCodeupOrganizationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCodeupOrganizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45450,6 +47578,72 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListApplicationsResponse{}
 	_body, _err := client.ListApplicationsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCheckRunsWithOptions(request *ListCheckRunsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCheckRunsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ref)) {
+		query["ref"] = request.Ref
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCheckRuns"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/check_runs/list_check_runs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCheckRunsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCheckRuns(request *ListCheckRunsRequest) (_result *ListCheckRunsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCheckRunsResponse{}
+	_body, _err := client.ListCheckRunsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49674,6 +51868,102 @@ func (client *Client) UpdateApplication(appName *string, request *UpdateApplicat
 	headers := make(map[string]*string)
 	_result = &UpdateApplicationResponse{}
 	_body, _err := client.UpdateApplicationWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCheckRunWithOptions(request *UpdateCheckRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCheckRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckRunId)) {
+		query["checkRunId"] = request.CheckRunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Annotations)) {
+		body["annotations"] = request.Annotations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompletedAt)) {
+		body["completedAt"] = request.CompletedAt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Conclusion)) {
+		body["conclusion"] = request.Conclusion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetailsUrl)) {
+		body["detailsUrl"] = request.DetailsUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalId)) {
+		body["externalId"] = request.ExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		body["output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartedAt)) {
+		body["startedAt"] = request.StartedAt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCheckRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/check_runs/update_check_run"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCheckRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCheckRun(request *UpdateCheckRunRequest) (_result *UpdateCheckRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateCheckRunResponse{}
+	_body, _err := client.UpdateCheckRunWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
