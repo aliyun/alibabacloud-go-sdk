@@ -1,3 +1,7 @@
+2024-01-31 Version: v2.2.1
+- Update API DescribeAppsupdate response param.
+
+
 2024-01-02 Version: v2.2.0
 - Generated golang 2018-01-11 for rtc.
 
