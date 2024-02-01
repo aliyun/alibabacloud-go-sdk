@@ -31374,7 +31374,7 @@ type ListUserKeysResponseBodyResult struct {
 	KeyScope     *string `json:"keyScope,omitempty" xml:"keyScope,omitempty"`
 	LastUsedTime *string `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
 	PublicKey    *string `json:"publicKey,omitempty" xml:"publicKey,omitempty"`
-	Tittle       *string `json:"tittle,omitempty" xml:"tittle,omitempty"`
+	Title        *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListUserKeysResponseBodyResult) String() string {
@@ -31420,8 +31420,8 @@ func (s *ListUserKeysResponseBodyResult) SetPublicKey(v string) *ListUserKeysRes
 	return s
 }
 
-func (s *ListUserKeysResponseBodyResult) SetTittle(v string) *ListUserKeysResponseBodyResult {
-	s.Tittle = &v
+func (s *ListUserKeysResponseBodyResult) SetTitle(v string) *ListUserKeysResponseBodyResult {
+	s.Title = &v
 	return s
 }
 
