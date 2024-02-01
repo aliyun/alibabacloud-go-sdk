@@ -65,9 +65,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -199,9 +199,9 @@ func (s *ContinueDeployServiceInstanceResponseBodyDryRunResult) SetParametersNot
 }
 
 type ContinueDeployServiceInstanceResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ContinueDeployServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ContinueDeployServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ContinueDeployServiceInstanceResponse) String() string {
@@ -228,8 +228,9 @@ func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployService
 }
 
 type CreateServiceInstanceRequest struct {
-	ClientToken *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Commodity   *CreateServiceInstanceRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	BusinessInfo *CreateServiceInstanceRequestBusinessInfo `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty" type:"Struct"`
+	ClientToken  *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Commodity    *CreateServiceInstanceRequestCommodity    `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
 	// 接收告警的云监控联系人组。
 	ContactGroup         *string `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -267,6 +268,11 @@ func (s CreateServiceInstanceRequest) String() string {
 
 func (s CreateServiceInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateServiceInstanceRequest) SetBusinessInfo(v *CreateServiceInstanceRequestBusinessInfo) *CreateServiceInstanceRequest {
+	s.BusinessInfo = v
+	return s
 }
 
 func (s *CreateServiceInstanceRequest) SetClientToken(v string) *CreateServiceInstanceRequest {
@@ -356,6 +362,23 @@ func (s *CreateServiceInstanceRequest) SetTemplateName(v string) *CreateServiceI
 
 func (s *CreateServiceInstanceRequest) SetTrialType(v string) *CreateServiceInstanceRequest {
 	s.TrialType = &v
+	return s
+}
+
+type CreateServiceInstanceRequestBusinessInfo struct {
+	OrderParams map[string]*string `json:"OrderParams,omitempty" xml:"OrderParams,omitempty"`
+}
+
+func (s CreateServiceInstanceRequestBusinessInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceInstanceRequestBusinessInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceInstanceRequestBusinessInfo) SetOrderParams(v map[string]*string) *CreateServiceInstanceRequestBusinessInfo {
+	s.OrderParams = v
 	return s
 }
 
@@ -449,8 +472,9 @@ func (s *CreateServiceInstanceRequestTag) SetValue(v string) *CreateServiceInsta
 }
 
 type CreateServiceInstanceShrinkRequest struct {
-	ClientToken *string                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Commodity   *CreateServiceInstanceShrinkRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	BusinessInfoShrink *string                                      `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	ClientToken        *string                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Commodity          *CreateServiceInstanceShrinkRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
 	// 接收告警的云监控联系人组。
 	ContactGroup         *string `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -488,6 +512,11 @@ func (s CreateServiceInstanceShrinkRequest) String() string {
 
 func (s CreateServiceInstanceShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetBusinessInfoShrink(v string) *CreateServiceInstanceShrinkRequest {
+	s.BusinessInfoShrink = &v
+	return s
 }
 
 func (s *CreateServiceInstanceShrinkRequest) SetClientToken(v string) *CreateServiceInstanceShrinkRequest {
@@ -705,9 +734,9 @@ func (s *CreateServiceInstanceResponseBody) SetStatus(v string) *CreateServiceIn
 }
 
 type CreateServiceInstanceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceInstanceResponse) String() string {
@@ -780,9 +809,9 @@ func (s *DeleteServiceInstancesResponseBody) SetRequestId(v string) *DeleteServi
 }
 
 type DeleteServiceInstancesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteServiceInstancesResponse) String() string {
@@ -1367,9 +1396,9 @@ func (s *GetServiceInstanceResponseBodyTags) SetValue(v string) *GetServiceInsta
 }
 
 type GetServiceInstanceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceInstanceResponse) String() string {
@@ -1613,9 +1642,9 @@ func (s *GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsO
 }
 
 type GetServiceTemplateParameterConstraintsResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceTemplateParameterConstraintsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceTemplateParameterConstraintsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceTemplateParameterConstraintsResponse) String() string {
@@ -1777,9 +1806,9 @@ func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetTimestamp(v
 }
 
 type ListServiceInstanceLogsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServiceInstanceLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstanceLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServiceInstanceLogsResponse) String() string {
@@ -2006,9 +2035,9 @@ func (s *ListServiceInstanceResourcesResponseBodyResources) SetStatus(v string) 
 }
 
 type ListServiceInstanceResourcesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServiceInstanceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstanceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServiceInstanceResourcesResponse) String() string {
@@ -2453,9 +2482,9 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesTags) SetValue(v string
 }
 
 type ListServiceInstancesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServiceInstancesResponse) String() string {
@@ -2655,11 +2684,19 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 	}
 	request := &CreateServiceInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BusinessInfo)) {
+		request.BusinessInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessInfo, tea.String("BusinessInfo"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
 		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessInfoShrink)) {
+		query["BusinessInfo"] = request.BusinessInfoShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
