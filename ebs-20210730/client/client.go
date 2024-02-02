@@ -70,9 +70,9 @@ func (s *AddDiskReplicaPairResponseBody) SetRequestId(v string) *AddDiskReplicaP
 }
 
 type AddDiskReplicaPairResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddDiskReplicaPairResponse) String() string {
@@ -117,9 +117,9 @@ func (s *ApplyLensServiceResponseBody) SetRequestId(v string) *ApplyLensServiceR
 }
 
 type ApplyLensServiceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyLensServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyLensServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyLensServiceResponse) String() string {
@@ -203,9 +203,9 @@ func (s *BindEnterpriseSnapshotPolicyResponseBody) SetRequestId(v string) *BindE
 }
 
 type BindEnterpriseSnapshotPolicyResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindEnterpriseSnapshotPolicyResponse) String() string {
@@ -250,9 +250,9 @@ func (s *CancelLensServiceResponseBody) SetRequestId(v string) *CancelLensServic
 }
 
 type CancelLensServiceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelLensServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelLensServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelLensServiceResponse) String() string {
@@ -281,7 +281,7 @@ func (s *CancelLensServiceResponse) SetBody(v *CancelLensServiceResponseBody) *C
 type ChangeResourceGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the new resource group. You can view the available resource groups in the Resource Management console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.htm?spm=a2c4g.11186623.0.0.15ef75c87zvMhL).
+	// The ID of the new resource group. You can view the available resource groups in the Resource Management console. For more information, see [View basic information of a resource group](~~151181~~).
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -347,9 +347,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -426,9 +426,9 @@ func (s *ClearPairDrillResponseBody) SetRequestId(v string) *ClearPairDrillRespo
 }
 
 type ClearPairDrillResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClearPairDrillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClearPairDrillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClearPairDrillResponse) String() string {
@@ -505,9 +505,9 @@ func (s *ClearReplicaGroupDrillResponseBody) SetRequestId(v string) *ClearReplic
 }
 
 type ClearReplicaGroupDrillResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClearReplicaGroupDrillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClearReplicaGroupDrillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClearReplicaGroupDrillResponse) String() string {
@@ -691,9 +691,9 @@ func (s *CreateDedicatedBlockStorageClusterResponseBody) SetRequestId(v string) 
 }
 
 type CreateDedicatedBlockStorageClusterResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDedicatedBlockStorageClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDedicatedBlockStorageClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDedicatedBlockStorageClusterResponse) String() string {
@@ -860,9 +860,9 @@ func (s *CreateDiskReplicaGroupResponseBody) SetRequestId(v string) *CreateDiskR
 }
 
 type CreateDiskReplicaGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDiskReplicaGroupResponse) String() string {
@@ -1091,9 +1091,9 @@ func (s *CreateDiskReplicaPairResponseBody) SetRequestId(v string) *CreateDiskRe
 }
 
 type CreateDiskReplicaPairResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDiskReplicaPairResponse) String() string {
@@ -1618,9 +1618,9 @@ func (s *CreateEnterpriseSnapshotPolicyResponseBody) SetRequestId(v string) *Cre
 }
 
 type CreateEnterpriseSnapshotPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEnterpriseSnapshotPolicyResponse) String() string {
@@ -1697,9 +1697,9 @@ func (s *DeleteDiskReplicaGroupResponseBody) SetRequestId(v string) *DeleteDiskR
 }
 
 type DeleteDiskReplicaGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDiskReplicaGroupResponse) String() string {
@@ -1776,9 +1776,9 @@ func (s *DeleteDiskReplicaPairResponseBody) SetRequestId(v string) *DeleteDiskRe
 }
 
 type DeleteDiskReplicaPairResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDiskReplicaPairResponse) String() string {
@@ -1855,9 +1855,9 @@ func (s *DeleteEnterpriseSnapshotPolicyResponseBody) SetRequestId(v string) *Del
 }
 
 type DeleteEnterpriseSnapshotPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEnterpriseSnapshotPolicyResponse) String() string {
@@ -2286,9 +2286,9 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags) Set
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedBlockStorageClusterDisksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDedicatedBlockStorageClusterDisksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClusterDisksResponse) String() string {
@@ -2772,9 +2772,9 @@ func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageC
 }
 
 type DescribeDedicatedBlockStorageClustersResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedBlockStorageClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDedicatedBlockStorageClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClustersResponse) String() string {
@@ -2983,9 +2983,9 @@ func (s *DescribeDiskEventsResponseBodyDiskEvents) SetType(v string) *DescribeDi
 }
 
 type DescribeDiskEventsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDiskEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiskEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDiskEventsResponse) String() string {
@@ -3179,9 +3179,9 @@ func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetWriteIOPS(v int64) *
 }
 
 type DescribeDiskMonitorDataResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDiskMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiskMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDiskMonitorDataResponse) String() string {
@@ -3345,9 +3345,9 @@ func (s *DescribeDiskMonitorDataListResponseBodyMonitorData) SetTimestamp(v stri
 }
 
 type DescribeDiskMonitorDataListResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDiskMonitorDataListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiskMonitorDataListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDiskMonitorDataListResponse) String() string {
@@ -3737,9 +3737,9 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags) SetTagValue(v s
 }
 
 type DescribeDiskReplicaGroupsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDiskReplicaGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiskReplicaGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDiskReplicaGroupsResponse) String() string {
@@ -3823,9 +3823,9 @@ func (s *DescribeDiskReplicaPairProgressResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeDiskReplicaPairProgressResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDiskReplicaPairProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiskReplicaPairProgressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDiskReplicaPairProgressResponse) String() string {
@@ -4277,9 +4277,9 @@ func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairsTags) SetTagValue(v str
 }
 
 type DescribeDiskReplicaPairsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDiskReplicaPairsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiskReplicaPairsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDiskReplicaPairsResponse) String() string {
@@ -4306,33 +4306,25 @@ func (s *DescribeDiskReplicaPairsResponse) SetBody(v *DescribeDiskReplicaPairsRe
 }
 
 type DescribeEnterpriseSnapshotPolicyRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
-	//
-	// The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](~~25693~~).
-	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DiskIds     []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to be returned. You can use this parameter together with NextToken.
-	//
-	// Valid values: 1 to 500.
-	//
-	// Default value: 10.
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of disks.
+	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
-	//
-	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-	// *   If a value of **NextToken** is returned, the value is the token that is used for the subsequent query.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of policies.
+	// The IDs of enterprise-level snapshot policies.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	// The region ID . You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which snapshot policy is supported.
+	// The region ID. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the policy belongs.
+	// The ID of the resource group to which the enterprise-level snapshot policy belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags.
+	// The tags of the enterprise-level snapshot policies. Valid values of N: 1 to 20.
 	Tag []*DescribeEnterpriseSnapshotPolicyRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -4395,9 +4387,9 @@ func (s *DescribeEnterpriseSnapshotPolicyRequest) SetTag(v []*DescribeEnterprise
 }
 
 type DescribeEnterpriseSnapshotPolicyRequestTag struct {
-	// The key of the tag.
+	// The key of tag N of the enterprise-level snapshot policy.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of tag N of the enterprise-level snapshot policy.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4420,15 +4412,15 @@ func (s *DescribeEnterpriseSnapshotPolicyRequestTag) SetValue(v string) *Describ
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBody struct {
-	// The query token returned in this call.
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of policies.
+	// The returned enterprise-level snapshot policies.
 	Policies []*DescribeEnterpriseSnapshotPolicyResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -4473,43 +4465,37 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBody) SetTotalCount(v int64) *D
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPolicies struct {
-	// Creation Time.
+	// The time when the enterprise-level snapshot policy was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Snapshot replication destination information.
+	// The replication rule of snapshots in the enterprise-level snapshot policy.
 	CrossRegionCopyInfo *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo `json:"CrossRegionCopyInfo,omitempty" xml:"CrossRegionCopyInfo,omitempty" type:"Struct"`
-	// The description of the policy.
-	Desc    *string   `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The description of the enterprise-level snapshot policy.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The list of disks.
 	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// Indicates whether it is an ECS snapshot policy，The range of values:
-	//
-	// - true
-	// - false
+	// Indicates whether snapshots are managed.
 	ManagedForEcs *bool `json:"ManagedForEcs,omitempty" xml:"ManagedForEcs,omitempty"`
-	// The name of the policy.
+	// The name of the enterprise-level snapshot policy.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The id of the policy.
+	// The ID of the enterprise-level snapshot policy.
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The resource group
+	// the resource group
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The snapshot retention rule.
+	// The retention rule of the enterprise-level snapshot policy.
 	RetainRule *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesRetainRule `json:"RetainRule,omitempty" xml:"RetainRule,omitempty" type:"Struct"`
-	// The rule for scheduling.
+	// The scheduling rule of the enterprise-level snapshot policy.
 	Schedule *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSchedule `json:"Schedule,omitempty" xml:"Schedule,omitempty" type:"Struct"`
-	// The special snapshot retention rules.
+	// The special retention rules of the enterprise-level snapshot policy.
 	SpecialRetainRules *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRules `json:"SpecialRetainRules,omitempty" xml:"SpecialRetainRules,omitempty" type:"Struct"`
-	// The status of the policy. Valid values:
-	//
-	// - ENABLED: Enable policy execution.
-	//
-	// - DISABLED: Disable policy execution.
+	// The status of the enterprise-level snapshot policy.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Advanced snapshot features.
+	// The storage rule of snapshots in the enterprise-level snapshot policy.
 	StorageRule *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesStorageRule `json:"StorageRule,omitempty" xml:"StorageRule,omitempty" type:"Struct"`
-	// The list of tags.
+	// the pair tags
 	Tags []*DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Number of bound targets.
+	// The number of objects that are associated with the enterprise-level snapshot policy.
 	TargetCount *int32 `json:"TargetCount,omitempty" xml:"TargetCount,omitempty"`
-	// The target type.
+	// The type of the enterprise-level snapshot policy.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -4602,13 +4588,9 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPolicies) SetTargetType(v s
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo struct {
-	// Whether cross-region replication is enabled. The range of values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the cross-region replication feature is enabled.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Destination region information.
+	// The destination regions that store snapshot copies.
 	Regions []*DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfoRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -4631,9 +4613,9 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfoRegions struct {
-	// The region ID of the destination. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	// The ID of the destination region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Number of days to retain the destination snapshot. The range of values is greater than 1.
+	// The retention period of snapshot copies in the destination region. Unit: day.
 	RetainDays *int32 `json:"RetainDays,omitempty" xml:"RetainDays,omitempty"`
 }
 
@@ -4656,15 +4638,11 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesRetainRule struct {
-	// Maximum number of retained snapshots.
+	// The maximum number of snapshots that can be retained.
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The time interval , valid value greater than 1.
+	// The value of the retention period of snapshots.
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
-	// The unit of time, valid values:
-	//
-	// - DAYS
-	//
-	// - WEEKS
+	// The unit of the retention period of snapshots.
 	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 }
 
@@ -4692,9 +4670,7 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesRetainRule) SetTime
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSchedule struct {
-	// The time when the policy will to be scheduled. Valid values: Set the parameter in a cron expression.
-	//
-	// For example, you can use 0 0 4 1/1 * ? to specify 04:00:00 (UTC+8) on the first day of each month.
+	// The cron expression of the enterprise-level snapshot policy.
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 }
 
@@ -4712,10 +4688,7 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSchedule) SetCronEx
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRules struct {
-	// Indicates whether the special retention is enabled.
-	//
-	// *   true: enable
-	// *   false: disable
+	// Indicates whether the special retention period is enabled.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The special retention rules.
 	Rules []*DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRulesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
@@ -4740,18 +4713,11 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRules)
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRulesRules struct {
-	// The periodic unit for specially retained snapshots. If configured to WEEKS, it provides special retention for the first snapshot of each week. The retention period is determined by TimeUnit and TimeInterval. The range of values are:
-	// - WEEKS
-	// - MONTHS
-	// - YEARS
+	// The unit of the special retention period.
 	SpecialPeriodUnit *string `json:"SpecialPeriodUnit,omitempty" xml:"SpecialPeriodUnit,omitempty"`
-	// Retention Time Value. The range of values is greater than 1.
+	// The value of the retention period.
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
-	// Retention time unit for special snapshots. The range of values:
-	//
-	// - DAYS
-	//
-	// - WEEKS
+	// The unit of the retention period.
 	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 }
 
@@ -4779,11 +4745,7 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRulesR
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesStorageRule struct {
-	// Whether to enable the rapid availability of snapshots. The range of values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the instant access feature is enabled.
 	EnableImmediateAccess *bool `json:"EnableImmediateAccess,omitempty" xml:"EnableImmediateAccess,omitempty"`
 }
 
@@ -4801,9 +4763,9 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesStorageRule) SetEna
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesTags struct {
-	// The key of a tag.
+	// The key of the tag of the enterprise-level snapshot policy.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of a tag.
+	// The value of the tag of the enterprise-level snapshot policy.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -4826,9 +4788,9 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesTags) SetTagValue(v
 }
 
 type DescribeEnterpriseSnapshotPolicyResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEnterpriseSnapshotPolicyResponse) String() string {
@@ -4884,9 +4846,9 @@ func (s *DescribeLensServiceStatusResponseBody) SetStatus(v string) *DescribeLen
 }
 
 type DescribeLensServiceStatusResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLensServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLensServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLensServiceStatusResponse) String() string {
@@ -5023,9 +4985,9 @@ func (s *DescribeMetricDataResponseBodyDataList) SetLabels(v interface{}) *Descr
 }
 
 type DescribeMetricDataResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeMetricDataResponse) String() string {
@@ -5242,9 +5204,9 @@ func (s *DescribePairDrillsResponseBodyDrills) SetStatusMessage(v string) *Descr
 }
 
 type DescribePairDrillsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePairDrillsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePairDrillsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePairDrillsResponse) String() string {
@@ -5411,9 +5373,9 @@ func (s *DescribeRegionsResponseBodyRegionsZones) SetZoneId(v string) *DescribeR
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -5662,9 +5624,9 @@ func (s *DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo) SetPairId(v stri
 }
 
 type DescribeReplicaGroupDrillsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeReplicaGroupDrillsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeReplicaGroupDrillsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeReplicaGroupDrillsResponse) String() string {
@@ -5741,9 +5703,9 @@ func (s *FailoverDiskReplicaGroupResponseBody) SetRequestId(v string) *FailoverD
 }
 
 type FailoverDiskReplicaGroupResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FailoverDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FailoverDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FailoverDiskReplicaGroupResponse) String() string {
@@ -5822,9 +5784,9 @@ func (s *FailoverDiskReplicaPairResponseBody) SetRequestId(v string) *FailoverDi
 }
 
 type FailoverDiskReplicaPairResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FailoverDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FailoverDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FailoverDiskReplicaPairResponse) String() string {
@@ -6016,9 +5978,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -6111,9 +6073,9 @@ func (s *ModifyDedicatedBlockStorageClusterAttributeResponseBody) SetRequestId(v
 }
 
 type ModifyDedicatedBlockStorageClusterAttributeResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDedicatedBlockStorageClusterAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDedicatedBlockStorageClusterAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDedicatedBlockStorageClusterAttributeResponse) String() string {
@@ -6220,9 +6182,9 @@ func (s *ModifyDiskReplicaGroupResponseBody) SetRequestId(v string) *ModifyDiskR
 }
 
 type ModifyDiskReplicaGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDiskReplicaGroupResponse) String() string {
@@ -6329,9 +6291,9 @@ func (s *ModifyDiskReplicaPairResponseBody) SetRequestId(v string) *ModifyDiskRe
 }
 
 type ModifyDiskReplicaPairResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDiskReplicaPairResponse) String() string {
@@ -6353,6 +6315,202 @@ func (s *ModifyDiskReplicaPairResponse) SetStatusCode(v int32) *ModifyDiskReplic
 }
 
 func (s *ModifyDiskReplicaPairResponse) SetBody(v *ModifyDiskReplicaPairResponseBody) *ModifyDiskReplicaPairResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDedicatedBlockStorageClusterInventoryDataRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+	//
+	// The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the dedicated block storage cluster.
+	DbscId *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	// End timestamp of trend data.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval （seconds） between data retrieval points.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID of the dedicated block storage cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Start timestamp of trend data.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataRequest) SetClientToken(v string) *QueryDedicatedBlockStorageClusterInventoryDataRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataRequest) SetDbscId(v string) *QueryDedicatedBlockStorageClusterInventoryDataRequest {
+	s.DbscId = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataRequest) SetEndTime(v int64) *QueryDedicatedBlockStorageClusterInventoryDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataRequest) SetPeriod(v int32) *QueryDedicatedBlockStorageClusterInventoryDataRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataRequest) SetRegionId(v string) *QueryDedicatedBlockStorageClusterInventoryDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataRequest) SetStartTime(v int64) *QueryDedicatedBlockStorageClusterInventoryDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type QueryDedicatedBlockStorageClusterInventoryDataResponseBody struct {
+	// The returned data.
+	Data []*QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the dedicated block storage cluster.
+	DbscId *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	// The name of the dedicated block storage cluster.
+	DbscName *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
+	// The type of the disk. Valid values:
+	//
+	// *   cloud_essd: enhanced SSD (ESSD).
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBody) SetData(v []*QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData) *QueryDedicatedBlockStorageClusterInventoryDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBody) SetDbscId(v string) *QueryDedicatedBlockStorageClusterInventoryDataResponseBody {
+	s.DbscId = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBody) SetDbscName(v string) *QueryDedicatedBlockStorageClusterInventoryDataResponseBody {
+	s.DbscName = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBody) SetDiskCategory(v string) *QueryDedicatedBlockStorageClusterInventoryDataResponseBody {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBody) SetRequestId(v string) *QueryDedicatedBlockStorageClusterInventoryDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBody) SetTotalCount(v int32) *QueryDedicatedBlockStorageClusterInventoryDataResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData struct {
+	// The returned metrics.
+	MonitorItems *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems `json:"MonitorItems,omitempty" xml:"MonitorItems,omitempty" type:"Struct"`
+	// The ID list of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The timestamp when the data is collected.
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData) SetMonitorItems(v *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems) *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData {
+	s.MonitorItems = v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData) SetResourceId(v string) *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData) SetTimestamp(v string) *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems struct {
+	// Available capacity size of the dedicated block storage cluster.
+	AvailableSize *int64 `json:"AvailableSize,omitempty" xml:"AvailableSize,omitempty"`
+	// Total capacity size of the dedicated block storage cluster.
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems) SetAvailableSize(v int64) *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems {
+	s.AvailableSize = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems) SetTotalSize(v int64) *QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems {
+	s.TotalSize = &v
+	return s
+}
+
+type QueryDedicatedBlockStorageClusterInventoryDataResponse struct {
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDedicatedBlockStorageClusterInventoryDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDedicatedBlockStorageClusterInventoryDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponse) SetHeaders(v map[string]*string) *QueryDedicatedBlockStorageClusterInventoryDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponse) SetStatusCode(v int32) *QueryDedicatedBlockStorageClusterInventoryDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterInventoryDataResponse) SetBody(v *QueryDedicatedBlockStorageClusterInventoryDataResponseBody) *QueryDedicatedBlockStorageClusterInventoryDataResponse {
 	s.Body = v
 	return s
 }
@@ -6417,9 +6575,9 @@ func (s *RemoveDiskReplicaPairResponseBody) SetRequestId(v string) *RemoveDiskRe
 }
 
 type RemoveDiskReplicaPairResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveDiskReplicaPairResponse) String() string {
@@ -6503,9 +6661,9 @@ func (s *ReprotectDiskReplicaGroupResponseBody) SetRequestId(v string) *Reprotec
 }
 
 type ReprotectDiskReplicaGroupResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReprotectDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReprotectDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReprotectDiskReplicaGroupResponse) String() string {
@@ -6591,9 +6749,9 @@ func (s *ReprotectDiskReplicaPairResponseBody) SetRequestId(v string) *Reprotect
 }
 
 type ReprotectDiskReplicaPairResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReprotectDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReprotectDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReprotectDiskReplicaPairResponse) String() string {
@@ -6615,103 +6773,6 @@ func (s *ReprotectDiskReplicaPairResponse) SetStatusCode(v int32) *ReprotectDisk
 }
 
 func (s *ReprotectDiskReplicaPairResponse) SetBody(v *ReprotectDiskReplicaPairResponseBody) *ReprotectDiskReplicaPairResponse {
-	s.Body = v
-	return s
-}
-
-type StartDiskMonitorRequest struct {
-	// The IDs of the disks for which you want to enable near real-time monitoring.
-	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// The ID of the region in which you want to enable near real-time monitoring for disks. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s StartDiskMonitorRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartDiskMonitorRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartDiskMonitorRequest) SetDiskIds(v []*string) *StartDiskMonitorRequest {
-	s.DiskIds = v
-	return s
-}
-
-func (s *StartDiskMonitorRequest) SetRegionId(v string) *StartDiskMonitorRequest {
-	s.RegionId = &v
-	return s
-}
-
-type StartDiskMonitorShrinkRequest struct {
-	// The IDs of the disks for which you want to enable near real-time monitoring.
-	DiskIdsShrink *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
-	// The ID of the region in which you want to enable near real-time monitoring for disks. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s StartDiskMonitorShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartDiskMonitorShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartDiskMonitorShrinkRequest) SetDiskIdsShrink(v string) *StartDiskMonitorShrinkRequest {
-	s.DiskIdsShrink = &v
-	return s
-}
-
-func (s *StartDiskMonitorShrinkRequest) SetRegionId(v string) *StartDiskMonitorShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-type StartDiskMonitorResponseBody struct {
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StartDiskMonitorResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartDiskMonitorResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartDiskMonitorResponseBody) SetRequestId(v string) *StartDiskMonitorResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StartDiskMonitorResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartDiskMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StartDiskMonitorResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartDiskMonitorResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartDiskMonitorResponse) SetHeaders(v map[string]*string) *StartDiskMonitorResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartDiskMonitorResponse) SetStatusCode(v int32) *StartDiskMonitorResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *StartDiskMonitorResponse) SetBody(v *StartDiskMonitorResponseBody) *StartDiskMonitorResponse {
 	s.Body = v
 	return s
 }
@@ -6779,9 +6840,9 @@ func (s *StartDiskReplicaGroupResponseBody) SetRequestId(v string) *StartDiskRep
 }
 
 type StartDiskReplicaGroupResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartDiskReplicaGroupResponse) String() string {
@@ -6870,9 +6931,9 @@ func (s *StartDiskReplicaPairResponseBody) SetRequestId(v string) *StartDiskRepl
 }
 
 type StartDiskReplicaPairResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartDiskReplicaPairResponse) String() string {
@@ -6958,9 +7019,9 @@ func (s *StartPairDrillResponseBody) SetRequestId(v string) *StartPairDrillRespo
 }
 
 type StartPairDrillResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartPairDrillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartPairDrillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartPairDrillResponse) String() string {
@@ -7046,9 +7107,9 @@ func (s *StartReplicaGroupDrillResponseBody) SetRequestId(v string) *StartReplic
 }
 
 type StartReplicaGroupDrillResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartReplicaGroupDrillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartReplicaGroupDrillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartReplicaGroupDrillResponse) String() string {
@@ -7070,103 +7131,6 @@ func (s *StartReplicaGroupDrillResponse) SetStatusCode(v int32) *StartReplicaGro
 }
 
 func (s *StartReplicaGroupDrillResponse) SetBody(v *StartReplicaGroupDrillResponseBody) *StartReplicaGroupDrillResponse {
-	s.Body = v
-	return s
-}
-
-type StopDiskMonitorRequest struct {
-	// The IDs of the disks for which you want to disable near real-time monitoring.
-	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// The ID of the region in which you want to disable near real-time monitoring for disks. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s StopDiskMonitorRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopDiskMonitorRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopDiskMonitorRequest) SetDiskIds(v []*string) *StopDiskMonitorRequest {
-	s.DiskIds = v
-	return s
-}
-
-func (s *StopDiskMonitorRequest) SetRegionId(v string) *StopDiskMonitorRequest {
-	s.RegionId = &v
-	return s
-}
-
-type StopDiskMonitorShrinkRequest struct {
-	// The IDs of the disks for which you want to disable near real-time monitoring.
-	DiskIdsShrink *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
-	// The ID of the region in which you want to disable near real-time monitoring for disks. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s StopDiskMonitorShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopDiskMonitorShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopDiskMonitorShrinkRequest) SetDiskIdsShrink(v string) *StopDiskMonitorShrinkRequest {
-	s.DiskIdsShrink = &v
-	return s
-}
-
-func (s *StopDiskMonitorShrinkRequest) SetRegionId(v string) *StopDiskMonitorShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-type StopDiskMonitorResponseBody struct {
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StopDiskMonitorResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopDiskMonitorResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StopDiskMonitorResponseBody) SetRequestId(v string) *StopDiskMonitorResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StopDiskMonitorResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopDiskMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StopDiskMonitorResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopDiskMonitorResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StopDiskMonitorResponse) SetHeaders(v map[string]*string) *StopDiskMonitorResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StopDiskMonitorResponse) SetStatusCode(v int32) *StopDiskMonitorResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *StopDiskMonitorResponse) SetBody(v *StopDiskMonitorResponseBody) *StopDiskMonitorResponse {
 	s.Body = v
 	return s
 }
@@ -7222,9 +7186,9 @@ func (s *StopDiskReplicaGroupResponseBody) SetRequestId(v string) *StopDiskRepli
 }
 
 type StopDiskReplicaGroupResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopDiskReplicaGroupResponse) String() string {
@@ -7301,9 +7265,9 @@ func (s *StopDiskReplicaPairResponseBody) SetRequestId(v string) *StopDiskReplic
 }
 
 type StopDiskReplicaPairResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopDiskReplicaPairResponse) String() string {
@@ -7423,9 +7387,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -7509,9 +7473,9 @@ func (s *UnbindEnterpriseSnapshotPolicyResponseBody) SetRequestId(v string) *Unb
 }
 
 type UnbindEnterpriseSnapshotPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindEnterpriseSnapshotPolicyResponse) String() string {
@@ -7618,9 +7582,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -8045,9 +8009,9 @@ func (s *UpdateEnterpriseSnapshotPolicyResponseBody) SetRequestId(v string) *Upd
 }
 
 type UpdateEnterpriseSnapshotPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEnterpriseSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateEnterpriseSnapshotPolicyResponse) String() string {
@@ -8138,9 +8102,9 @@ func (s *UpdateSolutionInstanceAttributeResponseBody) SetRequestId(v string) *Up
 }
 
 type UpdateSolutionInstanceAttributeResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSolutionInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSolutionInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSolutionInstanceAttributeResponse) String() string {
@@ -8607,10 +8571,10 @@ func (client *Client) ClearReplicaGroupDrill(request *ClearReplicaGroupDrillRequ
 }
 
 /**
- * Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster. For more information, see [Overview](~~208883~~).
+ * Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster.
  * Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
  * Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
- * You are charged for creating dedicated block storage clusters. For more information, see [~~208884~~](~~208884~~).
+ * You are charged for creating dedicated block storage clusters.
  *
  * @param request CreateDedicatedBlockStorageClusterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -8686,10 +8650,10 @@ func (client *Client) CreateDedicatedBlockStorageClusterWithOptions(request *Cre
 }
 
 /**
- * Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster. For more information, see [Overview](~~208883~~).
+ * Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster.
  * Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
  * Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
- * You are charged for creating dedicated block storage clusters. For more information, see [~~208884~~](~~208884~~).
+ * You are charged for creating dedicated block storage clusters.
  *
  * @param request CreateDedicatedBlockStorageClusterRequest
  * @return CreateDedicatedBlockStorageClusterResponse
@@ -10778,6 +10742,85 @@ func (client *Client) ModifyDiskReplicaPair(request *ModifyDiskReplicaPairReques
 }
 
 /**
+ * Period is the time interval between data retrieval points. When set to 60 (minute interval), a maximum of 1440 data points can be returned; when set to 3600 (hour interval), a maximum of 744 data points can be returned; and when set to 86400 (day interval), a maximum of 366 data points can be returned.
+ *
+ * @param request QueryDedicatedBlockStorageClusterInventoryDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryDedicatedBlockStorageClusterInventoryDataResponse
+ */
+func (client *Client) QueryDedicatedBlockStorageClusterInventoryDataWithOptions(request *QueryDedicatedBlockStorageClusterInventoryDataRequest, runtime *util.RuntimeOptions) (_result *QueryDedicatedBlockStorageClusterInventoryDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbscId)) {
+		body["DbscId"] = request.DbscId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		body["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDedicatedBlockStorageClusterInventoryData"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDedicatedBlockStorageClusterInventoryDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * Period is the time interval between data retrieval points. When set to 60 (minute interval), a maximum of 1440 data points can be returned; when set to 3600 (hour interval), a maximum of 744 data points can be returned; and when set to 86400 (day interval), a maximum of 366 data points can be returned.
+ *
+ * @param request QueryDedicatedBlockStorageClusterInventoryDataRequest
+ * @return QueryDedicatedBlockStorageClusterInventoryDataResponse
+ */
+func (client *Client) QueryDedicatedBlockStorageClusterInventoryData(request *QueryDedicatedBlockStorageClusterInventoryDataRequest) (_result *QueryDedicatedBlockStorageClusterInventoryDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDedicatedBlockStorageClusterInventoryDataResponse{}
+	_body, _err := client.QueryDedicatedBlockStorageClusterInventoryDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
  * ## [](#)Usage notes
  * *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
  * *   The replication pair-consistent group from which you want to remove a replication pair must be in the **Created** (`created`), **Stopped** (`stopped`), or **Invalid** (`invalid`) state.
@@ -11001,77 +11044,6 @@ func (client *Client) ReprotectDiskReplicaPair(request *ReprotectDiskReplicaPair
 	runtime := &util.RuntimeOptions{}
 	_result = &ReprotectDiskReplicaPairResponse{}
 	_body, _err := client.ReprotectDiskReplicaPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * ## Usage notes
- * *   CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
- * *   CloudLens for EBS can be used to monitor the performance of enhanced SSDs (ESSDs), standard SSDs, and ultra disks. After you enable CloudLens for EBS, you can enable the data collection feature to obtain the near real-time monitoring data. For more information, see [Enable near real-time monitoring for disks](~~354196~~).
- *
- * @param tmpReq StartDiskMonitorRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StartDiskMonitorResponse
- */
-func (client *Client) StartDiskMonitorWithOptions(tmpReq *StartDiskMonitorRequest, runtime *util.RuntimeOptions) (_result *StartDiskMonitorResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &StartDiskMonitorShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.DiskIds)) {
-		request.DiskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIds, tea.String("DiskIds"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DiskIdsShrink)) {
-		query["DiskIds"] = request.DiskIdsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StartDiskMonitor"),
-		Version:     tea.String("2021-07-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &StartDiskMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * ## Usage notes
- * *   CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
- * *   CloudLens for EBS can be used to monitor the performance of enhanced SSDs (ESSDs), standard SSDs, and ultra disks. After you enable CloudLens for EBS, you can enable the data collection feature to obtain the near real-time monitoring data. For more information, see [Enable near real-time monitoring for disks](~~354196~~).
- *
- * @param request StartDiskMonitorRequest
- * @return StartDiskMonitorResponse
- */
-func (client *Client) StartDiskMonitor(request *StartDiskMonitorRequest) (_result *StartDiskMonitorResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartDiskMonitorResponse{}
-	_body, _err := client.StartDiskMonitorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11354,75 +11326,6 @@ func (client *Client) StartReplicaGroupDrill(request *StartReplicaGroupDrillRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &StartReplicaGroupDrillResponse{}
 	_body, _err := client.StartReplicaGroupDrillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * ## Usage notes
- * CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
- *
- * @param tmpReq StopDiskMonitorRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StopDiskMonitorResponse
- */
-func (client *Client) StopDiskMonitorWithOptions(tmpReq *StopDiskMonitorRequest, runtime *util.RuntimeOptions) (_result *StopDiskMonitorResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &StopDiskMonitorShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.DiskIds)) {
-		request.DiskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIds, tea.String("DiskIds"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DiskIdsShrink)) {
-		query["DiskIds"] = request.DiskIdsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StopDiskMonitor"),
-		Version:     tea.String("2021-07-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &StopDiskMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * ## Usage notes
- * CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
- *
- * @param request StopDiskMonitorRequest
- * @return StopDiskMonitorResponse
- */
-func (client *Client) StopDiskMonitor(request *StopDiskMonitorRequest) (_result *StopDiskMonitorResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StopDiskMonitorResponse{}
-	_body, _err := client.StopDiskMonitorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
