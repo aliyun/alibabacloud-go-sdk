@@ -106,9 +106,9 @@ func (s *AuthUserResponseBodyData) SetType(v string) *AuthUserResponseBodyData {
 }
 
 type AuthUserResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AuthUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AuthUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AuthUserResponse) String() string {
@@ -280,9 +280,9 @@ func (s *BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult) SetVideoUrl(
 }
 
 type BatchQueryMotionShopTaskStatusResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchQueryMotionShopTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchQueryMotionShopTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchQueryMotionShopTaskStatusResponse) String() string {
@@ -408,9 +408,9 @@ func (s *CreateAvatarTalkProjectResponseBodyData) SetId(v string) *CreateAvatarT
 }
 
 type CreateAvatarTalkProjectResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAvatarTalkProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAvatarTalkProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAvatarTalkProjectResponse) String() string {
@@ -608,9 +608,9 @@ func (s *CreateDigitalHumanProjectResponseBodyData) SetId(v string) *CreateDigit
 }
 
 type CreateDigitalHumanProjectResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDigitalHumanProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDigitalHumanProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDigitalHumanProjectResponse) String() string {
@@ -790,9 +790,9 @@ func (s *CreateLivePortraitProjectResponseBodyData) SetId(v string) *CreateLiveP
 }
 
 type CreateLivePortraitProjectResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateLivePortraitProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLivePortraitProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLivePortraitProjectResponse) String() string {
@@ -900,9 +900,9 @@ func (s *GenerateMotionShopVideoUploadUrlResponseBodyData) SetUploadUrl(v string
 }
 
 type GenerateMotionShopVideoUploadUrlResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateMotionShopVideoUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateMotionShopVideoUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateMotionShopVideoUploadUrlResponse) String() string {
@@ -1005,9 +1005,9 @@ func (s *GetMapDataResponseBody) SetSuccess(v bool) *GetMapDataResponseBody {
 }
 
 type GetMapDataResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMapDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMapDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMapDataResponse) String() string {
@@ -1110,9 +1110,9 @@ func (s *GetMapPublishDataResponseBody) SetSuccess(v bool) *GetMapPublishDataRes
 }
 
 type GetMapPublishDataResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMapPublishDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMapPublishDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMapPublishDataResponse) String() string {
@@ -1215,9 +1215,9 @@ func (s *InitLocateResponseBody) SetSuccess(v bool) *InitLocateResponseBody {
 }
 
 type InitLocateResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InitLocateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitLocateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitLocateResponse) String() string {
@@ -1361,9 +1361,9 @@ func (s *ListCommonMaterialsResponseBodyData) SetType(v string) *ListCommonMater
 }
 
 type ListCommonMaterialsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCommonMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCommonMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCommonMaterialsResponse) String() string {
@@ -1596,9 +1596,9 @@ func (s *ListDigitalHumanMaterialsResponseBodyDataComponents) SetType(v string) 
 }
 
 type ListDigitalHumanMaterialsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDigitalHumanMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDigitalHumanMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDigitalHumanMaterialsResponse) String() string {
@@ -1820,9 +1820,9 @@ func (s *ListLocationServiceResponseBodyData) SetSvcState(v string) *ListLocatio
 }
 
 type ListLocationServiceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLocationServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLocationServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLocationServiceResponse) String() string {
@@ -2042,9 +2042,9 @@ func (s *ListMotionShopTasksResponseBodyDataResult) SetVideoUrl(v string) *ListM
 }
 
 type ListMotionShopTasksResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMotionShopTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMotionShopTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMotionShopTasksResponse) String() string {
@@ -2158,9 +2158,9 @@ func (s *LivePortraitFaceDetectResponseBodyData) SetMessage(v string) *LivePortr
 }
 
 type LivePortraitFaceDetectResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LivePortraitFaceDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LivePortraitFaceDetectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LivePortraitFaceDetectResponse) String() string {
@@ -2269,9 +2269,9 @@ func (s *LocateResponseBody) SetSuccess(v bool) *LocateResponseBody {
 }
 
 type LocateResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LocateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LocateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LocateResponse) String() string {
@@ -2293,6 +2293,140 @@ func (s *LocateResponse) SetStatusCode(v int32) *LocateResponse {
 }
 
 func (s *LocateResponse) SetBody(v *LocateResponseBody) *LocateResponse {
+	s.Body = v
+	return s
+}
+
+type LoginHuggingFaceRequest struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s LoginHuggingFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoginHuggingFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LoginHuggingFaceRequest) SetToken(v string) *LoginHuggingFaceRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *LoginHuggingFaceRequest) SetType(v string) *LoginHuggingFaceRequest {
+	s.Type = &v
+	return s
+}
+
+type LoginHuggingFaceResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *LoginHuggingFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorName *string                           `json:"ErrorName,omitempty" xml:"ErrorName,omitempty"`
+	HttpCode  *int32                            `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s LoginHuggingFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoginHuggingFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LoginHuggingFaceResponseBody) SetCode(v string) *LoginHuggingFaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *LoginHuggingFaceResponseBody) SetData(v *LoginHuggingFaceResponseBodyData) *LoginHuggingFaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *LoginHuggingFaceResponseBody) SetErrorName(v string) *LoginHuggingFaceResponseBody {
+	s.ErrorName = &v
+	return s
+}
+
+func (s *LoginHuggingFaceResponseBody) SetHttpCode(v int32) *LoginHuggingFaceResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *LoginHuggingFaceResponseBody) SetMessage(v string) *LoginHuggingFaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *LoginHuggingFaceResponseBody) SetRequestId(v string) *LoginHuggingFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LoginHuggingFaceResponseBody) SetSuccess(v bool) *LoginHuggingFaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type LoginHuggingFaceResponseBodyData struct {
+	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s LoginHuggingFaceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoginHuggingFaceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *LoginHuggingFaceResponseBodyData) SetJwtToken(v string) *LoginHuggingFaceResponseBodyData {
+	s.JwtToken = &v
+	return s
+}
+
+func (s *LoginHuggingFaceResponseBodyData) SetNickname(v string) *LoginHuggingFaceResponseBodyData {
+	s.Nickname = &v
+	return s
+}
+
+func (s *LoginHuggingFaceResponseBodyData) SetUid(v string) *LoginHuggingFaceResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type LoginHuggingFaceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LoginHuggingFaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s LoginHuggingFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoginHuggingFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LoginHuggingFaceResponse) SetHeaders(v map[string]*string) *LoginHuggingFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LoginHuggingFaceResponse) SetStatusCode(v int32) *LoginHuggingFaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LoginHuggingFaceResponse) SetBody(v *LoginHuggingFaceResponseBody) *LoginHuggingFaceResponse {
 	s.Body = v
 	return s
 }
@@ -2421,9 +2555,9 @@ func (s *LoginModelScopeResponseBodyData) SetUid(v string) *LoginModelScopeRespo
 }
 
 type LoginModelScopeResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LoginModelScopeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LoginModelScopeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LoginModelScopeResponse) String() string {
@@ -2531,9 +2665,9 @@ func (s *MotionShopVideoDetectResponseBodyData) SetJobId(v string) *MotionShopVi
 }
 
 type MotionShopVideoDetectResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MotionShopVideoDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MotionShopVideoDetectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MotionShopVideoDetectResponse) String() string {
@@ -2676,9 +2810,9 @@ func (s *PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset) SetB
 }
 
 type PopBatchQueryObjectGenerationProjectStatusResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopBatchQueryObjectGenerationProjectStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopBatchQueryObjectGenerationProjectStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopBatchQueryObjectGenerationProjectStatusResponse) String() string {
@@ -2810,9 +2944,9 @@ func (s *PopBatchQueryObjectProjectStatusResponseBodyData) SetStatus(v string) *
 }
 
 type PopBatchQueryObjectProjectStatusResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopBatchQueryObjectProjectStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopBatchQueryObjectProjectStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopBatchQueryObjectProjectStatusResponse) String() string {
@@ -2891,9 +3025,9 @@ func (s *PopBuildFeatureToAvatarProjectResponseBody) SetSuccess(v bool) *PopBuil
 }
 
 type PopBuildFeatureToAvatarProjectResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopBuildFeatureToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopBuildFeatureToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopBuildFeatureToAvatarProjectResponse) String() string {
@@ -2972,9 +3106,9 @@ func (s *PopBuildLivePortraitModelScopeProjectResponseBody) SetSuccess(v bool) *
 }
 
 type PopBuildLivePortraitModelScopeProjectResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopBuildLivePortraitModelScopeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopBuildLivePortraitModelScopeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopBuildLivePortraitModelScopeProjectResponse) String() string {
@@ -3059,9 +3193,9 @@ func (s *PopBuildObjectGenerationProjectResponseBody) SetSuccess(v bool) *PopBui
 }
 
 type PopBuildObjectGenerationProjectResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopBuildObjectGenerationProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopBuildObjectGenerationProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopBuildObjectGenerationProjectResponse) String() string {
@@ -3158,9 +3292,9 @@ func (s *PopBuildObjectProjectResponseBody) SetSuccess(v bool) *PopBuildObjectPr
 }
 
 type PopBuildObjectProjectResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopBuildObjectProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopBuildObjectProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopBuildObjectProjectResponse) String() string {
@@ -3239,9 +3373,9 @@ func (s *PopBuildPakRenderProjectResponseBody) SetSuccess(v bool) *PopBuildPakRe
 }
 
 type PopBuildPakRenderProjectResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopBuildPakRenderProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopBuildPakRenderProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopBuildPakRenderProjectResponse) String() string {
@@ -3326,9 +3460,9 @@ func (s *PopBuildTextToAvatarProjectResponseBody) SetSuccess(v bool) *PopBuildTe
 }
 
 type PopBuildTextToAvatarProjectResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopBuildTextToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopBuildTextToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopBuildTextToAvatarProjectResponse) String() string {
@@ -3745,9 +3879,9 @@ func (s *PopCreateFeatureToAvatarProjectResponseBodyDataDatasetPolicy) SetSignat
 }
 
 type PopCreateFeatureToAvatarProjectResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopCreateFeatureToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopCreateFeatureToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopCreateFeatureToAvatarProjectResponse) String() string {
@@ -3861,9 +3995,9 @@ func (s *PopCreateLivePortraitModelScopeProjectResponseBodyData) SetId(v string)
 }
 
 type PopCreateLivePortraitModelScopeProjectResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopCreateLivePortraitModelScopeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopCreateLivePortraitModelScopeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopCreateLivePortraitModelScopeProjectResponse) String() string {
@@ -4091,9 +4225,9 @@ func (s *PopCreateMaterialResponseBodyData) SetType(v string) *PopCreateMaterial
 }
 
 type PopCreateMaterialResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopCreateMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopCreateMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopCreateMaterialResponse) String() string {
@@ -4219,9 +4353,9 @@ func (s *PopCreateObjectGenerationProjectResponseBodyData) SetId(v string) *PopC
 }
 
 type PopCreateObjectGenerationProjectResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopCreateObjectGenerationProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopCreateObjectGenerationProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopCreateObjectGenerationProjectResponse) String() string {
@@ -5022,9 +5156,9 @@ func (s *PopCreateObjectProjectResponseBodyDataSourceToken) SetSecurityToken(v s
 }
 
 type PopCreateObjectProjectResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopCreateObjectProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopCreateObjectProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopCreateObjectProjectResponse) String() string {
@@ -5222,9 +5356,9 @@ func (s *PopCreatePakRenderProjectResponseBodyData) SetType(v string) *PopCreate
 }
 
 type PopCreatePakRenderProjectResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopCreatePakRenderProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopCreatePakRenderProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopCreatePakRenderProjectResponse) String() string {
@@ -5428,9 +5562,9 @@ func (s *PopCreateTextToAvatarProjectResponseBodyData) SetType(v string) *PopCre
 }
 
 type PopCreateTextToAvatarProjectResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopCreateTextToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopCreateTextToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopCreateTextToAvatarProjectResponse) String() string {
@@ -5515,9 +5649,9 @@ func (s *PopDeleteMaterialResponseBody) SetSuccess(v bool) *PopDeleteMaterialRes
 }
 
 type PopDeleteMaterialResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopDeleteMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopDeleteMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopDeleteMaterialResponse) String() string {
@@ -7624,9 +7758,9 @@ func (s *PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceToken) SetS
 }
 
 type PopGetAITryOnJobResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopGetAITryOnJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopGetAITryOnJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopGetAITryOnJobResponse) String() string {
@@ -9751,9 +9885,9 @@ func (s *PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceToken) Se
 }
 
 type PopListAITryOnJobsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListAITryOnJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListAITryOnJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListAITryOnJobsResponse) String() string {
@@ -9975,9 +10109,9 @@ func (s *PopListCommonMaterialsAllResponseBodyData) SetType(v string) *PopListCo
 }
 
 type PopListCommonMaterialsAllResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListCommonMaterialsAllResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListCommonMaterialsAllResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListCommonMaterialsAllResponse) String() string {
@@ -10181,9 +10315,9 @@ func (s *PopListFeatureToAvatarMaterialsResponseBodyData) SetType(v string) *Pop
 }
 
 type PopListFeatureToAvatarMaterialsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListFeatureToAvatarMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListFeatureToAvatarMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListFeatureToAvatarMaterialsResponse) String() string {
@@ -10624,9 +10758,9 @@ func (s *PopListFeatureToAvatarProjectResponseBodyDataDatasetPolicy) SetSignatur
 }
 
 type PopListFeatureToAvatarProjectResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListFeatureToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListFeatureToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListFeatureToAvatarProjectResponse) String() string {
@@ -10800,9 +10934,9 @@ func (s *PopListLivePortraitModelScopeMaterialsResponseBodyData) SetType(v strin
 }
 
 type PopListLivePortraitModelScopeMaterialsResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListLivePortraitModelScopeMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListLivePortraitModelScopeMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListLivePortraitModelScopeMaterialsResponse) String() string {
@@ -11473,9 +11607,9 @@ func (s *PopListObjectCaseResponseBodyDataSourceSourceFiles) SetUrl(v string) *P
 }
 
 type PopListObjectCaseResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListObjectCaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListObjectCaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListObjectCaseResponse) String() string {
@@ -11713,9 +11847,9 @@ func (s *PopListObjectGenerationProjectResponseBodyDataDataset) SetBuildResultUr
 }
 
 type PopListObjectGenerationProjectResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListObjectGenerationProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListObjectGenerationProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListObjectGenerationProjectResponse) String() string {
@@ -12422,9 +12556,9 @@ func (s *PopListObjectProjectResponseBodyDataSourceSourceFiles) SetUrl(v string)
 }
 
 type PopListObjectProjectResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListObjectProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListObjectProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListObjectProjectResponse) String() string {
@@ -12592,9 +12726,9 @@ func (s *PopListPakRenderExpressionResponseBodyData) SetName(v string) *PopListP
 }
 
 type PopListPakRenderExpressionResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListPakRenderExpressionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListPakRenderExpressionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListPakRenderExpressionResponse) String() string {
@@ -13017,9 +13151,9 @@ func (s *PopListTextToAvatarProjectResponseBodyDataDatasetPolicy) SetSignature(v
 }
 
 type PopListTextToAvatarProjectResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopListTextToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopListTextToAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopListTextToAvatarProjectResponse) String() string {
@@ -13648,9 +13782,9 @@ func (s *PopObjectProjectDetailResponseBodyDataSourceSourceFiles) SetUrl(v strin
 }
 
 type PopObjectProjectDetailResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopObjectProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopObjectProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopObjectProjectDetailResponse) String() string {
@@ -13800,9 +13934,9 @@ func (s *PopObjectRetrievalResponseBodyData) SetTitle(v string) *PopObjectRetrie
 }
 
 type PopObjectRetrievalResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopObjectRetrievalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopObjectRetrievalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopObjectRetrievalResponse) String() string {
@@ -13934,9 +14068,9 @@ func (s *PopObjectRetrievalUploadDataResponseBodyData) SetSignature(v string) *P
 }
 
 type PopObjectRetrievalUploadDataResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopObjectRetrievalUploadDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopObjectRetrievalUploadDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopObjectRetrievalUploadDataResponse) String() string {
@@ -14288,9 +14422,9 @@ func (s *PopQueryAvatarProjectDetailResponseBodyDataDataset) SetPreviewUrl(v str
 }
 
 type PopQueryAvatarProjectDetailResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopQueryAvatarProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopQueryAvatarProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopQueryAvatarProjectDetailResponse) String() string {
@@ -14492,9 +14626,9 @@ func (s *PopQueryLatestAvatarProjectDetailByUserResponseBodyDataDataset) SetErro
 }
 
 type PopQueryLatestAvatarProjectDetailByUserResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopQueryLatestAvatarProjectDetailByUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopQueryLatestAvatarProjectDetailByUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopQueryLatestAvatarProjectDetailByUserResponse) String() string {
@@ -14673,9 +14807,9 @@ func (s *PopQueryLivePortraitModelScopeProjectDetailResponseBodyDataDataset) Set
 }
 
 type PopQueryLivePortraitModelScopeProjectDetailResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopQueryLivePortraitModelScopeProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopQueryLivePortraitModelScopeProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopQueryLivePortraitModelScopeProjectDetailResponse) String() string {
@@ -14883,9 +15017,9 @@ func (s *PopQueryObjectGenerationProjectDetailResponseBodyDataDataset) SetBuildR
 }
 
 type PopQueryObjectGenerationProjectDetailResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopQueryObjectGenerationProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopQueryObjectGenerationProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopQueryObjectGenerationProjectDetailResponse) String() string {
@@ -14970,9 +15104,9 @@ func (s *PopRetryAITryOnTaskResponseBody) SetSuccess(v bool) *PopRetryAITryOnTas
 }
 
 type PopRetryAITryOnTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopRetryAITryOnTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopRetryAITryOnTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopRetryAITryOnTaskResponse) String() string {
@@ -15116,9 +15250,9 @@ func (s *PopSubmitAITryOnJobResponseBodyData) SetProjectId(v string) *PopSubmitA
 }
 
 type PopSubmitAITryOnJobResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopSubmitAITryOnJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopSubmitAITryOnJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopSubmitAITryOnJobResponse) String() string {
@@ -15273,9 +15407,9 @@ func (s *PopUploadMaterialResponseBodyDataPolicy) SetSignature(v string) *PopUpl
 }
 
 type PopUploadMaterialResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopUploadMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopUploadMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopUploadMaterialResponse) String() string {
@@ -15378,9 +15512,9 @@ func (s *PopVideoSaveSourceResponseBody) SetSuccess(v bool) *PopVideoSaveSourceR
 }
 
 type PopVideoSaveSourceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PopVideoSaveSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PopVideoSaveSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PopVideoSaveSourceResponse) String() string {
@@ -15554,9 +15688,9 @@ func (s *QueryDigitalHumanProjectResponseBodyData) SetWaitingTime(v int32) *Quer
 }
 
 type QueryDigitalHumanProjectResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDigitalHumanProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDigitalHumanProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDigitalHumanProjectResponse) String() string {
@@ -15676,9 +15810,9 @@ func (s *QueryLongTtsResultResponseBodyData) SetStatus(v string) *QueryLongTtsRe
 }
 
 type QueryLongTtsResultResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryLongTtsResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryLongTtsResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryLongTtsResultResponse) String() string {
@@ -15839,9 +15973,9 @@ func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetSelect
 }
 
 type QueryMotionShopVideoDetectResultResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMotionShopVideoDetectResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMotionShopVideoDetectResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMotionShopVideoDetectResultResponse) String() string {
@@ -15938,9 +16072,9 @@ func (s *SubmitLongTtsTaskResponseBody) SetSuccess(v bool) *SubmitLongTtsTaskRes
 }
 
 type SubmitLongTtsTaskResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitLongTtsTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitLongTtsTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitLongTtsTaskResponse) String() string {
@@ -16060,9 +16194,9 @@ func (s *SubmitMotionShopTaskResponseBodyData) SetTaskId(v string) *SubmitMotion
 }
 
 type SubmitMotionShopTaskResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitMotionShopTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitMotionShopTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitMotionShopTaskResponse) String() string {
@@ -16159,9 +16293,9 @@ func (s *UpdateUserEmailResponseBody) SetSuccess(v bool) *UpdateUserEmailRespons
 }
 
 type UpdateUserEmailResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserEmailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserEmailResponse) String() string {
@@ -17159,6 +17293,54 @@ func (client *Client) Locate(request *LocateRequest) (_result *LocateResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &LocateResponse{}
 	_body, _err := client.LocateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LoginHuggingFaceWithOptions(request *LoginHuggingFaceRequest, runtime *util.RuntimeOptions) (_result *LoginHuggingFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LoginHuggingFace"),
+		Version:     tea.String("2023-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LoginHuggingFaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LoginHuggingFace(request *LoginHuggingFaceRequest) (_result *LoginHuggingFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LoginHuggingFaceResponse{}
+	_body, _err := client.LoginHuggingFaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
