@@ -5518,6 +5518,7 @@ type ListProjectFeatureViewsResponseBodyFeatureViews struct {
 	FeatureViewId *string                                                    `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
 	Features      []*ListProjectFeatureViewsResponseBodyFeatureViewsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	Name          *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type          *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListProjectFeatureViewsResponseBodyFeatureViews) String() string {
@@ -5540,6 +5541,11 @@ func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetFeatures(v []*ListP
 
 func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetName(v string) *ListProjectFeatureViewsResponseBodyFeatureViews {
 	s.Name = &v
+	return s
+}
+
+func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetType(v string) *ListProjectFeatureViewsResponseBodyFeatureViews {
+	s.Type = &v
 	return s
 }
 
