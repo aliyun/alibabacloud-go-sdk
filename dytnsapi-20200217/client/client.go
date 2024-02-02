@@ -118,9 +118,9 @@ func (s *CertNoTwoElementVerificationResponseBodyData) SetIsConsistent(v string)
 }
 
 type CertNoTwoElementVerificationResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CertNoTwoElementVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CertNoTwoElementVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CertNoTwoElementVerificationResponse) String() string {
@@ -337,9 +337,9 @@ func (s *CompanyFourElementsVerificationResponseBodyDataDetailInfo) SetOpenTime(
 }
 
 type CompanyFourElementsVerificationResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CompanyFourElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompanyFourElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompanyFourElementsVerificationResponse) String() string {
@@ -547,9 +547,9 @@ func (s *CompanyThreeElementsVerificationResponseBodyDataDetailInfo) SetOpenTime
 }
 
 type CompanyThreeElementsVerificationResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CompanyThreeElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompanyThreeElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompanyThreeElementsVerificationResponse) String() string {
@@ -746,9 +746,9 @@ func (s *CompanyTwoElementsVerificationResponseBodyDataDetailInfo) SetOpenTime(v
 }
 
 type CompanyTwoElementsVerificationResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CompanyTwoElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompanyTwoElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompanyTwoElementsVerificationResponse) String() string {
@@ -905,9 +905,9 @@ func (s *DescribeEmptyNumberResponseBodyData) SetStatus(v string) *DescribeEmpty
 }
 
 type DescribeEmptyNumberResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEmptyNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEmptyNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEmptyNumberResponse) String() string {
@@ -1068,9 +1068,9 @@ func (s *DescribePhoneNumberAnalysisResponseBodyDataList) SetNumber(v string) *D
 }
 
 type DescribePhoneNumberAnalysisResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePhoneNumberAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePhoneNumberAnalysisResponse) String() string {
@@ -1228,9 +1228,9 @@ func (s *DescribePhoneNumberAnalysisAIResponseBodyData) SetNumber(v string) *Des
 }
 
 type DescribePhoneNumberAnalysisAIResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePhoneNumberAnalysisAIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberAnalysisAIResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePhoneNumberAnalysisAIResponse) String() string {
@@ -1392,9 +1392,9 @@ func (s *DescribePhoneNumberAnalysisTransparentResponseBodyData) SetScore3(v str
 }
 
 type DescribePhoneNumberAnalysisTransparentResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePhoneNumberAnalysisTransparentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberAnalysisTransparentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePhoneNumberAnalysisTransparentResponse) String() string {
@@ -1561,9 +1561,9 @@ func (s *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) SetProvin
 }
 
 type DescribePhoneNumberAttributeResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePhoneNumberAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePhoneNumberAttributeResponse) String() string {
@@ -1748,9 +1748,9 @@ func (s *DescribePhoneNumberOnlineTimeResponseBodyData) SetVerifyResult(v string
 }
 
 type DescribePhoneNumberOnlineTimeResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePhoneNumberOnlineTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberOnlineTimeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePhoneNumberOnlineTimeResponse) String() string {
@@ -1947,9 +1947,9 @@ func (s *DescribePhoneNumberOperatorAttributeResponseBodyData) SetProvince(v str
 }
 
 type DescribePhoneNumberOperatorAttributeResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePhoneNumberOperatorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberOperatorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePhoneNumberOperatorAttributeResponse) String() string {
@@ -2081,9 +2081,9 @@ func (s *DescribePhoneNumberRiskResponseBodyData) SetVerifyResult(v string) *Des
 }
 
 type DescribePhoneNumberRiskResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePhoneNumberRiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberRiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePhoneNumberRiskResponse) String() string {
@@ -2267,9 +2267,9 @@ func (s *DescribePhoneTwiceTelVerifyResponseBodyData) SetVerifyResult(v string) 
 }
 
 type DescribePhoneTwiceTelVerifyResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePhoneTwiceTelVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneTwiceTelVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePhoneTwiceTelVerifyResponse) String() string {
@@ -2443,9 +2443,9 @@ func (s *GetUAIDApplyTokenSignResponseBodyData) SetSign(v string) *GetUAIDApplyT
 }
 
 type GetUAIDApplyTokenSignResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUAIDApplyTokenSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUAIDApplyTokenSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUAIDApplyTokenSignResponse) String() string {
@@ -2619,9 +2619,9 @@ func (s *InvalidPhoneNumberFilterResponseBodyData) SetOriginalNumber(v string) *
 }
 
 type InvalidPhoneNumberFilterResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InvalidPhoneNumberFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InvalidPhoneNumberFilterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InvalidPhoneNumberFilterResponse) String() string {
@@ -2765,9 +2765,9 @@ func (s *PhoneNumberConvertServiceResponseBodyData) SetNumberSha256(v string) *P
 }
 
 type PhoneNumberConvertServiceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PhoneNumberConvertServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PhoneNumberConvertServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PhoneNumberConvertServiceResponse) String() string {
@@ -2924,9 +2924,9 @@ func (s *PhoneNumberEncryptResponseBodyData) SetOriginalNumber(v string) *PhoneN
 }
 
 type PhoneNumberEncryptResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PhoneNumberEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PhoneNumberEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PhoneNumberEncryptResponse) String() string {
@@ -3098,9 +3098,9 @@ func (s *PhoneNumberStatusForAccountResponseBodyData) SetStatus(v string) *Phone
 }
 
 type PhoneNumberStatusForAccountResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PhoneNumberStatusForAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PhoneNumberStatusForAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PhoneNumberStatusForAccountResponse) String() string {
@@ -3277,9 +3277,9 @@ func (s *PhoneNumberStatusForPublicResponseBodyData) SetStatus(v string) *PhoneN
 }
 
 type PhoneNumberStatusForPublicResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PhoneNumberStatusForPublicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PhoneNumberStatusForPublicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PhoneNumberStatusForPublicResponse) String() string {
@@ -3453,9 +3453,9 @@ func (s *PhoneNumberStatusForRealResponseBodyData) SetStatus(v string) *PhoneNum
 }
 
 type PhoneNumberStatusForRealResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PhoneNumberStatusForRealResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PhoneNumberStatusForRealResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PhoneNumberStatusForRealResponse) String() string {
@@ -3627,9 +3627,9 @@ func (s *PhoneNumberStatusForSmsResponseBodyData) SetStatus(v string) *PhoneNumb
 }
 
 type PhoneNumberStatusForSmsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PhoneNumberStatusForSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PhoneNumberStatusForSmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PhoneNumberStatusForSmsResponse) String() string {
@@ -3782,9 +3782,9 @@ func (s *PhoneNumberStatusForVirtualResponseBodyData) SetIsPrivacyNumber(v bool)
 }
 
 type PhoneNumberStatusForVirtualResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PhoneNumberStatusForVirtualResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PhoneNumberStatusForVirtualResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PhoneNumberStatusForVirtualResponse) String() string {
@@ -3957,9 +3957,9 @@ func (s *PhoneNumberStatusForVoiceResponseBodyData) SetStatus(v string) *PhoneNu
 }
 
 type PhoneNumberStatusForVoiceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PhoneNumberStatusForVoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PhoneNumberStatusForVoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PhoneNumberStatusForVoiceResponse) String() string {
@@ -4071,9 +4071,9 @@ func (s *QueryAvailableAuthCodeResponseBody) SetSuccess(v bool) *QueryAvailableA
 }
 
 type QueryAvailableAuthCodeResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryAvailableAuthCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAvailableAuthCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryAvailableAuthCodeResponse) String() string {
@@ -4095,6 +4095,146 @@ func (s *QueryAvailableAuthCodeResponse) SetStatusCode(v int32) *QueryAvailableA
 }
 
 func (s *QueryAvailableAuthCodeResponse) SetBody(v *QueryAvailableAuthCodeResponseBody) *QueryAvailableAuthCodeResponse {
+	s.Body = v
+	return s
+}
+
+type QueryPhoneNumberOnlineTimeRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QueryPhoneNumberOnlineTimeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneNumberOnlineTimeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneNumberOnlineTimeRequest) SetAuthCode(v string) *QueryPhoneNumberOnlineTimeRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeRequest) SetInputNumber(v string) *QueryPhoneNumberOnlineTimeRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeRequest) SetMask(v string) *QueryPhoneNumberOnlineTimeRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeRequest) SetOwnerId(v int64) *QueryPhoneNumberOnlineTimeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeRequest) SetResourceOwnerAccount(v string) *QueryPhoneNumberOnlineTimeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeRequest) SetResourceOwnerId(v int64) *QueryPhoneNumberOnlineTimeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QueryPhoneNumberOnlineTimeResponseBody struct {
+	AccessDeniedDetail *string                                     `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *QueryPhoneNumberOnlineTimeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryPhoneNumberOnlineTimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneNumberOnlineTimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponseBody) SetAccessDeniedDetail(v string) *QueryPhoneNumberOnlineTimeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponseBody) SetCode(v string) *QueryPhoneNumberOnlineTimeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponseBody) SetData(v *QueryPhoneNumberOnlineTimeResponseBodyData) *QueryPhoneNumberOnlineTimeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponseBody) SetMessage(v string) *QueryPhoneNumberOnlineTimeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponseBody) SetRequestId(v string) *QueryPhoneNumberOnlineTimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryPhoneNumberOnlineTimeResponseBodyData struct {
+	CarrierCode  *string `json:"CarrierCode,omitempty" xml:"CarrierCode,omitempty"`
+	VerifyResult *int64  `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s QueryPhoneNumberOnlineTimeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneNumberOnlineTimeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponseBodyData) SetCarrierCode(v string) *QueryPhoneNumberOnlineTimeResponseBodyData {
+	s.CarrierCode = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponseBodyData) SetVerifyResult(v int64) *QueryPhoneNumberOnlineTimeResponseBodyData {
+	s.VerifyResult = &v
+	return s
+}
+
+type QueryPhoneNumberOnlineTimeResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPhoneNumberOnlineTimeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryPhoneNumberOnlineTimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneNumberOnlineTimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponse) SetHeaders(v map[string]*string) *QueryPhoneNumberOnlineTimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponse) SetStatusCode(v int32) *QueryPhoneNumberOnlineTimeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryPhoneNumberOnlineTimeResponse) SetBody(v *QueryPhoneNumberOnlineTimeResponseBody) *QueryPhoneNumberOnlineTimeResponse {
 	s.Body = v
 	return s
 }
@@ -4238,9 +4378,9 @@ func (s *QueryTagApplyRuleResponseBodyData) SetSlaLink(v string) *QueryTagApplyR
 }
 
 type QueryTagApplyRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTagApplyRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTagApplyRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTagApplyRuleResponse) String() string {
@@ -4551,9 +4691,9 @@ func (s *QueryTagInfoBySelectionResponseBodyDataParamListValueDict) SetDesc(v st
 }
 
 type QueryTagInfoBySelectionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTagInfoBySelectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTagInfoBySelectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTagInfoBySelectionResponse) String() string {
@@ -4814,9 +4954,9 @@ func (s *QueryTagListPageResponseBodyDataRecords) SetSceneName(v string) *QueryT
 }
 
 type QueryTagListPageResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTagListPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTagListPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTagListPageResponse) String() string {
@@ -5044,9 +5184,9 @@ func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetTotal(v int64) *QueryUs
 }
 
 type QueryUsageStatisticsByTagIdResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryUsageStatisticsByTagIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryUsageStatisticsByTagIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryUsageStatisticsByTagIdResponse) String() string {
@@ -5245,9 +5385,9 @@ func (s *ThreeElementsVerificationResponseBodyData) SetIsConsistent(v int32) *Th
 }
 
 type ThreeElementsVerificationResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ThreeElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ThreeElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ThreeElementsVerificationResponse) String() string {
@@ -5437,9 +5577,9 @@ func (s *TwoElementsVerificationResponseBodyData) SetIsConsistent(v int32) *TwoE
 }
 
 type TwoElementsVerificationResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TwoElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TwoElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TwoElementsVerificationResponse) String() string {
@@ -5595,9 +5735,9 @@ func (s *UAIDVerificationResponseBodyData) SetUaid(v string) *UAIDVerificationRe
 }
 
 type UAIDVerificationResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UAIDVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UAIDVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UAIDVerificationResponse) String() string {
@@ -7578,6 +7718,70 @@ func (client *Client) QueryAvailableAuthCode(request *QueryAvailableAuthCodeRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAvailableAuthCodeResponse{}
 	_body, _err := client.QueryAvailableAuthCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryPhoneNumberOnlineTimeWithOptions(request *QueryPhoneNumberOnlineTimeRequest, runtime *util.RuntimeOptions) (_result *QueryPhoneNumberOnlineTimeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPhoneNumberOnlineTime"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryPhoneNumberOnlineTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryPhoneNumberOnlineTime(request *QueryPhoneNumberOnlineTimeRequest) (_result *QueryPhoneNumberOnlineTimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryPhoneNumberOnlineTimeResponse{}
+	_body, _err := client.QueryPhoneNumberOnlineTimeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
