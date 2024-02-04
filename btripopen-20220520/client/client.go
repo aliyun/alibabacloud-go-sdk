@@ -45283,12 +45283,15 @@ func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetUserName(v string) *
 }
 
 type HotelOrderQueryResponseBodyModulePassengerList struct {
+	ApplyId               *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
 	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
 	CostCenterNumber      *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
 	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectId             *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
 	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartApplyId      *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
 	ThirdpartProjectId    *string `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
 	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
@@ -45302,6 +45305,11 @@ func (s HotelOrderQueryResponseBodyModulePassengerList) String() string {
 
 func (s HotelOrderQueryResponseBodyModulePassengerList) GoString() string {
 	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetApplyId(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.ApplyId = &v
+	return s
 }
 
 func (s *HotelOrderQueryResponseBodyModulePassengerList) SetCostCenterId(v int64) *HotelOrderQueryResponseBodyModulePassengerList {
@@ -45319,6 +45327,11 @@ func (s *HotelOrderQueryResponseBodyModulePassengerList) SetCostCenterNumber(v s
 	return s
 }
 
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetItineraryId(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.ItineraryId = &v
+	return s
+}
+
 func (s *HotelOrderQueryResponseBodyModulePassengerList) SetProjectCode(v string) *HotelOrderQueryResponseBodyModulePassengerList {
 	s.ProjectCode = &v
 	return s
@@ -45331,6 +45344,11 @@ func (s *HotelOrderQueryResponseBodyModulePassengerList) SetProjectId(v int64) *
 
 func (s *HotelOrderQueryResponseBodyModulePassengerList) SetProjectTitle(v string) *HotelOrderQueryResponseBodyModulePassengerList {
 	s.ProjectTitle = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetThirdpartApplyId(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.ThirdpartApplyId = &v
 	return s
 }
 
