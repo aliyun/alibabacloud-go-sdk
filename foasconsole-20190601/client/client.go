@@ -152,9 +152,9 @@ func (s *ConvertInstanceResponseBody) SetSuccess(v bool) *ConvertInstanceRespons
 }
 
 type ConvertInstanceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConvertInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConvertInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConvertInstanceResponse) String() string {
@@ -250,9 +250,9 @@ func (s *ConvertPrepayInstanceResponseBody) SetSuccess(v bool) *ConvertPrepayIns
 }
 
 type ConvertPrepayInstanceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConvertPrepayInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConvertPrepayInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConvertPrepayInstanceResponse) String() string {
@@ -296,20 +296,25 @@ func (s *CreateInstanceRequest) SetCreateInstanceRequest(v *CreateInstanceReques
 }
 
 type CreateInstanceRequestCreateInstanceRequest struct {
-	ArchitectureType *string                                                 `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AutoRenew        *bool                                                   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType       *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Duration         *int32                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra            *string                                                 `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	InstanceName     *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PricingCycle     *string                                                 `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	PromotionCode    *string                                                 `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	Region           *string                                                 `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroupId  *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceSpec     *CreateInstanceRequestCreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage          *CreateInstanceRequestCreateInstanceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	UsePromotionCode *bool                                                   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	VSwitchIds       []*string                                               `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	ArchitectureType *string                                                   `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	AutoRenew        *bool                                                     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType       *string                                                   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Duration         *int32                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extra            *string                                                   `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Ha               *bool                                                     `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec   *CreateInstanceRequestCreateInstanceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	HaVSwitchIds     []*string                                                 `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	HaZoneId         *string                                                   `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	InstanceName     *string                                                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MonitorType      *string                                                   `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	PricingCycle     *string                                                   `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	PromotionCode    *string                                                   `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	Region           *string                                                   `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId  *string                                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceSpec     *CreateInstanceRequestCreateInstanceRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage          *CreateInstanceRequestCreateInstanceRequestStorage        `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	UsePromotionCode *bool                                                     `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	VSwitchIds       []*string                                                 `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// VPC ID。
 	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -348,8 +353,33 @@ func (s *CreateInstanceRequestCreateInstanceRequest) SetExtra(v string) *CreateI
 	return s
 }
 
+func (s *CreateInstanceRequestCreateInstanceRequest) SetHa(v bool) *CreateInstanceRequestCreateInstanceRequest {
+	s.Ha = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequest) SetHaResourceSpec(v *CreateInstanceRequestCreateInstanceRequestHaResourceSpec) *CreateInstanceRequestCreateInstanceRequest {
+	s.HaResourceSpec = v
+	return s
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequest) SetHaVSwitchIds(v []*string) *CreateInstanceRequestCreateInstanceRequest {
+	s.HaVSwitchIds = v
+	return s
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequest) SetHaZoneId(v string) *CreateInstanceRequestCreateInstanceRequest {
+	s.HaZoneId = &v
+	return s
+}
+
 func (s *CreateInstanceRequestCreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequestCreateInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequest) SetMonitorType(v string) *CreateInstanceRequestCreateInstanceRequest {
+	s.MonitorType = &v
 	return s
 }
 
@@ -400,6 +430,29 @@ func (s *CreateInstanceRequestCreateInstanceRequest) SetVpcId(v string) *CreateI
 
 func (s *CreateInstanceRequestCreateInstanceRequest) SetZoneId(v string) *CreateInstanceRequestCreateInstanceRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type CreateInstanceRequestCreateInstanceRequestHaResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s CreateInstanceRequestCreateInstanceRequestHaResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestCreateInstanceRequestHaResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequestHaResourceSpec) SetCpu(v int32) *CreateInstanceRequestCreateInstanceRequestHaResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequestHaResourceSpec) SetMemoryGB(v int32) *CreateInstanceRequestCreateInstanceRequestHaResourceSpec {
+	s.MemoryGB = &v
 	return s
 }
 
@@ -513,9 +566,9 @@ func (s *CreateInstanceResponseBodyOrderInfo) SetOrderId(v int64) *CreateInstanc
 }
 
 type CreateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -559,6 +612,7 @@ func (s *CreateNamespaceRequest) SetCreateNamespaceRequest(v *CreateNamespaceReq
 }
 
 type CreateNamespaceRequestCreateNamespaceRequest struct {
+	Ha           *bool                                                     `json:"Ha,omitempty" xml:"Ha,omitempty"`
 	InstanceId   *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Namespace    *string                                                   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	Region       *string                                                   `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -571,6 +625,11 @@ func (s CreateNamespaceRequestCreateNamespaceRequest) String() string {
 
 func (s CreateNamespaceRequestCreateNamespaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateNamespaceRequestCreateNamespaceRequest) SetHa(v bool) *CreateNamespaceRequestCreateNamespaceRequest {
+	s.Ha = &v
+	return s
 }
 
 func (s *CreateNamespaceRequestCreateNamespaceRequest) SetInstanceId(v string) *CreateNamespaceRequestCreateNamespaceRequest {
@@ -640,9 +699,9 @@ func (s *CreateNamespaceResponseBody) SetSuccess(v bool) *CreateNamespaceRespons
 }
 
 type CreateNamespaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateNamespaceResponse) String() string {
@@ -732,9 +791,9 @@ func (s *DeleteInstanceResponseBody) SetSuccess(v bool) *DeleteInstanceResponseB
 }
 
 type DeleteInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -830,9 +889,9 @@ func (s *DeleteNamespaceResponseBody) SetSuccess(v bool) *DeleteNamespaceRespons
 }
 
 type DeleteNamespaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteNamespaceResponse) String() string {
@@ -1011,26 +1070,31 @@ func (s *DescribeInstancesResponseBody) SetTotalPage(v int32) *DescribeInstances
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	ArchitectureType    *string                                              `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AskClusterId        *string                                              `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
-	ChargeType          *string                                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClusterStatus       *string                                              `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	HostAliases         []*DescribeInstancesResponseBodyInstancesHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
-	InstanceId          *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string                                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	OrderState          *string                                              `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
-	Region              *string                                              `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreateTime  *int64                                               `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceExpiredTime *int64                                               `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
-	ResourceGroupId     *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId          *string                                              `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceSpec        *DescribeInstancesResponseBodyInstancesResourceSpec  `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage             *DescribeInstancesResponseBodyInstancesStorage       `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	Tags                []*DescribeInstancesResponseBodyInstancesTags        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Uid                 *string                                              `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	VSwitchIds          []*string                                            `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId               *string                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId              *string                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ArchitectureType    *string                                               `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	AskClusterId        *string                                               `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
+	ChargeType          *string                                               `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterStatus       *string                                               `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	Ha                  *bool                                                 `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec      *DescribeInstancesResponseBodyInstancesHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	HaVSwitchIds        []*string                                             `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	HaZoneId            *string                                               `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	HostAliases         []*DescribeInstancesResponseBodyInstancesHostAliases  `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
+	InstanceId          *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName        *string                                               `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MonitorType         *string                                               `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	OrderState          *string                                               `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	Region              *string                                               `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreateTime  *int64                                                `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	ResourceExpiredTime *int64                                                `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
+	ResourceGroupId     *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId          *string                                               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceSpec        *DescribeInstancesResponseBodyInstancesResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage             *DescribeInstancesResponseBodyInstancesStorage        `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	Tags                []*DescribeInstancesResponseBodyInstancesTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Uid                 *string                                               `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	VSwitchIds          []*string                                             `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId               *string                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId              *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstances) String() string {
@@ -1061,6 +1125,26 @@ func (s *DescribeInstancesResponseBodyInstances) SetClusterStatus(v string) *Des
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetHa(v bool) *DescribeInstancesResponseBodyInstances {
+	s.Ha = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetHaResourceSpec(v *DescribeInstancesResponseBodyInstancesHaResourceSpec) *DescribeInstancesResponseBodyInstances {
+	s.HaResourceSpec = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetHaVSwitchIds(v []*string) *DescribeInstancesResponseBodyInstances {
+	s.HaVSwitchIds = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetHaZoneId(v string) *DescribeInstancesResponseBodyInstances {
+	s.HaZoneId = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetHostAliases(v []*DescribeInstancesResponseBodyInstancesHostAliases) *DescribeInstancesResponseBodyInstances {
 	s.HostAliases = v
 	return s
@@ -1073,6 +1157,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceId(v string) *Descri
 
 func (s *DescribeInstancesResponseBodyInstances) SetInstanceName(v string) *DescribeInstancesResponseBodyInstances {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetMonitorType(v string) *DescribeInstancesResponseBodyInstances {
+	s.MonitorType = &v
 	return s
 }
 
@@ -1138,6 +1227,29 @@ func (s *DescribeInstancesResponseBodyInstances) SetVpcId(v string) *DescribeIns
 
 func (s *DescribeInstancesResponseBodyInstances) SetZoneId(v string) *DescribeInstancesResponseBodyInstances {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesHaResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesHaResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesHaResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaResourceSpec) SetCpu(v int32) *DescribeInstancesResponseBodyInstancesHaResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaResourceSpec) SetMemoryGB(v int32) *DescribeInstancesResponseBodyInstancesHaResourceSpec {
+	s.MemoryGB = &v
 	return s
 }
 
@@ -1245,9 +1357,9 @@ func (s *DescribeInstancesResponseBodyInstancesTags) SetValue(v string) *Describ
 }
 
 type DescribeInstancesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstancesResponse) String() string {
@@ -1291,6 +1403,7 @@ func (s *DescribeNamespacesRequest) SetDescribeNamespacesRequest(v *DescribeName
 }
 
 type DescribeNamespacesRequestDescribeNamespacesRequest struct {
+	Ha         *bool                                                     `json:"Ha,omitempty" xml:"Ha,omitempty"`
 	InstanceId *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Namespace  *string                                                   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	PageIndex  *int32                                                    `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
@@ -1305,6 +1418,11 @@ func (s DescribeNamespacesRequestDescribeNamespacesRequest) String() string {
 
 func (s DescribeNamespacesRequestDescribeNamespacesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeNamespacesRequestDescribeNamespacesRequest) SetHa(v bool) *DescribeNamespacesRequestDescribeNamespacesRequest {
+	s.Ha = &v
+	return s
 }
 
 func (s *DescribeNamespacesRequestDescribeNamespacesRequest) SetInstanceId(v string) *DescribeNamespacesRequestDescribeNamespacesRequest {
@@ -1416,6 +1534,7 @@ func (s *DescribeNamespacesResponseBody) SetTotalPage(v int32) *DescribeNamespac
 type DescribeNamespacesResponseBodyNamespaces struct {
 	GmtCreate    *int64                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified  *int64                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Ha           *bool                                                 `json:"Ha,omitempty" xml:"Ha,omitempty"`
 	Namespace    *string                                               `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ResourceSpec *DescribeNamespacesResponseBodyNamespacesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	ResourceUsed *DescribeNamespacesResponseBodyNamespacesResourceUsed `json:"ResourceUsed,omitempty" xml:"ResourceUsed,omitempty" type:"Struct"`
@@ -1438,6 +1557,11 @@ func (s *DescribeNamespacesResponseBodyNamespaces) SetGmtCreate(v int64) *Descri
 
 func (s *DescribeNamespacesResponseBodyNamespaces) SetGmtModified(v int64) *DescribeNamespacesResponseBodyNamespaces {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeNamespacesResponseBodyNamespaces) SetHa(v bool) *DescribeNamespacesResponseBodyNamespaces {
+	s.Ha = &v
 	return s
 }
 
@@ -1542,9 +1666,9 @@ func (s *DescribeNamespacesResponseBodyNamespacesTags) SetValue(v string) *Descr
 }
 
 type DescribeNamespacesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNamespacesResponse) String() string {
@@ -1623,9 +1747,9 @@ func (s *DescribeSupportedRegionsResponseBodyRegions) SetRegionName(v string) *D
 }
 
 type DescribeSupportedRegionsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSupportedRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSupportedRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSupportedRegionsResponse) String() string {
@@ -1704,9 +1828,9 @@ func (s *DescribeSupportedZonesResponseBody) SetZoneIds(v []*string) *DescribeSu
 }
 
 type DescribeSupportedZonesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSupportedZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSupportedZonesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSupportedZonesResponse) String() string {
@@ -1874,9 +1998,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -1920,9 +2044,13 @@ func (s *ModifyPrepayInstanceSpecRequest) SetModifyPrepayInstanceSpecRequest(v *
 }
 
 type ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest struct {
-	InstanceId   *string                                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region       *string                                                                     `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpec *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Ha             *bool                                                                         `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	HaVSwitchIds   []*string                                                                     `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	HaZoneId       *string                                                                       `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	InstanceId     *string                                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region         *string                                                                       `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceSpec   *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
 func (s ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) String() string {
@@ -1931,6 +2059,26 @@ func (s ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) String()
 
 func (s ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) SetHa(v bool) *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest {
+	s.Ha = &v
+	return s
+}
+
+func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) SetHaResourceSpec(v *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec) *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest {
+	s.HaResourceSpec = v
+	return s
+}
+
+func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) SetHaVSwitchIds(v []*string) *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest {
+	s.HaVSwitchIds = v
+	return s
+}
+
+func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) SetHaZoneId(v string) *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest {
+	s.HaZoneId = &v
+	return s
 }
 
 func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) SetInstanceId(v string) *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest {
@@ -1945,6 +2093,29 @@ func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) SetRegi
 
 func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest) SetResourceSpec(v *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestResourceSpec) *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest {
 	s.ResourceSpec = v
+	return s
+}
+
+type ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec) SetCpu(v int32) *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec) SetMemoryGB(v int32) *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec {
+	s.MemoryGB = &v
 	return s
 }
 
@@ -2001,9 +2172,9 @@ func (s *ModifyPrepayInstanceSpecResponseBody) SetSuccess(v bool) *ModifyPrepayI
 }
 
 type ModifyPrepayInstanceSpecResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyPrepayInstanceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPrepayInstanceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyPrepayInstanceSpecResponse) String() string {
@@ -2128,9 +2299,9 @@ func (s *ModifyPrepayNamespaceSpecResponseBody) SetSuccess(v bool) *ModifyPrepay
 }
 
 type ModifyPrepayNamespaceSpecResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyPrepayNamespaceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPrepayNamespaceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyPrepayNamespaceSpecResponse) String() string {
@@ -2413,9 +2584,9 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64)
 }
 
 type QueryConvertInstancePriceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryConvertInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryConvertInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryConvertInstancePriceResponse) String() string {
@@ -2628,9 +2799,9 @@ func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) SetRuleId(v 
 }
 
 type QueryConvertPrepayInstancePriceResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryConvertPrepayInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryConvertPrepayInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryConvertPrepayInstancePriceResponse) String() string {
@@ -2674,19 +2845,21 @@ func (s *QueryCreateInstancePriceRequest) SetCreateInstanceRequest(v *QueryCreat
 }
 
 type QueryCreateInstancePriceRequestCreateInstanceRequest struct {
-	ArchitectureType *string                                                           `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AutoRenew        *bool                                                             `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType       *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Duration         *int32                                                            `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra            *string                                                           `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	InstanceName     *string                                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PricingCycle     *string                                                           `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	PromotionCode    *string                                                           `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	Region           *string                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpec     *QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage          *QueryCreateInstancePriceRequestCreateInstanceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	UsePromotionCode *bool                                                             `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	VSwitchIds       []*string                                                         `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	ArchitectureType *string                                                             `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	AutoRenew        *bool                                                               `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType       *string                                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Duration         *int32                                                              `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extra            *string                                                             `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Ha               *bool                                                               `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec   *QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	InstanceName     *string                                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PricingCycle     *string                                                             `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	PromotionCode    *string                                                             `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	Region           *string                                                             `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceSpec     *QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage          *QueryCreateInstancePriceRequestCreateInstanceRequestStorage        `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	UsePromotionCode *bool                                                               `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	VSwitchIds       []*string                                                           `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// VPC ID。
 	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -2722,6 +2895,16 @@ func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetDuration(v int
 
 func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetExtra(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
 	s.Extra = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetHa(v bool) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.Ha = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetHaResourceSpec(v *QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.HaResourceSpec = v
 	return s
 }
 
@@ -2772,6 +2955,29 @@ func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetVpcId(v string
 
 func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetZoneId(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec) SetCpu(v int32) *QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec) SetMemoryGB(v int32) *QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec {
+	s.MemoryGB = &v
 	return s
 }
 
@@ -2979,9 +3185,9 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64) 
 }
 
 type QueryCreateInstancePriceResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCreateInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCreateInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCreateInstancePriceResponse) String() string {
@@ -3025,9 +3231,13 @@ func (s *QueryModifyInstancePriceRequest) SetModifyPrepayInstanceSpecRequest(v *
 }
 
 type QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest struct {
-	InstanceId   *string                                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region       *string                                                                     `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpec *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Ha             *bool                                                                         `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	HaVSwitchIds   []*string                                                                     `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	HaZoneId       *string                                                                       `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	InstanceId     *string                                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region         *string                                                                       `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceSpec   *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
 func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) String() string {
@@ -3036,6 +3246,26 @@ func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) String()
 
 func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetHa(v bool) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
+	s.Ha = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetHaResourceSpec(v *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
+	s.HaResourceSpec = v
+	return s
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetHaVSwitchIds(v []*string) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
+	s.HaVSwitchIds = v
+	return s
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetHaZoneId(v string) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
+	s.HaZoneId = &v
+	return s
 }
 
 func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetInstanceId(v string) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
@@ -3050,6 +3280,29 @@ func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetRegi
 
 func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetResourceSpec(v *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
 	s.ResourceSpec = v
+	return s
+}
+
+type QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec) SetCpu(v int32) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec) SetMemoryGB(v int32) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec {
+	s.MemoryGB = &v
 	return s
 }
 
@@ -3223,9 +3476,9 @@ func (s *QueryModifyInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64) 
 }
 
 type QueryModifyInstancePriceResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryModifyInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryModifyInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryModifyInstancePriceResponse) String() string {
@@ -3450,9 +3703,9 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64) *
 }
 
 type QueryRenewInstancePriceResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRenewInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRenewInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRenewInstancePriceResponse) String() string {
@@ -3560,9 +3813,9 @@ func (s *RenewInstanceResponseBody) SetSuccess(v bool) *RenewInstanceResponseBod
 }
 
 type RenewInstanceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenewInstanceResponse) String() string {
@@ -3688,9 +3941,9 @@ func (s *TagResourcesResponseBody) SetTagResponseId(v string) *TagResourcesRespo
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -3799,9 +4052,9 @@ func (s *UntagResourcesResponseBody) SetTagResponseId(v string) *UntagResourcesR
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -4369,6 +4622,14 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2019-06-01::ModifyInstanceSpec instead.
+ *
+ * @param request ModifyPrepayInstanceSpecRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyPrepayInstanceSpecResponse
+ */
+// Deprecated
 func (client *Client) ModifyPrepayInstanceSpecWithOptions(request *ModifyPrepayInstanceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4405,6 +4666,13 @@ func (client *Client) ModifyPrepayInstanceSpecWithOptions(request *ModifyPrepayI
 	return _result, _err
 }
 
+/**
+ * @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2019-06-01::ModifyInstanceSpec instead.
+ *
+ * @param request ModifyPrepayInstanceSpecRequest
+ * @return ModifyPrepayInstanceSpecResponse
+ */
+// Deprecated
 func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpecRequest) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPrepayInstanceSpecResponse{}
@@ -4416,6 +4684,14 @@ func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpec
 	return _result, _err
 }
 
+/**
+ * @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2019-06-01::ModifyNamespaceSpec instead.
+ *
+ * @param request ModifyPrepayNamespaceSpecRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyPrepayNamespaceSpecResponse
+ */
+// Deprecated
 func (client *Client) ModifyPrepayNamespaceSpecWithOptions(request *ModifyPrepayNamespaceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyPrepayNamespaceSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4452,6 +4728,13 @@ func (client *Client) ModifyPrepayNamespaceSpecWithOptions(request *ModifyPrepay
 	return _result, _err
 }
 
+/**
+ * @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2019-06-01::ModifyNamespaceSpec instead.
+ *
+ * @param request ModifyPrepayNamespaceSpecRequest
+ * @return ModifyPrepayNamespaceSpecResponse
+ */
+// Deprecated
 func (client *Client) ModifyPrepayNamespaceSpec(request *ModifyPrepayNamespaceSpecRequest) (_result *ModifyPrepayNamespaceSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPrepayNamespaceSpecResponse{}
