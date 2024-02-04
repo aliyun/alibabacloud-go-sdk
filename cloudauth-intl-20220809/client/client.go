@@ -3196,6 +3196,7 @@ type InitializeRequest struct {
 	ProductFlow   *string `json:"ProductFlow,omitempty" xml:"ProductFlow,omitempty"`
 	ReturnUrl     *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	SceneCode     *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 	ServiceLevel  *string `json:"ServiceLevel,omitempty" xml:"ServiceLevel,omitempty"`
 }
 
@@ -3319,6 +3320,11 @@ func (s *InitializeRequest) SetReturnUrl(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetSceneCode(v string) *InitializeRequest {
 	s.SceneCode = &v
+	return s
+}
+
+func (s *InitializeRequest) SetSecurityLevel(v string) *InitializeRequest {
+	s.SecurityLevel = &v
 	return s
 }
 
@@ -4313,10 +4319,6 @@ func (client *Client) DocOcrWithOptions(request *DocOcrRequest, runtime *util.Ru
 		query["IdFaceQuality"] = request.IdFaceQuality
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
-		query["IdOcrPictureBase64"] = request.IdOcrPictureBase64
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureUrl)) {
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
 	}
@@ -4341,8 +4343,14 @@ func (client *Client) DocOcrWithOptions(request *DocOcrRequest, runtime *util.Ru
 		query["Spoof"] = request.Spoof
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
+		body["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DocOcr"),
@@ -4401,16 +4409,8 @@ func (client *Client) EkycVerifyWithOptions(request *EkycVerifyRequest, runtime 
 		query["DocType"] = request.DocType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
-		query["FacePictureBase64"] = request.FacePictureBase64
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.FacePictureUrl)) {
 		query["FacePictureUrl"] = request.FacePictureUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
-		query["IdOcrPictureBase64"] = request.IdOcrPictureBase64
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureUrl)) {
@@ -4429,8 +4429,18 @@ func (client *Client) EkycVerifyWithOptions(request *EkycVerifyRequest, runtime 
 		query["ProductCode"] = request.ProductCode
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
+		body["FacePictureBase64"] = request.FacePictureBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
+		body["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EkycVerify"),
@@ -4473,24 +4483,26 @@ func (client *Client) FaceCompareWithOptions(request *FaceCompareRequest, runtim
 		query["MerchantBizId"] = request.MerchantBizId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceFacePicture)) {
-		query["SourceFacePicture"] = request.SourceFacePicture
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SourceFacePictureUrl)) {
 		query["SourceFacePictureUrl"] = request.SourceFacePictureUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetFacePicture)) {
-		query["TargetFacePicture"] = request.TargetFacePicture
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetFacePictureUrl)) {
 		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceFacePicture)) {
+		body["SourceFacePicture"] = request.SourceFacePicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFacePicture)) {
+		body["TargetFacePicture"] = request.TargetFacePicture
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FaceCompare"),
@@ -4739,10 +4751,6 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["DocType"] = request.DocType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
-		query["FacePictureBase64"] = request.FacePictureBase64
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.FacePictureUrl)) {
 		query["FacePictureUrl"] = request.FacePictureUrl
 	}
@@ -4807,12 +4815,22 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["SceneCode"] = request.SceneCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityLevel)) {
+		query["SecurityLevel"] = request.SecurityLevel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceLevel)) {
 		query["ServiceLevel"] = request.ServiceLevel
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
+		body["FacePictureBase64"] = request.FacePictureBase64
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("Initialize"),
