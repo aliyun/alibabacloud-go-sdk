@@ -135,7 +135,10 @@ type AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvit
 	// The type of the sharing operation. Valid values:
 	//
 	// *   Associate
-	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	AssociateType      *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	FailureDescription *string `json:"FailureDescription,omitempty" xml:"FailureDescription,omitempty"`
+	FailureReason      *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The ID of the shared resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the shared resource.
@@ -166,6 +169,21 @@ func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptI
 	return s
 }
 
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetFailureDescription(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
+	s.FailureDescription = &v
+	return s
+}
+
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetFailureReason(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
+	s.FailureReason = &v
+	return s
+}
+
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetOperationType(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
+	s.OperationType = &v
+	return s
+}
+
 func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetResourceId(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
 	s.ResourceId = &v
 	return s
@@ -187,9 +205,9 @@ func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptI
 }
 
 type AcceptResourceShareInvitationResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AcceptResourceShareInvitationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcceptResourceShareInvitationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AcceptResourceShareInvitationResponse) String() string {
@@ -447,9 +465,9 @@ func (s *AssociateResourceShareResponseBodyResourceShareAssociations) SetUpdateT
 }
 
 type AssociateResourceShareResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateResourceShareResponse) String() string {
@@ -529,9 +547,9 @@ func (s *AssociateResourceSharePermissionResponseBody) SetRequestId(v string) *A
 }
 
 type AssociateResourceSharePermissionResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateResourceSharePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateResourceSharePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateResourceSharePermissionResponse) String() string {
@@ -608,9 +626,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -665,9 +683,9 @@ func (s *CheckSharingWithResourceDirectoryStatusResponseBody) SetRequestId(v str
 }
 
 type CheckSharingWithResourceDirectoryStatusResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckSharingWithResourceDirectoryStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckSharingWithResourceDirectoryStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckSharingWithResourceDirectoryStatusResponse) String() string {
@@ -906,9 +924,9 @@ func (s *CreateResourceShareResponseBodyResourceShare) SetUpdateTime(v string) *
 }
 
 type CreateResourceShareResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateResourceShareResponse) String() string {
@@ -971,9 +989,9 @@ func (s *DeleteResourceShareResponseBody) SetRequestId(v string) *DeleteResource
 }
 
 type DeleteResourceShareResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteResourceShareResponse) String() string {
@@ -1078,9 +1096,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegi
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1312,9 +1330,9 @@ func (s *DisassociateResourceShareResponseBodyResourceShareAssociations) SetUpda
 }
 
 type DisassociateResourceShareResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisassociateResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisassociateResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisassociateResourceShareResponse) String() string {
@@ -1384,9 +1402,9 @@ func (s *DisassociateResourceSharePermissionResponseBody) SetRequestId(v string)
 }
 
 type DisassociateResourceSharePermissionResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisassociateResourceSharePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisassociateResourceSharePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisassociateResourceSharePermissionResponse) String() string {
@@ -1431,9 +1449,9 @@ func (s *EnableSharingWithResourceDirectoryResponseBody) SetRequestId(v string) 
 }
 
 type EnableSharingWithResourceDirectoryResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableSharingWithResourceDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableSharingWithResourceDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableSharingWithResourceDirectoryResponse) String() string {
@@ -1585,9 +1603,9 @@ func (s *GetPermissionResponseBodyPermission) SetUpdateTime(v string) *GetPermis
 }
 
 type GetPermissionResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPermissionResponse) String() string {
@@ -1748,9 +1766,9 @@ func (s *ListPermissionVersionsResponseBodyPermissions) SetUpdateTime(v string) 
 }
 
 type ListPermissionVersionsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPermissionVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPermissionVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPermissionVersionsResponse) String() string {
@@ -1913,9 +1931,9 @@ func (s *ListPermissionsResponseBodyPermissions) SetUpdateTime(v string) *ListPe
 }
 
 type ListPermissionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPermissionsResponse) String() string {
@@ -2170,11 +2188,14 @@ func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) Set
 }
 
 type ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails struct {
-	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityType    *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	AssociateType      *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	EntityId           *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityType         *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	FailureDescription *string `json:"FailureDescription,omitempty" xml:"FailureDescription,omitempty"`
+	FailureReason      *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage      *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 }
 
 func (s ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) String() string {
@@ -2200,6 +2221,21 @@ func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssoc
 	return s
 }
 
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetFailureDescription(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
+	s.FailureDescription = &v
+	return s
+}
+
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetFailureReason(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
+	s.FailureReason = &v
+	return s
+}
+
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetOperationType(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
+	s.OperationType = &v
+	return s
+}
+
 func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) SetStatus(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails {
 	s.Status = &v
 	return s
@@ -2211,9 +2247,9 @@ func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssoc
 }
 
 type ListResourceShareAssociationsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceShareAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceShareAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceShareAssociationsResponse) String() string {
@@ -2391,7 +2427,10 @@ type ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationF
 	//
 	// *   Associate
 	// *   Disassociate
-	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	AssociateType      *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	FailureDescription *string `json:"FailureDescription,omitempty" xml:"FailureDescription,omitempty"`
+	FailureReason      *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The ID of the shared resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the shared resource.
@@ -2423,6 +2462,21 @@ func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitat
 	return s
 }
 
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetFailureDescription(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
+	s.FailureDescription = &v
+	return s
+}
+
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetFailureReason(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
+	s.FailureReason = &v
+	return s
+}
+
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetOperationType(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
+	s.OperationType = &v
+	return s
+}
+
 func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetResourceId(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
 	s.ResourceId = &v
 	return s
@@ -2444,9 +2498,9 @@ func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitat
 }
 
 type ListResourceShareInvitationsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceShareInvitationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceShareInvitationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceShareInvitationsResponse) String() string {
@@ -2617,9 +2671,9 @@ func (s *ListResourceSharePermissionsResponseBodyPermissions) SetUpdateTime(v st
 }
 
 type ListResourceSharePermissionsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceSharePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceSharePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceSharePermissionsResponse) String() string {
@@ -2820,9 +2874,9 @@ func (s *ListResourceSharesResponseBodyResourceShares) SetUpdateTime(v string) *
 }
 
 type ListResourceSharesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceSharesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceSharesResponse) String() string {
@@ -3020,9 +3074,9 @@ func (s *ListSharedResourcesResponseBodySharedResources) SetUpdateTime(v string)
 }
 
 type ListSharedResourcesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSharedResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSharedResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSharedResourcesResponse) String() string {
@@ -3206,9 +3260,9 @@ func (s *ListSharedTargetsResponseBodySharedTargets) SetUpdateTime(v string) *Li
 }
 
 type ListSharedTargetsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSharedTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSharedTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSharedTargetsResponse) String() string {
@@ -3346,9 +3400,9 @@ func (s *RejectResourceShareInvitationResponseBodyResourceShareInvitation) SetSt
 }
 
 type RejectResourceShareInvitationResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RejectResourceShareInvitationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RejectResourceShareInvitationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RejectResourceShareInvitationResponse) String() string {
@@ -3509,9 +3563,9 @@ func (s *UpdateResourceShareResponseBodyResourceShare) SetUpdateTime(v string) *
 }
 
 type UpdateResourceShareResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateResourceShareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateResourceShareResponse) String() string {
