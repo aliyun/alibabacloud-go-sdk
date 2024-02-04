@@ -13,9 +13,10 @@ import (
 )
 
 type AbolishApiRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s AbolishApiRequest) String() string {
@@ -33,6 +34,11 @@ func (s *AbolishApiRequest) SetApiId(v string) *AbolishApiRequest {
 
 func (s *AbolishApiRequest) SetGroupId(v string) *AbolishApiRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *AbolishApiRequest) SetSecurityToken(v string) *AbolishApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -88,10 +94,11 @@ func (s *AbolishApiResponse) SetBody(v *AbolishApiResponseBody) *AbolishApiRespo
 }
 
 type AbolishApiForInnerRequest struct {
-	AliUid    *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s AbolishApiForInnerRequest) String() string {
@@ -114,6 +121,11 @@ func (s *AbolishApiForInnerRequest) SetApiId(v string) *AbolishApiForInnerReques
 
 func (s *AbolishApiForInnerRequest) SetGroupId(v string) *AbolishApiForInnerRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *AbolishApiForInnerRequest) SetSecurityToken(v string) *AbolishApiForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -17995,6 +18007,10 @@ func (client *Client) AbolishApiWithOptions(request *AbolishApiRequest, runtime 
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -18049,6 +18065,10 @@ func (client *Client) AbolishApiForInnerWithOptions(request *AbolishApiForInnerR
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
