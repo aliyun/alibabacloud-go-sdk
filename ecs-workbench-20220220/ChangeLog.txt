@@ -1,0 +1,4 @@
+2024-02-05 Version: v1.0.0
+- Update API LoginInstanceupdate InstanceLoginInfo param.
+
+
