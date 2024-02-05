@@ -252,9 +252,9 @@ func (s *AddAttendeeResponseBodyContent) SetData(v interface{}) *AddAttendeeResp
 }
 
 type AddAttendeeResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddAttendeeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddAttendeeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddAttendeeResponse) String() string {
@@ -443,9 +443,9 @@ func (s *AddMeetingRoomsResponseBody) SetResult(v bool) *AddMeetingRoomsResponse
 }
 
 type AddMeetingRoomsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddMeetingRoomsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddMeetingRoomsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddMeetingRoomsResponse) String() string {
@@ -582,9 +582,9 @@ func (s *AddScenegroupMemberResponseBody) SetSuccess(v bool) *AddScenegroupMembe
 }
 
 type AddScenegroupMemberResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddScenegroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddScenegroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddScenegroupMemberResponse) String() string {
@@ -920,9 +920,9 @@ func (s *AddWorkspaceResponseBodyWorkspaceIcon) SetValue(v string) *AddWorkspace
 }
 
 type AddWorkspaceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddWorkspaceResponse) String() string {
@@ -1146,9 +1146,9 @@ func (s *AddWorkspaceDocMembersResponseBody) SetRequestId(v string) *AddWorkspac
 }
 
 type AddWorkspaceDocMembersResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddWorkspaceDocMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddWorkspaceDocMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddWorkspaceDocMembersResponse) String() string {
@@ -1366,9 +1366,9 @@ func (s *AddWorkspaceMembersResponseBody) SetRequestId(v string) *AddWorkspaceMe
 }
 
 type AddWorkspaceMembersResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddWorkspaceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddWorkspaceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddWorkspaceMembersResponse) String() string {
@@ -1768,9 +1768,9 @@ func (s *BatchGetFormDataByIdListResponseBodyResultOriginatorName) SetNameInEngl
 }
 
 type BatchGetFormDataByIdListResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchGetFormDataByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGetFormDataByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchGetFormDataByIdListResponse) String() string {
@@ -1983,9 +1983,9 @@ func (s *BatchRemovalByFormInstanceIdListResponseBody) SetVendorType(v string) *
 }
 
 type BatchRemovalByFormInstanceIdListResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchRemovalByFormInstanceIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchRemovalByFormInstanceIdListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchRemovalByFormInstanceIdListResponse) String() string {
@@ -2216,9 +2216,9 @@ func (s *BatchSaveFormDataResponseBody) SetVendorType(v string) *BatchSaveFormDa
 }
 
 type BatchSaveFormDataResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchSaveFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchSaveFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchSaveFormDataResponse) String() string {
@@ -2473,9 +2473,9 @@ func (s *BatchUpdateFormDataByInstanceIdResponseBody) SetVendorType(v string) *B
 }
 
 type BatchUpdateFormDataByInstanceIdResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchUpdateFormDataByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchUpdateFormDataByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchUpdateFormDataByInstanceIdResponse) String() string {
@@ -2718,9 +2718,9 @@ func (s *BatchUpdateFormDataByInstanceMapResponseBody) SetVendorType(v string) *
 }
 
 type BatchUpdateFormDataByInstanceMapResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchUpdateFormDataByInstanceMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchUpdateFormDataByInstanceMapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchUpdateFormDataByInstanceMapResponse) String() string {
@@ -2897,9 +2897,9 @@ func (s *CancelScheduleConferenceResponseBody) SetSuccess(v bool) *CancelSchedul
 }
 
 type CancelScheduleConferenceResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelScheduleConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelScheduleConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelScheduleConferenceResponse) String() string {
@@ -3100,9 +3100,9 @@ func (s *ClearResponseBody) SetRequestId(v string) *ClearResponseBody {
 }
 
 type ClearResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClearResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClearResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClearResponse) String() string {
@@ -3303,9 +3303,9 @@ func (s *ClearDataResponseBody) SetRequestId(v string) *ClearDataResponseBody {
 }
 
 type ClearDataResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClearDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClearDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClearDataResponse) String() string {
@@ -3547,9 +3547,9 @@ func (s *CommentListReportResponseBodyComments) SetUserid(v string) *CommentList
 }
 
 type CommentListReportResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CommentListReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CommentListReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CommentListReportResponse) String() string {
@@ -3791,9 +3791,9 @@ func (s *CreateDeliveryPlanResponseBody) SetVendorType(v string) *CreateDelivery
 }
 
 type CreateDeliveryPlanResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDeliveryPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDeliveryPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDeliveryPlanResponse) String() string {
@@ -4742,9 +4742,9 @@ func (s *CreateEventResponseBodyUiConfigs) SetUiStatus(v string) *CreateEventRes
 }
 
 type CreateEventResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEventResponse) String() string {
@@ -4981,9 +4981,9 @@ func (s *CreateLiveResponseBody) SetRequestId(v string) *CreateLiveResponseBody 
 }
 
 type CreateLiveResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLiveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLiveResponse) String() string {
@@ -5349,9 +5349,9 @@ func (s *CreateMeetingRoomResponseBody) SetVendorType(v string) *CreateMeetingRo
 }
 
 type CreateMeetingRoomResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateMeetingRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMeetingRoomResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateMeetingRoomResponse) String() string {
@@ -5540,9 +5540,9 @@ func (s *CreateMeetingRoomGroupResponseBody) SetResult(v int64) *CreateMeetingRo
 }
 
 type CreateMeetingRoomGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateMeetingRoomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMeetingRoomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateMeetingRoomGroupResponse) String() string {
@@ -5720,9 +5720,9 @@ func (s *CreateOrUpdateFormDataResponseBody) SetVendorType(v string) *CreateOrUp
 }
 
 type CreateOrUpdateFormDataResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateOrUpdateFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrUpdateFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateOrUpdateFormDataResponse) String() string {
@@ -5971,9 +5971,9 @@ func (s *CreateOrgHonorTemplateResponseBody) SetRequestId(v string) *CreateOrgHo
 }
 
 type CreateOrgHonorTemplateResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateOrgHonorTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrgHonorTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateOrgHonorTemplateResponse) String() string {
@@ -6244,9 +6244,9 @@ func (s *CreatePersonalTodoTaskResponseBody) SetVendorType(v string) *CreatePers
 }
 
 type CreatePersonalTodoTaskResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePersonalTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePersonalTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePersonalTodoTaskResponse) String() string {
@@ -6524,9 +6524,9 @@ func (s *CreateReportResponseBody) SetSuccess(v bool) *CreateReportResponseBody 
 }
 
 type CreateReportResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateReportResponse) String() string {
@@ -6771,9 +6771,9 @@ func (s *CreateScenegroupResponseBody) SetRequestId(v string) *CreateScenegroupR
 }
 
 type CreateScenegroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateScenegroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScenegroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateScenegroupResponse) String() string {
@@ -6992,9 +6992,9 @@ func (s *CreateScheduleConferenceResponseBody) SetUrl(v string) *CreateScheduleC
 }
 
 type CreateScheduleConferenceResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateScheduleConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScheduleConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateScheduleConferenceResponse) String() string {
@@ -7016,6 +7016,494 @@ func (s *CreateScheduleConferenceResponse) SetStatusCode(v int32) *CreateSchedul
 }
 
 func (s *CreateScheduleConferenceResponse) SetBody(v *CreateScheduleConferenceResponseBody) *CreateScheduleConferenceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSearchDomeHeaders struct {
+	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreateSearchDomeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreateSearchDomeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchDomeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchDomeHeaders) SetCommonHeaders(v map[string]*string) *CreateSearchDomeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateSearchDomeHeaders) SetAccountContext(v *CreateSearchDomeHeadersAccountContext) *CreateSearchDomeHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreateSearchDomeHeadersAccountContext struct {
+	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
+}
+
+func (s CreateSearchDomeHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchDomeHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchDomeHeadersAccountContext) SetUserToken(v string) *CreateSearchDomeHeadersAccountContext {
+	s.UserToken = &v
+	return s
+}
+
+type CreateSearchDomeShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreateSearchDomeShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchDomeShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchDomeShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreateSearchDomeShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateSearchDomeShrinkHeaders) SetAccountContextShrink(v string) *CreateSearchDomeShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreateSearchDomeRequest struct {
+	Content       *string                               `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime       *int64                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResId         *string                               `json:"ResId,omitempty" xml:"ResId,omitempty"`
+	StartTime     *int64                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *CreateSearchDomeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	UserIdList    []*string                             `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
+}
+
+func (s CreateSearchDomeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchDomeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchDomeRequest) SetContent(v string) *CreateSearchDomeRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateSearchDomeRequest) SetEndTime(v int64) *CreateSearchDomeRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateSearchDomeRequest) SetResId(v string) *CreateSearchDomeRequest {
+	s.ResId = &v
+	return s
+}
+
+func (s *CreateSearchDomeRequest) SetStartTime(v int64) *CreateSearchDomeRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateSearchDomeRequest) SetTenantContext(v *CreateSearchDomeRequestTenantContext) *CreateSearchDomeRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CreateSearchDomeRequest) SetUserIdList(v []*string) *CreateSearchDomeRequest {
+	s.UserIdList = v
+	return s
+}
+
+type CreateSearchDomeRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreateSearchDomeRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchDomeRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchDomeRequestTenantContext) SetTenantId(v string) *CreateSearchDomeRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CreateSearchDomeShrinkRequest struct {
+	Content             *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResId               *string `json:"ResId,omitempty" xml:"ResId,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	UserIdListShrink    *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
+}
+
+func (s CreateSearchDomeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchDomeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchDomeShrinkRequest) SetContent(v string) *CreateSearchDomeShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateSearchDomeShrinkRequest) SetEndTime(v int64) *CreateSearchDomeShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateSearchDomeShrinkRequest) SetResId(v string) *CreateSearchDomeShrinkRequest {
+	s.ResId = &v
+	return s
+}
+
+func (s *CreateSearchDomeShrinkRequest) SetStartTime(v int64) *CreateSearchDomeShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateSearchDomeShrinkRequest) SetTenantContextShrink(v string) *CreateSearchDomeShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CreateSearchDomeShrinkRequest) SetUserIdListShrink(v string) *CreateSearchDomeShrinkRequest {
+	s.UserIdListShrink = &v
+	return s
+}
+
+type CreateSearchDomeResponseBody struct {
+	Arguments       []interface{} `json:"arguments,omitempty" xml:"arguments,omitempty" type:"Repeated"`
+	RequestId       *string       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success         *bool         `json:"success,omitempty" xml:"success,omitempty"`
+	VendorRequestId *string       `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string       `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreateSearchDomeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchDomeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchDomeResponseBody) SetArguments(v []interface{}) *CreateSearchDomeResponseBody {
+	s.Arguments = v
+	return s
+}
+
+func (s *CreateSearchDomeResponseBody) SetRequestId(v string) *CreateSearchDomeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSearchDomeResponseBody) SetSuccess(v bool) *CreateSearchDomeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateSearchDomeResponseBody) SetVendorRequestId(v string) *CreateSearchDomeResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateSearchDomeResponseBody) SetVendorType(v string) *CreateSearchDomeResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CreateSearchDomeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSearchDomeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSearchDomeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchDomeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchDomeResponse) SetHeaders(v map[string]*string) *CreateSearchDomeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSearchDomeResponse) SetStatusCode(v int32) *CreateSearchDomeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSearchDomeResponse) SetBody(v *CreateSearchDomeResponseBody) *CreateSearchDomeResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSearchKeywordHeaders struct {
+	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreateSearchKeywordHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreateSearchKeywordHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchKeywordHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchKeywordHeaders) SetCommonHeaders(v map[string]*string) *CreateSearchKeywordHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateSearchKeywordHeaders) SetAccountContext(v *CreateSearchKeywordHeadersAccountContext) *CreateSearchKeywordHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreateSearchKeywordHeadersAccountContext struct {
+	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
+}
+
+func (s CreateSearchKeywordHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchKeywordHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchKeywordHeadersAccountContext) SetUserToken(v string) *CreateSearchKeywordHeadersAccountContext {
+	s.UserToken = &v
+	return s
+}
+
+type CreateSearchKeywordShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreateSearchKeywordShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchKeywordShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchKeywordShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreateSearchKeywordShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateSearchKeywordShrinkHeaders) SetAccountContextShrink(v string) *CreateSearchKeywordShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreateSearchKeywordRequest struct {
+	Content       *string                                  `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime       *int64                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResId         *string                                  `json:"ResId,omitempty" xml:"ResId,omitempty"`
+	StartTime     *int64                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *CreateSearchKeywordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	UserIdList    []*string                                `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
+}
+
+func (s CreateSearchKeywordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchKeywordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchKeywordRequest) SetContent(v string) *CreateSearchKeywordRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateSearchKeywordRequest) SetEndTime(v int64) *CreateSearchKeywordRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateSearchKeywordRequest) SetResId(v string) *CreateSearchKeywordRequest {
+	s.ResId = &v
+	return s
+}
+
+func (s *CreateSearchKeywordRequest) SetStartTime(v int64) *CreateSearchKeywordRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateSearchKeywordRequest) SetTenantContext(v *CreateSearchKeywordRequestTenantContext) *CreateSearchKeywordRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CreateSearchKeywordRequest) SetUserIdList(v []*string) *CreateSearchKeywordRequest {
+	s.UserIdList = v
+	return s
+}
+
+type CreateSearchKeywordRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreateSearchKeywordRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchKeywordRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchKeywordRequestTenantContext) SetTenantId(v string) *CreateSearchKeywordRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CreateSearchKeywordShrinkRequest struct {
+	Content             *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResId               *string `json:"ResId,omitempty" xml:"ResId,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	UserIdListShrink    *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
+}
+
+func (s CreateSearchKeywordShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchKeywordShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchKeywordShrinkRequest) SetContent(v string) *CreateSearchKeywordShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateSearchKeywordShrinkRequest) SetEndTime(v int64) *CreateSearchKeywordShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateSearchKeywordShrinkRequest) SetResId(v string) *CreateSearchKeywordShrinkRequest {
+	s.ResId = &v
+	return s
+}
+
+func (s *CreateSearchKeywordShrinkRequest) SetStartTime(v int64) *CreateSearchKeywordShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateSearchKeywordShrinkRequest) SetTenantContextShrink(v string) *CreateSearchKeywordShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CreateSearchKeywordShrinkRequest) SetUserIdListShrink(v string) *CreateSearchKeywordShrinkRequest {
+	s.UserIdListShrink = &v
+	return s
+}
+
+type CreateSearchKeywordResponseBody struct {
+	Arguments       []interface{} `json:"arguments,omitempty" xml:"arguments,omitempty" type:"Repeated"`
+	RequestId       *string       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success         *bool         `json:"success,omitempty" xml:"success,omitempty"`
+	VendorRequestId *string       `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string       `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreateSearchKeywordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchKeywordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchKeywordResponseBody) SetArguments(v []interface{}) *CreateSearchKeywordResponseBody {
+	s.Arguments = v
+	return s
+}
+
+func (s *CreateSearchKeywordResponseBody) SetRequestId(v string) *CreateSearchKeywordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSearchKeywordResponseBody) SetSuccess(v bool) *CreateSearchKeywordResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateSearchKeywordResponseBody) SetVendorRequestId(v string) *CreateSearchKeywordResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateSearchKeywordResponseBody) SetVendorType(v string) *CreateSearchKeywordResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CreateSearchKeywordResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSearchKeywordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSearchKeywordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchKeywordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchKeywordResponse) SetHeaders(v map[string]*string) *CreateSearchKeywordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSearchKeywordResponse) SetStatusCode(v int32) *CreateSearchKeywordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSearchKeywordResponse) SetBody(v *CreateSearchKeywordResponseBody) *CreateSearchKeywordResponse {
 	s.Body = v
 	return s
 }
@@ -7194,9 +7682,9 @@ func (s *CreateSheetResponseBody) SetVisibility(v string) *CreateSheetResponseBo
 }
 
 type CreateSheetResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSheetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSheetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSheetResponse) String() string {
@@ -7397,9 +7885,9 @@ func (s *CreateSubscribedCalendarResponseBody) SetRequestId(v string) *CreateSub
 }
 
 type CreateSubscribedCalendarResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSubscribedCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSubscribedCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSubscribedCalendarResponse) String() string {
@@ -7970,9 +8458,9 @@ func (s *CreateTodoTaskResponseBodyNotifyConfigs) SetDingNotify(v string) *Creat
 }
 
 type CreateTodoTaskResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTodoTaskResponse) String() string {
@@ -8174,9 +8662,9 @@ func (s *CreateVideoConferenceResponseBody) SetRoomCode(v string) *CreateVideoCo
 }
 
 type CreateVideoConferenceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVideoConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVideoConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVideoConferenceResponse) String() string {
@@ -8383,9 +8871,9 @@ func (s *CreateWorkspaceResponseBody) SetWorkspaceId(v string) *CreateWorkspaceR
 }
 
 type CreateWorkspaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateWorkspaceResponse) String() string {
@@ -8640,9 +9128,9 @@ func (s *CreateWorkspaceDocResponseBody) SetWorkspaceId(v string) *CreateWorkspa
 }
 
 type CreateWorkspaceDocResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateWorkspaceDocResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWorkspaceDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateWorkspaceDocResponse) String() string {
@@ -8855,9 +9343,9 @@ func (s *DeleteColumnsResponseBody) SetRequestId(v string) *DeleteColumnsRespons
 }
 
 type DeleteColumnsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteColumnsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteColumnsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteColumnsResponse) String() string {
@@ -9047,9 +9535,9 @@ func (s *DeleteEventResponseBodyContent) SetData(v interface{}) *DeleteEventResp
 }
 
 type DeleteEventResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEventResponse) String() string {
@@ -9203,9 +9691,9 @@ func (s *DeleteFormDataResponseBody) SetVendorType(v string) *DeleteFormDataResp
 }
 
 type DeleteFormDataResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFormDataResponse) String() string {
@@ -9359,9 +9847,9 @@ func (s *DeleteInstanceResponseBody) SetVendorType(v string) *DeleteInstanceResp
 }
 
 type DeleteInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -9538,9 +10026,9 @@ func (s *DeleteLiveResponseBody) SetSuccess(v bool) *DeleteLiveResponseBody {
 }
 
 type DeleteLiveResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLiveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteLiveResponse) String() string {
@@ -9717,9 +10205,9 @@ func (s *DeleteMeetingRoomResponseBody) SetResult(v bool) *DeleteMeetingRoomResp
 }
 
 type DeleteMeetingRoomResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMeetingRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMeetingRoomResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMeetingRoomResponse) String() string {
@@ -9896,9 +10384,9 @@ func (s *DeleteMeetingRoomGroupResponseBody) SetResult(v bool) *DeleteMeetingRoo
 }
 
 type DeleteMeetingRoomGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMeetingRoomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMeetingRoomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMeetingRoomGroupResponse) String() string {
@@ -10111,9 +10599,9 @@ func (s *DeleteRowsResponseBody) SetRequestId(v string) *DeleteRowsResponseBody 
 }
 
 type DeleteRowsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRowsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRowsResponse) String() string {
@@ -10250,9 +10738,9 @@ func (s *DeleteScenegroupMemberResponseBody) SetSuccess(v bool) *DeleteScenegrou
 }
 
 type DeleteScenegroupMemberResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteScenegroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteScenegroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteScenegroupMemberResponse) String() string {
@@ -10441,9 +10929,9 @@ func (s *DeleteSheetResponseBody) SetSuccess(v bool) *DeleteSheetResponseBody {
 }
 
 type DeleteSheetResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSheetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSheetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSheetResponse) String() string {
@@ -10574,9 +11062,9 @@ func (s *DeleteSubscribedCalendarResponseBody) SetRequestId(v string) *DeleteSub
 }
 
 type DeleteSubscribedCalendarResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSubscribedCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSubscribedCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSubscribedCalendarResponse) String() string {
@@ -10765,9 +11253,9 @@ func (s *DeleteTodoTaskResponseBody) SetResult(v bool) *DeleteTodoTaskResponseBo
 }
 
 type DeleteTodoTaskResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTodoTaskResponse) String() string {
@@ -10985,9 +11473,9 @@ func (s *DeleteWorkspaceDocMembersResponseBody) SetRequestId(v string) *DeleteWo
 }
 
 type DeleteWorkspaceDocMembersResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteWorkspaceDocMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWorkspaceDocMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteWorkspaceDocMembersResponse) String() string {
@@ -11193,9 +11681,9 @@ func (s *DeleteWorkspaceMembersResponseBody) SetRequestId(v string) *DeleteWorks
 }
 
 type DeleteWorkspaceMembersResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteWorkspaceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWorkspaceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteWorkspaceMembersResponse) String() string {
@@ -11373,9 +11861,9 @@ func (s *ExecuteBatchTaskResponseBody) SetVendorType(v string) *ExecuteBatchTask
 }
 
 type ExecuteBatchTaskResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteBatchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteBatchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteBatchTaskResponse) String() string {
@@ -11553,9 +12041,9 @@ func (s *ExecutePlatformTaskResponseBody) SetVendorType(v string) *ExecutePlatfo
 }
 
 type ExecutePlatformTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecutePlatformTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecutePlatformTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecutePlatformTaskResponse) String() string {
@@ -11745,9 +12233,9 @@ func (s *ExecuteTaskResponseBody) SetVendorType(v string) *ExecuteTaskResponseBo
 }
 
 type ExecuteTaskResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteTaskResponse) String() string {
@@ -11936,9 +12424,9 @@ func (s *GetActivityListResponseBodyResult) SetActivityNameInEnglish(v string) *
 }
 
 type GetActivityListResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetActivityListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetActivityListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetActivityListResponse) String() string {
@@ -12138,9 +12626,9 @@ func (s *GetAllSheetsResponseBodyValue) SetName(v string) *GetAllSheetsResponseB
 }
 
 type GetAllSheetsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAllSheetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAllSheetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAllSheetsResponse) String() string {
@@ -12455,9 +12943,9 @@ func (s *GetCorpAccomplishmentTasksResponseBodyData) SetTitle(v string) *GetCorp
 }
 
 type GetCorpAccomplishmentTasksResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCorpAccomplishmentTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCorpAccomplishmentTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCorpAccomplishmentTasksResponse) String() string {
@@ -12802,9 +13290,9 @@ func (s *GetCorpTasksResponseBodyData) SetTitleInEnglish(v string) *GetCorpTasks
 }
 
 type GetCorpTasksResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCorpTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCorpTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCorpTasksResponse) String() string {
@@ -12826,6 +13314,208 @@ func (s *GetCorpTasksResponse) SetStatusCode(v int32) *GetCorpTasksResponse {
 }
 
 func (s *GetCorpTasksResponse) SetBody(v *GetCorpTasksResponseBody) *GetCorpTasksResponse {
+	s.Body = v
+	return s
+}
+
+type GetDocContentHeaders struct {
+	CommonHeaders  map[string]*string                  `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetDocContentHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetDocContentHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentHeaders) SetCommonHeaders(v map[string]*string) *GetDocContentHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDocContentHeaders) SetAccountContext(v *GetDocContentHeadersAccountContext) *GetDocContentHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetDocContentHeadersAccountContext struct {
+	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
+}
+
+func (s GetDocContentHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentHeadersAccountContext) SetUserToken(v string) *GetDocContentHeadersAccountContext {
+	s.UserToken = &v
+	return s
+}
+
+type GetDocContentShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetDocContentShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetDocContentShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDocContentShrinkHeaders) SetAccountContextShrink(v string) *GetDocContentShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetDocContentRequest struct {
+	DentryUuid    *string                            `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	TargetFormat  *string                            `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
+	TenantContext *GetDocContentRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetDocContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentRequest) SetDentryUuid(v string) *GetDocContentRequest {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetDocContentRequest) SetTargetFormat(v string) *GetDocContentRequest {
+	s.TargetFormat = &v
+	return s
+}
+
+func (s *GetDocContentRequest) SetTenantContext(v *GetDocContentRequestTenantContext) *GetDocContentRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetDocContentRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetDocContentRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentRequestTenantContext) SetTenantId(v string) *GetDocContentRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetDocContentShrinkRequest struct {
+	DentryUuid          *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	TargetFormat        *string `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetDocContentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentShrinkRequest) SetDentryUuid(v string) *GetDocContentShrinkRequest {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetDocContentShrinkRequest) SetTargetFormat(v string) *GetDocContentShrinkRequest {
+	s.TargetFormat = &v
+	return s
+}
+
+func (s *GetDocContentShrinkRequest) SetTenantContextShrink(v string) *GetDocContentShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetDocContentResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TaskId          *int64  `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetDocContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentResponseBody) SetRequestId(v string) *GetDocContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDocContentResponseBody) SetTaskId(v int64) *GetDocContentResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetDocContentResponseBody) SetVendorRequestId(v string) *GetDocContentResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetDocContentResponseBody) SetVendorType(v string) *GetDocContentResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetDocContentResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDocContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentResponse) SetHeaders(v map[string]*string) *GetDocContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDocContentResponse) SetStatusCode(v int32) *GetDocContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDocContentResponse) SetBody(v *GetDocContentResponseBody) *GetDocContentResponse {
 	s.Body = v
 	return s
 }
@@ -13496,9 +14186,9 @@ func (s *GetEventResponseBodyStart) SetTimeZone(v string) *GetEventResponseBodyS
 }
 
 type GetEventResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEventResponse) String() string {
@@ -13711,9 +14401,9 @@ func (s *GetFieldDefByUuidResponseBodyResult) SetSuccess(v bool) *GetFieldDefByU
 }
 
 type GetFieldDefByUuidResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFieldDefByUuidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFieldDefByUuidResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFieldDefByUuidResponse) String() string {
@@ -13908,9 +14598,9 @@ func (s *GetFormComponentDefinitionListResponseBodyResult) SetParentId(v string)
 }
 
 type GetFormComponentDefinitionListResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFormComponentDefinitionListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFormComponentDefinitionListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFormComponentDefinitionListResponse) String() string {
@@ -14152,9 +14842,9 @@ func (s *GetFormDataByIDResponseBodyOriginatorName) SetType(v string) *GetFormDa
 }
 
 type GetFormDataByIDResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFormDataByIDResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFormDataByIDResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFormDataByIDResponse) String() string {
@@ -14402,9 +15092,9 @@ func (s *GetFormListInAppResponseBodyDataTitle) SetZhCN(v string) *GetFormListIn
 }
 
 type GetFormListInAppResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFormListInAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFormListInAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFormListInAppResponse) String() string {
@@ -14758,9 +15448,9 @@ func (s *GetInstanceByIdResponseBodyOriginatorName) SetType(v string) *GetInstan
 }
 
 type GetInstanceByIdResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceByIdResponse) String() string {
@@ -14998,9 +15688,9 @@ func (s *GetInstanceIdListResponseBody) SetVendorType(v string) *GetInstanceIdLi
 }
 
 type GetInstanceIdListResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceIdListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceIdListResponse) String() string {
@@ -15455,9 +16145,9 @@ func (s *GetInstancesResponseBodyDataOriginatorName) SetType(v string) *GetInsta
 }
 
 type GetInstancesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstancesResponse) String() string {
@@ -15810,9 +16500,9 @@ func (s *GetInstancesByIdListResponseBodyResultOriginatorName) SetType(v string)
 }
 
 type GetInstancesByIdListResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstancesByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstancesByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstancesByIdListResponse) String() string {
@@ -15834,6 +16524,196 @@ func (s *GetInstancesByIdListResponse) SetStatusCode(v int32) *GetInstancesByIdL
 }
 
 func (s *GetInstancesByIdListResponse) SetBody(v *GetInstancesByIdListResponseBody) *GetInstancesByIdListResponse {
+	s.Body = v
+	return s
+}
+
+type GetLiveReplayUrlHeaders struct {
+	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetLiveReplayUrlHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetLiveReplayUrlHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveReplayUrlHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveReplayUrlHeaders) SetCommonHeaders(v map[string]*string) *GetLiveReplayUrlHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetLiveReplayUrlHeaders) SetAccountContext(v *GetLiveReplayUrlHeadersAccountContext) *GetLiveReplayUrlHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetLiveReplayUrlHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetLiveReplayUrlHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveReplayUrlHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveReplayUrlHeadersAccountContext) SetAccountId(v string) *GetLiveReplayUrlHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetLiveReplayUrlShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetLiveReplayUrlShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveReplayUrlShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveReplayUrlShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetLiveReplayUrlShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetLiveReplayUrlShrinkHeaders) SetAccountContextShrink(v string) *GetLiveReplayUrlShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetLiveReplayUrlRequest struct {
+	LiveId        *string                               `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	TenantContext *GetLiveReplayUrlRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetLiveReplayUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveReplayUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveReplayUrlRequest) SetLiveId(v string) *GetLiveReplayUrlRequest {
+	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveReplayUrlRequest) SetTenantContext(v *GetLiveReplayUrlRequestTenantContext) *GetLiveReplayUrlRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetLiveReplayUrlRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetLiveReplayUrlRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveReplayUrlRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveReplayUrlRequestTenantContext) SetTenantId(v string) *GetLiveReplayUrlRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetLiveReplayUrlShrinkRequest struct {
+	LiveId              *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetLiveReplayUrlShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveReplayUrlShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveReplayUrlShrinkRequest) SetLiveId(v string) *GetLiveReplayUrlShrinkRequest {
+	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveReplayUrlShrinkRequest) SetTenantContextShrink(v string) *GetLiveReplayUrlShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetLiveReplayUrlResponseBody struct {
+	ReplayUrl       *string `json:"replayUrl,omitempty" xml:"replayUrl,omitempty"`
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetLiveReplayUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveReplayUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveReplayUrlResponseBody) SetReplayUrl(v string) *GetLiveReplayUrlResponseBody {
+	s.ReplayUrl = &v
+	return s
+}
+
+func (s *GetLiveReplayUrlResponseBody) SetRequestId(v string) *GetLiveReplayUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveReplayUrlResponseBody) SetVendorRequestId(v string) *GetLiveReplayUrlResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetLiveReplayUrlResponseBody) SetVendorType(v string) *GetLiveReplayUrlResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetLiveReplayUrlResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLiveReplayUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLiveReplayUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveReplayUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveReplayUrlResponse) SetHeaders(v map[string]*string) *GetLiveReplayUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveReplayUrlResponse) SetStatusCode(v int32) *GetLiveReplayUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLiveReplayUrlResponse) SetBody(v *GetLiveReplayUrlResponseBody) *GetLiveReplayUrlResponse {
 	s.Body = v
 	return s
 }
@@ -16347,9 +17227,9 @@ func (s *GetMeCorpSubmissionResponseBodyDataCurrentActivityInstances) SetId(v in
 }
 
 type GetMeCorpSubmissionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMeCorpSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMeCorpSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMeCorpSubmissionResponse) String() string {
@@ -16654,9 +17534,9 @@ func (s *GetMeetingRoomsScheduleResponseBodyScheduleInformationScheduleItemsStar
 }
 
 type GetMeetingRoomsScheduleResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMeetingRoomsScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMeetingRoomsScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMeetingRoomsScheduleResponse) String() string {
@@ -16957,9 +17837,9 @@ func (s *GetMineWorkspaceResponseBodyWorkspaceIcon) SetValue(v string) *GetMineW
 }
 
 type GetMineWorkspaceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMineWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMineWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMineWorkspaceResponse) String() string {
@@ -17278,9 +18158,9 @@ func (s *GetNodeResponseBodyNodeStatisticalInfo) SetWordCount(v int64) *GetNodeR
 }
 
 type GetNodeResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNodeResponse) String() string {
@@ -17610,9 +18490,9 @@ func (s *GetNodeByUrlResponseBodyNodeStatisticalInfo) SetWordCount(v int64) *Get
 }
 
 type GetNodeByUrlResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNodeByUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNodeByUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNodeByUrlResponse) String() string {
@@ -17942,9 +18822,9 @@ func (s *GetNodesResponseBodyNodesStatisticalInfo) SetWordCount(v int64) *GetNod
 }
 
 type GetNodesResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNodesResponse) String() string {
@@ -18229,9 +19109,9 @@ func (s *GetNotifyMeResponseBodyData) SetModifiedTimeGMT(v string) *GetNotifyMeR
 }
 
 type GetNotifyMeResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNotifyMeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNotifyMeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNotifyMeResponse) String() string {
@@ -18386,9 +19266,9 @@ func (s *GetOpenUrlResponseBody) SetResult(v string) *GetOpenUrlResponseBody {
 }
 
 type GetOpenUrlResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOpenUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOpenUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOpenUrlResponse) String() string {
@@ -18703,9 +19583,9 @@ func (s *GetOperationRecordsResponseBodyResult) SetType(v string) *GetOperationR
 }
 
 type GetOperationRecordsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOperationRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOperationRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOperationRecordsResponse) String() string {
@@ -19285,9 +20165,9 @@ func (s *GetProcessDefinitionResponseBodyTasksActivity) SetId(v int64) *GetProce
 }
 
 type GetProcessDefinitionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProcessDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProcessDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProcessDefinitionResponse) String() string {
@@ -19557,9 +20437,9 @@ func (s *GetRangeResponseBodyBackgroundColors) SetHexString(v string) *GetRangeR
 }
 
 type GetRangeResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRangeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRangeResponse) String() string {
@@ -19847,9 +20727,9 @@ func (s *GetReportTemplateByNameResponseBodyFields) SetType(v int64) *GetReportT
 }
 
 type GetReportTemplateByNameResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetReportTemplateByNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetReportTemplateByNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetReportTemplateByNameResponse) String() string {
@@ -20026,9 +20906,9 @@ func (s *GetReportUnReadCountResponseBody) SetRequestId(v string) *GetReportUnRe
 }
 
 type GetReportUnReadCountResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetReportUnReadCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetReportUnReadCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetReportUnReadCountResponse) String() string {
@@ -20277,9 +21157,9 @@ func (s *GetRunningTasksResponseBodyResult) SetTitleInEnglish(v string) *GetRunn
 }
 
 type GetRunningTasksResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRunningTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRunningTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRunningTasksResponse) String() string {
@@ -20504,9 +21384,9 @@ func (s *GetSheetResponseBody) SetVisibility(v string) *GetSheetResponseBody {
 }
 
 type GetSheetResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSheetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSheetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSheetResponse) String() string {
@@ -21188,9 +22068,9 @@ func (s *GetSpaceDirectoriesResponseBodyChildrenVisitorInfo) SetSpaceActions(v [
 }
 
 type GetSpaceDirectoriesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSpaceDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSpaceDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSpaceDirectoriesResponse) String() string {
@@ -21380,9 +22260,9 @@ func (s *GetSubscribedCalendarResponseBodySubscribeScope) SetUserIds(v []*string
 }
 
 type GetSubscribedCalendarResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSubscribedCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSubscribedCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSubscribedCalendarResponse) String() string {
@@ -21798,9 +22678,9 @@ func (s *GetTaskCopiesResponseBodyDataCurrentActivityInstances) SetId(v int64) *
 }
 
 type GetTaskCopiesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskCopiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskCopiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskCopiesResponse) String() string {
@@ -22030,9 +22910,9 @@ func (s *GetTemplateListByUserIdResponseBodyTemplateList) SetUrl(v string) *GetT
 }
 
 type GetTemplateListByUserIdResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTemplateListByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemplateListByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTemplateListByUserIdResponse) String() string {
@@ -22521,9 +23401,9 @@ func (s *GetUserResponseBodyUnionEmpExtUnionEmpMapList) SetUserid(v string) *Get
 }
 
 type GetUserResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserResponse) String() string {
@@ -22836,9 +23716,9 @@ func (s *GetWorkspaceResponseBodyWorkspaceIcon) SetValue(v string) *GetWorkspace
 }
 
 type GetWorkspaceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetWorkspaceResponse) String() string {
@@ -23168,9 +24048,9 @@ func (s *GetWorkspacesResponseBodyWorkspaceIcon) SetValue(v string) *GetWorkspac
 }
 
 type GetWorkspacesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetWorkspacesResponse) String() string {
@@ -23461,9 +24341,9 @@ func (s *GrantHonorResponseBody) SetSuccessUserIds(v []*string) *GrantHonorRespo
 }
 
 type GrantHonorResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GrantHonorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantHonorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GrantHonorResponse) String() string {
@@ -23676,9 +24556,9 @@ func (s *InsertColumnsBeforeResponseBody) SetRequestId(v string) *InsertColumnsB
 }
 
 type InsertColumnsBeforeResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InsertColumnsBeforeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertColumnsBeforeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InsertColumnsBeforeResponse) String() string {
@@ -23891,9 +24771,9 @@ func (s *InsertRowsBeforeResponseBody) SetRequestId(v string) *InsertRowsBeforeR
 }
 
 type InsertRowsBeforeResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InsertRowsBeforeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertRowsBeforeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InsertRowsBeforeResponse) String() string {
@@ -24105,9 +24985,9 @@ func (s *InviteUsersResponseBody) SetSuccess(v bool) *InviteUsersResponseBody {
 }
 
 type InviteUsersResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InviteUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InviteUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InviteUsersResponse) String() string {
@@ -24362,9 +25242,9 @@ func (s *ListApplicationResponseBodyData) SetSubCorpId(v string) *ListApplicatio
 }
 
 type ListApplicationResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListApplicationResponse) String() string {
@@ -24582,9 +25462,9 @@ func (s *ListCalendarsResponseBodyResponseCalendars) SetType(v string) *ListCale
 }
 
 type ListCalendarsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCalendarsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCalendarsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCalendarsResponse) String() string {
@@ -25340,9 +26220,9 @@ func (s *ListEventsResponseBodyEventsStart) SetTimeZone(v string) *ListEventsRes
 }
 
 type ListEventsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEventsResponse) String() string {
@@ -26045,9 +26925,9 @@ func (s *ListEventsViewResponseBodyEventsStart) SetTimeZone(v string) *ListEvent
 }
 
 type ListEventsViewResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEventsViewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEventsViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEventsViewResponse) String() string {
@@ -26242,9 +27122,9 @@ func (s *ListFormRemarksResponseBody) SetVendorType(v string) *ListFormRemarksRe
 }
 
 type ListFormRemarksResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFormRemarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFormRemarksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFormRemarksResponse) String() string {
@@ -26462,9 +27342,9 @@ func (s *ListNavigationByFormTypeResponseBodyResultTitle) SetType(v string) *Lis
 }
 
 type ListNavigationByFormTypeResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNavigationByFormTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNavigationByFormTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNavigationByFormTypeResponse) String() string {
@@ -26801,9 +27681,9 @@ func (s *ListNodesResponseBodyNodesStatisticalInfo) SetWordCount(v int64) *ListN
 }
 
 type ListNodesResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNodesResponse) String() string {
@@ -27188,9 +28068,9 @@ func (s *ListReportResponseBodyDataListContents) SetValue(v string) *ListReportR
 }
 
 type ListReportResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListReportResponse) String() string {
@@ -27380,9 +28260,9 @@ func (s *ListTableDataByFormInstanceIdTableIdResponseBody) SetVendorType(v strin
 }
 
 type ListTableDataByFormInstanceIdTableIdResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTableDataByFormInstanceIdTableIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTableDataByFormInstanceIdTableIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTableDataByFormInstanceIdTableIdResponse) String() string {
@@ -27682,9 +28562,9 @@ func (s *ListTeamsResponseBodyTeamsIcon) SetValue(v string) *ListTeamsResponseBo
 }
 
 type ListTeamsResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTeamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTeamsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTeamsResponse) String() string {
@@ -28039,9 +28919,9 @@ func (s *ListWorkspacesResponseBodyWorkspacesIcon) SetValue(v string) *ListWorks
 }
 
 type ListWorkspacesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListWorkspacesResponse) String() string {
@@ -28880,9 +29760,9 @@ func (s *PatchEventResponseBodyStart) SetTimeZone(v string) *PatchEventResponseB
 }
 
 type PatchEventResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PatchEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PatchEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PatchEventResponse) String() string {
@@ -29254,9 +30134,9 @@ func (s *QueryCloudRecordTextResponseBodyParagraphListSentenceListWordList) SetW
 }
 
 type QueryCloudRecordTextResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCloudRecordTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCloudRecordTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCloudRecordTextResponse) String() string {
@@ -29498,9 +30378,9 @@ func (s *QueryCloudRecordVideoResponseBodyVideoList) SetUserId(v string) *QueryC
 }
 
 type QueryCloudRecordVideoResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCloudRecordVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCloudRecordVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCloudRecordVideoResponse) String() string {
@@ -29725,9 +30605,9 @@ func (s *QueryCloudRecordVideoPlayInfoResponseBody) SetStatus(v int64) *QueryClo
 }
 
 type QueryCloudRecordVideoPlayInfoResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCloudRecordVideoPlayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCloudRecordVideoPlayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCloudRecordVideoPlayInfoResponse) String() string {
@@ -29947,9 +30827,9 @@ func (s *QueryConferenceInfoResponseBodyConfInfo) SetTitle(v string) *QueryConfe
 }
 
 type QueryConferenceInfoResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryConferenceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryConferenceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryConferenceInfoResponse) String() string {
@@ -30239,9 +31119,9 @@ func (s *QueryConferenceMembersResponseBodyMemberModels) SetUserNick(v string) *
 }
 
 type QueryConferenceMembersResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryConferenceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryConferenceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryConferenceMembersResponse) String() string {
@@ -31139,9 +32019,9 @@ func (s *QueryDentryResponseBodyVisitorInfo) SetSpaceActions(v []*string) *Query
 }
 
 type QueryDentryResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDentryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDentryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDentryResponse) String() string {
@@ -31384,9 +32264,9 @@ func (s *QueryLiveInfoResponseBody) SetUv(v int32) *QueryLiveInfoResponseBody {
 }
 
 type QueryLiveInfoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryLiveInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryLiveInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryLiveInfoResponse) String() string {
@@ -31605,9 +32485,9 @@ func (s *QueryLiveWatchDetailResponseBody) SetUv(v int32) *QueryLiveWatchDetailR
 }
 
 type QueryLiveWatchDetailResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryLiveWatchDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryLiveWatchDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryLiveWatchDetailResponse) String() string {
@@ -31896,9 +32776,9 @@ func (s *QueryLiveWatchUserListResponseBodyOutOrgUserList) SetWatchProgressMs(v 
 }
 
 type QueryLiveWatchUserListResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryLiveWatchUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryLiveWatchUserListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryLiveWatchUserListResponse) String() string {
@@ -32303,9 +33183,9 @@ func (s *QueryMeetingRoomResponseBodyResultRoomLocation) SetTitle(v string) *Que
 }
 
 type QueryMeetingRoomResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMeetingRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMeetingRoomResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMeetingRoomResponse) String() string {
@@ -32494,9 +33374,9 @@ func (s *QueryMeetingRoomGroupResponseBody) SetRequestId(v string) *QueryMeeting
 }
 
 type QueryMeetingRoomGroupResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMeetingRoomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMeetingRoomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMeetingRoomGroupResponse) String() string {
@@ -32702,9 +33582,9 @@ func (s *QueryMeetingRoomGroupListResponseBodyResult) SetParentId(v int64) *Quer
 }
 
 type QueryMeetingRoomGroupListResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMeetingRoomGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMeetingRoomGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMeetingRoomGroupListResponse) String() string {
@@ -33057,9 +33937,9 @@ func (s *QueryMeetingRoomListResponseBodyResultRoomLocation) SetTitle(v string) 
 }
 
 type QueryMeetingRoomListResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMeetingRoomListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMeetingRoomListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMeetingRoomListResponse) String() string {
@@ -33307,9 +34187,9 @@ func (s *QueryOrgHonorsResponseBodyOpenHonors) SetHonorPendantImgUrl(v string) *
 }
 
 type QueryOrgHonorsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryOrgHonorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryOrgHonorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryOrgHonorsResponse) String() string {
@@ -33604,9 +34484,9 @@ func (s *QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl) SetPcUrl(v string) *Qu
 }
 
 type QueryOrgTodoTasksResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryOrgTodoTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryOrgTodoTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryOrgTodoTasksResponse) String() string {
@@ -33818,9 +34698,9 @@ func (s *QueryScheduleConferenceResponseBody) SetUrl(v string) *QueryScheduleCon
 }
 
 type QueryScheduleConferenceResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryScheduleConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryScheduleConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryScheduleConferenceResponse) String() string {
@@ -34103,9 +34983,9 @@ func (s *QueryUserHonorsResponseBodyHonorsGrantHistory) SetSenderUserid(v string
 }
 
 type QueryUserHonorsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryUserHonorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryUserHonorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryUserHonorsResponse) String() string {
@@ -34353,9 +35233,9 @@ func (s *RecallHonorResponseBodyContent) SetData(v interface{}) *RecallHonorResp
 }
 
 type RecallHonorResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecallHonorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecallHonorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecallHonorResponse) String() string {
@@ -34568,9 +35448,9 @@ func (s *ReceiverListReportResponseBody) SetUseridList(v []*string) *ReceiverLis
 }
 
 type ReceiverListReportResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReceiverListReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReceiverListReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReceiverListReportResponse) String() string {
@@ -34748,9 +35628,9 @@ func (s *RedirectTaskResponseBody) SetVendorType(v string) *RedirectTaskResponse
 }
 
 type RedirectTaskResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RedirectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RedirectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RedirectTaskResponse) String() string {
@@ -34969,9 +35849,9 @@ func (s *RemoveAttendeeResponseBodyContent) SetData(v interface{}) *RemoveAttend
 }
 
 type RemoveAttendeeResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveAttendeeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveAttendeeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveAttendeeResponse) String() string {
@@ -35160,9 +36040,9 @@ func (s *RemoveMeetingRoomsResponseBody) SetResult(v bool) *RemoveMeetingRoomsRe
 }
 
 type RemoveMeetingRoomsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveMeetingRoomsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveMeetingRoomsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveMeetingRoomsResponse) String() string {
@@ -35404,9 +36284,9 @@ func (s *SaveContentResponseBody) SetSuccess(v bool) *SaveContentResponseBody {
 }
 
 type SaveContentResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveContentResponse) String() string {
@@ -35572,9 +36452,9 @@ func (s *SaveFormDataResponseBody) SetVendorType(v string) *SaveFormDataResponse
 }
 
 type SaveFormDataResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveFormDataResponse) String() string {
@@ -35752,9 +36632,9 @@ func (s *SaveFormRemarkResponseBody) SetVendorType(v string) *SaveFormRemarkResp
 }
 
 type SaveFormRemarkResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveFormRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveFormRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveFormRemarkResponse) String() string {
@@ -35956,9 +36836,9 @@ func (s *SearchEmployeeFieldValuesResponseBody) SetVendorType(v string) *SearchE
 }
 
 type SearchEmployeeFieldValuesResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchEmployeeFieldValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchEmployeeFieldValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchEmployeeFieldValuesResponse) String() string {
@@ -36178,9 +37058,9 @@ func (s *SearchFormDataIdListResponseBody) SetVendorType(v string) *SearchFormDa
 }
 
 type SearchFormDataIdListResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchFormDataIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchFormDataIdListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchFormDataIdListResponse) String() string {
@@ -36593,9 +37473,9 @@ func (s *SearchFormDataSecondGenerationResponseBodyDataOriginatorName) SetNameIn
 }
 
 type SearchFormDataSecondGenerationResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchFormDataSecondGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchFormDataSecondGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchFormDataSecondGenerationResponse) String() string {
@@ -37008,9 +37888,9 @@ func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorNam
 }
 
 type SearchFormDataSecondGenerationNoTableFieldResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchFormDataSecondGenerationNoTableFieldResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchFormDataSecondGenerationNoTableFieldResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchFormDataSecondGenerationNoTableFieldResponse) String() string {
@@ -37447,9 +38327,9 @@ func (s *SearchFormDatasResponseBodyDataOriginatorUserName) SetType(v string) *S
 }
 
 type SearchFormDatasResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchFormDatasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchFormDatasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchFormDatasResponse) String() string {
@@ -37667,9 +38547,9 @@ func (s *SendBannerResponseBody) SetVendorType(v string) *SendBannerResponseBody
 }
 
 type SendBannerResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendBannerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendBannerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendBannerResponse) String() string {
@@ -37887,9 +38767,9 @@ func (s *SendPopupResponseBody) SetVendorType(v string) *SendPopupResponseBody {
 }
 
 type SendPopupResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendPopupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendPopupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendPopupResponse) String() string {
@@ -38107,9 +38987,9 @@ func (s *SendSearchShadeResponseBody) SetVendorType(v string) *SendSearchShadeRe
 }
 
 type SendSearchShadeResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendSearchShadeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendSearchShadeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendSearchShadeResponse) String() string {
@@ -38334,9 +39214,9 @@ func (s *SetColumnsVisibilityResponseBody) SetRequestId(v string) *SetColumnsVis
 }
 
 type SetColumnsVisibilityResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetColumnsVisibilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetColumnsVisibilityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetColumnsVisibilityResponse) String() string {
@@ -38561,9 +39441,9 @@ func (s *SetRowsVisibilityResponseBody) SetRequestId(v string) *SetRowsVisibilit
 }
 
 type SetRowsVisibilityResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetRowsVisibilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetRowsVisibilityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetRowsVisibilityResponse) String() string {
@@ -38859,9 +39739,9 @@ func (s *SimpleListReportResponseBodyDataList) SetTemplateName(v string) *Simple
 }
 
 type SimpleListReportResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SimpleListReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SimpleListReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SimpleListReportResponse) String() string {
@@ -39062,9 +39942,9 @@ func (s *StartCloudRecordResponseBody) SetRequestId(v string) *StartCloudRecordR
 }
 
 type StartCloudRecordResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartCloudRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartCloudRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartCloudRecordResponse) String() string {
@@ -39242,9 +40122,9 @@ func (s *StartInstanceResponseBody) SetVendorType(v string) *StartInstanceRespon
 }
 
 type StartInstanceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartInstanceResponse) String() string {
@@ -39469,9 +40349,9 @@ func (s *StatisticsListByTypeReportResponseBody) SetUseridList(v []*string) *Sta
 }
 
 type StatisticsListByTypeReportResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StatisticsListByTypeReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StatisticsListByTypeReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StatisticsListByTypeReportResponse) String() string {
@@ -39666,9 +40546,9 @@ func (s *StatisticsReportResponseBody) SetRequestId(v string) *StatisticsReportR
 }
 
 type StatisticsReportResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StatisticsReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StatisticsReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StatisticsReportResponse) String() string {
@@ -39845,9 +40725,9 @@ func (s *StopCloudRecordResponseBody) SetRequestId(v string) *StopCloudRecordRes
 }
 
 type StopCloudRecordResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopCloudRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopCloudRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopCloudRecordResponse) String() string {
@@ -39972,9 +40852,9 @@ func (s *SubscribeCalendarResponseBody) SetRequestId(v string) *SubscribeCalenda
 }
 
 type SubscribeCalendarResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubscribeCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubscribeCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubscribeCalendarResponse) String() string {
@@ -40128,9 +41008,9 @@ func (s *TerminateInstanceResponseBody) SetVendorType(v string) *TerminateInstan
 }
 
 type TerminateInstanceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TerminateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TerminateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TerminateInstanceResponse) String() string {
@@ -40261,9 +41141,9 @@ func (s *UnsubscribeCalendarResponseBody) SetResult(v bool) *UnsubscribeCalendar
 }
 
 type UnsubscribeCalendarResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnsubscribeCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnsubscribeCalendarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnsubscribeCalendarResponse) String() string {
@@ -40429,9 +41309,9 @@ func (s *UpdateFormDataResponseBody) SetVendorType(v string) *UpdateFormDataResp
 }
 
 type UpdateFormDataResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFormDataResponse) String() string {
@@ -40591,9 +41471,9 @@ func (s *UpdateInstanceResponseBody) SetVendorType(v string) *UpdateInstanceResp
 }
 
 type UpdateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateInstanceResponse) String() string {
@@ -40830,9 +41710,9 @@ func (s *UpdateLiveResponseBody) SetSuccess(v bool) *UpdateLiveResponseBody {
 }
 
 type UpdateLiveResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLiveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateLiveResponse) String() string {
@@ -41210,9 +42090,9 @@ func (s *UpdateMeetingRoomResponseBody) SetVendorType(v string) *UpdateMeetingRo
 }
 
 type UpdateMeetingRoomResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateMeetingRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMeetingRoomResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateMeetingRoomResponse) String() string {
@@ -41401,9 +42281,9 @@ func (s *UpdateMeetingRoomGroupResponseBody) SetResult(v bool) *UpdateMeetingRoo
 }
 
 type UpdateMeetingRoomGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateMeetingRoomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMeetingRoomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateMeetingRoomGroupResponse) String() string {
@@ -41681,9 +42561,9 @@ func (s *UpdateRangeResponseBody) SetRequestId(v string) *UpdateRangeResponseBod
 }
 
 type UpdateRangeResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRangeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRangeResponse) String() string {
@@ -41896,9 +42776,9 @@ func (s *UpdateScheduleConferenceResponseBody) SetSuccess(v bool) *UpdateSchedul
 }
 
 type UpdateScheduleConferenceResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateScheduleConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateScheduleConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateScheduleConferenceResponse) String() string {
@@ -42111,9 +42991,9 @@ func (s *UpdateStatusResponseBody) SetVendorType(v string) *UpdateStatusResponse
 }
 
 type UpdateStatusResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateStatusResponse) String() string {
@@ -42326,9 +43206,9 @@ func (s *UpdateSubscribedCalendarsResponseBody) SetResult(v bool) *UpdateSubscri
 }
 
 type UpdateSubscribedCalendarsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSubscribedCalendarsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSubscribedCalendarsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSubscribedCalendarsResponse) String() string {
@@ -42577,9 +43457,9 @@ func (s *UpdateTodoTaskResponseBody) SetResult(v bool) *UpdateTodoTaskResponseBo
 }
 
 type UpdateTodoTaskResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTodoTaskResponse) String() string {
@@ -42803,9 +43683,9 @@ func (s *UpdateTodoTaskExecutorStatusResponseBody) SetResult(v bool) *UpdateTodo
 }
 
 type UpdateTodoTaskExecutorStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTodoTaskExecutorStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTodoTaskExecutorStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTodoTaskExecutorStatusResponse) String() string {
@@ -42953,9 +43833,9 @@ func (s *UpdateUserAvatarResponseBody) SetVendorType(v string) *UpdateUserAvatar
 }
 
 type UpdateUserAvatarResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserAvatarResponse) String() string {
@@ -43179,9 +44059,9 @@ func (s *UpdateWorkspaceDocMembersResponseBody) SetRequestId(v string) *UpdateWo
 }
 
 type UpdateWorkspaceDocMembersResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateWorkspaceDocMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateWorkspaceDocMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateWorkspaceDocMembersResponse) String() string {
@@ -43393,9 +44273,9 @@ func (s *UpdateWorkspaceMembersResponseBody) SetRequestId(v string) *UpdateWorks
 }
 
 type UpdateWorkspaceMembersResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateWorkspaceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateWorkspaceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateWorkspaceMembersResponse) String() string {
@@ -43608,9 +44488,9 @@ func (s *UploadMediaResponseBody) SetRequestId(v string) *UploadMediaResponseBod
 }
 
 type UploadMediaResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadMediaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadMediaResponse) String() string {
@@ -43869,9 +44749,9 @@ func (s *WearOrgHonorResponseBodyContent) SetData(v interface{}) *WearOrgHonorRe
 }
 
 type WearOrgHonorResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *WearOrgHonorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WearOrgHonorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s WearOrgHonorResponse) String() string {
@@ -46300,6 +47180,188 @@ func (client *Client) CreateScheduleConference(request *CreateScheduleConference
 	return _result, _err
 }
 
+func (client *Client) CreateSearchDomeWithOptions(tmpReq *CreateSearchDomeRequest, tmpHeader *CreateSearchDomeHeaders, runtime *util.RuntimeOptions) (_result *CreateSearchDomeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSearchDomeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CreateSearchDomeShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserIdList)) {
+		request.UserIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIdList, tea.String("UserIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResId)) {
+		body["ResId"] = request.ResId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdListShrink)) {
+		body["UserIdList"] = request.UserIdListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSearchDome"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/watt/createSearchDome"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSearchDomeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSearchDome(request *CreateSearchDomeRequest) (_result *CreateSearchDomeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateSearchDomeHeaders{}
+	_result = &CreateSearchDomeResponse{}
+	_body, _err := client.CreateSearchDomeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSearchKeywordWithOptions(tmpReq *CreateSearchKeywordRequest, tmpHeader *CreateSearchKeywordHeaders, runtime *util.RuntimeOptions) (_result *CreateSearchKeywordResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSearchKeywordShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CreateSearchKeywordShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserIdList)) {
+		request.UserIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIdList, tea.String("UserIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResId)) {
+		body["ResId"] = request.ResId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdListShrink)) {
+		body["UserIdList"] = request.UserIdListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSearchKeyword"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/watt/createSearchKeyword"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSearchKeywordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSearchKeyword(request *CreateSearchKeywordRequest) (_result *CreateSearchKeywordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateSearchKeywordHeaders{}
+	_result = &CreateSearchKeywordResponse{}
+	_body, _err := client.CreateSearchKeywordWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateSheetWithOptions(tmpReq *CreateSheetRequest, tmpHeader *CreateSheetHeaders, runtime *util.RuntimeOptions) (_result *CreateSheetResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -48473,6 +49535,81 @@ func (client *Client) GetCorpTasks(request *GetCorpTasksRequest) (_result *GetCo
 	return _result, _err
 }
 
+func (client *Client) GetDocContentWithOptions(tmpReq *GetDocContentRequest, tmpHeader *GetDocContentHeaders, runtime *util.RuntimeOptions) (_result *GetDocContentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetDocContentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDocContentShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DentryUuid)) {
+		body["DentryUuid"] = request.DentryUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFormat)) {
+		body["TargetFormat"] = request.TargetFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocContent"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v2/documents/getDocContent"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDocContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDocContent(request *GetDocContentRequest) (_result *GetDocContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetDocContentHeaders{}
+	_result = &GetDocContentResponse{}
+	_body, _err := client.GetDocContentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetEventWithOptions(request *GetEventRequest, tmpHeader *GetEventHeaders, runtime *util.RuntimeOptions) (_result *GetEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49213,6 +50350,77 @@ func (client *Client) GetInstancesByIdList(request *GetInstancesByIdListRequest)
 	headers := &GetInstancesByIdListHeaders{}
 	_result = &GetInstancesByIdListResponse{}
 	_body, _err := client.GetInstancesByIdListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveReplayUrlWithOptions(tmpReq *GetLiveReplayUrlRequest, tmpHeader *GetLiveReplayUrlHeaders, runtime *util.RuntimeOptions) (_result *GetLiveReplayUrlResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetLiveReplayUrlShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetLiveReplayUrlShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LiveId)) {
+		body["LiveId"] = request.LiveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveReplayUrl"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/getLiveReplayUrl"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLiveReplayUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveReplayUrl(request *GetLiveReplayUrlRequest) (_result *GetLiveReplayUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetLiveReplayUrlHeaders{}
+	_result = &GetLiveReplayUrlResponse{}
+	_body, _err := client.GetLiveReplayUrlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
