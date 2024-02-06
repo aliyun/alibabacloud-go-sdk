@@ -8100,6 +8100,140 @@ func (s *DescribeAvailableZoneResponse) SetBody(v *DescribeAvailableZoneResponse
 	return s
 }
 
+type DescribeBackupSetDownloadLinkRequest struct {
+	DownloadTaskId *string `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeBackupSetDownloadLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetDownloadLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetDownloadLinkRequest) SetDownloadTaskId(v string) *DescribeBackupSetDownloadLinkRequest {
+	s.DownloadTaskId = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkRequest) SetInstanceId(v string) *DescribeBackupSetDownloadLinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeBackupSetDownloadLinkResponseBody struct {
+	Data      *DescribeBackupSetDownloadLinkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeBackupSetDownloadLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetDownloadLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBody) SetData(v *DescribeBackupSetDownloadLinkResponseBodyData) *DescribeBackupSetDownloadLinkResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBody) SetRequestId(v string) *DescribeBackupSetDownloadLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeBackupSetDownloadLinkResponseBodyData struct {
+	BackupRestorableTime   *string `json:"BackupRestorableTime,omitempty" xml:"BackupRestorableTime,omitempty"`
+	BackupSetId            *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	DownloadTaskCreateTime *string `json:"DownloadTaskCreateTime,omitempty" xml:"DownloadTaskCreateTime,omitempty"`
+	DownloadTaskId         *int64  `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
+	DownloadTaskStatus     *string `json:"DownloadTaskStatus,omitempty" xml:"DownloadTaskStatus,omitempty"`
+	InternalUrl            *string `json:"InternalUrl,omitempty" xml:"InternalUrl,omitempty"`
+	UrlAliveTime           *int64  `json:"UrlAliveTime,omitempty" xml:"UrlAliveTime,omitempty"`
+	UrlExpiredTime         *string `json:"UrlExpiredTime,omitempty" xml:"UrlExpiredTime,omitempty"`
+}
+
+func (s DescribeBackupSetDownloadLinkResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetDownloadLinkResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBodyData) SetBackupRestorableTime(v string) *DescribeBackupSetDownloadLinkResponseBodyData {
+	s.BackupRestorableTime = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBodyData) SetBackupSetId(v string) *DescribeBackupSetDownloadLinkResponseBodyData {
+	s.BackupSetId = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBodyData) SetDownloadTaskCreateTime(v string) *DescribeBackupSetDownloadLinkResponseBodyData {
+	s.DownloadTaskCreateTime = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBodyData) SetDownloadTaskId(v int64) *DescribeBackupSetDownloadLinkResponseBodyData {
+	s.DownloadTaskId = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBodyData) SetDownloadTaskStatus(v string) *DescribeBackupSetDownloadLinkResponseBodyData {
+	s.DownloadTaskStatus = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBodyData) SetInternalUrl(v string) *DescribeBackupSetDownloadLinkResponseBodyData {
+	s.InternalUrl = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBodyData) SetUrlAliveTime(v int64) *DescribeBackupSetDownloadLinkResponseBodyData {
+	s.UrlAliveTime = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponseBodyData) SetUrlExpiredTime(v string) *DescribeBackupSetDownloadLinkResponseBodyData {
+	s.UrlExpiredTime = &v
+	return s
+}
+
+type DescribeBackupSetDownloadLinkResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupSetDownloadLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBackupSetDownloadLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetDownloadLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetDownloadLinkResponse) SetHeaders(v map[string]*string) *DescribeBackupSetDownloadLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponse) SetStatusCode(v int32) *DescribeBackupSetDownloadLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupSetDownloadLinkResponse) SetBody(v *DescribeBackupSetDownloadLinkResponseBody) *DescribeBackupSetDownloadLinkResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCharsetRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 实例的系列  - normal（默认）：标准集群版（云盘）  - normal_ssd：标准集群版（本地盘） - history：历史库集群版。
@@ -42428,6 +42562,54 @@ func (client *Client) DescribeAvailableZone(request *DescribeAvailableZoneReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableZoneResponse{}
 	_body, _err := client.DescribeAvailableZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupSetDownloadLinkWithOptions(request *DescribeBackupSetDownloadLinkRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupSetDownloadLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DownloadTaskId)) {
+		body["DownloadTaskId"] = request.DownloadTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupSetDownloadLink"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupSetDownloadLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupSetDownloadLink(request *DescribeBackupSetDownloadLinkRequest) (_result *DescribeBackupSetDownloadLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupSetDownloadLinkResponse{}
+	_body, _err := client.DescribeBackupSetDownloadLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
