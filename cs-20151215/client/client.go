@@ -19410,6 +19410,7 @@ type UpgradeClusterNodepoolRequest struct {
 	RuntimeType *string `json:"runtime_type,omitempty" xml:"runtime_type,omitempty"`
 	// The version of the container runtime that is used by the nodes.
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
+	UseReplace     *bool   `json:"use_replace,omitempty" xml:"use_replace,omitempty"`
 }
 
 func (s UpgradeClusterNodepoolRequest) String() string {
@@ -19437,6 +19438,11 @@ func (s *UpgradeClusterNodepoolRequest) SetRuntimeType(v string) *UpgradeCluster
 
 func (s *UpgradeClusterNodepoolRequest) SetRuntimeVersion(v string) *UpgradeClusterNodepoolRequest {
 	s.RuntimeVersion = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolRequest) SetUseReplace(v bool) *UpgradeClusterNodepoolRequest {
+	s.UseReplace = &v
 	return s
 }
 
@@ -26367,6 +26373,10 @@ func (client *Client) UpgradeClusterNodepoolWithOptions(ClusterId *string, Nodep
 
 	if !tea.BoolValue(util.IsUnset(request.RuntimeVersion)) {
 		body["runtime_version"] = request.RuntimeVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseReplace)) {
+		body["use_replace"] = request.UseReplace
 	}
 
 	req := &openapi.OpenApiRequest{
