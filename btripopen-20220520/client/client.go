@@ -6260,6 +6260,205 @@ func (s *ApplyApproveResponse) SetBody(v *ApplyApproveResponseBody) *ApplyApprov
 	return s
 }
 
+type ApplyExternalNodeStatusUpdateHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s ApplyExternalNodeStatusUpdateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyExternalNodeStatusUpdateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyExternalNodeStatusUpdateHeaders) SetCommonHeaders(v map[string]*string) *ApplyExternalNodeStatusUpdateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateHeaders) SetXAcsBtripCorpToken(v string) *ApplyExternalNodeStatusUpdateHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type ApplyExternalNodeStatusUpdateRequest struct {
+	NodeId              *string                                                 `json:"node_id,omitempty" xml:"node_id,omitempty"`
+	OperationRecords    []*ApplyExternalNodeStatusUpdateRequestOperationRecords `json:"operation_records,omitempty" xml:"operation_records,omitempty" type:"Repeated"`
+	ProcessActionResult *string                                                 `json:"process_action_result,omitempty" xml:"process_action_result,omitempty"`
+}
+
+func (s ApplyExternalNodeStatusUpdateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyExternalNodeStatusUpdateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyExternalNodeStatusUpdateRequest) SetNodeId(v string) *ApplyExternalNodeStatusUpdateRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateRequest) SetOperationRecords(v []*ApplyExternalNodeStatusUpdateRequestOperationRecords) *ApplyExternalNodeStatusUpdateRequest {
+	s.OperationRecords = v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateRequest) SetProcessActionResult(v string) *ApplyExternalNodeStatusUpdateRequest {
+	s.ProcessActionResult = &v
+	return s
+}
+
+type ApplyExternalNodeStatusUpdateRequestOperationRecords struct {
+	Comment      *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	OperateTime  *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
+	OperatorName *string `json:"operator_name,omitempty" xml:"operator_name,omitempty"`
+	Result       *string `json:"result,omitempty" xml:"result,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ApplyExternalNodeStatusUpdateRequestOperationRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyExternalNodeStatusUpdateRequestOperationRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyExternalNodeStatusUpdateRequestOperationRecords) SetComment(v string) *ApplyExternalNodeStatusUpdateRequestOperationRecords {
+	s.Comment = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateRequestOperationRecords) SetOperateTime(v string) *ApplyExternalNodeStatusUpdateRequestOperationRecords {
+	s.OperateTime = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateRequestOperationRecords) SetOperatorName(v string) *ApplyExternalNodeStatusUpdateRequestOperationRecords {
+	s.OperatorName = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateRequestOperationRecords) SetResult(v string) *ApplyExternalNodeStatusUpdateRequestOperationRecords {
+	s.Result = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateRequestOperationRecords) SetType(v string) *ApplyExternalNodeStatusUpdateRequestOperationRecords {
+	s.Type = &v
+	return s
+}
+
+type ApplyExternalNodeStatusUpdateShrinkRequest struct {
+	NodeId                 *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
+	OperationRecordsShrink *string `json:"operation_records,omitempty" xml:"operation_records,omitempty"`
+	ProcessActionResult    *string `json:"process_action_result,omitempty" xml:"process_action_result,omitempty"`
+}
+
+func (s ApplyExternalNodeStatusUpdateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyExternalNodeStatusUpdateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyExternalNodeStatusUpdateShrinkRequest) SetNodeId(v string) *ApplyExternalNodeStatusUpdateShrinkRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateShrinkRequest) SetOperationRecordsShrink(v string) *ApplyExternalNodeStatusUpdateShrinkRequest {
+	s.OperationRecordsShrink = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateShrinkRequest) SetProcessActionResult(v string) *ApplyExternalNodeStatusUpdateShrinkRequest {
+	s.ProcessActionResult = &v
+	return s
+}
+
+type ApplyExternalNodeStatusUpdateResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s ApplyExternalNodeStatusUpdateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyExternalNodeStatusUpdateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponseBody) SetCode(v string) *ApplyExternalNodeStatusUpdateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponseBody) SetMessage(v string) *ApplyExternalNodeStatusUpdateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponseBody) SetModule(v bool) *ApplyExternalNodeStatusUpdateResponseBody {
+	s.Module = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponseBody) SetRequestId(v string) *ApplyExternalNodeStatusUpdateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponseBody) SetSuccess(v bool) *ApplyExternalNodeStatusUpdateResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponseBody) SetTraceId(v string) *ApplyExternalNodeStatusUpdateResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ApplyExternalNodeStatusUpdateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyExternalNodeStatusUpdateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApplyExternalNodeStatusUpdateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyExternalNodeStatusUpdateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponse) SetHeaders(v map[string]*string) *ApplyExternalNodeStatusUpdateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponse) SetStatusCode(v int32) *ApplyExternalNodeStatusUpdateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyExternalNodeStatusUpdateResponse) SetBody(v *ApplyExternalNodeStatusUpdateResponseBody) *ApplyExternalNodeStatusUpdateResponse {
+	s.Body = v
+	return s
+}
+
 type ApplyInvoiceTaskHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -67114,6 +67313,75 @@ func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *Apply
 	headers := &ApplyApproveHeaders{}
 	_result = &ApplyApproveResponse{}
 	_body, _err := client.ApplyApproveWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyExternalNodeStatusUpdateWithOptions(tmpReq *ApplyExternalNodeStatusUpdateRequest, headers *ApplyExternalNodeStatusUpdateHeaders, runtime *util.RuntimeOptions) (_result *ApplyExternalNodeStatusUpdateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ApplyExternalNodeStatusUpdateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.OperationRecords)) {
+		request.OperationRecordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationRecords, tea.String("operation_records"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["node_id"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationRecordsShrink)) {
+		body["operation_records"] = request.OperationRecordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessActionResult)) {
+		body["process_action_result"] = request.ProcessActionResult
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyExternalNodeStatusUpdate"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apply/v1/external-nodes/action/status-update"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyExternalNodeStatusUpdateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyExternalNodeStatusUpdate(request *ApplyExternalNodeStatusUpdateRequest) (_result *ApplyExternalNodeStatusUpdateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ApplyExternalNodeStatusUpdateHeaders{}
+	_result = &ApplyExternalNodeStatusUpdateResponse{}
+	_body, _err := client.ApplyExternalNodeStatusUpdateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
