@@ -13,6 +13,65 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type Alert struct {
+	Configuration    *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	CreateTime       *int64              `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description      *string             `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName      *string             `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	LastModifiedTime *int64              `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Name             *string             `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule         *Schedule           `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	Status           *string             `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s Alert) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Alert) GoString() string {
+	return s.String()
+}
+
+func (s *Alert) SetConfiguration(v *AlertConfiguration) *Alert {
+	s.Configuration = v
+	return s
+}
+
+func (s *Alert) SetCreateTime(v int64) *Alert {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Alert) SetDescription(v string) *Alert {
+	s.Description = &v
+	return s
+}
+
+func (s *Alert) SetDisplayName(v string) *Alert {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *Alert) SetLastModifiedTime(v int64) *Alert {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *Alert) SetName(v string) *Alert {
+	s.Name = &v
+	return s
+}
+
+func (s *Alert) SetSchedule(v *Schedule) *Alert {
+	s.Schedule = v
+	return s
+}
+
+func (s *Alert) SetStatus(v string) *Alert {
+	s.Status = &v
+	return s
+}
+
 type AlertConfiguration struct {
 	Annotations            []*AlertTag                  `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
 	AutoAnnotation         *bool                        `json:"autoAnnotation,omitempty" xml:"autoAnnotation,omitempty"`
@@ -245,65 +304,6 @@ func (s *AlertQuery) SetUi(v string) *AlertQuery {
 	return s
 }
 
-type AlertResp struct {
-	Configuration    *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	CreateTime       *int64              `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description      *string             `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName      *string             `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	LastModifiedTime *int64              `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Name             *string             `json:"name,omitempty" xml:"name,omitempty"`
-	Schedule         *Schedule           `json:"schedule,omitempty" xml:"schedule,omitempty"`
-	Status           *string             `json:"status,omitempty" xml:"status,omitempty"`
-}
-
-func (s AlertResp) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AlertResp) GoString() string {
-	return s.String()
-}
-
-func (s *AlertResp) SetConfiguration(v *AlertConfiguration) *AlertResp {
-	s.Configuration = v
-	return s
-}
-
-func (s *AlertResp) SetCreateTime(v int64) *AlertResp {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *AlertResp) SetDescription(v string) *AlertResp {
-	s.Description = &v
-	return s
-}
-
-func (s *AlertResp) SetDisplayName(v string) *AlertResp {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *AlertResp) SetLastModifiedTime(v int64) *AlertResp {
-	s.LastModifiedTime = &v
-	return s
-}
-
-func (s *AlertResp) SetName(v string) *AlertResp {
-	s.Name = &v
-	return s
-}
-
-func (s *AlertResp) SetSchedule(v *Schedule) *AlertResp {
-	s.Schedule = v
-	return s
-}
-
-func (s *AlertResp) SetStatus(v string) *AlertResp {
-	s.Status = &v
-	return s
-}
-
 type AlertTag struct {
 	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
@@ -417,6 +417,263 @@ func (s *CreateAlertReq) SetName(v string) *CreateAlertReq {
 
 func (s *CreateAlertReq) SetSchedule(v *Schedule) *CreateAlertReq {
 	s.Schedule = v
+	return s
+}
+
+type CreateOSSExportReq struct {
+	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string                 `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateOSSExportReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOSSExportReq) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOSSExportReq) SetConfiguration(v *OSSExportConfiguration) *CreateOSSExportReq {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateOSSExportReq) SetDescription(v string) *CreateOSSExportReq {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOSSExportReq) SetDisplayName(v string) *CreateOSSExportReq {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateOSSExportReq) SetName(v string) *CreateOSSExportReq {
+	s.Name = &v
+	return s
+}
+
+type CreateOSSIngestionReq struct {
+	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string                    `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule      *Schedule                  `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s CreateOSSIngestionReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOSSIngestionReq) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOSSIngestionReq) SetConfiguration(v *OSSIngestionConfiguration) *CreateOSSIngestionReq {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateOSSIngestionReq) SetDescription(v string) *CreateOSSIngestionReq {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOSSIngestionReq) SetDisplayName(v string) *CreateOSSIngestionReq {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateOSSIngestionReq) SetName(v string) *CreateOSSIngestionReq {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOSSIngestionReq) SetSchedule(v *Schedule) *CreateOSSIngestionReq {
+	s.Schedule = v
+	return s
+}
+
+type ETL struct {
+	Configuration    *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	CreateTime       *int64            `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description      *string           `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName      *string           `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	LastModifiedTime *int64            `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Name             *string           `json:"name,omitempty" xml:"name,omitempty"`
+	ScheduleId       *string           `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	Status           *string           `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ETL) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ETL) GoString() string {
+	return s.String()
+}
+
+func (s *ETL) SetConfiguration(v *ETLConfiguration) *ETL {
+	s.Configuration = v
+	return s
+}
+
+func (s *ETL) SetCreateTime(v int64) *ETL {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ETL) SetDescription(v string) *ETL {
+	s.Description = &v
+	return s
+}
+
+func (s *ETL) SetDisplayName(v string) *ETL {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ETL) SetLastModifiedTime(v int64) *ETL {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *ETL) SetName(v string) *ETL {
+	s.Name = &v
+	return s
+}
+
+func (s *ETL) SetScheduleId(v string) *ETL {
+	s.ScheduleId = &v
+	return s
+}
+
+func (s *ETL) SetStatus(v string) *ETL {
+	s.Status = &v
+	return s
+}
+
+type ETLConfiguration struct {
+	// Deprecated
+	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	// Deprecated
+	AccessKeySecret *string                 `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	FromTime        *int64                  `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	Logstore        *string                 `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Parameters      map[string]interface{}  `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	RoleArn         *string                 `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Script          *string                 `json:"script,omitempty" xml:"script,omitempty"`
+	Sinks           []*ETLConfigurationSink `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
+	ToTime          *int64                  `json:"toTime,omitempty" xml:"toTime,omitempty"`
+}
+
+func (s ETLConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ETLConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ETLConfiguration) SetAccessKeyId(v string) *ETLConfiguration {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *ETLConfiguration) SetAccessKeySecret(v string) *ETLConfiguration {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *ETLConfiguration) SetFromTime(v int64) *ETLConfiguration {
+	s.FromTime = &v
+	return s
+}
+
+func (s *ETLConfiguration) SetLogstore(v string) *ETLConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ETLConfiguration) SetParameters(v map[string]interface{}) *ETLConfiguration {
+	s.Parameters = v
+	return s
+}
+
+func (s *ETLConfiguration) SetRoleArn(v string) *ETLConfiguration {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *ETLConfiguration) SetScript(v string) *ETLConfiguration {
+	s.Script = &v
+	return s
+}
+
+func (s *ETLConfiguration) SetSinks(v []*ETLConfigurationSink) *ETLConfiguration {
+	s.Sinks = v
+	return s
+}
+
+func (s *ETLConfiguration) SetToTime(v int64) *ETLConfiguration {
+	s.ToTime = &v
+	return s
+}
+
+type ETLConfigurationSink struct {
+	// Deprecated
+	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	// Deprecated
+	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	Endpoint        *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	Project         *string `json:"project,omitempty" xml:"project,omitempty"`
+	RoleArn         *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+}
+
+func (s ETLConfigurationSink) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ETLConfigurationSink) GoString() string {
+	return s.String()
+}
+
+func (s *ETLConfigurationSink) SetAccessKeyId(v string) *ETLConfigurationSink {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *ETLConfigurationSink) SetAccessKeySecret(v string) *ETLConfigurationSink {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *ETLConfigurationSink) SetEndpoint(v string) *ETLConfigurationSink {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ETLConfigurationSink) SetLogstore(v string) *ETLConfigurationSink {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ETLConfigurationSink) SetName(v string) *ETLConfigurationSink {
+	s.Name = &v
+	return s
+}
+
+func (s *ETLConfigurationSink) SetProject(v string) *ETLConfigurationSink {
+	s.Project = &v
+	return s
+}
+
+func (s *ETLConfigurationSink) SetRoleArn(v string) *ETLConfigurationSink {
+	s.RoleArn = &v
 	return s
 }
 
@@ -1174,6 +1431,563 @@ func (s *MLServiceParamResource) SetReplica(v int32) *MLServiceParamResource {
 	return s
 }
 
+type MaxComputeExport struct {
+	Configuration    *MaxComputeExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	CreateTime       *int64                         `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description      *string                        `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName      *string                        `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	LastModifiedTime *int64                         `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Name             *string                        `json:"name,omitempty" xml:"name,omitempty"`
+	Status           *string                        `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s MaxComputeExport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MaxComputeExport) GoString() string {
+	return s.String()
+}
+
+func (s *MaxComputeExport) SetConfiguration(v *MaxComputeExportConfiguration) *MaxComputeExport {
+	s.Configuration = v
+	return s
+}
+
+func (s *MaxComputeExport) SetCreateTime(v int64) *MaxComputeExport {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *MaxComputeExport) SetDescription(v string) *MaxComputeExport {
+	s.Description = &v
+	return s
+}
+
+func (s *MaxComputeExport) SetDisplayName(v string) *MaxComputeExport {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *MaxComputeExport) SetLastModifiedTime(v int64) *MaxComputeExport {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *MaxComputeExport) SetName(v string) *MaxComputeExport {
+	s.Name = &v
+	return s
+}
+
+func (s *MaxComputeExport) SetStatus(v string) *MaxComputeExport {
+	s.Status = &v
+	return s
+}
+
+type MaxComputeExportConfiguration struct {
+	FromTime *int64                             `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	Logstore *string                            `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	RoleArn  *string                            `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Sink     *MaxComputeExportConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty"`
+	ToTime   *int64                             `json:"toTime,omitempty" xml:"toTime,omitempty"`
+}
+
+func (s MaxComputeExportConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MaxComputeExportConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *MaxComputeExportConfiguration) SetFromTime(v int64) *MaxComputeExportConfiguration {
+	s.FromTime = &v
+	return s
+}
+
+func (s *MaxComputeExportConfiguration) SetLogstore(v string) *MaxComputeExportConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *MaxComputeExportConfiguration) SetRoleArn(v string) *MaxComputeExportConfiguration {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *MaxComputeExportConfiguration) SetSink(v *MaxComputeExportConfigurationSink) *MaxComputeExportConfiguration {
+	s.Sink = v
+	return s
+}
+
+func (s *MaxComputeExportConfiguration) SetToTime(v int64) *MaxComputeExportConfiguration {
+	s.ToTime = &v
+	return s
+}
+
+type MaxComputeExportConfigurationSink struct {
+	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// Deprecated
+	OdpsAccessKeyId *string `json:"odpsAccessKeyId,omitempty" xml:"odpsAccessKeyId,omitempty"`
+	// Deprecated
+	OdpsAccessSecret    *string   `json:"odpsAccessSecret,omitempty" xml:"odpsAccessSecret,omitempty"`
+	OdpsEndpoint        *string   `json:"odpsEndpoint,omitempty" xml:"odpsEndpoint,omitempty"`
+	OdpsProject         *string   `json:"odpsProject,omitempty" xml:"odpsProject,omitempty"`
+	OdpsRolearn         *string   `json:"odpsRolearn,omitempty" xml:"odpsRolearn,omitempty"`
+	OdpsTable           *string   `json:"odpsTable,omitempty" xml:"odpsTable,omitempty"`
+	OdpsTunnelEndpoint  *string   `json:"odpsTunnelEndpoint,omitempty" xml:"odpsTunnelEndpoint,omitempty"`
+	PartitionColumn     []*string `json:"partitionColumn,omitempty" xml:"partitionColumn,omitempty" type:"Repeated"`
+	PartitionTimeFormat *string   `json:"partitionTimeFormat,omitempty" xml:"partitionTimeFormat,omitempty"`
+	TimeZone            *string   `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+}
+
+func (s MaxComputeExportConfigurationSink) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MaxComputeExportConfigurationSink) GoString() string {
+	return s.String()
+}
+
+func (s *MaxComputeExportConfigurationSink) SetFields(v []*string) *MaxComputeExportConfigurationSink {
+	s.Fields = v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetOdpsAccessKeyId(v string) *MaxComputeExportConfigurationSink {
+	s.OdpsAccessKeyId = &v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetOdpsAccessSecret(v string) *MaxComputeExportConfigurationSink {
+	s.OdpsAccessSecret = &v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetOdpsEndpoint(v string) *MaxComputeExportConfigurationSink {
+	s.OdpsEndpoint = &v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetOdpsProject(v string) *MaxComputeExportConfigurationSink {
+	s.OdpsProject = &v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetOdpsRolearn(v string) *MaxComputeExportConfigurationSink {
+	s.OdpsRolearn = &v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetOdpsTable(v string) *MaxComputeExportConfigurationSink {
+	s.OdpsTable = &v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetOdpsTunnelEndpoint(v string) *MaxComputeExportConfigurationSink {
+	s.OdpsTunnelEndpoint = &v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetPartitionColumn(v []*string) *MaxComputeExportConfigurationSink {
+	s.PartitionColumn = v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetPartitionTimeFormat(v string) *MaxComputeExportConfigurationSink {
+	s.PartitionTimeFormat = &v
+	return s
+}
+
+func (s *MaxComputeExportConfigurationSink) SetTimeZone(v string) *MaxComputeExportConfigurationSink {
+	s.TimeZone = &v
+	return s
+}
+
+type OSSExport struct {
+	Configuration    *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	CreateTime       *int64                  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description      *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName      *string                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	LastModifiedTime *int64                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Name             *string                 `json:"name,omitempty" xml:"name,omitempty"`
+	Status           *string                 `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s OSSExport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSExport) GoString() string {
+	return s.String()
+}
+
+func (s *OSSExport) SetConfiguration(v *OSSExportConfiguration) *OSSExport {
+	s.Configuration = v
+	return s
+}
+
+func (s *OSSExport) SetCreateTime(v int64) *OSSExport {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *OSSExport) SetDescription(v string) *OSSExport {
+	s.Description = &v
+	return s
+}
+
+func (s *OSSExport) SetDisplayName(v string) *OSSExport {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *OSSExport) SetLastModifiedTime(v int64) *OSSExport {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *OSSExport) SetName(v string) *OSSExport {
+	s.Name = &v
+	return s
+}
+
+func (s *OSSExport) SetStatus(v string) *OSSExport {
+	s.Status = &v
+	return s
+}
+
+type OSSExportConfiguration struct {
+	FromTime *int64                      `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	Logstore *string                     `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	RoleArn  *string                     `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Sink     *OSSExportConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	ToTime   *int64                      `json:"toTime,omitempty" xml:"toTime,omitempty"`
+}
+
+func (s OSSExportConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSExportConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *OSSExportConfiguration) SetFromTime(v int64) *OSSExportConfiguration {
+	s.FromTime = &v
+	return s
+}
+
+func (s *OSSExportConfiguration) SetLogstore(v string) *OSSExportConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *OSSExportConfiguration) SetRoleArn(v string) *OSSExportConfiguration {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *OSSExportConfiguration) SetSink(v *OSSExportConfigurationSink) *OSSExportConfiguration {
+	s.Sink = v
+	return s
+}
+
+func (s *OSSExportConfiguration) SetToTime(v int64) *OSSExportConfiguration {
+	s.ToTime = &v
+	return s
+}
+
+type OSSExportConfigurationSink struct {
+	Bucket          *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	BufferInterval  *int64  `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
+	BufferSize      *int64  `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
+	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
+	ContentDetail   *string `json:"contentDetail,omitempty" xml:"contentDetail,omitempty"`
+	ContentType     *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	DelaySec        *int64  `json:"delaySec,omitempty" xml:"delaySec,omitempty"`
+	Endpoint        *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	PathFormat      *string `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
+	PathFormatType  *string `json:"pathFormatType,omitempty" xml:"pathFormatType,omitempty"`
+	Prefix          *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	RoleArn         *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Suffix          *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
+	TimeZone        *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+}
+
+func (s OSSExportConfigurationSink) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSExportConfigurationSink) GoString() string {
+	return s.String()
+}
+
+func (s *OSSExportConfigurationSink) SetBucket(v string) *OSSExportConfigurationSink {
+	s.Bucket = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetBufferInterval(v int64) *OSSExportConfigurationSink {
+	s.BufferInterval = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetBufferSize(v int64) *OSSExportConfigurationSink {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetCompressionType(v string) *OSSExportConfigurationSink {
+	s.CompressionType = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetContentDetail(v string) *OSSExportConfigurationSink {
+	s.ContentDetail = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetContentType(v string) *OSSExportConfigurationSink {
+	s.ContentType = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetDelaySec(v int64) *OSSExportConfigurationSink {
+	s.DelaySec = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetEndpoint(v string) *OSSExportConfigurationSink {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetPathFormat(v string) *OSSExportConfigurationSink {
+	s.PathFormat = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetPathFormatType(v string) *OSSExportConfigurationSink {
+	s.PathFormatType = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetPrefix(v string) *OSSExportConfigurationSink {
+	s.Prefix = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetRoleArn(v string) *OSSExportConfigurationSink {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetSuffix(v string) *OSSExportConfigurationSink {
+	s.Suffix = &v
+	return s
+}
+
+func (s *OSSExportConfigurationSink) SetTimeZone(v string) *OSSExportConfigurationSink {
+	s.TimeZone = &v
+	return s
+}
+
+type OSSIngestion struct {
+	Configuration    *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	CreateTime       *int64                     `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description      *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName      *string                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	LastModifiedTime *int64                     `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Name             *string                    `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule         *Schedule                  `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	Status           *string                    `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s OSSIngestion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSIngestion) GoString() string {
+	return s.String()
+}
+
+func (s *OSSIngestion) SetConfiguration(v *OSSIngestionConfiguration) *OSSIngestion {
+	s.Configuration = v
+	return s
+}
+
+func (s *OSSIngestion) SetCreateTime(v int64) *OSSIngestion {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *OSSIngestion) SetDescription(v string) *OSSIngestion {
+	s.Description = &v
+	return s
+}
+
+func (s *OSSIngestion) SetDisplayName(v string) *OSSIngestion {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *OSSIngestion) SetLastModifiedTime(v int64) *OSSIngestion {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *OSSIngestion) SetName(v string) *OSSIngestion {
+	s.Name = &v
+	return s
+}
+
+func (s *OSSIngestion) SetSchedule(v *Schedule) *OSSIngestion {
+	s.Schedule = v
+	return s
+}
+
+func (s *OSSIngestion) SetStatus(v string) *OSSIngestion {
+	s.Status = &v
+	return s
+}
+
+type OSSIngestionConfiguration struct {
+	Logstore *string                          `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Source   *OSSIngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
+}
+
+func (s OSSIngestionConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSIngestionConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *OSSIngestionConfiguration) SetLogstore(v string) *OSSIngestionConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *OSSIngestionConfiguration) SetSource(v *OSSIngestionConfigurationSource) *OSSIngestionConfiguration {
+	s.Source = v
+	return s
+}
+
+type OSSIngestionConfigurationSource struct {
+	Bucket               *string                `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	CompressionCodec     *string                `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
+	Encoding             *string                `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	EndTime              *int64                 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Endpoint             *string                `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Format               map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	Interval             *string                `json:"interval,omitempty" xml:"interval,omitempty"`
+	Pattern              *string                `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	Prefix               *string                `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	RestoreObjectEnabled *bool                  `json:"restoreObjectEnabled,omitempty" xml:"restoreObjectEnabled,omitempty"`
+	RoleARN              *string                `json:"roleARN,omitempty" xml:"roleARN,omitempty"`
+	StartTime            *int64                 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	TimeField            *string                `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	TimeFormat           *string                `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	TimePattern          *string                `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	TimeZone             *string                `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	UseMetaIndex         *bool                  `json:"useMetaIndex,omitempty" xml:"useMetaIndex,omitempty"`
+}
+
+func (s OSSIngestionConfigurationSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSIngestionConfigurationSource) GoString() string {
+	return s.String()
+}
+
+func (s *OSSIngestionConfigurationSource) SetBucket(v string) *OSSIngestionConfigurationSource {
+	s.Bucket = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetCompressionCodec(v string) *OSSIngestionConfigurationSource {
+	s.CompressionCodec = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetEncoding(v string) *OSSIngestionConfigurationSource {
+	s.Encoding = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetEndTime(v int64) *OSSIngestionConfigurationSource {
+	s.EndTime = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetEndpoint(v string) *OSSIngestionConfigurationSource {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetFormat(v map[string]interface{}) *OSSIngestionConfigurationSource {
+	s.Format = v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetInterval(v string) *OSSIngestionConfigurationSource {
+	s.Interval = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetPattern(v string) *OSSIngestionConfigurationSource {
+	s.Pattern = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetPrefix(v string) *OSSIngestionConfigurationSource {
+	s.Prefix = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetRestoreObjectEnabled(v bool) *OSSIngestionConfigurationSource {
+	s.RestoreObjectEnabled = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetRoleARN(v string) *OSSIngestionConfigurationSource {
+	s.RoleARN = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetStartTime(v int64) *OSSIngestionConfigurationSource {
+	s.StartTime = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetTimeField(v string) *OSSIngestionConfigurationSource {
+	s.TimeField = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetTimeFormat(v string) *OSSIngestionConfigurationSource {
+	s.TimeFormat = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetTimePattern(v string) *OSSIngestionConfigurationSource {
+	s.TimePattern = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetTimeZone(v string) *OSSIngestionConfigurationSource {
+	s.TimeZone = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetUseMetaIndex(v bool) *OSSIngestionConfigurationSource {
+	s.UseMetaIndex = &v
+	return s
+}
+
 type PolicyConfiguration struct {
 	ActionPolicyId *string `json:"actionPolicyId,omitempty" xml:"actionPolicyId,omitempty"`
 	AlertPolicyId  *string `json:"alertPolicyId,omitempty" xml:"alertPolicyId,omitempty"`
@@ -1288,6 +2102,178 @@ func (s *Schedule) SetTimeZone(v string) *Schedule {
 
 func (s *Schedule) SetType(v string) *Schedule {
 	s.Type = &v
+	return s
+}
+
+type ScheduledSQL struct {
+	Configuration    *ScheduledSQLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	CreateTime       *int64                     `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description      *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName      *string                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	LastModifiedTime *int64                     `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Name             *string                    `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule         *Schedule                  `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	ScheduleId       *string                    `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+}
+
+func (s ScheduledSQL) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScheduledSQL) GoString() string {
+	return s.String()
+}
+
+func (s *ScheduledSQL) SetConfiguration(v *ScheduledSQLConfiguration) *ScheduledSQL {
+	s.Configuration = v
+	return s
+}
+
+func (s *ScheduledSQL) SetCreateTime(v int64) *ScheduledSQL {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ScheduledSQL) SetDescription(v string) *ScheduledSQL {
+	s.Description = &v
+	return s
+}
+
+func (s *ScheduledSQL) SetDisplayName(v string) *ScheduledSQL {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ScheduledSQL) SetLastModifiedTime(v int64) *ScheduledSQL {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *ScheduledSQL) SetName(v string) *ScheduledSQL {
+	s.Name = &v
+	return s
+}
+
+func (s *ScheduledSQL) SetSchedule(v *Schedule) *ScheduledSQL {
+	s.Schedule = v
+	return s
+}
+
+func (s *ScheduledSQL) SetScheduleId(v string) *ScheduledSQL {
+	s.ScheduleId = &v
+	return s
+}
+
+type ScheduledSQLConfiguration struct {
+	DataFormat          *string                `json:"dataFormat,omitempty" xml:"dataFormat,omitempty"`
+	DestEndpoint        *string                `json:"destEndpoint,omitempty" xml:"destEndpoint,omitempty"`
+	DestLogstore        *string                `json:"destLogstore,omitempty" xml:"destLogstore,omitempty"`
+	DestProject         *string                `json:"destProject,omitempty" xml:"destProject,omitempty"`
+	DestRoleArn         *string                `json:"destRoleArn,omitempty" xml:"destRoleArn,omitempty"`
+	FromTime            *int64                 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	FromTimeExpr        *string                `json:"fromTimeExpr,omitempty" xml:"fromTimeExpr,omitempty"`
+	MaxRetries          *int64                 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
+	MaxRunTimeInSeconds *int64                 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
+	Parameters          map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	ResourcePool        *string                `json:"resourcePool,omitempty" xml:"resourcePool,omitempty"`
+	RoleArn             *string                `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Script              *string                `json:"script,omitempty" xml:"script,omitempty"`
+	SourceLogstore      *string                `json:"sourceLogstore,omitempty" xml:"sourceLogstore,omitempty"`
+	SqlType             *string                `json:"sqlType,omitempty" xml:"sqlType,omitempty"`
+	ToTime              *int64                 `json:"toTime,omitempty" xml:"toTime,omitempty"`
+	ToTimeExpr          *string                `json:"toTimeExpr,omitempty" xml:"toTimeExpr,omitempty"`
+}
+
+func (s ScheduledSQLConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScheduledSQLConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ScheduledSQLConfiguration) SetDataFormat(v string) *ScheduledSQLConfiguration {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetDestEndpoint(v string) *ScheduledSQLConfiguration {
+	s.DestEndpoint = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetDestLogstore(v string) *ScheduledSQLConfiguration {
+	s.DestLogstore = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetDestProject(v string) *ScheduledSQLConfiguration {
+	s.DestProject = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetDestRoleArn(v string) *ScheduledSQLConfiguration {
+	s.DestRoleArn = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetFromTime(v int64) *ScheduledSQLConfiguration {
+	s.FromTime = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetFromTimeExpr(v string) *ScheduledSQLConfiguration {
+	s.FromTimeExpr = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetMaxRetries(v int64) *ScheduledSQLConfiguration {
+	s.MaxRetries = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetMaxRunTimeInSeconds(v int64) *ScheduledSQLConfiguration {
+	s.MaxRunTimeInSeconds = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetParameters(v map[string]interface{}) *ScheduledSQLConfiguration {
+	s.Parameters = v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetResourcePool(v string) *ScheduledSQLConfiguration {
+	s.ResourcePool = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetRoleArn(v string) *ScheduledSQLConfiguration {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetScript(v string) *ScheduledSQLConfiguration {
+	s.Script = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetSourceLogstore(v string) *ScheduledSQLConfiguration {
+	s.SourceLogstore = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetSqlType(v string) *ScheduledSQLConfiguration {
+	s.SqlType = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetToTime(v int64) *ScheduledSQLConfiguration {
+	s.ToTime = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetToTimeExpr(v string) *ScheduledSQLConfiguration {
+	s.ToTimeExpr = &v
 	return s
 }
 
@@ -1544,6 +2530,70 @@ func (s *UpdateAlertReq) SetDisplayName(v string) *UpdateAlertReq {
 }
 
 func (s *UpdateAlertReq) SetSchedule(v *Schedule) *UpdateAlertReq {
+	s.Schedule = v
+	return s
+}
+
+type UpdateOSSExportReq struct {
+	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s UpdateOSSExportReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOSSExportReq) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOSSExportReq) SetConfiguration(v *OSSExportConfiguration) *UpdateOSSExportReq {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateOSSExportReq) SetDescription(v string) *UpdateOSSExportReq {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateOSSExportReq) SetDisplayName(v string) *UpdateOSSExportReq {
+	s.DisplayName = &v
+	return s
+}
+
+type UpdateOSSIngestionReq struct {
+	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Schedule      *Schedule                  `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s UpdateOSSIngestionReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOSSIngestionReq) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOSSIngestionReq) SetConfiguration(v *OSSIngestionConfiguration) *UpdateOSSIngestionReq {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateOSSIngestionReq) SetDescription(v string) *UpdateOSSIngestionReq {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateOSSIngestionReq) SetDisplayName(v string) *UpdateOSSIngestionReq {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateOSSIngestionReq) SetSchedule(v *Schedule) *UpdateOSSIngestionReq {
 	s.Schedule = v
 	return s
 }
@@ -2527,8 +3577,8 @@ func (s *KeysValue) SetDocValue(v bool) *KeysValue {
 }
 
 type ApplyConfigToMachineGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ApplyConfigToMachineGroupResponse) String() string {
@@ -2582,8 +3632,8 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -2630,9 +3680,9 @@ func (s *ConsumerGroupHeartBeatRequest) SetConsumer(v string) *ConsumerGroupHear
 }
 
 type ConsumerGroupHeartBeatResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*int32           `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*int32           `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s ConsumerGroupHeartBeatResponse) String() string {
@@ -2659,7 +3709,11 @@ func (s *ConsumerGroupHeartBeatResponse) SetBody(v []*int32) *ConsumerGroupHeart
 }
 
 type CreateAlertRequest struct {
-	Body *CreateAlertReq `json:"body,omitempty" xml:"body,omitempty"`
+	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string             `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string             `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string             `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule      *Schedule           `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
 func (s CreateAlertRequest) String() string {
@@ -2670,15 +3724,34 @@ func (s CreateAlertRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAlertRequest) SetBody(v *CreateAlertReq) *CreateAlertRequest {
-	s.Body = v
+func (s *CreateAlertRequest) SetConfiguration(v *AlertConfiguration) *CreateAlertRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateAlertRequest) SetDescription(v string) *CreateAlertRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAlertRequest) SetDisplayName(v string) *CreateAlertRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateAlertRequest) SetName(v string) *CreateAlertRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAlertRequest) SetSchedule(v *Schedule) *CreateAlertRequest {
+	s.Schedule = v
 	return s
 }
 
 type CreateAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateAlertResponse) String() string {
@@ -2696,11 +3769,6 @@ func (s *CreateAlertResponse) SetHeaders(v map[string]*string) *CreateAlertRespo
 
 func (s *CreateAlertResponse) SetStatusCode(v int32) *CreateAlertResponse {
 	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateAlertResponse) SetBody(v interface{}) *CreateAlertResponse {
-	s.Body = v
 	return s
 }
 
@@ -2730,8 +3798,8 @@ func (s *CreateAnnotationDataSetRequest) SetDatasetId(v string) *CreateAnnotatio
 }
 
 type CreateAnnotationDataSetResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateAnnotationDataSetResponse) String() string {
@@ -2771,8 +3839,8 @@ func (s *CreateAnnotationLabelRequest) SetBody(v *MLLabelParam) *CreateAnnotatio
 }
 
 type CreateAnnotationLabelResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateAnnotationLabelResponse) String() string {
@@ -2812,8 +3880,8 @@ func (s *CreateConfigRequest) SetBody(v *LogtailConfig) *CreateConfigRequest {
 }
 
 type CreateConfigResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateConfigResponse) String() string {
@@ -2875,8 +3943,8 @@ func (s *CreateConsumerGroupRequest) SetTimeout(v int32) *CreateConsumerGroupReq
 }
 
 type CreateConsumerGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateConsumerGroupResponse) String() string {
@@ -2916,8 +3984,8 @@ func (s *CreateDashboardRequest) SetBody(v *Dashboard) *CreateDashboardRequest {
 }
 
 type CreateDashboardResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateDashboardResponse) String() string {
@@ -2957,8 +4025,8 @@ func (s *CreateDomainRequest) SetDomainName(v string) *CreateDomainRequest {
 }
 
 type CreateDomainResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateDomainResponse) String() string {
@@ -2975,6 +4043,64 @@ func (s *CreateDomainResponse) SetHeaders(v map[string]*string) *CreateDomainRes
 }
 
 func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateETLRequest struct {
+	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string           `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string           `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string           `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateETLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateETLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateETLRequest) SetConfiguration(v *ETLConfiguration) *CreateETLRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateETLRequest) SetDescription(v string) *CreateETLRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateETLRequest) SetDisplayName(v string) *CreateETLRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateETLRequest) SetName(v string) *CreateETLRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateETLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateETLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateETLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateETLResponse) SetHeaders(v map[string]*string) *CreateETLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateETLResponse) SetStatusCode(v int32) *CreateETLResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -3092,8 +4218,8 @@ func (s *CreateIndexRequestLine) SetToken(v []*string) *CreateIndexRequestLine {
 }
 
 type CreateIndexResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateIndexResponse) String() string {
@@ -3235,8 +4361,8 @@ func (s *CreateLogStoreRequest) SetTtl(v int32) *CreateLogStoreRequest {
 }
 
 type CreateLogStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateLogStoreResponse) String() string {
@@ -3317,8 +4443,8 @@ func (s *CreateLoggingRequestLoggingDetails) SetType(v string) *CreateLoggingReq
 }
 
 type CreateLoggingResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateLoggingResponse) String() string {
@@ -3400,8 +4526,8 @@ func (s *CreateLogtailPipelineConfigRequest) SetProcessors(v []map[string]interf
 }
 
 type CreateLogtailPipelineConfigResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateLogtailPipelineConfigResponse) String() string {
@@ -3505,8 +4631,8 @@ func (s *CreateMachineGroupRequestGroupAttribute) SetGroupTopic(v string) *Creat
 }
 
 type CreateMachineGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateMachineGroupResponse) String() string {
@@ -3523,6 +4649,186 @@ func (s *CreateMachineGroupResponse) SetHeaders(v map[string]*string) *CreateMac
 }
 
 func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateOSSExportRequest struct {
+	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string                 `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateOSSExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOSSExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOSSExportRequest) SetConfiguration(v *OSSExportConfiguration) *CreateOSSExportRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateOSSExportRequest) SetDescription(v string) *CreateOSSExportRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOSSExportRequest) SetDisplayName(v string) *CreateOSSExportRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateOSSExportRequest) SetName(v string) *CreateOSSExportRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateOSSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateOSSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOSSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOSSExportResponse) SetHeaders(v map[string]*string) *CreateOSSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOSSExportResponse) SetStatusCode(v int32) *CreateOSSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateOSSHDFSExportRequest struct {
+	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string                 `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateOSSHDFSExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOSSHDFSExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOSSHDFSExportRequest) SetConfiguration(v *OSSExportConfiguration) *CreateOSSHDFSExportRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateOSSHDFSExportRequest) SetDescription(v string) *CreateOSSHDFSExportRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOSSHDFSExportRequest) SetDisplayName(v string) *CreateOSSHDFSExportRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateOSSHDFSExportRequest) SetName(v string) *CreateOSSHDFSExportRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateOSSHDFSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateOSSHDFSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOSSHDFSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOSSHDFSExportResponse) SetHeaders(v map[string]*string) *CreateOSSHDFSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOSSHDFSExportResponse) SetStatusCode(v int32) *CreateOSSHDFSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateOSSIngestionRequest struct {
+	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string                    `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule      *Schedule                  `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s CreateOSSIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOSSIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOSSIngestionRequest) SetConfiguration(v *OSSIngestionConfiguration) *CreateOSSIngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateOSSIngestionRequest) SetDescription(v string) *CreateOSSIngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOSSIngestionRequest) SetDisplayName(v string) *CreateOSSIngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateOSSIngestionRequest) SetName(v string) *CreateOSSIngestionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOSSIngestionRequest) SetSchedule(v *Schedule) *CreateOSSIngestionRequest {
+	s.Schedule = v
+	return s
+}
+
+type CreateOSSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateOSSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOSSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOSSIngestionResponse) SetHeaders(v map[string]*string) *CreateOSSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOSSIngestionResponse) SetStatusCode(v int32) *CreateOSSIngestionResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -3638,8 +4944,8 @@ func (s *CreateOssExternalStoreRequestParameterColumns) SetType(v string) *Creat
 }
 
 type CreateOssExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateOssExternalStoreResponse) String() string {
@@ -3705,8 +5011,8 @@ func (s *CreateProjectRequest) SetResourceGroupId(v string) *CreateProjectReques
 }
 
 type CreateProjectResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateProjectResponse) String() string {
@@ -3834,8 +5140,8 @@ func (s *CreateRdsExternalStoreRequestParameter) SetVpcId(v string) *CreateRdsEx
 }
 
 type CreateRdsExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateRdsExternalStoreResponse) String() string {
@@ -3903,8 +5209,8 @@ func (s *CreateSavedSearchRequest) SetTopic(v string) *CreateSavedSearchRequest 
 }
 
 type CreateSavedSearchResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateSavedSearchResponse) String() string {
@@ -3921,6 +5227,70 @@ func (s *CreateSavedSearchResponse) SetHeaders(v map[string]*string) *CreateSave
 }
 
 func (s *CreateSavedSearchResponse) SetStatusCode(v int32) *CreateSavedSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateScheduledSQLRequest struct {
+	Configuration *ScheduledSQLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string                    `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule      *Schedule                  `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s CreateScheduledSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduledSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduledSQLRequest) SetConfiguration(v *ScheduledSQLConfiguration) *CreateScheduledSQLRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateScheduledSQLRequest) SetDescription(v string) *CreateScheduledSQLRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateScheduledSQLRequest) SetDisplayName(v string) *CreateScheduledSQLRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateScheduledSQLRequest) SetName(v string) *CreateScheduledSQLRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateScheduledSQLRequest) SetSchedule(v *Schedule) *CreateScheduledSQLRequest {
+	s.Schedule = v
+	return s
+}
+
+type CreateScheduledSQLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateScheduledSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduledSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduledSQLResponse) SetHeaders(v map[string]*string) *CreateScheduledSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateScheduledSQLResponse) SetStatusCode(v int32) *CreateScheduledSQLResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -3943,9 +5313,9 @@ func (s *CreateTicketResponseBody) SetTicket(v string) *CreateTicketResponseBody
 }
 
 type CreateTicketResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTicketResponse) String() string {
@@ -3972,9 +5342,8 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 }
 
 type DeleteAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteAlertResponse) String() string {
@@ -3995,14 +5364,9 @@ func (s *DeleteAlertResponse) SetStatusCode(v int32) *DeleteAlertResponse {
 	return s
 }
 
-func (s *DeleteAlertResponse) SetBody(v interface{}) *DeleteAlertResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteAnnotationDataResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteAnnotationDataResponse) String() string {
@@ -4024,8 +5388,8 @@ func (s *DeleteAnnotationDataResponse) SetStatusCode(v int32) *DeleteAnnotationD
 }
 
 type DeleteAnnotationDataSetResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteAnnotationDataSetResponse) String() string {
@@ -4047,8 +5411,8 @@ func (s *DeleteAnnotationDataSetResponse) SetStatusCode(v int32) *DeleteAnnotati
 }
 
 type DeleteAnnotationLabelResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteAnnotationLabelResponse) String() string {
@@ -4110,9 +5474,9 @@ func (s *DeleteCollectionPolicyResponseBody) SetMessage(v string) *DeleteCollect
 }
 
 type DeleteCollectionPolicyResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCollectionPolicyResponse) String() string {
@@ -4139,8 +5503,8 @@ func (s *DeleteCollectionPolicyResponse) SetBody(v *DeleteCollectionPolicyRespon
 }
 
 type DeleteConfigResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteConfigResponse) String() string {
@@ -4162,8 +5526,8 @@ func (s *DeleteConfigResponse) SetStatusCode(v int32) *DeleteConfigResponse {
 }
 
 type DeleteConsumerGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteConsumerGroupResponse) String() string {
@@ -4185,8 +5549,8 @@ func (s *DeleteConsumerGroupResponse) SetStatusCode(v int32) *DeleteConsumerGrou
 }
 
 type DeleteDashboardResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteDashboardResponse) String() string {
@@ -4208,8 +5572,8 @@ func (s *DeleteDashboardResponse) SetStatusCode(v int32) *DeleteDashboardRespons
 }
 
 type DeleteDomainResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteDomainResponse) String() string {
@@ -4230,9 +5594,32 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 	return s
 }
 
+type DeleteETLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteETLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteETLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteETLResponse) SetHeaders(v map[string]*string) *DeleteETLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteETLResponse) SetStatusCode(v int32) *DeleteETLResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteExternalStoreResponse) String() string {
@@ -4254,8 +5641,8 @@ func (s *DeleteExternalStoreResponse) SetStatusCode(v int32) *DeleteExternalStor
 }
 
 type DeleteIndexResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteIndexResponse) String() string {
@@ -4277,8 +5664,8 @@ func (s *DeleteIndexResponse) SetStatusCode(v int32) *DeleteIndexResponse {
 }
 
 type DeleteLogStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteLogStoreResponse) String() string {
@@ -4300,8 +5687,8 @@ func (s *DeleteLogStoreResponse) SetStatusCode(v int32) *DeleteLogStoreResponse 
 }
 
 type DeleteLoggingResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteLoggingResponse) String() string {
@@ -4323,8 +5710,8 @@ func (s *DeleteLoggingResponse) SetStatusCode(v int32) *DeleteLoggingResponse {
 }
 
 type DeleteLogtailPipelineConfigResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteLogtailPipelineConfigResponse) String() string {
@@ -4346,8 +5733,8 @@ func (s *DeleteLogtailPipelineConfigResponse) SetStatusCode(v int32) *DeleteLogt
 }
 
 type DeleteMachineGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteMachineGroupResponse) String() string {
@@ -4368,9 +5755,78 @@ func (s *DeleteMachineGroupResponse) SetStatusCode(v int32) *DeleteMachineGroupR
 	return s
 }
 
+type DeleteOSSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteOSSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOSSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOSSExportResponse) SetHeaders(v map[string]*string) *DeleteOSSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOSSExportResponse) SetStatusCode(v int32) *DeleteOSSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteOSSHDFSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteOSSHDFSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOSSHDFSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOSSHDFSExportResponse) SetHeaders(v map[string]*string) *DeleteOSSHDFSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOSSHDFSExportResponse) SetStatusCode(v int32) *DeleteOSSHDFSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteOSSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteOSSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOSSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOSSIngestionResponse) SetHeaders(v map[string]*string) *DeleteOSSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOSSIngestionResponse) SetStatusCode(v int32) *DeleteOSSIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteProjectResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteProjectResponse) String() string {
@@ -4392,8 +5848,8 @@ func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
 }
 
 type DeleteProjectPolicyResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteProjectPolicyResponse) String() string {
@@ -4415,8 +5871,8 @@ func (s *DeleteProjectPolicyResponse) SetStatusCode(v int32) *DeleteProjectPolic
 }
 
 type DeleteSavedSearchResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteSavedSearchResponse) String() string {
@@ -4437,9 +5893,32 @@ func (s *DeleteSavedSearchResponse) SetStatusCode(v int32) *DeleteSavedSearchRes
 	return s
 }
 
+type DeleteScheduledSQLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteScheduledSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScheduledSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScheduledSQLResponse) SetHeaders(v map[string]*string) *DeleteScheduledSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteScheduledSQLResponse) SetStatusCode(v int32) *DeleteScheduledSQLResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteShipperResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteShipperResponse) String() string {
@@ -4461,9 +5940,8 @@ func (s *DeleteShipperResponse) SetStatusCode(v int32) *DeleteShipperResponse {
 }
 
 type DisableAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DisableAlertResponse) String() string {
@@ -4484,15 +5962,9 @@ func (s *DisableAlertResponse) SetStatusCode(v int32) *DisableAlertResponse {
 	return s
 }
 
-func (s *DisableAlertResponse) SetBody(v interface{}) *DisableAlertResponse {
-	s.Body = v
-	return s
-}
-
 type EnableAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s EnableAlertResponse) String() string {
@@ -4513,15 +5985,10 @@ func (s *EnableAlertResponse) SetStatusCode(v int32) *EnableAlertResponse {
 	return s
 }
 
-func (s *EnableAlertResponse) SetBody(v interface{}) *EnableAlertResponse {
-	s.Body = v
-	return s
-}
-
 type GetAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AlertResp         `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Alert             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAlertResponse) String() string {
@@ -4542,15 +6009,15 @@ func (s *GetAlertResponse) SetStatusCode(v int32) *GetAlertResponse {
 	return s
 }
 
-func (s *GetAlertResponse) SetBody(v *AlertResp) *GetAlertResponse {
+func (s *GetAlertResponse) SetBody(v *Alert) *GetAlertResponse {
 	s.Body = v
 	return s
 }
 
 type GetAnnotationDataResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MLDataParam       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MLDataParam       `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAnnotationDataResponse) String() string {
@@ -4577,9 +6044,9 @@ func (s *GetAnnotationDataResponse) SetBody(v *MLDataParam) *GetAnnotationDataRe
 }
 
 type GetAnnotationDataSetResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MLDataSetParam    `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MLDataSetParam    `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAnnotationDataSetResponse) String() string {
@@ -4606,9 +6073,9 @@ func (s *GetAnnotationDataSetResponse) SetBody(v *MLDataSetParam) *GetAnnotation
 }
 
 type GetAnnotationLabelResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MLLabelParam      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MLLabelParam      `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAnnotationLabelResponse) String() string {
@@ -4660,9 +6127,9 @@ func (s *GetAppliedConfigsResponseBody) SetCount(v int32) *GetAppliedConfigsResp
 }
 
 type GetAppliedConfigsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppliedConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppliedConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppliedConfigsResponse) String() string {
@@ -4714,9 +6181,9 @@ func (s *GetAppliedMachineGroupsResponseBody) SetMachinegroups(v []*string) *Get
 }
 
 type GetAppliedMachineGroupsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppliedMachineGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppliedMachineGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppliedMachineGroupsResponse) String() string {
@@ -4764,9 +6231,9 @@ func (s *GetCheckPointRequest) SetShard(v int32) *GetCheckPointRequest {
 }
 
 type GetCheckPointResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*GetCheckPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*GetCheckPointResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s GetCheckPointResponse) String() string {
@@ -5024,9 +6491,9 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetResourc
 }
 
 type GetCollectionPolicyResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCollectionPolicyResponse) String() string {
@@ -5053,9 +6520,9 @@ func (s *GetCollectionPolicyResponse) SetBody(v *GetCollectionPolicyResponseBody
 }
 
 type GetConfigResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LogtailConfig     `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LogtailConfig     `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigResponse) String() string {
@@ -5177,9 +6644,9 @@ func (s *GetContextLogsResponseBody) SetTotalLines(v int64) *GetContextLogsRespo
 }
 
 type GetContextLogsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetContextLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetContextLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetContextLogsResponse) String() string {
@@ -5242,9 +6709,9 @@ func (s *GetCursorResponseBody) SetCursor(v string) *GetCursorResponseBody {
 }
 
 type GetCursorResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCursorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCursorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCursorResponse) String() string {
@@ -5307,9 +6774,9 @@ func (s *GetCursorTimeResponseBody) SetCursorTime(v string) *GetCursorTimeRespon
 }
 
 type GetCursorTimeResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCursorTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCursorTimeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCursorTimeResponse) String() string {
@@ -5336,9 +6803,9 @@ func (s *GetCursorTimeResponse) SetBody(v *GetCursorTimeResponseBody) *GetCursor
 }
 
 type GetDashboardResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Dashboard         `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Dashboard         `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDashboardResponse) String() string {
@@ -5364,10 +6831,39 @@ func (s *GetDashboardResponse) SetBody(v *Dashboard) *GetDashboardResponse {
 	return s
 }
 
+type GetETLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ETL               `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetETLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetETLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetETLResponse) SetHeaders(v map[string]*string) *GetETLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetETLResponse) SetStatusCode(v int32) *GetETLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetETLResponse) SetBody(v *ETL) *GetETLResponse {
+	s.Body = v
+	return s
+}
+
 type GetExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExternalStore     `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExternalStore     `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetExternalStoreResponse) String() string {
@@ -5433,9 +6929,9 @@ func (s *GetHistogramsRequest) SetTopic(v string) *GetHistogramsRequest {
 }
 
 type GetHistogramsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*GetHistogramsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*GetHistogramsResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s GetHistogramsResponse) String() string {
@@ -5642,9 +7138,9 @@ func (s *GetIndexResponseBodyLine) SetToken(v []*string) *GetIndexResponseBodyLi
 }
 
 type GetIndexResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIndexResponse) String() string {
@@ -5671,9 +7167,9 @@ func (s *GetIndexResponse) SetBody(v *GetIndexResponseBody) *GetIndexResponse {
 }
 
 type GetLogStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Logstore          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Logstore          `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLogStoreResponse) String() string {
@@ -5717,9 +7213,9 @@ func (s *GetLogStoreMeteringModeResponseBody) SetMeteringMode(v string) *GetLogS
 }
 
 type GetLogStoreMeteringModeResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLogStoreMeteringModeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLogStoreMeteringModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLogStoreMeteringModeResponse) String() string {
@@ -5746,9 +7242,9 @@ func (s *GetLogStoreMeteringModeResponse) SetBody(v *GetLogStoreMeteringModeResp
 }
 
 type GetLoggingResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Logging           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Logging           `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLoggingResponse) String() string {
@@ -5877,9 +7373,9 @@ func (s *GetLogsRequest) SetTopic(v string) *GetLogsRequest {
 }
 
 type GetLogsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s GetLogsResponse) String() string {
@@ -6240,9 +7736,9 @@ func (s *GetLogsV2ResponseBodyMetaPhraseQueryInfo) SetScanAll(v bool) *GetLogsV2
 }
 
 type GetLogsV2Response struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLogsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLogsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLogsV2Response) String() string {
@@ -6269,9 +7765,9 @@ func (s *GetLogsV2Response) SetBody(v *GetLogsV2ResponseBody) *GetLogsV2Response
 }
 
 type GetLogtailPipelineConfigResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LogtailPipelineConfig `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LogtailPipelineConfig `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLogtailPipelineConfigResponse) String() string {
@@ -6344,9 +7840,9 @@ func (s *GetMLServiceResultsResponseBody) SetStatus(v map[string]*string) *GetML
 }
 
 type GetMLServiceResultsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMLServiceResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMLServiceResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMLServiceResultsResponse) String() string {
@@ -6373,9 +7869,9 @@ func (s *GetMLServiceResultsResponse) SetBody(v *GetMLServiceResultsResponseBody
 }
 
 type GetMachineGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MachineGroup      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MachineGroup      `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMachineGroupResponse) String() string {
@@ -6401,10 +7897,97 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 	return s
 }
 
+type GetOSSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OSSExport         `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOSSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSExportResponse) SetHeaders(v map[string]*string) *GetOSSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOSSExportResponse) SetStatusCode(v int32) *GetOSSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOSSExportResponse) SetBody(v *OSSExport) *GetOSSExportResponse {
+	s.Body = v
+	return s
+}
+
+type GetOSSHDFSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OSSExport         `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOSSHDFSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSHDFSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSHDFSExportResponse) SetHeaders(v map[string]*string) *GetOSSHDFSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOSSHDFSExportResponse) SetStatusCode(v int32) *GetOSSHDFSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOSSHDFSExportResponse) SetBody(v *OSSExport) *GetOSSHDFSExportResponse {
+	s.Body = v
+	return s
+}
+
+type GetOSSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OSSIngestion      `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOSSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSIngestionResponse) SetHeaders(v map[string]*string) *GetOSSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOSSIngestionResponse) SetStatusCode(v int32) *GetOSSIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOSSIngestionResponse) SetBody(v *OSSIngestion) *GetOSSIngestionResponse {
+	s.Body = v
+	return s
+}
+
 type GetProjectResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Project           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Project           `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProjectResponse) String() string {
@@ -6461,9 +8044,9 @@ func (s *GetProjectLogsRequest) SetQuery(v string) *GetProjectLogsRequest {
 }
 
 type GetProjectLogsResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []map[string]*string `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []map[string]*string `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s GetProjectLogsResponse) String() string {
@@ -6490,9 +8073,9 @@ func (s *GetProjectLogsResponse) SetBody(v []map[string]*string) *GetProjectLogs
 }
 
 type GetProjectPolicyResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProjectPolicyResponse) String() string {
@@ -6519,9 +8102,9 @@ func (s *GetProjectPolicyResponse) SetBody(v string) *GetProjectPolicyResponse {
 }
 
 type GetSavedSearchResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SavedSearch       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SavedSearch       `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSavedSearchResponse) String() string {
@@ -6543,6 +8126,35 @@ func (s *GetSavedSearchResponse) SetStatusCode(v int32) *GetSavedSearchResponse 
 }
 
 func (s *GetSavedSearchResponse) SetBody(v *SavedSearch) *GetSavedSearchResponse {
+	s.Body = v
+	return s
+}
+
+type GetScheduledSQLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ScheduledSQL      `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetScheduledSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduledSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduledSQLResponse) SetHeaders(v map[string]*string) *GetScheduledSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetScheduledSQLResponse) SetStatusCode(v int32) *GetScheduledSQLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetScheduledSQLResponse) SetBody(v *ScheduledSQL) *GetScheduledSQLResponse {
 	s.Body = v
 	return s
 }
@@ -6732,9 +8344,9 @@ func (s *GetShipperStatusResponseBodyTasks) SetTaskStatus(v string) *GetShipperS
 }
 
 type GetShipperStatusResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetShipperStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetShipperStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetShipperStatusResponse) String() string {
@@ -6790,9 +8402,9 @@ func (s *ListAlertsRequest) SetSize(v int32) *ListAlertsRequest {
 }
 
 type ListAlertsResponseBody struct {
-	Count   *int32       `json:"count,omitempty" xml:"count,omitempty"`
-	Results []*AlertResp `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	Total   *int32       `json:"total,omitempty" xml:"total,omitempty"`
+	Count   *int32   `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*Alert `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32   `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAlertsResponseBody) String() string {
@@ -6808,7 +8420,7 @@ func (s *ListAlertsResponseBody) SetCount(v int32) *ListAlertsResponseBody {
 	return s
 }
 
-func (s *ListAlertsResponseBody) SetResults(v []*AlertResp) *ListAlertsResponseBody {
+func (s *ListAlertsResponseBody) SetResults(v []*Alert) *ListAlertsResponseBody {
 	s.Results = v
 	return s
 }
@@ -6819,9 +8431,9 @@ func (s *ListAlertsResponseBody) SetTotal(v int32) *ListAlertsResponseBody {
 }
 
 type ListAlertsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAlertsResponse) String() string {
@@ -6898,9 +8510,9 @@ func (s *ListAnnotationDataResponseBody) SetTotal(v int32) *ListAnnotationDataRe
 }
 
 type ListAnnotationDataResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAnnotationDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAnnotationDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAnnotationDataResponse) String() string {
@@ -6977,9 +8589,9 @@ func (s *ListAnnotationDataSetsResponseBody) SetTotal(v int32) *ListAnnotationDa
 }
 
 type ListAnnotationDataSetsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAnnotationDataSetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAnnotationDataSetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAnnotationDataSetsResponse) String() string {
@@ -7056,9 +8668,9 @@ func (s *ListAnnotationLabelsResponseBody) SetTotal(v int32) *ListAnnotationLabe
 }
 
 type ListAnnotationLabelsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAnnotationLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAnnotationLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAnnotationLabelsResponse) String() string {
@@ -7395,9 +9007,9 @@ func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetResourceTags(v m
 }
 
 type ListCollectionPoliciesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCollectionPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCollectionPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCollectionPoliciesResponse) String() string {
@@ -7495,9 +9107,9 @@ func (s *ListConfigResponseBody) SetTotal(v int32) *ListConfigResponseBody {
 }
 
 type ListConfigResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConfigResponse) String() string {
@@ -7524,9 +9136,9 @@ func (s *ListConfigResponse) SetBody(v *ListConfigResponseBody) *ListConfigRespo
 }
 
 type ListConsumerGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*ConsumerGroup   `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*ConsumerGroup   `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s ListConsumerGroupResponse) String() string {
@@ -7628,9 +9240,9 @@ func (s *ListDashboardResponseBodyDashboardItems) SetDisplayName(v string) *List
 }
 
 type ListDashboardResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDashboardResponse) String() string {
@@ -7721,9 +9333,9 @@ func (s *ListDomainsResponseBody) SetTotal(v int64) *ListDomainsResponseBody {
 }
 
 type ListDomainsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDomainsResponse) String() string {
@@ -7745,6 +9357,87 @@ func (s *ListDomainsResponse) SetStatusCode(v int32) *ListDomainsResponse {
 }
 
 func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type ListETLsRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListETLsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListETLsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListETLsRequest) SetOffset(v int32) *ListETLsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListETLsRequest) SetSize(v int32) *ListETLsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListETLsResponseBody struct {
+	Count   *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*ETL `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListETLsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListETLsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListETLsResponseBody) SetCount(v int32) *ListETLsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListETLsResponseBody) SetResults(v []*ETL) *ListETLsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListETLsResponseBody) SetTotal(v int32) *ListETLsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListETLsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListETLsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListETLsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListETLsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListETLsResponse) SetHeaders(v map[string]*string) *ListETLsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListETLsResponse) SetStatusCode(v int32) *ListETLsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListETLsResponse) SetBody(v *ListETLsResponseBody) *ListETLsResponse {
 	s.Body = v
 	return s
 }
@@ -7814,9 +9507,9 @@ func (s *ListExternalStoreResponseBody) SetTotal(v int32) *ListExternalStoreResp
 }
 
 type ListExternalStoreResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListExternalStoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExternalStoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListExternalStoreResponse) String() string {
@@ -7927,9 +9620,9 @@ func (s *ListLogStoresResponseBody) SetTotal(v int32) *ListLogStoresResponseBody
 }
 
 type ListLogStoresResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLogStoresResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLogStoresResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLogStoresResponse) String() string {
@@ -8027,9 +9720,9 @@ func (s *ListLogtailPipelineConfigResponseBody) SetTotal(v int32) *ListLogtailPi
 }
 
 type ListLogtailPipelineConfigResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLogtailPipelineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLogtailPipelineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLogtailPipelineConfigResponse) String() string {
@@ -8120,9 +9813,9 @@ func (s *ListMachineGroupResponseBody) SetTotal(v int32) *ListMachineGroupRespon
 }
 
 type ListMachineGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMachineGroupResponse) String() string {
@@ -8206,9 +9899,9 @@ func (s *ListMachinesResponseBody) SetTotal(v int32) *ListMachinesResponseBody {
 }
 
 type ListMachinesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMachinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMachinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMachinesResponse) String() string {
@@ -8230,6 +9923,249 @@ func (s *ListMachinesResponse) SetStatusCode(v int32) *ListMachinesResponse {
 }
 
 func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachinesResponse {
+	s.Body = v
+	return s
+}
+
+type ListOSSExportsRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListOSSExportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSExportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSExportsRequest) SetOffset(v int32) *ListOSSExportsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListOSSExportsRequest) SetSize(v int32) *ListOSSExportsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListOSSExportsResponseBody struct {
+	Count   *int32       `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*OSSExport `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32       `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListOSSExportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSExportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSExportsResponseBody) SetCount(v int32) *ListOSSExportsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListOSSExportsResponseBody) SetResults(v []*OSSExport) *ListOSSExportsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListOSSExportsResponseBody) SetTotal(v int32) *ListOSSExportsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListOSSExportsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOSSExportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOSSExportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSExportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSExportsResponse) SetHeaders(v map[string]*string) *ListOSSExportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOSSExportsResponse) SetStatusCode(v int32) *ListOSSExportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOSSExportsResponse) SetBody(v *ListOSSExportsResponseBody) *ListOSSExportsResponse {
+	s.Body = v
+	return s
+}
+
+type ListOSSHDFSExportsRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListOSSHDFSExportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSHDFSExportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSHDFSExportsRequest) SetOffset(v int32) *ListOSSHDFSExportsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListOSSHDFSExportsRequest) SetSize(v int32) *ListOSSHDFSExportsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListOSSHDFSExportsResponseBody struct {
+	Count   *int32       `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*OSSExport `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32       `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListOSSHDFSExportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSHDFSExportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSHDFSExportsResponseBody) SetCount(v int32) *ListOSSHDFSExportsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListOSSHDFSExportsResponseBody) SetResults(v []*OSSExport) *ListOSSHDFSExportsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListOSSHDFSExportsResponseBody) SetTotal(v int32) *ListOSSHDFSExportsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListOSSHDFSExportsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOSSHDFSExportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOSSHDFSExportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSHDFSExportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSHDFSExportsResponse) SetHeaders(v map[string]*string) *ListOSSHDFSExportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOSSHDFSExportsResponse) SetStatusCode(v int32) *ListOSSHDFSExportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOSSHDFSExportsResponse) SetBody(v *ListOSSHDFSExportsResponseBody) *ListOSSHDFSExportsResponse {
+	s.Body = v
+	return s
+}
+
+type ListOSSIngestionsRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListOSSIngestionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSIngestionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSIngestionsRequest) SetOffset(v int32) *ListOSSIngestionsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListOSSIngestionsRequest) SetSize(v int32) *ListOSSIngestionsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListOSSIngestionsResponseBody struct {
+	Count   *int32          `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*OSSIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32          `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListOSSIngestionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSIngestionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSIngestionsResponseBody) SetCount(v int32) *ListOSSIngestionsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListOSSIngestionsResponseBody) SetResults(v []*OSSIngestion) *ListOSSIngestionsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListOSSIngestionsResponseBody) SetTotal(v int32) *ListOSSIngestionsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListOSSIngestionsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOSSIngestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOSSIngestionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOSSIngestionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOSSIngestionsResponse) SetHeaders(v map[string]*string) *ListOSSIngestionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOSSIngestionsResponse) SetStatusCode(v int32) *ListOSSIngestionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOSSIngestionsResponse) SetBody(v *ListOSSIngestionsResponseBody) *ListOSSIngestionsResponse {
 	s.Body = v
 	return s
 }
@@ -8305,9 +10241,9 @@ func (s *ListProjectResponseBody) SetTotal(v int64) *ListProjectResponseBody {
 }
 
 type ListProjectResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProjectResponse) String() string {
@@ -8391,9 +10327,9 @@ func (s *ListSavedSearchResponseBody) SetTotal(v int32) *ListSavedSearchResponse
 }
 
 type ListSavedSearchResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSavedSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSavedSearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSavedSearchResponse) String() string {
@@ -8419,10 +10355,91 @@ func (s *ListSavedSearchResponse) SetBody(v *ListSavedSearchResponseBody) *ListS
 	return s
 }
 
+type ListScheduledSQLsRequest struct {
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int64 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListScheduledSQLsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledSQLsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledSQLsRequest) SetOffset(v int64) *ListScheduledSQLsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListScheduledSQLsRequest) SetSize(v int64) *ListScheduledSQLsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListScheduledSQLsResponseBody struct {
+	Count   *int32          `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*ScheduledSQL `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32          `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListScheduledSQLsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledSQLsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledSQLsResponseBody) SetCount(v int32) *ListScheduledSQLsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListScheduledSQLsResponseBody) SetResults(v []*ScheduledSQL) *ListScheduledSQLsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListScheduledSQLsResponseBody) SetTotal(v int32) *ListScheduledSQLsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListScheduledSQLsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListScheduledSQLsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListScheduledSQLsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledSQLsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledSQLsResponse) SetHeaders(v map[string]*string) *ListScheduledSQLsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListScheduledSQLsResponse) SetStatusCode(v int32) *ListScheduledSQLsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListScheduledSQLsResponse) SetBody(v *ListScheduledSQLsResponseBody) *ListScheduledSQLsResponse {
+	s.Body = v
+	return s
+}
+
 type ListShardsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s ListShardsResponse) String() string {
@@ -8481,9 +10498,9 @@ func (s *ListShipperResponseBody) SetTotal(v int64) *ListShipperResponseBody {
 }
 
 type ListShipperResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListShipperResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListShipperResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListShipperResponse) String() string {
@@ -8667,9 +10684,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -8691,6 +10708,35 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type MergeShardResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+}
+
+func (s MergeShardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeShardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MergeShardResponse) SetHeaders(v map[string]*string) *MergeShardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MergeShardResponse) SetStatusCode(v int32) *MergeShardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MergeShardResponse) SetBody(v []*Shard) *MergeShardResponse {
 	s.Body = v
 	return s
 }
@@ -8728,8 +10774,8 @@ func (s *PutAnnotationDataRequest) SetRawLog(v []map[string]*string) *PutAnnotat
 }
 
 type PutAnnotationDataResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s PutAnnotationDataResponse) String() string {
@@ -8769,8 +10815,8 @@ func (s *PutProjectPolicyRequest) SetBody(v string) *PutProjectPolicyRequest {
 }
 
 type PutProjectPolicyResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s PutProjectPolicyResponse) String() string {
@@ -8809,8 +10855,8 @@ func (s *PutProjectTransferAccelerationRequest) SetEnabled(v bool) *PutProjectTr
 }
 
 type PutProjectTransferAccelerationResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s PutProjectTransferAccelerationResponse) String() string {
@@ -8873,8 +10919,8 @@ func (s *PutWebtrackingRequest) SetTopic(v string) *PutWebtrackingRequest {
 }
 
 type PutWebtrackingResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s PutWebtrackingResponse) String() string {
@@ -8942,9 +10988,9 @@ func (s *QueryMLServiceResultsResponseBody) SetStatus(v map[string]*string) *Que
 }
 
 type QueryMLServiceResultsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMLServiceResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMLServiceResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMLServiceResultsResponse) String() string {
@@ -8971,8 +11017,8 @@ func (s *QueryMLServiceResultsResponse) SetBody(v *QueryMLServiceResultsResponse
 }
 
 type RemoveConfigFromMachineGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s RemoveConfigFromMachineGroupResponse) String() string {
@@ -9019,9 +11065,9 @@ func (s *SplitShardRequest) SetShardCount(v int32) *SplitShardRequest {
 }
 
 type SplitShardResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s SplitShardResponse) String() string {
@@ -9044,6 +11090,190 @@ func (s *SplitShardResponse) SetStatusCode(v int32) *SplitShardResponse {
 
 func (s *SplitShardResponse) SetBody(v []*Shard) *SplitShardResponse {
 	s.Body = v
+	return s
+}
+
+type StartETLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StartETLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartETLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartETLResponse) SetHeaders(v map[string]*string) *StartETLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartETLResponse) SetStatusCode(v int32) *StartETLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StartOSSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StartOSSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartOSSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartOSSExportResponse) SetHeaders(v map[string]*string) *StartOSSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartOSSExportResponse) SetStatusCode(v int32) *StartOSSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StartOSSHDFSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StartOSSHDFSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartOSSHDFSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartOSSHDFSExportResponse) SetHeaders(v map[string]*string) *StartOSSHDFSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartOSSHDFSExportResponse) SetStatusCode(v int32) *StartOSSHDFSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StartOSSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StartOSSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartOSSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartOSSIngestionResponse) SetHeaders(v map[string]*string) *StartOSSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartOSSIngestionResponse) SetStatusCode(v int32) *StartOSSIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StopETLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StopETLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopETLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopETLResponse) SetHeaders(v map[string]*string) *StopETLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopETLResponse) SetStatusCode(v int32) *StopETLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StopOSSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StopOSSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopOSSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopOSSExportResponse) SetHeaders(v map[string]*string) *StopOSSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopOSSExportResponse) SetStatusCode(v int32) *StopOSSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StopOSSHDFSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StopOSSHDFSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopOSSHDFSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopOSSHDFSExportResponse) SetHeaders(v map[string]*string) *StopOSSHDFSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopOSSHDFSExportResponse) SetStatusCode(v int32) *StopOSSHDFSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StopOSSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StopOSSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopOSSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopOSSIngestionResponse) SetHeaders(v map[string]*string) *StopOSSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopOSSIngestionResponse) SetStatusCode(v int32) *StopOSSIngestionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9112,8 +11342,8 @@ func (s *TagResourcesRequestTags) SetValue(v string) *TagResourcesRequestTags {
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -9170,8 +11400,8 @@ func (s *UntagResourcesRequest) SetTags(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -9193,7 +11423,10 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 type UpdateAlertRequest struct {
-	Body *UpdateAlertReq `json:"body,omitempty" xml:"body,omitempty"`
+	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string             `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string             `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Schedule      *Schedule           `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
 func (s UpdateAlertRequest) String() string {
@@ -9204,15 +11437,29 @@ func (s UpdateAlertRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAlertRequest) SetBody(v *UpdateAlertReq) *UpdateAlertRequest {
-	s.Body = v
+func (s *UpdateAlertRequest) SetConfiguration(v *AlertConfiguration) *UpdateAlertRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateAlertRequest) SetDescription(v string) *UpdateAlertRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAlertRequest) SetDisplayName(v string) *UpdateAlertRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateAlertRequest) SetSchedule(v *Schedule) *UpdateAlertRequest {
+	s.Schedule = v
 	return s
 }
 
 type UpdateAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateAlertResponse) String() string {
@@ -9230,11 +11477,6 @@ func (s *UpdateAlertResponse) SetHeaders(v map[string]*string) *UpdateAlertRespo
 
 func (s *UpdateAlertResponse) SetStatusCode(v int32) *UpdateAlertResponse {
 	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateAlertResponse) SetBody(v interface{}) *UpdateAlertResponse {
-	s.Body = v
 	return s
 }
 
@@ -9257,8 +11499,8 @@ func (s *UpdateAnnotationDataSetRequest) SetBody(v *MLDataSetParam) *UpdateAnnot
 }
 
 type UpdateAnnotationDataSetResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateAnnotationDataSetResponse) String() string {
@@ -9298,8 +11540,8 @@ func (s *UpdateAnnotationLabelRequest) SetBody(v *MLLabelParam) *UpdateAnnotatio
 }
 
 type UpdateAnnotationLabelResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateAnnotationLabelResponse) String() string {
@@ -9339,8 +11581,8 @@ func (s *UpdateConfigRequest) SetBody(v *LogtailConfig) *UpdateConfigRequest {
 }
 
 type UpdateConfigResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateConfigResponse) String() string {
@@ -9390,8 +11632,8 @@ func (s *UpdateConsumerGroupRequest) SetTimeout(v int32) *UpdateConsumerGroupReq
 }
 
 type UpdateConsumerGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateConsumerGroupResponse) String() string {
@@ -9459,8 +11701,8 @@ func (s *UpdateDashboardRequest) SetDisplayName(v string) *UpdateDashboardReques
 }
 
 type UpdateDashboardResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateDashboardResponse) String() string {
@@ -9477,6 +11719,58 @@ func (s *UpdateDashboardResponse) SetHeaders(v map[string]*string) *UpdateDashbo
 }
 
 func (s *UpdateDashboardResponse) SetStatusCode(v int32) *UpdateDashboardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateETLRequest struct {
+	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string           `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string           `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s UpdateETLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateETLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateETLRequest) SetConfiguration(v *ETLConfiguration) *UpdateETLRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateETLRequest) SetDescription(v string) *UpdateETLRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateETLRequest) SetDisplayName(v string) *UpdateETLRequest {
+	s.DisplayName = &v
+	return s
+}
+
+type UpdateETLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateETLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateETLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateETLResponse) SetHeaders(v map[string]*string) *UpdateETLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateETLResponse) SetStatusCode(v int32) *UpdateETLResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -9594,8 +11888,8 @@ func (s *UpdateIndexRequestLine) SetToken(v []*string) *UpdateIndexRequestLine {
 }
 
 type UpdateIndexResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateIndexResponse) String() string {
@@ -9732,8 +12026,8 @@ func (s *UpdateLogStoreRequest) SetTtl(v int32) *UpdateLogStoreRequest {
 }
 
 type UpdateLogStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateLogStoreResponse) String() string {
@@ -9772,8 +12066,8 @@ func (s *UpdateLogStoreMeteringModeRequest) SetMeteringMode(v string) *UpdateLog
 }
 
 type UpdateLogStoreMeteringModeResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateLogStoreMeteringModeResponse) String() string {
@@ -9854,8 +12148,8 @@ func (s *UpdateLoggingRequestLoggingDetails) SetType(v string) *UpdateLoggingReq
 }
 
 type UpdateLoggingResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateLoggingResponse) String() string {
@@ -9937,8 +12231,8 @@ func (s *UpdateLogtailPipelineConfigRequest) SetProcessors(v []map[string]interf
 }
 
 type UpdateLogtailPipelineConfigResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateLogtailPipelineConfigResponse) String() string {
@@ -10037,8 +12331,8 @@ func (s *UpdateMachineGroupRequestGroupAttribute) SetGroupTopic(v string) *Updat
 }
 
 type UpdateMachineGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateMachineGroupResponse) String() string {
@@ -10085,8 +12379,8 @@ func (s *UpdateMachineGroupMachineRequest) SetBody(v []*string) *UpdateMachineGr
 }
 
 type UpdateMachineGroupMachineResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateMachineGroupMachineResponse) String() string {
@@ -10103,6 +12397,168 @@ func (s *UpdateMachineGroupMachineResponse) SetHeaders(v map[string]*string) *Up
 }
 
 func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachineGroupMachineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateOSSExportRequest struct {
+	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s UpdateOSSExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOSSExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOSSExportRequest) SetConfiguration(v *OSSExportConfiguration) *UpdateOSSExportRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateOSSExportRequest) SetDescription(v string) *UpdateOSSExportRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateOSSExportRequest) SetDisplayName(v string) *UpdateOSSExportRequest {
+	s.DisplayName = &v
+	return s
+}
+
+type UpdateOSSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateOSSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOSSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOSSExportResponse) SetHeaders(v map[string]*string) *UpdateOSSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOSSExportResponse) SetStatusCode(v int32) *UpdateOSSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateOSSHDFSExportRequest struct {
+	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s UpdateOSSHDFSExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOSSHDFSExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOSSHDFSExportRequest) SetConfiguration(v *OSSExportConfiguration) *UpdateOSSHDFSExportRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateOSSHDFSExportRequest) SetDescription(v string) *UpdateOSSHDFSExportRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateOSSHDFSExportRequest) SetDisplayName(v string) *UpdateOSSHDFSExportRequest {
+	s.DisplayName = &v
+	return s
+}
+
+type UpdateOSSHDFSExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateOSSHDFSExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOSSHDFSExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOSSHDFSExportResponse) SetHeaders(v map[string]*string) *UpdateOSSHDFSExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOSSHDFSExportResponse) SetStatusCode(v int32) *UpdateOSSHDFSExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateOSSIngestionRequest struct {
+	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Schedule      *Schedule                  `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s UpdateOSSIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOSSIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOSSIngestionRequest) SetConfiguration(v *OSSIngestionConfiguration) *UpdateOSSIngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateOSSIngestionRequest) SetDescription(v string) *UpdateOSSIngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateOSSIngestionRequest) SetDisplayName(v string) *UpdateOSSIngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateOSSIngestionRequest) SetSchedule(v *Schedule) *UpdateOSSIngestionRequest {
+	s.Schedule = v
+	return s
+}
+
+type UpdateOSSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateOSSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOSSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOSSIngestionResponse) SetHeaders(v map[string]*string) *UpdateOSSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOSSIngestionResponse) SetStatusCode(v int32) *UpdateOSSIngestionResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -10218,8 +12674,8 @@ func (s *UpdateOssExternalStoreRequestParameterColumns) SetType(v string) *Updat
 }
 
 type UpdateOssExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateOssExternalStoreResponse) String() string {
@@ -10259,8 +12715,8 @@ func (s *UpdateProjectRequest) SetDescription(v string) *UpdateProjectRequest {
 }
 
 type UpdateProjectResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateProjectResponse) String() string {
@@ -10388,8 +12844,8 @@ func (s *UpdateRdsExternalStoreRequestParameter) SetVpcId(v string) *UpdateRdsEx
 }
 
 type UpdateRdsExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateRdsExternalStoreResponse) String() string {
@@ -10459,8 +12915,8 @@ func (s *UpdateSavedSearchRequest) SetTopic(v string) *UpdateSavedSearchRequest 
 }
 
 type UpdateSavedSearchResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateSavedSearchResponse) String() string {
@@ -10477,6 +12933,64 @@ func (s *UpdateSavedSearchResponse) SetHeaders(v map[string]*string) *UpdateSave
 }
 
 func (s *UpdateSavedSearchResponse) SetStatusCode(v int32) *UpdateSavedSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateScheduledSQLRequest struct {
+	Configuration *ScheduledSQLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Schedule      *Schedule                  `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s UpdateScheduledSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScheduledSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScheduledSQLRequest) SetConfiguration(v *ScheduledSQLConfiguration) *UpdateScheduledSQLRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateScheduledSQLRequest) SetDescription(v string) *UpdateScheduledSQLRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateScheduledSQLRequest) SetDisplayName(v string) *UpdateScheduledSQLRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateScheduledSQLRequest) SetSchedule(v *Schedule) *UpdateScheduledSQLRequest {
+	s.Schedule = v
+	return s
+}
+
+type UpdateScheduledSQLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateScheduledSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScheduledSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScheduledSQLResponse) SetHeaders(v map[string]*string) *UpdateScheduledSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateScheduledSQLResponse) SetStatusCode(v int32) *UpdateScheduledSQLResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -10651,9 +13165,9 @@ func (s *UpsertCollectionPolicyResponseBody) SetMessage(v string) *UpsertCollect
 }
 
 type UpsertCollectionPolicyResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpsertCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpsertCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpsertCollectionPolicyResponse) String() string {
@@ -10887,10 +13401,31 @@ func (client *Client) CreateAlertWithOptions(project *string, request *CreateAle
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Body),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAlert"),
@@ -10901,7 +13436,7 @@ func (client *Client) CreateAlertWithOptions(project *string, request *CreateAle
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("any"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &CreateAlertResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -11281,6 +13816,67 @@ func (client *Client) CreateDomain(project *string, request *CreateDomainRequest
 	headers := make(map[string]*string)
 	_result = &CreateDomainResponse{}
 	_body, _err := client.CreateDomainWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateETLWithOptions(project *string, request *CreateETLRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateETLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateETL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etls"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateETLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateETL(project *string, request *CreateETLRequest) (_result *CreateETLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateETLResponse{}
+	_body, _err := client.CreateETLWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11719,6 +14315,193 @@ func (client *Client) CreateMachineGroup(project *string, request *CreateMachine
 	return _result, _err
 }
 
+func (client *Client) CreateOSSExportWithOptions(project *string, request *CreateOSSExportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOSSExportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOSSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossexports"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateOSSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOSSExport(project *string, request *CreateOSSExportRequest) (_result *CreateOSSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOSSExportResponse{}
+	_body, _err := client.CreateOSSExportWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOSSHDFSExportWithOptions(project *string, request *CreateOSSHDFSExportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOSSHDFSExportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOSSHDFSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/osshdfsexports"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateOSSHDFSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOSSHDFSExport(project *string, request *CreateOSSHDFSExportRequest) (_result *CreateOSSHDFSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOSSHDFSExportResponse{}
+	_body, _err := client.CreateOSSHDFSExportWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOSSIngestionWithOptions(project *string, request *CreateOSSIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOSSIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOSSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossingestions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateOSSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOSSIngestion(project *string, request *CreateOSSIngestionRequest) (_result *CreateOSSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOSSIngestionResponse{}
+	_body, _err := client.CreateOSSIngestionWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -12002,6 +14785,71 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 	return _result, _err
 }
 
+func (client *Client) CreateScheduledSQLWithOptions(project *string, request *CreateScheduledSQLRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateScheduledSQLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateScheduledSQL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scheduledsqls"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateScheduledSQLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateScheduledSQL(project *string, request *CreateScheduledSQLRequest) (_result *CreateScheduledSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateScheduledSQLResponse{}
+	_body, _err := client.CreateScheduledSQLWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateTicketWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -12054,7 +14902,7 @@ func (client *Client) DeleteAlertWithOptions(project *string, alertName *string,
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("any"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteAlertResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -12483,6 +15331,45 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 	return _result, _err
 }
 
+func (client *Client) DeleteETLWithOptions(project *string, etlName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteETLResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteETL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etls/" + tea.StringValue(etlName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteETLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteETL(project *string, etlName *string) (_result *DeleteETLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteETLResponse{}
+	_body, _err := client.DeleteETLWithOptions(project, etlName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
@@ -12783,6 +15670,123 @@ func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) 
 	return _result, _err
 }
 
+func (client *Client) DeleteOSSExportWithOptions(project *string, ossExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteOSSExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOSSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossexports/" + tea.StringValue(ossExportName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteOSSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteOSSExport(project *string, ossExportName *string) (_result *DeleteOSSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteOSSExportResponse{}
+	_body, _err := client.DeleteOSSExportWithOptions(project, ossExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteOSSHDFSExportWithOptions(project *string, ossExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteOSSHDFSExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOSSHDFSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/osshdfsexports/" + tea.StringValue(ossExportName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteOSSHDFSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteOSSHDFSExport(project *string, ossExportName *string) (_result *DeleteOSSHDFSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteOSSHDFSExportResponse{}
+	_body, _err := client.DeleteOSSHDFSExportWithOptions(project, ossExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteOSSIngestionWithOptions(project *string, ossIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteOSSIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOSSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossingestions/" + tea.StringValue(ossIngestionName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteOSSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteOSSIngestion(project *string, ossIngestionName *string) (_result *DeleteOSSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteOSSIngestionResponse{}
+	_body, _err := client.DeleteOSSIngestionWithOptions(project, ossIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteProjectWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -12928,13 +15932,54 @@ func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string
 	return _result, _err
 }
 
+func (client *Client) DeleteScheduledSQLWithOptions(project *string, scheduledSQLName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteScheduledSQLResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteScheduledSQL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scheduledsqls/" + tea.StringValue(scheduledSQLName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteScheduledSQLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteScheduledSQL(project *string, scheduledSQLName *string) (_result *DeleteScheduledSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteScheduledSQLResponse{}
+	_body, _err := client.DeleteScheduledSQLWithOptions(project, scheduledSQLName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
+ * @deprecated
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return DeleteShipperResponse
  */
+// Deprecated
 func (client *Client) DeleteShipperWithOptions(project *string, logstore *string, shipperName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteShipperResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -12963,10 +16008,12 @@ func (client *Client) DeleteShipperWithOptions(project *string, logstore *string
 }
 
 /**
+ * @deprecated
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @return DeleteShipperResponse
  */
+// Deprecated
 func (client *Client) DeleteShipper(project *string, logstore *string, shipperName *string) (_result *DeleteShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12995,7 +16042,7 @@ func (client *Client) DisableAlertWithOptions(project *string, alertName *string
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("any"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DisableAlertResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -13034,7 +16081,7 @@ func (client *Client) EnableAlertWithOptions(project *string, alertName *string,
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("any"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &EnableAlertResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -13735,6 +16782,45 @@ func (client *Client) GetDashboard(project *string, dashboardName *string) (_res
 	headers := make(map[string]*string)
 	_result = &GetDashboardResponse{}
 	_body, _err := client.GetDashboardWithOptions(project, dashboardName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetETLWithOptions(project *string, etlName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetETLResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetETL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etls/" + tea.StringValue(etlName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetETLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetETL(project *string, etlName *string) (_result *GetETLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetETLResponse{}
+	_body, _err := client.GetETLWithOptions(project, etlName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14466,6 +17552,123 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 	return _result, _err
 }
 
+func (client *Client) GetOSSExportWithOptions(project *string, ossExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOSSExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOSSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossexports/" + tea.StringValue(ossExportName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOSSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOSSExport(project *string, ossExportName *string) (_result *GetOSSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOSSExportResponse{}
+	_body, _err := client.GetOSSExportWithOptions(project, ossExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOSSHDFSExportWithOptions(project *string, ossExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOSSHDFSExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOSSHDFSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/osshdfsexports/" + tea.StringValue(ossExportName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOSSHDFSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOSSHDFSExport(project *string, ossExportName *string) (_result *GetOSSHDFSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOSSHDFSExportResponse{}
+	_body, _err := client.GetOSSHDFSExportWithOptions(project, ossExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOSSIngestionWithOptions(project *string, ossIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOSSIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOSSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossingestions/" + tea.StringValue(ossIngestionName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOSSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOSSIngestion(project *string, ossIngestionName *string) (_result *GetOSSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOSSIngestionResponse{}
+	_body, _err := client.GetOSSIngestionWithOptions(project, ossIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -14702,7 +17905,47 @@ func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (
 	return _result, _err
 }
 
+func (client *Client) GetScheduledSQLWithOptions(project *string, scheduledSQLName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetScheduledSQLResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetScheduledSQL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scheduledsqls/" + tea.StringValue(scheduledSQLName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetScheduledSQLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetScheduledSQL(project *string, scheduledSQLName *string) (_result *GetScheduledSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetScheduledSQLResponse{}
+	_body, _err := client.GetScheduledSQLWithOptions(project, scheduledSQLName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
+ * @deprecated
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param request GetShipperStatusRequest
@@ -14710,6 +17953,7 @@ func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (
  * @param runtime runtime options for this request RuntimeOptions
  * @return GetShipperStatusResponse
  */
+// Deprecated
 func (client *Client) GetShipperStatusWithOptions(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShipperStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14764,11 +18008,13 @@ func (client *Client) GetShipperStatusWithOptions(project *string, logstore *str
 }
 
 /**
+ * @deprecated
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param request GetShipperStatusRequest
  * @return GetShipperStatusResponse
  */
+// Deprecated
 func (client *Client) GetShipperStatus(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest) (_result *GetShipperStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15348,6 +18594,59 @@ func (client *Client) ListDomains(project *string, request *ListDomainsRequest) 
 	return _result, _err
 }
 
+func (client *Client) ListETLsWithOptions(project *string, request *ListETLsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListETLsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListETLs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etls"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListETLsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListETLs(project *string, request *ListETLsRequest) (_result *ListETLsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListETLsResponse{}
+	_body, _err := client.ListETLsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
@@ -15729,6 +19028,165 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 	return _result, _err
 }
 
+func (client *Client) ListOSSExportsWithOptions(project *string, request *ListOSSExportsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListOSSExportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOSSExports"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossexports"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOSSExportsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOSSExports(project *string, request *ListOSSExportsRequest) (_result *ListOSSExportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOSSExportsResponse{}
+	_body, _err := client.ListOSSExportsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOSSHDFSExportsWithOptions(project *string, request *ListOSSHDFSExportsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListOSSHDFSExportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOSSHDFSExports"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/osshdfsexports"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOSSHDFSExportsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOSSHDFSExports(project *string, request *ListOSSHDFSExportsRequest) (_result *ListOSSHDFSExportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOSSHDFSExportsResponse{}
+	_body, _err := client.ListOSSHDFSExportsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOSSIngestionsWithOptions(project *string, request *ListOSSIngestionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListOSSIngestionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOSSIngestions"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossingestions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOSSIngestionsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOSSIngestions(project *string, request *ListOSSIngestionsRequest) (_result *ListOSSIngestionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOSSIngestionsResponse{}
+	_body, _err := client.ListOSSIngestionsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -15872,6 +19330,59 @@ func (client *Client) ListSavedSearch(project *string, request *ListSavedSearchR
 	return _result, _err
 }
 
+func (client *Client) ListScheduledSQLsWithOptions(project *string, request *ListScheduledSQLsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListScheduledSQLsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListScheduledSQLs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scheduledsqls"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListScheduledSQLsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListScheduledSQLs(project *string, request *ListScheduledSQLsRequest) (_result *ListScheduledSQLsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListScheduledSQLsResponse{}
+	_body, _err := client.ListScheduledSQLsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListShardsWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShardsResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -15912,12 +19423,14 @@ func (client *Client) ListShards(project *string, logstore *string) (_result *Li
 }
 
 /**
+ * @deprecated
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return ListShipperResponse
  */
+// Deprecated
 func (client *Client) ListShipperWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShipperResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -15946,10 +19459,12 @@ func (client *Client) ListShipperWithOptions(project *string, logstore *string, 
 }
 
 /**
+ * @deprecated
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
  *
  * @return ListShipperResponse
  */
+// Deprecated
 func (client *Client) ListShipper(project *string, logstore *string) (_result *ListShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16035,6 +19550,45 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MergeShardWithOptions(project *string, logstore *string, shard *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MergeShardResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MergeShard"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shard) + "?action=merge"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &MergeShardResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MergeShard(project *string, logstore *string, shard *string) (_result *MergeShardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &MergeShardResponse{}
+	_body, _err := client.MergeShardWithOptions(project, logstore, shard, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16489,6 +20043,318 @@ func (client *Client) SplitShard(project *string, logstore *string, shard *strin
 	return _result, _err
 }
 
+func (client *Client) StartETLWithOptions(project *string, etlName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartETLResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartETL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etls/" + tea.StringValue(etlName) + "?action=START"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartETLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartETL(project *string, etlName *string) (_result *StartETLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartETLResponse{}
+	_body, _err := client.StartETLWithOptions(project, etlName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartOSSExportWithOptions(project *string, ossExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartOSSExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartOSSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossexports/" + tea.StringValue(ossExportName) + "?action=START"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartOSSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartOSSExport(project *string, ossExportName *string) (_result *StartOSSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartOSSExportResponse{}
+	_body, _err := client.StartOSSExportWithOptions(project, ossExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartOSSHDFSExportWithOptions(project *string, ossExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartOSSHDFSExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartOSSHDFSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/osshdfsexports/" + tea.StringValue(ossExportName) + "?action=START"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartOSSHDFSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartOSSHDFSExport(project *string, ossExportName *string) (_result *StartOSSHDFSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartOSSHDFSExportResponse{}
+	_body, _err := client.StartOSSHDFSExportWithOptions(project, ossExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartOSSIngestionWithOptions(project *string, ossIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartOSSIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartOSSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossingestions/" + tea.StringValue(ossIngestionName) + "?action=START"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartOSSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartOSSIngestion(project *string, ossIngestionName *string) (_result *StartOSSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartOSSIngestionResponse{}
+	_body, _err := client.StartOSSIngestionWithOptions(project, ossIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopETLWithOptions(project *string, etlName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopETLResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopETL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etls/" + tea.StringValue(etlName) + "?action=STOP"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopETLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopETL(project *string, etlName *string) (_result *StopETLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopETLResponse{}
+	_body, _err := client.StopETLWithOptions(project, etlName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopOSSExportWithOptions(project *string, ossExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopOSSExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopOSSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossexports/" + tea.StringValue(ossExportName) + "?action=STOP"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopOSSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopOSSExport(project *string, ossExportName *string) (_result *StopOSSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopOSSExportResponse{}
+	_body, _err := client.StopOSSExportWithOptions(project, ossExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopOSSHDFSExportWithOptions(project *string, ossExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopOSSHDFSExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopOSSHDFSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/osshdfsexports/" + tea.StringValue(ossExportName) + "?action=STOP"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopOSSHDFSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopOSSHDFSExport(project *string, ossExportName *string) (_result *StopOSSHDFSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopOSSHDFSExportResponse{}
+	_body, _err := client.StopOSSHDFSExportWithOptions(project, ossExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopOSSIngestionWithOptions(project *string, ossIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopOSSIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopOSSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossingestions/" + tea.StringValue(ossIngestionName) + "?action=STOP"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopOSSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopOSSIngestion(project *string, ossIngestionName *string) (_result *StopOSSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopOSSIngestionResponse{}
+	_body, _err := client.StopOSSIngestionWithOptions(project, ossIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### Usage notes
  * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
@@ -16640,10 +20506,27 @@ func (client *Client) UpdateAlertWithOptions(project *string, alertName *string,
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Body),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAlert"),
@@ -16654,7 +20537,7 @@ func (client *Client) UpdateAlertWithOptions(project *string, alertName *string,
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("any"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &UpdateAlertResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -16986,6 +20869,63 @@ func (client *Client) UpdateDashboard(project *string, dashboardName *string, re
 	headers := make(map[string]*string)
 	_result = &UpdateDashboardResponse{}
 	_body, _err := client.UpdateDashboardWithOptions(project, dashboardName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateETLWithOptions(project *string, etlName *string, request *UpdateETLRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateETLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateETL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etls/" + tea.StringValue(etlName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateETLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateETL(project *string, etlName *string, request *UpdateETLRequest) (_result *UpdateETLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateETLResponse{}
+	_body, _err := client.UpdateETLWithOptions(project, etlName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17539,6 +21479,181 @@ func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *s
 	return _result, _err
 }
 
+func (client *Client) UpdateOSSExportWithOptions(project *string, ossExportName *string, request *UpdateOSSExportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOSSExportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOSSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossexports/" + tea.StringValue(ossExportName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateOSSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateOSSExport(project *string, ossExportName *string, request *UpdateOSSExportRequest) (_result *UpdateOSSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOSSExportResponse{}
+	_body, _err := client.UpdateOSSExportWithOptions(project, ossExportName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateOSSHDFSExportWithOptions(project *string, ossExportName *string, request *UpdateOSSHDFSExportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOSSHDFSExportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOSSHDFSExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/osshdfsexports/" + tea.StringValue(ossExportName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateOSSHDFSExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateOSSHDFSExport(project *string, ossExportName *string, request *UpdateOSSHDFSExportRequest) (_result *UpdateOSSHDFSExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOSSHDFSExportResponse{}
+	_body, _err := client.UpdateOSSHDFSExportWithOptions(project, ossExportName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateOSSIngestionWithOptions(project *string, ossIngestionName *string, request *UpdateOSSIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOSSIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOSSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ossingestions/" + tea.StringValue(ossIngestionName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateOSSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateOSSIngestion(project *string, ossIngestionName *string, request *UpdateOSSIngestionRequest) (_result *UpdateOSSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOSSIngestionResponse{}
+	_body, _err := client.UpdateOSSIngestionWithOptions(project, ossIngestionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### [](#)Usage notes
  * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -17806,6 +21921,67 @@ func (client *Client) UpdateSavedSearch(project *string, savedsearchName *string
 	headers := make(map[string]*string)
 	_result = &UpdateSavedSearchResponse{}
 	_body, _err := client.UpdateSavedSearchWithOptions(project, savedsearchName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateScheduledSQLWithOptions(project *string, scheduledSQLName *string, request *UpdateScheduledSQLRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateScheduledSQLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateScheduledSQL"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scheduledsqls/" + tea.StringValue(scheduledSQLName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateScheduledSQLResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateScheduledSQL(project *string, scheduledSQLName *string, request *UpdateScheduledSQLRequest) (_result *UpdateScheduledSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateScheduledSQLResponse{}
+	_body, _err := client.UpdateScheduledSQLWithOptions(project, scheduledSQLName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
