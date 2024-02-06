@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/ens-20171110/v5
+module github.com/alibabacloud-go/ens-20171110/v6
 
 go 1.15
 
