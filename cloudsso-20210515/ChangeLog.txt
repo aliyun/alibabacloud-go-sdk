@@ -1,3 +1,10 @@
+2024-02-07 Version: v1.4.0
+- Support API GetLoginPreference.
+- Support API GetPasswordPolicy.
+- Support API SetLoginPreference.
+- Support API SetPasswordPolicy.
+
+
 2023-11-27 Version: v1.3.0
 - Generated golang 2021-05-15 for cloudsso.
 

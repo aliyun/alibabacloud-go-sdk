@@ -65,9 +65,9 @@ func (s *AddExternalSAMLIdPCertificateResponseBody) SetRequestId(v string) *AddE
 }
 
 type AddExternalSAMLIdPCertificateResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddExternalSAMLIdPCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddExternalSAMLIdPCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddExternalSAMLIdPCertificateResponse) String() string {
@@ -168,9 +168,9 @@ func (s *AddPermissionPolicyToAccessConfigurationResponseBody) SetRequestId(v st
 }
 
 type AddPermissionPolicyToAccessConfigurationResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddPermissionPolicyToAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddPermissionPolicyToAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddPermissionPolicyToAccessConfigurationResponse) String() string {
@@ -247,9 +247,9 @@ func (s *AddUserToGroupResponseBody) SetRequestId(v string) *AddUserToGroupRespo
 }
 
 type AddUserToGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddUserToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddUserToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddUserToGroupResponse) String() string {
@@ -312,9 +312,9 @@ func (s *ClearExternalSAMLIdentityProviderResponseBody) SetRequestId(v string) *
 }
 
 type ClearExternalSAMLIdentityProviderResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClearExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClearExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClearExternalSAMLIdentityProviderResponse) String() string {
@@ -357,7 +357,7 @@ type CreateAccessAssignmentRequest struct {
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the task object.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -400,9 +400,9 @@ func (s *CreateAccessAssignmentRequest) SetTargetType(v string) *CreateAccessAss
 }
 
 type CreateAccessAssignmentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the task.
+	// The queried task.
 	Task *CreateAccessAssignmentResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
@@ -438,7 +438,7 @@ type CreateAccessAssignmentResponseBodyTask struct {
 	// *   User
 	// *   Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// *   InProgress: The task is running.
 	// *   Success: The task is successful.
@@ -448,15 +448,15 @@ type CreateAccessAssignmentResponseBodyTask struct {
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in your resource directory.
+	// The path ID of the task object in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in your resource directory.
+	// The path name of the task object in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
+	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the task.
+	// The ID of the job.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. The value is fixed as CreateAccessAssignment, which indicates that access permissions on an account in your resource directory are assigned.
+	// The task type. The value is fixed as CreateAccessAssignment, which indicates that access permissions on an account in your resource directory are assigned.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -534,9 +534,9 @@ func (s *CreateAccessAssignmentResponseBodyTask) SetTaskType(v string) *CreateAc
 }
 
 type CreateAccessAssignmentResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAccessAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccessAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAccessAssignmentResponse) String() string {
@@ -717,9 +717,9 @@ func (s *CreateAccessConfigurationResponseBodyAccessConfiguration) SetUpdateTime
 }
 
 type CreateAccessConfigurationResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAccessConfigurationResponse) String() string {
@@ -841,9 +841,9 @@ func (s *CreateDirectoryResponseBodyDirectory) SetUpdateTime(v string) *CreateDi
 }
 
 type CreateDirectoryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDirectoryResponse) String() string {
@@ -986,9 +986,9 @@ func (s *CreateGroupResponseBodyGroup) SetUpdateTime(v string) *CreateGroupRespo
 }
 
 type CreateGroupResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateGroupResponse) String() string {
@@ -1120,9 +1120,9 @@ func (s *CreateSCIMServerCredentialResponseBodySCIMServerCredential) SetStatus(v
 }
 
 type CreateSCIMServerCredentialResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSCIMServerCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSCIMServerCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSCIMServerCredentialResponse) String() string {
@@ -1352,9 +1352,9 @@ func (s *CreateUserResponseBodyUser) SetUserName(v string) *CreateUserResponseBo
 }
 
 type CreateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -1570,9 +1570,9 @@ func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetUserProvisioning
 }
 
 type CreateUserProvisioningResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserProvisioningResponse) String() string {
@@ -1620,7 +1620,7 @@ type DeleteAccessAssignmentRequest struct {
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the task object.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -1668,9 +1668,9 @@ func (s *DeleteAccessAssignmentRequest) SetTargetType(v string) *DeleteAccessAss
 }
 
 type DeleteAccessAssignmentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the task.
+	// The task information.
 	Task *DeleteAccessAssignmentResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
@@ -1706,7 +1706,7 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	// *   User
 	// *   Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// *   InProgress: The task is running.
 	// *   Success: The task is successful.
@@ -1722,9 +1722,9 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. The value is fixed as DeleteAccessAssignment, which indicates that access permissions on an account in your resource directory are removed.
+	// The task type. The value is fixed as DeleteAccessAssignment, which indicates that access permissions on an account in your resource directory are removed.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -1802,9 +1802,9 @@ func (s *DeleteAccessAssignmentResponseBodyTask) SetTaskType(v string) *DeleteAc
 }
 
 type DeleteAccessAssignmentResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAccessAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccessAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAccessAssignmentResponse) String() string {
@@ -1884,9 +1884,9 @@ func (s *DeleteAccessConfigurationResponseBody) SetRequestId(v string) *DeleteAc
 }
 
 type DeleteAccessConfigurationResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAccessConfigurationResponse) String() string {
@@ -1949,9 +1949,9 @@ func (s *DeleteDirectoryResponseBody) SetRequestId(v string) *DeleteDirectoryRes
 }
 
 type DeleteDirectoryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDirectoryResponse) String() string {
@@ -2021,9 +2021,9 @@ func (s *DeleteGroupResponseBody) SetRequestId(v string) *DeleteGroupResponseBod
 }
 
 type DeleteGroupResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteGroupResponse) String() string {
@@ -2102,9 +2102,9 @@ func (s *DeleteMFADeviceForUserResponseBody) SetRequestId(v string) *DeleteMFADe
 }
 
 type DeleteMFADeviceForUserResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMFADeviceForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMFADeviceForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMFADeviceForUserResponse) String() string {
@@ -2174,9 +2174,9 @@ func (s *DeleteSCIMServerCredentialResponseBody) SetRequestId(v string) *DeleteS
 }
 
 type DeleteSCIMServerCredentialResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSCIMServerCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSCIMServerCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSCIMServerCredentialResponse) String() string {
@@ -2246,9 +2246,9 @@ func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody 
 }
 
 type DeleteUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -2321,9 +2321,9 @@ func (s *DeleteUserProvisioningResponseBody) SetRequestId(v string) *DeleteUserP
 }
 
 type DeleteUserProvisioningResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserProvisioningResponse) String() string {
@@ -2396,9 +2396,9 @@ func (s *DeleteUserProvisioningEventResponseBody) SetRequestId(v string) *Delete
 }
 
 type DeleteUserProvisioningEventResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserProvisioningEventResponse) String() string {
@@ -2427,11 +2427,11 @@ func (s *DeleteUserProvisioningEventResponse) SetBody(v *DeleteUserProvisioningE
 type DeprovisionAccessConfigurationRequest struct {
 	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the task object.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -2464,9 +2464,9 @@ func (s *DeprovisionAccessConfigurationRequest) SetTargetType(v string) *Deprovi
 }
 
 type DeprovisionAccessConfigurationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the task.
+	// The task information.
 	Tasks []*DeprovisionAccessConfigurationResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -2493,7 +2493,7 @@ type DeprovisionAccessConfigurationResponseBodyTasks struct {
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// *   InProgress: The task is running.
 	// *   Success: The task is successful.
@@ -2503,15 +2503,15 @@ type DeprovisionAccessConfigurationResponseBodyTasks struct {
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in your resource directory.
+	// The path ID of the task object in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in your resource directory.
+	// The path name of the task object in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
+	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. The value is fixed as DeprovisionAccessConfiguration, which indicates that the access configuration is de-provisioned.
+	// The task type. The value is fixed as DeprovisionAccessConfiguration, which indicates that the access configuration is de-provisioned.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -2574,9 +2574,9 @@ func (s *DeprovisionAccessConfigurationResponseBodyTasks) SetTaskType(v string) 
 }
 
 type DeprovisionAccessConfigurationResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeprovisionAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeprovisionAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeprovisionAccessConfigurationResponse) String() string {
@@ -2621,9 +2621,9 @@ func (s *DisableServiceResponseBody) SetRequestId(v string) *DisableServiceRespo
 }
 
 type DisableServiceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableServiceResponse) String() string {
@@ -2668,9 +2668,9 @@ func (s *EnableServiceResponseBody) SetRequestId(v string) *EnableServiceRespons
 }
 
 type EnableServiceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableServiceResponse) String() string {
@@ -2816,9 +2816,9 @@ func (s *GetAccessConfigurationResponseBodyAccessConfiguration) SetUpdateTime(v 
 }
 
 type GetAccessConfigurationResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccessConfigurationResponse) String() string {
@@ -2934,9 +2934,9 @@ func (s *GetDirectoryResponseBodyDirectory) SetUpdateTime(v string) *GetDirector
 }
 
 type GetDirectoryResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDirectoryResponse) String() string {
@@ -3063,9 +3063,9 @@ func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) Set
 }
 
 type GetDirectorySAMLServiceProviderInfoResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDirectorySAMLServiceProviderInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDirectorySAMLServiceProviderInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDirectorySAMLServiceProviderInfoResponse) String() string {
@@ -3257,9 +3257,9 @@ func (s *GetDirectoryStatisticsResponseBodyDirectoryStatistics) SetUserQuota(v i
 }
 
 type GetDirectoryStatisticsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDirectoryStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDirectoryStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDirectoryStatisticsResponse) String() string {
@@ -3409,9 +3409,9 @@ func (s *GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigur
 }
 
 type GetExternalSAMLIdentityProviderResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetExternalSAMLIdentityProviderResponse) String() string {
@@ -3544,9 +3544,9 @@ func (s *GetGroupResponseBodyGroup) SetUpdateTime(v string) *GetGroupResponseBod
 }
 
 type GetGroupResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetGroupResponse) String() string {
@@ -3568,6 +3568,92 @@ func (s *GetGroupResponse) SetStatusCode(v int32) *GetGroupResponse {
 }
 
 func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetLoginPreferenceRequest struct {
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+}
+
+func (s GetLoginPreferenceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoginPreferenceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoginPreferenceRequest) SetDirectoryId(v string) *GetLoginPreferenceRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+type GetLoginPreferenceResponseBody struct {
+	LoginPreference *GetLoginPreferenceResponseBodyLoginPreference `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty" type:"Struct"`
+	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLoginPreferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoginPreferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoginPreferenceResponseBody) SetLoginPreference(v *GetLoginPreferenceResponseBodyLoginPreference) *GetLoginPreferenceResponseBody {
+	s.LoginPreference = v
+	return s
+}
+
+func (s *GetLoginPreferenceResponseBody) SetRequestId(v string) *GetLoginPreferenceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLoginPreferenceResponseBodyLoginPreference struct {
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+}
+
+func (s GetLoginPreferenceResponseBodyLoginPreference) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoginPreferenceResponseBodyLoginPreference) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoginPreferenceResponseBodyLoginPreference) SetLoginNetworkMasks(v string) *GetLoginPreferenceResponseBodyLoginPreference {
+	s.LoginNetworkMasks = &v
+	return s
+}
+
+type GetLoginPreferenceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLoginPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLoginPreferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoginPreferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoginPreferenceResponse) SetHeaders(v map[string]*string) *GetLoginPreferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLoginPreferenceResponse) SetStatusCode(v int32) *GetLoginPreferenceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLoginPreferenceResponse) SetBody(v *GetLoginPreferenceResponseBody) *GetLoginPreferenceResponse {
 	s.Body = v
 	return s
 }
@@ -3651,9 +3737,9 @@ func (s *GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo
 }
 
 type GetMFAAuthenticationSettingInfoResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMFAAuthenticationSettingInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMFAAuthenticationSettingInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMFAAuthenticationSettingInfoResponse) String() string {
@@ -3727,9 +3813,9 @@ func (s *GetMFAAuthenticationSettingsResponseBody) SetRequestId(v string) *GetMF
 }
 
 type GetMFAAuthenticationSettingsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMFAAuthenticationSettingsResponse) String() string {
@@ -3802,9 +3888,9 @@ func (s *GetMFAAuthenticationStatusResponseBody) SetRequestId(v string) *GetMFAA
 }
 
 type GetMFAAuthenticationStatusResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMFAAuthenticationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMFAAuthenticationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMFAAuthenticationStatusResponse) String() string {
@@ -3826,6 +3912,158 @@ func (s *GetMFAAuthenticationStatusResponse) SetStatusCode(v int32) *GetMFAAuthe
 }
 
 func (s *GetMFAAuthenticationStatusResponse) SetBody(v *GetMFAAuthenticationStatusResponseBody) *GetMFAAuthenticationStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetPasswordPolicyRequest struct {
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+}
+
+func (s GetPasswordPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPasswordPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPasswordPolicyRequest) SetDirectoryId(v string) *GetPasswordPolicyRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+type GetPasswordPolicyResponseBody struct {
+	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPasswordPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPasswordPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPasswordPolicyResponseBody) SetPasswordPolicy(v *GetPasswordPolicyResponseBodyPasswordPolicy) *GetPasswordPolicyResponseBody {
+	s.PasswordPolicy = v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBody) SetRequestId(v string) *GetPasswordPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPasswordPolicyResponseBodyPasswordPolicy struct {
+	HardExpire                 *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	MaxLoginAttempts           *int32 `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
+	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	MaxPasswordLength          *int32 `json:"MaxPasswordLength,omitempty" xml:"MaxPasswordLength,omitempty"`
+	MinPasswordDifferentChars  *int32 `json:"MinPasswordDifferentChars,omitempty" xml:"MinPasswordDifferentChars,omitempty"`
+	MinPasswordLength          *int32 `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
+	PasswordNotContainUsername *bool  `json:"PasswordNotContainUsername,omitempty" xml:"PasswordNotContainUsername,omitempty"`
+	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	RequireLowerCaseChars      *bool  `json:"RequireLowerCaseChars,omitempty" xml:"RequireLowerCaseChars,omitempty"`
+	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	RequireUpperCaseChars      *bool  `json:"RequireUpperCaseChars,omitempty" xml:"RequireUpperCaseChars,omitempty"`
+}
+
+func (s GetPasswordPolicyResponseBodyPasswordPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPasswordPolicyResponseBodyPasswordPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetHardExpire(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.HardExpire = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetMaxLoginAttempts(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.MaxLoginAttempts = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetMaxPasswordAge(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.MaxPasswordAge = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetMaxPasswordLength(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.MaxPasswordLength = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetMinPasswordDifferentChars(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.MinPasswordDifferentChars = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetMinPasswordLength(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.MinPasswordLength = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetPasswordNotContainUsername(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.PasswordNotContainUsername = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetPasswordReusePrevention(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.PasswordReusePrevention = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireLowerCaseChars(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireLowerCaseChars = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireNumbers(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireNumbers = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireSymbols(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireSymbols = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireUpperCaseChars(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireUpperCaseChars = &v
+	return s
+}
+
+type GetPasswordPolicyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPasswordPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPasswordPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPasswordPolicyResponse) SetHeaders(v map[string]*string) *GetPasswordPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPasswordPolicyResponse) SetStatusCode(v int32) *GetPasswordPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponse) SetBody(v *GetPasswordPolicyResponseBody) *GetPasswordPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -3877,9 +4115,9 @@ func (s *GetSCIMSynchronizationStatusResponseBody) SetSCIMSynchronizationStatus(
 }
 
 type GetSCIMSynchronizationStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSCIMSynchronizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSCIMSynchronizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSCIMSynchronizationStatusResponse) String() string {
@@ -3978,9 +4216,9 @@ func (s *GetServiceStatusResponseBodyServiceStatus) SetStatus(v string) *GetServ
 }
 
 type GetServiceStatusResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceStatusResponse) String() string {
@@ -4007,9 +4245,9 @@ func (s *GetServiceStatusResponse) SetBody(v *GetServiceStatusResponseBody) *Get
 }
 
 type GetTaskRequest struct {
-	// The ID of the directory.
+	// The directory ID.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4032,9 +4270,9 @@ func (s *GetTaskRequest) SetTaskId(v string) *GetTaskRequest {
 }
 
 type GetTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the task.
+	// The task information.
 	Task *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
@@ -4061,7 +4299,7 @@ type GetTaskResponseBodyTask struct {
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	// The time when the task ended.
+	// The end time of the task.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The cause of the task failure.
 	//
@@ -4076,9 +4314,9 @@ type GetTaskResponseBodyTask struct {
 	// *   User
 	// *   Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The time when the task started.
+	// The start time of the task.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// *   InProgress: The task is running.
 	// *   Success: The task is successful.
@@ -4094,9 +4332,9 @@ type GetTaskResponseBodyTask struct {
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
 	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
 	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
@@ -4194,9 +4432,9 @@ func (s *GetTaskResponseBodyTask) SetTaskType(v string) *GetTaskResponseBodyTask
 }
 
 type GetTaskResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskResponse) String() string {
@@ -4223,9 +4461,9 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 }
 
 type GetTaskStatusRequest struct {
-	// The ID of the directory.
+	// The directory ID.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4248,9 +4486,9 @@ func (s *GetTaskStatusRequest) SetTaskId(v string) *GetTaskStatusRequest {
 }
 
 type GetTaskStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status information of the task.
+	// The status information about the task.
 	TaskStatus *GetTaskStatusResponseBodyTaskStatus `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty" type:"Struct"`
 }
 
@@ -4273,23 +4511,23 @@ func (s *GetTaskStatusResponseBody) SetTaskStatus(v *GetTaskStatusResponseBodyTa
 }
 
 type GetTaskStatusResponseBodyTaskStatus struct {
-	// The time when the task ended.
+	// The end time of the task.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The cause of the task failure.
 	//
 	// >  This parameter is returned only when the value of `Status` is `Failed`.
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	// The time when the task started.
+	// The start time of the task.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// *   InProgress: The task is running.
 	// *   Success: The task is successful.
 	// *   Failed: The task failed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
 	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
 	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
@@ -4337,9 +4575,9 @@ func (s *GetTaskStatusResponseBodyTaskStatus) SetTaskType(v string) *GetTaskStat
 }
 
 type GetTaskStatusResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskStatusResponse) String() string {
@@ -4510,9 +4748,9 @@ func (s *GetUserResponseBodyUser) SetUserName(v string) *GetUserResponseBodyUser
 }
 
 type GetUserResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserResponse) String() string {
@@ -4592,9 +4830,9 @@ func (s *GetUserMFAAuthenticationSettingsResponseBody) SetUserMFAAuthenticationS
 }
 
 type GetUserMFAAuthenticationSettingsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserMFAAuthenticationSettingsResponse) String() string {
@@ -4774,9 +5012,9 @@ func (s *GetUserProvisioningResponseBodyUserProvisioning) SetUserProvisioningId(
 }
 
 type GetUserProvisioningResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserProvisioningResponse) String() string {
@@ -4884,9 +5122,9 @@ func (s *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfigurati
 }
 
 type GetUserProvisioningConfigurationResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserProvisioningConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserProvisioningConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserProvisioningConfigurationResponse) String() string {
@@ -5078,9 +5316,9 @@ func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetUserProvi
 }
 
 type GetUserProvisioningEventResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserProvisioningEventResponse) String() string {
@@ -5200,9 +5438,9 @@ func (s *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStati
 }
 
 type GetUserProvisioningRdAccountStatisticsResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserProvisioningRdAccountStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserProvisioningRdAccountStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserProvisioningRdAccountStatisticsResponse) String() string {
@@ -5322,9 +5560,9 @@ func (s *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) Se
 }
 
 type GetUserProvisioningStatisticsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserProvisioningStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserProvisioningStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserProvisioningStatisticsResponse) String() string {
@@ -5353,39 +5591,39 @@ func (s *GetUserProvisioningStatisticsResponse) SetBody(v *GetUserProvisioningSt
 type ListAccessAssignmentsRequest struct {
 	// The ID of the access configuration. The ID can be used to filter access permissions.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 20.
 	//
 	// Default value: 10.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+	// The pagination token that is used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the CloudSSO identity. The ID can be used to filter access permissions.
 	//
-	// *   If you set `PrincipalType` to User, set `PrincipalId` to the ID of the Cloud SSO user.
+	// *   If you set `PrincipalType` to User, set `PrincipalId` to the ID of the CloudSSO user.
 	// *   If you set `PrincipalType` to Group, set `PrincipalId` to the ID of the CloudSSO group.
 	//
-	// >  You can use the ID to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
+	// >  You can use the type to filter access permissions only if you specify both PrincipalId and `PrincipalType`.``
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
 	//
 	// *   User
 	// *   Group
 	//
-	// >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
+	// >  You can use the type to filter access permissions only if you specify both PrincipalId and `PrincipalType`.``
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the task object. The ID can be used to filter access permissions.
 	//
-	// >  You can use the ID to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the task object. The type can be used to filter access permissions.
 	//
-	// Set the value to RD-Account, which indicates an account in your resource directory.
+	// Set the value to RD-Account, which specifies the accounts in the resource directory.
 	//
 	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
@@ -5444,16 +5682,16 @@ type ListAccessAssignmentsResponseBody struct {
 	AccessAssignments []*ListAccessAssignmentsResponseBodyAccessAssignments `json:"AccessAssignments,omitempty" xml:"AccessAssignments,omitempty" type:"Repeated"`
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true: The queried entries are truncated.
-	// *   false: The queried entries are not truncated.
+	// *   true
+	// *   false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is returned for the next page.
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
-	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	// >  This parameter is returned only when the value of IsTruncated is `true`.``
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
@@ -5517,13 +5755,13 @@ type ListAccessAssignmentsResponseBodyAccessAssignments struct {
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in your resource directory.
+	// The path ID of the task object in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in your resource directory.
+	// The path name of the task object in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
-	// The value is fixed as RD-Account, which indicates an account in your resource directory.
+	// The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -5591,9 +5829,9 @@ func (s *ListAccessAssignmentsResponseBodyAccessAssignments) SetTargetType(v str
 }
 
 type ListAccessAssignmentsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAccessAssignmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccessAssignmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAccessAssignmentsResponse) String() string {
@@ -5620,17 +5858,17 @@ func (s *ListAccessAssignmentsResponse) SetBody(v *ListAccessAssignmentsResponse
 }
 
 type ListAccessConfigurationProvisioningsRequest struct {
-	// The ID of the access configuration. The ID can be used to filter accounts.
+	// The ID of the access configuration. The ID can be used to filter access permissions.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 20.
 	//
 	// Default value: 10.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -5640,15 +5878,15 @@ type ListAccessConfigurationProvisioningsRequest struct {
 	// *   ReprovisionRequired: The access configuration needs to be re-provisioned.
 	// *   DeprovisionFailed: The access configuration failed to be provisioned.
 	ProvisioningStatus *string `json:"ProvisioningStatus,omitempty" xml:"ProvisioningStatus,omitempty"`
-	// The ID of the task object. The ID can be used to filter accounts.
+	// The ID of the task object. The ID can be used to filter access permissions.
 	//
-	// >  You can use the ID to filter accounts only if you specify both `TargetId` and `TargetType`.
+	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. The type can be used to filter accounts.
+	// The type of the task object. The type can be used to filter access permissions.
 	//
-	// Set the value to RD-Account, which indicates an account in your resource directory.
+	// Set the value to RD-Account, which specifies the accounts in the resource directory.
 	//
-	// >  You can use the type to filter accounts only if you specify both `TargetId` and `TargetType`.
+	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -5700,16 +5938,16 @@ type ListAccessConfigurationProvisioningsResponseBody struct {
 	AccessConfigurationProvisionings []*ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisionings `json:"AccessConfigurationProvisionings,omitempty" xml:"AccessConfigurationProvisionings,omitempty" type:"Repeated"`
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true: The queried entries are truncated.
-	// *   false: The queried entries are not truncated.
+	// *   true
+	// *   false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is returned for the next page.
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
 	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
@@ -5760,11 +5998,11 @@ type ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisio
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The first time when the access configuration was provisioned.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the custom policy that is created for an account in your resource directory.
+	// The name of the custom policy that is created for an account in the resource directory.
 	RAMPolicyNames []*string `json:"RAMPolicyNames,omitempty" xml:"RAMPolicyNames,omitempty" type:"Repeated"`
-	// The name of the RAM role that is created for an account in your resource directory.
+	// The name of the RAM role that is created for an account in the resource directory.
 	RAMRoleName *string `json:"RAMRoleName,omitempty" xml:"RAMRoleName,omitempty"`
-	// The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in your resource directory.
+	// The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in the resource directory.
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
 	// The status of the access configuration. Valid values:
 	//
@@ -5774,17 +6012,17 @@ type ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisio
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object.
 	//
-	// If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in your resource directory.
+	// If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in the resource directory.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in your resource directory.
+	// The path ID of the task object in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in your resource directory.
+	// The path name of the task object in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
-	// The value is fixed as RD-Account, which indicates an account in your resource directory.
+	// Set the value to RD-Account, which specifies the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The last time when the access configuration was provisioned.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -5864,9 +6102,9 @@ func (s *ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProv
 }
 
 type ListAccessConfigurationProvisioningsResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAccessConfigurationProvisioningsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccessConfigurationProvisioningsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAccessConfigurationProvisioningsResponse) String() string {
@@ -6078,9 +6316,9 @@ func (s *ListAccessConfigurationsResponseBodyAccessConfigurations) SetUpdateTime
 }
 
 type ListAccessConfigurationsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAccessConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccessConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAccessConfigurationsResponse) String() string {
@@ -6185,9 +6423,9 @@ func (s *ListDirectoriesResponseBodyDirectories) SetUpdateTime(v string) *ListDi
 }
 
 type ListDirectoriesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDirectoriesResponse) String() string {
@@ -6345,9 +6583,9 @@ func (s *ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates) SetX509
 }
 
 type ListExternalSAMLIdPCertificatesResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListExternalSAMLIdPCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExternalSAMLIdPCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListExternalSAMLIdPCertificatesResponse) String() string {
@@ -6557,9 +6795,9 @@ func (s *ListGroupMembersResponseBodyGroupMembers) SetUserName(v string) *ListGr
 }
 
 type ListGroupMembersResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGroupMembersResponse) String() string {
@@ -6759,9 +6997,9 @@ func (s *ListGroupsResponseBodyGroups) SetUpdateTime(v string) *ListGroupsRespon
 }
 
 type ListGroupsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGroupsResponse) String() string {
@@ -6947,9 +7185,9 @@ func (s *ListJoinedGroupsForUserResponseBodyJoinedGroups) SetUserId(v string) *L
 }
 
 type ListJoinedGroupsForUserResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJoinedGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJoinedGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJoinedGroupsForUserResponse) String() string {
@@ -7079,9 +7317,9 @@ func (s *ListMFADevicesForUserResponseBodyMFADevices) SetUserId(v string) *ListM
 }
 
 type ListMFADevicesForUserResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMFADevicesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMFADevicesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMFADevicesForUserResponse) String() string {
@@ -7218,9 +7456,9 @@ func (s *ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolici
 }
 
 type ListPermissionPoliciesInAccessConfigurationResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPermissionPoliciesInAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPermissionPoliciesInAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPermissionPoliciesInAccessConfigurationResponse) String() string {
@@ -7353,9 +7591,9 @@ func (s *ListSCIMServerCredentialsResponseBodySCIMServerCredentials) SetStatus(v
 }
 
 type ListSCIMServerCredentialsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSCIMServerCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSCIMServerCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSCIMServerCredentialsResponse) String() string {
@@ -7382,64 +7620,64 @@ func (s *ListSCIMServerCredentialsResponse) SetBody(v *ListSCIMServerCredentials
 }
 
 type ListTasksRequest struct {
-	// The ID of the access configuration. The ID can be used to filter asynchronous tasks.
+	// The ID of the access configuration. The ID can be used to filter access permissions.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The filter condition.
 	//
-	// Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set Attribute only to StartTime and Operator only to ge. You must set Value in the YYYY-MM-DDTHH:mm:SSZ format and enter a value that is no more than 7 days from the current time. The value ge indicates Greater Than or Equals.
+	// The condition is not case-sensitive. The condition must be in the StartTime ge YYYY-MM-DDTHH:mm:SSZ format. You must set YYYY-MM-DDTHH:mm:SSZ to a value that is no more than 7 days from the current time. ge indicates Greater Than or Equals.
 	//
-	// For example, if you set Filter to StartTime ge 2021-03-15T01:12:23Z, the operation queries the tasks from 2021-03-15T01:12:23 GMT.
+	// For example, if you set the Filter parameter to StartTime ge 2021-03-15T01:12:23Z, the operation queries the tasks from 2021-03-15T01:12:23 GMT.
 	//
 	// >  If you do not specify this parameter, the operation queries the tasks within the previous 24 hours by default.
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 20.
 	//
 	// Default value: 10.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+	// The pagination token that is used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the CloudSSO identity. The ID can be used to filter asynchronous tasks.
+	// The ID of the CloudSSO identity. The ID can be used to filter access permissions.
 	//
 	// *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
 	// *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
 	//
-	// >  You can use the ID to filter asynchronous tasks only if you specify both `PrincipalId` and `PrincipalType`.
+	// >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The type of the CloudSSO identity. The type can be used to filter asynchronous tasks. Valid values:
+	// The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
 	//
 	// *   User
 	// *   Group
 	//
-	// >  You can use the type to filter asynchronous tasks only if you specify both `PrincipalId` and `PrincipalType`.
+	// >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The ID of the task. The ID can be used to filter asynchronous tasks. Valid values:
+	// The ID of the task. The ID can be used to filter tasks. Valid values:
 	//
 	// *   InProgress: The task is running.
 	// *   Success: The task is successful.
 	// *   Failed: The task failed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task object. The ID can be used to filter asynchronous tasks.
+	// The ID of the task object. The ID can be used to filter access permissions.
 	//
-	// >  You can use the ID to filter asynchronous tasks only if you specify both `TargetId` and `TargetType`.
+	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. The type can be used to filter asynchronous tasks.
+	// The type of the task object. The type can be used to filter access permissions.
 	//
-	// Set the value to RD-Account, which indicates an account in your resource directory.
+	// Set the value to RD-Account, which specifies the accounts in the resource directory.
 	//
-	// >  You can use the type to filter asynchronous tasks only if you specify both `TargetId` and `TargetType`.
+	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the task. The type can be used to filter asynchronous tasks. Valid values:
+	// The type of the task. The type can be used to filter tasks. Valid values:
 	//
 	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
 	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-	// *   CreateAccessAssignment: Access permissions on an account in your resource directory are assigned.
-	// *   DeleteAccessAssignment: Access permissions on an account in your resource directory are removed.
+	// *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	// *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -7509,16 +7747,16 @@ func (s *ListTasksRequest) SetTaskType(v string) *ListTasksRequest {
 type ListTasksResponseBody struct {
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true: The queried entries are truncated.
-	// *   false: The queried entries are not truncated.
+	// *   true
+	// *   false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is returned for the next page.
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
 	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tasks.
 	Tasks []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
@@ -7569,7 +7807,7 @@ type ListTasksResponseBodyTasks struct {
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	// The time when the task ended.
+	// The end time of the task.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The cause of the task failure.
 	//
@@ -7584,9 +7822,9 @@ type ListTasksResponseBodyTasks struct {
 	// *   User
 	// *   Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The time when the task started.
+	// The start time of the task.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// *   InProgress: The task is running.
 	// *   Success: The task is successful.
@@ -7596,22 +7834,22 @@ type ListTasksResponseBodyTasks struct {
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in your resource directory.
+	// The path ID of the task object in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in your resource directory.
+	// The path name of the task object in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
-	// The value is fixed as RD-Account, which indicates an account in your resource directory.
+	// The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the task.
+	// The ID of the job.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
 	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
 	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-	// *   CreateAccessAssignment: Access permissions on an account in your resource directory are assigned.
-	// *   DeleteAccessAssignment: Access permissions on an account in your resource directory are removed.
+	// *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	// *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -7704,9 +7942,9 @@ func (s *ListTasksResponseBodyTasks) SetTaskType(v string) *ListTasksResponseBod
 }
 
 type ListTasksResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTasksResponse) String() string {
@@ -7934,9 +8172,9 @@ func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetUserPr
 }
 
 type ListUserProvisioningEventsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserProvisioningEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserProvisioningEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserProvisioningEventsResponse) String() string {
@@ -8170,9 +8408,9 @@ func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetUserProvisioning
 }
 
 type ListUserProvisioningsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserProvisioningsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserProvisioningsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserProvisioningsResponse) String() string {
@@ -8420,9 +8658,9 @@ func (s *ListUsersResponseBodyUsers) SetUserName(v string) *ListUsersResponseBod
 }
 
 type ListUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -8451,11 +8689,11 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 type ProvisionAccessConfigurationRequest struct {
 	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the task object.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -8488,9 +8726,9 @@ func (s *ProvisionAccessConfigurationRequest) SetTargetType(v string) *Provision
 }
 
 type ProvisionAccessConfigurationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the task.
+	// The task information.
 	Tasks []*ProvisionAccessConfigurationResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -8517,7 +8755,7 @@ type ProvisionAccessConfigurationResponseBodyTasks struct {
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// *   InProgress: The task is running.
 	// *   Success: The task is successful.
@@ -8527,15 +8765,15 @@ type ProvisionAccessConfigurationResponseBodyTasks struct {
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in your resource directory.
+	// The path ID of the task object in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in your resource directory.
+	// The path name of the task object in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
+	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
+	// The task type. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -8598,9 +8836,9 @@ func (s *ProvisionAccessConfigurationResponseBodyTasks) SetTaskType(v string) *P
 }
 
 type ProvisionAccessConfigurationResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ProvisionAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ProvisionAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ProvisionAccessConfigurationResponse) String() string {
@@ -8672,9 +8910,9 @@ func (s *RemoveExternalSAMLIdPCertificateResponseBody) SetRequestId(v string) *R
 }
 
 type RemoveExternalSAMLIdPCertificateResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveExternalSAMLIdPCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveExternalSAMLIdPCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveExternalSAMLIdPCertificateResponse) String() string {
@@ -8761,9 +8999,9 @@ func (s *RemovePermissionPolicyFromAccessConfigurationResponseBody) SetRequestId
 }
 
 type RemovePermissionPolicyFromAccessConfigurationResponse struct {
-	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemovePermissionPolicyFromAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemovePermissionPolicyFromAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemovePermissionPolicyFromAccessConfigurationResponse) String() string {
@@ -8840,9 +9078,9 @@ func (s *RemoveUserFromGroupResponseBody) SetRequestId(v string) *RemoveUserFrom
 }
 
 type RemoveUserFromGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveUserFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveUserFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveUserFromGroupResponse) String() string {
@@ -8954,9 +9192,9 @@ func (s *ResetUserPasswordResponseBody) SetRequestId(v string) *ResetUserPasswor
 }
 
 type ResetUserPasswordResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetUserPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetUserPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetUserPasswordResponse) String() string {
@@ -9029,9 +9267,9 @@ func (s *RetryUserProvisioningEventResponseBody) SetRequestId(v string) *RetryUs
 }
 
 type RetryUserProvisioningEventResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RetryUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RetryUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RetryUserProvisioningEventResponse) String() string {
@@ -9231,9 +9469,9 @@ func (s *SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigur
 }
 
 type SetExternalSAMLIdentityProviderResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetExternalSAMLIdentityProviderResponse) String() string {
@@ -9255,6 +9493,75 @@ func (s *SetExternalSAMLIdentityProviderResponse) SetStatusCode(v int32) *SetExt
 }
 
 func (s *SetExternalSAMLIdentityProviderResponse) SetBody(v *SetExternalSAMLIdentityProviderResponseBody) *SetExternalSAMLIdentityProviderResponse {
+	s.Body = v
+	return s
+}
+
+type SetLoginPreferenceRequest struct {
+	DirectoryId       *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+}
+
+func (s SetLoginPreferenceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoginPreferenceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoginPreferenceRequest) SetDirectoryId(v string) *SetLoginPreferenceRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *SetLoginPreferenceRequest) SetLoginNetworkMasks(v string) *SetLoginPreferenceRequest {
+	s.LoginNetworkMasks = &v
+	return s
+}
+
+type SetLoginPreferenceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetLoginPreferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoginPreferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoginPreferenceResponseBody) SetRequestId(v string) *SetLoginPreferenceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetLoginPreferenceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetLoginPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetLoginPreferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoginPreferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoginPreferenceResponse) SetHeaders(v map[string]*string) *SetLoginPreferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetLoginPreferenceResponse) SetStatusCode(v int32) *SetLoginPreferenceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetLoginPreferenceResponse) SetBody(v *SetLoginPreferenceResponseBody) *SetLoginPreferenceResponse {
 	s.Body = v
 	return s
 }
@@ -9306,9 +9613,9 @@ func (s *SetMFAAuthenticationStatusResponseBody) SetRequestId(v string) *SetMFAA
 }
 
 type SetMFAAuthenticationStatusResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetMFAAuthenticationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetMFAAuthenticationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetMFAAuthenticationStatusResponse) String() string {
@@ -9330,6 +9637,105 @@ func (s *SetMFAAuthenticationStatusResponse) SetStatusCode(v int32) *SetMFAAuthe
 }
 
 func (s *SetMFAAuthenticationStatusResponse) SetBody(v *SetMFAAuthenticationStatusResponseBody) *SetMFAAuthenticationStatusResponse {
+	s.Body = v
+	return s
+}
+
+type SetPasswordPolicyRequest struct {
+	DirectoryId                *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	MaxLoginAttempts           *int32  `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
+	MaxPasswordAge             *int32  `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	MinPasswordDifferentChars  *int32  `json:"MinPasswordDifferentChars,omitempty" xml:"MinPasswordDifferentChars,omitempty"`
+	MinPasswordLength          *int32  `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
+	PasswordNotContainUsername *bool   `json:"PasswordNotContainUsername,omitempty" xml:"PasswordNotContainUsername,omitempty"`
+	PasswordReusePrevention    *int32  `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+}
+
+func (s SetPasswordPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPasswordPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPasswordPolicyRequest) SetDirectoryId(v string) *SetPasswordPolicyRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetMaxLoginAttempts(v int32) *SetPasswordPolicyRequest {
+	s.MaxLoginAttempts = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetMaxPasswordAge(v int32) *SetPasswordPolicyRequest {
+	s.MaxPasswordAge = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetMinPasswordDifferentChars(v int32) *SetPasswordPolicyRequest {
+	s.MinPasswordDifferentChars = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetMinPasswordLength(v int32) *SetPasswordPolicyRequest {
+	s.MinPasswordLength = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetPasswordNotContainUsername(v bool) *SetPasswordPolicyRequest {
+	s.PasswordNotContainUsername = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetPasswordReusePrevention(v int32) *SetPasswordPolicyRequest {
+	s.PasswordReusePrevention = &v
+	return s
+}
+
+type SetPasswordPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPasswordPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPasswordPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPasswordPolicyResponseBody) SetRequestId(v string) *SetPasswordPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPasswordPolicyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetPasswordPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPasswordPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPasswordPolicyResponse) SetHeaders(v map[string]*string) *SetPasswordPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPasswordPolicyResponse) SetStatusCode(v int32) *SetPasswordPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPasswordPolicyResponse) SetBody(v *SetPasswordPolicyResponseBody) *SetPasswordPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -9381,9 +9787,9 @@ func (s *SetSCIMSynchronizationStatusResponseBody) SetRequestId(v string) *SetSC
 }
 
 type SetSCIMSynchronizationStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetSCIMSynchronizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetSCIMSynchronizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetSCIMSynchronizationStatusResponse) String() string {
@@ -9558,9 +9964,9 @@ func (s *UpdateAccessConfigurationResponseBodyAccessConfiguration) SetUpdateTime
 }
 
 type UpdateAccessConfigurationResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAccessConfigurationResponse) String() string {
@@ -9687,9 +10093,9 @@ func (s *UpdateDirectoryResponseBodyDirectory) SetUpdateTime(v string) *UpdateDi
 }
 
 type UpdateDirectoryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDirectoryResponse) String() string {
@@ -9836,9 +10242,9 @@ func (s *UpdateGroupResponseBodyGroup) SetUpdateTime(v string) *UpdateGroupRespo
 }
 
 type UpdateGroupResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateGroupResponse) String() string {
@@ -9926,9 +10332,9 @@ func (s *UpdateInlinePolicyForAccessConfigurationResponseBody) SetRequestId(v st
 }
 
 type UpdateInlinePolicyForAccessConfigurationResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateInlinePolicyForAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInlinePolicyForAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateInlinePolicyForAccessConfigurationResponse) String() string {
@@ -10014,9 +10420,9 @@ func (s *UpdateMFAAuthenticationSettingsResponseBody) SetRequestId(v string) *Up
 }
 
 type UpdateMFAAuthenticationSettingsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateMFAAuthenticationSettingsResponse) String() string {
@@ -10159,9 +10565,9 @@ func (s *UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential) SetSt
 }
 
 type UpdateSCIMServerCredentialStatusResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSCIMServerCredentialStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSCIMServerCredentialStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSCIMServerCredentialStatusResponse) String() string {
@@ -10367,9 +10773,9 @@ func (s *UpdateUserResponseBodyUser) SetUserName(v string) *UpdateUserResponseBo
 }
 
 type UpdateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserResponse) String() string {
@@ -10449,9 +10855,9 @@ func (s *UpdateUserMFAAuthenticationSettingsResponseBody) SetRequestId(v string)
 }
 
 type UpdateUserMFAAuthenticationSettingsResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserMFAAuthenticationSettingsResponse) String() string {
@@ -10649,9 +11055,9 @@ func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetUserProvisioning
 }
 
 type UpdateUserProvisioningResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserProvisioningResponse) String() string {
@@ -10771,9 +11177,9 @@ func (s *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfigur
 }
 
 type UpdateUserProvisioningConfigurationResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserProvisioningConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserProvisioningConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserProvisioningConfigurationResponse) String() string {
@@ -10853,9 +11259,9 @@ func (s *UpdateUserStatusResponseBody) SetRequestId(v string) *UpdateUserStatusR
 }
 
 type UpdateUserStatusResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserStatusResponse) String() string {
@@ -11191,7 +11597,7 @@ func (client *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSA
 }
 
 /**
- * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
+ * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
  * This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
  *
@@ -11253,7 +11659,7 @@ func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAss
 }
 
 /**
- * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
+ * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
  * This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
  *
@@ -12812,6 +13218,50 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+func (client *Client) GetLoginPreferenceWithOptions(request *GetLoginPreferenceRequest, runtime *util.RuntimeOptions) (_result *GetLoginPreferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLoginPreference"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLoginPreferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLoginPreference(request *GetLoginPreferenceRequest) (_result *GetLoginPreferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLoginPreferenceResponse{}
+	_body, _err := client.GetLoginPreferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
  * This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk****`.
@@ -12987,6 +13437,50 @@ func (client *Client) GetMFAAuthenticationStatus(request *GetMFAAuthenticationSt
 	return _result, _err
 }
 
+func (client *Client) GetPasswordPolicyWithOptions(request *GetPasswordPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPasswordPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPasswordPolicy"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPasswordPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPasswordPolicy(request *GetPasswordPolicyRequest) (_result *GetPasswordPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPasswordPolicyResponse{}
+	_body, _err := client.GetPasswordPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
  *
@@ -13139,7 +13633,7 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 }
 
 /**
- * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
+ * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](~~340670~~) operation.
  * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
  *
  * @param request GetTaskStatusRequest
@@ -13184,7 +13678,7 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 }
 
 /**
- * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
+ * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](~~340670~~) operation.
  * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
  *
  * @param request GetTaskStatusRequest
@@ -13560,7 +14054,7 @@ func (client *Client) GetUserProvisioningStatistics(request *GetUserProvisioning
 }
 
 /**
- * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory are assigned to one user.
+ * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
  *
  * @param request ListAccessAssignmentsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13628,7 +14122,7 @@ func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssign
 }
 
 /**
- * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory are assigned to one user.
+ * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
  *
  * @param request ListAccessAssignmentsRequest
  * @return ListAccessAssignmentsResponse
@@ -15090,6 +15584,54 @@ func (client *Client) SetExternalSAMLIdentityProvider(request *SetExternalSAMLId
 	return _result, _err
 }
 
+func (client *Client) SetLoginPreferenceWithOptions(request *SetLoginPreferenceRequest, runtime *util.RuntimeOptions) (_result *SetLoginPreferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginNetworkMasks)) {
+		query["LoginNetworkMasks"] = request.LoginNetworkMasks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetLoginPreference"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetLoginPreferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetLoginPreference(request *SetLoginPreferenceRequest) (_result *SetLoginPreferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetLoginPreferenceResponse{}
+	_body, _err := client.SetLoginPreferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
  * This topic provides an example on how to enable MFA for users.
@@ -15146,6 +15688,74 @@ func (client *Client) SetMFAAuthenticationStatus(request *SetMFAAuthenticationSt
 	runtime := &util.RuntimeOptions{}
 	_result = &SetMFAAuthenticationStatusResponse{}
 	_body, _err := client.SetMFAAuthenticationStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyRequest, runtime *util.RuntimeOptions) (_result *SetPasswordPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxLoginAttempts)) {
+		query["MaxLoginAttempts"] = request.MaxLoginAttempts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxPasswordAge)) {
+		query["MaxPasswordAge"] = request.MaxPasswordAge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinPasswordDifferentChars)) {
+		query["MinPasswordDifferentChars"] = request.MinPasswordDifferentChars
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinPasswordLength)) {
+		query["MinPasswordLength"] = request.MinPasswordLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordNotContainUsername)) {
+		query["PasswordNotContainUsername"] = request.PasswordNotContainUsername
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordReusePrevention)) {
+		query["PasswordReusePrevention"] = request.PasswordReusePrevention
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPasswordPolicy"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPasswordPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_result *SetPasswordPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPasswordPolicyResponse{}
+	_body, _err := client.SetPasswordPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
