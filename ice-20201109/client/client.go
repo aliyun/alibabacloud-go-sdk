@@ -6520,7 +6520,12 @@ func (s *GetAvatarTrainingJobResponse) SetBody(v *GetAvatarTrainingJobResponseBo
 }
 
 type GetBatchMediaProducingJobRequest struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Signature        *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	SignatureMehtod  *string `json:"SignatureMehtod,omitempty" xml:"SignatureMehtod,omitempty"`
+	SignatureNonce   *string `json:"SignatureNonce,omitempty" xml:"SignatureNonce,omitempty"`
+	SignatureType    *string `json:"SignatureType,omitempty" xml:"SignatureType,omitempty"`
+	SignatureVersion *string `json:"SignatureVersion,omitempty" xml:"SignatureVersion,omitempty"`
 }
 
 func (s GetBatchMediaProducingJobRequest) String() string {
@@ -6533,6 +6538,31 @@ func (s GetBatchMediaProducingJobRequest) GoString() string {
 
 func (s *GetBatchMediaProducingJobRequest) SetJobId(v string) *GetBatchMediaProducingJobRequest {
 	s.JobId = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobRequest) SetSignature(v string) *GetBatchMediaProducingJobRequest {
+	s.Signature = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobRequest) SetSignatureMehtod(v string) *GetBatchMediaProducingJobRequest {
+	s.SignatureMehtod = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobRequest) SetSignatureNonce(v string) *GetBatchMediaProducingJobRequest {
+	s.SignatureNonce = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobRequest) SetSignatureType(v string) *GetBatchMediaProducingJobRequest {
+	s.SignatureType = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobRequest) SetSignatureVersion(v string) *GetBatchMediaProducingJobRequest {
+	s.SignatureVersion = &v
 	return s
 }
 
@@ -43489,6 +43519,26 @@ func (client *Client) GetBatchMediaProducingJobWithOptions(request *GetBatchMedi
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.JobId)) {
 		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Signature)) {
+		query["Signature"] = request.Signature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureMehtod)) {
+		query["SignatureMehtod"] = request.SignatureMehtod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureNonce)) {
+		query["SignatureNonce"] = request.SignatureNonce
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureType)) {
+		query["SignatureType"] = request.SignatureType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureVersion)) {
+		query["SignatureVersion"] = request.SignatureVersion
 	}
 
 	req := &openapi.OpenApiRequest{
