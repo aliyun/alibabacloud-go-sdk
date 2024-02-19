@@ -3114,15 +3114,19 @@ type DescribeDiskMonitorDataResponseBodyMonitorData struct {
 	// The percentage of IOPS.
 	IOPSPercent *int64 `json:"IOPSPercent,omitempty" xml:"IOPSPercent,omitempty"`
 	// The read bandwidth of the disk. Unit: Mbit/s.
-	ReadBPS *int64 `json:"ReadBPS,omitempty" xml:"ReadBPS,omitempty"`
+	ReadBPS       *int64 `json:"ReadBPS,omitempty" xml:"ReadBPS,omitempty"`
+	ReadBlockSize *int64 `json:"ReadBlockSize,omitempty" xml:"ReadBlockSize,omitempty"`
 	// The maximum number of read IOPS.
-	ReadIOPS *int64 `json:"ReadIOPS,omitempty" xml:"ReadIOPS,omitempty"`
+	ReadIOPS    *int64 `json:"ReadIOPS,omitempty" xml:"ReadIOPS,omitempty"`
+	ReadLatency *int64 `json:"ReadLatency,omitempty" xml:"ReadLatency,omitempty"`
 	// The timestamp that is used to query the near real-time monitoring data of the disk. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The write bandwidth of the disk. Unit: Mbit/s.
-	WriteBPS *int64 `json:"WriteBPS,omitempty" xml:"WriteBPS,omitempty"`
+	WriteBPS       *int64 `json:"WriteBPS,omitempty" xml:"WriteBPS,omitempty"`
+	WriteBlockSize *int64 `json:"WriteBlockSize,omitempty" xml:"WriteBlockSize,omitempty"`
 	// The maximum number of write IOPS.
-	WriteIOPS *int64 `json:"WriteIOPS,omitempty" xml:"WriteIOPS,omitempty"`
+	WriteIOPS    *int64 `json:"WriteIOPS,omitempty" xml:"WriteIOPS,omitempty"`
+	WriteLatency *int64 `json:"WriteLatency,omitempty" xml:"WriteLatency,omitempty"`
 }
 
 func (s DescribeDiskMonitorDataResponseBodyMonitorData) String() string {
@@ -3158,8 +3162,18 @@ func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetReadBPS(v int64) *De
 	return s
 }
 
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetReadBlockSize(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.ReadBlockSize = &v
+	return s
+}
+
 func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetReadIOPS(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
 	s.ReadIOPS = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetReadLatency(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.ReadLatency = &v
 	return s
 }
 
@@ -3173,8 +3187,18 @@ func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetWriteBPS(v int64) *D
 	return s
 }
 
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetWriteBlockSize(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.WriteBlockSize = &v
+	return s
+}
+
 func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetWriteIOPS(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
 	s.WriteIOPS = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetWriteLatency(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.WriteLatency = &v
 	return s
 }
 
@@ -4301,6 +4325,575 @@ func (s *DescribeDiskReplicaPairsResponse) SetStatusCode(v int32) *DescribeDiskR
 }
 
 func (s *DescribeDiskReplicaPairsResponse) SetBody(v *DescribeDiskReplicaPairsResponseBody) *DescribeDiskReplicaPairsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDisksRequest struct {
+	// The category of disks.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The IDs of the disks. The value is a JSON array that contains multiple disk IDs. Separate the IDs with commas (,).
+	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100.
+	//
+	// Default values:
+	//
+	// *   If this parameter is not specified or is set to a value smaller than 10, the default value is 10.
+	// *   If this parameter is set to a value greater than 100, the default value is 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the disk belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The states of disk. Valid values:
+	//
+	// *   In_use
+	// *   Available
+	// *   Attaching
+	// *   Detaching
+	// *   Creating
+	// *   ReIniting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The resource tags. You can specify up to 20 tags.
+	Tag []*DescribeDisksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDisksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksRequest) SetCategory(v string) *DescribeDisksRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetDiskIds(v string) *DescribeDisksRequest {
+	s.DiskIds = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetDiskName(v string) *DescribeDisksRequest {
+	s.DiskName = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetMaxResults(v int32) *DescribeDisksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetNextToken(v string) *DescribeDisksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetPageNumber(v int32) *DescribeDisksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetPageSize(v int32) *DescribeDisksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetRegionId(v string) *DescribeDisksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetResourceGroupId(v string) *DescribeDisksRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetStatus(v string) *DescribeDisksRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetTag(v []*DescribeDisksRequestTag) *DescribeDisksRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetZoneId(v string) *DescribeDisksRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeDisksRequestTag struct {
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDisksRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksRequestTag) SetKey(v string) *DescribeDisksRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDisksRequestTag) SetValue(v string) *DescribeDisksRequestTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeDisksResponseBody struct {
+	// The data returned.
+	Data []*DescribeDisksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDisksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBody) SetData(v []*DescribeDisksResponseBodyData) *DescribeDisksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDisksResponseBody) SetNextToken(v string) *DescribeDisksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBody) SetPageNumber(v int32) *DescribeDisksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBody) SetPageSize(v int32) *DescribeDisksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBody) SetRequestId(v string) *DescribeDisksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBody) SetTotalCount(v int64) *DescribeDisksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDisksResponseBodyData struct {
+	// The access authorization information of the disk.
+	AccessAuthorization []*DescribeDisksResponseBodyDataAccessAuthorization `json:"AccessAuthorization,omitempty" xml:"AccessAuthorization,omitempty" type:"Repeated"`
+	// The time when the disk was attached.
+	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	// The attachment information of the disk.
+	Attachments []*DescribeDisksResponseBodyDataAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	// Specifies whether to enable the performance burst feature for the disk. Valid values:
+	//
+	// *   true: enable the performance burst feature.
+	// *   false: disable the performance burst feature.
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	// The category of disk.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the disk was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the disk was detached.
+	DetachedTime *string `json:"DetachedTime,omitempty" xml:"DetachedTime,omitempty"`
+	// The maximum number of read and write operations per second. Unit: operations/s.
+	DeviceNguid *string `json:"DeviceNguid,omitempty" xml:"DeviceNguid,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// Specifies whether to encrypt the disk. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
+	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// IOPS。
+	Iops *int64 `json:"Iops,omitempty" xml:"Iops,omitempty"`
+	// The maximum number of read operations per second. Unit: operations/s.
+	IopsRead *int64 `json:"IopsRead,omitempty" xml:"IopsRead,omitempty"`
+	// The maximum number of write operations per second. Unit: operations/s.
+	IopsWrite *int64 `json:"IopsWrite,omitempty" xml:"IopsWrite,omitempty"`
+	// The ID of the KMS key.
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The time when the disk was modified.
+	ModifyAt *string `json:"ModifyAt,omitempty" xml:"ModifyAt,omitempty"`
+	// The performance level of the ESSD. Valid values:
+	//
+	// *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	//
+	// Default value: PL1.
+	//
+	// For more information about ESSD performance levels, see [ESSDs](~~122389~~).
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
+	//
+	// Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
+	//
+	// >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](~~368372~~) and [Modify the performance configurations of an ESSD AutoPL disk](~~413275~~).
+	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	// The region ID of the disk.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the disk belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The size of the disk. Unit: GB.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The states of disk. Valid values:
+	//
+	// *   In_use
+	// *   Available
+	// *   Attaching
+	// *   Detaching
+	// *   Creating
+	// *   ReIniting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The details of the tags.
+	Tags []*DescribeDisksResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The throughput of the disk.
+	//
+	// Unit: MB/s.
+	Throughput *int64 `json:"Throughput,omitempty" xml:"Throughput,omitempty"`
+	// The zone ID of the disk.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDisksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyData) SetAccessAuthorization(v []*DescribeDisksResponseBodyDataAccessAuthorization) *DescribeDisksResponseBodyData {
+	s.AccessAuthorization = v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetAttachedTime(v string) *DescribeDisksResponseBodyData {
+	s.AttachedTime = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetAttachments(v []*DescribeDisksResponseBodyDataAttachments) *DescribeDisksResponseBodyData {
+	s.Attachments = v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetBurstingEnabled(v bool) *DescribeDisksResponseBodyData {
+	s.BurstingEnabled = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetCategory(v string) *DescribeDisksResponseBodyData {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetCreationTime(v string) *DescribeDisksResponseBodyData {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetDescription(v string) *DescribeDisksResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetDetachedTime(v string) *DescribeDisksResponseBodyData {
+	s.DetachedTime = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetDeviceNguid(v string) *DescribeDisksResponseBodyData {
+	s.DeviceNguid = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetDiskId(v string) *DescribeDisksResponseBodyData {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetDiskName(v string) *DescribeDisksResponseBodyData {
+	s.DiskName = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetEncrypted(v bool) *DescribeDisksResponseBodyData {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetIops(v int64) *DescribeDisksResponseBodyData {
+	s.Iops = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetIopsRead(v int64) *DescribeDisksResponseBodyData {
+	s.IopsRead = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetIopsWrite(v int64) *DescribeDisksResponseBodyData {
+	s.IopsWrite = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetKmsKeyId(v string) *DescribeDisksResponseBodyData {
+	s.KmsKeyId = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetModifyAt(v string) *DescribeDisksResponseBodyData {
+	s.ModifyAt = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetPerformanceLevel(v string) *DescribeDisksResponseBodyData {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetProvisionedIops(v int64) *DescribeDisksResponseBodyData {
+	s.ProvisionedIops = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetRegionId(v string) *DescribeDisksResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetResourceGroupId(v string) *DescribeDisksResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetSize(v int64) *DescribeDisksResponseBodyData {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetStatus(v string) *DescribeDisksResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetTags(v []*DescribeDisksResponseBodyDataTags) *DescribeDisksResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetThroughput(v int64) *DescribeDisksResponseBodyData {
+	s.Throughput = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyData) SetZoneId(v string) *DescribeDisksResponseBodyData {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeDisksResponseBodyDataAccessAuthorization struct {
+	// The token that is used to access the disk.
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The information of ecs.
+	Ecs *DescribeDisksResponseBodyDataAccessAuthorizationEcs `json:"Ecs,omitempty" xml:"Ecs,omitempty" type:"Struct"`
+	// The information of pod.
+	Pod *DescribeDisksResponseBodyDataAccessAuthorizationPod `json:"Pod,omitempty" xml:"Pod,omitempty" type:"Struct"`
+}
+
+func (s DescribeDisksResponseBodyDataAccessAuthorization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyDataAccessAuthorization) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyDataAccessAuthorization) SetAccessToken(v string) *DescribeDisksResponseBodyDataAccessAuthorization {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDataAccessAuthorization) SetEcs(v *DescribeDisksResponseBodyDataAccessAuthorizationEcs) *DescribeDisksResponseBodyDataAccessAuthorization {
+	s.Ecs = v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDataAccessAuthorization) SetPod(v *DescribeDisksResponseBodyDataAccessAuthorizationPod) *DescribeDisksResponseBodyDataAccessAuthorization {
+	s.Pod = v
+	return s
+}
+
+type DescribeDisksResponseBodyDataAccessAuthorizationEcs struct {
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeDisksResponseBodyDataAccessAuthorizationEcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyDataAccessAuthorizationEcs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyDataAccessAuthorizationEcs) SetInstanceId(v string) *DescribeDisksResponseBodyDataAccessAuthorizationEcs {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeDisksResponseBodyDataAccessAuthorizationPod struct {
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The pod ID.
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+}
+
+func (s DescribeDisksResponseBodyDataAccessAuthorizationPod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyDataAccessAuthorizationPod) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyDataAccessAuthorizationPod) SetClusterId(v string) *DescribeDisksResponseBodyDataAccessAuthorizationPod {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDataAccessAuthorizationPod) SetPodId(v string) *DescribeDisksResponseBodyDataAccessAuthorizationPod {
+	s.PodId = &v
+	return s
+}
+
+type DescribeDisksResponseBodyDataAttachments struct {
+	// The time when the disk was attached.
+	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *int32 `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DescribeDisksResponseBodyDataAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyDataAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyDataAttachments) SetAttachedTime(v string) *DescribeDisksResponseBodyDataAttachments {
+	s.AttachedTime = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDataAttachments) SetInstanceId(v string) *DescribeDisksResponseBodyDataAttachments {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDataAttachments) SetNamespaceId(v int32) *DescribeDisksResponseBodyDataAttachments {
+	s.NamespaceId = &v
+	return s
+}
+
+type DescribeDisksResponseBodyDataTags struct {
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDisksResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyDataTags) SetTagKey(v string) *DescribeDisksResponseBodyDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDataTags) SetTagValue(v string) *DescribeDisksResponseBodyDataTags {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeDisksResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDisksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDisksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponse) SetHeaders(v map[string]*string) *DescribeDisksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDisksResponse) SetStatusCode(v int32) *DescribeDisksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDisksResponse) SetBody(v *DescribeDisksResponseBody) *DescribeDisksResponse {
 	s.Body = v
 	return s
 }
@@ -5808,6 +6401,436 @@ func (s *FailoverDiskReplicaPairResponse) SetStatusCode(v int32) *FailoverDiskRe
 }
 
 func (s *FailoverDiskReplicaPairResponse) SetBody(v *FailoverDiskReplicaPairResponseBody) *FailoverDiskReplicaPairResponse {
+	s.Body = v
+	return s
+}
+
+type GetDiskRequest struct {
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The region ID of the disk.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetDiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskRequest) SetDiskId(v string) *GetDiskRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *GetDiskRequest) SetRegionId(v string) *GetDiskRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetDiskResponseBody struct {
+	// The information of the disk.
+	Disk *GetDiskResponseBodyDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskResponseBody) SetDisk(v *GetDiskResponseBodyDisk) *GetDiskResponseBody {
+	s.Disk = v
+	return s
+}
+
+func (s *GetDiskResponseBody) SetRequestId(v string) *GetDiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDiskResponseBodyDisk struct {
+	// The access authorization information of the disk.
+	AccessAuthorization []*GetDiskResponseBodyDiskAccessAuthorization `json:"AccessAuthorization,omitempty" xml:"AccessAuthorization,omitempty" type:"Repeated"`
+	// The time when the disk was attached.
+	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	// The attachment information of the disk.
+	Attachments []*GetDiskResponseBodyDiskAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	// Specifies whether to enable the performance burst feature for the disk. Valid values:
+	//
+	// * true: enable the performance burst feature.
+	// * false: disable the performance burst feature.
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	// The category of the disk.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. For more information, see [ISO 8601](~~25696~~).
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the disk.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the disk was detached.
+	DetachedTime *string `json:"DetachedTime,omitempty" xml:"DetachedTime,omitempty"`
+	// The maximum number of read and write operations per second. Unit: operations/s.
+	DeviceNguid *string `json:"DeviceNguid,omitempty" xml:"DeviceNguid,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// Specifies whether to encrypt the disk. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
+	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// IOPS。
+	Iops *int64 `json:"Iops,omitempty" xml:"Iops,omitempty"`
+	// The maximum number of read operations per second. Unit: operations/s.
+	IopsRead *int64 `json:"IopsRead,omitempty" xml:"IopsRead,omitempty"`
+	// The maximum number of write operations per second. Unit: operations/s.
+	IopsWrite *int64 `json:"IopsWrite,omitempty" xml:"IopsWrite,omitempty"`
+	// The ID of the KMS key.
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The time when the disk was modfied.
+	ModifyAt *string `json:"ModifyAt,omitempty" xml:"ModifyAt,omitempty"`
+	// The performance level of the ESSD. Valid values:
+	//
+	// * PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// * PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// * PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// * PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
+	//
+	// Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
+	//
+	// >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](~~368372~~) and [Modify the performance configurations of an ESSD AutoPL disk](~~413275~~).
+	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	// The region ID of the disk. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the disk belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The size of the disk. Unit: GB.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The states of disk. Valid values:
+	//
+	// * In_use
+	// * Available
+	// * Attaching
+	// * Detaching
+	// * Creating
+	// * ReIniting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The details of the tags.
+	Tags []*GetDiskResponseBodyDiskTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The throughput of the disk.
+	//
+	// Unit: MB/s.
+	Throughput *int64 `json:"Throughput,omitempty" xml:"Throughput,omitempty"`
+	// The ID of the zone where the disk resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s GetDiskResponseBodyDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskResponseBodyDisk) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskResponseBodyDisk) SetAccessAuthorization(v []*GetDiskResponseBodyDiskAccessAuthorization) *GetDiskResponseBodyDisk {
+	s.AccessAuthorization = v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetAttachedTime(v string) *GetDiskResponseBodyDisk {
+	s.AttachedTime = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetAttachments(v []*GetDiskResponseBodyDiskAttachments) *GetDiskResponseBodyDisk {
+	s.Attachments = v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetBurstingEnabled(v bool) *GetDiskResponseBodyDisk {
+	s.BurstingEnabled = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetCategory(v string) *GetDiskResponseBodyDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetCreationTime(v string) *GetDiskResponseBodyDisk {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetDescription(v string) *GetDiskResponseBodyDisk {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetDetachedTime(v string) *GetDiskResponseBodyDisk {
+	s.DetachedTime = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetDeviceNguid(v string) *GetDiskResponseBodyDisk {
+	s.DeviceNguid = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetDiskId(v string) *GetDiskResponseBodyDisk {
+	s.DiskId = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetDiskName(v string) *GetDiskResponseBodyDisk {
+	s.DiskName = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetEncrypted(v bool) *GetDiskResponseBodyDisk {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetIops(v int64) *GetDiskResponseBodyDisk {
+	s.Iops = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetIopsRead(v int64) *GetDiskResponseBodyDisk {
+	s.IopsRead = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetIopsWrite(v int64) *GetDiskResponseBodyDisk {
+	s.IopsWrite = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetKmsKeyId(v string) *GetDiskResponseBodyDisk {
+	s.KmsKeyId = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetModifyAt(v string) *GetDiskResponseBodyDisk {
+	s.ModifyAt = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetPerformanceLevel(v string) *GetDiskResponseBodyDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetProvisionedIops(v int64) *GetDiskResponseBodyDisk {
+	s.ProvisionedIops = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetRegionId(v string) *GetDiskResponseBodyDisk {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetResourceGroupId(v string) *GetDiskResponseBodyDisk {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetSize(v int64) *GetDiskResponseBodyDisk {
+	s.Size = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetStatus(v string) *GetDiskResponseBodyDisk {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetTags(v []*GetDiskResponseBodyDiskTags) *GetDiskResponseBodyDisk {
+	s.Tags = v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetThroughput(v int64) *GetDiskResponseBodyDisk {
+	s.Throughput = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDisk) SetZoneId(v string) *GetDiskResponseBodyDisk {
+	s.ZoneId = &v
+	return s
+}
+
+type GetDiskResponseBodyDiskAccessAuthorization struct {
+	// The token that is used to access the disk.
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The information of ecs.
+	Ecs *GetDiskResponseBodyDiskAccessAuthorizationEcs `json:"Ecs,omitempty" xml:"Ecs,omitempty" type:"Struct"`
+	// The information of pod.
+	Pod *GetDiskResponseBodyDiskAccessAuthorizationPod `json:"Pod,omitempty" xml:"Pod,omitempty" type:"Struct"`
+}
+
+func (s GetDiskResponseBodyDiskAccessAuthorization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskResponseBodyDiskAccessAuthorization) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskResponseBodyDiskAccessAuthorization) SetAccessToken(v string) *GetDiskResponseBodyDiskAccessAuthorization {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDiskAccessAuthorization) SetEcs(v *GetDiskResponseBodyDiskAccessAuthorizationEcs) *GetDiskResponseBodyDiskAccessAuthorization {
+	s.Ecs = v
+	return s
+}
+
+func (s *GetDiskResponseBodyDiskAccessAuthorization) SetPod(v *GetDiskResponseBodyDiskAccessAuthorizationPod) *GetDiskResponseBodyDiskAccessAuthorization {
+	s.Pod = v
+	return s
+}
+
+type GetDiskResponseBodyDiskAccessAuthorizationEcs struct {
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetDiskResponseBodyDiskAccessAuthorizationEcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskResponseBodyDiskAccessAuthorizationEcs) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskResponseBodyDiskAccessAuthorizationEcs) SetInstanceId(v string) *GetDiskResponseBodyDiskAccessAuthorizationEcs {
+	s.InstanceId = &v
+	return s
+}
+
+type GetDiskResponseBodyDiskAccessAuthorizationPod struct {
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The pod ID.
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+}
+
+func (s GetDiskResponseBodyDiskAccessAuthorizationPod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskResponseBodyDiskAccessAuthorizationPod) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskResponseBodyDiskAccessAuthorizationPod) SetClusterId(v string) *GetDiskResponseBodyDiskAccessAuthorizationPod {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDiskAccessAuthorizationPod) SetPodId(v string) *GetDiskResponseBodyDiskAccessAuthorizationPod {
+	s.PodId = &v
+	return s
+}
+
+type GetDiskResponseBodyDiskAttachments struct {
+	// The time when the disk was attached.
+	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *int32 `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s GetDiskResponseBodyDiskAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskResponseBodyDiskAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskResponseBodyDiskAttachments) SetAttachedTime(v string) *GetDiskResponseBodyDiskAttachments {
+	s.AttachedTime = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDiskAttachments) SetInstanceId(v string) *GetDiskResponseBodyDiskAttachments {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDiskAttachments) SetNamespaceId(v int32) *GetDiskResponseBodyDiskAttachments {
+	s.NamespaceId = &v
+	return s
+}
+
+type GetDiskResponseBodyDiskTags struct {
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetDiskResponseBodyDiskTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskResponseBodyDiskTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskResponseBodyDiskTags) SetTagKey(v string) *GetDiskResponseBodyDiskTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetDiskResponseBodyDiskTags) SetTagValue(v string) *GetDiskResponseBodyDiskTags {
+	s.TagValue = &v
+	return s
+}
+
+type GetDiskResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiskResponse) SetHeaders(v map[string]*string) *GetDiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDiskResponse) SetStatusCode(v int32) *GetDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDiskResponse) SetBody(v *GetDiskResponseBody) *GetDiskResponse {
 	s.Body = v
 	return s
 }
@@ -9892,6 +10915,94 @@ func (client *Client) DescribeDiskReplicaPairs(request *DescribeDiskReplicaPairs
 	return _result, _err
 }
 
+func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, runtime *util.RuntimeOptions) (_result *DescribeDisksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskIds)) {
+		query["DiskIds"] = request.DiskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskName)) {
+		query["DiskName"] = request.DiskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDisks"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDisksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDisks(request *DescribeDisksRequest) (_result *DescribeDisksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDisksResponse{}
+	_body, _err := client.DescribeDisksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeEnterpriseSnapshotPolicyWithOptions(request *DescribeEnterpriseSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeEnterpriseSnapshotPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10408,6 +11519,54 @@ func (client *Client) FailoverDiskReplicaPair(request *FailoverDiskReplicaPairRe
 	runtime := &util.RuntimeOptions{}
 	_result = &FailoverDiskReplicaPairResponse{}
 	_body, _err := client.FailoverDiskReplicaPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDiskWithOptions(request *GetDiskRequest, runtime *util.RuntimeOptions) (_result *GetDiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDisk"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDisk(request *GetDiskRequest) (_result *GetDiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDiskResponse{}
+	_body, _err := client.GetDiskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
