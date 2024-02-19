@@ -482,7 +482,6 @@ type AddImageRequest struct {
 	ContainerImageSpec *AddImageRequestContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
 	Description        *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name               *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId           *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VMImageSpec        *AddImageRequestVMImageSpec        `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
 	Version            *string                            `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -507,11 +506,6 @@ func (s *AddImageRequest) SetDescription(v string) *AddImageRequest {
 
 func (s *AddImageRequest) SetName(v string) *AddImageRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *AddImageRequest) SetRegionId(v string) *AddImageRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -616,7 +610,6 @@ type AddImageShrinkRequest struct {
 	ContainerImageSpecShrink *string `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VMImageSpecShrink        *string `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty"`
 	Version                  *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -641,11 +634,6 @@ func (s *AddImageShrinkRequest) SetDescription(v string) *AddImageShrinkRequest 
 
 func (s *AddImageShrinkRequest) SetName(v string) *AddImageShrinkRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *AddImageShrinkRequest) SetRegionId(v string) *AddImageShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1210,8 +1198,7 @@ func (s *DeleteJobsResponse) SetBody(v *DeleteJobsResponseBody) *DeleteJobsRespo
 }
 
 type GetImageRequest struct {
-	ImageId  *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 }
 
 func (s GetImageRequest) String() string {
@@ -1224,11 +1211,6 @@ func (s GetImageRequest) GoString() string {
 
 func (s *GetImageRequest) SetImageId(v string) *GetImageRequest {
 	s.ImageId = &v
-	return s
-}
-
-func (s *GetImageRequest) SetRegionId(v string) *GetImageRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1871,7 +1853,6 @@ type ListImagesRequest struct {
 	ImageNames []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	PageNumber *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListImagesRequest) String() string {
@@ -1902,17 +1883,11 @@ func (s *ListImagesRequest) SetPageSize(v int64) *ListImagesRequest {
 	return s
 }
 
-func (s *ListImagesRequest) SetRegionId(v string) *ListImagesRequest {
-	s.RegionId = &v
-	return s
-}
-
 type ListImagesShrinkRequest struct {
 	ImageIdsShrink   *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
 	ImageNamesShrink *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	PageNumber       *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize         *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListImagesShrinkRequest) String() string {
@@ -1940,11 +1915,6 @@ func (s *ListImagesShrinkRequest) SetPageNumber(v int64) *ListImagesShrinkReques
 
 func (s *ListImagesShrinkRequest) SetPageSize(v int64) *ListImagesShrinkRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListImagesShrinkRequest) SetRegionId(v string) *ListImagesShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2330,8 +2300,7 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type RemoveImageRequest struct {
-	ImageId  *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 }
 
 func (s RemoveImageRequest) String() string {
@@ -2344,11 +2313,6 @@ func (s RemoveImageRequest) GoString() string {
 
 func (s *RemoveImageRequest) SetImageId(v string) *RemoveImageRequest {
 	s.ImageId = &v
-	return s
-}
-
-func (s *RemoveImageRequest) SetRegionId(v string) *RemoveImageRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2477,10 +2441,6 @@ func (client *Client) AddImageWithOptions(tmpReq *AddImageRequest, runtime *util
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VMImageSpecShrink)) {
@@ -2651,10 +2611,6 @@ func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *uti
 		query["ImageId"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2765,10 +2721,6 @@ func (client *Client) ListImagesWithOptions(tmpReq *ListImagesRequest, runtime *
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2877,10 +2829,6 @@ func (client *Client) RemoveImageWithOptions(request *RemoveImageRequest, runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
 		query["ImageId"] = request.ImageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
