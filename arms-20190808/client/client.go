@@ -16250,7 +16250,11 @@ type DescribeEnvironmentResponseBodyData struct {
 	GrafanaFolderUid *string `json:"GrafanaFolderUid,omitempty" xml:"GrafanaFolderUid,omitempty"`
 	// The URL of the Grafana directory.
 	GrafanaFolderUrl *string `json:"GrafanaFolderUrl,omitempty" xml:"GrafanaFolderUrl,omitempty"`
-	ManagedType      *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
+	// managed type:
+	// - none: unmanaged. The default value for ACK clusters.
+	// - agent: managed agent (including KSM). The default values for ASK, ACS, and AckOne clusters.
+	// - agent-exporter: managed agent and exporters. The default value for the cloud service type.
+	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// The ID of the Prometheus instance.
 	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
 	// The name of the Prometheus instance.
@@ -16263,7 +16267,7 @@ type DescribeEnvironmentResponseBodyData struct {
 	Tags []*DescribeEnvironmentResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user ID.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// VPC ID.
+	// The VPC ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -16391,9 +16395,9 @@ func (s *DescribeEnvironmentResponseBodyData) SetVpcId(v string) *DescribeEnviro
 }
 
 type DescribeEnvironmentResponseBodyDataTags struct {
-	// The tag key.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -27377,6 +27381,466 @@ func (s *ListAddonReleasesResponse) SetBody(v *ListAddonReleasesResponseBody) *L
 	return s
 }
 
+type ListAddonsRequest struct {
+	// Language,the default language is Chinese.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Category filter.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Whether to enable regular matching.
+	Regexp *bool `json:"Regexp,omitempty" xml:"Regexp,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A query field can be queried by name or description.
+	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
+}
+
+func (s ListAddonsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsRequest) SetAliyunLang(v string) *ListAddonsRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetCategory(v string) *ListAddonsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetRegexp(v bool) *ListAddonsRequest {
+	s.Regexp = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetRegionId(v string) *ListAddonsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetSearch(v string) *ListAddonsRequest {
+	s.Search = &v
+	return s
+}
+
+type ListAddonsResponseBody struct {
+	// Status code: 200 indicates success.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data []*ListAddonsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the alert rule was deleted. Valid values:
+	//
+	// *   `true`: The alert rule was deleted.
+	// *   `false`: The alert rule failed to be deleted.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAddonsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBody) SetCode(v int32) *ListAddonsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAddonsResponseBody) SetData(v []*ListAddonsResponseBodyData) *ListAddonsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAddonsResponseBody) SetMessage(v string) *ListAddonsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAddonsResponseBody) SetRequestId(v string) *ListAddonsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAddonsResponseBody) SetSuccess(v bool) *ListAddonsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAddonsResponseBodyData struct {
+	// Ailas of the Addon.
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Categories list.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// Dashboard list.
+	Dashboards []*ListAddonsResponseBodyDataDashboards `json:"Dashboards,omitempty" xml:"Dashboards,omitempty" type:"Repeated"`
+	// Description of the Addon.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Environment list.
+	Environments []*ListAddonsResponseBodyDataEnvironments `json:"Environments,omitempty" xml:"Environments,omitempty" type:"Repeated"`
+	// Icon address.
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// Keyword list.
+	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// Language.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// Last installation time.
+	LatestReleaseCreateTime *string `json:"LatestReleaseCreateTime,omitempty" xml:"LatestReleaseCreateTime,omitempty"`
+	// Name of the Addon.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Whether to install it only once.
+	Once *bool `json:"Once,omitempty" xml:"Once,omitempty"`
+	// Scene of the Addon.
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Version of the Addon.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Weight of the Addon.
+	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ListAddonsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBodyData) SetAlias(v string) *ListAddonsResponseBodyData {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetCategories(v []*string) *ListAddonsResponseBodyData {
+	s.Categories = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetDashboards(v []*ListAddonsResponseBodyDataDashboards) *ListAddonsResponseBodyData {
+	s.Dashboards = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetDescription(v string) *ListAddonsResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetEnvironments(v []*ListAddonsResponseBodyDataEnvironments) *ListAddonsResponseBodyData {
+	s.Environments = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetIcon(v string) *ListAddonsResponseBodyData {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetKeywords(v []*string) *ListAddonsResponseBodyData {
+	s.Keywords = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetLanguage(v string) *ListAddonsResponseBodyData {
+	s.Language = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetLatestReleaseCreateTime(v string) *ListAddonsResponseBodyData {
+	s.LatestReleaseCreateTime = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetName(v string) *ListAddonsResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetOnce(v bool) *ListAddonsResponseBodyData {
+	s.Once = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetScene(v string) *ListAddonsResponseBodyData {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetVersion(v string) *ListAddonsResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyData) SetWeight(v string) *ListAddonsResponseBodyData {
+	s.Weight = &v
+	return s
+}
+
+type ListAddonsResponseBodyDataDashboards struct {
+	// Description of the dashboard.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Name of the dashboard.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// URL of the dashboard.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListAddonsResponseBodyDataDashboards) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBodyDataDashboards) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBodyDataDashboards) SetDescription(v string) *ListAddonsResponseBodyDataDashboards {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataDashboards) SetName(v string) *ListAddonsResponseBodyDataDashboards {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataDashboards) SetUrl(v string) *ListAddonsResponseBodyDataDashboards {
+	s.Url = &v
+	return s
+}
+
+type ListAddonsResponseBodyDataEnvironments struct {
+	// Dependency list.
+	Dependencies *ListAddonsResponseBodyDataEnvironmentsDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Struct"`
+	// Description of environment.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether to enable it.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Label of the environment.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Name of the environment.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Policies list.
+	Policies *ListAddonsResponseBodyDataEnvironmentsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+}
+
+func (s ListAddonsResponseBodyDataEnvironments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBodyDataEnvironments) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBodyDataEnvironments) SetDependencies(v *ListAddonsResponseBodyDataEnvironmentsDependencies) *ListAddonsResponseBodyDataEnvironments {
+	s.Dependencies = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironments) SetDescription(v string) *ListAddonsResponseBodyDataEnvironments {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironments) SetEnable(v bool) *ListAddonsResponseBodyDataEnvironments {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironments) SetLabel(v string) *ListAddonsResponseBodyDataEnvironments {
+	s.Label = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironments) SetName(v string) *ListAddonsResponseBodyDataEnvironments {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironments) SetPolicies(v *ListAddonsResponseBodyDataEnvironmentsPolicies) *ListAddonsResponseBodyDataEnvironments {
+	s.Policies = v
+	return s
+}
+
+type ListAddonsResponseBodyDataEnvironmentsDependencies struct {
+	// Name of the Feature.
+	Features map[string]*bool `json:"Features,omitempty" xml:"Features,omitempty"`
+	// Service list.
+	Services []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+}
+
+func (s ListAddonsResponseBodyDataEnvironmentsDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBodyDataEnvironmentsDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsDependencies) SetFeatures(v map[string]*bool) *ListAddonsResponseBodyDataEnvironmentsDependencies {
+	s.Features = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsDependencies) SetServices(v []*string) *ListAddonsResponseBodyDataEnvironmentsDependencies {
+	s.Services = v
+	return s
+}
+
+type ListAddonsResponseBodyDataEnvironmentsPolicies struct {
+	// Default alert status.
+	AlertDefaultStatus *string `json:"AlertDefaultStatus,omitempty" xml:"AlertDefaultStatus,omitempty"`
+	// Default install status.
+	DefaultInstall *bool `json:"DefaultInstall,omitempty" xml:"DefaultInstall,omitempty"`
+	// Whether to enable a service account.
+	EnableServiceAccount *bool `json:"EnableServiceAccount,omitempty" xml:"EnableServiceAccount,omitempty"`
+	// Metric check rule PromQL.
+	MetricCheckRule *ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule `json:"MetricCheckRule,omitempty" xml:"MetricCheckRule,omitempty" type:"Struct"`
+	// Whether to restart after integration.
+	NeedRestartAfterIntegration *bool `json:"NeedRestartAfterIntegration,omitempty" xml:"NeedRestartAfterIntegration,omitempty"`
+	// Protocol list.
+	Protocols []*ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	// Target Addon name.
+	TargetAddonName *string `json:"TargetAddonName,omitempty" xml:"TargetAddonName,omitempty"`
+}
+
+func (s ListAddonsResponseBodyDataEnvironmentsPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBodyDataEnvironmentsPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) SetAlertDefaultStatus(v string) *ListAddonsResponseBodyDataEnvironmentsPolicies {
+	s.AlertDefaultStatus = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) SetDefaultInstall(v bool) *ListAddonsResponseBodyDataEnvironmentsPolicies {
+	s.DefaultInstall = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) SetEnableServiceAccount(v bool) *ListAddonsResponseBodyDataEnvironmentsPolicies {
+	s.EnableServiceAccount = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) SetMetricCheckRule(v *ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule) *ListAddonsResponseBodyDataEnvironmentsPolicies {
+	s.MetricCheckRule = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) SetNeedRestartAfterIntegration(v bool) *ListAddonsResponseBodyDataEnvironmentsPolicies {
+	s.NeedRestartAfterIntegration = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) SetProtocols(v []*ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols) *ListAddonsResponseBodyDataEnvironmentsPolicies {
+	s.Protocols = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPolicies) SetTargetAddonName(v string) *ListAddonsResponseBodyDataEnvironmentsPolicies {
+	s.TargetAddonName = &v
+	return s
+}
+
+type ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule struct {
+	// PromQL list.
+	PromQL []*string `json:"PromQL,omitempty" xml:"PromQL,omitempty" type:"Repeated"`
+}
+
+func (s ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule) SetPromQL(v []*string) *ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule {
+	s.PromQL = v
+	return s
+}
+
+type ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols struct {
+	// Description of the Protocol.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Icon address.
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// Label of the Protocol.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Name of the Protocol.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols) SetDescription(v string) *ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols) SetIcon(v string) *ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols) SetLabel(v string) *ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols {
+	s.Label = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols) SetName(v string) *ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols {
+	s.Name = &v
+	return s
+}
+
+type ListAddonsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAddonsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAddonsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponse) SetHeaders(v map[string]*string) *ListAddonsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAddonsResponse) SetStatusCode(v int32) *ListAddonsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAddonsResponse) SetBody(v *ListAddonsResponseBody) *ListAddonsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAlertEventsRequest struct {
 	// The name of the alert.
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
@@ -35830,15 +36294,13 @@ func (s *OpenXtraceDefaultSLRResponse) SetBody(v *OpenXtraceDefaultSLRResponseBo
 }
 
 type QueryAppMetadataRequest struct {
-	// The array of meta Ids.
+	// The list of metadata IDs. Separate multiple IDs with commas (,).
 	MetaIds *string `json:"MetaIds,omitempty" xml:"MetaIds,omitempty"`
-	// The mata type.
+	// The metadata type. Valid values: sql: obtains an SQL statement based on sqlId exception: obtains the exception stack based on exceptionId
 	MetaType *string `json:"MetaType,omitempty" xml:"MetaType,omitempty"`
-	// The ID of the application.
-	//
-	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	// The process identifier (PID) of the application. For more information about how to obtain the PID, see "Obtain the PID of an application."
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// The region ID.
+	// The region ID. Default value: cn-hangzhou.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -49601,6 +50063,14 @@ func (client *Client) DeleteAppList(request *DeleteAppListRequest) (_result *Del
 	return _result, _err
 }
 
+/**
+ * @deprecated : DeleteCmsExporter is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+ *
+ * @param request DeleteCmsExporterRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteCmsExporterResponse
+ */
+// Deprecated
 func (client *Client) DeleteCmsExporterWithOptions(request *DeleteCmsExporterRequest, runtime *util.RuntimeOptions) (_result *DeleteCmsExporterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49638,6 +50108,13 @@ func (client *Client) DeleteCmsExporterWithOptions(request *DeleteCmsExporterReq
 	return _result, _err
 }
 
+/**
+ * @deprecated : DeleteCmsExporter is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+ *
+ * @param request DeleteCmsExporterRequest
+ * @return DeleteCmsExporterResponse
+ */
+// Deprecated
 func (client *Client) DeleteCmsExporter(request *DeleteCmsExporterRequest) (_result *DeleteCmsExporterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCmsExporterResponse{}
@@ -52090,6 +52567,14 @@ func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAu
 	return _result, _err
 }
 
+/**
+ * @deprecated : GetCloudClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetRemoteWriteUrl instead.
+ *
+ * @param request GetCloudClusterAllUrlRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetCloudClusterAllUrlResponse
+ */
+// Deprecated
 func (client *Client) GetCloudClusterAllUrlWithOptions(request *GetCloudClusterAllUrlRequest, runtime *util.RuntimeOptions) (_result *GetCloudClusterAllUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52127,6 +52612,13 @@ func (client *Client) GetCloudClusterAllUrlWithOptions(request *GetCloudClusterA
 	return _result, _err
 }
 
+/**
+ * @deprecated : GetCloudClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetRemoteWriteUrl instead.
+ *
+ * @param request GetCloudClusterAllUrlRequest
+ * @return GetCloudClusterAllUrlResponse
+ */
+// Deprecated
 func (client *Client) GetCloudClusterAllUrl(request *GetCloudClusterAllUrlRequest) (_result *GetCloudClusterAllUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCloudClusterAllUrlResponse{}
@@ -53834,6 +54326,14 @@ func (client *Client) InstallAddon(request *InstallAddonRequest) (_result *Insta
 	return _result, _err
 }
 
+/**
+ * @deprecated : InstallCmsExporter is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+ *
+ * @param request InstallCmsExporterRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return InstallCmsExporterResponse
+ */
+// Deprecated
 func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterRequest, runtime *util.RuntimeOptions) (_result *InstallCmsExporterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53883,6 +54383,13 @@ func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterR
 	return _result, _err
 }
 
+/**
+ * @deprecated : InstallCmsExporter is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+ *
+ * @param request InstallCmsExporterRequest
+ * @return InstallCmsExporterResponse
+ */
+// Deprecated
 func (client *Client) InstallCmsExporter(request *InstallCmsExporterRequest) (_result *InstallCmsExporterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallCmsExporterResponse{}
@@ -54163,6 +54670,66 @@ func (client *Client) ListAddonReleases(request *ListAddonReleasesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, runtime *util.RuntimeOptions) (_result *ListAddonsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regexp)) {
+		query["Regexp"] = request.Regexp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["Search"] = request.Search
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAddons"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddonsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAddonsResponse{}
+	_body, _err := client.ListAddonsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAlertEventsWithOptions(request *ListAlertEventsRequest, runtime *util.RuntimeOptions) (_result *ListAlertEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54363,6 +54930,14 @@ func (client *Client) ListClusterFromGrafana(request *ListClusterFromGrafanaRequ
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+ *
+ * @param request ListCmsInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCmsInstancesResponse
+ */
+// Deprecated
 func (client *Client) ListCmsInstancesWithOptions(request *ListCmsInstancesRequest, runtime *util.RuntimeOptions) (_result *ListCmsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54404,6 +54979,13 @@ func (client *Client) ListCmsInstancesWithOptions(request *ListCmsInstancesReque
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+ *
+ * @param request ListCmsInstancesRequest
+ * @return ListCmsInstancesResponse
+ */
+// Deprecated
 func (client *Client) ListCmsInstances(request *ListCmsInstancesRequest) (_result *ListCmsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCmsInstancesResponse{}
