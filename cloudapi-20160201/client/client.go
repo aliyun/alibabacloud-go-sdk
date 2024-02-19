@@ -256,6 +256,7 @@ func (s *AddBlackListResponse) SetBody(v *AddBlackListResponseBody) *AddBlackLis
 }
 
 type AddTrafficSpecialControlRequest struct {
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SpecialKey       *string `json:"SpecialKey,omitempty" xml:"SpecialKey,omitempty"`
 	SpecialType      *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
@@ -268,6 +269,11 @@ func (s AddTrafficSpecialControlRequest) String() string {
 
 func (s AddTrafficSpecialControlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddTrafficSpecialControlRequest) SetSecurityToken(v string) *AddTrafficSpecialControlRequest {
+	s.SecurityToken = &v
+	return s
 }
 
 func (s *AddTrafficSpecialControlRequest) SetSpecialKey(v string) *AddTrafficSpecialControlRequest {
@@ -337,7 +343,8 @@ func (s *AddTrafficSpecialControlResponse) SetBody(v *AddTrafficSpecialControlRe
 }
 
 type CheckAccountForInnerRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CheckAccountForInnerRequest) String() string {
@@ -350,6 +357,11 @@ func (s CheckAccountForInnerRequest) GoString() string {
 
 func (s *CheckAccountForInnerRequest) SetAliUid(v int64) *CheckAccountForInnerRequest {
 	s.AliUid = &v
+	return s
+}
+
+func (s *CheckAccountForInnerRequest) SetSecurityToken(v string) *CheckAccountForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -481,7 +493,8 @@ func (s *CheckAoneAppAuditResponse) SetBody(v *CheckAoneAppAuditResponseBody) *C
 }
 
 type CopyConsumerOpenForInnerRequest struct {
-	CopyList *string `json:"CopyList,omitempty" xml:"CopyList,omitempty"`
+	CopyList      *string `json:"CopyList,omitempty" xml:"CopyList,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CopyConsumerOpenForInnerRequest) String() string {
@@ -494,6 +507,11 @@ func (s CopyConsumerOpenForInnerRequest) GoString() string {
 
 func (s *CopyConsumerOpenForInnerRequest) SetCopyList(v string) *CopyConsumerOpenForInnerRequest {
 	s.CopyList = &v
+	return s
+}
+
+func (s *CopyConsumerOpenForInnerRequest) SetSecurityToken(v string) *CopyConsumerOpenForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -561,6 +579,7 @@ type CreateApiRequest struct {
 	RequestQueries      *string `json:"RequestQueries,omitempty" xml:"RequestQueries,omitempty"`
 	ResultSample        *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	ResultType          *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	SecurityToken       *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	ServiceAddress      *string `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
 	ServiceProtocol     *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
 	ServiceTimeout      *int32  `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
@@ -661,6 +680,11 @@ func (s *CreateApiRequest) SetResultType(v string) *CreateApiRequest {
 	return s
 }
 
+func (s *CreateApiRequest) SetSecurityToken(v string) *CreateApiRequest {
+	s.SecurityToken = &v
+	return s
+}
+
 func (s *CreateApiRequest) SetServiceAddress(v string) *CreateApiRequest {
 	s.ServiceAddress = &v
 	return s
@@ -748,6 +772,7 @@ type CreateApiForInnerRequest struct {
 	RequestParamters     *string `json:"RequestParamters,omitempty" xml:"RequestParamters,omitempty"`
 	ResultSample         *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	ResultType           *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	ServiceConfig        *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	ServiceParameters    *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 	ServiceParametersMap *string `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty"`
@@ -804,6 +829,11 @@ func (s *CreateApiForInnerRequest) SetResultSample(v string) *CreateApiForInnerR
 
 func (s *CreateApiForInnerRequest) SetResultType(v string) *CreateApiForInnerRequest {
 	s.ResultType = &v
+	return s
+}
+
+func (s *CreateApiForInnerRequest) SetSecurityToken(v string) *CreateApiForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -979,10 +1009,11 @@ func (s *CreateApiGroupResponse) SetBody(v *CreateApiGroupResponseBody) *CreateA
 }
 
 type CreateApiGroupForInnerRequest struct {
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s CreateApiGroupForInnerRequest) String() string {
@@ -1005,6 +1036,11 @@ func (s *CreateApiGroupForInnerRequest) SetDescription(v string) *CreateApiGroup
 
 func (s *CreateApiGroupForInnerRequest) SetGroupName(v string) *CreateApiGroupForInnerRequest {
 	s.GroupName = &v
+	return s
+}
+
+func (s *CreateApiGroupForInnerRequest) SetSecurityToken(v string) *CreateApiGroupForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -1084,8 +1120,9 @@ func (s *CreateApiGroupForInnerResponse) SetBody(v *CreateApiGroupForInnerRespon
 }
 
 type CreateAppRequest struct {
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CreateAppRequest) String() string {
@@ -1103,6 +1140,11 @@ func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetDescription(v string) *CreateAppRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetSecurityToken(v string) *CreateAppRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -1246,14 +1288,15 @@ func (s *CreateAppForBackendResponse) SetBody(v *CreateAppForBackendResponseBody
 }
 
 type CreateAppForInnerRequest struct {
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppCode     *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	AppKey      *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppSecret   *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Extend      *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppCode       *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppKey        *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppSecret     *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Extend        *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s CreateAppForInnerRequest) String() string {
@@ -1296,6 +1339,11 @@ func (s *CreateAppForInnerRequest) SetDescription(v string) *CreateAppForInnerRe
 
 func (s *CreateAppForInnerRequest) SetExtend(v string) *CreateAppForInnerRequest {
 	s.Extend = &v
+	return s
+}
+
+func (s *CreateAppForInnerRequest) SetSecurityToken(v string) *CreateAppForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -1484,6 +1532,7 @@ type CreateRaceWorkForInnerRequest struct {
 	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Keywords         *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	LogoUrl          *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 	WorkName         *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 }
@@ -1513,6 +1562,11 @@ func (s *CreateRaceWorkForInnerRequest) SetKeywords(v string) *CreateRaceWorkFor
 
 func (s *CreateRaceWorkForInnerRequest) SetLogoUrl(v string) *CreateRaceWorkForInnerRequest {
 	s.LogoUrl = &v
+	return s
+}
+
+func (s *CreateRaceWorkForInnerRequest) SetSecurityToken(v string) *CreateRaceWorkForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -1576,6 +1630,7 @@ type CreateSecretKeyRequest struct {
 	SecretKey     *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	SecretKeyName *string `json:"SecretKeyName,omitempty" xml:"SecretKeyName,omitempty"`
 	SecretValue   *string `json:"SecretValue,omitempty" xml:"SecretValue,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CreateSecretKeyRequest) String() string {
@@ -1598,6 +1653,11 @@ func (s *CreateSecretKeyRequest) SetSecretKeyName(v string) *CreateSecretKeyRequ
 
 func (s *CreateSecretKeyRequest) SetSecretValue(v string) *CreateSecretKeyRequest {
 	s.SecretValue = &v
+	return s
+}
+
+func (s *CreateSecretKeyRequest) SetSecurityToken(v string) *CreateSecretKeyRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -1663,6 +1723,7 @@ type CreateTrafficControlRequest struct {
 	ApiDefault         *int32  `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
 	AppDefault         *int32  `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
 	UserDefault        *int32  `json:"UserDefault,omitempty" xml:"UserDefault,omitempty"`
@@ -1688,6 +1749,11 @@ func (s *CreateTrafficControlRequest) SetAppDefault(v int32) *CreateTrafficContr
 
 func (s *CreateTrafficControlRequest) SetDescription(v string) *CreateTrafficControlRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateTrafficControlRequest) SetSecurityToken(v string) *CreateTrafficControlRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -1759,13 +1825,14 @@ func (s *CreateTrafficControlResponse) SetBody(v *CreateTrafficControlResponseBo
 }
 
 type CreateUserWhiteListRequest struct {
-	AoneId      *string `json:"AoneId,omitempty" xml:"AoneId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EntityId    *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	LimitCount  *int32  `json:"LimitCount,omitempty" xml:"LimitCount,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uid         *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	AoneId        *string `json:"AoneId,omitempty" xml:"AoneId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	LimitCount    *int32  `json:"LimitCount,omitempty" xml:"LimitCount,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uid           *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateUserWhiteListRequest) String() string {
@@ -1793,6 +1860,11 @@ func (s *CreateUserWhiteListRequest) SetEntityId(v string) *CreateUserWhiteListR
 
 func (s *CreateUserWhiteListRequest) SetLimitCount(v int32) *CreateUserWhiteListRequest {
 	s.LimitCount = &v
+	return s
+}
+
+func (s *CreateUserWhiteListRequest) SetSecurityToken(v string) *CreateUserWhiteListRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -1858,6 +1930,7 @@ func (s *CreateUserWhiteListResponse) SetBody(v *CreateUserWhiteListResponseBody
 }
 
 type DeleteAllTrafficSpecialControlRequest struct {
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -1867,6 +1940,11 @@ func (s DeleteAllTrafficSpecialControlRequest) String() string {
 
 func (s DeleteAllTrafficSpecialControlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteAllTrafficSpecialControlRequest) SetSecurityToken(v string) *DeleteAllTrafficSpecialControlRequest {
+	s.SecurityToken = &v
+	return s
 }
 
 func (s *DeleteAllTrafficSpecialControlRequest) SetTrafficControlId(v string) *DeleteAllTrafficSpecialControlRequest {
@@ -1921,8 +1999,9 @@ func (s *DeleteAllTrafficSpecialControlResponse) SetBody(v *DeleteAllTrafficSpec
 }
 
 type DeleteApiRequest struct {
-	ApiId   *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteApiRequest) String() string {
@@ -1940,6 +2019,11 @@ func (s *DeleteApiRequest) SetApiId(v string) *DeleteApiRequest {
 
 func (s *DeleteApiRequest) SetGroupId(v string) *DeleteApiRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteApiRequest) SetSecurityToken(v string) *DeleteApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -1990,9 +2074,10 @@ func (s *DeleteApiResponse) SetBody(v *DeleteApiResponseBody) *DeleteApiResponse
 }
 
 type DeleteApiForInnerRequest struct {
-	AliUid  *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApiId   *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteApiForInnerRequest) String() string {
@@ -2015,6 +2100,11 @@ func (s *DeleteApiForInnerRequest) SetApiId(v string) *DeleteApiForInnerRequest 
 
 func (s *DeleteApiForInnerRequest) SetGroupId(v string) *DeleteApiForInnerRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteApiForInnerRequest) SetSecurityToken(v string) *DeleteApiForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2065,7 +2155,8 @@ func (s *DeleteApiForInnerResponse) SetBody(v *DeleteApiForInnerResponseBody) *D
 }
 
 type DeleteApiGroupRequest struct {
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteApiGroupRequest) String() string {
@@ -2078,6 +2169,11 @@ func (s DeleteApiGroupRequest) GoString() string {
 
 func (s *DeleteApiGroupRequest) SetGroupId(v string) *DeleteApiGroupRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteApiGroupRequest) SetSecurityToken(v string) *DeleteApiGroupRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2128,7 +2224,8 @@ func (s *DeleteApiGroupResponse) SetBody(v *DeleteApiGroupResponseBody) *DeleteA
 }
 
 type DeleteAppRequest struct {
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteAppRequest) String() string {
@@ -2141,6 +2238,11 @@ func (s DeleteAppRequest) GoString() string {
 
 func (s *DeleteAppRequest) SetAppId(v int64) *DeleteAppRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppRequest) SetSecurityToken(v string) *DeleteAppRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2191,8 +2293,9 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 }
 
 type DeleteAppForInnerRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppId  *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteAppForInnerRequest) String() string {
@@ -2210,6 +2313,11 @@ func (s *DeleteAppForInnerRequest) SetAliUid(v int64) *DeleteAppForInnerRequest 
 
 func (s *DeleteAppForInnerRequest) SetAppId(v int64) *DeleteAppForInnerRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppForInnerRequest) SetSecurityToken(v string) *DeleteAppForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2260,8 +2368,9 @@ func (s *DeleteAppForInnerResponse) SetBody(v *DeleteAppForInnerResponseBody) *D
 }
 
 type DeleteDomainRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteDomainRequest) String() string {
@@ -2279,6 +2388,11 @@ func (s *DeleteDomainRequest) SetDomainName(v string) *DeleteDomainRequest {
 
 func (s *DeleteDomainRequest) SetGroupId(v string) *DeleteDomainRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteDomainRequest) SetSecurityToken(v string) *DeleteDomainRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2332,6 +2446,7 @@ type DeleteDomainCertificateRequest struct {
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteDomainCertificateRequest) String() string {
@@ -2354,6 +2469,11 @@ func (s *DeleteDomainCertificateRequest) SetDomainName(v string) *DeleteDomainCe
 
 func (s *DeleteDomainCertificateRequest) SetGroupId(v string) *DeleteDomainCertificateRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteDomainCertificateRequest) SetSecurityToken(v string) *DeleteDomainCertificateRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2404,7 +2524,8 @@ func (s *DeleteDomainCertificateResponse) SetBody(v *DeleteDomainCertificateResp
 }
 
 type DeleteSecretKeyRequest struct {
-	SecretKeyId *string `json:"SecretKeyId,omitempty" xml:"SecretKeyId,omitempty"`
+	SecretKeyId   *string `json:"SecretKeyId,omitempty" xml:"SecretKeyId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteSecretKeyRequest) String() string {
@@ -2417,6 +2538,11 @@ func (s DeleteSecretKeyRequest) GoString() string {
 
 func (s *DeleteSecretKeyRequest) SetSecretKeyId(v string) *DeleteSecretKeyRequest {
 	s.SecretKeyId = &v
+	return s
+}
+
+func (s *DeleteSecretKeyRequest) SetSecurityToken(v string) *DeleteSecretKeyRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2467,6 +2593,7 @@ func (s *DeleteSecretKeyResponse) SetBody(v *DeleteSecretKeyResponseBody) *Delet
 }
 
 type DeleteTrafficControlRequest struct {
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -2476,6 +2603,11 @@ func (s DeleteTrafficControlRequest) String() string {
 
 func (s DeleteTrafficControlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteTrafficControlRequest) SetSecurityToken(v string) *DeleteTrafficControlRequest {
+	s.SecurityToken = &v
+	return s
 }
 
 func (s *DeleteTrafficControlRequest) SetTrafficControlId(v string) *DeleteTrafficControlRequest {
@@ -2530,6 +2662,7 @@ func (s *DeleteTrafficControlResponse) SetBody(v *DeleteTrafficControlResponseBo
 }
 
 type DeleteTrafficSpecialControlRequest struct {
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SpecialKey       *string `json:"SpecialKey,omitempty" xml:"SpecialKey,omitempty"`
 	SpecialType      *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
@@ -2541,6 +2674,11 @@ func (s DeleteTrafficSpecialControlRequest) String() string {
 
 func (s DeleteTrafficSpecialControlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteTrafficSpecialControlRequest) SetSecurityToken(v string) *DeleteTrafficSpecialControlRequest {
+	s.SecurityToken = &v
+	return s
 }
 
 func (s *DeleteTrafficSpecialControlRequest) SetSpecialKey(v string) *DeleteTrafficSpecialControlRequest {
@@ -2605,9 +2743,10 @@ func (s *DeleteTrafficSpecialControlResponse) SetBody(v *DeleteTrafficSpecialCon
 }
 
 type DeleteUserWhiteListByTypeRequest struct {
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uid      *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uid           *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DeleteUserWhiteListByTypeRequest) String() string {
@@ -2620,6 +2759,11 @@ func (s DeleteUserWhiteListByTypeRequest) GoString() string {
 
 func (s *DeleteUserWhiteListByTypeRequest) SetEntityId(v string) *DeleteUserWhiteListByTypeRequest {
 	s.EntityId = &v
+	return s
+}
+
+func (s *DeleteUserWhiteListByTypeRequest) SetSecurityToken(v string) *DeleteUserWhiteListByTypeRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2680,10 +2824,11 @@ func (s *DeleteUserWhiteListByTypeResponse) SetBody(v *DeleteUserWhiteListByType
 }
 
 type DeployApiRequest struct {
-	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DeployApiRequest) String() string {
@@ -2706,6 +2851,11 @@ func (s *DeployApiRequest) SetDescription(v string) *DeployApiRequest {
 
 func (s *DeployApiRequest) SetGroupId(v string) *DeployApiRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DeployApiRequest) SetSecurityToken(v string) *DeployApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2761,11 +2911,12 @@ func (s *DeployApiResponse) SetBody(v *DeployApiResponseBody) *DeployApiResponse
 }
 
 type DeployApiForInnerRequest struct {
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DeployApiForInnerRequest) String() string {
@@ -2793,6 +2944,11 @@ func (s *DeployApiForInnerRequest) SetDescription(v string) *DeployApiForInnerRe
 
 func (s *DeployApiForInnerRequest) SetGroupId(v string) *DeployApiForInnerRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DeployApiForInnerRequest) SetSecurityToken(v string) *DeployApiForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -2848,8 +3004,9 @@ func (s *DeployApiForInnerResponse) SetBody(v *DeployApiForInnerResponseBody) *D
 }
 
 type DescribeApiRequest struct {
-	ApiId   *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeApiRequest) String() string {
@@ -2867,6 +3024,11 @@ func (s *DescribeApiRequest) SetApiId(v string) *DescribeApiRequest {
 
 func (s *DescribeApiRequest) SetGroupId(v string) *DescribeApiRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApiRequest) SetSecurityToken(v string) *DescribeApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -4752,13 +4914,14 @@ func (s *DescribeApiDocsResponse) SetBody(v *DescribeApiDocsResponseBody) *Descr
 }
 
 type DescribeApiDocsForBackendRequest struct {
-	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StageName  *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApiDocsForBackendRequest) String() string {
@@ -4796,6 +4959,11 @@ func (s *DescribeApiDocsForBackendRequest) SetPageNumber(v int32) *DescribeApiDo
 
 func (s *DescribeApiDocsForBackendRequest) SetPageSize(v int32) *DescribeApiDocsForBackendRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApiDocsForBackendRequest) SetSecurityToken(v string) *DescribeApiDocsForBackendRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -4957,10 +5125,11 @@ func (s *DescribeApiDocsForBackendResponse) SetBody(v *DescribeApiDocsForBackend
 }
 
 type DescribeApiErrorRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApiErrorRequest) String() string {
@@ -4983,6 +5152,11 @@ func (s *DescribeApiErrorRequest) SetEndTime(v string) *DescribeApiErrorRequest 
 
 func (s *DescribeApiErrorRequest) SetGroupId(v string) *DescribeApiErrorRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApiErrorRequest) SetSecurityToken(v string) *DescribeApiErrorRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -5130,7 +5304,8 @@ func (s *DescribeApiErrorResponse) SetBody(v *DescribeApiErrorResponseBody) *Des
 }
 
 type DescribeApiGroupDetailRequest struct {
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeApiGroupDetailRequest) String() string {
@@ -5143,6 +5318,11 @@ func (s DescribeApiGroupDetailRequest) GoString() string {
 
 func (s *DescribeApiGroupDetailRequest) SetGroupId(v string) *DescribeApiGroupDetailRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApiGroupDetailRequest) SetSecurityToken(v string) *DescribeApiGroupDetailRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -5522,10 +5702,11 @@ func (s *DescribeApiGroupsResponse) SetBody(v *DescribeApiGroupsResponseBody) *D
 }
 
 type DescribeApiLatencyRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApiLatencyRequest) String() string {
@@ -5548,6 +5729,11 @@ func (s *DescribeApiLatencyRequest) SetEndTime(v string) *DescribeApiLatencyRequ
 
 func (s *DescribeApiLatencyRequest) SetGroupId(v string) *DescribeApiLatencyRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApiLatencyRequest) SetSecurityToken(v string) *DescribeApiLatencyRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -5649,8 +5835,9 @@ func (s *DescribeApiLatencyResponse) SetBody(v *DescribeApiLatencyResponseBody) 
 }
 
 type DescribeApiMarketInstanceRequest struct {
-	AliUid  *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeApiMarketInstanceRequest) String() string {
@@ -5668,6 +5855,11 @@ func (s *DescribeApiMarketInstanceRequest) SetAliUid(v string) *DescribeApiMarke
 
 func (s *DescribeApiMarketInstanceRequest) SetGroupId(v string) *DescribeApiMarketInstanceRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApiMarketInstanceRequest) SetSecurityToken(v string) *DescribeApiMarketInstanceRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -5724,10 +5916,11 @@ func (s *DescribeApiMarketInstanceResponse) SetBody(v *DescribeApiMarketInstance
 }
 
 type DescribeApiQpsRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApiQpsRequest) String() string {
@@ -5750,6 +5943,11 @@ func (s *DescribeApiQpsRequest) SetEndTime(v string) *DescribeApiQpsRequest {
 
 func (s *DescribeApiQpsRequest) SetGroupId(v string) *DescribeApiQpsRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApiQpsRequest) SetSecurityToken(v string) *DescribeApiQpsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -5897,12 +6095,13 @@ func (s *DescribeApiQpsResponse) SetBody(v *DescribeApiQpsResponseBody) *Describ
 }
 
 type DescribeApiRulesRequest struct {
-	ApiIds     *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RuleType   *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	StageName  *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RuleType      *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApiRulesRequest) String() string {
@@ -5935,6 +6134,11 @@ func (s *DescribeApiRulesRequest) SetPageSize(v int32) *DescribeApiRulesRequest 
 
 func (s *DescribeApiRulesRequest) SetRuleType(v string) *DescribeApiRulesRequest {
 	s.RuleType = &v
+	return s
+}
+
+func (s *DescribeApiRulesRequest) SetSecurityToken(v string) *DescribeApiRulesRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -6078,10 +6282,11 @@ func (s *DescribeApiRulesResponse) SetBody(v *DescribeApiRulesResponseBody) *Des
 }
 
 type DescribeApiTrafficRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApiTrafficRequest) String() string {
@@ -6104,6 +6309,11 @@ func (s *DescribeApiTrafficRequest) SetEndTime(v string) *DescribeApiTrafficRequ
 
 func (s *DescribeApiTrafficRequest) SetGroupId(v string) *DescribeApiTrafficRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApiTrafficRequest) SetSecurityToken(v string) *DescribeApiTrafficRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -6251,12 +6461,13 @@ func (s *DescribeApiTrafficResponse) SetBody(v *DescribeApiTrafficResponseBody) 
 }
 
 type DescribeApisRequest struct {
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Visibility    *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribeApisRequest) String() string {
@@ -6289,6 +6500,11 @@ func (s *DescribeApisRequest) SetPageNumber(v int32) *DescribeApisRequest {
 
 func (s *DescribeApisRequest) SetPageSize(v int32) *DescribeApisRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisRequest) SetSecurityToken(v string) *DescribeApisRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -6450,9 +6666,10 @@ func (s *DescribeApisResponse) SetBody(v *DescribeApisResponseBody) *DescribeApi
 }
 
 type DescribeApisByAppRequest struct {
-	AppId      *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeApisByAppRequest) String() string {
@@ -6475,6 +6692,11 @@ func (s *DescribeApisByAppRequest) SetPageNumber(v int32) *DescribeApisByAppRequ
 
 func (s *DescribeApisByAppRequest) SetPageSize(v int32) *DescribeApisByAppRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisByAppRequest) SetSecurityToken(v string) *DescribeApisByAppRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -6637,10 +6859,11 @@ func (s *DescribeApisByAppResponse) SetBody(v *DescribeApisByAppResponseBody) *D
 }
 
 type DescribeApisByRuleRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleType   *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RuleId        *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleType      *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeApisByRuleRequest) String() string {
@@ -6668,6 +6891,11 @@ func (s *DescribeApisByRuleRequest) SetRuleId(v string) *DescribeApisByRuleReque
 
 func (s *DescribeApisByRuleRequest) SetRuleType(v string) *DescribeApisByRuleRequest {
 	s.RuleType = &v
+	return s
+}
+
+func (s *DescribeApisByRuleRequest) SetSecurityToken(v string) *DescribeApisByRuleRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -6830,13 +7058,14 @@ func (s *DescribeApisByRuleResponse) SetBody(v *DescribeApisByRuleResponseBody) 
 }
 
 type DescribeApisForConsoleRequest struct {
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StageName  *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Visibility    *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribeApisForConsoleRequest) String() string {
@@ -6869,6 +7098,11 @@ func (s *DescribeApisForConsoleRequest) SetPageNumber(v int32) *DescribeApisForC
 
 func (s *DescribeApisForConsoleRequest) SetPageSize(v int32) *DescribeApisForConsoleRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisForConsoleRequest) SetSecurityToken(v string) *DescribeApisForConsoleRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -7087,7 +7321,8 @@ func (s *DescribeApisForConsoleResponse) SetBody(v *DescribeApisForConsoleRespon
 }
 
 type DescribeAppRequest struct {
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeAppRequest) String() string {
@@ -7100,6 +7335,11 @@ func (s DescribeAppRequest) GoString() string {
 
 func (s *DescribeAppRequest) SetAppId(v int64) *DescribeAppRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppRequest) SetSecurityToken(v string) *DescribeAppRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -7505,9 +7745,10 @@ func (s *DescribeAppSecurityForInnerResponse) SetBody(v *DescribeAppSecurityForI
 }
 
 type DescribeAppsRequest struct {
-	AppId      *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeAppsRequest) String() string {
@@ -7530,6 +7771,11 @@ func (s *DescribeAppsRequest) SetPageNumber(v int32) *DescribeAppsRequest {
 
 func (s *DescribeAppsRequest) SetPageSize(v int32) *DescribeAppsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetSecurityToken(v string) *DescribeAppsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -7662,11 +7908,12 @@ func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeApp
 }
 
 type DescribeAppsByApiRequest struct {
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StageName  *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeAppsByApiRequest) String() string {
@@ -7694,6 +7941,11 @@ func (s *DescribeAppsByApiRequest) SetPageNumber(v int32) *DescribeAppsByApiRequ
 
 func (s *DescribeAppsByApiRequest) SetPageSize(v int32) *DescribeAppsByApiRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppsByApiRequest) SetSecurityToken(v string) *DescribeAppsByApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -7843,10 +8095,11 @@ func (s *DescribeAppsByApiResponse) SetBody(v *DescribeAppsByApiResponseBody) *D
 }
 
 type DescribeAppsForProviderRequest struct {
-	AppId      *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppOwner   *string `json:"AppOwner,omitempty" xml:"AppOwner,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppOwner      *string `json:"AppOwner,omitempty" xml:"AppOwner,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeAppsForProviderRequest) String() string {
@@ -7874,6 +8127,11 @@ func (s *DescribeAppsForProviderRequest) SetPageNumber(v int32) *DescribeAppsFor
 
 func (s *DescribeAppsForProviderRequest) SetPageSize(v int32) *DescribeAppsForProviderRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppsForProviderRequest) SetSecurityToken(v string) *DescribeAppsForProviderRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -8006,7 +8264,8 @@ func (s *DescribeAppsForProviderResponse) SetBody(v *DescribeAppsForProviderResp
 }
 
 type DescribeAvailableVipsRequest struct {
-	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Vip           *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
 }
 
 func (s DescribeAvailableVipsRequest) String() string {
@@ -8015,6 +8274,11 @@ func (s DescribeAvailableVipsRequest) String() string {
 
 func (s DescribeAvailableVipsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAvailableVipsRequest) SetSecurityToken(v string) *DescribeAvailableVipsRequest {
+	s.SecurityToken = &v
+	return s
 }
 
 func (s *DescribeAvailableVipsRequest) SetVip(v string) *DescribeAvailableVipsRequest {
@@ -8161,9 +8425,10 @@ func (s *DescribeBidByUserIdForInnerResponse) SetBody(v *DescribeBidByUserIdForI
 }
 
 type DescribeBlackListsRequest struct {
-	BlackType  *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	BlackType     *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeBlackListsRequest) String() string {
@@ -8186,6 +8451,11 @@ func (s *DescribeBlackListsRequest) SetPageNumber(v int32) *DescribeBlackListsRe
 
 func (s *DescribeBlackListsRequest) SetPageSize(v int32) *DescribeBlackListsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBlackListsRequest) SetSecurityToken(v string) *DescribeBlackListsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -8318,9 +8588,10 @@ func (s *DescribeBlackListsResponse) SetBody(v *DescribeBlackListsResponseBody) 
 }
 
 type DescribeDeployedApiRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeDeployedApiRequest) String() string {
@@ -8338,6 +8609,11 @@ func (s *DescribeDeployedApiRequest) SetApiId(v string) *DescribeDeployedApiRequ
 
 func (s *DescribeDeployedApiRequest) SetGroupId(v string) *DescribeDeployedApiRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDeployedApiRequest) SetSecurityToken(v string) *DescribeDeployedApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -9194,12 +9470,13 @@ func (s *DescribeDeployedApiResponse) SetBody(v *DescribeDeployedApiResponseBody
 }
 
 type DescribeDeployedApisRequest struct {
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StageName  *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeDeployedApisRequest) String() string {
@@ -9232,6 +9509,11 @@ func (s *DescribeDeployedApisRequest) SetPageNumber(v int32) *DescribeDeployedAp
 
 func (s *DescribeDeployedApisRequest) SetPageSize(v int32) *DescribeDeployedApisRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDeployedApisRequest) SetSecurityToken(v string) *DescribeDeployedApisRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -9393,8 +9675,9 @@ func (s *DescribeDeployedApisResponse) SetBody(v *DescribeDeployedApisResponseBo
 }
 
 type DescribeDomainRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeDomainRequest) String() string {
@@ -9412,6 +9695,11 @@ func (s *DescribeDomainRequest) SetDomainName(v string) *DescribeDomainRequest {
 
 func (s *DescribeDomainRequest) SetGroupId(v string) *DescribeDomainRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDomainRequest) SetSecurityToken(v string) *DescribeDomainRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -9516,8 +9804,9 @@ func (s *DescribeDomainResponse) SetBody(v *DescribeDomainResponseBody) *Describ
 }
 
 type DescribeDomainResolutionRequest struct {
-	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeDomainResolutionRequest) String() string {
@@ -9535,6 +9824,11 @@ func (s *DescribeDomainResolutionRequest) SetDomainNames(v string) *DescribeDoma
 
 func (s *DescribeDomainResolutionRequest) SetGroupId(v string) *DescribeDomainResolutionRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDomainResolutionRequest) SetSecurityToken(v string) *DescribeDomainResolutionRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -9640,6 +9934,7 @@ type DescribeHistoryApiRequest struct {
 	ApiId          *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -9663,6 +9958,11 @@ func (s *DescribeHistoryApiRequest) SetGroupId(v string) *DescribeHistoryApiRequ
 
 func (s *DescribeHistoryApiRequest) SetHistoryVersion(v string) *DescribeHistoryApiRequest {
 	s.HistoryVersion = &v
+	return s
+}
+
+func (s *DescribeHistoryApiRequest) SetSecurityToken(v string) *DescribeHistoryApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -10549,12 +10849,13 @@ func (s *DescribeHistoryApiResponse) SetBody(v *DescribeHistoryApiResponseBody) 
 }
 
 type DescribeHistoryApisRequest struct {
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StageName  *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeHistoryApisRequest) String() string {
@@ -10587,6 +10888,11 @@ func (s *DescribeHistoryApisRequest) SetPageNumber(v int32) *DescribeHistoryApis
 
 func (s *DescribeHistoryApisRequest) SetPageSize(v int32) *DescribeHistoryApisRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHistoryApisRequest) SetSecurityToken(v string) *DescribeHistoryApisRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -10754,12 +11060,13 @@ func (s *DescribeHistoryApisResponse) SetBody(v *DescribeHistoryApisResponseBody
 }
 
 type DescribeModelsForInnerRequest struct {
-	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ModelId    *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName  *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelId       *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName     *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeModelsForInnerRequest) String() string {
@@ -10797,6 +11104,11 @@ func (s *DescribeModelsForInnerRequest) SetPageNumber(v int32) *DescribeModelsFo
 
 func (s *DescribeModelsForInnerRequest) SetPageSize(v int32) *DescribeModelsForInnerRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeModelsForInnerRequest) SetSecurityToken(v string) *DescribeModelsForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -10941,8 +11253,9 @@ func (s *DescribeModelsForInnerResponse) SetBody(v *DescribeModelsForInnerRespon
 }
 
 type DescribePurchasedApiRequest struct {
-	ApiId   *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribePurchasedApiRequest) String() string {
@@ -10960,6 +11273,11 @@ func (s *DescribePurchasedApiRequest) SetApiId(v string) *DescribePurchasedApiRe
 
 func (s *DescribePurchasedApiRequest) SetGroupId(v string) *DescribePurchasedApiRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribePurchasedApiRequest) SetSecurityToken(v string) *DescribePurchasedApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -11548,7 +11866,8 @@ func (s *DescribePurchasedApiResponse) SetBody(v *DescribePurchasedApiResponseBo
 }
 
 type DescribePurchasedApiGroupDetailRequest struct {
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribePurchasedApiGroupDetailRequest) String() string {
@@ -11561,6 +11880,11 @@ func (s DescribePurchasedApiGroupDetailRequest) GoString() string {
 
 func (s *DescribePurchasedApiGroupDetailRequest) SetGroupId(v string) *DescribePurchasedApiGroupDetailRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribePurchasedApiGroupDetailRequest) SetSecurityToken(v string) *DescribePurchasedApiGroupDetailRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -11892,13 +12216,14 @@ func (s *DescribePurchasedApiGroupsResponse) SetBody(v *DescribePurchasedApiGrou
 }
 
 type DescribePurchasedApisRequest struct {
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiName    *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StageName  *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Visibility    *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribePurchasedApisRequest) String() string {
@@ -11931,6 +12256,11 @@ func (s *DescribePurchasedApisRequest) SetPageNumber(v int32) *DescribePurchased
 
 func (s *DescribePurchasedApisRequest) SetPageSize(v int32) *DescribePurchasedApisRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePurchasedApisRequest) SetSecurityToken(v string) *DescribePurchasedApisRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -12103,7 +12433,8 @@ func (s *DescribePurchasedApisResponse) SetBody(v *DescribePurchasedApisResponse
 }
 
 type DescribeRaceWorkForInnerRequest struct {
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeRaceWorkForInnerRequest) String() string {
@@ -12116,6 +12447,11 @@ func (s DescribeRaceWorkForInnerRequest) GoString() string {
 
 func (s *DescribeRaceWorkForInnerRequest) SetGroupId(v string) *DescribeRaceWorkForInnerRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeRaceWorkForInnerRequest) SetSecurityToken(v string) *DescribeRaceWorkForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -12214,8 +12550,9 @@ func (s *DescribeRaceWorkForInnerResponse) SetBody(v *DescribeRaceWorkForInnerRe
 }
 
 type DescribeRaceWorksForInnerRequest struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeRaceWorksForInnerRequest) String() string {
@@ -12233,6 +12570,11 @@ func (s *DescribeRaceWorksForInnerRequest) SetPageNumber(v int32) *DescribeRaceW
 
 func (s *DescribeRaceWorksForInnerRequest) SetPageSize(v int32) *DescribeRaceWorksForInnerRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRaceWorksForInnerRequest) SetSecurityToken(v string) *DescribeRaceWorksForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -12504,9 +12846,10 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeRulesByApiRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeRulesByApiRequest) String() string {
@@ -12524,6 +12867,11 @@ func (s *DescribeRulesByApiRequest) SetApiId(v string) *DescribeRulesByApiReques
 
 func (s *DescribeRulesByApiRequest) SetGroupId(v string) *DescribeRulesByApiRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeRulesByApiRequest) SetSecurityToken(v string) *DescribeRulesByApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -12641,6 +12989,7 @@ type DescribeSecretKeysRequest struct {
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecretKeyId   *string `json:"SecretKeyId,omitempty" xml:"SecretKeyId,omitempty"`
 	SecretKeyName *string `json:"SecretKeyName,omitempty" xml:"SecretKeyName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeSecretKeysRequest) String() string {
@@ -12668,6 +13017,11 @@ func (s *DescribeSecretKeysRequest) SetSecretKeyId(v string) *DescribeSecretKeys
 
 func (s *DescribeSecretKeysRequest) SetSecretKeyName(v string) *DescribeSecretKeysRequest {
 	s.SecretKeyName = &v
+	return s
+}
+
+func (s *DescribeSecretKeysRequest) SetSecurityToken(v string) *DescribeSecretKeysRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -13058,6 +13412,7 @@ type DescribeTrafficControlsRequest struct {
 	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName          *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	TrafficControlId   *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
@@ -13088,6 +13443,11 @@ func (s *DescribeTrafficControlsRequest) SetPageNumber(v int32) *DescribeTraffic
 
 func (s *DescribeTrafficControlsRequest) SetPageSize(v int32) *DescribeTrafficControlsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTrafficControlsRequest) SetSecurityToken(v string) *DescribeTrafficControlsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -13345,10 +13705,11 @@ func (s *DescribeTrafficControlsResponse) SetBody(v *DescribeTrafficControlsResp
 }
 
 type DescribeUserWhiteListsRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uid        *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uid           *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribeUserWhiteListsRequest) String() string {
@@ -13366,6 +13727,11 @@ func (s *DescribeUserWhiteListsRequest) SetPageNumber(v int32) *DescribeUserWhit
 
 func (s *DescribeUserWhiteListsRequest) SetPageSize(v int32) *DescribeUserWhiteListsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeUserWhiteListsRequest) SetSecurityToken(v string) *DescribeUserWhiteListsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -13526,7 +13892,8 @@ func (s *DescribeUserWhiteListsResponse) SetBody(v *DescribeUserWhiteListsRespon
 }
 
 type IsIncludedByUserWhitelistRequest struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s IsIncludedByUserWhitelistRequest) String() string {
@@ -13535,6 +13902,11 @@ func (s IsIncludedByUserWhitelistRequest) String() string {
 
 func (s IsIncludedByUserWhitelistRequest) GoString() string {
 	return s.String()
+}
+
+func (s *IsIncludedByUserWhitelistRequest) SetSecurityToken(v string) *IsIncludedByUserWhitelistRequest {
+	s.SecurityToken = &v
+	return s
 }
 
 func (s *IsIncludedByUserWhitelistRequest) SetType(v string) *IsIncludedByUserWhitelistRequest {
@@ -13613,6 +13985,7 @@ type ModifyApiRequest struct {
 	RequestQueries      *string `json:"RequestQueries,omitempty" xml:"RequestQueries,omitempty"`
 	ResultSample        *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	ResultType          *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	SecurityToken       *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	ServiceAddress      *string `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
 	ServiceProtocol     *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
 	ServiceTimeout      *int32  `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
@@ -13718,6 +14091,11 @@ func (s *ModifyApiRequest) SetResultType(v string) *ModifyApiRequest {
 	return s
 }
 
+func (s *ModifyApiRequest) SetSecurityToken(v string) *ModifyApiRequest {
+	s.SecurityToken = &v
+	return s
+}
+
 func (s *ModifyApiRequest) SetServiceAddress(v string) *ModifyApiRequest {
 	s.ServiceAddress = &v
 	return s
@@ -13800,6 +14178,7 @@ type ModifyApiForInnerRequest struct {
 	RequestParamters     *string `json:"RequestParamters,omitempty" xml:"RequestParamters,omitempty"`
 	ResultSample         *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	ResultType           *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	ServiceConfig        *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	ServiceParameters    *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 	ServiceParametersMap *string `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty"`
@@ -13861,6 +14240,11 @@ func (s *ModifyApiForInnerRequest) SetResultSample(v string) *ModifyApiForInnerR
 
 func (s *ModifyApiForInnerRequest) SetResultType(v string) *ModifyApiForInnerRequest {
 	s.ResultType = &v
+	return s
+}
+
+func (s *ModifyApiForInnerRequest) SetSecurityToken(v string) *ModifyApiForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -13931,9 +14315,10 @@ func (s *ModifyApiForInnerResponse) SetBody(v *ModifyApiForInnerResponseBody) *M
 }
 
 type ModifyApiGroupRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifyApiGroupRequest) String() string {
@@ -13956,6 +14341,11 @@ func (s *ModifyApiGroupRequest) SetGroupId(v string) *ModifyApiGroupRequest {
 
 func (s *ModifyApiGroupRequest) SetGroupName(v string) *ModifyApiGroupRequest {
 	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyApiGroupRequest) SetSecurityToken(v string) *ModifyApiGroupRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14105,9 +14495,10 @@ func (s *ModifyApiMarketInstanceAttributeResponse) SetBody(v *ModifyApiMarketIns
 }
 
 type ModifyAppRequest struct {
-	AppId       *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifyAppRequest) String() string {
@@ -14130,6 +14521,11 @@ func (s *ModifyAppRequest) SetAppName(v string) *ModifyAppRequest {
 
 func (s *ModifyAppRequest) SetDescription(v string) *ModifyAppRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyAppRequest) SetSecurityToken(v string) *ModifyAppRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14180,11 +14576,12 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 }
 
 type ModifyAppForInnerRequest struct {
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppId       *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Extend      *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Extend        *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifyAppForInnerRequest) String() string {
@@ -14217,6 +14614,11 @@ func (s *ModifyAppForInnerRequest) SetDescription(v string) *ModifyAppForInnerRe
 
 func (s *ModifyAppForInnerRequest) SetExtend(v string) *ModifyAppForInnerRequest {
 	s.Extend = &v
+	return s
+}
+
+func (s *ModifyAppForInnerRequest) SetSecurityToken(v string) *ModifyAppForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14267,9 +14669,10 @@ func (s *ModifyAppForInnerResponse) SetBody(v *ModifyAppForInnerResponseBody) *M
 }
 
 type ModifyGroupAuthAppCodeForBackendRequest struct {
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AuthAppCode *string `json:"AuthAppCode,omitempty" xml:"AuthAppCode,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AuthAppCode   *string `json:"AuthAppCode,omitempty" xml:"AuthAppCode,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifyGroupAuthAppCodeForBackendRequest) String() string {
@@ -14292,6 +14695,11 @@ func (s *ModifyGroupAuthAppCodeForBackendRequest) SetAuthAppCode(v string) *Modi
 
 func (s *ModifyGroupAuthAppCodeForBackendRequest) SetGroupId(v string) *ModifyGroupAuthAppCodeForBackendRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyGroupAuthAppCodeForBackendRequest) SetSecurityToken(v string) *ModifyGroupAuthAppCodeForBackendRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14346,6 +14754,7 @@ type ModifySecretKeyRequest struct {
 	SecretKeyId   *string `json:"SecretKeyId,omitempty" xml:"SecretKeyId,omitempty"`
 	SecretKeyName *string `json:"SecretKeyName,omitempty" xml:"SecretKeyName,omitempty"`
 	SecretValue   *string `json:"SecretValue,omitempty" xml:"SecretValue,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifySecretKeyRequest) String() string {
@@ -14373,6 +14782,11 @@ func (s *ModifySecretKeyRequest) SetSecretKeyName(v string) *ModifySecretKeyRequ
 
 func (s *ModifySecretKeyRequest) SetSecretValue(v string) *ModifySecretKeyRequest {
 	s.SecretValue = &v
+	return s
+}
+
+func (s *ModifySecretKeyRequest) SetSecurityToken(v string) *ModifySecretKeyRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14438,6 +14852,7 @@ type ModifyTrafficControlRequest struct {
 	ApiDefault         *int32  `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
 	AppDefault         *int32  `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	TrafficControlId   *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
@@ -14464,6 +14879,11 @@ func (s *ModifyTrafficControlRequest) SetAppDefault(v int32) *ModifyTrafficContr
 
 func (s *ModifyTrafficControlRequest) SetDescription(v string) *ModifyTrafficControlRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyTrafficControlRequest) SetSecurityToken(v string) *ModifyTrafficControlRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14534,10 +14954,11 @@ func (s *ModifyTrafficControlResponse) SetBody(v *ModifyTrafficControlResponseBo
 }
 
 type ModifyUserWhiteListValueByTypeRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uid         *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uid           *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ModifyUserWhiteListValueByTypeRequest) String() string {
@@ -14550,6 +14971,11 @@ func (s ModifyUserWhiteListValueByTypeRequest) GoString() string {
 
 func (s *ModifyUserWhiteListValueByTypeRequest) SetDescription(v string) *ModifyUserWhiteListValueByTypeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyUserWhiteListValueByTypeRequest) SetSecurityToken(v string) *ModifyUserWhiteListValueByTypeRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14615,9 +15041,10 @@ func (s *ModifyUserWhiteListValueByTypeResponse) SetBody(v *ModifyUserWhiteListV
 }
 
 type ReactivateDomainForBackendRequest struct {
-	Aliuid     *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Aliuid        *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ReactivateDomainForBackendRequest) String() string {
@@ -14640,6 +15067,11 @@ func (s *ReactivateDomainForBackendRequest) SetDomainName(v string) *ReactivateD
 
 func (s *ReactivateDomainForBackendRequest) SetGroupId(v string) *ReactivateDomainForBackendRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *ReactivateDomainForBackendRequest) SetSecurityToken(v string) *ReactivateDomainForBackendRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14693,6 +15125,7 @@ type RecoverApiFromHistoricalRequest struct {
 	ApiId          *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -14716,6 +15149,11 @@ func (s *RecoverApiFromHistoricalRequest) SetGroupId(v string) *RecoverApiFromHi
 
 func (s *RecoverApiFromHistoricalRequest) SetHistoryVersion(v string) *RecoverApiFromHistoricalRequest {
 	s.HistoryVersion = &v
+	return s
+}
+
+func (s *RecoverApiFromHistoricalRequest) SetSecurityToken(v string) *RecoverApiFromHistoricalRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14774,6 +15212,7 @@ type RecoveryApiDefineFromHistoricalRequest struct {
 	ApiId          *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -14797,6 +15236,11 @@ func (s *RecoveryApiDefineFromHistoricalRequest) SetGroupId(v string) *RecoveryA
 
 func (s *RecoveryApiDefineFromHistoricalRequest) SetHistoryVersion(v string) *RecoveryApiDefineFromHistoricalRequest {
 	s.HistoryVersion = &v
+	return s
+}
+
+func (s *RecoveryApiDefineFromHistoricalRequest) SetSecurityToken(v string) *RecoveryApiDefineFromHistoricalRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14855,6 +15299,7 @@ type RecoveryApiFromHistoricalRequest struct {
 	ApiId          *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -14878,6 +15323,11 @@ func (s *RecoveryApiFromHistoricalRequest) SetGroupId(v string) *RecoveryApiFrom
 
 func (s *RecoveryApiFromHistoricalRequest) SetHistoryVersion(v string) *RecoveryApiFromHistoricalRequest {
 	s.HistoryVersion = &v
+	return s
+}
+
+func (s *RecoveryApiFromHistoricalRequest) SetSecurityToken(v string) *RecoveryApiFromHistoricalRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -14933,8 +15383,9 @@ func (s *RecoveryApiFromHistoricalResponse) SetBody(v *RecoveryApiFromHistorical
 }
 
 type RefreshDomainRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s RefreshDomainRequest) String() string {
@@ -14952,6 +15403,11 @@ func (s *RefreshDomainRequest) SetDomainName(v string) *RefreshDomainRequest {
 
 func (s *RefreshDomainRequest) SetGroupId(v string) *RefreshDomainRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *RefreshDomainRequest) SetSecurityToken(v string) *RefreshDomainRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15044,11 +15500,12 @@ func (s *RefreshDomainResponse) SetBody(v *RefreshDomainResponseBody) *RefreshDo
 }
 
 type RemoveAccessPermissionByApisRequest struct {
-	ApiIds      *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	AppId       *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s RemoveAccessPermissionByApisRequest) String() string {
@@ -15076,6 +15533,11 @@ func (s *RemoveAccessPermissionByApisRequest) SetDescription(v string) *RemoveAc
 
 func (s *RemoveAccessPermissionByApisRequest) SetGroupId(v string) *RemoveAccessPermissionByApisRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *RemoveAccessPermissionByApisRequest) SetSecurityToken(v string) *RemoveAccessPermissionByApisRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15131,10 +15593,11 @@ func (s *RemoveAccessPermissionByApisResponse) SetBody(v *RemoveAccessPermission
 }
 
 type RemoveAccessPermissionByAppsRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	AppIds    *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	AppIds        *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s RemoveAccessPermissionByAppsRequest) String() string {
@@ -15157,6 +15620,11 @@ func (s *RemoveAccessPermissionByAppsRequest) SetAppIds(v string) *RemoveAccessP
 
 func (s *RemoveAccessPermissionByAppsRequest) SetGroupId(v string) *RemoveAccessPermissionByAppsRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *RemoveAccessPermissionByAppsRequest) SetSecurityToken(v string) *RemoveAccessPermissionByAppsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15212,12 +15680,13 @@ func (s *RemoveAccessPermissionByAppsResponse) SetBody(v *RemoveAccessPermission
 }
 
 type RemoveAccessPermissionByAppsForInnerRequest struct {
-	AliUid    *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	AppIds    *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	AppIds        *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s RemoveAccessPermissionByAppsForInnerRequest) String() string {
@@ -15245,6 +15714,11 @@ func (s *RemoveAccessPermissionByAppsForInnerRequest) SetAppIds(v string) *Remov
 
 func (s *RemoveAccessPermissionByAppsForInnerRequest) SetGroupId(v string) *RemoveAccessPermissionByAppsForInnerRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *RemoveAccessPermissionByAppsForInnerRequest) SetSecurityToken(v string) *RemoveAccessPermissionByAppsForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15305,7 +15779,8 @@ func (s *RemoveAccessPermissionByAppsForInnerResponse) SetBody(v *RemoveAccessPe
 }
 
 type RemoveAllBlackListRequest struct {
-	BlackType *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	BlackType     *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s RemoveAllBlackListRequest) String() string {
@@ -15318,6 +15793,11 @@ func (s RemoveAllBlackListRequest) GoString() string {
 
 func (s *RemoveAllBlackListRequest) SetBlackType(v string) *RemoveAllBlackListRequest {
 	s.BlackType = &v
+	return s
+}
+
+func (s *RemoveAllBlackListRequest) SetSecurityToken(v string) *RemoveAllBlackListRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15368,11 +15848,12 @@ func (s *RemoveAllBlackListResponse) SetBody(v *RemoveAllBlackListResponseBody) 
 }
 
 type RemoveApiRuleRequest struct {
-	ApiIds    *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleType  *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	RuleId        *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleType      *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s RemoveApiRuleRequest) String() string {
@@ -15400,6 +15881,11 @@ func (s *RemoveApiRuleRequest) SetRuleId(v string) *RemoveApiRuleRequest {
 
 func (s *RemoveApiRuleRequest) SetRuleType(v string) *RemoveApiRuleRequest {
 	s.RuleType = &v
+	return s
+}
+
+func (s *RemoveApiRuleRequest) SetSecurityToken(v string) *RemoveApiRuleRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15455,10 +15941,11 @@ func (s *RemoveApiRuleResponse) SetBody(v *RemoveApiRuleResponseBody) *RemoveApi
 }
 
 type RemoveAppsFromApiRequest struct {
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	AppIds    *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	AppIds        *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s RemoveAppsFromApiRequest) String() string {
@@ -15481,6 +15968,11 @@ func (s *RemoveAppsFromApiRequest) SetAppIds(v string) *RemoveAppsFromApiRequest
 
 func (s *RemoveAppsFromApiRequest) SetGroupId(v string) *RemoveAppsFromApiRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *RemoveAppsFromApiRequest) SetSecurityToken(v string) *RemoveAppsFromApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15536,8 +16028,9 @@ func (s *RemoveAppsFromApiResponse) SetBody(v *RemoveAppsFromApiResponseBody) *R
 }
 
 type RemoveBlackListRequest struct {
-	BlackContent *string `json:"BlackContent,omitempty" xml:"BlackContent,omitempty"`
-	BlackType    *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	BlackContent  *string `json:"BlackContent,omitempty" xml:"BlackContent,omitempty"`
+	BlackType     *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s RemoveBlackListRequest) String() string {
@@ -15555,6 +16048,11 @@ func (s *RemoveBlackListRequest) SetBlackContent(v string) *RemoveBlackListReque
 
 func (s *RemoveBlackListRequest) SetBlackType(v string) *RemoveBlackListRequest {
 	s.BlackType = &v
+	return s
+}
+
+func (s *RemoveBlackListRequest) SetSecurityToken(v string) *RemoveBlackListRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15605,7 +16103,8 @@ func (s *RemoveBlackListResponse) SetBody(v *RemoveBlackListResponseBody) *Remov
 }
 
 type ResetAppCodeRequest struct {
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppCode       *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ResetAppCodeRequest) String() string {
@@ -15618,6 +16117,11 @@ func (s ResetAppCodeRequest) GoString() string {
 
 func (s *ResetAppCodeRequest) SetAppCode(v string) *ResetAppCodeRequest {
 	s.AppCode = &v
+	return s
+}
+
+func (s *ResetAppCodeRequest) SetSecurityToken(v string) *ResetAppCodeRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15668,9 +16172,10 @@ func (s *ResetAppCodeResponse) SetBody(v *ResetAppCodeResponseBody) *ResetAppCod
 }
 
 type ResetAppCodeForInnerRequest struct {
-	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppCode    *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	NewAppCode *string `json:"NewAppCode,omitempty" xml:"NewAppCode,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppCode       *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	NewAppCode    *string `json:"NewAppCode,omitempty" xml:"NewAppCode,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ResetAppCodeForInnerRequest) String() string {
@@ -15693,6 +16198,11 @@ func (s *ResetAppCodeForInnerRequest) SetAppCode(v string) *ResetAppCodeForInner
 
 func (s *ResetAppCodeForInnerRequest) SetNewAppCode(v string) *ResetAppCodeForInnerRequest {
 	s.NewAppCode = &v
+	return s
+}
+
+func (s *ResetAppCodeForInnerRequest) SetSecurityToken(v string) *ResetAppCodeForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15743,7 +16253,8 @@ func (s *ResetAppCodeForInnerResponse) SetBody(v *ResetAppCodeForInnerResponseBo
 }
 
 type ResetAppKeySecretRequest struct {
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppKey        *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ResetAppKeySecretRequest) String() string {
@@ -15756,6 +16267,11 @@ func (s ResetAppKeySecretRequest) GoString() string {
 
 func (s *ResetAppKeySecretRequest) SetAppKey(v string) *ResetAppKeySecretRequest {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ResetAppKeySecretRequest) SetSecurityToken(v string) *ResetAppKeySecretRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15806,10 +16322,11 @@ func (s *ResetAppKeySecretResponse) SetBody(v *ResetAppKeySecretResponseBody) *R
 }
 
 type ResetSecretByAppKeyForInnerRequest struct {
-	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppKey       *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	NewAppKey    *string `json:"NewAppKey,omitempty" xml:"NewAppKey,omitempty"`
-	NewAppSecret *string `json:"NewAppSecret,omitempty" xml:"NewAppSecret,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppKey        *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	NewAppKey     *string `json:"NewAppKey,omitempty" xml:"NewAppKey,omitempty"`
+	NewAppSecret  *string `json:"NewAppSecret,omitempty" xml:"NewAppSecret,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ResetSecretByAppKeyForInnerRequest) String() string {
@@ -15837,6 +16354,11 @@ func (s *ResetSecretByAppKeyForInnerRequest) SetNewAppKey(v string) *ResetSecret
 
 func (s *ResetSecretByAppKeyForInnerRequest) SetNewAppSecret(v string) *ResetSecretByAppKeyForInnerRequest {
 	s.NewAppSecret = &v
+	return s
+}
+
+func (s *ResetSecretByAppKeyForInnerRequest) SetSecurityToken(v string) *ResetSecretByAppKeyForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15887,11 +16409,12 @@ func (s *ResetSecretByAppKeyForInnerResponse) SetBody(v *ResetSecretByAppKeyForI
 }
 
 type SetAccessPermissionByApisRequest struct {
-	ApiIds      *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	AppId       *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s SetAccessPermissionByApisRequest) String() string {
@@ -15919,6 +16442,11 @@ func (s *SetAccessPermissionByApisRequest) SetDescription(v string) *SetAccessPe
 
 func (s *SetAccessPermissionByApisRequest) SetGroupId(v string) *SetAccessPermissionByApisRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *SetAccessPermissionByApisRequest) SetSecurityToken(v string) *SetAccessPermissionByApisRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16049,11 +16577,12 @@ func (s *SetAccessPermissionByGroupForBackendResponse) SetBody(v *SetAccessPermi
 }
 
 type SetAccessPermissionsRequest struct {
-	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	AppIds      *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	AppIds        *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s SetAccessPermissionsRequest) String() string {
@@ -16081,6 +16610,11 @@ func (s *SetAccessPermissionsRequest) SetDescription(v string) *SetAccessPermiss
 
 func (s *SetAccessPermissionsRequest) SetGroupId(v string) *SetAccessPermissionsRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *SetAccessPermissionsRequest) SetSecurityToken(v string) *SetAccessPermissionsRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16136,13 +16670,14 @@ func (s *SetAccessPermissionsResponse) SetBody(v *SetAccessPermissionsResponseBo
 }
 
 type SetAccessPermissionsForInnerRequest struct {
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	AppIds      *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	AppIds        *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s SetAccessPermissionsForInnerRequest) String() string {
@@ -16175,6 +16710,11 @@ func (s *SetAccessPermissionsForInnerRequest) SetDescription(v string) *SetAcces
 
 func (s *SetAccessPermissionsForInnerRequest) SetGroupId(v string) *SetAccessPermissionsForInnerRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *SetAccessPermissionsForInnerRequest) SetSecurityToken(v string) *SetAccessPermissionsForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16235,11 +16775,12 @@ func (s *SetAccessPermissionsForInnerResponse) SetBody(v *SetAccessPermissionsFo
 }
 
 type SetApiRuleRequest struct {
-	ApiIds    *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleType  *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	RuleId        *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleType      *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s SetApiRuleRequest) String() string {
@@ -16267,6 +16808,11 @@ func (s *SetApiRuleRequest) SetRuleId(v string) *SetApiRuleRequest {
 
 func (s *SetApiRuleRequest) SetRuleType(v string) *SetApiRuleRequest {
 	s.RuleType = &v
+	return s
+}
+
+func (s *SetApiRuleRequest) SetSecurityToken(v string) *SetApiRuleRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16327,6 +16873,7 @@ type SetDomainRequest struct {
 	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	PrivateKey      *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s SetDomainRequest) String() string {
@@ -16359,6 +16906,11 @@ func (s *SetDomainRequest) SetGroupId(v string) *SetDomainRequest {
 
 func (s *SetDomainRequest) SetPrivateKey(v string) *SetDomainRequest {
 	s.PrivateKey = &v
+	return s
+}
+
+func (s *SetDomainRequest) SetSecurityToken(v string) *SetDomainRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16438,6 +16990,7 @@ type SetDomainCertificateRequest struct {
 	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	PrivateKey      *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s SetDomainCertificateRequest) String() string {
@@ -16470,6 +17023,11 @@ func (s *SetDomainCertificateRequest) SetGroupId(v string) *SetDomainCertificate
 
 func (s *SetDomainCertificateRequest) SetPrivateKey(v string) *SetDomainCertificateRequest {
 	s.PrivateKey = &v
+	return s
+}
+
+func (s *SetDomainCertificateRequest) SetSecurityToken(v string) *SetDomainCertificateRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16525,6 +17083,7 @@ type SetDomainForBackendRequest struct {
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" xml:"CertificatePrivateKey,omitempty"`
 	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s SetDomainForBackendRequest) String() string {
@@ -16557,6 +17116,11 @@ func (s *SetDomainForBackendRequest) SetDomainName(v string) *SetDomainForBacken
 
 func (s *SetDomainForBackendRequest) SetGroupId(v string) *SetDomainForBackendRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *SetDomainForBackendRequest) SetSecurityToken(v string) *SetDomainForBackendRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16631,10 +17195,11 @@ func (s *SetDomainForBackendResponse) SetBody(v *SetDomainForBackendResponseBody
 }
 
 type SetMockIntegrationRequest struct {
-	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Mock       *string `json:"Mock,omitempty" xml:"Mock,omitempty"`
-	MockResult *string `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Mock          *string `json:"Mock,omitempty" xml:"Mock,omitempty"`
+	MockResult    *string `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s SetMockIntegrationRequest) String() string {
@@ -16662,6 +17227,11 @@ func (s *SetMockIntegrationRequest) SetMock(v string) *SetMockIntegrationRequest
 
 func (s *SetMockIntegrationRequest) SetMockResult(v string) *SetMockIntegrationRequest {
 	s.MockResult = &v
+	return s
+}
+
+func (s *SetMockIntegrationRequest) SetSecurityToken(v string) *SetMockIntegrationRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16797,6 +17367,7 @@ type SwitchApiRequest struct {
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -16825,6 +17396,11 @@ func (s *SwitchApiRequest) SetGroupId(v string) *SwitchApiRequest {
 
 func (s *SwitchApiRequest) SetHistoryVersion(v string) *SwitchApiRequest {
 	s.HistoryVersion = &v
+	return s
+}
+
+func (s *SwitchApiRequest) SetSecurityToken(v string) *SwitchApiRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16884,6 +17460,7 @@ type SwitchApiForInnerRequest struct {
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -16912,6 +17489,11 @@ func (s *SwitchApiForInnerRequest) SetGroupId(v string) *SwitchApiForInnerReques
 
 func (s *SwitchApiForInnerRequest) SetHistoryVersion(v string) *SwitchApiForInnerRequest {
 	s.HistoryVersion = &v
+	return s
+}
+
+func (s *SwitchApiForInnerRequest) SetSecurityToken(v string) *SwitchApiForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -16967,12 +17549,13 @@ func (s *SwitchApiForInnerResponse) SetBody(v *SwitchApiForInnerResponseBody) *S
 }
 
 type SynCreateAppForInnerRequest struct {
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppSecret   *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppKey        *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppSecret     *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s SynCreateAppForInnerRequest) String() string {
@@ -17005,6 +17588,11 @@ func (s *SynCreateAppForInnerRequest) SetAppSecret(v string) *SynCreateAppForInn
 
 func (s *SynCreateAppForInnerRequest) SetDescription(v string) *SynCreateAppForInnerRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *SynCreateAppForInnerRequest) SetSecurityToken(v string) *SynCreateAppForInnerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -17287,8 +17875,9 @@ func (s *UntagResourcesSystemTagsResponse) SetBody(v *UntagResourcesSystemTagsRe
 }
 
 type VipMigrationRequest struct {
-	NewVip      *string `json:"NewVip,omitempty" xml:"NewVip,omitempty"`
-	OriginalVip *string `json:"OriginalVip,omitempty" xml:"OriginalVip,omitempty"`
+	NewVip        *string `json:"NewVip,omitempty" xml:"NewVip,omitempty"`
+	OriginalVip   *string `json:"OriginalVip,omitempty" xml:"OriginalVip,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s VipMigrationRequest) String() string {
@@ -17306,6 +17895,11 @@ func (s *VipMigrationRequest) SetNewVip(v string) *VipMigrationRequest {
 
 func (s *VipMigrationRequest) SetOriginalVip(v string) *VipMigrationRequest {
 	s.OriginalVip = &v
+	return s
+}
+
+func (s *VipMigrationRequest) SetSecurityToken(v string) *VipMigrationRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -17333,8 +17927,9 @@ func (s *VipMigrationResponse) SetStatusCode(v int32) *VipMigrationResponse {
 }
 
 type VipMigrationByUidRequest struct {
-	NewVip      *string `json:"NewVip,omitempty" xml:"NewVip,omitempty"`
-	OriginalVip *string `json:"OriginalVip,omitempty" xml:"OriginalVip,omitempty"`
+	NewVip        *string `json:"NewVip,omitempty" xml:"NewVip,omitempty"`
+	OriginalVip   *string `json:"OriginalVip,omitempty" xml:"OriginalVip,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s VipMigrationByUidRequest) String() string {
@@ -17352,6 +17947,11 @@ func (s *VipMigrationByUidRequest) SetNewVip(v string) *VipMigrationByUidRequest
 
 func (s *VipMigrationByUidRequest) SetOriginalVip(v string) *VipMigrationByUidRequest {
 	s.OriginalVip = &v
+	return s
+}
+
+func (s *VipMigrationByUidRequest) SetSecurityToken(v string) *VipMigrationByUidRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -17404,6 +18004,7 @@ func (s *VipMigrationByUidResponse) SetBody(v *VipMigrationByUidResponseBody) *V
 type VpcAddAppServerRequest struct {
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
 	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	ServerIp      *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	Token         *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
@@ -17423,6 +18024,11 @@ func (s *VpcAddAppServerRequest) SetAddressPoolId(v string) *VpcAddAppServerRequ
 
 func (s *VpcAddAppServerRequest) SetAppId(v string) *VpcAddAppServerRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *VpcAddAppServerRequest) SetSecurityToken(v string) *VpcAddAppServerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -17483,10 +18089,11 @@ func (s *VpcAddAppServerResponse) SetBody(v *VpcAddAppServerResponseBody) *VpcAd
 }
 
 type VpcCreateAddressPoolRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Token         *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s VpcCreateAddressPoolRequest) String() string {
@@ -17509,6 +18116,11 @@ func (s *VpcCreateAddressPoolRequest) SetDescription(v string) *VpcCreateAddress
 
 func (s *VpcCreateAddressPoolRequest) SetName(v string) *VpcCreateAddressPoolRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *VpcCreateAddressPoolRequest) SetSecurityToken(v string) *VpcCreateAddressPoolRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -17721,10 +18333,11 @@ func (s *VpcQueryAppServersResponse) SetBody(v *VpcQueryAppServersResponseBody) 
 }
 
 type VpcRegisterAppRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Token         *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s VpcRegisterAppRequest) String() string {
@@ -17747,6 +18360,11 @@ func (s *VpcRegisterAppRequest) SetDescription(v string) *VpcRegisterAppRequest 
 
 func (s *VpcRegisterAppRequest) SetName(v string) *VpcRegisterAppRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *VpcRegisterAppRequest) SetSecurityToken(v string) *VpcRegisterAppRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -17808,9 +18426,10 @@ func (s *VpcRegisterAppResponse) SetBody(v *VpcRegisterAppResponseBody) *VpcRegi
 }
 
 type VpcRemoveAppServerRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	Token    *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ServerIp      *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	Token         *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s VpcRemoveAppServerRequest) String() string {
@@ -17823,6 +18442,11 @@ func (s VpcRemoveAppServerRequest) GoString() string {
 
 func (s *VpcRemoveAppServerRequest) SetAppId(v string) *VpcRemoveAppServerRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *VpcRemoveAppServerRequest) SetSecurityToken(v string) *VpcRemoveAppServerRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -18167,6 +18791,10 @@ func (client *Client) AddTrafficSpecialControlWithOptions(request *AddTrafficSpe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SpecialKey)) {
 		query["SpecialKey"] = request.SpecialKey
 	}
@@ -18225,6 +18853,10 @@ func (client *Client) CheckAccountForInnerWithOptions(request *CheckAccountForIn
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
 		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18317,6 +18949,10 @@ func (client *Client) CopyConsumerOpenForInnerWithOptions(request *CopyConsumerO
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CopyList)) {
 		query["CopyList"] = request.CopyList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18431,6 +19067,10 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 		query["ResultType"] = request.ResultType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceAddress)) {
 		query["ServiceAddress"] = request.ServiceAddress
 	}
@@ -18525,6 +19165,10 @@ func (client *Client) CreateApiForInnerWithOptions(request *CreateApiForInnerReq
 
 	if !tea.BoolValue(util.IsUnset(request.ResultType)) {
 		query["ResultType"] = request.ResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceConfig)) {
@@ -18647,6 +19291,10 @@ func (client *Client) CreateApiGroupForInnerWithOptions(request *CreateApiGroupF
 		query["GroupName"] = request.GroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
@@ -18697,6 +19345,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18821,6 +19473,10 @@ func (client *Client) CreateAppForInnerWithOptions(request *CreateAppForInnerReq
 
 	if !tea.BoolValue(util.IsUnset(request.Extend)) {
 		query["Extend"] = request.Extend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
@@ -18963,6 +19619,10 @@ func (client *Client) CreateRaceWorkForInnerWithOptions(request *CreateRaceWorkF
 		query["LogoUrl"] = request.LogoUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ShortDescription)) {
 		query["ShortDescription"] = request.ShortDescription
 	}
@@ -19023,6 +19683,10 @@ func (client *Client) CreateSecretKeyWithOptions(request *CreateSecretKeyRequest
 		query["SecretValue"] = request.SecretValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19073,6 +19737,10 @@ func (client *Client) CreateTrafficControlWithOptions(request *CreateTrafficCont
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficControlName)) {
@@ -19143,6 +19811,10 @@ func (client *Client) CreateUserWhiteListWithOptions(request *CreateUserWhiteLis
 		query["LimitCount"] = request.LimitCount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -19195,6 +19867,10 @@ func (client *Client) DeleteAllTrafficSpecialControlWithOptions(request *DeleteA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
 		query["TrafficControlId"] = request.TrafficControlId
 	}
@@ -19245,6 +19921,10 @@ func (client *Client) DeleteApiWithOptions(request *DeleteApiRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -19299,6 +19979,10 @@ func (client *Client) DeleteApiForInnerWithOptions(request *DeleteApiForInnerReq
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19343,6 +20027,10 @@ func (client *Client) DeleteApiGroupWithOptions(request *DeleteApiGroupRequest, 
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19385,6 +20073,10 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -19435,6 +20127,10 @@ func (client *Client) DeleteAppForInnerWithOptions(request *DeleteAppForInnerReq
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19481,6 +20177,10 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -19535,6 +20235,10 @@ func (client *Client) DeleteDomainCertificateWithOptions(request *DeleteDomainCe
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19579,6 +20283,10 @@ func (client *Client) DeleteSecretKeyWithOptions(request *DeleteSecretKeyRequest
 		query["SecretKeyId"] = request.SecretKeyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19619,6 +20327,10 @@ func (client *Client) DeleteTrafficControlWithOptions(request *DeleteTrafficCont
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
 		query["TrafficControlId"] = request.TrafficControlId
 	}
@@ -19663,6 +20375,10 @@ func (client *Client) DeleteTrafficSpecialControlWithOptions(request *DeleteTraf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SpecialKey)) {
 		query["SpecialKey"] = request.SpecialKey
 	}
@@ -19717,6 +20433,10 @@ func (client *Client) DeleteUserWhiteListByTypeWithOptions(request *DeleteUserWh
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
 		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -19779,6 +20499,10 @@ func (client *Client) DeployApiWithOptions(request *DeployApiRequest, runtime *u
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -19839,6 +20563,10 @@ func (client *Client) DeployApiForInnerWithOptions(request *DeployApiForInnerReq
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -19889,6 +20617,10 @@ func (client *Client) DescribeApiWithOptions(request *DescribeApiRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20079,6 +20811,10 @@ func (client *Client) DescribeApiDocsForBackendWithOptions(request *DescribeApiD
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -20135,6 +20871,10 @@ func (client *Client) DescribeApiErrorWithOptions(request *DescribeApiErrorReque
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -20181,6 +20921,10 @@ func (client *Client) DescribeApiGroupDetailWithOptions(request *DescribeApiGrou
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20295,6 +21039,10 @@ func (client *Client) DescribeApiLatencyWithOptions(request *DescribeApiLatencyR
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -20347,6 +21095,10 @@ func (client *Client) DescribeApiMarketInstanceWithOptions(request *DescribeApiM
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20397,6 +21149,10 @@ func (client *Client) DescribeApiQpsWithOptions(request *DescribeApiQpsRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -20463,6 +21219,10 @@ func (client *Client) DescribeApiRulesWithOptions(request *DescribeApiRulesReque
 		query["RuleType"] = request.RuleType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -20517,6 +21277,10 @@ func (client *Client) DescribeApiTrafficWithOptions(request *DescribeApiTrafficR
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -20583,6 +21347,10 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
 		query["Visibility"] = request.Visibility
 	}
@@ -20639,6 +21407,10 @@ func (client *Client) DescribeApisByAppWithOptions(request *DescribeApisByAppReq
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20693,6 +21465,10 @@ func (client *Client) DescribeApisByRuleWithOptions(request *DescribeApisByRuleR
 
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
 		query["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20755,6 +21531,10 @@ func (client *Client) DescribeApisForConsoleWithOptions(request *DescribeApisFor
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -20805,6 +21585,10 @@ func (client *Client) DescribeAppWithOptions(request *DescribeAppRequest, runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21003,6 +21787,10 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21057,6 +21845,10 @@ func (client *Client) DescribeAppsByApiWithOptions(request *DescribeAppsByApiReq
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -21119,6 +21911,10 @@ func (client *Client) DescribeAppsForProviderWithOptions(request *DescribeAppsFo
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21159,6 +21955,10 @@ func (client *Client) DescribeAvailableVipsWithOptions(request *DescribeAvailabl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Vip)) {
 		query["Vip"] = request.Vip
 	}
@@ -21263,6 +22063,10 @@ func (client *Client) DescribeBlackListsWithOptions(request *DescribeBlackListsR
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21309,6 +22113,10 @@ func (client *Client) DescribeDeployedApiWithOptions(request *DescribeDeployedAp
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -21375,6 +22183,10 @@ func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedA
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -21427,6 +22239,10 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21473,6 +22289,10 @@ func (client *Client) DescribeDomainResolutionWithOptions(request *DescribeDomai
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21525,6 +22345,10 @@ func (client *Client) DescribeHistoryApiWithOptions(request *DescribeHistoryApiR
 
 	if !tea.BoolValue(util.IsUnset(request.HistoryVersion)) {
 		query["HistoryVersion"] = request.HistoryVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -21589,6 +22413,10 @@ func (client *Client) DescribeHistoryApisWithOptions(request *DescribeHistoryApi
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -21659,6 +22487,10 @@ func (client *Client) DescribeModelsForInnerWithOptions(request *DescribeModelsF
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21707,6 +22539,10 @@ func (client *Client) DescribePurchasedApiWithOptions(request *DescribePurchased
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21749,6 +22585,10 @@ func (client *Client) DescribePurchasedApiGroupDetailWithOptions(request *Descri
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21867,6 +22707,10 @@ func (client *Client) DescribePurchasedApisWithOptions(request *DescribePurchase
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -21919,6 +22763,10 @@ func (client *Client) DescribeRaceWorkForInnerWithOptions(request *DescribeRaceW
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21965,6 +22813,10 @@ func (client *Client) DescribeRaceWorksForInnerWithOptions(request *DescribeRace
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22063,6 +22915,10 @@ func (client *Client) DescribeRulesByApiWithOptions(request *DescribeRulesByApiR
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -22121,6 +22977,10 @@ func (client *Client) DescribeSecretKeysWithOptions(request *DescribeSecretKeysR
 
 	if !tea.BoolValue(util.IsUnset(request.SecretKeyName)) {
 		query["SecretKeyName"] = request.SecretKeyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22267,6 +23127,10 @@ func (client *Client) DescribeTrafficControlsWithOptions(request *DescribeTraffi
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -22327,6 +23191,10 @@ func (client *Client) DescribeUserWhiteListsWithOptions(request *DescribeUserWhi
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -22375,6 +23243,10 @@ func (client *Client) IsIncludedByUserWhitelistWithOptions(request *IsIncludedBy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -22495,6 +23367,10 @@ func (client *Client) ModifyApiWithOptions(request *ModifyApiRequest, runtime *u
 		query["ResultType"] = request.ResultType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceAddress)) {
 		query["ServiceAddress"] = request.ServiceAddress
 	}
@@ -22595,6 +23471,10 @@ func (client *Client) ModifyApiForInnerWithOptions(request *ModifyApiForInnerReq
 		query["ResultType"] = request.ResultType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceConfig)) {
 		query["ServiceConfig"] = request.ServiceConfig
 	}
@@ -22661,6 +23541,10 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
 		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22767,6 +23651,10 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22827,6 +23715,10 @@ func (client *Client) ModifyAppForInnerWithOptions(request *ModifyAppForInnerReq
 		query["Extend"] = request.Extend
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22877,6 +23769,10 @@ func (client *Client) ModifyGroupAuthAppCodeForBackendWithOptions(request *Modif
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22935,6 +23831,10 @@ func (client *Client) ModifySecretKeyWithOptions(request *ModifySecretKeyRequest
 		query["SecretValue"] = request.SecretValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22985,6 +23885,10 @@ func (client *Client) ModifyTrafficControlWithOptions(request *ModifyTrafficCont
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
@@ -23045,6 +23949,10 @@ func (client *Client) ModifyUserWhiteListValueByTypeWithOptions(request *ModifyU
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -23111,6 +24019,10 @@ func (client *Client) ReactivateDomainForBackendWithOptions(request *ReactivateD
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23161,6 +24073,10 @@ func (client *Client) RecoverApiFromHistoricalWithOptions(request *RecoverApiFro
 
 	if !tea.BoolValue(util.IsUnset(request.HistoryVersion)) {
 		query["HistoryVersion"] = request.HistoryVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -23219,6 +24135,10 @@ func (client *Client) RecoveryApiDefineFromHistoricalWithOptions(request *Recove
 		query["HistoryVersion"] = request.HistoryVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -23275,6 +24195,10 @@ func (client *Client) RecoveryApiFromHistoricalWithOptions(request *RecoveryApiF
 		query["HistoryVersion"] = request.HistoryVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -23325,6 +24249,10 @@ func (client *Client) RefreshDomainWithOptions(request *RefreshDomainRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23383,6 +24311,10 @@ func (client *Client) RemoveAccessPermissionByApisWithOptions(request *RemoveAcc
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -23437,6 +24369,10 @@ func (client *Client) RemoveAccessPermissionByAppsWithOptions(request *RemoveAcc
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -23499,6 +24435,10 @@ func (client *Client) RemoveAccessPermissionByAppsForInnerWithOptions(request *R
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
@@ -23549,6 +24489,10 @@ func (client *Client) RemoveAllBlackListWithOptions(request *RemoveAllBlackListR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BlackType)) {
 		query["BlackType"] = request.BlackType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23607,6 +24551,10 @@ func (client *Client) RemoveApiRuleWithOptions(request *RemoveApiRuleRequest, ru
 		query["RuleType"] = request.RuleType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -23663,6 +24611,10 @@ func (client *Client) RemoveAppsFromApiWithOptions(request *RemoveAppsFromApiReq
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -23715,6 +24667,10 @@ func (client *Client) RemoveBlackListWithOptions(request *RemoveBlackListRequest
 		query["BlackType"] = request.BlackType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23757,6 +24713,10 @@ func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
 		query["AppCode"] = request.AppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23811,6 +24771,10 @@ func (client *Client) ResetAppCodeForInnerWithOptions(request *ResetAppCodeForIn
 		query["NewAppCode"] = request.NewAppCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23853,6 +24817,10 @@ func (client *Client) ResetAppKeySecretWithOptions(request *ResetAppKeySecretReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
 		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23911,6 +24879,10 @@ func (client *Client) ResetSecretByAppKeyForInnerWithOptions(request *ResetSecre
 		query["NewAppSecret"] = request.NewAppSecret
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23965,6 +24937,10 @@ func (client *Client) SetAccessPermissionByApisWithOptions(request *SetAccessPer
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -24075,6 +25051,10 @@ func (client *Client) SetAccessPermissionsWithOptions(request *SetAccessPermissi
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -24137,6 +25117,10 @@ func (client *Client) SetAccessPermissionsForInnerWithOptions(request *SetAccess
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
@@ -24203,6 +25187,10 @@ func (client *Client) SetApiRuleWithOptions(request *SetApiRuleRequest, runtime 
 		query["RuleType"] = request.RuleType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -24267,6 +25255,10 @@ func (client *Client) SetDomainWithOptions(request *SetDomainRequest, runtime *u
 		query["PrivateKey"] = request.PrivateKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24325,6 +25317,10 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 
 	if !tea.BoolValue(util.IsUnset(request.PrivateKey)) {
 		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24387,6 +25383,10 @@ func (client *Client) SetDomainForBackendWithOptions(request *SetDomainForBacken
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24441,6 +25441,10 @@ func (client *Client) SetMockIntegrationWithOptions(request *SetMockIntegrationR
 
 	if !tea.BoolValue(util.IsUnset(request.MockResult)) {
 		query["MockResult"] = request.MockResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24555,6 +25559,10 @@ func (client *Client) SwitchApiWithOptions(request *SwitchApiRequest, runtime *u
 		query["HistoryVersion"] = request.HistoryVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -24613,6 +25621,10 @@ func (client *Client) SwitchApiForInnerWithOptions(request *SwitchApiForInnerReq
 
 	if !tea.BoolValue(util.IsUnset(request.HistoryVersion)) {
 		query["HistoryVersion"] = request.HistoryVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -24677,6 +25689,10 @@ func (client *Client) SynCreateAppForInnerWithOptions(request *SynCreateAppForIn
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
@@ -24867,6 +25883,10 @@ func (client *Client) VipMigrationWithOptions(request *VipMigrationRequest, runt
 		query["OriginalVip"] = request.OriginalVip
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24915,6 +25935,10 @@ func (client *Client) VipMigrationByUidWithOptions(request *VipMigrationByUidReq
 		query["OriginalVip"] = request.OriginalVip
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24961,6 +25985,10 @@ func (client *Client) VpcAddAppServerWithOptions(request *VpcAddAppServerRequest
 
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServerIp)) {
@@ -25021,6 +26049,10 @@ func (client *Client) VpcCreateAddressPoolWithOptions(request *VpcCreateAddressP
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Token)) {
@@ -25131,6 +26163,10 @@ func (client *Client) VpcRegisterAppWithOptions(request *VpcRegisterAppRequest, 
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Token)) {
 		query["Token"] = request.Token
 	}
@@ -25177,6 +26213,10 @@ func (client *Client) VpcRemoveAppServerWithOptions(request *VpcRemoveAppServerR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServerIp)) {
