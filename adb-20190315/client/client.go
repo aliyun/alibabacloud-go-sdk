@@ -14616,6 +14616,7 @@ type DescribeTableStatisticsRequest struct {
 	//
 	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query details about all AnalyticDB for MySQL clusters in a specific region, including cluster IDs.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The order in which to sort the retrieved records by field. Specify this value in the JSON format. The value is an ordered array that uses the order of the input array and contains `Field` and `Type`. Example: `[{ "Field":"TableName", "Type":"Asc" }]`.
 	//
 	// *   In the example, `Field` indicates the field that is used to sort the retrieved records. Set the value of Field to `TableName`.
@@ -14649,6 +14650,11 @@ func (s DescribeTableStatisticsRequest) GoString() string {
 
 func (s *DescribeTableStatisticsRequest) SetDBClusterId(v string) *DescribeTableStatisticsRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsRequest) SetKeyword(v string) *DescribeTableStatisticsRequest {
+	s.Keyword = &v
 	return s
 }
 
@@ -14768,9 +14774,11 @@ type DescribeTableStatisticsResponseBodyItemsTableStatisticRecords struct {
 	// >  The parameter is returned only when the engine version of the cluster is 3.1.3.4 or later.
 	ColdDataSize *int64 `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty"`
 	// The amount of data in the table. Unit: byte.
-	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	DataSize    *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	HotDataSize *int64 `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty"`
 	// The amount of data in indexes. Unit: byte.
 	IndexSize *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	OtherSize *int64 `json:"OtherSize,omitempty" xml:"OtherSize,omitempty"`
 	// The number of partitions.
 	PartitionCount *int64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
 	// The amount of data in primary key indexes. Unit: byte.
@@ -14778,9 +14786,11 @@ type DescribeTableStatisticsResponseBodyItemsTableStatisticRecords struct {
 	// The number of rows in the table.
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
 	// The name of the database.
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SchemaName *string  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
 	// The name of the table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TotalSize *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) String() string {
@@ -14801,8 +14811,18 @@ func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetDataS
 	return s
 }
 
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetHotDataSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.HotDataSize = &v
+	return s
+}
+
 func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetIndexSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
 	s.IndexSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetOtherSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.OtherSize = &v
 	return s
 }
 
@@ -14826,8 +14846,18 @@ func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetSchem
 	return s
 }
 
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetSpaceRatio(v float64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.SpaceRatio = &v
+	return s
+}
+
 func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetTableName(v string) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
 	s.TableName = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetTotalSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.TotalSize = &v
 	return s
 }
 
@@ -24874,6 +24904,10 @@ func (client *Client) DescribeTableStatisticsWithOptions(request *DescribeTableS
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
