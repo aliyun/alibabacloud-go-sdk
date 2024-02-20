@@ -2099,6 +2099,549 @@ func (s *AddGatewayResponse) SetBody(v *AddGatewayResponseBody) *AddGatewayRespo
 	return s
 }
 
+type AddGatewayAuthRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The information about the resource to be authorized.
+	AuthResourceList []*AddGatewayAuthRequestAuthResourceList `json:"AuthResourceList,omitempty" xml:"AuthResourceList,omitempty" type:"Repeated"`
+	// The application ID registered with the OIDC authentication service.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The application secret registered with the OIDC authentication service.
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The domain name of the cookie. After the authentication is passed, the cookie is sent to the specified domain name to maintain the logon status. For example, if you set `Cookie-domain` to a.example.com, the cookie is sent to the domain name `a.example.com`. If you set `Cookie-domain` to .example.com, the cookie is sent to all subdomains of `example.com`.
+	CookieDomain *string `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	// The information about the custom authentication service.
+	ExternalAuthZJSON *AddGatewayAuthRequestExternalAuthZJSON `json:"ExternalAuthZJSON,omitempty" xml:"ExternalAuthZJSON,omitempty" type:"Struct"`
+	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// Specifies whether to enable the whitelist feature.
+	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// The iss value of JWT claims, which indicates the issuer. You must make sure that the value of this parameter is the same as the iss value in the payload of JWT claims.
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The JWT public key. The JSON format is supported.
+	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	// The URL that is used to log on to the IDaaS instance. For more information, see [OAuth2.0 Application User Manual](https://help.aliyun.com/document_detail/193871.html).
+	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The redirect URL.
+	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	// The OIDC scope.
+	ScopesList []*string `json:"ScopesList,omitempty" xml:"ScopesList,omitempty" type:"Repeated"`
+	// The status.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sub value of JWT claims, which indicates the subject. You must make sure that the value of this parameter is the same as the sub value in the payload of JWT claims. If you do not set this parameter or leave it empty, the default value, which is the value of the Issuer parameter, is used.
+	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	// The name of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`.
+	TokenName *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	// The name prefix of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`
+	TokenNamePrefix *string `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
+	// Specifies whether to enable pass-through.
+	TokenPass *bool `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	// The position of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`.
+	TokenPosition *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	// The authentication type. JSON Web Token (JWT) authentication, OpenID Connect (OIDC) authentication, Identity as a Service (IDaaS) authentication, or custom authentication are supported.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AddGatewayAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthRequest) SetAcceptLanguage(v string) *AddGatewayAuthRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetAuthResourceList(v []*AddGatewayAuthRequestAuthResourceList) *AddGatewayAuthRequest {
+	s.AuthResourceList = v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetClientId(v string) *AddGatewayAuthRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetClientSecret(v string) *AddGatewayAuthRequest {
+	s.ClientSecret = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetCookieDomain(v string) *AddGatewayAuthRequest {
+	s.CookieDomain = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetExternalAuthZJSON(v *AddGatewayAuthRequestExternalAuthZJSON) *AddGatewayAuthRequest {
+	s.ExternalAuthZJSON = v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetGatewayUniqueId(v string) *AddGatewayAuthRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetIsWhite(v bool) *AddGatewayAuthRequest {
+	s.IsWhite = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetIssuer(v string) *AddGatewayAuthRequest {
+	s.Issuer = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetJwks(v string) *AddGatewayAuthRequest {
+	s.Jwks = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetLoginUrl(v string) *AddGatewayAuthRequest {
+	s.LoginUrl = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetName(v string) *AddGatewayAuthRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetRedirectUrl(v string) *AddGatewayAuthRequest {
+	s.RedirectUrl = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetScopesList(v []*string) *AddGatewayAuthRequest {
+	s.ScopesList = v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetStatus(v bool) *AddGatewayAuthRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetSub(v string) *AddGatewayAuthRequest {
+	s.Sub = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetTokenName(v string) *AddGatewayAuthRequest {
+	s.TokenName = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetTokenNamePrefix(v string) *AddGatewayAuthRequest {
+	s.TokenNamePrefix = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetTokenPass(v bool) *AddGatewayAuthRequest {
+	s.TokenPass = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetTokenPosition(v string) *AddGatewayAuthRequest {
+	s.TokenPosition = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetType(v string) *AddGatewayAuthRequest {
+	s.Type = &v
+	return s
+}
+
+type AddGatewayAuthRequestAuthResourceList struct {
+	AuthResourceHeaderList []*AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList `json:"AuthResourceHeaderList,omitempty" xml:"AuthResourceHeaderList,omitempty" type:"Repeated"`
+	// The domain ID.
+	DomainId   *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	IgnoreCase *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	MatchType  *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The request path.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s AddGatewayAuthRequestAuthResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthRequestAuthResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthRequestAuthResourceList) SetAuthResourceHeaderList(v []*AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList) *AddGatewayAuthRequestAuthResourceList {
+	s.AuthResourceHeaderList = v
+	return s
+}
+
+func (s *AddGatewayAuthRequestAuthResourceList) SetDomainId(v int64) *AddGatewayAuthRequestAuthResourceList {
+	s.DomainId = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestAuthResourceList) SetIgnoreCase(v bool) *AddGatewayAuthRequestAuthResourceList {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestAuthResourceList) SetMatchType(v string) *AddGatewayAuthRequestAuthResourceList {
+	s.MatchType = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestAuthResourceList) SetPath(v string) *AddGatewayAuthRequestAuthResourceList {
+	s.Path = &v
+	return s
+}
+
+type AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList struct {
+	HeaderKey    *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
+	HeaderMethod *string `json:"HeaderMethod,omitempty" xml:"HeaderMethod,omitempty"`
+	HeaderValue  *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
+}
+
+func (s AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList) SetHeaderKey(v string) *AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList {
+	s.HeaderKey = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList) SetHeaderMethod(v string) *AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList {
+	s.HeaderMethod = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList) SetHeaderValue(v string) *AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList {
+	s.HeaderValue = &v
+	return s
+}
+
+type AddGatewayAuthRequestExternalAuthZJSON struct {
+	// The header that can be carried in an authentication request.
+	AllowRequestHeaders []*string `json:"AllowRequestHeaders,omitempty" xml:"AllowRequestHeaders,omitempty" type:"Repeated"`
+	// The header that can be retained in an authentication response.
+	AllowUpstreamHeaders []*string `json:"AllowUpstreamHeaders,omitempty" xml:"AllowUpstreamHeaders,omitempty" type:"Repeated"`
+	BodyMaxBytes         *int32    `json:"BodyMaxBytes,omitempty" xml:"BodyMaxBytes,omitempty"`
+	// Specifies whether the gateway allows a client request when the authentication server is unavailable. If a connection to the authentication server fails to be established or a 5xx error code is returned, the authentication server is unavailable.
+	IsRestrict *bool `json:"IsRestrict,omitempty" xml:"IsRestrict,omitempty"`
+	// The path of the authentication API provided by the authentication service. The path supports the prefix match method.
+	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
+	// The ID of the service.
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The timeout period. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The header that stores a token in an authentication request. In most cases, a token is stored in the Authorization or Cookie header.
+	TokenKey        *string `json:"TokenKey,omitempty" xml:"TokenKey,omitempty"`
+	WithRequestBody *bool   `json:"WithRequestBody,omitempty" xml:"WithRequestBody,omitempty"`
+}
+
+func (s AddGatewayAuthRequestExternalAuthZJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthRequestExternalAuthZJSON) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetAllowRequestHeaders(v []*string) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.AllowRequestHeaders = v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetAllowUpstreamHeaders(v []*string) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.AllowUpstreamHeaders = v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetBodyMaxBytes(v int32) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.BodyMaxBytes = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetIsRestrict(v bool) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.IsRestrict = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetPrefixPath(v string) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.PrefixPath = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetServiceId(v int64) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetTimeout(v int32) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.Timeout = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetTokenKey(v string) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.TokenKey = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetWithRequestBody(v bool) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.WithRequestBody = &v
+	return s
+}
+
+type AddGatewayAuthShrinkRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The information about the resource to be authorized.
+	AuthResourceListShrink *string `json:"AuthResourceList,omitempty" xml:"AuthResourceList,omitempty"`
+	// The application ID registered with the OIDC authentication service.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The application secret registered with the OIDC authentication service.
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The domain name of the cookie. After the authentication is passed, the cookie is sent to the specified domain name to maintain the logon status. For example, if you set `Cookie-domain` to a.example.com, the cookie is sent to the domain name `a.example.com`. If you set `Cookie-domain` to .example.com, the cookie is sent to all subdomains of `example.com`.
+	CookieDomain *string `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	// The information about the custom authentication service.
+	ExternalAuthZJSONShrink *string `json:"ExternalAuthZJSON,omitempty" xml:"ExternalAuthZJSON,omitempty"`
+	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// Specifies whether to enable the whitelist feature.
+	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// The iss value of JWT claims, which indicates the issuer. You must make sure that the value of this parameter is the same as the iss value in the payload of JWT claims.
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The JWT public key. The JSON format is supported.
+	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	// The URL that is used to log on to the IDaaS instance. For more information, see [OAuth2.0 Application User Manual](https://help.aliyun.com/document_detail/193871.html).
+	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The redirect URL.
+	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	// The OIDC scope.
+	ScopesListShrink *string `json:"ScopesList,omitempty" xml:"ScopesList,omitempty"`
+	// The status.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sub value of JWT claims, which indicates the subject. You must make sure that the value of this parameter is the same as the sub value in the payload of JWT claims. If you do not set this parameter or leave it empty, the default value, which is the value of the Issuer parameter, is used.
+	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	// The name of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`.
+	TokenName *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	// The name prefix of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`
+	TokenNamePrefix *string `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
+	// Specifies whether to enable pass-through.
+	TokenPass *bool `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	// The position of the parameter that is required to verify a token. By default, a token is prefixed with Bearer and stored in the authorization header. Example: `Authorization: Bearer token`.
+	TokenPosition *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	// The authentication type. JSON Web Token (JWT) authentication, OpenID Connect (OIDC) authentication, Identity as a Service (IDaaS) authentication, or custom authentication are supported.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AddGatewayAuthShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetAcceptLanguage(v string) *AddGatewayAuthShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetAuthResourceListShrink(v string) *AddGatewayAuthShrinkRequest {
+	s.AuthResourceListShrink = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetClientId(v string) *AddGatewayAuthShrinkRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetClientSecret(v string) *AddGatewayAuthShrinkRequest {
+	s.ClientSecret = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetCookieDomain(v string) *AddGatewayAuthShrinkRequest {
+	s.CookieDomain = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetExternalAuthZJSONShrink(v string) *AddGatewayAuthShrinkRequest {
+	s.ExternalAuthZJSONShrink = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetGatewayUniqueId(v string) *AddGatewayAuthShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetIsWhite(v bool) *AddGatewayAuthShrinkRequest {
+	s.IsWhite = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetIssuer(v string) *AddGatewayAuthShrinkRequest {
+	s.Issuer = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetJwks(v string) *AddGatewayAuthShrinkRequest {
+	s.Jwks = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetLoginUrl(v string) *AddGatewayAuthShrinkRequest {
+	s.LoginUrl = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetName(v string) *AddGatewayAuthShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetRedirectUrl(v string) *AddGatewayAuthShrinkRequest {
+	s.RedirectUrl = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetScopesListShrink(v string) *AddGatewayAuthShrinkRequest {
+	s.ScopesListShrink = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetStatus(v bool) *AddGatewayAuthShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetSub(v string) *AddGatewayAuthShrinkRequest {
+	s.Sub = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetTokenName(v string) *AddGatewayAuthShrinkRequest {
+	s.TokenName = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetTokenNamePrefix(v string) *AddGatewayAuthShrinkRequest {
+	s.TokenNamePrefix = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetTokenPass(v bool) *AddGatewayAuthShrinkRequest {
+	s.TokenPass = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetTokenPosition(v string) *AddGatewayAuthShrinkRequest {
+	s.TokenPosition = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetType(v string) *AddGatewayAuthShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type AddGatewayAuthResponseBody struct {
+	// The status code returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddGatewayAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthResponseBody) SetCode(v int32) *AddGatewayAuthResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddGatewayAuthResponseBody) SetData(v int64) *AddGatewayAuthResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddGatewayAuthResponseBody) SetHttpStatusCode(v int32) *AddGatewayAuthResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddGatewayAuthResponseBody) SetMessage(v string) *AddGatewayAuthResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddGatewayAuthResponseBody) SetRequestId(v string) *AddGatewayAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddGatewayAuthResponseBody) SetSuccess(v bool) *AddGatewayAuthResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddGatewayAuthResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddGatewayAuthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddGatewayAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthResponse) SetHeaders(v map[string]*string) *AddGatewayAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddGatewayAuthResponse) SetStatusCode(v int32) *AddGatewayAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddGatewayAuthResponse) SetBody(v *AddGatewayAuthResponseBody) *AddGatewayAuthResponse {
+	s.Body = v
+	return s
+}
+
 type AddGatewayAuthConsumerRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -15480,6 +16023,496 @@ func (s *GetGatewayAuthConsumerDetailResponse) SetStatusCode(v int32) *GetGatewa
 }
 
 func (s *GetGatewayAuthConsumerDetailResponse) SetBody(v *GetGatewayAuthConsumerDetailResponseBody) *GetGatewayAuthConsumerDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetGatewayAuthDetailRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetGatewayAuthDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthDetailRequest) SetAcceptLanguage(v string) *GetGatewayAuthDetailRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailRequest) SetGatewayId(v int64) *GetGatewayAuthDetailRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailRequest) SetGatewayUniqueId(v string) *GetGatewayAuthDetailRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailRequest) SetId(v int64) *GetGatewayAuthDetailRequest {
+	s.Id = &v
+	return s
+}
+
+type GetGatewayAuthDetailResponseBody struct {
+	Code           *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetGatewayAuthDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetGatewayAuthDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthDetailResponseBody) SetCode(v int32) *GetGatewayAuthDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBody) SetData(v *GetGatewayAuthDetailResponseBodyData) *GetGatewayAuthDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBody) SetHttpStatusCode(v int32) *GetGatewayAuthDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBody) SetMessage(v string) *GetGatewayAuthDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBody) SetRequestId(v string) *GetGatewayAuthDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBody) SetSuccess(v bool) *GetGatewayAuthDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetGatewayAuthDetailResponseBodyData struct {
+	ClientId        *string                                             `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientSecret    *string                                             `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	CookieDomain    *string                                             `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	ExternalAuthZ   *GetGatewayAuthDetailResponseBodyDataExternalAuthZ  `json:"ExternalAuthZ,omitempty" xml:"ExternalAuthZ,omitempty" type:"Struct"`
+	GatewayId       *int64                                              `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                             `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate       *string                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string                                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsWhite         *bool                                               `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	Issuer          *string                                             `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Jwks            *string                                             `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	LoginUrl        *string                                             `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	Name            *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	RedirectUrl     *string                                             `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	ResourceList    []*GetGatewayAuthDetailResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	ScopesList      []*string                                           `json:"ScopesList,omitempty" xml:"ScopesList,omitempty" type:"Repeated"`
+	Status          *bool                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Sub             *string                                             `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	TokenName       *string                                             `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	TokenNamePrefix *string                                             `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
+	TokenPass       *bool                                               `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	TokenPosition   *string                                             `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	Type            *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetGatewayAuthDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetClientId(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.ClientId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetClientSecret(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.ClientSecret = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetCookieDomain(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.CookieDomain = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetExternalAuthZ(v *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) *GetGatewayAuthDetailResponseBodyData {
+	s.ExternalAuthZ = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetGatewayId(v int64) *GetGatewayAuthDetailResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetGatewayUniqueId(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetGmtCreate(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetGmtModified(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetId(v int64) *GetGatewayAuthDetailResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetIsWhite(v bool) *GetGatewayAuthDetailResponseBodyData {
+	s.IsWhite = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetIssuer(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetJwks(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.Jwks = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetLoginUrl(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.LoginUrl = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetName(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetRedirectUrl(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.RedirectUrl = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetResourceList(v []*GetGatewayAuthDetailResponseBodyDataResourceList) *GetGatewayAuthDetailResponseBodyData {
+	s.ResourceList = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetScopesList(v []*string) *GetGatewayAuthDetailResponseBodyData {
+	s.ScopesList = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetStatus(v bool) *GetGatewayAuthDetailResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetSub(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.Sub = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetTokenName(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.TokenName = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetTokenNamePrefix(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.TokenNamePrefix = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetTokenPass(v bool) *GetGatewayAuthDetailResponseBodyData {
+	s.TokenPass = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetTokenPosition(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.TokenPosition = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetType(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type GetGatewayAuthDetailResponseBodyDataExternalAuthZ struct {
+	AllowRequestHeaders  []*string                                                 `json:"AllowRequestHeaders,omitempty" xml:"AllowRequestHeaders,omitempty" type:"Repeated"`
+	AllowUpstreamHeaders []*string                                                 `json:"AllowUpstreamHeaders,omitempty" xml:"AllowUpstreamHeaders,omitempty" type:"Repeated"`
+	BodyMaxBytes         *int32                                                    `json:"BodyMaxBytes,omitempty" xml:"BodyMaxBytes,omitempty"`
+	IsRestrict           *bool                                                     `json:"IsRestrict,omitempty" xml:"IsRestrict,omitempty"`
+	PrefixPath           *string                                                   `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
+	Service              *GetGatewayAuthDetailResponseBodyDataExternalAuthZService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
+	ServiceId            *int64                                                    `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Timeout              *int32                                                    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TokenKey             *string                                                   `json:"TokenKey,omitempty" xml:"TokenKey,omitempty"`
+	WithRequestBody      *bool                                                     `json:"WithRequestBody,omitempty" xml:"WithRequestBody,omitempty"`
+}
+
+func (s GetGatewayAuthDetailResponseBodyDataExternalAuthZ) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthDetailResponseBodyDataExternalAuthZ) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetAllowRequestHeaders(v []*string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.AllowRequestHeaders = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetAllowUpstreamHeaders(v []*string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.AllowUpstreamHeaders = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetBodyMaxBytes(v int32) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.BodyMaxBytes = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetIsRestrict(v bool) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.IsRestrict = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetPrefixPath(v string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.PrefixPath = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetService(v *GetGatewayAuthDetailResponseBodyDataExternalAuthZService) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.Service = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetServiceId(v int64) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetTimeout(v int32) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetTokenKey(v string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.TokenKey = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetWithRequestBody(v bool) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.WithRequestBody = &v
+	return s
+}
+
+type GetGatewayAuthDetailResponseBodyDataExternalAuthZService struct {
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s GetGatewayAuthDetailResponseBodyDataExternalAuthZService) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthDetailResponseBodyDataExternalAuthZService) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZService) SetGroupName(v string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZService {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZService) SetName(v string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZService {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZService) SetNamespace(v string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZService {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZService) SetSourceType(v string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZService {
+	s.SourceType = &v
+	return s
+}
+
+type GetGatewayAuthDetailResponseBodyDataResourceList struct {
+	AuthId                 *int64                                                                    `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	AuthResourceHeaderList []*GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList `json:"AuthResourceHeaderList,omitempty" xml:"AuthResourceHeaderList,omitempty" type:"Repeated"`
+	DomainId               *int64                                                                    `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainName             *string                                                                   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GatewayId              *int64                                                                    `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId        *string                                                                   `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate              *string                                                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *string                                                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                     *int64                                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	IgnoreCase             *bool                                                                     `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	IsWhite                *bool                                                                     `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	MatchType              *string                                                                   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	Path                   *string                                                                   `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s GetGatewayAuthDetailResponseBodyDataResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthDetailResponseBodyDataResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetAuthId(v int64) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.AuthId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetAuthResourceHeaderList(v []*GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.AuthResourceHeaderList = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetDomainId(v int64) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.DomainId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetDomainName(v string) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.DomainName = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetGatewayId(v int64) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetGatewayUniqueId(v string) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetGmtCreate(v string) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetGmtModified(v string) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetId(v int64) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetIgnoreCase(v bool) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetIsWhite(v bool) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.IsWhite = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetMatchType(v string) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetPath(v string) *GetGatewayAuthDetailResponseBodyDataResourceList {
+	s.Path = &v
+	return s
+}
+
+type GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList struct {
+	HeaderKey    *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
+	HeaderMethod *string `json:"HeaderMethod,omitempty" xml:"HeaderMethod,omitempty"`
+	HeaderValue  *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
+}
+
+func (s GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList) SetHeaderKey(v string) *GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList {
+	s.HeaderKey = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList) SetHeaderMethod(v string) *GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList {
+	s.HeaderMethod = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList) SetHeaderValue(v string) *GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList {
+	s.HeaderValue = &v
+	return s
+}
+
+type GetGatewayAuthDetailResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGatewayAuthDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGatewayAuthDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthDetailResponse) SetHeaders(v map[string]*string) *GetGatewayAuthDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponse) SetStatusCode(v int32) *GetGatewayAuthDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponse) SetBody(v *GetGatewayAuthDetailResponseBody) *GetGatewayAuthDetailResponse {
 	s.Body = v
 	return s
 }
@@ -50090,6 +51123,144 @@ func (client *Client) AddGateway(request *AddGatewayRequest) (_result *AddGatewa
 	return _result, _err
 }
 
+func (client *Client) AddGatewayAuthWithOptions(tmpReq *AddGatewayAuthRequest, runtime *util.RuntimeOptions) (_result *AddGatewayAuthResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddGatewayAuthShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AuthResourceList)) {
+		request.AuthResourceListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuthResourceList, tea.String("AuthResourceList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalAuthZJSON)) {
+		request.ExternalAuthZJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalAuthZJSON, tea.String("ExternalAuthZJSON"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScopesList)) {
+		request.ScopesListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScopesList, tea.String("ScopesList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthResourceListShrink)) {
+		query["AuthResourceList"] = request.AuthResourceListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientSecret)) {
+		query["ClientSecret"] = request.ClientSecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CookieDomain)) {
+		query["CookieDomain"] = request.CookieDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalAuthZJSONShrink)) {
+		query["ExternalAuthZJSON"] = request.ExternalAuthZJSONShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsWhite)) {
+		query["IsWhite"] = request.IsWhite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Issuer)) {
+		query["Issuer"] = request.Issuer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Jwks)) {
+		query["Jwks"] = request.Jwks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginUrl)) {
+		query["LoginUrl"] = request.LoginUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectUrl)) {
+		query["RedirectUrl"] = request.RedirectUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopesListShrink)) {
+		query["ScopesList"] = request.ScopesListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sub)) {
+		query["Sub"] = request.Sub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenName)) {
+		query["TokenName"] = request.TokenName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenNamePrefix)) {
+		query["TokenNamePrefix"] = request.TokenNamePrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenPass)) {
+		query["TokenPass"] = request.TokenPass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenPosition)) {
+		query["TokenPosition"] = request.TokenPosition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddGatewayAuth"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddGatewayAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddGatewayAuth(request *AddGatewayAuthRequest) (_result *AddGatewayAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddGatewayAuthResponse{}
+	_body, _err := client.AddGatewayAuthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddGatewayAuthConsumerWithOptions(request *AddGatewayAuthConsumerRequest, runtime *util.RuntimeOptions) (_result *AddGatewayAuthConsumerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54259,6 +55430,62 @@ func (client *Client) GetGatewayAuthConsumerDetail(request *GetGatewayAuthConsum
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGatewayAuthConsumerDetailResponse{}
 	_body, _err := client.GetGatewayAuthConsumerDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGatewayAuthDetailWithOptions(request *GetGatewayAuthDetailRequest, runtime *util.RuntimeOptions) (_result *GetGatewayAuthDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGatewayAuthDetail"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGatewayAuthDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGatewayAuthDetail(request *GetGatewayAuthDetailRequest) (_result *GetGatewayAuthDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGatewayAuthDetailResponse{}
+	_body, _err := client.GetGatewayAuthDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
