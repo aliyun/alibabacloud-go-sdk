@@ -92,9 +92,9 @@ func (s *AssessCompositionResponseBodyData) SetScore(v float32) *AssessCompositi
 }
 
 type AssessCompositionResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssessCompositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssessCompositionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssessCompositionResponse) String() string {
@@ -195,9 +195,9 @@ func (s *AssessExposureResponseBodyData) SetExposure(v float32) *AssessExposureR
 }
 
 type AssessExposureResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssessExposureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssessExposureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssessExposureResponse) String() string {
@@ -298,9 +298,9 @@ func (s *AssessSharpnessResponseBodyData) SetSharpness(v float32) *AssessSharpne
 }
 
 type AssessSharpnessResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssessSharpnessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssessSharpnessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssessSharpnessResponse) String() string {
@@ -466,9 +466,9 @@ func (s *ChangeImageSizeResponseBodyDataRetainLocation) SetY(v int32) *ChangeIma
 }
 
 type ChangeImageSizeResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeImageSizeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeImageSizeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeImageSizeResponse) String() string {
@@ -569,9 +569,9 @@ func (s *ColorizeImageResponseBodyData) SetImageURL(v string) *ColorizeImageResp
 }
 
 type ColorizeImageResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ColorizeImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ColorizeImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ColorizeImageResponse) String() string {
@@ -696,9 +696,9 @@ func (s *EnhanceImageColorResponseBodyData) SetImageURL(v string) *EnhanceImageC
 }
 
 type EnhanceImageColorResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnhanceImageColorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnhanceImageColorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnhanceImageColorResponse) String() string {
@@ -811,9 +811,9 @@ func (s *ErasePersonResponseBodyData) SetImageUrl(v string) *ErasePersonResponse
 }
 
 type ErasePersonResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ErasePersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ErasePersonResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ErasePersonResponse) String() string {
@@ -932,9 +932,9 @@ func (s *ExtendImageStyleResponseBodyData) SetUrl(v string) *ExtendImageStyleRes
 }
 
 type ExtendImageStyleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExtendImageStyleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExtendImageStyleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExtendImageStyleResponse) String() string {
@@ -1065,9 +1065,9 @@ func (s *GenerateCartoonizedImageResponseBodyData) SetResultUrl(v string) *Gener
 }
 
 type GenerateCartoonizedImageResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateCartoonizedImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateCartoonizedImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateCartoonizedImageResponse) String() string {
@@ -1180,9 +1180,9 @@ func (s *GenerateDynamicImageResponseBodyData) SetUrl(v string) *GenerateDynamic
 }
 
 type GenerateDynamicImageResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateDynamicImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateDynamicImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateDynamicImageResponse) String() string {
@@ -1284,9 +1284,9 @@ func (s *GenerateImageWithTextResponseBodyData) SetImageUrls(v []*string) *Gener
 }
 
 type GenerateImageWithTextResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateImageWithTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateImageWithTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateImageWithTextResponse) String() string {
@@ -1453,9 +1453,9 @@ func (s *GenerateImageWithTextAndImageResponseBodyData) SetImageUrls(v []*string
 }
 
 type GenerateImageWithTextAndImageResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateImageWithTextAndImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateImageWithTextAndImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateImageWithTextAndImageResponse) String() string {
@@ -1610,9 +1610,9 @@ func (s *GenerateSuperResolutionImageResponseBodyData) SetResultUrl(v string) *G
 }
 
 type GenerateSuperResolutionImageResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateSuperResolutionImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateSuperResolutionImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateSuperResolutionImageResponse) String() string {
@@ -1720,9 +1720,9 @@ func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResu
 }
 
 type GetAsyncJobResultResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -1889,9 +1889,9 @@ func (s *ImageBlindCharacterWatermarkResponseBodyData) SetWatermarkImageURL(v st
 }
 
 type ImageBlindCharacterWatermarkResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImageBlindCharacterWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageBlindCharacterWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageBlindCharacterWatermarkResponse) String() string {
@@ -2058,9 +2058,9 @@ func (s *ImageBlindPicWatermarkResponseBodyData) SetWatermarkImageURL(v string) 
 }
 
 type ImageBlindPicWatermarkResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImageBlindPicWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageBlindPicWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageBlindPicWatermarkResponse) String() string {
@@ -2173,9 +2173,9 @@ func (s *ImitatePhotoStyleResponseBodyData) SetImageURL(v string) *ImitatePhotoS
 }
 
 type ImitatePhotoStyleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImitatePhotoStyleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImitatePhotoStyleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImitatePhotoStyleResponse) String() string {
@@ -2329,9 +2329,9 @@ func (s *IntelligentCompositionResponseBodyDataElements) SetScore(v float32) *In
 }
 
 type IntelligentCompositionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IntelligentCompositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IntelligentCompositionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s IntelligentCompositionResponse) String() string {
@@ -2480,9 +2480,9 @@ func (s *MakeSuperResolutionImageResponseBodyData) SetUrl(v string) *MakeSuperRe
 }
 
 type MakeSuperResolutionImageResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MakeSuperResolutionImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MakeSuperResolutionImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MakeSuperResolutionImageResponse) String() string {
@@ -2686,9 +2686,9 @@ func (s *RecolorHDImageResponseBodyData) SetImageList(v []*string) *RecolorHDIma
 }
 
 type RecolorHDImageResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecolorHDImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecolorHDImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecolorHDImageResponse) String() string {
@@ -2874,9 +2874,9 @@ func (s *RecolorImageResponseBodyData) SetImageList(v []*string) *RecolorImageRe
 }
 
 type RecolorImageResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecolorImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecolorImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecolorImageResponse) String() string {
@@ -3025,9 +3025,9 @@ func (s *RemoveImageSubtitlesResponseBodyData) SetImageURL(v string) *RemoveImag
 }
 
 type RemoveImageSubtitlesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveImageSubtitlesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveImageSubtitlesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveImageSubtitlesResponse) String() string {
@@ -3128,9 +3128,9 @@ func (s *RemoveImageWatermarkResponseBodyData) SetImageURL(v string) *RemoveImag
 }
 
 type RemoveImageWatermarkResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveImageWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveImageWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveImageWatermarkResponse) String() string {
