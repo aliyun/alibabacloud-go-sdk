@@ -13,12 +13,14 @@ import (
 )
 
 type CancelTaskRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CancelTaskRequest) String() string {
@@ -60,6 +62,7 @@ func (s *CancelTaskRequest) SetTaskId(v string) *CancelTaskRequest {
 }
 
 type CancelTaskResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -77,9 +80,9 @@ func (s *CancelTaskResponseBody) SetRequestId(v string) *CancelTaskResponseBody 
 }
 
 type CancelTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelTaskResponse) String() string {
@@ -106,13 +109,19 @@ func (s *CancelTaskResponse) SetBody(v *CancelTaskResponseBody) *CancelTaskRespo
 }
 
 type CopyImageRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationRegionId  *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	ImageId              *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName            *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The image description. The description must be 2 to 256 characters in length but cannot start with http:// or https://.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination region to which you want to copy the image.
+	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	// The ID of the image that you want to copy.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter but cannot start with http:// or https://.
+	ImageName    *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The source region from which you want to copy the image.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -177,7 +186,9 @@ func (s *CopyImageRequest) SetResourceOwnerId(v int64) *CopyImageRequest {
 }
 
 type CopyImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the image that is copied to the destination region.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -200,9 +211,9 @@ func (s *CopyImageResponseBody) SetRequestId(v string) *CopyImageResponseBody {
 }
 
 type CopyImageResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CopyImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CopyImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CopyImageResponse) String() string {
@@ -229,12 +240,17 @@ func (s *CopyImageResponse) SetBody(v *CopyImageResponseBody) *CopyImageResponse
 }
 
 type CreateImageRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageName            *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The image description. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image name. The name must be 2 to 128 characters in length. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The instance ID.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -294,7 +310,9 @@ func (s *CreateImageRequest) SetResourceOwnerId(v int64) *CreateImageRequest {
 }
 
 type CreateImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The custom image ID.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -317,9 +335,9 @@ func (s *CreateImageResponseBody) SetRequestId(v string) *CreateImageResponseBod
 }
 
 type CreateImageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateImageResponse) String() string {
@@ -346,13 +364,16 @@ func (s *CreateImageResponse) SetBody(v *CreateImageResponseBody) *CreateImageRe
 }
 
 type DeleteImagesRequest struct {
-	Force                *bool     `json:"Force,omitempty" xml:"Force,omitempty"`
-	ImageId              []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to forcefully delete the image. Default value: false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The image IDs. You can specify up to 100 images.
+	ImageId      []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteImagesRequest) String() string {
@@ -399,8 +420,10 @@ func (s *DeleteImagesRequest) SetResourceOwnerId(v int64) *DeleteImagesRequest {
 }
 
 type DeleteImagesResponseBody struct {
+	// Details about images that are deleted.
 	ImageResponses *DeleteImagesResponseBodyImageResponses `json:"ImageResponses,omitempty" xml:"ImageResponses,omitempty" type:"Struct"`
-	RequestId      *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteImagesResponseBody) String() string {
@@ -439,8 +462,11 @@ func (s *DeleteImagesResponseBodyImageResponses) SetImageResponse(v []*DeleteIma
 }
 
 type DeleteImagesResponseBodyImageResponsesImageResponse struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned when the image is deleted.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the image that is requested for deletion.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The message that is returned when the image is deleted.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -468,9 +494,9 @@ func (s *DeleteImagesResponseBodyImageResponsesImageResponse) SetMessage(v strin
 }
 
 type DeleteImagesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteImagesResponse) String() string {
@@ -497,13 +523,19 @@ func (s *DeleteImagesResponse) SetBody(v *DeleteImagesResponseBody) *DeleteImage
 }
 
 type DeleteInstancesRequest struct {
-	Force                *bool     `json:"Force,omitempty" xml:"Force,omitempty"`
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to forcefully release the instance if it is in the Running status. Valid values:
+	//
+	// *   true. If you set the Force parameter to true, temporary data in the memory and storage of the instance is erased and cannot be restored after you call the operation, which is similar to the effect of a power-off action.
+	// *   false (default)
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The instance IDs. Valid values of N: 1 to 100.
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteInstancesRequest) String() string {
@@ -550,6 +582,7 @@ func (s *DeleteInstancesRequest) SetResourceOwnerId(v int64) *DeleteInstancesReq
 }
 
 type DeleteInstancesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -567,9 +600,9 @@ func (s *DeleteInstancesResponseBody) SetRequestId(v string) *DeleteInstancesRes
 }
 
 type DeleteInstancesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstancesResponse) String() string {
@@ -596,12 +629,14 @@ func (s *DeleteInstancesResponse) SetBody(v *DeleteInstancesResponseBody) *Delet
 }
 
 type DeleteKeyPairsRequest struct {
-	KeyPairName          []*string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The name of the key pair that the cloud phone uses. The value can be a JSON array that consists of up to 100 SSH key pair names. Separate multiple key pair names with commas (,).
+	KeyPairName  []*string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the key pair that you want to delete.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteKeyPairsRequest) String() string {
@@ -643,6 +678,7 @@ func (s *DeleteKeyPairsRequest) SetResourceOwnerId(v int64) *DeleteKeyPairsReque
 }
 
 type DeleteKeyPairsResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -660,9 +696,9 @@ func (s *DeleteKeyPairsResponseBody) SetRequestId(v string) *DeleteKeyPairsRespo
 }
 
 type DeleteKeyPairsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteKeyPairsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteKeyPairsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteKeyPairsResponse) String() string {
@@ -689,12 +725,19 @@ func (s *DeleteKeyPairsResponse) SetBody(v *DeleteKeyPairsResponseBody) *DeleteK
 }
 
 type FetchFileRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OssBucket            *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssObject            *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Path                 *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The ID of the instance on which you want to run the command. Valid values of N: 1 to 10.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The OSS bucket to which the file that you want to upload.
+	//
+	// >  Before you import an APK file to the OSS bucket for the first time, add a Resource Access Management (RAM) policy. Otherwise, NoSetRoletoECSServiceAcount appears.
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The name that you want to save to OSS.
+	OssObject    *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The path in which you want to store the file in the cloud phone.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -754,8 +797,10 @@ func (s *FetchFileRequest) SetResourceOwnerId(v int64) *FetchFileRequest {
 }
 
 type FetchFileResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s FetchFileResponseBody) String() string {
@@ -777,9 +822,9 @@ func (s *FetchFileResponseBody) SetTaskId(v string) *FetchFileResponseBody {
 }
 
 type FetchFileResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FetchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FetchFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FetchFileResponse) String() string {
@@ -806,15 +851,28 @@ func (s *FetchFileResponse) SetBody(v *FetchFileResponseBody) *FetchFileResponse
 }
 
 type ImportImageRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	ImageName            *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	OssBucket            *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssObject            *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Platform             *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The image description. The description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image format. Valid values:
+	//
+	// *   RAW
+	// *   QCOW2
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The image name. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The OSS bucket to which you want to import the image.
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The name (key) of the image file that you want to use as an OSS object.
+	OssObject    *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The OS distribution. Valid values:
+	//
+	// *   Android 9.0
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the region where you want to import the image to the ECP instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -889,7 +947,9 @@ func (s *ImportImageRequest) SetResourceOwnerId(v int64) *ImportImageRequest {
 }
 
 type ImportImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the image that is imported to the instance.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -912,9 +972,9 @@ func (s *ImportImageResponseBody) SetRequestId(v string) *ImportImageResponseBod
 }
 
 type ImportImageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImportImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImportImageResponse) String() string {
@@ -941,10 +1001,13 @@ func (s *ImportImageResponse) SetBody(v *ImportImageResponseBody) *ImportImageRe
 }
 
 type ImportKeyPairRequest struct {
-	KeyPairName          *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PublicKeyBody        *string `json:"PublicKeyBody,omitempty" xml:"PublicKeyBody,omitempty"`
+	// The name of the key pair. The name must be globally unique. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The public key of the key pair.
+	PublicKeyBody *string `json:"PublicKeyBody,omitempty" xml:"PublicKeyBody,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -994,9 +1057,12 @@ func (s *ImportKeyPairRequest) SetResourceOwnerId(v int64) *ImportKeyPairRequest
 }
 
 type ImportKeyPairResponseBody struct {
+	// The fingerprint of the key pair. The message-digest algorithm 5 (MD5) is used based on the public key fingerprint format defined in RFC 4716.
 	KeyPairFingerPrint *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
-	KeyPairName        *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the key pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ImportKeyPairResponseBody) String() string {
@@ -1023,9 +1089,9 @@ func (s *ImportKeyPairResponseBody) SetRequestId(v string) *ImportKeyPairRespons
 }
 
 type ImportKeyPairResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImportKeyPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportKeyPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImportKeyPairResponse) String() string {
@@ -1052,14 +1118,20 @@ func (s *ImportKeyPairResponse) SetBody(v *ImportKeyPairResponseBody) *ImportKey
 }
 
 type InstallApplicationRequest struct {
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OssBucket            *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssObject            *string   `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The IDs of the instances on which you want to run the command. Valid values of N: 1 to 10.
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	// The Object Storage Service (OSS) bucket in which you want to store the application file.
+	//
+	// >  Before you import application files to the OSS bucket for the first time, add a Resource Access Management (RAM) policy. Otherwise, NoSetRoletoECSServiceAcount appears.
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The name (key) of the application file that is used as an OSS object.
+	OssObject    *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s InstallApplicationRequest) String() string {
@@ -1111,8 +1183,10 @@ func (s *InstallApplicationRequest) SetResourceOwnerId(v int64) *InstallApplicat
 }
 
 type InstallApplicationResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *InstallApplicationResponseBodyTaskId `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task IDs.
+	TaskId *InstallApplicationResponseBodyTaskId `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Struct"`
 }
 
 func (s InstallApplicationResponseBody) String() string {
@@ -1151,9 +1225,9 @@ func (s *InstallApplicationResponseBodyTaskId) SetTaskId(v []*string) *InstallAp
 }
 
 type InstallApplicationResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InstallApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InstallApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InstallApplicationResponse) String() string {
@@ -1180,9 +1254,11 @@ func (s *InstallApplicationResponse) SetBody(v *InstallApplicationResponseBody) 
 }
 
 type ListImageSharePermissionRequest struct {
-	ImageId              *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the image that you want to import to the instance.
+	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1227,8 +1303,10 @@ func (s *ListImageSharePermissionRequest) SetResourceOwnerId(v int64) *ListImage
 }
 
 type ListImageSharePermissionResponseBody struct {
-	Accounts  *ListImageSharePermissionResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of Alibaba Cloud accounts.
+	Accounts *ListImageSharePermissionResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListImageSharePermissionResponseBody) String() string {
@@ -1267,6 +1345,7 @@ func (s *ListImageSharePermissionResponseBodyAccounts) SetAccount(v []*ListImage
 }
 
 type ListImageSharePermissionResponseBodyAccountsAccount struct {
+	// The ID of the Alibaba Cloud account.
 	AliyunId *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
 }
 
@@ -1284,9 +1363,9 @@ func (s *ListImageSharePermissionResponseBodyAccountsAccount) SetAliyunId(v stri
 }
 
 type ListImageSharePermissionResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListImageSharePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListImageSharePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListImageSharePermissionResponse) String() string {
@@ -1313,18 +1392,37 @@ func (s *ListImageSharePermissionResponse) SetBody(v *ListImageSharePermissionRe
 }
 
 type ListImagesRequest struct {
-	ImageCategory        *string   `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	ImageId              []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
-	ImageName            *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	InstanceType         *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxResults           *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The image source. Valid values:
+	//
+	// *   system: public images provided by Alibaba Cloud.
+	// *   self: custom images that you create.
+	// *   others: shared images from other Alibaba Cloud accounts.
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	// The image IDs. Valid values of N: 1 to 100.
+	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
+	// The image name. The name must be 2 to 128 characters in length. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The instance type.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The maximum number of entries to return on each page. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The image state. Valid values:
+	//
+	// *   Waiting
+	// *   Creating
+	// *   Copying
+	// *   Importing
+	// *   Available (default)
+	// *   CreateFailed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListImagesRequest) String() string {
@@ -1396,12 +1494,18 @@ func (s *ListImagesRequest) SetStatus(v string) *ListImagesRequest {
 }
 
 type ListImagesResponseBody struct {
-	Images     *ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	MaxResults *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of images.
+	Images *ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The maximum number of entries that is returned on each page. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of images.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListImagesResponseBody) String() string {
@@ -1460,19 +1564,35 @@ func (s *ListImagesResponseBodyImages) SetImage(v []*ListImagesResponseBodyImage
 }
 
 type ListImagesResponseBodyImagesImage struct {
-	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the image was created. The time follows the ISO 8601 standard.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The image description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image type.
 	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName     *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	IsSelfShared  *bool   `json:"IsSelfShared,omitempty" xml:"IsSelfShared,omitempty"`
-	OSName        *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	OSNameEn      *string `json:"OSNameEn,omitempty" xml:"OSNameEn,omitempty"`
-	OSType        *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	Platform      *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Progress      *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Usage         *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The image ID.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// Indicates whether the image is shared with other Alibaba Cloud accounts.
+	IsSelfShared *bool `json:"IsSelfShared,omitempty" xml:"IsSelfShared,omitempty"`
+	// The display name of the OS in Chinese.
+	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// The display name of the OS in English.
+	OSNameEn *string `json:"OSNameEn,omitempty" xml:"OSNameEn,omitempty"`
+	// The image OS.
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// The OS distribution.
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The progress of image creation.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The image state.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the image is used by instances. Valid values:
+	//
+	// *   none: The image is idle.
+	// *   instance: The image is used by instances.
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s ListImagesResponseBodyImagesImage) String() string {
@@ -1549,9 +1669,9 @@ func (s *ListImagesResponseBodyImagesImage) SetUsage(v string) *ListImagesRespon
 }
 
 type ListImagesResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListImagesResponse) String() string {
@@ -1578,13 +1698,16 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 }
 
 type ListInstanceTypesRequest struct {
-	InstanceType         []*string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
-	InstanceTypeFamily   *string   `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The names of the instance types. Valid values of N: 1 to 100.
+	InstanceType []*string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
+	// The instance type family.
+	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ListInstanceTypesRequest) String() string {
@@ -1631,8 +1754,10 @@ func (s *ListInstanceTypesRequest) SetResourceOwnerId(v int64) *ListInstanceType
 }
 
 type ListInstanceTypesResponseBody struct {
+	// The instance types.
 	InstanceTypes *ListInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstanceTypesResponseBody) String() string {
@@ -1671,14 +1796,22 @@ func (s *ListInstanceTypesResponseBodyInstanceTypes) SetInstanceType(v []*ListIn
 }
 
 type ListInstanceTypesResponseBodyInstanceTypesInstanceType struct {
-	CpuCoreCount       *int32                                                             `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
-	DefaultResolution  *string                                                            `json:"DefaultResolution,omitempty" xml:"DefaultResolution,omitempty"`
-	InstanceType       *string                                                            `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceTypeFamily *string                                                            `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	MemorySize         *string                                                            `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	Name               *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	NameEn             *string                                                            `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
-	Resolutions        *ListInstanceTypesResponseBodyInstanceTypesInstanceTypeResolutions `json:"Resolutions,omitempty" xml:"Resolutions,omitempty" type:"Struct"`
+	// The number of vCPUs supported by the instance type.
+	CpuCoreCount *int32 `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
+	// The default resolution supported by the instance type.
+	DefaultResolution *string `json:"DefaultResolution,omitempty" xml:"DefaultResolution,omitempty"`
+	// The instance type.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The instance type family.
+	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	// The memory size supported by the instance type. Unit: GiB.
+	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The name of the instance type in Chinese.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the instance type in English.
+	NameEn *string `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
+	// The resolutions supported by the instance type.
+	Resolutions *ListInstanceTypesResponseBodyInstanceTypesInstanceTypeResolutions `json:"Resolutions,omitempty" xml:"Resolutions,omitempty" type:"Struct"`
 }
 
 func (s ListInstanceTypesResponseBodyInstanceTypesInstanceType) String() string {
@@ -1747,9 +1880,9 @@ func (s *ListInstanceTypesResponseBodyInstanceTypesInstanceTypeResolutions) SetR
 }
 
 type ListInstanceTypesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceTypesResponse) String() string {
@@ -1776,9 +1909,11 @@ func (s *ListInstanceTypesResponse) SetBody(v *ListInstanceTypesResponseBody) *L
 }
 
 type ListInstanceVncUrlRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The instance ID.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the instance resides.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1823,8 +1958,11 @@ func (s *ListInstanceVncUrlRequest) SetResourceOwnerId(v int64) *ListInstanceVnc
 }
 
 type ListInstanceVncUrlResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VncUrl      *string `json:"VncUrl,omitempty" xml:"VncUrl,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Virtual Network Computing (VNC) connection URL.
+	VncUrl *string `json:"VncUrl,omitempty" xml:"VncUrl,omitempty"`
+	// The token that is used for WebRTC logon.
 	WebRtcToken *string `json:"WebRtcToken,omitempty" xml:"WebRtcToken,omitempty"`
 }
 
@@ -1852,9 +1990,9 @@ func (s *ListInstanceVncUrlResponseBody) SetWebRtcToken(v string) *ListInstanceV
 }
 
 type ListInstanceVncUrlResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceVncUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceVncUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceVncUrlResponse) String() string {
@@ -1881,24 +2019,49 @@ func (s *ListInstanceVncUrlResponse) SetBody(v *ListInstanceVncUrlResponseBody) 
 }
 
 type ListInstancesRequest struct {
-	ChargeType           *string                    `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ImageId              *string                    `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceId           []*string                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	InstanceName         *string                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType         *string                    `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KeyPairName          *string                    `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	MaxResults           *int32                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string                    `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resolution           *string                    `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	ResourceOwnerAccount *string                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                     `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ShowWebRtcToken      *bool                      `json:"ShowWebRtcToken,omitempty" xml:"ShowWebRtcToken,omitempty"`
-	Status               *string                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag                  []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	ZoneId               *string                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The billing method. Valid values:
+	//
+	// *   PrePaid: subscription
+	// *   PostPaid: pay-as-you-go
+	ChargeType *string                       `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Filter     []*ListInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The image ID.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance IDs. Valid values of N: 1 to 100.
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	// The instance name.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The key pair name. The name must be globally unique. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The maximum number of entries returned on each page. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance resolution.
+	Resolution           *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether webRtcToken is returned in the query result.
+	ShowWebRtcToken *bool `json:"ShowWebRtcToken,omitempty" xml:"ShowWebRtcToken,omitempty"`
+	// The instance status. Valid values:
+	//
+	// *   Pending: The instance is being created.
+	// *   Running: The instance is running.
+	// *   Starting: The instance is being started.
+	// *   Stopping: The instance is being stopped.
+	// *   Stopped: The instance is stopped.
+	// *   Expired: The instance has expired.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instances that you want to filter by using a specified tag.
+	Tag []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the zone where the instance resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -1911,6 +2074,11 @@ func (s ListInstancesRequest) GoString() string {
 
 func (s *ListInstancesRequest) SetChargeType(v string) *ListInstancesRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetFilter(v []*ListInstancesRequestFilter) *ListInstancesRequest {
+	s.Filter = v
 	return s
 }
 
@@ -1999,8 +2167,33 @@ func (s *ListInstancesRequest) SetZoneId(v string) *ListInstancesRequest {
 	return s
 }
 
-type ListInstancesRequestTag struct {
+type ListInstancesRequestFilter struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListInstancesRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesRequestFilter) SetKey(v string) *ListInstancesRequestFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesRequestFilter) SetValue(v string) *ListInstancesRequestFilter {
+	s.Value = &v
+	return s
+}
+
+type ListInstancesRequestTag struct {
+	// The tag key of the instance. Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the instance. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2023,11 +2216,16 @@ func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
 }
 
 type ListInstancesResponseBody struct {
-	Instances  *ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details of the instances.
+	Instances *ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The maximum number of entries returned on each page. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that is returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -2081,27 +2279,54 @@ func (s *ListInstancesResponseBodyInstances) SetInstance(v []*ListInstancesRespo
 }
 
 type ListInstancesResponseBodyInstancesInstance struct {
-	AutoRenew       *bool                                                    `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType      *string                                                  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreationTime    *string                                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description     *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipAddress      *ListInstancesResponseBodyInstancesInstanceEipAddress    `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
-	ExpiredTime     *string                                                  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	ImageId         *string                                                  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceId      *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string                                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType    *string                                                  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KeyPairName     *string                                                  `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	OsName          *string                                                  `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	OsNameEn        *string                                                  `json:"OsNameEn,omitempty" xml:"OsNameEn,omitempty"`
-	RegionId        *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resolution      *string                                                  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	SecurityGroupId *string                                                  `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Status          *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            *ListInstancesResponseBodyInstancesInstanceTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VpcAttributes   *ListInstancesResponseBodyInstancesInstanceVpcAttributes `json:"VpcAttributes,omitempty" xml:"VpcAttributes,omitempty" type:"Struct"`
-	WebRtcToken     *string                                                  `json:"WebRtcToken,omitempty" xml:"WebRtcToken,omitempty"`
-	ZoneId          *string                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Indicates whether auto-renewal is enabled. This parameter takes effect only for subscription instances.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing method of the instance.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the image was created. The time follows the ISO 8601 standard.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The instance description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the elastic IP address (EIP) of the instance.
+	EipAddress *ListInstancesResponseBodyInstancesInstanceEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
+	// The time when the subscription instance expires.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The image ID.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The name of the key pair for the instance.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The display name of the OS in Chinese.
+	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	// The display name of the OS in English.
+	OsNameEn *string `json:"OsNameEn,omitempty" xml:"OsNameEn,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resolution of the instance.
+	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The ID of the security group that the instance uses. The security group is the same as that of the Elastic Compute Service (ECS) instance that you use.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The instance state. Valid values:
+	//
+	// *   Pending: The instance is being created.
+	// *   Running: The instance is running.
+	// *   Starting: The instance is being started.
+	// *   Stopping: The instance is being stopped.
+	// *   Stopped: The instance is stopped.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the instance.
+	Tags *ListInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The information about the virtual private cloud (VPC) in which the instance is deployed.
+	VpcAttributes *ListInstancesResponseBodyInstancesInstanceVpcAttributes `json:"VpcAttributes,omitempty" xml:"VpcAttributes,omitempty" type:"Struct"`
+	// The information about webRtcToken.
+	WebRtcToken *string `json:"WebRtcToken,omitempty" xml:"WebRtcToken,omitempty"`
+	// The zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesInstance) String() string {
@@ -2218,10 +2443,14 @@ func (s *ListInstancesResponseBodyInstancesInstance) SetZoneId(v string) *ListIn
 }
 
 type ListInstancesResponseBodyInstancesInstanceEipAddress struct {
-	AllocationId       *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the EIP that is used by the instance.
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The bandwidth of the EIP.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The billing method of the EIP.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The EIP.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesInstanceEipAddress) String() string {
@@ -2270,7 +2499,9 @@ func (s *ListInstancesResponseBodyInstancesInstanceTags) SetTag(v []*ListInstanc
 }
 
 type ListInstancesResponseBodyInstancesInstanceTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the instance.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2293,8 +2524,10 @@ func (s *ListInstancesResponseBodyInstancesInstanceTagsTag) SetValue(v string) *
 }
 
 type ListInstancesResponseBodyInstancesInstanceVpcAttributes struct {
+	// The private IP address.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The vSwitch ID.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesInstanceVpcAttributes) String() string {
@@ -2316,9 +2549,9 @@ func (s *ListInstancesResponseBodyInstancesInstanceVpcAttributes) SetVSwitchId(v
 }
 
 type ListInstancesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -2345,12 +2578,17 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListKeyPairsRequest struct {
-	KeyPairFingerPrint   *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
-	KeyPairName          *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The fingerprint of the key pair. The message-digest algorithm 5 (MD5) is used based on the public key fingerprint format defined in RFC 4716.
+	KeyPairFingerPrint *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
+	// The name of the key pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the key pair resides.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2410,11 +2648,16 @@ func (s *ListKeyPairsRequest) SetResourceOwnerId(v int64) *ListKeyPairsRequest {
 }
 
 type ListKeyPairsResponseBody struct {
-	KeyPairs   *ListKeyPairsResponseBodyKeyPairs `json:"KeyPairs,omitempty" xml:"KeyPairs,omitempty" type:"Struct"`
-	MaxResults *int32                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The key pairs that are returned.
+	KeyPairs *ListKeyPairsResponseBodyKeyPairs `json:"KeyPairs,omitempty" xml:"KeyPairs,omitempty" type:"Struct"`
+	// The maximum number of entries per page. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of key pairs.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListKeyPairsResponseBody) String() string {
@@ -2468,9 +2711,12 @@ func (s *ListKeyPairsResponseBodyKeyPairs) SetKeyPair(v []*ListKeyPairsResponseB
 }
 
 type ListKeyPairsResponseBodyKeyPairsKeyPair struct {
-	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The time when the key pair was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The fingerprint of the key pair.
 	KeyPairFingerPrint *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
-	KeyPairName        *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The name of the SSH key pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 }
 
 func (s ListKeyPairsResponseBodyKeyPairsKeyPair) String() string {
@@ -2497,9 +2743,9 @@ func (s *ListKeyPairsResponseBodyKeyPairsKeyPair) SetKeyPairName(v string) *List
 }
 
 type ListKeyPairsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListKeyPairsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListKeyPairsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListKeyPairsResponse) String() string {
@@ -2526,8 +2772,9 @@ func (s *ListKeyPairsResponse) SetBody(v *ListKeyPairsResponseBody) *ListKeyPair
 }
 
 type ListRegionsRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2567,8 +2814,10 @@ func (s *ListRegionsRequest) SetResourceOwnerId(v int64) *ListRegionsRequest {
 }
 
 type ListRegionsResponseBody struct {
-	Regions   *ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the regions.
+	Regions *ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRegionsResponseBody) String() string {
@@ -2607,8 +2856,10 @@ func (s *ListRegionsResponseBodyRegions) SetRegion(v []*ListRegionsResponseBodyR
 }
 
 type ListRegionsResponseBodyRegionsRegion struct {
+	// The endpoint that corresponds to the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListRegionsResponseBodyRegionsRegion) String() string {
@@ -2630,9 +2881,9 @@ func (s *ListRegionsResponseBodyRegionsRegion) SetRegionId(v string) *ListRegion
 }
 
 type ListRegionsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -2659,12 +2910,17 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListTagKeysRequest struct {
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource type. Valid value:
+	//
+	// *   instance: Elastic Cloud Phone (ECP) instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListTagKeysRequest) String() string {
@@ -2706,10 +2962,14 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	Keys       *ListTagKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
-	MaxResults *int32                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag keys.
+	Keys *ListTagKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	// The maximum number of entries to return on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTagKeysResponseBody) String() string {
@@ -2758,9 +3018,9 @@ func (s *ListTagKeysResponseBodyKeys) SetKey(v []*string) *ListTagKeysResponseBo
 }
 
 type ListTagKeysResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagKeysResponse) String() string {
@@ -2787,14 +3047,21 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify up to 50 resources.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The resource type. Valid value:
+	//
+	// *   instance: Elastic Cloud Phone (ECP) instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. You can specify up to 20 tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -2846,7 +3113,9 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2869,8 +3138,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -2915,10 +3187,16 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid value:
+	//
+	// *   instance: ECP instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -2950,9 +3228,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -2979,13 +3257,19 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
-	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The tag key whose values you want to query.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource type. Valid value:
+	//
+	// *   instance: Elastic Cloud Phone (ECP) instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -3032,10 +3316,14 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
-	MaxResults *int32                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Values     *ListTagValuesResponseBodyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+	// The maximum number of entries that is returned on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
+	Values *ListTagValuesResponseBodyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
 func (s ListTagValuesResponseBody) String() string {
@@ -3084,9 +3372,9 @@ func (s *ListTagValuesResponseBodyValues) SetValue(v []*string) *ListTagValuesRe
 }
 
 type ListTagValuesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagValuesResponse) String() string {
@@ -3113,17 +3401,38 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 }
 
 type ListTasksRequest struct {
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults           *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               []*string `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Repeated"`
-	TaskStatus           *string   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskType             *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 50.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The task IDs. Valid values of N: 1 to 100.
+	TaskId []*string `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Repeated"`
+	// The task state. Valid values:
+	//
+	// *   Finished
+	// *   Processing
+	// *   Failed
+	//
+	// This parameter is empty by default.
+	//
+	// >  The system only queries tasks that are in the Finished, Processing, and Failed states and ignores other values.
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The name of the operation that you can call to execute the task on the instance. Valid values:
+	//
+	// *   Shell: runs a shell command.
+	// *   InstallApplication: installs an application.
+	// *   UninstallApplication: uninstalls an application.
+	// *   SendFile: uploads a file.
+	// *   ImportImage: imports an image.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s ListTasksRequest) String() string {
@@ -3190,12 +3499,18 @@ func (s *ListTasksRequest) SetTaskType(v string) *ListTasksRequest {
 }
 
 type ListTasksResponseBody struct {
-	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks      *ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
-	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The maximum number of entries that is returned on each page. Valid values: 1 to 200. Default value: 50.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tasks.
+	Tasks *ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+	// The total number of tasks.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTasksResponseBody) String() string {
@@ -3254,14 +3569,22 @@ func (s *ListTasksResponseBodyTasks) SetTask(v []*ListTasksResponseBodyTasksTask
 }
 
 type ListTasksResponseBodyTasksTask struct {
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExecuteMsg   *string `json:"ExecuteMsg,omitempty" xml:"ExecuteMsg,omitempty"`
+	// The time when the task was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The content that is returned after the task is executed. The content can be up to 1,024 bytes in length.
+	ExecuteMsg *string `json:"ExecuteMsg,omitempty" xml:"ExecuteMsg,omitempty"`
+	// The time when the task ended.
 	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskType     *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The task progress.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task state.
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The task type.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s ListTasksResponseBodyTasksTask) String() string {
@@ -3313,9 +3636,9 @@ func (s *ListTasksResponseBodyTasksTask) SetTaskType(v string) *ListTasksRespons
 }
 
 type ListTasksResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTasksResponse) String() string {
@@ -3342,8 +3665,9 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type ListZonesRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3383,8 +3707,10 @@ func (s *ListZonesRequest) SetResourceOwnerId(v int64) *ListZonesRequest {
 }
 
 type ListZonesResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     *ListZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The zones available in the current region.
+	Zones *ListZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s ListZonesResponseBody) String() string {
@@ -3423,6 +3749,7 @@ func (s *ListZonesResponseBodyZones) SetZone(v []*ListZonesResponseBodyZonesZone
 }
 
 type ListZonesResponseBodyZonesZone struct {
+	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3440,9 +3767,9 @@ func (s *ListZonesResponseBodyZonesZone) SetZoneId(v string) *ListZonesResponseB
 }
 
 type ListZonesResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListZonesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListZonesResponse) String() string {
@@ -3469,13 +3796,19 @@ func (s *ListZonesResponse) SetBody(v *ListZonesResponseBody) *ListZonesResponse
 }
 
 type RebootInstancesRequest struct {
-	Force                *bool     `json:"Force,omitempty" xml:"Force,omitempty"`
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to forcefully restart the instance. Valid values:
+	//
+	// *   true If you set this parameter to true, cache data that is not written to storage in the instance will be lost after you call this operation, which is similar to the effect of a power-off action.
+	// *   false (default)
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The instance IDs.
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s RebootInstancesRequest) String() string {
@@ -3522,6 +3855,7 @@ func (s *RebootInstancesRequest) SetResourceOwnerId(v int64) *RebootInstancesReq
 }
 
 type RebootInstancesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3539,9 +3873,9 @@ func (s *RebootInstancesResponseBody) SetRequestId(v string) *RebootInstancesRes
 }
 
 type RebootInstancesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RebootInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebootInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RebootInstancesResponse) String() string {
@@ -3568,16 +3902,26 @@ func (s *RebootInstancesResponse) SetBody(v *RebootInstancesResponseBody) *Reboo
 }
 
 type RenewInstancesRequest struct {
-	AutoPay              *bool     `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Period               *int32    `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string   `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to enable auto-payment. Default value: true.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The IDs of the instances that you want to renew. You can renew up to 20 instances at a time.
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The renewal period. Default value: 1.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the renewal period.
+	//
+	// *   Valid values if you set this parameter to Year: 1, 2, 3, 4, and 5.
+	// *   Valid values if you set this parameter to Month (default): 1, 2, 3, and 6.
+	// *   Valid values if you set this parameter to Hour: 1.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s RenewInstancesRequest) String() string {
@@ -3639,9 +3983,12 @@ func (s *RenewInstancesRequest) SetResourceOwnerId(v int64) *RenewInstancesReque
 }
 
 type RenewInstancesResponseBody struct {
+	// The IDs of the instances that are renewed.
 	InstanceIds *RenewInstancesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	OrderId     *string                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RenewInstancesResponseBody) String() string {
@@ -3685,9 +4032,9 @@ func (s *RenewInstancesResponseBodyInstanceIds) SetInstanceId(v []*string) *Rene
 }
 
 type RenewInstancesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenewInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenewInstancesResponse) String() string {
@@ -3714,13 +4061,16 @@ func (s *RenewInstancesResponse) SetBody(v *RenewInstancesResponseBody) *RenewIn
 }
 
 type ResetInstancesRequest struct {
-	ImageId              *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The image ID of the instance. If you do not specify this parameter, the image of the current instance is used to reset the instance.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance IDs. Valid values of N: 1 to 100.
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ResetInstancesRequest) String() string {
@@ -3767,6 +4117,7 @@ func (s *ResetInstancesRequest) SetResourceOwnerId(v int64) *ResetInstancesReque
 }
 
 type ResetInstancesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3784,9 +4135,9 @@ func (s *ResetInstancesResponseBody) SetRequestId(v string) *ResetInstancesRespo
 }
 
 type ResetInstancesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetInstancesResponse) String() string {
@@ -3813,13 +4164,18 @@ func (s *ResetInstancesResponse) SetBody(v *ResetInstancesResponseBody) *ResetIn
 }
 
 type RunCommandRequest struct {
-	Command              *string   `json:"Command,omitempty" xml:"Command,omitempty"`
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The command that you want to run.\
+	// The name can be up to 1024 bytes in length and can contain only letters, digits, underscores (\_), periods (.), slashes (/), colons (:), and hyphens (-).
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The IDs of the instances on which you want to run the command.\
+	// Valid values of N: 1 to 10.
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s RunCommandRequest) String() string {
@@ -3866,8 +4222,10 @@ func (s *RunCommandRequest) SetResourceOwnerId(v int64) *RunCommandRequest {
 }
 
 type RunCommandResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *RunCommandResponseBodyTaskId `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task IDs.
+	TaskId *RunCommandResponseBodyTaskId `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Struct"`
 }
 
 func (s RunCommandResponseBody) String() string {
@@ -3906,9 +4264,9 @@ func (s *RunCommandResponseBodyTaskId) SetTaskId(v []*string) *RunCommandRespons
 }
 
 type RunCommandResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RunCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunCommandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RunCommandResponse) String() string {
@@ -3935,28 +4293,61 @@ func (s *RunCommandResponse) SetBody(v *RunCommandResponseBody) *RunCommandRespo
 }
 
 type RunInstancesRequest struct {
-	Amount               *int32                    `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoPay              *bool                     `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew            *bool                     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType           *string                   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClientToken          *string                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description          *string                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipBandwidth         *int32                    `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	ImageId              *string                   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceName         *string                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType         *string                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KeyPairName          *string                   `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Period               *int64                    `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string                   `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PrivateIpAddress     *string                   `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resolution           *string                   `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	SecurityGroupId      *string                   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Tag                  []*RunInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId            *string                   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The number of ECS instances that you want to create. Valid values: 1 to 100.
+	//
+	// Default value: 1.
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable the auto-payment feature. Default value: true.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable the auto-renewal feature. This parameter takes effect only if you set InstanceChargeType to PrePaid. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing method of the ECP instance. Valid values:
+	//
+	// *   PrePaid: subscription
+	// *   PostPaid (default): pay-as-you-go
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the ECP instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The bandwidth of the elastic IP address (EIP). Valid values: 1 to 200. If you specify this parameter, an ECP instance that uses an EIP with specified bandwidth is automatically created and associated with the ECP instance. If the ECP instance is released, the EIP is also released.
+	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the ECP instance. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-). The default value of this parameter is the value of the InstanceId parameter.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The specifications of the ECP instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The name of the key pair that you want to use to connect to the instance. You can call the ImportKeyPair operation to import a key pair for cloud phones.
+	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The subscription duration. Default value: 1.
+	//
+	// *   Valid values if you set PeriodUnit to Month: 1, 2, 3, and 6.
+	// *   Valid values if you set PeriodUnit to Year: 1, 2, 3, 4, and 5.
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// *   Year
+	// *   Month (default)
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The private IP address of the cloud phone. When you configure a private IP address for an ECP instance, you must select an idle CIDR block from the CIDR blocks of the vSwitch (VSwitchId). When you specify this parameter, take note of the following items: After you specify the PrivateIpAddress parameter, you must set Amount to 1, which indicates that a cloud phone with a specific private IP address is created.
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resolution that you want to select for the ECP instance. You can query the resolutions that are supported by the current instance by calling the DescribeInstanceTypes operation and select an appropriate resolution.
+	Resolution           *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the security group that the ECP instance uses. The security group is the same as that of the Elastic Compute Service (ECS) instance that you use.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The tags of the ECP instance.
+	Tag []*RunInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s RunInstancesRequest) String() string {
@@ -4078,7 +4469,9 @@ func (s *RunInstancesRequest) SetVSwitchId(v string) *RunInstancesRequest {
 }
 
 type RunInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the ECP instance. Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the ECP instance. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4101,10 +4494,14 @@ func (s *RunInstancesRequestTag) SetValue(v string) *RunInstancesRequestTag {
 }
 
 type RunInstancesResponseBody struct {
+	// The IDs of the ECP instances.
 	InstanceIds *RunInstancesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	OrderId     *string                              `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TradePrice  *float32                             `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The price of the ECP resource.
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s RunInstancesResponseBody) String() string {
@@ -4153,9 +4550,9 @@ func (s *RunInstancesResponseBodyInstanceIds) SetInstanceId(v []*string) *RunIns
 }
 
 type RunInstancesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RunInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RunInstancesResponse) String() string {
@@ -4182,15 +4579,22 @@ func (s *RunInstancesResponse) SetBody(v *RunInstancesResponseBody) *RunInstance
 }
 
 type SendFileRequest struct {
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OssBucket            *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssObject            *string   `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Path                 *string   `json:"Path,omitempty" xml:"Path,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The IDs of the instances on which you want to run the command. Valid values of N: 1 to 10.
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	// The Object Storage Service (OSS) bucket to which you want to upload the file.
+	//
+	// >  Before you import an APK file to the OSS bucket for the first time, add a Resource Access Management (RAM) policy. Otherwise, NoSetRoletoECSServiceAcount appears.
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The name (key) of the file that you want to use as an OSS object.
+	OssObject    *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The directory of the file that you want to pull in the cloud phone.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s SendFileRequest) String() string {
@@ -4247,8 +4651,10 @@ func (s *SendFileRequest) SetResourceOwnerId(v int64) *SendFileRequest {
 }
 
 type SendFileResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *SendFileResponseBodyTaskId `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task IDs. Valid values of N: 1 to 100.
+	TaskId *SendFileResponseBodyTaskId `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Struct"`
 }
 
 func (s SendFileResponseBody) String() string {
@@ -4287,9 +4693,9 @@ func (s *SendFileResponseBodyTaskId) SetTaskId(v []*string) *SendFileResponseBod
 }
 
 type SendFileResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendFileResponse) String() string {
@@ -4316,12 +4722,14 @@ func (s *SendFileResponse) SetBody(v *SendFileResponseBody) *SendFileResponse {
 }
 
 type StartInstancesRequest struct {
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The instance IDs.
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s StartInstancesRequest) String() string {
@@ -4363,6 +4771,7 @@ func (s *StartInstancesRequest) SetResourceOwnerId(v int64) *StartInstancesReque
 }
 
 type StartInstancesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4380,9 +4789,9 @@ func (s *StartInstancesResponseBody) SetRequestId(v string) *StartInstancesRespo
 }
 
 type StartInstancesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartInstancesResponse) String() string {
@@ -4409,13 +4818,19 @@ func (s *StartInstancesResponse) SetBody(v *StartInstancesResponseBody) *StartIn
 }
 
 type StopInstancesRequest struct {
-	Force                *bool     `json:"Force,omitempty" xml:"Force,omitempty"`
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to forcefully stop the instance. Valid values:
+	//
+	// *   true. If you set this parameter to true, cache data that is not written to storage in the instance will be lost after you call this operation, which is similar to the effect of a power-off action.
+	// *   false (default)
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The instance IDs. Valid values of N: 1 to 100.
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s StopInstancesRequest) String() string {
@@ -4462,6 +4877,7 @@ func (s *StopInstancesRequest) SetResourceOwnerId(v int64) *StopInstancesRequest
 }
 
 type StopInstancesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4479,9 +4895,9 @@ func (s *StopInstancesResponseBody) SetRequestId(v string) *StopInstancesRespons
 }
 
 type StopInstancesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopInstancesResponse) String() string {
@@ -4508,13 +4924,19 @@ func (s *StopInstancesResponse) SetBody(v *StopInstancesResponseBody) *StopInsta
 }
 
 type TagResourcesRequest struct {
-	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify up to 50 resources.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The resource type. Valid value:
+	//
+	// *   instance: Elastic Cloud Phone (ECP) instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. You can specify up to 20 tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -4561,7 +4983,9 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4584,6 +5008,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4601,9 +5026,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -4630,13 +5055,16 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UninstallApplicationRequest struct {
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PackageName          *string   `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The IDs of the instances on which you want to run the command. Valid values of N: 1 to 10.
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the application that you want to uninstall. The name can be up to 1024 bytes in length and can contain only letters, digits, underscores (\_), periods (.), slashes (/), colons (:), and hyphens (-).
+	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// The region ID.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s UninstallApplicationRequest) String() string {
@@ -4683,8 +5111,10 @@ func (s *UninstallApplicationRequest) SetResourceOwnerId(v int64) *UninstallAppl
 }
 
 type UninstallApplicationResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *UninstallApplicationResponseBodyTaskId `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	TaskId *UninstallApplicationResponseBodyTaskId `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Struct"`
 }
 
 func (s UninstallApplicationResponseBody) String() string {
@@ -4723,9 +5153,9 @@ func (s *UninstallApplicationResponseBodyTaskId) SetTaskId(v []*string) *Uninsta
 }
 
 type UninstallApplicationResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UninstallApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UninstallApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UninstallApplicationResponse) String() string {
@@ -4752,14 +5182,21 @@ func (s *UninstallApplicationResponse) SetBody(v *UninstallApplicationResponseBo
 }
 
 type UntagResourcesRequest struct {
-	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to delete all tags. This parameter takes effect only when the TagKey.N parameter is not specified. Valid values: true and false. Default value: false.
+	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify up to 50 resources.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// The resource type. Valid value:
+	//
+	// *   instance: Elastic Cloud Phone (ECP) instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys. You can specify up to 20 tag keys.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -4811,6 +5248,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4828,9 +5266,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -4857,13 +5295,19 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateImageAttributeRequest struct {
-	AddAccount           []*string `json:"AddAccount,omitempty" xml:"AddAccount,omitempty" type:"Repeated"`
-	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId              *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName            *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the Alibaba Cloud accounts that are authorized to share images. You can specify up to 10 Alibaba Cloud accounts.
+	AddAccount []*string `json:"AddAccount,omitempty" xml:"AddAccount,omitempty" type:"Repeated"`
+	// The description of the custom image. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`. By default, this parameter is empty, which indicates that the original description is retained.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image ID.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the custom image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It cannot start with `http://` or `https://`. By default, this parameter is empty, which indicates that the original name is retained.
+	ImageName    *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the Alibaba Cloud accounts from which you want to revoke image sharing permissions. You can specify up to 10 Alibaba Cloud accounts.
 	RemoveAccount        []*string `json:"RemoveAccount,omitempty" xml:"RemoveAccount,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4928,6 +5372,7 @@ func (s *UpdateImageAttributeRequest) SetResourceOwnerId(v int64) *UpdateImageAt
 }
 
 type UpdateImageAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4945,9 +5390,9 @@ func (s *UpdateImageAttributeResponseBody) SetRequestId(v string) *UpdateImageAt
 }
 
 type UpdateImageAttributeResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateImageAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateImageAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateImageAttributeResponse) String() string {
@@ -4974,17 +5419,25 @@ func (s *UpdateImageAttributeResponse) SetBody(v *UpdateImageAttributeResponseBo
 }
 
 type UpdateInstanceAttributeRequest struct {
-	Description          *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId           *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName         *string                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	KeyPairName          *string                              `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	OwnerAccount         *string                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resolution           *string                              `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	Tag                  []*UpdateInstanceAttributeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VncPassword          *string                              `json:"VncPassword,omitempty" xml:"VncPassword,omitempty"`
+	// The instance description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The name of the key pair that is used to connect to the instance. To improve the security of an instance, we recommend that you use a key pair to connect to the instance.
+	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance resolution.
+	Resolution           *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// Details of tags.
+	Tag []*UpdateInstanceAttributeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The VNC password of the instance. The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
+	VncPassword *string `json:"VncPassword,omitempty" xml:"VncPassword,omitempty"`
 }
 
 func (s UpdateInstanceAttributeRequest) String() string {
@@ -5051,7 +5504,9 @@ func (s *UpdateInstanceAttributeRequest) SetVncPassword(v string) *UpdateInstanc
 }
 
 type UpdateInstanceAttributeRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the instance. Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the instance. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5074,6 +5529,7 @@ func (s *UpdateInstanceAttributeRequestTag) SetValue(v string) *UpdateInstanceAt
 }
 
 type UpdateInstanceAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5091,9 +5547,9 @@ func (s *UpdateInstanceAttributeResponseBody) SetRequestId(v string) *UpdateInst
 }
 
 type UpdateInstanceAttributeResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateInstanceAttributeResponse) String() string {
@@ -5166,6 +5622,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following item:
+ * *   If the task is executed, you fail to call the operation and an error is returned.
+ *
+ * @param request CancelTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CancelTaskResponse
+ */
 func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime *util.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5223,6 +5687,13 @@ func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following item:
+ * *   If the task is executed, you fail to call the operation and an error is returned.
+ *
+ * @param request CancelTaskRequest
+ * @return CancelTaskResponse
+ */
 func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelTaskResponse{}
@@ -5234,6 +5705,16 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   The custom image that you want to copy must be in the Available state.
+ * *   You can only copy images within your own Alibaba Cloud account. Images cannot be copied from one account to another.
+ * *   A single region can have only one image copy task running at a time. Other image copy tasks queue up for the current task to complete before they run in sequence.
+ *
+ * @param request CopyImageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CopyImageResponse
+ */
 func (client *Client) CopyImageWithOptions(request *CopyImageRequest, runtime *util.RuntimeOptions) (_result *CopyImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5307,6 +5788,15 @@ func (client *Client) CopyImageWithOptions(request *CopyImageRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   The custom image that you want to copy must be in the Available state.
+ * *   You can only copy images within your own Alibaba Cloud account. Images cannot be copied from one account to another.
+ * *   A single region can have only one image copy task running at a time. Other image copy tasks queue up for the current task to complete before they run in sequence.
+ *
+ * @param request CopyImageRequest
+ * @return CopyImageResponse
+ */
 func (client *Client) CopyImage(request *CopyImageRequest) (_result *CopyImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CopyImageResponse{}
@@ -5318,6 +5808,15 @@ func (client *Client) CopyImage(request *CopyImageRequest) (_result *CopyImageRe
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   You need to only specify the ID (InstanceId) of an ECP instance. The instance is used as a template. The instance must be in the Running or Stopped state.
+ * *   You can use the created custom image only if the image is in the Available state.
+ *
+ * @param request CreateImageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateImageResponse
+ */
 func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtime *util.RuntimeOptions) (_result *CreateImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5387,6 +5886,14 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   You need to only specify the ID (InstanceId) of an ECP instance. The instance is used as a template. The instance must be in the Running or Stopped state.
+ * *   You can use the created custom image only if the image is in the Available state.
+ *
+ * @param request CreateImageRequest
+ * @return CreateImageResponse
+ */
 func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageResponse{}
@@ -5398,6 +5905,16 @@ func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateI
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * When you call this operation, take note of the following items:
+ * *   Images that are shared with recipient users can be deleted only after you unshare the images.
+ * *   Images that are used by other Elastic Cloud Phone (ECP) instances can only be forcefully deleted.
+ *
+ * @param request DeleteImagesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteImagesResponse
+ */
 func (client *Client) DeleteImagesWithOptions(request *DeleteImagesRequest, runtime *util.RuntimeOptions) (_result *DeleteImagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5459,6 +5976,15 @@ func (client *Client) DeleteImagesWithOptions(request *DeleteImagesRequest, runt
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * When you call this operation, take note of the following items:
+ * *   Images that are shared with recipient users can be deleted only after you unshare the images.
+ * *   Images that are used by other Elastic Cloud Phone (ECP) instances can only be forcefully deleted.
+ *
+ * @param request DeleteImagesRequest
+ * @return DeleteImagesResponse
+ */
 func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *DeleteImagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteImagesResponse{}
@@ -5542,6 +6068,15 @@ func (client *Client) DeleteInstances(request *DeleteInstancesRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * *   Before you call the operation, take note of the following items:
+ *     *   If you delete a key pair of a cloud phone, you cannot query the key pair of the cloud phone by calling the ListKeyPairs operation.
+ *     *   If you delete a key pair that is bound to an existing Elastic Cloud Phone (ECP) instance, Alibaba Cloud no longer saves the key pair for you, but the ECP instance can use the key pair as expected.
+ *
+ * @param request DeleteKeyPairsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteKeyPairsResponse
+ */
 func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, runtime *util.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5599,6 +6134,14 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 	return _result, _err
 }
 
+/**
+ * *   Before you call the operation, take note of the following items:
+ *     *   If you delete a key pair of a cloud phone, you cannot query the key pair of the cloud phone by calling the ListKeyPairs operation.
+ *     *   If you delete a key pair that is bound to an existing Elastic Cloud Phone (ECP) instance, Alibaba Cloud no longer saves the key pair for you, but the ECP instance can use the key pair as expected.
+ *
+ * @param request DeleteKeyPairsRequest
+ * @return DeleteKeyPairsResponse
+ */
 func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *DeleteKeyPairsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteKeyPairsResponse{}
@@ -5690,6 +6233,16 @@ func (client *Client) FetchFile(request *FetchFileRequest) (_result *FetchFileRe
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   Before you import the image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+ * *   When you import an image for the first time, you must use Resource Access Management (RAM) to grant permissions on the access to OSS buckets in advance to obtain [Cloud Resource Access Authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CloudPhone%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCloudPhoneDefaultRole%22%2C%22TemplateId%22%3A%22AliyunCloudPhoneDefaultRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcloudphone.console.aliyun.com%2F%23%2Finstances%22%7D) with one click.
+ * *   You can import an image only to a region that is the same as that of the OSS bucket to which the image file was imported.
+ *
+ * @param request ImportImageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ImportImageResponse
+ */
 func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtime *util.RuntimeOptions) (_result *ImportImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5771,6 +6324,15 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   Before you import the image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+ * *   When you import an image for the first time, you must use Resource Access Management (RAM) to grant permissions on the access to OSS buckets in advance to obtain [Cloud Resource Access Authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CloudPhone%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCloudPhoneDefaultRole%22%2C%22TemplateId%22%3A%22AliyunCloudPhoneDefaultRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcloudphone.console.aliyun.com%2F%23%2Finstances%22%7D) with one click.
+ * *   You can import an image only to a region that is the same as that of the OSS bucket to which the image file was imported.
+ *
+ * @param request ImportImageRequest
+ * @return ImportImageResponse
+ */
 func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportImageResponse{}
@@ -5782,6 +6344,15 @@ func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportI
 	return _result, _err
 }
 
+/**
+ * Usage notes Before you call this operation, take note of the following items:
+ * *   You can create up to 500 key pairs in each region.
+ * *   The imported public key pair must generate the public key of a key pair for Android Debug Bridge (ADB).
+ *
+ * @param request ImportKeyPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ImportKeyPairResponse
+ */
 func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *util.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5843,6 +6414,14 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 	return _result, _err
 }
 
+/**
+ * Usage notes Before you call this operation, take note of the following items:
+ * *   You can create up to 500 key pairs in each region.
+ * *   The imported public key pair must generate the public key of a key pair for Android Debug Bridge (ADB).
+ *
+ * @param request ImportKeyPairRequest
+ * @return ImportKeyPairResponse
+ */
 func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *ImportKeyPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportKeyPairResponse{}
@@ -6158,6 +6737,25 @@ func (client *Client) ListInstanceTypes(request *ListInstanceTypesRequest) (_res
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * When you call this operation, take note of the following items:
+ * *   The URL returned is valid only for 15 seconds. If no connection is established within 15 seconds after a successful query, the URL expires. You must query the URL again if you still want to use the URL.
+ * *   The keep-alive duration of a single URL of a management terminal is 60 seconds. If no interaction is detected within the 60 seconds, the management terminal is automatically disconnected.
+ * *   After the management terminal is disconnected, you can only reconnect to the terminal up to 30 times per minute.
+ * *   You need to add vncUrl=\\*\\*\\*\\*, instanceId= ****and password=**** to the end of the link https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html? and use ampersands (&) between the parameters. Parameter description:
+ *     *   vncUrl: the value that is returned after the operation is called.
+ *     *   instanceId: the instance ID.
+ *     *   (Optional) password: the password for remote connection of the instance, which can contain six characters in length. The password can be digits or letters. If you specify this parameter, you do not need to enter your password again when the management terminal is being connected.
+ * Example:
+ * https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****
+ * Or:
+ * https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\\&password=\\*\\*\\*\\*
+ *
+ * @param request ListInstanceVncUrlRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListInstanceVncUrlResponse
+ */
 func (client *Client) ListInstanceVncUrlWithOptions(request *ListInstanceVncUrlRequest, runtime *util.RuntimeOptions) (_result *ListInstanceVncUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6215,6 +6813,24 @@ func (client *Client) ListInstanceVncUrlWithOptions(request *ListInstanceVncUrlR
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * When you call this operation, take note of the following items:
+ * *   The URL returned is valid only for 15 seconds. If no connection is established within 15 seconds after a successful query, the URL expires. You must query the URL again if you still want to use the URL.
+ * *   The keep-alive duration of a single URL of a management terminal is 60 seconds. If no interaction is detected within the 60 seconds, the management terminal is automatically disconnected.
+ * *   After the management terminal is disconnected, you can only reconnect to the terminal up to 30 times per minute.
+ * *   You need to add vncUrl=\\*\\*\\*\\*, instanceId= ****and password=**** to the end of the link https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html? and use ampersands (&) between the parameters. Parameter description:
+ *     *   vncUrl: the value that is returned after the operation is called.
+ *     *   instanceId: the instance ID.
+ *     *   (Optional) password: the password for remote connection of the instance, which can contain six characters in length. The password can be digits or letters. If you specify this parameter, you do not need to enter your password again when the management terminal is being connected.
+ * Example:
+ * https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****
+ * Or:
+ * https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\\&password=\\*\\*\\*\\*
+ *
+ * @param request ListInstanceVncUrlRequest
+ * @return ListInstanceVncUrlResponse
+ */
 func (client *Client) ListInstanceVncUrl(request *ListInstanceVncUrlRequest) (_result *ListInstanceVncUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceVncUrlResponse{}
@@ -6226,6 +6842,15 @@ func (client *Client) ListInstanceVncUrl(request *ListInstanceVncUrlRequest) (_r
 	return _result, _err
 }
 
+/**
+ * *   This operation only supports the NextToken query method.
+ * *   Results are returned in descending order based on the time when ECP instances were created.
+ * *   When you use NextToken to specify a query token, set the value to the NextToken value that is returned in the last call to the ListInstances operation. Then, use MaxResults to specify the maximum number of entries to return on each page.
+ *
+ * @param request ListInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListInstancesResponse
+ */
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6234,6 +6859,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
@@ -6331,6 +6960,14 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+/**
+ * *   This operation only supports the NextToken query method.
+ * *   Results are returned in descending order based on the time when ECP instances were created.
+ * *   When you use NextToken to specify a query token, set the value to the NextToken value that is returned in the last call to the ListInstances operation. Then, use MaxResults to specify the maximum number of entries to return on each page.
+ *
+ * @param request ListInstancesRequest
+ * @return ListInstancesResponse
+ */
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancesResponse{}
@@ -6342,6 +6979,13 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query one or more key pairs of cloud phones.
+ *
+ * @param request ListKeyPairsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListKeyPairsResponse
+ */
 func (client *Client) ListKeyPairsWithOptions(request *ListKeyPairsRequest, runtime *util.RuntimeOptions) (_result *ListKeyPairsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6411,6 +7055,12 @@ func (client *Client) ListKeyPairsWithOptions(request *ListKeyPairsRequest, runt
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query one or more key pairs of cloud phones.
+ *
+ * @param request ListKeyPairsRequest
+ * @return ListKeyPairsResponse
+ */
 func (client *Client) ListKeyPairs(request *ListKeyPairsRequest) (_result *ListKeyPairsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListKeyPairsResponse{}
@@ -6422,6 +7072,13 @@ func (client *Client) ListKeyPairs(request *ListKeyPairsRequest) (_result *ListK
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to query regions where ECP is available.
+ *
+ * @param request ListRegionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListRegionsResponse
+ */
 func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6475,6 +7132,12 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to query regions where ECP is available.
+ *
+ * @param request ListRegionsRequest
+ * @return ListRegionsResponse
+ */
 func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
@@ -6778,6 +7441,14 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * *   You can call the operation to query zones available in a specified region.
+ *
+ * @param request ListZonesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListZonesResponse
+ */
 func (client *Client) ListZonesWithOptions(request *ListZonesRequest, runtime *util.RuntimeOptions) (_result *ListZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6831,6 +7502,13 @@ func (client *Client) ListZonesWithOptions(request *ListZonesRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * *   You can call the operation to query zones available in a specified region.
+ *
+ * @param request ListZonesRequest
+ * @return ListZonesResponse
+ */
 func (client *Client) ListZones(request *ListZonesRequest) (_result *ListZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListZonesResponse{}
@@ -6914,6 +7592,13 @@ func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * *   You can call the operation to renew multiple ECP instances at a time.
+ *
+ * @param request RenewInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RenewInstancesResponse
+ */
 func (client *Client) RenewInstancesWithOptions(request *RenewInstancesRequest, runtime *util.RuntimeOptions) (_result *RenewInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6987,6 +7672,12 @@ func (client *Client) RenewInstancesWithOptions(request *RenewInstancesRequest, 
 	return _result, _err
 }
 
+/**
+ * *   You can call the operation to renew multiple ECP instances at a time.
+ *
+ * @param request RenewInstancesRequest
+ * @return RenewInstancesResponse
+ */
 func (client *Client) RenewInstances(request *RenewInstancesRequest) (_result *RenewInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewInstancesResponse{}
@@ -6998,6 +7689,16 @@ func (client *Client) RenewInstances(request *RenewInstancesRequest) (_result *R
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * When you call this operation, take note of the following items:
+ * *   This operation is valid only for ECP instances that are in the Stopped state.
+ * *   If the images based on which the instances are created are deleted, the instances cannot be reset.
+ *
+ * @param request ResetInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResetInstancesResponse
+ */
 func (client *Client) ResetInstancesWithOptions(request *ResetInstancesRequest, runtime *util.RuntimeOptions) (_result *ResetInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7059,6 +7760,15 @@ func (client *Client) ResetInstancesWithOptions(request *ResetInstancesRequest, 
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * When you call this operation, take note of the following items:
+ * *   This operation is valid only for ECP instances that are in the Stopped state.
+ * *   If the images based on which the instances are created are deleted, the instances cannot be reset.
+ *
+ * @param request ResetInstancesRequest
+ * @return ResetInstancesResponse
+ */
 func (client *Client) ResetInstances(request *ResetInstancesRequest) (_result *ResetInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetInstancesResponse{}
@@ -7142,6 +7852,18 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 	return _result, _err
 }
 
+/**
+ * Preparations:
+ * *   The real-name verification is complete. For more information, see [Real-name verification](~~428525~~).
+ * Precautions:
+ * *   You can create up to 100 ECP instances at a time.
+ * *   You can call this operation to create and start ECP instances.
+ * *   If an ECP instance fails to be created due to force majeure factors, such as insufficient inventory, the ECP instance is automatically rolled back and released.
+ *
+ * @param request RunInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RunInstancesResponse
+ */
 func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runtime *util.RuntimeOptions) (_result *RunInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7263,6 +7985,17 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 	return _result, _err
 }
 
+/**
+ * Preparations:
+ * *   The real-name verification is complete. For more information, see [Real-name verification](~~428525~~).
+ * Precautions:
+ * *   You can create up to 100 ECP instances at a time.
+ * *   You can call this operation to create and start ECP instances.
+ * *   If an ECP instance fails to be created due to force majeure factors, such as insufficient inventory, the ECP instance is automatically rolled back and released.
+ *
+ * @param request RunInstancesRequest
+ * @return RunInstancesResponse
+ */
 func (client *Client) RunInstances(request *RunInstancesRequest) (_result *RunInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RunInstancesResponse{}
@@ -7706,6 +8439,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   You can share only your own custom images with other Alibaba Cloud accounts.
+ * *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time.
+ *
+ * @param request UpdateImageAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateImageAttributeResponse
+ */
 func (client *Client) UpdateImageAttributeWithOptions(request *UpdateImageAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateImageAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7779,6 +8521,14 @@ func (client *Client) UpdateImageAttributeWithOptions(request *UpdateImageAttrib
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   You can share only your own custom images with other Alibaba Cloud accounts.
+ * *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time.
+ *
+ * @param request UpdateImageAttributeRequest
+ * @return UpdateImageAttributeResponse
+ */
 func (client *Client) UpdateImageAttribute(request *UpdateImageAttributeRequest) (_result *UpdateImageAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateImageAttributeResponse{}
@@ -7790,6 +8540,13 @@ func (client *Client) UpdateImageAttribute(request *UpdateImageAttributeRequest)
 	return _result, _err
 }
 
+/**
+ * You can call this operation to modify the name, key pair, Virtual Network Computing (VNC) password, and resolution of an ECP instance. Take note that the modified key pair and resolution takes effect the next time you restart the instance.
+ *
+ * @param request UpdateInstanceAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateInstanceAttributeResponse
+ */
 func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7867,6 +8624,12 @@ func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstance
 	return _result, _err
 }
 
+/**
+ * You can call this operation to modify the name, key pair, Virtual Network Computing (VNC) password, and resolution of an ECP instance. Take note that the modified key pair and resolution takes effect the next time you restart the instance.
+ *
+ * @param request UpdateInstanceAttributeRequest
+ * @return UpdateInstanceAttributeResponse
+ */
 func (client *Client) UpdateInstanceAttribute(request *UpdateInstanceAttributeRequest) (_result *UpdateInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceAttributeResponse{}
