@@ -110,9 +110,9 @@ func (s *ActiveFlowLogResponseBody) SetSuccess(v string) *ActiveFlowLogResponseB
 }
 
 type ActiveFlowLogResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ActiveFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ActiveFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ActiveFlowLogResponse) String() string {
@@ -326,9 +326,9 @@ func (s *AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody) SetRequestId(v s
 }
 
 type AddTrafficMatchRuleToTrafficMarkingPolicyResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddTrafficMatchRuleToTrafficMarkingPolicyResponse) String() string {
@@ -490,9 +490,9 @@ func (s *AddTraficMatchRuleToTrafficMarkingPolicyResponseBody) SetRequestId(v st
 }
 
 type AddTraficMatchRuleToTrafficMarkingPolicyResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddTraficMatchRuleToTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddTraficMatchRuleToTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddTraficMatchRuleToTrafficMarkingPolicyResponse) String() string {
@@ -586,9 +586,9 @@ func (s *AssociateCenBandwidthPackageResponseBody) SetRequestId(v string) *Assoc
 }
 
 type AssociateCenBandwidthPackageResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateCenBandwidthPackageResponse) String() string {
@@ -703,9 +703,9 @@ func (s *AssociateTransitRouterAttachmentWithRouteTableResponseBody) SetRequestI
 }
 
 type AssociateTransitRouterAttachmentWithRouteTableResponse struct {
-	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateTransitRouterAttachmentWithRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateTransitRouterAttachmentWithRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateTransitRouterAttachmentWithRouteTableResponse) String() string {
@@ -814,9 +814,9 @@ func (s *AssociateTransitRouterMulticastDomainResponseBody) SetRequestId(v strin
 }
 
 type AssociateTransitRouterMulticastDomainResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateTransitRouterMulticastDomainResponse) String() string {
@@ -939,9 +939,9 @@ func (s *AttachCenChildInstanceResponseBody) SetRequestId(v string) *AttachCenCh
 }
 
 type AttachCenChildInstanceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachCenChildInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachCenChildInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachCenChildInstanceResponse) String() string {
@@ -1040,9 +1040,9 @@ func (s *CheckTransitRouterServiceResponseBody) SetRequestId(v string) *CheckTra
 }
 
 type CheckTransitRouterServiceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckTransitRouterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckTransitRouterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckTransitRouterServiceResponse) String() string {
@@ -1207,9 +1207,9 @@ func (s *CreateCenResponseBody) SetRequestId(v string) *CreateCenResponseBody {
 }
 
 type CreateCenResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCenResponse) String() string {
@@ -1463,9 +1463,9 @@ func (s *CreateCenBandwidthPackageResponseBody) SetRequestId(v string) *CreateCe
 }
 
 type CreateCenBandwidthPackageResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCenBandwidthPackageResponse) String() string {
@@ -1596,9 +1596,9 @@ func (s *CreateCenChildInstanceRouteEntryToAttachmentResponseBody) SetRequestId(
 }
 
 type CreateCenChildInstanceRouteEntryToAttachmentResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCenChildInstanceRouteEntryToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCenChildInstanceRouteEntryToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCenChildInstanceRouteEntryToAttachmentResponse) String() string {
@@ -1635,7 +1635,7 @@ type CreateCenChildInstanceRouteEntryToCenRequest struct {
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The ID of the region where the network instance is deployed.
 	//
-	// You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the attached network instance. Valid values:
 	//
@@ -1736,9 +1736,9 @@ func (s *CreateCenChildInstanceRouteEntryToCenResponseBody) SetRequestId(v strin
 }
 
 type CreateCenChildInstanceRouteEntryToCenResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCenChildInstanceRouteEntryToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCenChildInstanceRouteEntryToCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCenChildInstanceRouteEntryToCenResponse) String() string {
@@ -1940,9 +1940,9 @@ func (s *CreateCenInterRegionTrafficQosPolicyResponseBody) SetTrafficQosPolicyId
 }
 
 type CreateCenInterRegionTrafficQosPolicyResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCenInterRegionTrafficQosPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCenInterRegionTrafficQosPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCenInterRegionTrafficQosPolicyResponse) String() string {
@@ -2069,9 +2069,9 @@ func (s *CreateCenInterRegionTrafficQosQueueResponseBody) SetRequestId(v string)
 }
 
 type CreateCenInterRegionTrafficQosQueueResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCenInterRegionTrafficQosQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCenInterRegionTrafficQosQueueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCenInterRegionTrafficQosQueueResponse) String() string {
@@ -2098,9 +2098,9 @@ func (s *CreateCenInterRegionTrafficQosQueueResponse) SetBody(v *CreateCenInterR
 }
 
 type CreateCenRouteMapRequest struct {
-	// The match method that is used to match routes against the AS paths. Valid values:
+	// The match method that is used to match routes based on AS paths. Valid values:
 	//
-	// *   **Include**: fuzzy match. A route meets the match condition if the AS path of the route overlaps with the AS paths specified in the match condition.
+	// *   **Include**: fuzzy match. A route meets the match condition if the AS path of the route overlaps with the AS path specified in the match condition.
 	// *   **Complete**: exact match. A route is a match only if the AS path of the route is the same as an AS path specified in the match condition.
 	AsPathMatchMode *string `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
 	// The ID of the CEN instance.
@@ -2113,13 +2113,13 @@ type CreateCenRouteMapRequest struct {
 	//
 	// *   **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
 	//
-	//     For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is enabled, the route whose prefix is 10.10.1.0/24 is a match.
+	// For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is applied, the route whose prefix is 10.10.1.0/24 meets the match condition.
 	//
 	// *   **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
 	//
-	//     For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
+	// For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
 	CidrMatchMode *string `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
-	// The match method that is used to match routes based on the community. Valid values:
+	// The match method that is used to evaluate routes based on the community. Valid values:
 	//
 	// *   **Include**: fuzzy match. A route meets the match condition if the community of the route overlaps with the community specified in the match condition.
 	// *   **Complete**: exact match. A route meets the match condition only if the community of the route is the same as the community specified in the match condition.
@@ -2169,14 +2169,14 @@ type CreateCenRouteMapRequest struct {
 	DestinationInstanceIds []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
 	// Specifies whether to exclude the destination network instance IDs. Valid values:
 	//
-	// *   **false** (default value): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
+	// *   **false** (default value): A route meets the match condition if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
 	// *   **true**: A route meets the match condition if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
 	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
 	// The IDs of the destination route tables to which routes are evaluated. You can enter at most 32 route table IDs.
 	//
 	// > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
 	DestinationRouteTableIds []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
-	// The action to be performed on a route that meets all match conditions. Valid values:
+	// The action to be performed on a route that meets all the match conditions. Valid values:
 	//
 	// *   **Permit**: the route is permitted.
 	// *   **Deny**: the route is denied.
@@ -2274,7 +2274,7 @@ type CreateCenRouteMapRequest struct {
 	SourceInstanceIds []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
 	// Specifies whether to exclude the source network instance IDs. Valid values:
 	//
-	// *   **false** (default value): A route is a match if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
+	// *   **false** (default value): A route meets the match condition if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
 	// *   **true**: A route is a match if its source network instance ID is not in the list specified by **SourceInstanceIds.N**.
 	SourceInstanceIdsReverseMatch *bool `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
 	// The IDs of the source regions from which routes are evaluated. You can enter at most 32 region IDs.
@@ -2291,11 +2291,11 @@ type CreateCenRouteMapRequest struct {
 	//
 	// *   **RegionIn**: Routes are advertised to the gateways in the regions that are connected by the CEN instance.
 	//
-	//     For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region.
+	// For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region.
 	//
 	// *   **RegionOut**: Routes are advertised from the gateways in the regions that are connected by the CEN instance.
 	//
-	//     For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the same region, or to gateways deployed in other regions.
+	// For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the same region, or to gateways deployed in other regions.
 	TransmitDirection *string `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
@@ -2498,9 +2498,9 @@ func (s *CreateCenRouteMapResponseBody) SetRouteMapId(v string) *CreateCenRouteM
 }
 
 type CreateCenRouteMapResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCenRouteMapResponse) String() string {
@@ -2734,9 +2734,9 @@ func (s *CreateFlowlogResponseBody) SetSuccess(v string) *CreateFlowlogResponseB
 }
 
 type CreateFlowlogResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFlowlogResponse) String() string {
@@ -3011,9 +3011,9 @@ func (s *CreateTrafficMarkingPolicyResponseBody) SetTrafficMarkingPolicyId(v str
 }
 
 type CreateTrafficMarkingPolicyResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTrafficMarkingPolicyResponse) String() string {
@@ -3159,9 +3159,9 @@ func (s *CreateTransitRouteTableAggregationResponseBody) SetRequestId(v string) 
 }
 
 type CreateTransitRouteTableAggregationResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouteTableAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouteTableAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouteTableAggregationResponse) String() string {
@@ -3225,13 +3225,13 @@ type CreateTransitRouterRequest struct {
 	//
 	// >  Only Enterprise Edition transit routers support CIDR blocks.
 	TransitRouterCidrList []*CreateTransitRouterRequestTransitRouterCidrList `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty" type:"Repeated"`
-	// The description of the Enterprise Edition transit router.
+	// The description of the Enterprise Edition transit router instance.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
 	// The name of the Enterprise Edition transit router.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 }
 
@@ -3432,13 +3432,13 @@ type CreateTransitRouterShrinkRequest struct {
 	//
 	// >  Only Enterprise Edition transit routers support CIDR blocks.
 	TransitRouterCidrListShrink *string `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty"`
-	// The description of the Enterprise Edition transit router.
+	// The description of the Enterprise Edition transit router instance.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
 	// The name of the Enterprise Edition transit router.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 }
 
@@ -3574,9 +3574,9 @@ func (s *CreateTransitRouterResponseBody) SetTransitRouterId(v string) *CreateTr
 }
 
 type CreateTransitRouterResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterResponse) String() string {
@@ -3611,18 +3611,18 @@ type CreateTransitRouterCidrRequest struct {
 	//
 	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the CIDR block.
+	// The description of the transit router CIDR block.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
 	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	// *   **false** (default): performs a dry run and sends the request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The name of the CIDR block.
+	// The name of the transit router CIDR block.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3738,9 +3738,9 @@ func (s *CreateTransitRouterCidrResponseBody) SetTransitRouterCidrId(v string) *
 }
 
 type CreateTransitRouterCidrResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterCidrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterCidrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterCidrResponse) String() string {
@@ -3794,11 +3794,11 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The description of the multicast domain.
 	//
-	// The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterMulticastDomainDescription *string `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
 	// The name of the multicast domain.
 	//
-	// The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterMulticastDomainName *string `json:"TransitRouterMulticastDomainName,omitempty" xml:"TransitRouterMulticastDomainName,omitempty"`
 }
 
@@ -3929,9 +3929,9 @@ func (s *CreateTransitRouterMulticastDomainResponseBody) SetTransitRouterMultica
 }
 
 type CreateTransitRouterMulticastDomainResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterMulticastDomainResponse) String() string {
@@ -3963,15 +3963,19 @@ type CreateTransitRouterPeerAttachmentRequest struct {
 	// *   **false** (default): no
 	// *   **true**: yes
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
+	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+	//
+	// *   This parameter specifies the maximum bandwidth value for the inter-region connection if you set **BandwidthType** to **BandwidthPackage**.
+	// *   This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set **BandwidthType** to **DataTransfer**.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
 	//
-	// **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	// *   **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	// *   **DataTransfer**: bandwidth is billed based on the pay-by-data-transfer metering method.
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 	//
-	// If this parameter is not set, the system allocates bandwidth that is used for testing purposes to the inter-region connection. The default bandwidth for testing purpose is 1 Kbit/s. You can use the bandwidth to test the connectivity of IPv4 networks.
+	// *   If you set **BandwidthType** to **DataTransfer**, you do not need to set this parameter.
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
@@ -3981,9 +3985,11 @@ type CreateTransitRouterPeerAttachmentRequest struct {
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The default link type. Valid values:
-	// - **Platinum**: only available for the **Pay-By-Data-Transfer** bandwidth.
-	// - **Gold** (default)
+	// The default line type.
+	//
+	// Valid values: Platinum and Gold.
+	//
+	// Platinum is supported only when BandwidthType is set to DataTransfer.
 	DefaultLinkType *string `json:"DefaultLinkType,omitempty" xml:"DefaultLinkType,omitempty"`
 	// Specifies whether to perform a dry run. Default values:
 	//
@@ -4180,9 +4186,9 @@ func (s *CreateTransitRouterPeerAttachmentResponseBody) SetTransitRouterAttachme
 }
 
 type CreateTransitRouterPeerAttachmentResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterPeerAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterPeerAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterPeerAttachmentResponse) String() string {
@@ -4341,9 +4347,9 @@ func (s *CreateTransitRouterPrefixListAssociationResponseBody) SetRequestId(v st
 }
 
 type CreateTransitRouterPrefixListAssociationResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterPrefixListAssociationResponse) String() string {
@@ -4387,13 +4393,13 @@ type CreateTransitRouterRouteEntryRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The description of the route.
 	//
-	// The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterRouteEntryDescription *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
 	// The destination CIDR block of the route.
 	TransitRouterRouteEntryDestinationCidrBlock *string `json:"TransitRouterRouteEntryDestinationCidrBlock,omitempty" xml:"TransitRouterRouteEntryDestinationCidrBlock,omitempty"`
 	// The name of the route.
 	//
-	// The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterRouteEntryName *string `json:"TransitRouterRouteEntryName,omitempty" xml:"TransitRouterRouteEntryName,omitempty"`
 	// The ID of the network instance connection that you want to specify as the next hop.
 	TransitRouterRouteEntryNextHopId *string `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
@@ -4500,9 +4506,9 @@ func (s *CreateTransitRouterRouteEntryResponseBody) SetTransitRouterRouteEntryId
 }
 
 type CreateTransitRouterRouteEntryResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterRouteEntryResponse) String() string {
@@ -4554,11 +4560,11 @@ type CreateTransitRouterRouteTableRequest struct {
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The description of the custom route table.
 	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterRouteTableDescription *string `json:"TransitRouterRouteTableDescription,omitempty" xml:"TransitRouterRouteTableDescription,omitempty"`
 	// The name of the custom route table.
 	//
-	// The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the name empty.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterRouteTableName *string `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
 }
 
@@ -4705,9 +4711,9 @@ func (s *CreateTransitRouterRouteTableResponseBody) SetTransitRouterRouteTableId
 }
 
 type CreateTransitRouterRouteTableResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterRouteTableResponse) String() string {
@@ -4766,11 +4772,11 @@ type CreateTransitRouterVbrAttachmentRequest struct {
 	Tag []*CreateTransitRouterVbrAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The description of the VBR connection.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The name of the VBR connection.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 	// The ID of the Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
@@ -4924,9 +4930,9 @@ func (s *CreateTransitRouterVbrAttachmentResponseBody) SetTransitRouterAttachmen
 }
 
 type CreateTransitRouterVbrAttachmentResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterVbrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterVbrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterVbrAttachmentResponse) String() string {
@@ -4987,11 +4993,11 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	Tag []*CreateTransitRouterVpcAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The description of the VPC connection.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The name of the VPC connection.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 	// The ID of the Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
@@ -5190,9 +5196,9 @@ func (s *CreateTransitRouterVpcAttachmentResponseBody) SetTransitRouterAttachmen
 }
 
 type CreateTransitRouterVpcAttachmentResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterVpcAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterVpcAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterVpcAttachmentResponse) String() string {
@@ -5448,9 +5454,9 @@ func (s *CreateTransitRouterVpnAttachmentResponseBody) SetTransitRouterAttachmen
 }
 
 type CreateTransitRouterVpnAttachmentResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTransitRouterVpnAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterVpnAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTransitRouterVpnAttachmentResponse) String() string {
@@ -5574,9 +5580,9 @@ func (s *DeactiveFlowLogResponseBody) SetSuccess(v string) *DeactiveFlowLogRespo
 }
 
 type DeactiveFlowLogResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeactiveFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeactiveFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeactiveFlowLogResponse) String() string {
@@ -5663,9 +5669,9 @@ func (s *DeleteCenResponseBody) SetRequestId(v string) *DeleteCenResponseBody {
 }
 
 type DeleteCenResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCenResponse) String() string {
@@ -5750,9 +5756,9 @@ func (s *DeleteCenBandwidthPackageResponseBody) SetRequestId(v string) *DeleteCe
 }
 
 type DeleteCenBandwidthPackageResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCenBandwidthPackageResponse) String() string {
@@ -5883,9 +5889,9 @@ func (s *DeleteCenChildInstanceRouteEntryToAttachmentResponseBody) SetRequestId(
 }
 
 type DeleteCenChildInstanceRouteEntryToAttachmentResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCenChildInstanceRouteEntryToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCenChildInstanceRouteEntryToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCenChildInstanceRouteEntryToAttachmentResponse) String() string {
@@ -6023,9 +6029,9 @@ func (s *DeleteCenChildInstanceRouteEntryToCenResponseBody) SetRequestId(v strin
 }
 
 type DeleteCenChildInstanceRouteEntryToCenResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCenChildInstanceRouteEntryToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCenChildInstanceRouteEntryToCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCenChildInstanceRouteEntryToCenResponse) String() string {
@@ -6133,9 +6139,9 @@ func (s *DeleteCenInterRegionTrafficQosPolicyResponseBody) SetRequestId(v string
 }
 
 type DeleteCenInterRegionTrafficQosPolicyResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCenInterRegionTrafficQosPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCenInterRegionTrafficQosPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCenInterRegionTrafficQosPolicyResponse) String() string {
@@ -6243,9 +6249,9 @@ func (s *DeleteCenInterRegionTrafficQosQueueResponseBody) SetRequestId(v string)
 }
 
 type DeleteCenInterRegionTrafficQosQueueResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCenInterRegionTrafficQosQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCenInterRegionTrafficQosQueueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCenInterRegionTrafficQosQueueResponse) String() string {
@@ -6348,9 +6354,9 @@ func (s *DeleteCenRouteMapResponseBody) SetRequestId(v string) *DeleteCenRouteMa
 }
 
 type DeleteCenRouteMapResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCenRouteMapResponse) String() string {
@@ -6474,9 +6480,9 @@ func (s *DeleteFlowlogResponseBody) SetSuccess(v string) *DeleteFlowlogResponseB
 }
 
 type DeleteFlowlogResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFlowlogResponse) String() string {
@@ -6503,15 +6509,15 @@ func (s *DeleteFlowlogResponse) SetBody(v *DeleteFlowlogResponseBody) *DeleteFlo
 }
 
 type DeleteRouteServiceInCenRequest struct {
-	// The ID of the region in which the network instance of the cloud service that you want to access is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The ID of the region where the cloud service is accessed.
 	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
 	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The IP addresses or CIDR blocks of the cloud service.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the region in which the cloud service is deployed.
+	// The region ID of the cloud service.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
 	// The ID of the virtual private cloud (VPC) that is associated with the cloud service.
 	HostVpcId            *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
@@ -6593,9 +6599,9 @@ func (s *DeleteRouteServiceInCenResponseBody) SetRequestId(v string) *DeleteRout
 }
 
 type DeleteRouteServiceInCenResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRouteServiceInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRouteServiceInCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRouteServiceInCenResponse) String() string {
@@ -6703,9 +6709,9 @@ func (s *DeleteTrafficMarkingPolicyResponseBody) SetRequestId(v string) *DeleteT
 }
 
 type DeleteTrafficMarkingPolicyResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTrafficMarkingPolicyResponse) String() string {
@@ -6824,9 +6830,9 @@ func (s *DeleteTransitRouteTableAggregationResponseBody) SetRequestId(v string) 
 }
 
 type DeleteTransitRouteTableAggregationResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouteTableAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouteTableAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouteTableAggregationResponse) String() string {
@@ -6934,9 +6940,9 @@ func (s *DeleteTransitRouterResponseBody) SetRequestId(v string) *DeleteTransitR
 }
 
 type DeleteTransitRouterResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterResponse) String() string {
@@ -7062,9 +7068,9 @@ func (s *DeleteTransitRouterCidrResponseBody) SetRequestId(v string) *DeleteTran
 }
 
 type DeleteTransitRouterCidrResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterCidrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterCidrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterCidrResponse) String() string {
@@ -7170,9 +7176,9 @@ func (s *DeleteTransitRouterMulticastDomainResponseBody) SetRequestId(v string) 
 }
 
 type DeleteTransitRouterMulticastDomainResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterMulticastDomainResponse) String() string {
@@ -7290,9 +7296,9 @@ func (s *DeleteTransitRouterPeerAttachmentResponseBody) SetRequestId(v string) *
 }
 
 type DeleteTransitRouterPeerAttachmentResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterPeerAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterPeerAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterPeerAttachmentResponse) String() string {
@@ -7444,9 +7450,9 @@ func (s *DeleteTransitRouterPrefixListAssociationResponseBody) SetRequestId(v st
 }
 
 type DeleteTransitRouterPrefixListAssociationResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterPrefixListAssociationResponse) String() string {
@@ -7585,9 +7591,9 @@ func (s *DeleteTransitRouterRouteEntryResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteTransitRouterRouteEntryResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterRouteEntryResponse) String() string {
@@ -7695,9 +7701,9 @@ func (s *DeleteTransitRouterRouteTableResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteTransitRouterRouteTableResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterRouteTableResponse) String() string {
@@ -7815,9 +7821,9 @@ func (s *DeleteTransitRouterVbrAttachmentResponseBody) SetRequestId(v string) *D
 }
 
 type DeleteTransitRouterVbrAttachmentResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterVbrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterVbrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterVbrAttachmentResponse) String() string {
@@ -7935,9 +7941,9 @@ func (s *DeleteTransitRouterVpcAttachmentResponseBody) SetRequestId(v string) *D
 }
 
 type DeleteTransitRouterVpcAttachmentResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterVpcAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterVpcAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterVpcAttachmentResponse) String() string {
@@ -8055,9 +8061,9 @@ func (s *DeleteTransitRouterVpnAttachmentResponseBody) SetRequestId(v string) *D
 }
 
 type DeleteTransitRouterVpnAttachmentResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTransitRouterVpnAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterVpnAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTransitRouterVpnAttachmentResponse) String() string {
@@ -8184,9 +8190,9 @@ func (s *DeregisterTransitRouterMulticastGroupMembersResponseBody) SetRequestId(
 }
 
 type DeregisterTransitRouterMulticastGroupMembersResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeregisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeregisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeregisterTransitRouterMulticastGroupMembersResponse) String() string {
@@ -8306,9 +8312,9 @@ func (s *DeregisterTransitRouterMulticastGroupSourcesResponseBody) SetRequestId(
 }
 
 type DeregisterTransitRouterMulticastGroupSourcesResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeregisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeregisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeregisterTransitRouterMulticastGroupSourcesResponse) String() string {
@@ -8600,9 +8606,9 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttri
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenAttachedChildInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenAttachedChildInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeResponse) String() string {
@@ -8805,9 +8811,9 @@ func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstanc
 }
 
 type DescribeCenAttachedChildInstancesResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenAttachedChildInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenAttachedChildInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstancesResponse) String() string {
@@ -9368,9 +9374,9 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidt
 }
 
 type DescribeCenBandwidthPackagesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenBandwidthPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenBandwidthPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenBandwidthPackagesResponse) String() string {
@@ -9849,9 +9855,9 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRoute
 }
 
 type DescribeCenChildInstanceRouteEntriesResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenChildInstanceRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenChildInstanceRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenChildInstanceRouteEntriesResponse) String() string {
@@ -9985,9 +9991,9 @@ func (s *DescribeCenGeographicSpanRemainingBandwidthResponseBody) SetRequestId(v
 }
 
 type DescribeCenGeographicSpanRemainingBandwidthResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenGeographicSpanRemainingBandwidthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenGeographicSpanRemainingBandwidthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenGeographicSpanRemainingBandwidthResponse) String() string {
@@ -10167,9 +10173,9 @@ func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpa
 }
 
 type DescribeCenGeographicSpansResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenGeographicSpansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenGeographicSpansResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenGeographicSpansResponse) String() string {
@@ -10389,9 +10395,9 @@ func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidt
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenInterRegionBandwidthLimitsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenInterRegionBandwidthLimitsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenInterRegionBandwidthLimitsResponse) String() string {
@@ -10598,9 +10604,9 @@ func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo
 }
 
 type DescribeCenPrivateZoneRoutesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenPrivateZoneRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenPrivateZoneRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenPrivateZoneRoutesResponse) String() string {
@@ -11000,9 +11006,9 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 type DescribeCenRegionDomainRouteEntriesResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenRegionDomainRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenRegionDomainRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenRegionDomainRouteEntriesResponse) String() string {
@@ -11677,9 +11683,9 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds) S
 }
 
 type DescribeCenRouteMapsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenRouteMapsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenRouteMapsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenRouteMapsResponse) String() string {
@@ -11706,7 +11712,7 @@ func (s *DescribeCenRouteMapsResponse) SetBody(v *DescribeCenRouteMapsResponseBo
 }
 
 type DescribeCenVbrHealthCheckRequest struct {
-	// The ID of the CEN instance.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -11718,9 +11724,9 @@ type DescribeCenVbrHealthCheckRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the VBR.
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the VBR.
+	// The ID of the Alibaba Cloud account that owns the VBRs.
 	VbrInstanceOwnerId *int64 `json:"VbrInstanceOwnerId,omitempty" xml:"VbrInstanceOwnerId,omitempty"`
-	// The ID of the region where the VBR is deployed.
+	// The ID of the region where the VBRs are deployed.
 	//
 	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	VbrInstanceRegionId *string `json:"VbrInstanceRegionId,omitempty" xml:"VbrInstanceRegionId,omitempty"`
@@ -11789,7 +11795,7 @@ type DescribeCenVbrHealthCheckResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -11850,19 +11856,19 @@ func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetVbrHealthCheck
 type DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck struct {
 	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The description of the health check.
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time interval at which probe packets are sent during the health check. Unit: seconds.
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// Indicates whether probing is enabled. Valid values:
 	//
-	// *   **true**: yes
+	// *   **true**: Probing is enabled.
 	//
-	//     If probing is enabled, the system does not switch to another route when the detected route is not reachable.
+	//         If you enable probing, the system does not switch to another route if the detected route is not reachable.
 	//
-	// *   **false**: no
+	// *   **false**: Probing is disabled.
 	//
-	//     If probing is disabled and a redundant route is specified, the system switches to the redundant route when the detected route is not reachable.
+	//           If probing is disabled and a redundant route is specified, the system switches to the redundant route when the detected route is not reachable.
 	HealthCheckOnly *bool `json:"HealthCheckOnly,omitempty" xml:"HealthCheckOnly,omitempty"`
 	// The source IP address of the health check.
 	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
@@ -11870,7 +11876,7 @@ type DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck struct {
 	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
 	// The number of probe packets that are sent during the health check.
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The ID of the VBR.
+	// The VBR ID.
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
 	// The ID of the region where the VBR is deployed.
 	VbrInstanceRegionId *string `json:"VbrInstanceRegionId,omitempty" xml:"VbrInstanceRegionId,omitempty"`
@@ -11930,9 +11936,9 @@ func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) Set
 }
 
 type DescribeCenVbrHealthCheckResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCenVbrHealthCheckResponse) String() string {
@@ -12316,9 +12322,9 @@ func (s *DescribeCensResponseBodyCensCenTagsTag) SetValue(v string) *DescribeCen
 }
 
 type DescribeCensResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCensResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCensResponse) String() string {
@@ -12465,9 +12471,9 @@ func (s *DescribeChildInstanceRegionsResponseBodyRegionsRegion) SetRegionId(v st
 }
 
 type DescribeChildInstanceRegionsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeChildInstanceRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChildInstanceRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeChildInstanceRegionsResponse) String() string {
@@ -12518,9 +12524,9 @@ type DescribeFlowlogsRequest struct {
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Minimum value: **1**. Default value: **20**.
+	// The number of entries per page. Minimum value: **1**. Default value: **20**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The name of the project where the flow log is stored.
 	//
@@ -12887,9 +12893,9 @@ func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLogTagsTag) SetValue(v string) 
 }
 
 type DescribeFlowlogsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFlowlogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFlowlogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFlowlogsResponse) String() string {
@@ -13044,9 +13050,9 @@ func (s *DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId) SetReg
 }
 
 type DescribeGeographicRegionMembershipResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeGeographicRegionMembershipResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGeographicRegionMembershipResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeGeographicRegionMembershipResponse) String() string {
@@ -13309,9 +13315,9 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetOrderType(v 
 }
 
 type DescribeGrantRulesToCenResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeGrantRulesToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGrantRulesToCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeGrantRulesToCenResponse) String() string {
@@ -13509,9 +13515,9 @@ func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) SetOrderType(v stri
 }
 
 type DescribeGrantRulesToResourceResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeGrantRulesToResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGrantRulesToResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeGrantRulesToResourceResponse) String() string {
@@ -13855,9 +13861,9 @@ func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublished
 }
 
 type DescribePublishedRouteEntriesResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePublishedRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePublishedRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePublishedRouteEntriesResponse) String() string {
@@ -14090,9 +14096,9 @@ func (s *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) SetStatus
 }
 
 type DescribeRouteConflictResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRouteConflictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRouteConflictResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRouteConflictResponse) String() string {
@@ -14121,23 +14127,23 @@ func (s *DescribeRouteConflictResponse) SetBody(v *DescribeRouteConflictResponse
 type DescribeRouteServicesInCenRequest struct {
 	// The ID of the region where the cloud service is accessed.
 	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	// The ID of the CEN instance.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The service address of the cloud service.
 	//
 	// You can enter a domain name, an IP address, or a CIDR block.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the region where the cloud service is deployed.
+	// The region ID of the cloud service.
 	//
 	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the virtual private cloud (VPC) that is associated with the cloud service.
+	// The ID of the VPC associated with the cloud service.
 	HostVpcId    *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: **10**. Valid values: **1** to **50**.
+	// The number of entries per page. Default value: **10**. Valid values: **1** to **50**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14207,11 +14213,11 @@ func (s *DescribeRouteServicesInCenRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeRouteServicesInCenResponseBody struct {
-	// The number of the returned page.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the cloud services.
 	RouteServiceEntries *DescribeRouteServicesInCenResponseBodyRouteServiceEntries `json:"RouteServiceEntries,omitempty" xml:"RouteServiceEntries,omitempty" type:"Struct"`
@@ -14280,15 +14286,15 @@ type DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry 
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The service address of the cloud service.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the region where the cloud service is deployed.
+	// The region ID of the cloud service.
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the VPC that is associated with the cloud service.
+	// The ID of the VPC associated with the cloud service.
 	HostVpcId *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
 	// The status of the cloud service. Valid values:
 	//
-	// *   **Creating**: The cloud service is being created.
-	// *   **Active**: The cloud service is available.
-	// *   **Deleting**: The cloud service is being deleted.
+	// *   **Creating**
+	// *   **Active**
+	// *   **Deleting**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14358,9 +14364,9 @@ func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEn
 }
 
 type DescribeRouteServicesInCenResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRouteServicesInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRouteServicesInCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRouteServicesInCenResponse) String() string {
@@ -14583,9 +14589,9 @@ func (s *DescribeTransitRouteTableAggregationResponseBodyData) SetTransitRouteTa
 }
 
 type DescribeTransitRouteTableAggregationResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTransitRouteTableAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTransitRouteTableAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTransitRouteTableAggregationResponse) String() string {
@@ -14749,9 +14755,9 @@ func (s *DescribeTransitRouteTableAggregationDetailResponseBodyData) SetStatus(v
 }
 
 type DescribeTransitRouteTableAggregationDetailResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTransitRouteTableAggregationDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTransitRouteTableAggregationDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTransitRouteTableAggregationDetailResponse) String() string {
@@ -14879,9 +14885,9 @@ func (s *DetachCenChildInstanceResponseBody) SetRequestId(v string) *DetachCenCh
 }
 
 type DetachCenChildInstanceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachCenChildInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachCenChildInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachCenChildInstanceResponse) String() string {
@@ -14993,9 +14999,9 @@ func (s *DisableCenVbrHealthCheckResponseBody) SetRequestId(v string) *DisableCe
 }
 
 type DisableCenVbrHealthCheckResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableCenVbrHealthCheckResponse) String() string {
@@ -15110,9 +15116,9 @@ func (s *DisableTransitRouterRouteTablePropagationResponseBody) SetRequestId(v s
 }
 
 type DisableTransitRouterRouteTablePropagationResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableTransitRouterRouteTablePropagationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableTransitRouterRouteTablePropagationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableTransitRouterRouteTablePropagationResponse) String() string {
@@ -15221,9 +15227,9 @@ func (s *DisassociateTransitRouterMulticastDomainResponseBody) SetRequestId(v st
 }
 
 type DisassociateTransitRouterMulticastDomainResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisassociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisassociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisassociateTransitRouterMulticastDomainResponse) String() string {
@@ -15338,9 +15344,9 @@ func (s *DissociateTransitRouterAttachmentFromRouteTableResponseBody) SetRequest
 }
 
 type DissociateTransitRouterAttachmentFromRouteTableResponse struct {
-	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DissociateTransitRouterAttachmentFromRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DissociateTransitRouterAttachmentFromRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DissociateTransitRouterAttachmentFromRouteTableResponse) String() string {
@@ -15508,9 +15514,9 @@ func (s *EnableCenVbrHealthCheckResponseBody) SetRequestId(v string) *EnableCenV
 }
 
 type EnableCenVbrHealthCheckResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableCenVbrHealthCheckResponse) String() string {
@@ -15625,9 +15631,9 @@ func (s *EnableTransitRouterRouteTablePropagationResponseBody) SetRequestId(v st
 }
 
 type EnableTransitRouterRouteTablePropagationResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableTransitRouterRouteTablePropagationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableTransitRouterRouteTablePropagationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableTransitRouterRouteTablePropagationResponse) String() string {
@@ -15758,9 +15764,9 @@ func (s *GrantInstanceToTransitRouterResponseBody) SetRequestId(v string) *Grant
 }
 
 type GrantInstanceToTransitRouterResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GrantInstanceToTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantInstanceToTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GrantInstanceToTransitRouterResponse) String() string {
@@ -15993,9 +15999,9 @@ func (s *ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry) Set
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCenChildInstanceRouteEntriesToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCenChildInstanceRouteEntriesToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCenChildInstanceRouteEntriesToAttachmentResponse) String() string {
@@ -16035,13 +16041,13 @@ type ListCenInterRegionTrafficQosPoliciesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The description of the QoS policy.
 	//
-	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TrafficQosPolicyDescription *string `json:"TrafficQosPolicyDescription,omitempty" xml:"TrafficQosPolicyDescription,omitempty"`
 	// The ID of the QoS policy.
 	TrafficQosPolicyId *string `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
 	// The name of the QoS policy.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TrafficQosPolicyName *string `json:"TrafficQosPolicyName,omitempty" xml:"TrafficQosPolicyName,omitempty"`
 	// The ID of the inter-region connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
@@ -16274,9 +16280,9 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTraff
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCenInterRegionTrafficQosPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCenInterRegionTrafficQosPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCenInterRegionTrafficQosPoliciesResponse) String() string {
@@ -16480,9 +16486,9 @@ func (s *ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues) SetTran
 }
 
 type ListCenInterRegionTrafficQosQueuesResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCenInterRegionTrafficQosQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCenInterRegionTrafficQosQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCenInterRegionTrafficQosQueuesResponse) String() string {
@@ -16718,9 +16724,9 @@ func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetVpcId(v string) *L
 }
 
 type ListGrantVSwitchEnisResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGrantVSwitchEnisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGrantVSwitchEnisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisResponse) String() string {
@@ -16916,9 +16922,9 @@ func (s *ListGrantVSwitchesToCenResponseBodyVSwitches) SetZoneId(v string) *List
 }
 
 type ListGrantVSwitchesToCenResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGrantVSwitchesToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGrantVSwitchesToCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGrantVSwitchesToCenResponse) String() string {
@@ -17195,9 +17201,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -17466,9 +17472,9 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatc
 }
 
 type ListTrafficMarkingPoliciesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTrafficMarkingPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTrafficMarkingPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTrafficMarkingPoliciesResponse) String() string {
@@ -17598,9 +17604,9 @@ func (s *ListTransitRouterAvailableResourceResponseBody) SetSupportMulticast(v b
 }
 
 type ListTransitRouterAvailableResourceResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterAvailableResourceResponse) String() string {
@@ -17706,7 +17712,7 @@ func (s *ListTransitRouterCidrRequest) SetTransitRouterId(v string) *ListTransit
 }
 
 type ListTransitRouterCidrResponseBody struct {
-	// The CIDR blocks of the transit router.
+	// The information about the CIDR block.
 	CidrLists []*ListTransitRouterCidrResponseBodyCidrLists `json:"CidrLists,omitempty" xml:"CidrLists,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -17737,25 +17743,25 @@ type ListTransitRouterCidrResponseBodyCidrLists struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the CIDR block.
 	//
-	// The value is set to **IPv4**, which indicates that the CIDR block is of the IPv4 type.
+	// The value is **IPv4**, which indicates that the CIDR block is of the IPv4 type.
 	Family *string `json:"Family,omitempty" xml:"Family,omitempty"`
 	// The name of the CIDR block.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the system is allowed to automatically add a route to the route table of the transit router.
+	// Indicates whether the system is allowed to automatically add a route to the route table of the transit router. Valid values:
 	//
-	// - **true**: yes.
+	// *   **true**
 	//
-	//      A value of true indicates that if you create a private VPN connection and add a route learning policy for the VPC connection, the system automatically adds the following route to the route table of the transit router that is in route learning relationship with the VPN connection:
+	//     A value of **true** indicates that after you create a private VPN connection and enable route learning for the connection, the system automatically adds a blackhole route to the route table of the transit router to which the VPN connection is attached.
 	//
-	//     A blackhole route whose destination CIDR block is the CIDR block of the transit router. The CIDR block of the transit router refers to the CIDR block from which gateway IP addresses are allocated to IPsec-VPN connections.
+	//     The destination CIDR block of the blackhole route is the CIDR block of the transit router. The CIDR block of the transit router refers to the CIDR block from which gateway IP addresses are allocated to IPsec-VPN connections.
 	//
-	//    The blackhole route is advertised only to the route tables of VBRs that are connected to the transit router.
+	//     The blackhole route is advertised only to the route table of the virtual border router (VBR) that is connected to the transit router.
 	//
-	// - **false**: no.
+	// *   **false**
 	PublishCidrRoute *bool `json:"PublishCidrRoute,omitempty" xml:"PublishCidrRoute,omitempty"`
-	// The ID of the CIDR block.
+	// The ID of the transit router CIDR block.
 	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
-	// The ID of the transit router.
+	// The transit router ID.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
@@ -17803,9 +17809,9 @@ func (s *ListTransitRouterCidrResponseBodyCidrLists) SetTransitRouterId(v string
 }
 
 type ListTransitRouterCidrResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterCidrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterCidrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterCidrResponse) String() string {
@@ -18071,9 +18077,9 @@ func (s *ListTransitRouterCidrAllocationResponseBodyTransitRouterCidrAllocations
 }
 
 type ListTransitRouterCidrAllocationResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterCidrAllocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterCidrAllocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterCidrAllocationResponse) String() string {
@@ -18315,9 +18321,9 @@ func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMu
 }
 
 type ListTransitRouterMulticastDomainAssociationsResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterMulticastDomainAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterMulticastDomainAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterMulticastDomainAssociationsResponse) String() string {
@@ -18450,9 +18456,9 @@ func (s *ListTransitRouterMulticastDomainVSwitchesResponseBody) SetVSwitchIds(v 
 }
 
 type ListTransitRouterMulticastDomainVSwitchesResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterMulticastDomainVSwitchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterMulticastDomainVSwitchesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterMulticastDomainVSwitchesResponse) String() string {
@@ -18757,9 +18763,9 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 }
 
 type ListTransitRouterMulticastDomainsResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterMulticastDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterMulticastDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterMulticastDomainsResponse) String() string {
@@ -19111,9 +19117,9 @@ func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroup
 }
 
 type ListTransitRouterMulticastGroupsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterMulticastGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterMulticastGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterMulticastGroupsResponse) String() string {
@@ -19275,7 +19281,7 @@ type ListTransitRouterPeerAttachmentsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The queried inter-region connections.
+	// A list of inter-region connections.
 	TransitRouterAttachments []*ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -19313,21 +19319,20 @@ func (s *ListTransitRouterPeerAttachmentsResponseBody) SetTransitRouterAttachmen
 }
 
 type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the local Enterprise Edition transit router automatically advertises routes of the inter-region connection to the peer transit router. Valid values:
+	// Indicates whether the local Enterprise Edition transit router automatically advertises routes of the cross-region connection to the peer transit router. Valid values:
 	//
-	// *   **false** (default): no
-	// *   **true**: yes
+	// *   **false** (default)
+	// *   **true**
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
+	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
 	//
 	// *   This parameter specifies the maximum bandwidth value for the inter-region connection if you set **BandwidthType** to **BandwidthPackage**.
 	// *   This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set **BandwidthType** to **DataTransfer**.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The bandwidth allocation method. Valid values:
 	//
-	// **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
-	//
-	// **DataTransfer**: bills bandwidth based on the pay-by-data-transfer metering method.
+	// *   **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	// *   **DataTransfer**: bandwidth is billed based on the pay-by-data-transfer metering method.
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
@@ -19337,9 +19342,10 @@ type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct
 	//
 	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The default link type. Valid values:
-	// - **Gold**
-	// - **Platinum**
+	// The default line type.
+	//
+	// *   **Gold** (default)
+	// *   **Platinum**
 	DefaultLinkType *string `json:"DefaultLinkType,omitempty" xml:"DefaultLinkType,omitempty"`
 	// The areas that are connected by the bandwidth plan.
 	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
@@ -19353,19 +19359,19 @@ type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the resource to which the transit router is connected. Valid values:
 	//
-	// *   **VPC**: VPC
+	// *   **VPC**: virtual private cloud (VPC)
 	// *   **CCN**: Cloud Connect Network (CCN) instance
 	// *   **VBR**: virtual border router (VBR)
 	// *   **TR**: transit router
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the inter-region connection. Valid values:
 	//
-	// *   **Attached**: The inter-region connection is created.
-	// *   **Attaching**: The inter-region connection is being created on the transit router.
-	// *   **Detaching**: The inter-region connection is being deleted from the transit router.
-	// *   **Detached**: The inter-region connection is deleted from the transit router.
+	// *   **Attached**
+	// *   **Attaching**
+	// *   **Detaching**
+	// *   **Detached**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tags []*ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the inter-region connection.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
@@ -19506,9 +19512,9 @@ func (s *ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachmentsTag
 }
 
 type ListTransitRouterPeerAttachmentsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterPeerAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterPeerAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterPeerAttachmentsResponse) String() string {
@@ -19782,9 +19788,9 @@ func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetTrans
 }
 
 type ListTransitRouterPrefixListAssociationResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterPrefixListAssociationResponse) String() string {
@@ -20312,9 +20318,9 @@ func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathA
 }
 
 type ListTransitRouterRouteEntriesResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterRouteEntriesResponse) String() string {
@@ -20542,9 +20548,9 @@ func (s *ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssocia
 }
 
 type ListTransitRouterRouteTableAssociationsResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterRouteTableAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterRouteTableAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterRouteTableAssociationsResponse) String() string {
@@ -20765,9 +20771,9 @@ func (s *ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropaga
 }
 
 type ListTransitRouterRouteTablePropagationsResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterRouteTablePropagationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterRouteTablePropagationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterRouteTablePropagationsResponse) String() string {
@@ -21149,9 +21155,9 @@ func (s *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesTags) S
 }
 
 type ListTransitRouterRouteTablesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterRouteTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterRouteTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterRouteTablesResponse) String() string {
@@ -21493,9 +21499,9 @@ func (s *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachmentsTags
 }
 
 type ListTransitRouterVbrAttachmentsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterVbrAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterVbrAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterVbrAttachmentsResponse) String() string {
@@ -21920,9 +21926,9 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZone
 }
 
 type ListTransitRouterVpcAttachmentsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterVpcAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterVpcAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterVpcAttachmentsResponse) String() string {
@@ -22299,9 +22305,9 @@ func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZone
 }
 
 type ListTransitRouterVpnAttachmentsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRouterVpnAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterVpnAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRouterVpnAttachmentsResponse) String() string {
@@ -22745,9 +22751,9 @@ func (s *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) SetT
 }
 
 type ListTransitRoutersResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTransitRoutersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRoutersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTransitRoutersResponse) String() string {
@@ -22861,9 +22867,9 @@ func (s *ModifyCenAttributeResponseBody) SetRequestId(v string) *ModifyCenAttrib
 }
 
 type ModifyCenAttributeResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyCenAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCenAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyCenAttributeResponse) String() string {
@@ -22894,11 +22900,11 @@ type ModifyCenBandwidthPackageAttributeRequest struct {
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
 	// The new description of the bandwidth plan.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The new name of the bandwidth plan.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -22968,9 +22974,9 @@ func (s *ModifyCenBandwidthPackageAttributeResponseBody) SetRequestId(v string) 
 }
 
 type ModifyCenBandwidthPackageAttributeResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyCenBandwidthPackageAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCenBandwidthPackageAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyCenBandwidthPackageAttributeResponse) String() string {
@@ -23066,9 +23072,9 @@ func (s *ModifyCenBandwidthPackageSpecResponseBody) SetRequestId(v string) *Modi
 }
 
 type ModifyCenBandwidthPackageSpecResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyCenBandwidthPackageSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCenBandwidthPackageSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyCenBandwidthPackageSpecResponse) String() string {
@@ -23463,9 +23469,9 @@ func (s *ModifyCenRouteMapResponseBody) SetRequestId(v string) *ModifyCenRouteMa
 }
 
 type ModifyCenRouteMapResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyCenRouteMapResponse) String() string {
@@ -23502,13 +23508,13 @@ type ModifyFlowLogAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new description of the flow log.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the flow log.
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The new name of the flow log.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	FlowLogName  *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -23607,9 +23613,9 @@ func (s *ModifyFlowLogAttributeResponseBody) SetSuccess(v string) *ModifyFlowLog
 }
 
 type ModifyFlowLogAttributeResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyFlowLogAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFlowLogAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyFlowLogAttributeResponse) String() string {
@@ -23775,9 +23781,9 @@ func (s *ModifyTransitRouterCidrResponseBody) SetRequestId(v string) *ModifyTran
 }
 
 type ModifyTransitRouterCidrResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyTransitRouterCidrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTransitRouterCidrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyTransitRouterCidrResponse) String() string {
@@ -23901,9 +23907,9 @@ func (s *ModifyTransitRouterMulticastDomainResponseBody) SetRequestId(v string) 
 }
 
 type ModifyTransitRouterMulticastDomainResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyTransitRouterMulticastDomainResponse) String() string {
@@ -24028,9 +24034,9 @@ func (s *MoveResourceGroupResponseBody) SetRequestId(v string) *MoveResourceGrou
 }
 
 type MoveResourceGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MoveResourceGroupResponse) String() string {
@@ -24126,9 +24132,9 @@ func (s *OpenTransitRouterServiceResponseBody) SetRequestId(v string) *OpenTrans
 }
 
 type OpenTransitRouterServiceResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OpenTransitRouterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenTransitRouterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s OpenTransitRouterServiceResponse) String() string {
@@ -24243,9 +24249,9 @@ func (s *PublishRouteEntriesResponseBody) SetRequestId(v string) *PublishRouteEn
 }
 
 type PublishRouteEntriesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PublishRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PublishRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PublishRouteEntriesResponse) String() string {
@@ -24342,9 +24348,9 @@ func (s *RefreshTransitRouteTableAggregationResponseBody) SetRequestId(v string)
 }
 
 type RefreshTransitRouteTableAggregationResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshTransitRouteTableAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshTransitRouteTableAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshTransitRouteTableAggregationResponse) String() string {
@@ -24465,9 +24471,9 @@ func (s *RegisterTransitRouterMulticastGroupMembersResponseBody) SetRequestId(v 
 }
 
 type RegisterTransitRouterMulticastGroupMembersResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RegisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RegisterTransitRouterMulticastGroupMembersResponse) String() string {
@@ -24603,9 +24609,9 @@ func (s *RegisterTransitRouterMulticastGroupSourcesResponseBody) SetRequestId(v 
 }
 
 type RegisterTransitRouterMulticastGroupSourcesResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RegisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RegisterTransitRouterMulticastGroupSourcesResponse) String() string {
@@ -24722,9 +24728,9 @@ func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody) SetRequestI
 }
 
 type RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse struct {
-	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) String() string {
@@ -24841,9 +24847,9 @@ func (s *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponseBody) SetRequestId
 }
 
 type RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse struct {
-	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse) String() string {
@@ -24946,9 +24952,9 @@ func (s *ReplaceTransitRouterRouteTableAssociationResponseBody) SetRequestId(v s
 }
 
 type ReplaceTransitRouterRouteTableAssociationResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReplaceTransitRouterRouteTableAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReplaceTransitRouterRouteTableAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReplaceTransitRouterRouteTableAssociationResponse) String() string {
@@ -24975,9 +24981,7 @@ func (s *ReplaceTransitRouterRouteTableAssociationResponse) SetBody(v *ReplaceTr
 }
 
 type ResolveAndRouteServiceInCenRequest struct {
-	// The ID of the region in which the cloud service that you want to access is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	// The IDs of the regions where the cloud service is accessed.
 	AccessRegionIds []*string `json:"AccessRegionIds,omitempty" xml:"AccessRegionIds,omitempty" type:"Repeated"`
 	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
@@ -24989,7 +24993,7 @@ type ResolveAndRouteServiceInCenRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the cloud service.
 	//
-	// The description can be empty or 2 to 256 characters in length. It must start with a letter, and can contain digits, hyphens (-), periods (.), and underscores (\_). It cannot start with `http://` or `https://`.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IP addresses or CIDR blocks of the cloud service.
 	//
@@ -25087,9 +25091,9 @@ func (s *ResolveAndRouteServiceInCenResponseBody) SetRequestId(v string) *Resolv
 }
 
 type ResolveAndRouteServiceInCenResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResolveAndRouteServiceInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResolveAndRouteServiceInCenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResolveAndRouteServiceInCenResponse) String() string {
@@ -25210,9 +25214,9 @@ func (s *RevokeInstanceFromTransitRouterResponseBody) SetRequestId(v string) *Re
 }
 
 type RevokeInstanceFromTransitRouterResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevokeInstanceFromTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeInstanceFromTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevokeInstanceFromTransitRouterResponse) String() string {
@@ -25324,9 +25328,9 @@ func (s *RoutePrivateZoneInCenToVpcResponseBody) SetRequestId(v string) *RoutePr
 }
 
 type RoutePrivateZoneInCenToVpcResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RoutePrivateZoneInCenToVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RoutePrivateZoneInCenToVpcResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RoutePrivateZoneInCenToVpcResponse) String() string {
@@ -25429,9 +25433,9 @@ func (s *SetCenInterRegionBandwidthLimitResponseBody) SetRequestId(v string) *Se
 }
 
 type SetCenInterRegionBandwidthLimitResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetCenInterRegionBandwidthLimitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetCenInterRegionBandwidthLimitResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetCenInterRegionBandwidthLimitResponse) String() string {
@@ -25572,9 +25576,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -25671,9 +25675,9 @@ func (s *TempUpgradeCenBandwidthPackageSpecResponseBody) SetRequestId(v string) 
 }
 
 type TempUpgradeCenBandwidthPackageSpecResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TempUpgradeCenBandwidthPackageSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TempUpgradeCenBandwidthPackageSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TempUpgradeCenBandwidthPackageSpecResponse) String() string {
@@ -25767,9 +25771,9 @@ func (s *UnassociateCenBandwidthPackageResponseBody) SetRequestId(v string) *Una
 }
 
 type UnassociateCenBandwidthPackageResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnassociateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnassociateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnassociateCenBandwidthPackageResponse) String() string {
@@ -25860,9 +25864,9 @@ func (s *UnroutePrivateZoneInCenToVpcResponseBody) SetRequestId(v string) *Unrou
 }
 
 type UnroutePrivateZoneInCenToVpcResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnroutePrivateZoneInCenToVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnroutePrivateZoneInCenToVpcResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnroutePrivateZoneInCenToVpcResponse) String() string {
@@ -25971,9 +25975,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -26002,12 +26006,12 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 type UpdateCenInterRegionTrafficQosPolicyAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request without performing the operation. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **true**: checks the request but does not modify the name and description of the QoS policy. The system checks whether the required parameters are set, whether the formats of the values are valid, and the service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): checks the request. If the request passes the check, the name and description of the QoS policy are modified.
+	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -26015,13 +26019,13 @@ type UpdateCenInterRegionTrafficQosPolicyAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new description of the QoS policy.
 	//
-	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TrafficQosPolicyDescription *string `json:"TrafficQosPolicyDescription,omitempty" xml:"TrafficQosPolicyDescription,omitempty"`
 	// The ID of the QoS policy.
 	TrafficQosPolicyId *string `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
 	// The new name of the QoS policy.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TrafficQosPolicyName *string `json:"TrafficQosPolicyName,omitempty" xml:"TrafficQosPolicyName,omitempty"`
 }
 
@@ -26079,7 +26083,7 @@ func (s *UpdateCenInterRegionTrafficQosPolicyAttributeRequest) SetTrafficQosPoli
 }
 
 type UpdateCenInterRegionTrafficQosPolicyAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26097,9 +26101,9 @@ func (s *UpdateCenInterRegionTrafficQosPolicyAttributeResponseBody) SetRequestId
 }
 
 type UpdateCenInterRegionTrafficQosPolicyAttributeResponse struct {
-	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCenInterRegionTrafficQosPolicyAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCenInterRegionTrafficQosPolicyAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCenInterRegionTrafficQosPolicyAttributeResponse) String() string {
@@ -26141,13 +26145,13 @@ type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
 	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The new description of the queue.
 	//
-	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	QosQueueDescription *string `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
 	// The queue ID.
 	QosQueueId *string `json:"QosQueueId,omitempty" xml:"QosQueueId,omitempty"`
 	// The new name of the queue.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
 	// The percentage of the inter-region bandwidth that can be used by the queue.
 	//
@@ -26239,9 +26243,9 @@ func (s *UpdateCenInterRegionTrafficQosQueueAttributeResponseBody) SetRequestId(
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCenInterRegionTrafficQosQueueAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCenInterRegionTrafficQosQueueAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCenInterRegionTrafficQosQueueAttributeResponse) String() string {
@@ -26561,9 +26565,9 @@ func (s *UpdateTrafficMarkingPolicyAttributeResponseBody) SetRequestId(v string)
 }
 
 type UpdateTrafficMarkingPolicyAttributeResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTrafficMarkingPolicyAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTrafficMarkingPolicyAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTrafficMarkingPolicyAttributeResponse) String() string {
@@ -26611,13 +26615,13 @@ type UpdateTransitRouterRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The description of the transit router.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
 	// The transit router ID.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The transit router name.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 }
 
@@ -26698,9 +26702,9 @@ func (s *UpdateTransitRouterResponseBody) SetRequestId(v string) *UpdateTransitR
 }
 
 type UpdateTransitRouterResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTransitRouterResponse) String() string {
@@ -26732,7 +26736,7 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	// *   **false** (default): no
 	// *   **true**: yes
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
+	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
 	//
 	// *   This parameter specifies the maximum bandwidth value for the inter-region connection if you set **BandwidthType** to **BandwidthPackage**.
 	// *   This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set **BandwidthType** to **DataTransfer**.
@@ -26744,7 +26748,7 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 	//
-	// > If you set **BandwidthType** to **DataTransfer**, you do not need to set this parameter.
+	// >  If you set **BandwidthType** to **DataTransfer**, you do not need to set this parameter.
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -26752,9 +26756,11 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The default link type. Valid values:
-	// - **Platinum**: only available for the **Pay-By-Data-Transfer** bandwidth.
-	// - **Gold** (default)
+	// The default line type.
+	//
+	// Valid values: Platinum and Gold.
+	//
+	// Platinum is supported only when BandwidthType is set to DataTransfer.
 	DefaultLinkType *string `json:"DefaultLinkType,omitempty" xml:"DefaultLinkType,omitempty"`
 	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Default values:
 	//
@@ -26874,9 +26880,9 @@ func (s *UpdateTransitRouterPeerAttachmentAttributeResponseBody) SetRequestId(v 
 }
 
 type UpdateTransitRouterPeerAttachmentAttributeResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTransitRouterPeerAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterPeerAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTransitRouterPeerAttachmentAttributeResponse) String() string {
@@ -26920,13 +26926,13 @@ type UpdateTransitRouterRouteEntryRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new description of the route.
 	//
-	// The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterRouteEntryDescription *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
 	// The ID of the route.
 	TransitRouterRouteEntryId *string `json:"TransitRouterRouteEntryId,omitempty" xml:"TransitRouterRouteEntryId,omitempty"`
 	// The new name of the route.
 	//
-	// The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the name empty.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterRouteEntryName *string `json:"TransitRouterRouteEntryName,omitempty" xml:"TransitRouterRouteEntryName,omitempty"`
 }
 
@@ -27002,9 +27008,9 @@ func (s *UpdateTransitRouterRouteEntryResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateTransitRouterRouteEntryResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTransitRouterRouteEntryResponse) String() string {
@@ -27050,13 +27056,13 @@ type UpdateTransitRouterRouteTableRequest struct {
 	RouteTableOptions *UpdateTransitRouterRouteTableRequestRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
 	// The description of the route table.
 	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterRouteTableDescription *string `json:"TransitRouterRouteTableDescription,omitempty" xml:"TransitRouterRouteTableDescription,omitempty"`
 	// The ID of the route table of the Enterprise Edition transit router.
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 	// The name of the route table.
 	//
-	// The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the name empty.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterRouteTableName *string `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
 }
 
@@ -27158,9 +27164,9 @@ func (s *UpdateTransitRouterRouteTableResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateTransitRouterRouteTableResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTransitRouterRouteTableResponse) String() string {
@@ -27209,13 +27215,13 @@ type UpdateTransitRouterVbrAttachmentAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new description of the VBR connection.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The ID of the VBR connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 	// The new name of the VBR connection.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 }
 
@@ -27296,9 +27302,9 @@ func (s *UpdateTransitRouterVbrAttachmentAttributeResponseBody) SetRequestId(v s
 }
 
 type UpdateTransitRouterVbrAttachmentAttributeResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTransitRouterVbrAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterVbrAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTransitRouterVbrAttachmentAttributeResponse) String() string {
@@ -27434,9 +27440,9 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeResponseBody) SetRequestId(v s
 }
 
 type UpdateTransitRouterVpcAttachmentAttributeResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTransitRouterVpcAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterVpcAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTransitRouterVpcAttachmentAttributeResponse) String() string {
@@ -27619,9 +27625,9 @@ func (s *UpdateTransitRouterVpcAttachmentZonesResponseBody) SetRequestId(v strin
 }
 
 type UpdateTransitRouterVpcAttachmentZonesResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTransitRouterVpcAttachmentZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterVpcAttachmentZonesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTransitRouterVpcAttachmentZonesResponse) String() string {
@@ -27757,9 +27763,9 @@ func (s *UpdateTransitRouterVpnAttachmentAttributeResponseBody) SetRequestId(v s
 }
 
 type UpdateTransitRouterVpnAttachmentAttributeResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTransitRouterVpnAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterVpnAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTransitRouterVpnAttachmentAttributeResponse) String() string {
@@ -27862,9 +27868,9 @@ func (s *WithdrawPublishedRouteEntriesResponseBody) SetRequestId(v string) *With
 }
 
 type WithdrawPublishedRouteEntriesResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *WithdrawPublishedRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WithdrawPublishedRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s WithdrawPublishedRouteEntriesResponse) String() string {
@@ -30015,7 +30021,6 @@ func (client *Client) CreateTransitRouterCidr(request *CreateTransitRouterCidrRe
 
 /**
  * Before you call this operation, read the following rules:
- * *   Only Enterprise Edition transit routers in the Australia (Sydney) and UK (London) regions support the multicast feature. Multicast is unavailable by default. If you want to enable multicast, contact your sales manager or [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to apply for multicast resources.
  * *   Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](~~261169~~).
  *     If an Enterprise Edition transit router was created before you apply for multicast resources, the transit router does not support multicast. You can delete the transit router and create a new one. For more information about how to delete an Enterprise Edition transit router, see [DeleteTransitRouter](~~261218~~).
  * *   When you call **CreateTransitRouterMulticastDomain**, if you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId**, you do not need to set **CenId** or **RegionId**.
@@ -30103,7 +30108,6 @@ func (client *Client) CreateTransitRouterMulticastDomainWithOptions(request *Cre
 
 /**
  * Before you call this operation, read the following rules:
- * *   Only Enterprise Edition transit routers in the Australia (Sydney) and UK (London) regions support the multicast feature. Multicast is unavailable by default. If you want to enable multicast, contact your sales manager or [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to apply for multicast resources.
  * *   Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](~~261169~~).
  *     If an Enterprise Edition transit router was created before you apply for multicast resources, the transit router does not support multicast. You can delete the transit router and create a new one. For more information about how to delete an Enterprise Edition transit router, see [DeleteTransitRouter](~~261218~~).
  * *   When you call **CreateTransitRouterMulticastDomain**, if you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId**, you do not need to set **CenId** or **RegionId**.
@@ -30123,8 +30127,13 @@ func (client *Client) CreateTransitRouterMulticastDomain(request *CreateTransitR
 }
 
 /**
- * You must purchase a bandwidth plan before you can create an inter-region connection. For more information, see [CreateCenBandwidthPackage](~~468263~~).
- * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+ * By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
+ * Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
+ * *   **Allocate bandwidth resources from a bandwidth plan**:
+ * You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](~~65919~~).
+ * *   **Use pay-by-data-transfer bandwidth resources**:
+ * You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Inter-region data transfer](~~337827~~).
+ * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you a request is set, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
  * *   If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
  * *   If an inter-region connection is in the **Attached** state, the inter-region connection is created.
  *
@@ -30238,8 +30247,13 @@ func (client *Client) CreateTransitRouterPeerAttachmentWithOptions(request *Crea
 }
 
 /**
- * You must purchase a bandwidth plan before you can create an inter-region connection. For more information, see [CreateCenBandwidthPackage](~~468263~~).
- * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+ * By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
+ * Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
+ * *   **Allocate bandwidth resources from a bandwidth plan**:
+ * You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](~~65919~~).
+ * *   **Use pay-by-data-transfer bandwidth resources**:
+ * You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Inter-region data transfer](~~337827~~).
+ * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you a request is set, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
  * *   If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
  * *   If an inter-region connection is in the **Attached** state, the inter-region connection is created.
  *
@@ -31770,9 +31784,9 @@ func (client *Client) DeleteFlowlog(request *DeleteFlowlogRequest) (_result *Del
 }
 
 /**
- * **DeleteRouteServiceInCen** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteServicesInCen** operation to query the status of the connection to a cloud service.
- * - If a cloud service is in the **Deleting** state, the configuration of the cloud service is being deleted. You can query the configuration but cannot perform other operations.
- * - If no configuration of a cloud service can be found, the configuration of the cloud service is deleted.
+ * **DeleteRouteServiceInCen** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. If the request parameters are invalid, the system returns a request ID, but the cloud service configuration is not deleted. You can call **DescribeRouteServicesInCen** to query the status of the task.
+ * *   If a cloud service is in the **Deleting** state, the cloud service configuration is being deleted. In this case, you can only query the cloud service configuration and cannot perform other operations.
+ * *   If the specified cloud service configuration cannot be found, the cloud service configuration is deleted.
  *
  * @param request DeleteRouteServiceInCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31844,9 +31858,9 @@ func (client *Client) DeleteRouteServiceInCenWithOptions(request *DeleteRouteSer
 }
 
 /**
- * **DeleteRouteServiceInCen** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteServicesInCen** operation to query the status of the connection to a cloud service.
- * - If a cloud service is in the **Deleting** state, the configuration of the cloud service is being deleted. You can query the configuration but cannot perform other operations.
- * - If no configuration of a cloud service can be found, the configuration of the cloud service is deleted.
+ * **DeleteRouteServiceInCen** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. If the request parameters are invalid, the system returns a request ID, but the cloud service configuration is not deleted. You can call **DescribeRouteServicesInCen** to query the status of the task.
+ * *   If a cloud service is in the **Deleting** state, the cloud service configuration is being deleted. In this case, you can only query the cloud service configuration and cannot perform other operations.
+ * *   If the specified cloud service configuration cannot be found, the cloud service configuration is deleted.
  *
  * @param request DeleteRouteServiceInCenRequest
  * @return DeleteRouteServiceInCenResponse
@@ -39552,17 +39566,17 @@ func (client *Client) ReplaceTransitRouterRouteTableAssociation(request *Replace
 }
 
 /**
- * Cloud services refer to the Alibaba Cloud services that use the 100.64.0.0/10 CIDR block to provide services. These cloud services include Object Storage Service (OSS), Log Service, and Data Transmission Service (DTS). If your on-premises network needs to access a cloud service, you must attach the virtual border router (VBR) or Cloud Connect Network (CCN) instance that is connected to your on-premises network to a Cloud Enterprise Network (CEN) instance. In addition, you must attach a virtual private cloud (VPC) that is deployed in the same region as the cloud service to the CEN instance. This way, your on-premises network can connect to the VPC that is deployed in the same region as the cloud service and access the cloud service through the VPC.
- * *   An on-premises network associated with a VBR can use CEN to access only a cloud service that is deployed in the same region.
+ * Cloud services refer to Alibaba Cloud services that use the 100.64.0.0/10 CIDR block to provide services. These cloud services include Object Storage Service (OSS), Simple Log Service, and Data Transmission Service (DTS). If your on-premises network needs to access a cloud service, you must attach the virtual border router (VBR) or Cloud Connect Network (CCN) instance that is connected to your on-premises network to a Cloud Enterprise Network (CEN) instance. In addition, you must attach a virtual private cloud (VPC) that is deployed in the same region as the cloud service to the CEN instance. This way, your on-premises network can connect to the VPC that is deployed in the same region as the cloud service and access the cloud service through the VPC.
+ * *   You can call this operation only for a Basic Edition transit router. An on-premises network associated with a VBR can use CEN to access only a cloud service that is deployed in the same region.
  *     For example, if cloud services are deployed in the China (Beijing) region, only on-premises networks connected to VBRs in the China (Beijing) region can access the cloud services.
- * *   **ResolveAndRouteServiceInCen** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteServicesInCen** operation to query the status of a cloud service.
+ * *   **ResolveAndRouteServiceInCen** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call **DescribeRouteServicesInCen** to query the status of a cloud service.
  *     *   If a cloud service is in the **Creating** state, the connection to the cloud service is being created. In this case, you can query the cloud service but cannot perform other operations.
  *     *   If a cloud service is in the **Active** state, the connection to the cloud service is created.
  *     *   If a cloud service is in the **Failed** state, the connection to the cloud service failed.
- * # Prerequisites
+ * # [](#)Prerequisites
  * Before you call this operation, make sure that the following conditions are met:
  * *   The VBR or CCN instance to which your on-premises network is connected is attached to a CEN instance.
- * *   A VPC that is deployed in the same region as the cloud service is also attached to the CEN instance. For more information, see [AttachCenChildInstance](~~65902~~).
+ * *   A VPC that is deployed in the same region as the cloud service is attached to the CEN instance. For more information, see [AttachCenChildInstance](~~65902~~).
  *
  * @param request ResolveAndRouteServiceInCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39642,17 +39656,17 @@ func (client *Client) ResolveAndRouteServiceInCenWithOptions(request *ResolveAnd
 }
 
 /**
- * Cloud services refer to the Alibaba Cloud services that use the 100.64.0.0/10 CIDR block to provide services. These cloud services include Object Storage Service (OSS), Log Service, and Data Transmission Service (DTS). If your on-premises network needs to access a cloud service, you must attach the virtual border router (VBR) or Cloud Connect Network (CCN) instance that is connected to your on-premises network to a Cloud Enterprise Network (CEN) instance. In addition, you must attach a virtual private cloud (VPC) that is deployed in the same region as the cloud service to the CEN instance. This way, your on-premises network can connect to the VPC that is deployed in the same region as the cloud service and access the cloud service through the VPC.
- * *   An on-premises network associated with a VBR can use CEN to access only a cloud service that is deployed in the same region.
+ * Cloud services refer to Alibaba Cloud services that use the 100.64.0.0/10 CIDR block to provide services. These cloud services include Object Storage Service (OSS), Simple Log Service, and Data Transmission Service (DTS). If your on-premises network needs to access a cloud service, you must attach the virtual border router (VBR) or Cloud Connect Network (CCN) instance that is connected to your on-premises network to a Cloud Enterprise Network (CEN) instance. In addition, you must attach a virtual private cloud (VPC) that is deployed in the same region as the cloud service to the CEN instance. This way, your on-premises network can connect to the VPC that is deployed in the same region as the cloud service and access the cloud service through the VPC.
+ * *   You can call this operation only for a Basic Edition transit router. An on-premises network associated with a VBR can use CEN to access only a cloud service that is deployed in the same region.
  *     For example, if cloud services are deployed in the China (Beijing) region, only on-premises networks connected to VBRs in the China (Beijing) region can access the cloud services.
- * *   **ResolveAndRouteServiceInCen** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteServicesInCen** operation to query the status of a cloud service.
+ * *   **ResolveAndRouteServiceInCen** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call **DescribeRouteServicesInCen** to query the status of a cloud service.
  *     *   If a cloud service is in the **Creating** state, the connection to the cloud service is being created. In this case, you can query the cloud service but cannot perform other operations.
  *     *   If a cloud service is in the **Active** state, the connection to the cloud service is created.
  *     *   If a cloud service is in the **Failed** state, the connection to the cloud service failed.
- * # Prerequisites
+ * # [](#)Prerequisites
  * Before you call this operation, make sure that the following conditions are met:
  * *   The VBR or CCN instance to which your on-premises network is connected is attached to a CEN instance.
- * *   A VPC that is deployed in the same region as the cloud service is also attached to the CEN instance. For more information, see [AttachCenChildInstance](~~65902~~).
+ * *   A VPC that is deployed in the same region as the cloud service is attached to the CEN instance. For more information, see [AttachCenChildInstance](~~65902~~).
  *
  * @param request ResolveAndRouteServiceInCenRequest
  * @return ResolveAndRouteServiceInCenResponse
