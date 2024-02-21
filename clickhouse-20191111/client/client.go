@@ -1190,6 +1190,7 @@ func (s *CreateBackupPolicyResponse) SetBody(v *CreateBackupPolicyResponseBody) 
 }
 
 type CreateDBInstanceRequest struct {
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The ID of the backup set. You can call the [DescribeBackups](~~360339~~) operation to query the backup sets.
 	//
 	// >  If you want to restore the data of an ApsaraDB for ClickHouse cluster, this parameter is required.
@@ -1297,6 +1298,11 @@ func (s CreateDBInstanceRequest) String() string {
 
 func (s CreateDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBInstanceRequest) SetAutoRenew(v bool) *CreateDBInstanceRequest {
+	s.AutoRenew = &v
+	return s
 }
 
 func (s *CreateDBInstanceRequest) SetBackupSetID(v string) *CreateDBInstanceRequest {
@@ -4596,10 +4602,10 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	// *   **1**: Data backup is supported.
 	// *   **2**: Data backup is not supported.
 	SupportBackup *int32 `json:"SupportBackup,omitempty" xml:"SupportBackup,omitempty"`
-	// Indicates whether the cluster supports an HTTP port. Valid values:
+	// Indicates whether HTTPS ports are supported. Valid values:
 	//
-	// *   **true**: An HTTP port is supported.
-	// *   **false**: An HTTP port is not supported.
+	// *   **true**
+	// *   **false**
 	SupportHttpsPort *bool `json:"SupportHttpsPort,omitempty" xml:"SupportHttpsPort,omitempty"`
 	// Indicates whether the cluster supports a MySQL port. Valid values:
 	//
@@ -4622,7 +4628,8 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	// The IP address that is used to connect to the cluster over the VPC.
 	VpcIpAddr *string `json:"VpcIpAddr,omitempty" xml:"VpcIpAddr,omitempty"`
 	// The zone ID.
-	ZoneId           *string                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The list of vSwitch IDs in multi-zone clusters.
 	ZoneIdVswitchMap map[string]interface{} `json:"ZoneIdVswitchMap,omitempty" xml:"ZoneIdVswitchMap,omitempty"`
 	// The ZooKeeper specifications.
 	ZookeeperClass *string `json:"ZookeeperClass,omitempty" xml:"ZookeeperClass,omitempty"`
@@ -6466,7 +6473,12 @@ type DescribeProcessListRequest struct {
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
 	// The keyword that is used to query.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The column by which the query results are sorted.
+	// Sorting by the specified column name. Valid values:
+	//
+	// *   elapsed: the cumulative execution time
+	// *   written_rows: the number of written rows
+	// *   read_rows: the number of read rows
+	// *   memory_usage: the memory usage
 	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7695,8 +7707,8 @@ func (s *DescribeSynDbsResponseBody) SetTotalCount(v int32) *DescribeSynDbsRespo
 }
 
 type DescribeSynDbsResponseBodySynDbs struct {
-	// *   If the value **true** is returned for the **SynStatus** parameter, this parameter is not returned.
-	// *   If the value **false** is returned for the **SynStatus** parameter, the system returns the ErrorMsg parameter that provides the cause why the data synchronization failed.
+	// *   When the value **true** is returned for the **SynStatus** parameter, the system does not return the ErrorMsg parameter.
+	// *   When the value **false** is returned for the **SynStatus** parameter, the system returns for the ErrorMsg parameter the cause why the data synchronization failed.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The ID of the ApsaraDB RDS for MySQL instance.
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
@@ -8968,7 +8980,7 @@ func (s *ModifyDBClusterConfigResponse) SetBody(v *ModifyDBClusterConfigResponse
 type ModifyDBClusterConfigInXMLRequest struct {
 	// The configuration parameters whose settings you want to modify. You can call the [DescribeDBClusterConfigInXML](~~452210~~) operation to query configuration parameters, and modify the settings of the returned configuration parameters.
 	//
-	// >  You must specify all configuration parameters even when you want to modify the setting of a single parameter. If a configuration parameter is not specified, the original value of this parameter is retained or the modification fails.
+	// > You must specify all configuration parameters even when you want to modify the setting of a single parameter. If a configuration parameter is not specified, the original value of this parameter is retained or the modification fails.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
@@ -11012,6 +11024,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BackupSetID)) {
 		query["BackupSetID"] = request.BackupSetID
 	}
