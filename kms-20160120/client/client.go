@@ -98,9 +98,9 @@ func (s *AsymmetricDecryptResponseBody) SetRequestId(v string) *AsymmetricDecryp
 }
 
 type AsymmetricDecryptResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AsymmetricDecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsymmetricDecryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AsymmetricDecryptResponse) String() string {
@@ -211,9 +211,9 @@ func (s *AsymmetricEncryptResponseBody) SetRequestId(v string) *AsymmetricEncryp
 }
 
 type AsymmetricEncryptResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AsymmetricEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsymmetricEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AsymmetricEncryptResponse) String() string {
@@ -327,9 +327,9 @@ func (s *AsymmetricSignResponseBody) SetValue(v string) *AsymmetricSignResponseB
 }
 
 type AsymmetricSignResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AsymmetricSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsymmetricSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AsymmetricSignResponse) String() string {
@@ -449,9 +449,9 @@ func (s *AsymmetricVerifyResponseBody) SetValue(v bool) *AsymmetricVerifyRespons
 }
 
 type AsymmetricVerifyResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AsymmetricVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsymmetricVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AsymmetricVerifyResponse) String() string {
@@ -514,9 +514,9 @@ func (s *CancelKeyDeletionResponseBody) SetRequestId(v string) *CancelKeyDeletio
 }
 
 type CancelKeyDeletionResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelKeyDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelKeyDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelKeyDeletionResponse) String() string {
@@ -619,9 +619,9 @@ func (s *CertificatePrivateKeyDecryptResponseBody) SetRequestId(v string) *Certi
 }
 
 type CertificatePrivateKeyDecryptResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CertificatePrivateKeyDecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CertificatePrivateKeyDecryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CertificatePrivateKeyDecryptResponse) String() string {
@@ -745,9 +745,9 @@ func (s *CertificatePrivateKeySignResponseBody) SetSignatureValue(v string) *Cer
 }
 
 type CertificatePrivateKeySignResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CertificatePrivateKeySignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CertificatePrivateKeySignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CertificatePrivateKeySignResponse) String() string {
@@ -858,9 +858,9 @@ func (s *CertificatePublicKeyEncryptResponseBody) SetRequestId(v string) *Certif
 }
 
 type CertificatePublicKeyEncryptResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CertificatePublicKeyEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CertificatePublicKeyEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CertificatePublicKeyEncryptResponse) String() string {
@@ -994,9 +994,9 @@ func (s *CertificatePublicKeyVerifyResponseBody) SetSignatureValid(v bool) *Cert
 }
 
 type CertificatePublicKeyVerifyResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CertificatePublicKeyVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CertificatePublicKeyVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CertificatePublicKeyVerifyResponse) String() string {
@@ -1081,9 +1081,9 @@ func (s *ConnectKmsInstanceResponseBody) SetRequestId(v string) *ConnectKmsInsta
 }
 
 type ConnectKmsInstanceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConnectKmsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConnectKmsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConnectKmsInstanceResponse) String() string {
@@ -1155,9 +1155,9 @@ func (s *CreateAliasResponseBody) SetRequestId(v string) *CreateAliasResponseBod
 }
 
 type CreateAliasResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAliasResponse) String() string {
@@ -1266,9 +1266,9 @@ func (s *CreateApplicationAccessPointResponseBody) SetRequestId(v string) *Creat
 }
 
 type CreateApplicationAccessPointResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateApplicationAccessPointResponse) String() string {
@@ -1456,9 +1456,9 @@ func (s *CreateCertificateResponseBody) SetRequestId(v string) *CreateCertificat
 }
 
 type CreateCertificateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCertificateResponse) String() string {
@@ -1567,9 +1567,9 @@ func (s *CreateClientKeyResponseBody) SetRequestId(v string) *CreateClientKeyRes
 }
 
 type CreateClientKeyResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateClientKeyResponse) String() string {
@@ -1596,6 +1596,21 @@ func (s *CreateClientKeyResponse) SetBody(v *CreateClientKeyResponseBody) *Creat
 }
 
 type CreateKeyRequest struct {
+	// The ID of the dedicated KMS instance.
+	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
+	// The description of the CMK.
+	//
+	// The description can be 0 to 8,192 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable automatic key rotation. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
+	//
+	// >  If the Origin parameter is set to EXTERNAL or the KeySpec parameter is set to an asymmetric CMK type, automatic key rotation is not supported.
+	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	// The type of the CMK. Valid values:
 	//
 	// *   Aliyun_AES\_256
@@ -1610,9 +1625,23 @@ type CreateKeyRequest struct {
 	//
 	// > * The default type of the CMK is Aliyun\_AES\_256.
 	// > * Only Dedicated KMS supports Aliyun\_AES\_128 and Aliyun\_AES\_192.
-	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateKey**.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
+	// The usage of the CMK. Valid values:
+	//
+	// *   ENCRYPT/DECRYPT: encrypts or decrypts data.
+	// *   SIGN/VERIFY: generates or verifies a digital signature.
+	//
+	// If the CMK supports signature verification, the default value is SIGN/VERIFY. If the CMK does not support signature verification, the default value is ENCRYPT/DECRYPT.
+	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	// The source of key material. Valid values:
+	//
+	// *   Aliyun_KMS (default value)
+	// *   EXTERNAL
+	//
+	// > * The value of this parameter is case-sensitive.
+	// > * If you set the KeySpec parameter to an asymmetric CMK type, you are not allowed to set the Origin parameter to EXTERNAL.
+	// > * If you set the Origin parameter to EXTERNAL, you must import key material. For more information, see [Import key material](~~68523~~).
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	// The protection level of the CMK. Valid values:
 	//
 	// *   SOFTWARE
@@ -1622,39 +1651,10 @@ type CreateKeyRequest struct {
 	//
 	// > * The value of this parameter is case-sensitive.
 	// > * Assume that you set this parameter to HSM. If you set the Origin parameter to Aliyun_KMS, the CMK is created in a managed HSM. If you set the Origin parameter to EXTERNAL, you can import an external key into the managed HSM.
-	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
+	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	// The period of automatic key rotation. Specify the value in the integer\[unit] format. Unit: d (day), h (hour), m (minute), or s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
 	//
 	// >  If you set the EnableAutomaticRotation parameter to true, you must also specify this parameter. If you set the EnableAutomaticRotation parameter to false, you can leave this parameter unspecified.
-	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	// The description of the CMK.
-	//
-	// The description can be 0 to 8,192 characters in length.
-	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The usage of the CMK. Valid values:
-	//
-	// *   ENCRYPT/DECRYPT: encrypts or decrypts data.
-	// *   SIGN/VERIFY: generates or verifies a digital signature.
-	//
-	// If the CMK supports signature verification, the default value is SIGN/VERIFY. If the CMK does not support signature verification, the default value is ENCRYPT/DECRYPT.
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The source of key material. Valid values:
-	//
-	// *   Aliyun_KMS (default value)
-	// *   EXTERNAL
-	//
-	// > * The value of this parameter is case-sensitive.
-	// > * If you set the KeySpec parameter to an asymmetric CMK type, you are not allowed to set the Origin parameter to EXTERNAL.
-	// > * If you set the Origin parameter to EXTERNAL, you must import key material. For more information, see [Import key material](~~68523~~).
-	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// Specifies whether to enable automatic key rotation. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	//
-	// >  If the Origin parameter is set to EXTERNAL or the KeySpec parameter is set to an asymmetric CMK type, automatic key rotation is not supported.
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -1713,9 +1713,9 @@ func (s *CreateKeyRequest) SetTags(v string) *CreateKeyRequest {
 }
 
 type CreateKeyResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The metadata of the CMK.
 	KeyMetadata *CreateKeyResponseBodyKeyMetadata `json:"KeyMetadata,omitempty" xml:"KeyMetadata,omitempty" type:"Struct"`
-	// The ID of the dedicated KMS instance.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1738,51 +1738,8 @@ func (s *CreateKeyResponseBody) SetRequestId(v string) *CreateKeyResponseBody {
 }
 
 type CreateKeyResponseBodyKeyMetadata struct {
-	// The period of automatic key rotation. Unit: seconds. The value is in the format of an integer followed by the letter s. For example, if the rotation period is seven days, this parameter is set to 604800s. This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The time when the key material expires. The time is displayed in UTC.
-	//
-	// If this parameter value is empty, the key material does not expire.
-	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	// The usage of the CMK.
-	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the CMK.
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The date and time when the CMK was created. The time is displayed in UTC.
-	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The time when the last rotation was performed. The time is displayed in UTC.
-	//
-	// For a new CMK, this parameter value is the time when the initial version of the CMK was generated.
-	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The ID of the current primary key version of the symmetric CMK.
-	//
-	// > * The primary key version of a symmetric CMK is an active encryption key. KMS uses the primary key version of a specified CMK to encrypt data.
-	// > * This parameter is unavailable for asymmetric CMKs.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metadata of the CMK.
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The description of the CMK.
-	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	// The time when the next rotation will be performed.
-	//
-	// >  This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
-	KeyState *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
-	// The protection level of the CMK.
-	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The creator of the CMK.
-	LastRotationDate *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
-	// The source of the key material for the CMK.
-	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	// The ID of the CMK. The ID must be globally unique.
-	NextRotationDate *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
-	// The type of the CMK.
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The time when the CMK is scheduled for deletion.
-	//
-	// For more information, see [ScheduleKeyDeletion](~~44196~~).
-	//
-	// >  This value is returned only when the value of the KeyState parameter is PendingDeletion.
-	PrimaryKeyVersion *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// Indicates whether automatic key rotation is enabled. Valid values:
 	//
 	// *   Enabled: Automatic key rotation is enabled.
@@ -1790,10 +1747,53 @@ type CreateKeyResponseBodyKeyMetadata struct {
 	// *   Suspended: Automatic key rotation is suspended. For more information, see [Automatic key rotation](~~134270~~).
 	//
 	// >  Automatic key rotation is available only for symmetric CMKs.
-	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
+	// The date and time when the CMK was created. The time is displayed in UTC.
+	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	// The creator of the CMK.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The ID of the dedicated KMS instance.
+	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
+	// The time when the CMK is scheduled for deletion.
+	//
+	// For more information, see [ScheduleKeyDeletion](~~44196~~).
+	//
+	// >  This value is returned only when the value of the KeyState parameter is PendingDeletion.
+	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	// The description of the CMK.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the CMK. The ID must be globally unique.
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The type of the CMK.
+	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	// The status of the CMK.
 	//
 	// For more information, see [Impact of CMK status on API operations](~~44211~~).
+	KeyState *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
+	// The usage of the CMK.
+	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	// The time when the last rotation was performed. The time is displayed in UTC.
+	//
+	// For a new CMK, this parameter value is the time when the initial version of the CMK was generated.
+	LastRotationDate *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
+	// The time when the key material expires. The time is displayed in UTC.
+	//
+	// If this parameter value is empty, the key material does not expire.
+	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
+	// The time when the next rotation will be performed.
+	//
+	// >  This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+	NextRotationDate *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	// The source of the key material for the CMK.
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The ID of the current primary key version of the symmetric CMK.
+	//
+	// > * The primary key version of a symmetric CMK is an active encryption key. KMS uses the primary key version of a specified CMK to encrypt data.
+	// > * This parameter is unavailable for asymmetric CMKs.
+	PrimaryKeyVersion *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
+	// The protection level of the CMK.
+	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// The period of automatic key rotation. Unit: seconds. The value is in the format of an integer followed by the letter s. For example, if the rotation period is seven days, this parameter is set to 604800s. This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 }
 
@@ -1896,9 +1896,9 @@ func (s *CreateKeyResponseBodyKeyMetadata) SetRotationInterval(v string) *Create
 }
 
 type CreateKeyResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateKeyResponse) String() string {
@@ -2002,9 +2002,9 @@ func (s *CreateKeyVersionResponseBodyKeyVersion) SetKeyVersionId(v string) *Crea
 }
 
 type CreateKeyVersionResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateKeyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateKeyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateKeyVersionResponse) String() string {
@@ -2113,9 +2113,9 @@ func (s *CreateNetworkRuleResponseBody) SetType(v string) *CreateNetworkRuleResp
 }
 
 type CreateNetworkRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateNetworkRuleResponse) String() string {
@@ -2248,9 +2248,9 @@ func (s *CreatePolicyResponseBody) SetResources(v string) *CreatePolicyResponseB
 }
 
 type CreatePolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePolicyResponse) String() string {
@@ -2691,9 +2691,9 @@ func (s *CreateSecretResponseBody) SetVersionId(v string) *CreateSecretResponseB
 }
 
 type CreateSecretResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSecretResponse) String() string {
@@ -2827,9 +2827,9 @@ func (s *DecryptResponseBody) SetRequestId(v string) *DecryptResponseBody {
 }
 
 type DecryptResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DecryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DecryptResponse) String() string {
@@ -2894,9 +2894,9 @@ func (s *DeleteAliasResponseBody) SetRequestId(v string) *DeleteAliasResponseBod
 }
 
 type DeleteAliasResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAliasResponse) String() string {
@@ -2957,9 +2957,9 @@ func (s *DeleteApplicationAccessPointResponseBody) SetRequestId(v string) *Delet
 }
 
 type DeleteApplicationAccessPointResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteApplicationAccessPointResponse) String() string {
@@ -3022,9 +3022,9 @@ func (s *DeleteCertificateResponseBody) SetRequestId(v string) *DeleteCertificat
 }
 
 type DeleteCertificateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCertificateResponse) String() string {
@@ -3085,9 +3085,9 @@ func (s *DeleteClientKeyResponseBody) SetRequestId(v string) *DeleteClientKeyRes
 }
 
 type DeleteClientKeyResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteClientKeyResponse) String() string {
@@ -3150,9 +3150,9 @@ func (s *DeleteKeyMaterialResponseBody) SetRequestId(v string) *DeleteKeyMateria
 }
 
 type DeleteKeyMaterialResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteKeyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteKeyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteKeyMaterialResponse) String() string {
@@ -3213,9 +3213,9 @@ func (s *DeleteNetworkRuleResponseBody) SetRequestId(v string) *DeleteNetworkRul
 }
 
 type DeleteNetworkRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteNetworkRuleResponse) String() string {
@@ -3276,9 +3276,9 @@ func (s *DeletePolicyResponseBody) SetRequestId(v string) *DeletePolicyResponseB
 }
 
 type DeletePolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePolicyResponse) String() string {
@@ -3374,9 +3374,9 @@ func (s *DeleteSecretResponseBody) SetSecretName(v string) *DeleteSecretResponse
 }
 
 type DeleteSecretResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSecretResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSecretResponse) String() string {
@@ -3438,9 +3438,9 @@ func (s *DescribeAccountKmsStatusResponseBody) SetRequestId(v string) *DescribeA
 }
 
 type DescribeAccountKmsStatusResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAccountKmsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAccountKmsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAccountKmsStatusResponse) String() string {
@@ -3531,9 +3531,9 @@ func (s *DescribeApplicationAccessPointResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeApplicationAccessPointResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeApplicationAccessPointResponse) String() string {
@@ -3729,9 +3729,9 @@ func (s *DescribeCertificateResponseBody) SetUpdatedAt(v string) *DescribeCertif
 }
 
 type DescribeCertificateResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCertificateResponse) String() string {
@@ -3979,9 +3979,9 @@ func (s *DescribeKeyResponseBodyKeyMetadata) SetRotationInterval(v string) *Desc
 }
 
 type DescribeKeyResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeKeyResponse) String() string {
@@ -4096,9 +4096,9 @@ func (s *DescribeKeyVersionResponseBodyKeyVersion) SetKeyVersionId(v string) *De
 }
 
 type DescribeKeyVersionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeKeyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeKeyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeKeyVersionResponse) String() string {
@@ -4183,9 +4183,9 @@ func (s *DescribeNetworkRuleResponseBody) SetType(v string) *DescribeNetworkRule
 }
 
 type DescribeNetworkRuleResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNetworkRuleResponse) String() string {
@@ -4288,9 +4288,9 @@ func (s *DescribePolicyResponseBody) SetResources(v []*string) *DescribePolicyRe
 }
 
 type DescribePolicyResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePolicyResponse) String() string {
@@ -4377,9 +4377,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -4622,9 +4622,9 @@ func (s *DescribeSecretResponseBodyTagsTag) SetTagValue(v string) *DescribeSecre
 }
 
 type DescribeSecretResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSecretResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSecretResponse) String() string {
@@ -4687,9 +4687,9 @@ func (s *DisableKeyResponseBody) SetRequestId(v string) *DisableKeyResponseBody 
 }
 
 type DisableKeyResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableKeyResponse) String() string {
@@ -4752,9 +4752,9 @@ func (s *EnableKeyResponseBody) SetRequestId(v string) *EnableKeyResponseBody {
 }
 
 type EnableKeyResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableKeyResponse) String() string {
@@ -4884,9 +4884,9 @@ func (s *EncryptResponseBody) SetRequestId(v string) *EncryptResponseBody {
 }
 
 type EncryptResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EncryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EncryptResponse) String() string {
@@ -5068,9 +5068,9 @@ func (s *ExportDataKeyResponseBody) SetRequestId(v string) *ExportDataKeyRespons
 }
 
 type ExportDataKeyResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExportDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExportDataKeyResponse) String() string {
@@ -5305,9 +5305,9 @@ func (s *GenerateAndExportDataKeyResponseBody) SetRequestId(v string) *GenerateA
 }
 
 type GenerateAndExportDataKeyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateAndExportDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateAndExportDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateAndExportDataKeyResponse) String() string {
@@ -5492,9 +5492,9 @@ func (s *GenerateDataKeyResponseBody) SetRequestId(v string) *GenerateDataKeyRes
 }
 
 type GenerateDataKeyResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateDataKeyResponse) String() string {
@@ -5658,9 +5658,9 @@ func (s *GenerateDataKeyWithoutPlaintextResponseBody) SetRequestId(v string) *Ge
 }
 
 type GenerateDataKeyWithoutPlaintextResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateDataKeyWithoutPlaintextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateDataKeyWithoutPlaintextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateDataKeyWithoutPlaintextResponse) String() string {
@@ -5751,9 +5751,9 @@ func (s *GetCertificateResponseBody) SetRequestId(v string) *GetCertificateRespo
 }
 
 type GetCertificateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCertificateResponse) String() string {
@@ -5862,9 +5862,9 @@ func (s *GetClientKeyResponseBody) SetRequestId(v string) *GetClientKeyResponseB
 }
 
 type GetClientKeyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetClientKeyResponse) String() string {
@@ -6084,9 +6084,9 @@ func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc) SetVpcOwnerId(v s
 }
 
 type GetKmsInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetKmsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetKmsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetKmsInstanceResponse) String() string {
@@ -6199,9 +6199,9 @@ func (s *GetParametersForImportResponseBody) SetTokenExpireTime(v string) *GetPa
 }
 
 type GetParametersForImportResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetParametersForImportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetParametersForImportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetParametersForImportResponse) String() string {
@@ -6294,9 +6294,9 @@ func (s *GetPublicKeyResponseBody) SetRequestId(v string) *GetPublicKeyResponseB
 }
 
 type GetPublicKeyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPublicKeyResponse) String() string {
@@ -6443,9 +6443,9 @@ func (s *GetRandomPasswordResponseBody) SetRequestId(v string) *GetRandomPasswor
 }
 
 type GetRandomPasswordResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRandomPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRandomPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRandomPasswordResponse) String() string {
@@ -6676,9 +6676,9 @@ func (s *GetSecretValueResponseBodyVersionStages) SetVersionStage(v []*string) *
 }
 
 type GetSecretValueResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSecretValueResponse) String() string {
@@ -6766,9 +6766,9 @@ func (s *ImportKeyMaterialResponseBody) SetRequestId(v string) *ImportKeyMateria
 }
 
 type ImportKeyMaterialResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImportKeyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportKeyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImportKeyMaterialResponse) String() string {
@@ -6923,9 +6923,9 @@ func (s *ListAliasesResponseBodyAliasesAlias) SetKeyId(v string) *ListAliasesRes
 }
 
 type ListAliasesResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAliasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAliasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAliasesResponse) String() string {
@@ -7087,9 +7087,9 @@ func (s *ListAliasesByKeyIdResponseBodyAliasesAlias) SetKeyId(v string) *ListAli
 }
 
 type ListAliasesByKeyIdResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAliasesByKeyIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAliasesByKeyIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAliasesByKeyIdResponse) String() string {
@@ -7220,9 +7220,9 @@ func (s *ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicati
 }
 
 type ListApplicationAccessPointsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListApplicationAccessPointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationAccessPointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListApplicationAccessPointsResponse) String() string {
@@ -7348,9 +7348,9 @@ func (s *ListClientKeysResponseBodyClientKeys) SetPublicKeyData(v string) *ListC
 }
 
 type ListClientKeysResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClientKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClientKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClientKeysResponse) String() string {
@@ -7514,9 +7514,9 @@ func (s *ListKeyVersionsResponseBodyKeyVersionsKeyVersion) SetKeyVersionId(v str
 }
 
 type ListKeyVersionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListKeyVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListKeyVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListKeyVersionsResponse) String() string {
@@ -7660,9 +7660,9 @@ func (s *ListKeysResponseBodyKeysKey) SetKeyId(v string) *ListKeysResponseBodyKe
 }
 
 type ListKeysResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListKeysResponse) String() string {
@@ -7793,9 +7793,9 @@ func (s *ListKmsInstancesResponseBodyKmsInstancesKmsInstance) SetKmsInstanceId(v
 }
 
 type ListKmsInstancesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListKmsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListKmsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListKmsInstancesResponse) String() string {
@@ -7926,9 +7926,9 @@ func (s *ListNetworkRulesResponseBodyNetworkRulesNetworkRule) SetType(v string) 
 }
 
 type ListNetworkRulesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNetworkRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNetworkRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNetworkRulesResponse) String() string {
@@ -8053,9 +8053,9 @@ func (s *ListPoliciesResponseBodyPoliciesPolicy) SetName(v string) *ListPolicies
 }
 
 type ListPoliciesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPoliciesResponse) String() string {
@@ -8174,9 +8174,9 @@ func (s *ListResourceTagsResponseBodyTagsTag) SetTagValue(v string) *ListResourc
 }
 
 type ListResourceTagsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceTagsResponse) String() string {
@@ -8368,9 +8368,9 @@ func (s *ListSecretVersionIdsResponseBodyVersionIdsVersionIdVersionStages) SetVe
 }
 
 type ListSecretVersionIdsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSecretVersionIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSecretVersionIdsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSecretVersionIdsResponse) String() string {
@@ -8631,9 +8631,9 @@ func (s *ListSecretsResponseBodySecretListSecretTagsTag) SetTagValue(v string) *
 }
 
 type ListSecretsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSecretsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSecretsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSecretsResponse) String() string {
@@ -8805,9 +8805,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -8852,9 +8852,9 @@ func (s *OpenKmsServiceResponseBody) SetRequestId(v string) *OpenKmsServiceRespo
 }
 
 type OpenKmsServiceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OpenKmsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenKmsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s OpenKmsServiceResponse) String() string {
@@ -8986,9 +8986,9 @@ func (s *PutSecretValueResponseBodyVersionStages) SetVersionStage(v []*string) *
 }
 
 type PutSecretValueResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PutSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutSecretValueResponse) String() string {
@@ -9218,9 +9218,9 @@ func (s *ReEncryptResponseBody) SetRequestId(v string) *ReEncryptResponseBody {
 }
 
 type ReEncryptResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReEncryptResponse) String() string {
@@ -9290,9 +9290,9 @@ func (s *RestoreSecretResponseBody) SetSecretName(v string) *RestoreSecretRespon
 }
 
 type RestoreSecretResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RestoreSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestoreSecretResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RestoreSecretResponse) String() string {
@@ -9385,9 +9385,9 @@ func (s *RotateSecretResponseBody) SetVersionId(v string) *RotateSecretResponseB
 }
 
 type RotateSecretResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RotateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RotateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RotateSecretResponse) String() string {
@@ -9461,9 +9461,9 @@ func (s *ScheduleKeyDeletionResponseBody) SetRequestId(v string) *ScheduleKeyDel
 }
 
 type ScheduleKeyDeletionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ScheduleKeyDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ScheduleKeyDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ScheduleKeyDeletionResponse) String() string {
@@ -9547,9 +9547,9 @@ func (s *SetDeletionProtectionResponseBody) SetRequestId(v string) *SetDeletionP
 }
 
 type SetDeletionProtectionResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDeletionProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetDeletionProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetDeletionProtectionResponse) String() string {
@@ -9644,9 +9644,9 @@ func (s *TagResourceResponseBody) SetRequestId(v string) *TagResourceResponseBod
 }
 
 type TagResourceResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourceResponse) String() string {
@@ -9748,9 +9748,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -9830,9 +9830,9 @@ func (s *UntagResourceResponseBody) SetRequestId(v string) *UntagResourceRespons
 }
 
 type UntagResourceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourceResponse) String() string {
@@ -9917,9 +9917,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -9991,9 +9991,9 @@ func (s *UpdateAliasResponseBody) SetRequestId(v string) *UpdateAliasResponseBod
 }
 
 type UpdateAliasResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAliasResponse) String() string {
@@ -10066,9 +10066,9 @@ func (s *UpdateApplicationAccessPointResponseBody) SetRequestId(v string) *Updat
 }
 
 type UpdateApplicationAccessPointResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateApplicationAccessPointResponse) String() string {
@@ -10146,9 +10146,9 @@ func (s *UpdateCertificateStatusResponseBody) SetRequestId(v string) *UpdateCert
 }
 
 type UpdateCertificateStatusResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCertificateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCertificateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCertificateStatusResponse) String() string {
@@ -10218,9 +10218,9 @@ func (s *UpdateKeyDescriptionResponseBody) SetRequestId(v string) *UpdateKeyDesc
 }
 
 type UpdateKeyDescriptionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateKeyDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateKeyDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateKeyDescriptionResponse) String() string {
@@ -10287,9 +10287,9 @@ func (s *UpdateKmsInstanceBindVpcResponseBody) SetRequestId(v string) *UpdateKms
 }
 
 type UpdateKmsInstanceBindVpcResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateKmsInstanceBindVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateKmsInstanceBindVpcResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateKmsInstanceBindVpcResponse) String() string {
@@ -10362,9 +10362,9 @@ func (s *UpdateNetworkRuleResponseBody) SetRequestId(v string) *UpdateNetworkRul
 }
 
 type UpdateNetworkRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateNetworkRuleResponse) String() string {
@@ -10449,9 +10449,9 @@ func (s *UpdatePolicyResponseBody) SetRequestId(v string) *UpdatePolicyResponseB
 }
 
 type UpdatePolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePolicyResponse) String() string {
@@ -10533,9 +10533,9 @@ func (s *UpdateRotationPolicyResponseBody) SetRequestId(v string) *UpdateRotatio
 }
 
 type UpdateRotationPolicyResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRotationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRotationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRotationPolicyResponse) String() string {
@@ -10691,9 +10691,9 @@ func (s *UpdateSecretResponseBody) SetSecretName(v string) *UpdateSecretResponse
 }
 
 type UpdateSecretResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSecretResponse) String() string {
@@ -10786,9 +10786,9 @@ func (s *UpdateSecretRotationPolicyResponseBody) SetSecretName(v string) *Update
 }
 
 type UpdateSecretRotationPolicyResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSecretRotationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSecretRotationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSecretRotationPolicyResponse) String() string {
@@ -10888,9 +10888,9 @@ func (s *UpdateSecretVersionStageResponseBody) SetSecretName(v string) *UpdateSe
 }
 
 type UpdateSecretVersionStageResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSecretVersionStageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSecretVersionStageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSecretVersionStageResponse) String() string {
@@ -10967,9 +10967,9 @@ func (s *UploadCertificateResponseBody) SetRequestId(v string) *UploadCertificat
 }
 
 type UploadCertificateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadCertificateResponse) String() string {
@@ -12074,7 +12074,21 @@ func (client *Client) CreateClientKey(request *CreateClientKeyRequest) (_result 
 }
 
 /**
- * Creates a customer master key (CMK).
+ * A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
+ * The following table describes different types of CMKs and the operations that are supported by the CMKs.
+ * | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
+ * | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
+ * | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
+ * | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
+ * | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
+ * | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
+ * | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
+ * | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
+ * | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
+ * | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
+ * | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
+ * > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
+ * > - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
  *
  * @param request CreateKeyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12146,7 +12160,21 @@ func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *u
 }
 
 /**
- * Creates a customer master key (CMK).
+ * A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
+ * The following table describes different types of CMKs and the operations that are supported by the CMKs.
+ * | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
+ * | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
+ * | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
+ * | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
+ * | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
+ * | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
+ * | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
+ * | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
+ * | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
+ * | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
+ * | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
+ * > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
+ * > - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
  *
  * @param request CreateKeyRequest
  * @return CreateKeyResponse
