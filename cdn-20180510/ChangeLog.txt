@@ -1,3 +1,9 @@
+2024-02-21 Version: v4.2.0
+- Support API BatchDescribeCdnIpInfo.
+- Support API DescribeCdnDomainAtoaLogs.
+- Support API DescribeDomainVerifyData.
+
+
 2023-10-18 Version: v4.1.2
 - Generated golang 2018-05-10 for Cdn.
 
