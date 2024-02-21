@@ -607,14 +607,14 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateBackupRequest struct {
-	// The backup method of the instance. Default value: Physical. Valid values:
+	// The backup method of the instance. Valid values:
 	//
 	// *   **Logical**
-	// *   **Physical**
+	// *   **Physical** (default)
 	//
-	// >  Only replica set instances and sharded cluster instances support this parameter. You do not need to specify this parameter for standalone instances. All standalone instances use snapshot backup.
+	// > Only replica set instances and sharded cluster instances support this parameter. You do not need to specify this parameter for standalone instances. All standalone instances use snapshot backup.
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -663,7 +663,7 @@ func (s *CreateBackupRequest) SetResourceOwnerId(v int64) *CreateBackupRequest {
 type CreateBackupResponseBody struct {
 	// The ID of the backup set.
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -745,7 +745,9 @@ type CreateDBInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the dedicated cluster to which the instance belongs.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	// Specifies whether to use coupons. Default value: null. Valid values:
+	// - **default** or **null**: uses coupons.
+	// - **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The instance type. You can also call the [DescribeAvailableResource](~~149719~~) operation to query the instance type.
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
@@ -1194,10 +1196,19 @@ func (s *CreateDBInstanceResponse) SetBody(v *CreateDBInstanceResponseBody) *Cre
 }
 
 type CreateGlobalSecurityIPGroupRequest struct {
-	GIpList              *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	GlobalIgName         *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP address whitelists.
+	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP whitelist template. The name must meet the following requirements:
+	//
+	// *   It can contain lowercase letters, digits, and underscores (\_).
+	// *   It must start with a letter and end with a letter or digit.
+	// *   It must be 2 to 120 characters in length.
+	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1253,8 +1264,10 @@ func (s *CreateGlobalSecurityIPGroupRequest) SetSecurityToken(v string) *CreateG
 }
 
 type CreateGlobalSecurityIPGroupResponseBody struct {
+	// The IP whitelist templates.
 	GlobalSecurityIPGroup []*CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
-	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateGlobalSecurityIPGroupResponseBody) String() string {
@@ -1276,10 +1289,20 @@ func (s *CreateGlobalSecurityIPGroupResponseBody) SetRequestId(v string) *Create
 }
 
 type CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
-	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP address whitelists.
+	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP whitelist template. The name must meet the following requirements:
+	//
+	// *   It can contain lowercase letters, digits, and underscores (\_).
+	// *   It must start with a letter and end with a letter or digit.
+	// *   It must be 2 to 120 characters in length.
+	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP whitelist template.
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) String() string {
@@ -1553,21 +1576,52 @@ func (s *CreateNodeResponse) SetBody(v *CreateNodeResponseBody) *CreateNodeRespo
 }
 
 type CreateNodeBatchRequest struct {
-	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The username of the account. The username must meet the following requirements:
+	// - The username starts with a lowercase letter.
+	// - The username contains lowercase letters, digits, and underscores (_).
+	// - The username is 4 to 16 characters in length.
+	//
+	// > - Keywords cannot be used as account usernames.
+	// > - The permissions of this account are fixed at read-only.
+	// > - The username and password are required to be set only when you apply for an endpoint for the shard node for the first time.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the account. The password must meet the following requirements:
+	// - The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters.
+	// - These special characters include ! @ # $ % ^ & * ( ) _ + - =
+	// - The password is 8 to 32 characters in length.
+	// > The account password of the shard node cannot be reset.
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	AutoPay         *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	BusinessInfo    *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The ID of the added mongos or shard node.
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CouponNo             *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FromApp              *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
+	// Specifies whether to enable automatic payment. Default value: true. Valid values:
+	// - **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+	// - **false**: disables automatic payment. In this case, you must manually pay for the instance. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Orders**. On the Orders page, find the order and complete the payment.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The business information.
+	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to use coupons. Default value: null. Valid values:
+	//
+	// *   **default** or **null**: uses coupons.
+	// *   **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The ID of the instance for which you want to add nodes.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The source of the request. Valid values:
+	// - **OpenApi**: ApsaraDB for MongoDB API
+	// - **mongo_buy**: ApsaraDB for MongoDB console
+	FromApp *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
+	// The specifications of the mongos or shard node that you want to add. For more information, see [Instance types](~~57141~~).
+	//
+	// > Up to 32 mongos or shard nodes are supported for each sharded cluster instance.
 	NodesInfo            *string `json:"NodesInfo,omitempty" xml:"NodesInfo,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ShardDirect          *bool   `json:"ShardDirect,omitempty" xml:"ShardDirect,omitempty"`
+	// Specifies whether to apply for an endpoint for the shard node. Default value: false. Valid values:
+	// - **true**: applies for an endpoint for the shard node.
+	// - **false**: does not apply for an endpoint for the shard node.
+	ShardDirect *bool `json:"ShardDirect,omitempty" xml:"ShardDirect,omitempty"`
 }
 
 func (s CreateNodeBatchRequest) String() string {
@@ -1649,8 +1703,11 @@ func (s *CreateNodeBatchRequest) SetShardDirect(v bool) *CreateNodeBatchRequest 
 }
 
 type CreateNodeBatchResponseBody struct {
-	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the added mongos or shard node.
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2238,9 +2295,9 @@ func (s *CreateShardingDBInstanceResponse) SetBody(v *CreateShardingDBInstanceRe
 }
 
 type DeleteDBInstanceRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2287,7 +2344,7 @@ func (s *DeleteDBInstanceRequest) SetResourceOwnerId(v int64) *DeleteDBInstanceR
 }
 
 type DeleteDBInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2334,14 +2391,21 @@ func (s *DeleteDBInstanceResponse) SetBody(v *DeleteDBInstanceResponseBody) *Del
 }
 
 type DeleteGlobalSecurityIPGroupRequest struct {
-	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The name of the IP whitelist template. The name must meet the following requirements:
+	//
+	// *   It can contain lowercase letters, digits, and underscores (\_).
+	// *   It must start with a letter and end with a letter or digit.
+	// *   It must be 2 to 120 characters in length.
+	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP whitelist template.
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DeleteGlobalSecurityIPGroupRequest) String() string {
@@ -2393,6 +2457,7 @@ func (s *DeleteGlobalSecurityIPGroupRequest) SetSecurityToken(v string) *DeleteG
 }
 
 type DeleteGlobalSecurityIPGroupResponseBody struct {
+	// The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2439,11 +2504,11 @@ func (s *DeleteGlobalSecurityIPGroupResponse) SetBody(v *DeleteGlobalSecurityIPG
 }
 
 type DeleteNodeRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the shard or mongos node to be deleted. You can call the [DescribeDBInstanceAttribute](~~61923~~) operation to query the node ID.
+	// The ID of the shard or mongos node that you want to delete. You can call the [DescribeDBInstanceAttribute](~~61923~~) operation to query node IDs.
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2495,9 +2560,9 @@ func (s *DeleteNodeRequest) SetResourceOwnerId(v int64) *DeleteNodeRequest {
 }
 
 type DeleteNodeResponseBody struct {
-	// The order ID of the instance.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the task.
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -2605,7 +2670,7 @@ func (s *DescribeAccountsRequest) SetResourceOwnerId(v int64) *DescribeAccountsR
 }
 
 type DescribeAccountsResponseBody struct {
-	// The username of the account.
+	// The details of the account.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -2648,25 +2713,23 @@ func (s *DescribeAccountsResponseBodyAccounts) SetAccount(v []*DescribeAccountsR
 
 type DescribeAccountsResponseBodyAccountsAccount struct {
 	// The description of the account.
-	//
-	// > This parameter is returned only after you configure the description of the account by calling the [ModifyAccountDescription](~~468391~~) operation.
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The status of the account.
+	// The status of the account. Valid values:
 	//
 	// *   **Unavailable**
 	// *   **Available**
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The role of the account. Valid values:
 	//
-	// *   **db**: shard
-	// *   **cs**: Configserver
-	// *   **mongos**: mongos
-	// *   **logic:** sharded cluster instance
-	// *   **normal:** replica set instance
+	// *   **db**: shard node
+	// *   **cs**: Configserver node
+	// *   **mongos**: mongos node
+	// *   **logic**: sharded cluster instance
+	// *   **normal**: replica set instance
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The name of the instance to which the account belongs.
+	// The ID of the instance to which the account belongs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -2775,14 +2838,14 @@ func (s *DescribeActiveOperationTaskCountRequest) SetResourceOwnerId(v int64) *D
 }
 
 type DescribeActiveOperationTaskCountResponseBody struct {
-	// Indicates whether any O&M tasks need pop-up windows to notify users actions. Valid values:
+	// Indicates whether any O\&M tasks need pop-up windows to notify users actions. Valid values:
 	//
-	// - **0**: No O&M tasks need pop-up windows to notify users actions.
-	// - **1**: Some O&M tasks need pop-up windows to notify users actions.
+	// *   **0**: No O\&M tasks need pop-up windows to notify users actions.
+	// *   **1**: Some O\&M tasks need pop-up windows to notify users actions.
 	NeedPop *int32 `json:"NeedPop,omitempty" xml:"NeedPop,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of pending O&M tasks.
+	// The number of pending O\&M tasks.
 	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
 }
 
@@ -3178,7 +3241,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
 	// The node ID.
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The time when the O\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
+	// The time when the O\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
@@ -3186,13 +3249,13 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The result information. The value of this parameter can be ignored.
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The time when the O\&M task started to run. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
+	// The time when the O\&M task started to run. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// None
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The subinstances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	// The point in time when the switchover is performed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC. Service interruptions may occur during switchover.
+	// The point in time when the switchover is performed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC. Service interruptions may occur during switchover.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The task type.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
@@ -3492,7 +3555,7 @@ func (s *DescribeAuditLogFilterResponse) SetBody(v *DescribeAuditLogFilterRespon
 }
 
 type DescribeAuditPolicyRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3541,7 +3604,7 @@ type DescribeAuditPolicyResponseBody struct {
 	//
 	// Default value: Disabled.
 	LogAuditStatus *string `json:"LogAuditStatus,omitempty" xml:"LogAuditStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4726,25 +4789,31 @@ func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResource
 }
 
 type DescribeBackupDBsRequest struct {
-	// The ID of the backup set.
+	// The backup ID.
 	//
-	// > * You can call the [DescribeBackups](~~62172~~) operation to query the backup ID.
-	// > * You must specify one of the **RestoreTime** and BackupId parameters.
+	// >
+	//
+	// *   You can call the [DescribeBackups](~~62172~~) operation to query the backup ID.
+	//
+	// *   You must specify one of the **RestoreTime** and BackupId parameters.
 	BackupId     *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+	// The page number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 30. Valid values: **30**, **50**, and **100**.
+	// The number of entries to return per page. Default value: 30. Valid values: **30**, **50**, and **100**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time to which the instance is restored. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The point in time to which the instance is restored. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// > * The time can be a point in time within the past seven days. The time must be earlier than the current time, but later than the time when the instance was created.
-	// > * You must specify one of the RestoreTime and **BackupId** parameters.
+	// >
+	//
+	// *   The time can be a point in time within the previous seven days. The time must be earlier than the current time, but later than the time when the instance was created.
+	//
+	// *   You must specify one of the RestoreTime and **BackupId** parameters.
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 	// The ID of the source instance.
 	SourceDBInstance *string `json:"SourceDBInstance,omitempty" xml:"SourceDBInstance,omitempty"`
@@ -4809,13 +4878,13 @@ func (s *DescribeBackupDBsRequest) SetSourceDBInstance(v string) *DescribeBackup
 }
 
 type DescribeBackupDBsResponseBody struct {
-	// Details about the databases.
+	// The details of the databases.
 	Databases *DescribeBackupDBsResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number of the page returned.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of returned databases.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -4919,7 +4988,7 @@ func (s *DescribeBackupDBsResponse) SetBody(v *DescribeBackupDBsResponseBody) *D
 }
 
 type DescribeBackupPolicyRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -4967,9 +5036,9 @@ func (s *DescribeBackupPolicyRequest) SetSecurityToken(v string) *DescribeBackup
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	// The frequency at which high-frequency backups are created. Valid values:
+	// The frequency at which high-frequency backup is created. Valid values:
 	//
-	// *   **-1**: disables high-frequency backup.
+	// *   **-1**: High-frequency backup is disabled.
 	// *   **15**: every 15 minutes.
 	// *   **30**: every 30 minutes.
 	// *   **60**: every hour.
@@ -4980,14 +5049,14 @@ type DescribeBackupPolicyResponseBody struct {
 	// *   **480**: every 8 hours.
 	// *   **720**: every 12 hours.
 	BackupInterval *int32 `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
-	// The retention period of backups. Unit: days.
+	// The retention period of the backup data. Unit: day.
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Indicates whether log backup is enabled. Default value: 0. Valid values:
+	// Indicates whether the log backup feature is enabled. Valid values:
 	//
-	// *   **0**: disables log backup.
-	// *   **1**: enables log backup.
+	// *   **0** (default): The log backup feature is disabled.
+	// *   **1**: The log backup feature is enabled.
 	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The number of days for which to retain log backups. Valid values: 7 to 730.
+	// The number of days for which log backups are retained. Valid values: 7 to 730.
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	// The day of a week on which to back up data. Valid values:
 	//
@@ -4999,14 +5068,14 @@ type DescribeBackupPolicyResponseBody struct {
 	// *   **Saturday**
 	// *   **Sunday**
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The time range to back up data. The time is in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
+	// The time range during which the backup was created. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The snapshot backup type. Default value: Standard. Valid values:
+	// The snapshot backup type. Valid values:
 	//
 	// *   **Flash**: single-digit second backup
-	// *   **Standard**: standard backup
+	// *   **Standard** (default): standard backup
 	SnapshotBackupType *string `json:"SnapshotBackupType,omitempty" xml:"SnapshotBackupType,omitempty"`
 }
 
@@ -5088,29 +5157,33 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 }
 
 type DescribeBackupsRequest struct {
-	// The ID of the backup set. You can call the [CreateBackup](~~62171~~) operation to obtain the value of this parameter.
+	// The ID of the backup set. You can call the [CreateBackup](~~62171~~) operation to query the backup set ID.
 	//
-	// If you set the DBInstanceId parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shards. Separate them with commas (,) in the middle.
+	// If you set the **DBInstanceId** parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shard nodes. Multiple backup IDs are separated with commas (,).
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the shard node in the sharded cluster instance.
 	//
-	// >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
+	// > This parameter takes effect only when you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30, 50, and 100**. Default value: **30**.
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **30** (default)
+	// *   **50**
+	// *   **100**
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5178,15 +5251,19 @@ func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest 
 }
 
 type DescribeBackupsResponseBody struct {
-	// Details about backup sets.
+	// The details of the backup sets.
 	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
-	// The number of the page to return.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries returned per page. Valid values:
+	//
+	// *   **30** (default)
+	// *   **50**
+	// *   **100**
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of backup sets that were returned.
+	// The total number of backup sets.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5245,38 +5322,38 @@ type DescribeBackupsResponseBodyBackupsBackup struct {
 	BackupDBNames *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
 	// The Internet download URL of the backup set. If the download URL is unavailable, this parameter is an empty string.
 	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	// The end of the backup time range. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and displayed in UTC.
+	// The end of the backup time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	// The ID of the backup set.
 	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The internal download URL of the backup set.
 	//
-	// >  You can use this URL to download the backup set from on the ECS instance which is on the same network as the ApsaraDB for MongoDB instance.
+	// > You can use this URL to download the backup set from on the Elastic Compute Service (ECS) instance which is on the same network as the ApsaraDB for MongoDB instance.
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	// The backup method. Valid values:
+	// The method that is used to generate the backup set. Valid values:
 	//
 	// *   **Snapshot**
 	// *   **Physical**
 	// *   **Logical**
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup mode.
+	// The backup mode of the backup set. Valid values:
 	//
-	// *   **Automated**: automatic backup
-	// *   **Manual**: manual backup
+	// *   **Automated**:
+	// *   **Manual**
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The size of the backup set. Unit: bytes.
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The beginning of the backup time range. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and displayed in UTC.
+	// The beginning of the backup time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The status of the backup. Valid values:
+	// The status of the backup task. Valid values:
 	//
-	// *   **Success**: The backup task is successful.
-	// *   **Failed**: The backup task failed.
+	// *   **Success**
+	// *   **Failed**
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup method.
+	// The backup type. Valid values:
 	//
-	// *   **FullBackup**: a full backup
-	// *   **IncrementalBackup**: an incremental backup
+	// *   **FullBackup**
+	// *   **IncrementalBackup**
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 }
 
@@ -5861,11 +5938,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The database engine of the instance. Set the value to **MongoDB**.
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Specifies whether to delete the instance. Valid values:
-	//
-	// *   **false**: queries the details of running instances.
-	// *   **true**: queries the details of deleted instances.
+	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	IsDelete     *bool   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5932,7 +6005,7 @@ func (s *DescribeDBInstanceAttributeRequest) SetSecurityToken(v string) *Describ
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	// The information of the instance.
+	// The details of the instance.
 	DBInstances *DescribeDBInstanceAttributeResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5974,24 +6047,24 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstances) SetDBInstance(v []*
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
-	// Indicates whether performance burst is enabled for the ESSD AutoPL disk.
+	// 是否已开启突发
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The read and write throughput consumed by the instance.
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   **PrePaid**: subscription
-	// *   **PostPaid**: pay-as-you-go
+	// *   **PrePaid**: subscription.
+	// *   **PostPaid**: pay-as-you-go.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The information of the Configserver nodes.
+	// The details of the Configserver nodes.
 	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
+	// > This parameter is returned if the instance is a sharded cluster instance.
 	ConfigserverList *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverList `json:"ConfigserverList,omitempty" xml:"ConfigserverList,omitempty" type:"Struct"`
 	// The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The minor version of the current database in the instance.
 	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
-	// The instance type of the instance.
+	// The instance type.
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The name of the instance.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
@@ -6001,16 +6074,17 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	//
 	// *   **all_completed**: All orders are being produced or complete.
 	// *   **order_unpaid**: The instance has unpaid orders.
-	// *   **order_wait_for_produce**: Orders are being delivered for production.
+	// *   **order_wait_for_produce**: Order are being delivered for production.
 	//
-	// >  The order production process includes the following steps: place an order, pay for an order, deliver an order for production, produce an order, and complete the production.
-	// > *   If an order is in the **order_wait_for_produce** state for a long time, an error occurs when the order is being delivered for production. The system will automatically retry.
-	// > *   The instance status changes only when the order is in the producing and complete state, such as changing configurations and running.
+	// > The order production process includes the following steps: place an order, pay for an order, deliver an order for production, produce an order, and complete an order.
+	//
+	// *   If an order is in the **order_wait_for_produce** state for a long time, an error occurs when the order is being delivered for production. The system will automatically retry.
+	// *   The instance status changes only when the order is in the producing and complete state, such as changing configurations and running.
 	DBInstanceOrderStatus *string `json:"DBInstanceOrderStatus,omitempty" xml:"DBInstanceOrderStatus,omitempty"`
 	// Indicates whether release protection is enabled for the instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// *   **true**: Release protection is enabled.
+	// *   **false** Release protection is disabled.
 	DBInstanceReleaseProtection *bool `json:"DBInstanceReleaseProtection,omitempty" xml:"DBInstanceReleaseProtection,omitempty"`
 	// The status of the instance. For more information, see [Instance states](~~63870~~).
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
@@ -6018,18 +6092,18 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The architecture of the instance. Valid values:
 	//
-	// *   **replicate**: replica set instance
-	// *   **sharding**: sharded cluster instance
+	// *   **replicate**: replica set instance.
+	// *   **sharding**: sharded cluster instance.
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	// The time when the instance data was destroyed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	// Indicates whether disk encryption is enabled.
+	// 是否开启云盘加密
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The Key Management Service (KMS) key used for disk encryption.
+	// 云盘加密对应的kms-key
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The database engine of the instance.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// The database engine version of the instance. Valid values:
 	//
 	// *   **6.0**
 	// *   **5.0**
@@ -6039,16 +6113,16 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The time when the subscription instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	//
-	// >  This parameter is returned if the instance is a subscription instance.
+	// > This parameter is returned if the instance is a subscription instance.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The ID of the secondary zone 2 of the instance. Valid values:
 	//
 	// *   **cn-hangzhou-g**: Hangzhou Zone G
 	// *   **cn-hangzhou-h**: Hangzhou Zone H
 	// *   **cn-hangzhou-i**: Hangzhou Zone I
-	// *   **cn-hongkong-b**: Hongkong Zone B
-	// *   **cn-hongkong-c**: Hongkong Zone C
-	// *   **cn-hongkong-d**: Hongkong Zone D
+	// *   **cn-hongkong-b**: Hong Kong Zone B
+	// *   **cn-hongkong-c**: Hong Kong Zone C
+	// *   **cn-hongkong-d**: Hong Kong Zone D
 	// *   **cn-wulanchabu-a**: Ulanqab Zone A
 	// *   **cn-wulanchabu-b**: Ulanqab Zone B
 	// *   **cn-wulanchabu-c**: Ulanqab Zone C
@@ -6062,15 +6136,18 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	// *   **eu-central-1b**: Frankfurt Zone B
 	// *   **eu-central-1c**: Frankfurt Zone C
 	//
-	// > *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-	// > *   This parameter is returned only if you use the China site (aliyun.com).
+	// >
+	//
+	// *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
+	//
+	// *   This parameter is returned only if you use the Chine site (aliyun.com).
 	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
 	// The kind code of the instance. Valid values:
 	//
-	// *   **0**: physical machine
-	// *   **1**: Elastic Compute Service (ECS) instance
-	// *   **2**: Docker cluster
-	// *   **18**: Kubernetes cluster
+	// *   **0**: physical machine.
+	// *   **1**: Elastic Compute Service (ECS) instance.
+	// *   **2**: Docker cluster.
+	// *   **18**: Kubernetes cluster.
 	KindCode *string `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
 	// The date when the last downgrade operation was performed on the instance.
 	LastDowngradeTime *string `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
@@ -6079,8 +6156,8 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	// *   **Unlock**: The instance is not locked.
 	// *   **ManualLock**: The instance is manually locked.
 	// *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	// *   **LockByRestoration**: The instance is automatically locked before the instance is rolled back.
-	// *   **LockByDiskQuota**: The instance is automatically locked after the storage space is exhausted.
+	// *   **LockByRestoration**: The instance is automatically locked before it is rolled back.
+	// *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage capacity.
 	// *   **Released**: The instance is released.
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The end time of the maintenance window. The time follows the ISO 8601 standard in the *HH:mm*Z format. The time is displayed in UTC.
@@ -6091,58 +6168,58 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The maximum IOPS of the instance.
 	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The maximum MBPS of the instance, Unit: MB/s.
+	// 实例的最大云盘吞吐量，单位MB/s。
 	MaxMBPS *int32 `json:"MaxMBPS,omitempty" xml:"MaxMBPS,omitempty"`
-	// The information of the mongos nodes.
+	// The details of the mongos nodes.
 	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
+	// > This parameter is returned if the instance is a sharded cluster instance.
 	MongosList *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosList `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Struct"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **Classic**: classic network
-	// *   **VPC**: VPC
+	// *   **Classic**
+	// *   **VPC**
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The access protocol type of the instance. Valid values:
 	//
 	// *   **mongodb**
 	// *   **dynamodb**
 	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
+	// > This parameter is returned if the instance is a sharded cluster instance.
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The provisioned performance of the ESSD AutoPL disk.
+	// 预配置性能
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The number of read-only nodes in the instance.
 	ReadonlyReplicas *string `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	// The region ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The logical ID of the replica set instance.
+	// The logical ID of the replica instance.
 	//
-	// >  ApsaraDB for MongoDB does not support new instances of this type. This parameter applies only to previous-version replica set instances.
+	// > ApsaraDB for MongoDB does not support new instances of this type. This parameter applies only to previous-version replica instances.
 	ReplacateId *string `json:"ReplacateId,omitempty" xml:"ReplacateId,omitempty"`
 	// The name of the replica set instance.
 	//
-	// >  This parameter is returned if the instance is a replica set instance.
+	// > This parameter is returned if the instance is a replica set instance.
 	ReplicaSetName *string `json:"ReplicaSetName,omitempty" xml:"ReplicaSetName,omitempty"`
-	// The information of the replica set instance.
+	// The details of the replica set instance.
 	//
-	// >  This parameter is returned if the instance is a replica set instance.
+	// > This parameter is returned if the instance is a replica set instance.
 	ReplicaSets *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSets `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
 	// The number of nodes in the instance.
 	//
-	// >  This parameter is returned if the instance is a replica set instance.
+	// > This parameter is returned if the instance is a replica set instance.
 	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group.
 	//
-	// >  This parameter is returned only if you use the China site (aliyun.com).
+	// > This parameter is returned only if you use the China site (aliyun.com).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the secondary zone 1 of the instance. Valid values:
 	//
 	// *   **cn-hangzhou-g**: Hangzhou Zone G
 	// *   **cn-hangzhou-h**: Hangzhou Zone H
 	// *   **cn-hangzhou-i**: Hangzhou Zone I
-	// *   **cn-hongkong-b**: Hongkong Zone B
-	// *   **cn-hongkong-c**: Hongkong Zone C
-	// *   **cn-hongkong-d**: Hongkong Zone D
+	// *   **cn-hongkong-b**: Hong Kong Zone B
+	// *   **cn-hongkong-c**: Hong Kong Zone C
+	// *   **cn-hongkong-d**: Hong Kong Zone D
 	// *   **cn-wulanchabu-a**: Ulanqab Zone A
 	// *   **cn-wulanchabu-b**: Ulanqab Zone B
 	// *   **cn-wulanchabu-c**: Ulanqab Zone C
@@ -6156,47 +6233,50 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	// *   **eu-central-1b**: Frankfurt Zone B
 	// *   **eu-central-1c**: Frankfurt Zone C
 	//
-	// > *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-	// > *   This parameter is returned only if you use the China site (aliyun.com).
-	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The information of the shard nodes.
+	// >
 	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
+	// *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
+	//
+	// *   This parameter is returned only if you use the Chine site (aliyun.com).
+	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	// The details of the shard nodes.
+	//
+	// > This parameter is returned if the instance is a sharded cluster instance.
 	ShardList *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
 	// The storage engine of the instance.
 	StorageEngine *string `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// **cloud_essd1**: ESSD PL1 **cloud_essd2**: ESSD PL2 **cloud_essd3**: ESSD PL3 **local_ssd**: local SSD **cloud_essd_dbfs_s**: DBFS disk
+	// **cloud_essd1**: PL1 ESSD. **cloud_essd2**: PL2. ESSD. **cloud_essd3**: PL3 ESSD. **local_ssd**: local SSD.
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The progress of data synchronization in percentage. When you are changing the configurations of the instance, you must synchronize the data of the instance. You can obtain the data synchronization progress based on the value returned for this parameter.
+	// 数据同步进度百分比。当实例处在变配中时，需要进行数据同步等操作，可以通过该字段判断同步进度。
 	SyncPercent *string `json:"SyncPercent,omitempty" xml:"SyncPercent,omitempty"`
 	// The details of the instance tags.
 	Tags *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// Indicates whether the cluster backup mode is enabled. Valid values:
+	// 是否使用集群备份模式。取值说明：
 	//
-	// *   **true**: The cluster backup mode is enabled.
-	// *   **false**: The cluster backup mode is disabled.
+	// - **true**：启用集群备份模式。
+	// - **false**未启用集群备份模式。
 	UseClusterBackup *bool `json:"UseClusterBackup,omitempty" xml:"UseClusterBackup,omitempty"`
 	// The instance ID.
 	//
-	// >  This parameter is returned if the network type of the instance is VPC.
+	// > This parameter is returned if the network type of the instance is VPC.
 	VPCCloudInstanceIds *string `json:"VPCCloudInstanceIds,omitempty" xml:"VPCCloudInstanceIds,omitempty"`
 	// The VPC ID of the instance.
 	//
-	// >  This parameter is returned if the network type of the instance is VPC.
+	// > This parameter is returned if the network type of the instance is VPC.
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the instance.
 	//
-	// >  This parameter is returned if the network type of the instance is VPC.
+	// > This parameter is returned if the network type of the instance is VPC.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Indicates whether password-free access within the VPC is enabled. Valid values:
+	// Indicates whether password-free access over VPC is enabled. Valid values:
 	//
-	// *   **Open**: Password-free access within the VPC is enabled.
-	// *   **Close**: Password-free access within the VPC is disabled, and you must use a password for access.
-	// *   **NotSupport**: Password-free access within the VPC is not supported.
+	// *   **Open**: Password-free access over VPC is enabled.
+	// *   **Close**: Password-free access over VPC is disabled, and you must use a password for access.
+	// *   **NotSupport**: Password-free access over VPC is not supported.
 	VpcAuthMode *string `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
-	// The ID of the zone in which the instance resides.
+	// The zone ID of the instance.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -6498,7 +6578,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLis
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
 	// The ID of the Configserver node.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage capacity of the Configserver node. Unit: GB.
+	// The storage capacity of the Configserver node.
 	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
 	// The port number that is used to connect to the Configserver node.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
@@ -6595,11 +6675,11 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongo
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The VPC ID of the instance.
 	//
-	// >  This parameter is returned if the network type of the instance is VPC.
+	// > This parameter is returned if the network type of the instance is VPC.
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the instance.
 	//
-	// >  This parameter is returned if the network type of the instance is VPC.
+	// > This parameter is returned if the network type of the instance is VPC.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the mongos node.
 	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
@@ -6692,8 +6772,8 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsRepl
 	ConnectionPort *string `json:"ConnectionPort,omitempty" xml:"ConnectionPort,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **Classic**: classic network
-	// *   **VPC**: VPC
+	// *   **Classic**: classic network.
+	// *   **VPC**: VPC.
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The role of the node. Valid values:
 	//
@@ -6702,15 +6782,15 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsRepl
 	ReplicaSetRole *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
 	// The instance ID.
 	//
-	// >  This parameter is returned if the network type of the instance is VPC.
+	// > This parameter is returned if the network type of the instance is VPC.
 	VPCCloudInstanceId *string `json:"VPCCloudInstanceId,omitempty" xml:"VPCCloudInstanceId,omitempty"`
 	// The VPC ID of the instance.
 	//
-	// >  This parameter is returned if the network type of the instance is VPC.
+	// > This parameter is returned if the network type of the instance is VPC.
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the instance.
 	//
-	// >  This parameter is returned if the network type of the instance is virtual private cloud (VPC).
+	// > This parameter is returned if the network type of the instance is Virtual Private Cloud (VPC).
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -6779,7 +6859,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardA
 	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
 	// The maximum number of connections to the shard node.
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum  MBPS of the shard node, Unit: MB/s.
+	// shard节点的最大云盘吞吐量。
 	MaxDiskMbps *string `json:"MaxDiskMbps,omitempty" xml:"MaxDiskMbps,omitempty"`
 	// The maximum IOPS of the shard node.
 	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
@@ -6789,7 +6869,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardA
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
 	// The ID of the shard node.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage capacity of the shard node. Unit: GB.
+	// The storage capacity of the shard node.
 	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
 	// The port number that is used to connect to the shard node.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
@@ -6880,9 +6960,9 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags) SetTa
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTagsTag struct {
-	// The tag key.
+	// The tag key of the instance.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6934,7 +7014,7 @@ func (s *DescribeDBInstanceAttributeResponse) SetBody(v *DescribeDBInstanceAttri
 }
 
 type DescribeDBInstanceEncryptionKeyRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The custom key for the instance. You can call the [DescribeUserEncryptionKeyList](~~151729~~) operation to query the list of custom keys for an ApsaraDB for MongoDB instance.
 	EncryptionKey        *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
@@ -6985,7 +7065,7 @@ func (s *DescribeDBInstanceEncryptionKeyRequest) SetResourceOwnerId(v int64) *De
 type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	// The UID of the key creator.
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The scheduled time when the key for the instance will be deleted. If the value is empty, the key will not be deleted.
+	// The scheduled time when the key for the instance will be deleted. If the parameter is left empty, the key will not be deleted.
 	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
 	// The description of the key for the instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -6998,11 +7078,11 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
 	// The purpose of the key for the instance.
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The expiration time of the key for the instance. The time is displayed in UTC. If the value is empty, the key for the instance will not expire.
+	// The expiration time of the key for the instance. The time is displayed in UTC. If the parameter is left empty, the key for the instance will not expire.
 	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
 	// The source of the key for the instance.
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7185,37 +7265,40 @@ func (s *DescribeDBInstanceMonitorResponse) SetBody(v *DescribeDBInstanceMonitor
 }
 
 type DescribeDBInstancePerformanceRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A performance metric. For more information about the valid values, see [Performance metrics](~~64048~~).
+	// The performance metric. For more information about valid values, see [Performance metrics](~~64048~~).
 	//
-	// >  If you specify multiple metrics, separate them with commas (,).
+	// >  If you need to specify multiple metrics, separate the metrics with commas (,).
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the mongos or shard node in a sharded cluster instance. You can specify this parameter to view the performance data of a single node.
 	//
-	// >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
+	// >  This parameter is valid when you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The role of the node in a standalone or replica set instance.
+	// The role of the node in a standalone or replica set instance. Valid values:
 	//
-	// * **Primary**
-	// * **Secondary**
+	// *   **Primary**
+	// *   **Secondary**
 	//
-	// > * This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a standalone instance or a replica set instance.
-	// > * If you set the **DBInstanceId** parameter to the ID of a standalone instance, the value of this parameter can only be **Primary**.
+	// >
+	//
+	// *   This parameter is valid only when you set the **DBInstanceId** parameter to the ID of a standalone instance or a replica set instance.
+	//
+	// *   If you set the **DBInstanceId** parameter to the ID of a standalone instance, the value of this parameter can only be **Primary**.
 	ReplicaSetRole       *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role ID of the node in a standalone or replica set instance. You can call the [DescribeReplicaSetRole](~~62134~~) operation to query the role ID of the node.
 	//
-	// >  This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a standalone instance or a replica set instance.
+	// >  This parameter is available when you set the **DBInstanceId** parameter to the ID of a standalone instance or a replica set instance.
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7283,13 +7366,13 @@ func (s *DescribeDBInstancePerformanceRequest) SetStartTime(v string) *DescribeD
 }
 
 type DescribeDBInstancePerformanceResponseBody struct {
-	// The end of the time range to query. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	// The end of the queried time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Details about the performance metrics.
+	// The details of performance metrics.
 	PerformanceKeys *DescribeDBInstancePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	// The beginning of the queried time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7339,15 +7422,15 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) SetPerformanc
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey struct {
-	// The performance metric.
+	// The performance metrics that are returned.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Details about the performance metric values.
+	// The details of the performance metric values.
 	PerformanceValues *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyPerformanceValues `json:"PerformanceValues,omitempty" xml:"PerformanceValues,omitempty" type:"Struct"`
 	// The unit of the performance metric.
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The format of the performance metric value. If the performance metric contains multiple fields, the fields are separated with **\&amp;** symbols.
+	// The format of the performance metric value. If the performance metric contains multiple fields, the fields are separated with ampersands ( &).
 	//
-	// For example, if you query disk usage, the returned **ValueFormat** value is in the **ins_size\&amp;data_size\&amp;log_size** format.
+	// For example, if you query disk space usage, the returned value of the **ValueFormat** parameter is **ins_size\&data_size\&log_size**.
 	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
 }
 
@@ -7786,23 +7869,24 @@ func (s *DescribeDBInstanceTDEInfoRequest) SetResourceOwnerId(v int64) *Describe
 }
 
 type DescribeDBInstanceTDEInfoResponseBody struct {
-	// The custom key of the instance.
+	// 实例的自定义密钥。
 	//
-	// The Bring Your Own Key (BYOK) feature allows you to manage and obtain your own encryption key. This feature is supported only in the following regions:
+	// 目前仅以下地域支持BYOK（Bring Your Own Key，用户可以自行管理和拥有加密密钥）：
+	// - 华东1（杭州）
+	// - 华东2（上海）
+	// - 华北2（北京）
+	// - 华南1（深圳）
+	// - 中国（香港）
+	// - 新加坡
+	// - 马来西亚（吉隆坡）
 	//
-	// *   cn-hangzhou
-	// *   cn-shanghai
-	// *   cn-beijing
-	// *   cn-shenzhen
-	// *   cn-hongkong
-	// *   ap-southeast-1
-	// *   ap-southeast-3
+	// > 支持BYOK，用户可以管理且拥有密钥，系统将返回用户的自定义密钥；不支持BYOK，用户不可管理密钥，系统将返回字符串`NoActiveBYOK`。
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The encryption algorithm.
+	// 加密算法。
 	EncryptorName *string `json:"EncryptorName,omitempty" xml:"EncryptorName,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role to which you want to grant permissions.
+	// 指定待授权角色的全局资源描述符ARN（Alibaba Cloud Resource Name）信息。
 	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The TDE status. Valid values:
 	//
@@ -8679,7 +8763,7 @@ type DescribeDBInstancesOverviewRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The database engine version of the instance. Valid values: **5.0**, **4.4**, **4.2**, **4.0**, and **3.4**.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance type of the instance. The instance type varies based on the instance architecture. For more information about instance types supported by different instance architectures, see the following topics:
+	// The instance type. The instance type varies based on the instance architecture. For more information about instance types supported by different instance architectures, see the following references:
 	//
 	// *   [Standalone instance types](~~311407~~)
 	// *   [Replica set instance types](~~311410~~)
@@ -8687,37 +8771,43 @@ type DescribeDBInstancesOverviewRequest struct {
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The ID of the instance for which you want to query the overview information.
 	//
-	// > * If you do not specify this parameter, the overview information of all instances under this account is queried.
-	// > * Separate the instance IDs with commas (,).
+	// >
+	//
+	// *   If you do not specify this parameter, the overview information of all instances within this account is queried.
+	//
+	// *   Separate the instance IDs with commas (,).
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The state of the instance. For more information about valid values, see [Instance states](~~63870~~).
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The category of the instance. Valid values:
+	// The architecture of the instance. Valid values:
 	//
-	// - **sharding**: sharded cluster instance
-	// - **replicate**: replica set or standalone instance
+	// *   **sharding**: sharded cluster instance
+	// *   **replicate**: replica set or standalone instance
 	//
-	// > * To query the overview information of a sharded cluster instance, you must set the parameter to **sharding**.
-	// > * If you do not specify this parameter, the overview information of all instances under this account is queried.
+	// >
+	//
+	// *   To query the overview information of a sharded cluster instance, you must set the parameter to **sharding**.
+	//
+	// *   If you do not specify this parameter, the overview information of all instances within this account is queried.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **Classic**
-	// *   **VPC**
+	// *   **Classic**: classic network
+	// *   **VPC**: Virtual Private Cloud (VPC)
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For more information, see [View the basic information of a resource group](~~151181~~).
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the vSwitch.
+	// The ID of the vSwitch to which the instance is connected.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The ID of the VPC in which the instance is deployed.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone.
+	// The zone ID of the instance.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -8810,11 +8900,11 @@ func (s *DescribeDBInstancesOverviewRequest) SetZoneId(v string) *DescribeDBInst
 }
 
 type DescribeDBInstancesOverviewResponseBody struct {
-	// Details about the instances.
+	// The information of instances.
 	DBInstances []*DescribeDBInstancesOverviewResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of instances in the query result.
+	// The number of instances in the query results.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8842,19 +8932,22 @@ func (s *DescribeDBInstancesOverviewResponseBody) SetTotalCount(v string) *Descr
 }
 
 type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
-	// The I/O throughput consumed by the instance.
+	// The read and write throughput consumed by the instance.
 	//
-	// > * This parameter is returned when the instance is a serverless instance.
-	// > * Serverless instances are available only in the China site (aliyun.com).
+	// >
+	//
+	// *   This parameter is returned when the instance is a serverless instance.
+	//
+	// *   Serverless instances are available only in the China site (aliyun.com).
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// *   **PrePaid**: subscription
 	// *   **PostPaid**: pay-as-you-go
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the instance was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The instance type of the instance. The instance type varies based on the instance architecture. For more information about instance types supported by different instance architectures, see the following topics:
+	// The instance type. The instance type varies based on the instance architecture. For more information about instance types supported by different instance architectures, see the following references:
 	//
 	// *   [Standalone instance types](~~311407~~)
 	// *   [Replica set instance types](~~311410~~)
@@ -8862,24 +8955,24 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The description of the instance.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The state of the instance. For more information about valid values, see [Instance states](~~63870~~).
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The storage capacity of the instance.
+	// The storage space of the instance. Unit: GB.
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The category of the instance. Valid values:
+	// The architecture of the instance. Valid values:
 	//
 	// *   **sharding**: sharded cluster instance
 	// *   **replicate**: replica set or standalone instance
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The time when the instance data was destroyed. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the instance data was destroyed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
 	// The database engine of the instance. Set the value to **MongoDB**.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database engine version of the instance.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the instance expires. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	// The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The kind code of the instance. Valid values:
 	//
@@ -8888,20 +8981,20 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	// *   **2**: Docker cluster
 	// *   **18**: Kubernetes cluster
 	KindCode *string `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	// The last time when the instance was downgraded.
+	// The date when the last downgrade operation was performed.
 	LastDowngradeTime *string `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
 	// Indicates whether the instance is locked. Valid values:
 	//
 	// *   **Unlock**: The instance is not locked.
-	// *   **ManualLock**: The cluster is manually locked.
-	// *   **LockByExpiration**: The instance is automatically locked after it expires.
+	// *   **ManualLock**: The instance is manually locked.
+	// *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
 	// *   **LockByRestoration**: The instance is automatically locked before it is rolled back.
-	// *   **LockByDiskQuota**: The instance is automatically locked after the storage capacity is exhausted.
-	// *   **Released**: The instance is released. After an instance is released, the instance cannot be unlocked. You can only restore the backup data of the instance to a new instance. This process requires an extended period of time.
+	// *   **LockByDiskQuota**: The instance is automatically locked after the storage space is exhausted.
+	// *   **Released**: The instance is released. After an instance is released, the instance cannot be unlocked. You can only restore the backup data of the instance to a new instance. This process requires a long period of time.
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// Details about the mongos node.
+	// The details of the mongos nodes.
 	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
+	// >  This parameter is returned when the instance is a sharded cluster instance.
 	MongosList []*DescribeDBInstancesOverviewResponseBodyDBInstancesMongosList `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Repeated"`
 	// The network type of the instance. Valid values:
 	//
@@ -8912,20 +9005,20 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of nodes in the instance.
 	//
-	// >  This parameter is returned if the instance is a replica set instance.
+	// >  This parameter is returned when the instance is a replica set instance.
 	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Details about the shard node.
+	// The details of the shard nodes.
 	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
+	// >  This parameter is returned when the instance is a sharded cluster instance.
 	ShardList []*DescribeDBInstancesOverviewResponseBodyDBInstancesShardList `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Repeated"`
-	// The tags of the instance.
+	// The tags to add to the instance.
 	Tags []*DescribeDBInstancesOverviewResponseBodyDBInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Indicates whether password-free access within a VPC is enabled. Valid values:
+	// Indicates whether password-free access over VPC is enabled. Valid values:
 	//
-	// *   **Open**: Password-free access is enabled.
-	// *   **Close**: Password-free access is disabled.
+	// *   **Open**: Password-free access over VPC is enabled.
+	// *   **Close**: Password-free access over VPC is disabled.
 	VpcAuthMode *string `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
 	// The zone ID of the instance.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -9065,7 +9158,7 @@ func (s *DescribeDBInstancesOverviewResponseBodyDBInstances) SetZoneId(v string)
 }
 
 type DescribeDBInstancesOverviewResponseBodyDBInstancesMongosList struct {
-	// The type of the mongos node.
+	// The instance type of the mongos node.
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
 	// The description of the mongos node.
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
@@ -9103,7 +9196,7 @@ type DescribeDBInstancesOverviewResponseBodyDBInstancesShardList struct {
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
 	// The ID of the shard node.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage capacity of the shard node. Unit: GB.
+	// The storage space of the shard node. Unit: GB.
 	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
 	// The number of read-only nodes in the shard node. Valid values: **0** to **5**.
 	ReadonlyReplicas *int32 `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
@@ -9143,13 +9236,13 @@ func (s *DescribeDBInstancesOverviewResponseBodyDBInstancesShardList) SetReadonl
 }
 
 type DescribeDBInstancesOverviewResponseBodyDBInstancesTags struct {
-	// The key of tag N of the instance. Valid values of N: **1** to **20**.
+	// The tag key. Valid values of N: **1** to **20**.
 	//
 	// *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-	// *   The key can be up to 64 characters in length.
-	// *   The key cannot be an empty string.
+	// *   It can be up to 64 characters in length.
+	// *   It cannot be an empty string.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the instance. Valid values of N: **1** to **20**.
+	// The tag value. Valid values of N: **1** to **20**.
 	//
 	// *   The value cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	// *   The value can be up to 128 characters in length.
@@ -9484,12 +9577,14 @@ func (s *DescribeErrorLogRecordsResponse) SetBody(v *DescribeErrorLogRecordsResp
 }
 
 type DescribeGlobalSecurityIPGroupRequest struct {
+	// The ID of the IP whitelist template.
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeGlobalSecurityIPGroupRequest) String() string {
@@ -9531,8 +9626,10 @@ func (s *DescribeGlobalSecurityIPGroupRequest) SetResourceOwnerId(v int64) *Desc
 }
 
 type DescribeGlobalSecurityIPGroupResponseBody struct {
+	// The global IP whitelist templates.
 	GlobalSecurityIPGroup []*DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
-	RequestId             *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGlobalSecurityIPGroupResponseBody) String() string {
@@ -9554,11 +9651,18 @@ func (s *DescribeGlobalSecurityIPGroupResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
-	DBInstances           []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	GIpList               *string   `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	GlobalIgName          *string   `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	GlobalSecurityGroupId *string   `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instances associated with the global whitelist template.
+	DBInstances []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP address whitelists.
+	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP whitelist template.
+	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP whitelist template.
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) String() string {
@@ -9624,9 +9728,11 @@ func (s *DescribeGlobalSecurityIPGroupResponse) SetBody(v *DescribeGlobalSecurit
 }
 
 type DescribeGlobalSecurityIPGroupRelationRequest struct {
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The instance ID.
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -9671,9 +9777,12 @@ func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetResourceOwnerId(v int6
 }
 
 type DescribeGlobalSecurityIPGroupRelationResponseBody struct {
-	DBClusterId              *string                                                                      `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance ID.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The global IP whitelist templates associated with the instance.
 	GlobalSecurityIPGroupRel []*DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
-	RequestId                *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGlobalSecurityIPGroupRelationResponseBody) String() string {
@@ -9700,10 +9809,16 @@ func (s *DescribeGlobalSecurityIPGroupRelationResponseBody) SetRequestId(v strin
 }
 
 type DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel struct {
-	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The IP addresses in the whitelist template.
+	//
+	// >  Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP whitelist template.
+	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP whitelist template.
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) String() string {
@@ -10621,10 +10736,9 @@ func (s *DescribeInstanceAutoRenewalAttributeResponse) SetBody(v *DescribeInstan
 }
 
 type DescribeKernelReleaseNotesRequest struct {
-	// The number of the minor database version. For example: **mongodb\_20180522\_0.4.8**.
+	// The minor version number of the instance. Example: **mongodb\_20180522\_0.4.8**.
 	//
-	// *   If you specify this parameter, a list of version numbers later than the version specified is returned.
-	// *   If you do not specify this parameter, a list of all the version numbers is returned.
+	// *   This parameter is required. After you specify a version number for this parameter in a request, the release notes of the versions later than this version are returned.
 	KernelVersion        *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10666,9 +10780,9 @@ func (s *DescribeKernelReleaseNotesRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeKernelReleaseNotesResponseBody struct {
-	// The list of version release notes.
+	// The list of the version release notes.
 	ReleaseNotes *DescribeKernelReleaseNotesResponseBodyReleaseNotes `json:"ReleaseNotes,omitempty" xml:"ReleaseNotes,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10710,7 +10824,7 @@ func (s *DescribeKernelReleaseNotesResponseBodyReleaseNotes) SetReleaseNote(v []
 type DescribeKernelReleaseNotesResponseBodyReleaseNotesReleaseNote struct {
 	// The version number.
 	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
-	// Publishes the log.
+	// The release notes.
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
 }
 
@@ -13700,13 +13814,13 @@ func (s *DescribeSecurityGroupConfigurationResponse) SetBody(v *DescribeSecurity
 }
 
 type DescribeSecurityIpsRequest struct {
-	// The ID of the instance.
+	// com.aliyun.abs.dds.service.v20151201.domain.GetDdsSecurityIpsRequest
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Whether to display DAS whitelist information.
+	// The operation that you want to perform. Set the value to **DescribeSecurityIps**.
 	ShowHDMIps *bool `json:"ShowHDMIps,omitempty" xml:"ShowHDMIps,omitempty"`
 }
 
@@ -13749,11 +13863,11 @@ func (s *DescribeSecurityIpsRequest) SetShowHDMIps(v bool) *DescribeSecurityIpsR
 }
 
 type DescribeSecurityIpsResponseBody struct {
-	// The ID of the request.
+	// Whether to display DAS whitelist information.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information of IP whitelists.
-	SecurityIpGroups *DescribeSecurityIpsResponseBodySecurityIpGroups `json:"SecurityIpGroups,omitempty" xml:"SecurityIpGroups,omitempty" type:"Struct"`
 	// The IP addresses in the default whitelist.
+	SecurityIpGroups *DescribeSecurityIpsResponseBodySecurityIpGroups `json:"SecurityIpGroups,omitempty" xml:"SecurityIpGroups,omitempty" type:"Struct"`
+	// The ID of the instance.
 	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
 }
 
@@ -13798,11 +13912,11 @@ func (s *DescribeSecurityIpsResponseBodySecurityIpGroups) SetSecurityIpGroup(v [
 }
 
 type DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup struct {
-	// The attribute of the IP whitelist. This parameter is empty by default.
+	// An array that consists of the information of IP whitelists.
 	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
-	// The name of the IP whitelist.
+	// The ID of the request.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	// The IP addresses in the whitelist.
+	// The name of the IP whitelist.
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
 }
 
@@ -14750,19 +14864,19 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 }
 
 type DestroyInstanceRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// > **InstanceId** and **DBInstanceId** serve the same function. You need only to specify one of them.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// > **InstanceId** and **DBInstanceId** serve the same function. You need only to specify one of them.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of a resource group.
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14817,7 +14931,7 @@ func (s *DestroyInstanceRequest) SetResourceOwnerId(v int64) *DestroyInstanceReq
 }
 
 type DestroyInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15552,11 +15666,10 @@ func (s *MigrateToOtherZoneResponse) SetBody(v *MigrateToOtherZoneResponseBody) 
 type ModifyAccountDescriptionRequest struct {
 	// The description of the account.
 	//
-	// *   It cannot start with http:// or https://.
-	// *   It must start with a letter.
-	// *   It must be 2 to 256 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The description must start with a letter and cannot start with http:// or https://.
+	// *   The description must be 2 to 256 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-).
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account for which you want to modify the description.
+	// The name of the account whose description is to be modified.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -15773,12 +15886,12 @@ func (s *ModifyAuditLogFilterResponse) SetBody(v *ModifyAuditLogFilterResponseBo
 type ModifyAuditPolicyRequest struct {
 	// The request source for the audit log feature. Set the value to **Console**.
 	AuditLogSwitchSource *string `json:"AuditLogSwitchSource,omitempty" xml:"AuditLogSwitchSource,omitempty"`
-	// Specifies whether the audit log feature is enabled. Valid values:
+	// Specifies whether to enable the audit log feature. Valid values:
 	//
 	// *   **enable**
 	// *   **disabled**
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15786,10 +15899,10 @@ type ModifyAuditPolicyRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the audit log feature. Valid values:
 	//
-	// *   **Trial**: the free trial edition
-	// *   **Standard**: the official edition
+	// *   **Trail**: free trial edition.
+	// *   **Standard**: official edition.
 	//
-	// >  Default value: **Trial**. Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. We recommend that you set this parameter to **Standard**.
+	// > The default value is **Trail**. Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and the free trial edition of the feature can no longer be applied for. We recommend that you set this parameter to **Standard**.
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The log retention period. Valid values: 1 to 365 days. Default value: 30 days.
 	StoragePeriod *int32 `json:"StoragePeriod,omitempty" xml:"StoragePeriod,omitempty"`
@@ -15849,7 +15962,7 @@ func (s *ModifyAuditPolicyRequest) SetStoragePeriod(v int32) *ModifyAuditPolicyR
 }
 
 type ModifyAuditPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16077,22 +16190,22 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
-	// The current connection string, which is to be modified.
+	// The current endpoint that is to be modified.
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The new connection string. It must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter.
+	// The new endpoint. It must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter.
 	//
-	// >  You need only to specify the prefix of the connection string. The content other than the prefix cannot be modified.
+	// > You need only to specify the prefix of the endpoint. The content other than the prefix cannot be modified.
 	NewConnectionString *string `json:"NewConnectionString,omitempty" xml:"NewConnectionString,omitempty"`
-	// The new port. The new port ranges from 1000 to 65535.
-	// >This parameter is available only when the DBInstanceId parameter is set to a cloud-disk instance ID.
+	// 新的端口，端口范围需要在1000~65535之间。
+	// > 当**DBInstanceId**参数传入的是云盘实例ID时，本参数才可用。
 	NewPort *int32 `json:"NewPort,omitempty" xml:"NewPort,omitempty"`
 	// The ID of the mongos in the specified sharded cluster instance. Only one mongos ID can be specified in each call.
 	//
-	// >  This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+	// > This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -16154,7 +16267,7 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetResourceOwnerId(v int64) *M
 }
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16868,9 +16981,9 @@ func (s *ModifyDBInstanceSSLResponse) SetBody(v *ModifyDBInstanceSSLResponseBody
 }
 
 type ModifyDBInstanceSpecRequest struct {
-	// Specifies whether to enable automatic payment. Default value: true. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// *   **true**: enables automatic payment. Make sure that your Alibaba Cloud account has a sufficient balance.
+	// *   **true** (default): enables automatic payment. Make sure that your Alibaba Cloud account has a sufficient balance.
 	// *   **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **User Center**. In the left-side navigation pane, choose **Order Management** > **Order**. On the **Orders for Services** tab, find the order and pay for the order.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The business information.
@@ -16891,19 +17004,37 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// *   Storage capacity can be scaled down only for pay-as-you-go replica set instances. The new storage capacity you specify must be greater than the used storage capacity.
 	DBInstanceStorage *string `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The time when the changed configurations take effect. Default value: Immediately. Valid values:
+	// The time when the changed configurations take effect. Valid values:
 	//
-	// *   **Immediately**: The configurations immediately take effect.
+	// *   **Immediately** (default): The configurations immediately take effect.
 	// *   **MaintainTime**: The configurations take effect during the maintenance window of the instance.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// Additional parameter
+	// The additional parameter.
+	//
+	// Valid values:
+	//
+	// *   async
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   sync
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	ExtraParam *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
-	// The type of the configuration change. Default value: DOWNGRADE. Valid values:
+	// The type of the configuration change. Valid values:
 	//
 	// *   **UPGRADE**
-	// *   **DOWNGRADE**
+	// *   **DOWNGRADE** (default)
 	//
-	// > This parameter can be configured only when the billing method of the instance is subscription.
+	// >  This parameter can be configured only when the billing method of the instance is subscription.
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -16915,10 +17046,10 @@ type ModifyDBInstanceSpecRequest struct {
 	ReadonlyReplicas *string `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	// The number of nodes in the instance.
 	//
-	// *   Valid values of replica set instances: **3**, **5**, and **7**
-	// *   Valid values of standalone instances: **1**
+	// *   Valid values for replica set instances: **3**, **5**, and **7**
+	// *   Valid values for standalone instances: **1**
 	//
-	// > This parameter is not required for a serverless instance which is only available on the China site (aliyun.com).
+	// >  This parameter is not required for a serverless instance which is only available on the China site (aliyun.com).
 	ReplicationFactor    *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -17187,14 +17318,20 @@ func (s *ModifyDBInstanceTDEResponse) SetBody(v *ModifyDBInstanceTDEResponseBody
 }
 
 type ModifyGlobalSecurityIPGroupRequest struct {
-	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP address whitelists.
+	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP whitelist template.
+	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP whitelist template.
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyGlobalSecurityIPGroupRequest) String() string {
@@ -17246,6 +17383,7 @@ func (s *ModifyGlobalSecurityIPGroupRequest) SetResourceOwnerId(v int64) *Modify
 }
 
 type ModifyGlobalSecurityIPGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17292,13 +17430,20 @@ func (s *ModifyGlobalSecurityIPGroupResponse) SetBody(v *ModifyGlobalSecurityIPG
 }
 
 type ModifyGlobalSecurityIPGroupNameRequest struct {
-	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The name of the IP whitelist template. The name must meet the following requirements:
+	//
+	// *   It can contain lowercase letters, digits, and underscores (\_).
+	// *   It must start with a letter and end with a letter or digit.
+	// *   It must be 2 to 120 characters in length.
+	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP whitelist template.
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyGlobalSecurityIPGroupNameRequest) String() string {
@@ -17345,8 +17490,10 @@ func (s *ModifyGlobalSecurityIPGroupNameRequest) SetResourceOwnerId(v int64) *Mo
 }
 
 type ModifyGlobalSecurityIPGroupNameResponseBody struct {
+	// The global IP whitelist templates.
 	GlobalSecurityIPGroup []*ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
-	RequestId             *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyGlobalSecurityIPGroupNameResponseBody) String() string {
@@ -17368,10 +17515,16 @@ func (s *ModifyGlobalSecurityIPGroupNameResponseBody) SetRequestId(v string) *Mo
 }
 
 type ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup struct {
-	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP address whitelists.
+	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP whitelist template.
+	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP whitelist template.
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup) String() string {
@@ -17432,13 +17585,16 @@ func (s *ModifyGlobalSecurityIPGroupNameResponse) SetBody(v *ModifyGlobalSecurit
 }
 
 type ModifyGlobalSecurityIPGroupRelationRequest struct {
-	DBClusterId           *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance ID.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the IP whitelist template.
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyGlobalSecurityIPGroupRelationRequest) String() string {
@@ -17485,6 +17641,7 @@ func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetResourceOwnerId(v int64)
 }
 
 type ModifyGlobalSecurityIPGroupRelationResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17954,22 +18111,22 @@ func (s *ModifyNodeSpecResponse) SetBody(v *ModifyNodeSpecResponseBody) *ModifyN
 }
 
 type ModifyNodeSpecBatchRequest struct {
-	// Specifies whether to enable automatic payment for the instance. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
 	// *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-	// *   **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > User Center to go to the **Billing Management** console. In the left-side navigation pane, click **Orders**. On the **Orders** page, find the order and complete the payment.
+	// *   **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, click **Expenses** to go to the **Billing Management** console. In the left-side navigation pane, click **Orders**. On the **Orders** page, find the order and complete the payment.
 	//
 	// Default value: **true**.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The business information.
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance whose configurations you want to modify.
+	// The ID of the instance whose configurations you want to change.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The time when the modified configurations take effect. Valid values:
+	// The time when the changed configurations take effect. Valid values:
 	//
 	// *   **Immediately**: The configurations immediately take effect.
 	// *   **MaintainTime**: The configurations take effect during the maintenance window of the instance.
@@ -17982,18 +18139,18 @@ type ModifyNodeSpecBatchRequest struct {
 	//
 	// Default value: **Immediately**.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The configuration information of the mongos nodes or shard nodes whose configurations you want to modify. For more information, see [Instance types](~~57141~~).
+	// The configuration information of the mongos nodes or shard nodes whose configurations you want to change. For more information, see [Instance types](~~57141~~).
 	NodesInfo *string `json:"NodesInfo,omitempty" xml:"NodesInfo,omitempty"`
-	// The type of configuration modifications. Valid values:
+	// The type of configuration changes. Valid values:
 	//
 	// *   **UPGRADE**
 	// *   **DOWNGRADE**
 	//
-	// > This parameter is available only if the billing method of the instance is subscription.
+	// > This parameter is only applicable to instances whose billing method is subscription.
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
+	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -18073,9 +18230,9 @@ func (s *ModifyNodeSpecBatchRequest) SetResourceOwnerId(v int64) *ModifyNodeSpec
 }
 
 type ModifyNodeSpecBatchResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18456,30 +18613,30 @@ func (s *ModifySecurityGroupConfigurationResponse) SetBody(v *ModifySecurityGrou
 }
 
 type ModifySecurityIpsRequest struct {
-	// The ID of an instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The method of modification. Valid values:
+	// The method that is used to modify the IP address whitelist. Valid values:
 	//
-	// *   **Cover**: overwrites the whitelist.
-	// *   **Append**: appends data to the whitelist.
-	// *   **Delete**: deletes the whitelist.
+	// *   **Cover**: overwrites the original IP address whitelist.
+	// *   **Append**: appends data to the IP address whitelist.
+	// *   **Delete**: deletes the IP address whitelist.
 	//
-	// The default value is **Cover**.
+	// Default value: **Cover**.
 	ModifyMode           *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The attributes of an IP address whitelist. It can contain a maximum of 120 characters in length and can contain uppercase letters, lowercase letters, and digits.
+	// The attribute of the IP address whitelist. It can contain a maximum of 120 characters in length and can contain uppercase letters, lowercase letters, and digits.
 	//
 	// This parameter is empty by default.
 	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
-	// The name of the IP address whitelist to be modified. The default value is **default**.
+	// The name of the IP address whitelist that you want to modify. Default value: **default**.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	// The IP addresses in an IP address whitelist. Separate multiple IP addresses with commas (,). You can add a maximum of 1,000 different IP addresses to a whitelist. You can add IP addresses in one of the following two formats:
+	// The IP addresses in the IP address whitelist. Separate multiple IP addresses with commas (,). You can add a maximum of 1,000 different IP addresses to the IP address whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	//
-	// *   IP addresses. Example: 10.23.12.24.
-	// *   Classless Inter-Domain Routing (CIDR) blocks, such as 10.23.12.24/24, where 24 indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value within the range of 1 to 32.
+	// *   IP addresses, such as 127.0.0.1.
+	// *   CIDR blocks, such as 127.0.0.1/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
 	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
 }
 
@@ -18537,7 +18694,7 @@ func (s *ModifySecurityIpsRequest) SetSecurityIps(v string) *ModifySecurityIpsRe
 }
 
 type ModifySecurityIpsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19063,20 +19220,20 @@ func (s *RenewDBInstanceResponse) SetBody(v *RenewDBInstanceResponseBody) *Renew
 }
 
 type ResetAccountPasswordRequest struct {
-	// The account for which you want to reset the password. Set the value to **root**.
+	// The account whose password needs to be reset. Set the value to **root**.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The new password.
 	//
 	// *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
 	// *   The password must be 8 to 32 characters in length.
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The role of the instance. Valid values:
+	// 实例的角色类型，取值说明
 	//
-	// *   db: a shard node.
-	// *   cs: a Configserver node.
-	// *   mongos: a mongos node.
+	//
+	// - 当实例类型为分片集群时，charactertype为必选； 取值为db 和cs。
+	// - 当实例类型为副本集时，charactertype 可为空或传入normal。
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19133,7 +19290,7 @@ func (s *ResetAccountPasswordRequest) SetResourceOwnerId(v int64) *ResetAccountP
 }
 
 type ResetAccountPasswordResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19278,9 +19435,9 @@ func (s *RestartDBInstanceResponse) SetBody(v *RestartDBInstanceResponseBody) *R
 }
 
 type RestoreDBInstanceRequest struct {
-	// The ID of the backup.
+	// The ID of the backup set.
 	//
-	// >  You can call the [DescribeBackups](~~62172~~) operation to query the backup ID.
+	// > You can call the [DescribeBackups](~~62172~~) operation to query the backup set ID.
 	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -19503,7 +19660,7 @@ type TagResourcesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of resource IDs.
+	// The details of the tags bound to the instance.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -19602,7 +19759,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19766,7 +19923,10 @@ type TransformInstanceChargeTypeRequest struct {
 	// *   **PrePaid**: subscription
 	// *   **PostPaid**: pay-as-you-go
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	// Specifies whether to use coupons. Default value: null. Valid values:
+	//
+	// *   **default** or **null**: uses coupons.
+	// *   **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The ID of the instance
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -20888,7 +21048,6 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 }
 
 /**
- * ## Usage
  * When you call this operation, the instance must be in the Running state.
  *
  * @param request CreateBackupRequest
@@ -20949,7 +21108,6 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 }
 
 /**
- * ## Usage
  * When you call this operation, the instance must be in the Running state.
  *
  * @param request CreateBackupRequest
@@ -21367,7 +21525,8 @@ func (client *Client) CreateNode(request *CreateNodeRequest) (_result *CreateNod
 }
 
 /**
- * The ID of the request.
+ * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+ * This operation is applicable only to sharded cluster instances.
  *
  * @param request CreateNodeBatchRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21459,7 +21618,8 @@ func (client *Client) CreateNodeBatchWithOptions(request *CreateNodeBatchRequest
 }
 
 /**
- * The ID of the request.
+ * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+ * This operation is applicable only to sharded cluster instances.
  *
  * @param request CreateNodeBatchRequest
  * @return CreateNodeBatchResponse
@@ -21669,10 +21829,10 @@ func (client *Client) CreateShardingDBInstance(request *CreateShardingDBInstance
 }
 
 /**
- * Before you call this operation, make sure that the instance meets the following requirements:
- * *   The instance is in the running state.
- * *   A pay-as-you-go instance is used.
- * > After you release an ApsaraDB for MongoDB instance, data in the instance can no longer be recovered. Proceed with caution.
+ * Before you call this operation, make sure that the instance meets the following requirements
+ * *   The instance is in the Running state.
+ * *   The billing method of the instance is pay-as-you-go.
+ * > After an instance is released, all data in the instance is cleared and cannot be recovered. Proceed with caution.
  *
  * @param request DeleteDBInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21732,10 +21892,10 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 }
 
 /**
- * Before you call this operation, make sure that the instance meets the following requirements:
- * *   The instance is in the running state.
- * *   A pay-as-you-go instance is used.
- * > After you release an ApsaraDB for MongoDB instance, data in the instance can no longer be recovered. Proceed with caution.
+ * Before you call this operation, make sure that the instance meets the following requirements
+ * *   The instance is in the Running state.
+ * *   The billing method of the instance is pay-as-you-go.
+ * > After an instance is released, all data in the instance is cleared and cannot be recovered. Proceed with caution.
  *
  * @param request DeleteDBInstanceRequest
  * @return DeleteDBInstanceResponse
@@ -21824,8 +21984,8 @@ func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityI
 }
 
 /**
- * Before you call this operation, make sure that the following requirements are met:
- * *   The instance is in the running state.
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The instance is in the Running state.
  * *   The instance is a sharded cluster instance.
  * *   The billing method of the instance is pay-as-you-go.
  * *   The number of the shard or mongos nodes in the instance is greater than two.
@@ -21892,8 +22052,8 @@ func (client *Client) DeleteNodeWithOptions(request *DeleteNodeRequest, runtime 
 }
 
 /**
- * Before you call this operation, make sure that the following requirements are met:
- * *   The instance is in the running state.
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The instance is in the Running state.
  * *   The instance is a sharded cluster instance.
  * *   The billing method of the instance is pay-as-you-go.
  * *   The number of the shard or mongos nodes in the instance is greater than two.
@@ -21913,7 +22073,7 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 }
 
 /**
- * >  You can call this operation to query only the information of the root account.
+ * >  This operation can be used to query only the information of the root account.
  *
  * @param request DescribeAccountsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21973,7 +22133,7 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 }
 
 /**
- * >  You can call this operation to query only the information of the root account.
+ * >  This operation can be used to query only the information of the root account.
  *
  * @param request DescribeAccountsRequest
  * @return DescribeAccountsResponse
@@ -22783,13 +22943,12 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 }
 
 /**
- * ## Precautions
- * You can call the [CreateDBInstance](~~61763~~) operation to restore a database for an ApsaraDB for MongoDB instance. For more information, see [Restore one or more databases of an ApsaraDB for MongoDB instance](~~112274~~).
- * Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+ * You can call the [CreateDBInstance](~~61763~~) operation to restore a database for an ApsaraDB for MongoDB instance. For more information, see [Restore one database of an ApsaraDB for MongoDB instance](~~112274~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
  * *   The instance was created after March 26, 2019.
- * *   The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore (Singapore) region. Other regions are not supported.
+ * *   The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore region. Other regions are not supported.
  * *   The instance is a replica set instance.
- * *   The version of the database engine is 3.4, 4.0, or 4.2.
+ * *   The instance runs MongoDB 3.4, MongoDB 4.0, or MongoDB 4.2. In addition, the instance uses local disks to store data.
  * *   The storage engine of the instance is WiredTiger.
  *
  * @param request DescribeBackupDBsRequest
@@ -22870,13 +23029,12 @@ func (client *Client) DescribeBackupDBsWithOptions(request *DescribeBackupDBsReq
 }
 
 /**
- * ## Precautions
- * You can call the [CreateDBInstance](~~61763~~) operation to restore a database for an ApsaraDB for MongoDB instance. For more information, see [Restore one or more databases of an ApsaraDB for MongoDB instance](~~112274~~).
- * Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+ * You can call the [CreateDBInstance](~~61763~~) operation to restore a database for an ApsaraDB for MongoDB instance. For more information, see [Restore one database of an ApsaraDB for MongoDB instance](~~112274~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
  * *   The instance was created after March 26, 2019.
- * *   The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore (Singapore) region. Other regions are not supported.
+ * *   The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore region. Other regions are not supported.
  * *   The instance is a replica set instance.
- * *   The version of the database engine is 3.4, 4.0, or 4.2.
+ * *   The instance runs MongoDB 3.4, MongoDB 4.0, or MongoDB 4.2. In addition, the instance uses local disks to store data.
  * *   The storage engine of the instance is WiredTiger.
  *
  * @param request DescribeBackupDBsRequest
@@ -23272,7 +23430,6 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 }
 
 /**
- * ## Usage
  * When you call the DescribeDBInstanceEncryptionKey operation, the instance must have transparent data encryption (TDE) enabled in BYOK mode. You can call the [ModifyDBInstanceTDE](~~131267~~) operation to enable TDE.
  *
  * @param request DescribeDBInstanceEncryptionKeyRequest
@@ -23333,7 +23490,6 @@ func (client *Client) DescribeDBInstanceEncryptionKeyWithOptions(request *Descri
 }
 
 /**
- * ## Usage
  * When you call the DescribeDBInstanceEncryptionKey operation, the instance must have transparent data encryption (TDE) enabled in BYOK mode. You can call the [ModifyDBInstanceTDE](~~131267~~) operation to enable TDE.
  *
  * @param request DescribeDBInstanceEncryptionKeyRequest
@@ -23655,9 +23811,9 @@ func (client *Client) DescribeDBInstanceSwitchLog(request *DescribeDBInstanceSwi
 }
 
 /**
- * >  For more information about this function, see [Configure TDE](~~131048~~).
- * Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
- * *   A replica set or sharded cluster instance is used.
+ * >  For more information about TDE, see [TDE](~~131048~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The instance is a replica set or sharded cluster instance.
  * *   The storage engine of the instance is WiredTiger.
  * *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
  *
@@ -23715,9 +23871,9 @@ func (client *Client) DescribeDBInstanceTDEInfoWithOptions(request *DescribeDBIn
 }
 
 /**
- * >  For more information about this function, see [Configure TDE](~~131048~~).
- * Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
- * *   A replica set or sharded cluster instance is used.
+ * >  For more information about TDE, see [TDE](~~131048~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The instance is a replica set or sharded cluster instance.
  * *   The storage engine of the instance is WiredTiger.
  * *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
  *
@@ -23893,7 +24049,7 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 }
 
 /**
- * *   If you do not specify an instance when you call this operation, the overview information of all instances in the specified region within this account is returned.
+ * *   If you do not specify an instance when you call this operation, the overview information of all instances in a specific region within this account is returned.
  * *   Paged query is disabled for this operation.
  *
  * @param request DescribeDBInstancesOverviewRequest
@@ -23994,7 +24150,7 @@ func (client *Client) DescribeDBInstancesOverviewWithOptions(request *DescribeDB
 }
 
 /**
- * *   If you do not specify an instance when you call this operation, the overview information of all instances in the specified region within this account is returned.
+ * *   If you do not specify an instance when you call this operation, the overview information of all instances in a specific region within this account is returned.
  * *   Paged query is disabled for this operation.
  *
  * @param request DescribeDBInstancesOverviewRequest
@@ -27973,8 +28129,9 @@ func (client *Client) ModifyNodeSpec(request *ModifyNodeSpecRequest) (_result *M
 }
 
 /**
- * Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
- * This operation is applicable to only sharded cluster instances.
+ * Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+ * This operation is applicable only to sharded cluster instances.
+ * When you upgrade or downgrade the configurations of multiple sharded cluster instances in batches, the specifications of the instances are limited. For example, if you want to expand the storage capacity of the instances, the storage capacity of the instances after expansion must be greater than the current capacity. When the specifications of multiple sharded cluster instances are different, limits are defined based on the specifications of a random sharded cluster instance. In this case, you may be unable to upgrade or downgrade the configurations of the instances. In this case, we recommend that you call the ModifyNodeSpec operation to individually change the configurations of each sharded cluster instance.
  *
  * @param request ModifyNodeSpecBatchRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28062,8 +28219,9 @@ func (client *Client) ModifyNodeSpecBatchWithOptions(request *ModifyNodeSpecBatc
 }
 
 /**
- * Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
- * This operation is applicable to only sharded cluster instances.
+ * Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+ * This operation is applicable only to sharded cluster instances.
+ * When you upgrade or downgrade the configurations of multiple sharded cluster instances in batches, the specifications of the instances are limited. For example, if you want to expand the storage capacity of the instances, the storage capacity of the instances after expansion must be greater than the current capacity. When the specifications of multiple sharded cluster instances are different, limits are defined based on the specifications of a random sharded cluster instance. In this case, you may be unable to upgrade or downgrade the configurations of the instances. In this case, we recommend that you call the ModifyNodeSpec operation to individually change the configurations of each sharded cluster instance.
  *
  * @param request ModifyNodeSpecBatchRequest
  * @return ModifyNodeSpecBatchResponse
@@ -28732,7 +28890,7 @@ func (client *Client) RenewDBInstance(request *RenewDBInstanceRequest) (_result 
 }
 
 /**
- * >  This operation can reset only the password of the root account of an instance.
+ * >  This operation can be used to reset only the password of the root account of an instance.
  *
  * @param request ResetAccountPasswordRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28800,7 +28958,7 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 }
 
 /**
- * >  This operation can reset only the password of the root account of an instance.
+ * >  This operation can be used to reset only the password of the root account of an instance.
  *
  * @param request ResetAccountPasswordRequest
  * @return ResetAccountPasswordResponse
@@ -28894,9 +29052,8 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 }
 
 /**
- * This operation is no longer maintained and will be unavailable.
- * This operation is applicable only to replica set instances. You can clone a standalone instance by [creating an instance from a backup set](~~55013~~). You can clone a sharded cluster instance by calling the [CreateShardingDBInstance](~~61884~~) operation.
- * >  This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution.
+ * This operation is applicable to replica set instances, but cannot be performed on standalone instances and sharded cluster instances. You can use the following methods to clone an instance: [Create an instance from a backup point](~~55013~~) to clone a standalone instance. Call the [CreateShardingDBInstance](~~61884~~) operation to clone a sharded cluster instance.
+ * > This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution.
  *
  * @param request RestoreDBInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28956,9 +29113,8 @@ func (client *Client) RestoreDBInstanceWithOptions(request *RestoreDBInstanceReq
 }
 
 /**
- * This operation is no longer maintained and will be unavailable.
- * This operation is applicable only to replica set instances. You can clone a standalone instance by [creating an instance from a backup set](~~55013~~). You can clone a sharded cluster instance by calling the [CreateShardingDBInstance](~~61884~~) operation.
- * >  This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution.
+ * This operation is applicable to replica set instances, but cannot be performed on standalone instances and sharded cluster instances. You can use the following methods to clone an instance: [Create an instance from a backup point](~~55013~~) to clone a standalone instance. Call the [CreateShardingDBInstance](~~61884~~) operation to clone a sharded cluster instance.
+ * > This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution.
  *
  * @param request RestoreDBInstanceRequest
  * @return RestoreDBInstanceResponse
@@ -29066,9 +29222,9 @@ func (client *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (_r
 }
 
 /**
- * You can create multiple tags and bind them to multiple instances. This allows you to classify and filter instances by tag.
- * *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can have the same value.
- * *   If the tag you specify does not exist, this tag is automatically created and bound to the specified instance.
+ * If you have a large number of instances, you can create multiple tags, bind the tags to the instances, and filter the instances by tag.
+ * *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+ * *   If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
  * *   If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
  * *   You can bind up to 20 tags to each instance.
  * *   You can bind tags to up to 50 instances each time you call the operation.
@@ -29143,9 +29299,9 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 }
 
 /**
- * You can create multiple tags and bind them to multiple instances. This allows you to classify and filter instances by tag.
- * *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can have the same value.
- * *   If the tag you specify does not exist, this tag is automatically created and bound to the specified instance.
+ * If you have a large number of instances, you can create multiple tags, bind the tags to the instances, and filter the instances by tag.
+ * *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+ * *   If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
  * *   If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
  * *   You can bind up to 20 tags to each instance.
  * *   You can bind tags to up to 50 instances each time you call the operation.
