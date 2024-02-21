@@ -168,8 +168,10 @@ type ConfigureDtsJobRequest struct {
 	// The ID of the data migration or synchronization instance.
 	//
 	// >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	JobType *string  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxDu   *float64 `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
+	MinDu   *float64 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
+	OwnerId *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The SID of the Oracle database.
@@ -462,6 +464,16 @@ func (s *ConfigureDtsJobRequest) SetJobType(v string) *ConfigureDtsJobRequest {
 	return s
 }
 
+func (s *ConfigureDtsJobRequest) SetMaxDu(v float64) *ConfigureDtsJobRequest {
+	s.MaxDu = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetMinDu(v float64) *ConfigureDtsJobRequest {
+	s.MinDu = &v
+	return s
+}
+
 func (s *ConfigureDtsJobRequest) SetOwnerId(v string) *ConfigureDtsJobRequest {
 	s.OwnerId = &v
 	return s
@@ -713,8 +725,10 @@ type ConfigureDtsJobAdvanceRequest struct {
 	// The ID of the data migration or synchronization instance.
 	//
 	// >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	JobType *string  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxDu   *float64 `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
+	MinDu   *float64 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
+	OwnerId *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The SID of the Oracle database.
@@ -1007,6 +1021,16 @@ func (s *ConfigureDtsJobAdvanceRequest) SetJobType(v string) *ConfigureDtsJobAdv
 	return s
 }
 
+func (s *ConfigureDtsJobAdvanceRequest) SetMaxDu(v float64) *ConfigureDtsJobAdvanceRequest {
+	s.MaxDu = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetMinDu(v float64) *ConfigureDtsJobAdvanceRequest {
+	s.MinDu = &v
+	return s
+}
+
 func (s *ConfigureDtsJobAdvanceRequest) SetOwnerId(v string) *ConfigureDtsJobAdvanceRequest {
 	s.OwnerId = &v
 	return s
@@ -1166,9 +1190,9 @@ func (s *ConfigureDtsJobResponseBody) SetSuccess(v string) *ConfigureDtsJobRespo
 }
 
 type ConfigureDtsJobResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureDtsJobResponse) String() string {
@@ -1609,9 +1633,9 @@ func (s *ConfigureMigrationJobResponseBody) SetSuccess(v string) *ConfigureMigra
 }
 
 type ConfigureMigrationJobResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureMigrationJobResponse) String() string {
@@ -1774,9 +1798,9 @@ func (s *ConfigureMigrationJobAlertResponseBody) SetSuccess(v string) *Configure
 }
 
 type ConfigureMigrationJobAlertResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureMigrationJobAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureMigrationJobAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureMigrationJobAlertResponse) String() string {
@@ -1845,7 +1869,9 @@ type ConfigureSubscriptionRequest struct {
 	// >
 	// *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
 	// *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
-	ErrorPhone *string `json:"ErrorPhone,omitempty" xml:"ErrorPhone,omitempty"`
+	ErrorPhone *string  `json:"ErrorPhone,omitempty" xml:"ErrorPhone,omitempty"`
+	MaxDu      *float64 `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
+	MinDu      *float64 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	// The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](~~141033~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](~~176470~~).
@@ -1992,6 +2018,16 @@ func (s *ConfigureSubscriptionRequest) SetErrorNotice(v bool) *ConfigureSubscrip
 
 func (s *ConfigureSubscriptionRequest) SetErrorPhone(v string) *ConfigureSubscriptionRequest {
 	s.ErrorPhone = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetMaxDu(v float64) *ConfigureSubscriptionRequest {
+	s.MaxDu = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetMinDu(v float64) *ConfigureSubscriptionRequest {
+	s.MinDu = &v
 	return s
 }
 
@@ -2151,9 +2187,9 @@ func (s *ConfigureSubscriptionResponseBody) SetSuccess(v string) *ConfigureSubsc
 }
 
 type ConfigureSubscriptionResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureSubscriptionResponse) String() string {
@@ -2464,9 +2500,9 @@ func (s *ConfigureSubscriptionInstanceResponseBody) SetSuccess(v string) *Config
 }
 
 type ConfigureSubscriptionInstanceResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureSubscriptionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureSubscriptionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureSubscriptionInstanceResponse) String() string {
@@ -2629,9 +2665,9 @@ func (s *ConfigureSubscriptionInstanceAlertResponseBody) SetSuccess(v string) *C
 }
 
 type ConfigureSubscriptionInstanceAlertResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureSubscriptionInstanceAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureSubscriptionInstanceAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureSubscriptionInstanceAlertResponse) String() string {
@@ -3066,9 +3102,9 @@ func (s *ConfigureSynchronizationJobResponseBody) SetSuccess(v string) *Configur
 }
 
 type ConfigureSynchronizationJobResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureSynchronizationJobResponse) String() string {
@@ -3243,9 +3279,9 @@ func (s *ConfigureSynchronizationJobAlertResponseBody) SetSuccess(v string) *Con
 }
 
 type ConfigureSynchronizationJobAlertResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureSynchronizationJobAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureSynchronizationJobAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureSynchronizationJobAlertResponse) String() string {
@@ -3379,9 +3415,9 @@ func (s *ConfigureSynchronizationJobReplicatorCompareResponseBody) SetSuccess(v 
 }
 
 type ConfigureSynchronizationJobReplicatorCompareResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigureSynchronizationJobReplicatorCompareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigureSynchronizationJobReplicatorCompareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigureSynchronizationJobReplicatorCompareResponse) String() string {
@@ -3612,9 +3648,9 @@ func (s *CountJobByConditionResponseBody) SetTotalRecordCount(v int64) *CountJob
 }
 
 type CountJobByConditionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CountJobByConditionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CountJobByConditionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CountJobByConditionResponse) String() string {
@@ -3757,9 +3793,9 @@ func (s *CreateConsumerChannelResponseBody) SetSuccess(v string) *CreateConsumer
 }
 
 type CreateConsumerChannelResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateConsumerChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConsumerChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateConsumerChannelResponse) String() string {
@@ -3896,9 +3932,9 @@ func (s *CreateConsumerGroupResponseBody) SetSuccess(v string) *CreateConsumerGr
 }
 
 type CreateConsumerGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateConsumerGroupResponse) String() string {
@@ -4054,9 +4090,9 @@ func (s *CreateDedicatedClusterMonitorRuleResponseBody) SetSuccess(v string) *Cr
 }
 
 type CreateDedicatedClusterMonitorRuleResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDedicatedClusterMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDedicatedClusterMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDedicatedClusterMonitorRuleResponse) String() string {
@@ -4148,7 +4184,9 @@ type CreateDtsInstanceRequest struct {
 	// The ID of the task. You can call the **ConfigureDtsJob** operation to obtain the task ID from the **DtsJobId** parameter.
 	//
 	// >  If this parameter is specified, you do not need to specify the **SourceRegion**, **DestinationRegion**, **Type**, **SourceEndpointEngineName**, or **DestinationEndpointEngineName** parameter. Even if these parameters are specified, the value of the **JobId** parameter takes precedence.
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxDu *float64 `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
+	MinDu *float64 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	// The billing method. Valid values:
 	//
 	// *   **PrePaid**: subscription
@@ -4284,6 +4322,16 @@ func (s *CreateDtsInstanceRequest) SetJobId(v string) *CreateDtsInstanceRequest 
 	return s
 }
 
+func (s *CreateDtsInstanceRequest) SetMaxDu(v float64) *CreateDtsInstanceRequest {
+	s.MaxDu = &v
+	return s
+}
+
+func (s *CreateDtsInstanceRequest) SetMinDu(v float64) *CreateDtsInstanceRequest {
+	s.MinDu = &v
+	return s
+}
+
 func (s *CreateDtsInstanceRequest) SetPayType(v string) *CreateDtsInstanceRequest {
 	s.PayType = &v
 	return s
@@ -4388,9 +4436,9 @@ func (s *CreateDtsInstanceResponseBody) SetSuccess(v string) *CreateDtsInstanceR
 }
 
 type CreateDtsInstanceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDtsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDtsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDtsInstanceResponse) String() string {
@@ -4585,9 +4633,9 @@ func (s *CreateJobMonitorRuleResponseBody) SetSuccess(v bool) *CreateJobMonitorR
 }
 
 type CreateJobMonitorRuleResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateJobMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateJobMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateJobMonitorRuleResponse) String() string {
@@ -4716,9 +4764,9 @@ func (s *CreateMigrationJobResponseBody) SetSuccess(v string) *CreateMigrationJo
 }
 
 type CreateMigrationJobResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateMigrationJobResponse) String() string {
@@ -4815,9 +4863,9 @@ func (s *CreateReverseDtsJobResponseBody) SetSuccess(v string) *CreateReverseDts
 }
 
 type CreateReverseDtsJobResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateReverseDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateReverseDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateReverseDtsJobResponse) String() string {
@@ -4994,9 +5042,9 @@ func (s *CreateSubscriptionInstanceResponseBody) SetSuccess(v string) *CreateSub
 }
 
 type CreateSubscriptionInstanceResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSubscriptionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSubscriptionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSubscriptionInstanceResponse) String() string {
@@ -5259,9 +5307,9 @@ func (s *CreateSynchronizationJobResponseBody) SetSynchronizationJobId(v string)
 }
 
 type CreateSynchronizationJobResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSynchronizationJobResponse) String() string {
@@ -5377,9 +5425,9 @@ func (s *DeleteConsumerChannelResponseBody) SetSuccess(v string) *DeleteConsumer
 }
 
 type DeleteConsumerChannelResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteConsumerChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConsumerChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteConsumerChannelResponse) String() string {
@@ -5489,9 +5537,9 @@ func (s *DeleteConsumerGroupResponseBody) SetSuccess(v string) *DeleteConsumerGr
 }
 
 type DeleteConsumerGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteConsumerGroupResponse) String() string {
@@ -5633,9 +5681,9 @@ func (s *DeleteDtsJobResponseBody) SetSuccess(v bool) *DeleteDtsJobResponseBody 
 }
 
 type DeleteDtsJobResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDtsJobResponse) String() string {
@@ -5752,9 +5800,9 @@ func (s *DeleteDtsJobsResponseBody) SetSuccess(v bool) *DeleteDtsJobsResponseBod
 }
 
 type DeleteDtsJobsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDtsJobsResponse) String() string {
@@ -5857,9 +5905,9 @@ func (s *DeleteMigrationJobResponseBody) SetSuccess(v string) *DeleteMigrationJo
 }
 
 type DeleteMigrationJobResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMigrationJobResponse) String() string {
@@ -5962,9 +6010,9 @@ func (s *DeleteSubscriptionInstanceResponseBody) SetSuccess(v string) *DeleteSub
 }
 
 type DeleteSubscriptionInstanceResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSubscriptionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSubscriptionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSubscriptionInstanceResponse) String() string {
@@ -6067,9 +6115,9 @@ func (s *DeleteSynchronizationJobResponseBody) SetSuccess(v string) *DeleteSynch
 }
 
 type DeleteSynchronizationJobResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSynchronizationJobResponse) String() string {
@@ -6214,9 +6262,9 @@ func (s *DescribeChannelAccountResponseBody) SetUsername(v string) *DescribeChan
 }
 
 type DescribeChannelAccountResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeChannelAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeChannelAccountResponse) String() string {
@@ -6468,9 +6516,9 @@ func (s *DescribeCheckJobsResponseBodyCheckJobs) SetTotalCount(v int64) *Describ
 }
 
 type DescribeCheckJobsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCheckJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCheckJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCheckJobsResponse) String() string {
@@ -6725,9 +6773,9 @@ func (s *DescribeClusterOperateLogsResponseBodyDataPoints) SetSuccess(v int32) *
 }
 
 type DescribeClusterOperateLogsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeClusterOperateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeClusterOperateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeClusterOperateLogsResponse) String() string {
@@ -6959,9 +7007,9 @@ func (s *DescribeClusterUsedUtilizationResponseBody) SetTaskRunning(v int32) *De
 }
 
 type DescribeClusterUsedUtilizationResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeClusterUsedUtilizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeClusterUsedUtilizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeClusterUsedUtilizationResponse) String() string {
@@ -7278,9 +7326,9 @@ func (s *DescribeConnectionStatusResponseBody) SetSuccess(v string) *DescribeCon
 }
 
 type DescribeConnectionStatusResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeConnectionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeConnectionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeConnectionStatusResponse) String() string {
@@ -7497,9 +7545,9 @@ func (s *DescribeConsumerChannelResponseBodyConsumerChannels) SetUnconsumedData(
 }
 
 type DescribeConsumerChannelResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeConsumerChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeConsumerChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeConsumerChannelResponse) String() string {
@@ -7718,9 +7766,9 @@ func (s *DescribeConsumerGroupResponseBodyConsumerChannelsDescribeConsumerChanne
 }
 
 type DescribeConsumerGroupResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeConsumerGroupResponse) String() string {
@@ -7835,9 +7883,9 @@ func (s *DescribeDTSIPResponseBody) SetSuccess(v string) *DescribeDTSIPResponseB
 }
 
 type DescribeDTSIPResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDTSIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDTSIPResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDTSIPResponse) String() string {
@@ -7864,10 +7912,17 @@ func (s *DescribeDTSIPResponse) SetBody(v *DescribeDTSIPResponseBody) *DescribeD
 }
 
 type DescribeDataCheckReportUrlRequest struct {
-	CheckType *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	DbName    *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DtsJobId  *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	TbName    *string `json:"TbName,omitempty" xml:"TbName,omitempty"`
+	// The data verification method. Valid values:
+	//
+	// *   **1**: full data verification.
+	// *   **2**: incremental data verification.
+	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// The name of the verified source database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The name of the table verified in the source database.
+	TbName *string `json:"TbName,omitempty" xml:"TbName,omitempty"`
 }
 
 func (s DescribeDataCheckReportUrlRequest) String() string {
@@ -7899,12 +7954,18 @@ func (s *DescribeDataCheckReportUrlRequest) SetTbName(v string) *DescribeDataChe
 }
 
 type DescribeDataCheckReportUrlResponseBody struct {
+	// The URL for downloading the verification report.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDataCheckReportUrlResponseBody) String() string {
@@ -7946,9 +8007,9 @@ func (s *DescribeDataCheckReportUrlResponseBody) SetSuccess(v string) *DescribeD
 }
 
 type DescribeDataCheckReportUrlResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDataCheckReportUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDataCheckReportUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDataCheckReportUrlResponse) String() string {
@@ -8236,9 +8297,9 @@ func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetTotalCount(v 
 }
 
 type DescribeDataCheckTableDetailsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDataCheckTableDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDataCheckTableDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDataCheckTableDetailsResponse) String() string {
@@ -8418,9 +8479,9 @@ func (s *DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails) SetId(v int64
 }
 
 type DescribeDataCheckTableDiffDetailsResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDataCheckTableDiffDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDataCheckTableDiffDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDataCheckTableDiffDetailsResponse) String() string {
@@ -8680,9 +8741,9 @@ func (s *DescribeDedicatedClusterResponseBody) SetUsedMemGBSize(v int64) *Descri
 }
 
 type DescribeDedicatedClusterResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDedicatedClusterResponse) String() string {
@@ -8821,9 +8882,9 @@ func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetSuccess(v string) *
 }
 
 type DescribeDedicatedClusterMonitorRuleResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedClusterMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDedicatedClusterMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDedicatedClusterMonitorRuleResponse) String() string {
@@ -9065,9 +9126,9 @@ func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetVersi
 }
 
 type DescribeDtsEtlJobVersionInfoResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDtsEtlJobVersionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDtsEtlJobVersionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDtsEtlJobVersionInfoResponse) String() string {
@@ -9263,11 +9324,13 @@ type DescribeDtsJobDetailResponseBody struct {
 	// The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
 	//
 	// >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobType        *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	HttpStatusCode *int32   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	JobType        *string  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	LastUpdateTime *string  `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	MaxDu          *float64 `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
 	// The type of the destination instance.
 	MigrationMode *DescribeDtsJobDetailResponseBodyMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	MinDu         *float64                                       `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	// The error message returned if the task failed.
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The network type of the consumer client. Valid values:
@@ -9502,8 +9565,18 @@ func (s *DescribeDtsJobDetailResponseBody) SetLastUpdateTime(v string) *Describe
 	return s
 }
 
+func (s *DescribeDtsJobDetailResponseBody) SetMaxDu(v float64) *DescribeDtsJobDetailResponseBody {
+	s.MaxDu = &v
+	return s
+}
+
 func (s *DescribeDtsJobDetailResponseBody) SetMigrationMode(v *DescribeDtsJobDetailResponseBodyMigrationMode) *DescribeDtsJobDetailResponseBody {
 	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetMinDu(v float64) *DescribeDtsJobDetailResponseBody {
+	s.MinDu = &v
 	return s
 }
 
@@ -10008,7 +10081,9 @@ type DescribeDtsJobDetailResponseBodySubDistributedJob struct {
 	GroupId                       *string                                                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IsDemoJob                     *bool                                                                           `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
 	JobType                       *string                                                                         `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxDu                         *float64                                                                        `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
 	MigrationMode                 *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	MinDu                         *float64                                                                        `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	OriginType                    *string                                                                         `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobDetailResponseBodySubDistributedJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
@@ -10171,8 +10246,18 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetJobType(v string)
 	return s
 }
 
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetMaxDu(v float64) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.MaxDu = &v
+	return s
+}
+
 func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetMigrationMode(v *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) *DescribeDtsJobDetailResponseBodySubDistributedJob {
 	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetMinDu(v float64) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.MinDu = &v
 	return s
 }
 
@@ -10689,7 +10774,9 @@ type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob struct {
 	GroupId                       *string                                                                                   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IsDemoJob                     *bool                                                                                     `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
 	JobType                       *string                                                                                   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxDu                         *float64                                                                                  `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
 	MigrationMode                 *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	MinDu                         *float64                                                                                  `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	OriginType                    *string                                                                                   `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
@@ -10851,8 +10938,18 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetJobType
 	return s
 }
 
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetMaxDu(v float64) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.MaxDu = &v
+	return s
+}
+
 func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetMigrationMode(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
 	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetMinDu(v float64) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.MinDu = &v
 	return s
 }
 
@@ -11898,7 +11995,9 @@ type DescribeDtsJobDetailResponseBodySubSyncJob struct {
 	GroupId                       *string                                                                  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IsDemoJob                     *bool                                                                    `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
 	JobType                       *string                                                                  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxDu                         *float64                                                                 `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
 	MigrationMode                 *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	MinDu                         *float64                                                                 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	OriginType                    *string                                                                  `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                                  `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobDetailResponseBodySubSyncJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
@@ -12061,8 +12160,18 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetJobType(v string) *Descr
 	return s
 }
 
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetMaxDu(v float64) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.MaxDu = &v
+	return s
+}
+
 func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetMigrationMode(v *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) *DescribeDtsJobDetailResponseBodySubSyncJob {
 	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetMinDu(v float64) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.MinDu = &v
 	return s
 }
 
@@ -13824,9 +13933,9 @@ func (s *DescribeDtsJobDetailResponseBodySubscriptionHost) SetVpcHost(v string) 
 }
 
 type DescribeDtsJobDetailResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDtsJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDtsJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponse) String() string {
@@ -13855,7 +13964,11 @@ func (s *DescribeDtsJobDetailResponse) SetBody(v *DescribeDtsJobDetailResponseBo
 type DescribeDtsJobsRequest struct {
 	// The ID of the DTS dedicated cluster on which the task runs.
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	DtsBisLabel        *string `json:"DtsBisLabel,omitempty" xml:"DtsBisLabel,omitempty"`
+	// The environment tag of the DTS instance. Valid values:
+	//
+	// - **normal**
+	// - **online**
+	DtsBisLabel *string `json:"DtsBisLabel,omitempty" xml:"DtsBisLabel,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking task.
@@ -14205,7 +14318,11 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	// The connection settings of the destination instance.
 	DestinationEndpoint *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsBisLabel         *string                                                   `json:"DtsBisLabel,omitempty" xml:"DtsBisLabel,omitempty"`
+	// The environment tag of the DTS instance. Valid values:
+	//
+	// - **normal**
+	// - **online**
+	DtsBisLabel *string `json:"DtsBisLabel,omitempty" xml:"DtsBisLabel,omitempty"`
 	// The ID of the data synchronization instance.
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
 	// The instance class.
@@ -14241,7 +14358,8 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	// - **MIGRATION**: data migration task
 	// - **SYNC**: data synchronization task
 	// - **SUBSCRIBE**: change tracking task
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	JobType *string  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxDu   *float64 `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
 	// The memory that has been used. Unit: MB.
 	MemUsage *string `json:"MemUsage,omitempty" xml:"MemUsage,omitempty"`
 	// The error code.
@@ -14258,6 +14376,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	MigrationErrWorkaround *string `json:"MigrationErrWorkaround,omitempty" xml:"MigrationErrWorkaround,omitempty"`
 	// The migration or synchronization modes.
 	MigrationMode *DescribeDtsJobsResponseBodyDtsJobListMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	MinDu         *float64                                            `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	// The source of the task. Valid values:
 	//
 	// *   **PTS**
@@ -14453,6 +14572,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetJobType(v string) *DescribeDt
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetMaxDu(v float64) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.MaxDu = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetMemUsage(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.MemUsage = &v
 	return s
@@ -14490,6 +14614,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetMigrationErrWorkaround(v stri
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetMigrationMode(v *DescribeDtsJobsResponseBodyDtsJobListMigrationMode) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetMinDu(v float64) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.MinDu = &v
 	return s
 }
 
@@ -14967,11 +15096,11 @@ type DescribeDtsJobsResponseBodyDtsJobListMigrationMode struct {
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
 	// Indicates whether full data verification is performed. Valid values:
 	// -  **true**: yes
-	// -   **false**: no
+	// -  **false**: no
 	FullDataCheck *bool `json:"FullDataCheck,omitempty" xml:"FullDataCheck,omitempty"`
 	// Indicates whether incremental data verification is performed. Valid values:
 	// -  **true**: yes
-	// -   **false**: no
+	// -  **false**: no
 	IncDataCheck *bool `json:"IncDataCheck,omitempty" xml:"IncDataCheck,omitempty"`
 	// Indicates whether schema migration or schema synchronization is performed. Valid values:
 	//
@@ -15294,13 +15423,17 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	// The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// > This parameter is returned only if the returned value of **PayType** is **PrePaid**.
-	ExpireTime          *string                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The state information about the full data verification task.
 	FullDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus `json:"FullDataCheckStatus,omitempty" xml:"FullDataCheckStatus,omitempty" type:"Struct"`
-	IncDataCheckStatus  *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus  `json:"IncDataCheckStatus,omitempty" xml:"IncDataCheckStatus,omitempty" type:"Struct"`
+	// The state information about the incremental data verification task.
+	IncDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus `json:"IncDataCheckStatus,omitempty" xml:"IncDataCheckStatus,omitempty" type:"Struct"`
+	MaxDu              *float64                                                           `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
 	// The memory that has been used. Unit: MB.
 	MemUsage *string `json:"MemUsage,omitempty" xml:"MemUsage,omitempty"`
 	// The initial synchronization types.
 	MigrationMode *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	MinDu         *float64                                                      `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	// The billing method of the DTS instance. Valid values:
 	//
 	// - **PrePaid**: subscription
@@ -15433,6 +15566,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetIncDataCheckStatus(
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetMaxDu(v float64) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.MaxDu = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetMemUsage(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
 	s.MemUsage = &v
 	return s
@@ -15440,6 +15578,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetMemUsage(v string) 
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetMigrationMode(v *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
 	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetMinDu(v float64) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.MinDu = &v
 	return s
 }
 
@@ -15687,10 +15830,19 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails) SetHelpUrl
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus struct {
+	// The error message returned if the task failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The progress of the full data verification task. Unit: percentage.
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The progress of the full data verification task.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The state of the full data verification task. Valid values:
+	//
+	// - **NotStarted**: The verification is not started.
+	// - **Checking**: The verification is in progress.
+	// - **Failed**: The verification failed.
+	// - **Finished**: The verification is complete.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) String() string {
@@ -15722,10 +15874,19 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) Set
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus struct {
+	// The error message returned if the task failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The progress of the incremental data verification task. Unit: percentage.
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The progress of the incremental data verification task.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The state of the incremental data verification task. Valid values:
+	//
+	// - **Catched**: The verification is delayed.
+	// - **NotStarted**: The verification is not started.
+	// - **Checking**: The verification is in progress.
+	// - **Failed**: The verification failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) String() string {
@@ -15766,8 +15927,14 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode struct {
 	// -  **true**
 	// -  **false**
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	FullDataCheck       *bool `json:"FullDataCheck,omitempty" xml:"FullDataCheck,omitempty"`
-	IncDataCheck        *bool `json:"IncDataCheck,omitempty" xml:"IncDataCheck,omitempty"`
+	// Indicates whether full data verification is performed. Valid values:
+	// -  **true**: yes
+	// -  **false**: no
+	FullDataCheck *bool `json:"FullDataCheck,omitempty" xml:"FullDataCheck,omitempty"`
+	// Indicates whether incremental data verification is performed. Valid values:
+	// -  **true**: yes
+	// -  **false**: no
+	IncDataCheck *bool `json:"IncDataCheck,omitempty" xml:"IncDataCheck,omitempty"`
 	// Indicates whether initial schema synchronization is performed. Valid values:
 	// -  **true**
 	// -  **false**
@@ -17793,9 +17960,9 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListTagList) SetTagValue(v string) *D
 }
 
 type DescribeDtsJobsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDtsJobsResponse) String() string {
@@ -18032,9 +18199,9 @@ func (s *DescribeDtsServiceLogResponseBodyServiceLogContexts) SetTime(v string) 
 }
 
 type DescribeDtsServiceLogResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDtsServiceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDtsServiceLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDtsServiceLogResponse) String() string {
@@ -18164,9 +18331,9 @@ func (s *DescribeEndpointSwitchStatusResponseBody) SetSuccess(v string) *Describ
 }
 
 type DescribeEndpointSwitchStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEndpointSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEndpointSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEndpointSwitchStatusResponse) String() string {
@@ -18338,9 +18505,9 @@ func (s *DescribeEtlJobLogsResponseBodyEtlRunningLogs) SetUserId(v string) *Desc
 }
 
 type DescribeEtlJobLogsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEtlJobLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEtlJobLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEtlJobLogsResponse) String() string {
@@ -18748,9 +18915,9 @@ func (s *DescribeInitializationStatusResponseBodyStructureInitializationDetailsC
 }
 
 type DescribeInitializationStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInitializationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInitializationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInitializationStatusResponse) String() string {
@@ -18966,9 +19133,9 @@ func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetType(v string) *Desc
 }
 
 type DescribeJobMonitorRuleResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeJobMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeJobMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeJobMonitorRuleResponse) String() string {
@@ -19223,9 +19390,9 @@ func (s *DescribeMetricListResponseBodyDataPoints) SetTimestamp(v int64) *Descri
 }
 
 type DescribeMetricListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeMetricListResponse) String() string {
@@ -19390,9 +19557,9 @@ func (s *DescribeMigrationJobAlertResponseBody) SetSuccess(v string) *DescribeMi
 }
 
 type DescribeMigrationJobAlertResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMigrationJobAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMigrationJobAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeMigrationJobAlertResponse) String() string {
@@ -19945,9 +20112,9 @@ func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList
 }
 
 type DescribeMigrationJobDetailResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMigrationJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMigrationJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeMigrationJobDetailResponse) String() string {
@@ -20589,9 +20756,9 @@ func (s *DescribeMigrationJobStatusResponseBodyStructureInitializationStatus) Se
 }
 
 type DescribeMigrationJobStatusResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMigrationJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMigrationJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeMigrationJobStatusResponse) String() string {
@@ -21373,9 +21540,9 @@ func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTagsTag) SetV
 }
 
 type DescribeMigrationJobsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMigrationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMigrationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeMigrationJobsResponse) String() string {
@@ -22733,9 +22900,9 @@ func (s *DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgressLog
 }
 
 type DescribePreCheckStatusResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePreCheckStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePreCheckStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePreCheckStatusResponse) String() string {
@@ -22900,9 +23067,9 @@ func (s *DescribeSubscriptionInstanceAlertResponseBody) SetSuccess(v string) *De
 }
 
 type DescribeSubscriptionInstanceAlertResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSubscriptionInstanceAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSubscriptionInstanceAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSubscriptionInstanceAlertResponse) String() string {
@@ -23281,9 +23448,9 @@ func (s *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchro
 }
 
 type DescribeSubscriptionInstanceStatusResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSubscriptionInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSubscriptionInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSubscriptionInstanceStatusResponse) String() string {
@@ -23837,9 +24004,9 @@ func (s *DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscript
 }
 
 type DescribeSubscriptionInstancesResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSubscriptionInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSubscriptionInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSubscriptionInstancesResponse) String() string {
@@ -24067,9 +24234,9 @@ func (s *DescribeSubscriptionMetaResponseBodySubscriptionMetaList) SetTopic(v st
 }
 
 type DescribeSubscriptionMetaResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSubscriptionMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSubscriptionMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSubscriptionMetaResponse) String() string {
@@ -24259,9 +24426,9 @@ func (s *DescribeSynchronizationJobAlertResponseBody) SetSynchronizationJobName(
 }
 
 type DescribeSynchronizationJobAlertResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSynchronizationJobAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSynchronizationJobAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSynchronizationJobAlertResponse) String() string {
@@ -24395,9 +24562,9 @@ func (s *DescribeSynchronizationJobReplicatorCompareResponseBody) SetSynchroniza
 }
 
 type DescribeSynchronizationJobReplicatorCompareResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSynchronizationJobReplicatorCompareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSynchronizationJobReplicatorCompareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSynchronizationJobReplicatorCompareResponse) String() string {
@@ -25135,9 +25302,9 @@ func (s *DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTable
 }
 
 type DescribeSynchronizationJobStatusResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSynchronizationJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSynchronizationJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSynchronizationJobStatusResponse) String() string {
@@ -25348,9 +25515,9 @@ func (s *DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListS
 }
 
 type DescribeSynchronizationJobStatusListResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSynchronizationJobStatusListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSynchronizationJobStatusListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSynchronizationJobStatusListResponse) String() string {
@@ -26166,9 +26333,9 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesTags) Se
 }
 
 type DescribeSynchronizationJobsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSynchronizationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSynchronizationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSynchronizationJobsResponse) String() string {
@@ -26540,9 +26707,9 @@ func (s *DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializ
 }
 
 type DescribeSynchronizationObjectModifyStatusResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSynchronizationObjectModifyStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSynchronizationObjectModifyStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSynchronizationObjectModifyStatusResponse) String() string {
@@ -26680,9 +26847,9 @@ func (s *DescribeTagKeysResponseBody) SetTotalCount(v int32) *DescribeTagKeysRes
 }
 
 type DescribeTagKeysResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTagKeysResponse) String() string {
@@ -26831,9 +26998,9 @@ func (s *DescribeTagValuesResponseBody) SetTotalCount(v int32) *DescribeTagValue
 }
 
 type DescribeTagValuesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTagValuesResponse) String() string {
@@ -26984,9 +27151,9 @@ func (s *InitDtsRdsInstanceResponseBody) SetSuccess(v string) *InitDtsRdsInstanc
 }
 
 type InitDtsRdsInstanceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InitDtsRdsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitDtsRdsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitDtsRdsInstanceResponse) String() string {
@@ -27360,9 +27527,9 @@ func (s *ListDedicatedClusterResponseBodyDedicatedClusterStatusListDedicatedClus
 }
 
 type ListDedicatedClusterResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDedicatedClusterResponse) String() string {
@@ -27579,9 +27746,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -27724,9 +27891,9 @@ func (s *ModifyConsumerChannelResponseBody) SetSuccess(v string) *ModifyConsumer
 }
 
 type ModifyConsumerChannelResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyConsumerChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyConsumerChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyConsumerChannelResponse) String() string {
@@ -27869,9 +28036,9 @@ func (s *ModifyConsumerGroupPasswordResponseBody) SetSuccess(v string) *ModifyCo
 }
 
 type ModifyConsumerGroupPasswordResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyConsumerGroupPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyConsumerGroupPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyConsumerGroupPasswordResponse) String() string {
@@ -27981,9 +28148,9 @@ func (s *ModifyConsumptionTimestampResponseBody) SetSuccess(v string) *ModifyCon
 }
 
 type ModifyConsumptionTimestampResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyConsumptionTimestampResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyConsumptionTimestampResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyConsumptionTimestampResponse) String() string {
@@ -28119,9 +28286,9 @@ func (s *ModifyDedicatedClusterResponseBody) SetSuccess(v string) *ModifyDedicat
 }
 
 type ModifyDedicatedClusterResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDedicatedClusterResponse) String() string {
@@ -28149,16 +28316,29 @@ func (s *ModifyDedicatedClusterResponse) SetBody(v *ModifyDedicatedClusterRespon
 
 type ModifyDtsJobRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataInitialization  *bool   `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	DataSynchronization *bool   `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform full data migration or synchronization. Valid values:
 	//
-	// >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+	// *   **true**
+	// *   **false**
+	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	// Specifies whether to perform incremental data migration or synchronization. Valid values:
+	//
+	// *   **false**
+	// *   **true**
+	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	//
+	// >
+	//
+	// *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
+	//
+	// *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
 	DbList map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
 	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
 	// The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -28170,8 +28350,12 @@ type ModifyDtsJobRequest struct {
 	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
-	Reserved                *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	StructureInitialization *bool   `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	// Specifies whether to perform schema migration or synchronization. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**: Data is synchronized from the source database to the destination database.
@@ -28263,16 +28447,29 @@ func (s *ModifyDtsJobRequest) SetSynchronizationDirection(v string) *ModifyDtsJo
 
 type ModifyDtsJobAdvanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataInitialization  *bool   `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	DataSynchronization *bool   `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform full data migration or synchronization. Valid values:
 	//
-	// >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+	// *   **true**
+	// *   **false**
+	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	// Specifies whether to perform incremental data migration or synchronization. Valid values:
+	//
+	// *   **false**
+	// *   **true**
+	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	//
+	// >
+	//
+	// *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
+	//
+	// *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
 	DbList map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
 	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
 	// The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -28284,8 +28481,12 @@ type ModifyDtsJobAdvanceRequest struct {
 	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
-	Reserved                *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	StructureInitialization *bool   `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	// Specifies whether to perform schema migration or synchronization. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**: Data is synchronized from the source database to the destination database.
@@ -28377,16 +28578,29 @@ func (s *ModifyDtsJobAdvanceRequest) SetSynchronizationDirection(v string) *Modi
 
 type ModifyDtsJobShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataInitialization  *bool   `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	DataSynchronization *bool   `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform full data migration or synchronization. Valid values:
 	//
-	// >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+	// *   **true**
+	// *   **false**
+	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	// Specifies whether to perform incremental data migration or synchronization. Valid values:
+	//
+	// *   **false**
+	// *   **true**
+	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	//
+	// >
+	//
+	// *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
+	//
+	// *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
 	DbListShrink *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
 	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
 	// The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -28398,8 +28612,12 @@ type ModifyDtsJobShrinkRequest struct {
 	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
-	Reserved                *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	StructureInitialization *bool   `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	// Specifies whether to perform schema migration or synchronization. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**: Data is synchronized from the source database to the destination database.
@@ -28545,9 +28763,9 @@ func (s *ModifyDtsJobResponseBody) SetSuccess(v bool) *ModifyDtsJobResponseBody 
 }
 
 type ModifyDtsJobResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDtsJobResponse) String() string {
@@ -28626,9 +28844,9 @@ func (s *ModifyDtsJobConfigResponseBody) SetRequestId(v string) *ModifyDtsJobCon
 }
 
 type ModifyDtsJobConfigResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDtsJobConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDtsJobConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDtsJobConfigResponse) String() string {
@@ -28743,9 +28961,9 @@ func (s *ModifyDtsJobDedicatedClusterResponseBody) SetSuccess(v bool) *ModifyDts
 }
 
 type ModifyDtsJobDedicatedClusterResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDtsJobDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDtsJobDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDtsJobDedicatedClusterResponse) String() string {
@@ -28872,9 +29090,9 @@ func (s *ModifyDtsJobDuLimitResponseBody) SetSuccess(v bool) *ModifyDtsJobDuLimi
 }
 
 type ModifyDtsJobDuLimitResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDtsJobDuLimitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDtsJobDuLimitResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDtsJobDuLimitResponse) String() string {
@@ -29055,9 +29273,9 @@ func (s *ModifyDtsJobEndpointResponseBody) SetSuccess(v bool) *ModifyDtsJobEndpo
 }
 
 type ModifyDtsJobEndpointResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDtsJobEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDtsJobEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDtsJobEndpointResponse) String() string {
@@ -29180,9 +29398,9 @@ func (s *ModifyDtsJobNameResponseBody) SetSuccess(v bool) *ModifyDtsJobNameRespo
 }
 
 type ModifyDtsJobNameResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDtsJobNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDtsJobNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDtsJobNameResponse) String() string {
@@ -29326,9 +29544,9 @@ func (s *ModifyDtsJobPasswordResponseBody) SetSuccess(v bool) *ModifyDtsJobPassw
 }
 
 type ModifyDtsJobPasswordResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDtsJobPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDtsJobPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDtsJobPasswordResponse) String() string {
@@ -29449,9 +29667,9 @@ func (s *ModifyDynamicConfigResponseBody) SetSuccess(v bool) *ModifyDynamicConfi
 }
 
 type ModifyDynamicConfigResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDynamicConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDynamicConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDynamicConfigResponse) String() string {
@@ -29585,9 +29803,9 @@ func (s *ModifySubscriptionResponseBody) SetSuccess(v string) *ModifySubscriptio
 }
 
 type ModifySubscriptionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifySubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifySubscriptionResponse) String() string {
@@ -29697,9 +29915,9 @@ func (s *ModifySubscriptionObjectResponseBody) SetSuccess(v string) *ModifySubsc
 }
 
 type ModifySubscriptionObjectResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifySubscriptionObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySubscriptionObjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifySubscriptionObjectResponse) String() string {
@@ -29829,9 +30047,9 @@ func (s *ModifySynchronizationObjectResponseBody) SetTaskId(v string) *ModifySyn
 }
 
 type ModifySynchronizationObjectResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifySynchronizationObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySynchronizationObjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifySynchronizationObjectResponse) String() string {
@@ -30007,9 +30225,9 @@ func (s *RenewInstanceResponseBody) SetSuccess(v bool) *RenewInstanceResponseBod
 }
 
 type RenewInstanceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenewInstanceResponse) String() string {
@@ -30143,9 +30361,9 @@ func (s *ResetDtsJobResponseBody) SetSuccess(v bool) *ResetDtsJobResponseBody {
 }
 
 type ResetDtsJobResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetDtsJobResponse) String() string {
@@ -30262,9 +30480,9 @@ func (s *ResetSynchronizationJobResponseBody) SetSuccess(v string) *ResetSynchro
 }
 
 type ResetSynchronizationJobResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetSynchronizationJobResponse) String() string {
@@ -30373,9 +30591,9 @@ func (s *ReverseTwoWayDirectionResponseBody) SetSuccess(v bool) *ReverseTwoWayDi
 }
 
 type ReverseTwoWayDirectionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReverseTwoWayDirectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReverseTwoWayDirectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReverseTwoWayDirectionResponse) String() string {
@@ -30484,9 +30702,9 @@ func (s *ShieldPrecheckResponseBody) SetSuccess(v bool) *ShieldPrecheckResponseB
 }
 
 type ShieldPrecheckResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ShieldPrecheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ShieldPrecheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ShieldPrecheckResponse) String() string {
@@ -30689,9 +30907,9 @@ func (s *SkipPreCheckResponseBody) SetSuccess(v bool) *SkipPreCheckResponseBody 
 }
 
 type SkipPreCheckResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SkipPreCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SkipPreCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SkipPreCheckResponse) String() string {
@@ -30827,9 +31045,9 @@ func (s *StartDtsJobResponseBody) SetSuccess(v bool) *StartDtsJobResponseBody {
 }
 
 type StartDtsJobResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartDtsJobResponse) String() string {
@@ -30947,9 +31165,9 @@ func (s *StartDtsJobsResponseBody) SetSuccess(v bool) *StartDtsJobsResponseBody 
 }
 
 type StartDtsJobsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartDtsJobsResponse) String() string {
@@ -31052,9 +31270,9 @@ func (s *StartMigrationJobResponseBody) SetSuccess(v string) *StartMigrationJobR
 }
 
 type StartMigrationJobResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartMigrationJobResponse) String() string {
@@ -31081,8 +31299,12 @@ func (s *StartMigrationJobResponse) SetBody(v *StartMigrationJobResponseBody) *S
 }
 
 type StartReverseWriterRequest struct {
+	// The offset of the Incremental Write module. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// > The default value is the offset that is automatically saved by DTS when the task is paused.
 	CheckPoint *string `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
-	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The ID of the reverse task that was created by calling the CreateReverseDtsJob operation.
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 }
 
 func (s StartReverseWriterRequest) String() string {
@@ -31104,10 +31326,14 @@ func (s *StartReverseWriterRequest) SetDtsJobId(v string) *StartReverseWriterReq
 }
 
 type StartReverseWriterResponseBody struct {
-	ErrCode    *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error code returned if the call failed.
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the request failed.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartReverseWriterResponseBody) String() string {
@@ -31139,9 +31365,9 @@ func (s *StartReverseWriterResponseBody) SetSuccess(v string) *StartReverseWrite
 }
 
 type StartReverseWriterResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartReverseWriterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartReverseWriterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartReverseWriterResponse) String() string {
@@ -31251,9 +31477,9 @@ func (s *StartSubscriptionInstanceResponseBody) SetTaskId(v string) *StartSubscr
 }
 
 type StartSubscriptionInstanceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartSubscriptionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartSubscriptionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartSubscriptionInstanceResponse) String() string {
@@ -31370,9 +31596,9 @@ func (s *StartSynchronizationJobResponseBody) SetSuccess(v string) *StartSynchro
 }
 
 type StartSynchronizationJobResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartSynchronizationJobResponse) String() string {
@@ -31494,9 +31720,9 @@ func (s *StopDedicatedClusterResponseBody) SetSuccess(v string) *StopDedicatedCl
 }
 
 type StopDedicatedClusterResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopDedicatedClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopDedicatedClusterResponse) String() string {
@@ -31630,9 +31856,9 @@ func (s *StopDtsJobResponseBody) SetSuccess(v bool) *StopDtsJobResponseBody {
 }
 
 type StopDtsJobResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopDtsJobResponse) String() string {
@@ -31750,9 +31976,9 @@ func (s *StopDtsJobsResponseBody) SetSuccess(v bool) *StopDtsJobsResponseBody {
 }
 
 type StopDtsJobsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopDtsJobsResponse) String() string {
@@ -31862,9 +32088,9 @@ func (s *StopMigrationJobResponseBody) SetSuccess(v string) *StopMigrationJobRes
 }
 
 type StopMigrationJobResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopMigrationJobResponse) String() string {
@@ -32058,9 +32284,9 @@ func (s *SummaryJobDetailResponseBodyProgressSummaryDetails) SetTotalCount(v int
 }
 
 type SummaryJobDetailResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SummaryJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SummaryJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SummaryJobDetailResponse) String() string {
@@ -32197,9 +32423,9 @@ func (s *SuspendDtsJobResponseBody) SetSuccess(v bool) *SuspendDtsJobResponseBod
 }
 
 type SuspendDtsJobResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SuspendDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SuspendDtsJobResponse) String() string {
@@ -32317,9 +32543,9 @@ func (s *SuspendDtsJobsResponseBody) SetSuccess(v bool) *SuspendDtsJobsResponseB
 }
 
 type SuspendDtsJobsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SuspendDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SuspendDtsJobsResponse) String() string {
@@ -32429,9 +32655,9 @@ func (s *SuspendMigrationJobResponseBody) SetSuccess(v string) *SuspendMigration
 }
 
 type SuspendMigrationJobResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SuspendMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendMigrationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SuspendMigrationJobResponse) String() string {
@@ -32548,9 +32774,9 @@ func (s *SuspendSynchronizationJobResponseBody) SetSuccess(v string) *SuspendSyn
 }
 
 type SuspendSynchronizationJobResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SuspendSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SuspendSynchronizationJobResponse) String() string {
@@ -32665,9 +32891,9 @@ func (s *SwitchPhysicalDtsJobToCloudResponseBody) SetSuccess(v bool) *SwitchPhys
 }
 
 type SwitchPhysicalDtsJobToCloudResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SwitchPhysicalDtsJobToCloudResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SwitchPhysicalDtsJobToCloudResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SwitchPhysicalDtsJobToCloudResponse) String() string {
@@ -32889,9 +33115,9 @@ func (s *SwitchSynchronizationEndpointResponseBody) SetTaskId(v string) *SwitchS
 }
 
 type SwitchSynchronizationEndpointResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SwitchSynchronizationEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SwitchSynchronizationEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SwitchSynchronizationEndpointResponse) String() string {
@@ -33027,9 +33253,9 @@ func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody 
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -33201,9 +33427,9 @@ func (s *TransferInstanceClassResponseBody) SetSuccess(v bool) *TransferInstance
 }
 
 type TransferInstanceClassResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TransferInstanceClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferInstanceClassResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TransferInstanceClassResponse) String() string {
@@ -33393,9 +33619,9 @@ func (s *TransferPayTypeResponseBody) SetSuccess(v bool) *TransferPayTypeRespons
 }
 
 type TransferPayTypeResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TransferPayTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferPayTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TransferPayTypeResponse) String() string {
@@ -33512,9 +33738,9 @@ func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseB
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -33640,9 +33866,9 @@ func (s *UpgradeTwoWayResponseBody) SetSuccess(v bool) *UpgradeTwoWayResponseBod
 }
 
 type UpgradeTwoWayResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpgradeTwoWayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeTwoWayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpgradeTwoWayResponse) String() string {
@@ -33782,9 +34008,9 @@ func (s *WhiteIpListResponseBody) SetSuccess(v bool) *WhiteIpListResponseBody {
 }
 
 type WhiteIpListResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *WhiteIpListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WhiteIpListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s WhiteIpListResponse) String() string {
@@ -34049,6 +34275,14 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 
 	if !tea.BoolValue(util.IsUnset(request.JobType)) {
 		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDu)) {
+		query["MaxDu"] = request.MaxDu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDu)) {
+		query["MinDu"] = request.MinDu
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -34512,6 +34746,14 @@ func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscri
 
 	if !tea.BoolValue(util.IsUnset(request.ErrorPhone)) {
 		query["ErrorPhone"] = request.ErrorPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDu)) {
+		query["MaxDu"] = request.MaxDu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDu)) {
+		query["MinDu"] = request.MinDu
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -35415,6 +35657,14 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.JobId)) {
 		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDu)) {
+		query["MaxDu"] = request.MaxDu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDu)) {
+		query["MinDu"] = request.MinDu
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PayType)) {
@@ -39588,6 +39838,13 @@ func (client *Client) ModifyDedicatedCluster(request *ModifyDedicatedClusterRequ
 	return _result, _err
 }
 
+/**
+ * When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over **Next: Save Task Settings and Precheck** in the **Advanced Settings** step and click **Preview OpenAPI parameters** to view the parameters that are used to configure the task by calling an API operation.
+ *
+ * @param tmpReq ModifyDtsJobRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDtsJobResponse
+ */
 func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -39681,6 +39938,12 @@ func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runti
 	return _result, _err
 }
 
+/**
+ * When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over **Next: Save Task Settings and Precheck** in the **Advanced Settings** step and click **Preview OpenAPI parameters** to view the parameters that are used to configure the task by calling an API operation.
+ *
+ * @param request ModifyDtsJobRequest
+ * @return ModifyDtsJobResponse
+ */
 func (client *Client) ModifyDtsJob(request *ModifyDtsJobRequest) (_result *ModifyDtsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDtsJobResponse{}
@@ -41039,6 +41302,13 @@ func (client *Client) StartMigrationJob(request *StartMigrationJobRequest) (_res
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](~~208925~~) operation.
+ *
+ * @param request StartReverseWriterRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartReverseWriterResponse
+ */
 func (client *Client) StartReverseWriterWithOptions(request *StartReverseWriterRequest, runtime *util.RuntimeOptions) (_result *StartReverseWriterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41076,6 +41346,12 @@ func (client *Client) StartReverseWriterWithOptions(request *StartReverseWriterR
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](~~208925~~) operation.
+ *
+ * @param request StartReverseWriterRequest
+ * @return StartReverseWriterResponse
+ */
 func (client *Client) StartReverseWriter(request *StartReverseWriterRequest) (_result *StartReverseWriterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartReverseWriterResponse{}
