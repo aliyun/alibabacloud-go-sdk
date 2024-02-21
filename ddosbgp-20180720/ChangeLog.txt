@@ -1,3 +1,6 @@
+2024-02-21 Version: v3.1.1
+- Generated golang 2018-07-20 for ddosbgp.
+
 2023-12-04 Version: v3.1.0
 - Generated golang 2018-07-20 for ddosbgp.
 

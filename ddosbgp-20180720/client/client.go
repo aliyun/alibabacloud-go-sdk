@@ -80,9 +80,9 @@ func (s *AddIpResponseBody) SetRequestId(v string) *AddIpResponseBody {
 }
 
 type AddIpResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddIpResponse) String() string {
@@ -109,10 +109,18 @@ func (s *AddIpResponse) SetBody(v *AddIpResponseBody) *AddIpResponse {
 }
 
 type AttachAssetGroupToInstanceRequest struct {
+	// The information about the asset to be associated.
 	AssetGroupList []*AttachAssetGroupToInstanceRequestAssetGroupList `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty" type:"Repeated"`
-	InstanceId     *string                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId       *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceIp       *string                                            `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The ID of the instance to query.
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The system specifies this parameter.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s AttachAssetGroupToInstanceRequest) String() string {
@@ -144,10 +152,14 @@ func (s *AttachAssetGroupToInstanceRequest) SetSourceIp(v string) *AttachAssetGr
 }
 
 type AttachAssetGroupToInstanceRequestAssetGroupList struct {
+	// The UID of the member to which the asset belongs.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the asset that you want to add. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID of the asset.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The type of the asset.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AttachAssetGroupToInstanceRequestAssetGroupList) String() string {
@@ -179,10 +191,18 @@ func (s *AttachAssetGroupToInstanceRequestAssetGroupList) SetType(v string) *Att
 }
 
 type AttachAssetGroupToInstanceShrinkRequest struct {
+	// The information about the asset to be associated.
 	AssetGroupListShrink *string `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceIp             *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The ID of the instance to query.
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The system specifies this parameter.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s AttachAssetGroupToInstanceShrinkRequest) String() string {
@@ -214,6 +234,7 @@ func (s *AttachAssetGroupToInstanceShrinkRequest) SetSourceIp(v string) *AttachA
 }
 
 type AttachAssetGroupToInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -231,9 +252,9 @@ func (s *AttachAssetGroupToInstanceResponseBody) SetRequestId(v string) *AttachA
 }
 
 type AttachAssetGroupToInstanceResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachAssetGroupToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachAssetGroupToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachAssetGroupToInstanceResponse) String() string {
@@ -317,9 +338,9 @@ func (s *CheckAccessLogAuthResponseBody) SetRequestId(v string) *CheckAccessLogA
 }
 
 type CheckAccessLogAuthResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckAccessLogAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckAccessLogAuthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckAccessLogAuthResponse) String() string {
@@ -413,9 +434,9 @@ func (s *CheckGrantResponseBody) SetStatus(v int32) *CheckGrantResponseBody {
 }
 
 type CheckGrantResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckGrantResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckGrantResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckGrantResponse) String() string {
@@ -577,9 +598,9 @@ func (s *ConfigSchedruleOnDemandResponseBody) SetRequestId(v string) *ConfigSche
 }
 
 type ConfigSchedruleOnDemandResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigSchedruleOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigSchedruleOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigSchedruleOnDemandResponse) String() string {
@@ -741,9 +762,9 @@ func (s *CreateSchedruleOnDemandResponseBody) SetRequestId(v string) *CreateSche
 }
 
 type CreateSchedruleOnDemandResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSchedruleOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSchedruleOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSchedruleOnDemandResponse) String() string {
@@ -835,9 +856,9 @@ func (s *DeleteBlackholeResponseBody) SetRequestId(v string) *DeleteBlackholeRes
 }
 
 type DeleteBlackholeResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteBlackholeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBlackholeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteBlackholeResponse) String() string {
@@ -931,9 +952,9 @@ func (s *DeleteIpResponseBody) SetRequestId(v string) *DeleteIpResponseBody {
 }
 
 type DeleteIpResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteIpResponse) String() string {
@@ -1014,9 +1035,9 @@ func (s *DeleteSchedruleOnDemandResponseBody) SetRequestId(v string) *DeleteSche
 }
 
 type DeleteSchedruleOnDemandResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSchedruleOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSchedruleOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSchedruleOnDemandResponse) String() string {
@@ -1043,11 +1064,21 @@ func (s *DeleteSchedruleOnDemandResponse) SetBody(v *DeleteSchedruleOnDemandResp
 }
 
 type DescribeAssetGroupRequest struct {
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID of the asset.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The system specifies this parameter.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the asset. Valid values:
+	//
+	// *   **waf**: WAF instance
+	// *   **ga**: Global Accelerator (GA) instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAssetGroupRequest) String() string {
@@ -1084,9 +1115,12 @@ func (s *DescribeAssetGroupRequest) SetType(v string) *DescribeAssetGroupRequest
 }
 
 type DescribeAssetGroupResponseBody struct {
+	// The information about the asset.
 	AssetGroupList []*DescribeAssetGroupResponseBodyAssetGroupList `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty" type:"Repeated"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total          *int64                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeAssetGroupResponseBody) String() string {
@@ -1113,9 +1147,12 @@ func (s *DescribeAssetGroupResponseBody) SetTotal(v int64) *DescribeAssetGroupRe
 }
 
 type DescribeAssetGroupResponseBodyAssetGroupList struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the asset.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region to which the asset belongs.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the asset.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAssetGroupResponseBodyAssetGroupList) String() string {
@@ -1142,9 +1179,9 @@ func (s *DescribeAssetGroupResponseBodyAssetGroupList) SetType(v string) *Descri
 }
 
 type DescribeAssetGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAssetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAssetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAssetGroupResponse) String() string {
@@ -1171,13 +1208,27 @@ func (s *DescribeAssetGroupResponse) SetBody(v *DescribeAssetGroupResponseBody) 
 }
 
 type DescribeAssetGroupToInstanceRequest struct {
+	// The ID of the instance to query.
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemberUid  *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The UID of the member to which the asset belongs.
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID of the asset.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The system specifies this parameter.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The type of the asset. Valid values:
+	//
+	// *   **waf**: WAF instance
+	// *   **ga**: Global Accelerator (GA) instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAssetGroupToInstanceRequest) String() string {
@@ -1224,9 +1275,12 @@ func (s *DescribeAssetGroupToInstanceRequest) SetType(v string) *DescribeAssetGr
 }
 
 type DescribeAssetGroupToInstanceResponseBody struct {
-	DataList  []*DescribeAssetGroupToInstanceResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                              `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The response parameters.
+	DataList []*DescribeAssetGroupToInstanceResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeAssetGroupToInstanceResponseBody) String() string {
@@ -1253,11 +1307,16 @@ func (s *DescribeAssetGroupToInstanceResponseBody) SetTotal(v int64) *DescribeAs
 }
 
 type DescribeAssetGroupToInstanceResponseBodyDataList struct {
+	// The ID of the Anti-DDoS Origin instance of a paid edition.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemberUid  *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The UID of the member to which the asset belongs.
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The ID of the asset.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID of the asset.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The type of the asset.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAssetGroupToInstanceResponseBodyDataList) String() string {
@@ -1294,9 +1353,9 @@ func (s *DescribeAssetGroupToInstanceResponseBodyDataList) SetType(v string) *De
 }
 
 type DescribeAssetGroupToInstanceResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAssetGroupToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAssetGroupToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAssetGroupToInstanceResponse) String() string {
@@ -1486,9 +1545,9 @@ func (s *DescribeDdosEventResponseBodyEvents) SetStatus(v string) *DescribeDdosE
 }
 
 type DescribeDdosEventResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDdosEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDdosEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDdosEventResponse) String() string {
@@ -1576,9 +1635,9 @@ func (s *DescribeExcpetionCountResponseBody) SetRequestId(v string) *DescribeExc
 }
 
 type DescribeExcpetionCountResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeExcpetionCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeExcpetionCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeExcpetionCountResponse) String() string {
@@ -1890,9 +1949,9 @@ func (s *DescribeInstanceListResponseBodyInstanceList) SetStatus(v string) *Desc
 }
 
 type DescribeInstanceListResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceListResponse) String() string {
@@ -2120,9 +2179,9 @@ func (s *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig) SetPackBasicT
 }
 
 type DescribeInstanceSpecsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceSpecsResponse) String() string {
@@ -2305,9 +2364,9 @@ func (s *DescribeOnDemandDdosEventResponseBodyEvents) SetStatus(v string) *Descr
 }
 
 type DescribeOnDemandDdosEventResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOnDemandDdosEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOnDemandDdosEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOnDemandDdosEventResponse) String() string {
@@ -2458,9 +2517,9 @@ func (s *DescribeOnDemandInstanceStatusResponseBodyInstances) SetUserId(v string
 }
 
 type DescribeOnDemandInstanceStatusResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOnDemandInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOnDemandInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOnDemandInstanceStatusResponse) String() string {
@@ -2680,9 +2739,9 @@ func (s *DescribeOpEntitiesResponseBodyOpEntities) SetOpDesc(v string) *Describe
 }
 
 type DescribeOpEntitiesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOpEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOpEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOpEntitiesResponse) String() string {
@@ -2903,9 +2962,9 @@ func (s *DescribePackIpListResponseBodyIpList) SetStatus(v string) *DescribePack
 }
 
 type DescribePackIpListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePackIpListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePackIpListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePackIpListResponse) String() string {
@@ -3035,9 +3094,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegionName(v string) *DescribeRe
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -3245,9 +3304,9 @@ func (s *DescribeTrafficResponseBodyFlowList) SetTime(v int32) *DescribeTrafficR
 }
 
 type DescribeTrafficResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTrafficResponse) String() string {
@@ -3274,10 +3333,18 @@ func (s *DescribeTrafficResponse) SetBody(v *DescribeTrafficResponseBody) *Descr
 }
 
 type DettachAssetGroupToInstanceRequest struct {
+	// The information about the asset that you want to dissociate.
 	AssetGroupList []*DettachAssetGroupToInstanceRequestAssetGroupList `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty" type:"Repeated"`
-	InstanceId     *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId       *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceIp       *string                                             `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The system specifies this parameter.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DettachAssetGroupToInstanceRequest) String() string {
@@ -3309,9 +3376,15 @@ func (s *DettachAssetGroupToInstanceRequest) SetSourceIp(v string) *DettachAsset
 }
 
 type DettachAssetGroupToInstanceRequestAssetGroupList struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID of the asset.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the asset. Valid values:
+	//
+	// *   **waf**: WAF instance
+	// *   **ga**: Global Accelerator (GA) instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DettachAssetGroupToInstanceRequestAssetGroupList) String() string {
@@ -3338,10 +3411,18 @@ func (s *DettachAssetGroupToInstanceRequestAssetGroupList) SetType(v string) *De
 }
 
 type DettachAssetGroupToInstanceShrinkRequest struct {
+	// The information about the asset that you want to dissociate.
 	AssetGroupListShrink *string `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceIp             *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The system specifies this parameter.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DettachAssetGroupToInstanceShrinkRequest) String() string {
@@ -3373,6 +3454,7 @@ func (s *DettachAssetGroupToInstanceShrinkRequest) SetSourceIp(v string) *Dettac
 }
 
 type DettachAssetGroupToInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3390,9 +3472,9 @@ func (s *DettachAssetGroupToInstanceResponseBody) SetRequestId(v string) *Dettac
 }
 
 type DettachAssetGroupToInstanceResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DettachAssetGroupToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DettachAssetGroupToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DettachAssetGroupToInstanceResponse) String() string {
@@ -3476,9 +3558,9 @@ func (s *GetSlsOpenStatusResponseBody) SetSlsOpenStatus(v bool) *GetSlsOpenStatu
 }
 
 type GetSlsOpenStatusResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSlsOpenStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSlsOpenStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSlsOpenStatusResponse) String() string {
@@ -3599,9 +3681,9 @@ func (s *ListOpenedAccessLogInstancesResponseBodySlsConfigStatus) SetInstanceId(
 }
 
 type ListOpenedAccessLogInstancesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOpenedAccessLogInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOpenedAccessLogInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOpenedAccessLogInstancesResponse) String() string {
@@ -3745,9 +3827,9 @@ func (s *ListTagKeysResponseBodyTagKeys) SetTagKey(v string) *ListTagKeysRespons
 }
 
 type ListTagKeysResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagKeysResponse) String() string {
@@ -3950,9 +4032,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -4042,9 +4124,9 @@ func (s *ModifyRemarkResponseBody) SetRequestId(v string) *ModifyRemarkResponseB
 }
 
 type ModifyRemarkResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyRemarkResponse) String() string {
@@ -4271,9 +4353,9 @@ func (s *QuerySchedruleOnDemandResponseBodyRuleStatus) SetRuleSchedStatus(v stri
 }
 
 type QuerySchedruleOnDemandResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySchedruleOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySchedruleOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySchedruleOnDemandResponse) String() string {
@@ -4357,9 +4439,9 @@ func (s *SetInstanceModeOnDemandResponseBody) SetRequestId(v string) *SetInstanc
 }
 
 type SetInstanceModeOnDemandResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetInstanceModeOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetInstanceModeOnDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetInstanceModeOnDemandResponse) String() string {
@@ -4481,9 +4563,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -4579,9 +4661,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
