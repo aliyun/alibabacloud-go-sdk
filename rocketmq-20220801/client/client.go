@@ -123,9 +123,9 @@ func (s *ChangeResourceGroupResponseBody) SetSuccess(v bool) *ChangeResourceGrou
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -295,9 +295,9 @@ func (s *CreateConsumerGroupResponseBody) SetSuccess(v bool) *CreateConsumerGrou
 }
 
 type CreateConsumerGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateConsumerGroupResponse) String() string {
@@ -324,34 +324,38 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 }
 
 type CreateInstanceRequest struct {
-	// Specifies whether to enable auto-renewal. This parameter takes effect only when the PaymentType parameter is set to Subscription.
+	// Specifies whether to enable auto-renewal for the instance. This parameter takes effect only if you set PaymentType to Subscription.
 	//
 	// *   true: enable
 	// *   false: disable
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The auto-renewal cycle of the instance. This parameter takes effect only when the autoRenew parameter is set to true. Unit: months.
+	// The auto-renewal cycle of the instance. This parameter takes effect only if you set autoRenew to true. Unit: months.
 	//
 	// Valid values:
 	//
 	// *   Monthly renewal: 1, 2, 3, 6, and 12
-	AutoRenewPeriod *int32  `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	CommodityCode   *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
+	// The commodity code.
+	//
+	// *   ons_rmqpost_public_intl: pay-as-you-go
+	// *   ons_rmqsub_public_intl: subscription
+	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
 	// The name of the instance that you want to create.
 	//
 	// If you do not configure this parameter, the instance ID is used as the instance name.
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// The information about the network.
+	// The network configurations.
 	NetworkInfo *CreateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	// The billing method of the instance. ApsaraMQ for RocketMQ supports the subscription and pay-as-you-go billing methods.
+	// The billing method of the instance. ApsaraMQ for RocketMQ supports the subscription and pay-as-you-go billing methods.
 	//
 	// Valid values:
 	//
-	// *   PayAsYouGo: pay-as-you go. This billing method allows you to use resources before you pay for the resources.
+	// *   PayAsYouGo: This billing method allows you to use resources before you pay for the resources.
 	// *   Subscription: This billing method allows you to use resources after you pay for the resources.
 	//
 	// For more information, see [Billing methods](~~427234~~).
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The subscription duration of the instance. This parameter takes effect only when the PaymentType parameter is set to Subscription.
+	// The subscription duration of the instance. This parameter takes effect only if you set PaymentType to Subscription.
 	//
 	// Valid values:
 	//
@@ -365,11 +369,11 @@ type CreateInstanceRequest struct {
 	// *   Month
 	// *   Year
 	PeriodUnit *string `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
-	// The information about the instance specification.
+	// The information about the instance specifications.
 	ProductInfo *CreateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
-	// The description of the instance.
+	// The instance description.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The primary edition of the instance. For information about the differences between primary edition instances, see [Instance selection](~~444722~~).
 	//
@@ -379,20 +383,20 @@ type CreateInstanceRequest struct {
 	// *   ultimate: Enterprise Platinum Edition
 	// *   professional: Professional Edition
 	//
-	// > After you create a ApsaraMQ for RocketMQ instance, you can only upgrade the primary edition of the instance. The following editions are sorted in ascending order: Standard Edition, Professional Edition, and Platinum Edition. For example, an instance of Standard Edition can be upgraded to Professional Edition. However, an instance of Professional Edition cannot be downgraded to Standard Edition.
+	// >  After an instance is created, you can only upgrade the primary edition of the instance. The following editions are sorted in ascending order: Standard Edition, Professional Edition, Enterprise Platinum Edition. For example, you can upgrade an instance of Standard Edition to Professional Edition, but cannot downgrade an instance of Professional Edition to Standard Edition.
 	SeriesCode *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	// The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+	// The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
 	ServiceCode *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
 	// The sub-category edition of the instance. For information about the differences between sub-category edition instances, see [Instance selection](~~444722~~).
 	//
 	// Valid values:
 	//
-	// *   cluster_ha: Cluster High-availability Edition
+	// *   cluster_ha: High-availability Cluster Edition
 	// *   single_node: Standalone Edition
 	//
-	// If you set the seriesCode parameter to ultimate, you can set this parameter to only cluster_ha.
+	// If you set seriesCode to ultimate, you can set this parameter to only cluster_ha.
 	//
-	// > After you create a ApsaraMQ for RocketMQ instance, you cannot change the sub-category edition of the instance.
+	// >  After an instance is created, you cannot change the sub-category edition of the instance.
 	SubSeriesCode *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value of this parameter, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
@@ -509,16 +513,16 @@ func (s *CreateInstanceRequestNetworkInfo) SetVpcInfo(v *CreateInstanceRequestNe
 type CreateInstanceRequestNetworkInfoInternetInfo struct {
 	// The Internet bandwidth. Unit: MB/s.
 	//
-	// This parameter is required only when the flowOutType parameter is set to payByBandwidth.
+	// This parameter is required only if you set flowOutType to payByBandwidth.
 	//
 	// Valid values: 1 to 1000.
 	FlowOutBandwidth *int32 `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
-	// The metering method for Internet usage.
+	// The billing method of Internet usage.
 	//
 	// Valid values:
 	//
-	// *   payByBandwidth: pay-by-bandwidth. If the Internet access feature is enabled, specify this value for the parameter.
-	// *   uninvolved: N/A. If the Internet access feature is disabled, specify this value for the parameter.
+	// *   payByBandwidth: pay-by-bandwidth. If Internet access is enabled for an instance, specify this value for the parameter.
+	// *   uninvolved: No billing method is involved. If Internet access is disabled for an instance, specify this value for the parameter.
 	FlowOutType *string `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
 	// Specifies whether to enable the Internet access feature.
 	//
@@ -527,12 +531,12 @@ type CreateInstanceRequestNetworkInfoInternetInfo struct {
 	// *   enable
 	// *   disable
 	//
-	// By default, ApsaraMQ for RocketMQ instances are accessed in VPCs. If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](~~427240~~).
+	// By default, ApsaraMQ for RocketMQ allows you to access instances in VPCs. If you enable Internet access for an instance, you can access the instance over the Internet. After you enable this feature, you are charged for outbound Internet traffic. For more information, see [Internet access fee](~~427240~~).
 	InternetSpec *string `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
-	// The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only when you use a public endpoint to access the ApsaraMQ for RocketMQ broker.
+	// The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use a public endpoint to access the instance.
 	//
-	// *   If this parameter is not configured, all IP addresses are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
-	// *   If this parameter is configured, only the IP addresses that are included in the whitelist can access the ApsaraMQ for RocketMQ broker over the Internet.
+	// *   If you do not configure an IP address whitelist, all CIDR blocks are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// *   If configure an IP address whitlist, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
 	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
@@ -565,14 +569,15 @@ func (s *CreateInstanceRequestNetworkInfoInternetInfo) SetIpWhitelist(v []*strin
 }
 
 type CreateInstanceRequestNetworkInfoVpcInfo struct {
+	// The ID of the security group to which the instance belongs.
 	SecurityGroupIds *string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty"`
-	// The ID of the vSwitch with which the instance is associated.
+	// The ID of the vSwitch with which you want to associate the instance.
 	//
-	// > After you create a ApsaraMQ for RocketMQ instance, you cannot change the vSwitch to which the instance is connected. If you want to change the vSwitch with which a ApsaraMQ for RocketMQ is associated, you must release the instance and purchase a new instance.
+	// >  After an ApsaraMQ for RocketMQ instance is created, you cannot change the vSwitch with which the instance is associated. If you want to change the vSwitch with which the instance is associated, you must release the instance and purchase a new instance.
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The ID of the VPC with which the instance that you want to create is associated.
+	// The ID of the VPC in which you want to deploy the instance.
 	//
-	// > After you create a ApsaraMQ for RocketMQ instance, you cannot change the VPC in which the instance is created. If you want to change the VPC with which a ApsaraMQ for RocketMQ is associated, you must release the instance and purchase a new instance.
+	// >  After an ApsaraMQ for RocketMQ instance is created, you cannot change the VPC in which the instance is deployed. If you want to change the VPC in which the instance is deployed, you must release the instance and create a new instance.
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -607,23 +612,32 @@ type CreateInstanceRequestProductInfo struct {
 	// *   true: enable
 	// *   false: disable
 	//
-	// After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](~~427237~~).
+	// After you enable the elastic TPS feature for an ApsaraMQ for RocketMQ instance, you can use a specific number of TPS that exceeds the specification limit. You are charged for using the elastic TPS feature. For more information, see [Computing fees](~~427237~~).
 	//
-	// > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](~~444715~~).
-	AutoScaling  *bool   `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
-	ChargeType   *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// >  The elastic TPS feature is supported only by instances of specific editions. For more information, see [Instance editions](~~444715~~).
+	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// *   provisioned
+	// *   ondemand
+	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// This parameter is no longer used. You do not need to configure this parameter.
 	IntranetSpec *string `json:"intranetSpec,omitempty" xml:"intranetSpec,omitempty"`
 	// The retention period of messages. Unit: hours.
 	//
-	// For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](~~440347~~).
+	// For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](~~440347~~) topic.
 	//
-	// The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](~~427238~~).
+	// ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](~~427238~~).
 	MessageRetentionTime *int32 `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
-	// The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](~~444715~~).
+	// The computing specification that specifies the messaging transactions per second (TPS) of the instance. For information about computing specification limits, see [Instance specifications](~~444715~~).
 	MsgProcessSpec *string `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
-	// The ratio between sent messages and received messages in the instance.
+	// The proportion of message sending TPS to the messaging TPS on the instance.
 	//
-	// Value values: 0.2 to 0.5.
+	// For example, you create an instance whose peak messaging TPS is specified as 1,000 and the proportion of message sending TPS is specified as 0.8. In this case, the peak message sending TPS is 800 and the peak message receiving TPS is 200 on the instance.
+	//
+	// Valid values: 0 to 1. Default value: 0.5.
 	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
 }
 
@@ -733,9 +747,9 @@ func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseB
 }
 
 type CreateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -863,9 +877,9 @@ func (s *CreateTopicResponseBody) SetSuccess(v bool) *CreateTopicResponseBody {
 }
 
 type CreateTopicResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTopicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTopicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTopicResponse) String() string {
@@ -959,9 +973,9 @@ func (s *DeleteConsumerGroupResponseBody) SetSuccess(v bool) *DeleteConsumerGrou
 }
 
 type DeleteConsumerGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteConsumerGroupResponse) String() string {
@@ -1055,9 +1069,9 @@ func (s *DeleteInstanceResponseBody) SetSuccess(v bool) *DeleteInstanceResponseB
 }
 
 type DeleteInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -1151,9 +1165,9 @@ func (s *DeleteTopicResponseBody) SetSuccess(v bool) *DeleteTopicResponseBody {
 }
 
 type DeleteTopicResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTopicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTopicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTopicResponse) String() string {
@@ -1441,9 +1455,9 @@ func (s *GetConsumerGroupResponseBodyDataConsumeRetryPolicy) SetRetryPolicy(v st
 }
 
 type GetConsumerGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConsumerGroupResponse) String() string {
@@ -2111,6 +2125,7 @@ func (s *GetInstanceResponseBodyDataNetworkInfoInternetInfo) SetIpWhitelist(v []
 }
 
 type GetInstanceResponseBodyDataNetworkInfoVpcInfo struct {
+	// The ID of the security group with which the instance is associated.
 	SecurityGroupIds *string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty"`
 	// The ID of the vSwitch with which the instance is associated.
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
@@ -2172,7 +2187,8 @@ type GetInstanceResponseBodyDataProductInfo struct {
 	//
 	// > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](~~444715~~).
 	SupportAutoScaling *bool `json:"supportAutoScaling,omitempty" xml:"supportAutoScaling,omitempty"`
-	TraceOn            *bool `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
+	// Whether to enable tracking capability. Non-serverless instances are enabled by default, and serverless instances are optional for users.
+	TraceOn *bool `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDataProductInfo) String() string {
@@ -2277,9 +2293,9 @@ func (s *GetInstanceResponseBodyDataTags) SetValue(v string) *GetInstanceRespons
 }
 
 type GetInstanceResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceResponse) String() string {
@@ -2452,9 +2468,9 @@ func (s *GetTopicResponseBodyData) SetUpdateTime(v string) *GetTopicResponseBody
 }
 
 type GetTopicResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTopicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTopicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTopicResponse) String() string {
@@ -2476,6 +2492,129 @@ func (s *GetTopicResponse) SetStatusCode(v int32) *GetTopicResponse {
 }
 
 func (s *GetTopicResponse) SetBody(v *GetTopicResponseBody) *GetTopicResponse {
+	s.Body = v
+	return s
+}
+
+type ListAvailableZonesResponseBody struct {
+	Code           *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data           []*ListAvailableZonesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	DynamicCode    *string                               `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string                               `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32                                `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListAvailableZonesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableZonesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableZonesResponseBody) SetCode(v string) *ListAvailableZonesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBody) SetData(v []*ListAvailableZonesResponseBodyData) *ListAvailableZonesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBody) SetDynamicCode(v string) *ListAvailableZonesResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBody) SetDynamicMessage(v string) *ListAvailableZonesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBody) SetHttpStatusCode(v int32) *ListAvailableZonesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBody) SetMessage(v string) *ListAvailableZonesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBody) SetRequestId(v string) *ListAvailableZonesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBody) SetSuccess(v bool) *ListAvailableZonesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAvailableZonesResponseBodyData struct {
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	ZoneId     *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	ZoneName   *string `json:"zoneName,omitempty" xml:"zoneName,omitempty"`
+}
+
+func (s ListAvailableZonesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableZonesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableZonesResponseBodyData) SetCreateTime(v string) *ListAvailableZonesResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBodyData) SetUpdateTime(v string) *ListAvailableZonesResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBodyData) SetZoneId(v string) *ListAvailableZonesResponseBodyData {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponseBodyData) SetZoneName(v string) *ListAvailableZonesResponseBodyData {
+	s.ZoneName = &v
+	return s
+}
+
+type ListAvailableZonesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAvailableZonesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAvailableZonesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableZonesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableZonesResponse) SetHeaders(v map[string]*string) *ListAvailableZonesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAvailableZonesResponse) SetStatusCode(v int32) *ListAvailableZonesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAvailableZonesResponse) SetBody(v *ListAvailableZonesResponseBody) *ListAvailableZonesResponse {
 	s.Body = v
 	return s
 }
@@ -2608,9 +2747,9 @@ func (s *ListConsumerGroupSubscriptionsResponseBodyData) SetTopicName(v string) 
 }
 
 type ListConsumerGroupSubscriptionsResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConsumerGroupSubscriptionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConsumerGroupSubscriptionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConsumerGroupSubscriptionsResponse) String() string {
@@ -2865,9 +3004,9 @@ func (s *ListConsumerGroupsResponseBodyDataList) SetUpdateTime(v string) *ListCo
 }
 
 type ListConsumerGroupsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConsumerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConsumerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConsumerGroupsResponse) String() string {
@@ -2904,7 +3043,7 @@ type ListInstancesRequest struct {
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries returned on each page.
 	//
-	// Value values: 10 to 200.
+	// Valid values: 10 to 200.
 	//
 	// If the value that you specify for this parameter is less than 10, the system uses 10 as the value. If the value that you specify for this parameter is greater than 200, the system uses 200 as the value.
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
@@ -3072,7 +3211,8 @@ type ListInstancesResponseBodyDataList struct {
 	//
 	// *   PayAsYouGo
 	// *   Subscription
-	PaymentType *string                                       `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The product information of instance.
 	ProductInfo *ListInstancesResponseBodyDataListProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
 	// The ID of the region in which the instance resides.
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
@@ -3235,6 +3375,7 @@ func (s *ListInstancesResponseBodyDataList) SetUserId(v string) *ListInstancesRe
 }
 
 type ListInstancesResponseBodyDataListProductInfo struct {
+	// Whether to enable tracking capability. Non-serverless instances are enabled by default, and serverless instances are optional for users.
 	TraceOn *bool `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
 }
 
@@ -3277,9 +3418,9 @@ func (s *ListInstancesResponseBodyDataListTags) SetValue(v string) *ListInstance
 }
 
 type ListInstancesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -3301,6 +3442,170 @@ func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
 }
 
 func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRegionsResponseBody struct {
+	Code           *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Data           []*ListRegionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	DynamicCode    *string                        `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string                        `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32                         `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                        `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsResponseBody) SetCode(v string) *ListRegionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetData(v []*ListRegionsResponseBodyData) *ListRegionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetDynamicCode(v string) *ListRegionsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetDynamicMessage(v string) *ListRegionsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetHttpStatusCode(v int32) *ListRegionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetMessage(v string) *ListRegionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetSuccess(v bool) *ListRegionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListRegionsResponseBodyData struct {
+	CreateTime        *string                            `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	RegionId          *string                            `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RegionName        *string                            `json:"regionName,omitempty" xml:"regionName,omitempty"`
+	SupportRocketmqV4 *bool                              `json:"supportRocketmqV4,omitempty" xml:"supportRocketmqV4,omitempty"`
+	SupportRocketmqV5 *bool                              `json:"supportRocketmqV5,omitempty" xml:"supportRocketmqV5,omitempty"`
+	Tags              []*ListRegionsResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	UpdateTime        *string                            `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s ListRegionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsResponseBodyData) SetCreateTime(v string) *ListRegionsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListRegionsResponseBodyData) SetRegionId(v string) *ListRegionsResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListRegionsResponseBodyData) SetRegionName(v string) *ListRegionsResponseBodyData {
+	s.RegionName = &v
+	return s
+}
+
+func (s *ListRegionsResponseBodyData) SetSupportRocketmqV4(v bool) *ListRegionsResponseBodyData {
+	s.SupportRocketmqV4 = &v
+	return s
+}
+
+func (s *ListRegionsResponseBodyData) SetSupportRocketmqV5(v bool) *ListRegionsResponseBodyData {
+	s.SupportRocketmqV5 = &v
+	return s
+}
+
+func (s *ListRegionsResponseBodyData) SetTags(v []*ListRegionsResponseBodyDataTags) *ListRegionsResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+func (s *ListRegionsResponseBodyData) SetUpdateTime(v string) *ListRegionsResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListRegionsResponseBodyDataTags struct {
+	TagCode  *string     `json:"tagCode,omitempty" xml:"tagCode,omitempty"`
+	TagValue interface{} `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s ListRegionsResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsResponseBodyDataTags) SetTagCode(v string) *ListRegionsResponseBodyDataTags {
+	s.TagCode = &v
+	return s
+}
+
+func (s *ListRegionsResponseBodyDataTags) SetTagValue(v interface{}) *ListRegionsResponseBodyDataTags {
+	s.TagValue = v
+	return s
+}
+
+type ListRegionsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -3637,9 +3942,9 @@ func (s *ListTopicsResponseBodyDataList) SetUpdateTime(v string) *ListTopicsResp
 }
 
 type ListTopicsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTopicsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTopicsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTopicsResponse) String() string {
@@ -3751,9 +4056,9 @@ func (s *ResetConsumeOffsetResponseBody) SetSuccess(v bool) *ResetConsumeOffsetR
 }
 
 type ResetConsumeOffsetResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetConsumeOffsetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetConsumeOffsetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetConsumeOffsetResponse) String() string {
@@ -3923,9 +4228,9 @@ func (s *UpdateConsumerGroupResponseBody) SetSuccess(v bool) *UpdateConsumerGrou
 }
 
 type UpdateConsumerGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateConsumerGroupResponse) String() string {
@@ -3952,13 +4257,13 @@ func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody
 }
 
 type UpdateInstanceRequest struct {
-	// The new name of the instance.
+	// The updated name of the instance.
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// The new network information about the instance.
+	// The updated network information about the instance.
 	NetworkInfo *UpdateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	// The extended configurations of the instance.
+	// Additional configurations of the instance.
 	ProductInfo *UpdateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
-	// The new remarks on the instance.
+	// The updated description of the instance.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -3991,7 +4296,7 @@ func (s *UpdateInstanceRequest) SetRemark(v string) *UpdateInstanceRequest {
 }
 
 type UpdateInstanceRequestNetworkInfo struct {
-	// The Internet information about the instance. This parameter takes effect only when the Internet access feature is enabled for the instance.
+	// The information about the Internet over which the instance is accessed. This parameter takes effect only if the Internet access feature is enabled for the instance.
 	InternetInfo *UpdateInstanceRequestNetworkInfoInternetInfo `json:"internetInfo,omitempty" xml:"internetInfo,omitempty" type:"Struct"`
 }
 
@@ -4009,10 +4314,10 @@ func (s *UpdateInstanceRequestNetworkInfo) SetInternetInfo(v *UpdateInstanceRequ
 }
 
 type UpdateInstanceRequestNetworkInfoInternetInfo struct {
-	// The IP address whitelist that allows access to the instance over the Internet.
+	// The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
 	//
-	// *   If you do not configure an IP address whitelist, all IP addresses are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
-	// *   If you configure an IP address whitelist, only IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// *   If you do not configure an IP address whitelist, all CIDR blocks are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// *   If you configure an IP address whitelist, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
 	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
@@ -4030,28 +4335,34 @@ func (s *UpdateInstanceRequestNetworkInfoInternetInfo) SetIpWhitelist(v []*strin
 }
 
 type UpdateInstanceRequestProductInfo struct {
-	// Specifies whether to enable burst scaling for the instance.
+	// Specifies whether to enable the elastic transactions per second (TPS) feature for the instance.
 	//
 	// Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// After you enable burst scaling, the system allows the actual messaging transactions per second (TPS) of the ApsaraMQ for RocketMQ instance to exceed the upper limit of the basic computing specification. You are charged for the extra TPS. For more information, see [Computing fee](~~427237~~).
+	// After you enable the elastic TPS feature for an ApsaraMQ for RocketMQ instance, you can use a specific number of TPS that exceeds the specification limit. You are charged for using the elastic TPS feature. For more information, see [Computing fees](~~427237~~).
 	//
-	// > Only specific types of instances support burst scaling. For more information, see [Instance specifications](~~444715~~).
+	// >  The elastic TPS feature is supported only by specific instance editions. For more information, see [Instance editions](~~444715~~).
 	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
 	// The retention period of messages. Unit: hours.
 	//
-	// For more information about the valid values, see the "Limits on resource quotas" section of the [Usage limits](~~440347~~) topic.
+	// For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](~~440347~~) topic.
 	//
-	// The storage of ApsaraMQ for RocketMQ messages is in serverless scaling mode. You are charged based on the actual used storage. You can adjust the storage retention period to reduce storage usage and costs. For more information, see [Storage fees](~~427238~~).
+	// ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](~~427238~~).
 	MessageRetentionTime *int32 `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
-	// The ratio of the number of messages that you can send to the number of messages that you can receive in the instance.
+	// The ratio of the number of messages that you can send to the number of messages that you can receive on the instance.
 	//
 	// Value values: 0.25 to 1.
 	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
-	TraceOn          *bool    `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
+	// Specifies whether to enable the message trace feature.
+	//
+	// *   true
+	// *   false
+	//
+	// This parameter is not in use. By default, the message trace feature is enabled for ApsaraMQ for RocketMQ instances, regardless of whether this parameter is configured.
+	TraceOn *bool `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
 }
 
 func (s UpdateInstanceRequestProductInfo) String() string {
@@ -4150,9 +4461,9 @@ func (s *UpdateInstanceResponseBody) SetSuccess(v bool) *UpdateInstanceResponseB
 }
 
 type UpdateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateInstanceResponse) String() string {
@@ -4264,9 +4575,9 @@ func (s *UpdateTopicResponseBody) SetSuccess(v bool) *UpdateTopicResponseBody {
 }
 
 type UpdateTopicResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTopicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTopicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTopicResponse) String() string {
@@ -4915,6 +5226,42 @@ func (client *Client) GetTopic(instanceId *string, topicName *string) (_result *
 	return _result, _err
 }
 
+func (client *Client) ListAvailableZonesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAvailableZonesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableZones"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/zones"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAvailableZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAvailableZones() (_result *ListAvailableZonesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAvailableZonesResponse{}
+	_body, _err := client.ListAvailableZonesWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListConsumerGroupSubscriptionsWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5088,6 +5435,42 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	headers := make(map[string]*string)
 	_result = &ListInstancesResponse{}
 	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRegions"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRegionsResponse{}
+	_body, _err := client.ListRegionsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
