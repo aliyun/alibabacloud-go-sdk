@@ -8188,6 +8188,7 @@ func (s *GetStackGroupOperationResponse) SetBody(v *GetStackGroupOperationRespon
 }
 
 type GetStackInstanceRequest struct {
+	OutputOption *string `json:"OutputOption,omitempty" xml:"OutputOption,omitempty"`
 	// The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the stack group. The name must be unique within a region.\
@@ -8210,6 +8211,11 @@ func (s GetStackInstanceRequest) String() string {
 
 func (s GetStackInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetStackInstanceRequest) SetOutputOption(v string) *GetStackInstanceRequest {
+	s.OutputOption = &v
+	return s
 }
 
 func (s *GetStackInstanceRequest) SetRegionId(v string) *GetStackInstanceRequest {
@@ -8263,7 +8269,8 @@ type GetStackInstanceResponseBodyStackInstance struct {
 	// The time when the most recent successful drift detection was performed on the stack group.
 	//
 	// > This parameter is returned only if drift detection is performed on the stack group.
-	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	DriftDetectionTime *string                  `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	Outputs            []map[string]interface{} `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 	// The parameters that are used to override specific parameters.
 	ParameterOverrides []*GetStackInstanceResponseBodyStackInstanceParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
 	// The ID of the folder in the resource directory.
@@ -8323,6 +8330,11 @@ func (s *GetStackInstanceResponseBodyStackInstance) SetAccountId(v string) *GetS
 
 func (s *GetStackInstanceResponseBodyStackInstance) SetDriftDetectionTime(v string) *GetStackInstanceResponseBodyStackInstance {
 	s.DriftDetectionTime = &v
+	return s
+}
+
+func (s *GetStackInstanceResponseBodyStackInstance) SetOutputs(v []map[string]interface{}) *GetStackInstanceResponseBodyStackInstance {
+	s.Outputs = v
 	return s
 }
 
@@ -21918,6 +21930,10 @@ func (client *Client) GetStackInstanceWithOptions(request *GetStackInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OutputOption)) {
+		query["OutputOption"] = request.OutputOption
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}

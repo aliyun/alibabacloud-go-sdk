@@ -1,3 +1,8 @@
+2024-02-21 Version: v4.1.7
+- Update API GetStackInstance: add param OutputOption.
+- Update API GetStackInstance: update response param.
+
+
 2024-02-21 Version: v4.1.6
 - Generated golang 2019-09-10 for ROS.
 
