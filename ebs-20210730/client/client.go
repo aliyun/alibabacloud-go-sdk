@@ -3113,19 +3113,23 @@ type DescribeDiskMonitorDataResponseBodyMonitorData struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The percentage of IOPS.
 	IOPSPercent *int64 `json:"IOPSPercent,omitempty" xml:"IOPSPercent,omitempty"`
-	// The read bandwidth of the disk. Unit: Mbit/s.
-	ReadBPS       *int64 `json:"ReadBPS,omitempty" xml:"ReadBPS,omitempty"`
+	// The read bandwidth of the disk. Unit: MByte/s.
+	ReadBPS *int64 `json:"ReadBPS,omitempty" xml:"ReadBPS,omitempty"`
+	// Read IO block size. Unit: Bytes
 	ReadBlockSize *int64 `json:"ReadBlockSize,omitempty" xml:"ReadBlockSize,omitempty"`
 	// The maximum number of read IOPS.
-	ReadIOPS    *int64 `json:"ReadIOPS,omitempty" xml:"ReadIOPS,omitempty"`
+	ReadIOPS *int64 `json:"ReadIOPS,omitempty" xml:"ReadIOPS,omitempty"`
+	// Read IO latency. Unit:  microsecond
 	ReadLatency *int64 `json:"ReadLatency,omitempty" xml:"ReadLatency,omitempty"`
 	// The timestamp that is used to query the near real-time monitoring data of the disk. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The write bandwidth of the disk. Unit: Mbit/s.
-	WriteBPS       *int64 `json:"WriteBPS,omitempty" xml:"WriteBPS,omitempty"`
+	// The write bandwidth of the disk. Unit: MByte/s.
+	WriteBPS *int64 `json:"WriteBPS,omitempty" xml:"WriteBPS,omitempty"`
+	// Write IO block size. Unit: Bytes
 	WriteBlockSize *int64 `json:"WriteBlockSize,omitempty" xml:"WriteBlockSize,omitempty"`
 	// The maximum number of write IOPS.
-	WriteIOPS    *int64 `json:"WriteIOPS,omitempty" xml:"WriteIOPS,omitempty"`
+	WriteIOPS *int64 `json:"WriteIOPS,omitempty" xml:"WriteIOPS,omitempty"`
+	// Write IO latency. Unit: microsecond
 	WriteLatency *int64 `json:"WriteLatency,omitempty" xml:"WriteLatency,omitempty"`
 }
 
@@ -7351,7 +7355,7 @@ type QueryDedicatedBlockStorageClusterInventoryDataRequest struct {
 	DbscId *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
 	// End timestamp of trend data.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval （seconds） between data retrieval points.
+	// The time interval (seconds) between data retrieval points.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The region ID of the dedicated block storage cluster.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
