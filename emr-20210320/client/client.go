@@ -22,8 +22,8 @@ type AckConfig struct {
 	// Pod的CPU限制值。
 	LimitCpu *float32 `json:"LimitCpu,omitempty" xml:"LimitCpu,omitempty"`
 	// Pod的内存限制值。
-	LimitMemory     *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
-	MountHostCgroup *bool   `json:"MountHostCgroup,omitempty" xml:"MountHostCgroup,omitempty"`
+	LimitMemory     *float32 `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
+	MountHostCgroup *bool    `json:"MountHostCgroup,omitempty" xml:"MountHostCgroup,omitempty"`
 	// ack 命名空间
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// ack的节点标签限制
@@ -31,7 +31,7 @@ type AckConfig struct {
 	// Pod的CPU请求值
 	RequestCpu *float32 `json:"RequestCpu,omitempty" xml:"RequestCpu,omitempty"`
 	// Pod的内存请求值。
-	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	RequestMemory *float32 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
 	// ack的节点污点容忍
 	Tolerations []*Toleration `json:"Tolerations,omitempty" xml:"Tolerations,omitempty" type:"Repeated"`
 }
@@ -74,7 +74,7 @@ func (s *AckConfig) SetLimitCpu(v float32) *AckConfig {
 	return s
 }
 
-func (s *AckConfig) SetLimitMemory(v string) *AckConfig {
+func (s *AckConfig) SetLimitMemory(v float32) *AckConfig {
 	s.LimitMemory = &v
 	return s
 }
@@ -99,7 +99,7 @@ func (s *AckConfig) SetRequestCpu(v float32) *AckConfig {
 	return s
 }
 
-func (s *AckConfig) SetRequestMemory(v string) *AckConfig {
+func (s *AckConfig) SetRequestMemory(v float32) *AckConfig {
 	s.RequestMemory = &v
 	return s
 }
@@ -895,8 +895,6 @@ type Cluster struct {
 	// Kerberos安全模式。
 	SecurityMode      *string                   `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
 	StateChangeReason *ClusterStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
-	// 集群状态，值同clusterState
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 预付费配置。
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
 	// 集群标签。
@@ -993,11 +991,6 @@ func (s *Cluster) SetSecurityMode(v string) *Cluster {
 
 func (s *Cluster) SetStateChangeReason(v *ClusterStateChangeReason) *Cluster {
 	s.StateChangeReason = v
-	return s
-}
-
-func (s *Cluster) SetStatus(v string) *Cluster {
-	s.Status = &v
 	return s
 }
 
@@ -1141,16 +1134,6 @@ type ClusterSummary struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 失败原因。
 	StateChangeReason *ClusterStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
-	// 集群状态。取值范围：
-	// - STARTING：启动中。
-	// - START_FAILED：启动失败。
-	// - BOOTSTRAPPING：引导操作初始化。
-	// - RUNNING：运行中。
-	// - TERMINATING：终止中。
-	// - TERMINATED：已终止。
-	// - TERMINATED_WITH_ERRORS：发生异常导致终止。
-	// - TERMINATE_FAILED：终止失败。
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 标签列表。
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -1228,17 +1211,14 @@ func (s *ClusterSummary) SetStateChangeReason(v *ClusterStateChangeReason) *Clus
 	return s
 }
 
-func (s *ClusterSummary) SetStatus(v string) *ClusterSummary {
-	s.Status = &v
-	return s
-}
-
 func (s *ClusterSummary) SetTags(v []*Tag) *ClusterSummary {
 	s.Tags = v
 	return s
 }
 
 type ComponentInstanceSelector struct {
+	// Deprecated
+	ActionScope *string `json:"ActionScope,omitempty" xml:"ActionScope,omitempty"`
 	// 应用名称。
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// 组件实例列表。actionScope为COPONENT_INSTANCE时使用。
@@ -1246,7 +1226,10 @@ type ComponentInstanceSelector struct {
 	// 组件列表。
 	// actionScope为COPONENT时使用。
 	Components []*ComponentInstanceSelectorComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// 执行范围。
+	// 动作执行范围。取值范围：
+	// - APPLICATION：应用级别。
+	// - COMPONENT：组件级别。
+	// - COMPONENT_INSTANCE：组件实例级别。
 	RunActionScope *string `json:"RunActionScope,omitempty" xml:"RunActionScope,omitempty"`
 }
 
@@ -1256,6 +1239,11 @@ func (s ComponentInstanceSelector) String() string {
 
 func (s ComponentInstanceSelector) GoString() string {
 	return s.String()
+}
+
+func (s *ComponentInstanceSelector) SetActionScope(v string) *ComponentInstanceSelector {
+	s.ActionScope = &v
+	return s
 }
 
 func (s *ComponentInstanceSelector) SetApplicationName(v string) *ComponentInstanceSelector {
@@ -2477,6 +2465,7 @@ type Node struct {
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// 节点自动续费时长单位。
 	AutoRenewDurationUnit *string `json:"AutoRenewDurationUnit,omitempty" xml:"AutoRenewDurationUnit,omitempty"`
+	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 节点过期时间。
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// 实例类型。
@@ -2531,6 +2520,11 @@ func (s *Node) SetAutoRenewDuration(v int32) *Node {
 
 func (s *Node) SetAutoRenewDurationUnit(v string) *Node {
 	s.AutoRenewDurationUnit = &v
+	return s
+}
+
+func (s *Node) SetCreateTime(v int64) *Node {
+	s.CreateTime = &v
 	return s
 }
 
@@ -2728,6 +2722,8 @@ type NodeGroup struct {
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// 状态变化原因。
 	StateChangeReason *NodeGroupStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
+	// 节点组状态，NodeGroupState别名。
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 系统盘信息。
 	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	// 虚拟机交换机ID列表。
@@ -2830,6 +2826,11 @@ func (s *NodeGroup) SetSpotStrategy(v string) *NodeGroup {
 
 func (s *NodeGroup) SetStateChangeReason(v *NodeGroupStateChangeReason) *NodeGroup {
 	s.StateChangeReason = v
+	return s
+}
+
+func (s *NodeGroup) SetStatus(v string) *NodeGroup {
+	s.Status = &v
 	return s
 }
 
@@ -5445,56 +5446,57 @@ func (s *ValueConstraints) SetValues(v []*int32) *ValueConstraints {
 }
 
 type CreateClusterRequest struct {
-	// 应用配置。数组元素个数N的取值范围：1~1000。
+	// The configurations of the applications. Valid values of N: 1 to 1000.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// 应用列表。数组元素个数N的取值范围：1~100。
+	// The applications that you want to add to the cluster. Valid values of N: 1 to 100.
 	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// 引导脚本。数组元素个数N的取值范围：1~10。
+	// The array of scripts for the bootstrap actions. Valid values of N: 1 to 10.
 	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
-	// 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+	// The idempotent client token. If you call the same ClientToken multiple times, the returned results are the same. Only one cluster can be created with the same ClientToken.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+	// The name of the cluster. The name must be 1 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 创建的EMR集群类型。取值范围：
-	// - DATALAKE：新版数据湖。
-	// - OLAP：数据分析。
-	// - DATAFLOW：实时数据流。
-	// - DATASERVING：数据服务。
-	// - CUSTOM：自定义集群。
-	// - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+	// The type of the cluster. Valid values:
+	//
+	// *   DATALAKE: data lake
+	// *   OLAP: online analytical processing (OLAP)
+	// *   DATAFLOW: Dataflow
+	// *   DATASERVING: DataServing
+	// *   CUSTOM: a custom hybrid cluster.
+	// *   HADOOP: the old data lake. We recommend that you use the new data lake.
+	//
+	// If you create an EMR cluster for the first time after 17:00 (UTC +8) on December 19, 2022, you cannot select the HADOOP, DATA_SCIENCE, PRESTO, or ZOOKEEPER cluster type.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// 集群中的应用部署模式。取值范围：
-	// - NORMAL：非高可用部署。集群1个MASTER节点。
-	// - HA：高可用部署。高可用部署要求至少3个MASTER节点。
+	// The deployment mode of applications in the cluster. Valid values:
 	//
-	// 默认值：NORMAL。
+	// *   NORMAL: regular mode. A master node is deployed in the cluster.
+	// *   HA: high availability mode. At least three master nodes are deployed in the cluster.
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// 节点属性。集群中的ECS节点基础属性。
+	// The attributes of all Elastic Compute Service (ECS) nodes in the cluster. The basic attributes of all ECS nodes in the cluster.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// 节点组。数组元素个数N的取值范围：1~100。
-	// <p>
+	// The array of configurations of the node groups. Valid values of N: 1 to 100.
 	NodeGroups []*NodeGroupConfig `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	// 集群的付费类型。取值范围：
-	// - PayAsYouGo：后付费。
-	// - Subscription：预付费。
+	// The billing cycle of the instance. Valid values:
 	//
-	// 默认值：PayAsYouGo。
+	// *   PayAsYouGo: pay-as-you-go
+	// *   Subscription: subscription
+	//
+	// Default value: PayAsYouGo.
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// 区域ID。
+	// The ID of the region in which you want to create the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// EMR发行版。
+	// The version of EMR. You can view the EMR release version on the EMR cluster purchase page.
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// 集群所在的企业资源组ID。
+	// The ID of the resource group to which to assign the ENI.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Kerberos安全模式。取值范围：
-	// - NORMAL：普通模式，不开启Kerberos模式。
-	// - KERBEROS：开启Kerberos模式。
+	// The security mode of the cluster. Valid values:
 	//
-	// 默认值：NORMAL
+	// *   NORMAL: regular mode. Kerberos is not enabled.
+	// *   KERBEROS: Kerberos mode. Kerberos is enabled.
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// 预付费配置。当PaymentType取值Subscription时该参数生效。
+	// The subscription configurations. This parameter is required when the PaymentType parameter is set to Subscription.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// 标签。数组元数个数N的取值范围：0~20。
+	// The tag that you want to add to the cloud desktop. Valid values of N: 0 to 20.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -5587,11 +5589,11 @@ func (s *CreateClusterRequest) SetTags(v []*Tag) *CreateClusterRequest {
 }
 
 type CreateClusterResponseBody struct {
-	// 集群ID。
+	// The ID of cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 操作ID。
+	// The ID of the operation.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 请求ID。
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5619,9 +5621,9 @@ func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterRespons
 }
 
 type CreateClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateClusterResponse) String() string {
@@ -5705,9 +5707,9 @@ func (s *CreateNodeGroupResponseBody) SetRequestId(v string) *CreateNodeGroupRes
 }
 
 type CreateNodeGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateNodeGroupResponse) String() string {
@@ -5805,9 +5807,9 @@ func (s *DecreaseNodesResponseBody) SetRequestId(v string) *DecreaseNodesRespons
 }
 
 type DecreaseNodesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DecreaseNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DecreaseNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DecreaseNodesResponse) String() string {
@@ -5884,9 +5886,9 @@ func (s *DeleteClusterResponseBody) SetRequestId(v string) *DeleteClusterRespons
 }
 
 type DeleteClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteClusterResponse) String() string {
@@ -5908,6 +5910,402 @@ func (s *DeleteClusterResponse) SetStatusCode(v int32) *DeleteClusterResponse {
 }
 
 func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClusterResponse {
+	s.Body = v
+	return s
+}
+
+type GetApmDataRequest struct {
+	// 集群ID。非必传参数。
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Provider      *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s GetApmDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApmDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApmDataRequest) SetClusterId(v string) *GetApmDataRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetApmDataRequest) SetComponentName(v string) *GetApmDataRequest {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *GetApmDataRequest) SetLanguage(v string) *GetApmDataRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetApmDataRequest) SetProvider(v string) *GetApmDataRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *GetApmDataRequest) SetRegionId(v string) *GetApmDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetApmDataRequest) SetResourceGroupId(v string) *GetApmDataRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type GetApmDataResponseBody struct {
+	// Created on 2022/7/11 3:16 PM
+	Data *GetApmDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetApmDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApmDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApmDataResponseBody) SetData(v *GetApmDataResponseBodyData) *GetApmDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetApmDataResponseBody) SetRequestId(v string) *GetApmDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetApmDataResponseBodyData struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetApmDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApmDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetApmDataResponseBodyData) SetData(v string) *GetApmDataResponseBodyData {
+	s.Data = &v
+	return s
+}
+
+func (s *GetApmDataResponseBodyData) SetType(v string) *GetApmDataResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type GetApmDataResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApmDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApmDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApmDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApmDataResponse) SetHeaders(v map[string]*string) *GetApmDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApmDataResponse) SetStatusCode(v int32) *GetApmDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApmDataResponse) SetBody(v *GetApmDataResponseBody) *GetApmDataResponse {
+	s.Body = v
+	return s
+}
+
+type GetApplicationRequest struct {
+	// 应用名称。
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationRequest) SetApplicationName(v string) *GetApplicationRequest {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *GetApplicationRequest) SetClusterId(v string) *GetApplicationRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetApplicationRequest) SetRegionId(v string) *GetApplicationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetApplicationResponseBody struct {
+	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBody) SetApplication(v *GetApplicationResponseBodyApplication) *GetApplicationResponseBody {
+	s.Application = v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetApplicationResponseBodyApplication struct {
+	// 操作列表。
+	Actions []*GetApplicationResponseBodyApplicationActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// 应用名称。
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// 应用操作状态。
+	ApplicationState *string `json:"ApplicationState,omitempty" xml:"ApplicationState,omitempty"`
+	// 应用版本。
+	ApplicationVersion *string `json:"ApplicationVersion,omitempty" xml:"ApplicationVersion,omitempty"`
+	// 社区版本。
+	CommunityVersion *string `json:"CommunityVersion,omitempty" xml:"CommunityVersion,omitempty"`
+}
+
+func (s GetApplicationResponseBodyApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyApplication) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyApplication) SetActions(v []*GetApplicationResponseBodyApplicationActions) *GetApplicationResponseBodyApplication {
+	s.Actions = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetApplicationName(v string) *GetApplicationResponseBodyApplication {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetApplicationState(v string) *GetApplicationResponseBodyApplication {
+	s.ApplicationState = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetApplicationVersion(v string) *GetApplicationResponseBodyApplication {
+	s.ApplicationVersion = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetCommunityVersion(v string) *GetApplicationResponseBodyApplication {
+	s.CommunityVersion = &v
+	return s
+}
+
+type GetApplicationResponseBodyApplicationActions struct {
+	// 操作名称。
+	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// 操作参数。
+	ActionParams []*GetApplicationResponseBodyApplicationActionsActionParams `json:"ActionParams,omitempty" xml:"ActionParams,omitempty" type:"Repeated"`
+	// 命令。
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// 组件名称。
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// 操作描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 执行范围。
+	RunActionScope *string `json:"RunActionScope,omitempty" xml:"RunActionScope,omitempty"`
+}
+
+func (s GetApplicationResponseBodyApplicationActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyApplicationActions) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyApplicationActions) SetActionName(v string) *GetApplicationResponseBodyApplicationActions {
+	s.ActionName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActions) SetActionParams(v []*GetApplicationResponseBodyApplicationActionsActionParams) *GetApplicationResponseBodyApplicationActions {
+	s.ActionParams = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActions) SetCommand(v string) *GetApplicationResponseBodyApplicationActions {
+	s.Command = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActions) SetComponentName(v string) *GetApplicationResponseBodyApplicationActions {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActions) SetDescription(v string) *GetApplicationResponseBodyApplicationActions {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActions) SetRunActionScope(v string) *GetApplicationResponseBodyApplicationActions {
+	s.RunActionScope = &v
+	return s
+}
+
+type GetApplicationResponseBodyApplicationActionsActionParams struct {
+	// 动作参数描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 动作参数KEY。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 动作参数属性。
+	ValueAttribute *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute `json:"ValueAttribute,omitempty" xml:"ValueAttribute,omitempty" type:"Struct"`
+}
+
+func (s GetApplicationResponseBodyApplicationActionsActionParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyApplicationActionsActionParams) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParams) SetDescription(v string) *GetApplicationResponseBodyApplicationActionsActionParams {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParams) SetKey(v string) *GetApplicationResponseBodyApplicationActionsActionParams {
+	s.Key = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParams) SetValueAttribute(v *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) *GetApplicationResponseBodyApplicationActionsActionParams {
+	s.ValueAttribute = v
+	return s
+}
+
+type GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute struct {
+	// 值表述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 值步长。
+	ValueIncrementStep *string `json:"ValueIncrementStep,omitempty" xml:"ValueIncrementStep,omitempty"`
+	// 最大值。
+	ValueMaximum *string `json:"ValueMaximum,omitempty" xml:"ValueMaximum,omitempty"`
+	// 最小值。
+	ValueMinimum *string `json:"ValueMinimum,omitempty" xml:"ValueMinimum,omitempty"`
+	// 属性值类型。
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// 值单位。
+	ValueUnit *string `json:"ValueUnit,omitempty" xml:"ValueUnit,omitempty"`
+}
+
+func (s GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) SetDescription(v string) *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) SetValueIncrementStep(v string) *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute {
+	s.ValueIncrementStep = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) SetValueMaximum(v string) *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute {
+	s.ValueMaximum = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) SetValueMinimum(v string) *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute {
+	s.ValueMinimum = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) SetValueType(v string) *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute {
+	s.ValueType = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute) SetValueUnit(v string) *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute {
+	s.ValueUnit = &v
+	return s
+}
+
+type GetApplicationResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponse) SetHeaders(v map[string]*string) *GetApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApplicationResponse) SetStatusCode(v int32) *GetApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetApplicationResponse {
 	s.Body = v
 	return s
 }
@@ -5946,7 +6344,8 @@ func (s *GetAutoScalingActivityRequest) SetScalingActivityId(v string) *GetAutoS
 
 type GetAutoScalingActivityResponseBody struct {
 	// The request ID.
-	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the scaling activity.
 	ScalingActivity *GetAutoScalingActivityResponseBodyScalingActivity `json:"ScalingActivity,omitempty" xml:"ScalingActivity,omitempty" type:"Struct"`
 }
 
@@ -5971,7 +6370,7 @@ func (s *GetAutoScalingActivityResponseBody) SetScalingActivity(v *GetAutoScalin
 type GetAutoScalingActivityResponseBodyScalingActivity struct {
 	// The ID of the scaling activity.
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// The instances corresponding to this scaling activity.
+	// The instances that correspond to the scaling activity.
 	ActivityResults []*ScalingActivityResult `json:"ActivityResults,omitempty" xml:"ActivityResults,omitempty" type:"Repeated"`
 	// The status of the scaling activity. Valid values:
 	//
@@ -6086,9 +6485,9 @@ func (s *GetAutoScalingActivityResponseBodyScalingActivity) SetStartTime(v int64
 }
 
 type GetAutoScalingActivityResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoScalingActivityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoScalingActivityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutoScalingActivityResponse) String() string {
@@ -6309,9 +6708,9 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetTriggerTy
 }
 
 type GetAutoScalingPolicyResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoScalingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoScalingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutoScalingPolicyResponse) String() string {
@@ -6338,9 +6737,9 @@ func (s *GetAutoScalingPolicyResponse) SetBody(v *GetAutoScalingPolicyResponseBo
 }
 
 type GetClusterRequest struct {
-	// 集群ID。
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 地域ID。
+	// The ID of the region in which you want to create the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6363,8 +6762,9 @@ func (s *GetClusterRequest) SetRegionId(v string) *GetClusterRequest {
 }
 
 type GetClusterResponseBody struct {
+	// The details of the master instance.
 	Cluster *Cluster `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
-	// 请求ID。
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6387,9 +6787,9 @@ func (s *GetClusterResponseBody) SetRequestId(v string) *GetClusterResponseBody 
 }
 
 type GetClusterResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetClusterResponse) String() string {
@@ -6781,9 +7181,9 @@ func (s *GetDoctorApplicationResponseBodyDataMetricsVcoreUtilization) SetValue(v
 }
 
 type GetDoctorApplicationResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorApplicationResponse) String() string {
@@ -6810,11 +7210,13 @@ func (s *GetDoctorApplicationResponse) SetBody(v *GetDoctorApplicationResponseBo
 }
 
 type GetDoctorComputeSummaryRequest struct {
-	// 集群ID。
-	ClusterId     *string                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The resource information, which is used to filter the results.
 	ComponentInfo *GetDoctorComputeSummaryRequestComponentInfo `json:"ComponentInfo,omitempty" xml:"ComponentInfo,omitempty" type:"Struct"`
-	DateTime      *string                                      `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 区域ID。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6847,7 +7249,15 @@ func (s *GetDoctorComputeSummaryRequest) SetRegionId(v string) *GetDoctorCompute
 }
 
 type GetDoctorComputeSummaryRequestComponentInfo struct {
+	// Set the filter condition name based on the value of ComponentType. For example, if you set ComponentType to queue, you can specify a specific queue name to obtain the resource usage of a specific queue.
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The resource type for filtering. Valid values:
+	//
+	// *   engine: filters results by engine.
+	// *   queue: filters results by queue.
+	// *   cluster: displays the results at the cluster level.
+	//
+	// If you do not specify this parameter, the information at the cluster level is displayed by default.
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
 }
 
@@ -6870,8 +7280,9 @@ func (s *GetDoctorComputeSummaryRequestComponentInfo) SetComponentType(v string)
 }
 
 type GetDoctorComputeSummaryResponseBody struct {
+	// The details of resource usage.
 	Data *GetDoctorComputeSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6894,8 +7305,10 @@ func (s *GetDoctorComputeSummaryResponseBody) SetRequestId(v string) *GetDoctorC
 }
 
 type GetDoctorComputeSummaryResponseBodyData struct {
+	// The resource analysis information.
 	Analysis *GetDoctorComputeSummaryResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	Metrics  *GetDoctorComputeSummaryResponseBodyDataMetrics  `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The metrics.
+	Metrics *GetDoctorComputeSummaryResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyData) String() string {
@@ -6917,12 +7330,18 @@ func (s *GetDoctorComputeSummaryResponseBodyData) SetMetrics(v *GetDoctorCompute
 }
 
 type GetDoctorComputeSummaryResponseBodyDataAnalysis struct {
-	HealthyJobCount       *int64   `json:"HealthyJobCount,omitempty" xml:"HealthyJobCount,omitempty"`
-	NeedAttentionJobCount *int64   `json:"NeedAttentionJobCount,omitempty" xml:"NeedAttentionJobCount,omitempty"`
-	Score                 *int32   `json:"Score,omitempty" xml:"Score,omitempty"`
-	ScoreDayGrowthRatio   *float32 `json:"ScoreDayGrowthRatio,omitempty" xml:"ScoreDayGrowthRatio,omitempty"`
-	SubHealthyJobCount    *int64   `json:"SubHealthyJobCount,omitempty" xml:"SubHealthyJobCount,omitempty"`
-	UnhealthyJobCount     *int64   `json:"UnhealthyJobCount,omitempty" xml:"UnhealthyJobCount,omitempty"`
+	// The total number of healthy jobs.
+	HealthyJobCount *int64 `json:"HealthyJobCount,omitempty" xml:"HealthyJobCount,omitempty"`
+	// The total number of jobs that require attention.
+	NeedAttentionJobCount *int64 `json:"NeedAttentionJobCount,omitempty" xml:"NeedAttentionJobCount,omitempty"`
+	// The score for jobs.
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The day-to-day growth rate of the score for jobs.
+	ScoreDayGrowthRatio *float32 `json:"ScoreDayGrowthRatio,omitempty" xml:"ScoreDayGrowthRatio,omitempty"`
+	// The total number of sub-healthy jobs.
+	SubHealthyJobCount *int64 `json:"SubHealthyJobCount,omitempty" xml:"SubHealthyJobCount,omitempty"`
+	// The total number of unhealthy jobs.
+	UnhealthyJobCount *int64 `json:"UnhealthyJobCount,omitempty" xml:"UnhealthyJobCount,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataAnalysis) String() string {
@@ -6964,14 +7383,22 @@ func (s *GetDoctorComputeSummaryResponseBodyDataAnalysis) SetUnhealthyJobCount(v
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetrics struct {
-	MemSeconds                 *GetDoctorComputeSummaryResponseBodyDataMetricsMemSeconds                 `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
-	MemSecondsDayGrowthRatio   *GetDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio   `json:"MemSecondsDayGrowthRatio,omitempty" xml:"MemSecondsDayGrowthRatio,omitempty" type:"Struct"`
-	MemUtilization             *GetDoctorComputeSummaryResponseBodyDataMetricsMemUtilization             `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty" type:"Struct"`
-	ReadSize                   *GetDoctorComputeSummaryResponseBodyDataMetricsReadSize                   `json:"ReadSize,omitempty" xml:"ReadSize,omitempty" type:"Struct"`
-	VcoreSeconds               *GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds               `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
+	// The total memory consumption over time in seconds.
+	MemSeconds *GetDoctorComputeSummaryResponseBodyDataMetricsMemSeconds `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total memory consumption over time in seconds.
+	MemSecondsDayGrowthRatio *GetDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio `json:"MemSecondsDayGrowthRatio,omitempty" xml:"MemSecondsDayGrowthRatio,omitempty" type:"Struct"`
+	// The average memory usage.
+	MemUtilization *GetDoctorComputeSummaryResponseBodyDataMetricsMemUtilization `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty" type:"Struct"`
+	// The total amount of data read from the file system.
+	ReadSize *GetDoctorComputeSummaryResponseBodyDataMetricsReadSize `json:"ReadSize,omitempty" xml:"ReadSize,omitempty" type:"Struct"`
+	// The total CPU consumption over time in seconds.
+	VcoreSeconds *GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total CPU consumption over time in seconds.
 	VcoreSecondsDayGrowthRatio *GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSecondsDayGrowthRatio `json:"VcoreSecondsDayGrowthRatio,omitempty" xml:"VcoreSecondsDayGrowthRatio,omitempty" type:"Struct"`
-	VcoreUtilization           *GetDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization           `json:"VcoreUtilization,omitempty" xml:"VcoreUtilization,omitempty" type:"Struct"`
-	WriteSize                  *GetDoctorComputeSummaryResponseBodyDataMetricsWriteSize                  `json:"WriteSize,omitempty" xml:"WriteSize,omitempty" type:"Struct"`
+	// The average CPU utilization. The meaning is the same as the %CPU parameter in the output of the top command in Linux.
+	VcoreUtilization *GetDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization `json:"VcoreUtilization,omitempty" xml:"VcoreUtilization,omitempty" type:"Struct"`
+	// The total amount of data written to the file system.
+	WriteSize *GetDoctorComputeSummaryResponseBodyDataMetricsWriteSize `json:"WriteSize,omitempty" xml:"WriteSize,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetrics) String() string {
@@ -7023,10 +7450,14 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetrics) SetWriteSize(v *GetDoct
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsMemSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetricsMemSeconds) String() string {
@@ -7058,10 +7489,14 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetricsMemSeconds) SetValue(v in
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio) String() string {
@@ -7093,10 +7528,14 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio)
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsMemUtilization struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetricsMemUtilization) String() string {
@@ -7128,10 +7567,14 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetricsMemUtilization) SetValue(
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsReadSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetricsReadSize) String() string {
@@ -7163,10 +7606,14 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetricsReadSize) SetValue(v int6
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds) String() string {
@@ -7198,10 +7645,14 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds) SetValue(v 
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSecondsDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSecondsDayGrowthRatio) String() string {
@@ -7233,10 +7684,14 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetricsVcoreSecondsDayGrowthRati
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization) String() string {
@@ -7268,10 +7723,14 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization) SetValu
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsWriteSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponseBodyDataMetricsWriteSize) String() string {
@@ -7303,9 +7762,9 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetricsWriteSize) SetValue(v int
 }
 
 type GetDoctorComputeSummaryResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorComputeSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorComputeSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorComputeSummaryResponse) String() string {
@@ -7332,10 +7791,11 @@ func (s *GetDoctorComputeSummaryResponse) SetBody(v *GetDoctorComputeSummaryResp
 }
 
 type GetDoctorHBaseClusterRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 区域ID。
+	// The date.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7363,8 +7823,9 @@ func (s *GetDoctorHBaseClusterRequest) SetRegionId(v string) *GetDoctorHBaseClus
 }
 
 type GetDoctorHBaseClusterResponseBody struct {
+	// The returned data.
 	Data *GetDoctorHBaseClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7387,8 +7848,10 @@ func (s *GetDoctorHBaseClusterResponseBody) SetRequestId(v string) *GetDoctorHBa
 }
 
 type GetDoctorHBaseClusterResponseBodyData struct {
+	// The analysis result.
 	Analysis *GetDoctorHBaseClusterResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	Metrics  *GetDoctorHBaseClusterResponseBodyDataMetrics  `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The metric information.
+	Metrics *GetDoctorHBaseClusterResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyData) String() string {
@@ -7410,6 +7873,7 @@ func (s *GetDoctorHBaseClusterResponseBodyData) SetMetrics(v *GetDoctorHBaseClus
 }
 
 type GetDoctorHBaseClusterResponseBodyDataAnalysis struct {
+	// The overall score of the HBase cluster.
 	HbaseScore *int32 `json:"HbaseScore,omitempty" xml:"HbaseScore,omitempty"`
 }
 
@@ -7427,19 +7891,33 @@ func (s *GetDoctorHBaseClusterResponseBodyDataAnalysis) SetHbaseScore(v int32) *
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetrics struct {
-	AvgLoad           *GetDoctorHBaseClusterResponseBodyDataMetricsAvgLoad           `json:"AvgLoad,omitempty" xml:"AvgLoad,omitempty" type:"Struct"`
-	DailyReadRequest  *GetDoctorHBaseClusterResponseBodyDataMetricsDailyReadRequest  `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
+	// The average load.
+	AvgLoad *GetDoctorHBaseClusterResponseBodyDataMetricsAvgLoad `json:"AvgLoad,omitempty" xml:"AvgLoad,omitempty" type:"Struct"`
+	// The number of read requests in a day.
+	DailyReadRequest *GetDoctorHBaseClusterResponseBodyDataMetricsDailyReadRequest `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
+	// The number of write requests in a day.
 	DailyWriteRequest *GetDoctorHBaseClusterResponseBodyDataMetricsDailyWriteRequest `json:"DailyWriteRequest,omitempty" xml:"DailyWriteRequest,omitempty" type:"Struct"`
-	MemHeap           *GetDoctorHBaseClusterResponseBodyDataMetricsMemHeap           `json:"MemHeap,omitempty" xml:"MemHeap,omitempty" type:"Struct"`
-	NormalAvgLoad     *GetDoctorHBaseClusterResponseBodyDataMetricsNormalAvgLoad     `json:"NormalAvgLoad,omitempty" xml:"NormalAvgLoad,omitempty" type:"Struct"`
-	RegionBalance     *GetDoctorHBaseClusterResponseBodyDataMetricsRegionBalance     `json:"RegionBalance,omitempty" xml:"RegionBalance,omitempty" type:"Struct"`
-	RegionCount       *GetDoctorHBaseClusterResponseBodyDataMetricsRegionCount       `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" type:"Struct"`
+	// The memory size.
+	MemHeap *GetDoctorHBaseClusterResponseBodyDataMetricsMemHeap `json:"MemHeap,omitempty" xml:"MemHeap,omitempty" type:"Struct"`
+	// The normal average load.
+	NormalAvgLoad *GetDoctorHBaseClusterResponseBodyDataMetricsNormalAvgLoad `json:"NormalAvgLoad,omitempty" xml:"NormalAvgLoad,omitempty" type:"Struct"`
+	// The region balance degree.
+	RegionBalance *GetDoctorHBaseClusterResponseBodyDataMetricsRegionBalance `json:"RegionBalance,omitempty" xml:"RegionBalance,omitempty" type:"Struct"`
+	// The number of regions.
+	RegionCount *GetDoctorHBaseClusterResponseBodyDataMetricsRegionCount `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" type:"Struct"`
+	// The number of region servers.
 	RegionServerCount *GetDoctorHBaseClusterResponseBodyDataMetricsRegionServerCount `json:"RegionServerCount,omitempty" xml:"RegionServerCount,omitempty" type:"Struct"`
-	StoreFileCount    *GetDoctorHBaseClusterResponseBodyDataMetricsStoreFileCount    `json:"StoreFileCount,omitempty" xml:"StoreFileCount,omitempty" type:"Struct"`
-	TableCount        *GetDoctorHBaseClusterResponseBodyDataMetricsTableCount        `json:"TableCount,omitempty" xml:"TableCount,omitempty" type:"Struct"`
-	TotalDataSize     *GetDoctorHBaseClusterResponseBodyDataMetricsTotalDataSize     `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalReadRequest  *GetDoctorHBaseClusterResponseBodyDataMetricsTotalReadRequest  `json:"TotalReadRequest,omitempty" xml:"TotalReadRequest,omitempty" type:"Struct"`
-	TotalRequest      *GetDoctorHBaseClusterResponseBodyDataMetricsTotalRequest      `json:"TotalRequest,omitempty" xml:"TotalRequest,omitempty" type:"Struct"`
+	// The number of StoreFiles.
+	StoreFileCount *GetDoctorHBaseClusterResponseBodyDataMetricsStoreFileCount `json:"StoreFileCount,omitempty" xml:"StoreFileCount,omitempty" type:"Struct"`
+	// The number of tables.
+	TableCount *GetDoctorHBaseClusterResponseBodyDataMetricsTableCount `json:"TableCount,omitempty" xml:"TableCount,omitempty" type:"Struct"`
+	// The size of the cluster.
+	TotalDataSize *GetDoctorHBaseClusterResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The total number of read requests.
+	TotalReadRequest *GetDoctorHBaseClusterResponseBodyDataMetricsTotalReadRequest `json:"TotalReadRequest,omitempty" xml:"TotalReadRequest,omitempty" type:"Struct"`
+	// The total number of requests in the cluster.
+	TotalRequest *GetDoctorHBaseClusterResponseBodyDataMetricsTotalRequest `json:"TotalRequest,omitempty" xml:"TotalRequest,omitempty" type:"Struct"`
+	// The total number of write requests.
 	TotalWriteRequest *GetDoctorHBaseClusterResponseBodyDataMetricsTotalWriteRequest `json:"TotalWriteRequest,omitempty" xml:"TotalWriteRequest,omitempty" type:"Struct"`
 }
 
@@ -7522,10 +8000,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetrics) SetTotalWriteRequest(v *G
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsAvgLoad struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsAvgLoad) String() string {
@@ -7557,10 +8039,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsAvgLoad) SetValue(v float32
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsDailyReadRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsDailyReadRequest) String() string {
@@ -7592,10 +8078,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsDailyReadRequest) SetValue(
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsDailyWriteRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsDailyWriteRequest) String() string {
@@ -7627,10 +8117,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsDailyWriteRequest) SetValue
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsMemHeap struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsMemHeap) String() string {
@@ -7662,10 +8156,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsMemHeap) SetValue(v int64) 
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsNormalAvgLoad struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsNormalAvgLoad) String() string {
@@ -7697,10 +8195,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsNormalAvgLoad) SetValue(v f
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsRegionBalance struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsRegionBalance) String() string {
@@ -7732,10 +8234,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsRegionBalance) SetValue(v f
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsRegionCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsRegionCount) String() string {
@@ -7767,10 +8273,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsRegionCount) SetValue(v int
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsRegionServerCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsRegionServerCount) String() string {
@@ -7802,10 +8312,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsRegionServerCount) SetValue
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsStoreFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsStoreFileCount) String() string {
@@ -7837,10 +8351,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsStoreFileCount) SetValue(v 
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsTableCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsTableCount) String() string {
@@ -7872,10 +8390,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsTableCount) SetValue(v int6
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsTotalDataSize) String() string {
@@ -7907,10 +8429,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsTotalDataSize) SetValue(v i
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsTotalReadRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsTotalReadRequest) String() string {
@@ -7942,10 +8468,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsTotalReadRequest) SetValue(
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsTotalRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsTotalRequest) String() string {
@@ -7977,10 +8507,14 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsTotalRequest) SetValue(v in
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsTotalWriteRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponseBodyDataMetricsTotalWriteRequest) String() string {
@@ -8012,9 +8546,9 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetricsTotalWriteRequest) SetValue
 }
 
 type GetDoctorHBaseClusterResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHBaseClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHBaseClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHBaseClusterResponse) String() string {
@@ -8079,6 +8613,7 @@ func (s *GetDoctorHBaseRegionRequest) SetRegionId(v string) *GetDoctorHBaseRegio
 }
 
 type GetDoctorHBaseRegionResponseBody struct {
+	// The returned data.
 	Data *GetDoctorHBaseRegionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -8103,6 +8638,7 @@ func (s *GetDoctorHBaseRegionResponseBody) SetRequestId(v string) *GetDoctorHBas
 }
 
 type GetDoctorHBaseRegionResponseBodyData struct {
+	// The metric information.
 	Metrics          *GetDoctorHBaseRegionResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 	RegionServerHost *string                                      `json:"RegionServerHost,omitempty" xml:"RegionServerHost,omitempty"`
 	TableName        *string                                      `json:"TableName,omitempty" xml:"TableName,omitempty"`
@@ -8134,6 +8670,7 @@ func (s *GetDoctorHBaseRegionResponseBodyData) SetTableName(v string) *GetDoctor
 type GetDoctorHBaseRegionResponseBodyDataMetrics struct {
 	DailyReadRequest  *GetDoctorHBaseRegionResponseBodyDataMetricsDailyReadRequest  `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
 	DailyWriteRequest *GetDoctorHBaseRegionResponseBodyDataMetricsDailyWriteRequest `json:"DailyWriteRequest,omitempty" xml:"DailyWriteRequest,omitempty" type:"Struct"`
+	// The number of StoreFiles.
 	StoreFileCount    *GetDoctorHBaseRegionResponseBodyDataMetricsStoreFileCount    `json:"StoreFileCount,omitempty" xml:"StoreFileCount,omitempty" type:"Struct"`
 	TotalReadRequest  *GetDoctorHBaseRegionResponseBodyDataMetricsTotalReadRequest  `json:"TotalReadRequest,omitempty" xml:"TotalReadRequest,omitempty" type:"Struct"`
 	TotalWriteRequest *GetDoctorHBaseRegionResponseBodyDataMetricsTotalWriteRequest `json:"TotalWriteRequest,omitempty" xml:"TotalWriteRequest,omitempty" type:"Struct"`
@@ -8244,9 +8781,11 @@ func (s *GetDoctorHBaseRegionResponseBodyDataMetricsDailyWriteRequest) SetValue(
 
 type GetDoctorHBaseRegionResponseBodyDataMetricsStoreFileCount struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionResponseBodyDataMetricsStoreFileCount) String() string {
@@ -8348,9 +8887,9 @@ func (s *GetDoctorHBaseRegionResponseBodyDataMetricsTotalWriteRequest) SetValue(
 }
 
 type GetDoctorHBaseRegionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHBaseRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHBaseRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionResponse) String() string {
@@ -8377,11 +8916,13 @@ func (s *GetDoctorHBaseRegionResponse) SetBody(v *GetDoctorHBaseRegionResponseBo
 }
 
 type GetDoctorHBaseRegionServerRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 区域ID。
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The date.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The host of the region server.
 	RegionServerHost *string `json:"RegionServerHost,omitempty" xml:"RegionServerHost,omitempty"`
 }
 
@@ -8414,8 +8955,9 @@ func (s *GetDoctorHBaseRegionServerRequest) SetRegionServerHost(v string) *GetDo
 }
 
 type GetDoctorHBaseRegionServerResponseBody struct {
+	// The returned data.
 	Data *GetDoctorHBaseRegionServerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8438,6 +8980,7 @@ func (s *GetDoctorHBaseRegionServerResponseBody) SetRequestId(v string) *GetDoct
 }
 
 type GetDoctorHBaseRegionServerResponseBodyData struct {
+	// The metric information.
 	Metrics *GetDoctorHBaseRegionServerResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
@@ -8455,16 +8998,26 @@ func (s *GetDoctorHBaseRegionServerResponseBodyData) SetMetrics(v *GetDoctorHBas
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetrics struct {
-	AvgGc                           *GetDoctorHBaseRegionServerResponseBodyDataMetricsAvgGc                           `json:"AvgGc,omitempty" xml:"AvgGc,omitempty" type:"Struct"`
-	CacheRatio                      *GetDoctorHBaseRegionServerResponseBodyDataMetricsCacheRatio                      `json:"CacheRatio,omitempty" xml:"CacheRatio,omitempty" type:"Struct"`
-	DailyReadRequest                *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequest                `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
-	DailyReadRequestDayGrowthRatio  *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequestDayGrowthRatio  `json:"DailyReadRequestDayGrowthRatio,omitempty" xml:"DailyReadRequestDayGrowthRatio,omitempty" type:"Struct"`
-	DailyWriteRequest               *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequest               `json:"DailyWriteRequest,omitempty" xml:"DailyWriteRequest,omitempty" type:"Struct"`
+	// The average garbage collection (GC) duration.
+	AvgGc *GetDoctorHBaseRegionServerResponseBodyDataMetricsAvgGc `json:"AvgGc,omitempty" xml:"AvgGc,omitempty" type:"Struct"`
+	// The cache hit ratio.
+	CacheRatio *GetDoctorHBaseRegionServerResponseBodyDataMetricsCacheRatio `json:"CacheRatio,omitempty" xml:"CacheRatio,omitempty" type:"Struct"`
+	// The number of daily read requests.
+	DailyReadRequest *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequest `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
+	// The day-to-day increment rate of the number of daily read requests.
+	DailyReadRequestDayGrowthRatio *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequestDayGrowthRatio `json:"DailyReadRequestDayGrowthRatio,omitempty" xml:"DailyReadRequestDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of daily write requests.
+	DailyWriteRequest *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequest `json:"DailyWriteRequest,omitempty" xml:"DailyWriteRequest,omitempty" type:"Struct"`
+	// The day-to-day increment rate of the number of daily write requests.
 	DailyWriteRequestDayGrowthRatio *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio `json:"DailyWriteRequestDayGrowthRatio,omitempty" xml:"DailyWriteRequestDayGrowthRatio,omitempty" type:"Struct"`
-	RegionCount                     *GetDoctorHBaseRegionServerResponseBodyDataMetricsRegionCount                     `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" type:"Struct"`
-	TotalReadRequest                *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalReadRequest                `json:"TotalReadRequest,omitempty" xml:"TotalReadRequest,omitempty" type:"Struct"`
-	TotalRequest                    *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalRequest                    `json:"TotalRequest,omitempty" xml:"TotalRequest,omitempty" type:"Struct"`
-	TotalWriteRequest               *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalWriteRequest               `json:"TotalWriteRequest,omitempty" xml:"TotalWriteRequest,omitempty" type:"Struct"`
+	// The number of regions.
+	RegionCount *GetDoctorHBaseRegionServerResponseBodyDataMetricsRegionCount `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" type:"Struct"`
+	// The cumulative number of read requests.
+	TotalReadRequest *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalReadRequest `json:"TotalReadRequest,omitempty" xml:"TotalReadRequest,omitempty" type:"Struct"`
+	// The cumulative number of total requests.
+	TotalRequest *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalRequest `json:"TotalRequest,omitempty" xml:"TotalRequest,omitempty" type:"Struct"`
+	// The cumulative number of write requests.
+	TotalWriteRequest *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalWriteRequest `json:"TotalWriteRequest,omitempty" xml:"TotalWriteRequest,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetrics) String() string {
@@ -8526,10 +9079,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetrics) SetTotalWriteRequest
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsAvgGc struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsAvgGc) String() string {
@@ -8561,10 +9118,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsAvgGc) SetValue(v floa
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsCacheRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsCacheRatio) String() string {
@@ -8596,10 +9157,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsCacheRatio) SetValue(v
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequest) String() string {
@@ -8631,10 +9196,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequest) SetV
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequestDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequestDayGrowthRatio) String() string {
@@ -8666,10 +9235,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyReadRequestDayGro
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequest) String() string {
@@ -8701,10 +9274,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequest) Set
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio) String() string {
@@ -8736,10 +9313,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsDailyWriteRequestDayGr
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsRegionCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsRegionCount) String() string {
@@ -8771,10 +9352,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsRegionCount) SetValue(
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalReadRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalReadRequest) String() string {
@@ -8806,10 +9391,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalReadRequest) SetV
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalRequest) String() string {
@@ -8841,10 +9430,14 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalRequest) SetValue
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalWriteRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalWriteRequest) String() string {
@@ -8876,9 +9469,9 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetricsTotalWriteRequest) Set
 }
 
 type GetDoctorHBaseRegionServerResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHBaseRegionServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHBaseRegionServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHBaseRegionServerResponse) String() string {
@@ -8942,6 +9535,7 @@ func (s *GetDoctorHBaseTableRequest) SetTableName(v string) *GetDoctorHBaseTable
 }
 
 type GetDoctorHBaseTableResponseBody struct {
+	// The returned data.
 	Data *GetDoctorHBaseTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -8966,6 +9560,7 @@ func (s *GetDoctorHBaseTableResponseBody) SetRequestId(v string) *GetDoctorHBase
 }
 
 type GetDoctorHBaseTableResponseBodyData struct {
+	// The diagnosis result.
 	Analysis *GetDoctorHBaseTableResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
 	Metrics  *GetDoctorHBaseTableResponseBodyDataMetrics  `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
@@ -8989,13 +9584,16 @@ func (s *GetDoctorHBaseTableResponseBodyData) SetMetrics(v *GetDoctorHBaseTableR
 }
 
 type GetDoctorHBaseTableResponseBodyDataAnalysis struct {
-	ReadRequestHotspotRegionList    []*string `json:"ReadRequestHotspotRegionList,omitempty" xml:"ReadRequestHotspotRegionList,omitempty" type:"Repeated"`
-	ReadRequestUnbalanceSuggestion  *string   `json:"ReadRequestUnbalanceSuggestion,omitempty" xml:"ReadRequestUnbalanceSuggestion,omitempty"`
-	RequestHotspotRegionList        []*string `json:"RequestHotspotRegionList,omitempty" xml:"RequestHotspotRegionList,omitempty" type:"Repeated"`
-	RequestUnbalanceSuggestion      *string   `json:"RequestUnbalanceSuggestion,omitempty" xml:"RequestUnbalanceSuggestion,omitempty"`
-	TableScore                      *int32    `json:"TableScore,omitempty" xml:"TableScore,omitempty"`
-	WriteRequestHotspotRegionList   []*string `json:"WriteRequestHotspotRegionList,omitempty" xml:"WriteRequestHotspotRegionList,omitempty" type:"Repeated"`
-	WriteRequestUnbalanceSuggestion *string   `json:"WriteRequestUnbalanceSuggestion,omitempty" xml:"WriteRequestUnbalanceSuggestion,omitempty"`
+	ReadRequestHotspotRegionList []*string `json:"ReadRequestHotspotRegionList,omitempty" xml:"ReadRequestHotspotRegionList,omitempty" type:"Repeated"`
+	// The description of read imbalance.
+	ReadRequestUnbalanceSuggestion *string   `json:"ReadRequestUnbalanceSuggestion,omitempty" xml:"ReadRequestUnbalanceSuggestion,omitempty"`
+	RequestHotspotRegionList       []*string `json:"RequestHotspotRegionList,omitempty" xml:"RequestHotspotRegionList,omitempty" type:"Repeated"`
+	// The description of read/write imbalance.
+	RequestUnbalanceSuggestion    *string   `json:"RequestUnbalanceSuggestion,omitempty" xml:"RequestUnbalanceSuggestion,omitempty"`
+	TableScore                    *int32    `json:"TableScore,omitempty" xml:"TableScore,omitempty"`
+	WriteRequestHotspotRegionList []*string `json:"WriteRequestHotspotRegionList,omitempty" xml:"WriteRequestHotspotRegionList,omitempty" type:"Repeated"`
+	// The description of write imbalance.
+	WriteRequestUnbalanceSuggestion *string `json:"WriteRequestUnbalanceSuggestion,omitempty" xml:"WriteRequestUnbalanceSuggestion,omitempty"`
 }
 
 func (s GetDoctorHBaseTableResponseBodyDataAnalysis) String() string {
@@ -10037,9 +10635,9 @@ func (s *GetDoctorHBaseTableResponseBodyDataMetricsWriteRequestBalance) SetValue
 }
 
 type GetDoctorHBaseTableResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHBaseTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHBaseTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHBaseTableResponse) String() string {
@@ -12109,9 +12707,9 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) 
 }
 
 type GetDoctorHDFSClusterResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHDFSClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHDFSClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponse) String() string {
@@ -12241,11 +12839,11 @@ func (s *GetDoctorHDFSDirectoryResponseBodyData) SetUser(v string) *GetDoctorHDF
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetrics struct {
-	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The number of empty files. Empty files are those with a size of 0 MB.
 	EmptyFileCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
@@ -12259,11 +12857,11 @@ type GetDoctorHDFSDirectoryResponseBodyDataMetrics struct {
 	FreezeDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
 	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
 	FreezeDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The number of large files. Large files are those with a size greater than 1 GB.
 	LargeFileCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
@@ -12289,7 +12887,7 @@ type GetDoctorHDFSDirectoryResponseBodyDataMetrics struct {
 	TinyFileCountDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
 	// The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
 	TinyFileDayGrowthCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	// The daily incremental of the total data volume.
+	// The daily incremental of the total amount of data.
 	TotalDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
 	// The total amount of data.
 	TotalDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
@@ -12301,11 +12899,11 @@ type GetDoctorHDFSDirectoryResponseBodyDataMetrics struct {
 	TotalFileCountDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
 	// The daily increment of the total number of files.
 	TotalFileDayGrowthCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
@@ -13770,9 +14368,9 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio
 }
 
 type GetDoctorHDFSDirectoryResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHDFSDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHDFSDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponse) String() string {
@@ -14040,9 +14638,9 @@ func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) SetValue(v int64
 }
 
 type GetDoctorHDFSUGIResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHDFSUGIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHDFSUGIResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHDFSUGIResponse) String() string {
@@ -14199,11 +14797,11 @@ func (s *GetDoctorHiveClusterResponseBodyDataAnalysis) SetHiveScore(v int32) *Ge
 type GetDoctorHiveClusterResponseBodyDataFormats struct {
 	// The name of the storage format.
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The proportion of data in a specific storage format.
+	// The proportion of the data in the format.
 	FormatRatio *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
-	// The size of storage format-specific data.
+	// The amount of data in the format.
 	FormatSize *int64 `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
-	// The unit of the data size.
+	// The unit of the amount of data in the format.
 	FormatSizeUnit *string `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
 }
 
@@ -14236,13 +14834,13 @@ func (s *GetDoctorHiveClusterResponseBodyDataFormats) SetFormatSizeUnit(v string
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetrics struct {
-	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataRatio *GetDoctorHiveClusterResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataSize *GetDoctorHiveClusterResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The number of databases.
 	DatabaseCount *GetDoctorHiveClusterResponseBodyDataMetricsDatabaseCount `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty" type:"Struct"`
@@ -14262,13 +14860,13 @@ type GetDoctorHiveClusterResponseBodyDataMetrics struct {
 	FreezeDataSize *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
 	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
 	FreezeDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The proportion of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataRatio *GetDoctorHiveClusterResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataSize *GetDoctorHiveClusterResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The number of large files. Large files are those with a size greater than 1 GB.
 	LargeFileCount *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
@@ -14306,7 +14904,7 @@ type GetDoctorHiveClusterResponseBodyDataMetrics struct {
 	TinyFileDayGrowthCount *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
 	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
 	TinyFileRatio *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	// The daily incremental of the total data volume.
+	// The daily incremental of the amount of total data.
 	TotalDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
 	// The total amount of data.
 	TotalDataSize *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
@@ -14318,13 +14916,13 @@ type GetDoctorHiveClusterResponseBodyDataMetrics struct {
 	TotalFileCountDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
 	// The daily increment of the total number of files.
 	TotalFileDayGrowthCount *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataRatio *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataSize *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
@@ -16317,9 +16915,9 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) 
 }
 
 type GetDoctorHiveClusterResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHiveClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHiveClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponse) String() string {
@@ -16442,9 +17040,9 @@ func (s *GetDoctorHiveDatabaseResponseBodyData) SetMetrics(v *GetDoctorHiveDatab
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataAnalysis struct {
-	// The score for the distribution of files of different sizes stored in the Hive database.
+	// The score for the file sizes of the Hive database.
 	HiveDistributionScore *int32 `json:"HiveDistributionScore,omitempty" xml:"HiveDistributionScore,omitempty"`
-	// The score for the distribution of files stored in different formats in the Hive database.
+	// The score for the data formats of the Hive database.
 	HiveFormatScore *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
 	// The score for the access frequency of the Hive database.
 	HiveFrequencyScore *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
@@ -16481,17 +17079,17 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataAnalysis) SetHiveScore(v int32) *G
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataFormats struct {
-	// The daily increment of storage format-specific data.
+	// The daily increment of data in the format.
 	FormatDayGrowthSize *int64 `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
 	// The name of the storage format.
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The proportion of data in a specific storage format.
+	// The proportion of the data in the format.
 	FormatRatio *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
-	// The amount of storage format-specific data.
+	// The amount of data in the format.
 	FormatSize *int64 `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
-	// The day-to-day growth rate of storage format-specific data.
+	// The day-to-day growth rate of data in the format.
 	FormatSizeDayGrowthRatio *float32 `json:"FormatSizeDayGrowthRatio,omitempty" xml:"FormatSizeDayGrowthRatio,omitempty"`
-	// The unit of the amount of storage format-specific data.
+	// The unit of the amount of data in the format.
 	FormatSizeUnit *string `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
 }
 
@@ -16534,13 +17132,13 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataFormats) SetFormatSizeUnit(v strin
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetrics struct {
-	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The number of empty files. Empty files are those with a size of 0 MB.
 	EmptyFileCount *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
@@ -16558,13 +17156,13 @@ type GetDoctorHiveDatabaseResponseBodyDataMetrics struct {
 	FreezeDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
 	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
 	FreezeDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The proportion of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The number of large files. Large files are those with a size greater than 1 GB.
 	LargeFileCount *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
@@ -16602,7 +17200,7 @@ type GetDoctorHiveDatabaseResponseBodyDataMetrics struct {
 	TinyFileDayGrowthCount *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
 	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
 	TinyFileRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	// The daily incremental of the total data volume.
+	// The daily incremental of the total amount of data.
 	TotalDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
 	// The total amount of data.
 	TotalDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
@@ -16614,13 +17212,13 @@ type GetDoctorHiveDatabaseResponseBodyDataMetrics struct {
 	TotalFileCountDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
 	// The daily increment of the total number of files.
 	TotalFileDayGrowthCount *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
@@ -18569,9 +19167,9 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio)
 }
 
 type GetDoctorHiveDatabaseResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHiveDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHiveDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponse) String() string {
@@ -20782,9 +21380,9 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) Se
 }
 
 type GetDoctorHiveTableResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorHiveTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorHiveTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponse) String() string {
@@ -21076,9 +21674,9 @@ func (s *GetDoctorJobResponseBodyDataMetricsVcoreSeconds) SetValue(v int64) *Get
 }
 
 type GetDoctorJobResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorJobResponse) String() string {
@@ -21144,6 +21742,7 @@ func (s *GetDoctorReportComponentSummaryRequest) SetRegionId(v string) *GetDocto
 }
 
 type GetDoctorReportComponentSummaryResponseBody struct {
+	// The content of the report.
 	Data *GetDoctorReportComponentSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -21170,7 +21769,8 @@ func (s *GetDoctorReportComponentSummaryResponseBody) SetRequestId(v string) *Ge
 type GetDoctorReportComponentSummaryResponseBodyData struct {
 	Score      *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	Summary    *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The summary of the report.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s GetDoctorReportComponentSummaryResponseBodyData) String() string {
@@ -21197,9 +21797,9 @@ func (s *GetDoctorReportComponentSummaryResponseBodyData) SetSummary(v string) *
 }
 
 type GetDoctorReportComponentSummaryResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDoctorReportComponentSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDoctorReportComponentSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDoctorReportComponentSummaryResponse) String() string {
@@ -21283,9 +21883,9 @@ func (s *GetNodeGroupResponseBody) SetRequestId(v string) *GetNodeGroupResponseB
 }
 
 type GetNodeGroupResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNodeGroupResponse) String() string {
@@ -21369,9 +21969,9 @@ func (s *GetOperationResponseBody) SetRequestId(v string) *GetOperationResponseB
 }
 
 type GetOperationResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOperationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOperationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOperationResponse) String() string {
@@ -21497,9 +22097,9 @@ func (s *IncreaseNodesResponseBody) SetRequestId(v string) *IncreaseNodesRespons
 }
 
 type IncreaseNodesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IncreaseNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IncreaseNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s IncreaseNodesResponse) String() string {
@@ -21526,7 +22126,7 @@ func (s *IncreaseNodesResponse) SetBody(v *IncreaseNodesResponseBody) *IncreaseN
 }
 
 type JoinResourceGroupRequest struct {
-	// The ID of the region in which you want to create the instance.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -21585,9 +22185,9 @@ func (s *JoinResourceGroupResponseBody) SetRequestId(v string) *JoinResourceGrou
 }
 
 type JoinResourceGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *JoinResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *JoinResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s JoinResourceGroupResponse) String() string {
@@ -21609,6 +22209,137 @@ func (s *JoinResourceGroupResponse) SetStatusCode(v int32) *JoinResourceGroupRes
 }
 
 func (s *JoinResourceGroupResponse) SetBody(v *JoinResourceGroupResponseBody) *JoinResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListApmMetadataRequest struct {
+	// 集群ID。非必传参数。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// 元数据类型。
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListApmMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmMetadataRequest) SetClusterId(v string) *ListApmMetadataRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListApmMetadataRequest) SetRegionId(v string) *ListApmMetadataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListApmMetadataRequest) SetResourceGroupId(v string) *ListApmMetadataRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListApmMetadataRequest) SetType(v string) *ListApmMetadataRequest {
+	s.Type = &v
+	return s
+}
+
+type ListApmMetadataResponseBody struct {
+	// 本次请求所返回的最大记录条数。
+	MaxResults *int32                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Metadata   []*ListApmMetadataResponseBodyMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Repeated"`
+	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 本次请求条件下的数据总量。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListApmMetadataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmMetadataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmMetadataResponseBody) SetMaxResults(v int32) *ListApmMetadataResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListApmMetadataResponseBody) SetMetadata(v []*ListApmMetadataResponseBodyMetadata) *ListApmMetadataResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListApmMetadataResponseBody) SetNextToken(v string) *ListApmMetadataResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListApmMetadataResponseBody) SetRequestId(v string) *ListApmMetadataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApmMetadataResponseBody) SetTotalCount(v int32) *ListApmMetadataResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListApmMetadataResponseBodyMetadata struct {
+	// 元数据值。
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListApmMetadataResponseBodyMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmMetadataResponseBodyMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmMetadataResponseBodyMetadata) SetValue(v string) *ListApmMetadataResponseBodyMetadata {
+	s.Value = &v
+	return s
+}
+
+type ListApmMetadataResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApmMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApmMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmMetadataResponse) SetHeaders(v map[string]*string) *ListApmMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApmMetadataResponse) SetStatusCode(v int32) *ListApmMetadataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApmMetadataResponse) SetBody(v *ListApmMetadataResponseBody) *ListApmMetadataResponse {
 	s.Body = v
 	return s
 }
@@ -21703,7 +22434,7 @@ type ListApplicationConfigsResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of pages.
+	// The total number of pages returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21747,11 +22478,11 @@ type ListApplicationConfigsResponseBodyApplicationConfigs struct {
 	ConfigEffectState *string `json:"ConfigEffectState,omitempty" xml:"ConfigEffectState,omitempty"`
 	// The name of the configuration file.
 	ConfigFileName *string `json:"ConfigFileName,omitempty" xml:"ConfigFileName,omitempty"`
-	// The name of the configuration item.
+	// The key of the configuration item.
 	ConfigItemKey *string `json:"ConfigItemKey,omitempty" xml:"ConfigItemKey,omitempty"`
 	// The value of the configuration item.
 	ConfigItemValue *string `json:"ConfigItemValue,omitempty" xml:"ConfigItemValue,omitempty"`
-	// The time when the application was created.
+	// The creation time.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether the configurations are custom.
 	Custom *bool `json:"Custom,omitempty" xml:"Custom,omitempty"`
@@ -21761,11 +22492,11 @@ type ListApplicationConfigsResponseBodyApplicationConfigs struct {
 	InitValue *string `json:"InitValue,omitempty" xml:"InitValue,omitempty"`
 	// The person who modified the configurations.
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	// The node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The time when the application was updated.
+	// The update time.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -21843,9 +22574,9 @@ func (s *ListApplicationConfigsResponseBodyApplicationConfigs) SetUpdateTime(v i
 }
 
 type ListApplicationConfigsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListApplicationConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListApplicationConfigsResponse) String() string {
@@ -22004,9 +22735,9 @@ func (s *ListApplicationsResponseBodyApplications) SetCommunityVersion(v string)
 }
 
 type ListApplicationsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListApplicationsResponse) String() string {
@@ -22266,9 +22997,9 @@ func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) SetStartTime(v 
 }
 
 type ListAutoScalingActivitiesResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAutoScalingActivitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAutoScalingActivitiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAutoScalingActivitiesResponse) String() string {
@@ -22310,32 +23041,6 @@ type ListClustersRequest struct {
 	// The billing methods. You can specify a maximum of 2 items.
 	PaymentTypes []*string `json:"PaymentTypes,omitempty" xml:"PaymentTypes,omitempty" type:"Repeated"`
 	// The region ID.
-	//
-	// Valid values:
-	//
-	// *   center
-	// *   cn-hangzhou
-	// *   cn-shanghai
-	// *   cn-qingdao
-	// *   cn-beijing
-	// *   cn-zhangjiakou
-	// *   cn-huhehaote
-	// *   cn-wulanchabu
-	// *   cn-shenzhen
-	// *   cn-chengdu
-	// *   cn-hongkong
-	// *   ap-southeast-1
-	// *   ap-southeast-2
-	// *   ap-southeast-3
-	// *   ap-southeast-5
-	// *   ap-northeast-1
-	// *   eu-central-1
-	// *   eu-west-1
-	// *   us-west-1
-	// *   us-east-1
-	// *   ap-south-1
-	// *   me-east-1
-	// *   me-central-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -22448,9 +23153,9 @@ func (s *ListClustersResponseBody) SetTotalCount(v int32) *ListClustersResponseB
 }
 
 type ListClustersResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClustersResponse) String() string {
@@ -22472,6 +23177,443 @@ func (s *ListClustersResponse) SetStatusCode(v int32) *ListClustersResponse {
 }
 
 func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListClustersResponse {
+	s.Body = v
+	return s
+}
+
+type ListComponentInstancesRequest struct {
+	// 应用名称列表。
+	ApplicationNames []*string `json:"ApplicationNames,omitempty" xml:"ApplicationNames,omitempty" type:"Repeated"`
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 组件名称列表。
+	ComponentNames  []*string `json:"ComponentNames,omitempty" xml:"ComponentNames,omitempty" type:"Repeated"`
+	ComponentStates []*string `json:"ComponentStates,omitempty" xml:"ComponentStates,omitempty" type:"Repeated"`
+	// 一次获取的最大记录数。取值范围：1~100。
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 节点ID列表。
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// 节点名称列表。
+	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListComponentInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentInstancesRequest) SetApplicationNames(v []*string) *ListComponentInstancesRequest {
+	s.ApplicationNames = v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetClusterId(v string) *ListComponentInstancesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetComponentNames(v []*string) *ListComponentInstancesRequest {
+	s.ComponentNames = v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetComponentStates(v []*string) *ListComponentInstancesRequest {
+	s.ComponentStates = v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetMaxResults(v int32) *ListComponentInstancesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetNextToken(v string) *ListComponentInstancesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetNodeIds(v []*string) *ListComponentInstancesRequest {
+	s.NodeIds = v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetNodeNames(v []*string) *ListComponentInstancesRequest {
+	s.NodeNames = v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetRegionId(v string) *ListComponentInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListComponentInstancesResponseBody struct {
+	ComponentInstances []*ListComponentInstancesResponseBodyComponentInstances `json:"ComponentInstances,omitempty" xml:"ComponentInstances,omitempty" type:"Repeated"`
+	// 本次请求所返回的最大记录条数。
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 本次请求条件下的数据总量。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListComponentInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentInstancesResponseBody) SetComponentInstances(v []*ListComponentInstancesResponseBodyComponentInstances) *ListComponentInstancesResponseBody {
+	s.ComponentInstances = v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBody) SetMaxResults(v int32) *ListComponentInstancesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBody) SetNextToken(v string) *ListComponentInstancesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBody) SetRequestId(v string) *ListComponentInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBody) SetTotalCount(v int32) *ListComponentInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListComponentInstancesResponseBodyComponentInstances struct {
+	// 应用名称。
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// 组件服务状态，取值如下：
+	// - active：主服务
+	// - standby：备用服务。
+	BizState *string `json:"BizState,omitempty" xml:"BizState,omitempty"`
+	// Commission状态，取值如下：
+	// - COMMISSIONED：已上线
+	// - COMMISSIONING：上线中
+	// - DECOMMISSIONED：已下线
+	// - DECOMMISSIONINPROGRESS：下线进程中
+	// - DECOMMISSIONFAILED：下线失败
+	// - INSERVICE：服务中
+	// - UNKNOWN：未知状态。
+	// <p>
+	CommissionState *string `json:"CommissionState,omitempty" xml:"CommissionState,omitempty"`
+	// 组件实例操作状态，取值如下：
+	// - WAITING：等待中
+	// - INSTALLING：安装中
+	// - INSTALLED：已安装
+	// - INSTALL_FAILED：安装失败
+	// - STARTING：启动中
+	// - STARTED：已启动
+	// - START_FAILED：启动失败
+	// - STOPPING：停止中
+	// - STOPPED：已停止
+	// - STOP_FAILED：停止失败
+	ComponentInstanceState *string `json:"ComponentInstanceState,omitempty" xml:"ComponentInstanceState,omitempty"`
+	// 组件名称。
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// 安装时间戳。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 期望状态，取值如下：
+	// - WAITING：等待中
+	// - INSTALLING：安装中
+	// - INSTALLED：已安装
+	// - INSTALL_FAILED：安装失败
+	// - STARTING：启动中
+	// - STARTED：已启动
+	// - START_FAILED：启动失败
+	// - STOPPING：停止中
+	// - STOPPED：已停止
+	// - STOP_FAILED：停止失败。
+	DesiredState *string `json:"DesiredState,omitempty" xml:"DesiredState,omitempty"`
+	// 节点ID。
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// 节点名称。
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+}
+
+func (s ListComponentInstancesResponseBodyComponentInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentInstancesResponseBodyComponentInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetApplicationName(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetBizState(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.BizState = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetCommissionState(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.CommissionState = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetComponentInstanceState(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.ComponentInstanceState = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetComponentName(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetCreateTime(v int64) *ListComponentInstancesResponseBodyComponentInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetDesiredState(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.DesiredState = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetNodeId(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetNodeName(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.NodeName = &v
+	return s
+}
+
+type ListComponentInstancesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListComponentInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListComponentInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentInstancesResponse) SetHeaders(v map[string]*string) *ListComponentInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListComponentInstancesResponse) SetStatusCode(v int32) *ListComponentInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponse) SetBody(v *ListComponentInstancesResponseBody) *ListComponentInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListComponentsRequest struct {
+	// 应用名称列表。
+	ApplicationNames []*string `json:"ApplicationNames,omitempty" xml:"ApplicationNames,omitempty" type:"Repeated"`
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 组件名称列表。
+	ComponentNames  []*string `json:"ComponentNames,omitempty" xml:"ComponentNames,omitempty" type:"Repeated"`
+	ComponentStates []*string `json:"ComponentStates,omitempty" xml:"ComponentStates,omitempty" type:"Repeated"`
+	// 是否包含过期配置。
+	IncludeExpiredConfig *bool `json:"IncludeExpiredConfig,omitempty" xml:"IncludeExpiredConfig,omitempty"`
+	// 一次获取的最大记录数。取值范围：1~100。
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListComponentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsRequest) SetApplicationNames(v []*string) *ListComponentsRequest {
+	s.ApplicationNames = v
+	return s
+}
+
+func (s *ListComponentsRequest) SetClusterId(v string) *ListComponentsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetComponentNames(v []*string) *ListComponentsRequest {
+	s.ComponentNames = v
+	return s
+}
+
+func (s *ListComponentsRequest) SetComponentStates(v []*string) *ListComponentsRequest {
+	s.ComponentStates = v
+	return s
+}
+
+func (s *ListComponentsRequest) SetIncludeExpiredConfig(v bool) *ListComponentsRequest {
+	s.IncludeExpiredConfig = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetMaxResults(v int32) *ListComponentsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetNextToken(v string) *ListComponentsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetRegionId(v string) *ListComponentsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListComponentsResponseBody struct {
+	Components []*ListComponentsResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// 本次请求所返回的最大记录条数。
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 本次请求条件下的数据总量。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListComponentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBody) SetComponents(v []*ListComponentsResponseBodyComponents) *ListComponentsResponseBody {
+	s.Components = v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetMaxResults(v int32) *ListComponentsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetNextToken(v string) *ListComponentsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetRequestId(v string) *ListComponentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetTotalCount(v int32) *ListComponentsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListComponentsResponseBodyComponents struct {
+	// 应用名称。
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// 属性列表。
+	Attributes []*Attribute `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// 组件名称。
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// 命名空间。
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// 安装该组件的机器总数。
+	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
+}
+
+func (s ListComponentsResponseBodyComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyComponents) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyComponents) SetApplicationName(v string) *ListComponentsResponseBodyComponents {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyComponents) SetAttributes(v []*Attribute) *ListComponentsResponseBodyComponents {
+	s.Attributes = v
+	return s
+}
+
+func (s *ListComponentsResponseBodyComponents) SetComponentName(v string) *ListComponentsResponseBodyComponents {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyComponents) SetNamespace(v string) *ListComponentsResponseBodyComponents {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyComponents) SetReplica(v int32) *ListComponentsResponseBodyComponents {
+	s.Replica = &v
+	return s
+}
+
+type ListComponentsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListComponentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponse) SetHeaders(v map[string]*string) *ListComponentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListComponentsResponse) SetStatusCode(v int32) *ListComponentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListComponentsResponse {
 	s.Body = v
 	return s
 }
@@ -22930,9 +24072,9 @@ func (s *ListDoctorApplicationsResponseBodyDataMetricsVcoreUtilization) SetValue
 }
 
 type ListDoctorApplicationsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorApplicationsResponse) String() string {
@@ -22959,17 +24101,45 @@ func (s *ListDoctorApplicationsResponse) SetBody(v *ListDoctorApplicationsRespon
 }
 
 type ListDoctorComputeSummaryRequest struct {
-	// 集群ID。
-	ClusterId      *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The resource types, which are used to filter query results. Valid values:
+	//
+	// *   engine: filters results by engine.
+	// *   queue: filters results by queue.
+	// *   cluster: displays the results at the cluster level.
+	//
+	// If you do not specify this parameter, the information at the cluster level is displayed by default. Currently, only one resource type is supported. If you specify multiple resource types, the first resource type is used by default.
 	ComponentTypes []*string `json:"ComponentTypes,omitempty" xml:"ComponentTypes,omitempty" type:"Repeated"`
-	DateTime       *string   `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The maximum number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The basis on which you want to sort the query results. Valid values:
+	//
+	// 1.  vcoreSeconds: the total CPU consumption over time in seconds.
+	// 2.  memSeconds: the total memory consumption over time in seconds.
+	// 3.  vcoreUtilization: the average CPU utilization. The meaning is the same as the %CPU parameter in the output of the top command in Linux.
+	// 4.  memUtilization: the average memory usage.
+	// 5.  vcoreSecondsDayGrowthRatio: the day-to-day growth rate of the total CPU consumption over time in seconds.
+	// 6.  memSecondsDayGrowthRatio: the day-to-day growth rate of the total memory consumption over time in seconds.
+	// 7.  readSize: the total amount of data read from the file system.
+	// 8.  writeSize: the total amount of data written to the file system.
+	// 9.  healthyJobCount: the total number of healthy jobs.
+	// 10. subHealthyJobCount: the total number of sub-healthy jobs.
+	// 11. unhealthyJobCount: the total number of unhealthy jobs.
+	// 12. needAttentionJobCount: the total number of jobs that require attention.
+	// 13. score: the score for jobs.
+	// 14. scoreDayGrowthRatio: the day-to-day growth rate of the score for jobs.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The order in which you want to sort the query results. Valid values:
+	//
+	// *   ASC: in ascending order.
+	// *   DESC: in descending order.
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -23022,14 +24192,15 @@ func (s *ListDoctorComputeSummaryRequest) SetRegionId(v string) *ListDoctorCompu
 }
 
 type ListDoctorComputeSummaryResponseBody struct {
+	// The details of resource usage.
 	Data []*ListDoctorComputeSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries that are returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -23067,9 +24238,12 @@ func (s *ListDoctorComputeSummaryResponseBody) SetTotalCount(v int32) *ListDocto
 }
 
 type ListDoctorComputeSummaryResponseBodyData struct {
-	Analysis      *ListDoctorComputeSummaryResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	ComponentName *string                                           `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	Metrics       *ListDoctorComputeSummaryResponseBodyDataMetrics  `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The resource analysis results.
+	Analysis *ListDoctorComputeSummaryResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The name of the resource whose details are obtained based on the value of ComponentTypes. For example, if the value of ComponentTypes is Queue, the value of this parameter is a queue, such as DW.
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The metric information.
+	Metrics *ListDoctorComputeSummaryResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyData) String() string {
@@ -23096,12 +24270,18 @@ func (s *ListDoctorComputeSummaryResponseBodyData) SetMetrics(v *ListDoctorCompu
 }
 
 type ListDoctorComputeSummaryResponseBodyDataAnalysis struct {
-	HealthyJobCount       *int64   `json:"HealthyJobCount,omitempty" xml:"HealthyJobCount,omitempty"`
-	NeedAttentionJobCount *int64   `json:"NeedAttentionJobCount,omitempty" xml:"NeedAttentionJobCount,omitempty"`
-	Score                 *int32   `json:"Score,omitempty" xml:"Score,omitempty"`
-	ScoreDayGrowthRatio   *float32 `json:"ScoreDayGrowthRatio,omitempty" xml:"ScoreDayGrowthRatio,omitempty"`
-	SubHealthyJobCount    *int64   `json:"SubHealthyJobCount,omitempty" xml:"SubHealthyJobCount,omitempty"`
-	UnhealthyJobCount     *int64   `json:"UnhealthyJobCount,omitempty" xml:"UnhealthyJobCount,omitempty"`
+	// The total number of healthy jobs.
+	HealthyJobCount *int64 `json:"HealthyJobCount,omitempty" xml:"HealthyJobCount,omitempty"`
+	// The total number of jobs that require attention.
+	NeedAttentionJobCount *int64 `json:"NeedAttentionJobCount,omitempty" xml:"NeedAttentionJobCount,omitempty"`
+	// The score for jobs.
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The day-to-day growth rate of the score for jobs.
+	ScoreDayGrowthRatio *float32 `json:"ScoreDayGrowthRatio,omitempty" xml:"ScoreDayGrowthRatio,omitempty"`
+	// The total number of sub-healthy jobs.
+	SubHealthyJobCount *int64 `json:"SubHealthyJobCount,omitempty" xml:"SubHealthyJobCount,omitempty"`
+	// The total number of unhealthy jobs.
+	UnhealthyJobCount *int64 `json:"UnhealthyJobCount,omitempty" xml:"UnhealthyJobCount,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataAnalysis) String() string {
@@ -23143,14 +24323,22 @@ func (s *ListDoctorComputeSummaryResponseBodyDataAnalysis) SetUnhealthyJobCount(
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetrics struct {
-	MemSeconds                 *ListDoctorComputeSummaryResponseBodyDataMetricsMemSeconds                 `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
-	MemSecondsDayGrowthRatio   *ListDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio   `json:"MemSecondsDayGrowthRatio,omitempty" xml:"MemSecondsDayGrowthRatio,omitempty" type:"Struct"`
-	MemUtilization             *ListDoctorComputeSummaryResponseBodyDataMetricsMemUtilization             `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty" type:"Struct"`
-	ReadSize                   *ListDoctorComputeSummaryResponseBodyDataMetricsReadSize                   `json:"ReadSize,omitempty" xml:"ReadSize,omitempty" type:"Struct"`
-	VcoreSeconds               *ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds               `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
+	// The total memory consumption over time in seconds.
+	MemSeconds *ListDoctorComputeSummaryResponseBodyDataMetricsMemSeconds `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total memory consumption over time in seconds.
+	MemSecondsDayGrowthRatio *ListDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio `json:"MemSecondsDayGrowthRatio,omitempty" xml:"MemSecondsDayGrowthRatio,omitempty" type:"Struct"`
+	// The average memory usage.
+	MemUtilization *ListDoctorComputeSummaryResponseBodyDataMetricsMemUtilization `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty" type:"Struct"`
+	// The total amount of data read from the file system.
+	ReadSize *ListDoctorComputeSummaryResponseBodyDataMetricsReadSize `json:"ReadSize,omitempty" xml:"ReadSize,omitempty" type:"Struct"`
+	// The total CPU consumption over time in seconds.
+	VcoreSeconds *ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total CPU consumption over time in seconds.
 	VcoreSecondsDayGrowthRatio *ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSecondsDayGrowthRatio `json:"VcoreSecondsDayGrowthRatio,omitempty" xml:"VcoreSecondsDayGrowthRatio,omitempty" type:"Struct"`
-	VcoreUtilization           *ListDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization           `json:"VcoreUtilization,omitempty" xml:"VcoreUtilization,omitempty" type:"Struct"`
-	WriteSize                  *ListDoctorComputeSummaryResponseBodyDataMetricsWriteSize                  `json:"WriteSize,omitempty" xml:"WriteSize,omitempty" type:"Struct"`
+	// The average CPU utilization. The meaning is the same as the %CPU parameter in the output of the top command in Linux.
+	VcoreUtilization *ListDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization `json:"VcoreUtilization,omitempty" xml:"VcoreUtilization,omitempty" type:"Struct"`
+	// The total amount of data written to the file system.
+	WriteSize *ListDoctorComputeSummaryResponseBodyDataMetricsWriteSize `json:"WriteSize,omitempty" xml:"WriteSize,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetrics) String() string {
@@ -23202,10 +24390,14 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetrics) SetWriteSize(v *ListDo
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetricsMemSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetricsMemSeconds) String() string {
@@ -23237,10 +24429,14 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetricsMemSeconds) SetValue(v i
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio) String() string {
@@ -23272,10 +24468,14 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetricsMemSecondsDayGrowthRatio
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetricsMemUtilization struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetricsMemUtilization) String() string {
@@ -23307,10 +24507,14 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetricsMemUtilization) SetValue
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetricsReadSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetricsReadSize) String() string {
@@ -23342,10 +24546,14 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetricsReadSize) SetValue(v int
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds) String() string {
@@ -23377,10 +24585,14 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSeconds) SetValue(v
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSecondsDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSecondsDayGrowthRatio) String() string {
@@ -23412,10 +24624,14 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetricsVcoreSecondsDayGrowthRat
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization) String() string {
@@ -23447,10 +24663,14 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetricsVcoreUtilization) SetVal
 }
 
 type ListDoctorComputeSummaryResponseBodyDataMetricsWriteSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponseBodyDataMetricsWriteSize) String() string {
@@ -23482,9 +24702,9 @@ func (s *ListDoctorComputeSummaryResponseBodyDataMetricsWriteSize) SetValue(v in
 }
 
 type ListDoctorComputeSummaryResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorComputeSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorComputeSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorComputeSummaryResponse) String() string {
@@ -23511,17 +24731,26 @@ func (s *ListDoctorComputeSummaryResponse) SetBody(v *ListDoctorComputeSummaryRe
 }
 
 type ListDoctorHBaseRegionServersRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The query date.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The maximum number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The field that you use to sort the query results. Valid value:
+	//
+	// *   regionCount: the number of regions.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The order in which you want to sort the query results. Valid value:
+	//
+	// *   ASC: in ascending order
+	// *   DESC: in descending order
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// 区域ID。
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The RegionServer hosts.
 	RegionServerHosts []*string `json:"RegionServerHosts,omitempty" xml:"RegionServerHosts,omitempty" type:"Repeated"`
 }
 
@@ -23574,14 +24803,15 @@ func (s *ListDoctorHBaseRegionServersRequest) SetRegionServerHosts(v []*string) 
 }
 
 type ListDoctorHBaseRegionServersResponseBody struct {
+	// The returned data.
 	Data []*ListDoctorHBaseRegionServersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries that are returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -23619,8 +24849,10 @@ func (s *ListDoctorHBaseRegionServersResponseBody) SetTotalCount(v int32) *ListD
 }
 
 type ListDoctorHBaseRegionServersResponseBodyData struct {
-	Metrics          *ListDoctorHBaseRegionServersResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	RegionServerHost *string                                              `json:"RegionServerHost,omitempty" xml:"RegionServerHost,omitempty"`
+	// The metric information.
+	Metrics *ListDoctorHBaseRegionServersResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The RegionServer host.
+	RegionServerHost *string `json:"RegionServerHost,omitempty" xml:"RegionServerHost,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyData) String() string {
@@ -23642,16 +24874,26 @@ func (s *ListDoctorHBaseRegionServersResponseBodyData) SetRegionServerHost(v str
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetrics struct {
-	AvgGc                           *ListDoctorHBaseRegionServersResponseBodyDataMetricsAvgGc                           `json:"AvgGc,omitempty" xml:"AvgGc,omitempty" type:"Struct"`
-	CacheRatio                      *ListDoctorHBaseRegionServersResponseBodyDataMetricsCacheRatio                      `json:"CacheRatio,omitempty" xml:"CacheRatio,omitempty" type:"Struct"`
-	DailyReadRequest                *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequest                `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
-	DailyReadRequestDayGrowthRatio  *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequestDayGrowthRatio  `json:"DailyReadRequestDayGrowthRatio,omitempty" xml:"DailyReadRequestDayGrowthRatio,omitempty" type:"Struct"`
-	DailyWriteRequest               *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequest               `json:"DailyWriteRequest,omitempty" xml:"DailyWriteRequest,omitempty" type:"Struct"`
+	// The average garbage collection (GC) duration.
+	AvgGc *ListDoctorHBaseRegionServersResponseBodyDataMetricsAvgGc `json:"AvgGc,omitempty" xml:"AvgGc,omitempty" type:"Struct"`
+	// The cache hit ratio.
+	CacheRatio *ListDoctorHBaseRegionServersResponseBodyDataMetricsCacheRatio `json:"CacheRatio,omitempty" xml:"CacheRatio,omitempty" type:"Struct"`
+	// The number of daily read requests.
+	DailyReadRequest *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequest `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
+	// The growth rate of the number of daily read requests.
+	DailyReadRequestDayGrowthRatio *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequestDayGrowthRatio `json:"DailyReadRequestDayGrowthRatio,omitempty" xml:"DailyReadRequestDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of daily write requests.
+	DailyWriteRequest *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequest `json:"DailyWriteRequest,omitempty" xml:"DailyWriteRequest,omitempty" type:"Struct"`
+	// The growth rate of the number of daily write requests.
 	DailyWriteRequestDayGrowthRatio *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio `json:"DailyWriteRequestDayGrowthRatio,omitempty" xml:"DailyWriteRequestDayGrowthRatio,omitempty" type:"Struct"`
-	RegionCount                     *ListDoctorHBaseRegionServersResponseBodyDataMetricsRegionCount                     `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" type:"Struct"`
-	TotalReadRequest                *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalReadRequest                `json:"TotalReadRequest,omitempty" xml:"TotalReadRequest,omitempty" type:"Struct"`
-	TotalRequest                    *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalRequest                    `json:"TotalRequest,omitempty" xml:"TotalRequest,omitempty" type:"Struct"`
-	TotalWriteRequest               *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalWriteRequest               `json:"TotalWriteRequest,omitempty" xml:"TotalWriteRequest,omitempty" type:"Struct"`
+	// The number of regions.
+	RegionCount *ListDoctorHBaseRegionServersResponseBodyDataMetricsRegionCount `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" type:"Struct"`
+	// The cumulative number of read requests.
+	TotalReadRequest *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalReadRequest `json:"TotalReadRequest,omitempty" xml:"TotalReadRequest,omitempty" type:"Struct"`
+	// The cumulative number of all requests.
+	TotalRequest *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalRequest `json:"TotalRequest,omitempty" xml:"TotalRequest,omitempty" type:"Struct"`
+	// The cumulative number of write requests.
+	TotalWriteRequest *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalWriteRequest `json:"TotalWriteRequest,omitempty" xml:"TotalWriteRequest,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetrics) String() string {
@@ -23713,10 +24955,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetrics) SetTotalWriteReque
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsAvgGc struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsAvgGc) String() string {
@@ -23748,10 +24994,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsAvgGc) SetValue(v fl
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsCacheRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsCacheRatio) String() string {
@@ -23783,10 +25033,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsCacheRatio) SetValue
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequest) String() string {
@@ -23818,10 +25072,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequest) Se
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequestDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequestDayGrowthRatio) String() string {
@@ -23853,10 +25111,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyReadRequestDayG
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequest) String() string {
@@ -23888,10 +25150,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequest) S
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio) String() string {
@@ -23923,10 +25189,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsDailyWriteRequestDay
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsRegionCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsRegionCount) String() string {
@@ -23958,10 +25228,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsRegionCount) SetValu
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalReadRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalReadRequest) String() string {
@@ -23993,10 +25267,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalReadRequest) Se
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalRequest) String() string {
@@ -24028,10 +25306,14 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalRequest) SetVal
 }
 
 type ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalWriteRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalWriteRequest) String() string {
@@ -24063,9 +25345,9 @@ func (s *ListDoctorHBaseRegionServersResponseBodyDataMetricsTotalWriteRequest) S
 }
 
 type ListDoctorHBaseRegionServersResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorHBaseRegionServersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorHBaseRegionServersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorHBaseRegionServersResponse) String() string {
@@ -24092,17 +25374,28 @@ func (s *ListDoctorHBaseRegionServersResponse) SetBody(v *ListDoctorHBaseRegionS
 }
 
 type ListDoctorHBaseTablesRequest struct {
-	// 集群ID。
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The query date.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The maximum number of entries that are returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// Marks the current position to start reading. If this field is empty, the data is read from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The field that you use to sort the query results.
+	//
+	// Valid values:
+	//
+	// *   tableSize
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The order in which you want to sort the query results. Valid value:
+	//
+	// *   ASC: in ascending order
+	// *   DESC: in descending order
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// 区域ID。
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The table names, which are used to filter the query results.
 	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
 
@@ -24155,14 +25448,15 @@ func (s *ListDoctorHBaseTablesRequest) SetTableNames(v []*string) *ListDoctorHBa
 }
 
 type ListDoctorHBaseTablesResponseBody struct {
+	// The response parameters.
 	Data []*ListDoctorHBaseTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// The page number of the next page returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -24200,9 +25494,12 @@ func (s *ListDoctorHBaseTablesResponseBody) SetTotalCount(v int32) *ListDoctorHB
 }
 
 type ListDoctorHBaseTablesResponseBodyData struct {
-	Analysis  *ListDoctorHBaseTablesResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	Metrics   *ListDoctorHBaseTablesResponseBodyDataMetrics  `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	TableName *string                                        `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The diagnosis result.
+	Analysis *ListDoctorHBaseTablesResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The metric information.
+	Metrics *ListDoctorHBaseTablesResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyData) String() string {
@@ -24229,13 +25526,20 @@ func (s *ListDoctorHBaseTablesResponseBodyData) SetTableName(v string) *ListDoct
 }
 
 type ListDoctorHBaseTablesResponseBodyDataAnalysis struct {
-	ReadRequestHotspotRegionList    []*string `json:"ReadRequestHotspotRegionList,omitempty" xml:"ReadRequestHotspotRegionList,omitempty" type:"Repeated"`
-	ReadRequestUnbalanceSuggestion  *string   `json:"ReadRequestUnbalanceSuggestion,omitempty" xml:"ReadRequestUnbalanceSuggestion,omitempty"`
-	RequestHotspotRegionList        []*string `json:"RequestHotspotRegionList,omitempty" xml:"RequestHotspotRegionList,omitempty" type:"Repeated"`
-	RequestUnbalanceSuggestion      *string   `json:"RequestUnbalanceSuggestion,omitempty" xml:"RequestUnbalanceSuggestion,omitempty"`
-	TableScore                      *int32    `json:"TableScore,omitempty" xml:"TableScore,omitempty"`
-	WriteRequestHotspotRegionList   []*string `json:"WriteRequestHotspotRegionList,omitempty" xml:"WriteRequestHotspotRegionList,omitempty" type:"Repeated"`
-	WriteRequestUnbalanceSuggestion *string   `json:"WriteRequestUnbalanceSuggestion,omitempty" xml:"WriteRequestUnbalanceSuggestion,omitempty"`
+	// The regions that have read hotspot issues.
+	ReadRequestHotspotRegionList []*string `json:"ReadRequestHotspotRegionList,omitempty" xml:"ReadRequestHotspotRegionList,omitempty" type:"Repeated"`
+	// The description of read imbalance.
+	ReadRequestUnbalanceSuggestion *string `json:"ReadRequestUnbalanceSuggestion,omitempty" xml:"ReadRequestUnbalanceSuggestion,omitempty"`
+	// The regions that have read/write hotspot issues.
+	RequestHotspotRegionList []*string `json:"RequestHotspotRegionList,omitempty" xml:"RequestHotspotRegionList,omitempty" type:"Repeated"`
+	// The description of read/write imbalance.
+	RequestUnbalanceSuggestion *string `json:"RequestUnbalanceSuggestion,omitempty" xml:"RequestUnbalanceSuggestion,omitempty"`
+	// The score of the table.
+	TableScore *int32 `json:"TableScore,omitempty" xml:"TableScore,omitempty"`
+	// The regions that have write hotspot issues.
+	WriteRequestHotspotRegionList []*string `json:"WriteRequestHotspotRegionList,omitempty" xml:"WriteRequestHotspotRegionList,omitempty" type:"Repeated"`
+	// The description of write imbalance.
+	WriteRequestUnbalanceSuggestion *string `json:"WriteRequestUnbalanceSuggestion,omitempty" xml:"WriteRequestUnbalanceSuggestion,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataAnalysis) String() string {
@@ -24282,30 +25586,54 @@ func (s *ListDoctorHBaseTablesResponseBodyDataAnalysis) SetWriteRequestUnbalance
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetrics struct {
-	ColdAccessDay                   *ListDoctorHBaseTablesResponseBodyDataMetricsColdAccessDay                   `json:"ColdAccessDay,omitempty" xml:"ColdAccessDay,omitempty" type:"Struct"`
-	ColdConfigDay                   *ListDoctorHBaseTablesResponseBodyDataMetricsColdConfigDay                   `json:"ColdConfigDay,omitempty" xml:"ColdConfigDay,omitempty" type:"Struct"`
-	ColdDataSize                    *ListDoctorHBaseTablesResponseBodyDataMetricsColdDataSize                    `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	DailyReadRequest                *ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequest                `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
-	DailyReadRequestDayGrowthRatio  *ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequestDayGrowthRatio  `json:"DailyReadRequestDayGrowthRatio,omitempty" xml:"DailyReadRequestDayGrowthRatio,omitempty" type:"Struct"`
-	DailyWriteRequest               *ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequest               `json:"DailyWriteRequest,omitempty" xml:"DailyWriteRequest,omitempty" type:"Struct"`
+	// The number of days during which the table was not accessed.
+	ColdAccessDay *ListDoctorHBaseTablesResponseBodyDataMetricsColdAccessDay `json:"ColdAccessDay,omitempty" xml:"ColdAccessDay,omitempty" type:"Struct"`
+	// The number of consecutive days without access to data before the data is considered as very cold data.
+	ColdConfigDay *ListDoctorHBaseTablesResponseBodyDataMetricsColdConfigDay `json:"ColdConfigDay,omitempty" xml:"ColdConfigDay,omitempty" type:"Struct"`
+	// The size of cold data.
+	ColdDataSize *ListDoctorHBaseTablesResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The total number of read requests for the table in a day.
+	DailyReadRequest *ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequest `json:"DailyReadRequest,omitempty" xml:"DailyReadRequest,omitempty" type:"Struct"`
+	// The daily increment ratio of the number of read requests in a day.
+	DailyReadRequestDayGrowthRatio *ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequestDayGrowthRatio `json:"DailyReadRequestDayGrowthRatio,omitempty" xml:"DailyReadRequestDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of write requests for the table in a day.
+	DailyWriteRequest *ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequest `json:"DailyWriteRequest,omitempty" xml:"DailyWriteRequest,omitempty" type:"Struct"`
+	// The daily increment ratio of the number of write requests in a day.
 	DailyWriteRequestDayGrowthRatio *ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio `json:"DailyWriteRequestDayGrowthRatio,omitempty" xml:"DailyWriteRequestDayGrowthRatio,omitempty" type:"Struct"`
-	FreezeConfigDay                 *ListDoctorHBaseTablesResponseBodyDataMetricsFreezeConfigDay                 `json:"FreezeConfigDay,omitempty" xml:"FreezeConfigDay,omitempty" type:"Struct"`
-	FreezeDataSize                  *ListDoctorHBaseTablesResponseBodyDataMetricsFreezeDataSize                  `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	HotDataSize                     *ListDoctorHBaseTablesResponseBodyDataMetricsHotDataSize                     `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	Locality                        *ListDoctorHBaseTablesResponseBodyDataMetricsLocality                        `json:"Locality,omitempty" xml:"Locality,omitempty" type:"Struct"`
-	ReadRequestBalance              *ListDoctorHBaseTablesResponseBodyDataMetricsReadRequestBalance              `json:"ReadRequestBalance,omitempty" xml:"ReadRequestBalance,omitempty" type:"Struct"`
-	RegionBalance                   *ListDoctorHBaseTablesResponseBodyDataMetricsRegionBalance                   `json:"RegionBalance,omitempty" xml:"RegionBalance,omitempty" type:"Struct"`
-	RegionCount                     *ListDoctorHBaseTablesResponseBodyDataMetricsRegionCount                     `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" type:"Struct"`
-	RegionCountDayGrowthRatio       *ListDoctorHBaseTablesResponseBodyDataMetricsRegionCountDayGrowthRatio       `json:"RegionCountDayGrowthRatio,omitempty" xml:"RegionCountDayGrowthRatio,omitempty" type:"Struct"`
-	RegionServerCount               *ListDoctorHBaseTablesResponseBodyDataMetricsRegionServerCount               `json:"RegionServerCount,omitempty" xml:"RegionServerCount,omitempty" type:"Struct"`
-	RequestBalance                  *ListDoctorHBaseTablesResponseBodyDataMetricsRequestBalance                  `json:"RequestBalance,omitempty" xml:"RequestBalance,omitempty" type:"Struct"`
-	StoreFileCount                  *ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCount                  `json:"StoreFileCount,omitempty" xml:"StoreFileCount,omitempty" type:"Struct"`
-	StoreFileCountDayGrowthRatio    *ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCountDayGrowthRatio    `json:"StoreFileCountDayGrowthRatio,omitempty" xml:"StoreFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TableSize                       *ListDoctorHBaseTablesResponseBodyDataMetricsTableSize                       `json:"TableSize,omitempty" xml:"TableSize,omitempty" type:"Struct"`
-	TableSizeDayGrowthRatio         *ListDoctorHBaseTablesResponseBodyDataMetricsTableSizeDayGrowthRatio         `json:"TableSizeDayGrowthRatio,omitempty" xml:"TableSizeDayGrowthRatio,omitempty" type:"Struct"`
-	WarmConfigDay                   *ListDoctorHBaseTablesResponseBodyDataMetricsWarmConfigDay                   `json:"WarmConfigDay,omitempty" xml:"WarmConfigDay,omitempty" type:"Struct"`
-	WarmDataSize                    *ListDoctorHBaseTablesResponseBodyDataMetricsWarmDataSize                    `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WriteRequestBalance             *ListDoctorHBaseTablesResponseBodyDataMetricsWriteRequestBalance             `json:"WriteRequestBalance,omitempty" xml:"WriteRequestBalance,omitempty" type:"Struct"`
+	// The number of consecutive days without access to data before the data was considered as very cold data.
+	FreezeConfigDay *ListDoctorHBaseTablesResponseBodyDataMetricsFreezeConfigDay `json:"FreezeConfigDay,omitempty" xml:"FreezeConfigDay,omitempty" type:"Struct"`
+	// The size of very cold data.
+	FreezeDataSize *ListDoctorHBaseTablesResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The size of hot data.
+	HotDataSize *ListDoctorHBaseTablesResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The localization rate.
+	Locality *ListDoctorHBaseTablesResponseBodyDataMetricsLocality `json:"Locality,omitempty" xml:"Locality,omitempty" type:"Struct"`
+	// The read balancing degree.
+	ReadRequestBalance *ListDoctorHBaseTablesResponseBodyDataMetricsReadRequestBalance `json:"ReadRequestBalance,omitempty" xml:"ReadRequestBalance,omitempty" type:"Struct"`
+	// The balancing degree.
+	RegionBalance *ListDoctorHBaseTablesResponseBodyDataMetricsRegionBalance `json:"RegionBalance,omitempty" xml:"RegionBalance,omitempty" type:"Struct"`
+	// The number of regions that host the table.
+	RegionCount *ListDoctorHBaseTablesResponseBodyDataMetricsRegionCount `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" type:"Struct"`
+	// The daily increment ratio of the number of regions.
+	RegionCountDayGrowthRatio *ListDoctorHBaseTablesResponseBodyDataMetricsRegionCountDayGrowthRatio `json:"RegionCountDayGrowthRatio,omitempty" xml:"RegionCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of region servers that host the table.
+	RegionServerCount *ListDoctorHBaseTablesResponseBodyDataMetricsRegionServerCount `json:"RegionServerCount,omitempty" xml:"RegionServerCount,omitempty" type:"Struct"`
+	// The request balancing degree.
+	RequestBalance *ListDoctorHBaseTablesResponseBodyDataMetricsRequestBalance `json:"RequestBalance,omitempty" xml:"RequestBalance,omitempty" type:"Struct"`
+	// The number of StoreFiles.
+	StoreFileCount *ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCount `json:"StoreFileCount,omitempty" xml:"StoreFileCount,omitempty" type:"Struct"`
+	// The daily increment ratio of the number of StoreFiles.
+	StoreFileCountDayGrowthRatio *ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCountDayGrowthRatio `json:"StoreFileCountDayGrowthRatio,omitempty" xml:"StoreFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The size of the table.
+	TableSize *ListDoctorHBaseTablesResponseBodyDataMetricsTableSize `json:"TableSize,omitempty" xml:"TableSize,omitempty" type:"Struct"`
+	// The daily increment ratio of the table size.
+	TableSizeDayGrowthRatio *ListDoctorHBaseTablesResponseBodyDataMetricsTableSizeDayGrowthRatio `json:"TableSizeDayGrowthRatio,omitempty" xml:"TableSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of consecutive days without access to data before the data is considered as cold data.
+	WarmConfigDay *ListDoctorHBaseTablesResponseBodyDataMetricsWarmConfigDay `json:"WarmConfigDay,omitempty" xml:"WarmConfigDay,omitempty" type:"Struct"`
+	// The size of warm data.
+	WarmDataSize *ListDoctorHBaseTablesResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The write balancing degree.
+	WriteRequestBalance *ListDoctorHBaseTablesResponseBodyDataMetricsWriteRequestBalance `json:"WriteRequestBalance,omitempty" xml:"WriteRequestBalance,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetrics) String() string {
@@ -24437,10 +25765,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetrics) SetWriteRequestBalance(v 
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsColdAccessDay struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsColdAccessDay) String() string {
@@ -24472,10 +25804,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsColdAccessDay) SetValue(v i
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsColdConfigDay struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsColdConfigDay) String() string {
@@ -24507,10 +25843,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsColdConfigDay) SetValue(v i
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsColdDataSize) String() string {
@@ -24542,10 +25882,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsColdDataSize) SetValue(v in
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequest) String() string {
@@ -24577,10 +25921,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequest) SetValue(
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequestDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequestDayGrowthRatio) String() string {
@@ -24612,10 +25960,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsDailyReadRequestDayGrowthRa
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequest struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequest) String() string {
@@ -24647,10 +25999,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequest) SetValue
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio) String() string {
@@ -24682,10 +26038,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsDailyWriteRequestDayGrowthR
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsFreezeConfigDay struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsFreezeConfigDay) String() string {
@@ -24717,10 +26077,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsFreezeConfigDay) SetValue(v
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsFreezeDataSize) String() string {
@@ -24752,10 +26116,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsFreezeDataSize) SetValue(v 
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsHotDataSize) String() string {
@@ -24787,10 +26155,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsHotDataSize) SetValue(v int
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsLocality struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsLocality) String() string {
@@ -24822,10 +26194,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsLocality) SetValue(v float3
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsReadRequestBalance struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsReadRequestBalance) String() string {
@@ -24857,10 +26233,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsReadRequestBalance) SetValu
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsRegionBalance struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsRegionBalance) String() string {
@@ -24892,10 +26272,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsRegionBalance) SetValue(v f
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsRegionCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsRegionCount) String() string {
@@ -24927,10 +26311,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsRegionCount) SetValue(v int
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsRegionCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsRegionCountDayGrowthRatio) String() string {
@@ -24962,10 +26350,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsRegionCountDayGrowthRatio) 
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsRegionServerCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsRegionServerCount) String() string {
@@ -24997,10 +26389,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsRegionServerCount) SetValue
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsRequestBalance struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsRequestBalance) String() string {
@@ -25032,10 +26428,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsRequestBalance) SetValue(v 
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCount) String() string {
@@ -25067,10 +26467,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCount) SetValue(v 
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCountDayGrowthRatio) String() string {
@@ -25102,10 +26506,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsStoreFileCountDayGrowthRati
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsTableSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsTableSize) String() string {
@@ -25137,10 +26545,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsTableSize) SetValue(v int64
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsTableSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsTableSizeDayGrowthRatio) String() string {
@@ -25172,10 +26584,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsTableSizeDayGrowthRatio) Se
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsWarmConfigDay struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsWarmConfigDay) String() string {
@@ -25207,10 +26623,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsWarmConfigDay) SetValue(v i
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsWarmDataSize) String() string {
@@ -25242,10 +26662,14 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsWarmDataSize) SetValue(v in
 }
 
 type ListDoctorHBaseTablesResponseBodyDataMetricsWriteRequestBalance struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponseBodyDataMetricsWriteRequestBalance) String() string {
@@ -25277,9 +26701,9 @@ func (s *ListDoctorHBaseTablesResponseBodyDataMetricsWriteRequestBalance) SetVal
 }
 
 type ListDoctorHBaseTablesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorHBaseTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorHBaseTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorHBaseTablesResponse) String() string {
@@ -26819,9 +28243,9 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataSizeDayGrowthRa
 }
 
 type ListDoctorHDFSDirectoriesResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorHDFSDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorHDFSDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorHDFSDirectoriesResponse) String() string {
@@ -27145,9 +28569,9 @@ func (s *ListDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) SetValue(v int6
 }
 
 type ListDoctorHDFSUGIResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorHDFSUGIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorHDFSUGIResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorHDFSUGIResponse) String() string {
@@ -29458,9 +30882,9 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSizeDayGrowthRati
 }
 
 type ListDoctorHiveDatabasesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorHiveDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorHiveDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponse) String() string {
@@ -29495,7 +30919,7 @@ type ListDoctorHiveTablesRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The basis on which you want to sort the query results. Valid value:
+	// The basis on which you want to sort the query results. Valid values:
 	//
 	// *   partitionNum: the number of partitions.
 	// *   totalFileCount: the total number of files.
@@ -29509,14 +30933,14 @@ type ListDoctorHiveTablesRequest struct {
 	// *   smallFileRatio: the proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
 	// *   tinyFileRatio: the proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
 	// *   emptyFileRatio: the proportion of empty files. Empty files are those with a size of 0 MB.
-	// *   hotDataSize: the amount of hot data. Hot data refers to data that is accessed in recent seven days.
-	// *   warmDataSize: the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
-	// *   coldDataSize: the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// *   hotDataSize: the amount of hot data. Hot data refers to data that is accessed in previous seven days.
+	// *   WarmDataSize: the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
+	// *   coldDataSize: the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	// *   freezeDataSize: the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
 	// *   totalDataSize: the total amount of data.
-	// *   hotDataRatio: the proportion of hot data. Hot data refers to data that is accessed in recent seven days.
-	// *   awmDataRatio: the proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
-	// *   coldDataRatio: the proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// *   hotDataRatio: the proportion of hot data. Hot data refers to data that is accessed in previous seven days.
+	// *   WarmDataRatio: the proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
+	// *   coldDataRatio: the proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	// *   freezeDataRatio: the proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
 	// *   totalFileDayGrowthCount: the daily increment of the total number of files.
 	// *   largeFileDayGrowthCount: the daily increment of the number of large files. Large files are those with a size greater than 1 GB.
@@ -29524,22 +30948,22 @@ type ListDoctorHiveTablesRequest struct {
 	// *   smallFileDayGrowthCount: the daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
 	// *   tinyFileDayGrowthCount: the daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
 	// *   emptyFileDayGrowthCount: the daily increment of the number of empty files. Empty files are those with a size of 0 MB.
-	// *   hotDataDayGrowthSize: The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
-	// *   warmDataDayGrowthSize: the daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
-	// *   coldDataDayGrowthSize: The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
-	// *   freezeDataDayGrowthSize: The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
-	// *   totalDataDayGrowthSize: the daily incremental of the total data volume.
+	// *   hotDataDayGrowthSize: the daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
+	// *   warmDataDayGrowthSize: the daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
+	// *   coldDataDayGrowthSize: the daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
+	// *   freezeDataDayGrowthSize: the daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	// *   totalDataDayGrowthSize: the daily increment of the amount of total data.
 	// *   totalFileCountDayGrowthRatio: the day-to-day growth rate of the total number of files.
 	// *   largeFileCountDayGrowthRatio: the day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
 	// *   mediumFileCountDayGrowthRatio: the day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
 	// *   smallFileCountDayGrowthRatio: the day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
 	// *   tinyFileCountDayGrowthRatio: the day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
 	// *   emptyFileCountDayGrowthRatio: the day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
-	// *   hotDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
-	// *   warmDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
-	// *   coldDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// *   hotDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
+	// *   warmDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
+	// *   coldDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	// *   freezeDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
-	// *   totalDataSizeDayGrowthRatio: the day-to-day growth rate of the total data volume.
+	// *   totalDataSizeDayGrowthRatio: the day-to-day growth rate of the total amount of data.
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The order in which you want to sort the query results. Valid value:
 	//
@@ -29649,13 +31073,13 @@ func (s *ListDoctorHiveTablesResponseBody) SetTotalCount(v int32) *ListDoctorHiv
 type ListDoctorHiveTablesResponseBodyData struct {
 	// The analysis results.
 	Analysis *ListDoctorHiveTablesResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	// The information from the perspective of formats.
+	// The table format information.
 	Formats []*ListDoctorHiveTablesResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
 	// The metric information.
 	Metrics *ListDoctorHiveTablesResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 	// The owner.
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The table name. The table name must follow the naming rule in Hive. A name in the {database name.table identifier} format uniquely identifies a table.
+	// The table name. The table name must follow the naming rule in Hive. A name in the {Database name.Table name} format uniquely identifies a table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -29693,9 +31117,9 @@ func (s *ListDoctorHiveTablesResponseBodyData) SetTableName(v string) *ListDocto
 }
 
 type ListDoctorHiveTablesResponseBodyDataAnalysis struct {
-	// The score for the distribution of files of different sizes stored in the Hive table.
+	// The score for the file sizes of the Hive table.
 	HiveDistributionScore *int32 `json:"HiveDistributionScore,omitempty" xml:"HiveDistributionScore,omitempty"`
-	// The score for the distribution of files stored in different formats in the Hive table.
+	// The score for the data formats of the Hive table.
 	HiveFormatScore *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
 	// The score for the access frequency of the Hive table.
 	HiveFrequencyScore *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
@@ -29732,17 +31156,17 @@ func (s *ListDoctorHiveTablesResponseBodyDataAnalysis) SetHiveScore(v int32) *Li
 }
 
 type ListDoctorHiveTablesResponseBodyDataFormats struct {
-	// The daily amount increment of the data in a specific storage format.
+	// The daily increment of data in the format.
 	FormatDayGrowthSize *int64 `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
 	// The name of the storage format.
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The proportion of the data in a specific storage format.
+	// The proportion of the data in the format.
 	FormatRatio *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
-	// The size of storage format-specific data.
+	// The amount of data in the format.
 	FormatSize *int64 `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
-	// The day-to-day growth rate of the amount of the data in a specific storage format.
+	// The day-to-day growth rate of data in the format.
 	FormatSizeDayGrowthRatio *float32 `json:"FormatSizeDayGrowthRatio,omitempty" xml:"FormatSizeDayGrowthRatio,omitempty"`
-	// The unit of the data size.
+	// The unit of the amount of data in the format.
 	FormatSizeUnit *string `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
 }
 
@@ -29785,13 +31209,13 @@ func (s *ListDoctorHiveTablesResponseBodyDataFormats) SetFormatSizeUnit(v string
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetrics struct {
-	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataRatio *ListDoctorHiveTablesResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataSize *ListDoctorHiveTablesResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
 	ColdDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The number of empty files. Empty files are those with a size of 0 MB.
 	EmptyFileCount *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
@@ -29809,13 +31233,13 @@ type ListDoctorHiveTablesResponseBodyDataMetrics struct {
 	FreezeDataSize *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
 	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
 	FreezeDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The proportion of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataRatio *ListDoctorHiveTablesResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataSize *ListDoctorHiveTablesResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
 	HotDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The number of large files. Large files are those with a size greater than 1 GB.
 	LargeFileCount *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
@@ -29851,11 +31275,11 @@ type ListDoctorHiveTablesResponseBodyDataMetrics struct {
 	TinyFileDayGrowthCount *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
 	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
 	TinyFileRatio *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	// The daily incremental of the total data volume.
+	// The daily increment of the total amount of data.
 	TotalDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
 	// The total amount of data.
 	TotalDataSize *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the total data volume.
+	// The day-to-day growth rate of the total amount of data.
 	TotalDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 	// The total number of files.
 	TotalFileCount *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
@@ -29863,13 +31287,13 @@ type ListDoctorHiveTablesResponseBodyDataMetrics struct {
 	TotalFileCountDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
 	// The daily increment of the total number of files.
 	TotalFileDayGrowthCount *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataRatio *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataSize *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
 	WarmDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
@@ -31774,9 +33198,9 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) 
 }
 
 type ListDoctorHiveTablesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorHiveTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorHiveTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponse) String() string {
@@ -31803,27 +33227,36 @@ func (s *ListDoctorHiveTablesResponse) SetBody(v *ListDoctorHiveTablesResponseBo
 }
 
 type ListDoctorJobsRequest struct {
-	// app ID数组
+	// The IDs of the jobs that are submitted to YARN.
 	AppIds []*string `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 结束range
+	// The range of end time. You can filter jobs whose end time falls within the specified time range.
 	EndRange *ListDoctorJobsRequestEndRange `json:"EndRange,omitempty" xml:"EndRange,omitempty" type:"Struct"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The maximum number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序字段
+	// The field that you use to sort the query results. Valid values:
+	//
+	// *   vcoreSeconds: the aggregated number of vCPUs that are allocated to the job multiplied by the number of seconds the job has been running
+	// *   memSeconds: the aggregated amount of memory that is allocated to the job multiplied by the number of seconds the job has been running
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 排序类型
-	OrderType *string   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Queues    []*string `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
-	// 区域ID。
+	// The order in which you want to sort the query results. Valid values:
+	//
+	// *   ASC: the ascending order
+	// *   DESC: the descending order
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The YARN queues to which the jobs are submitted.
+	Queues []*string `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 开始range
+	// The range of start time. You can filter jobs whose start time falls within the specified time range.
 	StartRange *ListDoctorJobsRequestStartRange `json:"StartRange,omitempty" xml:"StartRange,omitempty" type:"Struct"`
-	Types      []*string                        `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-	Users      []*string                        `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// The YARN engines to which the jobs are submitted.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	// The users who submit the jobs.
+	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListDoctorJobsRequest) String() string {
@@ -31895,7 +33328,9 @@ func (s *ListDoctorJobsRequest) SetUsers(v []*string) *ListDoctorJobsRequest {
 }
 
 type ListDoctorJobsRequestEndRange struct {
-	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range during which jobs ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range during which jobs ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -31918,7 +33353,9 @@ func (s *ListDoctorJobsRequestEndRange) SetStartTime(v int64) *ListDoctorJobsReq
 }
 
 type ListDoctorJobsRequestStartRange struct {
-	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range during which jobs were submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range during which jobs were submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -31941,14 +33378,15 @@ func (s *ListDoctorJobsRequestStartRange) SetStartTime(v int64) *ListDoctorJobsR
 }
 
 type ListDoctorJobsResponseBody struct {
+	// The information about the jobs.
 	Data []*ListDoctorJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -31986,18 +33424,40 @@ func (s *ListDoctorJobsResponseBody) SetTotalCount(v int32) *ListDoctorJobsRespo
 }
 
 type ListDoctorJobsResponseBodyData struct {
-	AppId       *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName     *string                                `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ElapsedTime *int64                                 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	FinalStatus *string                                `json:"FinalStatus,omitempty" xml:"FinalStatus,omitempty"`
-	FinishTime  *int64                                 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	LaunchTime  *int64                                 `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	Metrics     *ListDoctorJobsResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	Queue       *string                                `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	StartTime   *int64                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State       *string                                `json:"State,omitempty" xml:"State,omitempty"`
-	Type        *string                                `json:"Type,omitempty" xml:"Type,omitempty"`
-	User        *string                                `json:"User,omitempty" xml:"User,omitempty"`
+	// The ID of the job that was submitted to YARN.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the job.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The total running time of the job. Unit: milliseconds.
+	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	// The final state of the job. Valid values:
+	//
+	// *   SUCCEEDED
+	// *   FAILED
+	// *   KILLED
+	// *   ENDED
+	// *   UNDEFINED
+	FinalStatus *string `json:"FinalStatus,omitempty" xml:"FinalStatus,omitempty"`
+	// The end time of the job. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The time when the job was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	LaunchTime *int64 `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
+	// The data about the metrics.
+	Metrics *ListDoctorJobsResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The YARN queue to which the job was submitted.
+	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The time when the job was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The running state of the job. Valid values:
+	//
+	// *   FINISHED
+	// *   FAILED
+	// *   KILLED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The type of the compute engine.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The username that was used to submit the job.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s ListDoctorJobsResponseBodyData) String() string {
@@ -32069,7 +33529,9 @@ func (s *ListDoctorJobsResponseBodyData) SetUser(v string) *ListDoctorJobsRespon
 }
 
 type ListDoctorJobsResponseBodyDataMetrics struct {
-	MemSeconds   *ListDoctorJobsResponseBodyDataMetricsMemSeconds   `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The amount of memory consumed.
+	MemSeconds *ListDoctorJobsResponseBodyDataMetricsMemSeconds `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The CPU usage.
 	VcoreSeconds *ListDoctorJobsResponseBodyDataMetricsVcoreSeconds `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
 }
 
@@ -32092,10 +33554,14 @@ func (s *ListDoctorJobsResponseBodyDataMetrics) SetVcoreSeconds(v *ListDoctorJob
 }
 
 type ListDoctorJobsResponseBodyDataMetricsMemSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorJobsResponseBodyDataMetricsMemSeconds) String() string {
@@ -32127,10 +33593,14 @@ func (s *ListDoctorJobsResponseBodyDataMetricsMemSeconds) SetValue(v int64) *Lis
 }
 
 type ListDoctorJobsResponseBodyDataMetricsVcoreSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorJobsResponseBodyDataMetricsVcoreSeconds) String() string {
@@ -32162,9 +33632,9 @@ func (s *ListDoctorJobsResponseBodyDataMetricsVcoreSeconds) SetValue(v int64) *L
 }
 
 type ListDoctorJobsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorJobsResponse) String() string {
@@ -32191,18 +33661,31 @@ func (s *ListDoctorJobsResponse) SetBody(v *ListDoctorJobsResponseBody) *ListDoc
 }
 
 type ListDoctorJobsStatsRequest struct {
-	// 集群ID。
-	ClusterId *string                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	EndRange  *ListDoctorJobsStatsRequestEndRange `json:"EndRange,omitempty" xml:"EndRange,omitempty" type:"Struct"`
-	GroupBy   []*string                           `json:"GroupBy,omitempty" xml:"GroupBy,omitempty" type:"Repeated"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The range of end time. You can filter jobs whose end time falls within the specified time range.
+	EndRange *ListDoctorJobsStatsRequestEndRange `json:"EndRange,omitempty" xml:"EndRange,omitempty" type:"Struct"`
+	// The fields that are used for grouping data.
+	//
+	// Currently, only the first value is used for grouping data. Combinations of multiple values will be supported in the future.
+	GroupBy []*string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty" type:"Repeated"`
+	// The maximum number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The field that you use to sort the query results. Valid values:
+	//
+	// *   vcoreSeconds: the aggregated number of vCPUs that are allocated to the job multiplied by the number of seconds the job has been running
+	// *   memSeconds: the aggregated amount of memory that is allocated to the job multiplied by the number of seconds the job has been running
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The order in which you want to sort the query results. Valid values:
+	//
+	// *   ASC: in ascending order
+	// *   DESC: in descending order
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// 区域ID。
-	RegionId   *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The range of start time. You can filter jobs whose start time falls within the specified time range.
 	StartRange *ListDoctorJobsStatsRequestStartRange `json:"StartRange,omitempty" xml:"StartRange,omitempty" type:"Struct"`
 }
 
@@ -32260,7 +33743,9 @@ func (s *ListDoctorJobsStatsRequest) SetStartRange(v *ListDoctorJobsStatsRequest
 }
 
 type ListDoctorJobsStatsRequestEndRange struct {
-	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range during which jobs ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range during which jobs ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -32283,7 +33768,9 @@ func (s *ListDoctorJobsStatsRequestEndRange) SetStartTime(v int64) *ListDoctorJo
 }
 
 type ListDoctorJobsStatsRequestStartRange struct {
-	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range during which jobs were submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range during which jobs were submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -32306,14 +33793,15 @@ func (s *ListDoctorJobsStatsRequestStartRange) SetStartTime(v int64) *ListDoctor
 }
 
 type ListDoctorJobsStatsResponseBody struct {
+	// The summary of job information.
 	Data []*ListDoctorJobsStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -32351,11 +33839,17 @@ func (s *ListDoctorJobsStatsResponseBody) SetTotalCount(v int32) *ListDoctorJobs
 }
 
 type ListDoctorJobsStatsResponseBodyData struct {
-	AppsCount    *ListDoctorJobsStatsResponseBodyDataAppsCount    `json:"AppsCount,omitempty" xml:"AppsCount,omitempty" type:"Struct"`
-	MemSeconds   *ListDoctorJobsStatsResponseBodyDataMemSeconds   `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
-	Queue        *string                                          `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	Type         *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
-	User         *string                                          `json:"User,omitempty" xml:"User,omitempty"`
+	// The total number of jobs.
+	AppsCount *ListDoctorJobsStatsResponseBodyDataAppsCount `json:"AppsCount,omitempty" xml:"AppsCount,omitempty" type:"Struct"`
+	// The aggregated amount of memory that is allocated to the job multiplied by the number of seconds the job has been running.
+	MemSeconds *ListDoctorJobsStatsResponseBodyDataMemSeconds `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The YARN queue to which the job was submitted.
+	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The type of the compute engine.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The username that is used to submit the job.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The aggregated number of vCPUs that are allocated to the job multiplied by the number of seconds the job has been running.
 	VcoreSeconds *ListDoctorJobsStatsResponseBodyDataVcoreSeconds `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
 }
 
@@ -32398,10 +33892,14 @@ func (s *ListDoctorJobsStatsResponseBodyData) SetVcoreSeconds(v *ListDoctorJobsS
 }
 
 type ListDoctorJobsStatsResponseBodyDataAppsCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorJobsStatsResponseBodyDataAppsCount) String() string {
@@ -32433,10 +33931,14 @@ func (s *ListDoctorJobsStatsResponseBodyDataAppsCount) SetValue(v int64) *ListDo
 }
 
 type ListDoctorJobsStatsResponseBodyDataMemSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorJobsStatsResponseBodyDataMemSeconds) String() string {
@@ -32468,10 +33970,14 @@ func (s *ListDoctorJobsStatsResponseBodyDataMemSeconds) SetValue(v int64) *ListD
 }
 
 type ListDoctorJobsStatsResponseBodyDataVcoreSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorJobsStatsResponseBodyDataVcoreSeconds) String() string {
@@ -32503,9 +34009,9 @@ func (s *ListDoctorJobsStatsResponseBodyDataVcoreSeconds) SetValue(v int64) *Lis
 }
 
 type ListDoctorJobsStatsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorJobsStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorJobsStatsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorJobsStatsResponse) String() string {
@@ -32532,13 +34038,13 @@ func (s *ListDoctorJobsStatsResponse) SetBody(v *ListDoctorJobsStatsResponseBody
 }
 
 type ListDoctorReportsRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -32571,14 +34077,15 @@ func (s *ListDoctorReportsRequest) SetRegionId(v string) *ListDoctorReportsReque
 }
 
 type ListDoctorReportsResponseBody struct {
+	// The reports.
 	Data []*ListDoctorReportsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -32616,9 +34123,62 @@ func (s *ListDoctorReportsResponseBody) SetTotalCount(v int32) *ListDoctorReport
 }
 
 type ListDoctorReportsResponseBodyData struct {
-	ComponentTypes []*string                                       `json:"ComponentTypes,omitempty" xml:"ComponentTypes,omitempty" type:"Repeated"`
-	DateTime       *string                                         `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	SummaryReport  *ListDoctorReportsResponseBodyDataSummaryReport `json:"SummaryReport,omitempty" xml:"SummaryReport,omitempty" type:"Struct"`
+	// The component types.
+	//
+	// Valid values:
+	//
+	// *   compute
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   hive
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   hdfs
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   yarn
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   oss
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   hbase
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	ComponentTypes []*string `json:"ComponentTypes,omitempty" xml:"ComponentTypes,omitempty" type:"Repeated"`
+	// The date on which the report was generated.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The summary of the report.
+	SummaryReport *ListDoctorReportsResponseBodyDataSummaryReport `json:"SummaryReport,omitempty" xml:"SummaryReport,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorReportsResponseBodyData) String() string {
@@ -32645,9 +34205,12 @@ func (s *ListDoctorReportsResponseBodyData) SetSummaryReport(v *ListDoctorReport
 }
 
 type ListDoctorReportsResponseBodyDataSummaryReport struct {
-	Score      *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The score.
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The optimization suggestion.
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	Summary    *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The summary of the report.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s ListDoctorReportsResponseBodyDataSummaryReport) String() string {
@@ -32674,9 +34237,9 @@ func (s *ListDoctorReportsResponseBodyDataSummaryReport) SetSummary(v string) *L
 }
 
 type ListDoctorReportsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDoctorReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDoctorReportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDoctorReportsResponse) String() string {
@@ -32853,9 +34416,9 @@ func (s *ListInstanceTypesResponseBody) SetTotalCount(v int32) *ListInstanceType
 }
 
 type ListInstanceTypesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceTypesResponse) String() string {
@@ -32995,9 +34558,9 @@ func (s *ListNodeGroupsResponseBody) SetTotalCount(v int32) *ListNodeGroupsRespo
 }
 
 type ListNodeGroupsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNodeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNodeGroupsResponse) String() string {
@@ -33158,9 +34721,9 @@ func (s *ListNodesResponseBody) SetTotalCount(v int32) *ListNodesResponseBody {
 }
 
 type ListNodesResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNodesResponse) String() string {
@@ -33191,7 +34754,7 @@ type ListReleaseVersionsRequest struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The type of the IaaS resource.
 	IaasType *string `json:"IaasType,omitempty" xml:"IaasType,omitempty"`
-	// The ID of the region in which you want to create the instance.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -33222,7 +34785,8 @@ type ListReleaseVersionsResponseBody struct {
 	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// Returns the location of the data that was read.
-	NextToken       *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The major EMR versions.
 	ReleaseVersions []*ListReleaseVersionsResponseBodyReleaseVersions `json:"ReleaseVersions,omitempty" xml:"ReleaseVersions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -33264,13 +34828,11 @@ func (s *ListReleaseVersionsResponseBody) SetTotalCount(v int32) *ListReleaseVer
 }
 
 type ListReleaseVersionsResponseBodyReleaseVersions struct {
-	// IaaS类型。取值范围：
-	// - ECS：基于ECS构建。
-	// - K8S：基于K8S构建。
+	// The IaaS type.
 	IaasType *string `json:"IaasType,omitempty" xml:"IaasType,omitempty"`
-	// EMR发行版。
+	// The EMR version.
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// 版本序列。
+	// The version series.
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
 }
 
@@ -33298,9 +34860,9 @@ func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetSeries(v string) *Li
 }
 
 type ListReleaseVersionsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListReleaseVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListReleaseVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListReleaseVersionsResponse) String() string {
@@ -33465,9 +35027,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -33559,9 +35121,9 @@ func (s *PutAutoScalingPolicyResponseBody) SetRequestId(v string) *PutAutoScalin
 }
 
 type PutAutoScalingPolicyResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PutAutoScalingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutAutoScalingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutAutoScalingPolicyResponse) String() string {
@@ -33583,6 +35145,427 @@ func (s *PutAutoScalingPolicyResponse) SetStatusCode(v int32) *PutAutoScalingPol
 }
 
 func (s *PutAutoScalingPolicyResponse) SetBody(v *PutAutoScalingPolicyResponseBody) *PutAutoScalingPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type QueryApmComponentsRequest struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Provider  *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s QueryApmComponentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmComponentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmComponentsRequest) SetClusterId(v string) *QueryApmComponentsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *QueryApmComponentsRequest) SetProvider(v string) *QueryApmComponentsRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *QueryApmComponentsRequest) SetRegionId(v string) *QueryApmComponentsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryApmComponentsRequest) SetResourceGroupId(v string) *QueryApmComponentsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type QueryApmComponentsResponseBody struct {
+	// Created on 2022/7/11 5:27 PM
+	Data *QueryApmComponentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryApmComponentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmComponentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmComponentsResponseBody) SetData(v *QueryApmComponentsResponseBodyData) *QueryApmComponentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryApmComponentsResponseBody) SetRequestId(v string) *QueryApmComponentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryApmComponentsResponseBodyData struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s QueryApmComponentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmComponentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmComponentsResponseBodyData) SetData(v string) *QueryApmComponentsResponseBodyData {
+	s.Data = &v
+	return s
+}
+
+type QueryApmComponentsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryApmComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryApmComponentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmComponentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmComponentsResponse) SetHeaders(v map[string]*string) *QueryApmComponentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryApmComponentsResponse) SetStatusCode(v int32) *QueryApmComponentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryApmComponentsResponse) SetBody(v *QueryApmComponentsResponseBody) *QueryApmComponentsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryApmGrafanaDataRequest struct {
+	// 集群ID。
+	ClusterId   *string                                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DashboardId *string                                `json:"DashboardId,omitempty" xml:"DashboardId,omitempty"`
+	End         *string                                `json:"End,omitempty" xml:"End,omitempty"`
+	Provider    *string                                `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Query       *string                                `json:"Query,omitempty" xml:"Query,omitempty"`
+	QueryParams *QueryApmGrafanaDataRequestQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Struct"`
+	QueryUrl    *string                                `json:"QueryUrl,omitempty" xml:"QueryUrl,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
+	ResourceGroupId *string            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Start           *string            `json:"Start,omitempty" xml:"Start,omitempty"`
+	Step            *string            `json:"Step,omitempty" xml:"Step,omitempty"`
+	Time            *string            `json:"Time,omitempty" xml:"Time,omitempty"`
+	Variables       map[string]*string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+}
+
+func (s QueryApmGrafanaDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmGrafanaDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmGrafanaDataRequest) SetClusterId(v string) *QueryApmGrafanaDataRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetDashboardId(v string) *QueryApmGrafanaDataRequest {
+	s.DashboardId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetEnd(v string) *QueryApmGrafanaDataRequest {
+	s.End = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetProvider(v string) *QueryApmGrafanaDataRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetQuery(v string) *QueryApmGrafanaDataRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetQueryParams(v *QueryApmGrafanaDataRequestQueryParams) *QueryApmGrafanaDataRequest {
+	s.QueryParams = v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetQueryUrl(v string) *QueryApmGrafanaDataRequest {
+	s.QueryUrl = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetRegionId(v string) *QueryApmGrafanaDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetResourceGroupId(v string) *QueryApmGrafanaDataRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetStart(v string) *QueryApmGrafanaDataRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetStep(v string) *QueryApmGrafanaDataRequest {
+	s.Step = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetTime(v string) *QueryApmGrafanaDataRequest {
+	s.Time = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequest) SetVariables(v map[string]*string) *QueryApmGrafanaDataRequest {
+	s.Variables = v
+	return s
+}
+
+type QueryApmGrafanaDataRequestQueryParams struct {
+	PanelId      *int64  `json:"PanelId,omitempty" xml:"PanelId,omitempty"`
+	RefId        *string `json:"RefId,omitempty" xml:"RefId,omitempty"`
+	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+}
+
+func (s QueryApmGrafanaDataRequestQueryParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmGrafanaDataRequestQueryParams) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmGrafanaDataRequestQueryParams) SetPanelId(v int64) *QueryApmGrafanaDataRequestQueryParams {
+	s.PanelId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequestQueryParams) SetRefId(v string) *QueryApmGrafanaDataRequestQueryParams {
+	s.RefId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataRequestQueryParams) SetVariableName(v string) *QueryApmGrafanaDataRequestQueryParams {
+	s.VariableName = &v
+	return s
+}
+
+type QueryApmGrafanaDataShrinkRequest struct {
+	// 集群ID。
+	ClusterId   *string                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DashboardId *string                                      `json:"DashboardId,omitempty" xml:"DashboardId,omitempty"`
+	End         *string                                      `json:"End,omitempty" xml:"End,omitempty"`
+	Provider    *string                                      `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Query       *string                                      `json:"Query,omitempty" xml:"Query,omitempty"`
+	QueryParams *QueryApmGrafanaDataShrinkRequestQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Struct"`
+	QueryUrl    *string                                      `json:"QueryUrl,omitempty" xml:"QueryUrl,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Start           *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Step            *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	Time            *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	VariablesShrink *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+}
+
+func (s QueryApmGrafanaDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmGrafanaDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetClusterId(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetDashboardId(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.DashboardId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetEnd(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.End = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetProvider(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetQuery(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetQueryParams(v *QueryApmGrafanaDataShrinkRequestQueryParams) *QueryApmGrafanaDataShrinkRequest {
+	s.QueryParams = v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetQueryUrl(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.QueryUrl = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetRegionId(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetResourceGroupId(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetStart(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetStep(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.Step = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetTime(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.Time = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequest) SetVariablesShrink(v string) *QueryApmGrafanaDataShrinkRequest {
+	s.VariablesShrink = &v
+	return s
+}
+
+type QueryApmGrafanaDataShrinkRequestQueryParams struct {
+	PanelId      *int64  `json:"PanelId,omitempty" xml:"PanelId,omitempty"`
+	RefId        *string `json:"RefId,omitempty" xml:"RefId,omitempty"`
+	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+}
+
+func (s QueryApmGrafanaDataShrinkRequestQueryParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmGrafanaDataShrinkRequestQueryParams) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmGrafanaDataShrinkRequestQueryParams) SetPanelId(v int64) *QueryApmGrafanaDataShrinkRequestQueryParams {
+	s.PanelId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequestQueryParams) SetRefId(v string) *QueryApmGrafanaDataShrinkRequestQueryParams {
+	s.RefId = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataShrinkRequestQueryParams) SetVariableName(v string) *QueryApmGrafanaDataShrinkRequestQueryParams {
+	s.VariableName = &v
+	return s
+}
+
+type QueryApmGrafanaDataResponseBody struct {
+	Data *QueryApmGrafanaDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryApmGrafanaDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmGrafanaDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmGrafanaDataResponseBody) SetData(v *QueryApmGrafanaDataResponseBodyData) *QueryApmGrafanaDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryApmGrafanaDataResponseBody) SetRequestId(v string) *QueryApmGrafanaDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryApmGrafanaDataResponseBodyData struct {
+	QueryGrafanaData *string `json:"QueryGrafanaData,omitempty" xml:"QueryGrafanaData,omitempty"`
+}
+
+func (s QueryApmGrafanaDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmGrafanaDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmGrafanaDataResponseBodyData) SetQueryGrafanaData(v string) *QueryApmGrafanaDataResponseBodyData {
+	s.QueryGrafanaData = &v
+	return s
+}
+
+type QueryApmGrafanaDataResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryApmGrafanaDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryApmGrafanaDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApmGrafanaDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApmGrafanaDataResponse) SetHeaders(v map[string]*string) *QueryApmGrafanaDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryApmGrafanaDataResponse) SetStatusCode(v int32) *QueryApmGrafanaDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryApmGrafanaDataResponse) SetBody(v *QueryApmGrafanaDataResponseBody) *QueryApmGrafanaDataResponse {
 	s.Body = v
 	return s
 }
@@ -33638,9 +35621,9 @@ func (s *RemoveAutoScalingPolicyResponseBody) SetRequestId(v string) *RemoveAuto
 }
 
 type RemoveAutoScalingPolicyResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveAutoScalingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveAutoScalingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveAutoScalingPolicyResponse) String() string {
@@ -33679,7 +35662,7 @@ type RunApplicationActionRequest struct {
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
 	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the operation.
+	// The operation object.
 	ComponentInstanceSelector *ComponentInstanceSelector `json:"ComponentInstanceSelector,omitempty" xml:"ComponentInstanceSelector,omitempty"`
 	// The description of the execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -33750,6 +35733,8 @@ func (s *RunApplicationActionRequest) SetRollingExecute(v bool) *RunApplicationA
 }
 
 type RunApplicationActionResponseBody struct {
+	// The abnormal nodes.
+	AbnInstances []*RunApplicationActionResponseBodyAbnInstances `json:"AbnInstances,omitempty" xml:"AbnInstances,omitempty" type:"Repeated"`
 	// The operation ID.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
 	// The request ID.
@@ -33764,6 +35749,11 @@ func (s RunApplicationActionResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RunApplicationActionResponseBody) SetAbnInstances(v []*RunApplicationActionResponseBodyAbnInstances) *RunApplicationActionResponseBody {
+	s.AbnInstances = v
+	return s
+}
+
 func (s *RunApplicationActionResponseBody) SetOperationId(v string) *RunApplicationActionResponseBody {
 	s.OperationId = &v
 	return s
@@ -33774,10 +35764,33 @@ func (s *RunApplicationActionResponseBody) SetRequestId(v string) *RunApplicatio
 	return s
 }
 
+type RunApplicationActionResponseBodyAbnInstances struct {
+	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+}
+
+func (s RunApplicationActionResponseBodyAbnInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunApplicationActionResponseBodyAbnInstances) GoString() string {
+	return s.String()
+}
+
+func (s *RunApplicationActionResponseBodyAbnInstances) SetNodeId(v string) *RunApplicationActionResponseBodyAbnInstances {
+	s.NodeId = &v
+	return s
+}
+
+func (s *RunApplicationActionResponseBodyAbnInstances) SetNodeName(v string) *RunApplicationActionResponseBodyAbnInstances {
+	s.NodeName = &v
+	return s
+}
+
 type RunApplicationActionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RunApplicationActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunApplicationActionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RunApplicationActionResponse) String() string {
@@ -33863,9 +35876,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -33961,9 +35974,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -33990,7 +36003,7 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateApplicationConfigsRequest struct {
-	// The list of application configurations.
+	// The application configurations.
 	ApplicationConfigs []*UpdateApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
 	// The application name.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
@@ -34009,7 +36022,7 @@ type UpdateApplicationConfigsRequest struct {
 	ConfigScope *string `json:"ConfigScope,omitempty" xml:"ConfigScope,omitempty"`
 	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	// The node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
@@ -34096,9 +36109,9 @@ func (s *UpdateApplicationConfigsResponseBody) SetRequestId(v string) *UpdateApp
 }
 
 type UpdateApplicationConfigsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateApplicationConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateApplicationConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateApplicationConfigsResponse) String() string {
@@ -34472,6 +36485,135 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 	return _result, _err
 }
 
+func (client *Client) GetApmDataWithOptions(request *GetApmDataRequest, runtime *util.RuntimeOptions) (_result *GetApmDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentName)) {
+		query["ComponentName"] = request.ComponentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApmData"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApmDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetApmData(request *GetApmDataRequest) (_result *GetApmDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApmDataResponse{}
+	_body, _err := client.GetApmDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * 查询应用详情。
+ *
+ * @param request GetApplicationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetApplicationResponse
+ */
+func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, runtime *util.RuntimeOptions) (_result *GetApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplication"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 查询应用详情。
+ *
+ * @param request GetApplicationRequest
+ * @return GetApplicationResponse
+ */
+func (client *Client) GetApplication(request *GetApplicationRequest) (_result *GetApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApplicationResponse{}
+	_body, _err := client.GetApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * 获取弹性伸缩活动详情。
  *
@@ -34602,13 +36744,6 @@ func (client *Client) GetAutoScalingPolicy(request *GetAutoScalingPolicyRequest)
 	return _result, _err
 }
 
-/**
- * 调用GetCluster获取集群详情。
- *
- * @param request GetClusterRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetClusterResponse
- */
 func (client *Client) GetClusterWithOptions(request *GetClusterRequest, runtime *util.RuntimeOptions) (_result *GetClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34646,12 +36781,6 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, runtime 
 	return _result, _err
 }
 
-/**
- * 调用GetCluster获取集群详情。
- *
- * @param request GetClusterRequest
- * @return GetClusterResponse
- */
 func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClusterResponse{}
@@ -35832,13 +37961,6 @@ func (client *Client) IncreaseNodes(request *IncreaseNodesRequest) (_result *Inc
 	return _result, _err
 }
 
-/**
- * 加入资源组。
- *
- * @param request JoinResourceGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return JoinResourceGroupResponse
- */
 func (client *Client) JoinResourceGroupWithOptions(request *JoinResourceGroupRequest, runtime *util.RuntimeOptions) (_result *JoinResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35884,16 +38006,66 @@ func (client *Client) JoinResourceGroupWithOptions(request *JoinResourceGroupReq
 	return _result, _err
 }
 
-/**
- * 加入资源组。
- *
- * @param request JoinResourceGroupRequest
- * @return JoinResourceGroupResponse
- */
 func (client *Client) JoinResourceGroup(request *JoinResourceGroupRequest) (_result *JoinResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &JoinResourceGroupResponse{}
 	_body, _err := client.JoinResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListApmMetadataWithOptions(request *ListApmMetadataRequest, runtime *util.RuntimeOptions) (_result *ListApmMetadataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApmMetadata"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApmMetadataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApmMetadata(request *ListApmMetadataRequest) (_result *ListApmMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApmMetadataResponse{}
+	_body, _err := client.ListApmMetadataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36233,6 +38405,180 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 	runtime := &util.RuntimeOptions{}
 	_result = &ListClustersResponse{}
 	_body, _err := client.ListClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * 查询组件实例列表。
+ *
+ * @param request ListComponentInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListComponentInstancesResponse
+ */
+func (client *Client) ListComponentInstancesWithOptions(request *ListComponentInstancesRequest, runtime *util.RuntimeOptions) (_result *ListComponentInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationNames)) {
+		query["ApplicationNames"] = request.ApplicationNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentNames)) {
+		query["ComponentNames"] = request.ComponentNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentStates)) {
+		query["ComponentStates"] = request.ComponentStates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		query["NodeIds"] = request.NodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeNames)) {
+		query["NodeNames"] = request.NodeNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListComponentInstances"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListComponentInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 查询组件实例列表。
+ *
+ * @param request ListComponentInstancesRequest
+ * @return ListComponentInstancesResponse
+ */
+func (client *Client) ListComponentInstances(request *ListComponentInstancesRequest) (_result *ListComponentInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListComponentInstancesResponse{}
+	_body, _err := client.ListComponentInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * 查询组件列表。
+ *
+ * @param request ListComponentsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListComponentsResponse
+ */
+func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, runtime *util.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationNames)) {
+		query["ApplicationNames"] = request.ApplicationNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentNames)) {
+		query["ComponentNames"] = request.ComponentNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentStates)) {
+		query["ComponentStates"] = request.ComponentStates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeExpiredConfig)) {
+		query["IncludeExpiredConfig"] = request.IncludeExpiredConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListComponents"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListComponentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 查询组件列表。
+ *
+ * @param request ListComponentsRequest
+ * @return ListComponentsResponse
+ */
+func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListComponentsResponse{}
+	_body, _err := client.ListComponentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37275,13 +39621,6 @@ func (client *Client) ListInstanceTypes(request *ListInstanceTypesRequest) (_res
 	return _result, _err
 }
 
-/**
- * 查询节点组。
- *
- * @param request ListNodeGroupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListNodeGroupsResponse
- */
 func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, runtime *util.RuntimeOptions) (_result *ListNodeGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37343,12 +39682,6 @@ func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, 
 	return _result, _err
 }
 
-/**
- * 查询节点组。
- *
- * @param request ListNodeGroupsRequest
- * @return ListNodeGroupsResponse
- */
 func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *ListNodeGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNodeGroupsResponse{}
@@ -37360,13 +39693,6 @@ func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *L
 	return _result, _err
 }
 
-/**
- * 查询节点。
- *
- * @param request ListNodesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListNodesResponse
- */
 func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *util.RuntimeOptions) (_result *ListNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37440,12 +39766,6 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * 查询节点。
- *
- * @param request ListNodesRequest
- * @return ListNodesResponse
- */
 func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNodesResponse{}
@@ -37587,7 +39907,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 }
 
 /**
- * 设置弹性伸缩规则。
+ * You can call this operation to configure auto scaling policies.
  *
  * @param request PutAutoScalingPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37643,7 +39963,7 @@ func (client *Client) PutAutoScalingPolicyWithOptions(request *PutAutoScalingPol
 }
 
 /**
- * 设置弹性伸缩规则。
+ * You can call this operation to configure auto scaling policies.
  *
  * @param request PutAutoScalingPolicyRequest
  * @return PutAutoScalingPolicyResponse
@@ -37652,6 +39972,160 @@ func (client *Client) PutAutoScalingPolicy(request *PutAutoScalingPolicyRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &PutAutoScalingPolicyResponse{}
 	_body, _err := client.PutAutoScalingPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryApmComponentsWithOptions(request *QueryApmComponentsRequest, runtime *util.RuntimeOptions) (_result *QueryApmComponentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryApmComponents"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryApmComponentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryApmComponents(request *QueryApmComponentsRequest) (_result *QueryApmComponentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryApmComponentsResponse{}
+	_body, _err := client.QueryApmComponentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryApmGrafanaDataWithOptions(tmpReq *QueryApmGrafanaDataRequest, runtime *util.RuntimeOptions) (_result *QueryApmGrafanaDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryApmGrafanaDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Variables)) {
+		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, tea.String("Variables"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DashboardId)) {
+		query["DashboardId"] = request.DashboardId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		query["End"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryParams)) {
+		query["QueryParams"] = request.QueryParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryUrl)) {
+		query["QueryUrl"] = request.QueryUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["Start"] = request.Start
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Step)) {
+		query["Step"] = request.Step
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Time)) {
+		query["Time"] = request.Time
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VariablesShrink)) {
+		query["Variables"] = request.VariablesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryApmGrafanaData"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryApmGrafanaDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryApmGrafanaData(request *QueryApmGrafanaDataRequest) (_result *QueryApmGrafanaDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryApmGrafanaDataResponse{}
+	_body, _err := client.QueryApmGrafanaDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37711,13 +40185,6 @@ func (client *Client) RemoveAutoScalingPolicy(request *RemoveAutoScalingPolicyRe
 	return _result, _err
 }
 
-/**
- * 执行应用操作。
- *
- * @param request RunApplicationActionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RunApplicationActionResponse
- */
 func (client *Client) RunApplicationActionWithOptions(request *RunApplicationActionRequest, runtime *util.RuntimeOptions) (_result *RunApplicationActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37783,12 +40250,6 @@ func (client *Client) RunApplicationActionWithOptions(request *RunApplicationAct
 	return _result, _err
 }
 
-/**
- * 执行应用操作。
- *
- * @param request RunApplicationActionRequest
- * @return RunApplicationActionResponse
- */
 func (client *Client) RunApplicationAction(request *RunApplicationActionRequest) (_result *RunApplicationActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RunApplicationActionResponse{}
