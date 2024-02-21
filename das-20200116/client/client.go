@@ -391,9 +391,9 @@ func (s *AddHDMInstanceResponseBodyData) SetVpcId(v string) *AddHDMInstanceRespo
 }
 
 type AddHDMInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddHDMInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddHDMInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddHDMInstanceResponse) String() string {
@@ -566,9 +566,9 @@ func (s *CreateAdamBenchTaskResponseBody) SetSuccess(v string) *CreateAdamBenchT
 }
 
 type CreateAdamBenchTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAdamBenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAdamBenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAdamBenchTaskResponse) String() string {
@@ -836,9 +836,9 @@ func (s *CreateCacheAnalysisJobResponseBodyDataBigKeysKeyInfo) SetType(v string)
 }
 
 type CreateCacheAnalysisJobResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCacheAnalysisJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCacheAnalysisJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCacheAnalysisJobResponse) String() string {
@@ -1171,9 +1171,9 @@ func (s *CreateCloudBenchTasksResponseBodyData) SetTaskIds(v []*string) *CreateC
 }
 
 type CreateCloudBenchTasksResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCloudBenchTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCloudBenchTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCloudBenchTasksResponse) String() string {
@@ -1285,9 +1285,9 @@ func (s *CreateDiagnosticReportResponseBody) SetSuccess(v string) *CreateDiagnos
 }
 
 type CreateDiagnosticReportResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDiagnosticReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDiagnosticReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDiagnosticReportResponse) String() string {
@@ -1438,9 +1438,9 @@ func (s *CreateKillInstanceSessionTaskResponseBody) SetSuccess(v bool) *CreateKi
 }
 
 type CreateKillInstanceSessionTaskResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateKillInstanceSessionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateKillInstanceSessionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateKillInstanceSessionTaskResponse) String() string {
@@ -1549,9 +1549,9 @@ func (s *CreateKillInstanceSessionTaskWithMaintainUserResponseBody) SetSuccess(v
 }
 
 type CreateKillInstanceSessionTaskWithMaintainUserResponse struct {
-	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateKillInstanceSessionTaskWithMaintainUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateKillInstanceSessionTaskWithMaintainUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateKillInstanceSessionTaskWithMaintainUserResponse) String() string {
@@ -1699,9 +1699,9 @@ func (s *CreateQueryOptimizeTagResponseBody) SetSuccess(v string) *CreateQueryOp
 }
 
 type CreateQueryOptimizeTagResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateQueryOptimizeTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateQueryOptimizeTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateQueryOptimizeTagResponse) String() string {
@@ -1820,9 +1820,9 @@ func (s *CreateRequestDiagnosisResponseBody) SetSuccess(v string) *CreateRequest
 }
 
 type CreateRequestDiagnosisResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRequestDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRequestDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRequestDiagnosisResponse) String() string {
@@ -1849,10 +1849,16 @@ func (s *CreateRequestDiagnosisResponse) SetBody(v *CreateRequestDiagnosisRespon
 }
 
 type CreateStorageAnalysisTaskRequest struct {
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The database name. If you specify a database, the operation analyzes the storage usage of the specified database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The node ID.
+	//
+	// >  This parameter is reserved.
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The table name. If you specify a table in the specified database, the operation analyzes the storage usage of the specified table. If you specify a table, you must also specify the database to which the table belongs by using **DbName**.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s CreateStorageAnalysisTaskRequest) String() string {
@@ -1884,11 +1890,21 @@ func (s *CreateStorageAnalysisTaskRequest) SetTableName(v string) *CreateStorage
 }
 
 type CreateStorageAnalysisTaskResponseBody struct {
-	Code      *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateStorageAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *CreateStorageAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateStorageAnalysisTaskResponseBody) String() string {
@@ -1925,9 +1941,15 @@ func (s *CreateStorageAnalysisTaskResponseBody) SetSuccess(v bool) *CreateStorag
 }
 
 type CreateStorageAnalysisTaskResponseBodyData struct {
-	CreateTaskSuccess *bool   `json:"CreateTaskSuccess,omitempty" xml:"CreateTaskSuccess,omitempty"`
-	ErrorMessage      *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the task is created. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	CreateTaskSuccess *bool `json:"CreateTaskSuccess,omitempty" xml:"CreateTaskSuccess,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateStorageAnalysisTaskResponseBodyData) String() string {
@@ -1954,9 +1976,9 @@ func (s *CreateStorageAnalysisTaskResponseBodyData) SetTaskId(v string) *CreateS
 }
 
 type CreateStorageAnalysisTaskResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateStorageAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateStorageAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateStorageAnalysisTaskResponse) String() string {
@@ -2052,9 +2074,9 @@ func (s *DeleteCloudBenchTaskResponseBody) SetSuccess(v string) *DeleteCloudBenc
 }
 
 type DeleteCloudBenchTaskResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCloudBenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCloudBenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCloudBenchTaskResponse) String() string {
@@ -2156,9 +2178,9 @@ func (s *DeleteStopGatewayResponseBody) SetSuccess(v string) *DeleteStopGatewayR
 }
 
 type DeleteStopGatewayResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteStopGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteStopGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteStopGatewayResponse) String() string {
@@ -2634,9 +2656,9 @@ func (s *DescribeAutoScalingConfigResponseBodyDataStorage) SetUpgrade(v bool) *D
 }
 
 type DescribeAutoScalingConfigResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAutoScalingConfigResponse) String() string {
@@ -2904,9 +2926,9 @@ func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetTaskTime(v in
 }
 
 type DescribeAutoScalingHistoryResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAutoScalingHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAutoScalingHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAutoScalingHistoryResponse) String() string {
@@ -3496,9 +3518,9 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo) SetTyp
 }
 
 type DescribeCacheAnalysisJobResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCacheAnalysisJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCacheAnalysisJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobResponse) String() string {
@@ -3833,9 +3855,9 @@ func (s *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeysKey
 }
 
 type DescribeCacheAnalysisJobsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCacheAnalysisJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCacheAnalysisJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobsResponse) String() string {
@@ -4432,9 +4454,9 @@ func (s *DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks) SetWorkDir(
 }
 
 type DescribeCloudBenchTasksResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCloudBenchTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudBenchTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCloudBenchTasksResponse) String() string {
@@ -4921,9 +4943,9 @@ func (s *DescribeCloudbenchTaskResponseBodyData) SetWorkDir(v string) *DescribeC
 }
 
 type DescribeCloudbenchTaskResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCloudbenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudbenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCloudbenchTaskResponse) String() string {
@@ -5149,9 +5171,9 @@ func (s *DescribeCloudbenchTaskConfigResponseBodyData) SetWorkDir(v string) *Des
 }
 
 type DescribeCloudbenchTaskConfigResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCloudbenchTaskConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudbenchTaskConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCloudbenchTaskConfigResponse) String() string {
@@ -5290,9 +5312,9 @@ func (s *DescribeDiagnosticReportListResponseBody) SetSynchro(v string) *Describ
 }
 
 type DescribeDiagnosticReportListResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDiagnosticReportListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiagnosticReportListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDiagnosticReportListResponse) String() string {
@@ -5572,9 +5594,9 @@ func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) SetNodeId(v string) *D
 }
 
 type DescribeHotBigKeysResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHotBigKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHotBigKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHotBigKeysResponse) String() string {
@@ -5740,9 +5762,9 @@ func (s *DescribeHotKeysResponseBodyDataHotKey) SetSize(v int64) *DescribeHotKey
 }
 
 type DescribeHotKeysResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHotKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHotKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHotKeysResponse) String() string {
@@ -5841,9 +5863,9 @@ func (s *DescribeInstanceDasProResponseBody) SetSuccess(v string) *DescribeInsta
 }
 
 type DescribeInstanceDasProResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceDasProResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceDasProResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceDasProResponse) String() string {
@@ -6038,9 +6060,9 @@ func (s *DescribeTopBigKeysResponseBodyDataBigKey) SetSize(v int64) *DescribeTop
 }
 
 type DescribeTopBigKeysResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTopBigKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTopBigKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTopBigKeysResponse) String() string {
@@ -6240,9 +6262,9 @@ func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetNodeId(v string) *Describe
 }
 
 type DescribeTopHotKeysResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTopHotKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTopHotKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTopHotKeysResponse) String() string {
@@ -6347,9 +6369,9 @@ func (s *DisableAllSqlConcurrencyControlRulesResponseBody) SetSuccess(v string) 
 }
 
 type DisableAllSqlConcurrencyControlRulesResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableAllSqlConcurrencyControlRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableAllSqlConcurrencyControlRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableAllSqlConcurrencyControlRulesResponse) String() string {
@@ -6565,9 +6587,9 @@ func (s *DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceLi
 }
 
 type DisableAutoResourceOptimizeRulesResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableAutoResourceOptimizeRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableAutoResourceOptimizeRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableAutoResourceOptimizeRulesResponse) String() string {
@@ -6783,9 +6805,9 @@ func (s *DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList) SetI
 }
 
 type DisableAutoThrottleRulesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableAutoThrottleRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableAutoThrottleRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableAutoThrottleRulesResponse) String() string {
@@ -6897,9 +6919,9 @@ func (s *DisableDasProResponseBody) SetSynchro(v string) *DisableDasProResponseB
 }
 
 type DisableDasProResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableDasProResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableDasProResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableDasProResponse) String() string {
@@ -7013,9 +7035,9 @@ func (s *DisableInstanceDasConfigResponseBody) SetSuccess(v string) *DisableInst
 }
 
 type DisableInstanceDasConfigResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableInstanceDasConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableInstanceDasConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableInstanceDasConfigResponse) String() string {
@@ -7127,9 +7149,9 @@ func (s *DisableSqlConcurrencyControlResponseBody) SetSuccess(v string) *Disable
 }
 
 type DisableSqlConcurrencyControlResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableSqlConcurrencyControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableSqlConcurrencyControlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableSqlConcurrencyControlResponse) String() string {
@@ -7254,9 +7276,9 @@ func (s *EnableDasProResponseBody) SetSynchro(v string) *EnableDasProResponseBod
 }
 
 type EnableDasProResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableDasProResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableDasProResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableDasProResponse) String() string {
@@ -7399,9 +7421,9 @@ func (s *EnableSqlConcurrencyControlResponseBody) SetSuccess(v string) *EnableSq
 }
 
 type EnableSqlConcurrencyControlResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableSqlConcurrencyControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableSqlConcurrencyControlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableSqlConcurrencyControlResponse) String() string {
@@ -7629,9 +7651,9 @@ func (s *GetAsyncErrorRequestListByCodeResponseBodyDataResult) SetSqlId(v string
 }
 
 type GetAsyncErrorRequestListByCodeResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncErrorRequestListByCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncErrorRequestListByCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncErrorRequestListByCodeResponse) String() string {
@@ -7866,9 +7888,9 @@ func (s *GetAsyncErrorRequestStatByCodeResponseBodyDataResult) SetInstanceId(v s
 }
 
 type GetAsyncErrorRequestStatByCodeResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncErrorRequestStatByCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncErrorRequestStatByCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatByCodeResponse) String() string {
@@ -8078,9 +8100,9 @@ func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetTimestamp(v int64) *
 }
 
 type GetAsyncErrorRequestStatResultResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncErrorRequestStatResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncErrorRequestStatResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatResultResponse) String() string {
@@ -8107,10 +8129,19 @@ func (s *GetAsyncErrorRequestStatResultResponse) SetBody(v *GetAsyncErrorRequest
 }
 
 type GetAutoIncrementUsageStatisticRequest struct {
-	DbNames     *string  `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The database name. If you specify a database, the operation queries the usage of auto-increment table IDs in the specified database. Otherwise, the operation queries the usage of auto-increment table IDs in all databases on the instance.
+	//
+	// >  Specify the parameter value as a JSON array, such as \[\"db1\",\"db2\"]. Separate multiple database names with commas (,).
+	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The usage threshold of auto-increment IDs. Only usage that exceeds the threshold can be returned. Valid values are decimals that range from 0 to 1.
 	RatioFilter *float64 `json:"RatioFilter,omitempty" xml:"RatioFilter,omitempty"`
-	RealTime    *bool    `json:"RealTime,omitempty" xml:"RealTime,omitempty"`
+	// Specifies whether to query real-time data. Valid values:
+	//
+	// *   **true**: queries data in real time except for data generated in the last 10 minutes.****
+	// *   **false**: queries data generated in the last 2 hours. If no such data exists, queries the latest data.
+	RealTime *bool `json:"RealTime,omitempty" xml:"RealTime,omitempty"`
 }
 
 func (s GetAutoIncrementUsageStatisticRequest) String() string {
@@ -8142,11 +8173,21 @@ func (s *GetAutoIncrementUsageStatisticRequest) SetRealTime(v bool) *GetAutoIncr
 }
 
 type GetAutoIncrementUsageStatisticResponseBody struct {
-	Code      *int64                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAutoIncrementUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetAutoIncrementUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAutoIncrementUsageStatisticResponseBody) String() string {
@@ -8183,11 +8224,24 @@ func (s *GetAutoIncrementUsageStatisticResponseBody) SetSuccess(v bool) *GetAuto
 }
 
 type GetAutoIncrementUsageStatisticResponseBodyData struct {
+	// The usage details of auto-increment IDs.
 	AutoIncrementUsageList []*GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList `json:"AutoIncrementUsageList,omitempty" xml:"AutoIncrementUsageList,omitempty" type:"Repeated"`
-	ErrorInfo              *string                                                                 `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	Finish                 *bool                                                                   `json:"Finish,omitempty" xml:"Finish,omitempty"`
-	TaskStatus             *string                                                                 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	Timestamp              *int64                                                                  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The error message returned if the task fails.
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// Indicates whether the task is complete. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Finish *bool `json:"Finish,omitempty" xml:"Finish,omitempty"`
+	// The task status. Valid values:
+	//
+	// *   **INIT**: The task is being initialized.
+	// *   **RUNNING**: The task is being executed.
+	// *   **SUCCESS**: The task succeeds.
+	// *   **FAIL**: The task fails.
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The time when the request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetAutoIncrementUsageStatisticResponseBodyData) String() string {
@@ -8224,12 +8278,18 @@ func (s *GetAutoIncrementUsageStatisticResponseBodyData) SetTimestamp(v int64) *
 }
 
 type GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList struct {
-	AutoIncrementCurrentValue *int64   `json:"AutoIncrementCurrentValue,omitempty" xml:"AutoIncrementCurrentValue,omitempty"`
-	AutoIncrementRatio        *float64 `json:"AutoIncrementRatio,omitempty" xml:"AutoIncrementRatio,omitempty"`
-	ColumnName                *string  `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DbName                    *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	MaximumValue              *int64   `json:"MaximumValue,omitempty" xml:"MaximumValue,omitempty"`
-	TableName                 *string  `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The latest auto-increment ID.
+	AutoIncrementCurrentValue *int64 `json:"AutoIncrementCurrentValue,omitempty" xml:"AutoIncrementCurrentValue,omitempty"`
+	// The usage ratio of auto-increment IDs.
+	AutoIncrementRatio *float64 `json:"AutoIncrementRatio,omitempty" xml:"AutoIncrementRatio,omitempty"`
+	// The column name.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The database name.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The maximum auto-increment ID that is supported by the current data type.
+	MaximumValue *int64 `json:"MaximumValue,omitempty" xml:"MaximumValue,omitempty"`
+	// The table name.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) String() string {
@@ -8271,9 +8331,9 @@ func (s *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) S
 }
 
 type GetAutoIncrementUsageStatisticResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoIncrementUsageStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoIncrementUsageStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutoIncrementUsageStatisticResponse) String() string {
@@ -8641,9 +8701,9 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimize
 }
 
 type GetAutoResourceOptimizeRulesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoResourceOptimizeRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoResourceOptimizeRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutoResourceOptimizeRulesResponse) String() string {
@@ -8676,7 +8736,7 @@ type GetAutoThrottleRulesRequest struct {
 	//
 	// *   Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
 	//
-	// *   By default, if you do not specify the database instance IDs, all database instances for which the automatic SQL throttling feature is enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
+	// *   By default, if you leave this parameter empty, all database instances for which the automatic SQL throttling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
 	//
 	//     *   Database instances for which the automatic SQL throttling feature is currently enabled.
 	//     *   Database instances for which the automatic SQL throttling feature was once enabled but is currently disabled. Released database instances are not included.
@@ -9015,9 +9075,9 @@ func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetVisible
 }
 
 type GetAutoThrottleRulesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoThrottleRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoThrottleRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutoThrottleRulesResponse) String() string {
@@ -9127,9 +9187,9 @@ func (s *GetAutonomousNotifyEventContentResponseBody) SetSuccess(v string) *GetA
 }
 
 type GetAutonomousNotifyEventContentResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutonomousNotifyEventContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutonomousNotifyEventContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutonomousNotifyEventContentResponse) String() string {
@@ -9365,9 +9425,9 @@ func (s *GetAutonomousNotifyEventsInRangeResponseBodyDataList) SetT(v []*string)
 }
 
 type GetAutonomousNotifyEventsInRangeResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutonomousNotifyEventsInRangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutonomousNotifyEventsInRangeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutonomousNotifyEventsInRangeResponse) String() string {
@@ -9394,13 +9454,22 @@ func (s *GetAutonomousNotifyEventsInRangeResponse) SetBody(v *GetAutonomousNotif
 }
 
 type GetBlockingDetailListRequest struct {
+	// The database name list.
+	//
+	// *   Separate multiple database names with commas (,).
 	DbNameList *string `json:"DbNameList,omitempty" xml:"DbNameList,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The database instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryHash  *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. The value must be an integer that is greater than 0. Default value: 10.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The hash value of the SQL statement.
+	QueryHash *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
+	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetBlockingDetailListRequest) String() string {
@@ -9447,11 +9516,21 @@ func (s *GetBlockingDetailListRequest) SetStartTime(v string) *GetBlockingDetail
 }
 
 type GetBlockingDetailListResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetBlockingDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetBlockingDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetBlockingDetailListResponseBody) String() string {
@@ -9488,10 +9567,14 @@ func (s *GetBlockingDetailListResponseBody) SetSuccess(v string) *GetBlockingDet
 }
 
 type GetBlockingDetailListResponseBodyData struct {
-	List     []*GetBlockingDetailListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo   *int64                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The details of the data returned.
+	List []*GetBlockingDetailListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number of the page returned.
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetBlockingDetailListResponseBodyData) String() string {
@@ -9523,18 +9606,30 @@ func (s *GetBlockingDetailListResponseBodyData) SetTotal(v int64) *GetBlockingDe
 }
 
 type GetBlockingDetailListResponseBodyDataList struct {
-	BatchId               *int64  `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	ClientAppName         *string `json:"ClientAppName,omitempty" xml:"ClientAppName,omitempty"`
-	CurrentCollectionTime *int64  `json:"CurrentCollectionTime,omitempty" xml:"CurrentCollectionTime,omitempty"`
-	DataBase              *string `json:"DataBase,omitempty" xml:"DataBase,omitempty"`
-	HostName              *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	LoginId               *string `json:"LoginId,omitempty" xml:"LoginId,omitempty"`
-	QueryHash             *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
-	Spid                  *string `json:"Spid,omitempty" xml:"Spid,omitempty"`
-	SqlText               *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	StartTime             *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	WaitTimeMs            *int64  `json:"WaitTimeMs,omitempty" xml:"WaitTimeMs,omitempty"`
-	WaitType              *string `json:"WaitType,omitempty" xml:"WaitType,omitempty"`
+	// The batch ID.
+	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The client name.
+	ClientAppName *string `json:"ClientAppName,omitempty" xml:"ClientAppName,omitempty"`
+	// The time when the blocking data was collected.
+	CurrentCollectionTime *int64 `json:"CurrentCollectionTime,omitempty" xml:"CurrentCollectionTime,omitempty"`
+	// The database name.
+	DataBase *string `json:"DataBase,omitempty" xml:"DataBase,omitempty"`
+	// The client hostname.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The username that is used for the logon.
+	LoginId *string `json:"LoginId,omitempty" xml:"LoginId,omitempty"`
+	// The hash value of the SQL statement.
+	QueryHash *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
+	// The session ID.
+	Spid *string `json:"Spid,omitempty" xml:"Spid,omitempty"`
+	// The SQL statement.
+	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The time when the execution started.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The blocking duration. Unit: milliseconds.
+	WaitTimeMs *int64 `json:"WaitTimeMs,omitempty" xml:"WaitTimeMs,omitempty"`
+	// The wait type.
+	WaitType *string `json:"WaitType,omitempty" xml:"WaitType,omitempty"`
 }
 
 func (s GetBlockingDetailListResponseBodyDataList) String() string {
@@ -9606,9 +9701,9 @@ func (s *GetBlockingDetailListResponseBodyDataList) SetWaitType(v string) *GetBl
 }
 
 type GetBlockingDetailListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetBlockingDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetBlockingDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetBlockingDetailListResponse) String() string {
@@ -9775,9 +9870,9 @@ func (s *GetDBInstanceConnectivityDiagnosisResponseBodyData) SetSuccess(v bool) 
 }
 
 type GetDBInstanceConnectivityDiagnosisResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDBInstanceConnectivityDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDBInstanceConnectivityDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDBInstanceConnectivityDiagnosisResponse) String() string {
@@ -10017,9 +10112,9 @@ func (s *GetDasProServiceUsageResponseBodyData) SetVpcId(v string) *GetDasProSer
 }
 
 type GetDasProServiceUsageResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDasProServiceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDasProServiceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDasProServiceUsageResponse) String() string {
@@ -10077,7 +10172,7 @@ type GetDasSQLLogHotDataRequest struct {
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// The maximum execution duration. Unit: microseconds. You can specify this parameter to query the SQL statements whose execution duration is smaller than the value of this parameter.
 	MaxLatancy *int64 `json:"MaxLatancy,omitempty" xml:"MaxLatancy,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries per page. Valid values: 5 to 100.
 	MaxRecordsPerPage *int64 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
 	// The reserved parameter. This parameter is not supported.
 	MaxRows *int64 `json:"MaxRows,omitempty" xml:"MaxRows,omitempty"`
@@ -10529,9 +10624,9 @@ func (s *GetDasSQLLogHotDataResponseBodyDataList) SetUpdateRows(v int64) *GetDas
 }
 
 type GetDasSQLLogHotDataResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDasSQLLogHotDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDasSQLLogHotDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDasSQLLogHotDataResponse) String() string {
@@ -10558,12 +10653,18 @@ func (s *GetDasSQLLogHotDataResponse) SetBody(v *GetDasSQLLogHotDataResponseBody
 }
 
 type GetDeadLockDetailListRequest struct {
+	// The database name list.
 	DbNameList *string `json:"DbNameList,omitempty" xml:"DbNameList,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetDeadLockDetailListRequest) String() string {
@@ -10605,11 +10706,21 @@ func (s *GetDeadLockDetailListRequest) SetStartTime(v string) *GetDeadLockDetail
 }
 
 type GetDeadLockDetailListResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetDeadLockDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetDeadLockDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDeadLockDetailListResponseBody) String() string {
@@ -10646,10 +10757,14 @@ func (s *GetDeadLockDetailListResponseBody) SetSuccess(v string) *GetDeadLockDet
 }
 
 type GetDeadLockDetailListResponseBodyData struct {
-	List     []*GetDeadLockDetailListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo   *int64                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The details of the data returned.
+	List []*GetDeadLockDetailListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetDeadLockDetailListResponseBodyData) String() string {
@@ -10681,25 +10796,44 @@ func (s *GetDeadLockDetailListResponseBodyData) SetTotal(v int64) *GetDeadLockDe
 }
 
 type GetDeadLockDetailListResponseBodyDataList struct {
-	BatchId                 *int64                                                       `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	BlockProcessList        []*GetDeadLockDetailListResponseBodyDataListBlockProcessList `json:"BlockProcessList,omitempty" xml:"BlockProcessList,omitempty" type:"Repeated"`
-	ClientApp               *string                                                      `json:"ClientApp,omitempty" xml:"ClientApp,omitempty"`
-	DatabaseName            *string                                                      `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	HostName                *string                                                      `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	LastTranStarted         *int64                                                       `json:"LastTranStarted,omitempty" xml:"LastTranStarted,omitempty"`
-	LockMode                *string                                                      `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LogUsed                 *int64                                                       `json:"LogUsed,omitempty" xml:"LogUsed,omitempty"`
-	LoginName               *string                                                      `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	ObjectOwned             *string                                                      `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
-	ObjectRequested         *string                                                      `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
-	OwnMode                 *string                                                      `json:"OwnMode,omitempty" xml:"OwnMode,omitempty"`
-	Spid                    *int64                                                       `json:"Spid,omitempty" xml:"Spid,omitempty"`
-	SqlText                 *string                                                      `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	Status                  *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Victim                  *int64                                                       `json:"Victim,omitempty" xml:"Victim,omitempty"`
-	WaitMode                *string                                                      `json:"WaitMode,omitempty" xml:"WaitMode,omitempty"`
-	WaitResource            *string                                                      `json:"WaitResource,omitempty" xml:"WaitResource,omitempty"`
-	WaitResourceDescription *string                                                      `json:"WaitResourceDescription,omitempty" xml:"WaitResourceDescription,omitempty"`
+	// The time when the data was collected.
+	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The blocking list.
+	BlockProcessList []*GetDeadLockDetailListResponseBodyDataListBlockProcessList `json:"BlockProcessList,omitempty" xml:"BlockProcessList,omitempty" type:"Repeated"`
+	// The client application.
+	ClientApp *string `json:"ClientApp,omitempty" xml:"ClientApp,omitempty"`
+	// The database name.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The host name.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The time when the transaction started.
+	LastTranStarted *int64 `json:"LastTranStarted,omitempty" xml:"LastTranStarted,omitempty"`
+	// The lock mode.
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The size of the logs generated by the session.
+	LogUsed *int64 `json:"LogUsed,omitempty" xml:"LogUsed,omitempty"`
+	// The username that is used for login.
+	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The locked object.
+	ObjectOwned *string `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
+	// The object that the current transaction requested to lock.
+	ObjectRequested *string `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
+	// The holding mode.
+	OwnMode *string `json:"OwnMode,omitempty" xml:"OwnMode,omitempty"`
+	// The ID of the session that started the transaction.
+	Spid *int64 `json:"Spid,omitempty" xml:"Spid,omitempty"`
+	// The SQL statement.
+	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The transaction status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The victim.
+	Victim *int64 `json:"Victim,omitempty" xml:"Victim,omitempty"`
+	// The wait mode.
+	WaitMode *string `json:"WaitMode,omitempty" xml:"WaitMode,omitempty"`
+	// The pending resource.
+	WaitResource *string `json:"WaitResource,omitempty" xml:"WaitResource,omitempty"`
+	// The description of the pending resource.
+	WaitResourceDescription *string `json:"WaitResourceDescription,omitempty" xml:"WaitResourceDescription,omitempty"`
 }
 
 func (s GetDeadLockDetailListResponseBodyDataList) String() string {
@@ -10806,22 +10940,39 @@ func (s *GetDeadLockDetailListResponseBodyDataList) SetWaitResourceDescription(v
 }
 
 type GetDeadLockDetailListResponseBodyDataListBlockProcessList struct {
-	ClientApp               *string `json:"ClientApp,omitempty" xml:"ClientApp,omitempty"`
-	DatabaseName            *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	HostName                *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	LastTranStarted         *int64  `json:"LastTranStarted,omitempty" xml:"LastTranStarted,omitempty"`
-	LockMode                *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LogUsed                 *int64  `json:"LogUsed,omitempty" xml:"LogUsed,omitempty"`
-	LoginName               *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	ObjectOwned             *string `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
-	ObjectRequested         *string `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
-	OwnMode                 *string `json:"OwnMode,omitempty" xml:"OwnMode,omitempty"`
-	Spid                    *int64  `json:"Spid,omitempty" xml:"Spid,omitempty"`
-	SqlText                 *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Victim                  *int64  `json:"Victim,omitempty" xml:"Victim,omitempty"`
-	WaitMode                *string `json:"WaitMode,omitempty" xml:"WaitMode,omitempty"`
-	WaitResource            *string `json:"WaitResource,omitempty" xml:"WaitResource,omitempty"`
+	// The client application.
+	ClientApp *string `json:"ClientApp,omitempty" xml:"ClientApp,omitempty"`
+	// The database name.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The host name.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The time when the transaction started.
+	LastTranStarted *int64 `json:"LastTranStarted,omitempty" xml:"LastTranStarted,omitempty"`
+	// The lock mode.
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The size of the logs generated by the session.
+	LogUsed *int64 `json:"LogUsed,omitempty" xml:"LogUsed,omitempty"`
+	// The username that is used for login.
+	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The locked object.
+	ObjectOwned *string `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
+	// The object that the current transaction requested to lock.
+	ObjectRequested *string `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
+	// The holding mode.
+	OwnMode *string `json:"OwnMode,omitempty" xml:"OwnMode,omitempty"`
+	// The ID of the session that started the transaction.
+	Spid *int64 `json:"Spid,omitempty" xml:"Spid,omitempty"`
+	// The SQL statement.
+	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The transaction status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The victim.
+	Victim *int64 `json:"Victim,omitempty" xml:"Victim,omitempty"`
+	// The wait mode.
+	WaitMode *string `json:"WaitMode,omitempty" xml:"WaitMode,omitempty"`
+	// The pending resource.
+	WaitResource *string `json:"WaitResource,omitempty" xml:"WaitResource,omitempty"`
+	// The description of the pending resource.
 	WaitResourceDescription *string `json:"WaitResourceDescription,omitempty" xml:"WaitResourceDescription,omitempty"`
 }
 
@@ -10919,9 +11070,9 @@ func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetWaitResou
 }
 
 type GetDeadLockDetailListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDeadLockDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeadLockDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDeadLockDetailListResponse) String() string {
@@ -11107,9 +11258,9 @@ func (s *GetEndpointSwitchTaskResponseBodyData) SetUuid(v string) *GetEndpointSw
 }
 
 type GetEndpointSwitchTaskResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEndpointSwitchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEndpointSwitchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEndpointSwitchTaskResponse) String() string {
@@ -11320,9 +11471,9 @@ func (s *GetErrorRequestSampleResponseBodyData) SetUser(v string) *GetErrorReque
 }
 
 type GetErrorRequestSampleResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetErrorRequestSampleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetErrorRequestSampleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetErrorRequestSampleResponse) String() string {
@@ -11656,9 +11807,9 @@ func (s *GetEventSubscriptionResponseBodyDataContacts) SetUserId(v string) *GetE
 }
 
 type GetEventSubscriptionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEventSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEventSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEventSubscriptionResponse) String() string {
@@ -12110,9 +12261,9 @@ func (s *GetFullRequestOriginStatByInstanceIdResponseBodyDataList) SetVpcId(v st
 }
 
 type GetFullRequestOriginStatByInstanceIdResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFullRequestOriginStatByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFullRequestOriginStatByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFullRequestOriginStatByInstanceIdResponse) String() string {
@@ -12398,9 +12549,9 @@ func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetUser(v string) *Ge
 }
 
 type GetFullRequestSampleByInstanceIdResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFullRequestSampleByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFullRequestSampleByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFullRequestSampleByInstanceIdResponse) String() string {
@@ -12947,9 +13098,9 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBodyDataResultList) SetVpcI
 }
 
 type GetFullRequestStatResultByInstanceIdResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFullRequestStatResultByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFullRequestStatResultByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFullRequestStatResultByInstanceIdResponse) String() string {
@@ -13169,9 +13320,9 @@ func (s *GetHDMAliyunResourceSyncResultResponseBodyDataSubResultsResourceSyncSub
 }
 
 type GetHDMAliyunResourceSyncResultResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHDMAliyunResourceSyncResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHDMAliyunResourceSyncResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHDMAliyunResourceSyncResultResponse) String() string {
@@ -13385,9 +13536,9 @@ func (s *GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResultsResourceSyn
 }
 
 type GetHDMLastAliyunResourceSyncResultResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHDMLastAliyunResourceSyncResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHDMLastAliyunResourceSyncResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHDMLastAliyunResourceSyncResultResponse) String() string {
@@ -13893,9 +14044,9 @@ func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetVpcId(v string) 
 }
 
 type GetInstanceInspectionsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceInspectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceInspectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceInspectionsResponse) String() string {
@@ -13922,21 +14073,38 @@ func (s *GetInstanceInspectionsResponse) SetBody(v *GetInstanceInspectionsRespon
 }
 
 type GetInstanceMissingIndexListRequest struct {
+	// The query condition based on the average cost savings.
 	AvgTotalUserCost *string `json:"AvgTotalUserCost,omitempty" xml:"AvgTotalUserCost,omitempty"`
-	AvgUserImpact    *string `json:"AvgUserImpact,omitempty" xml:"AvgUserImpact,omitempty"`
-	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IndexCount       *string `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ObjectName       *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	PageNo           *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize         *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ReservedPages    *string `json:"ReservedPages,omitempty" xml:"ReservedPages,omitempty"`
-	ReservedSize     *string `json:"ReservedSize,omitempty" xml:"ReservedSize,omitempty"`
-	RowCount         *string `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UniqueCompiles   *string `json:"UniqueCompiles,omitempty" xml:"UniqueCompiles,omitempty"`
-	UserScans        *string `json:"UserScans,omitempty" xml:"UserScans,omitempty"`
-	UserSeeks        *string `json:"UserSeeks,omitempty" xml:"UserSeeks,omitempty"`
+	// The query condition based on the performance improvement.
+	AvgUserImpact *string `json:"AvgUserImpact,omitempty" xml:"AvgUserImpact,omitempty"`
+	// The end time of the last seek.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The query condition based on the number of indexes.
+	IndexCount *string `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
+	// The database instance ID.
+	//
+	// >  Only ApsaraDB RDS for SQL Server instances are supported.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The object name.
+	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query condition based on the total number of pages.
+	ReservedPages *string `json:"ReservedPages,omitempty" xml:"ReservedPages,omitempty"`
+	// The query condition based on the table size.
+	ReservedSize *string `json:"ReservedSize,omitempty" xml:"ReservedSize,omitempty"`
+	// The query condition based on the number of table rows.
+	RowCount *string `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// The start time of the last seek.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The query condition based on the number of compilations.
+	UniqueCompiles *string `json:"UniqueCompiles,omitempty" xml:"UniqueCompiles,omitempty"`
+	// The query condition based on the number of scans.
+	UserScans *string `json:"UserScans,omitempty" xml:"UserScans,omitempty"`
+	// The query condition based on the number of seeks.
+	UserSeeks *string `json:"UserSeeks,omitempty" xml:"UserSeeks,omitempty"`
 }
 
 func (s GetInstanceMissingIndexListRequest) String() string {
@@ -14023,11 +14191,19 @@ func (s *GetInstanceMissingIndexListRequest) SetUserSeeks(v string) *GetInstance
 }
 
 type GetInstanceMissingIndexListResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetInstanceMissingIndexListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The detailed information.
+	Data *GetInstanceMissingIndexListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceMissingIndexListResponseBody) String() string {
@@ -14064,10 +14240,14 @@ func (s *GetInstanceMissingIndexListResponseBody) SetSuccess(v string) *GetInsta
 }
 
 type GetInstanceMissingIndexListResponseBodyData struct {
-	List     []*GetInstanceMissingIndexListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo   *int64                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The returned data.
+	List []*GetInstanceMissingIndexListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number of the page returned.
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetInstanceMissingIndexListResponseBodyData) String() string {
@@ -14099,25 +14279,44 @@ func (s *GetInstanceMissingIndexListResponseBodyData) SetTotal(v int64) *GetInst
 }
 
 type GetInstanceMissingIndexListResponseBodyDataList struct {
-	AvgTotalUserCost  *float64 `json:"AvgTotalUserCost,omitempty" xml:"AvgTotalUserCost,omitempty"`
-	AvgUserImpact     *float64 `json:"AvgUserImpact,omitempty" xml:"AvgUserImpact,omitempty"`
-	CreateIndex       *string  `json:"CreateIndex,omitempty" xml:"CreateIndex,omitempty"`
-	DatabaseName      *string  `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EqualityColumns   *string  `json:"EqualityColumns,omitempty" xml:"EqualityColumns,omitempty"`
-	IncludedColumns   *string  `json:"IncludedColumns,omitempty" xml:"IncludedColumns,omitempty"`
-	IndexCount        *int64   `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
-	InequalityColumns *string  `json:"InequalityColumns,omitempty" xml:"InequalityColumns,omitempty"`
-	LastUserSeek      *int64   `json:"LastUserSeek,omitempty" xml:"LastUserSeek,omitempty"`
-	ObjectName        *string  `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	ReservedPages     *int64   `json:"ReservedPages,omitempty" xml:"ReservedPages,omitempty"`
-	ReservedSize      *float64 `json:"ReservedSize,omitempty" xml:"ReservedSize,omitempty"`
-	RowCount          *int64   `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	SchemaName        *string  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	SystemScans       *int64   `json:"SystemScans,omitempty" xml:"SystemScans,omitempty"`
-	SystemSeeks       *int64   `json:"SystemSeeks,omitempty" xml:"SystemSeeks,omitempty"`
-	UniqueCompiles    *int64   `json:"UniqueCompiles,omitempty" xml:"UniqueCompiles,omitempty"`
-	UserScans         *int64   `json:"UserScans,omitempty" xml:"UserScans,omitempty"`
-	UserSeeks         *int64   `json:"UserSeeks,omitempty" xml:"UserSeeks,omitempty"`
+	// The average cost savings.
+	AvgTotalUserCost *float64 `json:"AvgTotalUserCost,omitempty" xml:"AvgTotalUserCost,omitempty"`
+	// The performance improvement, in percentage.
+	AvgUserImpact *float64 `json:"AvgUserImpact,omitempty" xml:"AvgUserImpact,omitempty"`
+	// The statement used to create the missing indexes.
+	CreateIndex *string `json:"CreateIndex,omitempty" xml:"CreateIndex,omitempty"`
+	// The database name.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The index columns included in the equal operation.
+	EqualityColumns *string `json:"EqualityColumns,omitempty" xml:"EqualityColumns,omitempty"`
+	// The columns on which indexes are missing.
+	IncludedColumns *string `json:"IncludedColumns,omitempty" xml:"IncludedColumns,omitempty"`
+	// The number of indexes.
+	IndexCount *int64 `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
+	// The index columns included in the not equal operation.
+	InequalityColumns *string `json:"InequalityColumns,omitempty" xml:"InequalityColumns,omitempty"`
+	// The last seek time of a user.
+	LastUserSeek *int64 `json:"LastUserSeek,omitempty" xml:"LastUserSeek,omitempty"`
+	// The object name.
+	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	// The total number of returned pages.
+	ReservedPages *int64 `json:"ReservedPages,omitempty" xml:"ReservedPages,omitempty"`
+	// The table size.
+	ReservedSize *float64 `json:"ReservedSize,omitempty" xml:"ReservedSize,omitempty"`
+	// The number of table rows.
+	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// The schema name.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The number of scans.
+	SystemScans *int64 `json:"SystemScans,omitempty" xml:"SystemScans,omitempty"`
+	// The number of seeks.
+	SystemSeeks *int64 `json:"SystemSeeks,omitempty" xml:"SystemSeeks,omitempty"`
+	// The number of compilations.
+	UniqueCompiles *int64 `json:"UniqueCompiles,omitempty" xml:"UniqueCompiles,omitempty"`
+	// The number of scans performed by users.
+	UserScans *int64 `json:"UserScans,omitempty" xml:"UserScans,omitempty"`
+	// The number of seeks performed by users.
+	UserSeeks *int64 `json:"UserSeeks,omitempty" xml:"UserSeeks,omitempty"`
 }
 
 func (s GetInstanceMissingIndexListResponseBodyDataList) String() string {
@@ -14224,9 +14423,9 @@ func (s *GetInstanceMissingIndexListResponseBodyDataList) SetUserSeeks(v int64) 
 }
 
 type GetInstanceMissingIndexListResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceMissingIndexListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceMissingIndexListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceMissingIndexListResponse) String() string {
@@ -14405,9 +14604,9 @@ func (s *GetInstanceSqlOptimizeStatisticResponseBodyData) SetImprovement(v float
 }
 
 type GetInstanceSqlOptimizeStatisticResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceSqlOptimizeStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceSqlOptimizeStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceSqlOptimizeStatisticResponse) String() string {
@@ -14708,9 +14907,9 @@ func (s *GetKillInstanceSessionTaskResultResponseBodyDataResult) SetUser(v strin
 }
 
 type GetKillInstanceSessionTaskResultResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetKillInstanceSessionTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetKillInstanceSessionTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetKillInstanceSessionTaskResultResponse) String() string {
@@ -15052,9 +15251,9 @@ func (s *GetMongoDBCurrentOpResponseBodyDataSessionStat) SetTotalCount(v int64) 
 }
 
 type GetMongoDBCurrentOpResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMongoDBCurrentOpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMongoDBCurrentOpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMongoDBCurrentOpResponse) String() string {
@@ -15551,9 +15750,9 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) SetUserLis
 }
 
 type GetMySQLAllSessionAsyncResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMySQLAllSessionAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMySQLAllSessionAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMySQLAllSessionAsyncResponse) String() string {
@@ -15686,9 +15885,9 @@ func (s *GetPartitionsHeatmapResponseBody) SetSuccess(v string) *GetPartitionsHe
 }
 
 type GetPartitionsHeatmapResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPartitionsHeatmapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPartitionsHeatmapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPartitionsHeatmapResponse) String() string {
@@ -15821,9 +16020,9 @@ func (s *GetPfsMetricTrendsResponseBody) SetSuccess(v bool) *GetPfsMetricTrendsR
 }
 
 type GetPfsMetricTrendsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPfsMetricTrendsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPfsMetricTrendsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPfsMetricTrendsResponse) String() string {
@@ -16200,9 +16399,9 @@ func (s *GetPfsSqlSampleResponseBodyData) SetWarnings(v int32) *GetPfsSqlSampleR
 }
 
 type GetPfsSqlSampleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPfsSqlSampleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPfsSqlSampleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPfsSqlSampleResponse) String() string {
@@ -16892,9 +17091,9 @@ func (s *GetPfsSqlSummariesResponseBodyDataList) SetWarnCount(v int64) *GetPfsSq
 }
 
 type GetPfsSqlSummariesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPfsSqlSummariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPfsSqlSummariesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPfsSqlSummariesResponse) String() string {
@@ -17346,9 +17545,9 @@ func (s *GetQueryOptimizeDataStatsResponseBodyDataListRuleList) SetType(v string
 }
 
 type GetQueryOptimizeDataStatsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeDataStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeDataStatsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeDataStatsResponse) String() string {
@@ -17573,9 +17772,9 @@ func (s *GetQueryOptimizeDataTopResponseBodyDataList) SetValue(v float64) *GetQu
 }
 
 type GetQueryOptimizeDataTopResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeDataTopResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeDataTopResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeDataTopResponse) String() string {
@@ -17807,9 +18006,9 @@ func (s *GetQueryOptimizeDataTrendResponseBodyDataList) SetValue(v float64) *Get
 }
 
 type GetQueryOptimizeDataTrendResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeDataTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeDataTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeDataTrendResponse) String() string {
@@ -18034,9 +18233,9 @@ func (s *GetQueryOptimizeExecErrorSampleResponseBodyDataList) SetUser(v string) 
 }
 
 type GetQueryOptimizeExecErrorSampleResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeExecErrorSampleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeExecErrorSampleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeExecErrorSampleResponse) String() string {
@@ -18324,9 +18523,9 @@ func (s *GetQueryOptimizeExecErrorStatsResponseBodyDataList) SetSqlText(v string
 }
 
 type GetQueryOptimizeExecErrorStatsResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeExecErrorStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeExecErrorStatsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeExecErrorStatsResponse) String() string {
@@ -18531,9 +18730,9 @@ func (s *GetQueryOptimizeRuleListResponseBodyDataList) SetType(v string) *GetQue
 }
 
 type GetQueryOptimizeRuleListResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeRuleListResponse) String() string {
@@ -18765,9 +18964,9 @@ func (s *GetQueryOptimizeShareUrlResponseBody) SetSuccess(v string) *GetQueryOpt
 }
 
 type GetQueryOptimizeShareUrlResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeShareUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeShareUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeShareUrlResponse) String() string {
@@ -18974,9 +19173,9 @@ func (s *GetQueryOptimizeSolutionResponseBodyDataList) SetSolutionExt(v string) 
 }
 
 type GetQueryOptimizeSolutionResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeSolutionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeSolutionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeSolutionResponse) String() string {
@@ -19122,9 +19321,9 @@ func (s *GetQueryOptimizeTagResponseBodyData) SetTags(v string) *GetQueryOptimiz
 }
 
 type GetQueryOptimizeTagResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryOptimizeTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryOptimizeTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryOptimizeTagResponse) String() string {
@@ -19473,9 +19672,9 @@ func (s *GetRedisAllSessionResponseBodyDataSourceStats) SetKey(v string) *GetRed
 }
 
 type GetRedisAllSessionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRedisAllSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRedisAllSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRedisAllSessionResponse) String() string {
@@ -19790,9 +19989,9 @@ func (s *GetRequestDiagnosisPageResponseBodyDataList) SetUuid(v string) *GetRequ
 }
 
 type GetRequestDiagnosisPageResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRequestDiagnosisPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRequestDiagnosisPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRequestDiagnosisPageResponse) String() string {
@@ -20068,9 +20267,9 @@ func (s *GetRequestDiagnosisResultResponseBodyData) SetUuid(v string) *GetReques
 }
 
 type GetRequestDiagnosisResultResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRequestDiagnosisResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRequestDiagnosisResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRequestDiagnosisResultResponse) String() string {
@@ -20322,9 +20521,9 @@ func (s *GetRunningSqlConcurrencyControlRulesResponseBodyDataListRunningRules) S
 }
 
 type GetRunningSqlConcurrencyControlRulesResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRunningSqlConcurrencyControlRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRunningSqlConcurrencyControlRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRunningSqlConcurrencyControlRulesResponse) String() string {
@@ -20434,9 +20633,9 @@ func (s *GetSqlConcurrencyControlKeywordsFromSqlTextResponseBody) SetSuccess(v s
 }
 
 type GetSqlConcurrencyControlKeywordsFromSqlTextResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSqlConcurrencyControlKeywordsFromSqlTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSqlConcurrencyControlKeywordsFromSqlTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSqlConcurrencyControlKeywordsFromSqlTextResponse) String() string {
@@ -20691,9 +20890,9 @@ func (s *GetSqlConcurrencyControlRulesHistoryResponseBodyDataListRules) SetUserI
 }
 
 type GetSqlConcurrencyControlRulesHistoryResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSqlConcurrencyControlRulesHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSqlConcurrencyControlRulesHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSqlConcurrencyControlRulesHistoryResponse) String() string {
@@ -20907,9 +21106,9 @@ func (s *GetSqlOptimizeAdviceResponseBodyData) SetTaskId(v string) *GetSqlOptimi
 }
 
 type GetSqlOptimizeAdviceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSqlOptimizeAdviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSqlOptimizeAdviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSqlOptimizeAdviceResponse) String() string {
@@ -20936,9 +21135,14 @@ func (s *GetSqlOptimizeAdviceResponse) SetBody(v *GetSqlOptimizeAdviceResponseBo
 }
 
 type GetStorageAnalysisResultRequest struct {
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The node ID.
+	//
+	// >  This parameter is reserved.
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The task ID, which is returned after you call the CreateStorageAnalysisTask operation.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetStorageAnalysisResultRequest) String() string {
@@ -20965,11 +21169,21 @@ func (s *GetStorageAnalysisResultRequest) SetTaskId(v string) *GetStorageAnalysi
 }
 
 type GetStorageAnalysisResultResponseBody struct {
-	Code      *int64                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetStorageAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetStorageAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetStorageAnalysisResultResponseBody) String() string {
@@ -21006,14 +21220,32 @@ func (s *GetStorageAnalysisResultResponseBody) SetSuccess(v bool) *GetStorageAna
 }
 
 type GetStorageAnalysisResultResponseBodyData struct {
-	AnalyzedDbCount       *int64                                                         `json:"AnalyzedDbCount,omitempty" xml:"AnalyzedDbCount,omitempty"`
+	// The number of databases that have been analyzed.
+	AnalyzedDbCount *int64 `json:"AnalyzedDbCount,omitempty" xml:"AnalyzedDbCount,omitempty"`
+	// The details of storage analysis.
 	StorageAnalysisResult *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult `json:"StorageAnalysisResult,omitempty" xml:"StorageAnalysisResult,omitempty" type:"Struct"`
-	TaskFinish            *bool                                                          `json:"TaskFinish,omitempty" xml:"TaskFinish,omitempty"`
-	TaskId                *string                                                        `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskProgress          *int64                                                         `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
-	TaskState             *string                                                        `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	TaskSuccess           *bool                                                          `json:"TaskSuccess,omitempty" xml:"TaskSuccess,omitempty"`
-	TotalDbCount          *int64                                                         `json:"TotalDbCount,omitempty" xml:"TotalDbCount,omitempty"`
+	// Indicates whether the task is complete.
+	TaskFinish *bool `json:"TaskFinish,omitempty" xml:"TaskFinish,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task progress.
+	//
+	// >  Valid values are integers that range from 0 to 100.
+	TaskProgress *int64 `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
+	// The status of the storage analysis task. Valid values:
+	//
+	// *   **INIT**: The task is being initialized.
+	// *   **PENDING**: The task is being queued for execution.
+	// *   **RECEIVED**: The task is received for execution.
+	// *   **RUNNING**: The task is being executed.
+	// *   **RETRY**: The task is being retried.
+	// *   **SUCCESS**: The task succeeds.
+	// *   **FAILURE**: The task fails.
+	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// Indicates whether the task is successful.
+	TaskSuccess *bool `json:"TaskSuccess,omitempty" xml:"TaskSuccess,omitempty"`
+	// The number of databases that need to be analyzed in the storage analysis task.
+	TotalDbCount *int64 `json:"TotalDbCount,omitempty" xml:"TotalDbCount,omitempty"`
 }
 
 func (s GetStorageAnalysisResultResponseBodyData) String() string {
@@ -21065,15 +21297,35 @@ func (s *GetStorageAnalysisResultResponseBodyData) SetTotalDbCount(v int64) *Get
 }
 
 type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
-	AnalysisErrorType     *string                                                                              `json:"AnalysisErrorType,omitempty" xml:"AnalysisErrorType,omitempty"`
-	AnalysisSuccess       *bool                                                                                `json:"AnalysisSuccess,omitempty" xml:"AnalysisSuccess,omitempty"`
-	DailyIncrement        *int64                                                                               `json:"DailyIncrement,omitempty" xml:"DailyIncrement,omitempty"`
-	EstimateAvailableDays *int64                                                                               `json:"EstimateAvailableDays,omitempty" xml:"EstimateAvailableDays,omitempty"`
-	NeedOptimizeItemList  []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList `json:"NeedOptimizeItemList,omitempty" xml:"NeedOptimizeItemList,omitempty" type:"Repeated"`
-	TableStats            []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats           `json:"TableStats,omitempty" xml:"TableStats,omitempty" type:"Repeated"`
-	TotalFreeStorageSize  *int64                                                                               `json:"TotalFreeStorageSize,omitempty" xml:"TotalFreeStorageSize,omitempty"`
-	TotalStorageSize      *int64                                                                               `json:"TotalStorageSize,omitempty" xml:"TotalStorageSize,omitempty"`
-	TotalUsedStorageSize  *int64                                                                               `json:"TotalUsedStorageSize,omitempty" xml:"TotalUsedStorageSize,omitempty"`
+	// The reason why the analysis on the database and table fails.
+	//
+	// *   **DB_OR_TABLE_NOT_EXIST**: The specified database or table does not exist.
+	// *   **DB_NOT_EXIST**: The specified database does not exist.
+	AnalysisErrorType *string `json:"AnalysisErrorType,omitempty" xml:"AnalysisErrorType,omitempty"`
+	// Indicates whether the analysis on the database and table is successful.
+	AnalysisSuccess *bool `json:"AnalysisSuccess,omitempty" xml:"AnalysisSuccess,omitempty"`
+	// The estimated daily storage usage increment in the last seven days.
+	//
+	// >  Unit: bytes.
+	DailyIncrement *int64 `json:"DailyIncrement,omitempty" xml:"DailyIncrement,omitempty"`
+	// The estimated number of days before the remaining storage runs out.
+	EstimateAvailableDays *int64 `json:"EstimateAvailableDays,omitempty" xml:"EstimateAvailableDays,omitempty"`
+	// The list of items to be optimized.
+	NeedOptimizeItemList []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList `json:"NeedOptimizeItemList,omitempty" xml:"NeedOptimizeItemList,omitempty" type:"Repeated"`
+	// The information about the table.
+	TableStats []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats `json:"TableStats,omitempty" xml:"TableStats,omitempty" type:"Repeated"`
+	// The size of remaining storage.
+	//
+	// >  Unit: bytes.
+	TotalFreeStorageSize *int64 `json:"TotalFreeStorageSize,omitempty" xml:"TotalFreeStorageSize,omitempty"`
+	// The total size of instance storage.
+	//
+	// >  Unit: bytes.
+	TotalStorageSize *int64 `json:"TotalStorageSize,omitempty" xml:"TotalStorageSize,omitempty"`
+	// The size of used storage.
+	//
+	// >  Unit: bytes.
+	TotalUsedStorageSize *int64 `json:"TotalUsedStorageSize,omitempty" xml:"TotalUsedStorageSize,omitempty"`
 }
 
 func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) String() string {
@@ -21130,11 +21382,22 @@ func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetTotal
 }
 
 type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList struct {
-	AssociatedData   *string `json:"AssociatedData,omitempty" xml:"AssociatedData,omitempty"`
-	DbName           *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	OptimizeAdvice   *string `json:"OptimizeAdvice,omitempty" xml:"OptimizeAdvice,omitempty"`
+	// The data associated with items to be optimized.
+	AssociatedData *string `json:"AssociatedData,omitempty" xml:"AssociatedData,omitempty"`
+	// The database name.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The optimization suggestion. Valid values:
+	//
+	// *   **NEED_ANALYZE_TABLE**: You can execute the ANALYZE TABLE statement on the related table during off-peak hours.
+	// *   **NEED_OPTIMIZE_TABLE**: You can reclaim fragments during off-peak hours.
+	OptimizeAdvice *string `json:"OptimizeAdvice,omitempty" xml:"OptimizeAdvice,omitempty"`
+	// The item to be optimized. Valid values:
+	//
+	// *   **NEED_ANALYZE_TABLE**: The statistical data in information_schema.tables differs greatly from the physical file size.
+	// *   **NEED_OPTIMIZE_TABLE**: The fragmentation degree of the table is high.
 	OptimizeItemName *string `json:"OptimizeItemName,omitempty" xml:"OptimizeItemName,omitempty"`
-	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The table name.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) String() string {
@@ -21171,18 +21434,44 @@ func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimi
 }
 
 type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats struct {
-	AvgRowLength     *int64  `json:"AvgRowLength,omitempty" xml:"AvgRowLength,omitempty"`
-	DataFree         *int64  `json:"DataFree,omitempty" xml:"DataFree,omitempty"`
-	DataSize         *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	DbName           *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Engine           *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	IndexSize        *int64  `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
-	PhyTotalSize     *int64  `json:"PhyTotalSize,omitempty" xml:"PhyTotalSize,omitempty"`
-	PhysicalFileSize *int64  `json:"PhysicalFileSize,omitempty" xml:"PhysicalFileSize,omitempty"`
-	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableRows        *int64  `json:"TableRows,omitempty" xml:"TableRows,omitempty"`
-	TableType        *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	TotalSize        *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The average row length.
+	//
+	// >  Unit: bytes.
+	AvgRowLength *int64 `json:"AvgRowLength,omitempty" xml:"AvgRowLength,omitempty"`
+	// The size of storage occupied by fragments.
+	//
+	// >  Unit: bytes.
+	DataFree *int64 `json:"DataFree,omitempty" xml:"DataFree,omitempty"`
+	// The size of storage occupied by the table data.
+	//
+	// >  Unit: bytes.
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The database name.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The type of the engine used by the table.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The size of storage occupied by indexes.
+	//
+	// >  Unit: bytes.
+	IndexSize *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	// The size of the table storage.
+	//
+	// >  Unit: byte. The value of the parameter is the sum of DataSize, IndexSize, and DataFree.
+	PhyTotalSize *int64 `json:"PhyTotalSize,omitempty" xml:"PhyTotalSize,omitempty"`
+	// The physical file size of the table.
+	//
+	// >  Unit: byte. You may fail to obtain the physical file size because of the deployment mode of the database instance.
+	PhysicalFileSize *int64 `json:"PhysicalFileSize,omitempty" xml:"PhysicalFileSize,omitempty"`
+	// The table name.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The number of rows in the table.
+	TableRows *int64 `json:"TableRows,omitempty" xml:"TableRows,omitempty"`
+	// The table type.
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The size of storage occupied by table data and indexes.
+	//
+	// >  Unit: byte. The value of the parameter is the sum of DataSize and IndexSize.
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) String() string {
@@ -21254,9 +21543,9 @@ func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats
 }
 
 type GetStorageAnalysisResultResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetStorageAnalysisResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetStorageAnalysisResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetStorageAnalysisResultResponse) String() string {
@@ -21359,9 +21648,9 @@ func (s *KillInstanceAllSessionResponseBody) SetSuccess(v string) *KillInstanceA
 }
 
 type KillInstanceAllSessionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *KillInstanceAllSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *KillInstanceAllSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s KillInstanceAllSessionResponse) String() string {
@@ -21911,9 +22200,9 @@ func (s *ModifyAutoScalingConfigResponseBody) SetSuccess(v string) *ModifyAutoSc
 }
 
 type ModifyAutoScalingConfigResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAutoScalingConfigResponse) String() string {
@@ -22092,9 +22381,9 @@ func (s *RunCloudBenchTaskResponseBodyDataPreCheckItem) SetStatus(v string) *Run
 }
 
 type RunCloudBenchTaskResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RunCloudBenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunCloudBenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RunCloudBenchTaskResponse) String() string {
@@ -22407,9 +22696,9 @@ func (s *SetEventSubscriptionResponseBodyData) SetUserId(v string) *SetEventSubs
 }
 
 type SetEventSubscriptionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetEventSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetEventSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetEventSubscriptionResponse) String() string {
@@ -22505,9 +22794,9 @@ func (s *StopCloudBenchTaskResponseBody) SetSuccess(v string) *StopCloudBenchTas
 }
 
 type StopCloudBenchTaskResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopCloudBenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopCloudBenchTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopCloudBenchTaskResponse) String() string {
@@ -22652,9 +22941,9 @@ func (s *SyncHDMAliyunResourceResponseBody) SetSynchro(v string) *SyncHDMAliyunR
 }
 
 type SyncHDMAliyunResourceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SyncHDMAliyunResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncHDMAliyunResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SyncHDMAliyunResourceResponse) String() string {
@@ -22968,9 +23257,9 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfi
 }
 
 type UpdateAutoResourceOptimizeRulesAsyncResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAutoResourceOptimizeRulesAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAutoResourceOptimizeRulesAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAutoResourceOptimizeRulesAsyncResponse) String() string {
@@ -23117,9 +23406,9 @@ func (s *UpdateAutoSqlOptimizeStatusResponseBodyData) SetSuccess(v string) *Upda
 }
 
 type UpdateAutoSqlOptimizeStatusResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAutoSqlOptimizeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAutoSqlOptimizeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAutoSqlOptimizeStatusResponse) String() string {
@@ -23486,9 +23775,9 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccess
 }
 
 type UpdateAutoThrottleRulesAsyncResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAutoThrottleRulesAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAutoThrottleRulesAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAutoThrottleRulesAsyncResponse) String() string {
@@ -24428,6 +24717,15 @@ func (client *Client) CreateRequestDiagnosis(request *CreateRequestDiagnosisRequ
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
+ *
+ * @param request CreateStorageAnalysisTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateStorageAnalysisTaskResponse
+ */
 func (client *Client) CreateStorageAnalysisTaskWithOptions(request *CreateStorageAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *CreateStorageAnalysisTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24473,6 +24771,14 @@ func (client *Client) CreateStorageAnalysisTaskWithOptions(request *CreateStorag
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
+ *
+ * @param request CreateStorageAnalysisTaskRequest
+ * @return CreateStorageAnalysisTaskResponse
+ */
 func (client *Client) CreateStorageAnalysisTask(request *CreateStorageAnalysisTaskRequest) (_result *CreateStorageAnalysisTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateStorageAnalysisTaskResponse{}
@@ -26302,6 +26608,15 @@ func (client *Client) GetAsyncErrorRequestStatResult(request *GetAsyncErrorReque
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
+ *
+ * @param request GetAutoIncrementUsageStatisticRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAutoIncrementUsageStatisticResponse
+ */
 func (client *Client) GetAutoIncrementUsageStatisticWithOptions(request *GetAutoIncrementUsageStatisticRequest, runtime *util.RuntimeOptions) (_result *GetAutoIncrementUsageStatisticResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26347,6 +26662,14 @@ func (client *Client) GetAutoIncrementUsageStatisticWithOptions(request *GetAuto
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
+ *
+ * @param request GetAutoIncrementUsageStatisticRequest
+ * @return GetAutoIncrementUsageStatisticResponse
+ */
 func (client *Client) GetAutoIncrementUsageStatistic(request *GetAutoIncrementUsageStatisticRequest) (_result *GetAutoIncrementUsageStatisticResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutoIncrementUsageStatisticResponse{}
@@ -26360,8 +26683,8 @@ func (client *Client) GetAutoIncrementUsageStatistic(request *GetAutoIncrementUs
 
 /**
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance for which you want to query automatic fragment recycling rules is an ApsaraDB RDS for MySQL High-availability Edition instance.
+ * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
  * *   The database instance has four or more cores, and **innodb_file_per_table** is set to **ON**.
  *
  * @param request GetAutoResourceOptimizeRulesRequest
@@ -26407,8 +26730,8 @@ func (client *Client) GetAutoResourceOptimizeRulesWithOptions(request *GetAutoRe
 
 /**
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance for which you want to query automatic fragment recycling rules is an ApsaraDB RDS for MySQL High-availability Edition instance.
+ * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
  * *   The database instance has four or more cores, and **innodb_file_per_table** is set to **ON**.
  *
  * @param request GetAutoResourceOptimizeRulesRequest
@@ -26668,6 +26991,15 @@ func (client *Client) GetAutonomousNotifyEventsInRange(request *GetAutonomousNot
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+ *
+ * @param request GetBlockingDetailListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetBlockingDetailListResponse
+ */
 func (client *Client) GetBlockingDetailListWithOptions(request *GetBlockingDetailListRequest, runtime *util.RuntimeOptions) (_result *GetBlockingDetailListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26725,6 +27057,14 @@ func (client *Client) GetBlockingDetailListWithOptions(request *GetBlockingDetai
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+ *
+ * @param request GetBlockingDetailListRequest
+ * @return GetBlockingDetailListResponse
+ */
 func (client *Client) GetBlockingDetailList(request *GetBlockingDetailListRequest) (_result *GetBlockingDetailListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBlockingDetailListResponse{}
@@ -27043,6 +27383,15 @@ func (client *Client) GetDasSQLLogHotData(request *GetDasSQLLogHotDataRequest) (
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+ *
+ * @param request GetDeadLockDetailListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDeadLockDetailListResponse
+ */
 func (client *Client) GetDeadLockDetailListWithOptions(request *GetDeadLockDetailListRequest, runtime *util.RuntimeOptions) (_result *GetDeadLockDetailListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27096,6 +27445,14 @@ func (client *Client) GetDeadLockDetailListWithOptions(request *GetDeadLockDetai
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+ *
+ * @param request GetDeadLockDetailListRequest
+ * @return GetDeadLockDetailListResponse
+ */
 func (client *Client) GetDeadLockDetailList(request *GetDeadLockDetailListRequest) (_result *GetDeadLockDetailListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDeadLockDetailListResponse{}
@@ -27861,6 +28218,15 @@ func (client *Client) GetInstanceInspections(request *GetInstanceInspectionsRequ
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+ *
+ * @param request GetInstanceMissingIndexListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetInstanceMissingIndexListResponse
+ */
 func (client *Client) GetInstanceMissingIndexListWithOptions(request *GetInstanceMissingIndexListRequest, runtime *util.RuntimeOptions) (_result *GetInstanceMissingIndexListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27950,6 +28316,14 @@ func (client *Client) GetInstanceMissingIndexListWithOptions(request *GetInstanc
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+ *
+ * @param request GetInstanceMissingIndexListRequest
+ * @return GetInstanceMissingIndexListResponse
+ */
 func (client *Client) GetInstanceMissingIndexList(request *GetInstanceMissingIndexListRequest) (_result *GetInstanceMissingIndexListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceMissingIndexListResponse{}
@@ -29723,6 +30097,14 @@ func (client *Client) GetSqlOptimizeAdvice(request *GetSqlOptimizeAdviceRequest)
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+ * *   The physical file size indicates the actual size of an obtained file. Only specific deployment modes of database instances support the display of physical file sizes. The statistics on tables are obtained from information_schema.tables. Due to the asynchronicity of the statistics update mechanism in MySQL, statistics and analysis results may not be perfectly accurate. You can execute the ANALYZE TABLE statement on related tables during off-peak hours to obtain the latest information.
+ *
+ * @param request GetStorageAnalysisResultRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetStorageAnalysisResultResponse
+ */
 func (client *Client) GetStorageAnalysisResultWithOptions(request *GetStorageAnalysisResultRequest, runtime *util.RuntimeOptions) (_result *GetStorageAnalysisResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29764,6 +30146,13 @@ func (client *Client) GetStorageAnalysisResultWithOptions(request *GetStorageAna
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+ * *   The physical file size indicates the actual size of an obtained file. Only specific deployment modes of database instances support the display of physical file sizes. The statistics on tables are obtained from information_schema.tables. Due to the asynchronicity of the statistics update mechanism in MySQL, statistics and analysis results may not be perfectly accurate. You can execute the ANALYZE TABLE statement on related tables during off-peak hours to obtain the latest information.
+ *
+ * @param request GetStorageAnalysisResultRequest
+ * @return GetStorageAnalysisResultResponse
+ */
 func (client *Client) GetStorageAnalysisResult(request *GetStorageAnalysisResultRequest) (_result *GetStorageAnalysisResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStorageAnalysisResultResponse{}
@@ -30239,10 +30628,10 @@ func (client *Client) SyncHDMAliyunResource(request *SyncHDMAliyunResourceReques
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not immediately returned. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
+ * >  An asynchronous call does not immediately return complete results. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish** is **true**, the complete results are returned.
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance is an ApsaraDB RDS for MySQL High-availability Edition instance.
+ * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
  * *   DAS Professional Edition is enabled for the database instance. You can call the [DescribeInstanceDasPro](~~413866~~) operation to check whether DAS Professional Edition is enabled for a database instance.
  * *   The database instance has four or more cores, and **innodb_file_per_table** is set to **ON**.
  *
@@ -30300,10 +30689,10 @@ func (client *Client) UpdateAutoResourceOptimizeRulesAsyncWithOptions(request *U
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not immediately returned. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
+ * >  An asynchronous call does not immediately return complete results. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish** is **true**, the complete results are returned.
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance is an ApsaraDB RDS for MySQL High-availability Edition instance.
+ * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
  * *   DAS Professional Edition is enabled for the database instance. You can call the [DescribeInstanceDasPro](~~413866~~) operation to check whether DAS Professional Edition is enabled for a database instance.
  * *   The database instance has four or more cores, and **innodb_file_per_table** is set to **ON**.
  *
@@ -30395,13 +30784,13 @@ func (client *Client) UpdateAutoSqlOptimizeStatus(request *UpdateAutoSqlOptimize
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not immediately returned. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
+ * >  An asynchronous call does not immediately return complete results. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish** is **true**, the complete results are returned.
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   Enable Autonomy Service is turned on for the database instance. For more information, see [Autonomy center](~~152139~~).
- * *   The database instance that you want to manage is of one of the following types:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
- *     *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, and PolarDB for MySQL X-Engine Edition that runs MySQL 8.0.
+ * *   If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](~~152139~~).
+ * *   The database instance that you want to manage must be of one of the following types:
+ *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
+ *     *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, and PolarDB for MySQL X-Engine Edition that runs MySQL 8.0
  *
  * @param request UpdateAutoThrottleRulesAsyncRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30481,13 +30870,13 @@ func (client *Client) UpdateAutoThrottleRulesAsyncWithOptions(request *UpdateAut
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not immediately returned. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
+ * >  An asynchronous call does not immediately return complete results. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish** is **true**, the complete results are returned.
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   Enable Autonomy Service is turned on for the database instance. For more information, see [Autonomy center](~~152139~~).
- * *   The database instance that you want to manage is of one of the following types:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
- *     *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, and PolarDB for MySQL X-Engine Edition that runs MySQL 8.0.
+ * *   If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](~~152139~~).
+ * *   The database instance that you want to manage must be of one of the following types:
+ *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
+ *     *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, and PolarDB for MySQL X-Engine Edition that runs MySQL 8.0
  *
  * @param request UpdateAutoThrottleRulesAsyncRequest
  * @return UpdateAutoThrottleRulesAsyncResponse
