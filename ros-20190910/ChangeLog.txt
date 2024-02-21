@@ -1,3 +1,6 @@
+2024-02-21 Version: v4.1.6
+- Generated golang 2019-09-10 for ROS.
+
 2024-01-30 Version: v4.1.5
 - Update API CreateTemplateupdate TemplateBody param.
 - Update API DeleteStackInstancesupdate DeploymentTargets param.

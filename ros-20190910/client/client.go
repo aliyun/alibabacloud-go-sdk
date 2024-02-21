@@ -3388,6 +3388,9 @@ func (s *DeleteStackInstancesRequest) SetStackGroupName(v string) *DeleteStackIn
 }
 
 type DeleteStackInstancesRequestDeploymentTargets struct {
+	// The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
+	//
+	// > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](~~111223~~).
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The IDs of the folders in the resource directory. You can add up to five folder IDs.
 	//
@@ -14422,7 +14425,7 @@ type ListTemplateScratchesRequest struct {
 	Tags []*ListTemplateScratchesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the scenario.
 	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	// The type of the scenario. Valid values:
+	// The type of the resource scenario. Valid values:
 	//
 	// *   ArchitectureReplication: resource replication
 	// *   ArchitectureDetection: resource detection
@@ -14513,7 +14516,7 @@ type ListTemplateScratchesResponseBody struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scenarios.
+	// The resource scenarios.
 	TemplateScratches []*ListTemplateScratchesResponseBodyTemplateScratches `json:"TemplateScratches,omitempty" xml:"TemplateScratches,omitempty" type:"Repeated"`
 	// The total number of scenarios.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -14553,15 +14556,15 @@ func (s *ListTemplateScratchesResponseBody) SetTotalCount(v int32) *ListTemplate
 }
 
 type ListTemplateScratchesResponseBodyTemplateScratches struct {
-	// The time when the scenario was created.
+	// The time when the resource scenario was created.
 	//
 	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the scenario.
+	// The description of the resource scenario.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The status code that is returned if the scenario failed to be generated.
+	// The status code of the resource scenario that failed to be generated.
 	//
-	// >  This parameter is returned only if Status is set to GENERATE_FAILED.
+	// >  This parameter is returned only if the value of Status is GENERATE_FAILED.
 	FailedCode *string `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
 	// The policy based on which the logical ID is generated. Valid values:
 	//
@@ -14569,7 +14572,7 @@ type ListTemplateScratchesResponseBodyTemplateScratches struct {
 	// *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
 	// *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
-	// The parameters that are configured for the scenario.
+	// The preference parameters of the resource scenario.
 	PreferenceParameters []*ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -14579,22 +14582,22 @@ type ListTemplateScratchesResponseBodyTemplateScratches struct {
 	SourceResources []*ListTemplateScratchesResponseBodyTemplateScratchesSourceResources `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
 	// The source tag.
 	SourceTag *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
-	// The state of the scenario.
+	// The state of the resource scenario.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The reason why the scenario failed to be generated.
+	// The reason why the resource scenario failed to be generated.
 	//
-	// >  This parameter is returned only if Status is set to GENERATE_FAILED.
+	// >  This parameter is returned only if the value of Status is GENERATE_FAILED.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	// The tags of the scenario.
+	// The tags of the resource scenario.
 	Tags []*ListTemplateScratchesResponseBodyTemplateScratchesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The scenario ID.
+	// The ID of the resource scenario.
 	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	// The type of the scenario. Valid values:
+	// The type of the resource scenario. Valid values:
 	//
 	// *   ResourceImport: resource management
 	// *   ArchitectureReplication: resource replication
 	TemplateScratchType *string `json:"TemplateScratchType,omitempty" xml:"TemplateScratchType,omitempty"`
-	// The time when the scenario was updated.
+	// The time when the resource scenario was updated.
 	//
 	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -14684,9 +14687,9 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetUpdateTime(v str
 }
 
 type ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters struct {
-	// The name of the parameter.
+	// The parameter name.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -14711,7 +14714,7 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters)
 type ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup struct {
 	// The ID of the source resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The filters for resource types.
+	// The resource types for filtering resources.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -14761,7 +14764,7 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceResources) SetR
 type ListTemplateScratchesResponseBodyTemplateScratchesSourceTag struct {
 	// The source tags.
 	ResourceTags map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
-	// The filters for resource types.
+	// The resource types for filtering resources.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -14784,9 +14787,9 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag) SetResourc
 }
 
 type ListTemplateScratchesResponseBodyTemplateScratchesTags struct {
-	// The tag key of the scenario.
+	// The tag key of the resource scenario.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the scenario.
+	// The tag value of the resource scenario.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18489,7 +18492,7 @@ type UpdateTemplateScratchRequest struct {
 	//
 	// >  If you set TemplateScratchType to ArchitectureDetection, the default value of LogicalIdStrategy is LongTypePrefixAndHashSuffix. In other cases, the default value of LogicalIdStrategy is LongTypePrefixAndIndexSuffix.
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
-	// The parameters that you want to configure for the scenario.
+	// The preference parameters of the resource scenario.
 	PreferenceParameters []*UpdateTemplateScratchRequestPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
 	// The region ID of the scenario.
 	//
@@ -18501,7 +18504,7 @@ type UpdateTemplateScratchRequest struct {
 	SourceResourceGroup *UpdateTemplateScratchRequestSourceResourceGroup `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
 	// The source resources.
 	//
-	// If you specify source resources as the value of SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the schema data of all resources that are associated with the specified source resources. For example, if you specify the ID of a Classic Load Balancer (CLB) instance as the value of SourceResources, the system detects the schema data of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and VPCs, that are associated with the CLB instance.
+	// If you specify SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the architecture of all resources that are associated with the specified source resources. For example, if you set the value of SourceResources to an ID of a Classic Load Balancer (CLB) instance, the system detects the architecture of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and virtual private clouds (VPCs), that are associated with the CLB instance.
 	//
 	// If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources for SourceResources. In other cases, you can specify up to 200 source resources.
 	SourceResources []*UpdateTemplateScratchRequestSourceResources `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
@@ -18575,16 +18578,16 @@ func (s *UpdateTemplateScratchRequest) SetTemplateScratchId(v string) *UpdateTem
 }
 
 type UpdateTemplateScratchRequestPreferenceParameters struct {
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// For more information about the valid values of ParameterKey, see the "**Additional information about request parameters**" section of this topic.
 	//
-	// > - PreferenceParameters is optional. If you specify PreferenceParameters, you must specify both ParameterKey and ParameterValue.
+	// >- PreferenceParameters is optional. If you specify PreferenceParameters, you must specify both ParameterKey and ParameterValue.
 	// > - If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The value of the parameter. The value of ParameterValue varies based on the value of ParameterKey.
+	// The parameter value. The value of ParameterValue varies based on the value of ParameterKey.
 	//
-	// For more information about the valid values of ParameterValue, see the "**Additional information about request parameters**" section of this topic.
+	// For more information about the valid values of ParameterKey, see the "**Additional information about request parameters**" section of this topic.
 	//
 	// >  PreferenceParameters is optional. If you specify PreferenceParameters, you must specify both ParameterKey and ParameterValue.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
@@ -18665,7 +18668,7 @@ type UpdateTemplateScratchRequestSourceTag struct {
 	//
 	// If you set TemplateScratchType to ArchitectureDetection, you can add up to five source tags. In other cases, you can add up to 10 source tags.
 	ResourceTags map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
-	// The filters for resource types.
+	// The resource types for filtering resources.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -18709,7 +18712,7 @@ type UpdateTemplateScratchShrinkRequest struct {
 	//
 	// >  If you set TemplateScratchType to ArchitectureDetection, the default value of LogicalIdStrategy is LongTypePrefixAndHashSuffix. In other cases, the default value of LogicalIdStrategy is LongTypePrefixAndIndexSuffix.
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
-	// The parameters that you want to configure for the scenario.
+	// The preference parameters of the resource scenario.
 	PreferenceParametersShrink *string `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty"`
 	// The region ID of the scenario.
 	//
@@ -18721,7 +18724,7 @@ type UpdateTemplateScratchShrinkRequest struct {
 	SourceResourceGroupShrink *string `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty"`
 	// The source resources.
 	//
-	// If you specify source resources as the value of SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the schema data of all resources that are associated with the specified source resources. For example, if you specify the ID of a Classic Load Balancer (CLB) instance as the value of SourceResources, the system detects the schema data of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and VPCs, that are associated with the CLB instance.
+	// If you specify SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the architecture of all resources that are associated with the specified source resources. For example, if you set the value of SourceResources to an ID of a Classic Load Balancer (CLB) instance, the system detects the architecture of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and virtual private clouds (VPCs), that are associated with the CLB instance.
 	//
 	// If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources for SourceResources. In other cases, you can specify up to 200 source resources.
 	SourceResourcesShrink *string `json:"SourceResources,omitempty" xml:"SourceResources,omitempty"`
