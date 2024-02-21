@@ -1,3 +1,6 @@
+2024-02-21 Version: v1.0.1
+- Generated golang 2021-10-28 for foasconsole.
+
 2022-11-24 Version: v1.0.0
 - Support describe instance namespace tag.
 
