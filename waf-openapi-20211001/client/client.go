@@ -4566,11 +4566,6 @@ type DescribeHybridCloudResourcesResponseBodyDomainsListen struct {
 	// The HTTPS listener ports.
 	HttpsPorts  []*int64 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	IPv6Enabled *bool    `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
-	// Indicates whether IPv6 is supported. Valid values:
-	//
-	// *   **true**
-	// *   **false**
-	Ipv6Enabled *bool `json:"Ipv6Enabled,omitempty" xml:"Ipv6Enabled,omitempty"`
 	// The type of the protection resource. Valid values:
 	//
 	// *   **share:** shared cluster.
@@ -4649,11 +4644,6 @@ func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetHttpsPorts(v 
 
 func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetIPv6Enabled(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
 	s.IPv6Enabled = &v
-	return s
-}
-
-func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetIpv6Enabled(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
-	s.Ipv6Enabled = &v
 	return s
 }
 

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/waf-openapi-20211001/v2
+module github.com/alibabacloud-go/waf-openapi-20211001/v3
 
 go 1.15
 
