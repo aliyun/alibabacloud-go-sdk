@@ -18192,6 +18192,99 @@ func (s *ModifyEciScalingConfigurationResponse) SetBody(v *ModifyEciScalingConfi
 	return s
 }
 
+type ModifyInstanceAttributeRequest struct {
+	Entrusted            *bool   `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s ModifyInstanceAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAttributeRequest) SetEntrusted(v bool) *ModifyInstanceAttributeRequest {
+	s.Entrusted = &v
+	return s
+}
+
+func (s *ModifyInstanceAttributeRequest) SetInstanceId(v string) *ModifyInstanceAttributeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceAttributeRequest) SetOwnerId(v int64) *ModifyInstanceAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceAttributeRequest) SetRegionId(v string) *ModifyInstanceAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyInstanceAttributeRequest) SetResourceOwnerAccount(v string) *ModifyInstanceAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyInstanceAttributeRequest) SetScalingGroupId(v string) *ModifyInstanceAttributeRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type ModifyInstanceAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAttributeResponseBody) SetRequestId(v string) *ModifyInstanceAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceAttributeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyInstanceAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAttributeResponse) SetHeaders(v map[string]*string) *ModifyInstanceAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceAttributeResponse) SetStatusCode(v int32) *ModifyInstanceAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceAttributeResponse) SetBody(v *ModifyInstanceAttributeResponseBody) *ModifyInstanceAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyLifecycleHookRequest struct {
 	// The action that you want Auto Scaling to perform after the lifecycle hook times out. Valid values:
 	//
@@ -20508,6 +20601,7 @@ type ModifyScalingGroupRequest struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The name of the scaling group. The name of each scaling group must be unique in a region. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
 	ScalingGroupName *string `json:"ScalingGroupName,omitempty" xml:"ScalingGroupName,omitempty"`
+	ScalingPolicy    *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
 	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter takes effect only when you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
 	//
 	// *   priority: Auto Scaling selects instance types based on the specified order to create the required number of preemptible instances.
@@ -20669,6 +20763,11 @@ func (s *ModifyScalingGroupRequest) SetScalingGroupId(v string) *ModifyScalingGr
 
 func (s *ModifyScalingGroupRequest) SetScalingGroupName(v string) *ModifyScalingGroupRequest {
 	s.ScalingGroupName = &v
+	return s
+}
+
+func (s *ModifyScalingGroupRequest) SetScalingPolicy(v string) *ModifyScalingGroupRequest {
+	s.ScalingPolicy = &v
 	return s
 }
 
@@ -28472,6 +28571,70 @@ func (client *Client) ModifyEciScalingConfiguration(request *ModifyEciScalingCon
 	return _result, _err
 }
 
+func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Entrusted)) {
+		query["Entrusted"] = request.Entrusted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
+		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceAttribute"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRequest) (_result *ModifyInstanceAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceAttributeResponse{}
+	_body, _err := client.ModifyInstanceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can use one of the following methods to specify the lifecycle hook that you want to modify:
  * *   Specify the lifecycle hook ID by using the LifecycleHookId parameter. When you use this method, the ScalingGroupId and LifecycleHookName parameters are ignored.
@@ -29038,6 +29201,10 @@ func (client *Client) ModifyScalingGroupWithOptions(request *ModifyScalingGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingGroupName)) {
 		query["ScalingGroupName"] = request.ScalingGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingPolicy)) {
+		query["ScalingPolicy"] = request.ScalingPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpotAllocationStrategy)) {
