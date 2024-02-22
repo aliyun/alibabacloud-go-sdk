@@ -59,9 +59,9 @@ func (s *CancelFineTuneJobResponseBody) SetRequestId(v string) *CancelFineTuneJo
 }
 
 type CancelFineTuneJobResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelFineTuneJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelFineTuneJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelFineTuneJobResponse) String() string {
@@ -111,6 +111,7 @@ func (s *CreateDocumentTagRequest) SetName(v string) *CreateDocumentTagRequest {
 }
 
 type CreateDocumentTagResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagId     *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
@@ -134,9 +135,9 @@ func (s *CreateDocumentTagResponseBody) SetTagId(v string) *CreateDocumentTagRes
 }
 
 type CreateDocumentTagResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDocumentTagResponse) String() string {
@@ -333,9 +334,9 @@ func (s *CreateFineTuneJobResponseBody) SetStatus(v string) *CreateFineTuneJobRe
 }
 
 type CreateFineTuneJobResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFineTuneJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFineTuneJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFineTuneJobResponse) String() string {
@@ -408,9 +409,9 @@ func (s *CreateServiceResponseBody) SetRequestId(v string) *CreateServiceRespons
 }
 
 type CreateServiceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceResponse) String() string {
@@ -582,9 +583,9 @@ func (s *CreateTextEmbeddingsResponseBodyDataEmbeddings) SetTextIndex(v int32) *
 }
 
 type CreateTextEmbeddingsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTextEmbeddingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTextEmbeddingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTextEmbeddingsResponse) String() string {
@@ -699,9 +700,9 @@ func (s *CreateTokenResponseBodyData) SetToken(v string) *CreateTokenResponseBod
 }
 
 type CreateTokenResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTokenResponse) String() string {
@@ -751,7 +752,8 @@ func (s *DeleteDocRequest) SetDocId(v string) *DeleteDocRequest {
 }
 
 type DeleteDocResponseBody struct {
-	DocId     *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -774,9 +776,9 @@ func (s *DeleteDocResponseBody) SetRequestId(v string) *DeleteDocResponseBody {
 }
 
 type DeleteDocResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDocResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDocResponse) String() string {
@@ -826,6 +828,7 @@ func (s *DeleteDocumentTagRequest) SetTagId(v string) *DeleteDocumentTagRequest 
 }
 
 type DeleteDocumentTagResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagId     *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
@@ -849,9 +852,9 @@ func (s *DeleteDocumentTagResponseBody) SetTagId(v string) *DeleteDocumentTagRes
 }
 
 type DeleteDocumentTagResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDocumentTagResponse) String() string {
@@ -924,9 +927,9 @@ func (s *DeleteFineTuneJobResponseBody) SetRequestId(v string) *DeleteFineTuneJo
 }
 
 type DeleteFineTuneJobResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFineTuneJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFineTuneJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFineTuneJobResponse) String() string {
@@ -999,9 +1002,9 @@ func (s *DeleteServiceResponseBody) SetRequestId(v string) *DeleteServiceRespons
 }
 
 type DeleteServiceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteServiceResponse) String() string {
@@ -1051,10 +1054,11 @@ func (s *DescribeDocRequest) SetDocId(v string) *DescribeDocRequest {
 }
 
 type DescribeDocResponseBody struct {
-	DocId      *string                        `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	FailReason *string                        `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	Name       *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId    *string                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DocId      *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Id of the request
 	RequestId  *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Size       *string                        `json:"Size,omitempty" xml:"Size,omitempty"`
 	Status     *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -1145,9 +1149,9 @@ func (s *DescribeDocResponseBodyTags) SetTagName(v string) *DescribeDocResponseB
 }
 
 type DescribeDocResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDocResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDocResponse) String() string {
@@ -1197,10 +1201,12 @@ func (s *DescribeDocumentImportJobRequest) SetJobId(v string) *DescribeDocumentI
 }
 
 type DescribeDocumentImportJobResponseBody struct {
-	Docs      []*DescribeDocumentImportJobResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
-	JobId     *string                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Docs []*DescribeDocumentImportJobResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	// Id of the request
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDocumentImportJobResponseBody) String() string {
@@ -1267,9 +1273,9 @@ func (s *DescribeDocumentImportJobResponseBodyDocs) SetStatus(v string) *Describ
 }
 
 type DescribeDocumentImportJobResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDocumentImportJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDocumentImportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDocumentImportJobResponse) String() string {
@@ -1431,9 +1437,9 @@ func (s *DescribeFineTuneJobResponseBodyHyperParameters) SetPromptLossWeight(v f
 }
 
 type DescribeFineTuneJobResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFineTuneJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFineTuneJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFineTuneJobResponse) String() string {
@@ -1518,9 +1524,9 @@ func (s *DescribeServiceResponseBody) SetStatus(v string) *DescribeServiceRespon
 }
 
 type DescribeServiceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeServiceResponse) String() string {
@@ -1682,9 +1688,9 @@ func (s *GetFileStoreUploadPolicyResponseBodyData) SetSignature(v string) *GetFi
 }
 
 type GetFileStoreUploadPolicyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFileStoreUploadPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFileStoreUploadPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFileStoreUploadPolicyResponse) String() string {
@@ -1811,9 +1817,9 @@ func (s *GetPromptResponseBodyData) SetPromptId(v string) *GetPromptResponseBody
 }
 
 type GetPromptResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPromptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPromptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPromptResponse) String() string {
@@ -1985,9 +1991,9 @@ func (s *GetText2ImageJobResponseBodyUsage) SetImageCount(v int32) *GetText2Imag
 }
 
 type GetText2ImageJobResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetText2ImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetText2ImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetText2ImageJobResponse) String() string {
@@ -2125,9 +2131,9 @@ func (s *ImportUserDocumentResponseBodyData) SetDataStatus(v int64) *ImportUserD
 }
 
 type ImportUserDocumentResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImportUserDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportUserDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImportUserDocumentResponse) String() string {
@@ -2248,11 +2254,12 @@ func (s *ListDocsShrinkRequest) SetTagIdsShrink(v string) *ListDocsShrinkRequest
 }
 
 type ListDocsResponseBody struct {
-	Docs      []*ListDocsResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
-	PageNo    *int32                      `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int32                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	Docs     []*ListDocsResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	PageNo   *int32                      `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListDocsResponseBody) String() string {
@@ -2377,9 +2384,9 @@ func (s *ListDocsResponseBodyDocsTags) SetTagName(v string) *ListDocsResponseBod
 }
 
 type ListDocsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDocsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDocsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDocsResponse) String() string {
@@ -2447,8 +2454,9 @@ func (s *ListDocumentTagsRequest) SetTagId(v string) *ListDocumentTagsRequest {
 }
 
 type ListDocumentTagsResponseBody struct {
-	PageNo    *int32                                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNo   *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagList   []*ListDocumentTagsResponseBodyTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 	Total     *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
@@ -2511,9 +2519,9 @@ func (s *ListDocumentTagsResponseBodyTagList) SetTagId(v string) *ListDocumentTa
 }
 
 type ListDocumentTagsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDocumentTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDocumentTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDocumentTagsResponse) String() string {
@@ -2716,9 +2724,9 @@ func (s *ListFineTuneJobsResponseBodyJobsHyperParameters) SetPromptLossWeight(v 
 }
 
 type ListFineTuneJobsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFineTuneJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFineTuneJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFineTuneJobsResponse) String() string {
@@ -2844,9 +2852,9 @@ func (s *ListServicesResponseBodyModelServices) SetStatus(v string) *ListService
 }
 
 type ListServicesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServicesResponse) String() string {
@@ -2966,9 +2974,9 @@ func (s *QueryUserDocumentResponseBodyData) SetDataStatus(v int64) *QueryUserDoc
 }
 
 type QueryUserDocumentResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryUserDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryUserDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryUserDocumentResponse) String() string {
@@ -3065,7 +3073,8 @@ func (s *SubmitDocumentImportJobRequestDocs) SetURL(v string) *SubmitDocumentImp
 }
 
 type SubmitDocumentImportJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3088,9 +3097,9 @@ func (s *SubmitDocumentImportJobResponseBody) SetRequestId(v string) *SubmitDocu
 }
 
 type SubmitDocumentImportJobResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitDocumentImportJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDocumentImportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitDocumentImportJobResponse) String() string {
@@ -3205,9 +3214,9 @@ func (s *SubmitText2ImageJobResponseBody) SetTaskStatus(v string) *SubmitText2Im
 }
 
 type SubmitText2ImageJobResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitText2ImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitText2ImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitText2ImageJobResponse) String() string {
@@ -3316,7 +3325,8 @@ func (s *UpdateDocAttributeShrinkRequest) SetTagIdsShrink(v string) *UpdateDocAt
 }
 
 type UpdateDocAttributeResponseBody struct {
-	DocId     *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3339,9 +3349,9 @@ func (s *UpdateDocAttributeResponseBody) SetRequestId(v string) *UpdateDocAttrib
 }
 
 type UpdateDocAttributeResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDocAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDocAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDocAttributeResponse) String() string {
@@ -3397,6 +3407,7 @@ func (s *UpdateDocumentTagRequest) SetTagId(v string) *UpdateDocumentTagRequest 
 }
 
 type UpdateDocumentTagResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagId     *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
@@ -3420,9 +3431,9 @@ func (s *UpdateDocumentTagResponseBody) SetTagId(v string) *UpdateDocumentTagRes
 }
 
 type UpdateDocumentTagResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDocumentTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDocumentTagResponse) String() string {
