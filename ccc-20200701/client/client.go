@@ -99,6 +99,100 @@ func (s *AbortCampaignResponse) SetBody(v *AbortCampaignResponseBody) *AbortCamp
 	return s
 }
 
+type AddBlacklistCallTaggingRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Number     *string `json:"Number,omitempty" xml:"Number,omitempty"`
+}
+
+func (s AddBlacklistCallTaggingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBlacklistCallTaggingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddBlacklistCallTaggingRequest) SetInstanceId(v string) *AddBlacklistCallTaggingRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddBlacklistCallTaggingRequest) SetJobId(v string) *AddBlacklistCallTaggingRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *AddBlacklistCallTaggingRequest) SetNumber(v string) *AddBlacklistCallTaggingRequest {
+	s.Number = &v
+	return s
+}
+
+type AddBlacklistCallTaggingResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddBlacklistCallTaggingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBlacklistCallTaggingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddBlacklistCallTaggingResponseBody) SetCode(v string) *AddBlacklistCallTaggingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddBlacklistCallTaggingResponseBody) SetHttpStatusCode(v int32) *AddBlacklistCallTaggingResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddBlacklistCallTaggingResponseBody) SetMessage(v string) *AddBlacklistCallTaggingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddBlacklistCallTaggingResponseBody) SetRequestId(v string) *AddBlacklistCallTaggingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddBlacklistCallTaggingResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddBlacklistCallTaggingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddBlacklistCallTaggingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBlacklistCallTaggingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddBlacklistCallTaggingResponse) SetHeaders(v map[string]*string) *AddBlacklistCallTaggingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddBlacklistCallTaggingResponse) SetStatusCode(v int32) *AddBlacklistCallTaggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddBlacklistCallTaggingResponse) SetBody(v *AddBlacklistCallTaggingResponseBody) *AddBlacklistCallTaggingResponse {
+	s.Body = v
+	return s
+}
+
 type AddCasesRequest struct {
 	CampaignId *string                    `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
 	CaseList   []*AddCasesRequestCaseList `json:"CaseList,omitempty" xml:"CaseList,omitempty" type:"Repeated"`
@@ -1002,6 +1096,7 @@ type AnswerCallResponseBodyDataCallContextChannelContexts struct {
 	ChannelState     *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
 	ChannelVariables *string `json:"ChannelVariables,omitempty" xml:"ChannelVariables,omitempty"`
 	Destination      *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	Index            *int64  `json:"Index,omitempty" xml:"Index,omitempty"`
 	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Originator       *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
@@ -1042,6 +1137,11 @@ func (s *AnswerCallResponseBodyDataCallContextChannelContexts) SetChannelVariabl
 
 func (s *AnswerCallResponseBodyDataCallContextChannelContexts) SetDestination(v string) *AnswerCallResponseBodyDataCallContextChannelContexts {
 	s.Destination = &v
+	return s
+}
+
+func (s *AnswerCallResponseBodyDataCallContextChannelContexts) SetIndex(v int64) *AnswerCallResponseBodyDataCallContextChannelContexts {
+	s.Index = &v
 	return s
 }
 
@@ -35521,6 +35621,100 @@ func (s *ReleaseCallResponse) SetBody(v *ReleaseCallResponseBody) *ReleaseCallRe
 	return s
 }
 
+type RemoveBlacklistCallTaggingRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Number     *string `json:"Number,omitempty" xml:"Number,omitempty"`
+}
+
+func (s RemoveBlacklistCallTaggingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBlacklistCallTaggingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBlacklistCallTaggingRequest) SetInstanceId(v string) *RemoveBlacklistCallTaggingRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RemoveBlacklistCallTaggingRequest) SetJobId(v string) *RemoveBlacklistCallTaggingRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *RemoveBlacklistCallTaggingRequest) SetNumber(v string) *RemoveBlacklistCallTaggingRequest {
+	s.Number = &v
+	return s
+}
+
+type RemoveBlacklistCallTaggingResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveBlacklistCallTaggingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBlacklistCallTaggingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBlacklistCallTaggingResponseBody) SetCode(v string) *RemoveBlacklistCallTaggingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RemoveBlacklistCallTaggingResponseBody) SetHttpStatusCode(v int32) *RemoveBlacklistCallTaggingResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RemoveBlacklistCallTaggingResponseBody) SetMessage(v string) *RemoveBlacklistCallTaggingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveBlacklistCallTaggingResponseBody) SetRequestId(v string) *RemoveBlacklistCallTaggingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveBlacklistCallTaggingResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveBlacklistCallTaggingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveBlacklistCallTaggingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBlacklistCallTaggingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBlacklistCallTaggingResponse) SetHeaders(v map[string]*string) *RemoveBlacklistCallTaggingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveBlacklistCallTaggingResponse) SetStatusCode(v int32) *RemoveBlacklistCallTaggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveBlacklistCallTaggingResponse) SetBody(v *RemoveBlacklistCallTaggingResponseBody) *RemoveBlacklistCallTaggingResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveDoNotCallNumbersRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
@@ -41138,6 +41332,58 @@ func (client *Client) AbortCampaign(request *AbortCampaignRequest) (_result *Abo
 	runtime := &util.RuntimeOptions{}
 	_result = &AbortCampaignResponse{}
 	_body, _err := client.AbortCampaignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddBlacklistCallTaggingWithOptions(request *AddBlacklistCallTaggingRequest, runtime *util.RuntimeOptions) (_result *AddBlacklistCallTaggingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddBlacklistCallTagging"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddBlacklistCallTaggingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddBlacklistCallTagging(request *AddBlacklistCallTaggingRequest) (_result *AddBlacklistCallTaggingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddBlacklistCallTaggingResponse{}
+	_body, _err := client.AddBlacklistCallTaggingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49490,6 +49736,58 @@ func (client *Client) ReleaseCall(request *ReleaseCallRequest) (_result *Release
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseCallResponse{}
 	_body, _err := client.ReleaseCallWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveBlacklistCallTaggingWithOptions(request *RemoveBlacklistCallTaggingRequest, runtime *util.RuntimeOptions) (_result *RemoveBlacklistCallTaggingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveBlacklistCallTagging"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveBlacklistCallTaggingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveBlacklistCallTagging(request *RemoveBlacklistCallTaggingRequest) (_result *RemoveBlacklistCallTaggingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveBlacklistCallTaggingResponse{}
+	_body, _err := client.RemoveBlacklistCallTaggingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
