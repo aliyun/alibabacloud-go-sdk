@@ -59,9 +59,9 @@ func (s *AcceptDemandResponseBody) SetRequestId(v string) *AcceptDemandResponseB
 }
 
 type AcceptDemandResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AcceptDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcceptDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AcceptDemandResponse) String() string {
@@ -140,9 +140,9 @@ func (s *BidDomainResponseBody) SetRequestId(v string) *BidDomainResponseBody {
 }
 
 type BidDomainResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BidDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BidDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BidDomainResponse) String() string {
@@ -303,9 +303,9 @@ func (s *ChangeAuctionResponseBody) SetRequestId(v string) *ChangeAuctionRespons
 }
 
 type ChangeAuctionResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeAuctionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeAuctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeAuctionResponse) String() string {
@@ -431,9 +431,9 @@ func (s *CheckDomainStatusResponseBodyModule) SetRegDate(v int64) *CheckDomainSt
 }
 
 type CheckDomainStatusResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckDomainStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckDomainStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckDomainStatusResponse) String() string {
@@ -559,9 +559,9 @@ func (s *CheckSelectedDomainStatusResponseBodyModule) SetRegDate(v int64) *Check
 }
 
 type CheckSelectedDomainStatusResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckSelectedDomainStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckSelectedDomainStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckSelectedDomainStatusResponse) String() string {
@@ -693,9 +693,9 @@ func (s *CreateFixedPriceDemandOrderResponseBodyModule) SetPrice(v int64) *Creat
 }
 
 type CreateFixedPriceDemandOrderResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFixedPriceDemandOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFixedPriceDemandOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFixedPriceDemandOrderResponse) String() string {
@@ -833,9 +833,9 @@ func (s *CreateFixedPriceSelectedOrderResponseBodyModule) SetPrice(v int64) *Cre
 }
 
 type CreateFixedPriceSelectedOrderResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFixedPriceSelectedOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFixedPriceSelectedOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFixedPriceSelectedOrderResponse) String() string {
@@ -902,9 +902,9 @@ func (s *FailDemandResponseBody) SetRequestId(v string) *FailDemandResponseBody 
 }
 
 type FailDemandResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FailDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FailDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FailDemandResponse) String() string {
@@ -971,9 +971,9 @@ func (s *FinishDemandResponseBody) SetRequestId(v string) *FinishDemandResponseB
 }
 
 type FinishDemandResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FinishDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FinishDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FinishDemandResponse) String() string {
@@ -1077,9 +1077,9 @@ func (s *GetIntlDomainDownloadUrlResponseBody) SetUrl(v string) *GetIntlDomainDo
 }
 
 type GetIntlDomainDownloadUrlResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIntlDomainDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIntlDomainDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIntlDomainDownloadUrlResponse) String() string {
@@ -1129,9 +1129,9 @@ func (s *GetReserveDomainUrlResponseBody) SetUrl(v string) *GetReserveDomainUrlR
 }
 
 type GetReserveDomainUrlResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetReserveDomainUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetReserveDomainUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetReserveDomainUrlResponse) String() string {
@@ -1264,9 +1264,9 @@ func (s *PurchaseIntlDomainResponseBody) SetSuccess(v bool) *PurchaseIntlDomainR
 }
 
 type PurchaseIntlDomainResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PurchaseIntlDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PurchaseIntlDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PurchaseIntlDomainResponse) String() string {
@@ -1465,9 +1465,9 @@ func (s *QueryAuctionDetailResponseBody) SetYourMaxBid(v float32) *QueryAuctionD
 }
 
 type QueryAuctionDetailResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryAuctionDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAuctionDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryAuctionDetailResponse) String() string {
@@ -1731,9 +1731,9 @@ func (s *QueryAuctionsResponseBodyData) SetYourMaxBid(v float32) *QueryAuctionsR
 }
 
 type QueryAuctionsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryAuctionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAuctionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryAuctionsResponse) String() string {
@@ -1877,9 +1877,9 @@ func (s *QueryBidRecordsResponseBodyData) SetDomainName(v string) *QueryBidRecor
 }
 
 type QueryBidRecordsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryBidRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryBidRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryBidRecordsResponse) String() string {
@@ -1976,9 +1976,9 @@ func (s *QueryBookingDomainInfoResponseBody) SetTransferInPrice(v float32) *Quer
 }
 
 type QueryBookingDomainInfoResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryBookingDomainInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryBookingDomainInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryBookingDomainInfoResponse) String() string {
@@ -2206,9 +2206,9 @@ func (s *QueryBrokerDemandResponseBodyData) SetStatus(v string) *QueryBrokerDema
 }
 
 type QueryBrokerDemandResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryBrokerDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryBrokerDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryBrokerDemandResponse) String() string {
@@ -2357,9 +2357,9 @@ func (s *QueryBrokerDemandRecordResponseBodyDataBrokerDemandRecord) SetDescripti
 }
 
 type QueryBrokerDemandRecordResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryBrokerDemandRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryBrokerDemandRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryBrokerDemandRecordResponse) String() string {
@@ -2449,9 +2449,9 @@ func (s *QueryDomainTransferStatusResponseBodyDomainTransferStatus) SetDomainSta
 }
 
 type QueryDomainTransferStatusResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDomainTransferStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDomainTransferStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDomainTransferStatusResponse) String() string {
@@ -2637,9 +2637,9 @@ func (s *QueryPurchasedDomainsResponseBodyData) SetTradeMoney(v float64) *QueryP
 }
 
 type QueryPurchasedDomainsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryPurchasedDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPurchasedDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryPurchasedDomainsResponse) String() string {
@@ -2706,9 +2706,9 @@ func (s *RecordDemandResponseBody) SetRequestId(v string) *RecordDemandResponseB
 }
 
 type RecordDemandResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecordDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecordDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecordDemandResponse) String() string {
@@ -2775,9 +2775,9 @@ func (s *RefuseDemandResponseBody) SetRequestId(v string) *RefuseDemandResponseB
 }
 
 type RefuseDemandResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefuseDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefuseDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefuseDemandResponse) String() string {
@@ -2862,9 +2862,9 @@ func (s *RequestPayDemandResponseBody) SetRequestId(v string) *RequestPayDemandR
 }
 
 type RequestPayDemandResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RequestPayDemandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RequestPayDemandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RequestPayDemandResponse) String() string {
@@ -2937,9 +2937,9 @@ func (s *ReserveDomainResponseBody) SetRequestId(v string) *ReserveDomainRespons
 }
 
 type ReserveDomainResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReserveDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReserveDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReserveDomainResponse) String() string {
@@ -3060,9 +3060,9 @@ func (s *ReserveIntlDomainResponseBody) SetSuccess(v bool) *ReserveIntlDomainRes
 }
 
 type ReserveIntlDomainResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReserveIntlDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReserveIntlDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReserveIntlDomainResponse) String() string {
@@ -3159,9 +3159,9 @@ func (s *SelectedDomainListResponseBodyModule) SetDownloadUrl(v string) *Selecte
 }
 
 type SelectedDomainListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SelectedDomainListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SelectedDomainListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SelectedDomainListResponse) String() string {
@@ -3183,6 +3183,147 @@ func (s *SelectedDomainListResponse) SetStatusCode(v int32) *SelectedDomainListR
 }
 
 func (s *SelectedDomainListResponse) SetBody(v *SelectedDomainListResponseBody) *SelectedDomainListResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitPurchaseInfoRequest struct {
+	BizId            *string   `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	PurchaseCurrency *string   `json:"PurchaseCurrency,omitempty" xml:"PurchaseCurrency,omitempty"`
+	PurchasePrice    *float64  `json:"PurchasePrice,omitempty" xml:"PurchasePrice,omitempty"`
+	PurchaseProofs   []*string `json:"PurchaseProofs,omitempty" xml:"PurchaseProofs,omitempty" type:"Repeated"`
+}
+
+func (s SubmitPurchaseInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitPurchaseInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitPurchaseInfoRequest) SetBizId(v string) *SubmitPurchaseInfoRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoRequest) SetPurchaseCurrency(v string) *SubmitPurchaseInfoRequest {
+	s.PurchaseCurrency = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoRequest) SetPurchasePrice(v float64) *SubmitPurchaseInfoRequest {
+	s.PurchasePrice = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoRequest) SetPurchaseProofs(v []*string) *SubmitPurchaseInfoRequest {
+	s.PurchaseProofs = v
+	return s
+}
+
+type SubmitPurchaseInfoResponseBody struct {
+	AllowRetry     *bool         `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	AppName        *string       `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DynamicCode    *string       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	ErrorCode      *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg       *string       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpStatusCode *int32        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Module         interface{}   `json:"Module,omitempty" xml:"Module,omitempty"`
+	RequestId      *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitPurchaseInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitPurchaseInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetAllowRetry(v bool) *SubmitPurchaseInfoResponseBody {
+	s.AllowRetry = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetAppName(v string) *SubmitPurchaseInfoResponseBody {
+	s.AppName = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetDynamicCode(v string) *SubmitPurchaseInfoResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetDynamicMessage(v string) *SubmitPurchaseInfoResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetErrorArgs(v []interface{}) *SubmitPurchaseInfoResponseBody {
+	s.ErrorArgs = v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetErrorCode(v string) *SubmitPurchaseInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetErrorMsg(v string) *SubmitPurchaseInfoResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetHttpStatusCode(v int32) *SubmitPurchaseInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetModule(v interface{}) *SubmitPurchaseInfoResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetRequestId(v string) *SubmitPurchaseInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponseBody) SetSuccess(v bool) *SubmitPurchaseInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitPurchaseInfoResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitPurchaseInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitPurchaseInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitPurchaseInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitPurchaseInfoResponse) SetHeaders(v map[string]*string) *SubmitPurchaseInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponse) SetStatusCode(v int32) *SubmitPurchaseInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitPurchaseInfoResponse) SetBody(v *SubmitPurchaseInfoResponseBody) *SubmitPurchaseInfoResponse {
 	s.Body = v
 	return s
 }
@@ -3240,9 +3381,9 @@ func (s *UpdatePartnerReservePriceResponseBody) SetRequestId(v string) *UpdatePa
 }
 
 type UpdatePartnerReservePriceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePartnerReservePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePartnerReservePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePartnerReservePriceResponse) String() string {
@@ -4578,6 +4719,62 @@ func (client *Client) SelectedDomainList(request *SelectedDomainListRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SelectedDomainListResponse{}
 	_body, _err := client.SelectedDomainListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitPurchaseInfoWithOptions(request *SubmitPurchaseInfoRequest, runtime *util.RuntimeOptions) (_result *SubmitPurchaseInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaseCurrency)) {
+		body["PurchaseCurrency"] = request.PurchaseCurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchasePrice)) {
+		body["PurchasePrice"] = request.PurchasePrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaseProofs)) {
+		body["PurchaseProofs"] = request.PurchaseProofs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitPurchaseInfo"),
+		Version:     tea.String("2018-02-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitPurchaseInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitPurchaseInfo(request *SubmitPurchaseInfoRequest) (_result *SubmitPurchaseInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitPurchaseInfoResponse{}
+	_body, _err := client.SubmitPurchaseInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
