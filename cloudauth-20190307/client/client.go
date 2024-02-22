@@ -17,6 +17,146 @@ import (
 	"io"
 )
 
+type AIGCFaceVerifyRequest struct {
+	FaceContrastPicture    *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
+	OssBucketName          *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s AIGCFaceVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIGCFaceVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AIGCFaceVerifyRequest) SetFaceContrastPicture(v string) *AIGCFaceVerifyRequest {
+	s.FaceContrastPicture = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyRequest) SetFaceContrastPictureUrl(v string) *AIGCFaceVerifyRequest {
+	s.FaceContrastPictureUrl = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyRequest) SetOssBucketName(v string) *AIGCFaceVerifyRequest {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyRequest) SetOssObjectName(v string) *AIGCFaceVerifyRequest {
+	s.OssObjectName = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyRequest) SetOuterOrderNo(v string) *AIGCFaceVerifyRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyRequest) SetProductCode(v string) *AIGCFaceVerifyRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyRequest) SetSceneId(v int64) *AIGCFaceVerifyRequest {
+	s.SceneId = &v
+	return s
+}
+
+type AIGCFaceVerifyResponseBody struct {
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *AIGCFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s AIGCFaceVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIGCFaceVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AIGCFaceVerifyResponseBody) SetCode(v string) *AIGCFaceVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyResponseBody) SetMessage(v string) *AIGCFaceVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyResponseBody) SetRequestId(v string) *AIGCFaceVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyResponseBody) SetResultObject(v *AIGCFaceVerifyResponseBodyResultObject) *AIGCFaceVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type AIGCFaceVerifyResponseBodyResultObject struct {
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Score  *string `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s AIGCFaceVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIGCFaceVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *AIGCFaceVerifyResponseBodyResultObject) SetResult(v string) *AIGCFaceVerifyResponseBodyResultObject {
+	s.Result = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyResponseBodyResultObject) SetScore(v string) *AIGCFaceVerifyResponseBodyResultObject {
+	s.Score = &v
+	return s
+}
+
+type AIGCFaceVerifyResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AIGCFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AIGCFaceVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIGCFaceVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AIGCFaceVerifyResponse) SetHeaders(v map[string]*string) *AIGCFaceVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AIGCFaceVerifyResponse) SetStatusCode(v int32) *AIGCFaceVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AIGCFaceVerifyResponse) SetBody(v *AIGCFaceVerifyResponseBody) *AIGCFaceVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type CompareFaceVerifyRequest struct {
 	Crop                         *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	OuterOrderNo                 *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
@@ -177,9 +317,9 @@ func (s *CompareFaceVerifyResponseBodyResultObject) SetVerifyScore(v float32) *C
 }
 
 type CompareFaceVerifyResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CompareFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompareFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompareFaceVerifyResponse) String() string {
@@ -305,9 +445,9 @@ func (s *CompareFacesResponseBodyData) SetSimilarityScore(v float32) *CompareFac
 }
 
 type CompareFacesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CompareFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompareFacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompareFacesResponse) String() string {
@@ -660,9 +800,9 @@ func (s *ContrastFaceVerifyResponseBodyResultObject) SetSubCode(v string) *Contr
 }
 
 type ContrastFaceVerifyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ContrastFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ContrastFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ContrastFaceVerifyResponse) String() string {
@@ -747,9 +887,9 @@ func (s *CreateAuthKeyResponseBody) SetRequestId(v string) *CreateAuthKeyRespons
 }
 
 type CreateAuthKeyResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAuthKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAuthKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAuthKeyResponse) String() string {
@@ -864,9 +1004,9 @@ func (s *CreateVerifySettingResponseBody) SetStepList(v []*string) *CreateVerify
 }
 
 type CreateVerifySettingResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVerifySettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVerifySettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVerifySettingResponse) String() string {
@@ -1045,9 +1185,9 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) SetUserDeviceId
 }
 
 type DescribeDeviceInfoResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDeviceInfoResponse) String() string {
@@ -1197,9 +1337,9 @@ func (s *DescribeFaceVerifyResponseBodyResultObject) SetUserInfo(v string) *Desc
 }
 
 type DescribeFaceVerifyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFaceVerifyResponse) String() string {
@@ -1302,9 +1442,9 @@ func (s *DescribeOssUploadTokenResponseBodyOssUploadToken) SetToken(v string) *D
 }
 
 type DescribeOssUploadTokenResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOssUploadTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOssUploadTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOssUploadTokenResponse) String() string {
@@ -1478,9 +1618,9 @@ func (s *DescribeSmartStatisticsPageListResponseBodyItems) SetTotalCount(v int32
 }
 
 type DescribeSmartStatisticsPageListResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSmartStatisticsPageListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSmartStatisticsPageListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSmartStatisticsPageListResponse) String() string {
@@ -1707,9 +1847,9 @@ func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetStartDate(v stri
 }
 
 type DescribeVerifyResultResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVerifyResultResponse) String() string {
@@ -1776,9 +1916,9 @@ func (s *DescribeVerifySDKResponseBody) SetSdkUrl(v string) *DescribeVerifySDKRe
 }
 
 type DescribeVerifySDKResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVerifySDKResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVerifySDKResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVerifySDKResponse) String() string {
@@ -1994,9 +2134,9 @@ func (s *DescribeVerifyTokenResponseBodyOssUploadToken) SetToken(v string) *Desc
 }
 
 type DescribeVerifyTokenResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVerifyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVerifyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVerifyTokenResponse) String() string {
@@ -2302,9 +2442,9 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFa
 }
 
 type DetectFaceAttributesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetectFaceAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetectFaceAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetectFaceAttributesResponse) String() string {
@@ -2412,9 +2552,9 @@ func (s *Id2MetaVerifyResponseBodyResultObject) SetBizCode(v string) *Id2MetaVer
 }
 
 type Id2MetaVerifyResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Id2MetaVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Id2MetaVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s Id2MetaVerifyResponse) String() string {
@@ -2708,9 +2848,9 @@ func (s *InitFaceVerifyResponseBodyResultObject) SetCertifyUrl(v string) *InitFa
 }
 
 type InitFaceVerifyResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InitFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitFaceVerifyResponse) String() string {
@@ -2902,9 +3042,9 @@ func (s *LivenessFaceVerifyResponseBodyResultObject) SetSubCode(v string) *Liven
 }
 
 type LivenessFaceVerifyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LivenessFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LivenessFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LivenessFaceVerifyResponse) String() string {
@@ -3030,9 +3170,9 @@ func (s *Mobile3MetaDetailVerifyResponseBodyResultObject) SetSubCode(v string) *
 }
 
 type Mobile3MetaDetailVerifyResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Mobile3MetaDetailVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Mobile3MetaDetailVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s Mobile3MetaDetailVerifyResponse) String() string {
@@ -3152,9 +3292,9 @@ func (s *Mobile3MetaSimpleVerifyResponseBodyResultObject) SetIspName(v string) *
 }
 
 type Mobile3MetaSimpleVerifyResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Mobile3MetaSimpleVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Mobile3MetaSimpleVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s Mobile3MetaSimpleVerifyResponse) String() string {
@@ -3269,9 +3409,9 @@ func (s *ModifyDeviceInfoResponseBody) SetUserDeviceId(v string) *ModifyDeviceIn
 }
 
 type ModifyDeviceInfoResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDeviceInfoResponse) String() string {
@@ -3528,9 +3668,9 @@ func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetStartDate(v string) *V
 }
 
 type VerifyMaterialResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyMaterialResponse) String() string {
@@ -3596,6 +3736,76 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AIGCFaceVerifyWithOptions(request *AIGCFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *AIGCFaceVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FaceContrastPictureUrl)) {
+		query["FaceContrastPictureUrl"] = request.FaceContrastPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssObjectName)) {
+		query["OssObjectName"] = request.OssObjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterOrderNo)) {
+		query["OuterOrderNo"] = request.OuterOrderNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FaceContrastPicture)) {
+		body["FaceContrastPicture"] = request.FaceContrastPicture
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AIGCFaceVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AIGCFaceVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AIGCFaceVerify(request *AIGCFaceVerifyRequest) (_result *AIGCFaceVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AIGCFaceVerifyResponse{}
+	_body, _err := client.AIGCFaceVerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
