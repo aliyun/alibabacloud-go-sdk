@@ -299,9 +299,9 @@ func (s *CreateIdleInstanceCullerResponseBody) SetSuccess(v bool) *CreateIdleIns
 }
 
 type CreateIdleInstanceCullerResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateIdleInstanceCullerResponse) String() string {
@@ -692,9 +692,9 @@ func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseB
 }
 
 type CreateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -791,9 +791,9 @@ func (s *CreateInstanceShutdownTimerResponseBody) SetSuccess(v bool) *CreateInst
 }
 
 type CreateInstanceShutdownTimerResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceShutdownTimerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceShutdownTimerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceShutdownTimerResponse) String() string {
@@ -943,9 +943,9 @@ func (s *CreateInstanceSnapshotResponseBody) SetSuccess(v bool) *CreateInstanceS
 }
 
 type CreateInstanceSnapshotResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceSnapshotResponse) String() string {
@@ -1013,9 +1013,9 @@ func (s *DeleteIdleInstanceCullerResponseBody) SetSuccess(v bool) *DeleteIdleIns
 }
 
 type DeleteIdleInstanceCullerResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteIdleInstanceCullerResponse) String() string {
@@ -1089,9 +1089,9 @@ func (s *DeleteInstanceResponseBody) SetSuccess(v bool) *DeleteInstanceResponseB
 }
 
 type DeleteInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -1165,9 +1165,9 @@ func (s *DeleteInstanceShutdownTimerResponseBody) SetSuccess(v bool) *DeleteInst
 }
 
 type DeleteInstanceShutdownTimerResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceShutdownTimerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceShutdownTimerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceShutdownTimerResponse) String() string {
@@ -1247,9 +1247,9 @@ func (s *DeleteInstanceSnapshotResponseBody) SetSuccess(v bool) *DeleteInstanceS
 }
 
 type DeleteInstanceSnapshotResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceSnapshotResponse) String() string {
@@ -1341,9 +1341,9 @@ func (s *GetIdleInstanceCullerResponseBody) SetSuccess(v bool) *GetIdleInstanceC
 }
 
 type GetIdleInstanceCullerResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIdleInstanceCullerResponse) String() string {
@@ -2035,9 +2035,9 @@ func (s *GetInstanceResponseBodyUserVpc) SetVpcId(v string) *GetInstanceResponse
 }
 
 type GetInstanceResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceResponse) String() string {
@@ -2059,6 +2059,117 @@ func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
 }
 
 func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstanceEventsRequest struct {
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MaxEventsNum *int32  `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetInstanceEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceEventsRequest) SetEndTime(v string) *GetInstanceEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetInstanceEventsRequest) SetMaxEventsNum(v int32) *GetInstanceEventsRequest {
+	s.MaxEventsNum = &v
+	return s
+}
+
+func (s *GetInstanceEventsRequest) SetStartTime(v string) *GetInstanceEventsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetInstanceEventsResponseBody struct {
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Events         []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInstanceEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceEventsResponseBody) SetCode(v string) *GetInstanceEventsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInstanceEventsResponseBody) SetEvents(v []*string) *GetInstanceEventsResponseBody {
+	s.Events = v
+	return s
+}
+
+func (s *GetInstanceEventsResponseBody) SetHttpStatusCode(v int32) *GetInstanceEventsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetInstanceEventsResponseBody) SetInstanceId(v string) *GetInstanceEventsResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceEventsResponseBody) SetMessage(v string) *GetInstanceEventsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInstanceEventsResponseBody) SetRequestId(v string) *GetInstanceEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceEventsResponseBody) SetSuccess(v bool) *GetInstanceEventsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInstanceEventsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetInstanceEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceEventsResponse) SetHeaders(v map[string]*string) *GetInstanceEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceEventsResponse) SetStatusCode(v int32) *GetInstanceEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceEventsResponse) SetBody(v *GetInstanceEventsResponseBody) *GetInstanceEventsResponse {
 	s.Body = v
 	return s
 }
@@ -2198,9 +2309,9 @@ func (s *GetInstanceMetricsResponseBodyPodMetricsMetrics) SetValue(v float32) *G
 }
 
 type GetInstanceMetricsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceMetricsResponse) String() string {
@@ -2298,9 +2409,9 @@ func (s *GetInstanceShutdownTimerResponseBody) SetSuccess(v bool) *GetInstanceSh
 }
 
 type GetInstanceShutdownTimerResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceShutdownTimerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceShutdownTimerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceShutdownTimerResponse) String() string {
@@ -2463,9 +2574,9 @@ func (s *GetInstanceSnapshotResponseBodyLabels) SetValue(v string) *GetInstanceS
 }
 
 type GetInstanceSnapshotResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceSnapshotResponse) String() string {
@@ -2615,9 +2726,9 @@ func (s *GetLifecycleResponseBodyLifecycle) SetGmtCreateTime(v string) *GetLifec
 }
 
 type GetLifecycleResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLifecycleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLifecycleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLifecycleResponse) String() string {
@@ -2726,9 +2837,9 @@ func (s *GetResourceGroupStatisticsResponseBody) SetSuccess(v bool) *GetResource
 }
 
 type GetResourceGroupStatisticsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceGroupStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceGroupStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceGroupStatisticsResponse) String() string {
@@ -2819,9 +2930,9 @@ func (s *GetTokenResponseBody) SetToken(v string) *GetTokenResponseBody {
 }
 
 type GetTokenResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTokenResponse) String() string {
@@ -2996,9 +3107,9 @@ func (s *GetUserConfigResponseBodyFreeTier) SetStatus(v string) *GetUserConfigRe
 }
 
 type GetUserConfigResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserConfigResponse) String() string {
@@ -3225,9 +3336,9 @@ func (s *ListEcsSpecsResponseBodyEcsSpecsLabels) SetValue(v string) *ListEcsSpec
 }
 
 type ListEcsSpecsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEcsSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEcsSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEcsSpecsResponse) String() string {
@@ -3448,9 +3559,9 @@ func (s *ListInstanceSnapshotResponseBodySnapshotsLabels) SetValue(v string) *Li
 }
 
 type ListInstanceSnapshotResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceSnapshotResponse) String() string {
@@ -3541,9 +3652,9 @@ func (s *ListInstanceStatisticsResponseBody) SetSuccess(v bool) *ListInstanceSta
 }
 
 type ListInstanceStatisticsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceStatisticsResponse) String() string {
@@ -4328,9 +4439,9 @@ func (s *ListInstancesResponseBodyInstancesUserVpc) SetVpcId(v string) *ListInst
 }
 
 type ListInstancesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -4404,9 +4515,9 @@ func (s *StartInstanceResponseBody) SetSuccess(v bool) *StartInstanceResponseBod
 }
 
 type StartInstanceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartInstanceResponse) String() string {
@@ -4497,9 +4608,9 @@ func (s *StopInstanceResponseBody) SetSuccess(v bool) *StopInstanceResponseBody 
 }
 
 type StopInstanceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopInstanceResponse) String() string {
@@ -4820,9 +4931,9 @@ func (s *UpdateInstanceResponseBody) SetSuccess(v bool) *UpdateInstanceResponseB
 }
 
 type UpdateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateInstanceResponse) String() string {
@@ -5384,6 +5495,60 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 	headers := make(map[string]*string)
 	_result = &GetInstanceResponse{}
 	_body, _err := client.GetInstanceWithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInstanceEventsWithOptions(InstanceId *string, request *GetInstanceEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxEventsNum)) {
+		query["MaxEventsNum"] = request.MaxEventsNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceEvents"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/events"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceEvents(InstanceId *string, request *GetInstanceEventsRequest) (_result *GetInstanceEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstanceEventsResponse{}
+	_body, _err := client.GetInstanceEventsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
