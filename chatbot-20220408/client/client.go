@@ -1282,6 +1282,8 @@ func (s *ContinueInstancePublishTaskResponse) SetBody(v *ContinueInstancePublish
 
 type CreateCategoryRequest struct {
 	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	KnowledgeType    *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
@@ -1296,6 +1298,16 @@ func (s CreateCategoryRequest) GoString() string {
 
 func (s *CreateCategoryRequest) SetAgentKey(v string) *CreateCategoryRequest {
 	s.AgentKey = &v
+	return s
+}
+
+func (s *CreateCategoryRequest) SetBizCode(v string) *CreateCategoryRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateCategoryRequest) SetKnowledgeType(v int32) *CreateCategoryRequest {
+	s.KnowledgeType = &v
 	return s
 }
 
@@ -1333,6 +1345,7 @@ func (s *CreateCategoryResponseBody) SetRequestId(v string) *CreateCategoryRespo
 }
 
 type CreateCategoryResponseBodyCategory struct {
+	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
@@ -1345,6 +1358,11 @@ func (s CreateCategoryResponseBodyCategory) String() string {
 
 func (s CreateCategoryResponseBodyCategory) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCategoryResponseBodyCategory) SetBizCode(v string) *CreateCategoryResponseBodyCategory {
+	s.BizCode = &v
+	return s
 }
 
 func (s *CreateCategoryResponseBodyCategory) SetCategoryId(v int64) *CreateCategoryResponseBodyCategory {
@@ -1694,6 +1712,117 @@ func (s *CreateDSEntityValueResponse) SetStatusCode(v int32) *CreateDSEntityValu
 }
 
 func (s *CreateDSEntityValueResponse) SetBody(v *CreateDSEntityValueResponseBody) *CreateDSEntityValueResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDocRequest struct {
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Meta       *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateDocRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocRequest) SetAgentKey(v string) *CreateDocRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *CreateDocRequest) SetCategoryId(v int64) *CreateDocRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *CreateDocRequest) SetConfig(v string) *CreateDocRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *CreateDocRequest) SetContent(v string) *CreateDocRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateDocRequest) SetEndDate(v string) *CreateDocRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *CreateDocRequest) SetMeta(v string) *CreateDocRequest {
+	s.Meta = &v
+	return s
+}
+
+func (s *CreateDocRequest) SetStartDate(v string) *CreateDocRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *CreateDocRequest) SetTitle(v string) *CreateDocRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateDocResponseBody struct {
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDocResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocResponseBody) SetKnowledgeId(v int64) *CreateDocResponseBody {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *CreateDocResponseBody) SetRequestId(v string) *CreateDocResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDocResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDocResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocResponse) SetHeaders(v map[string]*string) *CreateDocResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDocResponse) SetStatusCode(v int32) *CreateDocResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDocResponse) SetBody(v *CreateDocResponseBody) *CreateDocResponse {
 	s.Body = v
 	return s
 }
@@ -3203,6 +3332,81 @@ func (s *DeleteDSEntityValueResponse) SetBody(v *DeleteDSEntityValueResponseBody
 	return s
 }
 
+type DeleteDocRequest struct {
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+}
+
+func (s DeleteDocRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocRequest) SetAgentKey(v string) *DeleteDocRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DeleteDocRequest) SetKnowledgeId(v int64) *DeleteDocRequest {
+	s.KnowledgeId = &v
+	return s
+}
+
+type DeleteDocResponseBody struct {
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDocResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocResponseBody) SetKnowledgeId(v int64) *DeleteDocResponseBody {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *DeleteDocResponseBody) SetRequestId(v string) *DeleteDocResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDocResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDocResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocResponse) SetHeaders(v map[string]*string) *DeleteDocResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDocResponse) SetStatusCode(v int32) *DeleteDocResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDocResponse) SetBody(v *DeleteDocResponseBody) *DeleteDocResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFaqRequest struct {
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -3906,6 +4110,7 @@ func (s *DescribeCategoryResponseBody) SetRequestId(v string) *DescribeCategoryR
 }
 
 type DescribeCategoryResponseBodyCategory struct {
+	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
@@ -3918,6 +4123,11 @@ func (s DescribeCategoryResponseBodyCategory) String() string {
 
 func (s DescribeCategoryResponseBodyCategory) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCategoryResponseBodyCategory) SetBizCode(v string) *DescribeCategoryResponseBodyCategory {
+	s.BizCode = &v
+	return s
 }
 
 func (s *DescribeCategoryResponseBodyCategory) SetCategoryId(v int64) *DescribeCategoryResponseBodyCategory {
@@ -4100,6 +4310,266 @@ func (s *DescribeDSEntityResponse) SetStatusCode(v int32) *DescribeDSEntityRespo
 }
 
 func (s *DescribeDSEntityResponse) SetBody(v *DescribeDSEntityResponseBody) *DescribeDSEntityResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDocRequest struct {
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	ShowDetail  *bool   `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty"`
+}
+
+func (s DescribeDocRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocRequest) SetAgentKey(v string) *DescribeDocRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DescribeDocRequest) SetKnowledgeId(v int64) *DescribeDocRequest {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *DescribeDocRequest) SetShowDetail(v bool) *DescribeDocRequest {
+	s.ShowDetail = &v
+	return s
+}
+
+type DescribeDocResponseBody struct {
+	BizCode         *string                         `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	CategoryId      *int64                          `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Config          *string                         `json:"Config,omitempty" xml:"Config,omitempty"`
+	CreateTime      *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserId    *int64                          `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName  *string                         `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DocInfo         *DescribeDocResponseBodyDocInfo `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
+	DocName         *string                         `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	EffectStatus    *int32                          `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	EndDate         *string                         `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	KnowledgeId     *int64                          `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	Meta            *string                         `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	ModifyTime      *string                         `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUserId    *int64                          `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	ModifyUserName  *string                         `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	ProcessCanRetry *bool                           `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
+	ProcessMessage  *string                         `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
+	ProcessStatus   *int32                          `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeDocResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponseBody) SetBizCode(v string) *DescribeDocResponseBody {
+	s.BizCode = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetCategoryId(v int64) *DescribeDocResponseBody {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetConfig(v string) *DescribeDocResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetCreateTime(v string) *DescribeDocResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetCreateUserId(v int64) *DescribeDocResponseBody {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetCreateUserName(v string) *DescribeDocResponseBody {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetDocInfo(v *DescribeDocResponseBodyDocInfo) *DescribeDocResponseBody {
+	s.DocInfo = v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetDocName(v string) *DescribeDocResponseBody {
+	s.DocName = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetEffectStatus(v int32) *DescribeDocResponseBody {
+	s.EffectStatus = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetEndDate(v string) *DescribeDocResponseBody {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetKnowledgeId(v int64) *DescribeDocResponseBody {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetMeta(v string) *DescribeDocResponseBody {
+	s.Meta = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetModifyTime(v string) *DescribeDocResponseBody {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetModifyUserId(v int64) *DescribeDocResponseBody {
+	s.ModifyUserId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetModifyUserName(v string) *DescribeDocResponseBody {
+	s.ModifyUserName = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetProcessCanRetry(v bool) *DescribeDocResponseBody {
+	s.ProcessCanRetry = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetProcessMessage(v string) *DescribeDocResponseBody {
+	s.ProcessMessage = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetProcessStatus(v int32) *DescribeDocResponseBody {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetRequestId(v string) *DescribeDocResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetStartDate(v string) *DescribeDocResponseBody {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetStatus(v int32) *DescribeDocResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetTitle(v string) *DescribeDocResponseBody {
+	s.Title = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetUrl(v string) *DescribeDocResponseBody {
+	s.Url = &v
+	return s
+}
+
+type DescribeDocResponseBodyDocInfo struct {
+	DocParas []*DescribeDocResponseBodyDocInfoDocParas `json:"DocParas,omitempty" xml:"DocParas,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDocResponseBodyDocInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponseBodyDocInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponseBodyDocInfo) SetDocParas(v []*DescribeDocResponseBodyDocInfoDocParas) *DescribeDocResponseBodyDocInfo {
+	s.DocParas = v
+	return s
+}
+
+type DescribeDocResponseBodyDocInfoDocParas struct {
+	ParaLevel *int32  `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
+	ParaNo    *int32  `json:"ParaNo,omitempty" xml:"ParaNo,omitempty"`
+	ParaText  *string `json:"ParaText,omitempty" xml:"ParaText,omitempty"`
+	ParaType  *string `json:"ParaType,omitempty" xml:"ParaType,omitempty"`
+}
+
+func (s DescribeDocResponseBodyDocInfoDocParas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponseBodyDocInfoDocParas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponseBodyDocInfoDocParas) SetParaLevel(v int32) *DescribeDocResponseBodyDocInfoDocParas {
+	s.ParaLevel = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocInfoDocParas) SetParaNo(v int32) *DescribeDocResponseBodyDocInfoDocParas {
+	s.ParaNo = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocInfoDocParas) SetParaText(v string) *DescribeDocResponseBodyDocInfoDocParas {
+	s.ParaText = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocInfoDocParas) SetParaType(v string) *DescribeDocResponseBodyDocInfoDocParas {
+	s.ParaType = &v
+	return s
+}
+
+type DescribeDocResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDocResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponse) SetHeaders(v map[string]*string) *DescribeDocResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDocResponse) SetStatusCode(v int32) *DescribeDocResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDocResponse) SetBody(v *DescribeDocResponseBody) *DescribeDocResponse {
 	s.Body = v
 	return s
 }
@@ -5822,6 +6292,7 @@ func (s *ListAgentResponse) SetBody(v *ListAgentResponseBody) *ListAgentResponse
 
 type ListCategoryRequest struct {
 	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeType    *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
 
@@ -5835,6 +6306,11 @@ func (s ListCategoryRequest) GoString() string {
 
 func (s *ListCategoryRequest) SetAgentKey(v string) *ListCategoryRequest {
 	s.AgentKey = &v
+	return s
+}
+
+func (s *ListCategoryRequest) SetKnowledgeType(v int32) *ListCategoryRequest {
+	s.KnowledgeType = &v
 	return s
 }
 
@@ -5867,6 +6343,7 @@ func (s *ListCategoryResponseBody) SetRequestId(v string) *ListCategoryResponseB
 }
 
 type ListCategoryResponseBodyCategories struct {
+	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
@@ -5879,6 +6356,11 @@ func (s ListCategoryResponseBodyCategories) String() string {
 
 func (s ListCategoryResponseBodyCategories) GoString() string {
 	return s.String()
+}
+
+func (s *ListCategoryResponseBodyCategories) SetBizCode(v string) *ListCategoryResponseBodyCategories {
+	s.BizCode = &v
+	return s
 }
 
 func (s *ListCategoryResponseBodyCategories) SetCategoryId(v int64) *ListCategoryResponseBodyCategories {
@@ -8091,6 +8573,522 @@ func (s *QueryPerspectivesResponse) SetBody(v *QueryPerspectivesResponseBody) *Q
 	return s
 }
 
+type RetryDocRequest struct {
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+}
+
+func (s RetryDocRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryDocRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryDocRequest) SetAgentKey(v string) *RetryDocRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *RetryDocRequest) SetKnowledgeId(v int64) *RetryDocRequest {
+	s.KnowledgeId = &v
+	return s
+}
+
+type RetryDocResponseBody struct {
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RetryDocResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryDocResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryDocResponseBody) SetKnowledgeId(v int64) *RetryDocResponseBody {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *RetryDocResponseBody) SetRequestId(v string) *RetryDocResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RetryDocResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RetryDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RetryDocResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryDocResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryDocResponse) SetHeaders(v map[string]*string) *RetryDocResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryDocResponse) SetStatusCode(v int32) *RetryDocResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryDocResponse) SetBody(v *RetryDocResponseBody) *RetryDocResponse {
+	s.Body = v
+	return s
+}
+
+type SearchDocRequest struct {
+	AgentKey        *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryIds     []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	CreateTimeBegin *string  `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	CreateTimeEnd   *string  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateUserName  *string  `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	EndTimeBegin    *string  `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	EndTimeEnd      *string  `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	Keyword         *string  `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	ModifyTimeBegin *string  `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	ModifyTimeEnd   *string  `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	ModifyUserName  *string  `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	PageNumber      *int32   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessStatus   *int32   `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	SearchScope     *int32   `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	StartTimeBegin  *string  `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	StartTimeEnd    *string  `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	Status          *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s SearchDocRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDocRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDocRequest) SetAgentKey(v string) *SearchDocRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetCategoryIds(v []*int64) *SearchDocRequest {
+	s.CategoryIds = v
+	return s
+}
+
+func (s *SearchDocRequest) SetCreateTimeBegin(v string) *SearchDocRequest {
+	s.CreateTimeBegin = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetCreateTimeEnd(v string) *SearchDocRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetCreateUserName(v string) *SearchDocRequest {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetEndTimeBegin(v string) *SearchDocRequest {
+	s.EndTimeBegin = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetEndTimeEnd(v string) *SearchDocRequest {
+	s.EndTimeEnd = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetKeyword(v string) *SearchDocRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetModifyTimeBegin(v string) *SearchDocRequest {
+	s.ModifyTimeBegin = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetModifyTimeEnd(v string) *SearchDocRequest {
+	s.ModifyTimeEnd = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetModifyUserName(v string) *SearchDocRequest {
+	s.ModifyUserName = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetPageNumber(v int32) *SearchDocRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetPageSize(v int32) *SearchDocRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetProcessStatus(v int32) *SearchDocRequest {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetSearchScope(v int32) *SearchDocRequest {
+	s.SearchScope = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetStartTimeBegin(v string) *SearchDocRequest {
+	s.StartTimeBegin = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetStartTimeEnd(v string) *SearchDocRequest {
+	s.StartTimeEnd = &v
+	return s
+}
+
+func (s *SearchDocRequest) SetStatus(v int32) *SearchDocRequest {
+	s.Status = &v
+	return s
+}
+
+type SearchDocShrinkRequest struct {
+	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	CreateTimeBegin   *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	CreateTimeEnd     *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateUserName    *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	EndTimeBegin      *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	EndTimeEnd        *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	ModifyTimeBegin   *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	ModifyTimeEnd     *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	ModifyUserName    *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessStatus     *int32  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	SearchScope       *int32  `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	StartTimeBegin    *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	StartTimeEnd      *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s SearchDocShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDocShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDocShrinkRequest) SetAgentKey(v string) *SearchDocShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetCategoryIdsShrink(v string) *SearchDocShrinkRequest {
+	s.CategoryIdsShrink = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetCreateTimeBegin(v string) *SearchDocShrinkRequest {
+	s.CreateTimeBegin = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetCreateTimeEnd(v string) *SearchDocShrinkRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetCreateUserName(v string) *SearchDocShrinkRequest {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetEndTimeBegin(v string) *SearchDocShrinkRequest {
+	s.EndTimeBegin = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetEndTimeEnd(v string) *SearchDocShrinkRequest {
+	s.EndTimeEnd = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetKeyword(v string) *SearchDocShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetModifyTimeBegin(v string) *SearchDocShrinkRequest {
+	s.ModifyTimeBegin = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetModifyTimeEnd(v string) *SearchDocShrinkRequest {
+	s.ModifyTimeEnd = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetModifyUserName(v string) *SearchDocShrinkRequest {
+	s.ModifyUserName = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetPageNumber(v int32) *SearchDocShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetPageSize(v int32) *SearchDocShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetProcessStatus(v int32) *SearchDocShrinkRequest {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetSearchScope(v int32) *SearchDocShrinkRequest {
+	s.SearchScope = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetStartTimeBegin(v string) *SearchDocShrinkRequest {
+	s.StartTimeBegin = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetStartTimeEnd(v string) *SearchDocShrinkRequest {
+	s.StartTimeEnd = &v
+	return s
+}
+
+func (s *SearchDocShrinkRequest) SetStatus(v int32) *SearchDocShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type SearchDocResponseBody struct {
+	DocHits    []*SearchDocResponseBodyDocHits `json:"DocHits,omitempty" xml:"DocHits,omitempty" type:"Repeated"`
+	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s SearchDocResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDocResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDocResponseBody) SetDocHits(v []*SearchDocResponseBodyDocHits) *SearchDocResponseBody {
+	s.DocHits = v
+	return s
+}
+
+func (s *SearchDocResponseBody) SetPageNumber(v int32) *SearchDocResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchDocResponseBody) SetPageSize(v int32) *SearchDocResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchDocResponseBody) SetRequestId(v string) *SearchDocResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchDocResponseBody) SetTotalCount(v int32) *SearchDocResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type SearchDocResponseBodyDocHits struct {
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	CategoryId      *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserId    *int64  `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName  *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DocName         *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	EffectStatus    *int32  `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	EndDate         *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	KnowledgeId     *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	Meta            *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUserId    *int64  `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	ModifyUserName  *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	ProcessCanRetry *bool   `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
+	ProcessMessage  *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
+	ProcessStatus   *int32  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	StartDate       *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Url             *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SearchDocResponseBodyDocHits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDocResponseBodyDocHits) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDocResponseBodyDocHits) SetBizCode(v string) *SearchDocResponseBodyDocHits {
+	s.BizCode = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetCategoryId(v int64) *SearchDocResponseBodyDocHits {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetConfig(v string) *SearchDocResponseBodyDocHits {
+	s.Config = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetCreateTime(v string) *SearchDocResponseBodyDocHits {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetCreateUserId(v int64) *SearchDocResponseBodyDocHits {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetCreateUserName(v string) *SearchDocResponseBodyDocHits {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetDocName(v string) *SearchDocResponseBodyDocHits {
+	s.DocName = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetEffectStatus(v int32) *SearchDocResponseBodyDocHits {
+	s.EffectStatus = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetEndDate(v string) *SearchDocResponseBodyDocHits {
+	s.EndDate = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetKnowledgeId(v int64) *SearchDocResponseBodyDocHits {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetMeta(v string) *SearchDocResponseBodyDocHits {
+	s.Meta = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetModifyTime(v string) *SearchDocResponseBodyDocHits {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetModifyUserId(v int64) *SearchDocResponseBodyDocHits {
+	s.ModifyUserId = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetModifyUserName(v string) *SearchDocResponseBodyDocHits {
+	s.ModifyUserName = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetProcessCanRetry(v bool) *SearchDocResponseBodyDocHits {
+	s.ProcessCanRetry = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetProcessMessage(v string) *SearchDocResponseBodyDocHits {
+	s.ProcessMessage = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetProcessStatus(v int32) *SearchDocResponseBodyDocHits {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetStartDate(v string) *SearchDocResponseBodyDocHits {
+	s.StartDate = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetStatus(v int32) *SearchDocResponseBodyDocHits {
+	s.Status = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHits) SetUrl(v string) *SearchDocResponseBodyDocHits {
+	s.Url = &v
+	return s
+}
+
+type SearchDocResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchDocResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDocResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDocResponse) SetHeaders(v map[string]*string) *SearchDocResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchDocResponse) SetStatusCode(v int32) *SearchDocResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchDocResponse) SetBody(v *SearchDocResponseBody) *SearchDocResponse {
+	s.Body = v
+	return s
+}
+
 type SearchFaqRequest struct {
 	AgentKey        *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryIds     []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
@@ -8478,6 +9476,7 @@ func (s *SearchFaqResponse) SetBody(v *SearchFaqResponseBody) *SearchFaqResponse
 
 type UpdateCategoryRequest struct {
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	BizCode    *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -8492,6 +9491,11 @@ func (s UpdateCategoryRequest) GoString() string {
 
 func (s *UpdateCategoryRequest) SetAgentKey(v string) *UpdateCategoryRequest {
 	s.AgentKey = &v
+	return s
+}
+
+func (s *UpdateCategoryRequest) SetBizCode(v string) *UpdateCategoryRequest {
+	s.BizCode = &v
 	return s
 }
 
@@ -8861,6 +9865,130 @@ func (s *UpdateDSEntityValueResponse) SetStatusCode(v int32) *UpdateDSEntityValu
 }
 
 func (s *UpdateDSEntityValueResponse) SetBody(v *UpdateDSEntityValueResponseBody) *UpdateDSEntityValueResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDocRequest struct {
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId  *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DocName     *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	Meta        *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateDocRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocRequest) SetAgentKey(v string) *UpdateDocRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetCategoryId(v int64) *UpdateDocRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetConfig(v string) *UpdateDocRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetContent(v string) *UpdateDocRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetDocName(v string) *UpdateDocRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetEndDate(v string) *UpdateDocRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetKnowledgeId(v int64) *UpdateDocRequest {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetMeta(v string) *UpdateDocRequest {
+	s.Meta = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetStartDate(v string) *UpdateDocRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *UpdateDocRequest) SetTitle(v string) *UpdateDocRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateDocResponseBody struct {
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDocResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocResponseBody) SetKnowledgeId(v int64) *UpdateDocResponseBody {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *UpdateDocResponseBody) SetRequestId(v string) *UpdateDocResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDocResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDocResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocResponse) SetHeaders(v map[string]*string) *UpdateDocResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDocResponse) SetStatusCode(v int32) *UpdateDocResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDocResponse) SetBody(v *UpdateDocResponseBody) *UpdateDocResponse {
 	s.Body = v
 	return s
 }
@@ -10263,6 +11391,14 @@ func (client *Client) CreateCategoryWithOptions(request *CreateCategoryRequest, 
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		body["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeType)) {
+		body["KnowledgeType"] = request.KnowledgeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
 	}
@@ -10477,6 +11613,78 @@ func (client *Client) CreateDSEntityValue(request *CreateDSEntityValueRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDSEntityValueResponse{}
 	_body, _err := client.CreateDSEntityValueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDocWithOptions(request *CreateDocRequest, runtime *util.RuntimeOptions) (_result *CreateDocResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Meta)) {
+		query["Meta"] = request.Meta
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDoc"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDoc(request *CreateDocRequest) (_result *CreateDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDocResponse{}
+	_body, _err := client.CreateDocWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11268,6 +12476,54 @@ func (client *Client) DeleteDSEntityValue(request *DeleteDSEntityValueRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteDocWithOptions(request *DeleteDocRequest, runtime *util.RuntimeOptions) (_result *DeleteDocResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDoc"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDoc(request *DeleteDocRequest) (_result *DeleteDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDocResponse{}
+	_body, _err := client.DeleteDocWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteFaqWithOptions(request *DeleteFaqRequest, runtime *util.RuntimeOptions) (_result *DeleteFaqResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11773,6 +13029,58 @@ func (client *Client) DescribeDSEntity(request *DescribeDSEntityRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDSEntityResponse{}
 	_body, _err := client.DescribeDSEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDocWithOptions(request *DescribeDocRequest, runtime *util.RuntimeOptions) (_result *DescribeDocResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowDetail)) {
+		query["ShowDetail"] = request.ShowDetail
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDoc"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDoc(request *DescribeDocRequest) (_result *DescribeDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDocResponse{}
+	_body, _err := client.DescribeDocWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12477,6 +13785,10 @@ func (client *Client) ListCategoryWithOptions(request *ListCategoryRequest, runt
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeType)) {
+		body["KnowledgeType"] = request.KnowledgeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ParentCategoryId)) {
 		body["ParentCategoryId"] = request.ParentCategoryId
 	}
@@ -13240,6 +14552,172 @@ func (client *Client) QueryPerspectives(request *QueryPerspectivesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) RetryDocWithOptions(request *RetryDocRequest, runtime *util.RuntimeOptions) (_result *RetryDocResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryDoc"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryDoc(request *RetryDocRequest) (_result *RetryDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryDocResponse{}
+	_body, _err := client.RetryDocWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchDocWithOptions(tmpReq *SearchDocRequest, runtime *util.RuntimeOptions) (_result *SearchDocResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SearchDocShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CategoryIds)) {
+		request.CategoryIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CategoryIds, tea.String("CategoryIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryIdsShrink)) {
+		query["CategoryIds"] = request.CategoryIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeBegin)) {
+		query["CreateTimeBegin"] = request.CreateTimeBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateUserName)) {
+		query["CreateUserName"] = request.CreateUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimeBegin)) {
+		query["EndTimeBegin"] = request.EndTimeBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimeEnd)) {
+		query["EndTimeEnd"] = request.EndTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyTimeBegin)) {
+		query["ModifyTimeBegin"] = request.ModifyTimeBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyTimeEnd)) {
+		query["ModifyTimeEnd"] = request.ModifyTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyUserName)) {
+		query["ModifyUserName"] = request.ModifyUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessStatus)) {
+		query["ProcessStatus"] = request.ProcessStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchScope)) {
+		query["SearchScope"] = request.SearchScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimeBegin)) {
+		query["StartTimeBegin"] = request.StartTimeBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimeEnd)) {
+		query["StartTimeEnd"] = request.StartTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchDoc"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchDoc(request *SearchDocRequest) (_result *SearchDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchDocResponse{}
+	_body, _err := client.SearchDocWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SearchFaqWithOptions(tmpReq *SearchFaqRequest, runtime *util.RuntimeOptions) (_result *SearchFaqResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13367,6 +14845,10 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		body["BizCode"] = request.BizCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
 		body["CategoryId"] = request.CategoryId
 	}
@@ -13589,6 +15071,86 @@ func (client *Client) UpdateDSEntityValue(request *UpdateDSEntityValueRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDSEntityValueResponse{}
 	_body, _err := client.UpdateDSEntityValueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDocWithOptions(request *UpdateDocRequest, runtime *util.RuntimeOptions) (_result *UpdateDocResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocName)) {
+		query["DocName"] = request.DocName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Meta)) {
+		query["Meta"] = request.Meta
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDoc"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDoc(request *UpdateDocRequest) (_result *UpdateDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDocResponse{}
+	_body, _err := client.UpdateDocWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
