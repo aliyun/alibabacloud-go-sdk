@@ -7007,6 +7007,7 @@ func (s *DescribeDBClusterAttributeRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeDBClusterAttributeResponseBody struct {
+	AiCreatingTime *string `json:"AiCreatingTime,omitempty" xml:"AiCreatingTime,omitempty"`
 	// The information status of the AI node. Valid values:
 	//
 	// *   SearchNode: search node.
@@ -7183,6 +7184,11 @@ func (s DescribeDBClusterAttributeResponseBody) String() string {
 
 func (s DescribeDBClusterAttributeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetAiCreatingTime(v string) *DescribeDBClusterAttributeResponseBody {
+	s.AiCreatingTime = &v
+	return s
 }
 
 func (s *DescribeDBClusterAttributeResponseBody) SetAiType(v string) *DescribeDBClusterAttributeResponseBody {
@@ -7503,8 +7509,9 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// The maximum number of concurrent connections in the cluster.
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The maximum input/output operations per second (IOPS).
-	MaxIOPS    *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MaxIOPS          *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MemorySize       *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
 	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
 	//
 	// *   **ON**
@@ -7596,6 +7603,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMaxIOPS(v int32) *Des
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMemorySize(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.MemorySize = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetRemoteMemorySize(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.RemoteMemorySize = &v
 	return s
 }
 
