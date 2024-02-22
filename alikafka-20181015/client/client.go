@@ -77,9 +77,9 @@ func (s *CreateConsumerGroupResponseBody) SetSuccess(v bool) *CreateConsumerGrou
 }
 
 type CreateConsumerGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateConsumerGroupResponse) String() string {
@@ -176,9 +176,9 @@ func (s *CreateTopicResponseBody) SetSuccess(v bool) *CreateTopicResponseBody {
 }
 
 type CreateTopicResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTopicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTopicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTopicResponse) String() string {
@@ -269,9 +269,9 @@ func (s *DeleteConsumerGroupResponseBody) SetSuccess(v bool) *DeleteConsumerGrou
 }
 
 type DeleteConsumerGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConsumerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteConsumerGroupResponse) String() string {
@@ -362,9 +362,9 @@ func (s *DeleteTopicResponseBody) SetSuccess(v bool) *DeleteTopicResponseBody {
 }
 
 type DeleteTopicResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTopicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTopicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTopicResponse) String() string {
@@ -501,9 +501,9 @@ func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetRegionId(v string
 }
 
 type GetConsumerListResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConsumerListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConsumerListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConsumerListResponse) String() string {
@@ -530,6 +530,7 @@ func (s *GetConsumerListResponse) SetBody(v *GetConsumerListResponseBody) *GetCo
 }
 
 type GetConsumerProgressRequest struct {
+	// Consumer Group ID。
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -733,9 +734,9 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 }
 
 type GetConsumerProgressResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConsumerProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConsumerProgressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConsumerProgressResponse) String() string {
@@ -847,8 +848,10 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	ServiceStatus            *int32                                                                     `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	SslEndPoint              *string                                                                    `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
 	UpgradeServiceDetailInfo *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
-	VSwitchId                *string                                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                    *string                                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VSwitch ID。
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetInstanceListResponseBodyInstanceListInstanceVO) String() string {
@@ -954,9 +957,9 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailIn
 }
 
 type GetInstanceListResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceListResponse) String() string {
@@ -1147,9 +1150,9 @@ func (s *GetTopicListResponseBodyTopicListTopicVO) SetTopic(v string) *GetTopicL
 }
 
 type GetTopicListResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTopicListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTopicListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTopicListResponse) String() string {
@@ -1177,6 +1180,7 @@ func (s *GetTopicListResponse) SetBody(v *GetTopicListResponseBody) *GetTopicLis
 
 type GetTopicStatusRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -1190,6 +1194,11 @@ func (s GetTopicStatusRequest) GoString() string {
 
 func (s *GetTopicStatusRequest) SetInstanceId(v string) *GetTopicStatusRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTopicStatusRequest) SetRegionId(v string) *GetTopicStatusRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1327,9 +1336,9 @@ func (s *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) SetTopic(v
 }
 
 type GetTopicStatusResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTopicStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTopicStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTopicStatusResponse) String() string {
@@ -1371,43 +1380,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = tea.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-2-pop":          tea.String("alikafka.aliyuncs.com"),
-		"ap-southeast-2":              tea.String("alikafka.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("alikafka.aliyuncs.com"),
-		"cn-beijing-finance-pop":      tea.String("alikafka.aliyuncs.com"),
-		"cn-beijing-gov-1":            tea.String("alikafka.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("alikafka.aliyuncs.com"),
-		"cn-edge-1":                   tea.String("alikafka.aliyuncs.com"),
-		"cn-fujian":                   tea.String("alikafka.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("alikafka.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     tea.String("alikafka.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       tea.String("alikafka.aliyuncs.com"),
-		"cn-qingdao-nebula":           tea.String("alikafka.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("alikafka.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         tea.String("alikafka.aliyuncs.com"),
-		"cn-shanghai-inner":           tea.String("alikafka.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": tea.String("alikafka.aliyuncs.com"),
-		"cn-shenzhen-inner":           tea.String("alikafka.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("alikafka.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        tea.String("alikafka.aliyuncs.com"),
-		"cn-wuhan":                    tea.String("alikafka.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("alikafka.aliyuncs.com"),
-		"cn-yushanfang":               tea.String("alikafka.aliyuncs.com"),
-		"cn-zhangbei":                 tea.String("alikafka.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("alikafka.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("alikafka.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("alikafka.aliyuncs.com"),
-		"eu-west-1-oxs":               tea.String("alikafka.aliyuncs.com"),
-		"me-east-1":                   tea.String("alikafka.aliyuncs.com"),
-		"rus-west-1-pop":              tea.String("alikafka.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1859,6 +1831,10 @@ func (client *Client) GetTopicStatusWithOptions(request *GetTopicStatusRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Topic)) {
