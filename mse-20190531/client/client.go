@@ -2119,7 +2119,7 @@ type AddGatewayAuthRequest struct {
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The JWT public key. The JSON format is supported.
 	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
-	// The URL that is used to log on to the IDaaS instance. For more information, see [OAuth2.0 Application User Manual](https://help.aliyun.com/document_detail/193871.html).
+	// The URL that is used to log on to the IDaaS instance.
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -2420,7 +2420,7 @@ type AddGatewayAuthShrinkRequest struct {
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The JWT public key. The JSON format is supported.
 	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
-	// The URL that is used to log on to the IDaaS instance. For more information, see [OAuth2.0 Application User Manual](https://help.aliyun.com/document_detail/193871.html).
+	// The URL that is used to log on to the IDaaS instance.
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -16126,7 +16126,7 @@ type GetGatewayAuthDetailResponseBodyData struct {
 	Name            *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	RedirectUrl     *string                                             `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
 	ResourceList    []*GetGatewayAuthDetailResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	ScopesList      []*string                                           `json:"ScopesList,omitempty" xml:"ScopesList,omitempty" type:"Repeated"`
+	ScopesList      *string                                             `json:"ScopesList,omitempty" xml:"ScopesList,omitempty"`
 	Status          *bool                                               `json:"Status,omitempty" xml:"Status,omitempty"`
 	Sub             *string                                             `json:"Sub,omitempty" xml:"Sub,omitempty"`
 	TokenName       *string                                             `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
@@ -16224,8 +16224,8 @@ func (s *GetGatewayAuthDetailResponseBodyData) SetResourceList(v []*GetGatewayAu
 	return s
 }
 
-func (s *GetGatewayAuthDetailResponseBodyData) SetScopesList(v []*string) *GetGatewayAuthDetailResponseBodyData {
-	s.ScopesList = v
+func (s *GetGatewayAuthDetailResponseBodyData) SetScopesList(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.ScopesList = &v
 	return s
 }
 

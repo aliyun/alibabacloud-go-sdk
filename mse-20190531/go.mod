@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/mse-20190531/v4
+module github.com/alibabacloud-go/mse-20190531/v5
 
 go 1.15
 
