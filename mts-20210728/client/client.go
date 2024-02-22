@@ -178,9 +178,9 @@ func (s *QueryCopyrightResponseBodyData) SetUserId(v int64) *QueryCopyrightRespo
 }
 
 type QueryCopyrightResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCopyrightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCopyrightResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCopyrightResponse) String() string {
@@ -276,9 +276,9 @@ func (s *QueryCopyrightExtractResponseBodyData) SetMessage(v string) *QueryCopyr
 }
 
 type QueryCopyrightExtractResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCopyrightExtractResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCopyrightExtractResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCopyrightExtractResponse) String() string {
@@ -446,9 +446,9 @@ func (s *QueryTraceAbResponseBodyData) SetUserId(v int64) *QueryTraceAbResponseB
 }
 
 type QueryTraceAbResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTraceAbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTraceAbResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTraceAbResponse) String() string {
@@ -544,9 +544,9 @@ func (s *QueryTraceExtractResponseBodyData) SetTrace(v string) *QueryTraceExtrac
 }
 
 type QueryTraceExtractResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTraceExtractResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTraceExtractResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTraceExtractResponse) String() string {
@@ -732,9 +732,9 @@ func (s *QueryTraceMuResponseBodyData) SetUserId(v int64) *QueryTraceMuResponseB
 }
 
 type QueryTraceMuResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTraceMuResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTraceMuResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTraceMuResponse) String() string {
@@ -854,9 +854,9 @@ func (s *SubmitCopyrightExtractResponseBodyData) SetJobId(v string) *SubmitCopyr
 }
 
 type SubmitCopyrightExtractResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitCopyrightExtractResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitCopyrightExtractResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitCopyrightExtractResponse) String() string {
@@ -1018,9 +1018,9 @@ func (s *SubmitCopyrightJobResponseBodyData) SetJobId(v string) *SubmitCopyright
 }
 
 type SubmitCopyrightJobResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitCopyrightJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitCopyrightJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitCopyrightJobResponse) String() string {
@@ -1134,9 +1134,9 @@ func (s *SubmitImageCopyrightResponseBodyData) SetJobId(v string) *SubmitImageCo
 }
 
 type SubmitImageCopyrightResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitImageCopyrightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitImageCopyrightResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitImageCopyrightResponse) String() string {
@@ -1286,9 +1286,9 @@ func (s *SubmitTraceAbResponseBodyData) SetMediaId(v string) *SubmitTraceAbRespo
 }
 
 type SubmitTraceAbResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitTraceAbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTraceAbResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitTraceAbResponse) String() string {
@@ -1408,9 +1408,9 @@ func (s *SubmitTraceExtractResponseBodyData) SetJobId(v string) *SubmitTraceExtr
 }
 
 type SubmitTraceExtractResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitTraceExtractResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTraceExtractResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitTraceExtractResponse) String() string {
@@ -1536,9 +1536,9 @@ func (s *SubmitTracemuResponseBodyData) SetJobId(v string) *SubmitTracemuRespons
 }
 
 type SubmitTracemuResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitTracemuResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTracemuResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitTracemuResponse) String() string {
