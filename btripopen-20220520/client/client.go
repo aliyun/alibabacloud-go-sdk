@@ -13187,6 +13187,835 @@ func (s *CommonApplySyncResponse) SetBody(v *CommonApplySyncResponseBody) *Commo
 	return s
 }
 
+type CooperatorFlightBillSettlementQueryHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s CooperatorFlightBillSettlementQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CooperatorFlightBillSettlementQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CooperatorFlightBillSettlementQueryHeaders) SetCommonHeaders(v map[string]*string) *CooperatorFlightBillSettlementQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryHeaders) SetXAcsBtripCorpToken(v string) *CooperatorFlightBillSettlementQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type CooperatorFlightBillSettlementQueryRequest struct {
+	CooperatorId *string `json:"cooperator_id,omitempty" xml:"cooperator_id,omitempty"`
+	PageNo       *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize     *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	PeriodEnd    *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart  *string `json:"period_start,omitempty" xml:"period_start,omitempty"`
+}
+
+func (s CooperatorFlightBillSettlementQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CooperatorFlightBillSettlementQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CooperatorFlightBillSettlementQueryRequest) SetCooperatorId(v string) *CooperatorFlightBillSettlementQueryRequest {
+	s.CooperatorId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryRequest) SetPageNo(v int32) *CooperatorFlightBillSettlementQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryRequest) SetPageSize(v int32) *CooperatorFlightBillSettlementQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryRequest) SetPeriodEnd(v string) *CooperatorFlightBillSettlementQueryRequest {
+	s.PeriodEnd = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryRequest) SetPeriodStart(v string) *CooperatorFlightBillSettlementQueryRequest {
+	s.PeriodStart = &v
+	return s
+}
+
+type CooperatorFlightBillSettlementQueryResponseBody struct {
+	Code      *string                                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CooperatorFlightBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                                  `json:"success,omitempty" xml:"success,omitempty"`
+	// trace_id
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s CooperatorFlightBillSettlementQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CooperatorFlightBillSettlementQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBody) SetCode(v string) *CooperatorFlightBillSettlementQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBody) SetMessage(v string) *CooperatorFlightBillSettlementQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBody) SetModule(v *CooperatorFlightBillSettlementQueryResponseBodyModule) *CooperatorFlightBillSettlementQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBody) SetRequestId(v string) *CooperatorFlightBillSettlementQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBody) SetSuccess(v bool) *CooperatorFlightBillSettlementQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBody) SetTraceId(v string) *CooperatorFlightBillSettlementQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CooperatorFlightBillSettlementQueryResponseBodyModule struct {
+	Category    *int32                                                        `json:"category,omitempty" xml:"category,omitempty"`
+	CorpId      *string                                                       `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	Items       []*CooperatorFlightBillSettlementQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	PeriodEnd   *string                                                       `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart *string                                                       `json:"period_start,omitempty" xml:"period_start,omitempty"`
+	TotalSize   *int64                                                        `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s CooperatorFlightBillSettlementQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CooperatorFlightBillSettlementQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModule) SetCategory(v int32) *CooperatorFlightBillSettlementQueryResponseBodyModule {
+	s.Category = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModule) SetCorpId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModule) SetItems(v []*CooperatorFlightBillSettlementQueryResponseBodyModuleItems) *CooperatorFlightBillSettlementQueryResponseBodyModule {
+	s.Items = v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModule) SetPeriodEnd(v string) *CooperatorFlightBillSettlementQueryResponseBodyModule {
+	s.PeriodEnd = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModule) SetPeriodStart(v string) *CooperatorFlightBillSettlementQueryResponseBodyModule {
+	s.PeriodStart = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModule) SetTotalSize(v int64) *CooperatorFlightBillSettlementQueryResponseBodyModule {
+	s.TotalSize = &v
+	return s
+}
+
+type CooperatorFlightBillSettlementQueryResponseBodyModuleItems struct {
+	AdvanceDay             *int32   `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
+	AirlineCorpCode        *string  `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
+	AirlineCorpName        *string  `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
+	AlipayId               *string  `json:"alipay_id,omitempty" xml:"alipay_id,omitempty"`
+	AlipayTradeNo          *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyArrCityCode       *string  `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	ApplyArrCityName       *string  `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	ApplyDepCityCode       *string  `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	ApplyDepCityName       *string  `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
+	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
+	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrAirportCode         *string  `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode            *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrDate                *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	ArrStation             *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	ArrTime                *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BillRecordTime         *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
+	BookMode               *string  `json:"book_mode,omitempty" xml:"book_mode,omitempty"`
+	BookTime               *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
+	BookerId               *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	BookerJobNo            *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
+	BookerName             *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	BtripCouponFee         *float64 `json:"btrip_coupon_fee,omitempty" xml:"btrip_coupon_fee,omitempty"`
+	BuildFee               *float64 `json:"build_fee,omitempty" xml:"build_fee,omitempty"`
+	BusinessTripResult     *string  `json:"business_trip_result,omitempty" xml:"business_trip_result,omitempty"`
+	Cabin                  *string  `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass             *string  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CapitalDirection       *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
+	CascadeDepartment      *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	ChangeFee              *float64 `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
+	ChangeResult           *string  `json:"change_result,omitempty" xml:"change_result,omitempty"`
+	CooperatorBillCode     *string  `json:"cooperator_bill_code,omitempty" xml:"cooperator_bill_code,omitempty"`
+	CooperatorName         *string  `json:"cooperator_name,omitempty" xml:"cooperator_name,omitempty"`
+	CooperatorOrderId      *string  `json:"cooperator_order_id,omitempty" xml:"cooperator_order_id,omitempty"`
+	CorpPayOrderFee        *float64 `json:"corp_pay_order_fee,omitempty" xml:"corp_pay_order_fee,omitempty"`
+	CorpSettlePrice        *float64 `json:"corp_settle_price,omitempty" xml:"corp_settle_price,omitempty"`
+	CostCenter             *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	CostCenterNumber       *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	Coupon                 *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
+	DepAirportCode         *string  `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCityCode            *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	Department             *string  `json:"department,omitempty" xml:"department,omitempty"`
+	DepartmentId           *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	DeptCity               *string  `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
+	DeptDate               *string  `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
+	DeptStation            *string  `json:"dept_station,omitempty" xml:"dept_station,omitempty"`
+	DeptTime               *string  `json:"dept_time,omitempty" xml:"dept_time,omitempty"`
+	Discount               *string  `json:"discount,omitempty" xml:"discount,omitempty"`
+	ExceedReason           *string  `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	FeeType                *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	FlightNo               *string  `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	Index                  *string  `json:"index,omitempty" xml:"index,omitempty"`
+	InsOrderId             *string  `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	InsuranceFee           *float64 `json:"insurance_fee,omitempty" xml:"insurance_fee,omitempty"`
+	InsuranceNumber        *string  `json:"insurance_number,omitempty" xml:"insurance_number,omitempty"`
+	InvoiceTitle           *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	ItemType               *string  `json:"item_type,omitempty" xml:"item_type,omitempty"`
+	ItineraryNum           *string  `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
+	ItineraryPrice         *float64 `json:"itinerary_price,omitempty" xml:"itinerary_price,omitempty"`
+	Mileage                *int32   `json:"mileage,omitempty" xml:"mileage,omitempty"`
+	MostDifferenceDeptTime *string  `json:"most_difference_dept_time,omitempty" xml:"most_difference_dept_time,omitempty"`
+	MostDifferenceDiscount *string  `json:"most_difference_discount,omitempty" xml:"most_difference_discount,omitempty"`
+	MostDifferenceFlightNo *string  `json:"most_difference_flight_no,omitempty" xml:"most_difference_flight_no,omitempty"`
+	MostDifferencePrice    *float64 `json:"most_difference_price,omitempty" xml:"most_difference_price,omitempty"`
+	MostDifferenceReason   *string  `json:"most_difference_reason,omitempty" xml:"most_difference_reason,omitempty"`
+	MostPrice              *float64 `json:"most_price,omitempty" xml:"most_price,omitempty"`
+	NegotiationCouponFee   *float64 `json:"negotiation_coupon_fee,omitempty" xml:"negotiation_coupon_fee,omitempty"`
+	OilFee                 *float64 `json:"oil_fee,omitempty" xml:"oil_fee,omitempty"`
+	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatusDesc        *string  `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
+	OverApplyId            *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PaymentDepartmentId    *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName  *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	PersonSettlePrice      *float64 `json:"person_settle_price,omitempty" xml:"person_settle_price,omitempty"`
+	PreBookTip             *string  `json:"pre_book_tip,omitempty" xml:"pre_book_tip,omitempty"`
+	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	ProjectCode            *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName            *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	RefundFee              *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	RefundResult           *string  `json:"refund_result,omitempty" xml:"refund_result,omitempty"`
+	RefundUpgradeCost      *float64 `json:"refund_upgrade_cost,omitempty" xml:"refund_upgrade_cost,omitempty"`
+	Remark                 *string  `json:"remark,omitempty" xml:"remark,omitempty"`
+	RepeatRefund           *string  `json:"repeat_refund,omitempty" xml:"repeat_refund,omitempty"`
+	SealPrice              *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
+	ServiceFee             *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	SettlementFee          *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
+	SettlementGrantFee     *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
+	SettlementTime         *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
+	SubOrderId             *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdInvoiceId         *string  `json:"third_invoice_id,omitempty" xml:"third_invoice_id,omitempty"`
+	ThirdItineraryId       *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TicketId               *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
+	Trade                  *string  `json:"trade,omitempty" xml:"trade,omitempty"`
+	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerMemberType     *string  `json:"traveler_member_type,omitempty" xml:"traveler_member_type,omitempty"`
+	TravelerMemberTypeName *string  `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
+	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	UpgradeCost            *float64 `json:"upgrade_cost,omitempty" xml:"upgrade_cost,omitempty"`
+	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	VoyageName             *string  `json:"voyage_name,omitempty" xml:"voyage_name,omitempty"`
+}
+
+func (s CooperatorFlightBillSettlementQueryResponseBodyModuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CooperatorFlightBillSettlementQueryResponseBodyModuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetAdvanceDay(v int32) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.AdvanceDay = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetAirlineCorpCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.AirlineCorpCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetAirlineCorpName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.AirlineCorpName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetAlipayId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.AlipayId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetAlipayTradeNo(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetApplyArrCityCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ApplyArrCityCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetApplyArrCityName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ApplyArrCityName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetApplyDepCityCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ApplyDepCityCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetApplyDepCityName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ApplyDepCityName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetApplyExtendField(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ApplyExtendField = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetApplyId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetArrAirportCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ArrAirportCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetArrCity(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetArrCityCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetArrDate(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetArrStation(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ArrStation = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetArrTime(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBillRecordTime(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BillRecordTime = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBookMode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BookMode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBookTime(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BookTime = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBookerId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BookerId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBookerJobNo(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BookerJobNo = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBookerName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BookerName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBtripCouponFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BtripCouponFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBuildFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BuildFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetBusinessTripResult(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.BusinessTripResult = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCabin(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Cabin = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCabinClass(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCapitalDirection(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CapitalDirection = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCascadeDepartment(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CascadeDepartment = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetChangeFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ChangeFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetChangeResult(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ChangeResult = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCooperatorBillCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CooperatorBillCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCooperatorName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CooperatorName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCooperatorOrderId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CooperatorOrderId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCorpPayOrderFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CorpPayOrderFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCorpSettlePrice(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CorpSettlePrice = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCostCenter(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CostCenter = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCostCenterNumber(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetCoupon(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Coupon = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDepAirportCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.DepAirportCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDepCityCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDepartment(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Department = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDepartmentId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDeptCity(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.DeptCity = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDeptDate(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.DeptDate = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDeptStation(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.DeptStation = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDeptTime(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.DeptTime = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetDiscount(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Discount = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetExceedReason(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ExceedReason = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetFeeType(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.FeeType = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetFlightNo(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetIndex(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Index = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetInsOrderId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetInsuranceFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.InsuranceFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetInsuranceNumber(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.InsuranceNumber = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetInvoiceTitle(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetItemType(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ItemType = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetItineraryNum(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ItineraryNum = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetItineraryPrice(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ItineraryPrice = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetMileage(v int32) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Mileage = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetMostDifferenceDeptTime(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.MostDifferenceDeptTime = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetMostDifferenceDiscount(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.MostDifferenceDiscount = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetMostDifferenceFlightNo(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.MostDifferenceFlightNo = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetMostDifferencePrice(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.MostDifferencePrice = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetMostDifferenceReason(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.MostDifferenceReason = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetMostPrice(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.MostPrice = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetNegotiationCouponFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.NegotiationCouponFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetOilFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.OilFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetOrderId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetOrderStatusDesc(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.OrderStatusDesc = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetOverApplyId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.OverApplyId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetPaymentDepartmentId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.PaymentDepartmentId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetPaymentDepartmentName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.PaymentDepartmentName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetPersonSettlePrice(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.PersonSettlePrice = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetPreBookTip(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.PreBookTip = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetPrimaryId(v int64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.PrimaryId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetProjectCode(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetProjectName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetRefundFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.RefundFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetRefundResult(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.RefundResult = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetRefundUpgradeCost(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.RefundUpgradeCost = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetRemark(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Remark = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetRepeatRefund(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.RepeatRefund = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetSealPrice(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.SealPrice = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetServiceFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ServiceFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetSettlementFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.SettlementFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetSettlementGrantFee(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.SettlementGrantFee = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetSettlementTime(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.SettlementTime = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetSettlementType(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.SettlementType = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetStatus(v int32) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Status = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetSubOrderId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.SubOrderId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetTaxRate(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetThirdInvoiceId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ThirdInvoiceId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetThirdItineraryId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.ThirdItineraryId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetTicketId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.TicketId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetTrade(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.Trade = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetTravelerId(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerId = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetTravelerJobNo(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerJobNo = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetTravelerMemberType(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerMemberType = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetTravelerMemberTypeName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerMemberTypeName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetTravelerName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerName = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetUpgradeCost(v float64) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.UpgradeCost = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetVoucherType(v int32) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.VoucherType = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponseBodyModuleItems) SetVoyageName(v string) *CooperatorFlightBillSettlementQueryResponseBodyModuleItems {
+	s.VoyageName = &v
+	return s
+}
+
+type CooperatorFlightBillSettlementQueryResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CooperatorFlightBillSettlementQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CooperatorFlightBillSettlementQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CooperatorFlightBillSettlementQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponse) SetHeaders(v map[string]*string) *CooperatorFlightBillSettlementQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponse) SetStatusCode(v int32) *CooperatorFlightBillSettlementQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CooperatorFlightBillSettlementQueryResponse) SetBody(v *CooperatorFlightBillSettlementQueryResponseBody) *CooperatorFlightBillSettlementQueryResponse {
+	s.Body = v
+	return s
+}
+
 type CooperatorHotelBillSettlementQueryHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
@@ -13394,7 +14223,6 @@ type CooperatorHotelBillSettlementQueryResponseBodyModuleItems struct {
 	IsEarlyDeparture       *string  `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
 	IsNegotiation          *string  `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
 	IsShareStr             *string  `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
-	MainApplyId            *string  `json:"main_apply_id,omitempty" xml:"main_apply_id,omitempty"`
 	Nights                 *int32   `json:"nights,omitempty" xml:"nights,omitempty"`
 	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OrderPrice             *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
@@ -13420,15 +14248,12 @@ type CooperatorHotelBillSettlementQueryResponseBodyModuleItems struct {
 	SettlementGrantFee     *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
 	SettlementTime         *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
 	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
-	ShowSubOrderId         *string  `json:"show_sub_order_id,omitempty" xml:"show_sub_order_id,omitempty"`
 	Star                   *string  `json:"star,omitempty" xml:"star,omitempty"`
 	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	SubOrderId             *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
 	ThirdInvoiceId         *string  `json:"third_invoice_id,omitempty" xml:"third_invoice_id,omitempty"`
 	ThirdItineraryId       *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
-	ThirdPartBusinessId    *string  `json:"third_part_business_id,omitempty" xml:"third_part_business_id,omitempty"`
-	ThirdpartApplyId       *string  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	TotalNights            *int32   `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
 	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
 	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
@@ -13676,11 +14501,6 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetIsShareSt
 	return s
 }
 
-func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetMainApplyId(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
-	s.MainApplyId = &v
-	return s
-}
-
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetNights(v int32) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
 	s.Nights = &v
 	return s
@@ -13806,11 +14626,6 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetSettlemen
 	return s
 }
 
-func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetShowSubOrderId(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
-	s.ShowSubOrderId = &v
-	return s
-}
-
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetStar(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
 	s.Star = &v
 	return s
@@ -13838,16 +14653,6 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetThirdInvo
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetThirdItineraryId(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
 	s.ThirdItineraryId = &v
-	return s
-}
-
-func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetThirdPartBusinessId(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
-	s.ThirdPartBusinessId = &v
-	return s
-}
-
-func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetThirdpartApplyId(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
-	s.ThirdpartApplyId = &v
 	return s
 }
 
@@ -69422,6 +70227,77 @@ func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result 
 	headers := &CommonApplySyncHeaders{}
 	_result = &CommonApplySyncResponse{}
 	_body, _err := client.CommonApplySyncWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CooperatorFlightBillSettlementQueryWithOptions(request *CooperatorFlightBillSettlementQueryRequest, headers *CooperatorFlightBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *CooperatorFlightBillSettlementQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CooperatorId)) {
+		query["cooperator_id"] = request.CooperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodEnd)) {
+		query["period_end"] = request.PeriodEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodStart)) {
+		query["period_start"] = request.PeriodStart
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CooperatorFlightBillSettlementQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/cooperator-flight/v1/bill-settlement"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CooperatorFlightBillSettlementQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CooperatorFlightBillSettlementQuery(request *CooperatorFlightBillSettlementQueryRequest) (_result *CooperatorFlightBillSettlementQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CooperatorFlightBillSettlementQueryHeaders{}
+	_result = &CooperatorFlightBillSettlementQueryResponse{}
+	_body, _err := client.CooperatorFlightBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
