@@ -26423,6 +26423,7 @@ func (s *ListClusterTypesResponseBody) SetSuccess(v bool) *ListClusterTypesRespo
 }
 
 type ListClusterTypesResponseBodyData struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The type of the MSE engine that can be activated.
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 }
@@ -26433,6 +26434,11 @@ func (s ListClusterTypesResponseBodyData) String() string {
 
 func (s ListClusterTypesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListClusterTypesResponseBodyData) SetCode(v string) *ListClusterTypesResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *ListClusterTypesResponseBodyData) SetShowName(v string) *ListClusterTypesResponseBodyData {
@@ -59011,7 +59017,27 @@ func (client *Client) ListMigrationTaskWithOptions(request *ListMigrationTaskReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginInstanceName)) {
+		query["OriginInstanceName"] = request.OriginInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -59020,7 +59046,7 @@ func (client *Client) ListMigrationTaskWithOptions(request *ListMigrationTaskReq
 		Version:     tea.String("2019-05-31"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
