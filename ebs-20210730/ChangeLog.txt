@@ -1,3 +1,13 @@
+2024-02-23 Version: v2.4.0
+- Support API DeleteDisk.
+- Support API DescribeDisks.
+- Support API GetDisk.
+- Support API QueryDedicatedBlockStorageClusterInventoryData.
+- Delete API StartDiskMonitor.
+- Delete API StopDiskMonitor.
+- Update API DescribeDiskMonitorData: update response param.
+
+
 2024-02-21 Version: v2.3.0
 - Support API DescribeDisks.
 - Support API GetDisk.

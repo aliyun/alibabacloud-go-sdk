@@ -1646,6 +1646,78 @@ func (s *CreateEnterpriseSnapshotPolicyResponse) SetBody(v *CreateEnterpriseSnap
 	return s
 }
 
+type DeleteDiskRequest struct {
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiskRequest) SetDiskId(v string) *DeleteDiskRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DeleteDiskRequest) SetRegionId(v string) *DeleteDiskRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDiskResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiskResponseBody) SetRequestId(v string) *DeleteDiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDiskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiskResponse) SetHeaders(v map[string]*string) *DeleteDiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDiskResponse) SetStatusCode(v int32) *DeleteDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDiskResponse) SetBody(v *DeleteDiskResponseBody) *DeleteDiskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDiskReplicaGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -10039,6 +10111,67 @@ func (client *Client) CreateEnterpriseSnapshotPolicy(request *CreateEnterpriseSn
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEnterpriseSnapshotPolicyResponse{}
 	_body, _err := client.CreateEnterpriseSnapshotPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
+ *
+ * @param request DeleteDiskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDiskResponse
+ */
+func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime *util.RuntimeOptions) (_result *DeleteDiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDisk"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
+ *
+ * @param request DeleteDiskRequest
+ * @return DeleteDiskResponse
+ */
+func (client *Client) DeleteDisk(request *DeleteDiskRequest) (_result *DeleteDiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDiskResponse{}
+	_body, _err := client.DeleteDiskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
