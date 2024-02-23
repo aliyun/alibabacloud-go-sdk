@@ -113,6 +113,7 @@ type CreateTaskRequestParameters struct {
 	PptExtractionEnabled     *bool                                         `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
 	Summarization            *CreateTaskRequestParametersSummarization     `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
 	SummarizationEnabled     *bool                                         `json:"SummarizationEnabled,omitempty" xml:"SummarizationEnabled,omitempty"`
+	TextPolishEnabled        *bool                                         `json:"TextPolishEnabled,omitempty" xml:"TextPolishEnabled,omitempty"`
 	Transcoding              *CreateTaskRequestParametersTranscoding       `json:"Transcoding,omitempty" xml:"Transcoding,omitempty" type:"Struct"`
 	Transcription            *CreateTaskRequestParametersTranscription     `json:"Transcription,omitempty" xml:"Transcription,omitempty" type:"Struct"`
 	Translation              *CreateTaskRequestParametersTranslation       `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
@@ -154,6 +155,11 @@ func (s *CreateTaskRequestParameters) SetSummarization(v *CreateTaskRequestParam
 
 func (s *CreateTaskRequestParameters) SetSummarizationEnabled(v bool) *CreateTaskRequestParameters {
 	s.SummarizationEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetTextPolishEnabled(v bool) *CreateTaskRequestParameters {
+	s.TextPolishEnabled = &v
 	return s
 }
 
@@ -386,9 +392,9 @@ func (s *CreateTaskResponseBodyData) SetTaskKey(v string) *CreateTaskResponseBod
 }
 
 type CreateTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTaskResponse) String() string {
@@ -515,9 +521,9 @@ func (s *CreateTranscriptionPhrasesResponseBodyData) SetStatus(v string) *Create
 }
 
 type CreateTranscriptionPhrasesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTranscriptionPhrasesResponse) String() string {
@@ -573,9 +579,9 @@ func (s *DeleteTranscriptionPhrasesResponseBody) SetStatus(v string) *DeleteTran
 }
 
 type DeleteTranscriptionPhrasesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTranscriptionPhrasesResponse) String() string {
@@ -637,10 +643,12 @@ func (s *GetTaskInfoResponseBody) SetRequestId(v string) *GetTaskInfoResponseBod
 }
 
 type GetTaskInfoResponseBodyData struct {
-	Result     *GetTaskInfoResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	TaskId     *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskKey    *string                            `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
-	TaskStatus *string                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	ErrorCode    *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result       *GetTaskInfoResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	TaskId       *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskKey      *string                            `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	TaskStatus   *string                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetTaskInfoResponseBodyData) String() string {
@@ -649,6 +657,16 @@ func (s GetTaskInfoResponseBodyData) String() string {
 
 func (s GetTaskInfoResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetTaskInfoResponseBodyData) SetErrorCode(v string) *GetTaskInfoResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyData) SetErrorMessage(v string) *GetTaskInfoResponseBodyData {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *GetTaskInfoResponseBodyData) SetResult(v *GetTaskInfoResponseBodyDataResult) *GetTaskInfoResponseBodyData {
@@ -719,9 +737,9 @@ func (s *GetTaskInfoResponseBodyDataResult) SetTranslation(v string) *GetTaskInf
 }
 
 type GetTaskInfoResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskInfoResponse) String() string {
@@ -854,9 +872,9 @@ func (s *GetTranscriptionPhrasesResponseBodyDataPhrases) SetWordWeights(v string
 }
 
 type GetTranscriptionPhrasesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTranscriptionPhrasesResponse) String() string {
@@ -983,9 +1001,9 @@ func (s *ListTranscriptionPhrasesResponseBodyDataPhrases) SetPhraseId(v string) 
 }
 
 type ListTranscriptionPhrasesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTranscriptionPhrasesResponse) String() string {
@@ -1106,9 +1124,9 @@ func (s *UpdateTranscriptionPhrasesResponseBodyData) SetStatus(v string) *Update
 }
 
 type UpdateTranscriptionPhrasesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTranscriptionPhrasesResponse) String() string {
