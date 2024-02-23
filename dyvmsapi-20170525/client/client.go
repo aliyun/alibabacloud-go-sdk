@@ -12,114 +12,23 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AddRtcAccountRequest struct {
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s AddRtcAccountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddRtcAccountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddRtcAccountRequest) SetDeviceId(v string) *AddRtcAccountRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *AddRtcAccountRequest) SetOwnerId(v int64) *AddRtcAccountRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *AddRtcAccountRequest) SetResourceOwnerAccount(v string) *AddRtcAccountRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *AddRtcAccountRequest) SetResourceOwnerId(v int64) *AddRtcAccountRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type AddRtcAccountResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddRtcAccountResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddRtcAccountResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddRtcAccountResponseBody) SetCode(v string) *AddRtcAccountResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddRtcAccountResponseBody) SetMessage(v string) *AddRtcAccountResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddRtcAccountResponseBody) SetModule(v string) *AddRtcAccountResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *AddRtcAccountResponseBody) SetRequestId(v string) *AddRtcAccountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddRtcAccountResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddRtcAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddRtcAccountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddRtcAccountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddRtcAccountResponse) SetHeaders(v map[string]*string) *AddRtcAccountResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddRtcAccountResponse) SetStatusCode(v int32) *AddRtcAccountResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddRtcAccountResponse) SetBody(v *AddRtcAccountResponseBody) *AddRtcAccountResponse {
-	s.Body = v
-	return s
-}
-
 type AddVirtualNumberRelationRequest struct {
-	CorpNameList         *string `json:"CorpNameList,omitempty" xml:"CorpNameList,omitempty"`
-	NumberList           *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNum             *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// The company names. Separate multiple company names with commas (,).
+	CorpNameList *string `json:"CorpNameList,omitempty" xml:"CorpNameList,omitempty"`
+	// The real numbers. Separate multiple real numbers with commas (,).
+	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The virtual number.
+	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// The service name. Default value: **dyvms**.
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteType            *int32  `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The route type. Valid values:
+	//
+	// *   **0**: number location first.
+	// *   **1**: random.
+	RouteType *int32 `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
 func (s AddVirtualNumberRelationRequest) String() string {
@@ -171,9 +80,18 @@ func (s *AddVirtualNumberRelationRequest) SetRouteType(v int32) *AddVirtualNumbe
 }
 
 type AddVirtualNumberRelationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value 200 indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The numbers that failed to be associated.
+	//
+	// > If all numbers are associated, no value is returned for this parameter.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -206,9 +124,9 @@ func (s *AddVirtualNumberRelationResponseBody) SetRequestId(v string) *AddVirtua
 }
 
 type AddVirtualNumberRelationResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddVirtualNumberRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddVirtualNumberRelationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddVirtualNumberRelationResponse) String() string {
@@ -235,20 +153,47 @@ func (s *AddVirtualNumberRelationResponse) SetBody(v *AddVirtualNumberRelationRe
 }
 
 type BatchRobotSmartCallRequest struct {
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CorpName             *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
-	DialogId             *string `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
-	EarlyMediaAsr        *bool   `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
+	// The called number. Only mobile phone numbers in the Chinese mainland are supported.
+	//
+	// You can set up to 1,000 called numbers and separate the numbers with commas (,).
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The number displayed to called parties, which must be a number you purchased. You can view the numbers you purchased in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+	//
+	// You can set up to 100 numbers and separate the numbers with commas (,).
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// The company name, which must be the same as the **company name** specified on the [qualification management page](https://dyvms.console.aliyun.com/dyvms.htm#/corp/normal).
+	//
+	// > This parameter is optional if **isSelfLine** is set to **true**.
+	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	// The ID of the robot or communication script that is used to initiate a call.
+	//
+	// You can obtain the **communication script ID** from the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page.
+	DialogId *string `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// The speech recognition identifier of early media. The default value is **false**, which means that the speech recognition identifier of early media is not enabled.
+	//
+	// Set the parameter to **true** if you want to enable the speech recognition identifier of early media.
+	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
+	// Specifies whether to call the self-managed line. Default value: **false**.
 	IsSelfLine           *bool   `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ScheduleCall         *bool   `json:"ScheduleCall,omitempty" xml:"ScheduleCall,omitempty"`
-	ScheduleTime         *int64  `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TtsParam             *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
-	TtsParamHead         *string `json:"TtsParamHead,omitempty" xml:"TtsParamHead,omitempty"`
+	// Specifies whether the call is scheduled. If you set this parameter to **true**, the **ScheduleTime** parameter is required.
+	ScheduleCall *bool `json:"ScheduleCall,omitempty" xml:"ScheduleCall,omitempty"`
+	// The preset call time. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// >  This parameter is required only when **ScheduleCall** is set to **true**.
+	ScheduleTime *int64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The task name. The task name can be up to 30 characters in length.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The variable value of the TTS template, in the JSON format.
+	//
+	// The variable value must correspond to a number. The TtsParam parameter must be used together with the TtsParamHead parameter.
+	TtsParam *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
+	// The call tasks with variables, in the JSON format.
+	//
+	// The parameter value is a list of variable names. The TtsParamHead parameter must be used together with the TtsParam parameter.
+	TtsParamHead *string `json:"TtsParamHead,omitempty" xml:"TtsParamHead,omitempty"`
 }
 
 func (s BatchRobotSmartCallRequest) String() string {
@@ -330,10 +275,17 @@ func (s *BatchRobotSmartCallRequest) SetTtsParamHead(v string) *BatchRobotSmartC
 }
 
 type BatchRobotSmartCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the robocall task. You can call the [QueryCallDetailByTaskId](~~393537~~) operation to query the details of the task based on the task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s BatchRobotSmartCallResponseBody) String() string {
@@ -365,9 +317,9 @@ func (s *BatchRobotSmartCallResponseBody) SetTaskId(v string) *BatchRobotSmartCa
 }
 
 type BatchRobotSmartCallResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchRobotSmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchRobotSmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchRobotSmartCallResponse) String() string {
@@ -397,7 +349,8 @@ type CancelOrderRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the ID of the robocall task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CancelOrderRobotTaskRequest) String() string {
@@ -429,9 +382,19 @@ func (s *CancelOrderRobotTaskRequest) SetTaskId(v int64) *CancelOrderRobotTaskRe
 }
 
 type CancelOrderRobotTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -464,9 +427,9 @@ func (s *CancelOrderRobotTaskResponseBody) SetRequestId(v string) *CancelOrderRo
 }
 
 type CancelOrderRobotTaskResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelOrderRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelOrderRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelOrderRobotTaskResponse) String() string {
@@ -496,7 +459,8 @@ type CancelRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CancelRobotTaskRequest) String() string {
@@ -528,9 +492,19 @@ func (s *CancelRobotTaskRequest) SetTaskId(v int64) *CancelRobotTaskRequest {
 }
 
 type CancelRobotTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -563,9 +537,9 @@ func (s *CancelRobotTaskResponseBody) SetRequestId(v string) *CancelRobotTaskRes
 }
 
 type CancelRobotTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelRobotTaskResponse) String() string {
@@ -592,20 +566,41 @@ func (s *CancelRobotTaskResponse) SetBody(v *CancelRobotTaskResponseBody) *Cance
 }
 
 type CreateCallTaskRequest struct {
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Data                 *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	DataType             *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	FireTime             *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The type of the task template. Valid values:
+	//
+	// *   **VMS_VOICE_TTS**: the text-to-speech (TTS) notification template.
+	// *   **VMS_VOICE_CODE**: the voice notification template.
+	// *   **VMS_TTS**: the voice verification code template.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The called numbers.
+	//
+	// *   If you set DataType to LIST, the value of Data is in the LIST format.
+	// *   If you set DataType to JSON, the value of Data is in the JSON format.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The type of called numbers. Valid values:
+	//
+	// *   **LIST**: the called numbers that are separated by commas (,).
+	// *   **JSON**: a JSON-formatted list of called numbers with template parameters.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// This parameter is unavailable.
+	FireTime *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The calling number. Only virtual numbers are supported.
 	Resource             *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ScheduleType         *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	StopTime             *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type of the calling number. Set the value to **LIST**.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is unavailable.
+	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// This parameter is unavailable.
+	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// The task name.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The template ID.
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The template name.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s CreateCallTaskRequest) String() string {
@@ -687,8 +682,11 @@ func (s *CreateCallTaskRequest) SetTemplateName(v string) *CreateCallTaskRequest
 }
 
 type CreateCallTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task ID.
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -716,9 +714,9 @@ func (s *CreateCallTaskResponseBody) SetRequestId(v string) *CreateCallTaskRespo
 }
 
 type CreateCallTaskResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCallTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCallTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCallTaskResponse) String() string {
@@ -745,19 +743,55 @@ func (s *CreateCallTaskResponse) SetBody(v *CreateCallTaskResponseBody) *CreateC
 }
 
 type CreateRobotTaskRequest struct {
-	Caller               *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	CorpName             *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
-	DialogId             *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
-	IsSelfLine           *bool   `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
-	NumberStatusIdent    *bool   `json:"NumberStatusIdent,omitempty" xml:"NumberStatusIdent,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecallInterval       *int32  `json:"RecallInterval,omitempty" xml:"RecallInterval,omitempty"`
-	RecallStateCodes     *string `json:"RecallStateCodes,omitempty" xml:"RecallStateCodes,omitempty"`
+	// The calling number.
+	//
+	// You must use the phone numbers that you have purchased and separate multiple numbers with commas (,). You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service** > **Real Number Management** to view the numbers you purchased.
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The company name, which must be the same as the **enterprise name** on the qualification management page.
+	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	// The ID of the robot or communication script that is used to initiate the call.
+	//
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Intelligent Voice Robot** > **Communication Script Management** to view the communication script ID.
+	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// Specifies whether to call the self-managed line. Valid values:
+	//
+	// *   **false** (default)
+	// *   **true**
+	//
+	// > If you set this parameter to **true**, calling numbers are not verified.
+	IsSelfLine *bool `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
+	// Specifies whether to enable number status identification. Valid values:
+	//
+	// *   **false** (default)
+	// *   **true**
+	//
+	// > If you set this parameter to **true**, the reason why a call is not answered is recorded.
+	NumberStatusIdent *bool  `json:"NumberStatusIdent,omitempty" xml:"NumberStatusIdent,omitempty"`
+	OwnerId           *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The redial interval. Unit: minutes. The value must be greater than 1.
+	//
+	// > The maximum redial interval is 30 minutes.
+	RecallInterval *int32 `json:"RecallInterval,omitempty" xml:"RecallInterval,omitempty"`
+	// The call state in which redial is required. Separate multiple call states with commas (,). Valid values:
+	//
+	// *   **200010**: The phone of the called party is powered off.
+	// *   **200011**: The number of the called party is out of service.
+	// *   **200002**: The line is busy.
+	// *   **200012**: The call is lost.
+	// *   **200005**: The called party cannot be connected.
+	// *   **200003**: The called party does not respond to the call.
+	RecallStateCodes *string `json:"RecallStateCodes,omitempty" xml:"RecallStateCodes,omitempty"`
+	// The number of redial times.
 	RecallTimes          *int32  `json:"RecallTimes,omitempty" xml:"RecallTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RetryType            *int32  `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Specifies whether to enable auto-redial. Valid values:
+	//
+	// *   **1**: enables auto-redial.
+	// *   **0**: disables auto-redial.
+	RetryType *int32 `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
+	// The task name. The task name can be up to 30 characters in length.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreateRobotTaskRequest) String() string {
@@ -834,9 +868,18 @@ func (s *CreateRobotTaskRequest) SetTaskName(v string) *CreateRobotTaskRequest {
 }
 
 type CreateRobotTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The unique ID of the robocall task.
+	//
+	// You can call the [QueryRobotTaskDetail](~~393538~~) operation to query the details of the task based on the task ID.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -869,9 +912,9 @@ func (s *CreateRobotTaskResponseBody) SetRequestId(v string) *CreateRobotTaskRes
 }
 
 type CreateRobotTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRobotTaskResponse) String() string {
@@ -901,7 +944,8 @@ type DeleteRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteRobotTaskRequest) String() string {
@@ -933,9 +977,19 @@ func (s *DeleteRobotTaskRequest) SetTaskId(v int64) *DeleteRobotTaskRequest {
 }
 
 type DeleteRobotTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -968,9 +1022,9 @@ func (s *DeleteRobotTaskResponseBody) SetRequestId(v string) *DeleteRobotTaskRes
 }
 
 type DeleteRobotTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRobotTaskResponse) String() string {
@@ -997,12 +1051,21 @@ func (s *DeleteRobotTaskResponse) SetBody(v *DeleteRobotTaskResponseBody) *Delet
 }
 
 type ExecuteCallTaskRequest struct {
+	// The time when the call task is executed, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// > You can leave this parameter empty.
 	FireTime             *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task state. Valid values:
+	//
+	// *   **RUNNING**
+	// *   **STOP**
+	// *   **CANCEL**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID. You can call the [CreateCallTask](~~CreateCallTask~~) operation to obtain the task ID.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ExecuteCallTaskRequest) String() string {
@@ -1044,8 +1107,14 @@ func (s *ExecuteCallTaskRequest) SetTaskId(v int64) *ExecuteCallTaskRequest {
 }
 
 type ExecuteCallTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1073,9 +1142,9 @@ func (s *ExecuteCallTaskResponseBody) SetRequestId(v string) *ExecuteCallTaskRes
 }
 
 type ExecuteCallTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteCallTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteCallTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteCallTaskResponse) String() string {
@@ -1101,129 +1170,10 @@ func (s *ExecuteCallTaskResponse) SetBody(v *ExecuteCallTaskResponseBody) *Execu
 	return s
 }
 
-type GetCallInfoRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RtcId                *string `json:"RtcId,omitempty" xml:"RtcId,omitempty"`
-}
-
-func (s GetCallInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetCallInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetCallInfoRequest) SetOwnerId(v int64) *GetCallInfoRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetCallInfoRequest) SetResourceOwnerAccount(v string) *GetCallInfoRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetCallInfoRequest) SetResourceOwnerId(v int64) *GetCallInfoRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *GetCallInfoRequest) SetRtcId(v string) *GetCallInfoRequest {
-	s.RtcId = &v
-	return s
-}
-
-type GetCallInfoResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetCallInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetCallInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetCallInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetCallInfoResponseBody) SetCode(v string) *GetCallInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetCallInfoResponseBody) SetData(v *GetCallInfoResponseBodyData) *GetCallInfoResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetCallInfoResponseBody) SetMessage(v string) *GetCallInfoResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetCallInfoResponseBody) SetRequestId(v string) *GetCallInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetCallInfoResponseBodyData struct {
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetCallInfoResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetCallInfoResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetCallInfoResponseBodyData) SetChannelId(v string) *GetCallInfoResponseBodyData {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *GetCallInfoResponseBodyData) SetStatus(v string) *GetCallInfoResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-type GetCallInfoResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCallInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetCallInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetCallInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetCallInfoResponse) SetHeaders(v map[string]*string) *GetCallInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetCallInfoResponse) SetStatusCode(v int32) *GetCallInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetCallInfoResponse) SetBody(v *GetCallInfoResponseBody) *GetCallInfoResponse {
-	s.Body = v
-	return s
-}
-
 type GetHotlineQualificationByOrderRequest struct {
+	// The ticket ID.
+	//
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualification\&Communication Script Management** > **Qualification Management**, and then click the **400 Qualifications** tab to view the ticket ID.
 	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1259,10 +1209,17 @@ func (s *GetHotlineQualificationByOrderRequest) SetResourceOwnerId(v int64) *Get
 }
 
 type GetHotlineQualificationByOrderResponseBody struct {
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetHotlineQualificationByOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *GetHotlineQualificationByOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetHotlineQualificationByOrderResponseBody) String() string {
@@ -1294,9 +1251,15 @@ func (s *GetHotlineQualificationByOrderResponseBody) SetRequestId(v string) *Get
 }
 
 type GetHotlineQualificationByOrderResponseBodyData struct {
-	OrderId         *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the qualification application ticket.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The qualification ID.
 	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The qualification state. Valid values:
+	//
+	// *   **NORMAL**
+	// *   **OTHER**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetHotlineQualificationByOrderResponseBodyData) String() string {
@@ -1323,9 +1286,9 @@ func (s *GetHotlineQualificationByOrderResponseBodyData) SetStatus(v string) *Ge
 }
 
 type GetHotlineQualificationByOrderResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineQualificationByOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineQualificationByOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineQualificationByOrderResponse) String() string {
@@ -1351,274 +1314,12 @@ func (s *GetHotlineQualificationByOrderResponse) SetBody(v *GetHotlineQualificat
 	return s
 }
 
-type GetMqttTokenRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s GetMqttTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMqttTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMqttTokenRequest) SetOwnerId(v int64) *GetMqttTokenRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetMqttTokenRequest) SetResourceOwnerAccount(v string) *GetMqttTokenRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetMqttTokenRequest) SetResourceOwnerId(v int64) *GetMqttTokenRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type GetMqttTokenResponseBody struct {
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetMqttTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetMqttTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMqttTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMqttTokenResponseBody) SetCode(v string) *GetMqttTokenResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBody) SetData(v *GetMqttTokenResponseBodyData) *GetMqttTokenResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetMqttTokenResponseBody) SetMessage(v string) *GetMqttTokenResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBody) SetRequestId(v string) *GetMqttTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetMqttTokenResponseBodyData struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	P2pTopic   *string `json:"P2pTopic,omitempty" xml:"P2pTopic,omitempty"`
-	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
-}
-
-func (s GetMqttTokenResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMqttTokenResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetMqttTokenResponseBodyData) SetClientId(v string) *GetMqttTokenResponseBodyData {
-	s.ClientId = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBodyData) SetExpireTime(v string) *GetMqttTokenResponseBodyData {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBodyData) SetHost(v string) *GetMqttTokenResponseBodyData {
-	s.Host = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBodyData) SetInstanceId(v string) *GetMqttTokenResponseBodyData {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBodyData) SetP2pTopic(v string) *GetMqttTokenResponseBodyData {
-	s.P2pTopic = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBodyData) SetServerId(v string) *GetMqttTokenResponseBodyData {
-	s.ServerId = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBodyData) SetToken(v string) *GetMqttTokenResponseBodyData {
-	s.Token = &v
-	return s
-}
-
-func (s *GetMqttTokenResponseBodyData) SetUsername(v string) *GetMqttTokenResponseBodyData {
-	s.Username = &v
-	return s
-}
-
-type GetMqttTokenResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMqttTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMqttTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMqttTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMqttTokenResponse) SetHeaders(v map[string]*string) *GetMqttTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMqttTokenResponse) SetStatusCode(v int32) *GetMqttTokenResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetMqttTokenResponse) SetBody(v *GetMqttTokenResponseBody) *GetMqttTokenResponse {
-	s.Body = v
-	return s
-}
-
-type GetRtcTokenRequest struct {
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	IsCustomAccount      *bool   `json:"IsCustomAccount,omitempty" xml:"IsCustomAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s GetRtcTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRtcTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRtcTokenRequest) SetDeviceId(v string) *GetRtcTokenRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *GetRtcTokenRequest) SetIsCustomAccount(v bool) *GetRtcTokenRequest {
-	s.IsCustomAccount = &v
-	return s
-}
-
-func (s *GetRtcTokenRequest) SetOwnerId(v int64) *GetRtcTokenRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetRtcTokenRequest) SetResourceOwnerAccount(v string) *GetRtcTokenRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetRtcTokenRequest) SetResourceOwnerId(v int64) *GetRtcTokenRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *GetRtcTokenRequest) SetUserId(v string) *GetRtcTokenRequest {
-	s.UserId = &v
-	return s
-}
-
-type GetRtcTokenResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetRtcTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRtcTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRtcTokenResponseBody) SetCode(v string) *GetRtcTokenResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetRtcTokenResponseBody) SetMessage(v string) *GetRtcTokenResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetRtcTokenResponseBody) SetModule(v string) *GetRtcTokenResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *GetRtcTokenResponseBody) SetRequestId(v string) *GetRtcTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetRtcTokenResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRtcTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetRtcTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRtcTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRtcTokenResponse) SetHeaders(v map[string]*string) *GetRtcTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRtcTokenResponse) SetStatusCode(v int32) *GetRtcTokenResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetRtcTokenResponse) SetBody(v *GetRtcTokenResponseBody) *GetRtcTokenResponse {
-	s.Body = v
-	return s
-}
-
 type GetTokenRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TokenType            *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
+	// The token type.
+	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
 }
 
 func (s GetTokenRequest) String() string {
@@ -1650,11 +1351,19 @@ func (s *GetTokenRequest) SetTokenType(v string) *GetTokenRequest {
 }
 
 type GetTokenResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The token.
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetTokenResponseBody) String() string {
@@ -1691,9 +1400,9 @@ func (s *GetTokenResponseBody) SetToken(v string) *GetTokenResponseBody {
 }
 
 type GetTokenResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTokenResponse) String() string {
@@ -1720,19 +1429,47 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type IvrCallRequest struct {
-	ByeCode              *string                     `json:"ByeCode,omitempty" xml:"ByeCode,omitempty"`
-	ByeTtsParams         *string                     `json:"ByeTtsParams,omitempty" xml:"ByeTtsParams,omitempty"`
-	CalledNumber         *string                     `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string                     `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	MenuKeyMap           []*IvrCallRequestMenuKeyMap `json:"MenuKeyMap,omitempty" xml:"MenuKeyMap,omitempty" type:"Repeated"`
-	OutId                *string                     `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlayTimes            *int64                      `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
-	ResourceOwnerAccount *string                     `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                      `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StartCode            *string                     `json:"StartCode,omitempty" xml:"StartCode,omitempty"`
-	StartTtsParams       *string                     `json:"StartTtsParams,omitempty" xml:"StartTtsParams,omitempty"`
-	Timeout              *int32                      `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The end voice.
+	//
+	// *   If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **Voice Notification Files** tab to view the voice ID.
+	// *   If you use a TTS template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **TTS Template** tab to view the template ID.
+	//
+	// > The value of the ByeCode parameter must be of the same type as the value of the StartCode parameter. This means that both parameters must specify voice IDs or TTS template IDs.
+	ByeCode *string `json:"ByeCode,omitempty" xml:"ByeCode,omitempty"`
+	// The variables in the TTS template, in the JSON format.
+	//
+	// > This parameter is required when the ByeCode parameter is set to the ID of a TTS template that contains variables.
+	ByeTtsParams *string `json:"ByeTtsParams,omitempty" xml:"ByeTtsParams,omitempty"`
+	// The called number.
+	//
+	// Only phone numbers in the Chinese mainland are supported. Each request supports only one called number.
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The calling number.
+	//
+	// The value must be a number you purchased. Each request supports only one calling number. In most cases, a calling number is configured with the maximum number of concurrent requests. New requests fail if the maximum number of concurrent requests is reached. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service > Real Number Management** to view the number you purchased.
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// The information about the key pressed by the subscriber.
+	MenuKeyMap []*IvrCallRequestMenuKeyMap `json:"MenuKeyMap,omitempty" xml:"MenuKeyMap,omitempty" type:"Repeated"`
+	// The ID that is reserved for the caller of the operation. This ID is returned to the caller in a receipt message.
+	//
+	// The value is of the STRING type and must be 1 to 15 bytes in length.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of replay times. Valid values: 1 to 3.
+	PlayTimes            *int64  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The voice that is played when the call begins.
+	//
+	// *   If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > Voice Notifications, and then click the **Voice Notification Files** tab to view the voice ID.
+	// *   If you use a text-to-speech (TTS) template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **TTS Template** tab to view the template ID.
+	StartCode *string `json:"StartCode,omitempty" xml:"StartCode,omitempty"`
+	// The variables in the TTS template, in the JSON format.
+	//
+	// > This parameter is required when the StartCode parameter is set to the ID of a TTS template that contains variables.
+	StartTtsParams *string `json:"StartTtsParams,omitempty" xml:"StartTtsParams,omitempty"`
+	// The timeout period for the subscriber to press a key. Unit: milliseconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s IvrCallRequest) String() string {
@@ -1809,8 +1546,20 @@ func (s *IvrCallRequest) SetTimeout(v int32) *IvrCallRequest {
 }
 
 type IvrCallRequestMenuKeyMap struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The voice that corresponds to the key specified by the **MenuKeyMap.N.Key** parameter.
+	//
+	// *   If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **Voice Notification Files** tab to view the voice ID.
+	// *   If you use a TTS template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **TTS Template** tab to view the template ID.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The key that can be pressed by the subscriber.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The variables in the TTS template, in the JSON format.
+	//
+	// >
+	//
+	// *   This parameter specifies the substitution relationship of the variables in the TTS template if the value of the **MenuKeyMap.N.Code** parameter is set to the ID of the TTS template.
+	//
+	// *   This parameter is required if the value of the **MenuKeyMap.N.Code** parameter is set to the ID of a TTS template that contains variables.
 	TtsParams *string `json:"TtsParams,omitempty" xml:"TtsParams,omitempty"`
 }
 
@@ -1838,9 +1587,18 @@ func (s *IvrCallRequestMenuKeyMap) SetTtsParams(v string) *IvrCallRequestMenuKey
 }
 
 type IvrCallResponseBody struct {
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique receipt ID of the call.
+	//
+	// You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call based on the receipt ID.
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1873,9 +1631,9 @@ func (s *IvrCallResponseBody) SetRequestId(v string) *IvrCallResponseBody {
 }
 
 type IvrCallResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IvrCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IvrCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s IvrCallResponse) String() string {
@@ -1902,16 +1660,36 @@ func (s *IvrCallResponse) SetBody(v *IvrCallResponseBody) *IvrCallResponse {
 }
 
 type ListCallTaskRequest struct {
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The type of the task template. Valid values:
+	//
+	// *   **VMS_VOICE_TTS**: the text-to-speech (TTS) notification template.
+	// *   **VMS_VOICE_CODE**: the voice notification template.
+	// *   **VMS_TTS**: the voice verification code template.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The task state. Valid values:
+	//
+	// *   **INIT**: The task is in the initial state.
+	// *   **RELEASE**: The task is being parsed.
+	// *   **RUNNING**: The task is running.
+	// *   **STOP**: The task is suspended.
+	// *   **SYSTEM_STOP**: The task is suspended by the system.
+	// *   **CANCEL**: The task is canceled.
+	// *   **SYSTEM_CANCEL**: The task is canceled by the system.
+	// *   **DONE**: The task is complete.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The template name.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s ListCallTaskRequest) String() string {
@@ -1973,12 +1751,18 @@ func (s *ListCallTaskRequest) SetTemplateName(v string) *ListCallTaskRequest {
 }
 
 type ListCallTaskResponseBody struct {
-	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       []*ListCallTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNumber *int64                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int64                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task information.
+	Data []*ListCallTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of tasks.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListCallTaskResponseBody) String() string {
@@ -2020,21 +1804,49 @@ func (s *ListCallTaskResponseBody) SetTotal(v int64) *ListCallTaskResponseBody {
 }
 
 type ListCallTaskResponseBodyData struct {
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CompleteTime   *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CompletedCount *int64  `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
-	CompletedRate  *int32  `json:"CompletedRate,omitempty" xml:"CompletedRate,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	DataType       *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	FireTime       *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StopTime       *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateCode   *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TotalCount     *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The type of the task template. Valid values:
+	//
+	// *   **VMS_VOICE_TTS**: the TTS notification template.
+	// *   **VMS_VOICE_CODE**: the voice notification template.
+	// *   **VMS_TTS**: the voice verification code template.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The time when the task was completed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The number of tasks that were complete.
+	CompletedCount *int64 `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
+	// The task progress.
+	CompletedRate *int32 `json:"CompletedRate,omitempty" xml:"CompletedRate,omitempty"`
+	// This parameter is unavailable.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The type of the called number.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The time when the scheduled task was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	FireTime *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
+	// The task ID.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The calling number.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The task state. Valid values:
+	//
+	// *   **INIT**: The task was in the initial state.
+	// *   **RELEASE**: The task was being parsed.
+	// *   **RUNNING**: The task was running.
+	// *   **STOP**: The task was manually suspended.
+	// *   **SYSTEM_STOP**: The task was suspended by the system.
+	// *   **CANCEL**: The task was manually canceled.
+	// *   **SYSTEM_CANCEL**: The task was canceled by the system.
+	// *   **DONE**: The task was complete.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is unavailable.
+	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// The task name.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The ID of the voice template.
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The template name.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The total number of called numbers.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCallTaskResponseBodyData) String() string {
@@ -2121,9 +1933,9 @@ func (s *ListCallTaskResponseBodyData) SetTotalCount(v int64) *ListCallTaskRespo
 }
 
 type ListCallTaskResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCallTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCallTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCallTaskResponse) String() string {
@@ -2150,14 +1962,23 @@ func (s *ListCallTaskResponse) SetBody(v *ListCallTaskResponseBody) *ListCallTas
 }
 
 type ListCallTaskDetailRequest struct {
-	CalledNum            *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The called number.
+	CalledNum *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task state. Valid values:
+	//
+	// *   **SUCCESS**: The task is successful.
+	// *   **FAIL**: The task fails.
+	// *   **INIT**: The task is not started.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListCallTaskDetailRequest) String() string {
@@ -2209,13 +2030,23 @@ func (s *ListCallTaskDetailRequest) SetTaskId(v int64) *ListCallTaskDetailReques
 }
 
 type ListCallTaskDetailResponseBody struct {
-	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       []*ListCallTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNumber *int64                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPage  *int64                                `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the task.
+	Data []*ListCallTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of called numbers.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of pages.
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListCallTaskDetailResponseBody) String() string {
@@ -2262,11 +2093,20 @@ func (s *ListCallTaskDetailResponseBody) SetTotalPage(v int64) *ListCallTaskDeta
 }
 
 type ListCallTaskDetailResponseBodyData struct {
+	// The called number.
 	CalledNum *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
-	Caller    *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The calling number.
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The call duration. Unit: seconds.
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is unavailable.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The task state. Valid values:
+	//
+	// *   **SUCCESS**: The task was successful.
+	// *   **FAIL**: The task failed.
+	// *   **INIT**: The task was not started.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCallTaskDetailResponseBodyData) String() string {
@@ -2303,9 +2143,9 @@ func (s *ListCallTaskDetailResponseBodyData) SetStatus(v string) *ListCallTaskDe
 }
 
 type ListCallTaskDetailResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCallTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCallTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCallTaskDetailResponse) String() string {
@@ -2332,10 +2172,14 @@ func (s *ListCallTaskDetailResponse) SetBody(v *ListCallTaskDetailResponseBody) 
 }
 
 type ListHotlineTransferNumberRequest struct {
-	HotlineNumber        *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The China 400 number.
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
 	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2385,10 +2229,17 @@ func (s *ListHotlineTransferNumberRequest) SetResourceOwnerId(v int64) *ListHotl
 }
 
 type ListHotlineTransferNumberResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListHotlineTransferNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the registered phone number.
+	Data *ListHotlineTransferNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListHotlineTransferNumberResponseBody) String() string {
@@ -2420,10 +2271,14 @@ func (s *ListHotlineTransferNumberResponseBody) SetRequestId(v string) *ListHotl
 }
 
 type ListHotlineTransferNumberResponseBodyData struct {
-	PageNo   *int32                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                             `json:"Total,omitempty" xml:"Total,omitempty"`
-	Values   []*ListHotlineTransferNumberResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The page number.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The phone numbers.
+	Values []*ListHotlineTransferNumberResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s ListHotlineTransferNumberResponseBodyData) String() string {
@@ -2455,12 +2310,18 @@ func (s *ListHotlineTransferNumberResponseBodyData) SetValues(v []*ListHotlineTr
 }
 
 type ListHotlineTransferNumberResponseBodyDataValues struct {
-	HotlineNumber   *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	IdentityCard    *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
+	// The China 400 number.
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// The ID card number of the number owner.
+	IdentityCard *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
+	// The real name of the number owner or the company name.
 	NumberOwnerName *string `json:"NumberOwnerName,omitempty" xml:"NumberOwnerName,omitempty"`
-	PhoneNumber     *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The registered phone number.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The qualification ID.
 	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	ResUniqueCode   *string `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
+	// The resource code.
+	ResUniqueCode *string `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
 }
 
 func (s ListHotlineTransferNumberResponseBodyDataValues) String() string {
@@ -2502,9 +2363,9 @@ func (s *ListHotlineTransferNumberResponseBodyDataValues) SetResUniqueCode(v str
 }
 
 type ListHotlineTransferNumberResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHotlineTransferNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotlineTransferNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHotlineTransferNumberResponse) String() string {
@@ -2531,10 +2392,14 @@ func (s *ListHotlineTransferNumberResponse) SetBody(v *ListHotlineTransferNumber
 }
 
 type ListHotlineTransferRegisterFileRequest struct {
-	HotlineNumber        *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The China 400 number.
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
 	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2584,10 +2449,17 @@ func (s *ListHotlineTransferRegisterFileRequest) SetResourceOwnerId(v int64) *Li
 }
 
 type ListHotlineTransferRegisterFileResponseBody struct {
-	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListHotlineTransferRegisterFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *ListHotlineTransferRegisterFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListHotlineTransferRegisterFileResponseBody) String() string {
@@ -2619,10 +2491,14 @@ func (s *ListHotlineTransferRegisterFileResponseBody) SetRequestId(v string) *Li
 }
 
 type ListHotlineTransferRegisterFileResponseBodyData struct {
-	PageNo   *int32                                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                                   `json:"Total,omitempty" xml:"Total,omitempty"`
-	Values   []*ListHotlineTransferRegisterFileResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The page number.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The registration file.
+	Values []*ListHotlineTransferRegisterFileResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s ListHotlineTransferRegisterFileResponseBodyData) String() string {
@@ -2654,15 +2530,24 @@ func (s *ListHotlineTransferRegisterFileResponseBodyData) SetValues(v []*ListHot
 }
 
 type ListHotlineTransferRegisterFileResponseBodyDataValues struct {
-	Agree             *string `json:"Agree,omitempty" xml:"Agree,omitempty"`
-	CorpName          *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
-	HotlineNumber     *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// The authenticity of the commitment.
+	Agree *string `json:"Agree,omitempty" xml:"Agree,omitempty"`
+	// The enterprise name.
+	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	// The China 400 number.
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// The ID card number of the handler.
 	MngOpIdentityCard *string `json:"MngOpIdentityCard,omitempty" xml:"MngOpIdentityCard,omitempty"`
-	MngOpMail         *string `json:"MngOpMail,omitempty" xml:"MngOpMail,omitempty"`
-	MngOpMobile       *string `json:"MngOpMobile,omitempty" xml:"MngOpMobile,omitempty"`
-	MngOpName         *string `json:"MngOpName,omitempty" xml:"MngOpName,omitempty"`
-	QualificationId   *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	ResUniqueCode     *int64  `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
+	// The email address of the handler.
+	MngOpMail *string `json:"MngOpMail,omitempty" xml:"MngOpMail,omitempty"`
+	// The mobile phone number of the handler.
+	MngOpMobile *string `json:"MngOpMobile,omitempty" xml:"MngOpMobile,omitempty"`
+	// The name of the handler.
+	MngOpName *string `json:"MngOpName,omitempty" xml:"MngOpName,omitempty"`
+	// The qualification ID.
+	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// The unique code of the query operation.
+	ResUniqueCode *int64 `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
 }
 
 func (s ListHotlineTransferRegisterFileResponseBodyDataValues) String() string {
@@ -2719,9 +2604,9 @@ func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetResUniqueCode
 }
 
 type ListHotlineTransferRegisterFileResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHotlineTransferRegisterFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotlineTransferRegisterFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHotlineTransferRegisterFileResponse) String() string {
@@ -2748,9 +2633,28 @@ func (s *ListHotlineTransferRegisterFileResponse) SetBody(v *ListHotlineTransfer
 }
 
 type QueryCallDetailByCallIdRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdId               *int64  `json:"ProdId,omitempty" xml:"ProdId,omitempty"`
+	// The unique ID of the call.
+	//
+	// >
+	//
+	// *   The CallId parameter is included in the response parameters of the outbound call operation that you call to initiate a call.
+	//
+	// *   The date when the call specified by CallId is started must be the same as the date specified by QueryDate.
+	//
+	// *   The value of CallId must match the value of ProdId.
+	CallId  *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The service ID. Valid values:
+	//
+	// *   **11000000300006**: voice notification. You can call the [SingleCallByVoice](https://help.aliyun.com/document_detail/393517.html) operation to send a voice notification of the voice notification file type to the specified number.
+	// *   **11010000138001**: voice verification code. You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send a voice verification code or a text-to-speech (TTS) voice notification to the specified number.
+	// *   **11000000300005**: IVR. You can call the [IvrCall](https://help.aliyun.com/document_detail/393521.html) operation to initiate an interactive voice call to the specified number.
+	// *   **11000000300009**: Session Initiation Protocol (SIP) call.
+	// *   **11030000180001**: intelligent outbound call.
+	ProdId *int64 `json:"ProdId,omitempty" xml:"ProdId,omitempty"`
+	// The time at which call details are queried. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// > The system queries the call records that are generated within 24 hours after the specified point in time. For example, if you specify the time 20:00:01 on November 21, 2022, the system queries the call records that are generated for the specified call ID from 20:00:01 on November 21, 2022, to 20:00:01 on November 22, 2022.
 	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2795,9 +2699,31 @@ func (s *QueryCallDetailByCallIdRequest) SetResourceOwnerId(v int64) *QueryCallD
 }
 
 type QueryCallDetailByCallIdResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the call, in the JSON format.
+	//
+	// *   **caller**: the calling number.
+	// *   **startDate**: the time when the call was started.
+	// *   **stateDesc**: the description of the call state.
+	// *   **duration**: the call duration. Unit: seconds. The value **0** indicates that the user was not connected.
+	// *   **callerShowNumber**: the calling number displayed to the called party.
+	// *   **gmtCreate**: the time when the call request was received.
+	// *   **state**: the call state. The call state is returned by the Internet service provider (ISP) in real time. For more information about call states, see [ISP-returned error codes](~~55085~~).
+	// *   **endDate**: the time when the call was ended.
+	// *   **calleeShowNumber**: the number displayed to the called party.
+	// *   **callee**: the called number.
+	// *   **aRingTime**: the time when Line A started to ring, in the yyyy-MM-dd HH:mm:ss format.
+	// *   **aEndTime**: the time when ringing on Line A ended, in the yyyy-MM-dd HH:mm:ss format.
+	// *   **bRingTime**: the time when Line B started to ring, in the yyyy-MM-dd HH:mm:ss format.
+	// *   **bEndTime**: the time when ringing on Line B ended, in the yyyy-MM-dd HH:mm:ss format.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2830,9 +2756,9 @@ func (s *QueryCallDetailByCallIdResponseBody) SetRequestId(v string) *QueryCallD
 }
 
 type QueryCallDetailByCallIdResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCallDetailByCallIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCallDetailByCallIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCallDetailByCallIdResponse) String() string {
@@ -2859,12 +2785,15 @@ func (s *QueryCallDetailByCallIdResponse) SetBody(v *QueryCallDetailByCallIdResp
 }
 
 type QueryCallDetailByTaskIdRequest struct {
-	Callee               *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The called number. You can view the outbound call records of only one called number.
+	Callee  *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The start time of the outbound robocall task. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the outbound robocall task. The task ID is returned after the outbound robocall task is successfully delivered. You can view the task ID on the [Task Management](https://dyvms.console.aliyun.com/job/list) page of the Voice Messaging Service console, or call the **BatchRobotSmartCall** operation to obtain the **task ID**.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s QueryCallDetailByTaskIdRequest) String() string {
@@ -2906,9 +2835,71 @@ func (s *QueryCallDetailByTaskIdRequest) SetTaskId(v string) *QueryCallDetailByT
 }
 
 type QueryCallDetailByTaskIdResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The call details of the outbound robocall task, in the JSON format.
+	//
+	// *   **startDate**: the time when the call was answered.
+	//
+	// *   **stateDesc**: the reason why the call was hung up. If the status code of early media was returned, this parameter indicates the reason why the status code of early media was used.
+	//
+	// *   **statusCode**: the status code.
+	//
+	// *   **EndDate**: the time when the call was ended.
+	//
+	// *   **calleeShowNumber**: the calling number displayed to the called party.
+	//
+	// *   **callee**: the called number.
+	//
+	// *   **duration**: the billing duration.
+	//
+	// *   **gmtCreate**: the time when the outbound robocall task was created.
+	//
+	// *   **hangupDirection**: the party who hung up.
+	//
+	// *   **tags**: the call tags.
+	//
+	// *   **dialogCount**: the number of conversation rounds in the call.
+	//
+	// *   **sureCount**: the number of times that the robocall task was acknowledged.
+	//
+	// *   **denyCount**: the number of times that the robocall task was denied.
+	//
+	// *   **rejectCount**: the number of times that the robocall task was rejected.
+	//
+	// *   **customCount**: the number of times that the robocall task was customized.
+	//
+	// *   **knowledgeCount**: the number of times that the knowledge base was queried.
+	//
+	// *   **recordFile**: the download URL of the recording file. The URL is valid only for 48 hours. The recording file must be downloaded in time.
+	//
+	// *   **callId**: the call ID.
+	//
+	// *   **recordStatus**: indicates whether a recording file was available. Valid values:
+	//
+	//     *   1: A recording file was available.
+	//     *   2: No recording file was available.
+	//
+	// *   **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
+	//
+	// *   **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
+	//
+	// *   **callee**: the called number.
+	//
+	// *   **dialogDetail**: the conversation details. The value is a JSON array that contains the following parameters:
+	//
+	//     *   **role**: the role who spoke.
+	//     *   **content**: the content of the speech.
+	//     *   **time**: the start time of the speech.
+	//
+	// > The preceding parameters are for reference only. The actually returned parameters prevail.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2941,9 +2932,9 @@ func (s *QueryCallDetailByTaskIdResponseBody) SetRequestId(v string) *QueryCallD
 }
 
 type QueryCallDetailByTaskIdResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCallDetailByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCallDetailByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCallDetailByTaskIdResponse) String() string {
@@ -2970,7 +2961,8 @@ func (s *QueryCallDetailByTaskIdResponse) SetBody(v *QueryCallDetailByTaskIdResp
 }
 
 type QueryCallInPoolTransferConfigRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The China 400 number used to transfer the call.
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3005,10 +2997,17 @@ func (s *QueryCallInPoolTransferConfigRequest) SetResourceOwnerId(v int64) *Quer
 }
 
 type QueryCallInPoolTransferConfigResponseBody struct {
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryCallInPoolTransferConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *QueryCallInPoolTransferConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryCallInPoolTransferConfigResponseBody) String() string {
@@ -3040,10 +3039,17 @@ func (s *QueryCallInPoolTransferConfigResponseBody) SetRequestId(v string) *Quer
 }
 
 type QueryCallInPoolTransferConfigResponseBodyData struct {
-	CalledRouteMode *string                                                 `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
-	Details         []*QueryCallInPoolTransferConfigResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	GmtCreate       *int64                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	TransferTimeout *string                                                 `json:"TransferTimeout,omitempty" xml:"TransferTimeout,omitempty"`
+	// The call mode. Valid values:
+	//
+	// *   **roundRobin**
+	// *   **random**
+	CalledRouteMode *string `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
+	// The details of the response parameters.
+	Details []*QueryCallInPoolTransferConfigResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// The time when the call transfer task was created.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timeout period for transferring the call.
+	TransferTimeout *string `json:"TransferTimeout,omitempty" xml:"TransferTimeout,omitempty"`
 }
 
 func (s QueryCallInPoolTransferConfigResponseBodyData) String() string {
@@ -3075,6 +3081,7 @@ func (s *QueryCallInPoolTransferConfigResponseBodyData) SetTransferTimeout(v str
 }
 
 type QueryCallInPoolTransferConfigResponseBodyDataDetails struct {
+	// The number used to transfer the call.
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
 }
 
@@ -3092,9 +3099,9 @@ func (s *QueryCallInPoolTransferConfigResponseBodyDataDetails) SetCalled(v strin
 }
 
 type QueryCallInPoolTransferConfigResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCallInPoolTransferConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCallInPoolTransferConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCallInPoolTransferConfigResponse) String() string {
@@ -3121,11 +3128,18 @@ func (s *QueryCallInPoolTransferConfigResponse) SetBody(v *QueryCallInPoolTransf
 }
 
 type QueryCallInTransferRecordRequest struct {
-	CallInCaller         *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The calling number of the inbound call.
+	CallInCaller *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 10.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The phone number to which a call is transferred.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The time at which call transfer records are queried, in the YYYY-MM-DD hh:mm:ss format.
+	//
+	// > The query result is all the call transfer records of the specified day.
 	QueryDate            *string `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3180,10 +3194,17 @@ func (s *QueryCallInTransferRecordRequest) SetResourceOwnerId(v int64) *QueryCal
 }
 
 type QueryCallInTransferRecordResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryCallInTransferRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *QueryCallInTransferRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryCallInTransferRecordResponseBody) String() string {
@@ -3215,10 +3236,14 @@ func (s *QueryCallInTransferRecordResponseBody) SetRequestId(v string) *QueryCal
 }
 
 type QueryCallInTransferRecordResponseBodyData struct {
-	PageNo   *int64                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                             `json:"Total,omitempty" xml:"Total,omitempty"`
-	Values   []*QueryCallInTransferRecordResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The page number.
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The call transfer records.
+	Values []*QueryCallInTransferRecordResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s QueryCallInTransferRecordResponseBodyData) String() string {
@@ -3250,11 +3275,17 @@ func (s *QueryCallInTransferRecordResponseBodyData) SetValues(v []*QueryCallInTr
 }
 
 type QueryCallInTransferRecordResponseBodyDataValues struct {
-	CallInCalled   *string `json:"CallInCalled,omitempty" xml:"CallInCalled,omitempty"`
-	CallInCaller   *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
-	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	RecordUrl      *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	// The called number of the inbound call.
+	CallInCalled *string `json:"CallInCalled,omitempty" xml:"CallInCalled,omitempty"`
+	// The calling number of the inbound call.
+	CallInCaller *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
+	// The time when the call was initiated.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The recording URL.
+	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	// The phone number to which the call was transferred.
 	TransferCalled *string `json:"TransferCalled,omitempty" xml:"TransferCalled,omitempty"`
+	// The calling number that transferred the call.
 	TransferCaller *string `json:"TransferCaller,omitempty" xml:"TransferCaller,omitempty"`
 }
 
@@ -3297,9 +3328,9 @@ func (s *QueryCallInTransferRecordResponseBodyDataValues) SetTransferCaller(v st
 }
 
 type QueryCallInTransferRecordResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCallInTransferRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCallInTransferRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCallInTransferRecordResponse) String() string {
@@ -3326,6 +3357,12 @@ func (s *QueryCallInTransferRecordResponse) SetBody(v *QueryCallInTransferRecord
 }
 
 type QueryRobotInfoListRequest struct {
+	// The review state. Valid values:
+	//
+	// *   **CONFIGURABLE**
+	// *   **AUDITING**
+	// *   **AUDITPASS**
+	// *   **AUDITFAIL**
 	AuditStatus          *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -3361,9 +3398,27 @@ func (s *QueryRobotInfoListRequest) SetResourceOwnerId(v int64) *QueryRobotInfoL
 }
 
 type QueryRobotInfoListResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The basic information about the robot, in the JSON format. The basic information contains the following parameters:
+	//
+	// *   **id**: the robot ID.
+	// *   **robotName**: the robot name.
+	// *   **robotType**: the robot type.
+	// *   **auditStatus**: the review state.
+	// *   **gmtCreate**: the time when the task was created.
+	// *   **gmtModified**: the time when the task was modified.
+	// *   **partnerId**: the partner ID.
+	// *   **asrId**: the ID of the automatic speech recognition (ASR) model.
+	// *   **asrType**: the ASR type. Valid values: **Public** and **Private**.
+	// *   **remark**: the additional information.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3396,9 +3451,9 @@ func (s *QueryRobotInfoListResponseBody) SetRequestId(v string) *QueryRobotInfoL
 }
 
 type QueryRobotInfoListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRobotInfoListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRobotInfoListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRobotInfoListResponse) String() string {
@@ -3425,12 +3480,15 @@ func (s *QueryRobotInfoListResponse) SetBody(v *QueryRobotInfoListResponseBody) 
 }
 
 type QueryRobotTaskCallDetailRequest struct {
-	Callee               *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The called number.
+	Callee  *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The timestamp of the time at which the call details you want to query.
 	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s QueryRobotTaskCallDetailRequest) String() string {
@@ -3472,9 +3530,43 @@ func (s *QueryRobotTaskCallDetailRequest) SetTaskId(v int64) *QueryRobotTaskCall
 }
 
 type QueryRobotTaskCallDetailResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The call details of a robocall task, in the JSON format.
+	//
+	// *   **taskId**: the unique ID of the robocall task.
+	// *   **caller**: the calling number.
+	// *   **called**: the called number.
+	// *   **duration**: the call duration. Unit: seconds.
+	// *   **label**: the label of the called party.
+	// *   **dialogCount**: the number of conversation rounds in the call.
+	// *   **callResult**: the call result.
+	// *   **hangupDirection**: the party who hung up. Valid values: **0**: the robot. **1**: the called party.
+	// *   **transferResult**: the result of transferring the call to an agent. Valid values: **1**, **0**, and **3**. The value 1 indicates that the call was transferred to the agent. The value 0 indicates that the call failed to be transferred to the agent. The value 3 indicates that the call was not transferred to the agent.
+	// *   **transferNumber**: the phone number of the agent to whom the call was transferred.
+	// *   **transferFailReason**: the reason why the call failed to be transferred to the agent.
+	// *   **callId**: the unique receipt ID of the call, in the `taskId^bizId` format.
+	// *   **recallCurTimes**: the number of recalls.
+	// *   **callStartTime**: the start time of the call.
+	// *   **callEndTime**: the end time of the call.
+	// *   **sureCount**: the number of times that the robocall task was affirmed.
+	// *   **denyCount**: the number of times that the robocall task was denied.
+	// *   **rejectCount**: the number of times that the robocall task was rejected.
+	// *   **customCount**: the number of times that the robocall task was customized.
+	// *   **knowledgeCount**: the number of times that the knowledge base was queried.
+	// *   **defaultCount**: the default number of calls.
+	// *   **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
+	// *   **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
+	// *   **recordStatus**: Indicates whether the call has a recording file. Valid values: **1**: The call has a recording file. **2**: The call does not have a recording file.
+	// *   **recordFile**: the download URL of the recording file.
+	// *   **dialogDetail**: the dialog details, in a JSON-formatted array. **role**: the object of the speech. **content**: the content of the speech. **speakTime**: the time of the speech.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3507,9 +3599,9 @@ func (s *QueryRobotTaskCallDetailResponseBody) SetRequestId(v string) *QueryRobo
 }
 
 type QueryRobotTaskCallDetailResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRobotTaskCallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRobotTaskCallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRobotTaskCallDetailResponse) String() string {
@@ -3536,19 +3628,38 @@ func (s *QueryRobotTaskCallDetailResponse) SetBody(v *QueryRobotTaskCallDetailRe
 }
 
 type QueryRobotTaskCallListRequest struct {
-	CallResult           *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
-	Called               *string `json:"Called,omitempty" xml:"Called,omitempty"`
-	DialogCountFrom      *string `json:"DialogCountFrom,omitempty" xml:"DialogCountFrom,omitempty"`
-	DialogCountTo        *string `json:"DialogCountTo,omitempty" xml:"DialogCountTo,omitempty"`
-	DurationFrom         *string `json:"DurationFrom,omitempty" xml:"DurationFrom,omitempty"`
-	DurationTo           *string `json:"DurationTo,omitempty" xml:"DurationTo,omitempty"`
-	HangupDirection      *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The call result. Valid values:
+	//
+	// *   **200002**: The line is busy.
+	// *   **200005**: The called party cannot be connected.
+	// *   **200010**: The phone of the called party is powered off.
+	// *   **200011**: The called party is out of service.
+	// *   **200012**: The call is lost.
+	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
+	// The called number.
+	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	// The minimum number of conversation rounds in the call.
+	DialogCountFrom *string `json:"DialogCountFrom,omitempty" xml:"DialogCountFrom,omitempty"`
+	// The maximum number of conversation rounds in the call.
+	DialogCountTo *string `json:"DialogCountTo,omitempty" xml:"DialogCountTo,omitempty"`
+	// The minimum call duration.
+	DurationFrom *string `json:"DurationFrom,omitempty" xml:"DurationFrom,omitempty"`
+	// The maximum call duration.
+	DurationTo *string `json:"DurationTo,omitempty" xml:"DurationTo,omitempty"`
+	// The party who hangs up. Valid values:
+	//
+	// *   **0**: the called party.
+	// *   **1**: the robot.
+	HangupDirection *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s QueryRobotTaskCallListRequest) String() string {
@@ -3625,9 +3736,41 @@ func (s *QueryRobotTaskCallListRequest) SetTaskId(v string) *QueryRobotTaskCallL
 }
 
 type QueryRobotTaskCallListResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the robocall task, which is a JSON-formatted array.
+	//
+	// *   **taskId**: the unique ID of the robocall task.
+	// *   **caller**: the calling number.
+	// *   **called**: the called number.
+	// *   **duration**: the call duration. Unit: seconds.
+	// *   **label**: the label of the called party.
+	// *   **dialogCount**: the number of conversation rounds in the call.
+	// *   **callResult**: the call result.
+	// *   **hangupDirection**: the party who hung up. Valid values: **1** and **0**. The value 1 indicates the called party, and the value 0 indicates the robot.
+	// *   **transferResult**: the result of transferring the call to an agent. Valid values: **1**, **0**, and **3**. The value 1 indicates that the call was transferred to an agent. The value 0 indicates that the call failed to be transferred to an agent. The value 3 indicates that the call was not transferred to an agent.
+	// *   **transferNumber**: the phone number of the agent to whom the call was transferred.
+	// *   **transferFailReason**: the reason why the call failed to be transferred to an agent.
+	// *   **callId**: the unique receipt ID of the call.
+	// *   **recallCurTimes**: the number of recalls.
+	// *   **callStartTime**: the start time of the call.
+	// *   **callEndTime**: the end time of the call.
+	// *   **sureCount**: the number of times that the robocall task was acknowledged.
+	// *   **denyCount**: the number of times that the robocall task was denied.
+	// *   **rejectCount**: the number of times that the robocall task was rejected.
+	// *   **customCount**: the number of times that the robocall task was customized.
+	// *   **knowledgeCount**: the number of times that the knowledge base was queried.
+	// *   **defaultCount**: the default number of calls.
+	// *   **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
+	// *   **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
+	// *   ****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3660,9 +3803,9 @@ func (s *QueryRobotTaskCallListResponseBody) SetRequestId(v string) *QueryRobotT
 }
 
 type QueryRobotTaskCallListResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRobotTaskCallListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRobotTaskCallListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRobotTaskCallListResponse) String() string {
@@ -3689,6 +3832,7 @@ func (s *QueryRobotTaskCallListResponse) SetBody(v *QueryRobotTaskCallListRespon
 }
 
 type QueryRobotTaskDetailRequest struct {
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
 	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -3724,9 +3868,35 @@ func (s *QueryRobotTaskDetailRequest) SetResourceOwnerId(v int64) *QueryRobotTas
 }
 
 type QueryRobotTaskDetailResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the robocall task, in the JSON format.
+	//
+	// *   **Id**: the unique ID of the robocall task.
+	// *   **taskName**: the task name.
+	// *   **robotId**: the robot ID.
+	// *   **robotName**: the robot name.
+	// *   **corpName**: the company name.
+	// *   **caller**: the number displayed to the called party.
+	// *   **numberStatusIdent**: indicates whether number status identification was enabled. Valid values: **true** and **false**. The value true indicates that number status identification was enabled. The value false indicates that number status identification was not enabled.
+	// *   **status**: the task state. You can call the [QueryRobotTaskList](~~QueryRobotTaskList~~) operation to obtain the task state from the `status` parameter.
+	// *   **scheduleType**: the scheduling type. Valid values: **SINGLE** and **ORDER**. The value SINGLE indicates that the task was started immediately after it was created. The value ORDER indicates that the task was started at a scheduled time.
+	// *   **retryType**: indicates whether auto-redial was enabled. Valid values: **1** and **0**. The value 1 indicates that auto-redial was enabled. The value 0 indicates that auto-redial was not enabled.
+	// *   **recallStateCodes**: the call state in which redial is required. Valid values: **200010**, **200011**, **200002**, **200012**, and **200005**. The value 200010 indicates that the phone of the called party was powered off. The value 200011 indicates that the number of the called party was out of service. The value 200002 indicates that the line was busy. The value 200012 indicates that the call was lost. The value 200005 indicates that the called party could not be connected.
+	// *   **recallTimes**: the number of redial times.
+	// *   **recallInterval**: the redial interval. Unit: minutes.
+	// *   **createTime**: the time when the task was created, in the yyyy-MM-dd HH:mm:ss format.
+	// *   **fireTime**: the time when the task was started, in the yyyy-MM-dd HH:mm:ss format.
+	// *   **completeTime**: the time when the task was completed, in the yyyy-MM-dd HH:mm:ss format.
+	// *   **filename**: the name of the called number file.
+	// *   **ossFilePath**: the path of the called number file.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3759,9 +3929,9 @@ func (s *QueryRobotTaskDetailResponseBody) SetRequestId(v string) *QueryRobotTas
 }
 
 type QueryRobotTaskDetailResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRobotTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRobotTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRobotTaskDetailResponse) String() string {
@@ -3788,14 +3958,30 @@ func (s *QueryRobotTaskDetailResponse) SetBody(v *QueryRobotTaskDetailResponseBo
 }
 
 type QueryRobotTaskListRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	Time                 *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The task state. Valid values:
+	//
+	// *   **INIT**: The task is not started.
+	// *   **READY**: The task is ready to start.
+	// *   **DISPATCH**: The task is being parsed.
+	// *   **EXCUTING**: The task is being executed.
+	// *   **MANUAL_STOP**: The task is manually suspended.
+	// *   **SYSTEM_STOP**: The task is suspended by the system.
+	// *   **ARREARS_STOP**: The task is suspended due to overdue payments.
+	// *   **CANCEL**: The task is manually canceled.
+	// *   **SYSTEM_CANCEL**: The task is canceled by the system.
+	// *   **FINISH**: The task is complete.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task name.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The date when the task is created, in the yyyy-MM-dd format.
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryRobotTaskListRequest) String() string {
@@ -3847,12 +4033,31 @@ func (s *QueryRobotTaskListRequest) SetTime(v string) *QueryRobotTaskListRequest
 }
 
 type QueryRobotTaskListResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The robocall tasks, in the JSON format.
+	//
+	// *   **id**: the unique ID of the robocall task.
+	// *   **taskName**: the task name.
+	// *   **robotId**: the robot ID.
+	// *   **robotName**: the robot name.
+	// *   **status**: the task state.
+	// *   **scheduleType**: the scheduling type. Valid values: **SINGLE** and **ORDER**. The value SINGLE indicates that the task was started immediately after it was created. The value ORDER indicates that the task was started at a scheduled time.
+	// *   **createTime**: the time when the task was created, in the yyyy.MM.dd HH:mm:ss format.
+	// *   **completeTime**: the time when the task was completed, in the yyyy.MM.dd HH:mm:ss format.
+	// *   **fireTime**: the time when the task was started, in the yyyy.MM.dd HH:mm:ss format.
+	// *   **totalCount**: the total number of calls processed.
+	// *   **finishCount**: the number of calls completed.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of tasks.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3900,9 +4105,9 @@ func (s *QueryRobotTaskListResponseBody) SetTotalCount(v string) *QueryRobotTask
 }
 
 type QueryRobotTaskListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRobotTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRobotTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRobotTaskListResponse) String() string {
@@ -3958,9 +4163,20 @@ func (s *QueryRobotv2AllListRequest) SetResourceOwnerId(v int64) *QueryRobotv2Al
 }
 
 type QueryRobotv2AllListResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the robot communication script, in the JSON format.
+	//
+	// *   **id**: the ID of the robot communication script.
+	// *   **robotName**: the name of the robot communication script.
+	// *   **robotType**: the type of the robot communication script.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3993,9 +4209,9 @@ func (s *QueryRobotv2AllListResponseBody) SetRequestId(v string) *QueryRobotv2Al
 }
 
 type QueryRobotv2AllListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRobotv2AllListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRobotv2AllListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRobotv2AllListResponse) String() string {
@@ -4022,13 +4238,20 @@ func (s *QueryRobotv2AllListResponse) SetBody(v *QueryRobotv2AllListResponseBody
 }
 
 type QueryVirtualNumberRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The service name. Default value: **dyvms**.
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteType            *int32  `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The route type. Valid values:
+	//
+	// *   **0**: number location first.
+	// *   **1**: random.
+	RouteType *int32 `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
 func (s QueryVirtualNumberRequest) String() string {
@@ -4075,8 +4298,25 @@ func (s *QueryVirtualNumberRequest) SetRouteType(v int32) *QueryVirtualNumberReq
 }
 
 type QueryVirtualNumberResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code. The value 200 indicates that the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the numbers associated with the virtual numbers. The following fields are returned:
+	//
+	// *   createTime: the time when the number was activated.
+	// *   qualificationCount: the number of qualifications.
+	// *   cityCount: the number of cities.
+	// *   phoneNumCount: the number of virtual numbers.
+	// *   remark: the additional information.
+	// *   phoneNum: the virtual number.
+	// *   routeType: the route type.
+	// *   canCancel: indicates whether the number can be deactivated.
+	// *   specCount: the number of Internet service providers (ISPs).
+	// *   status: the number state. Valid values: **1**, **0**, and **-1**. The value 1 indicates that the number is valid. The value 0 indicates that the number is invalid. The value -1 indicates that the number was deactivated.
+	// *   pageNo: the page number.
+	// *   pageSize: the number of entries per page.
+	// *   total: the total number of virtual numbers.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4104,9 +4344,9 @@ func (s *QueryVirtualNumberResponseBody) SetRequestId(v string) *QueryVirtualNum
 }
 
 type QueryVirtualNumberResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryVirtualNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryVirtualNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryVirtualNumberResponse) String() string {
@@ -4133,18 +4373,35 @@ func (s *QueryVirtualNumberResponse) SetBody(v *QueryVirtualNumberResponseBody) 
 }
 
 type QueryVirtualNumberRelationRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PhoneNum             *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	RegionNameCity       *string `json:"RegionNameCity,omitempty" xml:"RegionNameCity,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The virtual number.
+	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// The service name. Default value: **dyvms**.
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The qualification ID.
+	//
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualifications\&Communication Scripts > Qualification Management**, and then click **Details** in the Actions column to view the qualification ID.
+	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// The city to which the virtual number belongs.
+	RegionNameCity *string `json:"RegionNameCity,omitempty" xml:"RegionNameCity,omitempty"`
+	// The real number.
 	RelatedNum           *string `json:"RelatedNum,omitempty" xml:"RelatedNum,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteType            *int32  `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	SpecId               *int64  `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// The route type. Valid values:
+	//
+	// **0**: number location first. **1**: random.
+	RouteType *int32 `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The number type. Valid values:
+	//
+	// *   **1**: the number provided by a virtual network operator, in the 05710000\*\*\*\* format.
+	// *   **2**: the number provided by an Internet service provider (ISP).
+	// *   **3**: a 5-digit phone number that starts with 95.
+	SpecId *int64 `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
 }
 
 func (s QueryVirtualNumberRelationRequest) String() string {
@@ -4216,8 +4473,20 @@ func (s *QueryVirtualNumberRelationRequest) SetSpecId(v int64) *QueryVirtualNumb
 }
 
 type QueryVirtualNumberRelationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code.
+	//
+	// *   The value 200 indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of associations between virtual numbers and real numbers. The following fields are returned:
+	//
+	// *   **relatedNum**: the real number.
+	// *   **createTime**: the time when the number was activated.
+	// *   **pageNo**: the page number.
+	// *   **pageSize**: the number of entries per page.
+	// *   **total**: the total number of entries returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4245,9 +4514,9 @@ func (s *QueryVirtualNumberRelationResponseBody) SetRequestId(v string) *QueryVi
 }
 
 type QueryVirtualNumberRelationResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryVirtualNumberRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryVirtualNumberRelationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryVirtualNumberRelationResponse) String() string {
@@ -4274,11 +4543,18 @@ func (s *QueryVirtualNumberRelationResponse) SetBody(v *QueryVirtualNumberRelati
 }
 
 type QueryVoiceFileAuditInfoRequest struct {
+	// The type of the voice file. Valid values:
+	//
+	// *   **0** (default): the voice notification file.
+	// *   **2**: the recording file.
 	BusinessType         *int32  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VoiceCodes           *string `json:"VoiceCodes,omitempty" xml:"VoiceCodes,omitempty"`
+	// The ID of the voice file. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications** or **Voice File Management**, and then click the **Voice Notification Files** tab to view the **voice ID**.
+	//
+	// > You can query up to 10 voice files each time. Separate the voice file names with commas (,).
+	VoiceCodes *string `json:"VoiceCodes,omitempty" xml:"VoiceCodes,omitempty"`
 }
 
 func (s QueryVoiceFileAuditInfoRequest) String() string {
@@ -4315,10 +4591,16 @@ func (s *QueryVoiceFileAuditInfoRequest) SetVoiceCodes(v string) *QueryVoiceFile
 }
 
 type QueryVoiceFileAuditInfoResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*QueryVoiceFileAuditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// The value OK indicates that the request was successful. For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data []*QueryVoiceFileAuditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryVoiceFileAuditInfoResponseBody) String() string {
@@ -4350,9 +4632,21 @@ func (s *QueryVoiceFileAuditInfoResponseBody) SetRequestId(v string) *QueryVoice
 }
 
 type QueryVoiceFileAuditInfoResponseBodyData struct {
+	// The review state of the voice file. Valid values:
+	//
+	// *   **AUDIT_STATE_INIT**: The voice file was under review.
+	// *   **AUDIT_STATE_PASS**: The voice file was approved.
+	// *   **AUDIT_STATE_NOT_PASS**: The voice file was rejected.
+	// *   **AUDIT_STATE_UPLOADING**: The voice file was approved and is being uploaded.
+	// *   **AUDIT_STATE_REDOING**: The voice file was being reprocessed.
+	// *   **AUDIT_SATE_CANCEL**: The review of the voice file was canceled.
+	// *   **AUDIT_PAUSE**: The review of the voice file was suspended.
+	// *   **AUDIT_ORDER_FINISHED**: The voice file was approved by the ticket system and was waiting for the review of the Internet service provider (ISP).
 	AuditState *string `json:"AuditState,omitempty" xml:"AuditState,omitempty"`
+	// The reason why the voice file was rejected.
 	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
-	VoiceCode  *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	// The code of the voice file.
+	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
 }
 
 func (s QueryVoiceFileAuditInfoResponseBodyData) String() string {
@@ -4379,9 +4673,9 @@ func (s *QueryVoiceFileAuditInfoResponseBodyData) SetVoiceCode(v string) *QueryV
 }
 
 type QueryVoiceFileAuditInfoResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryVoiceFileAuditInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryVoiceFileAuditInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryVoiceFileAuditInfoResponse) String() string {
@@ -4408,6 +4702,7 @@ func (s *QueryVoiceFileAuditInfoResponse) SetBody(v *QueryVoiceFileAuditInfoResp
 }
 
 type RecoverCallInConfigRequest struct {
+	// The China 400 number that is used to transfer the inbound call.
 	Number               *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4443,9 +4738,16 @@ func (s *RecoverCallInConfigRequest) SetResourceOwnerId(v int64) *RecoverCallInC
 }
 
 type RecoverCallInConfigResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the inbound call was resumed. Valid values:
+	//
+	// *   true: The inbound call was resumed.
+	// *   false: The inbound call failed to be resumed.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4478,9 +4780,9 @@ func (s *RecoverCallInConfigResponseBody) SetRequestId(v string) *RecoverCallInC
 }
 
 type RecoverCallInConfigResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecoverCallInConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecoverCallInConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecoverCallInConfigResponse) String() string {
@@ -4506,171 +4808,16 @@ func (s *RecoverCallInConfigResponse) SetBody(v *RecoverCallInConfigResponseBody
 	return s
 }
 
-type RefreshMqttTokenRequest struct {
-	ClientId             *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s RefreshMqttTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshMqttTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshMqttTokenRequest) SetClientId(v string) *RefreshMqttTokenRequest {
-	s.ClientId = &v
-	return s
-}
-
-func (s *RefreshMqttTokenRequest) SetOwnerId(v int64) *RefreshMqttTokenRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *RefreshMqttTokenRequest) SetResourceOwnerAccount(v string) *RefreshMqttTokenRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *RefreshMqttTokenRequest) SetResourceOwnerId(v int64) *RefreshMqttTokenRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type RefreshMqttTokenResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *RefreshMqttTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RefreshMqttTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshMqttTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshMqttTokenResponseBody) SetCode(v string) *RefreshMqttTokenResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBody) SetData(v *RefreshMqttTokenResponseBodyData) *RefreshMqttTokenResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBody) SetMessage(v string) *RefreshMqttTokenResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBody) SetRequestId(v string) *RefreshMqttTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RefreshMqttTokenResponseBodyData struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	P2pTopic   *string `json:"P2pTopic,omitempty" xml:"P2pTopic,omitempty"`
-	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
-}
-
-func (s RefreshMqttTokenResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshMqttTokenResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshMqttTokenResponseBodyData) SetClientId(v string) *RefreshMqttTokenResponseBodyData {
-	s.ClientId = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBodyData) SetExpireTime(v string) *RefreshMqttTokenResponseBodyData {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBodyData) SetHost(v string) *RefreshMqttTokenResponseBodyData {
-	s.Host = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBodyData) SetInstanceId(v string) *RefreshMqttTokenResponseBodyData {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBodyData) SetP2pTopic(v string) *RefreshMqttTokenResponseBodyData {
-	s.P2pTopic = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBodyData) SetServerId(v string) *RefreshMqttTokenResponseBodyData {
-	s.ServerId = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBodyData) SetToken(v string) *RefreshMqttTokenResponseBodyData {
-	s.Token = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponseBodyData) SetUsername(v string) *RefreshMqttTokenResponseBodyData {
-	s.Username = &v
-	return s
-}
-
-type RefreshMqttTokenResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshMqttTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RefreshMqttTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshMqttTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshMqttTokenResponse) SetHeaders(v map[string]*string) *RefreshMqttTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RefreshMqttTokenResponse) SetStatusCode(v int32) *RefreshMqttTokenResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RefreshMqttTokenResponse) SetBody(v *RefreshMqttTokenResponseBody) *RefreshMqttTokenResponse {
-	s.Body = v
-	return s
-}
-
 type SendVerificationRequest struct {
+	// The business type. Set the value to **CONTACT**.
 	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Target               *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	VerifyType           *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
+	// The mobile phone number that receives the SMS verification code.
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The mode of sending the SMS verification code. Set the value to **SMS**.
+	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
 func (s SendVerificationRequest) String() string {
@@ -4712,9 +4859,16 @@ func (s *SendVerificationRequest) SetVerifyType(v string) *SendVerificationReque
 }
 
 type SendVerificationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the verification code was sent successfully.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4747,9 +4901,9 @@ func (s *SendVerificationResponseBody) SetRequestId(v string) *SendVerificationR
 }
 
 type SendVerificationResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendVerificationResponse) String() string {
@@ -4776,13 +4930,20 @@ func (s *SendVerificationResponse) SetBody(v *SendVerificationResponseBody) *Sen
 }
 
 type SetTransferCalleePoolConfigRequest struct {
-	CalledRouteMode      *string                                      `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
-	Details              []*SetTransferCalleePoolConfigRequestDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	OwnerId              *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNumber          *string                                      `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	QualificationId      *string                                      `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	ResourceOwnerAccount *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The call mode. Valid values:
+	//
+	// *   **roundRobin**
+	// *   **random**
+	CalledRouteMode *string `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
+	// The information about the phone numbers for transferring the call.
+	Details []*SetTransferCalleePoolConfigRequestDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	OwnerId *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number used for transferring the call.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s SetTransferCalleePoolConfigRequest) String() string {
@@ -4829,7 +4990,9 @@ func (s *SetTransferCalleePoolConfigRequest) SetResourceOwnerId(v int64) *SetTra
 }
 
 type SetTransferCalleePoolConfigRequestDetails struct {
+	// The called number.
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	// The calling number.
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 }
 
@@ -4852,9 +5015,16 @@ func (s *SetTransferCalleePoolConfigRequestDetails) SetCaller(v string) *SetTran
 }
 
 type SetTransferCalleePoolConfigResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the phone numbers for transferring the call were configured.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4887,9 +5057,9 @@ func (s *SetTransferCalleePoolConfigResponseBody) SetRequestId(v string) *SetTra
 }
 
 type SetTransferCalleePoolConfigResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetTransferCalleePoolConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetTransferCalleePoolConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetTransferCalleePoolConfigResponse) String() string {
@@ -4916,17 +5086,49 @@ func (s *SetTransferCalleePoolConfigResponse) SetBody(v *SetTransferCalleePoolCo
 }
 
 type SingleCallByTtsRequest struct {
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The mobile phone number that receives voice notifications.
+	//
+	// *   Number format in the Chinese mainland:
+	//
+	//     *   Mobile phone number, for example, 159\*\*\*\*0000.
+	//     *   Landline number, for example, 0571\*\*\*\*5678.
+	//
+	// *   Number format outside the Chinese mainland: country code + phone number, for example, 85200\*\*\*\*00.
+	//
+	// >
+	//
+	// *   Each request supports only one called number. For more information, see [How to use voice notifications in the Chinese mainland](~~150016~~) or [How to use voice verification codes in regions outside the Chinese mainland](~~270044~~).
+	//
+	// *   Voice verification codes are sent to a called number at the following frequency: one time per minute, five times per hour, and 20 times per 24 hours.
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The number displayed to the called party.
+	//
+	// *   You do not need to specify this parameter if you use the text-to-speech (TTS) notification template or voice verification code template for outbound calls in the common mode. For more information, see [FAQ about the common outbound call mode](~~172104~~).
+	// *   If you use the TTS notification template or voice verification code template for outbound calls in the dedicated mode, you must specify a number you purchased and only one number can be specified. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Voice Numbers** > **Real Number Management** to view the number you purchased.
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// The custom ID that is reserved for the caller of the operation when the request is initiated. This ID is returned to the caller in a receipt message.
+	//
+	// The value is of the STRING type and must be 1 to 15 bytes in length.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of times a voice notification is played back in a call. Valid values: 1 to 3. Default value: 3.
 	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	TtsCode              *string `json:"TtsCode,omitempty" xml:"TtsCode,omitempty"`
-	TtsParam             *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
-	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// The playback speed. Valid value: -500 to 500.
+	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The ID of the approved TTS notification template or voice verification code template.
+	//
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), and choose **Voice Messages** > **Voice Verification Codes** or choose **Voice Messages** > **Voice Notifications** to view the **template ID**.
+	//
+	// > The account to which the TTS template belongs must be the same as the account that is used to call the SingleCallByTts operation.
+	TtsCode *string `json:"TtsCode,omitempty" xml:"TtsCode,omitempty"`
+	// The variables in the template, in the JSON format.
+	//
+	// > The variables in the template must be less than 250 characters in length. The length of each single variable is not limited. These variables do not support URLs. The variables in the verification code template support only digits and letters.
+	TtsParam *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
+	// The playback volume of the voice notification. Valid values: 0 to 100. Default value: 100.
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s SingleCallByTtsRequest) String() string {
@@ -4993,9 +5195,18 @@ func (s *SingleCallByTtsRequest) SetVolume(v int32) *SingleCallByTtsRequest {
 }
 
 type SingleCallByTtsResponseBody struct {
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique receipt ID of the call.
+	//
+	// You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call based on the receipt ID.
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5028,9 +5239,9 @@ func (s *SingleCallByTtsResponseBody) SetRequestId(v string) *SingleCallByTtsRes
 }
 
 type SingleCallByTtsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SingleCallByTtsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SingleCallByTtsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SingleCallByTtsResponse) String() string {
@@ -5057,16 +5268,45 @@ func (s *SingleCallByTtsResponse) SetBody(v *SingleCallByTtsResponseBody) *Singl
 }
 
 type SingleCallByVoiceRequest struct {
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number for receiving voice notifications.
+	//
+	// Number format:
+	//
+	// *   In the Chinese mainland:
+	//
+	//     *   Mobile phone number, for example, 159\*\*\*\*0000.
+	//     *   Landline number, for example, 0571\*\*\*\*5678.
+	//
+	// *   Outside the Chinese mainland: country code + phone number, for example, 85200\*\*\*\*00.
+	//
+	// >
+	//
+	// *   You can specify only one called number for a request. For more information, see [How to use voice notifications in the Chinese mainland](~~150016~~) or [How to use voice notifications in regions outside the Chinese mainland](~~268810~~).
+	//
+	// *   Voice notifications are sent to a called number at the following frequency: one time per minute, five times per hour, and 20 times per 24 hours.
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The number displayed to the called party.
+	//
+	// *   You do not need to specify this parameter if you use a voice notification file that uses the common outbound call mode. For more information, see [FAQ about the common outbound call mode](~~172104~~).
+	// *   If you use a voice notification file that uses the dedicated outbound call mode, you must specify a number that you purchased. You can specify only one number. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service** > **Real Number Management** to view the number that you purchased.
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// The ID reserved for the caller. This ID is returned to the caller in a receipt message.
+	//
+	// The value must be of the STRING type and 1 to 15 bytes in length.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of times the voice notification file is played. Valid values: 1 to 3.
 	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// The playback speed of the voice notification file. Valid values: -500 to 500.
+	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The voice ID of the voice notification file.
+	//
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications** or **Voice File Management**, and then click the **Voice Notification Files** tab to view the **voice ID**.
+	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	// The playback volume of the voice notification file. Valid values: 0 to 100. Default value: 100.
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s SingleCallByVoiceRequest) String() string {
@@ -5128,9 +5368,18 @@ func (s *SingleCallByVoiceRequest) SetVolume(v int32) *SingleCallByVoiceRequest 
 }
 
 type SingleCallByVoiceResponseBody struct {
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique receipt ID for the call.
+	//
+	// You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call.
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.****
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5163,9 +5412,9 @@ func (s *SingleCallByVoiceResponseBody) SetRequestId(v string) *SingleCallByVoic
 }
 
 type SingleCallByVoiceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SingleCallByVoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SingleCallByVoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SingleCallByVoiceResponse) String() string {
@@ -5192,35 +5441,134 @@ func (s *SingleCallByVoiceResponse) SetBody(v *SingleCallByVoiceResponseBody) *S
 }
 
 type SmartCallRequest struct {
-	ActionCodeBreak      *bool   `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
-	ActionCodeTimeBreak  *int32  `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
-	AsrBaseId            *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
-	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	BackgroundFileCode   *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
-	BackgroundSpeed      *int32  `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
-	BackgroundVolume     *int32  `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	DynamicId            *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
-	EarlyMediaAsr        *bool   `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
-	EnableITN            *bool   `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
-	MuteTime             *int32  `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PauseTime            *int32  `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
+	// Specifies whether the playback of the recording file can be interrupted. Default value: **true**. The default value indicates that the playback of the recording file can be interrupted.
+	//
+	// If you set the value of this parameter to false, the playback of the recording file cannot be interrupted even if the value of action_break is set to true.
+	//
+	// > The value of action_code_break takes precedence over the value of action_break.
+	ActionCodeBreak *bool `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
+	// The duration that the user keeps speaking. The playback of the recording file is interrupted when this duration is reached. Unit: milliseconds.
+	//
+	// If the value of ActionCodeBreak is set to **true** for the recording file and the duration that the user keeps speaking reaches the specified duration, the playback of the recording file is interrupted. If you do not specify ActionCodeTimeBreak or set the value of ActionCodeTimeBreak to 0, the setting of ActionCodeBreak does not take effect.
+	ActionCodeTimeBreak *int32 `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
+	// The ASR base model. Valid values:
+	//
+	// *   **customer_service\_8k** (default): Chinese Mandarin.
+	// *   **dialect_customer_service\_8k**: a heavy accent.
+	//
+	// > You must specify the ASR model when you call the SmartCall operation. We recommend that you specify either of the AsrModelId and AsrBaseId parameters.
+	//
+	// *   If you specify only the AsrModelId parameter, the specified ASR model is used.
+	//
+	// *   If you specify only the AsrBaseId parameter, the ASR base model is used.
+	//
+	// *   If you specify neither of the two parameters, the default ASR base model is used, that is, the default value customer_service\_8k is used for the AsrBaseId parameter.
+	//
+	// *   If you specify both parameters, make sure that their values do not conflict with each other.
+	AsrBaseId *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
+	// The ID of the Automatic Speech Recognition (ASR) model.
+	//
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and view the ID of the ASR model on the **ASR Model Management** page.
+	//
+	// > You must specify the ASR model when you call the SmartCall operation. We recommend that you specify either of the AsrModelId and AsrBaseId parameters.
+	//
+	// *   If you specify only the AsrModelId parameter, the specified ASR model is used.
+	//
+	// *   If you specify only the AsrBaseId parameter, the specified ASR base model is used.
+	//
+	// *   If you specify neither of the two parameters, the default value customer_service\_8k is used for the AsrBaseId parameter. This means that the default Mandarin ASR base model is used.
+	//
+	// *   If you specify both parameters, make sure that their values do not conflict with each other.
+	AsrModelId *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
+	// The ID of the background voice file that is played back when the user talks with the robot.
+	//
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice File Management**, click the **Intelligent Speech Interaction Recording File** tab, and then click **Details** in the Actions column to view the voice ID.
+	BackgroundFileCode *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
+	// This parameter is unavailable.
+	BackgroundSpeed *int32 `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
+	// This parameter is unavailable.
+	BackgroundVolume *int32 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
+	// The called number. Only phone numbers in the Chinese mainland are supported.
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The number displayed to the called party. The value must be the number you purchased.
+	//
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Voice Numbers** > **Real Number Management** to view the number you purchased.
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// The dynamic extension ID that is reserved for the caller of the operation. This ID is returned in the callback URL and is used as the development identifier of the customer.
+	DynamicId *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
+	// Specifies whether to enable speech recognition of early media. Valid values:
+	//
+	// *   **false** (default): Speech recognition of early media is disabled.
+	// *   **true**: Speech recognition of early media is enabled.
+	//
+	// > If you set the value of this parameter to **true**, the reason why the call is not answered is recorded.
+	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
+	// Specifies whether to enable Inverse Text Normalization (ITN) during post-processing. Default value: **false**. If you set the value to false, ITN is not enabled during post-processing.
+	//
+	// If you set the value to **true**, Chinese numerals are converted into Arabic numerals for output.
+	EnableITN *bool `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
+	// The silence duration. The system determines the end of the conversation based on the silence duration of the user. Unit: milliseconds. Valid values: 1000 to 20000.****
+	//
+	// >
+	//
+	// *   If you specify a value out of the valid range, the default value **10000** is used.
+	//
+	// *   The parameter value can be adjusted during the conversation. The last setting prevails.
+	MuteTime *int32 `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
+	// The ID that is reserved for the caller of the operation. This ID is returned to the caller in a receipt message.
+	//
+	// The value is of the STRING type and must be 1 to 15 bytes in length.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pause duration. The system determines the end of a sentence based on the pause duration of the user in the conversation. Unit: milliseconds. Valid values: 300 to 1200.****
+	//
+	// >
+	//
+	// *   If you specify a value out of the valid range, the default value **800** is used.
+	//
+	// *   You cannot change the parameter value after specifying it.
+	PauseTime *int32 `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
+	// Specifies whether to record the conversation. Valid values:
+	//
+	// *   **true**: The conversation is recorded.
+	// *   **false**: The conversation is not recorded.
 	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	StreamAsr            *int32  `json:"StreamAsr,omitempty" xml:"StreamAsr,omitempty"`
-	TtsConf              *bool   `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
-	TtsSpeed             *int32  `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
-	TtsStyle             *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
-	TtsVolume            *int32  `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
-	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	VoiceCodeParam       *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
-	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// The maximum call duration. The call is automatically hung up when the maximum call duration is reached. Unit: seconds.
+	//
+	// > The maximum call duration is 3,600 seconds.
+	SessionTimeout *int32 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	// This parameter is unavailable.
+	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// Specifies whether to enable streaming ASR, which intelligently judges what the user wants to express based on the first few words spoken by the user. Valid values:
+	//
+	// *   **0**: Streaming ASR is disabled.
+	// *   **1**: Streaming ASR is enabled.
+	StreamAsr *int32 `json:"StreamAsr,omitempty" xml:"StreamAsr,omitempty"`
+	// Specifies whether to set TTS sound parameters. Valid values:
+	//
+	// *   **true**: TTS sound parameters must be set. You must set the **TtsStyle**, **TtsColume**, and **TtsSpeed** parameters to specify a sound style.
+	// *   **false**: TTS sound parameters do not need to be set. The values of TTS sound parameters do not take effect even if you set them.
+	TtsConf *bool `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
+	// The speed of TTS variable playback. Valid values: -200 to 200. Default value: 0.
+	TtsSpeed *int32 `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
+	// The sound style for TTS variable playback. Default value: **xiaoyun**. For more information about the sound styles, see the **Sound styles** table below.
+	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
+	// The volume of TTS variable playback. Valid values: 0 to 100. Default value: 0.
+	TtsVolume *int32 `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
+	// The recording file that is played back in the intelligent outbound call.
+	//
+	// The file can be an online file, a voice file uploaded from the Voice Messaging Service console, or a text-to-speech (TTS) template that contains variables. You can specify multiple files and a TTS variable together. Separate them with commas (,). The values of the variables in the TTS template are specified by the **VoiceCodeParam** parameter.
+	//
+	// *   If you use an online file as the recording file, set the value of **VoiceCode** to the URL of the file that can be accessed over the Internet.
+	// *   If you use a voice file uploaded from the Voice Messaging Service console as the recording file, set the value of **VoiceCode** to the voice ID of the file. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice File Management**, click the **Intelligent Speech Interaction Recording File** tab, and then click **Details** in the Actions column to view the voice ID.
+	// *   If you use a TTS template that contains variables as the recording file, set the value of **VoiceCode** to a variable name such as $name$, and also set a value for the variable in the **VoiceCodeParam** parameter.
+	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	// The value of the TTS variable, in the JSON format. This value must match the TTS variable specified by the **VoiceCode** parameter.
+	VoiceCodeParam *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
+	// The volume at which the recording file is played. Valid values: -4 to 4. We recommend that you set the value of this parameter to **1**.
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s SmartCallRequest) String() string {
@@ -5377,9 +5725,18 @@ func (s *SmartCallRequest) SetVolume(v int32) *SmartCallRequest {
 }
 
 type SmartCallResponseBody struct {
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique receipt ID for this call.
+	//
+	// You can call the [QueryCallDetailByCallId](~~QueryCallDetailByCallId~~) operation to query the details of the call based on the receipt ID.
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5412,9 +5769,9 @@ func (s *SmartCallResponseBody) SetRequestId(v string) *SmartCallResponseBody {
 }
 
 type SmartCallResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SmartCallResponse) String() string {
@@ -5441,9 +5798,14 @@ func (s *SmartCallResponse) SetBody(v *SmartCallResponseBody) *SmartCallResponse
 }
 
 type SmartCallOperateRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The unique receipt ID of the call. You can call the [SmartCall](~~393526~~) operation to obtain the receipt ID.
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The action that is initiated to the called number of an outbound robocall.
+	//
+	// > Only the value **parallelBridge** is supported. This value indicates that a bridge action is initiated between a called number and an agent of the call center.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The extended field.
 	Param                *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -5488,10 +5850,20 @@ func (s *SmartCallOperateRequest) SetResourceOwnerId(v int64) *SmartCallOperateR
 }
 
 type SmartCallOperateResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The action result. Valid values:
+	//
+	// *   **true**: The action was successful.
+	// *   **false**: The action failed.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SmartCallOperateResponseBody) String() string {
@@ -5523,9 +5895,9 @@ func (s *SmartCallOperateResponseBody) SetStatus(v bool) *SmartCallOperateRespon
 }
 
 type SmartCallOperateResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SmartCallOperateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmartCallOperateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SmartCallOperateResponse) String() string {
@@ -5555,8 +5927,10 @@ type StartRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ScheduleTime         *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The time scheduled for starting the robocall task, in the yyyy-MM-dd HH:mm:ss format.
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StartRobotTaskRequest) String() string {
@@ -5593,9 +5967,19 @@ func (s *StartRobotTaskRequest) SetTaskId(v int64) *StartRobotTaskRequest {
 }
 
 type StartRobotTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5628,9 +6012,9 @@ func (s *StartRobotTaskResponseBody) SetRequestId(v string) *StartRobotTaskRespo
 }
 
 type StartRobotTaskResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartRobotTaskResponse) String() string {
@@ -5657,6 +6041,7 @@ func (s *StartRobotTaskResponse) SetBody(v *StartRobotTaskResponseBody) *StartRo
 }
 
 type StopCallInConfigRequest struct {
+	// The China 400 number from which the inbound call to be stopped is transferred.
 	Number               *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -5692,9 +6077,16 @@ func (s *StopCallInConfigRequest) SetResourceOwnerId(v int64) *StopCallInConfigR
 }
 
 type StopCallInConfigResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the inbound call was stopped. Valid values:
+	//
+	// *   true: The inbound call was stopped.
+	// *   false: The inbound call failed to be stopped.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5727,9 +6119,9 @@ func (s *StopCallInConfigResponseBody) SetRequestId(v string) *StopCallInConfigR
 }
 
 type StopCallInConfigResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopCallInConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopCallInConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopCallInConfigResponse) String() string {
@@ -5759,7 +6151,8 @@ type StopRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopRobotTaskRequest) String() string {
@@ -5791,9 +6184,19 @@ func (s *StopRobotTaskRequest) SetTaskId(v int64) *StopRobotTaskRequest {
 }
 
 type StopRobotTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5826,9 +6229,9 @@ func (s *StopRobotTaskResponseBody) SetRequestId(v string) *StopRobotTaskRespons
 }
 
 type StopRobotTaskResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopRobotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopRobotTaskResponse) String() string {
@@ -5855,18 +6258,31 @@ func (s *StopRobotTaskResponse) SetBody(v *StopRobotTaskResponseBody) *StopRobot
 }
 
 type SubmitHotlineTransferRegisterRequest struct {
-	Agreement                *string                                                         `json:"Agreement,omitempty" xml:"Agreement,omitempty"`
-	HotlineNumber            *string                                                         `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	OperatorIdentityCard     *string                                                         `json:"OperatorIdentityCard,omitempty" xml:"OperatorIdentityCard,omitempty"`
-	OperatorMail             *string                                                         `json:"OperatorMail,omitempty" xml:"OperatorMail,omitempty"`
-	OperatorMailVerifyCode   *string                                                         `json:"OperatorMailVerifyCode,omitempty" xml:"OperatorMailVerifyCode,omitempty"`
-	OperatorMobile           *string                                                         `json:"OperatorMobile,omitempty" xml:"OperatorMobile,omitempty"`
-	OperatorMobileVerifyCode *string                                                         `json:"OperatorMobileVerifyCode,omitempty" xml:"OperatorMobileVerifyCode,omitempty"`
-	OperatorName             *string                                                         `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	OwnerId                  *int64                                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	QualificationId          *string                                                         `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	ResourceOwnerAccount     *string                                                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId          *int64                                                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The authenticity of the commitment. Valid values:
+	//
+	// *   **true**: The commitment is authentic.
+	// *   **false**: The commitment is not authentic.
+	Agreement *string `json:"Agreement,omitempty" xml:"Agreement,omitempty"`
+	// The China 400 number.
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// The ID card number of the handler.
+	OperatorIdentityCard *string `json:"OperatorIdentityCard,omitempty" xml:"OperatorIdentityCard,omitempty"`
+	// The email address of the handler.
+	OperatorMail *string `json:"OperatorMail,omitempty" xml:"OperatorMail,omitempty"`
+	// The verification code that is received by the mailbox of the handler.
+	OperatorMailVerifyCode *string `json:"OperatorMailVerifyCode,omitempty" xml:"OperatorMailVerifyCode,omitempty"`
+	// The mobile phone number of the handler.
+	OperatorMobile *string `json:"OperatorMobile,omitempty" xml:"OperatorMobile,omitempty"`
+	// The verification code that is received by the mobile phone of the handler.
+	OperatorMobileVerifyCode *string `json:"OperatorMobileVerifyCode,omitempty" xml:"OperatorMobileVerifyCode,omitempty"`
+	// The name of the handler.
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The registration information about the China 400 number.
 	TransferPhoneNumberInfos []*SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos `json:"TransferPhoneNumberInfos,omitempty" xml:"TransferPhoneNumberInfos,omitempty" type:"Repeated"`
 }
 
@@ -5944,8 +6360,11 @@ func (s *SubmitHotlineTransferRegisterRequest) SetTransferPhoneNumberInfos(v []*
 }
 
 type SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos struct {
-	IdentityCard         *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The ID card number of the number owner.
+	IdentityCard *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
+	// The China 400 number that you want to submit for registration.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The real name or company name of the number owner.
 	PhoneNumberOwnerName *string `json:"PhoneNumberOwnerName,omitempty" xml:"PhoneNumberOwnerName,omitempty"`
 }
 
@@ -5973,9 +6392,16 @@ func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetPhoneN
 }
 
 type SubmitHotlineTransferRegisterResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The registration ID.
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6008,9 +6434,9 @@ func (s *SubmitHotlineTransferRegisterResponseBody) SetRequestId(v string) *Subm
 }
 
 type SubmitHotlineTransferRegisterResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitHotlineTransferRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitHotlineTransferRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitHotlineTransferRegisterResponse) String() string {
@@ -6037,13 +6463,22 @@ func (s *SubmitHotlineTransferRegisterResponse) SetBody(v *SubmitHotlineTransfer
 }
 
 type UploadRobotTaskCalledFileRequest struct {
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The called numbers. Separate multiple called numbers with commas (,).
+	//
+	// > After you create a robocall task, you must upload called numbers in batches. You can upload up to 300,000 called numbers for each task.
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the ID of the robocall task.
 	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TtsParam             *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
-	TtsParamHead         *string `json:"TtsParamHead,omitempty" xml:"TtsParamHead,omitempty"`
+	// The values of the variable in the text-to-speech (TTS) template, in the JSON format. The variable values specified by the TtsParam parameter must match the variable names specified by the TtsParamHead parameter.
+	//
+	// *   If all the called numbers carry the same variable values, you can set the value of the number field to **all** and upload only one copy of the variable values.
+	// *   If only some of the called numbers carry the same variable values, you can set the value of the number field to **all** for these called numbers and set the value of the number field and variable values for other called numbers based on your business requirements. The system preferentially selects the values that you set for the called numbers.
+	TtsParam *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
+	// The list of variable names carried in the robocall task, in the JSON format. The TtsParamHead parameter must be used together with the TtsParam parameter.
+	TtsParamHead *string `json:"TtsParamHead,omitempty" xml:"TtsParamHead,omitempty"`
 }
 
 func (s UploadRobotTaskCalledFileRequest) String() string {
@@ -6090,9 +6525,18 @@ func (s *UploadRobotTaskCalledFileRequest) SetTtsParamHead(v string) *UploadRobo
 }
 
 type UploadRobotTaskCalledFileResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The unique ID of the robocall task.
+	//
+	// You can call the [QueryRobotTaskDetail](~~QueryRobotTaskDetail~~) operation to query the details of the robocall task based on the task ID.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6125,9 +6569,9 @@ func (s *UploadRobotTaskCalledFileResponseBody) SetRequestId(v string) *UploadRo
 }
 
 type UploadRobotTaskCalledFileResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadRobotTaskCalledFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadRobotTaskCalledFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadRobotTaskCalledFileResponse) String() string {
@@ -6200,62 +6644,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddRtcAccountWithOptions(request *AddRtcAccountRequest, runtime *util.RuntimeOptions) (_result *AddRtcAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
-		query["DeviceId"] = request.DeviceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddRtcAccount"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddRtcAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddRtcAccount(request *AddRtcAccountRequest) (_result *AddRtcAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddRtcAccountResponse{}
-	_body, _err := client.AddRtcAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+/**
+ * ### QPS limits
+ * You can call this operation up to 200 times per second per account.
+ *
+ * @param request AddVirtualNumberRelationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddVirtualNumberRelationResponse
+ */
 func (client *Client) AddVirtualNumberRelationWithOptions(request *AddVirtualNumberRelationRequest, runtime *util.RuntimeOptions) (_result *AddVirtualNumberRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6317,6 +6713,13 @@ func (client *Client) AddVirtualNumberRelationWithOptions(request *AddVirtualNum
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 200 times per second per account.
+ *
+ * @param request AddVirtualNumberRelationRequest
+ * @return AddVirtualNumberRelationResponse
+ */
 func (client *Client) AddVirtualNumberRelation(request *AddVirtualNumberRelationRequest) (_result *AddVirtualNumberRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddVirtualNumberRelationResponse{}
@@ -6328,6 +6731,19 @@ func (client *Client) AddVirtualNumberRelation(request *AddVirtualNumberRelation
 	return _result, _err
 }
 
+/**
+ * *   In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+ * *   The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
+ * ## Prerequisites
+ * *   You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
+ * *   You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+ * *   You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
+ * > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
+ *
+ * @param request BatchRobotSmartCallRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchRobotSmartCallResponse
+ */
 func (client *Client) BatchRobotSmartCallWithOptions(request *BatchRobotSmartCallRequest, runtime *util.RuntimeOptions) (_result *BatchRobotSmartCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6413,6 +6829,18 @@ func (client *Client) BatchRobotSmartCallWithOptions(request *BatchRobotSmartCal
 	return _result, _err
 }
 
+/**
+ * *   In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+ * *   The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
+ * ## Prerequisites
+ * *   You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
+ * *   You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+ * *   You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
+ * > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
+ *
+ * @param request BatchRobotSmartCallRequest
+ * @return BatchRobotSmartCallResponse
+ */
 func (client *Client) BatchRobotSmartCall(request *BatchRobotSmartCallRequest) (_result *BatchRobotSmartCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchRobotSmartCallResponse{}
@@ -6424,6 +6852,14 @@ func (client *Client) BatchRobotSmartCall(request *BatchRobotSmartCallRequest) (
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request CancelOrderRobotTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CancelOrderRobotTaskResponse
+ */
 func (client *Client) CancelOrderRobotTaskWithOptions(request *CancelOrderRobotTaskRequest, runtime *util.RuntimeOptions) (_result *CancelOrderRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6469,6 +6905,13 @@ func (client *Client) CancelOrderRobotTaskWithOptions(request *CancelOrderRobotT
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request CancelOrderRobotTaskRequest
+ * @return CancelOrderRobotTaskResponse
+ */
 func (client *Client) CancelOrderRobotTask(request *CancelOrderRobotTaskRequest) (_result *CancelOrderRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelOrderRobotTaskResponse{}
@@ -6480,6 +6923,15 @@ func (client *Client) CancelOrderRobotTask(request *CancelOrderRobotTaskRequest)
 	return _result, _err
 }
 
+/**
+ * Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request CancelRobotTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CancelRobotTaskResponse
+ */
 func (client *Client) CancelRobotTaskWithOptions(request *CancelRobotTaskRequest, runtime *util.RuntimeOptions) (_result *CancelRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6525,6 +6977,14 @@ func (client *Client) CancelRobotTaskWithOptions(request *CancelRobotTaskRequest
 	return _result, _err
 }
 
+/**
+ * Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request CancelRobotTaskRequest
+ * @return CancelRobotTaskResponse
+ */
 func (client *Client) CancelRobotTask(request *CancelRobotTaskRequest) (_result *CancelRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelRobotTaskResponse{}
@@ -6536,6 +6996,15 @@ func (client *Client) CancelRobotTask(request *CancelRobotTaskRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * You can create up to 1,000 voice notifications for each task.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request CreateCallTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateCallTaskResponse
+ */
 func (client *Client) CreateCallTaskWithOptions(request *CreateCallTaskRequest, runtime *util.RuntimeOptions) (_result *CreateCallTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6621,6 +7090,14 @@ func (client *Client) CreateCallTaskWithOptions(request *CreateCallTaskRequest, 
 	return _result, _err
 }
 
+/**
+ * You can create up to 1,000 voice notifications for each task.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request CreateCallTaskRequest
+ * @return CreateCallTaskResponse
+ */
 func (client *Client) CreateCallTask(request *CreateCallTaskRequest) (_result *CreateCallTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCallTaskResponse{}
@@ -6632,6 +7109,15 @@ func (client *Client) CreateCallTask(request *CreateCallTaskRequest) (_result *C
 	return _result, _err
 }
 
+/**
+ * You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request CreateRobotTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateRobotTaskResponse
+ */
 func (client *Client) CreateRobotTaskWithOptions(request *CreateRobotTaskRequest, runtime *util.RuntimeOptions) (_result *CreateRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6713,6 +7199,14 @@ func (client *Client) CreateRobotTaskWithOptions(request *CreateRobotTaskRequest
 	return _result, _err
 }
 
+/**
+ * You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request CreateRobotTaskRequest
+ * @return CreateRobotTaskResponse
+ */
 func (client *Client) CreateRobotTask(request *CreateRobotTaskRequest) (_result *CreateRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRobotTaskResponse{}
@@ -6724,6 +7218,15 @@ func (client *Client) CreateRobotTask(request *CreateRobotTaskRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request DeleteRobotTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteRobotTaskResponse
+ */
 func (client *Client) DeleteRobotTaskWithOptions(request *DeleteRobotTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6769,6 +7272,14 @@ func (client *Client) DeleteRobotTaskWithOptions(request *DeleteRobotTaskRequest
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request DeleteRobotTaskRequest
+ * @return DeleteRobotTaskResponse
+ */
 func (client *Client) DeleteRobotTask(request *DeleteRobotTaskRequest) (_result *DeleteRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRobotTaskResponse{}
@@ -6780,6 +7291,14 @@ func (client *Client) DeleteRobotTask(request *DeleteRobotTaskRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ExecuteCallTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ExecuteCallTaskResponse
+ */
 func (client *Client) ExecuteCallTaskWithOptions(request *ExecuteCallTaskRequest, runtime *util.RuntimeOptions) (_result *ExecuteCallTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6833,6 +7352,13 @@ func (client *Client) ExecuteCallTaskWithOptions(request *ExecuteCallTaskRequest
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ExecuteCallTaskRequest
+ * @return ExecuteCallTaskResponse
+ */
 func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result *ExecuteCallTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteCallTaskResponse{}
@@ -6844,62 +7370,14 @@ func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) GetCallInfoWithOptions(request *GetCallInfoRequest, runtime *util.RuntimeOptions) (_result *GetCallInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RtcId)) {
-		query["RtcId"] = request.RtcId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetCallInfo"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetCallInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetCallInfo(request *GetCallInfoRequest) (_result *GetCallInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetCallInfoResponse{}
-	_body, _err := client.GetCallInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request GetHotlineQualificationByOrderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetHotlineQualificationByOrderResponse
+ */
 func (client *Client) GetHotlineQualificationByOrderWithOptions(request *GetHotlineQualificationByOrderRequest, runtime *util.RuntimeOptions) (_result *GetHotlineQualificationByOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6945,6 +7423,13 @@ func (client *Client) GetHotlineQualificationByOrderWithOptions(request *GetHotl
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request GetHotlineQualificationByOrderRequest
+ * @return GetHotlineQualificationByOrderResponse
+ */
 func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualificationByOrderRequest) (_result *GetHotlineQualificationByOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineQualificationByOrderResponse{}
@@ -6956,122 +7441,14 @@ func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualific
 	return _result, _err
 }
 
-func (client *Client) GetMqttTokenWithOptions(request *GetMqttTokenRequest, runtime *util.RuntimeOptions) (_result *GetMqttTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMqttToken"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetMqttTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMqttToken(request *GetMqttTokenRequest) (_result *GetMqttTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetMqttTokenResponse{}
-	_body, _err := client.GetMqttTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetRtcTokenWithOptions(request *GetRtcTokenRequest, runtime *util.RuntimeOptions) (_result *GetRtcTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
-		query["DeviceId"] = request.DeviceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsCustomAccount)) {
-		query["IsCustomAccount"] = request.IsCustomAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["UserId"] = request.UserId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetRtcToken"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetRtcTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRtcToken(request *GetRtcTokenRequest) (_result *GetRtcTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRtcTokenResponse{}
-	_body, _err := client.GetRtcTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+/**
+ * ### QPS limits
+ * You can call this operation up to five times per second per account.
+ *
+ * @param request GetTokenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetTokenResponse
+ */
 func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7117,6 +7494,13 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *uti
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to five times per second per account.
+ *
+ * @param request GetTokenRequest
+ * @return GetTokenResponse
+ */
 func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTokenResponse{}
@@ -7128,6 +7512,17 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	return _result, _err
 }
 
+/**
+ * *   Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](~~149795~~).
+ * *   Voice numbers are purchased. For more information, see [Purchase numbers](~~149794~~).
+ * *   When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](~~112503~~) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
+ * ## QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request IvrCallRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return IvrCallResponse
+ */
 func (client *Client) IvrCallWithOptions(request *IvrCallRequest, runtime *util.RuntimeOptions) (_result *IvrCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7209,6 +7604,16 @@ func (client *Client) IvrCallWithOptions(request *IvrCallRequest, runtime *util.
 	return _result, _err
 }
 
+/**
+ * *   Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](~~149795~~).
+ * *   Voice numbers are purchased. For more information, see [Purchase numbers](~~149794~~).
+ * *   When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](~~112503~~) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
+ * ## QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request IvrCallRequest
+ * @return IvrCallResponse
+ */
 func (client *Client) IvrCall(request *IvrCallRequest) (_result *IvrCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IvrCallResponse{}
@@ -7220,6 +7625,14 @@ func (client *Client) IvrCall(request *IvrCallRequest) (_result *IvrCallResponse
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ListCallTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCallTaskResponse
+ */
 func (client *Client) ListCallTaskWithOptions(request *ListCallTaskRequest, runtime *util.RuntimeOptions) (_result *ListCallTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7289,6 +7702,13 @@ func (client *Client) ListCallTaskWithOptions(request *ListCallTaskRequest, runt
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ListCallTaskRequest
+ * @return ListCallTaskResponse
+ */
 func (client *Client) ListCallTask(request *ListCallTaskRequest) (_result *ListCallTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCallTaskResponse{}
@@ -7300,6 +7720,14 @@ func (client *Client) ListCallTask(request *ListCallTaskRequest) (_result *ListC
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ListCallTaskDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCallTaskDetailResponse
+ */
 func (client *Client) ListCallTaskDetailWithOptions(request *ListCallTaskDetailRequest, runtime *util.RuntimeOptions) (_result *ListCallTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7361,6 +7789,13 @@ func (client *Client) ListCallTaskDetailWithOptions(request *ListCallTaskDetailR
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ListCallTaskDetailRequest
+ * @return ListCallTaskDetailResponse
+ */
 func (client *Client) ListCallTaskDetail(request *ListCallTaskDetailRequest) (_result *ListCallTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCallTaskDetailResponse{}
@@ -7372,6 +7807,14 @@ func (client *Client) ListCallTaskDetail(request *ListCallTaskDetailRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ListHotlineTransferNumberRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListHotlineTransferNumberResponse
+ */
 func (client *Client) ListHotlineTransferNumberWithOptions(request *ListHotlineTransferNumberRequest, runtime *util.RuntimeOptions) (_result *ListHotlineTransferNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7429,6 +7872,13 @@ func (client *Client) ListHotlineTransferNumberWithOptions(request *ListHotlineT
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ListHotlineTransferNumberRequest
+ * @return ListHotlineTransferNumberResponse
+ */
 func (client *Client) ListHotlineTransferNumber(request *ListHotlineTransferNumberRequest) (_result *ListHotlineTransferNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotlineTransferNumberResponse{}
@@ -7440,6 +7890,14 @@ func (client *Client) ListHotlineTransferNumber(request *ListHotlineTransferNumb
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ListHotlineTransferRegisterFileRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListHotlineTransferRegisterFileResponse
+ */
 func (client *Client) ListHotlineTransferRegisterFileWithOptions(request *ListHotlineTransferRegisterFileRequest, runtime *util.RuntimeOptions) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7497,6 +7955,13 @@ func (client *Client) ListHotlineTransferRegisterFileWithOptions(request *ListHo
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request ListHotlineTransferRegisterFileRequest
+ * @return ListHotlineTransferRegisterFileResponse
+ */
 func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransferRegisterFileRequest) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotlineTransferRegisterFileResponse{}
@@ -7508,6 +7973,15 @@ func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransf
 	return _result, _err
 }
 
+/**
+ * QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryCallDetailByCallIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryCallDetailByCallIdResponse
+ */
 func (client *Client) QueryCallDetailByCallIdWithOptions(request *QueryCallDetailByCallIdRequest, runtime *util.RuntimeOptions) (_result *QueryCallDetailByCallIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7561,6 +8035,14 @@ func (client *Client) QueryCallDetailByCallIdWithOptions(request *QueryCallDetai
 	return _result, _err
 }
 
+/**
+ * QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryCallDetailByCallIdRequest
+ * @return QueryCallDetailByCallIdResponse
+ */
 func (client *Client) QueryCallDetailByCallId(request *QueryCallDetailByCallIdRequest) (_result *QueryCallDetailByCallIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCallDetailByCallIdResponse{}
@@ -7636,6 +8118,14 @@ func (client *Client) QueryCallDetailByTaskId(request *QueryCallDetailByTaskIdRe
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryCallInPoolTransferConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryCallInPoolTransferConfigResponse
+ */
 func (client *Client) QueryCallInPoolTransferConfigWithOptions(request *QueryCallInPoolTransferConfigRequest, runtime *util.RuntimeOptions) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7681,6 +8171,13 @@ func (client *Client) QueryCallInPoolTransferConfigWithOptions(request *QueryCal
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryCallInPoolTransferConfigRequest
+ * @return QueryCallInPoolTransferConfigResponse
+ */
 func (client *Client) QueryCallInPoolTransferConfig(request *QueryCallInPoolTransferConfigRequest) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCallInPoolTransferConfigResponse{}
@@ -7692,6 +8189,14 @@ func (client *Client) QueryCallInPoolTransferConfig(request *QueryCallInPoolTran
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryCallInTransferRecordRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryCallInTransferRecordResponse
+ */
 func (client *Client) QueryCallInTransferRecordWithOptions(request *QueryCallInTransferRecordRequest, runtime *util.RuntimeOptions) (_result *QueryCallInTransferRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7753,6 +8258,13 @@ func (client *Client) QueryCallInTransferRecordWithOptions(request *QueryCallInT
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryCallInTransferRecordRequest
+ * @return QueryCallInTransferRecordResponse
+ */
 func (client *Client) QueryCallInTransferRecord(request *QueryCallInTransferRecordRequest) (_result *QueryCallInTransferRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCallInTransferRecordResponse{}
@@ -7820,6 +8332,14 @@ func (client *Client) QueryRobotInfoList(request *QueryRobotInfoListRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotTaskCallDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryRobotTaskCallDetailResponse
+ */
 func (client *Client) QueryRobotTaskCallDetailWithOptions(request *QueryRobotTaskCallDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRobotTaskCallDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7873,6 +8393,13 @@ func (client *Client) QueryRobotTaskCallDetailWithOptions(request *QueryRobotTas
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotTaskCallDetailRequest
+ * @return QueryRobotTaskCallDetailResponse
+ */
 func (client *Client) QueryRobotTaskCallDetail(request *QueryRobotTaskCallDetailRequest) (_result *QueryRobotTaskCallDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotTaskCallDetailResponse{}
@@ -7884,6 +8411,14 @@ func (client *Client) QueryRobotTaskCallDetail(request *QueryRobotTaskCallDetail
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotTaskCallListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryRobotTaskCallListResponse
+ */
 func (client *Client) QueryRobotTaskCallListWithOptions(request *QueryRobotTaskCallListRequest, runtime *util.RuntimeOptions) (_result *QueryRobotTaskCallListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7965,6 +8500,13 @@ func (client *Client) QueryRobotTaskCallListWithOptions(request *QueryRobotTaskC
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotTaskCallListRequest
+ * @return QueryRobotTaskCallListResponse
+ */
 func (client *Client) QueryRobotTaskCallList(request *QueryRobotTaskCallListRequest) (_result *QueryRobotTaskCallListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotTaskCallListResponse{}
@@ -7976,6 +8518,14 @@ func (client *Client) QueryRobotTaskCallList(request *QueryRobotTaskCallListRequ
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotTaskDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryRobotTaskDetailResponse
+ */
 func (client *Client) QueryRobotTaskDetailWithOptions(request *QueryRobotTaskDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRobotTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8021,6 +8571,13 @@ func (client *Client) QueryRobotTaskDetailWithOptions(request *QueryRobotTaskDet
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotTaskDetailRequest
+ * @return QueryRobotTaskDetailResponse
+ */
 func (client *Client) QueryRobotTaskDetail(request *QueryRobotTaskDetailRequest) (_result *QueryRobotTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotTaskDetailResponse{}
@@ -8032,6 +8589,14 @@ func (client *Client) QueryRobotTaskDetail(request *QueryRobotTaskDetailRequest)
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotTaskListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryRobotTaskListResponse
+ */
 func (client *Client) QueryRobotTaskListWithOptions(request *QueryRobotTaskListRequest, runtime *util.RuntimeOptions) (_result *QueryRobotTaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8093,6 +8658,13 @@ func (client *Client) QueryRobotTaskListWithOptions(request *QueryRobotTaskListR
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotTaskListRequest
+ * @return QueryRobotTaskListResponse
+ */
 func (client *Client) QueryRobotTaskList(request *QueryRobotTaskListRequest) (_result *QueryRobotTaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotTaskListResponse{}
@@ -8104,6 +8676,14 @@ func (client *Client) QueryRobotTaskList(request *QueryRobotTaskListRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotv2AllListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryRobotv2AllListResponse
+ */
 func (client *Client) QueryRobotv2AllListWithOptions(request *QueryRobotv2AllListRequest, runtime *util.RuntimeOptions) (_result *QueryRobotv2AllListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8145,6 +8725,13 @@ func (client *Client) QueryRobotv2AllListWithOptions(request *QueryRobotv2AllLis
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryRobotv2AllListRequest
+ * @return QueryRobotv2AllListResponse
+ */
 func (client *Client) QueryRobotv2AllList(request *QueryRobotv2AllListRequest) (_result *QueryRobotv2AllListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotv2AllListResponse{}
@@ -8156,6 +8743,14 @@ func (client *Client) QueryRobotv2AllList(request *QueryRobotv2AllListRequest) (
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryVirtualNumberRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryVirtualNumberResponse
+ */
 func (client *Client) QueryVirtualNumberWithOptions(request *QueryVirtualNumberRequest, runtime *util.RuntimeOptions) (_result *QueryVirtualNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8213,6 +8808,13 @@ func (client *Client) QueryVirtualNumberWithOptions(request *QueryVirtualNumberR
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request QueryVirtualNumberRequest
+ * @return QueryVirtualNumberResponse
+ */
 func (client *Client) QueryVirtualNumber(request *QueryVirtualNumberRequest) (_result *QueryVirtualNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryVirtualNumberResponse{}
@@ -8224,6 +8826,14 @@ func (client *Client) QueryVirtualNumber(request *QueryVirtualNumberRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 200 times per second per account.
+ *
+ * @param request QueryVirtualNumberRelationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryVirtualNumberRelationResponse
+ */
 func (client *Client) QueryVirtualNumberRelationWithOptions(request *QueryVirtualNumberRelationRequest, runtime *util.RuntimeOptions) (_result *QueryVirtualNumberRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8301,6 +8911,13 @@ func (client *Client) QueryVirtualNumberRelationWithOptions(request *QueryVirtua
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 200 times per second per account.
+ *
+ * @param request QueryVirtualNumberRelationRequest
+ * @return QueryVirtualNumberRelationResponse
+ */
 func (client *Client) QueryVirtualNumberRelation(request *QueryVirtualNumberRelationRequest) (_result *QueryVirtualNumberRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryVirtualNumberRelationResponse{}
@@ -8428,62 +9045,14 @@ func (client *Client) RecoverCallInConfig(request *RecoverCallInConfigRequest) (
 	return _result, _err
 }
 
-func (client *Client) RefreshMqttTokenWithOptions(request *RefreshMqttTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshMqttTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
-		query["ClientId"] = request.ClientId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RefreshMqttToken"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RefreshMqttTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RefreshMqttToken(request *RefreshMqttTokenRequest) (_result *RefreshMqttTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RefreshMqttTokenResponse{}
-	_body, _err := client.RefreshMqttTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request SendVerificationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SendVerificationResponse
+ */
 func (client *Client) SendVerificationWithOptions(request *SendVerificationRequest, runtime *util.RuntimeOptions) (_result *SendVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8537,6 +9106,13 @@ func (client *Client) SendVerificationWithOptions(request *SendVerificationReque
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request SendVerificationRequest
+ * @return SendVerificationResponse
+ */
 func (client *Client) SendVerification(request *SendVerificationRequest) (_result *SendVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendVerificationResponse{}
@@ -8548,6 +9124,14 @@ func (client *Client) SendVerification(request *SendVerificationRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request SetTransferCalleePoolConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetTransferCalleePoolConfigResponse
+ */
 func (client *Client) SetTransferCalleePoolConfigWithOptions(request *SetTransferCalleePoolConfigRequest, runtime *util.RuntimeOptions) (_result *SetTransferCalleePoolConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8605,6 +9189,13 @@ func (client *Client) SetTransferCalleePoolConfigWithOptions(request *SetTransfe
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request SetTransferCalleePoolConfigRequest
+ * @return SetTransferCalleePoolConfigResponse
+ */
 func (client *Client) SetTransferCalleePoolConfig(request *SetTransferCalleePoolConfigRequest) (_result *SetTransferCalleePoolConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetTransferCalleePoolConfigResponse{}
@@ -8616,6 +9207,16 @@ func (client *Client) SetTransferCalleePoolConfig(request *SetTransferCalleePool
 	return _result, _err
 }
 
+/**
+ * *   Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+ * *   For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](~~150083~~).
+ * ### QPS limits
+ * You can call this operation up to 1,000 times per second per account.
+ *
+ * @param request SingleCallByTtsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SingleCallByTtsResponse
+ */
 func (client *Client) SingleCallByTtsWithOptions(request *SingleCallByTtsRequest, runtime *util.RuntimeOptions) (_result *SingleCallByTtsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8689,6 +9290,15 @@ func (client *Client) SingleCallByTtsWithOptions(request *SingleCallByTtsRequest
 	return _result, _err
 }
 
+/**
+ * *   Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+ * *   For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](~~150083~~).
+ * ### QPS limits
+ * You can call this operation up to 1,000 times per second per account.
+ *
+ * @param request SingleCallByTtsRequest
+ * @return SingleCallByTtsResponse
+ */
 func (client *Client) SingleCallByTts(request *SingleCallByTtsRequest) (_result *SingleCallByTtsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SingleCallByTtsResponse{}
@@ -8700,6 +9310,16 @@ func (client *Client) SingleCallByTts(request *SingleCallByTtsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+ * You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
+ * ### QPS limits
+ * You can call this operation up to 1,200 times per second per account.
+ *
+ * @param request SingleCallByVoiceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SingleCallByVoiceResponse
+ */
 func (client *Client) SingleCallByVoiceWithOptions(request *SingleCallByVoiceRequest, runtime *util.RuntimeOptions) (_result *SingleCallByVoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8769,6 +9389,15 @@ func (client *Client) SingleCallByVoiceWithOptions(request *SingleCallByVoiceReq
 	return _result, _err
 }
 
+/**
+ * > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+ * You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
+ * ### QPS limits
+ * You can call this operation up to 1,200 times per second per account.
+ *
+ * @param request SingleCallByVoiceRequest
+ * @return SingleCallByVoiceResponse
+ */
 func (client *Client) SingleCallByVoice(request *SingleCallByVoiceRequest) (_result *SingleCallByVoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SingleCallByVoiceResponse{}
@@ -8780,6 +9409,16 @@ func (client *Client) SingleCallByVoice(request *SingleCallByVoiceRequest) (_res
 	return _result, _err
 }
 
+/**
+ * *   The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
+ * *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
+ * ### QPS limits
+ * You can call this operation up to 1,000 times per second per account.
+ *
+ * @param request SmartCallRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SmartCallResponse
+ */
 func (client *Client) SmartCallWithOptions(request *SmartCallRequest, runtime *util.RuntimeOptions) (_result *SmartCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8925,6 +9564,15 @@ func (client *Client) SmartCallWithOptions(request *SmartCallRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * *   The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
+ * *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
+ * ### QPS limits
+ * You can call this operation up to 1,000 times per second per account.
+ *
+ * @param request SmartCallRequest
+ * @return SmartCallResponse
+ */
 func (client *Client) SmartCall(request *SmartCallRequest) (_result *SmartCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SmartCallResponse{}
@@ -8936,6 +9584,16 @@ func (client *Client) SmartCall(request *SmartCallRequest) (_result *SmartCallRe
 	return _result, _err
 }
 
+/**
+ * You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
+ * > You can only initiate the action of bridging a called number and an agent of the call center.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request SmartCallOperateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SmartCallOperateResponse
+ */
 func (client *Client) SmartCallOperateWithOptions(request *SmartCallOperateRequest, runtime *util.RuntimeOptions) (_result *SmartCallOperateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8989,6 +9647,15 @@ func (client *Client) SmartCallOperateWithOptions(request *SmartCallOperateReque
 	return _result, _err
 }
 
+/**
+ * You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
+ * > You can only initiate the action of bridging a called number and an agent of the call center.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request SmartCallOperateRequest
+ * @return SmartCallOperateResponse
+ */
 func (client *Client) SmartCallOperate(request *SmartCallOperateRequest) (_result *SmartCallOperateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SmartCallOperateResponse{}
@@ -9000,6 +9667,14 @@ func (client *Client) SmartCallOperate(request *SmartCallOperateRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request StartRobotTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartRobotTaskResponse
+ */
 func (client *Client) StartRobotTaskWithOptions(request *StartRobotTaskRequest, runtime *util.RuntimeOptions) (_result *StartRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9049,6 +9724,13 @@ func (client *Client) StartRobotTaskWithOptions(request *StartRobotTaskRequest, 
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request StartRobotTaskRequest
+ * @return StartRobotTaskResponse
+ */
 func (client *Client) StartRobotTask(request *StartRobotTaskRequest) (_result *StartRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRobotTaskResponse{}
@@ -9116,6 +9798,15 @@ func (client *Client) StopCallInConfig(request *StopCallInConfigRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request StopRobotTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopRobotTaskResponse
+ */
 func (client *Client) StopRobotTaskWithOptions(request *StopRobotTaskRequest, runtime *util.RuntimeOptions) (_result *StopRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9161,6 +9852,14 @@ func (client *Client) StopRobotTaskWithOptions(request *StopRobotTaskRequest, ru
 	return _result, _err
 }
 
+/**
+ * After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request StopRobotTaskRequest
+ * @return StopRobotTaskResponse
+ */
 func (client *Client) StopRobotTask(request *StopRobotTaskRequest) (_result *StopRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopRobotTaskResponse{}
@@ -9172,6 +9871,14 @@ func (client *Client) StopRobotTask(request *StopRobotTaskRequest) (_result *Sto
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request SubmitHotlineTransferRegisterRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SubmitHotlineTransferRegisterResponse
+ */
 func (client *Client) SubmitHotlineTransferRegisterWithOptions(request *SubmitHotlineTransferRegisterRequest, runtime *util.RuntimeOptions) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9253,6 +9960,13 @@ func (client *Client) SubmitHotlineTransferRegisterWithOptions(request *SubmitHo
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request SubmitHotlineTransferRegisterRequest
+ * @return SubmitHotlineTransferRegisterResponse
+ */
 func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransferRegisterRequest) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitHotlineTransferRegisterResponse{}
@@ -9264,6 +9978,14 @@ func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransf
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request UploadRobotTaskCalledFileRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UploadRobotTaskCalledFileResponse
+ */
 func (client *Client) UploadRobotTaskCalledFileWithOptions(request *UploadRobotTaskCalledFileRequest, runtime *util.RuntimeOptions) (_result *UploadRobotTaskCalledFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9321,6 +10043,13 @@ func (client *Client) UploadRobotTaskCalledFileWithOptions(request *UploadRobotT
 	return _result, _err
 }
 
+/**
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account.
+ *
+ * @param request UploadRobotTaskCalledFileRequest
+ * @return UploadRobotTaskCalledFileResponse
+ */
 func (client *Client) UploadRobotTaskCalledFile(request *UploadRobotTaskCalledFileRequest) (_result *UploadRobotTaskCalledFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadRobotTaskCalledFileResponse{}
