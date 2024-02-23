@@ -3340,6 +3340,29 @@ func (s *Operation) SetStateChangeReason(v *OperationStateChangeReason) *Operati
 	return s
 }
 
+type OperationData struct {
+	ActualDeliveredAmounts *int32 `json:"actualDeliveredAmounts,omitempty" xml:"actualDeliveredAmounts,omitempty"`
+	ToBeDeliveredAmounts   *int32 `json:"toBeDeliveredAmounts,omitempty" xml:"toBeDeliveredAmounts,omitempty"`
+}
+
+func (s OperationData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperationData) GoString() string {
+	return s.String()
+}
+
+func (s *OperationData) SetActualDeliveredAmounts(v int32) *OperationData {
+	s.ActualDeliveredAmounts = &v
+	return s
+}
+
+func (s *OperationData) SetToBeDeliveredAmounts(v int32) *OperationData {
+	s.ToBeDeliveredAmounts = &v
+	return s
+}
+
 type OperationStateChangeReason struct {
 	// 状态码。
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -4364,7 +4387,8 @@ type ScalingRule struct {
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	// 按照负载伸缩描述。
 	// <p>
-	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	MetricsTrigger     *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	MinAdjustmentValue *int32          `json:"MinAdjustmentValue,omitempty" xml:"MinAdjustmentValue,omitempty"`
 	// 规则名称。
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// 按照时间伸缩描述。
@@ -4396,6 +4420,11 @@ func (s *ScalingRule) SetAdjustmentValue(v int32) *ScalingRule {
 
 func (s *ScalingRule) SetMetricsTrigger(v *MetricsTrigger) *ScalingRule {
 	s.MetricsTrigger = v
+	return s
+}
+
+func (s *ScalingRule) SetMinAdjustmentValue(v int32) *ScalingRule {
+	s.MinAdjustmentValue = &v
 	return s
 }
 
@@ -5735,6 +5764,107 @@ func (s *CreateNodeGroupResponse) SetBody(v *CreateNodeGroupResponseBody) *Creat
 	return s
 }
 
+type CreateReportRequest struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 地域ID。
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SelectTimestamp *int64  `json:"SelectTimestamp,omitempty" xml:"SelectTimestamp,omitempty"`
+}
+
+func (s CreateReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReportRequest) SetClusterId(v string) *CreateReportRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateReportRequest) SetRegionId(v string) *CreateReportRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateReportRequest) SetSelectTimestamp(v int64) *CreateReportRequest {
+	s.SelectTimestamp = &v
+	return s
+}
+
+type CreateReportResponseBody struct {
+	Data *CreateReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReportResponseBody) SetData(v *CreateReportResponseBodyData) *CreateReportResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateReportResponseBody) SetRequestId(v string) *CreateReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateReportResponseBodyData struct {
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+}
+
+func (s CreateReportResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReportResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReportResponseBodyData) SetReportId(v string) *CreateReportResponseBodyData {
+	s.ReportId = &v
+	return s
+}
+
+type CreateReportResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReportResponse) SetHeaders(v map[string]*string) *CreateReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateReportResponse) SetStatusCode(v int32) *CreateReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateReportResponse) SetBody(v *CreateReportResponseBody) *CreateReportResponse {
+	s.Body = v
+	return s
+}
+
 type DecreaseNodesRequest struct {
 	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -6811,6 +6941,372 @@ func (s *GetClusterResponse) SetStatusCode(v int32) *GetClusterResponse {
 }
 
 func (s *GetClusterResponse) SetBody(v *GetClusterResponseBody) *GetClusterResponse {
+	s.Body = v
+	return s
+}
+
+type GetClusterCloneMetaRequest struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetClusterCloneMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaRequest) SetClusterId(v string) *GetClusterCloneMetaRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaRequest) SetRegionId(v string) *GetClusterCloneMetaRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetClusterCloneMetaResponseBody struct {
+	ClusterCloneMeta *GetClusterCloneMetaResponseBodyClusterCloneMeta `json:"ClusterCloneMeta,omitempty" xml:"ClusterCloneMeta,omitempty" type:"Struct"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetClusterCloneMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBody) SetClusterCloneMeta(v *GetClusterCloneMetaResponseBodyClusterCloneMeta) *GetClusterCloneMetaResponseBody {
+	s.ClusterCloneMeta = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBody) SetRequestId(v string) *GetClusterCloneMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
+	// 创建集群时的服务配置项。创建集群时需要记录用户传入的配置项参数key，返回集群最新的配置项值。
+	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
+	// 集群应用。
+	Applications     []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	BootstrapScripts []*Script      `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 集群名称。
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// 集群状态。
+	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
+	// 集群类型。
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// 部署模式。
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// EMR服务角色。
+	EmrDefaultRole   *string `json:"EmrDefaultRole,omitempty" xml:"EmrDefaultRole,omitempty"`
+	ExistCloneConfig *bool   `json:"ExistCloneConfig,omitempty" xml:"ExistCloneConfig,omitempty"`
+	// 元数据类型。
+	MetaStoreType *string `json:"MetaStoreType,omitempty" xml:"MetaStoreType,omitempty"`
+	// 网络类型。
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// 节点属性。
+	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
+	NodeGroups     []*NodeGroup    `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	// 付费类型。
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// EMR发行版。
+	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
+	// 资源组ID。
+	ResourceGroupId   *string                                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ScalingPolicyDTOS []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS `json:"ScalingPolicyDTOS,omitempty" xml:"ScalingPolicyDTOS,omitempty" type:"Repeated"`
+	// Kerberos安全模式。
+	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	// 预付费配置。
+	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
+	Tags               []*Tag              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMeta) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetApplicationConfigs(v []*ApplicationConfig) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ApplicationConfigs = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetApplications(v []*Application) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.Applications = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetBootstrapScripts(v []*Script) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.BootstrapScripts = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterName(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterState(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ClusterState = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetDeployMode(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetEmrDefaultRole(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.EmrDefaultRole = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetExistCloneConfig(v bool) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ExistCloneConfig = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetMetaStoreType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.MetaStoreType = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetNetworkType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetNodeAttributes(v *NodeAttributes) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.NodeAttributes = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetNodeGroups(v []*NodeGroup) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.NodeGroups = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetPaymentType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetRegionId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetReleaseVersion(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetResourceGroupId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetScalingPolicyDTOS(v []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ScalingPolicyDTOS = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetSecurityMode(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.SecurityMode = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetSubscriptionConfig(v *SubscriptionConfig) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.SubscriptionConfig = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetTags(v []*Tag) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.Tags = v
+	return s
+}
+
+type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 最大最小值约束
+	Constraints *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
+	// 节点组ID。
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// 伸缩策略ID。
+	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
+	// 伸缩规则列表
+	ScalingRules []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetClusterId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetConstraints(v *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
+	s.Constraints = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetNodeGroupId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
+	s.NodeGroupId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetScalingPolicyId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
+	s.ScalingPolicyId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetScalingRules(v []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
+	s.ScalingRules = v
+	return s
+}
+
+type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints struct {
+	// 最大值
+	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	// 最小值
+	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) SetMaxCapacity(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints {
+	s.MaxCapacity = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) SetMinCapacity(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints {
+	s.MinCapacity = &v
+	return s
+}
+
+type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules struct {
+	// 伸缩类型。取值范围：
+	// - SCALE_OUT：扩容
+	// - SCALE_IN：缩容
+	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
+	// 调整值。需要为正数，代表需要扩容或者缩容的实例数量。
+	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	// 按照负载伸缩描述。
+	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	// 弹性伸缩规则名称。
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// 按照时间伸缩描述。
+	TimeTrigger *TimeTrigger `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
+	// 伸缩规则类型。取值范围：
+	// - TIME_TRIGGER: 按时间伸缩。
+	// - METRICS_TRIGGER: 按负载伸缩。
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetActivityType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
+	s.ActivityType = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetAdjustmentValue(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
+	s.AdjustmentValue = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetMetricsTrigger(v *MetricsTrigger) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
+	s.MetricsTrigger = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetRuleName(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetTimeTrigger(v *TimeTrigger) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
+	s.TimeTrigger = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetTriggerType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
+	s.TriggerType = &v
+	return s
+}
+
+type GetClusterCloneMetaResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClusterCloneMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetClusterCloneMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponse) SetHeaders(v map[string]*string) *GetClusterCloneMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponse) SetStatusCode(v int32) *GetClusterCloneMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponse) SetBody(v *GetClusterCloneMetaResponseBody) *GetClusterCloneMetaResponse {
 	s.Body = v
 	return s
 }
@@ -22010,7 +22506,8 @@ type IncreaseNodesRequest struct {
 	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The number of nodes. The number of incremental nodes for this scale-out. Valid values: 1 to 500.
-	IncreaseNodeCount *int32 `json:"IncreaseNodeCount,omitempty" xml:"IncreaseNodeCount,omitempty"`
+	IncreaseNodeCount    *int32 `json:"IncreaseNodeCount,omitempty" xml:"IncreaseNodeCount,omitempty"`
+	MinIncreaseNodeCount *int32 `json:"MinIncreaseNodeCount,omitempty" xml:"MinIncreaseNodeCount,omitempty"`
 	// The ID of the node group. The target node group to which you want to scale out the cluster.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	// The subscription duration. Valid values when the PaymentDurationUnit value is Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
@@ -22048,6 +22545,11 @@ func (s *IncreaseNodesRequest) SetClusterId(v string) *IncreaseNodesRequest {
 
 func (s *IncreaseNodesRequest) SetIncreaseNodeCount(v int32) *IncreaseNodesRequest {
 	s.IncreaseNodeCount = &v
+	return s
+}
+
+func (s *IncreaseNodesRequest) SetMinIncreaseNodeCount(v int32) *IncreaseNodesRequest {
+	s.MinIncreaseNodeCount = &v
 	return s
 }
 
@@ -36365,6 +36867,71 @@ func (client *Client) CreateNodeGroup(request *CreateNodeGroupRequest) (_result 
 }
 
 /**
+ * Currently we only support taihao platform
+ *
+ * @param request CreateReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateReportResponse
+ */
+func (client *Client) CreateReportWithOptions(request *CreateReportRequest, runtime *util.RuntimeOptions) (_result *CreateReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SelectTimestamp)) {
+		query["SelectTimestamp"] = request.SelectTimestamp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateReport"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * Currently we only support taihao platform
+ *
+ * @param request CreateReportRequest
+ * @return CreateReportResponse
+ */
+func (client *Client) CreateReport(request *CreateReportRequest) (_result *CreateReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateReportResponse{}
+	_body, _err := client.CreateReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
  * 缩容节点。
  *
  * @param request DecreaseNodesRequest
@@ -36785,6 +37352,67 @@ func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetCluste
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClusterResponse{}
 	_body, _err := client.GetClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * 获取集群克隆详情。
+ *
+ * @param request GetClusterCloneMetaRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetClusterCloneMetaResponse
+ */
+func (client *Client) GetClusterCloneMetaWithOptions(request *GetClusterCloneMetaRequest, runtime *util.RuntimeOptions) (_result *GetClusterCloneMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterCloneMeta"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClusterCloneMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 获取集群克隆详情。
+ *
+ * @param request GetClusterCloneMetaRequest
+ * @return GetClusterCloneMetaResponse
+ */
+func (client *Client) GetClusterCloneMeta(request *GetClusterCloneMetaRequest) (_result *GetClusterCloneMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClusterCloneMetaResponse{}
+	_body, _err := client.GetClusterCloneMetaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37876,13 +38504,6 @@ func (client *Client) GetOperation(request *GetOperationRequest) (_result *GetOp
 	return _result, _err
 }
 
-/**
- * 扩容节点。
- *
- * @param request IncreaseNodesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return IncreaseNodesResponse
- */
 func (client *Client) IncreaseNodesWithOptions(request *IncreaseNodesRequest, runtime *util.RuntimeOptions) (_result *IncreaseNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37903,6 +38524,10 @@ func (client *Client) IncreaseNodesWithOptions(request *IncreaseNodesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.IncreaseNodeCount)) {
 		query["IncreaseNodeCount"] = request.IncreaseNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinIncreaseNodeCount)) {
+		query["MinIncreaseNodeCount"] = request.MinIncreaseNodeCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
@@ -37944,12 +38569,6 @@ func (client *Client) IncreaseNodesWithOptions(request *IncreaseNodesRequest, ru
 	return _result, _err
 }
 
-/**
- * 扩容节点。
- *
- * @param request IncreaseNodesRequest
- * @return IncreaseNodesResponse
- */
 func (client *Client) IncreaseNodes(request *IncreaseNodesRequest) (_result *IncreaseNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IncreaseNodesResponse{}

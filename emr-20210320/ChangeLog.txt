@@ -1,3 +1,23 @@
+2024-02-23 Version: v1.3.0
+- Support API CreateReport.
+- Support API GetApmData.
+- Support API GetApplication.
+- Support API GetClusterCloneMeta.
+- Support API ListApmMetadata.
+- Support API ListComponentInstances.
+- Support API ListComponents.
+- Support API QueryApmComponents.
+- Support API QueryApmGrafanaData.
+- Update API IncreaseNodes: add param MinIncreaseNodeCount.
+- Update API JoinResourceGroup: update param RegionId.
+- Update API ListClusters: update param RegionId.
+- Update API ListNodeGroups: update param RegionId.
+- Update API RunApplicationAction: update param ExecuteStrategy.
+- Update API RunApplicationAction: update param Interval.
+- Update API RunApplicationAction: update param RegionId.
+- Update API RunApplicationAction: update response param.
+
+
 2024-02-21 Version: v1.2.0
 - Support API GetApmData.
 - Support API GetApplication.
