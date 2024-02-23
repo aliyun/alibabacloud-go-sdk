@@ -3437,6 +3437,111 @@ func (s *OpenComputeEngineResponse) SetBody(v *OpenComputeEngineResponseBody) *O
 	return s
 }
 
+type OpenComputePreCheckRequest struct {
+	CpuLimit             *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MemoryLimit          *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s OpenComputePreCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenComputePreCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenComputePreCheckRequest) SetCpuLimit(v string) *OpenComputePreCheckRequest {
+	s.CpuLimit = &v
+	return s
+}
+
+func (s *OpenComputePreCheckRequest) SetInstanceId(v string) *OpenComputePreCheckRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *OpenComputePreCheckRequest) SetMemoryLimit(v string) *OpenComputePreCheckRequest {
+	s.MemoryLimit = &v
+	return s
+}
+
+func (s *OpenComputePreCheckRequest) SetOwnerAccount(v string) *OpenComputePreCheckRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *OpenComputePreCheckRequest) SetOwnerId(v int64) *OpenComputePreCheckRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OpenComputePreCheckRequest) SetResourceOwnerAccount(v string) *OpenComputePreCheckRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *OpenComputePreCheckRequest) SetResourceOwnerId(v int64) *OpenComputePreCheckRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *OpenComputePreCheckRequest) SetSecurityToken(v string) *OpenComputePreCheckRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type OpenComputePreCheckResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OpenComputePreCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenComputePreCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenComputePreCheckResponseBody) SetRequestId(v string) *OpenComputePreCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OpenComputePreCheckResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenComputePreCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s OpenComputePreCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenComputePreCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenComputePreCheckResponse) SetHeaders(v map[string]*string) *OpenComputePreCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenComputePreCheckResponse) SetStatusCode(v int32) *OpenComputePreCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenComputePreCheckResponse) SetBody(v *OpenComputePreCheckResponseBody) *OpenComputePreCheckResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseLindormInstanceRequest struct {
 	// Specifies whether to release the instance immediately. If you set this parameter to false, data in the released instance is retained for seven days before it is completely deleted. If you set this parameter to true, data in the released instance is immediately deleted. The default value is false.
 	Immediately          *bool   `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
@@ -6336,6 +6441,78 @@ func (client *Client) OpenComputeEngine(request *OpenComputeEngineRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenComputeEngineResponse{}
 	_body, _err := client.OpenComputeEngineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OpenComputePreCheckWithOptions(request *OpenComputePreCheckRequest, runtime *util.RuntimeOptions) (_result *OpenComputePreCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CpuLimit)) {
+		query["CpuLimit"] = request.CpuLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryLimit)) {
+		query["MemoryLimit"] = request.MemoryLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenComputePreCheck"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenComputePreCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenComputePreCheck(request *OpenComputePreCheckRequest) (_result *OpenComputePreCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenComputePreCheckResponse{}
+	_body, _err := client.OpenComputePreCheckWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
