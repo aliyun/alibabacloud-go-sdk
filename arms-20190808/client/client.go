@@ -4949,7 +4949,8 @@ type CreateEnvironmentRequest struct {
 	// - none: not managed. default value of prometheus for ACK.
 	// - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
 	// - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
-	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
+	ManagedType          *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
+	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
@@ -4993,6 +4994,11 @@ func (s *CreateEnvironmentRequest) SetEnvironmentType(v string) *CreateEnvironme
 
 func (s *CreateEnvironmentRequest) SetManagedType(v string) *CreateEnvironmentRequest {
 	s.ManagedType = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetPrometheusInstanceId(v string) *CreateEnvironmentRequest {
+	s.PrometheusInstanceId = &v
 	return s
 }
 
@@ -10099,12 +10105,13 @@ func (s *CreateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) 
 }
 
 type CreateTimingSyntheticTaskRequestCommonSetting struct {
-	CustomHost      *CreateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	IpType          *int32                                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	IsOpenTrace     *bool                                                    `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
-	MonitorSamples  *int32                                                   `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
-	TraceClientType *int32                                                   `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
-	XtraceRegion    *string                                                  `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
+	CustomHost       *CreateTimingSyntheticTaskRequestCommonSettingCustomHost       `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomVPCSetting *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
+	IpType           *int32                                                         `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IsOpenTrace      *bool                                                          `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
+	MonitorSamples   *int32                                                         `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	TraceClientType  *int32                                                         `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
+	XtraceRegion     *string                                                        `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
 }
 
 func (s CreateTimingSyntheticTaskRequestCommonSetting) String() string {
@@ -10117,6 +10124,11 @@ func (s CreateTimingSyntheticTaskRequestCommonSetting) GoString() string {
 
 func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetCustomHost(v *CreateTimingSyntheticTaskRequestCommonSettingCustomHost) *CreateTimingSyntheticTaskRequestCommonSetting {
 	s.CustomHost = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetCustomVPCSetting(v *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) *CreateTimingSyntheticTaskRequestCommonSetting {
+	s.CustomVPCSetting = v
 	return s
 }
 
@@ -10194,6 +10206,41 @@ func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIpType
 
 func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIps(v []*string) *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
 	s.Ips = v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting struct {
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecureGroupId *string `json:"SecureGroupId,omitempty" xml:"SecureGroupId,omitempty"`
+	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetRegionId(v string) *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetSecureGroupId(v string) *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting {
+	s.SecureGroupId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetVSwitchId(v string) *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetVpcId(v string) *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting {
+	s.VpcId = &v
 	return s
 }
 
@@ -14466,6 +14513,7 @@ func (s *DeleteTraceAppResponse) SetBody(v *DeleteTraceAppResponseBody) *DeleteT
 }
 
 type DeleteWebhookContactRequest struct {
+	// The ID of the webhook alert contact.
 	WebhookId *int64 `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
 }
 
@@ -14483,7 +14531,12 @@ func (s *DeleteWebhookContactRequest) SetWebhookId(v int64) *DeleteWebhookContac
 }
 
 type DeleteWebhookContactResponseBody struct {
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Indicates whether the webhook alert contact was deleted.
+	//
+	// *   `true`
+	// *   `false`
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24207,7 +24260,8 @@ func (s *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) SetType(v st
 
 type GetTimingSyntheticTaskResponseBodyDataCommonSetting struct {
 	// The custom host.
-	CustomHost *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomHost       *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost       `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomVPCSetting *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
 	// The IP version. Valid values:
 	//
 	// *   0: A version is automatically selected.
@@ -24241,6 +24295,11 @@ func (s GetTimingSyntheticTaskResponseBodyDataCommonSetting) GoString() string {
 
 func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetCustomHost(v *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
 	s.CustomHost = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetCustomVPCSetting(v *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
+	s.CustomVPCSetting = v
 	return s
 }
 
@@ -24327,6 +24386,41 @@ func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) Set
 
 func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) SetIps(v []*string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts {
 	s.Ips = v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting struct {
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecureGroupId *string `json:"SecureGroupId,omitempty" xml:"SecureGroupId,omitempty"`
+	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting) SetRegionId(v string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting) SetSecureGroupId(v string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting {
+	s.SecureGroupId = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting) SetVSwitchId(v string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting) SetVpcId(v string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting {
+	s.VpcId = &v
 	return s
 }
 
@@ -44954,7 +45048,8 @@ func (s *UpdateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) 
 
 type UpdateTimingSyntheticTaskRequestCommonSetting struct {
 	// The custom host.
-	CustomHost *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomHost       *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost       `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomVPCSetting *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
 	// The IP version. Valid values:
 	//
 	// *   0: A version is automatically selected.
@@ -44988,6 +45083,11 @@ func (s UpdateTimingSyntheticTaskRequestCommonSetting) GoString() string {
 
 func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetCustomHost(v *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) *UpdateTimingSyntheticTaskRequestCommonSetting {
 	s.CustomHost = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetCustomVPCSetting(v *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) *UpdateTimingSyntheticTaskRequestCommonSetting {
+	s.CustomVPCSetting = v
 	return s
 }
 
@@ -45074,6 +45174,41 @@ func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIpType
 
 func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIps(v []*string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
 	s.Ips = v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting struct {
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecureGroupId *string `json:"SecureGroupId,omitempty" xml:"SecureGroupId,omitempty"`
+	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetRegionId(v string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetSecureGroupId(v string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting {
+	s.SecureGroupId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetVSwitchId(v string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetVpcId(v string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting {
+	s.VpcId = &v
 	return s
 }
 
@@ -48250,6 +48385,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 
 	if !tea.BoolValue(util.IsUnset(request.ManagedType)) {
 		query["ManagedType"] = request.ManagedType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrometheusInstanceId)) {
+		query["PrometheusInstanceId"] = request.PrometheusInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
