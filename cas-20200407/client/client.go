@@ -47,9 +47,9 @@ func (s *CancelCertificateForPackageRequestResponseBody) SetRequestId(v string) 
 }
 
 type CancelCertificateForPackageRequestResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelCertificateForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelCertificateForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelCertificateForPackageRequestResponse) String() string {
@@ -114,9 +114,9 @@ func (s *CancelOrderRequestResponseBody) SetRequestId(v string) *CancelOrderRequ
 }
 
 type CancelOrderRequestResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelOrderRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelOrderRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelOrderRequestResponse) String() string {
@@ -282,9 +282,9 @@ func (s *CreateCertificateForPackageRequestResponseBody) SetRequestId(v string) 
 }
 
 type CreateCertificateForPackageRequestResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCertificateForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCertificateForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCertificateForPackageRequestResponse) String() string {
@@ -406,9 +406,9 @@ func (s *CreateCertificateRequestResponseBody) SetRequestId(v string) *CreateCer
 }
 
 type CreateCertificateRequestResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCertificateRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCertificateRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCertificateRequestResponse) String() string {
@@ -532,9 +532,9 @@ func (s *CreateCertificateWithCsrRequestResponseBody) SetRequestId(v string) *Cr
 }
 
 type CreateCertificateWithCsrRequestResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCertificateWithCsrRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCertificateWithCsrRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCertificateWithCsrRequestResponse) String() string {
@@ -721,9 +721,9 @@ func (s *CreateWHClientCertificateResponseBody) SetX509Certificate(v string) *Cr
 }
 
 type CreateWHClientCertificateResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateWHClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWHClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateWHClientCertificateResponse) String() string {
@@ -814,9 +814,9 @@ func (s *DecryptResponseBody) SetRequestId(v string) *DecryptResponseBody {
 }
 
 type DecryptResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DecryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DecryptResponse) String() string {
@@ -881,9 +881,9 @@ func (s *DeleteCertificateRequestResponseBody) SetRequestId(v string) *DeleteCer
 }
 
 type DeleteCertificateRequestResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCertificateRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCertificateRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCertificateRequestResponse) String() string {
@@ -944,9 +944,9 @@ func (s *DeletePCACertResponseBody) SetRequestId(v string) *DeletePCACertRespons
 }
 
 type DeletePCACertResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePCACertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePCACertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePCACertResponse) String() string {
@@ -1009,9 +1009,9 @@ func (s *DeleteUserCertificateResponseBody) SetRequestId(v string) *DeleteUserCe
 }
 
 type DeleteUserCertificateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserCertificateResponse) String() string {
@@ -1184,9 +1184,9 @@ func (s *DescribeCertificateStateResponseBody) SetValidateType(v string) *Descri
 }
 
 type DescribeCertificateStateResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCertificateStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCertificateStateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCertificateStateResponse) String() string {
@@ -1311,9 +1311,9 @@ func (s *DescribePackageStateResponseBody) SetUsedCount(v int64) *DescribePackag
 }
 
 type DescribePackageStateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePackageStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePackageStateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePackageStateResponse) String() string {
@@ -1404,9 +1404,9 @@ func (s *EncryptResponseBody) SetRequestId(v string) *EncryptResponseBody {
 }
 
 type EncryptResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EncryptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EncryptResponse) String() string {
@@ -1462,9 +1462,9 @@ func (s *GetCertWarehouseQuotaResponseBody) SetUseCount(v int64) *GetCertWarehou
 }
 
 type GetCertWarehouseQuotaResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCertWarehouseQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCertWarehouseQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCertWarehouseQuotaResponse) String() string {
@@ -1491,7 +1491,7 @@ func (s *GetCertWarehouseQuotaResponse) SetBody(v *GetCertWarehouseQuotaResponse
 }
 
 type GetUserCertificateDetailRequest struct {
-	// 值为true时Cert、Key、EncryptCert、EncryptPrivateKey、SignCert、SignPrivateKey信息不返回，false时则返回，默认是false。
+	// If true, the Cert, Key, EncryptCert, EncryptPrivateKey, SignCert, SignPrivateKey will return null, default is false.
 	CertFilter *bool `json:"CertFilter,omitempty" xml:"CertFilter,omitempty"`
 	// The ID of the certificate.
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
@@ -1701,9 +1701,9 @@ func (s *GetUserCertificateDetailResponseBody) SetStartDate(v string) *GetUserCe
 }
 
 type GetUserCertificateDetailResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserCertificateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserCertificateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserCertificateDetailResponse) String() string {
@@ -1737,7 +1737,7 @@ type ListCertRequest struct {
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// The number of the page to return. Default value: 1.
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The keyword for the query. You can enter a name, domain name, or Subject Alternative Name (SAN) extension. Fuzzy match is supported.
+	// The keyword that is used for queries. The value can be a name, domain name, or subject alternative name (SAN) attribute. Fuzzy match is supported.
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	// The number of entries to return on each page. Default value: 50.
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
@@ -1751,7 +1751,7 @@ type ListCertRequest struct {
 	// *   **ISSUE**: issued
 	// *   **REVOKE**: revoked
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the certificate repository. You can call the [ListCertWarehouse](~~453246~~) operation to query the IDs of certificate repositories.
+	// The ID of the certificate repository. You can call the ListCertWarehouse API operation to query the IDs of certificate repositories.
 	WarehouseId *int64 `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
@@ -1799,7 +1799,7 @@ func (s *ListCertRequest) SetWarehouseId(v int64) *ListCertRequest {
 }
 
 type ListCertResponseBody struct {
-	// An array that consists of the certificates.
+	// The certificates.
 	CertList []*ListCertResponseBodyCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
 	// The page number of the returned page. Default value: 1.
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -1865,7 +1865,7 @@ type ListCertResponseBodyCertList struct {
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The issuer of the certificate.
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The domain names that are bound to the certificate. Multiple domain names are separated by commas.
+	// All domain names that are bound to the certificate. Multiple domain names are separated by commas (,).
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
 	// The source of the certificate. Valid values:
 	//
@@ -1877,9 +1877,9 @@ type ListCertResponseBodyCertList struct {
 	// *   **ISSUE**: issued
 	// *   **REVOKE**: revoked
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the certificate repository.
+	// The ID of the certificate application repository.
 	WhId *int64 `json:"WhId,omitempty" xml:"WhId,omitempty"`
-	// The instance ID of the certificate repository.
+	// The instance ID of the certificate application repository.
 	WhInstanceId *string `json:"WhInstanceId,omitempty" xml:"WhInstanceId,omitempty"`
 }
 
@@ -1952,9 +1952,9 @@ func (s *ListCertResponseBodyCertList) SetWhInstanceId(v string) *ListCertRespon
 }
 
 type ListCertResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCertResponse) String() string {
@@ -2122,9 +2122,9 @@ func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetWhId(v int64) *ListC
 }
 
 type ListCertWarehouseResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCertWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCertWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCertWarehouseResponse) String() string {
@@ -2553,9 +2553,9 @@ func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetWildDomain
 }
 
 type ListUserCertificateOrderResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserCertificateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserCertificateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserCertificateOrderResponse) String() string {
@@ -2642,9 +2642,9 @@ func (s *RenewCertificateOrderForPackageRequestResponseBody) SetRequestId(v stri
 }
 
 type RenewCertificateOrderForPackageRequestResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenewCertificateOrderForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewCertificateOrderForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenewCertificateOrderForPackageRequestResponse) String() string {
@@ -2705,9 +2705,9 @@ func (s *RevokeWHClientCertificateResponseBody) SetRequestId(v string) *RevokeWH
 }
 
 type RevokeWHClientCertificateResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevokeWHClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeWHClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevokeWHClientCertificateResponse) String() string {
@@ -2792,9 +2792,9 @@ func (s *SignResponseBody) SetSignature(v string) *SignResponseBody {
 }
 
 type SignResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SignResponseBody  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SignResponseBody  `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SignResponse) String() string {
@@ -2887,9 +2887,9 @@ func (s *UploadPCACertResponseBody) SetRequestId(v string) *UploadPCACertRespons
 }
 
 type UploadPCACertResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadPCACertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadPCACertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadPCACertResponse) String() string {
@@ -3010,9 +3010,9 @@ func (s *UploadUserCertificateResponseBody) SetRequestId(v string) *UploadUserCe
 }
 
 type UploadUserCertificateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadUserCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadUserCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadUserCertificateResponse) String() string {
@@ -3103,9 +3103,9 @@ func (s *VerifyResponseBody) SetSignatureValid(v bool) *VerifyResponseBody {
 }
 
 type VerifyResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyResponse) String() string {
