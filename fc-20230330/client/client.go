@@ -1622,6 +1622,35 @@ func (s *ListProvisionConfigsOutput) SetProvisionConfigs(v []*ProvisionConfig) *
 	return s
 }
 
+type ListTagResourcesOutput struct {
+	NextToken    *string        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources []*TagResource `json:"TagResources" xml:"TagResources" type:"Repeated"`
+}
+
+func (s ListTagResourcesOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesOutput) SetNextToken(v string) *ListTagResourcesOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesOutput) SetRequestId(v string) *ListTagResourcesOutput {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesOutput) SetTagResources(v []*TagResource) *ListTagResourcesOutput {
+	s.TagResources = v
+	return s
+}
+
 type ListTaggedResourcesOutput struct {
 	NextToken *string     `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	Resources []*Resource `json:"resources" xml:"resources" type:"Repeated"`
@@ -2277,6 +2306,64 @@ func (s *TLSConfig) SetMinVersion(v string) *TLSConfig {
 	return s
 }
 
+type Tag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s Tag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Tag) GoString() string {
+	return s.String()
+}
+
+func (s *Tag) SetKey(v string) *Tag {
+	s.Key = &v
+	return s
+}
+
+func (s *Tag) SetValue(v string) *Tag {
+	s.Value = &v
+	return s
+}
+
+type TagResource struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s TagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResource) GoString() string {
+	return s.String()
+}
+
+func (s *TagResource) SetResourceId(v string) *TagResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *TagResource) SetResourceType(v string) *TagResource {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResource) SetTagKey(v string) *TagResource {
+	s.TagKey = &v
+	return s
+}
+
+func (s *TagResource) SetTagValue(v string) *TagResource {
+	s.TagValue = &v
+	return s
+}
+
 type TagResourceInput struct {
 	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
 	Tags        map[string]*string `json:"tags" xml:"tags"`
@@ -2297,6 +2384,35 @@ func (s *TagResourceInput) SetResourceArn(v string) *TagResourceInput {
 
 func (s *TagResourceInput) SetTags(v map[string]*string) *TagResourceInput {
 	s.Tags = v
+	return s
+}
+
+type TagResourcesInput struct {
+	ResourceId   []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*Tag    `json:"Tag" xml:"Tag" type:"Repeated"`
+}
+
+func (s TagResourcesInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesInput) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesInput) SetResourceId(v []*string) *TagResourcesInput {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesInput) SetResourceType(v string) *TagResourcesInput {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesInput) SetTag(v []*Tag) *TagResourcesInput {
+	s.Tag = v
 	return s
 }
 
@@ -2847,9 +2963,9 @@ func (s *CreateAliasRequest) SetBody(v *CreateAliasInput) *CreateAliasRequest {
 }
 
 type CreateAliasResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Alias             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Alias             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAliasResponse) String() string {
@@ -2893,9 +3009,9 @@ func (s *CreateCustomDomainRequest) SetBody(v *CreateCustomDomainInput) *CreateC
 }
 
 type CreateCustomDomainResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CustomDomain      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CustomDomain      `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCustomDomainResponse) String() string {
@@ -2939,9 +3055,9 @@ func (s *CreateFunctionRequest) SetBody(v *CreateFunctionInput) *CreateFunctionR
 }
 
 type CreateFunctionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Function          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Function          `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFunctionResponse) String() string {
@@ -2985,9 +3101,9 @@ func (s *CreateLayerVersionRequest) SetBody(v *CreateLayerVersionInput) *CreateL
 }
 
 type CreateLayerVersionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Layer             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Layer             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLayerVersionResponse) String() string {
@@ -3031,9 +3147,9 @@ func (s *CreateTriggerRequest) SetBody(v *CreateTriggerInput) *CreateTriggerRequ
 }
 
 type CreateTriggerResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Trigger           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Trigger           `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTriggerResponse) String() string {
@@ -3077,8 +3193,8 @@ func (s *CreateVpcBindingRequest) SetBody(v *CreateVpcBindingInput) *CreateVpcBi
 }
 
 type CreateVpcBindingResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateVpcBindingResponse) String() string {
@@ -3100,8 +3216,8 @@ func (s *CreateVpcBindingResponse) SetStatusCode(v int32) *CreateVpcBindingRespo
 }
 
 type DeleteAliasResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteAliasResponse) String() string {
@@ -3140,8 +3256,8 @@ func (s *DeleteAsyncInvokeConfigRequest) SetQualifier(v string) *DeleteAsyncInvo
 }
 
 type DeleteAsyncInvokeConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteAsyncInvokeConfigResponse) String() string {
@@ -3163,8 +3279,8 @@ func (s *DeleteAsyncInvokeConfigResponse) SetStatusCode(v int32) *DeleteAsyncInv
 }
 
 type DeleteConcurrencyConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteConcurrencyConfigResponse) String() string {
@@ -3186,8 +3302,8 @@ func (s *DeleteConcurrencyConfigResponse) SetStatusCode(v int32) *DeleteConcurre
 }
 
 type DeleteCustomDomainResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteCustomDomainResponse) String() string {
@@ -3209,8 +3325,8 @@ func (s *DeleteCustomDomainResponse) SetStatusCode(v int32) *DeleteCustomDomainR
 }
 
 type DeleteFunctionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteFunctionResponse) String() string {
@@ -3232,8 +3348,8 @@ func (s *DeleteFunctionResponse) SetStatusCode(v int32) *DeleteFunctionResponse 
 }
 
 type DeleteFunctionVersionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteFunctionVersionResponse) String() string {
@@ -3255,8 +3371,8 @@ func (s *DeleteFunctionVersionResponse) SetStatusCode(v int32) *DeleteFunctionVe
 }
 
 type DeleteLayerVersionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteLayerVersionResponse) String() string {
@@ -3295,8 +3411,8 @@ func (s *DeleteProvisionConfigRequest) SetQualifier(v string) *DeleteProvisionCo
 }
 
 type DeleteProvisionConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteProvisionConfigResponse) String() string {
@@ -3318,8 +3434,8 @@ func (s *DeleteProvisionConfigResponse) SetStatusCode(v int32) *DeleteProvisionC
 }
 
 type DeleteTriggerResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteTriggerResponse) String() string {
@@ -3341,8 +3457,8 @@ func (s *DeleteTriggerResponse) SetStatusCode(v int32) *DeleteTriggerResponse {
 }
 
 type DeleteVpcBindingResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteVpcBindingResponse) String() string {
@@ -3364,9 +3480,9 @@ func (s *DeleteVpcBindingResponse) SetStatusCode(v int32) *DeleteVpcBindingRespo
 }
 
 type GetAliasResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Alias             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Alias             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAliasResponse) String() string {
@@ -3410,9 +3526,9 @@ func (s *GetAsyncInvokeConfigRequest) SetQualifier(v string) *GetAsyncInvokeConf
 }
 
 type GetAsyncInvokeConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AsyncConfig       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncConfig       `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncInvokeConfigResponse) String() string {
@@ -3439,9 +3555,9 @@ func (s *GetAsyncInvokeConfigResponse) SetBody(v *AsyncConfig) *GetAsyncInvokeCo
 }
 
 type GetConcurrencyConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConcurrencyConfig `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConcurrencyConfig `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConcurrencyConfigResponse) String() string {
@@ -3468,9 +3584,9 @@ func (s *GetConcurrencyConfigResponse) SetBody(v *ConcurrencyConfig) *GetConcurr
 }
 
 type GetCustomDomainResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CustomDomain      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CustomDomain      `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCustomDomainResponse) String() string {
@@ -3514,9 +3630,9 @@ func (s *GetFunctionRequest) SetQualifier(v string) *GetFunctionRequest {
 }
 
 type GetFunctionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Function          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Function          `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionResponse) String() string {
@@ -3560,9 +3676,9 @@ func (s *GetFunctionCodeRequest) SetQualifier(v string) *GetFunctionCodeRequest 
 }
 
 type GetFunctionCodeResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OutputFuncCode    `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OutputFuncCode    `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionCodeResponse) String() string {
@@ -3589,9 +3705,9 @@ func (s *GetFunctionCodeResponse) SetBody(v *OutputFuncCode) *GetFunctionCodeRes
 }
 
 type GetLayerVersionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Layer             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Layer             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLayerVersionResponse) String() string {
@@ -3618,9 +3734,9 @@ func (s *GetLayerVersionResponse) SetBody(v *Layer) *GetLayerVersionResponse {
 }
 
 type GetLayerVersionByArnResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Layer             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Layer             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLayerVersionByArnResponse) String() string {
@@ -3664,9 +3780,9 @@ func (s *GetProvisionConfigRequest) SetQualifier(v string) *GetProvisionConfigRe
 }
 
 type GetProvisionConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ProvisionConfig   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ProvisionConfig   `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProvisionConfigResponse) String() string {
@@ -3693,6 +3809,7 @@ func (s *GetProvisionConfigResponse) SetBody(v *ProvisionConfig) *GetProvisionCo
 }
 
 type GetResourceTagsRequest struct {
+	// The resource ID.
 	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
 }
 
@@ -3710,9 +3827,9 @@ func (s *GetResourceTagsRequest) SetArn(v string) *GetResourceTagsRequest {
 }
 
 type GetResourceTagsResponse struct {
-	Headers    map[string]*string     `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceTagsOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers" xml:"headers"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceTagsOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceTagsResponse) String() string {
@@ -3739,9 +3856,9 @@ func (s *GetResourceTagsResponse) SetBody(v *GetResourceTagsOutput) *GetResource
 }
 
 type GetTriggerResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Trigger           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Trigger           `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTriggerResponse) String() string {
@@ -3820,9 +3937,9 @@ func (s *InvokeFunctionRequest) SetQualifier(v string) *InvokeFunctionRequest {
 }
 
 type InvokeFunctionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       io.Reader          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       io.Reader          `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InvokeFunctionResponse) String() string {
@@ -3878,9 +3995,9 @@ func (s *ListAliasesRequest) SetPrefix(v string) *ListAliasesRequest {
 }
 
 type ListAliasesResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAliasesOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAliasesOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAliasesResponse) String() string {
@@ -3936,9 +4053,9 @@ func (s *ListAsyncInvokeConfigsRequest) SetNextToken(v string) *ListAsyncInvokeC
 }
 
 type ListAsyncInvokeConfigsResponse struct {
-	Headers    map[string]*string           `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAsyncInvokeConfigOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers" xml:"headers"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAsyncInvokeConfigOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAsyncInvokeConfigsResponse) String() string {
@@ -3994,9 +4111,9 @@ func (s *ListConcurrencyConfigsRequest) SetNextToken(v string) *ListConcurrencyC
 }
 
 type ListConcurrencyConfigsResponse struct {
-	Headers    map[string]*string            `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConcurrencyConfigsOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers" xml:"headers"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConcurrencyConfigsOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConcurrencyConfigsResponse) String() string {
@@ -4052,9 +4169,9 @@ func (s *ListCustomDomainsRequest) SetPrefix(v string) *ListCustomDomainsRequest
 }
 
 type ListCustomDomainsResponse struct {
-	Headers    map[string]*string      `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCustomDomainOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers" xml:"headers"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCustomDomainOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCustomDomainsResponse) String() string {
@@ -4110,9 +4227,9 @@ func (s *ListFunctionVersionsRequest) SetNextToken(v string) *ListFunctionVersio
 }
 
 type ListFunctionVersionsResponse struct {
-	Headers    map[string]*string  `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVersionsOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers" xml:"headers"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVersionsOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFunctionVersionsResponse) String() string {
@@ -4139,9 +4256,12 @@ func (s *ListFunctionVersionsResponse) SetBody(v *ListVersionsOutput) *ListFunct
 }
 
 type ListFunctionsRequest struct {
-	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The number of functions to return.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// A pagination token.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// A prefix of function names.
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
 func (s ListFunctionsRequest) String() string {
@@ -4168,9 +4288,9 @@ func (s *ListFunctionsRequest) SetPrefix(v string) *ListFunctionsRequest {
 }
 
 type ListFunctionsResponse struct {
-	Headers    map[string]*string   `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFunctionsOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers" xml:"headers"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFunctionsOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFunctionsResponse) String() string {
@@ -4220,9 +4340,9 @@ func (s *ListInstancesRequest) SetWithAllActive(v bool) *ListInstancesRequest {
 }
 
 type ListInstancesResponse struct {
-	Headers    map[string]*string   `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstancesOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers" xml:"headers"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -4272,9 +4392,9 @@ func (s *ListLayerVersionsRequest) SetStartVersion(v string) *ListLayerVersionsR
 }
 
 type ListLayerVersionsResponse struct {
-	Headers    map[string]*string      `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLayerVersionOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers" xml:"headers"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLayerVersionOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLayerVersionsResponse) String() string {
@@ -4342,9 +4462,9 @@ func (s *ListLayersRequest) SetPublic(v string) *ListLayersRequest {
 }
 
 type ListLayersResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLayersOutput  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLayersOutput  `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLayersResponse) String() string {
@@ -4371,9 +4491,12 @@ func (s *ListLayersResponse) SetBody(v *ListLayersOutput) *ListLayersResponse {
 }
 
 type ListProvisionConfigsRequest struct {
+	// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	Limit        *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	NextToken    *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Number of provisioned configurations to return.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// A pagination token.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListProvisionConfigsRequest) String() string {
@@ -4400,9 +4523,9 @@ func (s *ListProvisionConfigsRequest) SetNextToken(v string) *ListProvisionConfi
 }
 
 type ListProvisionConfigsResponse struct {
-	Headers    map[string]*string          `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProvisionConfigsOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers" xml:"headers"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProvisionConfigsOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProvisionConfigsResponse) String() string {
@@ -4429,8 +4552,11 @@ func (s *ListProvisionConfigsResponse) SetBody(v *ListProvisionConfigsOutput) *L
 }
 
 type ListTaggedResourcesRequest struct {
-	Limit        *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	NextToken    *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The number of resources to return.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The type of the resource quantity. ALIYUN::FC::FUNCTION indicates functions in Function Compute 3.0. ALIYUN::FC::SERVICE indicates the original service of Function Compute. The default value is ALIYUN::FC:FUNCTION.
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -4458,9 +4584,9 @@ func (s *ListTaggedResourcesRequest) SetResourceType(v string) *ListTaggedResour
 }
 
 type ListTaggedResourcesResponse struct {
-	Headers    map[string]*string         `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTaggedResourcesOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers" xml:"headers"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTaggedResourcesOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTaggedResourcesResponse) String() string {
@@ -4516,9 +4642,9 @@ func (s *ListTriggersRequest) SetPrefix(v string) *ListTriggersRequest {
 }
 
 type ListTriggersResponse struct {
-	Headers    map[string]*string  `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTriggersOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers" xml:"headers"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTriggersOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTriggersResponse) String() string {
@@ -4545,9 +4671,9 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersOutput) *ListTriggersRespo
 }
 
 type ListVpcBindingsResponse struct {
-	Headers    map[string]*string     `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVpcBindingsOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers" xml:"headers"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVpcBindingsOutput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVpcBindingsResponse) String() string {
@@ -4574,6 +4700,7 @@ func (s *ListVpcBindingsResponse) SetBody(v *ListVpcBindingsOutput) *ListVpcBind
 }
 
 type PublishFunctionVersionRequest struct {
+	// The information about the function version.
 	Body *PublishVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4591,9 +4718,9 @@ func (s *PublishFunctionVersionRequest) SetBody(v *PublishVersionInput) *Publish
 }
 
 type PublishFunctionVersionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Version           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Version           `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PublishFunctionVersionResponse) String() string {
@@ -4643,9 +4770,9 @@ func (s *PutAsyncInvokeConfigRequest) SetQualifier(v string) *PutAsyncInvokeConf
 }
 
 type PutAsyncInvokeConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AsyncConfig       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncConfig       `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutAsyncInvokeConfigResponse) String() string {
@@ -4672,6 +4799,7 @@ func (s *PutAsyncInvokeConfigResponse) SetBody(v *AsyncConfig) *PutAsyncInvokeCo
 }
 
 type PutConcurrencyConfigRequest struct {
+	// The concurrency configurations.
 	Body *PutConcurrencyInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4689,9 +4817,9 @@ func (s *PutConcurrencyConfigRequest) SetBody(v *PutConcurrencyInput) *PutConcur
 }
 
 type PutConcurrencyConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConcurrencyConfig `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConcurrencyConfig `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutConcurrencyConfigResponse) String() string {
@@ -4735,8 +4863,8 @@ func (s *PutLayerACLRequest) SetPublic(v string) *PutLayerACLRequest {
 }
 
 type PutLayerACLResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s PutLayerACLResponse) String() string {
@@ -4781,9 +4909,9 @@ func (s *PutProvisionConfigRequest) SetQualifier(v string) *PutProvisionConfigRe
 }
 
 type PutProvisionConfigResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ProvisionConfig   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ProvisionConfig   `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutProvisionConfigResponse) String() string {
@@ -4810,6 +4938,7 @@ func (s *PutProvisionConfigResponse) SetBody(v *ProvisionConfig) *PutProvisionCo
 }
 
 type TagResourceRequest struct {
+	// The configuration of the resource tag.
 	Body *TagResourceInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4827,8 +4956,8 @@ func (s *TagResourceRequest) SetBody(v *TagResourceInput) *TagResourceRequest {
 }
 
 type TagResourceResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s TagResourceResponse) String() string {
@@ -4850,8 +4979,11 @@ func (s *TagResourceResponse) SetStatusCode(v int32) *TagResourceResponse {
 }
 
 type UntagResourceRequest struct {
-	All     *bool   `json:"all,omitempty" xml:"all,omitempty"`
-	Arn     *string `json:"arn,omitempty" xml:"arn,omitempty"`
+	// Specifies whether to delete all tags.
+	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// The resource ID.
+	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
+	// The tag name.
 	TagKeys *string `json:"tagKeys,omitempty" xml:"tagKeys,omitempty"`
 }
 
@@ -4879,8 +5011,8 @@ func (s *UntagResourceRequest) SetTagKeys(v string) *UntagResourceRequest {
 }
 
 type UntagResourceResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UntagResourceResponse) String() string {
@@ -4919,9 +5051,9 @@ func (s *UpdateAliasRequest) SetBody(v *UpdateAliasInput) *UpdateAliasRequest {
 }
 
 type UpdateAliasResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Alias             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Alias             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAliasResponse) String() string {
@@ -4965,9 +5097,9 @@ func (s *UpdateCustomDomainRequest) SetBody(v *UpdateCustomDomainInput) *UpdateC
 }
 
 type UpdateCustomDomainResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CustomDomain      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CustomDomain      `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCustomDomainResponse) String() string {
@@ -5011,9 +5143,9 @@ func (s *UpdateFunctionRequest) SetBody(v *UpdateFunctionInput) *UpdateFunctionR
 }
 
 type UpdateFunctionResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Function          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Function          `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFunctionResponse) String() string {
@@ -5057,9 +5189,9 @@ func (s *UpdateTriggerRequest) SetBody(v *UpdateTriggerInput) *UpdateTriggerRequ
 }
 
 type UpdateTriggerResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Trigger           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Trigger           `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTriggerResponse) String() string {
@@ -5132,14 +5264,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * 创建函数别名。
- *
- * @param request CreateAliasRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAliasResponse
- */
 func (client *Client) CreateAliasWithOptions(functionName *string, request *CreateAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5169,12 +5293,6 @@ func (client *Client) CreateAliasWithOptions(functionName *string, request *Crea
 	return _result, _err
 }
 
-/**
- * 创建函数别名。
- *
- * @param request CreateAliasRequest
- * @return CreateAliasResponse
- */
 func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequest) (_result *CreateAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5187,14 +5305,6 @@ func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequ
 	return _result, _err
 }
 
-/**
- * 创建自定义域名。
- *
- * @param request CreateCustomDomainRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateCustomDomainResponse
- */
 func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCustomDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5224,12 +5334,6 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 	return _result, _err
 }
 
-/**
- * 创建自定义域名。
- *
- * @param request CreateCustomDomainRequest
- * @return CreateCustomDomainResponse
- */
 func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_result *CreateCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5242,14 +5346,6 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 	return _result, _err
 }
 
-/**
- * 创建函数。
- *
- * @param request CreateFunctionRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateFunctionResponse
- */
 func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5279,12 +5375,6 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 	return _result, _err
 }
 
-/**
- * 创建函数。
- *
- * @param request CreateFunctionRequest
- * @return CreateFunctionResponse
- */
 func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *CreateFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5297,14 +5387,6 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * 创建层版本。
- *
- * @param request CreateLayerVersionRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateLayerVersionResponse
- */
 func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *CreateLayerVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLayerVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5334,12 +5416,6 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 	return _result, _err
 }
 
-/**
- * 创建层版本。
- *
- * @param request CreateLayerVersionRequest
- * @return CreateLayerVersionResponse
- */
 func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayerVersionRequest) (_result *CreateLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5352,14 +5428,6 @@ func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayer
 	return _result, _err
 }
 
-/**
- * 创建函数触发器。
- *
- * @param request CreateTriggerRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateTriggerResponse
- */
 func (client *Client) CreateTriggerWithOptions(functionName *string, request *CreateTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5389,12 +5457,6 @@ func (client *Client) CreateTriggerWithOptions(functionName *string, request *Cr
 	return _result, _err
 }
 
-/**
- * 创建函数触发器。
- *
- * @param request CreateTriggerRequest
- * @return CreateTriggerResponse
- */
 func (client *Client) CreateTrigger(functionName *string, request *CreateTriggerRequest) (_result *CreateTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5407,14 +5469,6 @@ func (client *Client) CreateTrigger(functionName *string, request *CreateTrigger
 	return _result, _err
 }
 
-/**
- * 创建VPC绑定。
- *
- * @param request CreateVpcBindingRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateVpcBindingResponse
- */
 func (client *Client) CreateVpcBindingWithOptions(functionName *string, request *CreateVpcBindingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVpcBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5444,12 +5498,6 @@ func (client *Client) CreateVpcBindingWithOptions(functionName *string, request 
 	return _result, _err
 }
 
-/**
- * 创建VPC绑定。
- *
- * @param request CreateVpcBindingRequest
- * @return CreateVpcBindingResponse
- */
 func (client *Client) CreateVpcBinding(functionName *string, request *CreateVpcBindingRequest) (_result *CreateVpcBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5462,13 +5510,6 @@ func (client *Client) CreateVpcBinding(functionName *string, request *CreateVpcB
 	return _result, _err
 }
 
-/**
- * 删除函数别名。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAliasResponse
- */
 func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAliasResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5493,11 +5534,6 @@ func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *st
 	return _result, _err
 }
 
-/**
- * 删除函数别名。
- *
- * @return DeleteAliasResponse
- */
 func (client *Client) DeleteAlias(functionName *string, aliasName *string) (_result *DeleteAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5510,14 +5546,6 @@ func (client *Client) DeleteAlias(functionName *string, aliasName *string) (_res
 	return _result, _err
 }
 
-/**
- * 删除函数异步调用配置。
- *
- * @param request DeleteAsyncInvokeConfigRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAsyncInvokeConfigResponse
- */
 func (client *Client) DeleteAsyncInvokeConfigWithOptions(functionName *string, request *DeleteAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5552,12 +5580,6 @@ func (client *Client) DeleteAsyncInvokeConfigWithOptions(functionName *string, r
 	return _result, _err
 }
 
-/**
- * 删除函数异步调用配置。
- *
- * @param request DeleteAsyncInvokeConfigRequest
- * @return DeleteAsyncInvokeConfigResponse
- */
 func (client *Client) DeleteAsyncInvokeConfig(functionName *string, request *DeleteAsyncInvokeConfigRequest) (_result *DeleteAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5570,13 +5592,6 @@ func (client *Client) DeleteAsyncInvokeConfig(functionName *string, request *Del
 	return _result, _err
 }
 
-/**
- * 删除函数并发度配置。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteConcurrencyConfigResponse
- */
 func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConcurrencyConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5601,11 +5616,6 @@ func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, h
 	return _result, _err
 }
 
-/**
- * 删除函数并发度配置。
- *
- * @return DeleteConcurrencyConfigResponse
- */
 func (client *Client) DeleteConcurrencyConfig(functionName *string) (_result *DeleteConcurrencyConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5618,13 +5628,6 @@ func (client *Client) DeleteConcurrencyConfig(functionName *string) (_result *De
 	return _result, _err
 }
 
-/**
- * 删除自定义域名。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteCustomDomainResponse
- */
 func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5649,11 +5652,6 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 	return _result, _err
 }
 
-/**
- * 删除自定义域名。
- *
- * @return DeleteCustomDomainResponse
- */
 func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5666,13 +5664,6 @@ func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCus
 	return _result, _err
 }
 
-/**
- * 删除函数。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteFunctionResponse
- */
 func (client *Client) DeleteFunctionWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5697,11 +5688,6 @@ func (client *Client) DeleteFunctionWithOptions(functionName *string, headers ma
 	return _result, _err
 }
 
-/**
- * 删除函数。
- *
- * @return DeleteFunctionResponse
- */
 func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5714,13 +5700,6 @@ func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunct
 	return _result, _err
 }
 
-/**
- * 删除函数版本。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteFunctionVersionResponse
- */
 func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5745,11 +5724,6 @@ func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, ver
 	return _result, _err
 }
 
-/**
- * 删除函数版本。
- *
- * @return DeleteFunctionVersionResponse
- */
 func (client *Client) DeleteFunctionVersion(functionName *string, versionId *string) (_result *DeleteFunctionVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5762,13 +5736,6 @@ func (client *Client) DeleteFunctionVersion(functionName *string, versionId *str
 	return _result, _err
 }
 
-/**
- * 删除层版本。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteLayerVersionResponse
- */
 func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLayerVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5793,11 +5760,6 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 	return _result, _err
 }
 
-/**
- * 删除层版本。
- *
- * @return DeleteLayerVersionResponse
- */
 func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_result *DeleteLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5810,14 +5772,6 @@ func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_r
 	return _result, _err
 }
 
-/**
- * 删除函数预留配置。
- *
- * @param request DeleteProvisionConfigRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteProvisionConfigResponse
- */
 func (client *Client) DeleteProvisionConfigWithOptions(functionName *string, request *DeleteProvisionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProvisionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5852,12 +5806,6 @@ func (client *Client) DeleteProvisionConfigWithOptions(functionName *string, req
 	return _result, _err
 }
 
-/**
- * 删除函数预留配置。
- *
- * @param request DeleteProvisionConfigRequest
- * @return DeleteProvisionConfigResponse
- */
 func (client *Client) DeleteProvisionConfig(functionName *string, request *DeleteProvisionConfigRequest) (_result *DeleteProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5870,13 +5818,6 @@ func (client *Client) DeleteProvisionConfig(functionName *string, request *Delet
 	return _result, _err
 }
 
-/**
- * 删除函数触发器。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteTriggerResponse
- */
 func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5901,11 +5842,6 @@ func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName
 	return _result, _err
 }
 
-/**
- * 删除函数触发器。
- *
- * @return DeleteTriggerResponse
- */
 func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (_result *DeleteTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5918,13 +5854,6 @@ func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (
 	return _result, _err
 }
 
-/**
- * 删除VPC绑定。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteVpcBindingResponse
- */
 func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVpcBindingResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5949,11 +5878,6 @@ func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *s
 	return _result, _err
 }
 
-/**
- * 删除VPC绑定。
- *
- * @return DeleteVpcBindingResponse
- */
 func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_result *DeleteVpcBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5966,13 +5890,6 @@ func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_re
 	return _result, _err
 }
 
-/**
- * 获取函数别名信息。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAliasResponse
- */
 func (client *Client) GetAliasWithOptions(functionName *string, aliasName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAliasResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5997,11 +5914,6 @@ func (client *Client) GetAliasWithOptions(functionName *string, aliasName *strin
 	return _result, _err
 }
 
-/**
- * 获取函数别名信息。
- *
- * @return GetAliasResponse
- */
 func (client *Client) GetAlias(functionName *string, aliasName *string) (_result *GetAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6014,14 +5926,6 @@ func (client *Client) GetAlias(functionName *string, aliasName *string) (_result
 	return _result, _err
 }
 
-/**
- * 获取函数异步调用配置。
- *
- * @param request GetAsyncInvokeConfigRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAsyncInvokeConfigResponse
- */
 func (client *Client) GetAsyncInvokeConfigWithOptions(functionName *string, request *GetAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6056,12 +5960,6 @@ func (client *Client) GetAsyncInvokeConfigWithOptions(functionName *string, requ
 	return _result, _err
 }
 
-/**
- * 获取函数异步调用配置。
- *
- * @param request GetAsyncInvokeConfigRequest
- * @return GetAsyncInvokeConfigResponse
- */
 func (client *Client) GetAsyncInvokeConfig(functionName *string, request *GetAsyncInvokeConfigRequest) (_result *GetAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6074,13 +5972,6 @@ func (client *Client) GetAsyncInvokeConfig(functionName *string, request *GetAsy
 	return _result, _err
 }
 
-/**
- * 获取函数并发度配置。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetConcurrencyConfigResponse
- */
 func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConcurrencyConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6105,11 +5996,6 @@ func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, head
 	return _result, _err
 }
 
-/**
- * 获取函数并发度配置。
- *
- * @return GetConcurrencyConfigResponse
- */
 func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetConcurrencyConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6122,13 +6008,6 @@ func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetCo
 	return _result, _err
 }
 
-/**
- * 获取自定义域名。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetCustomDomainResponse
- */
 func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6153,11 +6032,6 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map
 	return _result, _err
 }
 
-/**
- * 获取自定义域名。
- *
- * @return GetCustomDomainResponse
- */
 func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6170,14 +6044,6 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 	return _result, _err
 }
 
-/**
- * 获取函数信息。
- *
- * @param request GetFunctionRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetFunctionResponse
- */
 func (client *Client) GetFunctionWithOptions(functionName *string, request *GetFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6212,12 +6078,6 @@ func (client *Client) GetFunctionWithOptions(functionName *string, request *GetF
 	return _result, _err
 }
 
-/**
- * 获取函数信息。
- *
- * @param request GetFunctionRequest
- * @return GetFunctionResponse
- */
 func (client *Client) GetFunction(functionName *string, request *GetFunctionRequest) (_result *GetFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6230,14 +6090,6 @@ func (client *Client) GetFunction(functionName *string, request *GetFunctionRequ
 	return _result, _err
 }
 
-/**
- * 获取函数代码。
- *
- * @param request GetFunctionCodeRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetFunctionCodeResponse
- */
 func (client *Client) GetFunctionCodeWithOptions(functionName *string, request *GetFunctionCodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6272,12 +6124,6 @@ func (client *Client) GetFunctionCodeWithOptions(functionName *string, request *
 	return _result, _err
 }
 
-/**
- * 获取函数代码。
- *
- * @param request GetFunctionCodeRequest
- * @return GetFunctionCodeResponse
- */
 func (client *Client) GetFunctionCode(functionName *string, request *GetFunctionCodeRequest) (_result *GetFunctionCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6290,13 +6136,6 @@ func (client *Client) GetFunctionCode(functionName *string, request *GetFunction
 	return _result, _err
 }
 
-/**
- * 获取层版本。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetLayerVersionResponse
- */
 func (client *Client) GetLayerVersionWithOptions(layerName *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLayerVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6321,11 +6160,6 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 	return _result, _err
 }
 
-/**
- * 获取层版本。
- *
- * @return GetLayerVersionResponse
- */
 func (client *Client) GetLayerVersion(layerName *string, version *string) (_result *GetLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6338,13 +6172,6 @@ func (client *Client) GetLayerVersion(layerName *string, version *string) (_resu
 	return _result, _err
 }
 
-/**
- * 根据资源标识获取层版本。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetLayerVersionByArnResponse
- */
 func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLayerVersionByArnResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6369,11 +6196,6 @@ func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[s
 	return _result, _err
 }
 
-/**
- * 根据资源标识获取层版本。
- *
- * @return GetLayerVersionByArnResponse
- */
 func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersionByArnResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6386,14 +6208,6 @@ func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersio
 	return _result, _err
 }
 
-/**
- * 获取函数预留配置。
- *
- * @param request GetProvisionConfigRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetProvisionConfigResponse
- */
 func (client *Client) GetProvisionConfigWithOptions(functionName *string, request *GetProvisionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProvisionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6428,12 +6242,6 @@ func (client *Client) GetProvisionConfigWithOptions(functionName *string, reques
 	return _result, _err
 }
 
-/**
- * 获取函数预留配置。
- *
- * @param request GetProvisionConfigRequest
- * @return GetProvisionConfigResponse
- */
 func (client *Client) GetProvisionConfig(functionName *string, request *GetProvisionConfigRequest) (_result *GetProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6447,13 +6255,14 @@ func (client *Client) GetProvisionConfig(functionName *string, request *GetProvi
 }
 
 /**
- * 获取资源标签。
+ * @deprecated
  *
  * @param request GetResourceTagsRequest
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return GetResourceTagsResponse
  */
+// Deprecated
 func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6489,11 +6298,12 @@ func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest
 }
 
 /**
- * 获取资源标签。
+ * @deprecated
  *
  * @param request GetResourceTagsRequest
  * @return GetResourceTagsResponse
  */
+// Deprecated
 func (client *Client) GetResourceTags(request *GetResourceTagsRequest) (_result *GetResourceTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6506,13 +6316,6 @@ func (client *Client) GetResourceTags(request *GetResourceTagsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * 获取函数触发器。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetTriggerResponse
- */
 func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6537,11 +6340,6 @@ func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *s
 	return _result, _err
 }
 
-/**
- * 获取函数触发器。
- *
- * @return GetTriggerResponse
- */
 func (client *Client) GetTrigger(functionName *string, triggerName *string) (_result *GetTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6554,14 +6352,6 @@ func (client *Client) GetTrigger(functionName *string, triggerName *string) (_re
 	return _result, _err
 }
 
-/**
- * 调用函数。
- *
- * @param request InvokeFunctionRequest
- * @param headers InvokeFunctionHeaders
- * @param runtime runtime options for this request RuntimeOptions
- * @return InvokeFunctionResponse
- */
 func (client *Client) InvokeFunctionWithOptions(functionName *string, request *InvokeFunctionRequest, headers *InvokeFunctionHeaders, runtime *util.RuntimeOptions) (_result *InvokeFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6644,12 +6434,6 @@ func (client *Client) InvokeFunctionWithOptions(functionName *string, request *I
 	return _result, _err
 }
 
-/**
- * 调用函数。
- *
- * @param request InvokeFunctionRequest
- * @return InvokeFunctionResponse
- */
 func (client *Client) InvokeFunction(functionName *string, request *InvokeFunctionRequest) (_result *InvokeFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvokeFunctionHeaders{}
@@ -6662,14 +6446,6 @@ func (client *Client) InvokeFunction(functionName *string, request *InvokeFuncti
 	return _result, _err
 }
 
-/**
- * 列出函数别名。
- *
- * @param request ListAliasesRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListAliasesResponse
- */
 func (client *Client) ListAliasesWithOptions(functionName *string, request *ListAliasesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAliasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6712,12 +6488,6 @@ func (client *Client) ListAliasesWithOptions(functionName *string, request *List
 	return _result, _err
 }
 
-/**
- * 列出函数别名。
- *
- * @param request ListAliasesRequest
- * @return ListAliasesResponse
- */
 func (client *Client) ListAliases(functionName *string, request *ListAliasesRequest) (_result *ListAliasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6730,14 +6500,6 @@ func (client *Client) ListAliases(functionName *string, request *ListAliasesRequ
 	return _result, _err
 }
 
-/**
- * 列出函数异步调用配置。
- *
- * @param request ListAsyncInvokeConfigsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListAsyncInvokeConfigsResponse
- */
 func (client *Client) ListAsyncInvokeConfigsWithOptions(request *ListAsyncInvokeConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAsyncInvokeConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6780,12 +6542,6 @@ func (client *Client) ListAsyncInvokeConfigsWithOptions(request *ListAsyncInvoke
 	return _result, _err
 }
 
-/**
- * 列出函数异步调用配置。
- *
- * @param request ListAsyncInvokeConfigsRequest
- * @return ListAsyncInvokeConfigsResponse
- */
 func (client *Client) ListAsyncInvokeConfigs(request *ListAsyncInvokeConfigsRequest) (_result *ListAsyncInvokeConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6798,14 +6554,6 @@ func (client *Client) ListAsyncInvokeConfigs(request *ListAsyncInvokeConfigsRequ
 	return _result, _err
 }
 
-/**
- * 列出函数并发度配置。
- *
- * @param request ListConcurrencyConfigsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListConcurrencyConfigsResponse
- */
 func (client *Client) ListConcurrencyConfigsWithOptions(request *ListConcurrencyConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConcurrencyConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6848,12 +6596,6 @@ func (client *Client) ListConcurrencyConfigsWithOptions(request *ListConcurrency
 	return _result, _err
 }
 
-/**
- * 列出函数并发度配置。
- *
- * @param request ListConcurrencyConfigsRequest
- * @return ListConcurrencyConfigsResponse
- */
 func (client *Client) ListConcurrencyConfigs(request *ListConcurrencyConfigsRequest) (_result *ListConcurrencyConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6866,14 +6608,6 @@ func (client *Client) ListConcurrencyConfigs(request *ListConcurrencyConfigsRequ
 	return _result, _err
 }
 
-/**
- * 列出自定义域名。
- *
- * @param request ListCustomDomainsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListCustomDomainsResponse
- */
 func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCustomDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6916,12 +6650,6 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 	return _result, _err
 }
 
-/**
- * 列出自定义域名。
- *
- * @param request ListCustomDomainsRequest
- * @return ListCustomDomainsResponse
- */
 func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_result *ListCustomDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6934,14 +6662,6 @@ func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_res
 	return _result, _err
 }
 
-/**
- * 列出函数版本。
- *
- * @param request ListFunctionVersionsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListFunctionVersionsResponse
- */
 func (client *Client) ListFunctionVersionsWithOptions(functionName *string, request *ListFunctionVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6984,12 +6704,6 @@ func (client *Client) ListFunctionVersionsWithOptions(functionName *string, requ
 	return _result, _err
 }
 
-/**
- * 列出函数版本。
- *
- * @param request ListFunctionVersionsRequest
- * @return ListFunctionVersionsResponse
- */
 func (client *Client) ListFunctionVersions(functionName *string, request *ListFunctionVersionsRequest) (_result *ListFunctionVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7002,14 +6716,6 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 	return _result, _err
 }
 
-/**
- * 列出函数。
- *
- * @param request ListFunctionsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListFunctionsResponse
- */
 func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7052,12 +6758,6 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, he
 	return _result, _err
 }
 
-/**
- * 列出函数。
- *
- * @param request ListFunctionsRequest
- * @return ListFunctionsResponse
- */
 func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *ListFunctionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7070,14 +6770,6 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 	return _result, _err
 }
 
-/**
- * 列出函数实例。
- *
- * @param request ListInstancesRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListInstancesResponse
- */
 func (client *Client) ListInstancesWithOptions(functionName *string, request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7116,12 +6808,6 @@ func (client *Client) ListInstancesWithOptions(functionName *string, request *Li
 	return _result, _err
 }
 
-/**
- * 列出函数实例。
- *
- * @param request ListInstancesRequest
- * @return ListInstancesResponse
- */
 func (client *Client) ListInstances(functionName *string, request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7134,14 +6820,6 @@ func (client *Client) ListInstances(functionName *string, request *ListInstances
 	return _result, _err
 }
 
-/**
- * 列出层版本。
- *
- * @param request ListLayerVersionsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListLayerVersionsResponse
- */
 func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *ListLayerVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLayerVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7180,12 +6858,6 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 	return _result, _err
 }
 
-/**
- * 列出层版本。
- *
- * @param request ListLayerVersionsRequest
- * @return ListLayerVersionsResponse
- */
 func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVersionsRequest) (_result *ListLayerVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7198,14 +6870,6 @@ func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVer
 	return _result, _err
 }
 
-/**
- * 列出层。
- *
- * @param request ListLayersRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListLayersResponse
- */
 func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLayersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7256,12 +6920,6 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 	return _result, _err
 }
 
-/**
- * 列出层。
- *
- * @param request ListLayersRequest
- * @return ListLayersResponse
- */
 func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7274,14 +6932,6 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 	return _result, _err
 }
 
-/**
- * 列出函数预留配置。
- *
- * @param request ListProvisionConfigsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListProvisionConfigsResponse
- */
 func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProvisionConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7324,12 +6974,6 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 	return _result, _err
 }
 
-/**
- * 列出函数预留配置。
- *
- * @param request ListProvisionConfigsRequest
- * @return ListProvisionConfigsResponse
- */
 func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest) (_result *ListProvisionConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7343,13 +6987,14 @@ func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest)
 }
 
 /**
- * 列出具有标签的资源。
+ * @deprecated
  *
  * @param request ListTaggedResourcesRequest
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return ListTaggedResourcesResponse
  */
+// Deprecated
 func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTaggedResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7393,11 +7038,12 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 }
 
 /**
- * 列出具有标签的资源。
+ * @deprecated
  *
  * @param request ListTaggedResourcesRequest
  * @return ListTaggedResourcesResponse
  */
+// Deprecated
 func (client *Client) ListTaggedResources(request *ListTaggedResourcesRequest) (_result *ListTaggedResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7410,14 +7056,6 @@ func (client *Client) ListTaggedResources(request *ListTaggedResourcesRequest) (
 	return _result, _err
 }
 
-/**
- * 列出函数触发器。
- *
- * @param request ListTriggersRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTriggersResponse
- */
 func (client *Client) ListTriggersWithOptions(functionName *string, request *ListTriggersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTriggersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7460,12 +7098,6 @@ func (client *Client) ListTriggersWithOptions(functionName *string, request *Lis
 	return _result, _err
 }
 
-/**
- * 列出函数触发器。
- *
- * @param request ListTriggersRequest
- * @return ListTriggersResponse
- */
 func (client *Client) ListTriggers(functionName *string, request *ListTriggersRequest) (_result *ListTriggersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7478,13 +7110,6 @@ func (client *Client) ListTriggers(functionName *string, request *ListTriggersRe
 	return _result, _err
 }
 
-/**
- * 列出VPC绑定配置。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListVpcBindingsResponse
- */
 func (client *Client) ListVpcBindingsWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListVpcBindingsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7509,11 +7134,6 @@ func (client *Client) ListVpcBindingsWithOptions(functionName *string, headers m
 	return _result, _err
 }
 
-/**
- * 列出VPC绑定配置。
- *
- * @return ListVpcBindingsResponse
- */
 func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBindingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7526,14 +7146,6 @@ func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBin
 	return _result, _err
 }
 
-/**
- * 发布函数版本。
- *
- * @param request PublishFunctionVersionRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return PublishFunctionVersionResponse
- */
 func (client *Client) PublishFunctionVersionWithOptions(functionName *string, request *PublishFunctionVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishFunctionVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7563,12 +7175,6 @@ func (client *Client) PublishFunctionVersionWithOptions(functionName *string, re
 	return _result, _err
 }
 
-/**
- * 发布函数版本。
- *
- * @param request PublishFunctionVersionRequest
- * @return PublishFunctionVersionResponse
- */
 func (client *Client) PublishFunctionVersion(functionName *string, request *PublishFunctionVersionRequest) (_result *PublishFunctionVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7581,14 +7187,6 @@ func (client *Client) PublishFunctionVersion(functionName *string, request *Publ
 	return _result, _err
 }
 
-/**
- * 设置函数异步调用配置。
- *
- * @param request PutAsyncInvokeConfigRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return PutAsyncInvokeConfigResponse
- */
 func (client *Client) PutAsyncInvokeConfigWithOptions(functionName *string, request *PutAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7624,12 +7222,6 @@ func (client *Client) PutAsyncInvokeConfigWithOptions(functionName *string, requ
 	return _result, _err
 }
 
-/**
- * 设置函数异步调用配置。
- *
- * @param request PutAsyncInvokeConfigRequest
- * @return PutAsyncInvokeConfigResponse
- */
 func (client *Client) PutAsyncInvokeConfig(functionName *string, request *PutAsyncInvokeConfigRequest) (_result *PutAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7642,14 +7234,6 @@ func (client *Client) PutAsyncInvokeConfig(functionName *string, request *PutAsy
 	return _result, _err
 }
 
-/**
- * 设置函数并发度配置。
- *
- * @param request PutConcurrencyConfigRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return PutConcurrencyConfigResponse
- */
 func (client *Client) PutConcurrencyConfigWithOptions(functionName *string, request *PutConcurrencyConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutConcurrencyConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7679,12 +7263,6 @@ func (client *Client) PutConcurrencyConfigWithOptions(functionName *string, requ
 	return _result, _err
 }
 
-/**
- * 设置函数并发度配置。
- *
- * @param request PutConcurrencyConfigRequest
- * @return PutConcurrencyConfigResponse
- */
 func (client *Client) PutConcurrencyConfig(functionName *string, request *PutConcurrencyConfigRequest) (_result *PutConcurrencyConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7697,14 +7275,6 @@ func (client *Client) PutConcurrencyConfig(functionName *string, request *PutCon
 	return _result, _err
 }
 
-/**
- * 设置层的访问权限。
- *
- * @param request PutLayerACLRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return PutLayerACLResponse
- */
 func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLayerACLRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutLayerACLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7739,12 +7309,6 @@ func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLaye
 	return _result, _err
 }
 
-/**
- * 设置层的访问权限。
- *
- * @param request PutLayerACLRequest
- * @return PutLayerACLResponse
- */
 func (client *Client) PutLayerACL(layerName *string, request *PutLayerACLRequest) (_result *PutLayerACLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7757,14 +7321,6 @@ func (client *Client) PutLayerACL(layerName *string, request *PutLayerACLRequest
 	return _result, _err
 }
 
-/**
- * 设置函数预留配置。
- *
- * @param request PutProvisionConfigRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return PutProvisionConfigResponse
- */
 func (client *Client) PutProvisionConfigWithOptions(functionName *string, request *PutProvisionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutProvisionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7800,12 +7356,6 @@ func (client *Client) PutProvisionConfigWithOptions(functionName *string, reques
 	return _result, _err
 }
 
-/**
- * 设置函数预留配置。
- *
- * @param request PutProvisionConfigRequest
- * @return PutProvisionConfigResponse
- */
 func (client *Client) PutProvisionConfig(functionName *string, request *PutProvisionConfigRequest) (_result *PutProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7819,13 +7369,14 @@ func (client *Client) PutProvisionConfig(functionName *string, request *PutProvi
 }
 
 /**
- * 设置资源标签。
+ * @deprecated
  *
  * @param request TagResourceRequest
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return TagResourceResponse
  */
+// Deprecated
 func (client *Client) TagResourceWithOptions(request *TagResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7856,11 +7407,12 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 }
 
 /**
- * 设置资源标签。
+ * @deprecated
  *
  * @param request TagResourceRequest
  * @return TagResourceResponse
  */
+// Deprecated
 func (client *Client) TagResource(request *TagResourceRequest) (_result *TagResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7874,13 +7426,14 @@ func (client *Client) TagResource(request *TagResourceRequest) (_result *TagReso
 }
 
 /**
- * 删除资源标签。
+ * @deprecated
  *
  * @param request UntagResourceRequest
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return UntagResourceResponse
  */
+// Deprecated
 func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7924,11 +7477,12 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 }
 
 /**
- * 删除资源标签。
+ * @deprecated
  *
  * @param request UntagResourceRequest
  * @return UntagResourceResponse
  */
+// Deprecated
 func (client *Client) UntagResource(request *UntagResourceRequest) (_result *UntagResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7941,14 +7495,6 @@ func (client *Client) UntagResource(request *UntagResourceRequest) (_result *Unt
 	return _result, _err
 }
 
-/**
- * 更新函数别名。
- *
- * @param request UpdateAliasRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateAliasResponse
- */
 func (client *Client) UpdateAliasWithOptions(functionName *string, aliasName *string, request *UpdateAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7978,12 +7524,6 @@ func (client *Client) UpdateAliasWithOptions(functionName *string, aliasName *st
 	return _result, _err
 }
 
-/**
- * 更新函数别名。
- *
- * @param request UpdateAliasRequest
- * @return UpdateAliasResponse
- */
 func (client *Client) UpdateAlias(functionName *string, aliasName *string, request *UpdateAliasRequest) (_result *UpdateAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7996,14 +7536,6 @@ func (client *Client) UpdateAlias(functionName *string, aliasName *string, reque
 	return _result, _err
 }
 
-/**
- * 更新自定义域名。
- *
- * @param request UpdateCustomDomainRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateCustomDomainResponse
- */
 func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request *UpdateCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCustomDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8033,12 +7565,6 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 	return _result, _err
 }
 
-/**
- * 更新自定义域名。
- *
- * @param request UpdateCustomDomainRequest
- * @return UpdateCustomDomainResponse
- */
 func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCustomDomainRequest) (_result *UpdateCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8051,14 +7577,6 @@ func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCust
 	return _result, _err
 }
 
-/**
- * 更新函数。
- *
- * @param request UpdateFunctionRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateFunctionResponse
- */
 func (client *Client) UpdateFunctionWithOptions(functionName *string, request *UpdateFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8088,12 +7606,6 @@ func (client *Client) UpdateFunctionWithOptions(functionName *string, request *U
 	return _result, _err
 }
 
-/**
- * 更新函数。
- *
- * @param request UpdateFunctionRequest
- * @return UpdateFunctionResponse
- */
 func (client *Client) UpdateFunction(functionName *string, request *UpdateFunctionRequest) (_result *UpdateFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8106,14 +7618,6 @@ func (client *Client) UpdateFunction(functionName *string, request *UpdateFuncti
 	return _result, _err
 }
 
-/**
- * 更新函数触发器。
- *
- * @param request UpdateTriggerRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateTriggerResponse
- */
 func (client *Client) UpdateTriggerWithOptions(functionName *string, triggerName *string, request *UpdateTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8143,12 +7647,6 @@ func (client *Client) UpdateTriggerWithOptions(functionName *string, triggerName
 	return _result, _err
 }
 
-/**
- * 更新函数触发器。
- *
- * @param request UpdateTriggerRequest
- * @return UpdateTriggerResponse
- */
 func (client *Client) UpdateTrigger(functionName *string, triggerName *string, request *UpdateTriggerRequest) (_result *UpdateTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
