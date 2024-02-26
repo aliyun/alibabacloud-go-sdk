@@ -190,9 +190,9 @@ func (s *DescribeAdvicesResponseBodyDataAdvice) SetSeverity(v int32) *DescribeAd
 }
 
 type DescribeAdvicesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAdvicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAdvicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAdvicesResponse) String() string {
@@ -419,9 +419,9 @@ func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetSeverity(v int64) *De
 }
 
 type DescribeAdvicesFlatPageResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAdvicesFlatPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAdvicesFlatPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAdvicesFlatPageResponse) String() string {
@@ -649,9 +649,9 @@ func (s *DescribeAdvicesPageResponseBodyDataResult) SetSeverity(v int64) *Descri
 }
 
 type DescribeAdvicesPageResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAdvicesPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAdvicesPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAdvicesPageResponse) String() string {
@@ -824,9 +824,9 @@ func (s *DescribeAdvisorChecksResponseBodyDataAdvisorCheck) SetViewColumn(v stri
 }
 
 type DescribeAdvisorChecksResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAdvisorChecksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAdvisorChecksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAdvisorChecksResponse) String() string {
@@ -1016,9 +1016,9 @@ func (s *DescribeAdvisorResourcesResponseBodyDataResultResource) SetResourceName
 }
 
 type DescribeAdvisorResourcesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAdvisorResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAdvisorResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAdvisorResourcesResponse) String() string {
@@ -1215,9 +1215,9 @@ func (s *GetHistoryAdvicesResponseBodyDataResult) SetUrl(v string) *GetHistoryAd
 }
 
 type GetHistoryAdvicesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHistoryAdvicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHistoryAdvicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHistoryAdvicesResponse) String() string {
@@ -1307,9 +1307,9 @@ func (s *GetTaskStatusByIdResponseBodyData) SetTaskStatus(v int32) *GetTaskStatu
 }
 
 type GetTaskStatusByIdResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskStatusByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskStatusByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskStatusByIdResponse) String() string {
@@ -1423,9 +1423,9 @@ func (s *RefreshAdvisorCheckResponseBodyData) SetTraceId(v string) *RefreshAdvis
 }
 
 type RefreshAdvisorCheckResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshAdvisorCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshAdvisorCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshAdvisorCheckResponse) String() string {
@@ -1498,9 +1498,9 @@ func (s *RefreshAdvisorResourceResponseBody) SetRequestId(v string) *RefreshAdvi
 }
 
 type RefreshAdvisorResourceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshAdvisorResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshAdvisorResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshAdvisorResourceResponse) String() string {
@@ -1522,6 +1522,211 @@ func (s *RefreshAdvisorResourceResponse) SetStatusCode(v int32) *RefreshAdvisorR
 }
 
 func (s *RefreshAdvisorResourceResponse) SetBody(v *RefreshAdvisorResourceResponseBody) *RefreshAdvisorResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ReportBizAlertInfoRequest struct {
+	AlertDescription *string  `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
+	AlertDetail      *string  `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	AlertGrade       *string  `json:"AlertGrade,omitempty" xml:"AlertGrade,omitempty"`
+	AlertLabels      *string  `json:"AlertLabels,omitempty" xml:"AlertLabels,omitempty"`
+	AlertScene       *string  `json:"AlertScene,omitempty" xml:"AlertScene,omitempty"`
+	AlertToken       *string  `json:"AlertToken,omitempty" xml:"AlertToken,omitempty"`
+	AlertUid         []*int64 `json:"AlertUid,omitempty" xml:"AlertUid,omitempty" type:"Repeated"`
+	Language         *string  `json:"Language,omitempty" xml:"Language,omitempty"`
+}
+
+func (s ReportBizAlertInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportBizAlertInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReportBizAlertInfoRequest) SetAlertDescription(v string) *ReportBizAlertInfoRequest {
+	s.AlertDescription = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoRequest) SetAlertDetail(v string) *ReportBizAlertInfoRequest {
+	s.AlertDetail = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoRequest) SetAlertGrade(v string) *ReportBizAlertInfoRequest {
+	s.AlertGrade = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoRequest) SetAlertLabels(v string) *ReportBizAlertInfoRequest {
+	s.AlertLabels = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoRequest) SetAlertScene(v string) *ReportBizAlertInfoRequest {
+	s.AlertScene = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoRequest) SetAlertToken(v string) *ReportBizAlertInfoRequest {
+	s.AlertToken = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoRequest) SetAlertUid(v []*int64) *ReportBizAlertInfoRequest {
+	s.AlertUid = v
+	return s
+}
+
+func (s *ReportBizAlertInfoRequest) SetLanguage(v string) *ReportBizAlertInfoRequest {
+	s.Language = &v
+	return s
+}
+
+type ReportBizAlertInfoShrinkRequest struct {
+	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
+	AlertDetail      *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	AlertGrade       *string `json:"AlertGrade,omitempty" xml:"AlertGrade,omitempty"`
+	AlertLabels      *string `json:"AlertLabels,omitempty" xml:"AlertLabels,omitempty"`
+	AlertScene       *string `json:"AlertScene,omitempty" xml:"AlertScene,omitempty"`
+	AlertToken       *string `json:"AlertToken,omitempty" xml:"AlertToken,omitempty"`
+	AlertUidShrink   *string `json:"AlertUid,omitempty" xml:"AlertUid,omitempty"`
+	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
+}
+
+func (s ReportBizAlertInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportBizAlertInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReportBizAlertInfoShrinkRequest) SetAlertDescription(v string) *ReportBizAlertInfoShrinkRequest {
+	s.AlertDescription = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoShrinkRequest) SetAlertDetail(v string) *ReportBizAlertInfoShrinkRequest {
+	s.AlertDetail = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoShrinkRequest) SetAlertGrade(v string) *ReportBizAlertInfoShrinkRequest {
+	s.AlertGrade = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoShrinkRequest) SetAlertLabels(v string) *ReportBizAlertInfoShrinkRequest {
+	s.AlertLabels = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoShrinkRequest) SetAlertScene(v string) *ReportBizAlertInfoShrinkRequest {
+	s.AlertScene = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoShrinkRequest) SetAlertToken(v string) *ReportBizAlertInfoShrinkRequest {
+	s.AlertToken = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoShrinkRequest) SetAlertUidShrink(v string) *ReportBizAlertInfoShrinkRequest {
+	s.AlertUidShrink = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoShrinkRequest) SetLanguage(v string) *ReportBizAlertInfoShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+type ReportBizAlertInfoResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ReportBizAlertInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReportBizAlertInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportBizAlertInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReportBizAlertInfoResponseBody) SetCode(v string) *ReportBizAlertInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoResponseBody) SetData(v *ReportBizAlertInfoResponseBodyData) *ReportBizAlertInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ReportBizAlertInfoResponseBody) SetMessage(v string) *ReportBizAlertInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoResponseBody) SetRequestId(v string) *ReportBizAlertInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoResponseBody) SetSuccess(v bool) *ReportBizAlertInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReportBizAlertInfoResponseBodyData struct {
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s ReportBizAlertInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportBizAlertInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ReportBizAlertInfoResponseBodyData) SetResult(v string) *ReportBizAlertInfoResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+type ReportBizAlertInfoResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReportBizAlertInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReportBizAlertInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportBizAlertInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReportBizAlertInfoResponse) SetHeaders(v map[string]*string) *ReportBizAlertInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReportBizAlertInfoResponse) SetStatusCode(v int32) *ReportBizAlertInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReportBizAlertInfoResponse) SetBody(v *ReportBizAlertInfoResponseBody) *ReportBizAlertInfoResponse {
 	s.Body = v
 	return s
 }
@@ -2094,6 +2299,84 @@ func (client *Client) RefreshAdvisorResource(request *RefreshAdvisorResourceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshAdvisorResourceResponse{}
 	_body, _err := client.RefreshAdvisorResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReportBizAlertInfoWithOptions(tmpReq *ReportBizAlertInfoRequest, runtime *util.RuntimeOptions) (_result *ReportBizAlertInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ReportBizAlertInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlertUid)) {
+		request.AlertUidShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertUid, tea.String("AlertUid"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertDescription)) {
+		query["AlertDescription"] = request.AlertDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertDetail)) {
+		query["AlertDetail"] = request.AlertDetail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertGrade)) {
+		query["AlertGrade"] = request.AlertGrade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertLabels)) {
+		query["AlertLabels"] = request.AlertLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertScene)) {
+		query["AlertScene"] = request.AlertScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertToken)) {
+		query["AlertToken"] = request.AlertToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUidShrink)) {
+		query["AlertUid"] = request.AlertUidShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReportBizAlertInfo"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReportBizAlertInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReportBizAlertInfo(request *ReportBizAlertInfoRequest) (_result *ReportBizAlertInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReportBizAlertInfoResponse{}
+	_body, _err := client.ReportBizAlertInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

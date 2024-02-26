@@ -1,3 +1,7 @@
+2024-02-26 Version: v1.2.0
+- Support API ReportBizAlertInfo.
+
+
 2023-11-08 Version: v1.1.0
 - Generated golang 2018-01-20 for Advisor.
 
