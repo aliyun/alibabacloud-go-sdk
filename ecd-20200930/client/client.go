@@ -21579,9 +21579,31 @@ func (s *DescribePriceForRenewDesktopOversoldGroupResponse) SetBody(v *DescribeP
 }
 
 type DescribeRegionsRequest struct {
-	// The ID of the region.
+	// The display language of the specified service in a location.
+	//
+	// Valid values:
+	//
+	// *   en
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     : English
+	//
+	// *   zh (default)
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     : Chinese
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The list of regions.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -21604,9 +21626,9 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	// DescribeRegions
+	// The information about regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The operation that you want to perform. Set the value to DescribeRegions.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21629,9 +21651,12 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The display name of the region, which varies based on the current language.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -36278,6 +36303,99 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
+type UnbindUserDesktopRequest struct {
+	DesktopAgentIds []*string `json:"DesktopAgentIds,omitempty" xml:"DesktopAgentIds,omitempty" type:"Repeated"`
+	DesktopGroupId  *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopIds      []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	Force           *bool     `json:"Force,omitempty" xml:"Force,omitempty"`
+	Reason          *string   `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	UserDesktopIds  []*string `json:"UserDesktopIds,omitempty" xml:"UserDesktopIds,omitempty" type:"Repeated"`
+}
+
+func (s UnbindUserDesktopRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindUserDesktopRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindUserDesktopRequest) SetDesktopAgentIds(v []*string) *UnbindUserDesktopRequest {
+	s.DesktopAgentIds = v
+	return s
+}
+
+func (s *UnbindUserDesktopRequest) SetDesktopGroupId(v string) *UnbindUserDesktopRequest {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *UnbindUserDesktopRequest) SetDesktopIds(v []*string) *UnbindUserDesktopRequest {
+	s.DesktopIds = v
+	return s
+}
+
+func (s *UnbindUserDesktopRequest) SetForce(v bool) *UnbindUserDesktopRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *UnbindUserDesktopRequest) SetReason(v string) *UnbindUserDesktopRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *UnbindUserDesktopRequest) SetUserDesktopIds(v []*string) *UnbindUserDesktopRequest {
+	s.UserDesktopIds = v
+	return s
+}
+
+type UnbindUserDesktopResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnbindUserDesktopResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindUserDesktopResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindUserDesktopResponseBody) SetRequestId(v string) *UnbindUserDesktopResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnbindUserDesktopResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindUserDesktopResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnbindUserDesktopResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindUserDesktopResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindUserDesktopResponse) SetHeaders(v map[string]*string) *UnbindUserDesktopResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindUserDesktopResponse) SetStatusCode(v int32) *UnbindUserDesktopResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindUserDesktopResponse) SetBody(v *UnbindUserDesktopResponseBody) *UnbindUserDesktopResponse {
+	s.Body = v
+	return s
+}
+
 type UnlockVirtualMFADeviceRequest struct {
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -50783,6 +50901,70 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopRequest, runtime *util.RuntimeOptions) (_result *UnbindUserDesktopResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesktopAgentIds)) {
+		query["DesktopAgentIds"] = request.DesktopAgentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
+		query["DesktopGroupId"] = request.DesktopGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopIds)) {
+		query["DesktopIds"] = request.DesktopIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDesktopIds)) {
+		query["UserDesktopIds"] = request.UserDesktopIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindUserDesktop"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindUserDesktopResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnbindUserDesktop(request *UnbindUserDesktopRequest) (_result *UnbindUserDesktopResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindUserDesktopResponse{}
+	_body, _err := client.UnbindUserDesktopWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
