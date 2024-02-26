@@ -452,8 +452,11 @@ type ChangeResourceGroupRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource IDs. You can specify up to 50 resource IDs.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The region ID of the resource group.
-	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The type of resource. Valid values:
+	//
+	// *   **vpcendpoint**: endpoint
+	// *   **vpcendpointservice**: endpoint service
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -474,8 +477,8 @@ func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGrou
 	return s
 }
 
-func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResourceGroupRequest {
-	s.ResourceRegionId = &v
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -3086,7 +3089,8 @@ type ListVpcEndpointConnectionsResponseBody struct {
 	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3732,7 +3736,8 @@ type ListVpcEndpointServiceUsersResponseBody struct {
 	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The whitelists in the format of Aliyun Resource Name (ARN).
 	UserARNs []*ListVpcEndpointServiceUsersResponseBodyUserARNs `json:"UserARNs,omitempty" xml:"UserARNs,omitempty" type:"Repeated"`
@@ -4007,8 +4012,9 @@ type ListVpcEndpointServicesResponseBody struct {
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The endpoint services.
-	Services   []*ListVpcEndpointServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Services []*ListVpcEndpointServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListVpcEndpointServicesResponseBody) String() string {
@@ -4433,7 +4439,12 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	// The ID of the endpoint service that can be associated with the endpoint.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service that can be associated with the endpoint.
-	ServiceName         *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The type of the service resource. Valid values:
+	//
+	// *   **slb**: Classic Load Balancer (CLB) instance
+	// *   **alb**: Application Load Balancer (ALB) instance
+	// *   **nlb**: Network Load Balancer (NLB) instance
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	// Indicates whether IPv6 is enabled. Valid values:
 	//
@@ -6733,8 +6744,8 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		query["ResourceId"] = request.ResourceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
-		query["ResourceRegionId"] = request.ResourceRegionId
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	req := &openapi.OpenApiRequest{
