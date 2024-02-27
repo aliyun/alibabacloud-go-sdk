@@ -13097,6 +13097,7 @@ type GetSmartHandleJobResponseBodyJobResult struct {
 	AiResult *string `json:"AiResult,omitempty" xml:"AiResult,omitempty"`
 	// 媒资Id
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Usage   *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBodyJobResult) String() string {
@@ -13114,6 +13115,11 @@ func (s *GetSmartHandleJobResponseBodyJobResult) SetAiResult(v string) *GetSmart
 
 func (s *GetSmartHandleJobResponseBodyJobResult) SetMediaId(v string) *GetSmartHandleJobResponseBodyJobResult {
 	s.MediaId = &v
+	return s
+}
+
+func (s *GetSmartHandleJobResponseBodyJobResult) SetUsage(v string) *GetSmartHandleJobResponseBodyJobResult {
+	s.Usage = &v
 	return s
 }
 
