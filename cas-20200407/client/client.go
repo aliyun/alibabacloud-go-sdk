@@ -560,6 +560,136 @@ func (s *CreateCertificateWithCsrRequestResponse) SetBody(v *CreateCertificateWi
 	return s
 }
 
+type CreateCsrRequest struct {
+	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CommonName  *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	CorpName    *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	KeySize     *int32  `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	Locality    *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Sans        *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+}
+
+func (s CreateCsrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCsrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCsrRequest) SetAlgorithm(v string) *CreateCsrRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetCommonName(v string) *CreateCsrRequest {
+	s.CommonName = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetCorpName(v string) *CreateCsrRequest {
+	s.CorpName = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetCountryCode(v string) *CreateCsrRequest {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetDepartment(v string) *CreateCsrRequest {
+	s.Department = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetKeySize(v int32) *CreateCsrRequest {
+	s.KeySize = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetLocality(v string) *CreateCsrRequest {
+	s.Locality = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetName(v string) *CreateCsrRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetProvince(v string) *CreateCsrRequest {
+	s.Province = &v
+	return s
+}
+
+func (s *CreateCsrRequest) SetSans(v string) *CreateCsrRequest {
+	s.Sans = &v
+	return s
+}
+
+type CreateCsrResponseBody struct {
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// CSR ID。
+	CsrId     *int64  `json:"CsrId,omitempty" xml:"CsrId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCsrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCsrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCsrResponseBody) SetCsr(v string) *CreateCsrResponseBody {
+	s.Csr = &v
+	return s
+}
+
+func (s *CreateCsrResponseBody) SetCsrId(v int64) *CreateCsrResponseBody {
+	s.CsrId = &v
+	return s
+}
+
+func (s *CreateCsrResponseBody) SetRequestId(v string) *CreateCsrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCsrResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCsrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCsrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCsrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCsrResponse) SetHeaders(v map[string]*string) *CreateCsrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCsrResponse) SetStatusCode(v int32) *CreateCsrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCsrResponse) SetBody(v *CreateCsrResponseBody) *CreateCsrResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWHClientCertificateRequest struct {
 	AfterTime        *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
 	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
@@ -905,6 +1035,70 @@ func (s *DeleteCertificateRequestResponse) SetStatusCode(v int32) *DeleteCertifi
 }
 
 func (s *DeleteCertificateRequestResponse) SetBody(v *DeleteCertificateRequestResponseBody) *DeleteCertificateRequestResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCsrRequest struct {
+	// CSR ID。
+	CsrId *int64 `json:"CsrId,omitempty" xml:"CsrId,omitempty"`
+}
+
+func (s DeleteCsrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCsrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCsrRequest) SetCsrId(v int64) *DeleteCsrRequest {
+	s.CsrId = &v
+	return s
+}
+
+type DeleteCsrResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCsrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCsrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCsrResponseBody) SetRequestId(v string) *DeleteCsrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCsrResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCsrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCsrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCsrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCsrResponse) SetHeaders(v map[string]*string) *DeleteCsrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCsrResponse) SetStatusCode(v int32) *DeleteCsrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCsrResponse) SetBody(v *DeleteCsrResponseBody) *DeleteCsrResponse {
 	s.Body = v
 	return s
 }
@@ -1486,6 +1680,76 @@ func (s *GetCertWarehouseQuotaResponse) SetStatusCode(v int32) *GetCertWarehouse
 }
 
 func (s *GetCertWarehouseQuotaResponse) SetBody(v *GetCertWarehouseQuotaResponseBody) *GetCertWarehouseQuotaResponse {
+	s.Body = v
+	return s
+}
+
+type GetCsrDetailRequest struct {
+	// CSR ID。
+	CsrId *int64 `json:"CsrId,omitempty" xml:"CsrId,omitempty"`
+}
+
+func (s GetCsrDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCsrDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCsrDetailRequest) SetCsrId(v int64) *GetCsrDetailRequest {
+	s.CsrId = &v
+	return s
+}
+
+type GetCsrDetailResponseBody struct {
+	Csr       *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetCsrDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCsrDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCsrDetailResponseBody) SetCsr(v string) *GetCsrDetailResponseBody {
+	s.Csr = &v
+	return s
+}
+
+func (s *GetCsrDetailResponseBody) SetRequestId(v string) *GetCsrDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCsrDetailResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCsrDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCsrDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCsrDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCsrDetailResponse) SetHeaders(v map[string]*string) *GetCsrDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCsrDetailResponse) SetStatusCode(v int32) *GetCsrDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCsrDetailResponse) SetBody(v *GetCsrDetailResponseBody) *GetCsrDetailResponse {
 	s.Body = v
 	return s
 }
@@ -2146,6 +2410,201 @@ func (s *ListCertWarehouseResponse) SetStatusCode(v int32) *ListCertWarehouseRes
 }
 
 func (s *ListCertWarehouseResponse) SetBody(v *ListCertWarehouseResponseBody) *ListCertWarehouseResponse {
+	s.Body = v
+	return s
+}
+
+type ListCsrRequest struct {
+	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	KeyWord     *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	ShowSize    *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+}
+
+func (s ListCsrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCsrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCsrRequest) SetAlgorithm(v string) *ListCsrRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListCsrRequest) SetCurrentPage(v int64) *ListCsrRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCsrRequest) SetKeyWord(v string) *ListCsrRequest {
+	s.KeyWord = &v
+	return s
+}
+
+func (s *ListCsrRequest) SetShowSize(v int64) *ListCsrRequest {
+	s.ShowSize = &v
+	return s
+}
+
+type ListCsrResponseBody struct {
+	CsrList     []*ListCsrResponseBodyCsrList `json:"CsrList,omitempty" xml:"CsrList,omitempty" type:"Repeated"`
+	CurrentPage *int64                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize    *int64                        `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	TotalCount  *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCsrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCsrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCsrResponseBody) SetCsrList(v []*ListCsrResponseBodyCsrList) *ListCsrResponseBody {
+	s.CsrList = v
+	return s
+}
+
+func (s *ListCsrResponseBody) SetCurrentPage(v int64) *ListCsrResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCsrResponseBody) SetRequestId(v string) *ListCsrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCsrResponseBody) SetShowSize(v int64) *ListCsrResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCsrResponseBody) SetTotalCount(v int64) *ListCsrResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCsrResponseBodyCsrList struct {
+	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CommonName  *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	CorpName    *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// CSR ID。
+	CsrId         *int64  `json:"CsrId,omitempty" xml:"CsrId,omitempty"`
+	Department    *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	HasPrivateKey *bool   `json:"HasPrivateKey,omitempty" xml:"HasPrivateKey,omitempty"`
+	KeySha2       *string `json:"KeySha2,omitempty" xml:"KeySha2,omitempty"`
+	KeySize       *int32  `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	Locality      *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Province      *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Sans          *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+}
+
+func (s ListCsrResponseBodyCsrList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCsrResponseBodyCsrList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCsrResponseBodyCsrList) SetAlgorithm(v string) *ListCsrResponseBodyCsrList {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetCommonName(v string) *ListCsrResponseBodyCsrList {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetCorpName(v string) *ListCsrResponseBodyCsrList {
+	s.CorpName = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetCountryCode(v string) *ListCsrResponseBodyCsrList {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetCsrId(v int64) *ListCsrResponseBodyCsrList {
+	s.CsrId = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetDepartment(v string) *ListCsrResponseBodyCsrList {
+	s.Department = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetHasPrivateKey(v bool) *ListCsrResponseBodyCsrList {
+	s.HasPrivateKey = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetKeySha2(v string) *ListCsrResponseBodyCsrList {
+	s.KeySha2 = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetKeySize(v int32) *ListCsrResponseBodyCsrList {
+	s.KeySize = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetLocality(v string) *ListCsrResponseBodyCsrList {
+	s.Locality = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetName(v string) *ListCsrResponseBodyCsrList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetProvince(v string) *ListCsrResponseBodyCsrList {
+	s.Province = &v
+	return s
+}
+
+func (s *ListCsrResponseBodyCsrList) SetSans(v string) *ListCsrResponseBodyCsrList {
+	s.Sans = &v
+	return s
+}
+
+type ListCsrResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCsrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCsrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCsrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCsrResponse) SetHeaders(v map[string]*string) *ListCsrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCsrResponse) SetStatusCode(v int32) *ListCsrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCsrResponse) SetBody(v *ListCsrResponseBody) *ListCsrResponse {
 	s.Body = v
 	return s
 }
@@ -2816,6 +3275,158 @@ func (s *SignResponse) SetStatusCode(v int32) *SignResponse {
 }
 
 func (s *SignResponse) SetBody(v *SignResponseBody) *SignResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCsrRequest struct {
+	// CSR ID。
+	CsrId *int64  `json:"CsrId,omitempty" xml:"CsrId,omitempty"`
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s UpdateCsrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCsrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCsrRequest) SetCsrId(v int64) *UpdateCsrRequest {
+	s.CsrId = &v
+	return s
+}
+
+func (s *UpdateCsrRequest) SetKey(v string) *UpdateCsrRequest {
+	s.Key = &v
+	return s
+}
+
+type UpdateCsrResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCsrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCsrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCsrResponseBody) SetRequestId(v string) *UpdateCsrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCsrResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCsrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCsrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCsrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCsrResponse) SetHeaders(v map[string]*string) *UpdateCsrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCsrResponse) SetStatusCode(v int32) *UpdateCsrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCsrResponse) SetBody(v *UpdateCsrResponseBody) *UpdateCsrResponse {
+	s.Body = v
+	return s
+}
+
+type UploadCsrRequest struct {
+	Csr  *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	Key  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UploadCsrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadCsrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadCsrRequest) SetCsr(v string) *UploadCsrRequest {
+	s.Csr = &v
+	return s
+}
+
+func (s *UploadCsrRequest) SetKey(v string) *UploadCsrRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *UploadCsrRequest) SetName(v string) *UploadCsrRequest {
+	s.Name = &v
+	return s
+}
+
+type UploadCsrResponseBody struct {
+	// CSR ID。
+	CsrId     *int64  `json:"CsrId,omitempty" xml:"CsrId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UploadCsrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadCsrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadCsrResponseBody) SetCsrId(v int64) *UploadCsrResponseBody {
+	s.CsrId = &v
+	return s
+}
+
+func (s *UploadCsrResponseBody) SetRequestId(v string) *UploadCsrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UploadCsrResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadCsrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadCsrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadCsrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadCsrResponse) SetHeaders(v map[string]*string) *UploadCsrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadCsrResponse) SetStatusCode(v int32) *UploadCsrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadCsrResponse) SetBody(v *UploadCsrResponseBody) *UploadCsrResponse {
 	s.Body = v
 	return s
 }
@@ -3606,6 +4217,86 @@ func (client *Client) CreateCertificateWithCsrRequest(request *CreateCertificate
 	return _result, _err
 }
 
+func (client *Client) CreateCsrWithOptions(request *CreateCsrRequest, runtime *util.RuntimeOptions) (_result *CreateCsrResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommonName)) {
+		query["CommonName"] = request.CommonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorpName)) {
+		query["CorpName"] = request.CorpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CountryCode)) {
+		query["CountryCode"] = request.CountryCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Department)) {
+		query["Department"] = request.Department
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeySize)) {
+		query["KeySize"] = request.KeySize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locality)) {
+		query["Locality"] = request.Locality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Province)) {
+		query["Province"] = request.Province
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sans)) {
+		query["Sans"] = request.Sans
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCsr"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCsr(request *CreateCsrRequest) (_result *CreateCsrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCsrResponse{}
+	_body, _err := client.CreateCsrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateWHClientCertificateWithOptions(request *CreateWHClientCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateWHClientCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3824,6 +4515,50 @@ func (client *Client) DeleteCertificateRequest(request *DeleteCertificateRequest
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCertificateRequestResponse{}
 	_body, _err := client.DeleteCertificateRequestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCsrWithOptions(request *DeleteCsrRequest, runtime *util.RuntimeOptions) (_result *DeleteCsrResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CsrId)) {
+		query["CsrId"] = request.CsrId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCsr"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCsr(request *DeleteCsrRequest) (_result *DeleteCsrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCsrResponse{}
+	_body, _err := client.DeleteCsrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4124,6 +4859,50 @@ func (client *Client) GetCertWarehouseQuota() (_result *GetCertWarehouseQuotaRes
 	return _result, _err
 }
 
+func (client *Client) GetCsrDetailWithOptions(request *GetCsrDetailRequest, runtime *util.RuntimeOptions) (_result *GetCsrDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CsrId)) {
+		query["CsrId"] = request.CsrId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCsrDetail"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCsrDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCsrDetail(request *GetCsrDetailRequest) (_result *GetCsrDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCsrDetailResponse{}
+	_body, _err := client.GetCsrDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -4319,6 +5098,62 @@ func (client *Client) ListCertWarehouse(request *ListCertWarehouseRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCertWarehouseResponse{}
 	_body, _err := client.ListCertWarehouseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCsrWithOptions(request *ListCsrRequest, runtime *util.RuntimeOptions) (_result *ListCsrResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyWord)) {
+		query["KeyWord"] = request.KeyWord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCsr"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCsr(request *ListCsrRequest) (_result *ListCsrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCsrResponse{}
+	_body, _err := client.ListCsrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4563,6 +5398,106 @@ func (client *Client) Sign(request *SignRequest) (_result *SignResponse, _err er
 	runtime := &util.RuntimeOptions{}
 	_result = &SignResponse{}
 	_body, _err := client.SignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCsrWithOptions(request *UpdateCsrRequest, runtime *util.RuntimeOptions) (_result *UpdateCsrResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CsrId)) {
+		query["CsrId"] = request.CsrId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCsr"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCsr(request *UpdateCsrRequest) (_result *UpdateCsrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCsrResponse{}
+	_body, _err := client.UpdateCsrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadCsrWithOptions(request *UploadCsrRequest, runtime *util.RuntimeOptions) (_result *UploadCsrResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Csr)) {
+		query["Csr"] = request.Csr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadCsr"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadCsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadCsr(request *UploadCsrRequest) (_result *UploadCsrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadCsrResponse{}
+	_body, _err := client.UploadCsrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
