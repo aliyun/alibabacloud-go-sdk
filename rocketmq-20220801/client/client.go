@@ -2619,6 +2619,176 @@ func (s *ListAvailableZonesResponse) SetBody(v *ListAvailableZonesResponseBody) 
 	return s
 }
 
+type ListConsumerConnectionsResponseBody struct {
+	Code           *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *ListConsumerConnectionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	DynamicCode    *string                                  `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string                                  `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32                                   `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListConsumerConnectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumerConnectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumerConnectionsResponseBody) SetCode(v string) *ListConsumerConnectionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBody) SetData(v *ListConsumerConnectionsResponseBodyData) *ListConsumerConnectionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBody) SetDynamicCode(v string) *ListConsumerConnectionsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBody) SetDynamicMessage(v string) *ListConsumerConnectionsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBody) SetHttpStatusCode(v int32) *ListConsumerConnectionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBody) SetMessage(v string) *ListConsumerConnectionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBody) SetRequestId(v string) *ListConsumerConnectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBody) SetSuccess(v bool) *ListConsumerConnectionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListConsumerConnectionsResponseBodyData struct {
+	Connections     []*ListConsumerConnectionsResponseBodyDataConnections `json:"connections,omitempty" xml:"connections,omitempty" type:"Repeated"`
+	ConsumerGroupId *string                                               `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	InstanceId      *string                                               `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	RegionId        *string                                               `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ListConsumerConnectionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumerConnectionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumerConnectionsResponseBodyData) SetConnections(v []*ListConsumerConnectionsResponseBodyDataConnections) *ListConsumerConnectionsResponseBodyData {
+	s.Connections = v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBodyData) SetConsumerGroupId(v string) *ListConsumerConnectionsResponseBodyData {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBodyData) SetInstanceId(v string) *ListConsumerConnectionsResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBodyData) SetRegionId(v string) *ListConsumerConnectionsResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+type ListConsumerConnectionsResponseBodyDataConnections struct {
+	ClientId     *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	EgressIp     *string `json:"egressIp,omitempty" xml:"egressIp,omitempty"`
+	Hostname     *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	Language     *string `json:"language,omitempty" xml:"language,omitempty"`
+	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
+	Version      *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ListConsumerConnectionsResponseBodyDataConnections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumerConnectionsResponseBodyDataConnections) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumerConnectionsResponseBodyDataConnections) SetClientId(v string) *ListConsumerConnectionsResponseBodyDataConnections {
+	s.ClientId = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBodyDataConnections) SetEgressIp(v string) *ListConsumerConnectionsResponseBodyDataConnections {
+	s.EgressIp = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBodyDataConnections) SetHostname(v string) *ListConsumerConnectionsResponseBodyDataConnections {
+	s.Hostname = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBodyDataConnections) SetLanguage(v string) *ListConsumerConnectionsResponseBodyDataConnections {
+	s.Language = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBodyDataConnections) SetMessageModel(v string) *ListConsumerConnectionsResponseBodyDataConnections {
+	s.MessageModel = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponseBodyDataConnections) SetVersion(v string) *ListConsumerConnectionsResponseBodyDataConnections {
+	s.Version = &v
+	return s
+}
+
+type ListConsumerConnectionsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConsumerConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListConsumerConnectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumerConnectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumerConnectionsResponse) SetHeaders(v map[string]*string) *ListConsumerConnectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponse) SetStatusCode(v int32) *ListConsumerConnectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConsumerConnectionsResponse) SetBody(v *ListConsumerConnectionsResponseBody) *ListConsumerConnectionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListConsumerGroupSubscriptionsResponseBody struct {
 	// The returned error code.
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
@@ -3606,6 +3776,141 @@ func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
 }
 
 func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTopicSubscriptionsResponseBody struct {
+	Code           *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data           []*ListTopicSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	DynamicCode    *string                                   `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string                                   `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32                                    `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                                   `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTopicSubscriptionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicSubscriptionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicSubscriptionsResponseBody) SetCode(v string) *ListTopicSubscriptionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBody) SetData(v []*ListTopicSubscriptionsResponseBodyData) *ListTopicSubscriptionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBody) SetDynamicCode(v string) *ListTopicSubscriptionsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBody) SetDynamicMessage(v string) *ListTopicSubscriptionsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBody) SetHttpStatusCode(v int32) *ListTopicSubscriptionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBody) SetMessage(v string) *ListTopicSubscriptionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBody) SetRequestId(v string) *ListTopicSubscriptionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBody) SetSuccess(v bool) *ListTopicSubscriptionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTopicSubscriptionsResponseBodyData struct {
+	ConsumerGroupId      *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	FilterExpression     *string `json:"filterExpression,omitempty" xml:"filterExpression,omitempty"`
+	FilterExpressionType *string `json:"filterExpressionType,omitempty" xml:"filterExpressionType,omitempty"`
+	MessageModel         *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
+	SubscriptionStatus   *string `json:"subscriptionStatus,omitempty" xml:"subscriptionStatus,omitempty"`
+	TopicName            *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s ListTopicSubscriptionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicSubscriptionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicSubscriptionsResponseBodyData) SetConsumerGroupId(v string) *ListTopicSubscriptionsResponseBodyData {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBodyData) SetFilterExpression(v string) *ListTopicSubscriptionsResponseBodyData {
+	s.FilterExpression = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBodyData) SetFilterExpressionType(v string) *ListTopicSubscriptionsResponseBodyData {
+	s.FilterExpressionType = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBodyData) SetMessageModel(v string) *ListTopicSubscriptionsResponseBodyData {
+	s.MessageModel = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBodyData) SetSubscriptionStatus(v string) *ListTopicSubscriptionsResponseBodyData {
+	s.SubscriptionStatus = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponseBodyData) SetTopicName(v string) *ListTopicSubscriptionsResponseBodyData {
+	s.TopicName = &v
+	return s
+}
+
+type ListTopicSubscriptionsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTopicSubscriptionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTopicSubscriptionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicSubscriptionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicSubscriptionsResponse) SetHeaders(v map[string]*string) *ListTopicSubscriptionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponse) SetStatusCode(v int32) *ListTopicSubscriptionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTopicSubscriptionsResponse) SetBody(v *ListTopicSubscriptionsResponseBody) *ListTopicSubscriptionsResponse {
 	s.Body = v
 	return s
 }
@@ -5262,6 +5567,42 @@ func (client *Client) ListAvailableZones() (_result *ListAvailableZonesResponse,
 	return _result, _err
 }
 
+func (client *Client) ListConsumerConnectionsWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerConnectionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConsumerConnections"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId)) + "/connections"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConsumerConnectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConsumerConnections(instanceId *string, consumerGroupId *string) (_result *ListConsumerConnectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerConnectionsResponse{}
+	_body, _err := client.ListConsumerConnectionsWithOptions(instanceId, consumerGroupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListConsumerGroupSubscriptionsWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5471,6 +5812,42 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 	headers := make(map[string]*string)
 	_result = &ListRegionsResponse{}
 	_body, _err := client.ListRegionsWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTopicSubscriptionsWithOptions(instanceId *string, topicName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTopicSubscriptionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTopicSubscriptions"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName)) + "/subscriptions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTopicSubscriptionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTopicSubscriptions(instanceId *string, topicName *string) (_result *ListTopicSubscriptionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTopicSubscriptionsResponse{}
+	_body, _err := client.ListTopicSubscriptionsWithOptions(instanceId, topicName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
