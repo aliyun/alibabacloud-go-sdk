@@ -77,9 +77,9 @@ func (s *CancelSubscriptionBillResponseBody) SetSuccess(v bool) *CancelSubscript
 }
 
 type CancelSubscriptionBillResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelSubscriptionBillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelSubscriptionBillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelSubscriptionBillResponse) String() string {
@@ -106,11 +106,16 @@ func (s *CancelSubscriptionBillResponse) SetBody(v *CancelSubscriptionBillRespon
 }
 
 type CreateCustomerRequest struct {
-	CustomerName     *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
-	CustomerSource   *string `json:"CustomerSource,omitempty" xml:"CustomerSource,omitempty"`
+	// Customer\"s name.
+	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
+	// The source/channel that allow client to connected with us. Please enumerate with Customer Source.
+	CustomerSource *string `json:"CustomerSource,omitempty" xml:"CustomerSource,omitempty"`
+	// The sub-industry that Customer\"s business belongs to. Please enumerate with Customer Trade.
 	CustomerSubTrade *string `json:"CustomerSubTrade,omitempty" xml:"CustomerSubTrade,omitempty"`
-	CustomerTrade    *string `json:"CustomerTrade,omitempty" xml:"CustomerTrade,omitempty"`
-	Nation           *string `json:"Nation,omitempty" xml:"Nation,omitempty"`
+	// The industry that Customer\"s business belongs to. Please enumerate with Customer Trade.
+	CustomerTrade *string `json:"CustomerTrade,omitempty" xml:"CustomerTrade,omitempty"`
+	// The region that Customer choose to launch the Cloud Service. Please use ListCountries to confirm the valid region list for current UID.
+	Nation *string `json:"Nation,omitempty" xml:"Nation,omitempty"`
 }
 
 func (s CreateCustomerRequest) String() string {
@@ -147,11 +152,16 @@ func (s *CreateCustomerRequest) SetNation(v string) *CreateCustomerRequest {
 }
 
 type CreateCustomerResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Code indicating whether the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data indicating whether a customer was successfully created. If it\"s "true", the Message contains CID.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Massage indicating whether the call was successful.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, Alibaba Cloud will track errors with this.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call it self was successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateCustomerResponseBody) String() string {
@@ -188,9 +198,9 @@ func (s *CreateCustomerResponseBody) SetSuccess(v bool) *CreateCustomerResponseB
 }
 
 type CreateCustomerResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCustomerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCustomerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCustomerResponse) String() string {
@@ -217,13 +227,26 @@ func (s *CreateCustomerResponse) SetBody(v *CreateCustomerResponseBody) *CreateC
 }
 
 type CustomerQuotaRecordListRequest struct {
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	EndUserPk     *int64  `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
-	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// End Date Format: yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Customer UID
+	EndUserPk *int64 `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
+	// Multilingual Parameters, the default language is English.</br>
+	// en: English</br>
+	// zh: Chinese</br>
+	// ja: Japanese </br>
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// Operation Type Enum</br>
+	// all All types</br>
+	// quota_create Create quota</br>
+	// quota_amount_adjust Adjust the amount of quota</br>
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Pagination, current page number, starting from 1.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Pagination, record number on each page. Maximum 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start Date Format: yyyy-MM-dd
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s CustomerQuotaRecordListRequest) String() string {
@@ -270,13 +293,20 @@ func (s *CustomerQuotaRecordListRequest) SetStartDate(v string) *CustomerQuotaRe
 }
 
 type CustomerQuotaRecordListResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*CustomerQuotaRecordListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Msg       *string                                    `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	PageNo    *int32                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Status code of returning result, 200 means success.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Listed data of returning result
+	Data []*CustomerQuotaRecordListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of returning data
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Current page number
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Record number on each page
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// ID of request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total volume
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s CustomerQuotaRecordListResponseBody) String() string {
@@ -323,14 +353,25 @@ func (s *CustomerQuotaRecordListResponseBody) SetTotal(v int32) *CustomerQuotaRe
 }
 
 type CustomerQuotaRecordListResponseBodyData struct {
+	// The way to submit the quota adjustment operation. API/ACPN
 	OperationSubmitType *string `json:"OperationSubmitType,omitempty" xml:"OperationSubmitType,omitempty"`
-	OperationTime       *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
-	OperationTypeCode   *string `json:"OperationTypeCode,omitempty" xml:"OperationTypeCode,omitempty"`
-	OperationTypeDesc   *string `json:"OperationTypeDesc,omitempty" xml:"OperationTypeDesc,omitempty"`
-	OperationUid        *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
-	UpdateAfterAmount   *string `json:"UpdateAfterAmount,omitempty" xml:"UpdateAfterAmount,omitempty"`
-	UpdateAmount        *string `json:"UpdateAmount,omitempty" xml:"UpdateAmount,omitempty"`
-	UpdateBeforeAmount  *string `json:"UpdateBeforeAmount,omitempty" xml:"UpdateBeforeAmount,omitempty"`
+	// The time of submit the quota adjustment operation.
+	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	// Operation Type Enum</br>
+	// all All types</br>
+	// quota_create Create quota</br>
+	// quota_amount_adjust Adjust the amount of quota</br>
+	OperationTypeCode *string `json:"OperationTypeCode,omitempty" xml:"OperationTypeCode,omitempty"`
+	// The description of submitted quota adjustment operation.
+	OperationTypeDesc *string `json:"OperationTypeDesc,omitempty" xml:"OperationTypeDesc,omitempty"`
+	// The UID of operator(Partner\"s UID).
+	OperationUid *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
+	// Updated quota amount
+	UpdateAfterAmount *string `json:"UpdateAfterAmount,omitempty" xml:"UpdateAfterAmount,omitempty"`
+	// The difference amount between updated quota and original quota.
+	UpdateAmount *string `json:"UpdateAmount,omitempty" xml:"UpdateAmount,omitempty"`
+	// Original quota amount
+	UpdateBeforeAmount *string `json:"UpdateBeforeAmount,omitempty" xml:"UpdateBeforeAmount,omitempty"`
 }
 
 func (s CustomerQuotaRecordListResponseBodyData) String() string {
@@ -382,9 +423,9 @@ func (s *CustomerQuotaRecordListResponseBodyData) SetUpdateBeforeAmount(v string
 }
 
 type CustomerQuotaRecordListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CustomerQuotaRecordListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CustomerQuotaRecordListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CustomerQuotaRecordListResponse) String() string {
@@ -411,8 +452,10 @@ func (s *CustomerQuotaRecordListResponse) SetBody(v *CustomerQuotaRecordListResp
 }
 
 type DeductOutstandingBalanceRequest struct {
+	// The Deducted Credit to be offset.
 	DeductAmount *string `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
-	Uid          *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Account UID of Distribution Customer.
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DeductOutstandingBalanceRequest) String() string {
@@ -434,10 +477,16 @@ func (s *DeductOutstandingBalanceRequest) SetUid(v int64) *DeductOutstandingBala
 }
 
 type DeductOutstandingBalanceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Result Code. Value Range:
+	// - 200 OK
+	// - 1109 System Error
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Same as Code Parameter Value.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, the unique request identifier generated by Alibaba Cloud.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeductOutstandingBalanceResponseBody) String() string {
@@ -469,9 +518,9 @@ func (s *DeductOutstandingBalanceResponseBody) SetSuccess(v bool) *DeductOutstan
 }
 
 type DeductOutstandingBalanceResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeductOutstandingBalanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeductOutstandingBalanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeductOutstandingBalanceResponse) String() string {
@@ -498,8 +547,13 @@ func (s *DeductOutstandingBalanceResponse) SetBody(v *DeductOutstandingBalanceRe
 }
 
 type EditEndUserStatusRequest struct {
+	// Shutdown Status</br>
+	//
+	// - postPayFreeze, the account have been blocked</br>
+	//
+	// - postPayThaw, the account have been unlocked</br>
 	CreditStatus *string `json:"CreditStatus,omitempty" xml:"CreditStatus,omitempty"`
-	// uid
+	// UID
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -522,10 +576,15 @@ func (s *EditEndUserStatusRequest) SetUid(v int64) *EditEndUserStatusRequest {
 }
 
 type EditEndUserStatusResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Status Code</br>
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Success or not</br>
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Message</br>
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Message</br>
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Request ID</br>
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -563,9 +622,9 @@ func (s *EditEndUserStatusResponseBody) SetRequestId(v string) *EditEndUserStatu
 }
 
 type EditEndUserStatusResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditEndUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditEndUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EditEndUserStatusResponse) String() string {
@@ -592,8 +651,14 @@ func (s *EditEndUserStatusResponse) SetBody(v *EditEndUserStatusResponseBody) *E
 }
 
 type EditNewBuyStatusRequest struct {
+	// New Purchase Status</br>
+	//
+	// - cancelBan: Cancel the restriction for New Purchase request</br>
+	//
+	// - ban: ban the New Purchase request</br>
 	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
-	Uid          *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Customer UID
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s EditNewBuyStatusRequest) String() string {
@@ -615,10 +680,15 @@ func (s *EditNewBuyStatusRequest) SetUid(v int64) *EditNewBuyStatusRequest {
 }
 
 type EditNewBuyStatusResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Status Code</br>
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Success or not</br>
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Message</br>
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Message</br>
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Request ID</br>
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -656,9 +726,9 @@ func (s *EditNewBuyStatusResponseBody) SetRequestId(v string) *EditNewBuyStatusR
 }
 
 type EditNewBuyStatusResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditNewBuyStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditNewBuyStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EditNewBuyStatusResponse) String() string {
@@ -685,8 +755,9 @@ func (s *EditNewBuyStatusResponse) SetBody(v *EditNewBuyStatusResponseBody) *Edi
 }
 
 type EditZeroCreditShutdownRequest struct {
+	// UID
 	ShutdownPolicy *string `json:"ShutdownPolicy,omitempty" xml:"ShutdownPolicy,omitempty"`
-	// uid
+	// No Change History
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -709,10 +780,15 @@ func (s *EditZeroCreditShutdownRequest) SetUid(v int64) *EditZeroCreditShutdownR
 }
 
 type EditZeroCreditShutdownResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Success or not</br>
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Request ID</br>
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Message</br>
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// NO_STOP
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// success
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -750,9 +826,9 @@ func (s *EditZeroCreditShutdownResponseBody) SetRequestId(v string) *EditZeroCre
 }
 
 type EditZeroCreditShutdownResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditZeroCreditShutdownResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditZeroCreditShutdownResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EditZeroCreditShutdownResponse) String() string {
@@ -779,11 +855,22 @@ func (s *EditZeroCreditShutdownResponse) SetBody(v *EditZeroCreditShutdownRespon
 }
 
 type ExportCustomerQuotaRecordRequest struct {
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	EndUserPk     *int64  `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
-	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// End Date Format:  yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Customer UID
+	EndUserPk *int64 `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
+	// Multilingual Parameters, the default language is English.</br>
+	// en: English</br>
+	// zh: Chinese</br>
+	// ja: Japanese </br>
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// Operation Type Enum</br>
+	// all All types</br>
+	// quota_create Create quota</br>
+	// quota_amount_adjust Adjust the amount of quota</br>
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Start Date Format:  yyyy-MM-dd
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s ExportCustomerQuotaRecordRequest) String() string {
@@ -820,11 +907,13 @@ func (s *ExportCustomerQuotaRecordRequest) SetStartDate(v string) *ExportCustome
 }
 
 type ExportCustomerQuotaRecordResponseBody struct {
-	// code
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data
 	Data *ExportCustomerQuotaRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg  *string                                    `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
+	// Description
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID of the Request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -857,8 +946,10 @@ func (s *ExportCustomerQuotaRecordResponseBody) SetRequestId(v string) *ExportCu
 }
 
 type ExportCustomerQuotaRecordResponseBodyData struct {
+	// Estimated duration, in minutes.
 	Cost *int32 `json:"Cost,omitempty" xml:"Cost,omitempty"`
-	Id   *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// ID of Export task
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s ExportCustomerQuotaRecordResponseBodyData) String() string {
@@ -880,9 +971,9 @@ func (s *ExportCustomerQuotaRecordResponseBodyData) SetId(v int64) *ExportCustom
 }
 
 type ExportCustomerQuotaRecordResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExportCustomerQuotaRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportCustomerQuotaRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExportCustomerQuotaRecordResponse) String() string {
@@ -909,10 +1000,17 @@ func (s *ExportCustomerQuotaRecordResponse) SetBody(v *ExportCustomerQuotaRecord
 }
 
 type GetAccountInfoRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Uid         *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	UserType    *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// Pagination, current page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Pagination, record number on each page, maximum 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Account UID of Distribution Customer. This parameter and the UserType parameter must have one filled. If this parameter is empty, then check all Distribution Customer accounts of the selected UserType.
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Distribution Customer\"s Account Type:
+	// - 1 End User
+	// - 2 Enterprise
+	// - 3 T2 Partner
+	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s GetAccountInfoRequest) String() string {
@@ -944,13 +1042,23 @@ func (s *GetAccountInfoRequest) SetUserType(v string) *GetAccountInfoRequest {
 }
 
 type GetAccountInfoResponseBody struct {
+	// List of Account Information
 	AccountInfoList *GetAccountInfoResponseBodyAccountInfoList `json:"AccountInfoList,omitempty" xml:"AccountInfoList,omitempty" type:"Struct"`
-	Code            *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	// message
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageInfo  *GetAccountInfoResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Result Code - Error Code. Value Range:
+	// - 200 OK
+	// - 1109 System Error
+	// - 3029: Invalid UID
+	// - 3062: UID and UserType are both empty.
+	// - 3063: UserType value out of range.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Pagination Information
+	PageInfo *GetAccountInfoResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAccountInfoResponseBody) String() string {
@@ -1009,15 +1117,32 @@ func (s *GetAccountInfoResponseBodyAccountInfoList) SetAccountInfo(v []*GetAccou
 }
 
 type GetAccountInfoResponseBodyAccountInfoListAccountInfo struct {
-	AccountNickname        *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	AliyunId               *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	// The name of Sub Account:
+	// 1.	Use the official name of Company, if Sub Account is an enterprise.
+	// 2.	Use the official name of Partner, if Sub Account is a T2 reseller.
+	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
+	// Alibaba Cloud Login name of Distribution Customer.
+	AliyunId *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	// The time that Distribution Customer successfully associated with Distributor.
 	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
-	Cid                    *int64  `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	Email                  *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Mobile                 *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Remark                 *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SubAccountType         *int32  `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
-	Uid                    *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Account CID of Distribution Customer.
+	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// The E-mail of Distribution Customer.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Valid mobile number of Distribution Customer.
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Description of Distribution Customer.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Account Type:
+	// - 1 Agency\"s End User
+	// - 2 Reseller\"s End User
+	// - 3 Enterprise
+	// - 4 T2 Agency Partner
+	// - 5 T2 Reseller Partner
+	// - 6 T2 Agency+Reseller Partner
+	SubAccountType *int32 `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
+	// Account UID of Distribution Customer.
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s GetAccountInfoResponseBodyAccountInfoListAccountInfo) String() string {
@@ -1074,9 +1199,12 @@ func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetUid(v int64) *
 }
 
 type GetAccountInfoResponseBodyPageInfo struct {
-	Page     *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Pagination, current page.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Pagination, record number on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Pagination, page volume in total.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetAccountInfoResponseBodyPageInfo) String() string {
@@ -1103,9 +1231,9 @@ func (s *GetAccountInfoResponseBodyPageInfo) SetTotal(v int32) *GetAccountInfoRe
 }
 
 type GetAccountInfoResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccountInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccountInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccountInfoResponse) String() string {
@@ -1132,6 +1260,7 @@ func (s *GetAccountInfoResponse) SetBody(v *GetAccountInfoResponseBody) *GetAcco
 }
 
 type GetCreditInfoRequest struct {
+	// Sub Account UID
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -1149,11 +1278,18 @@ func (s *GetCreditInfoRequest) SetUid(v int64) *GetCreditInfoRequest {
 }
 
 type GetCreditInfoResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetCreditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Result Code:
+	// - 200 OK
+	// - 1109 System Error
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *GetCreditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Message Information
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, Alibaba Cloud will track errors with this.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCreditInfoResponseBody) String() string {
@@ -1190,14 +1326,31 @@ func (s *GetCreditInfoResponseBody) SetSuccess(v bool) *GetCreditInfoResponseBod
 }
 
 type GetCreditInfoResponseBodyData struct {
-	AccountStatus            *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	AlarmThreshold           *string `json:"AlarmThreshold,omitempty" xml:"AlarmThreshold,omitempty"`
-	AvailableCredit          *string `json:"AvailableCredit,omitempty" xml:"AvailableCredit,omitempty"`
-	ConsumedUndeductedValue  *string `json:"ConsumedUndeductedValue,omitempty" xml:"ConsumedUndeductedValue,omitempty"`
-	CreditLine               *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
-	OutstandingBalance       *string `json:"OutstandingBalance,omitempty" xml:"OutstandingBalance,omitempty"`
+	// The Credit Control status, Value Range:</br>
+	// 1. normal - Sub Account status is running as usual.
+	// 2. arrearsNotShutdown - Sub Account status is running as usual, but have outstanding bill(s).
+	// 3. shutdown -  Sub Account status is down.
+	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	// Percentage value, when the available credit limit is lower than this credit limit percentage, a notification E-mail will be sent to the main account.
+	AlarmThreshold *string `json:"AlarmThreshold,omitempty" xml:"AlarmThreshold,omitempty"`
+	// The Credit available to consume.
+	AvailableCredit *string `json:"AvailableCredit,omitempty" xml:"AvailableCredit,omitempty"`
+	// Obtain total unpaid amount on demo bill before simulated deduction.
+	ConsumedUndeductedValue *string `json:"ConsumedUndeductedValue,omitempty" xml:"ConsumedUndeductedValue,omitempty"`
+	// The Credit Line of Sub Account
+	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
+	// The Credit have been consumed by Sub Account, and haven\"t be paid.
+	OutstandingBalance *string `json:"OutstandingBalance,omitempty" xml:"OutstandingBalance,omitempty"`
+	// The systematic controlling policy for resource management, specifically when the available Credit of Sub Account falls to 0 or less.</br>
+	//
+	// - 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
+	// - 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\"s life-circle of Sub Account.</br>
+	// - 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
 	ZeroCreditShutdownPolicy *string `json:"ZeroCreditShutdownPolicy,omitempty" xml:"ZeroCreditShutdownPolicy,omitempty"`
-	NewBuyStatus             *string `json:"newBuyStatus,omitempty" xml:"newBuyStatus,omitempty"`
+	// Manage order operation.
+	// - ban：Ban the new purchase action.
+	// - normal：The account could raise new purchase order as usual.
+	NewBuyStatus *string `json:"newBuyStatus,omitempty" xml:"newBuyStatus,omitempty"`
 }
 
 func (s GetCreditInfoResponseBodyData) String() string {
@@ -1249,9 +1402,9 @@ func (s *GetCreditInfoResponseBodyData) SetNewBuyStatus(v string) *GetCreditInfo
 }
 
 type GetCreditInfoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCreditInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCreditInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCreditInfoResponse) String() string {
@@ -1278,8 +1431,17 @@ func (s *GetCreditInfoResponse) SetBody(v *GetCreditInfoResponseBody) *GetCredit
 }
 
 type GetDailyBillRequest struct {
+	// Bill Owner type. Value Range:</br>
+	// 1: Master account</br>
+	// 2: Sub account</br>
 	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
-	BillType  *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// BillType. Value Range:</br>
+	//
+	// - DailyOrder(Deprecated)
+	// - DailyBill (Deprecated)
+	// - DailyInstanceBill (Deprecated)
+	// - DailyInstanceBillV2
+	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	// Billing date. Format YYYY-MM-DD
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 }
@@ -1308,11 +1470,21 @@ func (s *GetDailyBillRequest) SetDate(v string) *GetDailyBillRequest {
 }
 
 type GetDailyBillResponseBody struct {
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetDailyBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Result Code:
+	// * 200 OK
+	// * 1109 System error
+	// * 3050 Bill Type can only be DailyOrder, DailyBill or DailyInstanceBill.
+	// * 3049 Incorrect format of Spending Time.
+	// * 3048 Bill Owner can only be 1 or 2.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetDailyBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Same as Code parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDailyBillResponseBody) String() string {
@@ -1349,10 +1521,15 @@ func (s *GetDailyBillResponseBody) SetSuccess(v bool) *GetDailyBillResponseBody 
 }
 
 type GetDailyBillResponseBodyData struct {
-	BillLinkCSV  *string `json:"BillLinkCSV,omitempty" xml:"BillLinkCSV,omitempty"`
+	// The link to download CSV file, please use HTTP Protocol.
+	BillLinkCSV *string `json:"BillLinkCSV,omitempty" xml:"BillLinkCSV,omitempty"`
+	// The link to download XLSX file, please use HTTP Protocol.
 	BillLinkXLSX *string `json:"BillLinkXLSX,omitempty" xml:"BillLinkXLSX,omitempty"`
-	BillOwner    *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
-	BillType     *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// Same as inserted parameter BillOwner.
+	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
+	// Same as inserted parameter BillType.
+	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// Spending Time, refer to the exact time of costuming.
 	SpendingTime *string `json:"SpendingTime,omitempty" xml:"SpendingTime,omitempty"`
 }
 
@@ -1390,9 +1567,9 @@ func (s *GetDailyBillResponseBodyData) SetSpendingTime(v string) *GetDailyBillRe
 }
 
 type GetDailyBillResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDailyBillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDailyBillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDailyBillResponse) String() string {
@@ -1419,7 +1596,8 @@ func (s *GetDailyBillResponse) SetBody(v *GetDailyBillResponseBody) *GetDailyBil
 }
 
 type GetInviteStatusRequest struct {
-	// inviteId list
+	// inviteId list</br>
+	// `Sub-levels <= 5`
 	InviteStatusList []*GetInviteStatusRequestInviteStatusList `json:"InviteStatusList,omitempty" xml:"InviteStatusList,omitempty" type:"Repeated"`
 }
 
@@ -1437,6 +1615,7 @@ func (s *GetInviteStatusRequest) SetInviteStatusList(v []*GetInviteStatusRequest
 }
 
 type GetInviteStatusRequestInviteStatusList struct {
+	// Invitation ID, From interface InviteSubAccount
 	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
 }
 
@@ -1454,11 +1633,18 @@ func (s *GetInviteStatusRequestInviteStatusList) SetInviteId(v int64) *GetInvite
 }
 
 type GetInviteStatusResponseBody struct {
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetInviteStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Status Code. Error Code:
+	//
+	// - 3057 InviteId is empty
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetInviteStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, Alibaba Cloud will track errors with this.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInviteStatusResponseBody) String() string {
@@ -1512,10 +1698,16 @@ func (s *GetInviteStatusResponseBodyData) SetInviteStatus(v []*GetInviteStatusRe
 }
 
 type GetInviteStatusResponseBodyDataInviteStatus struct {
-	Code             *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Result Code. Value Range:
+	// *   200 OK
+	// *   1109 system error
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of Invitation Status result
 	InviteStatusList *GetInviteStatusResponseBodyDataInviteStatusInviteStatusList `json:"InviteStatusList,omitempty" xml:"InviteStatusList,omitempty" type:"Struct"`
-	Message          *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success          *bool                                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInviteStatusResponseBodyDataInviteStatus) String() string {
@@ -1547,13 +1739,28 @@ func (s *GetInviteStatusResponseBodyDataInviteStatus) SetSuccess(v bool) *GetInv
 }
 
 type GetInviteStatusResponseBodyDataInviteStatusInviteStatusList struct {
+	// The time that Distribution Customer successfully associated with Distributor.</br>
+	// This value will be empty if there is no existing association.
 	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
-	Cid                    *int64  `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	ParentId               *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubAccountType         *string `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
-	Uid                    *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Distribution Customer\"s CID
+	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// The time of email been sent out.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The parent organization ID.
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// Invitation Status:
+	// * 0 No visit on registration URL
+	// * 1 Successful Registration
+	// * 2 Unsuccessful Registration
+	// * 3 Registration URL have been visited, but no submitted sheet/ticket.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Account Type:
+	// - 1 Agency\"s End User
+	// - 2 Reseller\"s End User
+	// - 5 T2 Reseller Partner
+	SubAccountType *string `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
+	// Distribution Customer\"s UID
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s GetInviteStatusResponseBodyDataInviteStatusInviteStatusList) String() string {
@@ -1600,9 +1807,9 @@ func (s *GetInviteStatusResponseBodyDataInviteStatusInviteStatusList) SetUid(v i
 }
 
 type GetInviteStatusResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInviteStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInviteStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInviteStatusResponse) String() string {
@@ -1629,33 +1836,21 @@ func (s *GetInviteStatusResponse) SetBody(v *GetInviteStatusResponseBody) *GetIn
 }
 
 type GetMonthlyBillRequest struct {
-	// Bill Owner type.
-	//
-	//  Value range:
-	//
-	// 1: Master account
-	//
-	// 2: Sub account
+	// Bill Owner type. Value Range:</br>
+	// 1: Master account</br>
+	// 2: Sub account</br>
 	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
 	// Value Range:
 	//
-	// MonthlyInvoice
-	//
-	// MonthRefundInvoice
-	//
-	// MonthlySummary
-	//
-	// MonthlyInstanceAddAdjustBill
-	//
-	// MonthlyInstanceRefundBill
-	//
-	// MonthlyAddAdjustInvoce
-	//
-	// MonthlyRefundAdjustInvoce
-	//
-	// MonthlyInstanceConsumeV2
-	//
-	// MarginReportV2
+	// - MonthlyInvoice
+	// - MonthRefundInvoice
+	// - MonthlySummary
+	// - MonthlyInstanceAddAdjustBill
+	// - MonthlyInstanceRefundBill
+	// - MonthlyAddAdjustInvoce
+	// - MonthlyRefundAdjustInvoce
+	// - MonthlyInstanceConsumeV2
+	// - MarginReportV2
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	// Billing Month, Format is YYYY-MM
 	Month *string `json:"Month,omitempty" xml:"Month,omitempty"`
@@ -1685,11 +1880,20 @@ func (s *GetMonthlyBillRequest) SetMonth(v string) *GetMonthlyBillRequest {
 }
 
 type GetMonthlyBillResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetMonthlyBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Result Code:
+	// * 200 OK
+	// * 1109 System error
+	// * 3030 Sub Account Nickname exceeds maximum length, maximum length 150 bytes.
+	// * 3031 Remark exceeds maximum length, maximum length 3000 bytes.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetMonthlyBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Same as Code parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMonthlyBillResponseBody) String() string {
@@ -1726,14 +1930,23 @@ func (s *GetMonthlyBillResponseBody) SetSuccess(v bool) *GetMonthlyBillResponseB
 }
 
 type GetMonthlyBillResponseBodyData struct {
-	BillLinkCSV       *string `json:"BillLinkCSV,omitempty" xml:"BillLinkCSV,omitempty"`
-	BillLinkXLSX      *string `json:"BillLinkXLSX,omitempty" xml:"BillLinkXLSX,omitempty"`
-	BillOwner         *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
-	BillType          *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	InvoiceLink       *string `json:"InvoiceLink,omitempty" xml:"InvoiceLink,omitempty"`
-	RefundInvoiceFlag *bool   `json:"RefundInvoiceFlag,omitempty" xml:"RefundInvoiceFlag,omitempty"`
+	// The link to download CSV file, please use HTTP Protocol.
+	BillLinkCSV *string `json:"BillLinkCSV,omitempty" xml:"BillLinkCSV,omitempty"`
+	// The link to download XLSX file, please use HTTP Protocol.
+	BillLinkXLSX *string `json:"BillLinkXLSX,omitempty" xml:"BillLinkXLSX,omitempty"`
+	// Same as inserted parameter BillOwner.
+	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
+	// Same as inserted parameter BillType.
+	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// The URL to download invoice.
+	InvoiceLink *string `json:"InvoiceLink,omitempty" xml:"InvoiceLink,omitempty"`
+	// It states the existence of refund invoice. </br>
+	// Candidate Values: True/False
+	RefundInvoiceFlag *bool `json:"RefundInvoiceFlag,omitempty" xml:"RefundInvoiceFlag,omitempty"`
+	// The URL to download refund invoice.
 	RefundInvoiceLink *string `json:"RefundInvoiceLink,omitempty" xml:"RefundInvoiceLink,omitempty"`
-	SpendingTime      *string `json:"SpendingTime,omitempty" xml:"SpendingTime,omitempty"`
+	// Spending Time, refer to the exact time of costuming.
+	SpendingTime *string `json:"SpendingTime,omitempty" xml:"SpendingTime,omitempty"`
 }
 
 func (s GetMonthlyBillResponseBodyData) String() string {
@@ -1785,9 +1998,9 @@ func (s *GetMonthlyBillResponseBodyData) SetSpendingTime(v string) *GetMonthlyBi
 }
 
 type GetMonthlyBillResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMonthlyBillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMonthlyBillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMonthlyBillResponse) String() string {
@@ -1814,8 +2027,10 @@ func (s *GetMonthlyBillResponse) SetBody(v *GetMonthlyBillResponseBody) *GetMont
 }
 
 type GetUnassociatedCustomerRequest struct {
+	// Pagination, current page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Pagination, record number on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s GetUnassociatedCustomerRequest) String() string {
@@ -1837,12 +2052,20 @@ func (s *GetUnassociatedCustomerRequest) SetPageSize(v int32) *GetUnassociatedCu
 }
 
 type GetUnassociatedCustomerResponseBody struct {
-	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error Code, Candidate Value：
+	// * 200: OK
+	// * 1109: System error
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of Invitation Information
 	InviteInfoList *GetUnassociatedCustomerResponseBodyInviteInfoList `json:"InviteInfoList,omitempty" xml:"InviteInfoList,omitempty" type:"Struct"`
-	Message        *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageInfo       *GetUnassociatedCustomerResponseBodyPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Message information
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Pagination Information
+	PageInfo *GetUnassociatedCustomerResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Request ID, Alibaba Cloud will track errors with this.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetUnassociatedCustomerResponseBody) String() string {
@@ -1901,11 +2124,20 @@ func (s *GetUnassociatedCustomerResponseBodyInviteInfoList) SetInviteInfo(v []*G
 }
 
 type GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo struct {
+	// The name of Customer who are to be invited.
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	Email           *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	InviteId        *int64  `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Email of Customer who are to be invited.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The time of email been sent out.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Invitation ID
+	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
+	// Invitation Status:
+	// * 0 No visit on registration URL
+	// * 1 Successful Registration
+	// * 2 Unsuccessful Registration
+	// * 3 Registration URL have been visited, but no submitted sheet/ticket.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo) String() string {
@@ -1942,9 +2174,12 @@ func (s *GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo) SetStatus(
 }
 
 type GetUnassociatedCustomerResponseBodyPageInfo struct {
-	Page     *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Pagination, current page.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Pagination, record number on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Pagination, page volume in total.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetUnassociatedCustomerResponseBodyPageInfo) String() string {
@@ -1971,9 +2206,9 @@ func (s *GetUnassociatedCustomerResponseBodyPageInfo) SetTotal(v int32) *GetUnas
 }
 
 type GetUnassociatedCustomerResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUnassociatedCustomerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUnassociatedCustomerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUnassociatedCustomerResponse) String() string {
@@ -2000,6 +2235,8 @@ func (s *GetUnassociatedCustomerResponse) SetBody(v *GetUnassociatedCustomerResp
 }
 
 type InviteSubAccountRequest struct {
+	// List of invited account information,  less than 5 accounts at a time.</br>
+	// `Sub-levels <= 5`
 	AccountInfoList []*InviteSubAccountRequestAccountInfoList `json:"AccountInfoList,omitempty" xml:"AccountInfoList,omitempty" type:"Repeated"`
 }
 
@@ -2017,13 +2254,32 @@ func (s *InviteSubAccountRequest) SetAccountInfoList(v []*InviteSubAccountReques
 }
 
 type InviteSubAccountRequestAccountInfoList struct {
-	AccountNickname          *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	CreditLine               *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
-	CustomerId               *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	EmailAddress             *string `json:"EmailAddress,omitempty" xml:"EmailAddress,omitempty"`
-	NewBuyStatus             *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
-	Remark                   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SubAccountType           *string `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
+	// The name of Sub Account:</br>
+	// 1. Use the official name of Company, if Sub Account is an enterprise.</br>
+	// 2. Use the official name of Partner, if Sub Account is a T2 reseller.</br>
+	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
+	// The total budget Credit of Sub Account that distributed by Partner.
+	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
+	// Customer ID, Returning ID from CreateCustomer API.
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// The email address of End User,  which will receive the invitation email.
+	EmailAddress *string `json:"EmailAddress,omitempty" xml:"EmailAddress,omitempty"`
+	// Initial Order Status</br>
+	// 1. ban：Ban the new purchase action--After End User finish registration and authorization, they can\"t issue Cloud Resource order immediately. Partner should manually update the "Order Control" settings as "Normal" to enable new order.</br>
+	// 2. normal：Normal--After End User finished registration and authorization, they can issue Cloud Resource order immediately.</br>
+	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
+	// Description of Sub Account.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The type of Sub Account</br>
+	//
+	// 1 Agency\"s End User</br>
+	// 2 Reseller\"s End user</br>
+	// 5 Reseller\"s T2 Partner</br>
+	SubAccountType *string `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
+	// Partner\"s Shutdown Policy Management for Sub Account.</br>
+	// 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
+	// 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\"s life-circle of Sub Account.</br>
+	// 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
 	ZeroCreditShutdownPolicy *string `json:"ZeroCreditShutdownPolicy,omitempty" xml:"ZeroCreditShutdownPolicy,omitempty"`
 }
 
@@ -2076,11 +2332,18 @@ func (s *InviteSubAccountRequestAccountInfoList) SetZeroCreditShutdownPolicy(v s
 }
 
 type InviteSubAccountResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   *InviteSubAccountResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Error Code: </br>
+	// • 200 OK</br>
+	// • 1109 System Error</br>
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message</br>
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, Alibaba Cloud will track errors with this ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of invitation sending results
+	Results *InviteSubAccountResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// Candidate Values: True/False, this value states if the current API calling action is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InviteSubAccountResponseBody) String() string {
@@ -2134,10 +2397,14 @@ func (s *InviteSubAccountResponseBodyResults) SetResult(v []*InviteSubAccountRes
 }
 
 type InviteSubAccountResponseBodyResultsResult struct {
-	Code    *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result  *InviteSubAccountResponseBodyResultsResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Error Code, 200 OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message, Notes of Code
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Returning Message of Invitation Results
+	Result *InviteSubAccountResponseBodyResultsResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Always true.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InviteSubAccountResponseBodyResultsResult) String() string {
@@ -2169,9 +2436,12 @@ func (s *InviteSubAccountResponseBodyResultsResult) SetSuccess(v bool) *InviteSu
 }
 
 type InviteSubAccountResponseBodyResultsResultResult struct {
-	Days     *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
-	InviteId *int64  `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
-	RegUrl   *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
+	// Valid days of registration URL, count on daily basis.
+	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	// Invitation ID, The invitation status tracking code.
+	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
+	// URL for Partner Customer Registration.
+	RegUrl *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
 }
 
 func (s InviteSubAccountResponseBodyResultsResultResult) String() string {
@@ -2198,9 +2468,9 @@ func (s *InviteSubAccountResponseBodyResultsResultResult) SetRegUrl(v string) *I
 }
 
 type InviteSubAccountResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InviteSubAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InviteSubAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InviteSubAccountResponse) String() string {
@@ -2227,11 +2497,18 @@ func (s *InviteSubAccountResponse) SetBody(v *InviteSubAccountResponseBody) *Inv
 }
 
 type ListCountriesResponseBody struct {
-	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Error Code
+	// * 200: OK
+	// * 1109: System error
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of Region Code
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Message information
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, Alibaba Cloud will track errors with this.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCountriesResponseBody) String() string {
@@ -2268,9 +2545,9 @@ func (s *ListCountriesResponseBody) SetSuccess(v bool) *ListCountriesResponseBod
 }
 
 type ListCountriesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCountriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCountriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCountriesResponse) String() string {
@@ -2297,9 +2574,15 @@ func (s *ListCountriesResponse) SetBody(v *ListCountriesResponseBody) *ListCount
 }
 
 type QuotaListExportPagedRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Pagination, current page number, starting from 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Multilingual Parameters, the default language is English.</br>
+	// en: English</br>
+	// zh: Chinese</br>
+	// ja: Japanese </br>
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// Pagination, record number on each page, maximum 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QuotaListExportPagedRequest) String() string {
@@ -2326,13 +2609,20 @@ func (s *QuotaListExportPagedRequest) SetPageSize(v int32) *QuotaListExportPaged
 }
 
 type QuotaListExportPagedResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*QuotaListExportPagedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Msg       *string                                 `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	PageNo    *int32                                  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int32                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Status code of returning result, 200 means success.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Listed data of returning result
+	Data []*QuotaListExportPagedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of returning result
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Current page number
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Record number on each page
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// ID of the Request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total volume
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QuotaListExportPagedResponseBody) String() string {
@@ -2379,12 +2669,21 @@ func (s *QuotaListExportPagedResponseBody) SetTotal(v int32) *QuotaListExportPag
 }
 
 type QuotaListExportPagedResponseBodyData struct {
+	// Create Time
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// File Name
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Notification Message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Display of Task Status
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task Status Enum</br>
+	// 2: Exporting</br>
+	// 3: Export Success</br>
+	// -1: Export Fail</br>
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The link to download exported file.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s QuotaListExportPagedResponseBodyData) String() string {
@@ -2426,9 +2725,9 @@ func (s *QuotaListExportPagedResponseBodyData) SetUrl(v string) *QuotaListExport
 }
 
 type QuotaListExportPagedResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuotaListExportPagedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuotaListExportPagedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuotaListExportPagedResponse) String() string {
@@ -2455,6 +2754,8 @@ func (s *QuotaListExportPagedResponse) SetBody(v *QuotaListExportPagedResponseBo
 }
 
 type ResendEmailRequest struct {
+	// Invitation ID, from interface InviteSubAccount </br>
+	// Note: This field type is Long, which may result in precision loss in serialization/deserialization process. Please ensure the value does not exceed 9007199254740991.
 	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
 }
 
@@ -2472,10 +2773,21 @@ func (s *ResendEmailRequest) SetInviteId(v int64) *ResendEmailRequest {
 }
 
 type ResendEmailResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Result Code, Error code.</br>
+	// Candidate Value: </br>
+	// * 200: OK
+	// * 1109: System error
+	// * 3058: Frequent sending, the limit is 10 emails in every 5 minutes.
+	// * 3057: InviteId is empty.
+	// * 3060: Can\"t find sending record of given InviteId.
+	// * 3061: Registration URL is expired, unable to resend.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Result message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, the unique request identifier generated by Alibaba Cloud.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ResendEmailResponseBody) String() string {
@@ -2507,9 +2819,9 @@ func (s *ResendEmailResponseBody) SetSuccess(v bool) *ResendEmailResponseBody {
 }
 
 type ResendEmailResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResendEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResendEmailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResendEmailResponse) String() string {
@@ -2536,9 +2848,14 @@ func (s *ResendEmailResponse) SetBody(v *ResendEmailResponseBody) *ResendEmailRe
 }
 
 type SetAccountInfoRequest struct {
+	// Sub Account Nickname.
+	// * Use the official name of Company, if Sub Account is an enterprise.
+	// * Use the official name of Partner, if Sub Account is a T2 reseller.
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Uid             *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Description of Sub Account.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The UID of Sub Account.
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s SetAccountInfoRequest) String() string {
@@ -2565,10 +2882,18 @@ func (s *SetAccountInfoRequest) SetUid(v int64) *SetAccountInfoRequest {
 }
 
 type SetAccountInfoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Result Code:
+	// *   200 OK
+	// *   1109 System error
+	// *   3030 Sub Account Nickname exceeds maximum length,  maximum length 150 bytes.
+	// *   3031 Remark exceeds maximum length,  maximum length 3000 bytes.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message information
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, Alibaba Cloud will track errors with this.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetAccountInfoResponseBody) String() string {
@@ -2600,9 +2925,9 @@ func (s *SetAccountInfoResponseBody) SetSuccess(v bool) *SetAccountInfoResponseB
 }
 
 type SetAccountInfoResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetAccountInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetAccountInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetAccountInfoResponse) String() string {
@@ -2629,8 +2954,10 @@ func (s *SetAccountInfoResponse) SetBody(v *SetAccountInfoResponseBody) *SetAcco
 }
 
 type SetCreditLineRequest struct {
+	// New Credit Line
 	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
-	Uid        *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The UID of Sub Account.
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s SetCreditLineRequest) String() string {
@@ -2652,10 +2979,18 @@ func (s *SetCreditLineRequest) SetUid(v int64) *SetCreditLineRequest {
 }
 
 type SetCreditLineResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Result Code:
+	// *   200 OK
+	// *   1109 system error
+	// *   3040 Sub Account is in a frozen state and cannot be operated.
+	// *   3041 Credit is not a proper number
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Same as Code parameter value
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, the unique request identifier generated by Alibaba Cloud.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetCreditLineResponseBody) String() string {
@@ -2687,9 +3022,9 @@ func (s *SetCreditLineResponseBody) SetSuccess(v bool) *SetCreditLineResponseBod
 }
 
 type SetCreditLineResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetCreditLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetCreditLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetCreditLineResponse) String() string {
@@ -2741,18 +3076,18 @@ func (s *SetWarningThresholdRequest) SetWarningValue(v string) *SetWarningThresh
 }
 
 type SetWarningThresholdResponseBody struct {
-	// Result code:
-	//
-	// *   200 OK
-	// *   1109 system error
-	// *   The operation cannot be completed 3040 the sub-account is frozen-the 3044 alert proportion value is not a number.
-	// *   3045 Alert Scale value should be 1 to 100
+	// Result Code:
+	// * 200 OK
+	// * 1109 System Error
+	// * 3040 The Sub Account is frozen, the operation cannot be completed.
+	// * 3044 Alert proportion value is not a number.
+	// * 3045 Alert proportion value should between 1 to 100.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Same as Code parameter value
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// the request id. the unique identifier generated by alibaba cloud for the request.
+	// Request ID, the unique request identifier generated by Alibaba Cloud.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Candidate value: True or False, which indicates whether the current API call itself is successful. does not represent the success of subsequent business operations.
+	// Candidate Value: True or False, which indicates whether the current API call itself is successful. does not represent the success of subsequent business operations.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2785,9 +3120,9 @@ func (s *SetWarningThresholdResponseBody) SetSuccess(v bool) *SetWarningThreshol
 }
 
 type SetWarningThresholdResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetWarningThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetWarningThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetWarningThresholdResponse) String() string {
@@ -2923,9 +3258,9 @@ func (s *SubscriptionBillResponseBody) SetSuccess(v bool) *SubscriptionBillRespo
 }
 
 type SubscriptionBillResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubscriptionBillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubscriptionBillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubscriptionBillResponse) String() string {
@@ -3219,6 +3554,14 @@ func (client *Client) CustomerQuotaRecordList(request *CustomerQuotaRecordListRe
 	return _result, _err
 }
 
+/**
+ * Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+ * For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+ *
+ * @param request DeductOutstandingBalanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeductOutstandingBalanceResponse
+ */
 func (client *Client) DeductOutstandingBalanceWithOptions(request *DeductOutstandingBalanceRequest, runtime *util.RuntimeOptions) (_result *DeductOutstandingBalanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3256,6 +3599,13 @@ func (client *Client) DeductOutstandingBalanceWithOptions(request *DeductOutstan
 	return _result, _err
 }
 
+/**
+ * Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+ * For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+ *
+ * @param request DeductOutstandingBalanceRequest
+ * @return DeductOutstandingBalanceResponse
+ */
 func (client *Client) DeductOutstandingBalance(request *DeductOutstandingBalanceRequest) (_result *DeductOutstandingBalanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeductOutstandingBalanceResponse{}
@@ -3267,6 +3617,14 @@ func (client *Client) DeductOutstandingBalance(request *DeductOutstandingBalance
 	return _result, _err
 }
 
+/**
+ * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+ * **This content is only published on the international site. **
+ *
+ * @param request EditEndUserStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return EditEndUserStatusResponse
+ */
 func (client *Client) EditEndUserStatusWithOptions(request *EditEndUserStatusRequest, runtime *util.RuntimeOptions) (_result *EditEndUserStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3296,6 +3654,13 @@ func (client *Client) EditEndUserStatusWithOptions(request *EditEndUserStatusReq
 	return _result, _err
 }
 
+/**
+ * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+ * **This content is only published on the international site. **
+ *
+ * @param request EditEndUserStatusRequest
+ * @return EditEndUserStatusResponse
+ */
 func (client *Client) EditEndUserStatus(request *EditEndUserStatusRequest) (_result *EditEndUserStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditEndUserStatusResponse{}
@@ -3307,6 +3672,14 @@ func (client *Client) EditEndUserStatus(request *EditEndUserStatusRequest) (_res
 	return _result, _err
 }
 
+/**
+ * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+ * **This content is only published on the international site. **
+ *
+ * @param request EditNewBuyStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return EditNewBuyStatusResponse
+ */
 func (client *Client) EditNewBuyStatusWithOptions(request *EditNewBuyStatusRequest, runtime *util.RuntimeOptions) (_result *EditNewBuyStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3344,6 +3717,13 @@ func (client *Client) EditNewBuyStatusWithOptions(request *EditNewBuyStatusReque
 	return _result, _err
 }
 
+/**
+ * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+ * **This content is only published on the international site. **
+ *
+ * @param request EditNewBuyStatusRequest
+ * @return EditNewBuyStatusResponse
+ */
 func (client *Client) EditNewBuyStatus(request *EditNewBuyStatusRequest) (_result *EditNewBuyStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditNewBuyStatusResponse{}
@@ -3355,6 +3735,14 @@ func (client *Client) EditNewBuyStatus(request *EditNewBuyStatusRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+ * **This content is only published on the international site. **
+ *
+ * @param request EditZeroCreditShutdownRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return EditZeroCreditShutdownResponse
+ */
 func (client *Client) EditZeroCreditShutdownWithOptions(request *EditZeroCreditShutdownRequest, runtime *util.RuntimeOptions) (_result *EditZeroCreditShutdownResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3392,6 +3780,13 @@ func (client *Client) EditZeroCreditShutdownWithOptions(request *EditZeroCreditS
 	return _result, _err
 }
 
+/**
+ * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+ * **This content is only published on the international site. **
+ *
+ * @param request EditZeroCreditShutdownRequest
+ * @return EditZeroCreditShutdownResponse
+ */
 func (client *Client) EditZeroCreditShutdown(request *EditZeroCreditShutdownRequest) (_result *EditZeroCreditShutdownResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditZeroCreditShutdownResponse{}
@@ -3403,6 +3798,13 @@ func (client *Client) EditZeroCreditShutdown(request *EditZeroCreditShutdownRequ
 	return _result, _err
 }
 
+/**
+ * Caller must be a Partner from International Site, either Distribution or Reseller will do.
+ *
+ * @param request ExportCustomerQuotaRecordRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ExportCustomerQuotaRecordResponse
+ */
 func (client *Client) ExportCustomerQuotaRecordWithOptions(request *ExportCustomerQuotaRecordRequest, runtime *util.RuntimeOptions) (_result *ExportCustomerQuotaRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3452,6 +3854,12 @@ func (client *Client) ExportCustomerQuotaRecordWithOptions(request *ExportCustom
 	return _result, _err
 }
 
+/**
+ * Caller must be a Partner from International Site, either Distribution or Reseller will do.
+ *
+ * @param request ExportCustomerQuotaRecordRequest
+ * @return ExportCustomerQuotaRecordResponse
+ */
 func (client *Client) ExportCustomerQuotaRecord(request *ExportCustomerQuotaRecordRequest) (_result *ExportCustomerQuotaRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportCustomerQuotaRecordResponse{}
@@ -3731,6 +4139,13 @@ func (client *Client) GetUnassociatedCustomer(request *GetUnassociatedCustomerRe
 	return _result, _err
 }
 
+/**
+ * The current API request rate for the Cloud Product has not been disclosed.
+ *
+ * @param request InviteSubAccountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return InviteSubAccountResponse
+ */
 func (client *Client) InviteSubAccountWithOptions(request *InviteSubAccountRequest, runtime *util.RuntimeOptions) (_result *InviteSubAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3764,6 +4179,12 @@ func (client *Client) InviteSubAccountWithOptions(request *InviteSubAccountReque
 	return _result, _err
 }
 
+/**
+ * The current API request rate for the Cloud Product has not been disclosed.
+ *
+ * @param request InviteSubAccountRequest
+ * @return InviteSubAccountResponse
+ */
 func (client *Client) InviteSubAccount(request *InviteSubAccountRequest) (_result *InviteSubAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InviteSubAccountResponse{}
@@ -3775,6 +4196,13 @@ func (client *Client) InviteSubAccount(request *InviteSubAccountRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * The current API request rate for cloud products has not been disclosed.
+ *
+ * @param request ListCountriesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCountriesResponse
+ */
 func (client *Client) ListCountriesWithOptions(runtime *util.RuntimeOptions) (_result *ListCountriesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3797,6 +4225,11 @@ func (client *Client) ListCountriesWithOptions(runtime *util.RuntimeOptions) (_r
 	return _result, _err
 }
 
+/**
+ * The current API request rate for cloud products has not been disclosed.
+ *
+ * @return ListCountriesResponse
+ */
 func (client *Client) ListCountries() (_result *ListCountriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCountriesResponse{}
@@ -3808,6 +4241,13 @@ func (client *Client) ListCountries() (_result *ListCountriesResponse, _err erro
 	return _result, _err
 }
 
+/**
+ * Caller must be a Partner from International Site, either Distribution or Reseller will do.
+ *
+ * @param request QuotaListExportPagedRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QuotaListExportPagedResponse
+ */
 func (client *Client) QuotaListExportPagedWithOptions(request *QuotaListExportPagedRequest, runtime *util.RuntimeOptions) (_result *QuotaListExportPagedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3837,6 +4277,12 @@ func (client *Client) QuotaListExportPagedWithOptions(request *QuotaListExportPa
 	return _result, _err
 }
 
+/**
+ * Caller must be a Partner from International Site, either Distribution or Reseller will do.
+ *
+ * @param request QuotaListExportPagedRequest
+ * @return QuotaListExportPagedResponse
+ */
 func (client *Client) QuotaListExportPaged(request *QuotaListExportPagedRequest) (_result *QuotaListExportPagedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuotaListExportPagedResponse{}
