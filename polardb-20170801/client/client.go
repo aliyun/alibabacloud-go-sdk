@@ -10035,10 +10035,11 @@ func (s *DescribeDBClusterTDEResponse) SetBody(v *DescribeDBClusterTDEResponseBo
 }
 
 type DescribeDBClusterVersionRequest struct {
-	// The ID of the cluster.
+	// The revision version of the database engine.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all the clusters for your account, such as the cluster ID.
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// >  For a cluster of the PolarDB for MySQL 5.6, the DBRevisionVersion parameter returns the revision version information only if the `Revision Version` is released later than August 31, 2020. Otherwise, this parameter returns an empty value. For more information about the kernel version of a cluster that runs the PolarDB for MySQL, see [PolarDB for MySQL](~~423884~~).
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the request.
 	DescribeType         *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10085,10 +10086,15 @@ func (s *DescribeDBClusterVersionRequest) SetResourceOwnerId(v int64) *DescribeD
 }
 
 type DescribeDBClusterVersionResponseBody struct {
-	// The ID of the cluster.
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The latest version of the database engine.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The release note of the kernel version.
 	DBLatestVersion *string `json:"DBLatestVersion,omitempty" xml:"DBLatestVersion,omitempty"`
+	// The versions to which the cluster can be upgraded.
+	DBMinorVersion *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
+	// The version of PolarProxy.
+	DBRevisionVersion     *string                                                      `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
+	DBRevisionVersionList []*DescribeDBClusterVersionResponseBodyDBRevisionVersionList `json:"DBRevisionVersionList,omitempty" xml:"DBRevisionVersionList,omitempty" type:"Repeated"`
 	// The minor version of the database engine.
 	//
 	// *   If `DBVersion` is **8.0**, the valid values of this parameter are:
@@ -10099,19 +10105,9 @@ type DescribeDBClusterVersionResponseBody struct {
 	// *   If `DBVersion` is **5.7**, set the value of this parameter to **5.7.28**.
 	//
 	// *   If `DBVersion` is **5.6**, the value of this parameter is **5.6.16**.
-	DBMinorVersion *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
-	// The revision version of the database engine.
-	//
-	// > For a cluster of the PolarDB for MySQL 5.6, the `DBRevisionVersion` parameter returns the revision version information only if the revision version is released later than August 31, 2020. Otherwise, this parameter returns an empty value. For more information about the kernel version of a cluster that runs the PolarDB for MySQL, see [PolarDB for MySQL](~~423884~~).
-	DBRevisionVersion *string `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
-	// 可升级的版本信息列表。
-	DBRevisionVersionList []*DescribeDBClusterVersionResponseBodyDBRevisionVersionList `json:"DBRevisionVersionList,omitempty" xml:"DBRevisionVersionList,omitempty" type:"Repeated"`
-	// The major version of the database engine. Valid values:
-	//
-	// *   **8.0**
-	// *   **5.7**
-	// *   **5.6**
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The latest version of PolarProxy.
+	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
 	// The status of the minor version. Valid values:
 	//
 	// *   **Stable**: The minor version is stable.
@@ -10119,30 +10115,27 @@ type DescribeDBClusterVersionResponseBody struct {
 	// *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
 	//
 	// > For more information about how to upgrade the minor version, see [Upgrade versions](~~158572~~).
-	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
-	// Indicates whether the kernel version is the latest version. Valid values:
-	//
-	// *   **true**
-	// *   **false**
 	IsLatestVersion *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	// Indicates whether PolarProxy is the latest version. Valid values:
-	//
-	// *   **true**
-	// *   **false**
+	// The ID of the cluster.
 	IsProxyLatestVersion *string `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
-	// The latest version of PolarProxy.
+	// The revision version of the database engine.
 	ProxyLatestVersion *string `json:"ProxyLatestVersion,omitempty" xml:"ProxyLatestVersion,omitempty"`
-	// The version of PolarProxy.
+	// The release status of the kernel version. Valid values:
+	//
+	// *   **Stable**: The kernel version is stable.
+	// *   **Old**: The kernel version is old. We recommend that you do not upgrade the cluster to this version returned for this parameter.
+	// *   **HighRisk**: The kernel version has critical defects. We recommend that you do not upgrade the cluster to this version returned for this parameter.
 	ProxyRevisionVersion *string `json:"ProxyRevisionVersion,omitempty" xml:"ProxyRevisionVersion,omitempty"`
+	// The code of the revision version of the database engine to which the cluster can be upgraded.
+	ProxyVersionStatus *string `json:"ProxyVersionStatus,omitempty" xml:"ProxyVersionStatus,omitempty"`
 	// The status of PolarProxy. Valid values:
 	//
 	// *   **Stable**: The minor version is stable.
 	// *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
 	// *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+	// *   **Beta**: The minor version is a beta version.
 	//
 	// > For more information about how to upgrade the PolarProxy version, see [Upgrade versions](~~158572~~).
-	ProxyVersionStatus *string `json:"ProxyVersionStatus,omitempty" xml:"ProxyVersionStatus,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10220,16 +10213,9 @@ func (s *DescribeDBClusterVersionResponseBody) SetRequestId(v string) *DescribeD
 }
 
 type DescribeDBClusterVersionResponseBodyDBRevisionVersionList struct {
-	// 版本发布说明。
-	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// 数据库版本发布状态。取值范围如下：
-	// * **Stable**：当前版本状态稳定。
-	// * **Old**：当前版本过旧，不建议升级到该版本。
-	// * **HighRisk**：当前版本有严重缺陷，不建议升级到该版本。
-	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
-	// 数据库引擎的修订版本Code，用于指定升级到该目标版本。
+	ReleaseNote         *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseType         *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
 	RevisionVersionCode *string `json:"RevisionVersionCode,omitempty" xml:"RevisionVersionCode,omitempty"`
-	// 数据库引擎的修订版本号。
 	RevisionVersionName *string `json:"RevisionVersionName,omitempty" xml:"RevisionVersionName,omitempty"`
 }
 
@@ -21056,7 +21042,8 @@ type ModifyDBClusterPrimaryZoneRequest struct {
 	// The ID of the destination primary zone.
 	//
 	// > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s ModifyDBClusterPrimaryZoneRequest) String() string {
@@ -21124,6 +21111,11 @@ func (s *ModifyDBClusterPrimaryZoneRequest) SetVSwitchId(v string) *ModifyDBClus
 
 func (s *ModifyDBClusterPrimaryZoneRequest) SetZoneId(v string) *ModifyDBClusterPrimaryZoneRequest {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *ModifyDBClusterPrimaryZoneRequest) SetZoneType(v string) *ModifyDBClusterPrimaryZoneRequest {
+	s.ZoneType = &v
 	return s
 }
 
@@ -29879,7 +29871,7 @@ func (client *Client) DescribeDBClusterTDE(request *DescribeDBClusterTDERequest)
 }
 
 /**
- * > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+ * The release note of the kernel version.
  *
  * @param request DescribeDBClusterVersionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29939,7 +29931,7 @@ func (client *Client) DescribeDBClusterVersionWithOptions(request *DescribeDBClu
 }
 
 /**
- * > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+ * The release note of the kernel version.
  *
  * @param request DescribeDBClusterVersionRequest
  * @return DescribeDBClusterVersionResponse
@@ -34220,6 +34212,10 @@ func (client *Client) ModifyDBClusterPrimaryZoneWithOptions(request *ModifyDBClu
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
 		query["ZoneId"] = request.ZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneType)) {
+		query["ZoneType"] = request.ZoneType
 	}
 
 	req := &openapi.OpenApiRequest{
