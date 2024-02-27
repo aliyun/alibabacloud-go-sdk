@@ -1748,7 +1748,7 @@ type CloneDBInstanceRequest struct {
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// This parameter is reserved. You do not need to specify this parameter.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
@@ -1801,7 +1801,8 @@ type CloneDBInstanceRequest struct {
 	// *   **Classic**
 	//
 	// > By default, the new instance has the same network type as the original primary instance.
-	InstanceNetworkType   *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
@@ -2097,7 +2098,7 @@ type CloneDBInstanceShrinkRequest struct {
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// This parameter is reserved. You do not need to specify this parameter.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
@@ -2150,7 +2151,8 @@ type CloneDBInstanceShrinkRequest struct {
 	// *   **Classic**
 	//
 	// > By default, the new instance has the same network type as the original primary instance.
-	InstanceNetworkType   *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
@@ -3467,7 +3469,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// > : This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
 	BabelfishConfig *string `json:"BabelfishConfig,omitempty" xml:"BabelfishConfig,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A deprecated parameter. You do not need to specify this parameter.
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
@@ -3492,8 +3494,9 @@ type CreateDBInstanceRequest struct {
 	// > This parameter is required when you create a serverless instance.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// A reserved parameter. You do not need to specify this parameter.
+	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
 	// *   **Standard**: standard mode
@@ -3602,19 +3605,25 @@ type CreateDBInstanceRequest struct {
 	// *   Regular instance
 	//
 	//     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
-	//     *   Valid values when you set Engine to SQLServer: **08r2\_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_ent_ha**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_ent**, **2017\_std_ha**, **2017\_web**, **2019\_ent**, **2019\_std_ha**, **2019\_web**, **2022\_ent**, **2022\_std_ha**, and **2022\_web**
-	//     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
+	//     *   Valid values if you set Engine to SQLServer: **08r2\_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_ent_ha**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_ent**, **2017\_std_ha**, **2017\_web**, **2019\_ent**, **2019\_std_ha**, **2019\_web**, **2022\_ent**, **2022\_std_ha**, and **2022\_web**
+	//     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**
 	//     *   Valid values when you set the Engine parameter to MariaDB: **10.3**
 	//
 	// *   Serverless instance
 	//
 	//     *   Valid values when you set Engine to MySQL: **5.7** and **8.0**
 	//     *   Valid values when you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**
-	//     *   Valid value when you set Engine to PostgreSQL: **14.0**
+	//     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, and **16.0**
 	//
-	// > *   ApsaraDB RDS for MariaDB does not support serverless instances.
-	// > *   Valid value if you set Engine to SQLServer: `_ent` specifies SQL Server EE on RDS Cluster Edition, `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
-	// > *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
+	// >
+	//
+	// *   ApsaraDB RDS for MariaDB does not support serverless instances.
+	//
+	// *   RDS instances that run SQL Server, `_ent` specifies SQL Server EE (Always On), `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
+	//
+	// *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
+	//
+	// *   ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled support only PostgreSQL 13.0, PostgreSQL 14.0, and PostgreSQL 15.0.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The network type of the instance. Valid values:
 	//
@@ -3624,7 +3633,8 @@ type CreateDBInstanceRequest struct {
 	// > *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	// > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
 	// > *   RDS instances that run SQL Server Basic and SQL Server Web can reside in the classic network and virtual private clouds (VPCs). If the instance runs other database engines, you must set this parameter to **VPC**.
-	InstanceNetworkType   *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// A reserved parameter. You do not need to specify this parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
@@ -4063,17 +4073,17 @@ type CreateDBInstanceRequestServerlessConfig struct {
 	AutoPause *bool `json:"AutoPause,omitempty" xml:"AutoPause,omitempty"`
 	// The maximum number of RDS Capacity Units (RCUs). Valid values:
 	//
-	// *   Serverless ApsaraDB RDS for MySQL instances: **1 to 8**
+	// *   Serverless ApsaraDB RDS for MySQL instances: **1 to 32**
 	// *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**
-	// *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 12**
+	// *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**
 	//
-	// >  The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
+	// >  The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be set only to an **integer**.
 	MaxCapacity *float64 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// The minimum number of RCUs. Valid values:
+	// The minimum value of RCUs. Valid values:
 	//
-	// *   Serverless ApsaraDB RDS for MySQL instances: **0.5 to 8**.
+	// *   Serverless ApsaraDB RDS for MySQL instances: **0.5 to 32**. Only integers are supported.
 	// *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
-	// *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 12**.
+	// *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**
 	//
 	// >  The value of this parameter must be less than or equal to the value of **MaxCapacity**.
 	MinCapacity *float64 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
@@ -4082,8 +4092,11 @@ type CreateDBInstanceRequestServerlessConfig struct {
 	// *   **true**
 	// *   **false** (default)
 	//
-	// > *   This parameter is required if you want to create a serverless instance that run MySQL and PostgreSQL. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during forced scaling. Process with caution.
-	// > *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+	// >
+	//
+	// *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
+	//
+	// *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
 	SwitchForce *bool `json:"SwitchForce,omitempty" xml:"SwitchForce,omitempty"`
 }
 
@@ -4186,7 +4199,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// > : This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
 	BabelfishConfig *string `json:"BabelfishConfig,omitempty" xml:"BabelfishConfig,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A deprecated parameter. You do not need to specify this parameter.
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
@@ -4211,8 +4224,9 @@ type CreateDBInstanceShrinkRequest struct {
 	// > This parameter is required when you create a serverless instance.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// A reserved parameter. You do not need to specify this parameter.
+	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
 	// *   **Standard**: standard mode
@@ -4321,19 +4335,25 @@ type CreateDBInstanceShrinkRequest struct {
 	// *   Regular instance
 	//
 	//     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
-	//     *   Valid values when you set Engine to SQLServer: **08r2\_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_ent_ha**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_ent**, **2017\_std_ha**, **2017\_web**, **2019\_ent**, **2019\_std_ha**, **2019\_web**, **2022\_ent**, **2022\_std_ha**, and **2022\_web**
-	//     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
+	//     *   Valid values if you set Engine to SQLServer: **08r2\_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_ent_ha**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_ent**, **2017\_std_ha**, **2017\_web**, **2019\_ent**, **2019\_std_ha**, **2019\_web**, **2022\_ent**, **2022\_std_ha**, and **2022\_web**
+	//     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**
 	//     *   Valid values when you set the Engine parameter to MariaDB: **10.3**
 	//
 	// *   Serverless instance
 	//
 	//     *   Valid values when you set Engine to MySQL: **5.7** and **8.0**
 	//     *   Valid values when you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**
-	//     *   Valid value when you set Engine to PostgreSQL: **14.0**
+	//     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, and **16.0**
 	//
-	// > *   ApsaraDB RDS for MariaDB does not support serverless instances.
-	// > *   Valid value if you set Engine to SQLServer: `_ent` specifies SQL Server EE on RDS Cluster Edition, `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
-	// > *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
+	// >
+	//
+	// *   ApsaraDB RDS for MariaDB does not support serverless instances.
+	//
+	// *   RDS instances that run SQL Server, `_ent` specifies SQL Server EE (Always On), `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
+	//
+	// *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
+	//
+	// *   ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled support only PostgreSQL 13.0, PostgreSQL 14.0, and PostgreSQL 15.0.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The network type of the instance. Valid values:
 	//
@@ -4343,7 +4363,8 @@ type CreateDBInstanceShrinkRequest struct {
 	// > *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	// > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
 	// > *   RDS instances that run SQL Server Basic and SQL Server Web can reside in the classic network and virtual private clouds (VPCs). If the instance runs other database engines, you must set this parameter to **VPC**.
-	InstanceNetworkType   *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// A reserved parameter. You do not need to specify this parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
@@ -8550,13 +8571,12 @@ type CreatePostgresExtensionsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// There are security risks associated with installing certain plug-ins on an instance of a minor version that is too low, and you can install it after confirming the risk.
+	// The risk description that you need to confirm. If your instance runs an outdated minor engine version, installing specific extensions on the instance poses security risks. Proceed with the installation only after you acknowledge these risks. Valid values:
 	//
-	// Valid values:
-	// - true
-	// - false
+	// *   true
+	// *   false
 	//
-	// > For more information about the risks, see [Limits on extension creation for ApsaraDB RDS for PostgreSQL instances](~~2587815~~).
+	// >  For more information about the risks, see [Limits on extension creation for ApsaraDB RDS for PostgreSQL instances](~~2587815~~).
 	RiskConfirmed *bool `json:"RiskConfirmed,omitempty" xml:"RiskConfirmed,omitempty"`
 	// The source database from which you want to synchronize the extension to the destination database. If you do not specify the **Extensions** parameter, you must specify this parameter.
 	SourceDatabase *string `json:"SourceDatabase,omitempty" xml:"SourceDatabase,omitempty"`
@@ -8695,7 +8715,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// This parameter is reserved. You do not need to specify this parameter.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
@@ -8755,7 +8775,8 @@ type CreateReadOnlyDBInstanceRequest struct {
 	// > The network type of the read-only instance can be different from the network type of the primary instance.
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// A reserved parameter.
-	InstructionSetArch    *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
+	InstructionSetArch *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9066,7 +9087,7 @@ func (s *CreateReadOnlyDBInstanceResponse) SetBody(v *CreateReadOnlyDBInstanceRe
 type CreateSecretRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the instance ID.
+	// The ID of the instance. You can call the DescribeDBInstances operation to query the ID of the instance.
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The name of the database.
 	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
@@ -9079,9 +9100,9 @@ type CreateSecretRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The password that is used to access the database.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query region ID of the instance.
+	// The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the resource group ID.
+	// The ID of the resource group to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -18264,14 +18285,14 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	AdvancedFeatures *string `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
 	// The method that is used to update the minor engine version of the instance. Valid values:
 	//
-	// *   **Auto:** automatic update.
+	// *   **Auto**: automatic update.
 	// *   **Manual**: manual update. The minor engine version of the instance is forcefully updated only when the in-use minor engine version is phased out.
 	AutoUpgradeMinorVersion *string `json:"AutoUpgradeMinorVersion,omitempty" xml:"AutoUpgradeMinorVersion,omitempty"`
 	// The availability status of the instance in percentage.
 	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
 	// The configuration of the Babelfish feature for the ApsaraDB RDS for PostgreSQL instance.
 	//
-	// >  This parameter is suitable only for ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](~~428613~~).
+	// >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](~~428613~~).
 	BabelfishConfig *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig `json:"BabelfishConfig,omitempty" xml:"BabelfishConfig,omitempty" type:"Struct"`
 	// An invalid parameter. You can ignore this parameter.
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
@@ -18285,8 +18306,9 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
 	// *   **Finance**: RDS Enterprise Edition
 	// *   **Serverless_basic**: RDS Basic Edition for serverless instances
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// A reserved parameter.
+	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
 	// The character set collation of the instance.
 	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	// The connection mode of the instance. Valid values:
@@ -18298,12 +18320,12 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The type of the proxy that is used by the instance. Valid values:
 	//
-	// *   **1**: shared proxy
-	// *   **2**: dedicated proxy
+	// *   **1**: shared database proxy
+	// *   **2**: dedicated database proxy
 	//
 	// >  We recommend that you use the **ProxyType** parameter instead of this parameter.
 	ConsoleVersion *string `json:"ConsoleVersion,omitempty" xml:"ConsoleVersion,omitempty"`
-	// The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The minor engine version.
 	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
@@ -18322,7 +18344,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
 	// The instance description.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The disk usage of the instance.
+	// The disk usage of the instance. Unit: MB.
 	DBInstanceDiskUsed *string `json:"DBInstanceDiskUsed,omitempty" xml:"DBInstanceDiskUsed,omitempty"`
 	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -18339,9 +18361,9 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// *   **local_ssd** and **ephemeral_ssd**: local SSD
+	// *   **local_ssd** or **ephemeral_ssd**: local SSD
 	// *   **cloud_ssd**: standard SSD
-	// *   **cloud_essd**: enhanced SSD (ESSD)
+	// *   **cloud_essd**: enhanced SSD (ESSD).
 	// *   **general_essd**: general ESSD
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The instance type. Valid values:
@@ -18353,7 +18375,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	// The maximum number of databases that can be created on the instance.
 	DBMaxQuantity *int32 `json:"DBMaxQuantity,omitempty" xml:"DBMaxQuantity,omitempty"`
-	// The dedicated cluster ID.
+	// The ID of the dedicated cluster to which the instances belong.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Indicates whether the release protection feature is enabled. Valid values:
 	//
@@ -18369,7 +18391,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database engine version.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The expiration time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// >  Pay-as-you-go instances never expire.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
@@ -18377,11 +18399,11 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	Extra *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
 	// The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
 	GeneralGroupName *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
-	// The ID of the disaster recovery instance that is attached to the instance.
+	// The ID of the disaster recovery instance that is attached to the primary instance.
 	GuardDBInstanceId *string `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
-	// The IP address type. Only **IPv4** addresses are supported.
+	// The IP address type. Only **IPv4 addresses** are supported.
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The ID of the instance from which incremental data comes. The incremental data of a read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
+	// The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance comes from its primary instance. The incremental data of a read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
 	IncrementSourceDBInstanceId *string `json:"IncrementSourceDBInstanceId,omitempty" xml:"IncrementSourceDBInstanceId,omitempty"`
 	// The network type of the instance. Valid values:
 	//
@@ -18392,7 +18414,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// *   **x86**
 	// *   **arm**
-	InstructionSetArch    *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
+	InstructionSetArch *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The latest minor engine version that is supported by the instance.
 	LatestKernelVersion *string `json:"LatestKernelVersion,omitempty" xml:"LatestKernelVersion,omitempty"`
@@ -18407,7 +18430,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The reason why the instance was locked.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maintenance window of the instance. The time is displayed in UTC. Take note that the maintenance window displayed in the ApsaraDB RDS console is equal to the value of this parameter plus 8 hours.
+	// The maintenance window of the instance. The time is displayed in UTC. The maintenance window displayed in the ApsaraDB RDS console is equal to the value of this parameter plus 8 hours.
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	// The primary instance ID.
 	//
@@ -18429,7 +18452,6 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// *   **Postpaid**: pay-as-you-go
 	// *   **Prepaid**: subscription
-	// *   **SERVERLESS**: Serverless
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The port that is used to connect to the instance over an internal network.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
@@ -18456,29 +18478,29 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	SecurityIPMode *string `json:"SecurityIPMode,omitempty" xml:"SecurityIPMode,omitempty"`
 	// The settings of the serverless instance.
 	ServerlessConfig *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
-	// The information about the zone of the secondary instance.
+	// The zone IDs of the secondary instances.
 	SlaveZones *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
-	// Indicates whether the instance supports superuser accounts, such as the system administrator (SA) account, the Active Directory (AD) account, and the host account. Valid values:
+	// Indicates whether the instance supports superuser accounts, such as the system administrator (SA) account, Active Directory (AD) account, and host account. Valid values:
 	//
 	// *   **Enable**
 	// *   **Disabled**
 	SuperPermissionMode *string `json:"SuperPermissionMode,omitempty" xml:"SuperPermissionMode,omitempty"`
-	// The ID of the temporary instance that is attached to the instance.
+	// The ID of the temporary instance that is attached to the primary instance.
 	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
 	// The time zone.
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 	// The information about the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	// The severity level of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
+	// The severity of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
 	//
 	// *   **1**: The instance is normal.
 	// *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance, and instance performance may be affected. You must adjust the specifications of these instances based on your business requirements.
 	TipsLevel *int32 `json:"TipsLevel,omitempty" xml:"TipsLevel,omitempty"`
 	// The vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// The ID of the instance. This parameter is returned only when the instance resides in a VPC.
 	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	// The VPC ID.
+	// The virtual private cloud (VPC) ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -22432,7 +22454,11 @@ type DescribeDBInstanceSSLResponseBody struct {
 	ClientCertRevocationList *string `json:"ClientCertRevocationList,omitempty" xml:"ClientCertRevocationList,omitempty"`
 	// The endpoint that is protected by SSL encryption.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	ForceEncryption  *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
+	// Indicates whether the forceful SSL encryption feature is enabled. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](~~95715~~).
+	//
+	// *   **1**: enabled
+	// *   **0**: The feature is disabled.
+	ForceEncryption *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
 	// The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
 	//
 	// *   **success**
@@ -22487,7 +22513,8 @@ type DescribeDBInstanceSSLResponseBody struct {
 	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
-	ServerKey  *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	ServerKey *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	// The minimum Transport Layer Security (TLS) version. Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](~~95715~~).
 	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
@@ -23195,7 +23222,7 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// *   **Internet**
 	// *   **Intranet**
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The status of the instance. For more information, see [Instance states](~~26315~~).
+	// The instance status. For more information, see [Instance statuses](~~26315~~).
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The storage type of the instance.
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
@@ -23206,7 +23233,7 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// *   **Guard**: disaster recovery instance
 	// *   **Temp**: temporary instance
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The ID of the dedicated cluster.
+	// The ID of the dedicated cluster to which the instances belong.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// The name of the dedicated cluster to which the instance belongs.
 	DedicatedHostGroupName *string `json:"DedicatedHostGroupName,omitempty" xml:"DedicatedHostGroupName,omitempty"`
@@ -23245,7 +23272,7 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
 	GeneralGroupName *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
-	// The ID of the disaster recovery instance. This parameter is returned only when the instance is a primary instance and has a disaster recovery instance.
+	// The ID of the disaster recovery instance. This parameter is returned only when the instance is a primary instance and has a disaster recovery instance attached.
 	GuardDBInstanceId *string `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
 	// The network type of the instance. Valid values:
 	//
@@ -23264,7 +23291,7 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The reason why the instance was locked.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The ID of the primary instance. If the value of this parameter is null, the instance is a primary instance.
+	// The ID of the primary instance. If this parameter is null, the instance is a primary instance.
 	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	// Indicates whether the multi-zone deployment method is used for the instance. Valid values:
 	//
@@ -23278,9 +23305,9 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// *   **Postpaid**: pay-as-you-go
 	// *   **Prepaid**: subscription
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// An array that consists of the IDs of the read-only instances that are attached to the instance. This parameter is returned only when the instance is a primary instance and has read-only instances.
+	// The IDs of the read-only instances that are attached to the primary instance. This parameter is returned only when the instance is a primary instance.
 	ReadOnlyDBInstanceIds *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
-	// The region ID of the instance.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -23289,20 +23316,20 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// *   **100**: The instance supports weight-based switchovers for high availability.
 	// *   **0**: The instance does not support weight-based switchovers for high availability.
 	SwitchWeight *int32 `json:"SwitchWeight,omitempty" xml:"SwitchWeight,omitempty"`
-	// The ID of the temporary instance. This parameter is returned only when the instance is a primary instance and has a temporary instance.
+	// The ID of the temporary instance. This parameter is returned only when the instance is a primary instance and has a temporary instance attached.
 	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
 	// The information about the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	// The severity level of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
+	// The severity of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
 	//
 	// *   **1**: The instance is normal.
 	// *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance, and instance performance may be affected. You must adjust the specifications of these instances based on your business requirements.
 	TipsLevel *int32 `json:"TipsLevel,omitempty" xml:"TipsLevel,omitempty"`
 	// The vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// The ID of the instance. This parameter is returned only when the instance resides in a VPC.
 	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	// The virtual private cloud (VPC) ID of the instance.
+	// The virtual private cloud (VPC) ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The VPC name.
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
@@ -23591,7 +23618,7 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds) Se
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIdsReadOnlyDBInstanceId struct {
-	// The ID of the read-only instance.
+	// The read-only instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -23640,7 +23667,7 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 type DescribeDBInstancesAsCsvRequest struct {
 	// A deprecated parameter. You do not need to configure this parameter.
 	CachedAsync *bool `json:"CachedAsync,omitempty" xml:"CachedAsync,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the IDs of instances.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// A deprecated parameter. You do not need to configure this parameter.
 	ExportKey *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
@@ -25439,9 +25466,9 @@ type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	// The RDS edition of the instance that runs the minor engine version. Valid values:
 	//
-	// *   **Basic**: RDS Basic Edition.
-	// *   **HighAvailability**: RDS High-availability Edition.
-	// *   **Finance**: RDS Enterprise Edition.
+	// *   **Basic**: RDS Basic Edition
+	// *   **HighAvailability**: RDS High-availability Edition
+	// *   **Finance**: RDS Enterprise Edition
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The URL of the release notes for the minor engine version.
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
@@ -25452,15 +25479,15 @@ type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
 	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
 	// The status of the minor engine version. Valid values:
 	//
-	// *   **Offline**
-	// *   **online**
+	// *   **Offline**: discontinued
+	// *   **Online**: available
 	//
 	// >  If the minor engine version is in the Offline state, the minor engine version is discontinued. In this case, ignore the expiration status. If the minor engine version is in the Online state and the expiration state is expired, the minor engine version expires. If the expiration state is vaild, the minor engine version is still in its lifecycle.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	// The tag that corresponds to the minor engine version. Valid values:
 	//
-	// *   **pgsql_docker_image**: tag of the common instance
-	// *   **pgsql_babelfish_image**: tag of the instance for which Babelfish is enabled
+	// *   **pgsql_docker_image**: tag of common instances
+	// *   **pgsql_babelfish_image**: tag of instances for which Babelfish is enabled
 	//
 	// >  This parameter is available only for instances that run **PostgreSQL**.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -26239,7 +26266,10 @@ type DescribeDBProxyPerformanceRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The type of proxy that is enabled on the instance. Set the value to **DedicatedProxy**.
+	// The type of the database proxy instance. Valid values:
+	//
+	// *   common: the general-purpose database proxy
+	// *   exclusive: the dedicated database proxy
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -44570,7 +44600,8 @@ type MigrateToOtherZoneRequest struct {
 	// *   **ScheduleTime**: The change takes effect at the point in time that you specify.
 	//
 	// >  If you set this parameter to **ScheduleTime**, you must specify the **SwitchTime** parameter.
-	EffectiveTime         *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// A reserved parameter. You do not need to specify this parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// Specifies whether to change the specifications of the instance during the cross-zone migration. Valid values:
 	//
@@ -45105,18 +45136,25 @@ type ModifyActiveOperationTasksRequest struct {
 	//
 	// >  You can call the DescribeActiveOperationTask operation to query the O\&M task ID.
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// Specifies whether to immediately start scheduling. The value 0 indicates that scheduling is not immediately started. This is the default value. The value 1 indicates that scheduling is immediately started. If you set this parameter to 0, SwitchTime takes effect. If you set this parameter to 1, SwitchTimer does not take effect. In this case, the start time of the task is set to the current time, and the system determines the switching time based on the start time.
+	// Specifies whether to immediately start scheduling. Valid values:
 	//
-	// >  Immediate scheduling indicates that the task enters the preparing state instead of the immediate switchover. After the preparation is complete, the switchover is performed. You can call the DescribeActiveOperationTasks operation and obtain the preparation time from the value of the PrepareInterval response parameter.
+	// *   0 (default): no
+	// *   1: yes
+	//
+	// >
+	//
+	// *   If you set this parameter to 0, the SwitchTime parameter takes effect. If you set this parameter to 1, the SwitchTime parameter does not take effect. In this case, the start time of the task is the current time, and the system determines the switching time based on the start time.
+	//
+	// *   Immediate scheduling specifies that the task enters the preparing state instead of being executed immediately. After the preparation is complete, the switchover is performed. You can call the DescribeActiveOperationTasks to query the preparation time that is returned for the PrepareInterval parameter.
 	ImmediateStart       *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The scheduled switching time for the task. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The scheduled switching time that you want to specify. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// >  The time that you specify cannot be later than the deadline of the O\&M task. You can call the DescribeActiveOperationTasks operation and obtain the deadline of the O\&M task from the value of the Deadline response parameter.
+	// >  The time that is specified by the SwitchTime parameter cannot be later than the time that is specified by the Deadline parameter. You can call the DescribeActiveOperationTasks operation to query the value of the Deadline parameter in the response.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 }
 
@@ -48103,7 +48141,8 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// *   **aliyun**: a cloud certificate
 	// *   **custom**: a custom certificate
-	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	CAType      *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when ClientCAEbabled is set to **1**.
 	ClientCACert *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
 	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
@@ -48121,10 +48160,15 @@ type ModifyDBInstanceSSLRequest struct {
 	// The internal or public endpoint for which the server certificate needs to be created or updated.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](~~95715~~). Valid values:
+	//
+	// *   **1**: enables the feature.
+	// *   **0**: disables the feature.
 	ForceEncryption *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PassWord        *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	//
 	// *   **cert**
@@ -48142,7 +48186,8 @@ type ModifyDBInstanceSSLRequest struct {
 	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
-	ServerKey  *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	ServerKey *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	// The minimum Transport Layer Security (TLS) version. Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](~~95715~~).
 	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
@@ -48161,6 +48206,11 @@ func (s *ModifyDBInstanceSSLRequest) SetACL(v string) *ModifyDBInstanceSSLReques
 
 func (s *ModifyDBInstanceSSLRequest) SetCAType(v string) *ModifyDBInstanceSSLRequest {
 	s.CAType = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetCertificate(v string) *ModifyDBInstanceSSLRequest {
+	s.Certificate = &v
 	return s
 }
 
@@ -48206,6 +48256,11 @@ func (s *ModifyDBInstanceSSLRequest) SetOwnerAccount(v string) *ModifyDBInstance
 
 func (s *ModifyDBInstanceSSLRequest) SetOwnerId(v int64) *ModifyDBInstanceSSLRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetPassWord(v string) *ModifyDBInstanceSSLRequest {
+	s.PassWord = &v
 	return s
 }
 
@@ -48297,26 +48352,29 @@ type ModifyDBInstanceSpecRequest struct {
 	// *   **true**
 	// *   **false** (default)
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// An invalid parameter. You do not need to specify this parameter.
+	// An invalid parameter. You can ignore this parameter.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
-	// *   Regular RDS instance
+	// *   Regular instance
 	//
-	//     *   **Basic**: RDS Basic Edition
-	//     *   **HighAvailability**: RDS High-availability Edition
-	//     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
+	//     *   **Basic**: RDS Basic Edition.
+	//     *   **HighAvailability**: RDS High-availability Edition.
+	//     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
 	//     *   **Cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
 	//
 	// *   Serverless instance
 	//
 	//     *   **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
-	//     *   **serverless_standard**: RDS High-availability Edition for ApsaraDB RDS for MySQL.
+	//     *   **serverless_standard**: RDS High-availability Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
 	//     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
 	//
-	// > If you set the **EngineVersion** parameter to an SQL Server version number, you must also specify this parameter.
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	//     **
+	//
+	//     **Note** If you set the **EngineVersion** parameter to an SQL Server version number, you must also specify this parameter.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// A reserved parameter.
+	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
 	// The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
 	//
 	// > *   You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
@@ -48361,19 +48419,20 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// *   Regular instance
 	//
-	//     *   Valid values if you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
-	//     *   Valid values if you set Engine to SQLServer: **2008r2**, **08r2\_ent_ha**, **2012**, **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_std_ha**, **2017\_ent**, **2019\_std_ha**, and **2019\_ent**
-	//     *   Valid values if you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
-	//     *   Valid value if you set Engine to MariaDB: **10.3**
+	//     *   Valid values if you set the Engine parameter to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
+	//     *   Valid values if you set the Engine parameter to SQLServer: **2008r2**, **08r2\_ent_ha**, **2012**, **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_std_ha**, **2017\_ent**, **2019\_std_ha**, and **2019\_ent**
+	//     *   Valid values if you set the Engine parameter to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
+	//     *   Valid value if you set the Engine parameter to MariaDB: **10.3**
 	//
 	// *   Serverless instance
 	//
-	//     *   Valid values if you set Engine to MySQL: **5.7** and **8.0**
-	//     *   Valid values if you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**
-	//     *   Valid value if you set Engine to PostgreSQL: **14.0**
+	//     *   Valid values if you set the Engine parameter to MySQL: **5.7** and **8.0**
+	//     *   Valid values if you set the Engine parameter to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**
+	//     *   Valid values if you set the Engine parameter to PostgreSQL: **14.0**, **15.0**, **16.0**
 	//
 	// > ApsaraDB RDS for MariaDB does not support serverless instances.
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -48387,7 +48446,7 @@ type ModifyDBInstanceSpecRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The serverless instance on which you want to perform the specification change.
+	// The serverless instance specifications that you want to change.
 	ServerlessConfiguration *ModifyDBInstanceSpecRequestServerlessConfiguration `json:"ServerlessConfiguration,omitempty" xml:"ServerlessConfiguration,omitempty" type:"Struct"`
 	// A deprecated parameter. You do not need to specify this parameter.
 	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
@@ -48548,7 +48607,7 @@ func (s *ModifyDBInstanceSpecRequest) SetZoneId(v string) *ModifyDBInstanceSpecR
 }
 
 type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
-	// Specifies whether to enable the automatic start and stop feature for the serverless instance. Valid values:
+	// Specifies whether to enable the automatic start and stop feature for the serverless instance. Valid values: Valid values:
 	//
 	// *   **true**
 	// *   **false** (default)
@@ -48557,17 +48616,17 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	AutoPause *bool `json:"AutoPause,omitempty" xml:"AutoPause,omitempty"`
 	// The maximum number of RDS Capacity Units (RCUs). Valid values:
 	//
-	// *   Serverless ApsaraDB RDS for MySQL instances: **1 to 8**
+	// *   Serverless ApsaraDB RDS for MySQL instances: **1 to 32**
 	// *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**
-	// *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 12**
+	// *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**
 	//
 	// >  The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
 	MaxCapacity *float64 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
 	// The minimum number of RCUs. Valid values:
 	//
-	// *   Serverless ApsaraDB RDS for MySQL instances: **0.5 to 8**.
+	// *   Serverless ApsaraDB RDS for MySQL instances: **0.5 to 32**.
 	// *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
-	// *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 12**.
+	// *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
 	//
 	// >  The value of this parameter must be less than or equal to the value of **MaxCapacity**.
 	MinCapacity *float64 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
@@ -48576,7 +48635,7 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	// *   **true**
 	// *   **false** (default)
 	//
-	// > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during forced scaling. Process with caution.
+	// > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
 	// > *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
 	SwitchForce *bool `json:"SwitchForce,omitempty" xml:"SwitchForce,omitempty"`
 }
@@ -48615,26 +48674,29 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// *   **true**
 	// *   **false** (default)
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// An invalid parameter. You do not need to specify this parameter.
+	// An invalid parameter. You can ignore this parameter.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
-	// *   Regular RDS instance
+	// *   Regular instance
 	//
-	//     *   **Basic**: RDS Basic Edition
-	//     *   **HighAvailability**: RDS High-availability Edition
-	//     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
+	//     *   **Basic**: RDS Basic Edition.
+	//     *   **HighAvailability**: RDS High-availability Edition.
+	//     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
 	//     *   **Cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
 	//
 	// *   Serverless instance
 	//
 	//     *   **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
-	//     *   **serverless_standard**: RDS High-availability Edition for ApsaraDB RDS for MySQL.
+	//     *   **serverless_standard**: RDS High-availability Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
 	//     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
 	//
-	// > If you set the **EngineVersion** parameter to an SQL Server version number, you must also specify this parameter.
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	//     **
+	//
+	//     **Note** If you set the **EngineVersion** parameter to an SQL Server version number, you must also specify this parameter.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// A reserved parameter.
+	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
 	// The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
 	//
 	// > *   You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
@@ -48679,19 +48741,20 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// *   Regular instance
 	//
-	//     *   Valid values if you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
-	//     *   Valid values if you set Engine to SQLServer: **2008r2**, **08r2\_ent_ha**, **2012**, **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_std_ha**, **2017\_ent**, **2019\_std_ha**, and **2019\_ent**
-	//     *   Valid values if you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
-	//     *   Valid value if you set Engine to MariaDB: **10.3**
+	//     *   Valid values if you set the Engine parameter to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
+	//     *   Valid values if you set the Engine parameter to SQLServer: **2008r2**, **08r2\_ent_ha**, **2012**, **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_std_ha**, **2017\_ent**, **2019\_std_ha**, and **2019\_ent**
+	//     *   Valid values if you set the Engine parameter to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
+	//     *   Valid value if you set the Engine parameter to MariaDB: **10.3**
 	//
 	// *   Serverless instance
 	//
-	//     *   Valid values if you set Engine to MySQL: **5.7** and **8.0**
-	//     *   Valid values if you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**
-	//     *   Valid value if you set Engine to PostgreSQL: **14.0**
+	//     *   Valid values if you set the Engine parameter to MySQL: **5.7** and **8.0**
+	//     *   Valid values if you set the Engine parameter to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**
+	//     *   Valid values if you set the Engine parameter to PostgreSQL: **14.0**, **15.0**, **16.0**
 	//
 	// > ApsaraDB RDS for MariaDB does not support serverless instances.
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -48705,7 +48768,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The serverless instance on which you want to perform the specification change.
+	// The serverless instance specifications that you want to change.
 	ServerlessConfigurationShrink *string `json:"ServerlessConfiguration,omitempty" xml:"ServerlessConfiguration,omitempty"`
 	// A deprecated parameter. You do not need to specify this parameter.
 	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
@@ -69027,7 +69090,7 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 /**
  * @deprecated : DescribeDBInstancesAsCsv is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
- * This operation is phased out. Use the DescribeDBInstances operation instead.
+ * >  The DescribeDBInstancesAsCsv operation is phased out. You can call the DescribeDBInstances operation.
  *
  * @param request DescribeDBInstancesAsCsvRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -69097,7 +69160,7 @@ func (client *Client) DescribeDBInstancesAsCsvWithOptions(request *DescribeDBIns
 
 /**
  * @deprecated : DescribeDBInstancesAsCsv is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
- * This operation is phased out. Use the DescribeDBInstances operation instead.
+ * >  The DescribeDBInstancesAsCsv operation is phased out. You can call the DescribeDBInstances operation.
  *
  * @param request DescribeDBInstancesAsCsvRequest
  * @return DescribeDBInstancesAsCsvResponse
@@ -79582,6 +79645,10 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 		query["CAType"] = request.CAType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Certificate)) {
+		query["Certificate"] = request.Certificate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientCACert)) {
 		query["ClientCACert"] = request.ClientCACert
 	}
@@ -79616,6 +79683,10 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PassWord)) {
+		query["PassWord"] = request.PassWord
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReplicationACL)) {
