@@ -24162,6 +24162,7 @@ type ListOrganizationMembersResponseBodyMembers struct {
 	Email                  *string                                               `json:"email,omitempty" xml:"email,omitempty"`
 	HiredDate              *int64                                                `json:"hiredDate,omitempty" xml:"hiredDate,omitempty"`
 	Identities             *ListOrganizationMembersResponseBodyMembersIdentities `json:"identities,omitempty" xml:"identities,omitempty" type:"Struct"`
+	JobNumber              *string                                               `json:"jobNumber,omitempty" xml:"jobNumber,omitempty"`
 	JoinTime               *int64                                                `json:"joinTime,omitempty" xml:"joinTime,omitempty"`
 	LastVisitTime          *int64                                                `json:"lastVisitTime,omitempty" xml:"lastVisitTime,omitempty"`
 	Mobile                 *string                                               `json:"mobile,omitempty" xml:"mobile,omitempty"`
@@ -24206,6 +24207,11 @@ func (s *ListOrganizationMembersResponseBodyMembers) SetHiredDate(v int64) *List
 
 func (s *ListOrganizationMembersResponseBodyMembers) SetIdentities(v *ListOrganizationMembersResponseBodyMembersIdentities) *ListOrganizationMembersResponseBodyMembers {
 	s.Identities = v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetJobNumber(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.JobNumber = &v
 	return s
 }
 
