@@ -767,6 +767,7 @@ func (s *CreatePostPayOrderResponse) SetBody(v *CreatePostPayOrderResponseBody) 
 }
 
 type CreatePrePayOrderRequest struct {
+	ConfluentConfig *CreatePrePayOrderRequestConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
 	// The deployment mode of the instance. Valid values:
 	//
 	// *   **4**: deploys the instance that allows access from the Internet and a VPC.
@@ -835,6 +836,11 @@ func (s CreatePrePayOrderRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePrePayOrderRequest) SetConfluentConfig(v *CreatePrePayOrderRequestConfluentConfig) *CreatePrePayOrderRequest {
+	s.ConfluentConfig = v
+	return s
+}
+
 func (s *CreatePrePayOrderRequest) SetDeployType(v int32) *CreatePrePayOrderRequest {
 	s.DeployType = &v
 	return s
@@ -895,6 +901,125 @@ func (s *CreatePrePayOrderRequest) SetTopicQuota(v int32) *CreatePrePayOrderRequ
 	return s
 }
 
+type CreatePrePayOrderRequestConfluentConfig struct {
+	ConnectCU             *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
+	ConnectReplica        *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
+	ControlCenterCU       *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
+	ControlCenterReplica  *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
+	ControlCenterStorage  *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
+	KafkaCU               *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
+	KafkaReplica          *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
+	KafkaRestProxyCU      *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
+	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
+	KafkaStorage          *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	KsqlCU                *int32 `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	KsqlReplica           *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
+	KsqlStorage           *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
+	SchemaRegistryCU      *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
+	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
+	ZooKeeperCU           *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
+	ZooKeeperReplica      *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
+	ZooKeeperStorage      *int32 `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
+}
+
+func (s CreatePrePayOrderRequestConfluentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayOrderRequestConfluentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetConnectCU(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.ConnectCU = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetConnectReplica(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.ConnectReplica = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetControlCenterCU(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.ControlCenterCU = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetControlCenterReplica(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.ControlCenterReplica = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetControlCenterStorage(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.ControlCenterStorage = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetKafkaCU(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.KafkaCU = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetKafkaReplica(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.KafkaReplica = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetKafkaRestProxyCU(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.KafkaRestProxyCU = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetKafkaRestProxyReplica(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.KafkaRestProxyReplica = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetKafkaStorage(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.KafkaStorage = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetKsqlCU(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.KsqlCU = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetKsqlReplica(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.KsqlReplica = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetKsqlStorage(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.KsqlStorage = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetSchemaRegistryCU(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.SchemaRegistryCU = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetSchemaRegistryReplica(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.SchemaRegistryReplica = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetZooKeeperCU(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.ZooKeeperCU = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetZooKeeperReplica(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.ZooKeeperReplica = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestConfluentConfig) SetZooKeeperStorage(v int32) *CreatePrePayOrderRequestConfluentConfig {
+	s.ZooKeeperStorage = &v
+	return s
+}
+
 type CreatePrePayOrderRequestTag struct {
 	// The key of tag N.
 	//
@@ -924,6 +1049,174 @@ func (s *CreatePrePayOrderRequestTag) SetKey(v string) *CreatePrePayOrderRequest
 }
 
 func (s *CreatePrePayOrderRequestTag) SetValue(v string) *CreatePrePayOrderRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreatePrePayOrderShrinkRequest struct {
+	ConfluentConfigShrink *string `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty"`
+	// The deployment mode of the instance. Valid values:
+	//
+	// *   **4**: deploys the instance that allows access from the Internet and a VPC.
+	// *   **5**: deploys the instance that allows access only from a VPC.
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The disk size. Unit: GB.
+	//
+	// For more information about the valid values, see [Billing](~~84737~~).
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The disk type. Valid values:
+	//
+	// *   **0**: ultra disk
+	// *   **1**: standard SSD
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The Internet traffic for the instance.
+	//
+	// *   This parameter is required if the **DeployType** parameter is set to **4**.
+	// *   For more information about the valid values, see [Pay-as-you-go](~~72142~~).
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
+	//
+	// *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	//
+	// *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// The number of partitions. We recommend that you configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **normal**: Standard Edition (High Write)
+	// *   **professional**: Professional Edition (High Write)
+	// *   **professionalForHighRead**: Professional Edition (High Read)
+	//
+	// For more information, see [Billing](~~84737~~).
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The tags.
+	Tag []*CreatePrePayOrderShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The number of topics. We recommend that you do not configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+}
+
+func (s CreatePrePayOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetConfluentConfigShrink(v string) *CreatePrePayOrderShrinkRequest {
+	s.ConfluentConfigShrink = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetDeployType(v int32) *CreatePrePayOrderShrinkRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetDiskSize(v int32) *CreatePrePayOrderShrinkRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetDiskType(v string) *CreatePrePayOrderShrinkRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetEipMax(v int32) *CreatePrePayOrderShrinkRequest {
+	s.EipMax = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetIoMax(v int32) *CreatePrePayOrderShrinkRequest {
+	s.IoMax = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetIoMaxSpec(v string) *CreatePrePayOrderShrinkRequest {
+	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetPartitionNum(v int32) *CreatePrePayOrderShrinkRequest {
+	s.PartitionNum = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetRegionId(v string) *CreatePrePayOrderShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetResourceGroupId(v string) *CreatePrePayOrderShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetSpecType(v string) *CreatePrePayOrderShrinkRequest {
+	s.SpecType = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetTag(v []*CreatePrePayOrderShrinkRequestTag) *CreatePrePayOrderShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetTopicQuota(v int32) *CreatePrePayOrderShrinkRequest {
+	s.TopicQuota = &v
+	return s
+}
+
+type CreatePrePayOrderShrinkRequestTag struct {
+	// The key of tag N.
+	//
+	// *   Valid values of N: 1 to 20.
+	// *   If this parameter is left empty, the keys of all tags are matched.
+	// *   The tag key can be up to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// *   Valid values of N: 1 to 20.
+	// *   This parameter can be left empty.
+	// *   The tag value can be 1 to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePrePayOrderShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayOrderShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayOrderShrinkRequestTag) SetKey(v string) *CreatePrePayOrderShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequestTag) SetValue(v string) *CreatePrePayOrderShrinkRequestTag {
 	s.Value = &v
 	return s
 }
@@ -3168,7 +3461,8 @@ func (s *GetInstanceListResponseBodyInstanceList) SetInstanceVO(v []*GetInstance
 
 type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// The configurations of the deployed ApsaraMQ for Kafka instance.
-	AllConfig *string `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
+	AllConfig       *string                                                           `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
+	ConfluentConfig *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
 	// The time when the instance was created. Unit: milliseconds.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The type of the network in which the instance is deployed. Valid values:
@@ -3291,6 +3585,11 @@ func (s GetInstanceListResponseBodyInstanceListInstanceVO) GoString() string {
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetAllConfig(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.AllConfig = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetConfluentConfig(v *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ConfluentConfig = v
 	return s
 }
 
@@ -3456,6 +3755,125 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVpcId(v string) *
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetZoneId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.ZoneId = &v
+	return s
+}
+
+type GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig struct {
+	ConnectCU             *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
+	ConnectReplica        *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
+	ControlCenterCU       *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
+	ControlCenterReplica  *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
+	ControlCenterStorage  *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
+	KafkaCU               *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
+	KafkaReplica          *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
+	KafkaRestProxyCU      *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
+	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
+	KafkaStorage          *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	KsqlCU                *int32 `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	KsqlReplica           *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
+	KsqlStorage           *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
+	SchemaRegistryCU      *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
+	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
+	ZooKeeperCU           *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
+	ZooKeeperReplica      *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
+	ZooKeeperStorage      *int32 `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetConnectCU(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.ConnectCU = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetConnectReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.ConnectReplica = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetControlCenterCU(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.ControlCenterCU = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetControlCenterReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.ControlCenterReplica = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetControlCenterStorage(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.ControlCenterStorage = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKafkaCU(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KafkaCU = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKafkaReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KafkaReplica = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKafkaRestProxyCU(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KafkaRestProxyCU = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKafkaRestProxyReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KafkaRestProxyReplica = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKafkaStorage(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KafkaStorage = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKsqlCU(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KsqlCU = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKsqlReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KsqlReplica = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKsqlStorage(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KsqlStorage = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetSchemaRegistryCU(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.SchemaRegistryCU = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetSchemaRegistryReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.SchemaRegistryReplica = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetZooKeeperCU(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.ZooKeeperCU = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetZooKeeperReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.ZooKeeperReplica = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetZooKeeperStorage(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.ZooKeeperStorage = &v
 	return s
 }
 
@@ -5329,7 +5747,8 @@ type StartInstanceRequest struct {
 	// This parameter is available only if you deploy an instance that allows access from the Internet and a VPC.
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	// The ID of the vSwitch to which you want to connect the instance.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId  *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) in which you want to deploy the instance.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone in which you want to deploy the instance.
@@ -5434,6 +5853,11 @@ func (s *StartInstanceRequest) SetUsername(v string) *StartInstanceRequest {
 
 func (s *StartInstanceRequest) SetVSwitchId(v string) *StartInstanceRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *StartInstanceRequest) SetVSwitchIds(v []*string) *StartInstanceRequest {
+	s.VSwitchIds = v
 	return s
 }
 
@@ -6781,6 +7205,7 @@ func (s *UpgradePostPayOrderResponse) SetBody(v *UpgradePostPayOrderResponseBody
 }
 
 type UpgradePrePayOrderRequest struct {
+	ConfluentConfig *UpgradePrePayOrderRequestConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
 	// The size of the disk.
 	//
 	// *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
@@ -6812,6 +7237,7 @@ type UpgradePrePayOrderRequest struct {
 	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
 	// *   For more information about the valid values, see [Billing overview](~~84737~~).
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PaidType  *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// The number of partitions. We recommend that you configure this parameter.
 	//
 	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
@@ -6845,6 +7271,11 @@ func (s UpgradePrePayOrderRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpgradePrePayOrderRequest) SetConfluentConfig(v *UpgradePrePayOrderRequestConfluentConfig) *UpgradePrePayOrderRequest {
+	s.ConfluentConfig = v
+	return s
+}
+
 func (s *UpgradePrePayOrderRequest) SetDiskSize(v int32) *UpgradePrePayOrderRequest {
 	s.DiskSize = &v
 	return s
@@ -6875,6 +7306,11 @@ func (s *UpgradePrePayOrderRequest) SetIoMaxSpec(v string) *UpgradePrePayOrderRe
 	return s
 }
 
+func (s *UpgradePrePayOrderRequest) SetPaidType(v int32) *UpgradePrePayOrderRequest {
+	s.PaidType = &v
+	return s
+}
+
 func (s *UpgradePrePayOrderRequest) SetPartitionNum(v int32) *UpgradePrePayOrderRequest {
 	s.PartitionNum = &v
 	return s
@@ -6891,6 +7327,252 @@ func (s *UpgradePrePayOrderRequest) SetSpecType(v string) *UpgradePrePayOrderReq
 }
 
 func (s *UpgradePrePayOrderRequest) SetTopicQuota(v int32) *UpgradePrePayOrderRequest {
+	s.TopicQuota = &v
+	return s
+}
+
+type UpgradePrePayOrderRequestConfluentConfig struct {
+	ConnectCU             *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
+	ConnectReplica        *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
+	ControlCenterCU       *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
+	ControlCenterReplica  *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
+	ControlCenterStorage  *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
+	KafkaCU               *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
+	KafkaReplica          *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
+	KafkaRestProxyCU      *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
+	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
+	KafkaStorage          *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	KsqlCU                *int32 `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	KsqlReplica           *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
+	KsqlStorage           *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
+	SchemaRegistryCU      *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
+	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
+	ZooKeeperCU           *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
+	ZooKeeperReplica      *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
+	ZooKeeperStorage      *int32 `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
+}
+
+func (s UpgradePrePayOrderRequestConfluentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradePrePayOrderRequestConfluentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetConnectCU(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.ConnectCU = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetConnectReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.ConnectReplica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetControlCenterCU(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.ControlCenterCU = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetControlCenterReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.ControlCenterReplica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetControlCenterStorage(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.ControlCenterStorage = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKafkaCU(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KafkaCU = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKafkaReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KafkaReplica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKafkaRestProxyCU(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KafkaRestProxyCU = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKafkaRestProxyReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KafkaRestProxyReplica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKafkaStorage(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KafkaStorage = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKsqlCU(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KsqlCU = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKsqlReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KsqlReplica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKsqlStorage(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KsqlStorage = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetSchemaRegistryCU(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.SchemaRegistryCU = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetSchemaRegistryReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.SchemaRegistryReplica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetZooKeeperCU(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.ZooKeeperCU = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetZooKeeperReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.ZooKeeperReplica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetZooKeeperStorage(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.ZooKeeperStorage = &v
+	return s
+}
+
+type UpgradePrePayOrderShrinkRequest struct {
+	ConfluentConfigShrink *string `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty"`
+	// The size of the disk.
+	//
+	// *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The Internet traffic for the instance.
+	//
+	// *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	// > - If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
+	// > - If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// Specifies whether to enable Internet access for the instance. Valid values:
+	//
+	// *   true: enables Internet access.
+	// *   false: disables Internet access.
+	EipModel *bool `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
+	//
+	// *   The maximum traffic volume that you specify must be greater than or equal to the current maximum traffic volume of the instance.
+	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	//
+	// *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
+	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PaidType  *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The number of partitions. We recommend that you configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **normal**: Standard Edition (High Write)
+	// *   **professional**: Professional Edition (High Write)
+	// *   **professionalForHighRead**: Professional Edition (High Read)
+	//
+	// You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing overview](~~84737~~).
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The number of topics. We recommend that you do not configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+}
+
+func (s UpgradePrePayOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradePrePayOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetConfluentConfigShrink(v string) *UpgradePrePayOrderShrinkRequest {
+	s.ConfluentConfigShrink = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetDiskSize(v int32) *UpgradePrePayOrderShrinkRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetEipMax(v int32) *UpgradePrePayOrderShrinkRequest {
+	s.EipMax = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetEipModel(v bool) *UpgradePrePayOrderShrinkRequest {
+	s.EipModel = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetInstanceId(v string) *UpgradePrePayOrderShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetIoMax(v int32) *UpgradePrePayOrderShrinkRequest {
+	s.IoMax = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetIoMaxSpec(v string) *UpgradePrePayOrderShrinkRequest {
+	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetPaidType(v int32) *UpgradePrePayOrderShrinkRequest {
+	s.PaidType = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetPartitionNum(v int32) *UpgradePrePayOrderShrinkRequest {
+	s.PartitionNum = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetRegionId(v string) *UpgradePrePayOrderShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetSpecType(v string) *UpgradePrePayOrderShrinkRequest {
+	s.SpecType = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderShrinkRequest) SetTopicQuota(v int32) *UpgradePrePayOrderShrinkRequest {
 	s.TopicQuota = &v
 	return s
 }
@@ -7347,16 +8029,26 @@ func (client *Client) CreatePostPayOrder(request *CreatePostPayOrderRequest) (_r
  * *   Before you call this operation, make sure that you understand the billing methods and pricing of subscription ApsaraMQ for Kafka instances. For more information, see [Billing](~~84737~~).
  * *   If you create an ApsaraMQ for Kafka instance by calling this operation, the subscription duration is one month and the auto-renewal feature is enabled by default. The auto-renewal cycle is also one month. If you want to change the auto-renewal cycle or disable the auto-renewal feature, you can go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.
  *
- * @param request CreatePrePayOrderRequest
+ * @param tmpReq CreatePrePayOrderRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return CreatePrePayOrderResponse
  */
-func (client *Client) CreatePrePayOrderWithOptions(request *CreatePrePayOrderRequest, runtime *util.RuntimeOptions) (_result *CreatePrePayOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreatePrePayOrderWithOptions(tmpReq *CreatePrePayOrderRequest, runtime *util.RuntimeOptions) (_result *CreatePrePayOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreatePrePayOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConfluentConfig)) {
+		request.ConfluentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfluentConfig, tea.String("ConfluentConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfluentConfigShrink)) {
+		query["ConfluentConfig"] = request.ConfluentConfigShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeployType)) {
 		query["DeployType"] = request.DeployType
 	}
@@ -8875,6 +9567,10 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 		query["VSwitchId"] = request.VSwitchId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
 		query["VpcId"] = request.VpcId
 	}
@@ -9520,16 +10216,26 @@ func (client *Client) UpgradePostPayOrder(request *UpgradePostPayOrderRequest) (
 /**
  * Before you call this operation, make sure that you understand the billing method and pricing of subscription Message Queue for Apache Kafka instances. For more information, see [Billing overview](~~84737~~).
  *
- * @param request UpgradePrePayOrderRequest
+ * @param tmpReq UpgradePrePayOrderRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return UpgradePrePayOrderResponse
  */
-func (client *Client) UpgradePrePayOrderWithOptions(request *UpgradePrePayOrderRequest, runtime *util.RuntimeOptions) (_result *UpgradePrePayOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpgradePrePayOrderWithOptions(tmpReq *UpgradePrePayOrderRequest, runtime *util.RuntimeOptions) (_result *UpgradePrePayOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpgradePrePayOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConfluentConfig)) {
+		request.ConfluentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfluentConfig, tea.String("ConfluentConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfluentConfigShrink)) {
+		query["ConfluentConfig"] = request.ConfluentConfigShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
 		query["DiskSize"] = request.DiskSize
 	}
@@ -9552,6 +10258,10 @@ func (client *Client) UpgradePrePayOrderWithOptions(request *UpgradePrePayOrderR
 
 	if !tea.BoolValue(util.IsUnset(request.IoMaxSpec)) {
 		query["IoMaxSpec"] = request.IoMaxSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaidType)) {
+		query["PaidType"] = request.PaidType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
