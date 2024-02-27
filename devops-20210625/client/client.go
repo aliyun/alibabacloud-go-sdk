@@ -31278,6 +31278,158 @@ func (s *ListTestCaseFieldsResponse) SetBody(v *ListTestCaseFieldsResponseBody) 
 	return s
 }
 
+type ListUserDrawRecordByPkRequest struct {
+	AliyunPk     *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	DrawGroup    *string `json:"drawGroup,omitempty" xml:"drawGroup,omitempty"`
+	DrawPoolName *string `json:"drawPoolName,omitempty" xml:"drawPoolName,omitempty"`
+}
+
+func (s ListUserDrawRecordByPkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserDrawRecordByPkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserDrawRecordByPkRequest) SetAliyunPk(v string) *ListUserDrawRecordByPkRequest {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkRequest) SetDrawGroup(v string) *ListUserDrawRecordByPkRequest {
+	s.DrawGroup = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkRequest) SetDrawPoolName(v string) *ListUserDrawRecordByPkRequest {
+	s.DrawPoolName = &v
+	return s
+}
+
+type ListUserDrawRecordByPkResponseBody struct {
+	Code      *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data      []*ListUserDrawRecordByPkResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Message   *string                                   `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListUserDrawRecordByPkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserDrawRecordByPkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserDrawRecordByPkResponseBody) SetCode(v string) *ListUserDrawRecordByPkResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBody) SetData(v []*ListUserDrawRecordByPkResponseBodyData) *ListUserDrawRecordByPkResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBody) SetMessage(v string) *ListUserDrawRecordByPkResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBody) SetRequestId(v string) *ListUserDrawRecordByPkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBody) SetSuccess(v bool) *ListUserDrawRecordByPkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListUserDrawRecordByPkResponseBodyData struct {
+	AliyunPk     *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	DrawGroup    *string `json:"drawGroup,omitempty" xml:"drawGroup,omitempty"`
+	DrawPoolName *string `json:"drawPoolName,omitempty" xml:"drawPoolName,omitempty"`
+	DrawResult   *string `json:"drawResult,omitempty" xml:"drawResult,omitempty"`
+	GmtCreate    *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	TaskGroupId  *string `json:"taskGroupId,omitempty" xml:"taskGroupId,omitempty"`
+	UccId        *string `json:"uccId,omitempty" xml:"uccId,omitempty"`
+}
+
+func (s ListUserDrawRecordByPkResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserDrawRecordByPkResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserDrawRecordByPkResponseBodyData) SetAliyunPk(v string) *ListUserDrawRecordByPkResponseBodyData {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBodyData) SetDrawGroup(v string) *ListUserDrawRecordByPkResponseBodyData {
+	s.DrawGroup = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBodyData) SetDrawPoolName(v string) *ListUserDrawRecordByPkResponseBodyData {
+	s.DrawPoolName = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBodyData) SetDrawResult(v string) *ListUserDrawRecordByPkResponseBodyData {
+	s.DrawResult = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBodyData) SetGmtCreate(v string) *ListUserDrawRecordByPkResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBodyData) SetTaskGroupId(v string) *ListUserDrawRecordByPkResponseBodyData {
+	s.TaskGroupId = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponseBodyData) SetUccId(v string) *ListUserDrawRecordByPkResponseBodyData {
+	s.UccId = &v
+	return s
+}
+
+type ListUserDrawRecordByPkResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserDrawRecordByPkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserDrawRecordByPkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserDrawRecordByPkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserDrawRecordByPkResponse) SetHeaders(v map[string]*string) *ListUserDrawRecordByPkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponse) SetStatusCode(v int32) *ListUserDrawRecordByPkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserDrawRecordByPkResponse) SetBody(v *ListUserDrawRecordByPkResponseBody) *ListUserDrawRecordByPkResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserKeysRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
@@ -50360,6 +50512,60 @@ func (client *Client) ListTestCaseFields(organizationId *string, request *ListTe
 	headers := make(map[string]*string)
 	_result = &ListTestCaseFieldsResponse{}
 	_body, _err := client.ListTestCaseFieldsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserDrawRecordByPkWithOptions(request *ListUserDrawRecordByPkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserDrawRecordByPkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunPk)) {
+		query["aliyunPk"] = request.AliyunPk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrawGroup)) {
+		query["drawGroup"] = request.DrawGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrawPoolName)) {
+		query["drawPoolName"] = request.DrawPoolName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserDrawRecordByPk"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/listUserDrawRecords"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserDrawRecordByPkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserDrawRecordByPk(request *ListUserDrawRecordByPkRequest) (_result *ListUserDrawRecordByPkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUserDrawRecordByPkResponse{}
+	_body, _err := client.ListUserDrawRecordByPkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
