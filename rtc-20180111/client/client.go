@@ -2524,6 +2524,209 @@ func (s *DescribeCallListResponse) SetBody(v *DescribeCallListResponseBody) *Des
 	return s
 }
 
+type DescribeChannelRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s DescribeChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelRequest) SetAppId(v string) *DescribeChannelRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeChannelRequest) SetChannelId(v string) *DescribeChannelRequest {
+	s.ChannelId = &v
+	return s
+}
+
+type DescribeChannelResponseBody struct {
+	// channel
+	Channel      *DescribeChannelResponseBodyChannel `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Struct"`
+	ChannelExist *bool                               `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelResponseBody) SetChannel(v *DescribeChannelResponseBodyChannel) *DescribeChannelResponseBody {
+	s.Channel = v
+	return s
+}
+
+func (s *DescribeChannelResponseBody) SetChannelExist(v bool) *DescribeChannelResponseBody {
+	s.ChannelExist = &v
+	return s
+}
+
+func (s *DescribeChannelResponseBody) SetRequestId(v string) *DescribeChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeChannelResponseBodyChannel struct {
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeChannelResponseBodyChannel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelResponseBodyChannel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelResponseBodyChannel) SetChannelId(v string) *DescribeChannelResponseBodyChannel {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeChannelResponseBodyChannel) SetStartTime(v int64) *DescribeChannelResponseBodyChannel {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeChannelResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelResponse) SetHeaders(v map[string]*string) *DescribeChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelResponse) SetStatusCode(v int32) *DescribeChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeChannelResponse) SetBody(v *DescribeChannelResponseBody) *DescribeChannelResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeChannelAllUsersRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s DescribeChannelAllUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelAllUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelAllUsersRequest) SetAppId(v string) *DescribeChannelAllUsersRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeChannelAllUsersRequest) SetChannelId(v string) *DescribeChannelAllUsersRequest {
+	s.ChannelId = &v
+	return s
+}
+
+type DescribeChannelAllUsersResponseBody struct {
+	ChannelExist *bool                                       `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users        []*DescribeChannelAllUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s DescribeChannelAllUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelAllUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelAllUsersResponseBody) SetChannelExist(v bool) *DescribeChannelAllUsersResponseBody {
+	s.ChannelExist = &v
+	return s
+}
+
+func (s *DescribeChannelAllUsersResponseBody) SetRequestId(v string) *DescribeChannelAllUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeChannelAllUsersResponseBody) SetUsers(v []*DescribeChannelAllUsersResponseBodyUsers) *DescribeChannelAllUsersResponseBody {
+	s.Users = v
+	return s
+}
+
+type DescribeChannelAllUsersResponseBodyUsers struct {
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeChannelAllUsersResponseBodyUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelAllUsersResponseBodyUsers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelAllUsersResponseBodyUsers) SetUserId(v string) *DescribeChannelAllUsersResponseBodyUsers {
+	s.UserId = &v
+	return s
+}
+
+type DescribeChannelAllUsersResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelAllUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeChannelAllUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelAllUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelAllUsersResponse) SetHeaders(v map[string]*string) *DescribeChannelAllUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelAllUsersResponse) SetStatusCode(v int32) *DescribeChannelAllUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeChannelAllUsersResponse) SetBody(v *DescribeChannelAllUsersResponseBody) *DescribeChannelAllUsersResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeChannelAreaDistributionStatDataRequest struct {
 	// APP ID。
 	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -3320,6 +3523,128 @@ func (s *DescribeChannelTopPubUserListResponse) SetBody(v *DescribeChannelTopPub
 	return s
 }
 
+type DescribeChannelUserRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeChannelUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelUserRequest) SetAppId(v string) *DescribeChannelUserRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeChannelUserRequest) SetChannelId(v string) *DescribeChannelUserRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeChannelUserRequest) SetUserId(v string) *DescribeChannelUserRequest {
+	s.UserId = &v
+	return s
+}
+
+type DescribeChannelUserResponseBody struct {
+	ChannelExist *bool                                      `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
+	InChannel    *bool                                      `json:"InChannel,omitempty" xml:"InChannel,omitempty"`
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Sessions     []*DescribeChannelUserResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeChannelUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelUserResponseBody) SetChannelExist(v bool) *DescribeChannelUserResponseBody {
+	s.ChannelExist = &v
+	return s
+}
+
+func (s *DescribeChannelUserResponseBody) SetInChannel(v bool) *DescribeChannelUserResponseBody {
+	s.InChannel = &v
+	return s
+}
+
+func (s *DescribeChannelUserResponseBody) SetRequestId(v string) *DescribeChannelUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeChannelUserResponseBody) SetSessions(v []*DescribeChannelUserResponseBodySessions) *DescribeChannelUserResponseBody {
+	s.Sessions = v
+	return s
+}
+
+type DescribeChannelUserResponseBodySessions struct {
+	Joined    *int64  `json:"Joined,omitempty" xml:"Joined,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeChannelUserResponseBodySessions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelUserResponseBodySessions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelUserResponseBodySessions) SetJoined(v int64) *DescribeChannelUserResponseBodySessions {
+	s.Joined = &v
+	return s
+}
+
+func (s *DescribeChannelUserResponseBodySessions) SetSessionId(v string) *DescribeChannelUserResponseBodySessions {
+	s.SessionId = &v
+	return s
+}
+
+func (s *DescribeChannelUserResponseBodySessions) SetUserId(v string) *DescribeChannelUserResponseBodySessions {
+	s.UserId = &v
+	return s
+}
+
+type DescribeChannelUserResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeChannelUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelUserResponse) SetHeaders(v map[string]*string) *DescribeChannelUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelUserResponse) SetStatusCode(v int32) *DescribeChannelUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeChannelUserResponse) SetBody(v *DescribeChannelUserResponseBody) *DescribeChannelUserResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeChannelUserMetricsRequest struct {
 	// APP ID。
 	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -3632,6 +3957,75 @@ func (s *DescribeChannelUsersResponse) SetStatusCode(v int32) *DescribeChannelUs
 }
 
 func (s *DescribeChannelUsersResponse) SetBody(v *DescribeChannelUsersResponseBody) *DescribeChannelUsersResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeChannelsRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DescribeChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelsRequest) SetAppId(v string) *DescribeChannelsRequest {
+	s.AppId = &v
+	return s
+}
+
+type DescribeChannelsResponseBody struct {
+	ChannelIds []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelsResponseBody) SetChannelIds(v []*string) *DescribeChannelsResponseBody {
+	s.ChannelIds = v
+	return s
+}
+
+func (s *DescribeChannelsResponseBody) SetRequestId(v string) *DescribeChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeChannelsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelsResponse) SetHeaders(v map[string]*string) *DescribeChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelsResponse) SetStatusCode(v int32) *DescribeChannelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeChannelsResponse) SetBody(v *DescribeChannelsResponseBody) *DescribeChannelsResponse {
 	s.Body = v
 	return s
 }
@@ -9314,6 +9708,318 @@ func (s *RemoveTerminalsResponse) SetBody(v *RemoveTerminalsResponseBody) *Remov
 	return s
 }
 
+type RemoveUsersRequest struct {
+	AppId     *string                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string                    `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Users     []*RemoveUsersRequestUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s RemoveUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUsersRequest) SetAppId(v string) *RemoveUsersRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RemoveUsersRequest) SetChannelId(v string) *RemoveUsersRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *RemoveUsersRequest) SetUsers(v []*RemoveUsersRequestUsers) *RemoveUsersRequest {
+	s.Users = v
+	return s
+}
+
+type RemoveUsersRequestUsers struct {
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s RemoveUsersRequestUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUsersRequestUsers) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUsersRequestUsers) SetUserId(v string) *RemoveUsersRequestUsers {
+	s.UserId = &v
+	return s
+}
+
+type RemoveUsersResponseBody struct {
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users     []*RemoveUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s RemoveUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUsersResponseBody) SetRequestId(v string) *RemoveUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveUsersResponseBody) SetUsers(v []*RemoveUsersResponseBodyUsers) *RemoveUsersResponseBody {
+	s.Users = v
+	return s
+}
+
+type RemoveUsersResponseBodyUsers struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s RemoveUsersResponseBodyUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUsersResponseBodyUsers) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUsersResponseBodyUsers) SetCode(v int32) *RemoveUsersResponseBodyUsers {
+	s.Code = &v
+	return s
+}
+
+func (s *RemoveUsersResponseBodyUsers) SetMessage(v string) *RemoveUsersResponseBodyUsers {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveUsersResponseBodyUsers) SetUserId(v string) *RemoveUsersResponseBodyUsers {
+	s.UserId = &v
+	return s
+}
+
+type RemoveUsersResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUsersResponse) SetHeaders(v map[string]*string) *RemoveUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveUsersResponse) SetStatusCode(v int32) *RemoveUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveUsersResponse) SetBody(v *RemoveUsersResponseBody) *RemoveUsersResponse {
+	s.Body = v
+	return s
+}
+
+type StartCloudRecordRequest struct {
+	// appId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// channelName
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// panes
+	Panes []*StartCloudRecordRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// storageConfig
+	StorageConfig *StartCloudRecordRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
+	// taskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// templateId
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s StartCloudRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequest) SetAppId(v string) *StartCloudRecordRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetChannelId(v string) *StartCloudRecordRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetPanes(v []*StartCloudRecordRequestPanes) *StartCloudRecordRequest {
+	s.Panes = v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetStorageConfig(v *StartCloudRecordRequestStorageConfig) *StartCloudRecordRequest {
+	s.StorageConfig = v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetTaskId(v string) *StartCloudRecordRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetTemplateId(v string) *StartCloudRecordRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type StartCloudRecordRequestPanes struct {
+	// paneId
+	PaneId *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// source
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// sourceType
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s StartCloudRecordRequestPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestPanes) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestPanes) SetPaneId(v string) *StartCloudRecordRequestPanes {
+	s.PaneId = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanes) SetSource(v string) *StartCloudRecordRequestPanes {
+	s.Source = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanes) SetSourceType(v string) *StartCloudRecordRequestPanes {
+	s.SourceType = &v
+	return s
+}
+
+type StartCloudRecordRequestStorageConfig struct {
+	// accessKey
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// bucket
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// region
+	Region *int32 `json:"Region,omitempty" xml:"Region,omitempty"`
+	// secretKey
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// vendor
+	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s StartCloudRecordRequestStorageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestStorageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestStorageConfig) SetAccessKey(v string) *StartCloudRecordRequestStorageConfig {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestStorageConfig) SetBucket(v string) *StartCloudRecordRequestStorageConfig {
+	s.Bucket = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestStorageConfig) SetRegion(v int32) *StartCloudRecordRequestStorageConfig {
+	s.Region = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestStorageConfig) SetSecretKey(v string) *StartCloudRecordRequestStorageConfig {
+	s.SecretKey = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestStorageConfig) SetVendor(v int32) *StartCloudRecordRequestStorageConfig {
+	s.Vendor = &v
+	return s
+}
+
+type StartCloudRecordResponseBody struct {
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// taskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StartCloudRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordResponseBody) SetRequestId(v string) *StartCloudRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartCloudRecordResponseBody) SetTaskId(v string) *StartCloudRecordResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StartCloudRecordResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartCloudRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartCloudRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordResponse) SetHeaders(v map[string]*string) *StartCloudRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartCloudRecordResponse) SetStatusCode(v int32) *StartCloudRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartCloudRecordResponse) SetBody(v *StartCloudRecordResponseBody) *StartCloudRecordResponse {
+	s.Body = v
+	return s
+}
+
 type StartMPUTaskRequest struct {
 	AppId                     *string                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BackgroundColor           *int32                             `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
@@ -10276,6 +10982,284 @@ func (s *StartRecordTaskResponse) SetBody(v *StartRecordTaskResponseBody) *Start
 	return s
 }
 
+type StartStreamingOutRequest struct {
+	AppId      *string                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId  *string                          `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Panes      []*StartStreamingOutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	TaskId     *string                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TemplateId *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Url        *string                          `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s StartStreamingOutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequest) SetAppId(v string) *StartStreamingOutRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetChannelId(v string) *StartStreamingOutRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetPanes(v []*StartStreamingOutRequestPanes) *StartStreamingOutRequest {
+	s.Panes = v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetTaskId(v string) *StartStreamingOutRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetTemplateId(v string) *StartStreamingOutRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetUrl(v string) *StartStreamingOutRequest {
+	s.Url = &v
+	return s
+}
+
+type StartStreamingOutRequestPanes struct {
+	PaneId     *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s StartStreamingOutRequestPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestPanes) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestPanes) SetPaneId(v string) *StartStreamingOutRequestPanes {
+	s.PaneId = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanes) SetSource(v string) *StartStreamingOutRequestPanes {
+	s.Source = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanes) SetSourceType(v string) *StartStreamingOutRequestPanes {
+	s.SourceType = &v
+	return s
+}
+
+type StartStreamingOutResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StartStreamingOutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutResponseBody) SetRequestId(v string) *StartStreamingOutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartStreamingOutResponseBody) SetTaskId(v string) *StartStreamingOutResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StartStreamingOutResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartStreamingOutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartStreamingOutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutResponse) SetHeaders(v map[string]*string) *StartStreamingOutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartStreamingOutResponse) SetStatusCode(v int32) *StartStreamingOutResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartStreamingOutResponse) SetBody(v *StartStreamingOutResponseBody) *StartStreamingOutResponse {
+	s.Body = v
+	return s
+}
+
+type StopChannelRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s StopChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopChannelRequest) SetAppId(v string) *StopChannelRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StopChannelRequest) SetChannelId(v string) *StopChannelRequest {
+	s.ChannelId = &v
+	return s
+}
+
+type StopChannelResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopChannelResponseBody) SetRequestId(v string) *StopChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopChannelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopChannelResponse) SetHeaders(v map[string]*string) *StopChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopChannelResponse) SetStatusCode(v int32) *StopChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopChannelResponse) SetBody(v *StopChannelResponseBody) *StopChannelResponse {
+	s.Body = v
+	return s
+}
+
+type StopCloudRecordRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StopCloudRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCloudRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopCloudRecordRequest) SetAppId(v string) *StopCloudRecordRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StopCloudRecordRequest) SetChannelId(v string) *StopCloudRecordRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StopCloudRecordRequest) SetTaskId(v string) *StopCloudRecordRequest {
+	s.TaskId = &v
+	return s
+}
+
+type StopCloudRecordResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StopCloudRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCloudRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopCloudRecordResponseBody) SetRequestId(v string) *StopCloudRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopCloudRecordResponseBody) SetTaskId(v string) *StopCloudRecordResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StopCloudRecordResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopCloudRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopCloudRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCloudRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopCloudRecordResponse) SetHeaders(v map[string]*string) *StopCloudRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopCloudRecordResponse) SetStatusCode(v int32) *StopCloudRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopCloudRecordResponse) SetBody(v *StopCloudRecordResponseBody) *StopCloudRecordResponse {
+	s.Body = v
+	return s
+}
+
 type StopMPUTaskRequest struct {
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10422,6 +11406,87 @@ func (s *StopRecordTaskResponse) SetStatusCode(v int32) *StopRecordTaskResponse 
 }
 
 func (s *StopRecordTaskResponse) SetBody(v *StopRecordTaskResponseBody) *StopRecordTaskResponse {
+	s.Body = v
+	return s
+}
+
+type StopStreamingOutRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StopStreamingOutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStreamingOutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopStreamingOutRequest) SetAppId(v string) *StopStreamingOutRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StopStreamingOutRequest) SetChannelId(v string) *StopStreamingOutRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StopStreamingOutRequest) SetTaskId(v string) *StopStreamingOutRequest {
+	s.TaskId = &v
+	return s
+}
+
+type StopStreamingOutResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StopStreamingOutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStreamingOutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopStreamingOutResponseBody) SetRequestId(v string) *StopStreamingOutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopStreamingOutResponseBody) SetTaskId(v string) *StopStreamingOutResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StopStreamingOutResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopStreamingOutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopStreamingOutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStreamingOutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopStreamingOutResponse) SetHeaders(v map[string]*string) *StopStreamingOutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopStreamingOutResponse) SetStatusCode(v int32) *StopStreamingOutResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopStreamingOutResponse) SetBody(v *StopStreamingOutResponseBody) *StopStreamingOutResponse {
 	s.Body = v
 	return s
 }
@@ -12857,6 +13922,102 @@ func (client *Client) DescribeCallList(request *DescribeCallListRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DescribeChannelWithOptions(request *DescribeChannelRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeChannel"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeChannel(request *DescribeChannelRequest) (_result *DescribeChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeChannelResponse{}
+	_body, _err := client.DescribeChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeChannelAllUsersWithOptions(request *DescribeChannelAllUsersRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelAllUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeChannelAllUsers"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeChannelAllUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeChannelAllUsers(request *DescribeChannelAllUsersRequest) (_result *DescribeChannelAllUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeChannelAllUsersResponse{}
+	_body, _err := client.DescribeChannelAllUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeChannelAreaDistributionStatDataWithOptions(request *DescribeChannelAreaDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelAreaDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13153,6 +14314,58 @@ func (client *Client) DescribeChannelTopPubUserList(request *DescribeChannelTopP
 	return _result, _err
 }
 
+func (client *Client) DescribeChannelUserWithOptions(request *DescribeChannelUserRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeChannelUser"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeChannelUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeChannelUser(request *DescribeChannelUserRequest) (_result *DescribeChannelUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeChannelUserResponse{}
+	_body, _err := client.DescribeChannelUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeChannelUserMetricsWithOptions(request *DescribeChannelUserMetricsRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelUserMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13254,6 +14467,50 @@ func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelUsersResponse{}
 	_body, _err := client.DescribeChannelUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeChannelsWithOptions(request *DescribeChannelsRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeChannels"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeChannelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeChannels(request *DescribeChannelsRequest) (_result *DescribeChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeChannelsResponse{}
+	_body, _err := client.DescribeChannelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15155,6 +16412,122 @@ func (client *Client) RemoveTerminals(request *RemoveTerminalsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtime *util.RuntimeOptions) (_result *RemoveUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Users)) {
+		query["Users"] = request.Users
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveUsers"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveUsersResponse{}
+	_body, _err := client.RemoveUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartCloudRecordWithOptions(request *StartCloudRecordRequest, runtime *util.RuntimeOptions) (_result *StartCloudRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Panes)) {
+		query["Panes"] = request.Panes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageConfig)) {
+		query["StorageConfig"] = request.StorageConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartCloudRecord"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartCloudRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartCloudRecord(request *StartCloudRecordRequest) (_result *StartCloudRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartCloudRecordResponse{}
+	_body, _err := client.StartCloudRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StartMPUTaskWithOptions(request *StartMPUTaskRequest, runtime *util.RuntimeOptions) (_result *StartMPUTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15440,6 +16813,170 @@ func (client *Client) StartRecordTask(request *StartRecordTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) StartStreamingOutWithOptions(request *StartStreamingOutRequest, runtime *util.RuntimeOptions) (_result *StartStreamingOutResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Panes)) {
+		query["Panes"] = request.Panes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartStreamingOut"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartStreamingOutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartStreamingOut(request *StartStreamingOutRequest) (_result *StartStreamingOutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartStreamingOutResponse{}
+	_body, _err := client.StartStreamingOutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopChannelWithOptions(request *StopChannelRequest, runtime *util.RuntimeOptions) (_result *StopChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopChannel"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopChannel(request *StopChannelRequest) (_result *StopChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopChannelResponse{}
+	_body, _err := client.StopChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopCloudRecordWithOptions(request *StopCloudRecordRequest, runtime *util.RuntimeOptions) (_result *StopCloudRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopCloudRecord"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopCloudRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopCloudRecord(request *StopCloudRecordRequest) (_result *StopCloudRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopCloudRecordResponse{}
+	_body, _err := client.StopCloudRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StopMPUTaskWithOptions(request *StopMPUTaskRequest, runtime *util.RuntimeOptions) (_result *StopMPUTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15537,6 +17074,58 @@ func (client *Client) StopRecordTask(request *StopRecordTaskRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &StopRecordTaskResponse{}
 	_body, _err := client.StopRecordTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopStreamingOutWithOptions(request *StopStreamingOutRequest, runtime *util.RuntimeOptions) (_result *StopStreamingOutResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopStreamingOut"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopStreamingOutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopStreamingOut(request *StopStreamingOutRequest) (_result *StopStreamingOutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopStreamingOutResponse{}
+	_body, _err := client.StopStreamingOutWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
