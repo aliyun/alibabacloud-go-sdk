@@ -1139,7 +1139,7 @@ type CreateDBInstanceResponseBody struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the order.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the instance.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5055,7 +5055,8 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// *   **0** (default): The log backup feature is disabled.
 	// *   **1**: The log backup feature is enabled.
-	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	EnableBackupLog              *int32  `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	HighFrequencyBackupRetention *string `json:"HighFrequencyBackupRetention,omitempty" xml:"HighFrequencyBackupRetention,omitempty"`
 	// The number of days for which log backups are retained. Valid values: 7 to 730.
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	// The day of a week on which to back up data. Valid values:
@@ -5099,6 +5100,11 @@ func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v string) *D
 
 func (s *DescribeBackupPolicyResponseBody) SetEnableBackupLog(v int32) *DescribeBackupPolicyResponseBody {
 	s.EnableBackupLog = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetHighFrequencyBackupRetention(v string) *DescribeBackupPolicyResponseBody {
+	s.HighFrequencyBackupRetention = &v
 	return s
 }
 
@@ -5330,6 +5336,7 @@ type DescribeBackupsResponseBodyBackupsBackup struct {
 	//
 	// > You can use this URL to download the backup set from on the Elastic Compute Service (ECS) instance which is on the same network as the ApsaraDB for MongoDB instance.
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
+	BackupJobId               *int64  `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The method that is used to generate the backup set. Valid values:
 	//
 	// *   **Snapshot**
@@ -5387,6 +5394,11 @@ func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupId(v int32) *Describ
 
 func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupIntranetDownloadURL(v string) *DescribeBackupsResponseBodyBackupsBackup {
 	s.BackupIntranetDownloadURL = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupJobId(v int64) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupJobId = &v
 	return s
 }
 
@@ -13814,13 +13826,13 @@ func (s *DescribeSecurityGroupConfigurationResponse) SetBody(v *DescribeSecurity
 }
 
 type DescribeSecurityIpsRequest struct {
-	// com.aliyun.abs.dds.service.v20151201.domain.GetDdsSecurityIpsRequest
+	// The ID of the instance.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeSecurityIps**.
+	// Whether to display DAS whitelist information.
 	ShowHDMIps *bool `json:"ShowHDMIps,omitempty" xml:"ShowHDMIps,omitempty"`
 }
 
@@ -13863,11 +13875,11 @@ func (s *DescribeSecurityIpsRequest) SetShowHDMIps(v bool) *DescribeSecurityIpsR
 }
 
 type DescribeSecurityIpsResponseBody struct {
-	// Whether to display DAS whitelist information.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IP addresses in the default whitelist.
+	// An array that consists of the information of IP whitelists.
 	SecurityIpGroups *DescribeSecurityIpsResponseBodySecurityIpGroups `json:"SecurityIpGroups,omitempty" xml:"SecurityIpGroups,omitempty" type:"Struct"`
-	// The ID of the instance.
+	// The IP addresses in the default whitelist.
 	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
 }
 
@@ -13912,9 +13924,9 @@ func (s *DescribeSecurityIpsResponseBodySecurityIpGroups) SetSecurityIpGroup(v [
 }
 
 type DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup struct {
-	// An array that consists of the information of IP whitelists.
+	// The attribute of the IP address whitelist.
 	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
-	// The ID of the request.
+	// The name of the IP whitelist.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
 	// The name of the IP whitelist.
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
@@ -16036,7 +16048,8 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// *   **0**: disables log backup.
 	// *   **1**: enables log backup.
-	EnableBackupLog *int64 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	EnableBackupLog              *int64 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	HighFrequencyBackupRetention *int64 `json:"HighFrequencyBackupRetention,omitempty" xml:"HighFrequencyBackupRetention,omitempty"`
 	// The number of days for which log backups are retained. Default value: 7.
 	//
 	// Valid values: 7 to 730.
@@ -16061,7 +16074,6 @@ type ModifyBackupPolicyRequest struct {
 	PreferredBackupTime  *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The snapshot backup type. Default value: Standard. Valid values:
 	//
 	// *   **Flash**: single-digit second backup
@@ -16097,6 +16109,11 @@ func (s *ModifyBackupPolicyRequest) SetEnableBackupLog(v int64) *ModifyBackupPol
 	return s
 }
 
+func (s *ModifyBackupPolicyRequest) SetHighFrequencyBackupRetention(v int64) *ModifyBackupPolicyRequest {
+	s.HighFrequencyBackupRetention = &v
+	return s
+}
+
 func (s *ModifyBackupPolicyRequest) SetLogBackupRetentionPeriod(v int64) *ModifyBackupPolicyRequest {
 	s.LogBackupRetentionPeriod = &v
 	return s
@@ -16129,11 +16146,6 @@ func (s *ModifyBackupPolicyRequest) SetResourceOwnerAccount(v string) *ModifyBac
 
 func (s *ModifyBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyBackupPolicyRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ModifyBackupPolicyRequest) SetSecurityToken(v string) *ModifyBackupPolicyRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -21125,7 +21137,9 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 }
 
 /**
- * Creates or clones an ApsaraDB for MongoDB replica set instance.
+ * Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+ * For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
+ * To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
  *
  * @param request CreateDBInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21317,7 +21331,9 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 }
 
 /**
- * Creates or clones an ApsaraDB for MongoDB replica set instance.
+ * Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+ * For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
+ * To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
  *
  * @param request CreateDBInstanceRequest
  * @return CreateDBInstanceResponse
@@ -26767,6 +26783,10 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 		query["EnableBackupLog"] = request.EnableBackupLog
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HighFrequencyBackupRetention)) {
+		query["HighFrequencyBackupRetention"] = request.HighFrequencyBackupRetention
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LogBackupRetentionPeriod)) {
 		query["LogBackupRetentionPeriod"] = request.LogBackupRetentionPeriod
 	}
@@ -26793,10 +26813,6 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotBackupType)) {
