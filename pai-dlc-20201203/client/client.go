@@ -2617,9 +2617,9 @@ func (s *CreateJobResponseBody) SetRequestId(v string) *CreateJobResponseBody {
 }
 
 type CreateJobResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateJobResponse) String() string {
@@ -2782,9 +2782,9 @@ func (s *CreateTensorboardResponseBody) SetTensorboardId(v string) *CreateTensor
 }
 
 type CreateTensorboardResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTensorboardResponse) String() string {
@@ -2834,9 +2834,9 @@ func (s *DeleteJobResponseBody) SetRequestId(v string) *DeleteJobResponseBody {
 }
 
 type DeleteJobResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteJobResponse) String() string {
@@ -2903,9 +2903,9 @@ func (s *DeleteTensorboardResponseBody) SetTensorboardId(v string) *DeleteTensor
 }
 
 type DeleteTensorboardResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTensorboardResponse) String() string {
@@ -3400,9 +3400,9 @@ func (s *GetJobResponseBodyPodsHistoryPods) SetType(v string) *GetJobResponseBod
 }
 
 type GetJobResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobResponse) String() string {
@@ -3487,9 +3487,9 @@ func (s *GetJobEventsResponseBody) SetRequestId(v string) *GetJobEventsResponseB
 }
 
 type GetJobEventsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobEventsResponse) String() string {
@@ -3586,9 +3586,9 @@ func (s *GetJobMetricsResponseBody) SetRequestId(v string) *GetJobMetricsRespons
 }
 
 type GetJobMetricsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobMetricsResponse) String() string {
@@ -3673,9 +3673,9 @@ func (s *GetJobSanityCheckResultResponseBody) SetSanityCheckResult(v []*SanityCh
 }
 
 type GetJobSanityCheckResultResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobSanityCheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobSanityCheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobSanityCheckResultResponse) String() string {
@@ -3778,9 +3778,9 @@ func (s *GetPodEventsResponseBody) SetRequestId(v string) *GetPodEventsResponseB
 }
 
 type GetPodEventsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPodEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPodEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPodEventsResponse) String() string {
@@ -3889,9 +3889,9 @@ func (s *GetPodLogsResponseBody) SetRequestId(v string) *GetPodLogsResponseBody 
 }
 
 type GetPodLogsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPodLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPodLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPodLogsResponse) String() string {
@@ -3947,9 +3947,9 @@ func (s *GetTensorboardRequest) SetWorkspaceId(v string) *GetTensorboardRequest 
 }
 
 type GetTensorboardResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Tensorboard       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Tensorboard       `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTensorboardResponse) String() string {
@@ -4016,9 +4016,9 @@ func (s *GetTensorboardSharedUrlResponseBody) SetTensorboardSharedUrl(v string) 
 }
 
 type GetTensorboardSharedUrlResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTensorboardSharedUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTensorboardSharedUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTensorboardSharedUrlResponse) String() string {
@@ -4097,9 +4097,9 @@ func (s *GetTokenResponseBody) SetToken(v string) *GetTokenResponseBody {
 }
 
 type GetTokenResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTokenResponse) String() string {
@@ -4173,9 +4173,9 @@ func (s *GetWebTerminalResponseBody) SetWebTerminalUrl(v string) *GetWebTerminal
 }
 
 type GetWebTerminalResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetWebTerminalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWebTerminalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetWebTerminalResponse) String() string {
@@ -4284,9 +4284,9 @@ func (s *ListEcsSpecsResponseBody) SetTotalCount(v int64) *ListEcsSpecsResponseB
 }
 
 type ListEcsSpecsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEcsSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEcsSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEcsSpecsResponse) String() string {
@@ -4359,9 +4359,9 @@ func (s *ListJobSanityCheckResultsResponseBody) SetTotalCount(v int32) *ListJobS
 }
 
 type ListJobSanityCheckResultsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJobSanityCheckResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobSanityCheckResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJobSanityCheckResultsResponse) String() string {
@@ -4679,9 +4679,9 @@ func (s *ListJobsResponseBody) SetTotalCount(v int64) *ListJobsResponseBody {
 }
 
 type ListJobsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJobsResponse) String() string {
@@ -4838,9 +4838,9 @@ func (s *ListTensorboardsResponseBody) SetTotalCount(v int64) *ListTensorboardsR
 }
 
 type ListTensorboardsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTensorboardsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTensorboardsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTensorboardsResponse) String() string {
@@ -4907,9 +4907,9 @@ func (s *StartTensorboardResponseBody) SetTensorboardId(v string) *StartTensorbo
 }
 
 type StartTensorboardResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartTensorboardResponse) String() string {
@@ -4959,9 +4959,9 @@ func (s *StopJobResponseBody) SetRequestId(v string) *StopJobResponseBody {
 }
 
 type StopJobResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopJobResponse) String() string {
@@ -5028,9 +5028,9 @@ func (s *StopTensorboardResponseBody) SetTensorboardId(v string) *StopTensorboar
 }
 
 type StopTensorboardResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopTensorboardResponse) String() string {
@@ -5097,9 +5097,9 @@ func (s *UpdateJobResponseBody) SetRequestId(v string) *UpdateJobResponseBody {
 }
 
 type UpdateJobResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateJobResponse) String() string {
@@ -5172,9 +5172,9 @@ func (s *UpdateTensorboardResponseBody) SetTensorboardId(v string) *UpdateTensor
 }
 
 type UpdateTensorboardResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTensorboardResponse) String() string {
