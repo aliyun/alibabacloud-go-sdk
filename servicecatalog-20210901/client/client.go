@@ -66,9 +66,9 @@ func (s *ApproveProvisionedProductPlanResponseBody) SetRequestId(v string) *Appr
 }
 
 type ApproveProvisionedProductPlanResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApproveProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApproveProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApproveProvisionedProductPlanResponse) String() string {
@@ -141,9 +141,9 @@ func (s *AssociatePrincipalWithPortfolioResponseBody) SetRequestId(v string) *As
 }
 
 type AssociatePrincipalWithPortfolioResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociatePrincipalWithPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociatePrincipalWithPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociatePrincipalWithPortfolioResponse) String() string {
@@ -213,9 +213,9 @@ func (s *AssociateProductWithPortfolioResponseBody) SetRequestId(v string) *Asso
 }
 
 type AssociateProductWithPortfolioResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateProductWithPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateProductWithPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateProductWithPortfolioResponse) String() string {
@@ -285,9 +285,9 @@ func (s *AssociateTagOptionWithResourceResponseBody) SetRequestId(v string) *Ass
 }
 
 type AssociateTagOptionWithResourceResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateTagOptionWithResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateTagOptionWithResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateTagOptionWithResourceResponse) String() string {
@@ -350,9 +350,9 @@ func (s *CancelProvisionedProductPlanResponseBody) SetRequestId(v string) *Cance
 }
 
 type CancelProvisionedProductPlanResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelProvisionedProductPlanResponse) String() string {
@@ -424,9 +424,9 @@ func (s *CopyProductResponseBody) SetRequestId(v string) *CopyProductResponseBod
 }
 
 type CopyProductResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CopyProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CopyProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CopyProductResponse) String() string {
@@ -530,9 +530,9 @@ func (s *CreateConstraintResponseBody) SetRequestId(v string) *CreateConstraintR
 }
 
 type CreateConstraintResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateConstraintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConstraintResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateConstraintResponse) String() string {
@@ -622,9 +622,9 @@ func (s *CreatePortfolioResponseBody) SetRequestId(v string) *CreatePortfolioRes
 }
 
 type CreatePortfolioResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePortfolioResponse) String() string {
@@ -669,6 +669,7 @@ type CreateProductRequest struct {
 	//
 	// The value must be 1 to 128 characters in length.
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s CreateProductRequest) String() string {
@@ -701,6 +702,11 @@ func (s *CreateProductRequest) SetProductVersionParameters(v *CreateProductReque
 
 func (s *CreateProductRequest) SetProviderName(v string) *CreateProductRequest {
 	s.ProviderName = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetTemplateType(v string) *CreateProductRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -792,6 +798,7 @@ type CreateProductShrinkRequest struct {
 	//
 	// The value must be 1 to 128 characters in length.
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s CreateProductShrinkRequest) String() string {
@@ -824,6 +831,11 @@ func (s *CreateProductShrinkRequest) SetProductVersionParametersShrink(v string)
 
 func (s *CreateProductShrinkRequest) SetProviderName(v string) *CreateProductShrinkRequest {
 	s.ProviderName = &v
+	return s
+}
+
+func (s *CreateProductShrinkRequest) SetTemplateType(v string) *CreateProductShrinkRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -860,9 +872,9 @@ func (s *CreateProductResponseBody) SetRequestId(v string) *CreateProductRespons
 }
 
 type CreateProductResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProductResponse) String() string {
@@ -990,9 +1002,9 @@ func (s *CreateProductVersionResponseBody) SetRequestId(v string) *CreateProduct
 }
 
 type CreateProductVersionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProductVersionResponse) String() string {
@@ -1219,9 +1231,9 @@ func (s *CreateProvisionedProductPlanResponseBody) SetRequestId(v string) *Creat
 }
 
 type CreateProvisionedProductPlanResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProvisionedProductPlanResponse) String() string {
@@ -1355,9 +1367,9 @@ func (s *CreateTagOptionResponseBodyTagOptionDetail) SetValue(v string) *CreateT
 }
 
 type CreateTagOptionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTagOptionResponse) String() string {
@@ -1474,9 +1486,9 @@ func (s *CreateTemplateResponseBody) SetTemplateUrl(v string) *CreateTemplateRes
 }
 
 type CreateTemplateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTemplateResponse) String() string {
@@ -1539,9 +1551,9 @@ func (s *DeleteConstraintResponseBody) SetRequestId(v string) *DeleteConstraintR
 }
 
 type DeleteConstraintResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteConstraintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConstraintResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteConstraintResponse) String() string {
@@ -1604,9 +1616,9 @@ func (s *DeletePortfolioResponseBody) SetRequestId(v string) *DeletePortfolioRes
 }
 
 type DeletePortfolioResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePortfolioResponse) String() string {
@@ -1669,9 +1681,9 @@ func (s *DeleteProductResponseBody) SetRequestId(v string) *DeleteProductRespons
 }
 
 type DeleteProductResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProductResponse) String() string {
@@ -1734,9 +1746,9 @@ func (s *DeleteProductVersionResponseBody) SetRequestId(v string) *DeleteProduct
 }
 
 type DeleteProductVersionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProductVersionResponse) String() string {
@@ -1799,9 +1811,9 @@ func (s *DeleteProvisionedProductPlanResponseBody) SetRequestId(v string) *Delet
 }
 
 type DeleteProvisionedProductPlanResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProvisionedProductPlanResponse) String() string {
@@ -1864,9 +1876,9 @@ func (s *DeleteTagOptionResponseBody) SetRequestId(v string) *DeleteTagOptionRes
 }
 
 type DeleteTagOptionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTagOptionResponse) String() string {
@@ -1936,9 +1948,9 @@ func (s *DisAssociateTagOptionFromResourceResponseBody) SetRequestId(v string) *
 }
 
 type DisAssociateTagOptionFromResourceResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisAssociateTagOptionFromResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisAssociateTagOptionFromResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisAssociateTagOptionFromResourceResponse) String() string {
@@ -2022,9 +2034,9 @@ func (s *DisassociatePrincipalFromPortfolioResponseBody) SetRequestId(v string) 
 }
 
 type DisassociatePrincipalFromPortfolioResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisassociatePrincipalFromPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisassociatePrincipalFromPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisassociatePrincipalFromPortfolioResponse) String() string {
@@ -2094,9 +2106,9 @@ func (s *DisassociateProductFromPortfolioResponseBody) SetRequestId(v string) *D
 }
 
 type DisassociateProductFromPortfolioResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisassociateProductFromPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisassociateProductFromPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisassociateProductFromPortfolioResponse) String() string {
@@ -2166,9 +2178,9 @@ func (s *ExecuteProvisionedProductPlanResponseBody) SetRequestId(v string) *Exec
 }
 
 type ExecuteProvisionedProductPlanResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteProvisionedProductPlanResponse) String() string {
@@ -2311,9 +2323,9 @@ func (s *GetConstraintResponseBodyConstraintDetail) SetProductName(v string) *Ge
 }
 
 type GetConstraintResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConstraintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConstraintResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConstraintResponse) String() string {
@@ -2494,9 +2506,9 @@ func (s *GetPortfolioResponseBodyTagOptions) SetValue(v string) *GetPortfolioRes
 }
 
 type GetPortfolioResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPortfolioResponse) String() string {
@@ -2591,6 +2603,7 @@ type GetProductAsAdminResponseBodyProductDetail struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The provider of the product.
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s GetProductAsAdminResponseBodyProductDetail) String() string {
@@ -2633,6 +2646,11 @@ func (s *GetProductAsAdminResponseBodyProductDetail) SetProductType(v string) *G
 
 func (s *GetProductAsAdminResponseBodyProductDetail) SetProviderName(v string) *GetProductAsAdminResponseBodyProductDetail {
 	s.ProviderName = &v
+	return s
+}
+
+func (s *GetProductAsAdminResponseBodyProductDetail) SetTemplateType(v string) *GetProductAsAdminResponseBodyProductDetail {
+	s.TemplateType = &v
 	return s
 }
 
@@ -2686,9 +2704,9 @@ func (s *GetProductAsAdminResponseBodyTagOptions) SetValue(v string) *GetProduct
 }
 
 type GetProductAsAdminResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProductAsAdminResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProductAsAdminResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProductAsAdminResponse) String() string {
@@ -2783,6 +2801,7 @@ type GetProductAsEndUserResponseBodyProductSummary struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The provider of the product.
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s GetProductAsEndUserResponseBodyProductSummary) String() string {
@@ -2833,10 +2852,15 @@ func (s *GetProductAsEndUserResponseBodyProductSummary) SetProviderName(v string
 	return s
 }
 
+func (s *GetProductAsEndUserResponseBodyProductSummary) SetTemplateType(v string) *GetProductAsEndUserResponseBodyProductSummary {
+	s.TemplateType = &v
+	return s
+}
+
 type GetProductAsEndUserResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProductAsEndUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProductAsEndUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProductAsEndUserResponse) String() string {
@@ -2968,9 +2992,9 @@ func (s *GetProductVersionResponseBodyProductVersionDetail) SetTemplateUrl(v str
 }
 
 type GetProductVersionResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProductVersionResponse) String() string {
@@ -3209,9 +3233,9 @@ func (s *GetProvisionedProductResponseBodyProvisionedProductDetail) SetStatusMes
 }
 
 type GetProvisionedProductResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProvisionedProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProvisionedProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProvisionedProductResponse) String() string {
@@ -3965,9 +3989,9 @@ func (s *GetProvisionedProductPlanResponseBodyResourceChanges) SetResourceType(v
 }
 
 type GetProvisionedProductPlanResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProvisionedProductPlanResponse) String() string {
@@ -4086,9 +4110,9 @@ func (s *GetTagOptionResponseBodyTagOptionDetail) SetValue(v string) *GetTagOpti
 }
 
 type GetTagOptionResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTagOptionResponse) String() string {
@@ -4448,9 +4472,9 @@ func (s *GetTaskResponseBodyTaskDetailTaskTags) SetValue(v string) *GetTaskRespo
 }
 
 type GetTaskResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskResponse) String() string {
@@ -4529,9 +4553,9 @@ func (s *GetTemplateResponseBody) SetTemplateBody(v string) *GetTemplateResponse
 }
 
 type GetTemplateResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTemplateResponse) String() string {
@@ -4715,9 +4739,9 @@ func (s *LaunchProductResponseBody) SetRequestId(v string) *LaunchProductRespons
 }
 
 type LaunchProductResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LaunchProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LaunchProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LaunchProductResponse) String() string {
@@ -4863,9 +4887,9 @@ func (s *ListLaunchOptionsResponseBodyLaunchOptionSummariesConstraintSummaries) 
 }
 
 type ListLaunchOptionsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLaunchOptionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLaunchOptionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLaunchOptionsResponse) String() string {
@@ -5061,9 +5085,9 @@ func (s *ListPortfoliosResponseBodyPortfolioDetails) SetProviderName(v string) *
 }
 
 type ListPortfoliosResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPortfoliosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPortfoliosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPortfoliosResponse) String() string {
@@ -5161,9 +5185,9 @@ func (s *ListPrincipalsResponseBodyPrincipals) SetPrincipalType(v string) *ListP
 }
 
 type ListPrincipalsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPrincipalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPrincipalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPrincipalsResponse) String() string {
@@ -5318,9 +5342,9 @@ func (s *ListProductVersionsResponseBodyProductVersionDetails) SetTemplateUrl(v 
 }
 
 type ListProductVersionsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProductVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProductVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProductVersionsResponse) String() string {
@@ -5512,6 +5536,7 @@ type ListProductsAsAdminResponseBodyProductDetails struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The provider of the product.
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s ListProductsAsAdminResponseBodyProductDetails) String() string {
@@ -5557,10 +5582,15 @@ func (s *ListProductsAsAdminResponseBodyProductDetails) SetProviderName(v string
 	return s
 }
 
+func (s *ListProductsAsAdminResponseBodyProductDetails) SetTemplateType(v string) *ListProductsAsAdminResponseBodyProductDetails {
+	s.TemplateType = &v
+	return s
+}
+
 type ListProductsAsAdminResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProductsAsAdminResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProductsAsAdminResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProductsAsAdminResponse) String() string {
@@ -5741,6 +5771,7 @@ type ListProductsAsEndUserResponseBodyProductSummaries struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The provider of the product.
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s ListProductsAsEndUserResponseBodyProductSummaries) String() string {
@@ -5791,10 +5822,15 @@ func (s *ListProductsAsEndUserResponseBodyProductSummaries) SetProviderName(v st
 	return s
 }
 
+func (s *ListProductsAsEndUserResponseBodyProductSummaries) SetTemplateType(v string) *ListProductsAsEndUserResponseBodyProductSummaries {
+	s.TemplateType = &v
+	return s
+}
+
 type ListProductsAsEndUserResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProductsAsEndUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProductsAsEndUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProductsAsEndUserResponse) String() string {
@@ -5944,9 +5980,9 @@ func (s *ListProvisionedProductPlanApproversResponseBodyApprovers) SetPrincipalT
 }
 
 type ListProvisionedProductPlanApproversResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProvisionedProductPlanApproversResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProvisionedProductPlanApproversResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProvisionedProductPlanApproversResponse) String() string {
@@ -6423,9 +6459,9 @@ func (s *ListProvisionedProductPlansResponseBodyPlanDetailsTags) SetValue(v stri
 }
 
 type ListProvisionedProductPlansResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProvisionedProductPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProvisionedProductPlansResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProvisionedProductPlansResponse) String() string {
@@ -6760,9 +6796,9 @@ func (s *ListProvisionedProductsResponseBodyProvisionedProductDetails) SetStatus
 }
 
 type ListProvisionedProductsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProvisionedProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProvisionedProductsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProvisionedProductsResponse) String() string {
@@ -6846,9 +6882,9 @@ func (s *ListRegionsResponseBodyRegions) SetRegionId(v string) *ListRegionsRespo
 }
 
 type ListRegionsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -7021,9 +7057,9 @@ func (s *ListResourcesForTagOptionResponseBodyResourceDetails) SetResourceName(v
 }
 
 type ListResourcesForTagOptionResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourcesForTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourcesForTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourcesForTagOptionResponse) String() string {
@@ -7299,9 +7335,9 @@ func (s *ListTagOptionsResponseBodyTagOptionDetails) SetValue(v string) *ListTag
 }
 
 type ListTagOptionsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagOptionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagOptionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagOptionsResponse) String() string {
@@ -7616,9 +7652,9 @@ func (s *ListTasksResponseBodyTaskDetailsParameters) SetParameterValue(v string)
 }
 
 type ListTasksResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTasksResponse) String() string {
@@ -7681,9 +7717,9 @@ func (s *TerminateProvisionedProductResponseBody) SetRequestId(v string) *Termin
 }
 
 type TerminateProvisionedProductResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TerminateProvisionedProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TerminateProvisionedProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TerminateProvisionedProductResponse) String() string {
@@ -7771,9 +7807,9 @@ func (s *UpdateConstraintResponseBody) SetRequestId(v string) *UpdateConstraintR
 }
 
 type UpdateConstraintResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateConstraintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConstraintResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateConstraintResponse) String() string {
@@ -7862,9 +7898,9 @@ func (s *UpdatePortfolioResponseBody) SetRequestId(v string) *UpdatePortfolioRes
 }
 
 type UpdatePortfolioResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePortfolioResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePortfolioResponse) String() string {
@@ -7953,9 +7989,9 @@ func (s *UpdateProductResponseBody) SetRequestId(v string) *UpdateProductRespons
 }
 
 type UpdateProductResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProductResponse) String() string {
@@ -8065,9 +8101,9 @@ func (s *UpdateProductVersionResponseBody) SetRequestId(v string) *UpdateProduct
 }
 
 type UpdateProductVersionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProductVersionResponse) String() string {
@@ -8240,9 +8276,9 @@ func (s *UpdateProvisionedProductResponseBody) SetRequestId(v string) *UpdatePro
 }
 
 type UpdateProvisionedProductResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProvisionedProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProvisionedProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProvisionedProductResponse) String() string {
@@ -8427,9 +8463,9 @@ func (s *UpdateProvisionedProductPlanResponseBody) SetRequestId(v string) *Updat
 }
 
 type UpdateProvisionedProductPlanResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProvisionedProductPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProvisionedProductPlanResponse) String() string {
@@ -8571,9 +8607,9 @@ func (s *UpdateTagOptionResponseBodyTagOptionDetail) SetValue(v string) *UpdateT
 }
 
 type UpdateTagOptionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTagOptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTagOptionResponse) String() string {
@@ -9087,6 +9123,10 @@ func (client *Client) CreateProductWithOptions(tmpReq *CreateProductRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.ProviderName)) {
 		body["ProviderName"] = request.ProviderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		body["TemplateType"] = request.TemplateType
 	}
 
 	req := &openapi.OpenApiRequest{
