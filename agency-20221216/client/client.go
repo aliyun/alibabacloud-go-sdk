@@ -2573,6 +2573,217 @@ func (s *ListCountriesResponse) SetBody(v *ListCountriesResponseBody) *ListCount
 	return s
 }
 
+type ListCouponUsageRequest struct {
+	Account          *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	CouponTemplateId *int64  `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
+	Page             *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Uid              *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s ListCouponUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponUsageRequest) SetAccount(v string) *ListCouponUsageRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *ListCouponUsageRequest) SetCouponTemplateId(v int64) *ListCouponUsageRequest {
+	s.CouponTemplateId = &v
+	return s
+}
+
+func (s *ListCouponUsageRequest) SetPage(v int32) *ListCouponUsageRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListCouponUsageRequest) SetPageSize(v int32) *ListCouponUsageRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCouponUsageRequest) SetStatus(v string) *ListCouponUsageRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCouponUsageRequest) SetUid(v int64) *ListCouponUsageRequest {
+	s.Uid = &v
+	return s
+}
+
+type ListCouponUsageResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListCouponUsageResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo  *ListCouponUsageResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCouponUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponUsageResponseBody) SetCode(v string) *ListCouponUsageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBody) SetData(v []*ListCouponUsageResponseBodyData) *ListCouponUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCouponUsageResponseBody) SetMessage(v string) *ListCouponUsageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBody) SetPageInfo(v *ListCouponUsageResponseBodyPageInfo) *ListCouponUsageResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListCouponUsageResponseBody) SetRequestId(v string) *ListCouponUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCouponUsageResponseBodyData struct {
+	Account          *string  `json:"Account,omitempty" xml:"Account,omitempty"`
+	Amount           *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Balance          *float64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	CouponId         *string  `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	CouponTemplateId *int64   `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
+	EffDate          *string  `json:"EffDate,omitempty" xml:"EffDate,omitempty"`
+	PublishDate      *string  `json:"PublishDate,omitempty" xml:"PublishDate,omitempty"`
+	Status           *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Uid              *int64   `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s ListCouponUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponUsageResponseBodyData) SetAccount(v string) *ListCouponUsageResponseBodyData {
+	s.Account = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetAmount(v float64) *ListCouponUsageResponseBodyData {
+	s.Amount = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetBalance(v float64) *ListCouponUsageResponseBodyData {
+	s.Balance = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetCouponId(v string) *ListCouponUsageResponseBodyData {
+	s.CouponId = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetCouponTemplateId(v int64) *ListCouponUsageResponseBodyData {
+	s.CouponTemplateId = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetEffDate(v string) *ListCouponUsageResponseBodyData {
+	s.EffDate = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetPublishDate(v string) *ListCouponUsageResponseBodyData {
+	s.PublishDate = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetStatus(v string) *ListCouponUsageResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyData) SetUid(v int64) *ListCouponUsageResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type ListCouponUsageResponseBodyPageInfo struct {
+	Page     *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListCouponUsageResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponUsageResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponUsageResponseBodyPageInfo) SetPage(v int32) *ListCouponUsageResponseBodyPageInfo {
+	s.Page = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyPageInfo) SetPageSize(v int32) *ListCouponUsageResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCouponUsageResponseBodyPageInfo) SetTotal(v int32) *ListCouponUsageResponseBodyPageInfo {
+	s.Total = &v
+	return s
+}
+
+type ListCouponUsageResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCouponUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCouponUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponUsageResponse) SetHeaders(v map[string]*string) *ListCouponUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCouponUsageResponse) SetStatusCode(v int32) *ListCouponUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCouponUsageResponse) SetBody(v *ListCouponUsageResponseBody) *ListCouponUsageResponse {
+	s.Body = v
+	return s
+}
+
 type QuotaListExportPagedRequest struct {
 	// Pagination, current page number, starting from 1.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -4234,6 +4445,70 @@ func (client *Client) ListCountries() (_result *ListCountriesResponse, _err erro
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCountriesResponse{}
 	_body, _err := client.ListCountriesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCouponUsageWithOptions(request *ListCouponUsageRequest, runtime *util.RuntimeOptions) (_result *ListCouponUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		query["Account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CouponTemplateId)) {
+		query["CouponTemplateId"] = request.CouponTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCouponUsage"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCouponUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCouponUsage(request *ListCouponUsageRequest) (_result *ListCouponUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCouponUsageResponse{}
+	_body, _err := client.ListCouponUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
