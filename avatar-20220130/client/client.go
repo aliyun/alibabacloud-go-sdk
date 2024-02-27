@@ -158,9 +158,9 @@ func (s *CancelVideoTaskResponseBodyData) SetTaskUuid(v string) *CancelVideoTask
 }
 
 type CancelVideoTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelVideoTaskResponse) String() string {
@@ -269,9 +269,9 @@ func (s *ClientAuthResponseBody) SetSuccess(v bool) *ClientAuthResponseBody {
 }
 
 type ClientAuthResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClientAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClientAuthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClientAuthResponse) String() string {
@@ -379,9 +379,9 @@ func (s *ClientStartResponseBodyData) SetImToken(v string) *ClientStartResponseB
 }
 
 type ClientStartResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClientStartResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClientStartResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClientStartResponse) String() string {
@@ -466,9 +466,9 @@ func (s *ClientUnbindDeviceResponseBody) SetSuccess(v bool) *ClientUnbindDeviceR
 }
 
 type ClientUnbindDeviceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClientUnbindDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClientUnbindDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClientUnbindDeviceResponse) String() string {
@@ -583,9 +583,9 @@ func (s *CloseTimedResetOperateResponseBodyData) SetTenantId(v int64) *CloseTime
 }
 
 type CloseTimedResetOperateResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CloseTimedResetOperateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloseTimedResetOperateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CloseTimedResetOperateResponse) String() string {
@@ -676,9 +676,9 @@ func (s *ConfirmAvatar2dTrainResponseBody) SetSuccess(v bool) *ConfirmAvatar2dTr
 }
 
 type ConfirmAvatar2dTrainResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfirmAvatar2dTrainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfirmAvatar2dTrainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfirmAvatar2dTrainResponse) String() string {
@@ -828,9 +828,9 @@ func (s *Create2dAvatarResponseBodyData) SetCode(v string) *Create2dAvatarRespon
 }
 
 type Create2dAvatarResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Create2dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Create2dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s Create2dAvatarResponse) String() string {
@@ -915,9 +915,9 @@ func (s *DeleteAvatarResponseBody) SetSuccess(v bool) *DeleteAvatarResponseBody 
 }
 
 type DeleteAvatarResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAvatarResponse) String() string {
@@ -1202,9 +1202,9 @@ func (s *DuplexDecisionResponseBodyData) SetOutputText(v string) *DuplexDecision
 }
 
 type DuplexDecisionResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DuplexDecisionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DuplexDecisionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DuplexDecisionResponse) String() string {
@@ -1454,9 +1454,9 @@ func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetWordSubtitlesUrl(v strin
 }
 
 type GetVideoTaskInfoResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVideoTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVideoTaskInfoResponse) String() string {
@@ -1570,9 +1570,9 @@ func (s *LicenseAuthResponseBodyData) SetToken(v string) *LicenseAuthResponseBod
 }
 
 type LicenseAuthResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LicenseAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LicenseAuthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LicenseAuthResponse) String() string {
@@ -1673,6 +1673,7 @@ type QueryAvatarResponseBodyData struct {
 	ModelType            *string                                          `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	Name                 *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
 	Portrait             *string                                          `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	Preview              *string                                          `json:"Preview,omitempty" xml:"Preview,omitempty"`
 	SupportedResolutions *QueryAvatarResponseBodyDataSupportedResolutions `json:"SupportedResolutions,omitempty" xml:"SupportedResolutions,omitempty" type:"Struct"`
 }
 
@@ -1731,6 +1732,11 @@ func (s *QueryAvatarResponseBodyData) SetName(v string) *QueryAvatarResponseBody
 
 func (s *QueryAvatarResponseBodyData) SetPortrait(v string) *QueryAvatarResponseBodyData {
 	s.Portrait = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetPreview(v string) *QueryAvatarResponseBodyData {
+	s.Preview = &v
 	return s
 }
 
@@ -1821,9 +1827,9 @@ func (s *QueryAvatarResponseBodyDataSupportedResolutionsOnline) SetWidth(v int32
 }
 
 type QueryAvatarResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryAvatarResponse) String() string {
@@ -1977,6 +1983,7 @@ type QueryAvatarListResponseBodyDataList struct {
 	ModelType            *string                                                  `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	Name                 *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	Portrait             *string                                                  `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	Preview              *string                                                  `json:"Preview,omitempty" xml:"Preview,omitempty"`
 	SupportedResolutions *QueryAvatarListResponseBodyDataListSupportedResolutions `json:"SupportedResolutions,omitempty" xml:"SupportedResolutions,omitempty" type:"Struct"`
 }
 
@@ -2035,6 +2042,11 @@ func (s *QueryAvatarListResponseBodyDataList) SetName(v string) *QueryAvatarList
 
 func (s *QueryAvatarListResponseBodyDataList) SetPortrait(v string) *QueryAvatarListResponseBodyDataList {
 	s.Portrait = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetPreview(v string) *QueryAvatarListResponseBodyDataList {
+	s.Preview = &v
 	return s
 }
 
@@ -2125,9 +2137,9 @@ func (s *QueryAvatarListResponseBodyDataListSupportedResolutionsOnline) SetWidth
 }
 
 type QueryAvatarListResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryAvatarListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAvatarListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryAvatarListResponse) String() string {
@@ -2393,9 +2405,9 @@ func (s *QueryRunningInstanceResponseBodyDataUser) SetUserName(v string) *QueryR
 }
 
 type QueryRunningInstanceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRunningInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRunningInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRunningInstanceResponse) String() string {
@@ -2522,9 +2534,9 @@ func (s *QueryTimedResetOperateStatusResponseBodyData) SetTenantId(v string) *Qu
 }
 
 type QueryTimedResetOperateStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTimedResetOperateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTimedResetOperateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTimedResetOperateStatusResponse) String() string {
@@ -2881,9 +2893,9 @@ func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetWordSubtitlesUrl(v
 }
 
 type QueryVideoTaskInfoResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryVideoTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryVideoTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryVideoTaskInfoResponse) String() string {
@@ -2997,9 +3009,9 @@ func (s *Render3dAvatarResponseBodyData) SetRenderData(v string) *Render3dAvatar
 }
 
 type Render3dAvatarResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Render3dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Render3dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s Render3dAvatarResponse) String() string {
@@ -3185,9 +3197,9 @@ func (s *SendCommandResponseBodyData) SetUniqueCode(v string) *SendCommandRespon
 }
 
 type SendCommandResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendCommandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendCommandResponse) String() string {
@@ -3454,9 +3466,9 @@ func (s *SendMessageResponseBodyData) SetSessionId(v string) *SendMessageRespons
 }
 
 type SendMessageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendMessageResponse) String() string {
@@ -3683,9 +3695,9 @@ func (s *SendTextResponseBodyData) SetUniqueCode(v string) *SendTextResponseBody
 }
 
 type SendTextResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendTextResponse) String() string {
@@ -3806,9 +3818,9 @@ func (s *SendVamlResponseBodyData) SetUniqueCode(v string) *SendVamlResponseBody
 }
 
 type SendVamlResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendVamlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendVamlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendVamlResponse) String() string {
@@ -4203,9 +4215,9 @@ func (s *StartInstanceResponseBodyDataChannel) SetUserInfoInChannel(v string) *S
 }
 
 type StartInstanceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartInstanceResponse) String() string {
@@ -4319,9 +4331,9 @@ func (s *StartTimedResetOperateResponseBodyData) SetTenantId(v int64) *StartTime
 }
 
 type StartTimedResetOperateResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartTimedResetOperateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartTimedResetOperateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartTimedResetOperateResponse) String() string {
@@ -4429,9 +4441,9 @@ func (s *StopInstanceResponseBodyData) SetSessionId(v string) *StopInstanceRespo
 }
 
 type StopInstanceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopInstanceResponse) String() string {
@@ -4768,9 +4780,9 @@ func (s *SubmitAudioTo2DAvatarVideoTaskResponseBodyData) SetTaskUuid(v string) *
 }
 
 type SubmitAudioTo2DAvatarVideoTaskResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitAudioTo2DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAudioTo2DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitAudioTo2DAvatarVideoTaskResponse) String() string {
@@ -5101,9 +5113,9 @@ func (s *SubmitAudioTo3DAvatarVideoTaskResponseBodyData) SetTaskUuid(v string) *
 }
 
 type SubmitAudioTo3DAvatarVideoTaskResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitAudioTo3DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAudioTo3DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitAudioTo3DAvatarVideoTaskResponse) String() string {
@@ -5312,9 +5324,9 @@ func (s *SubmitAvatarVideoTaskResponseBodyData) SetTaskUuid(v string) *SubmitAva
 }
 
 type SubmitAvatarVideoTaskResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitAvatarVideoTaskResponse) String() string {
@@ -5735,9 +5747,9 @@ func (s *SubmitTextTo2DAvatarVideoTaskResponseBodyData) SetTaskUuid(v string) *S
 }
 
 type SubmitTextTo2DAvatarVideoTaskResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitTextTo2DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTextTo2DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitTextTo2DAvatarVideoTaskResponse) String() string {
@@ -6152,9 +6164,9 @@ func (s *SubmitTextTo3DAvatarVideoTaskResponseBodyData) SetTaskUuid(v string) *S
 }
 
 type SubmitTextTo3DAvatarVideoTaskResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitTextTo3DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTextTo3DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitTextTo3DAvatarVideoTaskResponse) String() string {
@@ -6310,9 +6322,9 @@ func (s *Update2dAvatarResponseBodyData) SetCode(v string) *Update2dAvatarRespon
 }
 
 type Update2dAvatarResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Update2dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Update2dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s Update2dAvatarResponse) String() string {
