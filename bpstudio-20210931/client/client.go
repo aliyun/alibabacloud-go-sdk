@@ -609,6 +609,7 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 type DeployApplicationRequest struct {
 	// The ID of the application.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -623,6 +624,11 @@ func (s DeployApplicationRequest) GoString() string {
 
 func (s *DeployApplicationRequest) SetApplicationId(v string) *DeployApplicationRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetClientToken(v string) *DeployApplicationRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -723,7 +729,8 @@ type ExecuteOperationASyncRequest struct {
 	//     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
 	//
 	//     <!-- -->
-	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	Attributes  map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	ClientToken *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
 	// - The name of the ECS: rename
 	// - Specificationof ecs: modifyInstanceType
@@ -755,6 +762,11 @@ func (s *ExecuteOperationASyncRequest) SetApplicationId(v string) *ExecuteOperat
 
 func (s *ExecuteOperationASyncRequest) SetAttributes(v map[string]interface{}) *ExecuteOperationASyncRequest {
 	s.Attributes = v
+	return s
+}
+
+func (s *ExecuteOperationASyncRequest) SetClientToken(v string) *ExecuteOperationASyncRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -798,6 +810,7 @@ type ExecuteOperationASyncShrinkRequest struct {
 	//
 	//     <!-- -->
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
 	// - The name of the ECS: rename
 	// - Specificationof ecs: modifyInstanceType
@@ -829,6 +842,11 @@ func (s *ExecuteOperationASyncShrinkRequest) SetApplicationId(v string) *Execute
 
 func (s *ExecuteOperationASyncShrinkRequest) SetAttributesShrink(v string) *ExecuteOperationASyncShrinkRequest {
 	s.AttributesShrink = &v
+	return s
+}
+
+func (s *ExecuteOperationASyncShrinkRequest) SetClientToken(v string) *ExecuteOperationASyncShrinkRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -915,6 +933,164 @@ func (s *ExecuteOperationASyncResponse) SetBody(v *ExecuteOperationASyncResponse
 	return s
 }
 
+type ExecuteOperationSyncRequest struct {
+	ApplicationId   *string                `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	Attributes      map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Operation       *string                `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceType     *string                `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+}
+
+func (s ExecuteOperationSyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteOperationSyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteOperationSyncRequest) SetApplicationId(v string) *ExecuteOperationSyncRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncRequest) SetAttributes(v map[string]interface{}) *ExecuteOperationSyncRequest {
+	s.Attributes = v
+	return s
+}
+
+func (s *ExecuteOperationSyncRequest) SetClientToken(v string) *ExecuteOperationSyncRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncRequest) SetOperation(v string) *ExecuteOperationSyncRequest {
+	s.Operation = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncRequest) SetResourceGroupId(v string) *ExecuteOperationSyncRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncRequest) SetServiceType(v string) *ExecuteOperationSyncRequest {
+	s.ServiceType = &v
+	return s
+}
+
+type ExecuteOperationSyncShrinkRequest struct {
+	ApplicationId    *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Operation        *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+}
+
+func (s ExecuteOperationSyncShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteOperationSyncShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteOperationSyncShrinkRequest) SetApplicationId(v string) *ExecuteOperationSyncShrinkRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncShrinkRequest) SetAttributesShrink(v string) *ExecuteOperationSyncShrinkRequest {
+	s.AttributesShrink = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncShrinkRequest) SetClientToken(v string) *ExecuteOperationSyncShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncShrinkRequest) SetOperation(v string) *ExecuteOperationSyncShrinkRequest {
+	s.Operation = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncShrinkRequest) SetResourceGroupId(v string) *ExecuteOperationSyncShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncShrinkRequest) SetServiceType(v string) *ExecuteOperationSyncShrinkRequest {
+	s.ServiceType = &v
+	return s
+}
+
+type ExecuteOperationSyncResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExecuteOperationSyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteOperationSyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteOperationSyncResponseBody) SetCode(v int32) *ExecuteOperationSyncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncResponseBody) SetData(v string) *ExecuteOperationSyncResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncResponseBody) SetMessage(v string) *ExecuteOperationSyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncResponseBody) SetRequestId(v string) *ExecuteOperationSyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExecuteOperationSyncResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteOperationSyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteOperationSyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteOperationSyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteOperationSyncResponse) SetHeaders(v map[string]*string) *ExecuteOperationSyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteOperationSyncResponse) SetStatusCode(v int32) *ExecuteOperationSyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncResponse) SetBody(v *ExecuteOperationSyncResponseBody) *ExecuteOperationSyncResponse {
+	s.Body = v
+	return s
+}
+
 type GetApplicationRequest struct {
 	// The ID of the request.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
@@ -945,34 +1121,9 @@ type GetApplicationResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the application.
 	Data *GetApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Possible application states:
-	//
-	// *   Creating: The application is being created.
-	// *   Modified: The application has been modified.
-	// *   Verifying: The application is being verified.
-	// *   Verified_Failure: The application failed to pass the verification.
-	// *   Verified_Success: The application has passed the verification.
-	// *   Valuating: Fees are being calculated for the application.
-	// *   Valuating_Failure: Fees failed to be calculated for the application.
-	// *   Valuating_Success: Fees are calculated for the application.
-	// *   Deploying: The application is being deployed.
-	// *   Deployed_Failure: The application failed to be deployed.
-	// *   Partially_Deployed_Success: Some resources of the application are deployed.
-	// *   Deployed_Success: The application is deployed.
-	// *   Destroying: The application is being released.
-	// *   Delayed_Destroy: The application release is delayed.
-	// *   Destroyed_Failure: The application failed to be released.
-	// *   Partially_Destroyed_Success: Some resources of the application are released.
-	// *   Destroyed_Success: The application is released.
-	// *   Revised: The application architecture is adjusted.
-	// *   Verifying_In_Revision: The application resources are being verified during architecture adjustment.
-	// *   Verified_Failure_In_Revision: The application resources failed to pass the verification during architecture adjustment.
-	// *   Verified_Success_In_Revision: The application resources are verified during architecture adjustment.
-	// *   Valuating_In_Revision: Fees are being calculated for the application during architecture adjustment.
-	// *   Valuating_Failure_In_Revision: Fees failed to be calculated for the application during architecture adjustment.
-	// *   Valuating_Success_In_Revision: Fees are calculated for the application during architecture adjustment.
+	// Reason for the request failure
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the application.
+	// Request ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1005,29 +1156,29 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 }
 
 type GetApplicationResponseBodyData struct {
-	// The description of the application.
+	// App ID
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The resource tag.
 	Checklist []*GetApplicationResponseBodyDataChecklist `json:"Checklist,omitempty" xml:"Checklist,omitempty" type:"Repeated"`
-	// The URL of the application topology image.
+	// The time when the app was created
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The message returned for the request.
+	// Application description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The resource type.
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The URL of the image in the database.
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	// The URL of the image in the database.
+	// App name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The billing results.
 	PriceList []*GetApplicationResponseBodyDataPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
-	// 1411182597819805/topo-MCEXDI5EL2OM10NY.json
+	// The ID of the resource group to which the app belongs
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource specification.
 	ResourceList []*GetApplicationResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 	// Verification passed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// CADT application
+	// The ID of the template associated with the application
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1182,7 +1333,7 @@ type GetApplicationResponseBodyDataPriceList struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The error message that is returned when a price query fails.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The service code.
+	// Product code
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
 	// The instance type. This parameter indicates the information about the instance type. For example, 192.168.0.0/16 may be returned for a Virtual Private Cloud (VPC) instance, ecs.g5.large may be returned for an Elastic Compute Service (ECS) instance, and slb.s1.small may be returned for a Server Load Balancer (SLB) instance. If the resource does not have a specific type, an empty value is returned.
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
@@ -2088,17 +2239,19 @@ func (s *InitAppFailOverResponse) SetBody(v *InitAppFailOverResponseBody) *InitA
 type ListApplicationRequest struct {
 	// Keywords in the app name
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The HTTP status code.
+	// The pagination size of the resulting value cannot be less than the minimum value of 1 and cannot be greater than the maximum value of 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the resource group to which the application belongs.
+	// The pagination page number of the resulting value cannot be less than the minimum value of 1 and cannot be greater than the maximum value of 10000.
 	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 1 update time,<br>2 creation time
 	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource Id
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The status of the applications to be returned.
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Template Id
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2788,6 +2941,7 @@ func (s *ListTemplateResponse) SetBody(v *ListTemplateResponseBody) *ListTemplat
 type ReleaseApplicationRequest struct {
 	// The ID of the application.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -2802,6 +2956,11 @@ func (s ReleaseApplicationRequest) GoString() string {
 
 func (s *ReleaseApplicationRequest) SetApplicationId(v string) *ReleaseApplicationRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ReleaseApplicationRequest) SetClientToken(v string) *ReleaseApplicationRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -2881,6 +3040,7 @@ func (s *ReleaseApplicationResponse) SetBody(v *ReleaseApplicationResponseBody) 
 type ValidateApplicationRequest struct {
 	// The ID of the application.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -2895,6 +3055,11 @@ func (s ValidateApplicationRequest) GoString() string {
 
 func (s *ValidateApplicationRequest) SetApplicationId(v string) *ValidateApplicationRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ValidateApplicationRequest) SetClientToken(v string) *ValidateApplicationRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -2974,6 +3139,7 @@ func (s *ValidateApplicationResponse) SetBody(v *ValidateApplicationResponseBody
 type ValuateApplicationRequest struct {
 	// The ID of the application.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -2988,6 +3154,11 @@ func (s ValuateApplicationRequest) GoString() string {
 
 func (s *ValuateApplicationRequest) SetApplicationId(v string) *ValuateApplicationRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ValuateApplicationRequest) SetClientToken(v string) *ValuateApplicationRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -3781,6 +3952,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -3840,6 +4015,10 @@ func (client *Client) ExecuteOperationASyncWithOptions(tmpReq *ExecuteOperationA
 		body["Attributes"] = request.AttributesShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Operation)) {
 		body["Operation"] = request.Operation
 	}
@@ -3879,6 +4058,76 @@ func (client *Client) ExecuteOperationASync(request *ExecuteOperationASyncReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteOperationASyncResponse{}
 	_body, _err := client.ExecuteOperationASyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExecuteOperationSyncWithOptions(tmpReq *ExecuteOperationSyncRequest, runtime *util.RuntimeOptions) (_result *ExecuteOperationSyncResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExecuteOperationSyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Attributes)) {
+		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, tea.String("Attributes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttributesShrink)) {
+		body["Attributes"] = request.AttributesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operation)) {
+		body["Operation"] = request.Operation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		body["ServiceType"] = request.ServiceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteOperationSync"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteOperationSyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecuteOperationSync(request *ExecuteOperationSyncRequest) (_result *ExecuteOperationSyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteOperationSyncResponse{}
+	_body, _err := client.ExecuteOperationSyncWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4481,6 +4730,10 @@ func (client *Client) ReleaseApplicationWithOptions(request *ReleaseApplicationR
 		body["ApplicationId"] = request.ApplicationId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -4530,6 +4783,10 @@ func (client *Client) ValidateApplicationWithOptions(request *ValidateApplicatio
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -4577,6 +4834,10 @@ func (client *Client) ValuateApplicationWithOptions(request *ValuateApplicationR
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
 		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
