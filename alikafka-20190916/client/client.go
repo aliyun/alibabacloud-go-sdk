@@ -4256,6 +4256,129 @@ func (s *GetTopicStatusResponse) SetBody(v *GetTopicStatusResponseBody) *GetTopi
 	return s
 }
 
+type GetTopicSubscribeStatusRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s GetTopicSubscribeStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSubscribeStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSubscribeStatusRequest) SetInstanceId(v string) *GetTopicSubscribeStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusRequest) SetRegionId(v string) *GetTopicSubscribeStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusRequest) SetTopic(v string) *GetTopicSubscribeStatusRequest {
+	s.Topic = &v
+	return s
+}
+
+type GetTopicSubscribeStatusResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	TopicSubscribeStatus *GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus `json:"TopicSubscribeStatus,omitempty" xml:"TopicSubscribeStatus,omitempty" type:"Struct"`
+}
+
+func (s GetTopicSubscribeStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSubscribeStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSubscribeStatusResponseBody) SetCode(v int32) *GetTopicSubscribeStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusResponseBody) SetMessage(v string) *GetTopicSubscribeStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusResponseBody) SetRequestId(v string) *GetTopicSubscribeStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusResponseBody) SetSuccess(v bool) *GetTopicSubscribeStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusResponseBody) SetTopicSubscribeStatus(v *GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus) *GetTopicSubscribeStatusResponseBody {
+	s.TopicSubscribeStatus = v
+	return s
+}
+
+type GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus struct {
+	ConsumerGroups []*string `json:"ConsumerGroups,omitempty" xml:"ConsumerGroups,omitempty" type:"Repeated"`
+	Topic          *string   `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus) SetConsumerGroups(v []*string) *GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus {
+	s.ConsumerGroups = v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus) SetTopic(v string) *GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus {
+	s.Topic = &v
+	return s
+}
+
+type GetTopicSubscribeStatusResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTopicSubscribeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTopicSubscribeStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSubscribeStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSubscribeStatusResponse) SetHeaders(v map[string]*string) *GetTopicSubscribeStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusResponse) SetStatusCode(v int32) *GetTopicSubscribeStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTopicSubscribeStatusResponse) SetBody(v *GetTopicSubscribeStatusResponseBody) *GetTopicSubscribeStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// The token that determines the start point of the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -8279,6 +8402,58 @@ func (client *Client) GetTopicStatus(request *GetTopicStatusRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTopicStatusResponse{}
 	_body, _err := client.GetTopicStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTopicSubscribeStatusWithOptions(request *GetTopicSubscribeStatusRequest, runtime *util.RuntimeOptions) (_result *GetTopicSubscribeStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		query["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTopicSubscribeStatus"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTopicSubscribeStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTopicSubscribeStatus(request *GetTopicSubscribeStatusRequest) (_result *GetTopicSubscribeStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTopicSubscribeStatusResponse{}
+	_body, _err := client.GetTopicSubscribeStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
