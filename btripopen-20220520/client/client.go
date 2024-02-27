@@ -5275,15 +5275,16 @@ func (s *ApplyAddRequestExternalTravelerList) SetUserNameEn(v string) *ApplyAddR
 }
 
 type ApplyAddRequestExternalTravelerStandard struct {
-	BusinessDiscount          *int32                                               `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount           *int32                                               `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount             *int32                                               `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins              *string                                              `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys                []*ApplyAddRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	InternationalFlightCabins *string                                              `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
-	PremiumEconomyDiscount    *int32                                               `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType               *int32                                               `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats                *string                                              `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	BusinessDiscount          *int32                                                   `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount           *int32                                                   `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount             *int32                                                   `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins              *string                                                  `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys                []*ApplyAddRequestExternalTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys            []*ApplyAddRequestExternalTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	InternationalFlightCabins *string                                                  `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	PremiumEconomyDiscount    *int32                                                   `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType               *int32                                                   `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats                *string                                                  `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
 func (s ApplyAddRequestExternalTravelerStandard) String() string {
@@ -5316,6 +5317,11 @@ func (s *ApplyAddRequestExternalTravelerStandard) SetFlightCabins(v string) *App
 
 func (s *ApplyAddRequestExternalTravelerStandard) SetHotelCitys(v []*ApplyAddRequestExternalTravelerStandardHotelCitys) *ApplyAddRequestExternalTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandard) SetHotelIntlCitys(v []*ApplyAddRequestExternalTravelerStandardHotelIntlCitys) *ApplyAddRequestExternalTravelerStandard {
+	s.HotelIntlCitys = v
 	return s
 }
 
@@ -5364,6 +5370,35 @@ func (s *ApplyAddRequestExternalTravelerStandardHotelCitys) SetCityName(v string
 }
 
 func (s *ApplyAddRequestExternalTravelerStandardHotelCitys) SetFee(v int64) *ApplyAddRequestExternalTravelerStandardHotelCitys {
+	s.Fee = &v
+	return s
+}
+
+type ApplyAddRequestExternalTravelerStandardHotelIntlCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyAddRequestExternalTravelerStandardHotelIntlCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestExternalTravelerStandardHotelIntlCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestExternalTravelerStandardHotelIntlCitys) SetCityCode(v string) *ApplyAddRequestExternalTravelerStandardHotelIntlCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandardHotelIntlCitys) SetCityName(v string) *ApplyAddRequestExternalTravelerStandardHotelIntlCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandardHotelIntlCitys) SetFee(v int64) *ApplyAddRequestExternalTravelerStandardHotelIntlCitys {
 	s.Fee = &v
 	return s
 }
@@ -5657,17 +5692,18 @@ func (s *ApplyAddRequestTravelerList) SetUserName(v string) *ApplyAddRequestTrav
 }
 
 type ApplyAddRequestTravelerStandard struct {
-	BusinessDiscount          *int32                                       `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	CarCitySet                []*ApplyAddRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
-	EconomyDiscount           *int32                                       `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount             *int32                                       `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins              *string                                      `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys                []*ApplyAddRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	InternationalFlightCabins *string                                      `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
-	PremiumEconomyDiscount    *int32                                       `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType               *int32                                       `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats                *string                                      `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserId                    *string                                      `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	BusinessDiscount          *int32                                           `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet                []*ApplyAddRequestTravelerStandardCarCitySet     `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	EconomyDiscount           *int32                                           `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount             *int32                                           `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins              *string                                          `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys                []*ApplyAddRequestTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys            []*ApplyAddRequestTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	InternationalFlightCabins *string                                          `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	PremiumEconomyDiscount    *int32                                           `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType               *int32                                           `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats                *string                                          `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserId                    *string                                          `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyAddRequestTravelerStandard) String() string {
@@ -5705,6 +5741,11 @@ func (s *ApplyAddRequestTravelerStandard) SetFlightCabins(v string) *ApplyAddReq
 
 func (s *ApplyAddRequestTravelerStandard) SetHotelCitys(v []*ApplyAddRequestTravelerStandardHotelCitys) *ApplyAddRequestTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetHotelIntlCitys(v []*ApplyAddRequestTravelerStandardHotelIntlCitys) *ApplyAddRequestTravelerStandard {
+	s.HotelIntlCitys = v
 	return s
 }
 
@@ -5781,6 +5822,35 @@ func (s *ApplyAddRequestTravelerStandardHotelCitys) SetCityName(v string) *Apply
 }
 
 func (s *ApplyAddRequestTravelerStandardHotelCitys) SetFee(v int64) *ApplyAddRequestTravelerStandardHotelCitys {
+	s.Fee = &v
+	return s
+}
+
+type ApplyAddRequestTravelerStandardHotelIntlCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardHotelIntlCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardHotelIntlCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardHotelIntlCitys) SetCityCode(v string) *ApplyAddRequestTravelerStandardHotelIntlCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardHotelIntlCitys) SetCityName(v string) *ApplyAddRequestTravelerStandardHotelIntlCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardHotelIntlCitys) SetFee(v int64) *ApplyAddRequestTravelerStandardHotelIntlCitys {
 	s.Fee = &v
 	return s
 }
@@ -7678,11 +7748,12 @@ func (s *ApplyModifyRequestExternalTravelerList) SetUserNameEn(v string) *ApplyM
 }
 
 type ApplyModifyRequestExternalTravelerStandard struct {
-	BusinessDiscount *int32                                                  `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount  *int32                                                  `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                                  `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                                 `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyModifyRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	BusinessDiscount *int32                                                      `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount  *int32                                                      `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount    *int32                                                      `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins     *string                                                     `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys       []*ApplyModifyRequestExternalTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys   []*ApplyModifyRequestExternalTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
 	// 超级经济舱折扣。1到10的整数
 	PremiumEconomyDiscount *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
 	ReserveType            *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
@@ -7719,6 +7790,11 @@ func (s *ApplyModifyRequestExternalTravelerStandard) SetFlightCabins(v string) *
 
 func (s *ApplyModifyRequestExternalTravelerStandard) SetHotelCitys(v []*ApplyModifyRequestExternalTravelerStandardHotelCitys) *ApplyModifyRequestExternalTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerStandard) SetHotelIntlCitys(v []*ApplyModifyRequestExternalTravelerStandardHotelIntlCitys) *ApplyModifyRequestExternalTravelerStandard {
+	s.HotelIntlCitys = v
 	return s
 }
 
@@ -7762,6 +7838,35 @@ func (s *ApplyModifyRequestExternalTravelerStandardHotelCitys) SetCityName(v str
 }
 
 func (s *ApplyModifyRequestExternalTravelerStandardHotelCitys) SetFee(v int64) *ApplyModifyRequestExternalTravelerStandardHotelCitys {
+	s.Fee = &v
+	return s
+}
+
+type ApplyModifyRequestExternalTravelerStandardHotelIntlCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyModifyRequestExternalTravelerStandardHotelIntlCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestExternalTravelerStandardHotelIntlCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestExternalTravelerStandardHotelIntlCitys) SetCityCode(v string) *ApplyModifyRequestExternalTravelerStandardHotelIntlCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerStandardHotelIntlCitys) SetCityName(v string) *ApplyModifyRequestExternalTravelerStandardHotelIntlCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerStandardHotelIntlCitys) SetFee(v int64) *ApplyModifyRequestExternalTravelerStandardHotelIntlCitys {
 	s.Fee = &v
 	return s
 }
@@ -8055,12 +8160,13 @@ func (s *ApplyModifyRequestTravelerList) SetUserName(v string) *ApplyModifyReque
 }
 
 type ApplyModifyRequestTravelerStandard struct {
-	BusinessDiscount *int32                                          `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	CarCitySet       []*ApplyModifyRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
-	EconomyDiscount  *int32                                          `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                          `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                         `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyModifyRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	BusinessDiscount *int32                                              `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet       []*ApplyModifyRequestTravelerStandardCarCitySet     `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	EconomyDiscount  *int32                                              `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount    *int32                                              `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins     *string                                             `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys       []*ApplyModifyRequestTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys   []*ApplyModifyRequestTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
 	// 超级经济舱折扣。1到10的整数
 	PremiumEconomyDiscount *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
 	ReserveType            *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
@@ -8103,6 +8209,11 @@ func (s *ApplyModifyRequestTravelerStandard) SetFlightCabins(v string) *ApplyMod
 
 func (s *ApplyModifyRequestTravelerStandard) SetHotelCitys(v []*ApplyModifyRequestTravelerStandardHotelCitys) *ApplyModifyRequestTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandard) SetHotelIntlCitys(v []*ApplyModifyRequestTravelerStandardHotelIntlCitys) *ApplyModifyRequestTravelerStandard {
+	s.HotelIntlCitys = v
 	return s
 }
 
@@ -8174,6 +8285,35 @@ func (s *ApplyModifyRequestTravelerStandardHotelCitys) SetCityName(v string) *Ap
 }
 
 func (s *ApplyModifyRequestTravelerStandardHotelCitys) SetFee(v int64) *ApplyModifyRequestTravelerStandardHotelCitys {
+	s.Fee = &v
+	return s
+}
+
+type ApplyModifyRequestTravelerStandardHotelIntlCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyModifyRequestTravelerStandardHotelIntlCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestTravelerStandardHotelIntlCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestTravelerStandardHotelIntlCitys) SetCityCode(v string) *ApplyModifyRequestTravelerStandardHotelIntlCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandardHotelIntlCitys) SetCityName(v string) *ApplyModifyRequestTravelerStandardHotelIntlCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandardHotelIntlCitys) SetFee(v int64) *ApplyModifyRequestTravelerStandardHotelIntlCitys {
 	s.Fee = &v
 	return s
 }
@@ -8905,15 +9045,16 @@ func (s *ApplyQueryResponseBodyModuleCarRule) SetScenarioTemplateName(v string) 
 }
 
 type ApplyQueryResponseBodyModuleExternalTravelerList struct {
-	BusinessDiscount       *int32                                                        `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount        *int32                                                        `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount          *int32                                                        `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins           *string                                                       `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys             []*ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	PremiumEconomyDiscount *int32                                                        `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType            *int32                                                        `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats             *string                                                       `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserName               *string                                                       `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	BusinessDiscount       *int32                                                            `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount        *int32                                                            `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                                            `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                                           `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys             []*ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys         []*ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	PremiumEconomyDiscount *int32                                                            `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                                            `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string                                                           `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserName               *string                                                           `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyQueryResponseBodyModuleExternalTravelerList) String() string {
@@ -8946,6 +9087,11 @@ func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetFlightCabins(v str
 
 func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetHotelCitys(v []*ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys) *ApplyQueryResponseBodyModuleExternalTravelerList {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetHotelIntlCitys(v []*ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys) *ApplyQueryResponseBodyModuleExternalTravelerList {
+	s.HotelIntlCitys = v
 	return s
 }
 
@@ -8994,6 +9140,35 @@ func (s *ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys) SetCityName
 }
 
 func (s *ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys) SetFee(v int64) *ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys {
+	s.Fee = &v
+	return s
+}
+
+type ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys) SetCityCode(v string) *ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys) SetCityName(v string) *ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys) SetFee(v int64) *ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys {
 	s.Fee = &v
 	return s
 }
@@ -9240,17 +9415,18 @@ func (s *ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard) Se
 }
 
 type ApplyQueryResponseBodyModuleTravelerList struct {
-	BusinessDiscount       *int32                                                `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	CarCitySet             []*ApplyQueryResponseBodyModuleTravelerListCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
-	EconomyDiscount        *int32                                                `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount          *int32                                                `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins           *string                                               `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys             []*ApplyQueryResponseBodyModuleTravelerListHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	PremiumEconomyDiscount *int32                                                `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType            *int32                                                `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats             *string                                               `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserId                 *string                                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName               *string                                               `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	BusinessDiscount       *int32                                                    `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet             []*ApplyQueryResponseBodyModuleTravelerListCarCitySet     `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	EconomyDiscount        *int32                                                    `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                                    `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                                   `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys             []*ApplyQueryResponseBodyModuleTravelerListHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys         []*ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	PremiumEconomyDiscount *int32                                                    `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                                    `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string                                                   `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserId                 *string                                                   `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName               *string                                                   `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyQueryResponseBodyModuleTravelerList) String() string {
@@ -9288,6 +9464,11 @@ func (s *ApplyQueryResponseBodyModuleTravelerList) SetFlightCabins(v string) *Ap
 
 func (s *ApplyQueryResponseBodyModuleTravelerList) SetHotelCitys(v []*ApplyQueryResponseBodyModuleTravelerListHotelCitys) *ApplyQueryResponseBodyModuleTravelerList {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerList) SetHotelIntlCitys(v []*ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys) *ApplyQueryResponseBodyModuleTravelerList {
+	s.HotelIntlCitys = v
 	return s
 }
 
@@ -9364,6 +9545,35 @@ func (s *ApplyQueryResponseBodyModuleTravelerListHotelCitys) SetCityName(v strin
 }
 
 func (s *ApplyQueryResponseBodyModuleTravelerListHotelCitys) SetFee(v int64) *ApplyQueryResponseBodyModuleTravelerListHotelCitys {
+	s.Fee = &v
+	return s
+}
+
+type ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys) SetCityCode(v string) *ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys) SetCityName(v string) *ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys) SetFee(v int64) *ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys {
 	s.Fee = &v
 	return s
 }
