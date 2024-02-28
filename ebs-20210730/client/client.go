@@ -6321,6 +6321,126 @@ func (s *DescribeReplicaGroupDrillsResponse) SetBody(v *DescribeReplicaGroupDril
 	return s
 }
 
+type DescribeSolutionInstanceConfigurationRequest struct {
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The parameters.
+	Parameters []*DescribeSolutionInstanceConfigurationRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the solution.
+	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+}
+
+func (s DescribeSolutionInstanceConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSolutionInstanceConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSolutionInstanceConfigurationRequest) SetClientToken(v string) *DescribeSolutionInstanceConfigurationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeSolutionInstanceConfigurationRequest) SetParameters(v []*DescribeSolutionInstanceConfigurationRequestParameters) *DescribeSolutionInstanceConfigurationRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *DescribeSolutionInstanceConfigurationRequest) SetRegionId(v string) *DescribeSolutionInstanceConfigurationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSolutionInstanceConfigurationRequest) SetSolutionId(v string) *DescribeSolutionInstanceConfigurationRequest {
+	s.SolutionId = &v
+	return s
+}
+
+type DescribeSolutionInstanceConfigurationRequestParameters struct {
+	// The key of the parameter.
+	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	// The value of the parameter.
+	//
+	// > The Parameters parameter is optional. If you specify Parameters, you must specify ParameterValue.
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s DescribeSolutionInstanceConfigurationRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSolutionInstanceConfigurationRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSolutionInstanceConfigurationRequestParameters) SetParameterKey(v string) *DescribeSolutionInstanceConfigurationRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *DescribeSolutionInstanceConfigurationRequestParameters) SetParameterValue(v string) *DescribeSolutionInstanceConfigurationRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type DescribeSolutionInstanceConfigurationResponseBody struct {
+	// The returned data.
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSolutionInstanceConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSolutionInstanceConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSolutionInstanceConfigurationResponseBody) SetData(v []map[string]interface{}) *DescribeSolutionInstanceConfigurationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSolutionInstanceConfigurationResponseBody) SetRequestId(v string) *DescribeSolutionInstanceConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSolutionInstanceConfigurationResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSolutionInstanceConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSolutionInstanceConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSolutionInstanceConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSolutionInstanceConfigurationResponse) SetHeaders(v map[string]*string) *DescribeSolutionInstanceConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSolutionInstanceConfigurationResponse) SetStatusCode(v int32) *DescribeSolutionInstanceConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSolutionInstanceConfigurationResponse) SetBody(v *DescribeSolutionInstanceConfigurationResponseBody) *DescribeSolutionInstanceConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type FailoverDiskReplicaGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -11512,6 +11632,62 @@ func (client *Client) DescribeReplicaGroupDrills(request *DescribeReplicaGroupDr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeReplicaGroupDrillsResponse{}
 	_body, _err := client.DescribeReplicaGroupDrillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSolutionInstanceConfigurationWithOptions(request *DescribeSolutionInstanceConfigurationRequest, runtime *util.RuntimeOptions) (_result *DescribeSolutionInstanceConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolutionId)) {
+		query["SolutionId"] = request.SolutionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSolutionInstanceConfiguration"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSolutionInstanceConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSolutionInstanceConfiguration(request *DescribeSolutionInstanceConfigurationRequest) (_result *DescribeSolutionInstanceConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSolutionInstanceConfigurationResponse{}
+	_body, _err := client.DescribeSolutionInstanceConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
