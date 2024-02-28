@@ -4949,7 +4949,8 @@ type CreateEnvironmentRequest struct {
 	// - none: not managed. default value of prometheus for ACK.
 	// - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
 	// - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
-	ManagedType          *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
+	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
+	// the ID of prometheus instance bound to the environment. If not provided, please call the InitEnvironment interface to complete the initialization of the storage instance.
 	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -8417,6 +8418,7 @@ type CreatePrometheusInstanceRequest struct {
 	// - cloud-monitor: Prometheus for enterprise cloud monitor
 	// - flink: Prometheus for Flink
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Duration    *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
 	// The region ID. If you create a Prometheus instance for a cloud service in China, set this parameter to cn-shanghai.
@@ -8460,6 +8462,11 @@ func (s *CreatePrometheusInstanceRequest) SetClusterName(v string) *CreatePromet
 
 func (s *CreatePrometheusInstanceRequest) SetClusterType(v string) *CreatePrometheusInstanceRequest {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *CreatePrometheusInstanceRequest) SetDuration(v int32) *CreatePrometheusInstanceRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -16277,7 +16284,8 @@ type DescribeEnvironmentResponseBodyData struct {
 	// The resource type.
 	BindResourceType *string `json:"BindResourceType,omitempty" xml:"BindResourceType,omitempty"`
 	// The VPC CIDR block.
-	BindVpcCidr *string `json:"BindVpcCidr,omitempty" xml:"BindVpcCidr,omitempty"`
+	BindVpcCidr      *string `json:"BindVpcCidr,omitempty" xml:"BindVpcCidr,omitempty"`
+	DbInstanceStatus *string `json:"DbInstanceStatus,omitempty" xml:"DbInstanceStatus,omitempty"`
 	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The environment name.
@@ -16359,6 +16367,11 @@ func (s *DescribeEnvironmentResponseBodyData) SetBindResourceType(v string) *Des
 
 func (s *DescribeEnvironmentResponseBodyData) SetBindVpcCidr(v string) *DescribeEnvironmentResponseBodyData {
 	s.BindVpcCidr = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetDbInstanceStatus(v string) *DescribeEnvironmentResponseBodyData {
+	s.DbInstanceStatus = &v
 	return s
 }
 
@@ -22025,7 +22038,7 @@ func (s *GetRetcodeLogstoreResponse) SetBody(v *GetRetcodeLogstoreResponseBody) 
 }
 
 type GetRetcodeShareUrlRequest struct {
-	// The logon-free URL of the application.
+	// The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 }
 
@@ -22043,9 +22056,9 @@ func (s *GetRetcodeShareUrlRequest) SetPid(v string) *GetRetcodeShareUrlRequest 
 }
 
 type GetRetcodeShareUrlResponseBody struct {
-	// Queries the logon-free URL of a Browser Monitoring application.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	// The logon-free URL of the application.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -36310,10 +36323,7 @@ func (s *OpenVClusterResponse) SetBody(v *OpenVClusterResponseBody) *OpenVCluste
 }
 
 type OpenXtraceDefaultSLRRequest struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   `true`: The request was successful.
-	// *   `false`: The request failed.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -41157,14 +41167,14 @@ func (s *SendTTSVerifyLinkResponse) SetBody(v *SendTTSVerifyLinkResponseBody) *S
 }
 
 type SetRetcodeShareStatusRequest struct {
-	// Turns on or turns off logon-free sharing for an application monitored by Browser Monitoring.
+	// The name of the application that is monitored by Browser Monitoring.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// *   `true`: The call is successful.
-	// *   `false`: The call fails.
+	// The process identifier (PID) of the application. For more information, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// SetRetcodeShareStatus
+	// Specifies whether to turn on or turn off the logon-free sharing switch. Valid values:
+	//
+	// *   `true`: Turn on the switch.
+	// *   `false`: Turn off the switch.
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -41192,12 +41202,12 @@ func (s *SetRetcodeShareStatusRequest) SetStatus(v bool) *SetRetcodeShareStatusR
 }
 
 type SetRetcodeShareStatusResponseBody struct {
-	// The ID of the application. Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with the at sign (@) to obtain xxx@74xxx.
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Specifies whether to turn on logon-free sharing. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// *   `true`: turns on logon-free sharing.
-	// *   `false`: turns off logon-free sharing.
+	// *   `true`: The call is successful.
+	// *   `false`: The call fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -49343,6 +49353,10 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GrafanaInstanceId)) {
