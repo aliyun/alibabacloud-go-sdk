@@ -10700,8 +10700,9 @@ func (s *SendMseIncidentResponse) SetBody(v *SendMseIncidentResponseBody) *SendM
 }
 
 type SetRetcodeShareStatusRequest struct {
-	Pid    *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Status *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Pid      *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status   *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetRetcodeShareStatusRequest) String() string {
@@ -10714,6 +10715,11 @@ func (s SetRetcodeShareStatusRequest) GoString() string {
 
 func (s *SetRetcodeShareStatusRequest) SetPid(v string) *SetRetcodeShareStatusRequest {
 	s.Pid = &v
+	return s
+}
+
+func (s *SetRetcodeShareStatusRequest) SetRegionId(v string) *SetRetcodeShareStatusRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -16204,6 +16210,10 @@ func (client *Client) SetRetcodeShareStatusWithOptions(request *SetRetcodeShareS
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Pid)) {
 		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
