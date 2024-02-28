@@ -12,6 +12,99 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ApplyEciScalingConfigurationRequest struct {
+	Content                *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Format                 *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
+	ScalingGroupId         *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s ApplyEciScalingConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEciScalingConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEciScalingConfigurationRequest) SetContent(v string) *ApplyEciScalingConfigurationRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *ApplyEciScalingConfigurationRequest) SetFormat(v string) *ApplyEciScalingConfigurationRequest {
+	s.Format = &v
+	return s
+}
+
+func (s *ApplyEciScalingConfigurationRequest) SetRegionId(v string) *ApplyEciScalingConfigurationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ApplyEciScalingConfigurationRequest) SetScalingConfigurationId(v string) *ApplyEciScalingConfigurationRequest {
+	s.ScalingConfigurationId = &v
+	return s
+}
+
+func (s *ApplyEciScalingConfigurationRequest) SetScalingGroupId(v string) *ApplyEciScalingConfigurationRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type ApplyEciScalingConfigurationResponseBody struct {
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
+}
+
+func (s ApplyEciScalingConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEciScalingConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEciScalingConfigurationResponseBody) SetRequestId(v string) *ApplyEciScalingConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyEciScalingConfigurationResponseBody) SetScalingConfigurationId(v string) *ApplyEciScalingConfigurationResponseBody {
+	s.ScalingConfigurationId = &v
+	return s
+}
+
+type ApplyEciScalingConfigurationResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyEciScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApplyEciScalingConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEciScalingConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEciScalingConfigurationResponse) SetHeaders(v map[string]*string) *ApplyEciScalingConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyEciScalingConfigurationResponse) SetStatusCode(v int32) *ApplyEciScalingConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyEciScalingConfigurationResponse) SetBody(v *ApplyEciScalingConfigurationResponseBody) *ApplyEciScalingConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type ApplyScalingGroupRequest struct {
 	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Format   *string `json:"Format,omitempty" xml:"Format,omitempty"`
@@ -8077,6 +8170,1348 @@ func (s *DescribeAlarmsResponse) SetBody(v *DescribeAlarmsResponseBody) *Describ
 	return s
 }
 
+type DescribeEciScalingConfigurationDetailRequest struct {
+	OutputFormat           *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
+	ScalingGroupId         *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailRequest) SetOutputFormat(v string) *DescribeEciScalingConfigurationDetailRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailRequest) SetRegionId(v string) *DescribeEciScalingConfigurationDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailRequest) SetScalingConfigurationId(v string) *DescribeEciScalingConfigurationDetailRequest {
+	s.ScalingConfigurationId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailRequest) SetScalingGroupId(v string) *DescribeEciScalingConfigurationDetailRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBody struct {
+	Output               *string                                                                `json:"Output,omitempty" xml:"Output,omitempty"`
+	RequestId            *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScalingConfiguration *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration `json:"ScalingConfiguration,omitempty" xml:"ScalingConfiguration,omitempty" type:"Struct"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBody) SetOutput(v string) *DescribeEciScalingConfigurationDetailResponseBody {
+	s.Output = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBody) SetRequestId(v string) *DescribeEciScalingConfigurationDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBody) SetScalingConfiguration(v *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) *DescribeEciScalingConfigurationDetailResponseBody {
+	s.ScalingConfiguration = v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration struct {
+	AcrRegistryInfos              []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos         `json:"AcrRegistryInfos,omitempty" xml:"AcrRegistryInfos,omitempty" type:"Repeated"`
+	ActiveDeadlineSeconds         *int32                                                                                           `json:"ActiveDeadlineSeconds,omitempty" xml:"ActiveDeadlineSeconds,omitempty"`
+	AutoCreateEip                 *bool                                                                                            `json:"AutoCreateEip,omitempty" xml:"AutoCreateEip,omitempty"`
+	AutoMatchImageCache           *bool                                                                                            `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
+	ComputeCategory               []*string                                                                                        `json:"ComputeCategory,omitempty" xml:"ComputeCategory,omitempty" type:"Repeated"`
+	ContainerGroupName            *string                                                                                          `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
+	Containers                    []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers               `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	CostOptimization              *bool                                                                                            `json:"CostOptimization,omitempty" xml:"CostOptimization,omitempty"`
+	Cpu                           *float32                                                                                         `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CpuOptionsCore                *int32                                                                                           `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
+	CpuOptionsThreadsPerCore      *int32                                                                                           `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
+	CreationTime                  *string                                                                                          `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataCacheBucket               *string                                                                                          `json:"DataCacheBucket,omitempty" xml:"DataCacheBucket,omitempty"`
+	DataCacheBurstingEnabled      *bool                                                                                            `json:"DataCacheBurstingEnabled,omitempty" xml:"DataCacheBurstingEnabled,omitempty"`
+	DataCachePL                   *string                                                                                          `json:"DataCachePL,omitempty" xml:"DataCachePL,omitempty"`
+	DataCacheProvisionedIops      *int32                                                                                           `json:"DataCacheProvisionedIops,omitempty" xml:"DataCacheProvisionedIops,omitempty"`
+	Description                   *string                                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	DnsConfigNameServers          []*string                                                                                        `json:"DnsConfigNameServers,omitempty" xml:"DnsConfigNameServers,omitempty" type:"Repeated"`
+	DnsConfigOptions              []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions         `json:"DnsConfigOptions,omitempty" xml:"DnsConfigOptions,omitempty" type:"Repeated"`
+	DnsConfigSearches             []*string                                                                                        `json:"DnsConfigSearches,omitempty" xml:"DnsConfigSearches,omitempty" type:"Repeated"`
+	DnsPolicy                     *string                                                                                          `json:"DnsPolicy,omitempty" xml:"DnsPolicy,omitempty"`
+	EgressBandwidth               *int64                                                                                           `json:"EgressBandwidth,omitempty" xml:"EgressBandwidth,omitempty"`
+	EipBandwidth                  *int32                                                                                           `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	EipCommonBandwidthPackage     *string                                                                                          `json:"EipCommonBandwidthPackage,omitempty" xml:"EipCommonBandwidthPackage,omitempty"`
+	EipISP                        *string                                                                                          `json:"EipISP,omitempty" xml:"EipISP,omitempty"`
+	EipPublicIpAddressPoolId      *string                                                                                          `json:"EipPublicIpAddressPoolId,omitempty" xml:"EipPublicIpAddressPoolId,omitempty"`
+	EphemeralStorage              *int32                                                                                           `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	HostAliases                   []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases              `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
+	HostName                      *string                                                                                          `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageRegistryCredentials      []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials `json:"ImageRegistryCredentials,omitempty" xml:"ImageRegistryCredentials,omitempty" type:"Repeated"`
+	ImageSnapshotId               *string                                                                                          `json:"ImageSnapshotId,omitempty" xml:"ImageSnapshotId,omitempty"`
+	IngressBandwidth              *int64                                                                                           `json:"IngressBandwidth,omitempty" xml:"IngressBandwidth,omitempty"`
+	InitContainers                []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers           `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
+	InstanceFamilyLevel           *string                                                                                          `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceTypes                 []*string                                                                                        `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	Ipv6AddressCount              *int32                                                                                           `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	LifecycleState                *string                                                                                          `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
+	LoadBalancerWeight            *int32                                                                                           `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
+	Memory                        *float32                                                                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NtpServers                    []*string                                                                                        `json:"NtpServers,omitempty" xml:"NtpServers,omitempty" type:"Repeated"`
+	RamRoleName                   *string                                                                                          `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId                      *string                                                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId               *string                                                                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RestartPolicy                 *string                                                                                          `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	ScalingConfigurationId        *string                                                                                          `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
+	ScalingConfigurationName      *string                                                                                          `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
+	ScalingGroupId                *string                                                                                          `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	SecurityContextSysCtls        []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls   `json:"SecurityContextSysCtls,omitempty" xml:"SecurityContextSysCtls,omitempty" type:"Repeated"`
+	SecurityGroupId               *string                                                                                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SlsEnable                     *bool                                                                                            `json:"SlsEnable,omitempty" xml:"SlsEnable,omitempty"`
+	SpotPriceLimit                *float32                                                                                         `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	SpotStrategy                  *string                                                                                          `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	Tags                          []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TerminationGracePeriodSeconds *int32                                                                                           `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Volumes                       []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes                  `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetAcrRegistryInfos(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.AcrRegistryInfos = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetActiveDeadlineSeconds(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ActiveDeadlineSeconds = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetAutoCreateEip(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.AutoCreateEip = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetAutoMatchImageCache(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.AutoMatchImageCache = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetComputeCategory(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ComputeCategory = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetContainerGroupName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ContainerGroupName = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetContainers(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.Containers = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetCostOptimization(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.CostOptimization = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetCpu(v float32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetCpuOptionsCore(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.CpuOptionsCore = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetCpuOptionsThreadsPerCore(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.CpuOptionsThreadsPerCore = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetCreationTime(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDataCacheBucket(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.DataCacheBucket = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDataCacheBurstingEnabled(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.DataCacheBurstingEnabled = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDataCachePL(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.DataCachePL = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDataCacheProvisionedIops(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.DataCacheProvisionedIops = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDescription(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDnsConfigNameServers(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.DnsConfigNameServers = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDnsConfigOptions(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.DnsConfigOptions = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDnsConfigSearches(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.DnsConfigSearches = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetDnsPolicy(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.DnsPolicy = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetEgressBandwidth(v int64) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.EgressBandwidth = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetEipBandwidth(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.EipBandwidth = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetEipCommonBandwidthPackage(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.EipCommonBandwidthPackage = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetEipISP(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.EipISP = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetEipPublicIpAddressPoolId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.EipPublicIpAddressPoolId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetEphemeralStorage(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.EphemeralStorage = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetHostAliases(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.HostAliases = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetHostName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetImageRegistryCredentials(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ImageRegistryCredentials = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetImageSnapshotId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ImageSnapshotId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetIngressBandwidth(v int64) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.IngressBandwidth = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetInitContainers(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.InitContainers = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetInstanceFamilyLevel(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetInstanceTypes(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetIpv6AddressCount(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.Ipv6AddressCount = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetLifecycleState(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.LifecycleState = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetLoadBalancerWeight(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.LoadBalancerWeight = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetMemory(v float32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetNtpServers(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.NtpServers = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetRamRoleName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetRegionId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetResourceGroupId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetRestartPolicy(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.RestartPolicy = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetScalingConfigurationId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ScalingConfigurationId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetScalingConfigurationName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ScalingConfigurationName = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetScalingGroupId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetSecurityContextSysCtls(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.SecurityContextSysCtls = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetSecurityGroupId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetSlsEnable(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.SlsEnable = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetSpotPriceLimit(v float32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.SpotPriceLimit = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetSpotStrategy(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.SpotStrategy = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetTags(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetTerminationGracePeriodSeconds(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.TerminationGracePeriodSeconds = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration) SetVolumes(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration {
+	s.Volumes = v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos struct {
+	Domains      []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos) SetDomains(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos {
+	s.Domains = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos) SetInstanceId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos) SetInstanceName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos) SetRegionId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers struct {
+	Args                                   []*string                                                                                         `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	Commands                               []*string                                                                                         `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	Cpu                                    *float32                                                                                          `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EnvironmentVars                        []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+	Gpu                                    *int32                                                                                            `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	Image                                  *string                                                                                           `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImagePullPolicy                        *string                                                                                           `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	LifecyclePostStartHandlerExecs         []*string                                                                                         `json:"LifecyclePostStartHandlerExecs,omitempty" xml:"LifecyclePostStartHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePostStartHandlerHttpGetHost   *string                                                                                           `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	LifecyclePostStartHandlerHttpGetPath   *string                                                                                           `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	LifecyclePostStartHandlerHttpGetPort   *int32                                                                                            `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+	LifecyclePostStartHandlerHttpGetScheme *string                                                                                           `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	LifecyclePostStartHandlerTcpSocketHost *string                                                                                           `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	LifecyclePostStartHandlerTcpSocketPort *int32                                                                                            `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	LifecyclePreStopHandlerExecs           []*string                                                                                         `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePreStopHandlerHttpGetHost     *string                                                                                           `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	LifecyclePreStopHandlerHttpGetPath     *string                                                                                           `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	LifecyclePreStopHandlerHttpGetPort     *int32                                                                                            `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	LifecyclePreStopHandlerHttpGetScheme   *string                                                                                           `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	LifecyclePreStopHandlerTcpSocketHost   *string                                                                                           `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	LifecyclePreStopHandlerTcpSocketPort   *int32                                                                                            `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
+	LivenessProbeExecCommands              []*string                                                                                         `json:"LivenessProbeExecCommands,omitempty" xml:"LivenessProbeExecCommands,omitempty" type:"Repeated"`
+	LivenessProbeFailureThreshold          *int32                                                                                            `json:"LivenessProbeFailureThreshold,omitempty" xml:"LivenessProbeFailureThreshold,omitempty"`
+	LivenessProbeHttpGetPath               *string                                                                                           `json:"LivenessProbeHttpGetPath,omitempty" xml:"LivenessProbeHttpGetPath,omitempty"`
+	LivenessProbeHttpGetPort               *int32                                                                                            `json:"LivenessProbeHttpGetPort,omitempty" xml:"LivenessProbeHttpGetPort,omitempty"`
+	LivenessProbeHttpGetScheme             *string                                                                                           `json:"LivenessProbeHttpGetScheme,omitempty" xml:"LivenessProbeHttpGetScheme,omitempty"`
+	LivenessProbeInitialDelaySeconds       *int32                                                                                            `json:"LivenessProbeInitialDelaySeconds,omitempty" xml:"LivenessProbeInitialDelaySeconds,omitempty"`
+	LivenessProbePeriodSeconds             *int32                                                                                            `json:"LivenessProbePeriodSeconds,omitempty" xml:"LivenessProbePeriodSeconds,omitempty"`
+	LivenessProbeSuccessThreshold          *int32                                                                                            `json:"LivenessProbeSuccessThreshold,omitempty" xml:"LivenessProbeSuccessThreshold,omitempty"`
+	LivenessProbeTcpSocketPort             *int32                                                                                            `json:"LivenessProbeTcpSocketPort,omitempty" xml:"LivenessProbeTcpSocketPort,omitempty"`
+	LivenessProbeTimeoutSeconds            *int32                                                                                            `json:"LivenessProbeTimeoutSeconds,omitempty" xml:"LivenessProbeTimeoutSeconds,omitempty"`
+	Memory                                 *float32                                                                                          `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Name                                   *string                                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Ports                                  []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts           `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	ReadinessProbeExecCommands             []*string                                                                                         `json:"ReadinessProbeExecCommands,omitempty" xml:"ReadinessProbeExecCommands,omitempty" type:"Repeated"`
+	ReadinessProbeFailureThreshold         *int32                                                                                            `json:"ReadinessProbeFailureThreshold,omitempty" xml:"ReadinessProbeFailureThreshold,omitempty"`
+	ReadinessProbeHttpGetPath              *string                                                                                           `json:"ReadinessProbeHttpGetPath,omitempty" xml:"ReadinessProbeHttpGetPath,omitempty"`
+	ReadinessProbeHttpGetPort              *int32                                                                                            `json:"ReadinessProbeHttpGetPort,omitempty" xml:"ReadinessProbeHttpGetPort,omitempty"`
+	ReadinessProbeHttpGetScheme            *string                                                                                           `json:"ReadinessProbeHttpGetScheme,omitempty" xml:"ReadinessProbeHttpGetScheme,omitempty"`
+	ReadinessProbeInitialDelaySeconds      *int32                                                                                            `json:"ReadinessProbeInitialDelaySeconds,omitempty" xml:"ReadinessProbeInitialDelaySeconds,omitempty"`
+	ReadinessProbePeriodSeconds            *int32                                                                                            `json:"ReadinessProbePeriodSeconds,omitempty" xml:"ReadinessProbePeriodSeconds,omitempty"`
+	ReadinessProbeSuccessThreshold         *int32                                                                                            `json:"ReadinessProbeSuccessThreshold,omitempty" xml:"ReadinessProbeSuccessThreshold,omitempty"`
+	ReadinessProbeTcpSocketPort            *int32                                                                                            `json:"ReadinessProbeTcpSocketPort,omitempty" xml:"ReadinessProbeTcpSocketPort,omitempty"`
+	ReadinessProbeTimeoutSeconds           *int32                                                                                            `json:"ReadinessProbeTimeoutSeconds,omitempty" xml:"ReadinessProbeTimeoutSeconds,omitempty"`
+	SecurityContextCapabilityAdds          []*string                                                                                         `json:"SecurityContextCapabilityAdds,omitempty" xml:"SecurityContextCapabilityAdds,omitempty" type:"Repeated"`
+	SecurityContextReadOnlyRootFilesystem  *bool                                                                                             `json:"SecurityContextReadOnlyRootFilesystem,omitempty" xml:"SecurityContextReadOnlyRootFilesystem,omitempty"`
+	SecurityContextRunAsUser               *int64                                                                                            `json:"SecurityContextRunAsUser,omitempty" xml:"SecurityContextRunAsUser,omitempty"`
+	Stdin                                  *bool                                                                                             `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	StdinOnce                              *bool                                                                                             `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
+	Tty                                    *bool                                                                                             `json:"Tty,omitempty" xml:"Tty,omitempty"`
+	VolumeMounts                           []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts    `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
+	WorkingDir                             *string                                                                                           `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetArgs(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Args = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetCommands(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Commands = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetCpu(v float32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetEnvironmentVars(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.EnvironmentVars = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetGpu(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Gpu = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetImage(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetImagePullPolicy(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePostStartHandlerExecs(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePostStartHandlerExecs = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePostStartHandlerHttpGetHost(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePostStartHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePostStartHandlerHttpGetPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePostStartHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePostStartHandlerHttpGetPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePostStartHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePostStartHandlerHttpGetScheme(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePostStartHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePostStartHandlerTcpSocketHost(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePostStartHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePostStartHandlerTcpSocketPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePostStartHandlerTcpSocketPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePreStopHandlerExecs(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePreStopHandlerExecs = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePreStopHandlerHttpGetHost(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePreStopHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePreStopHandlerHttpGetPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePreStopHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePreStopHandlerHttpGetPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePreStopHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePreStopHandlerHttpGetScheme(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePreStopHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePreStopHandlerTcpSocketHost(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePreStopHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLifecyclePreStopHandlerTcpSocketPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LifecyclePreStopHandlerTcpSocketPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeExecCommands(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeExecCommands = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeFailureThreshold(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeFailureThreshold = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeHttpGetPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeHttpGetPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeHttpGetPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeHttpGetPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeHttpGetScheme(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeHttpGetScheme = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeInitialDelaySeconds(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeInitialDelaySeconds = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbePeriodSeconds(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbePeriodSeconds = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeSuccessThreshold(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeSuccessThreshold = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeTcpSocketPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeTcpSocketPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetLivenessProbeTimeoutSeconds(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.LivenessProbeTimeoutSeconds = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetMemory(v float32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetPorts(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Ports = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeExecCommands(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeExecCommands = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeFailureThreshold(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeFailureThreshold = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeHttpGetPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeHttpGetPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeHttpGetPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeHttpGetPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeHttpGetScheme(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeHttpGetScheme = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeInitialDelaySeconds(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeInitialDelaySeconds = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbePeriodSeconds(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbePeriodSeconds = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeSuccessThreshold(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeSuccessThreshold = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeTcpSocketPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeTcpSocketPort = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetReadinessProbeTimeoutSeconds(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.ReadinessProbeTimeoutSeconds = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetSecurityContextCapabilityAdds(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.SecurityContextCapabilityAdds = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetSecurityContextReadOnlyRootFilesystem(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.SecurityContextReadOnlyRootFilesystem = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetSecurityContextRunAsUser(v int64) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.SecurityContextRunAsUser = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetStdin(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Stdin = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetStdinOnce(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.StdinOnce = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetTty(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.Tty = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetVolumeMounts(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.VolumeMounts = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers) SetWorkingDir(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers {
+	s.WorkingDir = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars struct {
+	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
+	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value             *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars) SetFieldRefFieldPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars {
+	s.FieldRefFieldPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars) SetKey(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars) SetValue(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars {
+	s.Value = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts struct {
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts) SetPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts) SetProtocol(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts {
+	s.Protocol = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts struct {
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts) SetMountPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts) SetMountPropagation(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts {
+	s.MountPropagation = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts) SetName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts) SetReadOnly(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts) SetSubPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts {
+	s.SubPath = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions) SetName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions) SetValue(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions {
+	s.Value = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases struct {
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	Ip        *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases) SetHostnames(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases {
+	s.Hostnames = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases) SetIp(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases {
+	s.Ip = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials struct {
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials) SetPassword(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials {
+	s.Password = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials) SetServer(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials) SetUserName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials {
+	s.UserName = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers struct {
+	Cpu                                   *float32                                                                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Gpu                                   *int32                                                                                                             `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	Image                                 *string                                                                                                            `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImagePullPolicy                       *string                                                                                                            `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	InitContainerArgs                     []*string                                                                                                          `json:"InitContainerArgs,omitempty" xml:"InitContainerArgs,omitempty" type:"Repeated"`
+	InitContainerCommands                 []*string                                                                                                          `json:"InitContainerCommands,omitempty" xml:"InitContainerCommands,omitempty" type:"Repeated"`
+	InitContainerEnvironmentVars          []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars `json:"InitContainerEnvironmentVars,omitempty" xml:"InitContainerEnvironmentVars,omitempty" type:"Repeated"`
+	InitContainerPorts                    []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts           `json:"InitContainerPorts,omitempty" xml:"InitContainerPorts,omitempty" type:"Repeated"`
+	InitContainerVolumeMounts             []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts    `json:"InitContainerVolumeMounts,omitempty" xml:"InitContainerVolumeMounts,omitempty" type:"Repeated"`
+	Memory                                *float32                                                                                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Name                                  *string                                                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	SecurityContextCapabilityAdds         []*string                                                                                                          `json:"SecurityContextCapabilityAdds,omitempty" xml:"SecurityContextCapabilityAdds,omitempty" type:"Repeated"`
+	SecurityContextReadOnlyRootFilesystem *bool                                                                                                              `json:"SecurityContextReadOnlyRootFilesystem,omitempty" xml:"SecurityContextReadOnlyRootFilesystem,omitempty"`
+	SecurityContextRunAsUser              *string                                                                                                            `json:"SecurityContextRunAsUser,omitempty" xml:"SecurityContextRunAsUser,omitempty"`
+	WorkingDir                            *string                                                                                                            `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetCpu(v float32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetGpu(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.Gpu = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetImage(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetImagePullPolicy(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetInitContainerArgs(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.InitContainerArgs = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetInitContainerCommands(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.InitContainerCommands = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetInitContainerEnvironmentVars(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.InitContainerEnvironmentVars = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetInitContainerPorts(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.InitContainerPorts = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetInitContainerVolumeMounts(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.InitContainerVolumeMounts = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetMemory(v float32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetSecurityContextCapabilityAdds(v []*string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.SecurityContextCapabilityAdds = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetSecurityContextReadOnlyRootFilesystem(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.SecurityContextReadOnlyRootFilesystem = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetSecurityContextRunAsUser(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.SecurityContextRunAsUser = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers) SetWorkingDir(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers {
+	s.WorkingDir = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars struct {
+	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
+	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value             *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars) SetFieldRefFieldPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars {
+	s.FieldRefFieldPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars) SetKey(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars) SetValue(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars {
+	s.Value = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts struct {
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts) SetPort(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts) SetProtocol(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts {
+	s.Protocol = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts struct {
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts) SetMountPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts) SetMountPropagation(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts {
+	s.MountPropagation = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts) SetName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts) SetReadOnly(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts) SetSubPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts {
+	s.SubPath = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls) SetName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls) SetValue(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls {
+	s.Value = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags) SetKey(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags) SetValue(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags {
+	s.Value = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes struct {
+	ConfigFileVolumeConfigFileToPaths []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths `json:"ConfigFileVolumeConfigFileToPaths,omitempty" xml:"ConfigFileVolumeConfigFileToPaths,omitempty" type:"Repeated"`
+	ConfigFileVolumeDefaultMode       *int32                                                                                                           `json:"ConfigFileVolumeDefaultMode,omitempty" xml:"ConfigFileVolumeDefaultMode,omitempty"`
+	DiskVolumeDiskId                  *string                                                                                                          `json:"DiskVolumeDiskId,omitempty" xml:"DiskVolumeDiskId,omitempty"`
+	DiskVolumeDiskSize                *int32                                                                                                           `json:"DiskVolumeDiskSize,omitempty" xml:"DiskVolumeDiskSize,omitempty"`
+	DiskVolumeFsType                  *string                                                                                                          `json:"DiskVolumeFsType,omitempty" xml:"DiskVolumeFsType,omitempty"`
+	EmptyDirVolumeMedium              *string                                                                                                          `json:"EmptyDirVolumeMedium,omitempty" xml:"EmptyDirVolumeMedium,omitempty"`
+	EmptyDirVolumeSizeLimit           *string                                                                                                          `json:"EmptyDirVolumeSizeLimit,omitempty" xml:"EmptyDirVolumeSizeLimit,omitempty"`
+	FlexVolumeDriver                  *string                                                                                                          `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
+	FlexVolumeFsType                  *string                                                                                                          `json:"FlexVolumeFsType,omitempty" xml:"FlexVolumeFsType,omitempty"`
+	FlexVolumeOptions                 *string                                                                                                          `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
+	HostPathVolumePath                *string                                                                                                          `json:"HostPathVolumePath,omitempty" xml:"HostPathVolumePath,omitempty"`
+	HostPathVolumeType                *string                                                                                                          `json:"HostPathVolumeType,omitempty" xml:"HostPathVolumeType,omitempty"`
+	NFSVolumePath                     *string                                                                                                          `json:"NFSVolumePath,omitempty" xml:"NFSVolumePath,omitempty"`
+	NFSVolumeReadOnly                 *bool                                                                                                            `json:"NFSVolumeReadOnly,omitempty" xml:"NFSVolumeReadOnly,omitempty"`
+	NFSVolumeServer                   *string                                                                                                          `json:"NFSVolumeServer,omitempty" xml:"NFSVolumeServer,omitempty"`
+	Name                              *string                                                                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type                              *string                                                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetConfigFileVolumeConfigFileToPaths(v []*DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.ConfigFileVolumeConfigFileToPaths = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetConfigFileVolumeDefaultMode(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.ConfigFileVolumeDefaultMode = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetDiskVolumeDiskId(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.DiskVolumeDiskId = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetDiskVolumeDiskSize(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.DiskVolumeDiskSize = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetDiskVolumeFsType(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.DiskVolumeFsType = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetEmptyDirVolumeMedium(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.EmptyDirVolumeMedium = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetEmptyDirVolumeSizeLimit(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.EmptyDirVolumeSizeLimit = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetFlexVolumeDriver(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.FlexVolumeDriver = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetFlexVolumeFsType(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.FlexVolumeFsType = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetFlexVolumeOptions(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.FlexVolumeOptions = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetHostPathVolumePath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.HostPathVolumePath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetHostPathVolumeType(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.HostPathVolumeType = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetNFSVolumePath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.NFSVolumePath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetNFSVolumeReadOnly(v bool) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.NFSVolumeReadOnly = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetNFSVolumeServer(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.NFSVolumeServer = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetName(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes) SetType(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes {
+	s.Type = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Mode    *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths) SetContent(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths) SetMode(v int32) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths) SetPath(v string) *DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths {
+	s.Path = &v
+	return s
+}
+
+type DescribeEciScalingConfigurationDetailResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEciScalingConfigurationDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeEciScalingConfigurationDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEciScalingConfigurationDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponse) SetHeaders(v map[string]*string) *DescribeEciScalingConfigurationDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponse) SetStatusCode(v int32) *DescribeEciScalingConfigurationDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationDetailResponse) SetBody(v *DescribeEciScalingConfigurationDetailResponseBody) *DescribeEciScalingConfigurationDetailResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEciScalingConfigurationsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -12099,6 +13534,661 @@ func (s *DescribeScalingConfigurationsResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribeScalingConfigurationsResponse) SetBody(v *DescribeScalingConfigurationsResponseBody) *DescribeScalingConfigurationsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeScalingGroupDetailRequest struct {
+	OutputFormat   *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailRequest) SetOutputFormat(v string) *DescribeScalingGroupDetailRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailRequest) SetOwnerId(v int64) *DescribeScalingGroupDetailRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailRequest) SetRegionId(v string) *DescribeScalingGroupDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailRequest) SetScalingGroupId(v string) *DescribeScalingGroupDetailRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBody struct {
+	Output       *string                                             `json:"Output,omitempty" xml:"Output,omitempty"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScalingGroup *DescribeScalingGroupDetailResponseBodyScalingGroup `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty" type:"Struct"`
+}
+
+func (s DescribeScalingGroupDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBody) SetOutput(v string) *DescribeScalingGroupDetailResponseBody {
+	s.Output = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBody) SetRequestId(v string) *DescribeScalingGroupDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBody) SetScalingGroup(v *DescribeScalingGroupDetailResponseBodyScalingGroup) *DescribeScalingGroupDetailResponseBody {
+	s.ScalingGroup = v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBodyScalingGroup struct {
+	ActiveCapacity                      *int32                                                                       `json:"ActiveCapacity,omitempty" xml:"ActiveCapacity,omitempty"`
+	ActiveScalingConfigurationId        *string                                                                      `json:"ActiveScalingConfigurationId,omitempty" xml:"ActiveScalingConfigurationId,omitempty"`
+	AlbServerGroups                     []*DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups         `json:"AlbServerGroups,omitempty" xml:"AlbServerGroups,omitempty" type:"Repeated"`
+	AllocationStrategy                  *string                                                                      `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
+	AzBalance                           *bool                                                                        `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	CompensateWithOnDemand              *bool                                                                        `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	CreationTime                        *string                                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CurrentHostName                     *string                                                                      `json:"CurrentHostName,omitempty" xml:"CurrentHostName,omitempty"`
+	CustomPolicyARN                     *string                                                                      `json:"CustomPolicyARN,omitempty" xml:"CustomPolicyARN,omitempty"`
+	DBInstanceIds                       []*string                                                                    `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Repeated"`
+	DefaultCooldown                     *int32                                                                       `json:"DefaultCooldown,omitempty" xml:"DefaultCooldown,omitempty"`
+	DesiredCapacity                     *int32                                                                       `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	EnableDesiredCapacity               *bool                                                                        `json:"EnableDesiredCapacity,omitempty" xml:"EnableDesiredCapacity,omitempty"`
+	GroupDeletionProtection             *bool                                                                        `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
+	GroupType                           *string                                                                      `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	HealthCheckType                     *string                                                                      `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	HealthCheckTypes                    []*string                                                                    `json:"HealthCheckTypes,omitempty" xml:"HealthCheckTypes,omitempty" type:"Repeated"`
+	InitCapacity                        *int32                                                                       `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
+	IsElasticStrengthInAlarm            *bool                                                                        `json:"IsElasticStrengthInAlarm,omitempty" xml:"IsElasticStrengthInAlarm,omitempty"`
+	LaunchTemplateId                    *string                                                                      `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateOverrides             []*DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
+	LaunchTemplateVersion               *string                                                                      `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	LifecycleState                      *string                                                                      `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
+	LoadBalancerConfigs                 []*DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs     `json:"LoadBalancerConfigs,omitempty" xml:"LoadBalancerConfigs,omitempty" type:"Repeated"`
+	LoadBalancerIds                     []*string                                                                    `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	MaxInstanceLifetime                 *int32                                                                       `json:"MaxInstanceLifetime,omitempty" xml:"MaxInstanceLifetime,omitempty"`
+	MaxSize                             *int32                                                                       `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	MinSize                             *int32                                                                       `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	ModificationTime                    *string                                                                      `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	MonitorGroupId                      *string                                                                      `json:"MonitorGroupId,omitempty" xml:"MonitorGroupId,omitempty"`
+	MultiAZPolicy                       *string                                                                      `json:"MultiAZPolicy,omitempty" xml:"MultiAZPolicy,omitempty"`
+	OnDemandBaseCapacity                *int32                                                                       `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int32                                                                       `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
+	PendingCapacity                     *int32                                                                       `json:"PendingCapacity,omitempty" xml:"PendingCapacity,omitempty"`
+	PendingWaitCapacity                 *int32                                                                       `json:"PendingWaitCapacity,omitempty" xml:"PendingWaitCapacity,omitempty"`
+	ProtectedCapacity                   *int32                                                                       `json:"ProtectedCapacity,omitempty" xml:"ProtectedCapacity,omitempty"`
+	RegionId                            *string                                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemovalPolicies                     []*string                                                                    `json:"RemovalPolicies,omitempty" xml:"RemovalPolicies,omitempty" type:"Repeated"`
+	RemovingCapacity                    *int32                                                                       `json:"RemovingCapacity,omitempty" xml:"RemovingCapacity,omitempty"`
+	RemovingWaitCapacity                *int32                                                                       `json:"RemovingWaitCapacity,omitempty" xml:"RemovingWaitCapacity,omitempty"`
+	ResourceGroupId                     *string                                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ScalingGroupId                      *string                                                                      `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupName                    *string                                                                      `json:"ScalingGroupName,omitempty" xml:"ScalingGroupName,omitempty"`
+	ScalingPolicy                       *string                                                                      `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
+	ServerGroups                        []*DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups            `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
+	SpotAllocationStrategy              *string                                                                      `json:"SpotAllocationStrategy,omitempty" xml:"SpotAllocationStrategy,omitempty"`
+	SpotInstancePools                   *int32                                                                       `json:"SpotInstancePools,omitempty" xml:"SpotInstancePools,omitempty"`
+	SpotInstanceRemedy                  *bool                                                                        `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	StandbyCapacity                     *int32                                                                       `json:"StandbyCapacity,omitempty" xml:"StandbyCapacity,omitempty"`
+	StoppedCapacity                     *int32                                                                       `json:"StoppedCapacity,omitempty" xml:"StoppedCapacity,omitempty"`
+	SuspendedProcesses                  []*string                                                                    `json:"SuspendedProcesses,omitempty" xml:"SuspendedProcesses,omitempty" type:"Repeated"`
+	SystemSuspended                     *bool                                                                        `json:"SystemSuspended,omitempty" xml:"SystemSuspended,omitempty"`
+	Tags                                []*DescribeScalingGroupDetailResponseBodyScalingGroupTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TotalCapacity                       *int32                                                                       `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	TotalInstanceCount                  *int32                                                                       `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
+	VServerGroups                       []*DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups           `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
+	VSwitchId                           *string                                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchIds                          []*string                                                                    `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId                               *string                                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetActiveCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ActiveCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetActiveScalingConfigurationId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ActiveScalingConfigurationId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetAlbServerGroups(v []*DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.AlbServerGroups = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetAllocationStrategy(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.AllocationStrategy = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetAzBalance(v bool) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.AzBalance = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetCompensateWithOnDemand(v bool) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.CompensateWithOnDemand = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetCreationTime(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetCurrentHostName(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.CurrentHostName = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetCustomPolicyARN(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.CustomPolicyARN = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetDBInstanceIds(v []*string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.DBInstanceIds = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetDefaultCooldown(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.DefaultCooldown = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetDesiredCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.DesiredCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetEnableDesiredCapacity(v bool) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.EnableDesiredCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetGroupDeletionProtection(v bool) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.GroupDeletionProtection = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetGroupType(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.GroupType = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetHealthCheckType(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.HealthCheckType = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetHealthCheckTypes(v []*string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.HealthCheckTypes = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetInitCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.InitCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetIsElasticStrengthInAlarm(v bool) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.IsElasticStrengthInAlarm = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetLaunchTemplateId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.LaunchTemplateId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetLaunchTemplateOverrides(v []*DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.LaunchTemplateOverrides = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetLaunchTemplateVersion(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.LaunchTemplateVersion = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetLifecycleState(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.LifecycleState = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetLoadBalancerConfigs(v []*DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.LoadBalancerConfigs = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetLoadBalancerIds(v []*string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.LoadBalancerIds = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetMaxInstanceLifetime(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.MaxInstanceLifetime = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetMaxSize(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.MaxSize = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetMinSize(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.MinSize = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetModificationTime(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ModificationTime = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetMonitorGroupId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.MonitorGroupId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetMultiAZPolicy(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.MultiAZPolicy = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetOnDemandBaseCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetOnDemandPercentageAboveBaseCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetPendingCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.PendingCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetPendingWaitCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.PendingWaitCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetProtectedCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ProtectedCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetRegionId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetRemovalPolicies(v []*string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.RemovalPolicies = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetRemovingCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.RemovingCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetRemovingWaitCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.RemovingWaitCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetResourceGroupId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetScalingGroupId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetScalingGroupName(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ScalingGroupName = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetScalingPolicy(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ScalingPolicy = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetServerGroups(v []*DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.ServerGroups = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetSpotAllocationStrategy(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.SpotAllocationStrategy = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetSpotInstancePools(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.SpotInstancePools = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetSpotInstanceRemedy(v bool) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.SpotInstanceRemedy = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetStandbyCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.StandbyCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetStoppedCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.StoppedCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetSuspendedProcesses(v []*string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.SuspendedProcesses = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetSystemSuspended(v bool) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.SystemSuspended = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetTags(v []*DescribeScalingGroupDetailResponseBodyScalingGroupTags) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetTotalCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.TotalCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetTotalInstanceCount(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.TotalInstanceCount = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetVServerGroups(v []*DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.VServerGroups = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetVSwitchId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetVSwitchIds(v []*string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetVpcId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroup {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups struct {
+	AlbServerGroupId *string `json:"AlbServerGroupId,omitempty" xml:"AlbServerGroupId,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Weight           *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups) SetAlbServerGroupId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups {
+	s.AlbServerGroupId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups) SetPort(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups) SetWeight(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups {
+	s.Weight = &v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides struct {
+	InstanceType     *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	SpotPriceLimit   *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	WeightedCapacity *int32   `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides) SetInstanceType(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides) SetSpotPriceLimit(v float32) *DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides {
+	s.SpotPriceLimit = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides) SetWeightedCapacity(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides {
+	s.WeightedCapacity = &v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs struct {
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Weight         *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs) SetLoadBalancerId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs) SetWeight(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs {
+	s.Weight = &v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups struct {
+	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups) SetPort(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups) SetServerGroupId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups {
+	s.ServerGroupId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups) SetType(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups) SetWeight(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups {
+	s.Weight = &v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBodyScalingGroupTags struct {
+	Propagate *bool   `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
+	TagKey    *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue  *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupTags) SetPropagate(v bool) *DescribeScalingGroupDetailResponseBodyScalingGroupTags {
+	s.Propagate = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupTags) SetTagKey(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupTags) SetTagValue(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupTags {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups struct {
+	LoadBalancerId         *string                                                                                  `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	VServerGroupAttributes []*DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes `json:"VServerGroupAttributes,omitempty" xml:"VServerGroupAttributes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups) SetLoadBalancerId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups) SetVServerGroupAttributes(v []*DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes) *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups {
+	s.VServerGroupAttributes = v
+	return s
+}
+
+type DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes struct {
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	Weight         *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes) SetPort(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes) SetVServerGroupId(v string) *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes {
+	s.VServerGroupId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes) SetWeight(v int32) *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes {
+	s.Weight = &v
+	return s
+}
+
+type DescribeScalingGroupDetailResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScalingGroupDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeScalingGroupDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDetailResponse) SetHeaders(v map[string]*string) *DescribeScalingGroupDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponse) SetStatusCode(v int32) *DescribeScalingGroupDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDetailResponse) SetBody(v *DescribeScalingGroupDetailResponseBody) *DescribeScalingGroupDetailResponse {
 	s.Body = v
 	return s
 }
@@ -23079,6 +25169,66 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ApplyEciScalingConfigurationWithOptions(request *ApplyEciScalingConfigurationRequest, runtime *util.RuntimeOptions) (_result *ApplyEciScalingConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Format)) {
+		query["Format"] = request.Format
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingConfigurationId)) {
+		query["ScalingConfigurationId"] = request.ScalingConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
+		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyEciScalingConfiguration"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyEciScalingConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyEciScalingConfiguration(request *ApplyEciScalingConfigurationRequest) (_result *ApplyEciScalingConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyEciScalingConfigurationResponse{}
+	_body, _err := client.ApplyEciScalingConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ApplyScalingGroupWithOptions(request *ApplyScalingGroupRequest, runtime *util.RuntimeOptions) (_result *ApplyScalingGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25922,6 +28072,62 @@ func (client *Client) DescribeAlarms(request *DescribeAlarmsRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DescribeEciScalingConfigurationDetailWithOptions(request *DescribeEciScalingConfigurationDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeEciScalingConfigurationDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		query["OutputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingConfigurationId)) {
+		query["ScalingConfigurationId"] = request.ScalingConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
+		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEciScalingConfigurationDetail"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEciScalingConfigurationDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEciScalingConfigurationDetail(request *DescribeEciScalingConfigurationDetailRequest) (_result *DescribeEciScalingConfigurationDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEciScalingConfigurationDetailResponse{}
+	_body, _err := client.DescribeEciScalingConfigurationDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeEciScalingConfigurationsWithOptions(request *DescribeEciScalingConfigurationsRequest, runtime *util.RuntimeOptions) (_result *DescribeEciScalingConfigurationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26601,6 +28807,62 @@ func (client *Client) DescribeScalingConfigurations(request *DescribeScalingConf
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScalingConfigurationsResponse{}
 	_body, _err := client.DescribeScalingConfigurationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeScalingGroupDetailWithOptions(request *DescribeScalingGroupDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeScalingGroupDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		query["OutputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
+		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeScalingGroupDetail"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeScalingGroupDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeScalingGroupDetail(request *DescribeScalingGroupDetailRequest) (_result *DescribeScalingGroupDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeScalingGroupDetailResponse{}
+	_body, _err := client.DescribeScalingGroupDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
