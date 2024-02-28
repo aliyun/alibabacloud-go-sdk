@@ -31452,6 +31452,135 @@ func (s *DescribeInstanceLinkedWhitelistTemplateResponse) SetBody(v *DescribeIns
 	return s
 }
 
+type DescribeKmsAssociateResourcesRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	KmsResourceId        *string `json:"KmsResourceId,omitempty" xml:"KmsResourceId,omitempty"`
+	KmsResourceRegionId  *string `json:"KmsResourceRegionId,omitempty" xml:"KmsResourceRegionId,omitempty"`
+	KmsResourceType      *string `json:"KmsResourceType,omitempty" xml:"KmsResourceType,omitempty"`
+	KmsResourceUser      *string `json:"KmsResourceUser,omitempty" xml:"KmsResourceUser,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeKmsAssociateResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKmsAssociateResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetClientToken(v string) *DescribeKmsAssociateResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetKmsResourceId(v string) *DescribeKmsAssociateResourcesRequest {
+	s.KmsResourceId = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetKmsResourceRegionId(v string) *DescribeKmsAssociateResourcesRequest {
+	s.KmsResourceRegionId = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetKmsResourceType(v string) *DescribeKmsAssociateResourcesRequest {
+	s.KmsResourceType = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetKmsResourceUser(v string) *DescribeKmsAssociateResourcesRequest {
+	s.KmsResourceUser = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetOwnerAccount(v string) *DescribeKmsAssociateResourcesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetOwnerId(v string) *DescribeKmsAssociateResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetRegionId(v string) *DescribeKmsAssociateResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetResourceGroupId(v string) *DescribeKmsAssociateResourcesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetResourceOwnerAccount(v string) *DescribeKmsAssociateResourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesRequest) SetResourceOwnerId(v string) *DescribeKmsAssociateResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeKmsAssociateResourcesResponseBody struct {
+	AssociateStatus *bool   `json:"AssociateStatus,omitempty" xml:"AssociateStatus,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeKmsAssociateResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKmsAssociateResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKmsAssociateResourcesResponseBody) SetAssociateStatus(v bool) *DescribeKmsAssociateResourcesResponseBody {
+	s.AssociateStatus = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesResponseBody) SetRequestId(v string) *DescribeKmsAssociateResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeKmsAssociateResourcesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeKmsAssociateResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeKmsAssociateResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKmsAssociateResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKmsAssociateResourcesResponse) SetHeaders(v map[string]*string) *DescribeKmsAssociateResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesResponse) SetStatusCode(v int32) *DescribeKmsAssociateResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeKmsAssociateResourcesResponse) SetBody(v *DescribeKmsAssociateResourcesResponseBody) *DescribeKmsAssociateResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLocalAvailableRecoveryTimeRequest struct {
 	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -71801,6 +71930,90 @@ func (client *Client) DescribeInstanceLinkedWhitelistTemplate(request *DescribeI
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceLinkedWhitelistTemplateResponse{}
 	_body, _err := client.DescribeInstanceLinkedWhitelistTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeKmsAssociateResourcesWithOptions(request *DescribeKmsAssociateResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeKmsAssociateResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsResourceId)) {
+		query["KmsResourceId"] = request.KmsResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsResourceRegionId)) {
+		query["KmsResourceRegionId"] = request.KmsResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsResourceType)) {
+		query["KmsResourceType"] = request.KmsResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsResourceUser)) {
+		query["KmsResourceUser"] = request.KmsResourceUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeKmsAssociateResources"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeKmsAssociateResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeKmsAssociateResources(request *DescribeKmsAssociateResourcesRequest) (_result *DescribeKmsAssociateResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeKmsAssociateResourcesResponse{}
+	_body, _err := client.DescribeKmsAssociateResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
