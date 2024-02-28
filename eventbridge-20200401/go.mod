@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/eventbridge-20200401/v2
+module github.com/alibabacloud-go/eventbridge-20200401/v3
 
 go 1.15
 
