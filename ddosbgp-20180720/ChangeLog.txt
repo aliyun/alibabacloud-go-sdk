@@ -1,3 +1,8 @@
+2024-02-28 Version: v3.1.2
+- Update API DescribeInstanceList: update response param.
+- Update API DescribePackIpList: update response param.
+
+
 2024-02-21 Version: v3.1.1
 - Generated golang 2018-07-20 for ddosbgp.
 

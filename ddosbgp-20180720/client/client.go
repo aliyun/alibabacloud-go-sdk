@@ -1836,6 +1836,7 @@ func (s *DescribeInstanceListResponseBody) SetTotal(v int64) *DescribeInstanceLi
 }
 
 type DescribeInstanceListResponseBodyInstanceList struct {
+	AutoProtectCondition *DescribeInstanceListResponseBodyInstanceListAutoProtectCondition `json:"AutoProtectCondition,omitempty" xml:"AutoProtectCondition,omitempty" type:"Struct"`
 	// Indicates whether auto-renewal is enabled for the instance. Valid values:
 	//
 	// *   **true**: enabled
@@ -1886,6 +1887,11 @@ func (s DescribeInstanceListResponseBodyInstanceList) String() string {
 
 func (s DescribeInstanceListResponseBodyInstanceList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceListResponseBodyInstanceList) SetAutoProtectCondition(v *DescribeInstanceListResponseBodyInstanceListAutoProtectCondition) *DescribeInstanceListResponseBodyInstanceList {
+	s.AutoProtectCondition = v
+	return s
 }
 
 func (s *DescribeInstanceListResponseBodyInstanceList) SetAutoRenewal(v bool) *DescribeInstanceListResponseBodyInstanceList {
@@ -1945,6 +1951,23 @@ func (s *DescribeInstanceListResponseBodyInstanceList) SetRemark(v string) *Desc
 
 func (s *DescribeInstanceListResponseBodyInstanceList) SetStatus(v string) *DescribeInstanceListResponseBodyInstanceList {
 	s.Status = &v
+	return s
+}
+
+type DescribeInstanceListResponseBodyInstanceListAutoProtectCondition struct {
+	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceListResponseBodyInstanceListAutoProtectCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceListResponseBodyInstanceListAutoProtectCondition) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceListResponseBodyInstanceListAutoProtectCondition) SetEvents(v []*string) *DescribeInstanceListResponseBodyInstanceListAutoProtectCondition {
+	s.Events = v
 	return s
 }
 
@@ -2901,6 +2924,7 @@ type DescribePackIpListResponseBodyIpList struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ID of the member.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	NsmStatus *int32  `json:"NsmStatus,omitempty" xml:"NsmStatus,omitempty"`
 	// The type of the cloud asset to which the IP address belongs. Valid values:
 	//
 	// *   **ECS**: an ECS instance.
@@ -2938,6 +2962,11 @@ func (s *DescribePackIpListResponseBodyIpList) SetIp(v string) *DescribePackIpLi
 
 func (s *DescribePackIpListResponseBodyIpList) SetMemberUid(v string) *DescribePackIpListResponseBodyIpList {
 	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribePackIpListResponseBodyIpList) SetNsmStatus(v int32) *DescribePackIpListResponseBodyIpList {
+	s.NsmStatus = &v
 	return s
 }
 
