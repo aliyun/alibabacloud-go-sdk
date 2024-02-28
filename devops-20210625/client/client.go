@@ -18859,6 +18859,7 @@ type GetWorkItemInfoResponseBodyWorkitem struct {
 	StatusStageIdentifier  *string                                            `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
 	Subject                *string                                            `json:"subject,omitempty" xml:"subject,omitempty"`
 	Tag                    []*string                                          `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	TagDetails             []*GetWorkItemInfoResponseBodyWorkitemTagDetails   `json:"tagDetails,omitempty" xml:"tagDetails,omitempty" type:"Repeated"`
 	Tracker                []*string                                          `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
 	UpdateStatusAt         *int64                                             `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
 	Verifier               []*string                                          `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
@@ -18988,6 +18989,11 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetTag(v []*string) *GetWorkItemIn
 	return s
 }
 
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetTagDetails(v []*GetWorkItemInfoResponseBodyWorkitemTagDetails) *GetWorkItemInfoResponseBodyWorkitem {
+	s.TagDetails = v
+	return s
+}
+
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetTracker(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
 	s.Tracker = v
 	return s
@@ -19111,6 +19117,35 @@ func (s *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) SetValue(v st
 
 func (s *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) SetValueEn(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList {
 	s.ValueEn = &v
+	return s
+}
+
+type GetWorkItemInfoResponseBodyWorkitemTagDetails struct {
+	Color      *string `json:"color,omitempty" xml:"color,omitempty"`
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemTagDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemTagDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemTagDetails) SetColor(v string) *GetWorkItemInfoResponseBodyWorkitemTagDetails {
+	s.Color = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemTagDetails) SetIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitemTagDetails {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemTagDetails) SetName(v string) *GetWorkItemInfoResponseBodyWorkitemTagDetails {
+	s.Name = &v
 	return s
 }
 
