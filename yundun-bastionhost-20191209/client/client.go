@@ -59,9 +59,9 @@ func (s *AcceptApproveCommandResponseBody) SetRequestId(v string) *AcceptApprove
 }
 
 type AcceptApproveCommandResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AcceptApproveCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcceptApproveCommandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AcceptApproveCommandResponse) String() string {
@@ -168,9 +168,9 @@ func (s *AcceptOperationTicketResponseBody) SetRequestId(v string) *AcceptOperat
 }
 
 type AcceptOperationTicketResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AcceptOperationTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcceptOperationTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AcceptOperationTicketResponse) String() string {
@@ -277,15 +277,11 @@ type AddHostsToGroupResponseBodyResults struct {
 	//
 	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	//     **
-	//
-	//     **Note**Make sure that the request parameters are valid and call the operation again.
+	// >Make sure that the request parameters are valid and call the operation again.
 	//
 	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	//     **
-	//
-	//     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	// >Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
 	//
 	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -326,9 +322,9 @@ func (s *AddHostsToGroupResponseBodyResults) SetMessage(v string) *AddHostsToGro
 }
 
 type AddHostsToGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddHostsToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddHostsToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddHostsToGroupResponse) String() string {
@@ -355,29 +351,21 @@ func (s *AddHostsToGroupResponse) SetBody(v *AddHostsToGroupResponseBody) *AddHo
 }
 
 type AddUsersToGroupRequest struct {
+	// The ID of the bastion host for which you want to add users to the user group.
+	//
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the bastion host for which you want to add users to the user group.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the user group to which you want to add users.
+	//
+	// > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The ID of the user that you want to add to the user group. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
 	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the user.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The return code that indicates whether the call was successful. Valid values:
-	//
-	// *   **OK**: The call was successful.
-	//
-	// *   **UNEXPECTED**: An unknown error occurred.
-	//
-	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
-	//
-	// > Make sure that the request parameters are valid and call the operation again.
-	//
-	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
-	//
-	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
-	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
@@ -410,11 +398,9 @@ func (s *AddUsersToGroupRequest) SetUserIds(v string) *AddUsersToGroupRequest {
 }
 
 type AddUsersToGroupResponseBody struct {
-	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
-	//
-	// For more information about sample requests, see the "Examples" section of this topic.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Adds one or more users to a user group.
+	// The result of the call.
 	Results []*AddUsersToGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -437,13 +423,32 @@ func (s *AddUsersToGroupResponseBody) SetResults(v []*AddUsersToGroupResponseBod
 }
 
 type AddUsersToGroupResponseBodyResults struct {
-	// AddUsersToGroup
+	// The return code that indicates whether the call was successful. Valid values:
+	//
+	// *   **OK**: The call was successful.
+	//
+	// *   **UNEXPECTED**: An unknown error occurred.
+	//
+	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
+	//
+	//     **
+	//
+	//     **Note**Make sure that the request parameters are valid and call the operation again.
+	//
+	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	//
+	//     **
+	//
+	//     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//
+	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// WB01014029
+	// This parameter is deprecated.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// AddUsersToGroup
+	// The ID of the group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddUsersToGroupResponseBodyResults) String() string {
@@ -475,9 +480,9 @@ func (s *AddUsersToGroupResponseBodyResults) SetUserId(v string) *AddUsersToGrou
 }
 
 type AddUsersToGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddUsersToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddUsersToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddUsersToGroupResponse) String() string {
@@ -611,9 +616,9 @@ func (s *AttachHostAccountsToHostShareKeyResponseBodyResults) SetMessage(v strin
 }
 
 type AttachHostAccountsToHostShareKeyResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachHostAccountsToHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachHostAccountsToHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachHostAccountsToHostShareKeyResponse) String() string {
@@ -810,9 +815,9 @@ func (s *AttachHostAccountsToUserResponseBodyResultsHostAccounts) SetMessage(v s
 }
 
 type AttachHostAccountsToUserResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachHostAccountsToUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachHostAccountsToUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachHostAccountsToUserResponse) String() string {
@@ -1001,9 +1006,9 @@ func (s *AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts) SetMessag
 }
 
 type AttachHostAccountsToUserGroupResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachHostAccountsToUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachHostAccountsToUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachHostAccountsToUserGroupResponse) String() string {
@@ -1192,9 +1197,9 @@ func (s *AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames) SetMe
 }
 
 type AttachHostGroupAccountsToUserResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachHostGroupAccountsToUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachHostGroupAccountsToUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachHostGroupAccountsToUserResponse) String() string {
@@ -1383,9 +1388,9 @@ func (s *AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames) 
 }
 
 type AttachHostGroupAccountsToUserGroupResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachHostGroupAccountsToUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachHostGroupAccountsToUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachHostGroupAccountsToUserGroupResponse) String() string {
@@ -1481,9 +1486,9 @@ func (s *ConfigInstanceSecurityGroupsResponseBody) SetRequestId(v string) *Confi
 }
 
 type ConfigInstanceSecurityGroupsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigInstanceSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigInstanceSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigInstanceSecurityGroupsResponse) String() string {
@@ -1565,9 +1570,9 @@ func (s *ConfigInstanceWhiteListResponseBody) SetRequestId(v string) *ConfigInst
 }
 
 type ConfigInstanceWhiteListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigInstanceWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigInstanceWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigInstanceWhiteListResponse) String() string {
@@ -1619,7 +1624,8 @@ type CreateHostRequest struct {
 	//
 	// > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	NetworkDomainId  *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	// The ID of the network domain to which the host belongs.
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The operating system of the host that you want to create. Valid values:
 	//
 	// *   **Linux**
@@ -1735,9 +1741,9 @@ func (s *CreateHostResponseBody) SetRequestId(v string) *CreateHostResponseBody 
 }
 
 type CreateHostResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHostResponse) String() string {
@@ -1878,9 +1884,9 @@ func (s *CreateHostAccountResponseBody) SetRequestId(v string) *CreateHostAccoun
 }
 
 type CreateHostAccountResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHostAccountResponse) String() string {
@@ -1977,9 +1983,9 @@ func (s *CreateHostGroupResponseBody) SetRequestId(v string) *CreateHostGroupRes
 }
 
 type CreateHostGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHostGroupResponse) String() string {
@@ -2077,9 +2083,9 @@ func (s *CreateHostShareKeyResponseBody) SetRequestId(v string) *CreateHostShare
 }
 
 type CreateHostShareKeyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHostShareKeyResponse) String() string {
@@ -2119,7 +2125,9 @@ type CreateUserRequest struct {
 	// The ID of the bastion host to which you want to add a user.
 	//
 	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	LanguageStatus *string `json:"LanguageStatus,omitempty" xml:"LanguageStatus,omitempty"`
 	// The mobile phone number of the user that you want to add.
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The country where the mobile number of the user is registered. Default value: **CN**. Valid values:
@@ -2226,6 +2234,16 @@ func (s *CreateUserRequest) SetInstanceId(v string) *CreateUserRequest {
 	return s
 }
 
+func (s *CreateUserRequest) SetLanguage(v string) *CreateUserRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *CreateUserRequest) SetLanguageStatus(v string) *CreateUserRequest {
+	s.LanguageStatus = &v
+	return s
+}
+
 func (s *CreateUserRequest) SetMobile(v string) *CreateUserRequest {
 	s.Mobile = &v
 	return s
@@ -2302,9 +2320,9 @@ func (s *CreateUserResponseBody) SetUserId(v string) *CreateUserResponseBody {
 }
 
 type CreateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -2399,9 +2417,9 @@ func (s *CreateUserGroupResponseBody) SetUserGroupId(v string) *CreateUserGroupR
 }
 
 type CreateUserGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserGroupResponse) String() string {
@@ -2510,9 +2528,9 @@ func (s *CreateUserPublicKeyResponseBody) SetRequestId(v string) *CreateUserPubl
 }
 
 type CreateUserPublicKeyResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserPublicKeyResponse) String() string {
@@ -2595,9 +2613,9 @@ func (s *DeleteHostResponseBody) SetRequestId(v string) *DeleteHostResponseBody 
 }
 
 type DeleteHostResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteHostResponse) String() string {
@@ -2624,11 +2642,17 @@ func (s *DeleteHostResponse) SetBody(v *DeleteHostResponseBody) *DeleteHostRespo
 }
 
 type DeleteHostAccountRequest struct {
-	// DeleteHostAccount
+	// The ID of the host account that you want to remove.
+	//
+	// >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// DeleteHostAccount
+	// The ID of the bastion host from which you want to remove the host account.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// WB01014029
+	// The region ID of the bastion host from which you want to remove the host account.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2656,6 +2680,7 @@ func (s *DeleteHostAccountRequest) SetRegionId(v string) *DeleteHostAccountReque
 }
 
 type DeleteHostAccountResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2673,9 +2698,9 @@ func (s *DeleteHostAccountResponseBody) SetRequestId(v string) *DeleteHostAccoun
 }
 
 type DeleteHostAccountResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteHostAccountResponse) String() string {
@@ -2758,9 +2783,9 @@ func (s *DeleteHostGroupResponseBody) SetRequestId(v string) *DeleteHostGroupRes
 }
 
 type DeleteHostGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteHostGroupResponse) String() string {
@@ -2839,9 +2864,9 @@ func (s *DeleteHostShareKeyResponseBody) SetRequestId(v string) *DeleteHostShare
 }
 
 type DeleteHostShareKeyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteHostShareKeyResponse) String() string {
@@ -2922,9 +2947,9 @@ func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody 
 }
 
 type DeleteUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -3007,9 +3032,9 @@ func (s *DeleteUserGroupResponseBody) SetRequestId(v string) *DeleteUserGroupRes
 }
 
 type DeleteUserGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserGroupResponse) String() string {
@@ -3088,9 +3113,9 @@ func (s *DeleteUserPublicKeyResponseBody) SetRequestId(v string) *DeleteUserPubl
 }
 
 type DeleteUserPublicKeyResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserPublicKeyResponse) String() string {
@@ -3382,9 +3407,9 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttributePorts) SetStandar
 }
 
 type DescribeInstanceAttributeResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceAttributeResponse) String() string {
@@ -3676,9 +3701,9 @@ func (s *DescribeInstancesResponseBodyInstances) SetVswitchId(v string) *Describ
 }
 
 type DescribeInstancesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstancesResponse) String() string {
@@ -3784,9 +3809,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegi
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -3916,9 +3941,9 @@ func (s *DetachHostAccountsFromHostShareKeyResponseBodyResults) SetMessage(v str
 }
 
 type DetachHostAccountsFromHostShareKeyResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachHostAccountsFromHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachHostAccountsFromHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachHostAccountsFromHostShareKeyResponse) String() string {
@@ -4107,9 +4132,9 @@ func (s *DetachHostAccountsFromUserResponseBodyResultsHostAccounts) SetMessage(v
 }
 
 type DetachHostAccountsFromUserResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachHostAccountsFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachHostAccountsFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachHostAccountsFromUserResponse) String() string {
@@ -4300,9 +4325,9 @@ func (s *DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts) SetMess
 }
 
 type DetachHostAccountsFromUserGroupResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachHostAccountsFromUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachHostAccountsFromUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachHostAccountsFromUserGroupResponse) String() string {
@@ -4491,9 +4516,9 @@ func (s *DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames) Set
 }
 
 type DetachHostGroupAccountsFromUserResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachHostGroupAccountsFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachHostGroupAccountsFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachHostGroupAccountsFromUserResponse) String() string {
@@ -4682,9 +4707,9 @@ func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames
 }
 
 type DetachHostGroupAccountsFromUserGroupResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachHostGroupAccountsFromUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachHostGroupAccountsFromUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachHostGroupAccountsFromUserGroupResponse) String() string {
@@ -4763,9 +4788,9 @@ func (s *DisableInstancePublicAccessResponseBody) SetRequestId(v string) *Disabl
 }
 
 type DisableInstancePublicAccessResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableInstancePublicAccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableInstancePublicAccessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableInstancePublicAccessResponse) String() string {
@@ -4844,9 +4869,9 @@ func (s *EnableInstancePublicAccessResponseBody) SetRequestId(v string) *EnableI
 }
 
 type EnableInstancePublicAccessResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableInstancePublicAccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableInstancePublicAccessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableInstancePublicAccessResponse) String() string {
@@ -4873,16 +4898,17 @@ func (s *EnableInstancePublicAccessResponse) SetBody(v *EnableInstancePublicAcce
 }
 
 type GetHostRequest struct {
-	// The protocol that is used to connect to the host. Valid values:
-	//
-	// *   **SSH**
-	// *   **RDP**
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The ID of the host that you want to query. You can specify only one host ID.
 	//
 	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The ID of the bastion host in which you want to query the host.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the host.
+	// The region ID of the bastion host in which you want to query the host.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4910,12 +4936,9 @@ func (s *GetHostRequest) SetRegionId(v string) *GetHostRequest {
 }
 
 type GetHostResponseBody struct {
-	// The fingerprint of the host. This parameter uniquely identifies a host.
+	// The information about the host that was queried.
 	Host *GetHostResponseBodyHost `json:"Host,omitempty" xml:"Host,omitempty" type:"Struct"`
-	// The endpoint type of the host. Valid values:
-	//
-	// *   **Public**: a public endpoint
-	// *   **Private**: an internal endpoint
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4938,41 +4961,44 @@ func (s *GetHostResponseBody) SetRequestId(v string) *GetHostResponseBody {
 }
 
 type GetHostResponseBodyHost struct {
-	// The public endpoint of the host. You can set this parameter to a domain name or an IP address.
+	// The address type of the host. Valid values:
+	//
+	// *   **Public**: a public address
+	// *   **Private**: a private address
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The ID of the ECS instance or dedicated cluster host that was queried.
-	//
-	// >  No value is returned for this parameter if the **Source** parameter is set to **Local**.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the request.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The description of the host.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the host.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The hostname.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The internal endpoint of the host. The value is a domain name or an IP address.
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The status of the host. Valid values:
-	//
-	// - **Normal**: The host is normal.
-	//
-	// - **Release**: The host is released.
+	// The public address of the host. The value is a domain name or an IP address.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	NetworkDomainId   *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	// The ID of the new network domain to which the host belongs.
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The operating system of the host. Valid values:
 	//
 	// *   **Linux**
 	// *   **Windows**
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// GetHost
+	// The protocol information about the host.
 	Protocols []*GetHostResponseBodyHostProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// The protocol information of the host.
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Queries the details of a specified host, such as the name, source, endpoint, protocol, and service port of the host.
-	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+	// The source of the host. Valid values:
 	//
-	// For more information about sample requests, see the "Examples" section of this topic.
+	// *   **Local**: a host in a data center
+	// *   **Ecs**: an Elastic Compute Service (ECS) instance
+	// *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
+	//
+	// >  If **Local** is returned for the **Source** parameter, no value is returned for this parameter.
+	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	// The status of the host. Valid values:
+	//
+	// *   **Normal**: normal
+	// *   **Release**: released
 	SourceInstanceState *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
 }
 
@@ -5045,10 +5071,14 @@ func (s *GetHostResponseBodyHost) SetSourceInstanceState(v string) *GetHostRespo
 }
 
 type GetHostResponseBodyHostProtocols struct {
-	// WB662865
+	// The fingerprint of the host. This parameter uniquely identifies a host.
 	HostFingerPrint *string `json:"HostFingerPrint,omitempty" xml:"HostFingerPrint,omitempty"`
-	// GetHost
-	Port         *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The service port of the host.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol that is used to connect to the host. Valid values:
+	//
+	// *   **SSH**
+	// *   **RDP**
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 }
 
@@ -5076,9 +5106,9 @@ func (s *GetHostResponseBodyHostProtocols) SetProtocolName(v string) *GetHostRes
 }
 
 type GetHostResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHostResponse) String() string {
@@ -5241,9 +5271,9 @@ func (s *GetHostAccountResponseBodyHostAccount) SetProtocolName(v string) *GetHo
 }
 
 type GetHostAccountResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHostAccountResponse) String() string {
@@ -5365,9 +5395,9 @@ func (s *GetHostGroupResponseBodyHostGroup) SetHostGroupName(v string) *GetHostG
 }
 
 type GetHostGroupResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHostGroupResponse) String() string {
@@ -5487,9 +5517,9 @@ func (s *GetHostShareKeyResponseBodyHostShareKey) SetPrivateKeyFingerPrint(v str
 }
 
 type GetHostShareKeyResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHostShareKeyResponse) String() string {
@@ -5667,9 +5697,9 @@ func (s *GetInstanceADAuthServerResponseBodyAD) SetStandbyServer(v string) *GetI
 }
 
 type GetInstanceADAuthServerResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceADAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceADAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceADAuthServerResponse) String() string {
@@ -5846,9 +5876,9 @@ func (s *GetInstanceLDAPAuthServerResponseBodyLDAP) SetStandbyServer(v string) *
 }
 
 type GetInstanceLDAPAuthServerResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceLDAPAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceLDAPAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceLDAPAuthServerResponse) String() string {
@@ -5957,9 +5987,9 @@ func (s *GetInstanceTwoFactorResponseBodyConfig) SetTwoFactorMethods(v []*string
 }
 
 type GetInstanceTwoFactorResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceTwoFactorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceTwoFactorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceTwoFactorResponse) String() string {
@@ -6058,7 +6088,9 @@ type GetUserResponseBodyUser struct {
 	// The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
 	// The email address of the user.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email          *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	LanguageStatus *string `json:"LanguageStatus,omitempty" xml:"LanguageStatus,omitempty"`
 	// The mobile phone number of the user.
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The location in which the mobile number of the user is registered. Valid values:
@@ -6146,6 +6178,16 @@ func (s *GetUserResponseBodyUser) SetEmail(v string) *GetUserResponseBodyUser {
 	return s
 }
 
+func (s *GetUserResponseBodyUser) SetLanguage(v string) *GetUserResponseBodyUser {
+	s.Language = &v
+	return s
+}
+
+func (s *GetUserResponseBodyUser) SetLanguageStatus(v string) *GetUserResponseBodyUser {
+	s.LanguageStatus = &v
+	return s
+}
+
 func (s *GetUserResponseBodyUser) SetMobile(v string) *GetUserResponseBodyUser {
 	s.Mobile = &v
 	return s
@@ -6197,9 +6239,9 @@ func (s *GetUserResponseBodyUser) SetUserState(v []*string) *GetUserResponseBody
 }
 
 type GetUserResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserResponse) String() string {
@@ -6316,9 +6358,9 @@ func (s *GetUserGroupResponseBodyUserGroup) SetUserGroupName(v string) *GetUserG
 }
 
 type GetUserGroupResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserGroupResponse) String() string {
@@ -6486,9 +6528,9 @@ func (s *ListApproveCommandsResponseBodyApproveCommands) SetState(v string) *Lis
 }
 
 type ListApproveCommandsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListApproveCommandsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApproveCommandsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListApproveCommandsResponse) String() string {
@@ -6696,9 +6738,9 @@ func (s *ListHostAccountsResponseBodyHostAccounts) SetProtocolName(v string) *Li
 }
 
 type ListHostAccountsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostAccountsResponse) String() string {
@@ -6842,9 +6884,9 @@ func (s *ListHostAccountsForHostShareKeyResponseBodyHostAccounts) SetProtocolNam
 }
 
 type ListHostAccountsForHostShareKeyResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostAccountsForHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostAccountsForHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostAccountsForHostShareKeyResponse) String() string {
@@ -7027,9 +7069,9 @@ func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetProtocolName(v stri
 }
 
 type ListHostAccountsForUserResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostAccountsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostAccountsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostAccountsForUserResponse) String() string {
@@ -7211,9 +7253,9 @@ func (s *ListHostAccountsForUserGroupResponseBodyHostAccounts) SetProtocolName(v
 }
 
 type ListHostAccountsForUserGroupResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostAccountsForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostAccountsForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostAccountsForUserGroupResponse) String() string {
@@ -7312,9 +7354,9 @@ func (s *ListHostGroupAccountNamesForUserResponseBody) SetRequestId(v string) *L
 }
 
 type ListHostGroupAccountNamesForUserResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostGroupAccountNamesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostGroupAccountNamesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostGroupAccountNamesForUserResponse) String() string {
@@ -7341,15 +7383,21 @@ func (s *ListHostGroupAccountNamesForUserResponse) SetBody(v *ListHostGroupAccou
 }
 
 type ListHostGroupAccountNamesForUserGroupRequest struct {
-	// WB662865
-	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
+	// The ID of the host group.
 	//
-	// For more information about sample requests, see the "Examples" section of this topic.
+	// > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	// The ID of the bastion host on which you want to query the host account names the user group is authorized to manage in a host group.
+	//
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Queries the names of the host accounts that a specified user group is authorized to manage in a specified host group.
+	// The region ID of the bastion host on which you want to query the host account names the user group is authorized to manage in a host group.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ListHostGroupAccountNamesForUserGroup
+	// The ID of the user group.
+	//
+	// > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -7382,8 +7430,9 @@ func (s *ListHostGroupAccountNamesForUserGroupRequest) SetUserGroupId(v string) 
 }
 
 type ListHostGroupAccountNamesForUserGroupResponseBody struct {
+	// The names of host accounts returned.
 	HostAccountNames []*string `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
-	// ListHostGroupAccountNamesForUserGroup
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7406,9 +7455,9 @@ func (s *ListHostGroupAccountNamesForUserGroupResponseBody) SetRequestId(v strin
 }
 
 type ListHostGroupAccountNamesForUserGroupResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostGroupAccountNamesForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostGroupAccountNamesForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostGroupAccountNamesForUserGroupResponse) String() string {
@@ -7559,9 +7608,9 @@ func (s *ListHostGroupsResponseBodyHostGroups) SetMemberCount(v int32) *ListHost
 }
 
 type ListHostGroupsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostGroupsResponse) String() string {
@@ -7721,9 +7770,9 @@ func (s *ListHostGroupsForUserResponseBodyHostGroups) SetHostGroupName(v string)
 }
 
 type ListHostGroupsForUserResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostGroupsForUserResponse) String() string {
@@ -7886,9 +7935,9 @@ func (s *ListHostGroupsForUserGroupResponseBodyHostGroups) SetHostGroupName(v st
 }
 
 type ListHostGroupsForUserGroupResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostGroupsForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostGroupsForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostGroupsForUserGroupResponse) String() string {
@@ -8032,9 +8081,9 @@ func (s *ListHostShareKeysResponseBodyHostShareKeys) SetPrivateKeyFingerPrint(v 
 }
 
 type ListHostShareKeysResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostShareKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostShareKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostShareKeysResponse) String() string {
@@ -8302,9 +8351,9 @@ func (s *ListHostsResponseBodyHosts) SetSourceInstanceState(v string) *ListHosts
 }
 
 type ListHostsResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostsResponse) String() string {
@@ -8331,41 +8380,38 @@ func (s *ListHostsResponse) SetBody(v *ListHostsResponseBody) *ListHostsResponse
 }
 
 type ListHostsForUserRequest struct {
+	// The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	// The name of the host that you want to query. Only exact match is supported.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the bastion host on which you want to query the hosts that the user is authorized or not authorized to manage.
+	//
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies the category of the hosts that you want to query. Valid values:
+	//
+	// *   **Authorized**: queries the hosts that the user is authorized to manage. This is the default value.
+	// *   **Unauthorized**: queries the hosts that the user is not authorized to manage.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The operating system of the host that you want to query. Valid values:
 	//
 	// *   **Linux**
 	// *   **Windows**
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the hosts that the user is authorized or not authorized to manage.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The category of the host that you want to query. Valid values:
-	//
-	// *   **Authorized**: Query the hosts that the user is authorized to manage. This is the default value.
-	// *   **Unauthorized**: Query the hosts that the user is not authorized to manage.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operating system of the host. Valid values:
-	//
-	// *   **Linux**
-	// *   **Windows**
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The internal endpoint of the host. The value is a domain name or an IP address.
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The endpoint type of the host. Valid values:
-	//
-	// *   **Public**: a public endpoint
-	// *   **Private**: an internal endpoint
+	// The number of the page. Default value: 1.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.\
+	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave the PageSize parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+	// The region ID of the bastion host on which you want to query the hosts that the user is authorized or not authorized to manage.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The ID of the user.
+	//
+	// > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -8423,13 +8469,11 @@ func (s *ListHostsForUserRequest) SetUserId(v string) *ListHostsForUserRequest {
 }
 
 type ListHostsForUserResponseBody struct {
-	// The ID of the user.
-	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user ID.
-	Hosts []*ListHostsForUserResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 	// The hosts returned.
+	Hosts []*ListHostsForUserResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The public endpoint of the host. The value is a domain name or an IP address.
+	// The total number of hosts returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8457,20 +8501,25 @@ func (s *ListHostsForUserResponseBody) SetTotalCount(v int32) *ListHostsForUserR
 }
 
 type ListHostsForUserResponseBodyHosts struct {
-	// All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
+	// The endpoint type of the host. Valid values:
 	//
-	// For more information about sample requests, see the "Examples" section of this topic.
+	// *   **Public**: public endpoint
+	// *   **Private**: internal endpoint
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The ID of the request.
+	// The description of the host.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// ListHostsForUser
+	// The ID of the host.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The name of the host.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// WB662865
+	// The internal endpoint of the host. The value is a domain name or an IP address.
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// Queries the hosts that a specified user is authorized or not authorized to manage.
+	// The public endpoint of the host. The value is a domain name or an IP address.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// ListHostsForUser
+	// The operating system of the host. Valid values:
+	//
+	// *   **Linux**
+	// *   **Windows**
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 }
 
@@ -8518,9 +8567,9 @@ func (s *ListHostsForUserResponseBodyHosts) SetOSType(v string) *ListHostsForUse
 }
 
 type ListHostsForUserResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostsForUserResponse) String() string {
@@ -8734,9 +8783,9 @@ func (s *ListHostsForUserGroupResponseBodyHosts) SetOSType(v string) *ListHostsF
 }
 
 type ListHostsForUserGroupResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHostsForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHostsForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHostsForUserGroupResponse) String() string {
@@ -8934,9 +8983,9 @@ func (s *ListOperationTicketsResponseBodyOperationTickets) SetState(v string) *L
 }
 
 type ListOperationTicketsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOperationTicketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOperationTicketsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOperationTicketsResponse) String() string {
@@ -9075,9 +9124,9 @@ func (s *ListTagKeysResponseBodyTagKeys) SetTagKey(v string) *ListTagKeysRespons
 }
 
 type ListTagKeysResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagKeysResponse) String() string {
@@ -9248,9 +9297,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -9382,9 +9431,9 @@ func (s *ListUserGroupsResponseBodyUserGroups) SetUserGroupName(v string) *ListU
 }
 
 type ListUserGroupsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserGroupsResponse) String() string {
@@ -9542,9 +9591,9 @@ func (s *ListUserPublicKeysResponseBodyPublicKeys) SetUserId(v string) *ListUser
 }
 
 type ListUserPublicKeysResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserPublicKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserPublicKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserPublicKeysResponse) String() string {
@@ -9719,7 +9768,9 @@ type ListUsersResponseBodyUsers struct {
 	// The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
 	// The email address of the user.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email          *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	LanguageStatus *string `json:"LanguageStatus,omitempty" xml:"LanguageStatus,omitempty"`
 	// The mobile number of the user.
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The country where the mobile number of the user is registered. Valid values:
@@ -9807,6 +9858,16 @@ func (s *ListUsersResponseBodyUsers) SetEmail(v string) *ListUsersResponseBodyUs
 	return s
 }
 
+func (s *ListUsersResponseBodyUsers) SetLanguage(v string) *ListUsersResponseBodyUsers {
+	s.Language = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetLanguageStatus(v string) *ListUsersResponseBodyUsers {
+	s.LanguageStatus = &v
+	return s
+}
+
 func (s *ListUsersResponseBodyUsers) SetMobile(v string) *ListUsersResponseBodyUsers {
 	s.Mobile = &v
 	return s
@@ -9858,9 +9919,9 @@ func (s *ListUsersResponseBodyUsers) SetUserState(v []*string) *ListUsersRespons
 }
 
 type ListUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -9958,15 +10019,11 @@ type LockUsersResponseBodyResults struct {
 	//
 	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	//     **
-	//
-	//     **Note**Make sure that the request parameters are valid and call the operation again.
+	// >Make sure that the request parameters are valid and call the operation again.
 	//
 	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	//     **
-	//
-	//     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	// >Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
 	//
 	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -10000,9 +10057,9 @@ func (s *LockUsersResponseBodyResults) SetUserId(v string) *LockUsersResponseBod
 }
 
 type LockUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LockUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LockUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LockUsersResponse) String() string {
@@ -10029,33 +10086,32 @@ func (s *LockUsersResponse) SetBody(v *LockUsersResponseBody) *LockUsersResponse
 }
 
 type ModifyHostRequest struct {
-	// The new internal endpoint of the host. You can set this parameter to a domain name or an IP address.
+	// The new description of the host. The description can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the Bastionhost instance where you want to modify the information of the host.
+	// The ID of the host.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The new name of the host. The name can be up to 128 characters.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The new description of the host. The value can be up to 500 characters in length.
+	// The new internal endpoint of the host. You can set this parameter to a domain name or an IP address.
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The region ID of the Bastionhost instance where you want to modify the information of the host.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The new public endpoint of the host. You can set this parameter to a domain name or an IP address.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
+	// The ID of the bastion host on which you want to modify the information about the host.
 	//
-	// >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the new network domain to which the host belongs.
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The ID of the host.
-	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	// The new operating system of the host. Valid values:
 	//
 	// *   **Linux**
 	// *   **Windows**
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// The region ID of the bastion host on which you want to modify the information about the host.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10131,9 +10187,9 @@ func (s *ModifyHostResponseBody) SetRequestId(v string) *ModifyHostResponseBody 
 }
 
 type ModifyHostResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyHostResponse) String() string {
@@ -10255,9 +10311,9 @@ func (s *ModifyHostAccountResponseBody) SetRequestId(v string) *ModifyHostAccoun
 }
 
 type ModifyHostAccountResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyHostAccountResponse) String() string {
@@ -10354,9 +10410,9 @@ func (s *ModifyHostGroupResponseBody) SetRequestId(v string) *ModifyHostGroupRes
 }
 
 type ModifyHostGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyHostGroupResponse) String() string {
@@ -10454,9 +10510,9 @@ func (s *ModifyHostShareKeyResponseBody) SetRequestId(v string) *ModifyHostShare
 }
 
 type ModifyHostShareKeyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHostShareKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyHostShareKeyResponse) String() string {
@@ -10594,9 +10650,9 @@ func (s *ModifyHostsActiveAddressTypeResponseBodyResults) SetMessage(v string) *
 }
 
 type ModifyHostsActiveAddressTypeResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyHostsActiveAddressTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHostsActiveAddressTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyHostsActiveAddressTypeResponse) String() string {
@@ -10746,9 +10802,9 @@ func (s *ModifyHostsPortResponseBodyResults) SetMessage(v string) *ModifyHostsPo
 }
 
 type ModifyHostsPortResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyHostsPortResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHostsPortResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyHostsPortResponse) String() string {
@@ -10905,9 +10961,9 @@ func (s *ModifyInstanceADAuthServerResponseBody) SetRequestId(v string) *ModifyI
 }
 
 type ModifyInstanceADAuthServerResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyInstanceADAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceADAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyInstanceADAuthServerResponse) String() string {
@@ -10990,9 +11046,9 @@ func (s *ModifyInstanceAttributeResponseBody) SetRequestId(v string) *ModifyInst
 }
 
 type ModifyInstanceAttributeResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyInstanceAttributeResponse) String() string {
@@ -11149,9 +11205,9 @@ func (s *ModifyInstanceLDAPAuthServerResponseBody) SetRequestId(v string) *Modif
 }
 
 type ModifyInstanceLDAPAuthServerResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyInstanceLDAPAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceLDAPAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyInstanceLDAPAuthServerResponse) String() string {
@@ -11253,9 +11309,9 @@ func (s *ModifyInstanceTwoFactorResponseBody) SetRequestId(v string) *ModifyInst
 }
 
 type ModifyInstanceTwoFactorResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyInstanceTwoFactorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceTwoFactorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyInstanceTwoFactorResponse) String() string {
@@ -11297,7 +11353,9 @@ type ModifyUserRequest struct {
 	// The ID of the bastion host where you want to modify user information.
 	//
 	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	LanguageStatus *string `json:"LanguageStatus,omitempty" xml:"LanguageStatus,omitempty"`
 	// The new mobile number of the user.
 	//
 	// > This parameter is required when the TwoFactorStatus parameter is set to Enable and the TwoFactorMethods parameter is set to sms or dingtalk.
@@ -11393,6 +11451,16 @@ func (s *ModifyUserRequest) SetInstanceId(v string) *ModifyUserRequest {
 	return s
 }
 
+func (s *ModifyUserRequest) SetLanguage(v string) *ModifyUserRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ModifyUserRequest) SetLanguageStatus(v string) *ModifyUserRequest {
+	s.LanguageStatus = &v
+	return s
+}
+
 func (s *ModifyUserRequest) SetMobile(v string) *ModifyUserRequest {
 	s.Mobile = &v
 	return s
@@ -11452,9 +11520,9 @@ func (s *ModifyUserResponseBody) SetRequestId(v string) *ModifyUserResponseBody 
 }
 
 type ModifyUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyUserResponse) String() string {
@@ -11551,9 +11619,9 @@ func (s *ModifyUserGroupResponseBody) SetRequestId(v string) *ModifyUserGroupRes
 }
 
 type ModifyUserGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyUserGroupResponse) String() string {
@@ -11641,9 +11709,9 @@ func (s *MoveResourceGroupResponseBody) SetRequestId(v string) *MoveResourceGrou
 }
 
 type MoveResourceGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MoveResourceGroupResponse) String() string {
@@ -11716,9 +11784,9 @@ func (s *RejectApproveCommandResponseBody) SetRequestId(v string) *RejectApprove
 }
 
 type RejectApproveCommandResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RejectApproveCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RejectApproveCommandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RejectApproveCommandResponse) String() string {
@@ -11745,9 +11813,16 @@ func (s *RejectApproveCommandResponse) SetBody(v *RejectApproveCommandResponseBo
 }
 
 type RejectOperationTicketRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the bastion host.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the O\&M application that you want to reject. You can call the ListOperationTickets operation to query the IDs of all O\&M applications that require review.
 	OperationTicketId *string `json:"OperationTicketId,omitempty" xml:"OperationTicketId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the bastion host.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RejectOperationTicketRequest) String() string {
@@ -11774,6 +11849,7 @@ func (s *RejectOperationTicketRequest) SetRegionId(v string) *RejectOperationTic
 }
 
 type RejectOperationTicketResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11791,9 +11867,9 @@ func (s *RejectOperationTicketResponseBody) SetRequestId(v string) *RejectOperat
 }
 
 type RejectOperationTicketResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RejectOperationTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RejectOperationTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RejectOperationTicketResponse) String() string {
@@ -11820,21 +11896,21 @@ func (s *RejectOperationTicketResponse) SetBody(v *RejectOperationTicketResponse
 }
 
 type RemoveHostsFromGroupRequest struct {
-	// The return code that indicates whether the call was successful. Valid values:
+	// The ID of the host group from which you want to remove hosts.
 	//
-	// *   **OK**: The call was successful.
-	// *   **UNEXPECTED**: An unknown error occurred.
-	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
-	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the request.
-	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
 	// The ID of the host that you want to remove from the host group. The value is a JSON string. You can add up to 100 host IDs.
 	//
 	// >  You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
+	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
+	// The ID of the bastion host for which you want to remove hosts from the host group.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the host group.
+	// The region ID of the bastion host for which you want to remove hosts from the host group.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11867,11 +11943,9 @@ func (s *RemoveHostsFromGroupRequest) SetRegionId(v string) *RemoveHostsFromGrou
 }
 
 type RemoveHostsFromGroupResponseBody struct {
-	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
-	//
-	// For more information about sample requests, see the "Examples" section of this topic.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Removes one or more hosts from a host group.
+	// The result of the call.
 	Results []*RemoveHostsFromGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -11894,12 +11968,19 @@ func (s *RemoveHostsFromGroupResponseBody) SetResults(v []*RemoveHostsFromGroupR
 }
 
 type RemoveHostsFromGroupResponseBodyResults struct {
-	// RemoveHostsFromGroup
+	// The return code that indicates whether the call was successful. Valid values:
+	//
+	// *   **OK**: The call was successful.
+	// *   **UNEXPECTED**: An unknown error occurred.
+	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
+	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// RemoveHostsFromGroup
+	// The ID of the host group.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	HostId      *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// WB662865
+	// The ID of the host.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// This parameter is deprecated.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -11932,9 +12013,9 @@ func (s *RemoveHostsFromGroupResponseBodyResults) SetMessage(v string) *RemoveHo
 }
 
 type RemoveHostsFromGroupResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveHostsFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveHostsFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveHostsFromGroupResponse) String() string {
@@ -11961,29 +12042,21 @@ func (s *RemoveHostsFromGroupResponse) SetBody(v *RemoveHostsFromGroupResponseBo
 }
 
 type RemoveUsersFromGroupRequest struct {
+	// The ID of the bastion host for which you want to remove users from the user group.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the bastion host for which you want to remove users from the user group.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the user group from which you want to remove users.
+	//
+	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The ID of the user who you want to remove. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
 	//
 	// >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the user.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The return code that indicates whether the call was successful. Valid values:
-	//
-	// *   **OK**: The call was successful.
-	//
-	// *   **UNEXPECTED**: An unknown error occurred.
-	//
-	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
-	//
-	// > Make sure that the request parameters are valid and call the operation again.
-	//
-	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
-	//
-	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
-	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
@@ -12016,11 +12089,9 @@ func (s *RemoveUsersFromGroupRequest) SetUserIds(v string) *RemoveUsersFromGroup
 }
 
 type RemoveUsersFromGroupResponseBody struct {
-	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
-	//
-	// For more information about sample requests, see the "Examples" section of this topic.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Removes one or more users from a user group.
+	// The result of the call.
 	Results []*RemoveUsersFromGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -12043,13 +12114,28 @@ func (s *RemoveUsersFromGroupResponseBody) SetResults(v []*RemoveUsersFromGroupR
 }
 
 type RemoveUsersFromGroupResponseBodyResults struct {
-	// RemoveUsersFromGroup
+	// The return code that indicates whether the call was successful. Valid values:
+	//
+	// *   **OK**: The call was successful.
+	//
+	// *   **UNEXPECTED**: An unknown error occurred.
+	//
+	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
+	//
+	// > Make sure that the request parameters are valid and call the operation again.
+	//
+	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	//
+	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//
+	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// WB01014029
+	// This parameter is deprecated.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// RemoveUsersFromGroup
+	// The ID of the group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s RemoveUsersFromGroupResponseBodyResults) String() string {
@@ -12081,9 +12167,9 @@ func (s *RemoveUsersFromGroupResponseBodyResults) SetUserId(v string) *RemoveUse
 }
 
 type RemoveUsersFromGroupResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveUsersFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveUsersFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveUsersFromGroupResponse) String() string {
@@ -12110,13 +12196,22 @@ func (s *RemoveUsersFromGroupResponse) SetBody(v *RemoveUsersFromGroupResponseBo
 }
 
 type ResetHostAccountCredentialRequest struct {
-	// ResetHostAccountCredential
+	// The type of the logon credential that you want to delete. Valid values:
+	//
+	// *   **Password**
+	// *   **PrivateKey**
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// WB662865
+	// The ID of the host account for which the logon credential is to be deleted.
+	//
+	// >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// Deletes the logon credential of a specified host account of a specified Bastionhost instance. The logon credential can be the password or SSH private key.
+	// The ID of the bastion host from which you want to delete the logon credential for the host account.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// ResetHostAccountCredential
+	// The region ID of the bastion host from which you want to delete the logon credential for the host account.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12149,6 +12244,7 @@ func (s *ResetHostAccountCredentialRequest) SetRegionId(v string) *ResetHostAcco
 }
 
 type ResetHostAccountCredentialResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12166,9 +12262,9 @@ func (s *ResetHostAccountCredentialResponseBody) SetRequestId(v string) *ResetHo
 }
 
 type ResetHostAccountCredentialResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetHostAccountCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetHostAccountCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetHostAccountCredentialResponse) String() string {
@@ -12261,9 +12357,9 @@ func (s *StartInstanceResponseBody) SetRequestId(v string) *StartInstanceRespons
 }
 
 type StartInstanceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartInstanceResponse) String() string {
@@ -12393,9 +12489,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -12535,9 +12631,9 @@ func (s *UnlockUsersResponseBodyResults) SetUserId(v string) *UnlockUsersRespons
 }
 
 type UnlockUsersResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnlockUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnlockUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnlockUsersResponse) String() string {
@@ -12641,9 +12737,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -12921,7 +13017,10 @@ func (client *Client) AddHostsToGroup(request *AddHostsToGroupRequest) (_result 
 }
 
 /**
- * This parameter is deprecated.
+ * #
+ * You can call this operation to add one or more users to a user group. After you call the [CreateUserGroup](~~204596~~) operation to create a user group, you can call the AddUsersToGroup operation to add multiple users to the user group. Then, you can manage and grant permissions to the users at a time.
+ * # Limit
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request AddUsersToGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12973,7 +13072,10 @@ func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest
 }
 
 /**
- * This parameter is deprecated.
+ * #
+ * You can call this operation to add one or more users to a user group. After you call the [CreateUserGroup](~~204596~~) operation to create a user group, you can call the AddUsersToGroup operation to add multiple users to the user group. Then, you can manage and grant permissions to the users at a time.
+ * # Limit
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request AddUsersToGroupRequest
  * @return AddUsersToGroupResponse
@@ -13723,6 +13825,14 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageStatus)) {
+		query["LanguageStatus"] = request.LanguageStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
 		query["Mobile"] = request.Mobile
 	}
@@ -14007,8 +14117,11 @@ func (client *Client) DeleteHost(request *DeleteHostRequest) (_result *DeleteHos
 }
 
 /**
- * All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
- * For more information about sample requests, see the "Examples" section of this topic.
+ * ## Usage notes
+ * You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
+ * >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DeleteHostAccountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -14056,8 +14169,11 @@ func (client *Client) DeleteHostAccountWithOptions(request *DeleteHostAccountReq
 }
 
 /**
- * All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
- * For more information about sample requests, see the "Examples" section of this topic.
+ * ## Usage notes
+ * You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
+ * >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DeleteHostAccountRequest
  * @return DeleteHostAccountResponse
@@ -16778,7 +16894,8 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 }
 
 /**
- * The ID of the request.
+ * You can call the ModifyHost operation to modify the basic information about a host in a data center, an Elastic Compute Service (ECS) instance, or a host in an ApsaraDB MyBase dedicated cluster.
+ * > The basic information about ECS instances and hosts in ApsaraDB MyBase dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information about an ECS instance or a host in an ApsaraDB MyBase dedicated cluster, the modification result may be overwritten by the synchronized information.
  *
  * @param request ModifyHostRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -16850,7 +16967,8 @@ func (client *Client) ModifyHostWithOptions(request *ModifyHostRequest, runtime 
 }
 
 /**
- * The ID of the request.
+ * You can call the ModifyHost operation to modify the basic information about a host in a data center, an Elastic Compute Service (ECS) instance, or a host in an ApsaraDB MyBase dedicated cluster.
+ * > The basic information about ECS instances and hosts in ApsaraDB MyBase dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information about an ECS instance or a host in an ApsaraDB MyBase dedicated cluster, the modification result may be overwritten by the synchronized information.
  *
  * @param request ModifyHostRequest
  * @return ModifyHostResponse
@@ -17533,6 +17651,14 @@ func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime 
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageStatus)) {
+		query["LanguageStatus"] = request.LanguageStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
 		query["Mobile"] = request.Mobile
 	}
@@ -17767,6 +17893,14 @@ func (client *Client) RejectApproveCommand(request *RejectApproveCommandRequest)
 	return _result, _err
 }
 
+/**
+ * You can call this operation to reject an O\\&M application of an O\\&M engineer as a Bastionhost administrator.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request RejectOperationTicketRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RejectOperationTicketResponse
+ */
 func (client *Client) RejectOperationTicketWithOptions(request *RejectOperationTicketRequest, runtime *util.RuntimeOptions) (_result *RejectOperationTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17808,6 +17942,13 @@ func (client *Client) RejectOperationTicketWithOptions(request *RejectOperationT
 	return _result, _err
 }
 
+/**
+ * You can call this operation to reject an O\\&M application of an O\\&M engineer as a Bastionhost administrator.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request RejectOperationTicketRequest
+ * @return RejectOperationTicketResponse
+ */
 func (client *Client) RejectOperationTicket(request *RejectOperationTicketRequest) (_result *RejectOperationTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RejectOperationTicketResponse{}
@@ -17876,7 +18017,9 @@ func (client *Client) RemoveHostsFromGroup(request *RemoveHostsFromGroupRequest)
 }
 
 /**
- * This parameter is deprecated.
+ * You can call this operation to remove one or more users from a user group. When users in a user group are transferred to a new position, resign, or are switched to another user group, you can call this operation to remove the users from the current user group at a time.
+ * ## QPS limit
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request RemoveUsersFromGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -17928,7 +18071,9 @@ func (client *Client) RemoveUsersFromGroupWithOptions(request *RemoveUsersFromGr
 }
 
 /**
- * This parameter is deprecated.
+ * You can call this operation to remove one or more users from a user group. When users in a user group are transferred to a new position, resign, or are switched to another user group, you can call this operation to remove the users from the current user group at a time.
+ * ## QPS limit
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request RemoveUsersFromGroupRequest
  * @return RemoveUsersFromGroupResponse
