@@ -2592,9 +2592,9 @@ func (s *CreateAlgorithmResponseBody) SetRequestId(v string) *CreateAlgorithmRes
 }
 
 type CreateAlgorithmResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAlgorithmResponse) String() string {
@@ -2678,9 +2678,9 @@ func (s *CreateAlgorithmVersionResponseBody) SetAlgorithmVersion(v string) *Crea
 }
 
 type CreateAlgorithmVersionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAlgorithmVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAlgorithmVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAlgorithmVersionResponse) String() string {
@@ -2802,9 +2802,9 @@ func (s *CreateQuotaResponseBody) SetRequestId(v string) *CreateQuotaResponseBod
 }
 
 type CreateQuotaResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateQuotaResponse) String() string {
@@ -2924,9 +2924,9 @@ func (s *CreateResourceGroupResponseBody) SetResourceGroupID(v string) *CreateRe
 }
 
 type CreateResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateResourceGroupResponse) String() string {
@@ -2959,6 +2959,7 @@ type CreateTrainingJobRequest struct {
 	AlgorithmVersion       *string                                    `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
 	CodeDir                *Location                                  `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
 	ComputeResource        *CreateTrainingJobRequestComputeResource   `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	ExperimentConfig       *CreateTrainingJobRequestExperimentConfig  `json:"ExperimentConfig,omitempty" xml:"ExperimentConfig,omitempty" type:"Struct"`
 	HyperParameters        []*CreateTrainingJobRequestHyperParameters `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
 	InputChannels          []*CreateTrainingJobRequestInputChannels   `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
 	Labels                 []*CreateTrainingJobRequestLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
@@ -3007,6 +3008,11 @@ func (s *CreateTrainingJobRequest) SetCodeDir(v *Location) *CreateTrainingJobReq
 
 func (s *CreateTrainingJobRequest) SetComputeResource(v *CreateTrainingJobRequestComputeResource) *CreateTrainingJobRequest {
 	s.ComputeResource = v
+	return s
+}
+
+func (s *CreateTrainingJobRequest) SetExperimentConfig(v *CreateTrainingJobRequestExperimentConfig) *CreateTrainingJobRequest {
+	s.ExperimentConfig = v
 	return s
 }
 
@@ -3144,6 +3150,23 @@ func (s *CreateTrainingJobRequestComputeResourceInstanceSpec) SetMemory(v string
 
 func (s *CreateTrainingJobRequestComputeResourceInstanceSpec) SetSharedMemory(v string) *CreateTrainingJobRequestComputeResourceInstanceSpec {
 	s.SharedMemory = &v
+	return s
+}
+
+type CreateTrainingJobRequestExperimentConfig struct {
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+}
+
+func (s CreateTrainingJobRequestExperimentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobRequestExperimentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobRequestExperimentConfig) SetExperimentId(v string) *CreateTrainingJobRequestExperimentConfig {
+	s.ExperimentId = &v
 	return s
 }
 
@@ -3368,9 +3391,9 @@ func (s *CreateTrainingJobResponseBody) SetTrainingJobId(v string) *CreateTraini
 }
 
 type CreateTrainingJobResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTrainingJobResponse) String() string {
@@ -3420,9 +3443,9 @@ func (s *DeleteMachineGroupResponseBody) SetRequestId(v string) *DeleteMachineGr
 }
 
 type DeleteMachineGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMachineGroupResponse) String() string {
@@ -3473,9 +3496,9 @@ func (s *DeleteQuotaResponseBody) SetRequestId(v string) *DeleteQuotaResponseBod
 }
 
 type DeleteQuotaResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteQuotaResponse) String() string {
@@ -3525,9 +3548,9 @@ func (s *DeleteResourceGroupResponseBody) SetResourceGroupID(v string) *DeleteRe
 }
 
 type DeleteResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteResourceGroupResponse) String() string {
@@ -3577,9 +3600,9 @@ func (s *DeleteResourceGroupMachineGroupResponseBody) SetRequestId(v string) *De
 }
 
 type DeleteResourceGroupMachineGroupResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteResourceGroupMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteResourceGroupMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteResourceGroupMachineGroupResponse) String() string {
@@ -3683,9 +3706,9 @@ func (s *GetAlgorithmResponseBody) SetWorkspaceId(v string) *GetAlgorithmRespons
 }
 
 type GetAlgorithmResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAlgorithmResponse) String() string {
@@ -3777,9 +3800,9 @@ func (s *GetAlgorithmVersionResponseBody) SetUserId(v string) *GetAlgorithmVersi
 }
 
 type GetAlgorithmVersionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAlgorithmVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAlgorithmVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAlgorithmVersionResponse) String() string {
@@ -3919,9 +3942,9 @@ func (s *GetMachineGroupResponseBody) SetSupportedDrivers(v []*string) *GetMachi
 }
 
 type GetMachineGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMachineGroupResponse) String() string {
@@ -4018,9 +4041,9 @@ func (s *GetNodeMetricsResponseBody) SetResourceGroupID(v string) *GetNodeMetric
 }
 
 type GetNodeMetricsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNodeMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNodeMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNodeMetricsResponse) String() string {
@@ -4191,9 +4214,9 @@ func (s *GetQuotaResponseBody) SetWorkspaces(v []*WorkspaceIdName) *GetQuotaResp
 }
 
 type GetQuotaResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQuotaResponse) String() string {
@@ -4407,9 +4430,9 @@ func (s *GetResourceGroupResponseBodyTags) SetTagValue(v string) *GetResourceGro
 }
 
 type GetResourceGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceGroupResponse) String() string {
@@ -4653,9 +4676,9 @@ func (s *GetResourceGroupMachineGroupResponseBodyTags) SetTagValue(v string) *Ge
 }
 
 type GetResourceGroupMachineGroupResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceGroupMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceGroupMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceGroupMachineGroupResponse) String() string {
@@ -4740,9 +4763,9 @@ func (s *GetResourceGroupRequestResponseBody) SetRequestMemory(v int32) *GetReso
 }
 
 type GetResourceGroupRequestResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceGroupRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceGroupRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceGroupRequestResponse) String() string {
@@ -4821,9 +4844,9 @@ func (s *GetResourceGroupTotalResponseBody) SetTotalMemory(v int32) *GetResource
 }
 
 type GetResourceGroupTotalResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceGroupTotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceGroupTotalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceGroupTotalResponse) String() string {
@@ -4856,6 +4879,7 @@ type GetTrainingJobResponseBody struct {
 	AlgorithmSpec          *AlgorithmSpec                                 `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
 	AlgorithmVersion       *string                                        `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
 	ComputeResource        *GetTrainingJobResponseBodyComputeResource     `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	ExperimentConfig       *GetTrainingJobResponseBodyExperimentConfig    `json:"ExperimentConfig,omitempty" xml:"ExperimentConfig,omitempty" type:"Struct"`
 	GmtCreateTime          *string                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime        *string                                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	HyperParameters        []*GetTrainingJobResponseBodyHyperParameters   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
@@ -4919,6 +4943,11 @@ func (s *GetTrainingJobResponseBody) SetAlgorithmVersion(v string) *GetTrainingJ
 
 func (s *GetTrainingJobResponseBody) SetComputeResource(v *GetTrainingJobResponseBodyComputeResource) *GetTrainingJobResponseBody {
 	s.ComputeResource = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetExperimentConfig(v *GetTrainingJobResponseBodyExperimentConfig) *GetTrainingJobResponseBody {
+	s.ExperimentConfig = v
 	return s
 }
 
@@ -5131,6 +5160,29 @@ func (s *GetTrainingJobResponseBodyComputeResourceInstanceSpec) SetMemory(v stri
 
 func (s *GetTrainingJobResponseBodyComputeResourceInstanceSpec) SetSharedMemory(v string) *GetTrainingJobResponseBodyComputeResourceInstanceSpec {
 	s.SharedMemory = &v
+	return s
+}
+
+type GetTrainingJobResponseBodyExperimentConfig struct {
+	ExperimentId   *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	ExperimentName *string `json:"ExperimentName,omitempty" xml:"ExperimentName,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodyExperimentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyExperimentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyExperimentConfig) SetExperimentId(v string) *GetTrainingJobResponseBodyExperimentConfig {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyExperimentConfig) SetExperimentName(v string) *GetTrainingJobResponseBodyExperimentConfig {
+	s.ExperimentName = &v
 	return s
 }
 
@@ -5517,9 +5569,9 @@ func (s *GetTrainingJobResponseBodyUserVpc) SetVpcId(v string) *GetTrainingJobRe
 }
 
 type GetTrainingJobResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTrainingJobResponse) String() string {
@@ -5634,9 +5686,9 @@ func (s *GetUserViewMetricsResponseBody) SetUserMetrics(v []*UserViewMetric) *Ge
 }
 
 type GetUserViewMetricsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserViewMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserViewMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserViewMetricsResponse) String() string {
@@ -5774,9 +5826,9 @@ func (s *ListAlgorithmVersionsResponseBodyAlgorithmVersions) SetUserId(v string)
 }
 
 type ListAlgorithmVersionsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAlgorithmVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAlgorithmVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAlgorithmVersionsResponse) String() string {
@@ -5944,9 +5996,9 @@ func (s *ListAlgorithmsResponseBodyAlgorithms) SetWorkspaceId(v string) *ListAlg
 }
 
 type ListAlgorithmsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAlgorithmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAlgorithmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAlgorithmsResponse) String() string {
@@ -6079,9 +6131,9 @@ func (s *ListQuotasResponseBody) SetRequestId(v string) *ListQuotasResponseBody 
 }
 
 type ListQuotasResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListQuotasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListQuotasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListQuotasResponse) String() string {
@@ -6214,9 +6266,9 @@ func (s *ListResourceGroupMachineGroupsResponseBody) SetTotalCount(v string) *Li
 }
 
 type ListResourceGroupMachineGroupsResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceGroupMachineGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceGroupMachineGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceGroupMachineGroupsResponse) String() string {
@@ -6337,9 +6389,9 @@ func (s *ListResourceGroupsResponseBody) SetTotalCount(v int64) *ListResourceGro
 }
 
 type ListResourceGroupsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceGroupsResponse) String() string {
@@ -6442,9 +6494,9 @@ func (s *ListTrainingJobLogsResponseBody) SetTotalCount(v string) *ListTrainingJ
 }
 
 type ListTrainingJobLogsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTrainingJobLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTrainingJobLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTrainingJobLogsResponse) String() string {
@@ -6570,9 +6622,9 @@ func (s *ListTrainingJobMetricsResponseBodyMetrics) SetValue(v float64) *ListTra
 }
 
 type ListTrainingJobMetricsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTrainingJobMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTrainingJobMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTrainingJobMetricsResponse) String() string {
@@ -6822,6 +6874,7 @@ type ListTrainingJobsResponseBodyTrainingJobs struct {
 	AlgorithmProvider      *string                                                      `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
 	AlgorithmVersion       *string                                                      `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
 	ComputeResource        *ListTrainingJobsResponseBodyTrainingJobsComputeResource     `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	ExperimentConfig       *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig    `json:"ExperimentConfig,omitempty" xml:"ExperimentConfig,omitempty" type:"Struct"`
 	GmtCreateTime          *string                                                      `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime        *string                                                      `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	HyperParameters        []*ListTrainingJobsResponseBodyTrainingJobsHyperParameters   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
@@ -6868,6 +6921,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAlgorithmVersion(v string)
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) SetComputeResource(v *ListTrainingJobsResponseBodyTrainingJobsComputeResource) *ListTrainingJobsResponseBodyTrainingJobs {
 	s.ComputeResource = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetExperimentConfig(v *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.ExperimentConfig = v
 	return s
 }
 
@@ -7045,6 +7103,29 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) Se
 
 func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) SetSharedMemory(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec {
 	s.SharedMemory = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsExperimentConfig struct {
+	ExperimentId   *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	ExperimentName *string `json:"ExperimentName,omitempty" xml:"ExperimentName,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsExperimentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsExperimentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig) SetExperimentId(v string) *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig) SetExperimentName(v string) *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig {
+	s.ExperimentName = &v
 	return s
 }
 
@@ -7252,9 +7333,9 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsUserVpc) SetVpcId(v string) *Li
 }
 
 type ListTrainingJobsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTrainingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTrainingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTrainingJobsResponse) String() string {
@@ -7328,9 +7409,9 @@ func (s *ScaleQuotaResponseBody) SetRequestId(v string) *ScaleQuotaResponseBody 
 }
 
 type ScaleQuotaResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ScaleQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ScaleQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ScaleQuotaResponse) String() string {
@@ -7374,9 +7455,9 @@ func (s *StopTrainingJobResponseBody) SetRequestId(v string) *StopTrainingJobRes
 }
 
 type StopTrainingJobResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopTrainingJobResponse) String() string {
@@ -7449,9 +7530,9 @@ func (s *UpdateAlgorithmResponseBody) SetRequestId(v string) *UpdateAlgorithmRes
 }
 
 type UpdateAlgorithmResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAlgorithmResponse) String() string {
@@ -7535,9 +7616,9 @@ func (s *UpdateAlgorithmVersionResponseBody) SetAlgorithmVersion(v string) *Upda
 }
 
 type UpdateAlgorithmVersionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAlgorithmVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAlgorithmVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAlgorithmVersionResponse) String() string {
@@ -7617,9 +7698,9 @@ func (s *UpdateQuotaResponseBody) SetRequestId(v string) *UpdateQuotaResponseBod
 }
 
 type UpdateQuotaResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateQuotaResponse) String() string {
@@ -7704,9 +7785,9 @@ func (s *UpdateResourceGroupResponseBody) SetRequestId(v string) *UpdateResource
 }
 
 type UpdateResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateResourceGroupResponse) String() string {
@@ -7790,9 +7871,9 @@ func (s *UpdateTrainingJobLabelsResponseBody) SetRequestId(v string) *UpdateTrai
 }
 
 type UpdateTrainingJobLabelsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTrainingJobLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTrainingJobLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTrainingJobLabelsResponse) String() string {
@@ -8169,6 +8250,10 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 
 	if !tea.BoolValue(util.IsUnset(request.ComputeResource)) {
 		body["ComputeResource"] = request.ComputeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentConfig)) {
+		body["ExperimentConfig"] = request.ExperimentConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HyperParameters)) {
