@@ -1448,7 +1448,8 @@ type CreateDataFlowRequest struct {
 	// *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the file system.
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemId   *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemPath *string `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
 	// The fileset ID.
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
 	// The type of security mechanism for the source storage. This parameter must be specified if the source storage is accessed with a security mechanism. Valid values:
@@ -1470,7 +1471,8 @@ type CreateDataFlowRequest struct {
 	//     *   The name cannot start with `http://` or `https://`.
 	//
 	// >  The OSS bucket must be an existing bucket in the region.
-	SourceStorage *string `json:"SourceStorage,omitempty" xml:"SourceStorage,omitempty"`
+	SourceStorage     *string `json:"SourceStorage,omitempty" xml:"SourceStorage,omitempty"`
+	SourceStoragePath *string `json:"SourceStoragePath,omitempty" xml:"SourceStoragePath,omitempty"`
 	// The maximum dataflow throughput. Unit: MB/s. Valid values:
 	//
 	// *   600
@@ -1524,6 +1526,11 @@ func (s *CreateDataFlowRequest) SetFileSystemId(v string) *CreateDataFlowRequest
 	return s
 }
 
+func (s *CreateDataFlowRequest) SetFileSystemPath(v string) *CreateDataFlowRequest {
+	s.FileSystemPath = &v
+	return s
+}
+
 func (s *CreateDataFlowRequest) SetFsetId(v string) *CreateDataFlowRequest {
 	s.FsetId = &v
 	return s
@@ -1536,6 +1543,11 @@ func (s *CreateDataFlowRequest) SetSourceSecurityType(v string) *CreateDataFlowR
 
 func (s *CreateDataFlowRequest) SetSourceStorage(v string) *CreateDataFlowRequest {
 	s.SourceStorage = &v
+	return s
+}
+
+func (s *CreateDataFlowRequest) SetSourceStoragePath(v string) *CreateDataFlowRequest {
+	s.SourceStoragePath = &v
 	return s
 }
 
@@ -1631,7 +1643,8 @@ type CreateDataFlowTaskRequest struct {
 	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
 	//
 	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConflictPolicy *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
 	// The dataflow ID.
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
 	// The type of data on which operations are performed by the dataflow task.
@@ -1694,6 +1707,11 @@ func (s CreateDataFlowTaskRequest) GoString() string {
 
 func (s *CreateDataFlowTaskRequest) SetClientToken(v string) *CreateDataFlowTaskRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDataFlowTaskRequest) SetConflictPolicy(v string) *CreateDataFlowTaskRequest {
+	s.ConflictPolicy = &v
 	return s
 }
 
@@ -5592,6 +5610,7 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfo) SetTask(v []*DescribeDataFlo
 }
 
 type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
+	ConflictPolicy *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
 	// The time when the task was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
@@ -5600,7 +5619,8 @@ type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
 	// *   null null
 	// *   null
 	// *   null
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The time when the task ended.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// *
@@ -5668,6 +5688,11 @@ func (s DescribeDataFlowTasksResponseBodyTaskInfoTask) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetConflictPolicy(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
+	s.ConflictPolicy = &v
+	return s
+}
+
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetCreateTime(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
 	s.CreateTime = &v
 	return s
@@ -5680,6 +5705,11 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetDataFlowId(v string) 
 
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetDataType(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
 	s.DataType = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetDirectory(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
+	s.Directory = &v
 	return s
 }
 
@@ -5970,6 +6000,8 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	//
 	// >  The OSS bucket must be an existing bucket in the region.
 	SourceStorage *string `json:"SourceStorage,omitempty" xml:"SourceStorage,omitempty"`
+	// 源端存储内的访问路径。
+	SourceStoragePath *string `json:"SourceStoragePath,omitempty" xml:"SourceStoragePath,omitempty"`
 	// The dataflow status. Valid values:
 	//
 	// *   Starting: The dataflow is being created or enabled.
@@ -6064,6 +6096,11 @@ func (s *DescribeDataFlowsResponseBodyDataFlowInfoDataFlow) SetSourceSecurityTyp
 
 func (s *DescribeDataFlowsResponseBodyDataFlowInfoDataFlow) SetSourceStorage(v string) *DescribeDataFlowsResponseBodyDataFlowInfoDataFlow {
 	s.SourceStorage = &v
+	return s
+}
+
+func (s *DescribeDataFlowsResponseBodyDataFlowInfoDataFlow) SetSourceStoragePath(v string) *DescribeDataFlowsResponseBodyDataFlowInfoDataFlow {
+	s.SourceStoragePath = &v
 	return s
 }
 
@@ -15925,6 +15962,10 @@ func (client *Client) CreateDataFlowWithOptions(request *CreateDataFlowRequest, 
 		query["FileSystemId"] = request.FileSystemId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FileSystemPath)) {
+		query["FileSystemPath"] = request.FileSystemPath
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FsetId)) {
 		query["FsetId"] = request.FsetId
 	}
@@ -15935,6 +15976,10 @@ func (client *Client) CreateDataFlowWithOptions(request *CreateDataFlowRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SourceStorage)) {
 		query["SourceStorage"] = request.SourceStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceStoragePath)) {
+		query["SourceStoragePath"] = request.SourceStoragePath
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Throughput)) {
@@ -16034,6 +16079,10 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConflictPolicy)) {
+		query["ConflictPolicy"] = request.ConflictPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DataFlowId)) {
