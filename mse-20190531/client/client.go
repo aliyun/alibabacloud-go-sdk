@@ -7772,6 +7772,194 @@ func (s *CreateFlowRuleResponse) SetBody(v *CreateFlowRuleResponseBody) *CreateF
 	return s
 }
 
+type CreateIsolationRuleRequest struct {
+	AcceptLanguage *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Enable         *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Namespace      *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId       *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resource       *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Threshold      *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s CreateIsolationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIsolationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIsolationRuleRequest) SetAcceptLanguage(v string) *CreateIsolationRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateIsolationRuleRequest) SetAppId(v string) *CreateIsolationRuleRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateIsolationRuleRequest) SetAppName(v string) *CreateIsolationRuleRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateIsolationRuleRequest) SetEnable(v bool) *CreateIsolationRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateIsolationRuleRequest) SetNamespace(v string) *CreateIsolationRuleRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateIsolationRuleRequest) SetRegionId(v string) *CreateIsolationRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateIsolationRuleRequest) SetResource(v string) *CreateIsolationRuleRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *CreateIsolationRuleRequest) SetThreshold(v float32) *CreateIsolationRuleRequest {
+	s.Threshold = &v
+	return s
+}
+
+type CreateIsolationRuleResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateIsolationRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateIsolationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIsolationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIsolationRuleResponseBody) SetCode(v string) *CreateIsolationRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBody) SetData(v *CreateIsolationRuleResponseBodyData) *CreateIsolationRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBody) SetMessage(v string) *CreateIsolationRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBody) SetRequestId(v string) *CreateIsolationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBody) SetSuccess(v bool) *CreateIsolationRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateIsolationRuleResponseBodyData struct {
+	AppId     *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName   *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Enable    *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Id        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Namespace *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId  *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resource  *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s CreateIsolationRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIsolationRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetAppId(v string) *CreateIsolationRuleResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetAppName(v string) *CreateIsolationRuleResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetEnable(v bool) *CreateIsolationRuleResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetId(v int64) *CreateIsolationRuleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetNamespace(v string) *CreateIsolationRuleResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetRegionId(v string) *CreateIsolationRuleResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetResource(v string) *CreateIsolationRuleResponseBodyData {
+	s.Resource = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponseBodyData) SetThreshold(v float32) *CreateIsolationRuleResponseBodyData {
+	s.Threshold = &v
+	return s
+}
+
+type CreateIsolationRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateIsolationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIsolationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIsolationRuleResponse) SetHeaders(v map[string]*string) *CreateIsolationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIsolationRuleResponse) SetStatusCode(v int32) *CreateIsolationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIsolationRuleResponse) SetBody(v *CreateIsolationRuleResponseBody) *CreateIsolationRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMseServiceApplicationRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -11926,6 +12114,152 @@ func (s *DeleteGatewaySlbResponse) SetBody(v *DeleteGatewaySlbResponseBody) *Del
 	return s
 }
 
+type DeleteIsolationRulesRequest struct {
+	AcceptLanguage *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppName        *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Ids            []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	Namespace      *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DeleteIsolationRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIsolationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIsolationRulesRequest) SetAcceptLanguage(v string) *DeleteIsolationRulesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesRequest) SetAppName(v string) *DeleteIsolationRulesRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesRequest) SetIds(v []*int64) *DeleteIsolationRulesRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *DeleteIsolationRulesRequest) SetNamespace(v string) *DeleteIsolationRulesRequest {
+	s.Namespace = &v
+	return s
+}
+
+type DeleteIsolationRulesShrinkRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	IdsShrink      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DeleteIsolationRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIsolationRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIsolationRulesShrinkRequest) SetAcceptLanguage(v string) *DeleteIsolationRulesShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesShrinkRequest) SetAppName(v string) *DeleteIsolationRulesShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesShrinkRequest) SetIdsShrink(v string) *DeleteIsolationRulesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesShrinkRequest) SetNamespace(v string) *DeleteIsolationRulesShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+type DeleteIsolationRulesResponseBody struct {
+	Code           *int32   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteIsolationRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIsolationRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIsolationRulesResponseBody) SetCode(v int32) *DeleteIsolationRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesResponseBody) SetData(v []*int64) *DeleteIsolationRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteIsolationRulesResponseBody) SetHttpStatusCode(v int32) *DeleteIsolationRulesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesResponseBody) SetMessage(v string) *DeleteIsolationRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesResponseBody) SetRequestId(v string) *DeleteIsolationRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesResponseBody) SetSuccess(v bool) *DeleteIsolationRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteIsolationRulesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIsolationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIsolationRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIsolationRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIsolationRulesResponse) SetHeaders(v map[string]*string) *DeleteIsolationRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIsolationRulesResponse) SetStatusCode(v int32) *DeleteIsolationRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIsolationRulesResponse) SetBody(v *DeleteIsolationRulesResponseBody) *DeleteIsolationRulesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteMigrationTaskRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -13647,12 +13981,12 @@ type ExportZookeeperDataRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The type of the object that you want to export. Valid values:
+	// The type of the object that is exported. Valid values:
 	//
 	// *   transactionLog: transaction logs
 	// *   snapshot: snapshots
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -32848,6 +33182,241 @@ func (s *ListInstanceCountResponse) SetBody(v *ListInstanceCountResponseBody) *L
 	return s
 }
 
+type ListIsolationRulesRequest struct {
+	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageIndex         *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Resource          *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceSearchKey *string `json:"ResourceSearchKey,omitempty" xml:"ResourceSearchKey,omitempty"`
+}
+
+func (s ListIsolationRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIsolationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIsolationRulesRequest) SetAcceptLanguage(v string) *ListIsolationRulesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListIsolationRulesRequest) SetAppId(v string) *ListIsolationRulesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListIsolationRulesRequest) SetAppName(v string) *ListIsolationRulesRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListIsolationRulesRequest) SetNamespace(v string) *ListIsolationRulesRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListIsolationRulesRequest) SetPageIndex(v int32) *ListIsolationRulesRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListIsolationRulesRequest) SetPageSize(v int32) *ListIsolationRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIsolationRulesRequest) SetResource(v string) *ListIsolationRulesRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *ListIsolationRulesRequest) SetResourceSearchKey(v string) *ListIsolationRulesRequest {
+	s.ResourceSearchKey = &v
+	return s
+}
+
+type ListIsolationRulesResponseBody struct {
+	Code           *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListIsolationRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListIsolationRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIsolationRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIsolationRulesResponseBody) SetCode(v int32) *ListIsolationRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBody) SetData(v *ListIsolationRulesResponseBodyData) *ListIsolationRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBody) SetHttpStatusCode(v int32) *ListIsolationRulesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBody) SetMessage(v string) *ListIsolationRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBody) SetRequestId(v string) *ListIsolationRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBody) SetSuccess(v bool) *ListIsolationRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListIsolationRulesResponseBodyData struct {
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*ListIsolationRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int32                                      `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListIsolationRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIsolationRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIsolationRulesResponseBodyData) SetPageNumber(v int32) *ListIsolationRulesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyData) SetPageSize(v int32) *ListIsolationRulesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyData) SetResult(v []*ListIsolationRulesResponseBodyDataResult) *ListIsolationRulesResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyData) SetTotalSize(v int32) *ListIsolationRulesResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListIsolationRulesResponseBodyDataResult struct {
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Enable         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	RuleId         *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Threshold      *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s ListIsolationRulesResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIsolationRulesResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetAppId(v string) *ListIsolationRulesResponseBodyDataResult {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetAppName(v string) *ListIsolationRulesResponseBodyDataResult {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetEnable(v bool) *ListIsolationRulesResponseBodyDataResult {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetFallbackObject(v string) *ListIsolationRulesResponseBodyDataResult {
+	s.FallbackObject = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetNamespace(v string) *ListIsolationRulesResponseBodyDataResult {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetRegionId(v string) *ListIsolationRulesResponseBodyDataResult {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetResource(v string) *ListIsolationRulesResponseBodyDataResult {
+	s.Resource = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetRuleId(v int64) *ListIsolationRulesResponseBodyDataResult {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponseBodyDataResult) SetThreshold(v int32) *ListIsolationRulesResponseBodyDataResult {
+	s.Threshold = &v
+	return s
+}
+
+type ListIsolationRulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIsolationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIsolationRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIsolationRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIsolationRulesResponse) SetHeaders(v map[string]*string) *ListIsolationRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIsolationRulesResponse) SetStatusCode(v int32) *ListIsolationRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIsolationRulesResponse) SetBody(v *ListIsolationRulesResponseBody) *ListIsolationRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListListenersByConfigRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -48659,6 +49228,182 @@ func (s *UpdateImageResponse) SetBody(v *UpdateImageResponseBody) *UpdateImageRe
 	return s
 }
 
+type UpdateIsolationRuleRequest struct {
+	AcceptLanguage *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Enable         *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Namespace      *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RuleId         *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Threshold      *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s UpdateIsolationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIsolationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIsolationRuleRequest) SetAcceptLanguage(v string) *UpdateIsolationRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleRequest) SetAppId(v string) *UpdateIsolationRuleRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleRequest) SetAppName(v string) *UpdateIsolationRuleRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleRequest) SetEnable(v bool) *UpdateIsolationRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleRequest) SetNamespace(v string) *UpdateIsolationRuleRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleRequest) SetRuleId(v int64) *UpdateIsolationRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleRequest) SetThreshold(v float32) *UpdateIsolationRuleRequest {
+	s.Threshold = &v
+	return s
+}
+
+type UpdateIsolationRuleResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateIsolationRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateIsolationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIsolationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIsolationRuleResponseBody) SetCode(v string) *UpdateIsolationRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBody) SetData(v *UpdateIsolationRuleResponseBodyData) *UpdateIsolationRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBody) SetMessage(v string) *UpdateIsolationRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBody) SetRequestId(v string) *UpdateIsolationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBody) SetSuccess(v bool) *UpdateIsolationRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateIsolationRuleResponseBodyData struct {
+	AppId     *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName   *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Enable    *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Id        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Namespace *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Resource  *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s UpdateIsolationRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIsolationRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIsolationRuleResponseBodyData) SetAppId(v string) *UpdateIsolationRuleResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBodyData) SetAppName(v string) *UpdateIsolationRuleResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBodyData) SetEnable(v bool) *UpdateIsolationRuleResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBodyData) SetId(v int64) *UpdateIsolationRuleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBodyData) SetNamespace(v string) *UpdateIsolationRuleResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBodyData) SetResource(v string) *UpdateIsolationRuleResponseBodyData {
+	s.Resource = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponseBodyData) SetThreshold(v float32) *UpdateIsolationRuleResponseBodyData {
+	s.Threshold = &v
+	return s
+}
+
+type UpdateIsolationRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateIsolationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIsolationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIsolationRuleResponse) SetHeaders(v map[string]*string) *UpdateIsolationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponse) SetStatusCode(v int32) *UpdateIsolationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIsolationRuleResponse) SetBody(v *UpdateIsolationRuleResponseBody) *UpdateIsolationRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMessageQueueRouteRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -52769,6 +53514,78 @@ func (client *Client) CreateFlowRule(request *CreateFlowRuleRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateIsolationRuleWithOptions(request *CreateIsolationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateIsolationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIsolationRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIsolationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIsolationRule(request *CreateIsolationRuleRequest) (_result *CreateIsolationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIsolationRuleResponse{}
+	_body, _err := client.CreateIsolationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * @deprecated : CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
  *
@@ -54094,6 +54911,68 @@ func (client *Client) DeleteGatewaySlb(request *DeleteGatewaySlbRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGatewaySlbResponse{}
 	_body, _err := client.DeleteGatewaySlbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteIsolationRulesWithOptions(tmpReq *DeleteIsolationRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteIsolationRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteIsolationRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		query["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIsolationRules"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIsolationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteIsolationRules(request *DeleteIsolationRulesRequest) (_result *DeleteIsolationRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIsolationRulesResponse{}
+	_body, _err := client.DeleteIsolationRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58862,6 +59741,78 @@ func (client *Client) ListInstanceCount(request *ListInstanceCountRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListIsolationRulesWithOptions(request *ListIsolationRulesRequest, runtime *util.RuntimeOptions) (_result *ListIsolationRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSearchKey)) {
+		query["ResourceSearchKey"] = request.ResourceSearchKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIsolationRules"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIsolationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIsolationRules(request *ListIsolationRulesRequest) (_result *ListIsolationRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIsolationRulesResponse{}
+	_body, _err := client.ListIsolationRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
  *
@@ -63449,6 +64400,74 @@ func (client *Client) UpdateImage(request *UpdateImageRequest) (_result *UpdateI
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateImageResponse{}
 	_body, _err := client.UpdateImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateIsolationRuleWithOptions(request *UpdateIsolationRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateIsolationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIsolationRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIsolationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIsolationRule(request *UpdateIsolationRuleRequest) (_result *UpdateIsolationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIsolationRuleResponse{}
+	_body, _err := client.UpdateIsolationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
