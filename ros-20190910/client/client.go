@@ -6654,7 +6654,8 @@ type GetStackResponseBody struct {
 	// The ID of the resource group to which the instances belong.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The creation progress of resources.
-	ResourceProgress *GetStackResponseBodyResourceProgress `json:"ResourceProgress,omitempty" xml:"ResourceProgress,omitempty" type:"Struct"`
+	ResourceProgress         *GetStackResponseBodyResourceProgress `json:"ResourceProgress,omitempty" xml:"ResourceProgress,omitempty" type:"Struct"`
+	RollbackFailedRootReason *string                               `json:"RollbackFailedRootReason,omitempty" xml:"RollbackFailedRootReason,omitempty"`
 	// The ID of the root stack. This parameter is returned if the specified stack is a nested stack.
 	RootStackId *string `json:"RootStackId,omitempty" xml:"RootStackId,omitempty"`
 	// Indicates whether the stack is a managed stack. Valid values:
@@ -6845,6 +6846,11 @@ func (s *GetStackResponseBody) SetResourceGroupId(v string) *GetStackResponseBod
 
 func (s *GetStackResponseBody) SetResourceProgress(v *GetStackResponseBodyResourceProgress) *GetStackResponseBody {
 	s.ResourceProgress = v
+	return s
+}
+
+func (s *GetStackResponseBody) SetRollbackFailedRootReason(v string) *GetStackResponseBody {
+	s.RollbackFailedRootReason = &v
 	return s
 }
 
