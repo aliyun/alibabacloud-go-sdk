@@ -1502,6 +1502,7 @@ type ListDigitalHumanMaterialsResponseBodyData struct {
 	Files      map[string]interface{}                                 `json:"Files,omitempty" xml:"Files,omitempty"`
 	Id         *string                                                `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name       *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	SortOrder  *int32                                                 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	Type       *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1540,6 +1541,11 @@ func (s *ListDigitalHumanMaterialsResponseBodyData) SetId(v string) *ListDigital
 
 func (s *ListDigitalHumanMaterialsResponseBodyData) SetName(v string) *ListDigitalHumanMaterialsResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *ListDigitalHumanMaterialsResponseBodyData) SetSortOrder(v int32) *ListDigitalHumanMaterialsResponseBodyData {
+	s.SortOrder = &v
 	return s
 }
 
