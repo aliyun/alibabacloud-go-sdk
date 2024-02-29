@@ -9134,7 +9134,11 @@ func (s *DescribeDBClusterParametersResponseBodyParameters) SetParameters(v []*D
 
 type DescribeDBClusterParametersResponseBodyParametersParameters struct {
 	// Indicates whether the source parameters and current parameters have the same value.
-	IsEqual *string `json:"IsEqual,omitempty" xml:"IsEqual,omitempty"`
+	IsEqual              *string `json:"IsEqual,omitempty" xml:"IsEqual,omitempty"`
+	IsInstancePolarDBKey *string `json:"IsInstancePolarDBKey,omitempty" xml:"IsInstancePolarDBKey,omitempty"`
+	IsInstanceRdsKey     *string `json:"IsInstanceRdsKey,omitempty" xml:"IsInstanceRdsKey,omitempty"`
+	IsPolarDBKey         *string `json:"IsPolarDBKey,omitempty" xml:"IsPolarDBKey,omitempty"`
+	IsRdsKey             *string `json:"IsRdsKey,omitempty" xml:"IsRdsKey,omitempty"`
 	// The description of the parameter of the current cluster.
 	DistParameterDescription *string `json:"distParameterDescription,omitempty" xml:"distParameterDescription,omitempty"`
 	// The name of the parameter of the current cluster.
@@ -9163,6 +9167,26 @@ func (s DescribeDBClusterParametersResponseBodyParametersParameters) GoString() 
 
 func (s *DescribeDBClusterParametersResponseBodyParametersParameters) SetIsEqual(v string) *DescribeDBClusterParametersResponseBodyParametersParameters {
 	s.IsEqual = &v
+	return s
+}
+
+func (s *DescribeDBClusterParametersResponseBodyParametersParameters) SetIsInstancePolarDBKey(v string) *DescribeDBClusterParametersResponseBodyParametersParameters {
+	s.IsInstancePolarDBKey = &v
+	return s
+}
+
+func (s *DescribeDBClusterParametersResponseBodyParametersParameters) SetIsInstanceRdsKey(v string) *DescribeDBClusterParametersResponseBodyParametersParameters {
+	s.IsInstanceRdsKey = &v
+	return s
+}
+
+func (s *DescribeDBClusterParametersResponseBodyParametersParameters) SetIsPolarDBKey(v string) *DescribeDBClusterParametersResponseBodyParametersParameters {
+	s.IsPolarDBKey = &v
+	return s
+}
+
+func (s *DescribeDBClusterParametersResponseBodyParametersParameters) SetIsRdsKey(v string) *DescribeDBClusterParametersResponseBodyParametersParameters {
+	s.IsRdsKey = &v
 	return s
 }
 
@@ -9367,7 +9391,8 @@ type DescribeDBClusterPerformanceRequest struct {
 	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
 	//
 	// >  You can specify a maximum of five performance metrics.
@@ -9391,6 +9416,11 @@ func (s *DescribeDBClusterPerformanceRequest) SetDBClusterId(v string) *Describe
 
 func (s *DescribeDBClusterPerformanceRequest) SetEndTime(v string) *DescribeDBClusterPerformanceRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterPerformanceRequest) SetInterval(v string) *DescribeDBClusterPerformanceRequest {
+	s.Interval = &v
 	return s
 }
 
@@ -29629,6 +29659,10 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Key)) {
