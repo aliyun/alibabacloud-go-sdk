@@ -284,6 +284,7 @@ func (s *AddDnsCacheDomainResponse) SetBody(v *AddDnsCacheDomainResponseBody) *A
 }
 
 type AddDnsGtmAccessStrategyRequest struct {
+	// The address pools in the primary address pool set.
 	DefaultAddrPool []*AddDnsGtmAccessStrategyRequestDefaultAddrPool `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
 	// The type of the primary address pool. Valid values:
 	//
@@ -291,51 +292,52 @@ type AddDnsGtmAccessStrategyRequest struct {
 	// *   IPV6
 	// *   DOMAIN
 	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values:
+	// Specifies whether to enable DNS resolution with optimal latency for the primary address pool set. Valid values:
 	//
-	// *   OPEN: enable
-	// *   CLOSE: disable
+	// *   OPEN
+	// *   CLOSE
 	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	// The load balancing policy of the primary address pool group. Valid values:
+	// The load balancing policy of the primary address pool set. Valid values:
 	//
 	// *   ALL_RR: returns all addresses.
 	// *   RATIO: returns addresses by weight.
 	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the primary address pool group.
+	// The maximum number of addresses returned from the primary address pool set.
 	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
-	// The minimum number of available addresses in the primary address pool group.
-	DefaultMinAvailableAddrNum *int32                                            `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	FailoverAddrPool           []*AddDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
+	// The minimum number of available addresses in the primary address pool set.
+	DefaultMinAvailableAddrNum *int32 `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
+	// The address pools in the secondary address pool set. If no address pool exists in the secondary address pool set, set this parameter to EMPTY.
+	FailoverAddrPool []*AddDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
 	// The type of the secondary address pool. Valid values:
 	//
 	// *   IPV4
 	// *   IPV6
 	// *   DOMAIN
 	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values:
+	// Specifies whether to enable DNS resolution with optimal latency for the secondary address pool set. Valid values:
 	//
-	// *   OPEN: enable
-	// *   CLOSE: disable
+	// *   OPEN
+	// *   CLOSE
 	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	// The load balancing policy of the secondary address pool group. Valid values:
+	// The load balancing policy of the secondary address pool set. Valid values:
 	//
 	// *   ALL_RR: returns all addresses.
 	// *   RATIO: returns addresses by weight.
 	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the secondary address pool group.
+	// The maximum number of addresses returned from the secondary address pool set.
 	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
-	// The minimum number of available addresses in the secondary address pool group.
+	// The minimum number of available addresses in the secondary address pool set.
 	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The line codes of source regions. For example: `["default", "drpeng"]` indicates Global and Dr. Peng Telecom & Media Group.
+	// The Domain Name System (DNS) request source. For example: `["default", "drpeng"]` indicates Global and Dr. Peng Group.
 	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
 	// The type of the access policy. Valid values:
 	//
-	// *   GEO: geographical location-based
-	// *   LATENCY: latency-based
+	// *   GEO: geographical location-based access policy
+	// *   LATENCY: latency-based access policy
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
 	// The name of the access policy.
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
@@ -435,9 +437,9 @@ func (s *AddDnsGtmAccessStrategyRequest) SetStrategyName(v string) *AddDnsGtmAcc
 }
 
 type AddDnsGtmAccessStrategyRequestDefaultAddrPool struct {
-	// The ID of the address pool in the primary address pool group.
+	// The ID of the address pool in the primary address pool set.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool in the primary address pool group.
+	// The weight of the address pool in the primary address pool set.
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
@@ -460,9 +462,9 @@ func (s *AddDnsGtmAccessStrategyRequestDefaultAddrPool) SetLbaWeight(v int32) *A
 }
 
 type AddDnsGtmAccessStrategyRequestFailoverAddrPool struct {
-	// The ID of the address pool in the secondary address pool group.
+	// The ID of the address pool in the secondary address pool set.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool in the secondary address pool group.
+	// The weight of the address pool in the secondary address pool set.
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
@@ -485,7 +487,7 @@ func (s *AddDnsGtmAccessStrategyRequestFailoverAddrPool) SetLbaWeight(v int32) *
 }
 
 type AddDnsGtmAccessStrategyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
@@ -1047,11 +1049,11 @@ func (s *AddDnsGtmMonitorResponse) SetBody(v *AddDnsGtmMonitorResponseBody) *Add
 }
 
 type AddDomainRequest struct {
-	// The domain name to be added.
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the domain name group. The default value is the ID of the default domain name group.
+	// The ID of the group to which the domain name will belong. The default value is the ID of the default group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language of the domain name.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -1086,7 +1088,7 @@ func (s *AddDomainRequest) SetResourceGroupId(v string) *AddDomainRequest {
 }
 
 type AddDomainResponseBody struct {
-	// The Domain Name System (DNS) servers that resolve the domain name.
+	// The Domain Name System (DNS) servers configured for the domain name.
 	DnsServers *AddDomainResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
 	// The ID of the domain name.
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
@@ -1098,7 +1100,7 @@ type AddDomainResponseBody struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
 	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1192,7 +1194,7 @@ func (s *AddDomainResponse) SetBody(v *AddDomainResponseBody) *AddDomainResponse
 }
 
 type AddDomainBackupRequest struct {
-	// The domain name for which you want to create a backup task.
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -1231,7 +1233,7 @@ type AddDomainBackupResponseBody struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The backup cycle.
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1288,9 +1290,9 @@ func (s *AddDomainBackupResponse) SetBody(v *AddDomainBackupResponseBody) *AddDo
 }
 
 type AddDomainGroupRequest struct {
-	// The ID of the request.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The name of the domain name group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -1313,10 +1315,11 @@ func (s *AddDomainGroupRequest) SetLang(v string) *AddDomainGroupRequest {
 }
 
 type AddDomainGroupResponseBody struct {
-	// The name of the domain name group.
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the domain name group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1375,27 +1378,31 @@ func (s *AddDomainGroupResponse) SetBody(v *AddDomainGroupResponseBody) *AddDoma
 type AddDomainRecordRequest struct {
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The resolution line. Default value: **default**.
+	// The DNS resolution line. Default value: **default**. For more information, see
+	//
+	// [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The priority of an MX-type DNS record. Valid values: `[1,50]`.
+	// The priority of the mail exchanger (MX) record. Valid values: `1 to 50`.
 	//
 	// This parameter must be specified if the type of the DNS record is MX. A smaller value indicates a higher priority.
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The host record.
+	// The hostname.
 	//
-	// For example, to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it blank.
+	// For example, if you want to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it empty.
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The TTL of the resolution. Default value: 600. Unit: seconds.
-	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	// The type of the DNS record. DNS record types
+	// The time-to-live (TTL) of the DNS record. Default value: 600. Unit: seconds. For more information, see
 	//
-	// [dns records types](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-record-types)
+	// [TTL definition](https://www.alibabacloud.com/help/zh/doc-detail/29806.htm).
+	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The type of the DNS record. For more information, see
+	//
+	// [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The value of the DNS record.
+	// The record value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1455,7 +1462,7 @@ func (s *AddDomainRecordRequest) SetValue(v string) *AddDomainRecordRequest {
 type AddDomainRecordResponseBody struct {
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2140,13 +2147,13 @@ func (s *AddGtmRecoveryPlanResponse) SetBody(v *AddGtmRecoveryPlanResponseBody) 
 }
 
 type BindInstanceDomainsRequest struct {
-	// The list of domain names.
+	// The domain names.
 	//
-	// >  Separate multiple domain names with commas (,). A maximum of 100 domain names can be entered.
+	// >  Separate multiple domain names with commas (,). Up to 100 domain names can be entered.
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -2174,11 +2181,11 @@ func (s *BindInstanceDomainsRequest) SetLang(v string) *BindInstanceDomainsReque
 }
 
 type BindInstanceDomainsResponseBody struct {
-	// The number of domain names that failed to be bound.
+	// The number of domain names that failed to be bound to the instance.
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of domain names that have been bound.
+	// The number of domain names that are bound to the instance.
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 }
 
@@ -2237,9 +2244,14 @@ func (s *BindInstanceDomainsResponse) SetBody(v *BindInstanceDomainsResponseBody
 type ChangeDomainGroupRequest struct {
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the target domain name group.
+	// The ID of the destination domain name group.
+	//
+	// *   If you do not specify GroupId, the domain name is moved to the default group.
+	// *   If you set GroupId to an empty string, the domain name is moved to the default group.
+	// *   If you set GroupId to defaultGroup, the domain name is moved to the default group.
+	// *   If you do not set GroupId to one of the preceding values and set GroupId to an existing group ID, the domain name is moved to the existing group. If you set GroupId to a group ID that does not exist, the domain name remains in the original group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -2267,11 +2279,11 @@ func (s *ChangeDomainGroupRequest) SetLang(v string) *ChangeDomainGroupRequest {
 }
 
 type ChangeDomainGroupResponseBody struct {
-	// The ID of the target domain name group.
+	// The ID of the destination domain name group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the target domain name group.
+	// The name of the destination domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2658,7 +2670,7 @@ func (s *CreatePdnsUdpIpSegmentResponse) SetBody(v *CreatePdnsUdpIpSegmentRespon
 }
 
 type DeleteCustomLinesRequest struct {
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The unique IDs of the custom lines that you want to delete. Separate the unique IDs with commas (,).
 	LineIds *string `json:"LineIds,omitempty" xml:"LineIds,omitempty"`
@@ -2683,7 +2695,7 @@ func (s *DeleteCustomLinesRequest) SetLineIds(v string) *DeleteCustomLinesReques
 }
 
 type DeleteCustomLinesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2730,8 +2742,10 @@ func (s *DeleteCustomLinesResponse) SetBody(v *DeleteCustomLinesResponseBody) *D
 }
 
 type DeleteDnsCacheDomainRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteDnsCacheDomainRequest) String() string {
@@ -2753,6 +2767,7 @@ func (s *DeleteDnsCacheDomainRequest) SetLang(v string) *DeleteDnsCacheDomainReq
 }
 
 type DeleteDnsCacheDomainResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2945,7 +2960,7 @@ func (s *DeleteDnsGtmAddressPoolResponse) SetBody(v *DeleteDnsGtmAddressPoolResp
 type DeleteDomainRequest struct {
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -2970,7 +2985,7 @@ func (s *DeleteDomainRequest) SetLang(v string) *DeleteDomainRequest {
 type DeleteDomainResponseBody struct {
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3101,11 +3116,11 @@ func (s *DeleteDomainGroupResponse) SetBody(v *DeleteDomainGroupResponseBody) *D
 }
 
 type DeleteDomainRecordRequest struct {
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the DNS record.
 	//
-	// This parameter is returned when you add a DNS record or when you query the list of DNS records.
+	// This parameter is returned when you add a DNS record or when you query a list of DNS records.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -3137,7 +3152,7 @@ func (s *DeleteDomainRecordRequest) SetUserClientIp(v string) *DeleteDomainRecor
 type DeleteDomainRecordResponseBody struct {
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3929,7 +3944,7 @@ func (s *DescribeBatchResultDetailResponse) SetBody(v *DescribeBatchResultDetail
 }
 
 type DescribeCustomLineRequest struct {
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The unique ID of the custom line.
 	LineId *int64 `json:"LineId,omitempty" xml:"LineId,omitempty"`
@@ -3954,17 +3969,17 @@ func (s *DescribeCustomLineRequest) SetLineId(v int64) *DescribeCustomLineReques
 }
 
 type DescribeCustomLineResponseBody struct {
-	// The code of the custom line. The code is used when you configure a resolution record.
+	// The code of the custom line.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The domain name for which the custom line is configured.
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The unique ID of the custom line.
+	// The ID of the custom line.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The list of CIDR blocks.
+	// The CIDR blocks. Separate IP addresses with a hyphen (-). Enter a CIDR block in each row. You can enter 1 to 50 CIDR blocks at a time. If a CIDR block contains only one IP address, enter the IP address in the format of IP1-IP1. Different CIDR blocks cannot be overlapped.
 	IpSegmentList []*DescribeCustomLineResponseBodyIpSegmentList `json:"IpSegmentList,omitempty" xml:"IpSegmentList,omitempty" type:"Repeated"`
 	// The name of the custom line.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4007,9 +4022,9 @@ func (s *DescribeCustomLineResponseBody) SetRequestId(v string) *DescribeCustomL
 }
 
 type DescribeCustomLineResponseBodyIpSegmentList struct {
-	// The end IP address.
+	// The end IP address of the CIDR block.
 	EndIp *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
-	// The start IP address.
+	// The start IP address of the CIDR block.
 	StartIp *string `json:"StartIp,omitempty" xml:"StartIp,omitempty"`
 }
 
@@ -4061,10 +4076,14 @@ func (s *DescribeCustomLineResponse) SetBody(v *DescribeCustomLineResponseBody) 
 }
 
 type DescribeCustomLinesRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeCustomLinesRequest) String() string {
@@ -4096,12 +4115,18 @@ func (s *DescribeCustomLinesRequest) SetPageSize(v int64) *DescribeCustomLinesRe
 }
 
 type DescribeCustomLinesResponseBody struct {
+	// The custom lines.
 	CustomLines []*DescribeCustomLinesResponseBodyCustomLines `json:"CustomLines,omitempty" xml:"CustomLines,omitempty" type:"Repeated"`
-	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems  *int32                                        `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages  *int32                                        `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of custom lines.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of returned pages.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeCustomLinesResponseBody) String() string {
@@ -4143,8 +4168,11 @@ func (s *DescribeCustomLinesResponseBody) SetTotalPages(v int32) *DescribeCustom
 }
 
 type DescribeCustomLinesResponseBodyCustomLines struct {
+	// The code of the custom line.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique ID of the custom line.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the custom line.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -4201,16 +4229,17 @@ func (s *DescribeCustomLinesResponse) SetBody(v *DescribeCustomLinesResponseBody
 }
 
 type DescribeDNSSLBSubDomainsRequest struct {
-	// The domain name whose subdomains you want to query.
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the domain name.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rr       *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The IP address of the client that you use to query subdomains.
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The hostname.
+	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4253,15 +4282,15 @@ func (s *DescribeDNSSLBSubDomainsRequest) SetUserClientIp(v string) *DescribeDNS
 }
 
 type DescribeDNSSLBSubDomainsResponseBody struct {
-	// The page number of the returned page.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of subdomains returned.
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the subdomains.
+	// The subdomains for which weighted round-robin is enabled.
 	SlbSubDomains *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains `json:"SlbSubDomains,omitempty" xml:"SlbSubDomains,omitempty" type:"Struct"`
-	// The number of domain name groups.
+	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4316,14 +4345,15 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains) SetSlbSubDomain(v []
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain struct {
+	// The lines for which weighted round-robin is enabled.
 	LineAlgorithms *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms `json:"LineAlgorithms,omitempty" xml:"LineAlgorithms,omitempty" type:"Struct"`
 	// Indicates whether weighted round-robin is enabled for the subdomain.
 	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
 	// The number of DNS records added for the subdomain.
 	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// The subdomain.
+	// The subdomain name.
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// The type of the DNS record that supports weighted round-robin. Valid values: A, AAAA, and CNAME.
+	// The type of the Domain Name System (DNS) record that supports weighted round-robin. Valid values: A, AAAA, and CNAME.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -4378,8 +4408,13 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgori
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm struct {
+	// The DNS resolution line. The line can be China Telecom, China Mobile, and China Unicom.
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Open *bool   `json:"Open,omitempty" xml:"Open,omitempty"`
+	// Indicates whether weighted round-robin is enabled for the line. Valid values:
+	//
+	// *   **true** (default): Weighted round-robin is enabled.
+	// *   **false**: Weighted round-robin is disabled.
+	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
 }
 
 func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm) String() string {
@@ -4430,10 +4465,14 @@ func (s *DescribeDNSSLBSubDomainsResponse) SetBody(v *DescribeDNSSLBSubDomainsRe
 }
 
 type DescribeDnsCacheDomainsRequest struct {
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDnsCacheDomainsRequest) String() string {
@@ -4465,11 +4504,16 @@ func (s *DescribeDnsCacheDomainsRequest) SetPageSize(v int64) *DescribeDnsCacheD
 }
 
 type DescribeDnsCacheDomainsResponseBody struct {
-	Domains    []*DescribeDnsCacheDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	PageNumber *int64                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The domain names.
+	Domains []*DescribeDnsCacheDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// The page number. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDnsCacheDomainsResponseBody) String() string {
@@ -4506,22 +4550,38 @@ func (s *DescribeDnsCacheDomainsResponseBody) SetTotalCount(v int64) *DescribeDn
 }
 
 type DescribeDnsCacheDomainsResponseBodyDomains struct {
-	CacheTtlMax      *int32                                                        `json:"CacheTtlMax,omitempty" xml:"CacheTtlMax,omitempty"`
-	CacheTtlMin      *int32                                                        `json:"CacheTtlMin,omitempty" xml:"CacheTtlMin,omitempty"`
-	CreateTime       *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp  *int64                                                        `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	DomainId         *string                                                       `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	DomainName       *string                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ExpireTime       *string                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimestamp  *int64                                                        `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	InstanceId       *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Remark           *string                                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The maximum time-to-live (TTL) period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
+	CacheTtlMax *int32 `json:"CacheTtlMax,omitempty" xml:"CacheTtlMax,omitempty"`
+	// The minimum TTL period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
+	CacheTtlMin *int32 `json:"CacheTtlMin,omitempty" xml:"CacheTtlMin,omitempty"`
+	// The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the domain name was added. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The ID of the cache-accelerated domain name.
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The cache-accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The time when the instance expires. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The time when the instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// The instance ID of the cache-accelerated domain name.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The description of the domain name.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The origin DNS servers.
 	SourceDnsServers []*DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers `json:"SourceDnsServers,omitempty" xml:"SourceDnsServers,omitempty" type:"Repeated"`
-	SourceEdns       *string                                                       `json:"SourceEdns,omitempty" xml:"SourceEdns,omitempty"`
-	SourceProtocol   *string                                                       `json:"SourceProtocol,omitempty" xml:"SourceProtocol,omitempty"`
-	UpdateTime       *string                                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp  *int64                                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	VersionCode      *string                                                       `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// Specifies whether the origin Domain Name System (DNS) server supports Extension Mechanisms for DNS (EDNS). Valid values: NOT_SUPPORT and SUPPORT.
+	SourceEdns *string `json:"SourceEdns,omitempty" xml:"SourceEdns,omitempty"`
+	// The origin protocol policy. Valid values: TCP and UDP. Default value: UDP.
+	SourceProtocol *string `json:"SourceProtocol,omitempty" xml:"SourceProtocol,omitempty"`
+	// The time when the configurations of the domain name were updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the configurations of the domain name were updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The edition code of Alibaba Cloud DNS.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s DescribeDnsCacheDomainsResponseBodyDomains) String() string {
@@ -4613,7 +4673,9 @@ func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetVersionCode(v string) *D
 }
 
 type DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers struct {
+	// The domain name or IP address of the origin DNS server.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The port of the origin DNS server.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -8738,6 +8800,10 @@ func (s *DescribeDnsProductInstanceRequest) SetUserClientIp(v string) *DescribeD
 }
 
 type DescribeDnsProductInstanceResponseBody struct {
+	// The auto-renewal status of the instance. Valid values:
+	//
+	// *   **true**: Auto-renewal is enabled.
+	// *   **false**: Auto-renewal is disabled.
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The number of times that you can change the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
 	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
@@ -10467,9 +10533,9 @@ func (s *DescribeDohUserInfoResponse) SetBody(v *DescribeDohUserInfoResponseBody
 }
 
 type DescribeDomainDnssecInfoRequest struct {
-	// The domain name for which DNSSEC configurations to query.
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages, such as the region parameter. Default value: en. Valid values: en, zh, and ja.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -10492,28 +10558,28 @@ func (s *DescribeDomainDnssecInfoRequest) SetLang(v string) *DescribeDomainDnsse
 }
 
 type DescribeDomainDnssecInfoResponseBody struct {
-	// The algorithm configured in a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	// The algorithm type. This parameter is returned if DNSSEC is enabled.
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The digest configured in a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	// The digest. This parameter is returned if DNSSEC is enabled.
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The digest type configured in a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	// The digest type. This parameter is returned if DNSSEC is enabled.
 	DigestType *string `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
-	// The domain name that is queried.
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The DS record. This parameter is returned if DNSSEC is enabled.
+	// The delegation signer (DS) record. This parameter is returned if DNSSEC is enabled.
 	DsRecord *string `json:"DsRecord,omitempty" xml:"DsRecord,omitempty"`
-	// The flag of a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	// The flag. This parameter is returned if DNSSEC is enabled.
 	Flags *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
-	// The key tag of a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	// The key tag. This parameter is returned if DNSSEC is enabled.
 	KeyTag *string `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	// The public key for a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	// The public key. This parameter is returned if DNSSEC is enabled.
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether DNSSEC is enabled for the specified domain name.
+	// The state of the DNSSEC. Valid values:
 	//
-	// *   ON: DNSSEC is enabled.
-	// *   OFF: DNSSEC is disabled.
+	// *   ON
+	// *   OFF
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10607,11 +10673,11 @@ func (s *DescribeDomainDnssecInfoResponse) SetBody(v *DescribeDomainDnssecInfoRe
 type DescribeDomainGroupsRequest struct {
 	// The keyword of the domain name group for searches in %KeyWord% mode. The value is not case-sensitive.
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -10644,15 +10710,15 @@ func (s *DescribeDomainGroupsRequest) SetPageSize(v int64) *DescribeDomainGroups
 }
 
 type DescribeDomainGroupsResponseBody struct {
-	// The list of domain name groups.
+	// The domain name groups.
 	DomainGroups *DescribeDomainGroupsResponseBodyDomainGroups `json:"DomainGroups,omitempty" xml:"DomainGroups,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of domain name groups.
+	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10709,7 +10775,10 @@ func (s *DescribeDomainGroupsResponseBodyDomainGroups) SetDomainGroup(v []*Descr
 type DescribeDomainGroupsResponseBodyDomainGroupsDomainGroup struct {
 	// The number of domain name groups.
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// The ID of the domain name group.
+	// The ID of the domain name group. Valid values:
+	//
+	// *   defaultGroup: the default group
+	// *   If an empty string is returned, it indicates the group that contains all domain names.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -10844,7 +10913,11 @@ type DescribeDomainInfoResponseBody struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether secondary DNS is supported.
-	SlaveDns  *bool `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
+	SlaveDns *bool `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
+	// Indicates whether the queried domain name is a hosted subdomain name. Valid values:
+	//
+	// *   true
+	// *   false
 	SubDomain *bool `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 	// The version ID of Alibaba Cloud DNS.
 	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
@@ -11037,7 +11110,7 @@ func (s *DescribeDomainInfoResponseBodyRecordLines) SetRecordLine(v []*DescribeD
 }
 
 type DescribeDomainInfoResponseBodyRecordLinesRecordLine struct {
-	// The code of the parent line. This parameter is left empty if the line has no parent line.
+	// The code of the parent line. This parameter is not returned if the line has no parent line.
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
 	// The code of the line.
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
@@ -11175,15 +11248,15 @@ func (s *DescribeDomainLogsRequest) SetEndDate(v string) *DescribeDomainLogsRequ
 }
 
 type DescribeDomainLogsResponseBody struct {
-	// The details about the operation logs that are queried.
+	// The operation logs.
 	DomainLogs *DescribeDomainLogsResponseBodyDomainLogs `json:"DomainLogs,omitempty" xml:"DomainLogs,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of operation logs returned per page.
+	// The number of entries per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of operation logs returned.
+	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11238,19 +11311,19 @@ func (s *DescribeDomainLogsResponseBodyDomainLogs) SetDomainLog(v []*DescribeDom
 }
 
 type DescribeDomainLogsResponseBodyDomainLogsDomainLog struct {
-	// The operation performed.
+	// The operation.
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The time when the operation was performed.
+	// The time when the operation is performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	ActionTime *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
-	// The UNIX timestamp that indicates when the operation was performed.
+	// The time when the operation was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	ActionTimestamp *int64 `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
-	// The IP address from which the operation was performed.
+	// The IP address of the operator.
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The message for the operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the zone.
+	// The ID of the private zone.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11468,11 +11541,11 @@ func (s *DescribeDomainNsResponse) SetBody(v *DescribeDomainNsResponseBody) *Des
 }
 
 type DescribeDomainRecordInfoRequest struct {
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the DNS record.
 	//
-	// This parameter is returned when you add a DNS record or when you query the list of DNS records.
+	// This parameter is returned when you add a DNS record or when you query a list of DNS records.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -11510,29 +11583,29 @@ type DescribeDomainRecordInfoResponseBody struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The resolution line.
+	// The DNS resolution line.
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The lock status of the DNS record. Valid values: true and false.
+	// The lock state of the DNS record. Valid values: **true and false**.
 	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// The priority of the MX-type DNS record.
+	// The priority of the mail exchanger (MX) record.
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The punycode is only returned for Chinese domain names.
+	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
 	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	// The host record.
+	// The hostname.
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The remark of the DNS record.
+	// The description of your DNS record.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the DNS record. Valid values: Enable and Disable.
+	// The state of the DNS records. Valid values: **Enable and Disable**.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The TTL of the resolution.
+	// The time-to-live (TTL) of the DNS record.
 	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
 	// The type of the DNS record.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the DNS record.
+	// The record value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11791,7 +11864,7 @@ func (s *DescribeDomainRecordsRequest) SetValueKeyWord(v string) *DescribeDomain
 }
 
 type DescribeDomainRecordsResponseBody struct {
-	// The returned DNS records.
+	// The returned Domain Name System (DNS) records.
 	DomainRecords *DescribeDomainRecordsResponseBodyDomainRecords `json:"DomainRecords,omitempty" xml:"DomainRecords,omitempty" type:"Struct"`
 	// The page number.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -11854,6 +11927,7 @@ func (s *DescribeDomainRecordsResponseBodyDomainRecords) SetRecord(v []*Describe
 }
 
 type DescribeDomainRecordsResponseBodyDomainRecordsRecord struct {
+	// The time when the DNS record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -11867,15 +11941,16 @@ type DescribeDomainRecordsResponseBodyDomainRecordsRecord struct {
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description.
+	// The description of the DNS record.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the DNS record.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time-to-live (TTL) of the cached data. Unit: seconds.
+	// The time-to-live (TTL) of the cached DNS record. Unit: seconds.
 	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
 	// The type of the DNS record.
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 	// The record value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The weight of the DNS record.
@@ -11990,13 +12065,16 @@ func (s *DescribeDomainRecordsResponse) SetBody(v *DescribeDomainRecordsResponse
 }
 
 type DescribeDomainResolveStatisticsSummaryRequest struct {
-	// The order in which you want to sort the query results. Valid values: DESC and ASC. DESC indicates that the query results are sorted in descending order. ASC indicates that the query results are sorted in ascending order.
+	// The order in which you want to sort the returned entries. Valid values:
+	//
+	// *   DESC: the descending order
+	// *   ASC: the ascending order
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The end time in the yyyy-MM-dd format, for example, 2023-03-13.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The keyword. The Keyword parameter must be used together with the SearchMode parameter.
+	// The keyword. The Keyword parameter is used together with the SearchMode parameter.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The language used. Valid values: zh, en, and ja.
+	// The language. Valid values: zh, en, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -12004,11 +12082,20 @@ type DescribeDomainResolveStatisticsSummaryRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The search mode of the keyword. Valid values:
 	//
-	// LIKE and EXACT. LIKE is the default value and indicates the fuzzy search mode. EXACT indicates the exact match mode.
+	// *   LIKE (default): fuzzy search
+	// *   EXACT: exact search
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
 	// The start time in the yyyy-MM-dd format, for example, 2023-03-01.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The threshold for the number of resolution requests. You can query the paid domain names at the specified quantity level of resolution requests and query the number of resolution requests. For example, if you set this parameter to 100, you can obtain data about the paid domain names with less than 100 resolution requests. If you do not specify this parameter, the data about the paid domain names that have resolution requests is obtained. If you set this parameter to a value less than 0, the data about all paid domain names is obtained. If you set this parameter to 0, the data about the paid domain names that do not have resolution requests is obtained. If you set this parameter to a value greater than 0, the data about the paid domain names whose number of resolution requests is less than or equal to the value of this parameter is obtained.
+	// The threshold for the number of Domain Name System (DNS) requests. You can query the domain names at the specified quantity level of DNS requests and query the number of DNS requests for each domain name.
+	//
+	// If you do not specify this parameter, the data about the domain names that have DNS requests is obtained.
+	//
+	// If you set this parameter to a value less than 0, the data about all domain names is obtained.
+	//
+	// If you set this parameter to 0, the data about the domain names that do not have DNS requests is obtained.
+	//
+	// If you set this parameter to a value greater than 0, the data about the domain names whose number of DNS requests is less than or equal to the value of this parameter is obtained.
 	Threshold *int64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
@@ -12066,9 +12153,9 @@ func (s *DescribeDomainResolveStatisticsSummaryRequest) SetThreshold(v int64) *D
 }
 
 type DescribeDomainResolveStatisticsSummaryResponseBody struct {
-	// The page number of the returned page.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Maximum value: **100**. Default value: **20**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -12119,11 +12206,14 @@ func (s *DescribeDomainResolveStatisticsSummaryResponseBody) SetTotalPages(v int
 }
 
 type DescribeDomainResolveStatisticsSummaryResponseBodyStatistics struct {
-	// The number of resolution requests.
+	// The number of DNS requests.
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The instance type. Valid values: PUBLIC and CACHE. PUBLIC indicates an authoritative domain name. CACHE indicates a cache-accelerated domain name.
+	// The type of the domain name. Valid values:
+	//
+	// *   PUBLIC: hosted public domain name
+	// *   CACHE: cache-accelerated domain name
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 }
 
@@ -12235,7 +12325,7 @@ func (s *DescribeDomainStatisticsRequest) SetStartDate(v string) *DescribeDomain
 type DescribeDomainStatisticsResponseBody struct {
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The DNS requests.
+	// The statistics on the Domain Name System (DNS) requests.
 	Statistics *DescribeDomainStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 }
 
@@ -12276,9 +12366,10 @@ func (s *DescribeDomainStatisticsResponseBodyStatistics) SetStatistic(v []*Descr
 
 type DescribeDomainStatisticsResponseBodyStatisticsStatistic struct {
 	// The number of DNS requests.
-	Count      *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The statistical timestamp. Unit: milliseconds. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -12415,7 +12506,7 @@ type DescribeDomainStatisticsSummaryResponseBody struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of query volume records.
+	// The statistics on the Domain Name System (DNS) requests.
 	Statistics *DescribeDomainStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	// The total number of data records.
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
@@ -12479,10 +12570,15 @@ func (s *DescribeDomainStatisticsSummaryResponseBodyStatistics) SetStatistic(v [
 }
 
 type DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic struct {
-	// The number of queries.
+	// The number of DNS requests.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The domain name.
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The type of the domain name. The parameter value is not case-sensitive. Valid values:
+	//
+	// PUBLIC (default): hosted public domain name
+	//
+	// CACHE: cache-accelerated domain name
 	DomainType            *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	ResolveAnalysisStatus *string `json:"resolveAnalysisStatus,omitempty" xml:"resolveAnalysisStatus,omitempty"`
 }
@@ -12615,7 +12711,7 @@ func (s *DescribeDomainsRequest) SetStarmark(v bool) *DescribeDomainsRequest {
 }
 
 type DescribeDomainsResponseBody struct {
-	// The list of domain names queried by this operation.
+	// The domain names.
 	Domains *DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -12678,11 +12774,13 @@ func (s *DescribeDomainsResponseBodyDomains) SetDomain(v []*DescribeDomainsRespo
 }
 
 type DescribeDomainsResponseBodyDomainsDomain struct {
-	// Indicates whether the domain name is an Alibaba Cloud HiChina domain name.
-	AliDomain       *bool   `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The list of DNS servers of the domain name in the DNS system.
+	// Indicates whether the domain name was registered in Alibaba Cloud.
+	AliDomain *bool `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
+	// The time when the domain name was added.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the domain name was added. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The names of the DNS servers configured for the domain name.
 	DnsServers *DescribeDomainsResponseBodyDomainsDomainDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
 	// The ID of the domain name.
 	DomainId                  *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
@@ -12693,27 +12791,29 @@ type DescribeDomainsResponseBodyDomainsDomain struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The expiration time of the instance.
+	// The time when the Alibaba Cloud DNS instance expires.
 	InstanceEndTime *string `json:"InstanceEndTime,omitempty" xml:"InstanceEndTime,omitempty"`
-	// Indicates whether the instance expired.
+	// Indicates whether the Alibaba Cloud DNS instance expires.
 	InstanceExpired *bool `json:"InstanceExpired,omitempty" xml:"InstanceExpired,omitempty"`
 	// The ID of the Alibaba Cloud DNS instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The punycode is returned for Chinese domain names and is left blank for English domain names.
+	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
 	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	// The number of DNS records of the domain name.
+	// The number of Domain Name System (DNS) records added for the domain name.
 	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
 	// The email address of the registrant.
 	RegistrantEmail *string `json:"RegistrantEmail,omitempty" xml:"RegistrantEmail,omitempty"`
-	// The description.
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The description of the domain name.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the resource group to which the domain name belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether to query the starmark of the domain name.
-	Starmark *bool                                         `json:"Starmark,omitempty" xml:"Starmark,omitempty"`
-	Tags     *DescribeDomainsResponseBodyDomainsDomainTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The version code of the Alibaba Cloud DNS instance.
+	// Indicates whether the domain name was added to favorites.
+	Starmark *bool `json:"Starmark,omitempty" xml:"Starmark,omitempty"`
+	// The tags added to the resource.
+	Tags *DescribeDomainsResponseBodyDomainsDomainTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The edition code of Alibaba Cloud DNS.
 	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	// The version name of the Alibaba Cloud DNS instance.
+	// The edition of Alibaba Cloud DNS.
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -12865,7 +12965,9 @@ func (s *DescribeDomainsResponseBodyDomainsDomainTags) SetTag(v []*DescribeDomai
 }
 
 type DescribeDomainsResponseBodyDomainsDomainTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag added to the resource.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag added to the resource.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13490,9 +13592,9 @@ func (s *DescribeGtmAccessStrategyResponse) SetBody(v *DescribeGtmAccessStrategy
 }
 
 type DescribeGtmAccessStrategyAvailableConfigRequest struct {
-	// The ID of the GTM instance for which you want to query the available configurations of the current access policy.
+	// The ID of the Global Traffic Manager (GTM) instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language used by the user.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -13515,13 +13617,14 @@ func (s *DescribeGtmAccessStrategyAvailableConfigRequest) SetLang(v string) *Des
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBody struct {
-	// The returned list of address pools.
+	// The address pools.
 	AddrPools *DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	// The returned lines of access regions.
+	// The Domain Name System (DNS) request sources.
 	Lines *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuggestSetDefaultLine *bool   `json:"SuggestSetDefaultLine,omitempty" xml:"SuggestSetDefaultLine,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the global line is recommended.
+	SuggestSetDefaultLine *bool `json:"SuggestSetDefaultLine,omitempty" xml:"SuggestSetDefaultLine,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategyAvailableConfigResponseBody) String() string {
@@ -13612,20 +13715,20 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines) SetLine(v []
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyLinesLine struct {
-	// The code of the parent line for the access region. If no parent line exists, leave this parameter blank.
+	// The code of the parent line. No value is returned if no parent line exists.
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// The code of the access region group.
+	// The group number of the DNS request source.
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The name of the access region group.
+	// The group name of the DNS request source.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The code for the line of the access region.
+	// The code of the DNS request source.
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The name for the line of the access region.
+	// The name of the DNS request source.
 	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
-	// The current status of the line. Valid values:
+	// The state of the line. Valid values:
 	//
-	// - **FORBIDDEN**: Unavailable
-	// - **OPTIONAL**: Availabe
+	// *   **FORBIDDEN**: The line is unavailable.
+	// *   **OPTIONAL**: The line is available.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -16272,10 +16375,12 @@ func (s *DescribeGtmRecoveryPlansResponse) SetBody(v *DescribeGtmRecoveryPlansRe
 }
 
 type DescribeInstanceDomainsRequest struct {
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeInstanceDomainsRequest) String() string {
@@ -16307,12 +16412,15 @@ func (s *DescribeInstanceDomainsRequest) SetPageSize(v int64) *DescribeInstanceD
 }
 
 type DescribeInstanceDomainsResponseBody struct {
+	// The domain names that are bound to the Alibaba Cloud DNS instance.
 	InstanceDomains []*DescribeInstanceDomainsResponseBodyInstanceDomains `json:"InstanceDomains,omitempty" xml:"InstanceDomains,omitempty" type:"Repeated"`
-	PageNumber      *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems      *int32                                                `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages      *int32                                                `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The page number. Pages start from page **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalItems *int32  `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	TotalPages *int32  `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeInstanceDomainsResponseBody) String() string {
@@ -16354,9 +16462,12 @@ func (s *DescribeInstanceDomainsResponseBody) SetTotalPages(v int32) *DescribeIn
 }
 
 type DescribeInstanceDomainsResponseBodyInstanceDomains struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The time when the instance was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeInstanceDomainsResponseBodyInstanceDomains) String() string {
@@ -16407,6 +16518,252 @@ func (s *DescribeInstanceDomainsResponse) SetStatusCode(v int32) *DescribeInstan
 }
 
 func (s *DescribeInstanceDomainsResponse) SetBody(v *DescribeInstanceDomainsResponseBody) *DescribeInstanceDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInternetDnsLogsRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Module         *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+}
+
+func (s DescribeInternetDnsLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetDnsLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetDomainName(v string) *DescribeInternetDnsLogsRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetEndTimestamp(v int64) *DescribeInternetDnsLogsRequest {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetLang(v string) *DescribeInternetDnsLogsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetModule(v string) *DescribeInternetDnsLogsRequest {
+	s.Module = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetPageNumber(v int32) *DescribeInternetDnsLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetPageSize(v int32) *DescribeInternetDnsLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetQueryCondition(v string) *DescribeInternetDnsLogsRequest {
+	s.QueryCondition = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetStartTimestamp(v int64) *DescribeInternetDnsLogsRequest {
+	s.StartTimestamp = &v
+	return s
+}
+
+type DescribeInternetDnsLogsResponseBody struct {
+	Complete  *bool                                    `json:"Complete,omitempty" xml:"Complete,omitempty"`
+	CurPage   *int32                                   `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
+	Logs      *DescribeInternetDnsLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
+	PageSize  *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalPage *int32                                   `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	TotalSize *int32                                   `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeInternetDnsLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetDnsLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetDnsLogsResponseBody) SetComplete(v bool) *DescribeInternetDnsLogsResponseBody {
+	s.Complete = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBody) SetCurPage(v int32) *DescribeInternetDnsLogsResponseBody {
+	s.CurPage = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBody) SetLogs(v *DescribeInternetDnsLogsResponseBodyLogs) *DescribeInternetDnsLogsResponseBody {
+	s.Logs = v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBody) SetPageSize(v int32) *DescribeInternetDnsLogsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBody) SetRequestId(v string) *DescribeInternetDnsLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBody) SetTotalPage(v int32) *DescribeInternetDnsLogsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBody) SetTotalSize(v int32) *DescribeInternetDnsLogsResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeInternetDnsLogsResponseBodyLogs struct {
+	Log []*DescribeInternetDnsLogsResponseBodyLogsLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInternetDnsLogsResponseBodyLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetDnsLogsResponseBodyLogs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogs) SetLog(v []*DescribeInternetDnsLogsResponseBodyLogsLog) *DescribeInternetDnsLogsResponseBodyLogs {
+	s.Log = v
+	return s
+}
+
+type DescribeInternetDnsLogsResponseBodyLogsLog struct {
+	DnsMsgId  *string                                          `json:"DnsMsgId,omitempty" xml:"DnsMsgId,omitempty"`
+	LogTime   *int64                                           `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	QueryName *string                                          `json:"QueryName,omitempty" xml:"QueryName,omitempty"`
+	QueryType *string                                          `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	Rt        *int32                                           `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	ServerIp  *string                                          `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	SourceIp  *string                                          `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Status    *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubnetIp  *string                                          `json:"SubnetIp,omitempty" xml:"SubnetIp,omitempty"`
+	Value     *DescribeInternetDnsLogsResponseBodyLogsLogValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+}
+
+func (s DescribeInternetDnsLogsResponseBodyLogsLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetDnsLogsResponseBodyLogsLog) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetDnsMsgId(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.DnsMsgId = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetLogTime(v int64) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.LogTime = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetQueryName(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.QueryName = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetQueryType(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.QueryType = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetRt(v int32) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.Rt = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetServerIp(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetSourceIp(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetStatus(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetSubnetIp(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.SubnetIp = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetValue(v *DescribeInternetDnsLogsResponseBodyLogsLogValue) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.Value = v
+	return s
+}
+
+type DescribeInternetDnsLogsResponseBodyLogsLogValue struct {
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInternetDnsLogsResponseBodyLogsLogValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetDnsLogsResponseBodyLogsLogValue) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLogValue) SetValue(v []*string) *DescribeInternetDnsLogsResponseBodyLogsLogValue {
+	s.Value = v
+	return s
+}
+
+type DescribeInternetDnsLogsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInternetDnsLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInternetDnsLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetDnsLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetDnsLogsResponse) SetHeaders(v map[string]*string) *DescribeInternetDnsLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponse) SetStatusCode(v int32) *DescribeInternetDnsLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponse) SetBody(v *DescribeInternetDnsLogsResponseBody) *DescribeInternetDnsLogsResponse {
 	s.Body = v
 	return s
 }
@@ -19062,19 +19419,23 @@ func (s *DescribeRecordLogsResponse) SetBody(v *DescribeRecordLogsResponseBody) 
 }
 
 type DescribeRecordResolveStatisticsSummaryRequest struct {
-	// The order in which you want to sort the query results. Valid values: DESC and ASC. DESC is the default value and indicates that the query results are sorted in descending order. ASC indicates that the query results are sorted in ascending order.
+	// The order in which the returned entries are sorted. Valid values:
+	//
+	// *   DESC (default): descending order
+	// *   ASC: ascending order
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The type of the domain name. The parameter value is not case-sensitive. Valid values:
 	//
-	// PUBLIC and CACHE. PUBLIC is the default value and indicates an authoritative domain name. CACHE indicates a cache-accelerated domain name.
+	// *   PUBLIC (default): hosted public domain name
+	// *   CACHE: cache-accelerated domain name
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The end time in the yyyy-MM-dd format, for example, 2023-03-13.
+	// The end date of the time range to be queried. Specify the time in the yyyy-MM-dd format, such as 2023-03-13.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The keyword. The Keyword parameter is used together with the SearchMode parameter.
+	// The keyword. Keyword is used together with SearchMode.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The language used. Valid values: zh, en, and ja.
+	// The language. Valid values: zh, en, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -19082,19 +19443,20 @@ type DescribeRecordResolveStatisticsSummaryRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The search mode of the keyword. Valid values:
 	//
-	// LIKE (default): fuzzy search. EXACT: exact match.
+	// *   LIKE (default): fuzzy search
+	// *   EXACT: exact search
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	// The start time in the yyyy-MM-dd format, for example, 2023-03-01.
+	// The start date of the time range to be queried. Specify the time in the yyyy-MM-dd format, such as 2023-03-01.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The threshold for the number of resolution requests. You can query the subdomain names at the specified quantity level of resolution requests and query the number of resolution requests for each subdomain name. For example, if you set this parameter to 100, you can obtain data about the subdomain names with less than 100 resolution requests.
+	// The threshold for the number of Domain Name System (DNS) requests. You can query the subdomain names at the specified quantity level of DNS requests and query the number of DNS requests for each subdomain name.
 	//
-	// If you do not specify this parameter, the data about the subdomain names that have resolution requests is obtained.
+	// If you do not specify this parameter, the data about the subdomain names that have DNS requests is obtained.
 	//
 	// If you set this parameter to a value less than 0, the data about all subdomain names is obtained.
 	//
-	// If you set this parameter to 0, the data about the subdomain names that do not have resolution requests is obtained.
+	// If you set this parameter to 0, the data about the subdomain names that do not have DNS requests is obtained.
 	//
-	// If you set this parameter to a value greater than 0, the data about the subdomain names whose number of resolution requests is less than or equal to the value of this parameter is obtained.
+	// If you set this parameter to a value greater than 0, the data about the subdomain names whose number of DNS requests is less than or equal to the value of this parameter is obtained.
 	Threshold *int64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
@@ -19162,9 +19524,9 @@ func (s *DescribeRecordResolveStatisticsSummaryRequest) SetThreshold(v int64) *D
 }
 
 type DescribeRecordResolveStatisticsSummaryResponseBody struct {
-	// The page number of the returned page.
+	// The page number. Pages start from page 1. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -19215,13 +19577,16 @@ func (s *DescribeRecordResolveStatisticsSummaryResponseBody) SetTotalPages(v int
 }
 
 type DescribeRecordResolveStatisticsSummaryResponseBodyStatistics struct {
-	// The number of resolution requests.
+	// The number of DNS requests.
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The domain name.
+	// The subdomain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the domain name. Valid values: PUBLIC and CACHE. PUBLIC indicates an authoritative domain name. CACHE indicates a cache-accelerated domain name.
+	// The type of the domain name. The parameter value is not case-sensitive. Valid values:
+	//
+	// *   PUBLIC (default): hosted public domain name
+	// *   CACHE: cache-accelerated domain name
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// 子域名
+	// The subdomain.
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
@@ -19285,20 +19650,26 @@ func (s *DescribeRecordResolveStatisticsSummaryResponse) SetBody(v *DescribeReco
 type DescribeRecordStatisticsRequest struct {
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The type of the domain name. The parameter value is not case-sensitive. Valid values:
+	//
+	// *   PUBLIC (default): hosted public domain name
+	// *   CACHE: cache-accelerated domain name
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The end of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	// The end date of the query. Specify the end date in the **YYYY-MM-DD** format.
 	//
-	// The default value is the day when you perform the operation.
+	// The default value is the day when you query the data.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The DNS record.
-	//
-	// The host record. For example, to resolve `www.dns-exmaple.com`, you must set Rr to www.
+	// The hostname. If you want to resolve the subdomain name www.dns-exmaple.top, set this parameter to www.
 	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The beginning of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	// The start date of the query. Specify the start date in the **YYYY-MM-DD** format.
 	//
-	// You can only query DNS records of the last 90 days.
+	// You can only query the DNS records within the last 90 days.``
+	//
+	// If the time range is less than or equal to seven days, data is returned on an hourly basis.````
+	//
+	// If the time range is greater than seven days, data is returned on a daily basis.````
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -19341,9 +19712,9 @@ func (s *DescribeRecordStatisticsRequest) SetStartDate(v string) *DescribeRecord
 }
 
 type DescribeRecordStatisticsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of query volume records.
+	// The statistics on the DNS requests.
 	Statistics *DescribeRecordStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 }
 
@@ -19383,9 +19754,9 @@ func (s *DescribeRecordStatisticsResponseBodyStatistics) SetStatistic(v []*Descr
 }
 
 type DescribeRecordStatisticsResponseBodyStatisticsStatistic struct {
-	// The number of queries.
+	// The number of DNS requests.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The UNIX timestamp representing the collection time.
+	// The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -19656,23 +20027,19 @@ type DescribeSubDomainRecordsRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The resolution line.
+	// The DNS resolution line.
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **500**. Default value: **20**.
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The subdomain. For example, assume that the SubDomain parameter is set to a.www.example.com.
+	// If you set SubDomain to `a.www.example.com` and leave
 	//
-	// If the DomainName parameter is empty, the DNS records of the subdomain whose domain name is example.com and hostname is "a.www" are queried.
-	//
-	// If the DomainName parameter is set to www.example.com, the DNS records of the subdomain whose domain name is www.example.com and hostname is "a" are queried.
-	//
-	// If the DomainName parameter is set to a.www.example.com, the DNS records of the subdomain whose domain name is a.www.example.com and hostname is "@" are queried.
+	// DomainName empty, the system returns the DNS records that contain the hostname `a.www` for the domain name example.com. If you set SubDomain to a.www.example.com and set DomainName to www.example.com, the system returns the DNS records that contain the hostname `a` for the domain name www.example.com. If you set SubDomain to a.www.example.com and set DomainName to a.www.example.com, the system returns the DNS records that contain the hostname `@` for the domain name a.www.example.com.
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// The type of DNS records to query. If you do not specify this parameter, all types of DNS records corresponding to the subdomain are returned.
+	// The type of DNS records. If you do not specify this parameter, all types of DNS records for the subdomain name are returned.
 	//
-	// DNS record types include **A, MX, CNAME, TXT, REDIRECT_URL, FORWORD_URL, NS, AAAA, and SRV**. The value is not case-sensitive.
+	// Valid values: **A, MX, CNAME, TXT, REDIRECT_URL, FORWORD_URL, NS, AAAA, and SRV**.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -19727,15 +20094,15 @@ func (s *DescribeSubDomainRecordsRequest) SetUserClientIp(v string) *DescribeSub
 }
 
 type DescribeSubDomainRecordsResponseBody struct {
-	// The list of DNS records returned.
+	// The returned DNS records.
 	DomainRecords *DescribeSubDomainRecordsResponseBodyDomainRecords `json:"DomainRecords,omitempty" xml:"DomainRecords,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of DNS records returned.
+	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19792,11 +20159,11 @@ func (s *DescribeSubDomainRecordsResponseBodyDomainRecords) SetRecord(v []*Descr
 type DescribeSubDomainRecordsResponseBodyDomainRecordsRecord struct {
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The resolution line.
+	// The DNS resolution line.
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// Indicates whether the DNS record is locked.
+	// The lock status of the DNS record.
 	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// The priority of the MX record.
+	// The priority of the mail exchanger (MX) record.
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The hostname.
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
@@ -19806,7 +20173,7 @@ type DescribeSubDomainRecordsResponseBodyDomainRecordsRecord struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the DNS record.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Time-to-Live (TTL) of the DNS record.
+	// The time-to-live (TTL) of the DNS record.
 	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
 	// The type of the DNS record.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -19914,11 +20281,11 @@ func (s *DescribeSubDomainRecordsResponse) SetBody(v *DescribeSubDomainRecordsRe
 }
 
 type DescribeSupportLinesRequest struct {
-	// The domain name.
+	// 域名名称。
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language type.
+	// 语言。
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The IP address of the client.
+	// 用户端IP。
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -19946,9 +20313,9 @@ func (s *DescribeSupportLinesRequest) SetUserClientIp(v string) *DescribeSupport
 }
 
 type DescribeSupportLinesResponseBody struct {
-	// The list of Alibaba Cloud DNS lines.
+	// 云解析线路列表。
 	RecordLines *DescribeSupportLinesResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
-	// The ID of the request.
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19988,13 +20355,13 @@ func (s *DescribeSupportLinesResponseBodyRecordLines) SetRecordLine(v []*Describ
 }
 
 type DescribeSupportLinesResponseBodyRecordLinesRecordLine struct {
-	// The code of the parent line. Leave it blank if there is no parent line.
+	// 2021-12-06T02:47:26.000+0000
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// The code of the child line.
+	// 子线路Code。
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The name of the parent line.
+	// 父线路展示名称。
 	LineDisplayName *string `json:"LineDisplayName,omitempty" xml:"LineDisplayName,omitempty"`
-	// The name of the child line.
+	// 子线路展示名称。
 	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
@@ -20058,7 +20425,7 @@ func (s *DescribeSupportLinesResponse) SetBody(v *DescribeSupportLinesResponseBo
 type DescribeTagsRequest struct {
 	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number to return. Default value: 1.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return per page. Default value: 200.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -20095,15 +20462,15 @@ func (s *DescribeTagsRequest) SetResourceType(v string) *DescribeTagsRequest {
 }
 
 type DescribeTagsResponseBody struct {
-	// The returned page number. Default value: 1.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 200.
+	// The number of entries per page. Default value: 200.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of tags.
+	// The tags added to the resource.
 	Tags []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The total number of tags returned.
+	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20141,8 +20508,9 @@ func (s *DescribeTagsResponseBody) SetTotalCount(v int64) *DescribeTagsResponseB
 }
 
 type DescribeTagsResponseBodyTags struct {
-	// The key of the tag.
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N added to the resource.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of tags added to the resource.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -20194,19 +20562,22 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 }
 
 type DescribeTransferDomainsRequest struct {
+	// Specifies the domain name for which you want to view the transfer record.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	FromUserId *int64  `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-	// The language type.
+	// The user ID from which the domain name was transferred to the current account.
+	FromUserId *int64 `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
-	PageSize     *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The user ID to which the domain name was transferred from the current account.
 	TargetUserId *int64 `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 	// The transfer type. Valid values:
 	//
-	// *   IN: transferred to this account.
-	// *   OUT: transferred from this account.
+	// *   IN: The domain name was transferred to the current account.
+	// *   OUT: The domain name was transferred from the current account.
 	TransferType *string `json:"TransferType,omitempty" xml:"TransferType,omitempty"`
 }
 
@@ -20254,15 +20625,15 @@ func (s *DescribeTransferDomainsRequest) SetTransferType(v string) *DescribeTran
 }
 
 type DescribeTransferDomainsResponseBody struct {
-	// The list of domain names that were transferred between accounts.
+	// The domain names that were transferred between accounts.
 	DomainTransfers *DescribeTransferDomainsResponseBodyDomainTransfers `json:"DomainTransfers,omitempty" xml:"DomainTransfers,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of domain names.
+	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20317,17 +20688,17 @@ func (s *DescribeTransferDomainsResponseBodyDomainTransfers) SetDomainTransfer(v
 }
 
 type DescribeTransferDomainsResponseBodyDomainTransfersDomainTransfer struct {
-	// The time when the task for transferring domain names was created.
+	// The time when the domain name was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The UNIX timestamp representing when the task for transferring domain names was created.
+	// The time when the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the user from which the domain name was transferred.
+	// The user ID from which the domain name was transferred.
 	FromUserId *int64 `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
 	// The ID of the domain name that was transferred.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user to which the domain name was transferred.
+	// The user ID to which the domain name was transferred.
 	TargetUserId *int64 `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
@@ -20471,9 +20842,9 @@ func (s *ExecuteGtmRecoveryPlanResponse) SetBody(v *ExecuteGtmRecoveryPlanRespon
 }
 
 type GetMainDomainNameRequest struct {
-	// The input string. The string can be up to 128 characters in length.
+	// The string. The string can be up to 128 characters in length.
 	InputString *string `json:"InputString,omitempty" xml:"InputString,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -20500,9 +20871,9 @@ type GetMainDomainNameResponseBody struct {
 	DomainLevel *int64 `json:"DomainLevel,omitempty" xml:"DomainLevel,omitempty"`
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The host record.
+	// The hostname.
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20566,11 +20937,11 @@ func (s *GetMainDomainNameResponse) SetBody(v *GetMainDomainNameResponseBody) *G
 type GetTxtRecordForVerifyRequest struct {
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The function verified by using the TXT record. Valid values:
+	// The feature verified by using the TXT record. Valid values:
 	//
-	// *   ADD_SUBDOMAIN
+	// *   ADD_SUB_DOMAIN
 	// *   RETRIEVAL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -20603,11 +20974,11 @@ type GetTxtRecordForVerifyResponseBody struct {
 	//
 	// >  If you do not specify this parameter, it is not returned.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The host record.
+	// The hostname.
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The value of the DNS record.
+	// The record value.
 	//
 	// >  The validity period is three days.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -20969,11 +21340,11 @@ func (s *ModifyHichinaDomainDNSResponse) SetBody(v *ModifyHichinaDomainDNSRespon
 }
 
 type MoveDomainResourceGroupRequest struct {
-	// The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the resource group.
+	// The ID of the new resource group.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The domain name.
+	// The resource ID. If Tag is left empty, ResourceId is required.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -21001,7 +21372,7 @@ func (s *MoveDomainResourceGroupRequest) SetResourceId(v string) *MoveDomainReso
 }
 
 type MoveDomainResourceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21123,17 +21494,16 @@ func (s *MoveGtmResourceGroupResponse) SetBody(v *MoveGtmResourceGroupResponseBo
 }
 
 type OperateBatchDomainRequest struct {
+	// The DNS records. You can submit up to 1000 DNS records.
 	DomainRecordInfo []*OperateBatchDomainRequestDomainRecordInfo `json:"DomainRecordInfo,omitempty" xml:"DomainRecordInfo,omitempty" type:"Repeated"`
+	// The language.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The type of the batch operation. Valid values:
 	//
 	// *   **DOMAIN_ADD**: adds domain names in batches.
 	// *   **DOMAIN_DEL**: deletes domain names in batches.
 	// *   **RR_ADD**: adds DNS records in batches.
-	// *   **RR_DEL**: deletes DNS records in batches. (If RR or VALUE exists, DNS records corresponding to the specified RR or VALUE are deleted. If both of them exist, DNS records corresponding to the specified RR and VALUE are deleted. If no RR or VALUE is specified, the DNS records corresponding to the DomainName parameter are deleted.)
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of DNS record N. For the DNS record types supported by Alibaba Cloud DNS, see [Resolution record type formats](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
-	//
-	// >  If you set the Type parameter to **RR_ADD**, you must also specify this parameter.
+	// *   **RR_DEL**: deletes DNS records in batches. This operation deletes the DNS records with the specified hostname or record value. If you do not specify the Rr and Value parameters, this operation deletes the DNS records that are added for the specified domain names.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -21161,32 +21531,32 @@ func (s *OperateBatchDomainRequest) SetType(v string) *OperateBatchDomainRequest
 }
 
 type OperateBatchDomainRequestDomainRecordInfo struct {
-	// The resolution line of DNS record N. Default value: default.
+	// The domain name.
 	//
-	// For more information, see [Resolution line enumeration](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+	// >  You can submit 1 to 1,000 domain names. Due to the limit on the length of HTTP request headers, excessive domain names are ignored. Do not enter more than 1,000 domain names.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The host record corresponding to DNS record N.
-	//
-	// >  If you set the Type parameter to **RR_ADD**, you must also specify this parameter.
+	// The resolution line. Default value: default.
 	Line     *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	NewRr    *string `json:"NewRr,omitempty" xml:"NewRr,omitempty"`
 	NewType  *string `json:"NewType,omitempty" xml:"NewType,omitempty"`
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The ID of the task.
+	// The priority of the mail exchanger (MX) record.
+	//
+	// This parameter is required if the type of the DNS record is MX. Default value: 10.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The priority of MX-type DNS record N.
+	// The hostname.
 	//
-	// This parameter must be specified if the type of the DNS record is MX. Default value: 10.
+	// >  This parameter is required if you set Type to **RR_ADD** or **RR_DEL**.
 	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The domain name corresponding to DNS record N.
-	//
-	// >  N is specified by users. **N** starts from **1**. The maximum value of N is **1000**. Extra data entries are ignored.
+	// The time-to-live (TTL) value of the cached DNS record. Unit: seconds. Default value: ***600***.
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The value of DNS record N.
+	// The type of the DNS record. Valid values: A, AAAA, TXT, MX, and CNAME.
 	//
-	// >  If you set the Type parameter to **RR_ADD**, you must also specify this parameter.
+	// >  This parameter is required if you set Type to **RR_ADD** or **RR_DEL**.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The TTL of DNS record N. Unit: seconds. Default value: **600**.
+	// The record value.
+	//
+	// >  This parameter is required if you set Type to **RR_ADD** or **RR_DEL**.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21249,8 +21619,9 @@ func (s *OperateBatchDomainRequestDomainRecordInfo) SetValue(v string) *OperateB
 }
 
 type OperateBatchDomainResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	// The task ID.
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -21799,7 +22170,7 @@ func (s *ResumePdnsServiceResponse) SetBody(v *ResumePdnsServiceResponseBody) *R
 type RetrieveDomainRequest struct {
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -21822,7 +22193,7 @@ func (s *RetrieveDomainRequest) SetLang(v string) *RetrieveDomainRequest {
 }
 
 type RetrieveDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22148,14 +22519,14 @@ func (s *SetDnsGtmAccessModeResponse) SetBody(v *SetDnsGtmAccessModeResponseBody
 }
 
 type SetDnsGtmMonitorStatusRequest struct {
-	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the health check task.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
 	// Specifies whether to enable the health check feature. Valid values:
 	//
-	// *   OPEN: enable
-	// *   CLOSE: disable
+	// *   OPEN: enables the health check feature.
+	// *   CLOSE: disables the health check feature.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -22183,7 +22554,7 @@ func (s *SetDnsGtmMonitorStatusRequest) SetStatus(v string) *SetDnsGtmMonitorSta
 }
 
 type SetDnsGtmMonitorStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22312,14 +22683,14 @@ func (s *SetDomainDnssecStatusResponse) SetBody(v *SetDomainDnssecStatusResponse
 }
 
 type SetDomainRecordStatusRequest struct {
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The status of the DNS record. Valid values:
+	// The state of the DNS record. Valid values:
 	//
-	// *   **Enable**: enables resolution.
-	// *   **Disable**: suspends resolution.
+	// *   **Enable**: enables the DNS record.
+	// *   **Disable**: disables the DNS record.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -22356,7 +22727,7 @@ func (s *SetDomainRecordStatusRequest) SetUserClientIp(v string) *SetDomainRecor
 type SetDomainRecordStatusResponseBody struct {
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the DNS record.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -22950,13 +23321,13 @@ func (s *TransferDomainResponse) SetBody(v *TransferDomainResponseBody) *Transfe
 }
 
 type UnbindInstanceDomainsRequest struct {
-	// The list of domain names.
+	// The domain names.
 	//
-	// Separate multiple domain names with commas (,). A maximum of 100 domain names can be entered.
+	// Separate multiple domain names with commas (,). Up to 100 domain names can be entered.
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -22984,11 +23355,11 @@ func (s *UnbindInstanceDomainsRequest) SetLang(v string) *UnbindInstanceDomainsR
 }
 
 type UnbindInstanceDomainsResponseBody struct {
-	// The number of domain names that failed to be unbound.
+	// The number of domain names that failed to be unbound from the instance.
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of domain names that have been unbound.
+	// The number of domain names that are unbound from the instance.
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 }
 
@@ -23213,12 +23584,13 @@ func (s *UpdateAppKeyStateResponse) SetBody(v *UpdateAppKeyStateResponseBody) *U
 }
 
 type UpdateCustomLineRequest struct {
+	// The CIDR blocks. Separate IP addresses with a hyphen (-). Enter a CIDR block in each row. You can enter 1 to 50 CIDR blocks at a time. If a CIDR block contains only one IP address, enter the IP address in the format of IP1-IP1. Different CIDR blocks cannot be overlapped.
 	IpSegment []*UpdateCustomLineRequestIpSegment `json:"IpSegment,omitempty" xml:"IpSegment,omitempty" type:"Repeated"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The unique ID of the custom line.
 	LineId *int64 `json:"LineId,omitempty" xml:"LineId,omitempty"`
-	// The new name of the custom line.
+	// The name of the custom line. The name must be 1 to 20 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
 	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
@@ -23276,7 +23648,7 @@ func (s *UpdateCustomLineRequestIpSegment) SetStartIp(v string) *UpdateCustomLin
 }
 
 type UpdateCustomLineResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23323,13 +23695,13 @@ func (s *UpdateCustomLineResponse) SetBody(v *UpdateCustomLineResponseBody) *Upd
 }
 
 type UpdateDNSSLBWeightRequest struct {
-	// The language of the domain name.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The IP address of the client that you use to change the weight.
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The updated weight of the DNS record. Valid values: `1 to 100`.
+	// The weight of the DNS record that you want to specify. Valid values: `1 to 100`.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -23364,7 +23736,7 @@ func (s *UpdateDNSSLBWeightRequest) SetWeight(v int32) *UpdateDNSSLBWeightReques
 type UpdateDNSSLBWeightResponseBody struct {
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The updated weight.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
@@ -23562,9 +23934,12 @@ func (s *UpdateDnsCacheDomainResponse) SetBody(v *UpdateDnsCacheDomainResponseBo
 }
 
 type UpdateDnsCacheDomainRemarkRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The language.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The remarks. The remarks can be up to 50 characters in length and can contain only letters, digits, periods (.), underscores (\_), and hyphens (-).
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s UpdateDnsCacheDomainRemarkRequest) String() string {
@@ -23591,6 +23966,7 @@ func (s *UpdateDnsCacheDomainRemarkRequest) SetRemark(v string) *UpdateDnsCacheD
 }
 
 type UpdateDnsCacheDomainRemarkResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23637,7 +24013,13 @@ func (s *UpdateDnsCacheDomainRemarkResponse) SetBody(v *UpdateDnsCacheDomainRema
 }
 
 type UpdateDnsGtmAccessStrategyRequest struct {
-	AccessMode      *string                                             `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// The primary/secondary switchover policy for address pool sets. Valid values:
+	//
+	// *   AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.
+	// *   DEFAULT: the primary address pool set
+	// *   FAILOVER: the secondary address pool set
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// The address pools in the primary address pool set.
 	DefaultAddrPool []*UpdateDnsGtmAccessStrategyRequestDefaultAddrPool `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
 	// The type of the primary address pool. Valid values:
 	//
@@ -23645,44 +24027,45 @@ type UpdateDnsGtmAccessStrategyRequest struct {
 	// *   IPV6
 	// *   DOMAIN
 	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values:
+	// Specifies whether to enable Domain Name System (DNS) resolution with optimal latency for the primary address pool set. Valid values:
 	//
-	// *   OPEN: enable
-	// *   CLOSE: disable
+	// *   OPEN
+	// *   CLOSE
 	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	// The load balancing policy of the primary address pool group. Valid values:
+	// The load balancing policy of the primary address pool set. Valid values:
 	//
 	// *   ALL_RR: returns all addresses.
 	// *   RATIO: returns addresses by weight.
 	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the primary address pool group.
+	// The maximum number of addresses returned from the primary address pool set.
 	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
-	// The minimum number of available addresses in the primary address pool group.
-	DefaultMinAvailableAddrNum *int32                                               `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	FailoverAddrPool           []*UpdateDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
+	// The minimum number of available addresses in the primary address pool set.
+	DefaultMinAvailableAddrNum *int32 `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
+	// The address pools in the secondary address pool set. If no address pool exists in the secondary address pool set, set this parameter to EMPTY.
+	FailoverAddrPool []*UpdateDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
 	// The type of the secondary address pool. Valid values:
 	//
 	// *   IPV4
 	// *   IPV6
 	// *   DOMAIN
 	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values:
+	// Specifies whether to enable DNS resolution with optimal latency for the secondary address pool set. Valid values:
 	//
-	// *   OPEN: enable
-	// *   CLOSE: disable
+	// *   OPEN
+	// *   CLOSE
 	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	// The load balancing policy of the secondary address pool group. Valid values:
+	// The load balancing policy of the secondary address pool set. Valid values:
 	//
 	// *   ALL_RR: returns all addresses.
 	// *   RATIO: returns addresses by weight.
 	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the secondary address pool group.
+	// The maximum number of addresses returned from the secondary address pool set.
 	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
-	// The minimum number of available addresses in the secondary address pool group.
+	// The minimum number of available addresses in the secondary address pool set.
 	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
-	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The line codes of source regions. For example: `["default", "drpeng"]` indicates Global and Dr. Peng Telecom & Media Group.
+	// The line codes of the source regions. Example: `["default", "drpeng"]`, which indicates the global line and Dr. Peng Group line.
 	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
 	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
@@ -23784,9 +24167,9 @@ func (s *UpdateDnsGtmAccessStrategyRequest) SetStrategyName(v string) *UpdateDns
 }
 
 type UpdateDnsGtmAccessStrategyRequestDefaultAddrPool struct {
-	// The ID of the address pool in the primary address pool group.
+	// The ID of the address pool in the primary address pool set.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool in the primary address pool group.
+	// The weight of the address pool in the primary address pool set.
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
@@ -23809,9 +24192,9 @@ func (s *UpdateDnsGtmAccessStrategyRequestDefaultAddrPool) SetLbaWeight(v int32)
 }
 
 type UpdateDnsGtmAccessStrategyRequestFailoverAddrPool struct {
-	// The ID of the address pool in the secondary address pool group.
+	// The ID of the address pool in the secondary address pool set.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool in the secondary address pool group.
+	// The weight of the address pool in the secondary address pool set.
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
@@ -23834,7 +24217,7 @@ func (s *UpdateDnsGtmAccessStrategyRequestFailoverAddrPool) SetLbaWeight(v int32
 }
 
 type UpdateDnsGtmAccessStrategyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
@@ -24424,7 +24807,7 @@ type UpdateDomainGroupRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The new name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -24456,7 +24839,7 @@ type UpdateDomainGroupResponseBody struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The new name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24513,27 +24896,37 @@ func (s *UpdateDomainGroupResponse) SetBody(v *UpdateDomainGroupResponseBody) *U
 }
 
 type UpdateDomainRecordRequest struct {
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The resolution line. Default value: **default**.
+	// The DNS resolution line. Default value: **default**.
+	//
+	// For more information, see
+	//
+	// [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The priority of an MX-type DNS record. Valid values: `[1,50]`.
+	// The priority of the mail exchanger (MX) record. Valid values: `1 to 50`.
 	//
 	// This parameter must be specified if the type of the DNS record is MX.
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The host record.
+	// The hostname.
 	//
-	// For example, to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it blank.
+	// For example, if you want to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it empty.
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The TTL of the resolution. Default value: 600. Unit: seconds.
+	// The time-to-live (TTL) of the DNS record. Default value: 600. Unit: seconds.
+	//
+	// For more information, see
+	//
+	// [TTL definition](https://www.alibabacloud.com/help/zh/doc-detail/29806.htm).
 	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	// The type of the DNS record.
+	// The type of the DNS record. For more information, see
+	//
+	// [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The value of the DNS record.
+	// The record value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -24593,7 +24986,7 @@ func (s *UpdateDomainRecordRequest) SetValue(v string) *UpdateDomainRecordReques
 type UpdateDomainRecordResponseBody struct {
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24645,11 +25038,11 @@ func (s *UpdateDomainRecordResponse) SetBody(v *UpdateDomainRecordResponseBody) 
 }
 
 type UpdateDomainRecordRemarkRequest struct {
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of your DNS record.
+	// The description of the DNS record.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -24684,7 +25077,7 @@ func (s *UpdateDomainRecordRemarkRequest) SetUserClientIp(v string) *UpdateDomai
 }
 
 type UpdateDomainRecordRemarkResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24731,9 +25124,9 @@ func (s *UpdateDomainRecordRemarkResponse) SetBody(v *UpdateDomainRecordRemarkRe
 }
 
 type UpdateDomainRemarkRequest struct {
-	// The domain name in Alibaba Cloud DNS.
+	// The domain name that already exists in Alibaba Cloud DNS.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language type.
+	// The language.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The description of your domain name.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
@@ -24763,7 +25156,7 @@ func (s *UpdateDomainRemarkRequest) SetRemark(v string) *UpdateDomainRemarkReque
 }
 
 type UpdateDomainRemarkResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26149,8 +26542,8 @@ func (client *Client) AddDnsGtmMonitor(request *AddDnsGtmMonitorRequest) (_resul
 }
 
 /**
- * You can check whether a domain name is valid based on the following topic:
- * [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm)
+ * For more information about how to check whether a domain name is valid, see
+ * [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
  *
  * @param request AddDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26202,8 +26595,8 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *u
 }
 
 /**
- * You can check whether a domain name is valid based on the following topic:
- * [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm)
+ * For more information about how to check whether a domain name is valid, see
+ * [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
  *
  * @param request AddDomainRequest
  * @return AddDomainResponse
@@ -26679,6 +27072,14 @@ func (client *Client) AddGtmRecoveryPlan(request *AddGtmRecoveryPlanRequest) (_r
 	return _result, _err
 }
 
+/**
+ * A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+ * A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
+ *
+ * @param request BindInstanceDomainsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BindInstanceDomainsResponse
+ */
 func (client *Client) BindInstanceDomainsWithOptions(request *BindInstanceDomainsRequest, runtime *util.RuntimeOptions) (_result *BindInstanceDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26720,6 +27121,13 @@ func (client *Client) BindInstanceDomainsWithOptions(request *BindInstanceDomain
 	return _result, _err
 }
 
+/**
+ * A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+ * A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
+ *
+ * @param request BindInstanceDomainsRequest
+ * @return BindInstanceDomainsResponse
+ */
 func (client *Client) BindInstanceDomains(request *BindInstanceDomainsRequest) (_result *BindInstanceDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindInstanceDomainsResponse{}
@@ -26731,6 +27139,13 @@ func (client *Client) BindInstanceDomains(request *BindInstanceDomainsRequest) (
 	return _result, _err
 }
 
+/**
+ * You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+ *
+ * @param request ChangeDomainGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ChangeDomainGroupResponse
+ */
 func (client *Client) ChangeDomainGroupWithOptions(request *ChangeDomainGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeDomainGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26772,6 +27187,12 @@ func (client *Client) ChangeDomainGroupWithOptions(request *ChangeDomainGroupReq
 	return _result, _err
 }
 
+/**
+ * You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+ *
+ * @param request ChangeDomainGroupRequest
+ * @return ChangeDomainGroupResponse
+ */
 func (client *Client) ChangeDomainGroup(request *ChangeDomainGroupRequest) (_result *ChangeDomainGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeDomainGroupResponse{}
@@ -27200,14 +27621,6 @@ func (client *Client) DeleteDnsGtmAddressPool(request *DeleteDnsGtmAddressPoolRe
 	return _result, _err
 }
 
-/**
- * *   Given the unique nature of a HiChina domain name, you are not allowed to delete the HiChina domain name by calling the Alibaba Cloud DNS API.
- * *   If the system prompts that a domain name does not exist, it is an unregistered domain name, it does not exist under the account, or its format in the request parameters is incorrect.
- *
- * @param request DeleteDomainRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDomainResponse
- */
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27245,13 +27658,6 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
-/**
- * *   Given the unique nature of a HiChina domain name, you are not allowed to delete the HiChina domain name by calling the Alibaba Cloud DNS API.
- * *   If the system prompts that a domain name does not exist, it is an unregistered domain name, it does not exist under the account, or its format in the request parameters is incorrect.
- *
- * @param request DeleteDomainRequest
- * @return DeleteDomainResponse
- */
 func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResponse{}
@@ -27264,7 +27670,7 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 }
 
 /**
- * >  A domain name group can be deleted only when it contains no domain names. The default group cannot be deleted.
+ * >  The default group cannot be deleted.
  *
  * @param request DeleteDomainGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27308,7 +27714,7 @@ func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupReq
 }
 
 /**
- * >  A domain name group can be deleted only when it contains no domain names. The default group cannot be deleted.
+ * >  The default group cannot be deleted.
  *
  * @param request DeleteDomainGroupRequest
  * @return DeleteDomainGroupResponse
@@ -27646,7 +28052,7 @@ func (client *Client) DescribeBatchResultCount(request *DescribeBatchResultCount
 }
 
 /**
- * **Before you call this operation, make sure that the batch operation task is complete.
+ * Before you call this operation, make sure that the batch operation task is complete.
  *
  * @param request DescribeBatchResultDetailRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27706,7 +28112,7 @@ func (client *Client) DescribeBatchResultDetailWithOptions(request *DescribeBatc
 }
 
 /**
- * **Before you call this operation, make sure that the batch operation task is complete.
+ * Before you call this operation, make sure that the batch operation task is complete.
  *
  * @param request DescribeBatchResultDetailRequest
  * @return DescribeBatchResultDetailResponse
@@ -30879,6 +31285,78 @@ func (client *Client) DescribeInstanceDomains(request *DescribeInstanceDomainsRe
 	return _result, _err
 }
 
+func (client *Client) DescribeInternetDnsLogsWithOptions(request *DescribeInternetDnsLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeInternetDnsLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimestamp)) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Module)) {
+		query["Module"] = request.Module
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryCondition)) {
+		query["QueryCondition"] = request.QueryCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInternetDnsLogs"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInternetDnsLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInternetDnsLogs(request *DescribeInternetDnsLogsRequest) (_result *DescribeInternetDnsLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInternetDnsLogsResponse{}
+	_body, _err := client.DescribeInternetDnsLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeIspFlushCacheInstancesWithOptions(request *DescribeIspFlushCacheInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeIspFlushCacheInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32388,6 +32866,14 @@ func (client *Client) ExecuteGtmRecoveryPlan(request *ExecuteGtmRecoveryPlanRequ
 	return _result, _err
 }
 
+/**
+ * For more information about the difference between primary domain names and subdomain names, see
+ * [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
+ *
+ * @param request GetMainDomainNameRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMainDomainNameResponse
+ */
 func (client *Client) GetMainDomainNameWithOptions(request *GetMainDomainNameRequest, runtime *util.RuntimeOptions) (_result *GetMainDomainNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32425,6 +32911,13 @@ func (client *Client) GetMainDomainNameWithOptions(request *GetMainDomainNameReq
 	return _result, _err
 }
 
+/**
+ * For more information about the difference between primary domain names and subdomain names, see
+ * [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
+ *
+ * @param request GetMainDomainNameRequest
+ * @return GetMainDomainNameResponse
+ */
 func (client *Client) GetMainDomainName(request *GetMainDomainNameRequest) (_result *GetMainDomainNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMainDomainNameResponse{}
@@ -32738,6 +33231,13 @@ func (client *Client) MoveGtmResourceGroup(request *MoveGtmResourceGroupRequest)
 	return _result, _err
 }
 
+/**
+ * Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+ *
+ * @param request OperateBatchDomainRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OperateBatchDomainResponse
+ */
 func (client *Client) OperateBatchDomainWithOptions(request *OperateBatchDomainRequest, runtime *util.RuntimeOptions) (_result *OperateBatchDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32779,6 +33279,12 @@ func (client *Client) OperateBatchDomainWithOptions(request *OperateBatchDomainR
 	return _result, _err
 }
 
+/**
+ * Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+ *
+ * @param request OperateBatchDomainRequest
+ * @return OperateBatchDomainResponse
+ */
 func (client *Client) OperateBatchDomain(request *OperateBatchDomainRequest) (_result *OperateBatchDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OperateBatchDomainResponse{}
@@ -33038,6 +33544,13 @@ func (client *Client) ResumePdnsService(request *ResumePdnsServiceRequest) (_res
 	return _result, _err
 }
 
+/**
+ * To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+ *
+ * @param request RetrieveDomainRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RetrieveDomainResponse
+ */
 func (client *Client) RetrieveDomainWithOptions(request *RetrieveDomainRequest, runtime *util.RuntimeOptions) (_result *RetrieveDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33075,6 +33588,12 @@ func (client *Client) RetrieveDomainWithOptions(request *RetrieveDomainRequest, 
 	return _result, _err
 }
 
+/**
+ * To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+ *
+ * @param request RetrieveDomainRequest
+ * @return RetrieveDomainResponse
+ */
 func (client *Client) RetrieveDomain(request *RetrieveDomainRequest) (_result *RetrieveDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RetrieveDomainResponse{}
@@ -33751,6 +34270,14 @@ func (client *Client) TransferDomain(request *TransferDomainRequest) (_result *T
 	return _result, _err
 }
 
+/**
+ * A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+ * A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
+ *
+ * @param request UnbindInstanceDomainsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UnbindInstanceDomainsResponse
+ */
 func (client *Client) UnbindInstanceDomainsWithOptions(request *UnbindInstanceDomainsRequest, runtime *util.RuntimeOptions) (_result *UnbindInstanceDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33792,6 +34319,13 @@ func (client *Client) UnbindInstanceDomainsWithOptions(request *UnbindInstanceDo
 	return _result, _err
 }
 
+/**
+ * A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+ * A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
+ *
+ * @param request UnbindInstanceDomainsRequest
+ * @return UnbindInstanceDomainsResponse
+ */
 func (client *Client) UnbindInstanceDomains(request *UnbindInstanceDomainsRequest) (_result *UnbindInstanceDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindInstanceDomainsResponse{}
@@ -33916,8 +34450,8 @@ func (client *Client) UpdateAppKeyState(request *UpdateAppKeyStateRequest) (_res
 }
 
 /**
- * In each CIDR block, the end IP address must be greater than or equal to the start IP address.
- * The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+ * In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+ * The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
  *
  * @param request UpdateCustomLineRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33969,8 +34503,8 @@ func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineReque
 }
 
 /**
- * In each CIDR block, the end IP address must be greater than or equal to the start IP address.
- * The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+ * In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+ * The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
  *
  * @param request UpdateCustomLineRequest
  * @return UpdateCustomLineResponse
