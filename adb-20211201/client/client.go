@@ -8862,6 +8862,7 @@ type DescribeDBResourceGroupRequest struct {
 	//
 	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
 	GroupType            *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
 
@@ -8885,6 +8886,11 @@ func (s *DescribeDBResourceGroupRequest) SetGroupName(v string) *DescribeDBResou
 
 func (s *DescribeDBResourceGroupRequest) SetGroupType(v string) *DescribeDBResourceGroupRequest {
 	s.GroupType = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupRequest) SetRegionId(v string) *DescribeDBResourceGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -13981,9 +13987,11 @@ type GetSparkAppAttemptLogRequest struct {
 	// > You can call the [ListSparkAppAttempts](~~455887~~) operation to query the information about the retry attempts of a Spark application, including the retry log IDs.
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
 	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
-	LogLength  *int64  `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
+	// The log offset.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s GetSparkAppAttemptLogRequest) String() string {
@@ -14046,7 +14054,8 @@ type GetSparkAppAttemptLogResponseBodyData struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
-	LogSize    *int32  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	// The number of entries per page. A value of 0 indicates that no valid logs are returned.
+	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	// The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
@@ -22529,6 +22538,10 @@ func (client *Client) DescribeDBResourceGroupWithOptions(request *DescribeDBReso
 
 	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
 		query["GroupType"] = request.GroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
