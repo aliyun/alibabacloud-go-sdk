@@ -15,16 +15,16 @@ import (
 type AddAddressBookRequest struct {
 	// The addresses that you want to add to the address book. Separate multiple addresses with commas (,).
 	//
-	// > If you set GroupType to `ip`, `port` or `domain`, you must specify the AddressList parameter.
-	// >
-	// > * If you set GroupType to `ip`, you must add IP addresses to the address book. Example: 192.0.XX.XX/32, 192.0.XX.XX/24.
-	// > * If you set GroupType to `port`, you must add port numbers or port ranges to the address book. Example: 80, 100/200.
-	// > * If you set GroupType to `domain`, you must add domain names to the address book. Example: example.com, aliyundoc.com.
+	// >  If you set GroupType to `ip`, `port`, or `domain`, you must specify the AddressList parameter.
+	//
+	// *   If you set GroupType to `ip`, you must add IP addresses to the address book. Example: 192.0.XX.XX/32, 192.0.XX.XX/24.
+	// *   If you set GroupType to `port`, you must add port numbers or port ranges to the address book. Example: 80, 100/200.
+	// *   If you set GroupType to `domain`, you must add domain names to the address book. Example: example.com, aliyundoc.com.
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
 	// Specifies whether to automatically add public IP addresses of ECS instances to the address book if the instances match the specified tags. Valid values:
 	//
 	// *   **1**: yes
-	// *   **0**: no (default)
+	// *   **0** (default): no
 	AutoAddTagEcs *string `json:"AutoAddTagEcs,omitempty" xml:"AutoAddTagEcs,omitempty"`
 	// The description of the address book.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -32,14 +32,14 @@ type AddAddressBookRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the address book. Valid values:
 	//
-	// * **ip**: IP address book
-	// * **domain**: domain address book
-	// * **port**: port address book
-	// * **tag**: ECS tag-based address book
+	// *   **ip**: IP address book
+	// *   **domain**: domain address book
+	// *   **port**: port address book
+	// *   **tag**: ECS tag-based address book
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
-	// *   **zh**: Chinese (default)
+	// *   **zh** (default): Chinese
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
@@ -49,7 +49,7 @@ type AddAddressBookRequest struct {
 	TagList []*AddAddressBookRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 	// The logical relation among the ECS tags that you want to match. Valid values:
 	//
-	// *   **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book. This is the default value.
+	// *   **and** (default): Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
 	// *   **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the address book.
 	TagRelation *string `json:"TagRelation,omitempty" xml:"TagRelation,omitempty"`
 }
@@ -108,9 +108,9 @@ func (s *AddAddressBookRequest) SetTagRelation(v string) *AddAddressBookRequest 
 }
 
 type AddAddressBookRequestTagList struct {
-	// The key of the tag.
+	// The key of the ECS tag.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The value of the ECS tag.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -135,7 +135,7 @@ func (s *AddAddressBookRequestTagList) SetTagValue(v string) *AddAddressBookRequ
 type AddAddressBookResponseBody struct {
 	// The UUID of the returned address book.
 	GroupUuid *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -158,9 +158,9 @@ func (s *AddAddressBookResponseBody) SetRequestId(v string) *AddAddressBookRespo
 }
 
 type AddAddressBookResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddAddressBookResponse) String() string {
@@ -273,7 +273,10 @@ type AddControlPolicyRequest struct {
 	// *   **in**: inbound traffic
 	// *   **out**: outbound traffic
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
+	// >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP version supported by the access control policy.
 	//
 	// Valid values:
@@ -299,11 +302,34 @@ type AddControlPolicyRequest struct {
 	//
 	// *   **true**: enables the access control policy.
 	// *   **false**: disables the access control policy.
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
+	//
+	// *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: \[].
+	// *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+	//
+	// >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+	//
+	// *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+	//
+	// >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
+	// >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+	//
+	// >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
 	// *   If SourceType is set to net, the value of this parameter is a CIDR block.
@@ -327,7 +353,10 @@ type AddControlPolicyRequest struct {
 	// *   **group**: address book
 	// *   **location**: location
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+	//
+	// >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s AddControlPolicyRequest) String() string {
@@ -484,9 +513,9 @@ func (s *AddControlPolicyResponseBody) SetRequestId(v string) *AddControlPolicyR
 }
 
 type AddControlPolicyResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddControlPolicyResponse) String() string {
@@ -574,9 +603,9 @@ func (s *AddInstanceMembersResponseBody) SetRequestId(v string) *AddInstanceMemb
 }
 
 type AddInstanceMembersResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddInstanceMembersResponse) String() string {
@@ -674,9 +703,9 @@ func (s *BatchCopyVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *
 }
 
 type BatchCopyVpcFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchCopyVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchCopyVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchCopyVpcFirewallControlPolicyResponse) String() string {
@@ -698,6 +727,93 @@ func (s *BatchCopyVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *Batc
 }
 
 func (s *BatchCopyVpcFirewallControlPolicyResponse) SetBody(v *BatchCopyVpcFirewallControlPolicyResponseBody) *BatchCopyVpcFirewallControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDownloadTaskRequest struct {
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	TaskData *string `json:"TaskData,omitempty" xml:"TaskData,omitempty"`
+}
+
+func (s CreateDownloadTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadTaskRequest) SetLang(v string) *CreateDownloadTaskRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateDownloadTaskRequest) SetTaskData(v string) *CreateDownloadTaskRequest {
+	s.TaskData = &v
+	return s
+}
+
+type CreateDownloadTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s CreateDownloadTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadTaskResponseBody) SetRequestId(v string) *CreateDownloadTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDownloadTaskResponseBody) SetStatus(v string) *CreateDownloadTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDownloadTaskResponseBody) SetTaskId(v int64) *CreateDownloadTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreateDownloadTaskResponseBody) SetTaskName(v string) *CreateDownloadTaskResponseBody {
+	s.TaskName = &v
+	return s
+}
+
+type CreateDownloadTaskResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDownloadTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDownloadTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadTaskResponse) SetHeaders(v map[string]*string) *CreateDownloadTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDownloadTaskResponse) SetStatusCode(v int32) *CreateDownloadTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDownloadTaskResponse) SetBody(v *CreateDownloadTaskResponseBody) *CreateDownloadTaskResponse {
 	s.Body = v
 	return s
 }
@@ -1015,9 +1131,9 @@ func (s *CreateNatFirewallControlPolicyResponseBody) SetRequestId(v string) *Cre
 }
 
 type CreateNatFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateNatFirewallControlPolicyResponse) String() string {
@@ -1189,9 +1305,9 @@ func (s *CreateTrFirewallV2ResponseBody) SetRequestId(v string) *CreateTrFirewal
 }
 
 type CreateTrFirewallV2Response struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTrFirewallV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTrFirewallV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTrFirewallV2Response) String() string {
@@ -1393,9 +1509,9 @@ func (s *CreateTrFirewallV2RoutePolicyResponseBody) SetTrFirewallRoutePolicyId(v
 }
 
 type CreateTrFirewallV2RoutePolicyResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTrFirewallV2RoutePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTrFirewallV2RoutePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTrFirewallV2RoutePolicyResponse) String() string {
@@ -1555,9 +1671,9 @@ func (s *CreateVpcFirewallCenConfigureResponseBody) SetVpcFirewallId(v string) *
 }
 
 type CreateVpcFirewallCenConfigureResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVpcFirewallCenConfigureResponse) String() string {
@@ -1706,9 +1822,9 @@ func (s *CreateVpcFirewallConfigureResponseBody) SetVpcFirewallId(v string) *Cre
 }
 
 type CreateVpcFirewallConfigureResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVpcFirewallConfigureResponse) String() string {
@@ -1758,7 +1874,8 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	// - **Memcache**
 	// - **SSL**
 	// - **ANY**: all types of applications
-	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application types supported by the access control policy.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -1787,7 +1904,10 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	// - **group**: address book
 	// - **domain**: domain name
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
+	// >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// - **zh**: Chinese (default)
@@ -1810,11 +1930,34 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// - **true**: enables the access control policy.
 	// - **false**: disables the access control policy.
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
+	//
+	// *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: \[].
+	// *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+	//
+	// >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+	//
+	// *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+	//
+	// >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
+	// >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+	//
+	// >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// - If SourceType is set to `net`, the value of Source must be a CIDR block.
@@ -1825,7 +1968,10 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	// - **net**: CIDR block
 	// - **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+	//
+	// >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the policy group in which you want to create the access control policy.
 	//
 	// - If a VPC firewall protects the traffic between two VPCs that are connected by using a CEN instance, the value of this parameter must be the ID of the CEN instance.
@@ -1984,9 +2130,9 @@ func (s *CreateVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *Cre
 }
 
 type CreateVpcFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVpcFirewallControlPolicyResponse) String() string {
@@ -2069,9 +2215,9 @@ func (s *DeleteAddressBookResponseBody) SetRequestId(v string) *DeleteAddressBoo
 }
 
 type DeleteAddressBookResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAddressBookResponse) String() string {
@@ -2168,9 +2314,9 @@ func (s *DeleteControlPolicyResponseBody) SetRequestId(v string) *DeleteControlP
 }
 
 type DeleteControlPolicyResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteControlPolicyResponse) String() string {
@@ -2192,6 +2338,150 @@ func (s *DeleteControlPolicyResponse) SetStatusCode(v int32) *DeleteControlPolic
 }
 
 func (s *DeleteControlPolicyResponse) SetBody(v *DeleteControlPolicyResponseBody) *DeleteControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteControlPolicyTemplateRequest struct {
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteControlPolicyTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteControlPolicyTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteControlPolicyTemplateRequest) SetLang(v string) *DeleteControlPolicyTemplateRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DeleteControlPolicyTemplateRequest) SetSourceIp(v string) *DeleteControlPolicyTemplateRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DeleteControlPolicyTemplateRequest) SetTemplateId(v string) *DeleteControlPolicyTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteControlPolicyTemplateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteControlPolicyTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteControlPolicyTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteControlPolicyTemplateResponseBody) SetRequestId(v string) *DeleteControlPolicyTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteControlPolicyTemplateResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteControlPolicyTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteControlPolicyTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteControlPolicyTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteControlPolicyTemplateResponse) SetHeaders(v map[string]*string) *DeleteControlPolicyTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteControlPolicyTemplateResponse) SetStatusCode(v int32) *DeleteControlPolicyTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteControlPolicyTemplateResponse) SetBody(v *DeleteControlPolicyTemplateResponseBody) *DeleteControlPolicyTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDownloadTaskRequest struct {
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeleteDownloadTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDownloadTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDownloadTaskRequest) SetLang(v string) *DeleteDownloadTaskRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DeleteDownloadTaskRequest) SetTaskId(v string) *DeleteDownloadTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteDownloadTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDownloadTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDownloadTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDownloadTaskResponseBody) SetRequestId(v string) *DeleteDownloadTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDownloadTaskResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDownloadTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDownloadTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDownloadTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDownloadTaskResponse) SetHeaders(v map[string]*string) *DeleteDownloadTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDownloadTaskResponse) SetStatusCode(v int32) *DeleteDownloadTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDownloadTaskResponse) SetBody(v *DeleteDownloadTaskResponseBody) *DeleteDownloadTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2243,9 +2533,9 @@ func (s *DeleteFirewallV2RoutePoliciesResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteFirewallV2RoutePoliciesResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFirewallV2RoutePoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFirewallV2RoutePoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFirewallV2RoutePoliciesResponse) String() string {
@@ -2308,9 +2598,9 @@ func (s *DeleteInstanceMembersResponseBody) SetRequestId(v string) *DeleteInstan
 }
 
 type DeleteInstanceMembersResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceMembersResponse) String() string {
@@ -2403,9 +2693,9 @@ func (s *DeleteNatFirewallControlPolicyResponseBody) SetRequestId(v string) *Del
 }
 
 type DeleteNatFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteNatFirewallControlPolicyResponse) String() string {
@@ -2427,6 +2717,87 @@ func (s *DeleteNatFirewallControlPolicyResponse) SetStatusCode(v int32) *DeleteN
 }
 
 func (s *DeleteNatFirewallControlPolicyResponse) SetBody(v *DeleteNatFirewallControlPolicyResponseBody) *DeleteNatFirewallControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNatFirewallControlPolicyBatchRequest struct {
+	AclUuidList  []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
+	Direction    *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+}
+
+func (s DeleteNatFirewallControlPolicyBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatFirewallControlPolicyBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatFirewallControlPolicyBatchRequest) SetAclUuidList(v []*string) *DeleteNatFirewallControlPolicyBatchRequest {
+	s.AclUuidList = v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyBatchRequest) SetDirection(v string) *DeleteNatFirewallControlPolicyBatchRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyBatchRequest) SetLang(v string) *DeleteNatFirewallControlPolicyBatchRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyBatchRequest) SetNatGatewayId(v string) *DeleteNatFirewallControlPolicyBatchRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+type DeleteNatFirewallControlPolicyBatchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNatFirewallControlPolicyBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatFirewallControlPolicyBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatFirewallControlPolicyBatchResponseBody) SetRequestId(v string) *DeleteNatFirewallControlPolicyBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNatFirewallControlPolicyBatchResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNatFirewallControlPolicyBatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteNatFirewallControlPolicyBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatFirewallControlPolicyBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatFirewallControlPolicyBatchResponse) SetHeaders(v map[string]*string) *DeleteNatFirewallControlPolicyBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyBatchResponse) SetStatusCode(v int32) *DeleteNatFirewallControlPolicyBatchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyBatchResponse) SetBody(v *DeleteNatFirewallControlPolicyBatchResponseBody) *DeleteNatFirewallControlPolicyBatchResponse {
 	s.Body = v
 	return s
 }
@@ -2478,9 +2849,9 @@ func (s *DeleteTrFirewallV2ResponseBody) SetRequestId(v string) *DeleteTrFirewal
 }
 
 type DeleteTrFirewallV2Response struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTrFirewallV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTrFirewallV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTrFirewallV2Response) String() string {
@@ -2560,9 +2931,9 @@ func (s *DeleteVpcFirewallCenConfigureResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteVpcFirewallCenConfigureResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVpcFirewallCenConfigureResponse) String() string {
@@ -2642,9 +3013,9 @@ func (s *DeleteVpcFirewallConfigureResponseBody) SetRequestId(v string) *DeleteV
 }
 
 type DeleteVpcFirewallConfigureResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVpcFirewallConfigureResponse) String() string {
@@ -2735,9 +3106,9 @@ func (s *DeleteVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *Del
 }
 
 type DeleteVpcFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVpcFirewallControlPolicyResponse) String() string {
@@ -2891,9 +3262,9 @@ func (s *DescribeACLProtectTrendResponseBodyTrendList) SetTime(v int64) *Describ
 }
 
 type DescribeACLProtectTrendResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeACLProtectTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeACLProtectTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeACLProtectTrendResponse) String() string {
@@ -2922,27 +3293,27 @@ func (s *DescribeACLProtectTrendResponse) SetBody(v *DescribeACLProtectTrendResp
 type DescribeAddressBookRequest struct {
 	// The port that is included in the address book. This parameter takes effect only when the **GroupType** parameter is set to **port**.
 	ContainPort *string `json:"ContainPort,omitempty" xml:"ContainPort,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// Pages start from page 1. Default value: 1.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The type of the address book. Valid values:
 	//
-	// * **ip**: IP address book
-	// * **domain**: domain address book
-	// * **port**: port address book
-	// * **tag**: Elastic Compute Service (ECS) tag-based address book
-	// * **allCloud**: cloud service address book
-	// * **threat**: threat intelligence address book
+	// *   **ip**: IP address book
+	// *   **domain**: domain address book
+	// *   **port**: port address book
+	// *   **tag**: Elastic Compute Service (ECS) tag-based address book
+	// *   **allCloud**: cloud service address book
+	// *   **threat**: threat intelligence address book
 	//
-	// > If you do not specify a type, the domain address books and ECS tag-based address books are queried.
+	// >  If you do not specify a type, the domain address books and ECS tag-based address books are queried.
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The language of the content within the request. Valid values:
 	//
-	// * **zh**: Chinese (default)
-	// * **en**: English
+	// *   **zh** (default): Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Default value: 10. Maximum value: 50.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -2991,11 +3362,11 @@ func (s *DescribeAddressBookRequest) SetQuery(v string) *DescribeAddressBookRequ
 type DescribeAddressBookResponseBody struct {
 	// The information about the address book.
 	Acls []*DescribeAddressBookResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
-	// The page number of the current page.
+	// The page number.
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of the returned address books.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -3041,8 +3412,8 @@ type DescribeAddressBookResponseBodyAcls struct {
 	AddressListCount *int32 `json:"AddressListCount,omitempty" xml:"AddressListCount,omitempty"`
 	// Indicates whether the public IP addresses of ECS instances are automatically added to the address book if the instances match the specified tags. The setting takes effect on both newly purchased ECS instances whose tag settings are complete and ECS instances whose tag settings are modified. Valid values:
 	//
-	// * **1**: yes
-	// * **0**: no
+	// *   **1**: yes
+	// *   **0**: no
 	AutoAddTagEcs *int32 `json:"AutoAddTagEcs,omitempty" xml:"AutoAddTagEcs,omitempty"`
 	// The description of the address book.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -3050,14 +3421,14 @@ type DescribeAddressBookResponseBodyAcls struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the address book. Valid values:
 	//
-	// * **ip**: IP address book
-	// * **domain**: domain address book
-	// * **port**: port address book
-	// * **tag**: ECS tag-based address book
-	// * **allCloud**: cloud service address book
-	// * **threat**: threat intelligence address book
+	// *   **ip**: IP address book
+	// *   **domain**: domain address book
+	// *   **port**: port address book
+	// *   **tag**: ECS tag-based address book
+	// *   **allCloud**: cloud service address book
+	// *   **threat**: threat intelligence address book
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The unique ID of the address book.
+	// The UUID of the address book.
 	GroupUuid *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
 	// The number of times that the address book is referenced.
 	ReferenceCount *int32 `json:"ReferenceCount,omitempty" xml:"ReferenceCount,omitempty"`
@@ -3065,8 +3436,8 @@ type DescribeAddressBookResponseBodyAcls struct {
 	TagList []*DescribeAddressBookResponseBodyAclsTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 	// The logical relationship among ECS tags. Valid values:
 	//
-	// * **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
-	// * **or**: The public IP addresses of ECS instances that match any of the specified tags can be added to the address book.
+	// *   **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
+	// *   **or**: The public IP addresses of ECS instances that match any of the specified tags can be added to the address book.
 	TagRelation *string `json:"TagRelation,omitempty" xml:"TagRelation,omitempty"`
 }
 
@@ -3154,9 +3525,9 @@ func (s *DescribeAddressBookResponseBodyAclsTagList) SetTagValue(v string) *Desc
 }
 
 type DescribeAddressBookResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAddressBookResponse) String() string {
@@ -3218,8 +3589,8 @@ type DescribeAssetListRequest struct {
 	// *   **EIP**: the EIP
 	// *   **EniEIP**: the EIP of an elastic network interface (ENI)
 	// *   **NatEIP**: the EIP of a NAT gateway
-	// *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
-	// *   **SlbPublicIP**: the public IP address of an SLB instance
+	// *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance or a Classic Load Balancer (CLB) instance
+	// *   **SlbPublicIP**: the public IP address of an SLB instance or a CLB instance
 	// *   **NatPublicIP**: the public IP address of a NAT gateway
 	// *   **HAVIP**: the high-availability virtual IP address (HAVIP)
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -3562,9 +3933,9 @@ func (s *DescribeAssetListResponseBodyAssets) SetType(v string) *DescribeAssetLi
 }
 
 type DescribeAssetListResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAssetListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAssetListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAssetListResponse) String() string {
@@ -3586,6 +3957,244 @@ func (s *DescribeAssetListResponse) SetStatusCode(v int32) *DescribeAssetListRes
 }
 
 func (s *DescribeAssetListResponse) SetBody(v *DescribeAssetListResponseBody) *DescribeAssetListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAssetRiskListRequest struct {
+	IpAddrList []*string `json:"IpAddrList,omitempty" xml:"IpAddrList,omitempty" type:"Repeated"`
+	IpVersion  *int32    `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Lang       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp   *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeAssetRiskListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAssetRiskListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetRiskListRequest) SetIpAddrList(v []*string) *DescribeAssetRiskListRequest {
+	s.IpAddrList = v
+	return s
+}
+
+func (s *DescribeAssetRiskListRequest) SetIpVersion(v int32) *DescribeAssetRiskListRequest {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeAssetRiskListRequest) SetLang(v string) *DescribeAssetRiskListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAssetRiskListRequest) SetSourceIp(v string) *DescribeAssetRiskListRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeAssetRiskListResponseBody struct {
+	AssetList  []*DescribeAssetRiskListResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAssetRiskListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAssetRiskListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetRiskListResponseBody) SetAssetList(v []*DescribeAssetRiskListResponseBodyAssetList) *DescribeAssetRiskListResponseBody {
+	s.AssetList = v
+	return s
+}
+
+func (s *DescribeAssetRiskListResponseBody) SetRequestId(v string) *DescribeAssetRiskListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAssetRiskListResponseBody) SetTotalCount(v int64) *DescribeAssetRiskListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAssetRiskListResponseBodyAssetList struct {
+	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpVersion *int64  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s DescribeAssetRiskListResponseBodyAssetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAssetRiskListResponseBodyAssetList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetRiskListResponseBodyAssetList) SetIp(v string) *DescribeAssetRiskListResponseBodyAssetList {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeAssetRiskListResponseBodyAssetList) SetIpVersion(v int64) *DescribeAssetRiskListResponseBodyAssetList {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeAssetRiskListResponseBodyAssetList) SetReason(v string) *DescribeAssetRiskListResponseBodyAssetList {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeAssetRiskListResponseBodyAssetList) SetRiskLevel(v string) *DescribeAssetRiskListResponseBodyAssetList {
+	s.RiskLevel = &v
+	return s
+}
+
+type DescribeAssetRiskListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAssetRiskListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAssetRiskListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAssetRiskListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetRiskListResponse) SetHeaders(v map[string]*string) *DescribeAssetRiskListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAssetRiskListResponse) SetStatusCode(v int32) *DescribeAssetRiskListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAssetRiskListResponse) SetBody(v *DescribeAssetRiskListResponseBody) *DescribeAssetRiskListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCfwRiskLevelSummaryRequest struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCfwRiskLevelSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCfwRiskLevelSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCfwRiskLevelSummaryRequest) SetInstanceType(v string) *DescribeCfwRiskLevelSummaryRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeCfwRiskLevelSummaryRequest) SetLang(v string) *DescribeCfwRiskLevelSummaryRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeCfwRiskLevelSummaryRequest) SetRegionId(v string) *DescribeCfwRiskLevelSummaryRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCfwRiskLevelSummaryResponseBody struct {
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RiskList  []*DescribeCfwRiskLevelSummaryResponseBodyRiskList `json:"RiskList,omitempty" xml:"RiskList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCfwRiskLevelSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCfwRiskLevelSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCfwRiskLevelSummaryResponseBody) SetRequestId(v string) *DescribeCfwRiskLevelSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCfwRiskLevelSummaryResponseBody) SetRiskList(v []*DescribeCfwRiskLevelSummaryResponseBodyRiskList) *DescribeCfwRiskLevelSummaryResponseBody {
+	s.RiskList = v
+	return s
+}
+
+type DescribeCfwRiskLevelSummaryResponseBodyRiskList struct {
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Num   *string `json:"Num,omitempty" xml:"Num,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCfwRiskLevelSummaryResponseBodyRiskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCfwRiskLevelSummaryResponseBodyRiskList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCfwRiskLevelSummaryResponseBodyRiskList) SetLevel(v string) *DescribeCfwRiskLevelSummaryResponseBodyRiskList {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeCfwRiskLevelSummaryResponseBodyRiskList) SetNum(v string) *DescribeCfwRiskLevelSummaryResponseBodyRiskList {
+	s.Num = &v
+	return s
+}
+
+func (s *DescribeCfwRiskLevelSummaryResponseBodyRiskList) SetType(v string) *DescribeCfwRiskLevelSummaryResponseBodyRiskList {
+	s.Type = &v
+	return s
+}
+
+type DescribeCfwRiskLevelSummaryResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCfwRiskLevelSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCfwRiskLevelSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCfwRiskLevelSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCfwRiskLevelSummaryResponse) SetHeaders(v map[string]*string) *DescribeCfwRiskLevelSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCfwRiskLevelSummaryResponse) SetStatusCode(v int32) *DescribeCfwRiskLevelSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCfwRiskLevelSummaryResponse) SetBody(v *DescribeCfwRiskLevelSummaryResponseBody) *DescribeCfwRiskLevelSummaryResponse {
 	s.Body = v
 	return s
 }
@@ -3648,7 +4257,14 @@ type DescribeControlPolicyRequest struct {
 	//
 	// *   **true**: The access control policy is enabled.
 	// *   **false**: The access control policy is disabled.
-	Release    *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Fuzzy match is supported. The value of this parameter depends on the value of the SourceType parameter.
 	//
@@ -3738,7 +4354,7 @@ type DescribeControlPolicyResponseBody struct {
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details about the access control policy.
+	// The information about the access control policies.
 	Policys []*DescribeControlPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3786,11 +4402,11 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	// *   **drop**: denies the traffic.
 	// *   **log**: monitors the traffic.
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The unique ID of the access control policy.
+	// The UUID of the access control policy.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// The application ID in the access control policy.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The type of the application that the access control policy supports. Valid values:
+	// The application type supported by the access control policy. We recommend that you specify ApplicationNameList. Valid values:
 	//
 	// *   **FTP**
 	// *   **HTTP**
@@ -3808,9 +4424,9 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	// *   **VNC**
 	// *   **ANY**: all types of applications
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The names of applications.
+	// The application names.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	// The time at which the access control policy was created.
+	// The time when the access control policy was created.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -3825,7 +4441,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	// *   **port**: port
 	// *   **group**: port address book
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	// The destination address in the access control policy. The value of this parameter depends on the value of the DestinationType parameter. Valid values:
+	// The destination address in the access control policy. The value of this parameter varies based on the value of DestinationType. Valid values:
 	//
 	// *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
 	// *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
@@ -3844,10 +4460,10 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	DestinationGroupType *string `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
 	// The type of the destination address in the access control policy. Valid values:
 	//
-	// *   **net**: destination CIDR block
-	// *   **group**: destination address book
-	// *   **domain**: destination domain name
-	// *   **location**: destination location
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **domain**: domain name
+	// *   **location**: location
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The direction of the traffic to which the access control policy applies. Valid values:
 	//
@@ -3856,40 +4472,66 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The DNS resolution result.
 	DnsResult *string `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
-	// The timestamp of the DNS resolution result. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the Domain Name System (DNS) resolution was performed. The value is a timestamp. Unit: seconds.
 	DnsResultTime *int64 `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
-	EndTime       *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The timestamp when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the access control policy stops taking effect. The value is a timestamp. Unit: seconds. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
+	// >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy was last hit. The value is a timestamp. Unit: seconds.
 	HitLastTime *int64 `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	// The number of hits for the access control policy.
 	HitTimes *int64 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
-	// The IP version of the address in the access control policy. Valid values:
+	// The IP version used in the access control policy. Valid values:
 	//
 	// *   **4**: IPv4
 	// *   **6**: IPv6
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The time at which the access control policy was modified.
+	// The time when the access control policy was modified.
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The priority of the access control policy.
 	//
-	// The priority value starts from 1. A small priority value indicates a high priority.
+	// The priority value starts from 1. A smaller priority value indicates a higher priority.
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The type of the protocol in the access control policy. Valid values:
+	// The protocol type in the access control policy. Valid values:
 	//
 	// *   **ANY**
 	// *   **TCP**
 	// *   **UDP**
 	// *   **ICMP**
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+	// The status of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
 	//
-	// *   **true**: The access control policy is enabled.
-	// *   **false**: The access control policy is disabled.
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	// *   **true**: enabled
+	// *   **false**: disabled
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
+	//
+	// *   If RepeatType is set to `Permanent`, `None`, or `Daily`, this parameter is left empty. Example: \[].
+	// *   If RepeatType is set to Weekly, this parameter must be specified. Example: \[0, 6].
+	//
+	// >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+	//
+	// *   If RepeatType is set to `Monthly`, this parameter must be specified. Example: \[1, 31].
+	//
+	// >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
+	// >  If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+	//
+	// >  If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type based on which the access control policy takes effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
 	// *   If **SourceType** is set to `net`, the value of Source is a CIDR block. Example: 192.0.XX.XX/24.
@@ -3908,14 +4550,15 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	SourceGroupType *string `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
 	// The type of the source address in the access control policy. Valid values:
 	//
-	// *   **net**: source CIDR block
-	// *   **group**: source address book
-	// *   **location**: source location
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **location**: location
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy.
-	//
-	// Quota that is consumed by an access control policy = Number of source CIDR blocks × Number of destination CIDR blocks, destination locations, or IP addresses that are resolved from destination domain names × Number of applications × Number of ports.
+	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses (number of CIDR blocks or regions) × Number of destination addresses (number of CIDR blocks, regions, or domain names) × Number of port ranges × Number of applications.
 	SpreadCnt *int32 `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a timestamp. Unit: seconds. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+	//
+	// >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4108,9 +4751,9 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetStartTime(v int64) *Descri
 }
 
 type DescribeControlPolicyResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeControlPolicyResponse) String() string {
@@ -4225,9 +4868,9 @@ func (s *DescribeDefaultIPSConfigResponseBody) SetRunMode(v int32) *DescribeDefa
 }
 
 type DescribeDefaultIPSConfigResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDefaultIPSConfigResponse) String() string {
@@ -4352,9 +4995,9 @@ func (s *DescribeDomainResolveResponseBodyResolveResult) SetUpdateTime(v int64) 
 }
 
 type DescribeDomainResolveResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainResolveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainResolveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainResolveResponse) String() string {
@@ -4376,6 +5019,274 @@ func (s *DescribeDomainResolveResponse) SetStatusCode(v int32) *DescribeDomainRe
 }
 
 func (s *DescribeDomainResolveResponse) SetBody(v *DescribeDomainResolveResponseBody) *DescribeDomainResolveResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDownloadTaskRequest struct {
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeDownloadTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadTaskRequest) SetCurrentPage(v string) *DescribeDownloadTaskRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskRequest) SetLang(v string) *DescribeDownloadTaskRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskRequest) SetPageSize(v string) *DescribeDownloadTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskRequest) SetTaskType(v string) *DescribeDownloadTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeDownloadTaskResponseBody struct {
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks      []*DescribeDownloadTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDownloadTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadTaskResponseBody) SetRequestId(v string) *DescribeDownloadTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBody) SetTasks(v []*DescribeDownloadTaskResponseBodyTasks) *DescribeDownloadTaskResponseBody {
+	s.Tasks = v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBody) SetTotalCount(v int32) *DescribeDownloadTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDownloadTaskResponseBodyTasks struct {
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileURL    *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType   *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeDownloadTaskResponseBodyTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadTaskResponseBodyTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadTaskResponseBodyTasks) SetCreateTime(v int64) *DescribeDownloadTaskResponseBodyTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBodyTasks) SetExpireTime(v int64) *DescribeDownloadTaskResponseBodyTasks {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBodyTasks) SetFileSize(v string) *DescribeDownloadTaskResponseBodyTasks {
+	s.FileSize = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBodyTasks) SetFileURL(v string) *DescribeDownloadTaskResponseBodyTasks {
+	s.FileURL = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBodyTasks) SetStatus(v string) *DescribeDownloadTaskResponseBodyTasks {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBodyTasks) SetTaskId(v string) *DescribeDownloadTaskResponseBodyTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBodyTasks) SetTaskName(v string) *DescribeDownloadTaskResponseBodyTasks {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponseBodyTasks) SetTaskType(v string) *DescribeDownloadTaskResponseBodyTasks {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeDownloadTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDownloadTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDownloadTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadTaskResponse) SetHeaders(v map[string]*string) *DescribeDownloadTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponse) SetStatusCode(v int32) *DescribeDownloadTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskResponse) SetBody(v *DescribeDownloadTaskResponseBody) *DescribeDownloadTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDownloadTaskTypeRequest struct {
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeDownloadTaskTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadTaskTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadTaskTypeRequest) SetCurrentPage(v string) *DescribeDownloadTaskTypeRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskTypeRequest) SetLang(v string) *DescribeDownloadTaskTypeRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskTypeRequest) SetPageSize(v string) *DescribeDownloadTaskTypeRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskTypeRequest) SetTaskType(v string) *DescribeDownloadTaskTypeRequest {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeDownloadTaskTypeResponseBody struct {
+	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskTypeArray []*DescribeDownloadTaskTypeResponseBodyTaskTypeArray `json:"TaskTypeArray,omitempty" xml:"TaskTypeArray,omitempty" type:"Repeated"`
+	TotalCount    *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDownloadTaskTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadTaskTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadTaskTypeResponseBody) SetRequestId(v string) *DescribeDownloadTaskTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskTypeResponseBody) SetTaskTypeArray(v []*DescribeDownloadTaskTypeResponseBodyTaskTypeArray) *DescribeDownloadTaskTypeResponseBody {
+	s.TaskTypeArray = v
+	return s
+}
+
+func (s *DescribeDownloadTaskTypeResponseBody) SetTotalCount(v int32) *DescribeDownloadTaskTypeResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDownloadTaskTypeResponseBodyTaskTypeArray struct {
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeDownloadTaskTypeResponseBodyTaskTypeArray) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadTaskTypeResponseBodyTaskTypeArray) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadTaskTypeResponseBodyTaskTypeArray) SetTaskName(v string) *DescribeDownloadTaskTypeResponseBodyTaskTypeArray {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskTypeResponseBodyTaskTypeArray) SetTaskType(v string) *DescribeDownloadTaskTypeResponseBodyTaskTypeArray {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeDownloadTaskTypeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDownloadTaskTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDownloadTaskTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadTaskTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadTaskTypeResponse) SetHeaders(v map[string]*string) *DescribeDownloadTaskTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDownloadTaskTypeResponse) SetStatusCode(v int32) *DescribeDownloadTaskTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDownloadTaskTypeResponse) SetBody(v *DescribeDownloadTaskTypeResponseBody) *DescribeDownloadTaskTypeResponse {
 	s.Body = v
 	return s
 }
@@ -4549,9 +5460,9 @@ func (s *DescribeInstanceMembersResponseBodyPageInfo) SetTotalCount(v int32) *De
 }
 
 type DescribeInstanceMembersResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceMembersResponse) String() string {
@@ -4573,6 +5484,174 @@ func (s *DescribeInstanceMembersResponse) SetStatusCode(v int32) *DescribeInstan
 }
 
 func (s *DescribeInstanceMembersResponse) SetBody(v *DescribeInstanceMembersResponseBody) *DescribeInstanceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceRiskLevelsRequest struct {
+	Instances []*DescribeInstanceRiskLevelsRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	Lang      *string                                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeInstanceRiskLevelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRiskLevelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRiskLevelsRequest) SetInstances(v []*DescribeInstanceRiskLevelsRequestInstances) *DescribeInstanceRiskLevelsRequest {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsRequest) SetLang(v string) *DescribeInstanceRiskLevelsRequest {
+	s.Lang = &v
+	return s
+}
+
+type DescribeInstanceRiskLevelsRequestInstances struct {
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InternetIp []*string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty" type:"Repeated"`
+	IntranetIp *string   `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Uuid       *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeInstanceRiskLevelsRequestInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRiskLevelsRequestInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRiskLevelsRequestInstances) SetInstanceId(v string) *DescribeInstanceRiskLevelsRequestInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsRequestInstances) SetInternetIp(v []*string) *DescribeInstanceRiskLevelsRequestInstances {
+	s.InternetIp = v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsRequestInstances) SetIntranetIp(v string) *DescribeInstanceRiskLevelsRequestInstances {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsRequestInstances) SetUuid(v string) *DescribeInstanceRiskLevelsRequestInstances {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeInstanceRiskLevelsResponseBody struct {
+	InstanceRisks []*DescribeInstanceRiskLevelsResponseBodyInstanceRisks `json:"InstanceRisks,omitempty" xml:"InstanceRisks,omitempty" type:"Repeated"`
+	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceRiskLevelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRiskLevelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRiskLevelsResponseBody) SetInstanceRisks(v []*DescribeInstanceRiskLevelsResponseBodyInstanceRisks) *DescribeInstanceRiskLevelsResponseBody {
+	s.InstanceRisks = v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsResponseBody) SetRequestId(v string) *DescribeInstanceRiskLevelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceRiskLevelsResponseBodyInstanceRisks struct {
+	Details    []*DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	InstanceId *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Level      *string                                                       `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s DescribeInstanceRiskLevelsResponseBodyInstanceRisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRiskLevelsResponseBodyInstanceRisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRiskLevelsResponseBodyInstanceRisks) SetDetails(v []*DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails) *DescribeInstanceRiskLevelsResponseBodyInstanceRisks {
+	s.Details = v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsResponseBodyInstanceRisks) SetInstanceId(v string) *DescribeInstanceRiskLevelsResponseBodyInstanceRisks {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsResponseBodyInstanceRisks) SetLevel(v string) *DescribeInstanceRiskLevelsResponseBodyInstanceRisks {
+	s.Level = &v
+	return s
+}
+
+type DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails struct {
+	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails) SetIp(v string) *DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails) SetLevel(v string) *DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails) SetType(v string) *DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails {
+	s.Type = &v
+	return s
+}
+
+type DescribeInstanceRiskLevelsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceRiskLevelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceRiskLevelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRiskLevelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRiskLevelsResponse) SetHeaders(v map[string]*string) *DescribeInstanceRiskLevelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsResponse) SetStatusCode(v int32) *DescribeInstanceRiskLevelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceRiskLevelsResponse) SetBody(v *DescribeInstanceRiskLevelsResponseBody) *DescribeInstanceRiskLevelsResponse {
 	s.Body = v
 	return s
 }
@@ -4881,9 +5960,9 @@ func (s *DescribeInternetOpenIpResponseBodyPageInfo) SetTotalCount(v int32) *Des
 }
 
 type DescribeInternetOpenIpResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInternetOpenIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInternetOpenIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInternetOpenIpResponse) String() string {
@@ -5130,7 +6209,7 @@ type DescribeInternetTrafficTrendResponseBodyDataList struct {
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
 	// The time when traffic is generated. The value is a UNIX timestamp. Unit: seconds.
 	Time *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The total inbound and outbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
+	// The total outbound and inbound network throughput, which indicates the total number of bits that are sent inbound and outbound per second. Unit: bit/s.
 	TotalBps *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
 }
 
@@ -5193,9 +6272,9 @@ func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetTotalBps(v int64) 
 }
 
 type DescribeInternetTrafficTrendResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInternetTrafficTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInternetTrafficTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInternetTrafficTrendResponse) String() string {
@@ -5601,9 +6680,9 @@ func (s *DescribeInvadeEventListResponseBodyPageInfo) SetTotalCount(v int32) *De
 }
 
 type DescribeInvadeEventListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInvadeEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInvadeEventListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInvadeEventListResponse) String() string {
@@ -5625,6 +6704,75 @@ func (s *DescribeInvadeEventListResponse) SetStatusCode(v int32) *DescribeInvade
 }
 
 func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResponseBody) *DescribeInvadeEventListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNatAclPageStatusRequest struct {
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeNatAclPageStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatAclPageStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatAclPageStatusRequest) SetLang(v string) *DescribeNatAclPageStatusRequest {
+	s.Lang = &v
+	return s
+}
+
+type DescribeNatAclPageStatusResponseBody struct {
+	NatAclPageEnable *bool   `json:"NatAclPageEnable,omitempty" xml:"NatAclPageEnable,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeNatAclPageStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatAclPageStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatAclPageStatusResponseBody) SetNatAclPageEnable(v bool) *DescribeNatAclPageStatusResponseBody {
+	s.NatAclPageEnable = &v
+	return s
+}
+
+func (s *DescribeNatAclPageStatusResponseBody) SetRequestId(v string) *DescribeNatAclPageStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeNatAclPageStatusResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNatAclPageStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNatAclPageStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatAclPageStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatAclPageStatusResponse) SetHeaders(v map[string]*string) *DescribeNatAclPageStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNatAclPageStatusResponse) SetStatusCode(v int32) *DescribeNatAclPageStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNatAclPageStatusResponse) SetBody(v *DescribeNatAclPageStatusResponseBody) *DescribeNatAclPageStatusResponse {
 	s.Body = v
 	return s
 }
@@ -5681,7 +6829,14 @@ type DescribeNatFirewallControlPolicyRequest struct {
 	//
 	// *   **true**
 	// *   **false**
-	Release    *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the SourceType parameter.
 	//
@@ -5826,10 +6981,10 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
 	// The destination address in the access control policy. The value of this parameter varies based on the value of DestinationType. Valid values:
 	//
-	// *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
-	// *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
-	// *   If **DestinationType** is set to **group**, the value of Destination is the name of an address book. Example: db_group.
-	// *   If **DestinationType** is set to **location**, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+	// *   If the value of **DestinationType** is **net**, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
+	// *   If the value of **DestinationType** is **domain**, the value of this parameter is a domain name. Example: aliyuncs.com.
+	// *   If the value of **DestinationType** is **group**, the value of this parameter is the name of an address book. Example: db_group.
+	// *   If the value of **DestinationType** is **location**, the value of this parameter is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	// The CIDR blocks in the destination address book.
 	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
@@ -5849,13 +7004,16 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	DnsResult *string `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
 	// The time when the Domain Name System (DNS) resolution was performed. The value is a UNIX timestamp. Unit: seconds.
 	DnsResultTime *int64 `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
-	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
 	//
-	// *   **0**: fully qualified domain name (FQDN) resolution
-	// *   **1**: dynamic DNS resolution
-	// *   **2**: FQDN resolution and dynamic DNS resolution
+	// *   **0**: fully qualified domain name (FQDN)-based resolution
+	// *   **1**: DNS-based dynamic resolution
+	// *   **2**: FQDN and DNS-based dynamic resolution
 	DomainResolveType *int32 `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	EndTime           *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
+	// >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
 	HitLastTime *int64 `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	// The number of hits for the access control policy.
@@ -5875,20 +7033,43 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **UDP**
 	// *   **ICMP**
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+	// The status of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
 	//
-	// *   **true**
-	// *   **false**
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	// *   **true**: enabled
+	// *   **false**: disabled
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
+	//
+	// *   If RepeatType is set to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[].
+	// *   If RepeatType is set to Weekly, this parameter must be specified. Example: \[0, 6].
+	//
+	// >  If RepeatType is set to Weekly, the fields in the value of this parameter cannot be repeated.
+	//
+	// *   If RepeatType is set to `Monthly`, this parameter must be specified. Example: \[1, 31].
+	//
+	// >  If RepeatType is set to Monthly, the fields in the value of this parameter cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
+	// >  If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+	//
+	// >  If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
-	// *   If **SourceType** is set to `net`, the value of Source is a CIDR block. Example: 192.0.XX.XX/24.
-	// *   If **SourceType** is set to `group`, the value of Source is the name of an address book. Example: db_group.
-	// *   If **SourceType** is set to `location`, the value of Source is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+	// *   If the value of **SourceType** is `net`, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
+	// *   If the value of **SourceType** is `group`, the value of this parameter is the name of an address book. Example: db_group.
+	// *   If the value of **SourceType** is `location`, the value of this parameter is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The CIDR blocks in the source address book.
 	SourceGroupCidrs []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
@@ -5902,7 +7083,10 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses (number of CIDR blocks or regions) × Number of destination addresses (number of CIDR blocks, regions, or domain names) × Number of port ranges × Number of applications.
 	SpreadCnt *string `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+	//
+	// >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeNatFirewallControlPolicyResponseBodyPolicys) String() string {
@@ -6084,9 +7268,9 @@ func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetStartTime(v int
 }
 
 type DescribeNatFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNatFirewallControlPolicyResponse) String() string {
@@ -6193,9 +7377,9 @@ func (s *DescribeNatFirewallPolicyPriorUsedResponseBody) SetStart(v int32) *Desc
 }
 
 type DescribeNatFirewallPolicyPriorUsedResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNatFirewallPolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNatFirewallPolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNatFirewallPolicyPriorUsedResponse) String() string {
@@ -6260,13 +7444,13 @@ type DescribeOutgoingDestinationIPRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
-	// *   **zh**: Chinese (default)
+	// *   **zh** (default): Chinese
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order in which you want to sort the queried information. Valid values:
+	// The method that is used to sort the results. Valid values:
 	//
 	// *   **asc**: the ascending order.
-	// *   **desc**: the descending order. This is the default value.
+	// *   **desc** (default): the descending order.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -6278,9 +7462,9 @@ type DescribeOutgoingDestinationIPRequest struct {
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
 	// The public IP address of the Elastic Compute Service (ECS) instance that initiates the outbound connection.
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The field based on which you want to sort the queried information. Valid values:
+	// The field based on which you want to sort the query results. Valid values:
 	//
-	// *   **SessionCount**: the number of requests. This is the default value.
+	// *   **SessionCount** (default): the number of requests.
 	// *   **TotalBytes**: the total volume of traffic.
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
@@ -6406,7 +7590,7 @@ func (s *DescribeOutgoingDestinationIPRequest) SetTagIdNew(v string) *DescribeOu
 }
 
 type DescribeOutgoingDestinationIPResponseBody struct {
-	// The destination IP addresses in outbound connections.
+	// The IP addresses in outbound connections.
 	DstIPList []*DescribeOutgoingDestinationIPResponseBodyDstIPList `json:"DstIPList,omitempty" xml:"DstIPList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6440,19 +7624,19 @@ func (s *DescribeOutgoingDestinationIPResponseBody) SetTotalCount(v int32) *Desc
 type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	// Indicates whether an access control policy is configured. Valid values:
 	//
-	// *   **Uncovered**: No access control policies are configured.
-	// *   **FullCoverage**: An access control policy is configured.
+	// *   **Uncovered**: no
+	// *   **FullCoverage**: yes
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// The suggestion in an access control policy.
+	// The suggestion to configure an access control policy.
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
-	// The state of the access control policy. Valid values:
+	// The status of the access control policy. Valid values:
 	//
-	// *   **Normal**: healthy
+	// *   **normal**: healthy
 	// *   **Abnormal**: unhealthy
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The information about the address book.
 	AddressGroupList []*DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList `json:"AddressGroupList,omitempty" xml:"AddressGroupList,omitempty" type:"Repeated"`
-	// An array that consists of application ports.
+	// The application ports.
 	ApplicationPortList []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
 	// The type of the tag. Valid values:
 	//
@@ -6460,7 +7644,7 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	// *   **Malicious**
 	// *   **Trusted**
 	CategoryClassId *string `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
-	// The ID of the service to which the destination IP address belongs. Valid values:
+	// The ID of the service type. Valid values:
 	//
 	// *   **Aliyun**: Alibaba Cloud services
 	// *   **NotAliyun**: third-party services
@@ -6468,28 +7652,28 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	// The type of the service to which the destination IP address belongs. Valid values:
 	//
 	// *   **Alibaba Cloud services**
-	// *   **third-party services**
+	// *   **Third-party services**
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The destination IP address in the outbound connection that is initiated to access a domain name.
+	// The destination IP addresses in outbound connections.
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
 	// The name of the group to which the access control policy belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// Indicates whether an access control policy is configured. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	HasAcl *string `json:"HasAcl,omitempty" xml:"HasAcl,omitempty"`
 	// Indicates whether an access control policy is recommended. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
 	// The inbound traffic. Unit: bytes.
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// Indicates whether the destination IP address is added to a whitelist. Valid values:
 	//
-	// *   **true**: added
-	// *   **false**: not added
+	// *   **true**
+	// *   **false**
 	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
 	// The outbound traffic. Unit: bytes.
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
@@ -6509,7 +7693,7 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
 	// The tags.
 	TagList []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The total volume of traffic. Unit: bytes.
+	// The total traffic. Unit: bytes
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
 }
 
@@ -6657,7 +7841,7 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList) Set
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList struct {
-	// The application type in the access control policy. Valid values:
+	// The application type used in the access control policy. Valid values:
 	//
 	// *   **FTP**
 	// *   **HTTP**
@@ -6675,9 +7859,9 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList struc
 	// *   **SSL**
 	// *   **VNC**
 	//
-	// >  The value of this parameter depends on the value of Proto. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you specify both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
+	// >  The value of this parameter depends on the value of the Proto parameter. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you configure both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The port of the application.
+	// The application port.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -6754,9 +7938,9 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) SetTagName(v
 }
 
 type DescribeOutgoingDestinationIPResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOutgoingDestinationIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOutgoingDestinationIPResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPResponse) String() string {
@@ -6804,10 +7988,10 @@ type DescribeOutgoingDomainRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order in which you want to sort the query results. Valid values:
+	// The method that is used to sort the results. Valid values:
 	//
 	// *   **asc**: the ascending order.
-	// *   **desc**: the descending order. This is the default value.
+	// *   **desc** (default): the descending order.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -6817,7 +8001,7 @@ type DescribeOutgoingDomainRequest struct {
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
 	// The field based on which you want to sort the query results. Valid values:
 	//
-	// *   **SessionCount**: the number of requests. This is the default value.
+	// *   **SessionCount** (default): the number of requests.
 	// *   **TotalBytes**: the total volume of traffic.
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
@@ -7222,9 +8406,9 @@ func (s *DescribeOutgoingDomainResponseBodyDomainListTagList) SetTagName(v strin
 }
 
 type DescribeOutgoingDomainResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOutgoingDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOutgoingDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOutgoingDomainResponse) String() string {
@@ -7308,9 +8492,9 @@ func (s *DescribePolicyAdvancedConfigResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribePolicyAdvancedConfigResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePolicyAdvancedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePolicyAdvancedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePolicyAdvancedConfigResponse) String() string {
@@ -7428,9 +8612,9 @@ func (s *DescribePolicyPriorUsedResponseBody) SetStart(v int32) *DescribePolicyP
 }
 
 type DescribePolicyPriorUsedResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePolicyPriorUsedResponse) String() string {
@@ -7452,6 +8636,134 @@ func (s *DescribePolicyPriorUsedResponse) SetStatusCode(v int32) *DescribePolicy
 }
 
 func (s *DescribePolicyPriorUsedResponse) SetBody(v *DescribePolicyPriorUsedResponseBody) *DescribePolicyPriorUsedResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePrefixListsRequest struct {
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribePrefixListsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePrefixListsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePrefixListsRequest) SetRegionNo(v string) *DescribePrefixListsRequest {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribePrefixListsRequest) SetSourceIp(v string) *DescribePrefixListsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribePrefixListsResponseBody struct {
+	PrefixList []*DescribePrefixListsResponseBodyPrefixList `json:"PrefixList,omitempty" xml:"PrefixList,omitempty" type:"Repeated"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePrefixListsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePrefixListsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePrefixListsResponseBody) SetPrefixList(v []*DescribePrefixListsResponseBodyPrefixList) *DescribePrefixListsResponseBody {
+	s.PrefixList = v
+	return s
+}
+
+func (s *DescribePrefixListsResponseBody) SetRequestId(v string) *DescribePrefixListsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePrefixListsResponseBodyPrefixList struct {
+	AddressFamily    *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
+	AssociationCount *int32  `json:"AssociationCount,omitempty" xml:"AssociationCount,omitempty"`
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxEntries       *int32  `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
+	PrefixListId     *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	PrefixListName   *string `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
+}
+
+func (s DescribePrefixListsResponseBodyPrefixList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePrefixListsResponseBodyPrefixList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePrefixListsResponseBodyPrefixList) SetAddressFamily(v string) *DescribePrefixListsResponseBodyPrefixList {
+	s.AddressFamily = &v
+	return s
+}
+
+func (s *DescribePrefixListsResponseBodyPrefixList) SetAssociationCount(v int32) *DescribePrefixListsResponseBodyPrefixList {
+	s.AssociationCount = &v
+	return s
+}
+
+func (s *DescribePrefixListsResponseBodyPrefixList) SetCreationTime(v string) *DescribePrefixListsResponseBodyPrefixList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribePrefixListsResponseBodyPrefixList) SetDescription(v string) *DescribePrefixListsResponseBodyPrefixList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePrefixListsResponseBodyPrefixList) SetMaxEntries(v int32) *DescribePrefixListsResponseBodyPrefixList {
+	s.MaxEntries = &v
+	return s
+}
+
+func (s *DescribePrefixListsResponseBodyPrefixList) SetPrefixListId(v string) *DescribePrefixListsResponseBodyPrefixList {
+	s.PrefixListId = &v
+	return s
+}
+
+func (s *DescribePrefixListsResponseBodyPrefixList) SetPrefixListName(v string) *DescribePrefixListsResponseBodyPrefixList {
+	s.PrefixListName = &v
+	return s
+}
+
+type DescribePrefixListsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePrefixListsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePrefixListsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePrefixListsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePrefixListsResponse) SetHeaders(v map[string]*string) *DescribePrefixListsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePrefixListsResponse) SetStatusCode(v int32) *DescribePrefixListsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePrefixListsResponse) SetBody(v *DescribePrefixListsResponseBody) *DescribePrefixListsResponse {
 	s.Body = v
 	return s
 }
@@ -8099,9 +9411,9 @@ func (s *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) SetRegionNo(v str
 }
 
 type DescribeRiskEventGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRiskEventGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRiskEventGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRiskEventGroupResponse) String() string {
@@ -8303,9 +9615,9 @@ func (s *DescribeRiskEventPayloadResponseBody) SetXForwardFor(v string) *Describ
 }
 
 type DescribeRiskEventPayloadResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRiskEventPayloadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRiskEventPayloadResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRiskEventPayloadResponse) String() string {
@@ -8331,7 +9643,89 @@ func (s *DescribeRiskEventPayloadResponse) SetBody(v *DescribeRiskEventPayloadRe
 	return s
 }
 
+type DescribeSignatureLibVersionResponseBody struct {
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Version    []*DescribeSignatureLibVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSignatureLibVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSignatureLibVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSignatureLibVersionResponseBody) SetRequestId(v string) *DescribeSignatureLibVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSignatureLibVersionResponseBody) SetTotalCount(v int32) *DescribeSignatureLibVersionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSignatureLibVersionResponseBody) SetVersion(v []*DescribeSignatureLibVersionResponseBodyVersion) *DescribeSignatureLibVersionResponseBody {
+	s.Version = v
+	return s
+}
+
+type DescribeSignatureLibVersionResponseBodyVersion struct {
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeSignatureLibVersionResponseBodyVersion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSignatureLibVersionResponseBodyVersion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSignatureLibVersionResponseBodyVersion) SetType(v string) *DescribeSignatureLibVersionResponseBodyVersion {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeSignatureLibVersionResponseBodyVersion) SetVersion(v string) *DescribeSignatureLibVersionResponseBodyVersion {
+	s.Version = &v
+	return s
+}
+
+type DescribeSignatureLibVersionResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSignatureLibVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSignatureLibVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSignatureLibVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSignatureLibVersionResponse) SetHeaders(v map[string]*string) *DescribeSignatureLibVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSignatureLibVersionResponse) SetStatusCode(v int32) *DescribeSignatureLibVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSignatureLibVersionResponse) SetBody(v *DescribeSignatureLibVersionResponseBody) *DescribeSignatureLibVersionResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTrFirewallPolicyBackUpAssociationListRequest struct {
+	CandidateList []*DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList `json:"CandidateList,omitempty" xml:"CandidateList,omitempty" type:"Repeated"`
 	// The instance ID of the VPC firewall.
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
 	// The language of the content within the response. Valid values:
@@ -8351,6 +9745,11 @@ func (s DescribeTrFirewallPolicyBackUpAssociationListRequest) GoString() string 
 	return s.String()
 }
 
+func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetCandidateList(v []*DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList) *DescribeTrFirewallPolicyBackUpAssociationListRequest {
+	s.CandidateList = v
+	return s
+}
+
 func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetFirewallId(v string) *DescribeTrFirewallPolicyBackUpAssociationListRequest {
 	s.FirewallId = &v
 	return s
@@ -8362,6 +9761,70 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetLang(v string)
 }
 
 func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetTrFirewallRoutePolicyId(v string) *DescribeTrFirewallPolicyBackUpAssociationListRequest {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList struct {
+	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList) SetCandidateId(v string) *DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList) SetCandidateType(v string) *DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList {
+	s.CandidateType = &v
+	return s
+}
+
+type DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest struct {
+	CandidateListShrink *string `json:"CandidateList,omitempty" xml:"CandidateList,omitempty"`
+	// The instance ID of the VPC firewall.
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the routing policy.
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest) SetCandidateListShrink(v string) *DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest {
+	s.CandidateListShrink = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest) SetFirewallId(v string) *DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest) SetLang(v string) *DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest) SetTrFirewallRoutePolicyId(v string) *DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest {
 	s.TrFirewallRoutePolicyId = &v
 	return s
 }
@@ -8438,9 +9901,9 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociat
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListResponse struct {
-	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTrFirewallPolicyBackUpAssociationListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTrFirewallPolicyBackUpAssociationListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTrFirewallPolicyBackUpAssociationListResponse) String() string {
@@ -8669,9 +10132,9 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesS
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTrFirewallV2RoutePolicyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTrFirewallV2RoutePolicyListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTrFirewallV2RoutePolicyListResponse) String() string {
@@ -8873,9 +10336,9 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) SetTransitRouterId(v string) *
 }
 
 type DescribeTrFirewallsV2DetailResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTrFirewallsV2DetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTrFirewallsV2DetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2DetailResponse) String() string {
@@ -9311,9 +10774,9 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource)
 }
 
 type DescribeTrFirewallsV2ListResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTrFirewallsV2ListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTrFirewallsV2ListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2ListResponse) String() string {
@@ -9439,9 +10902,9 @@ func (s *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList) SetT
 }
 
 type DescribeTrFirewallsV2RouteListResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTrFirewallsV2RouteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTrFirewallsV2RouteListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2RouteListResponse) String() string {
@@ -9472,10 +10935,10 @@ type DescribeUserAssetIPTrafficInfoRequest struct {
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
-	// *   **zh**: Chinese (default)
+	// *   **zh** (default): Chinese
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The point in time to query. The value is a UNIX timestamp. Unit: seconds.
+	// The time range to query. The value is a UNIX timestamp. Unit: seconds.
 	TrafficTime *string `json:"TrafficTime,omitempty" xml:"TrafficTime,omitempty"`
 }
 
@@ -9503,23 +10966,23 @@ func (s *DescribeUserAssetIPTrafficInfoRequest) SetTrafficTime(v string) *Descri
 }
 
 type DescribeUserAssetIPTrafficInfoResponseBody struct {
-	// The end of the time range that is queried. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The network throughput, which indicates the inbound traffic rate. Unit: bit/s.
 	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
-	// The network throughput, which indicates the inbound packet rate. Unit: packets per second (pps).
+	// The inbound network throughput, which indicates the number of packets that are sent inbound per second. Unit: packets per second (pps).
 	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
-	// The number of new connections.
+	// The new connection creation rate.
 	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
 	// The network throughput, which indicates the outbound traffic rate. Unit: bit/s.
 	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	// The network throughput, which indicates the outbound packet rate. Unit: pps.
+	// The outbound network throughput, which indicates the number of packets that are sent outbound per second. Unit: pps.
 	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of requests.
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The beginning of the time range that is queried. The value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9577,9 +11040,9 @@ func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetStartTime(v int64) *Desc
 }
 
 type DescribeUserAssetIPTrafficInfoResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUserAssetIPTrafficInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserAssetIPTrafficInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUserAssetIPTrafficInfoResponse) String() string {
@@ -9740,9 +11203,9 @@ func (s *DescribeUserIPSWhitelistResponseBodyWhitelists) SetWhiteType(v int64) *
 }
 
 type DescribeUserIPSWhitelistResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUserIPSWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserIPSWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUserIPSWhitelistResponse) String() string {
@@ -9775,7 +11238,7 @@ type DescribeVpcFirewallAclGroupListRequest struct {
 	//
 	// *   **notconfigured**: VPC firewalls are not configured.
 	// *   **configured**: VPC firewalls are configured.
-	// *   If this parameter is left empty, all policy groups of access control policies are queried.
+	// *   If you do not specify this parameter, the access control policies of all VPC firewalls are queried.
 	FirewallConfigureStatus *string `json:"FirewallConfigureStatus,omitempty" xml:"FirewallConfigureStatus,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
@@ -9815,7 +11278,7 @@ func (s *DescribeVpcFirewallAclGroupListRequest) SetPageSize(v string) *Describe
 }
 
 type DescribeVpcFirewallAclGroupListResponseBody struct {
-	// An array that consists of the information about the policy group.
+	// The information about the policy groups.
 	AclGroupList []*DescribeVpcFirewallAclGroupListResponseBodyAclGroupList `json:"AclGroupList,omitempty" xml:"AclGroupList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -9855,17 +11318,21 @@ type DescribeVpcFirewallAclGroupListResponseBodyAclGroupList struct {
 	//
 	//     Example: cen-ervw0g12b5jbw\*\*\*\*
 	//
-	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall instance.
+	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.
 	//
 	//     Example: vfw-a42bbb7b887148c9\*\*\*\*
 	AclGroupId *string `json:"AclGroupId,omitempty" xml:"AclGroupId,omitempty"`
 	// The name of the policy group. Valid values:
 	//
 	// *   If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
-	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
+	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance name of the VPC firewall.
 	AclGroupName *string `json:"AclGroupName,omitempty" xml:"AclGroupName,omitempty"`
-	AclRuleCount *int32  `json:"AclRuleCount,omitempty" xml:"AclRuleCount,omitempty"`
-	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The number of access control policies in the policy group.
+	AclRuleCount *int32 `json:"AclRuleCount,omitempty" xml:"AclRuleCount,omitempty"`
+	// 是否是默认防火墙。取值：
+	// - **true**：是默认防火墙。
+	// - **false**：不是默认防火墙。
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 }
@@ -9904,9 +11371,9 @@ func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetMemberUid(v
 }
 
 type DescribeVpcFirewallAclGroupListResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVpcFirewallAclGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallAclGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVpcFirewallAclGroupListResponse) String() string {
@@ -10311,9 +11778,9 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEn
 }
 
 type DescribeVpcFirewallCenDetailResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVpcFirewallCenDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallCenDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVpcFirewallCenDetailResponse) String() string {
@@ -10822,9 +12289,9 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableL
 }
 
 type DescribeVpcFirewallCenListResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVpcFirewallCenListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallCenListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVpcFirewallCenListResponse) String() string {
@@ -11337,9 +12804,9 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetStartTime(v int
 }
 
 type DescribeVpcFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVpcFirewallControlPolicyResponse) String() string {
@@ -11442,9 +12909,9 @@ func (s *DescribeVpcFirewallDefaultIPSConfigResponseBody) SetRunMode(v int32) *D
 }
 
 type DescribeVpcFirewallDefaultIPSConfigResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVpcFirewallDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVpcFirewallDefaultIPSConfigResponse) String() string {
@@ -11814,9 +13281,9 @@ func (s *DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableListRouteEntryL
 }
 
 type DescribeVpcFirewallDetailResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVpcFirewallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVpcFirewallDetailResponse) String() string {
@@ -11838,6 +13305,128 @@ func (s *DescribeVpcFirewallDetailResponse) SetStatusCode(v int32) *DescribeVpcF
 }
 
 func (s *DescribeVpcFirewallDetailResponse) SetBody(v *DescribeVpcFirewallDetailResponseBody) *DescribeVpcFirewallDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVpcFirewallIPSWhitelistRequest struct {
+	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MemberUid     *int64  `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
+}
+
+func (s DescribeVpcFirewallIPSWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcFirewallIPSWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistRequest) SetLang(v string) *DescribeVpcFirewallIPSWhitelistRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistRequest) SetMemberUid(v int64) *DescribeVpcFirewallIPSWhitelistRequest {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistRequest) SetVpcFirewallId(v string) *DescribeVpcFirewallIPSWhitelistRequest {
+	s.VpcFirewallId = &v
+	return s
+}
+
+type DescribeVpcFirewallIPSWhitelistResponseBody struct {
+	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Whitelists []*DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists `json:"Whitelists,omitempty" xml:"Whitelists,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpcFirewallIPSWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcFirewallIPSWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponseBody) SetRequestId(v string) *DescribeVpcFirewallIPSWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponseBody) SetWhitelists(v []*DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) *DescribeVpcFirewallIPSWhitelistResponseBody {
+	s.Whitelists = v
+	return s
+}
+
+type DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists struct {
+	ListType       *int64    `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	ListValue      *string   `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	VpcFirewallId  *string   `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
+	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
+	WhiteType      *int64    `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+}
+
+func (s DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) SetListType(v int64) *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists {
+	s.ListType = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) SetListValue(v string) *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists {
+	s.ListValue = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) SetVpcFirewallId(v string) *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists {
+	s.VpcFirewallId = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) SetWhiteListValue(v []*string) *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists {
+	s.WhiteListValue = v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) SetWhiteType(v int64) *DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists {
+	s.WhiteType = &v
+	return s
+}
+
+type DescribeVpcFirewallIPSWhitelistResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallIPSWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVpcFirewallIPSWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcFirewallIPSWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallIPSWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponse) SetStatusCode(v int32) *DescribeVpcFirewallIPSWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallIPSWhitelistResponse) SetBody(v *DescribeVpcFirewallIPSWhitelistResponseBody) *DescribeVpcFirewallIPSWhitelistResponse {
 	s.Body = v
 	return s
 }
@@ -12338,9 +13927,9 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListR
 }
 
 type DescribeVpcFirewallListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVpcFirewallListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVpcFirewallListResponse) String() string {
@@ -12438,9 +14027,9 @@ func (s *DescribeVpcFirewallPolicyPriorUsedResponseBody) SetStart(v int32) *Desc
 }
 
 type DescribeVpcFirewallPolicyPriorUsedResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVpcFirewallPolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcFirewallPolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVpcFirewallPolicyPriorUsedResponse) String() string {
@@ -12466,8 +14055,246 @@ func (s *DescribeVpcFirewallPolicyPriorUsedResponse) SetBody(v *DescribeVpcFirew
 	return s
 }
 
+type DescribeVpcListLiteRequest struct {
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName  *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+}
+
+func (s DescribeVpcListLiteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcListLiteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcListLiteRequest) SetLang(v string) *DescribeVpcListLiteRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeVpcListLiteRequest) SetRegionNo(v string) *DescribeVpcListLiteRequest {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeVpcListLiteRequest) SetSourceIp(v string) *DescribeVpcListLiteRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeVpcListLiteRequest) SetVpcId(v string) *DescribeVpcListLiteRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeVpcListLiteRequest) SetVpcName(v string) *DescribeVpcListLiteRequest {
+	s.VpcName = &v
+	return s
+}
+
+type DescribeVpcListLiteResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VpcList   []*DescribeVpcListLiteResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpcListLiteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcListLiteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcListLiteResponseBody) SetRequestId(v string) *DescribeVpcListLiteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVpcListLiteResponseBody) SetVpcList(v []*DescribeVpcListLiteResponseBodyVpcList) *DescribeVpcListLiteResponseBody {
+	s.VpcList = v
+	return s
+}
+
+type DescribeVpcListLiteResponseBodyVpcList struct {
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName  *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+}
+
+func (s DescribeVpcListLiteResponseBodyVpcList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcListLiteResponseBodyVpcList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcListLiteResponseBodyVpcList) SetRegionNo(v string) *DescribeVpcListLiteResponseBodyVpcList {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeVpcListLiteResponseBodyVpcList) SetVpcId(v string) *DescribeVpcListLiteResponseBodyVpcList {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeVpcListLiteResponseBodyVpcList) SetVpcName(v string) *DescribeVpcListLiteResponseBodyVpcList {
+	s.VpcName = &v
+	return s
+}
+
+type DescribeVpcListLiteResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcListLiteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVpcListLiteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcListLiteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcListLiteResponse) SetHeaders(v map[string]*string) *DescribeVpcListLiteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcListLiteResponse) SetStatusCode(v int32) *DescribeVpcListLiteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVpcListLiteResponse) SetBody(v *DescribeVpcListLiteResponseBody) *DescribeVpcListLiteResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVpcZoneRequest struct {
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MemberUid   *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	RegionNo    *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+}
+
+func (s DescribeVpcZoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcZoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcZoneRequest) SetEnvironment(v string) *DescribeVpcZoneRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *DescribeVpcZoneRequest) SetLang(v string) *DescribeVpcZoneRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeVpcZoneRequest) SetMemberUid(v string) *DescribeVpcZoneRequest {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribeVpcZoneRequest) SetRegionNo(v string) *DescribeVpcZoneRequest {
+	s.RegionNo = &v
+	return s
+}
+
+type DescribeVpcZoneResponseBody struct {
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ZoneList  []*DescribeVpcZoneResponseBodyZoneList `json:"ZoneList,omitempty" xml:"ZoneList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpcZoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcZoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcZoneResponseBody) SetRequestId(v string) *DescribeVpcZoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVpcZoneResponseBody) SetZoneList(v []*DescribeVpcZoneResponseBodyZoneList) *DescribeVpcZoneResponseBody {
+	s.ZoneList = v
+	return s
+}
+
+type DescribeVpcZoneResponseBodyZoneList struct {
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneType  *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+}
+
+func (s DescribeVpcZoneResponseBodyZoneList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcZoneResponseBodyZoneList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcZoneResponseBodyZoneList) SetLocalName(v string) *DescribeVpcZoneResponseBodyZoneList {
+	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeVpcZoneResponseBodyZoneList) SetZoneId(v string) *DescribeVpcZoneResponseBodyZoneList {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeVpcZoneResponseBodyZoneList) SetZoneType(v string) *DescribeVpcZoneResponseBodyZoneList {
+	s.ZoneType = &v
+	return s
+}
+
+type DescribeVpcZoneResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVpcZoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVpcZoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcZoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcZoneResponse) SetHeaders(v map[string]*string) *DescribeVpcZoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcZoneResponse) SetStatusCode(v int32) *DescribeVpcZoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVpcZoneResponse) SetBody(v *DescribeVpcZoneResponseBody) *DescribeVpcZoneResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVulnerabilityProtectedListRequest struct {
-	// The attack type of the intrusion event. Valid values:
+	// The attack type of the vulnerability prevention event. Valid values:
 	//
 	// *   **1**: suspicious connection
 	// *   **2**: command execution
@@ -12483,9 +14310,9 @@ type DescribeVulnerabilityProtectedListRequest struct {
 	// *   **12**: mining
 	// *   **13**: reverse shell
 	//
-	// > If you do not specify this parameter, the intrusion events of all attack types are queried.
+	// >  If you do not specify this parameter, the intrusion events of all attack types are queried.
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The edition of Cloud Firewall.
+	// The edition of Cloud Firewall. If you use Cloud Firewall that uses the pay-as-you-go billing method, set the value to 10. You do not need to specify this parameter for other editions.
 	BuyVersion *int64 `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
 	// The number of the page to return. Default value: 1.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -12508,7 +14335,7 @@ type DescribeVulnerabilityProtectedListRequest struct {
 	// The sorting basis. Set the value to **attackCnt**, which indicates the number of attacks.
 	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
 	// Deprecated
-	// The source IP address of the request.
+	// The IP address of the access source.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -12636,7 +14463,7 @@ type DescribeVulnerabilityProtectedListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of vulnerabilities that are detected by Cloud Firewall.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// An array that consists of the information about the vulnerabilities.
+	// The vulnerabilities.
 	VulnList []*DescribeVulnerabilityProtectedListResponseBodyVulnList `json:"VulnList,omitempty" xml:"VulnList,omitempty" type:"Repeated"`
 	// The number of assets on which no vulnerabilities are detected.
 	ZeroResourceCount *int32 `json:"ZeroResourceCount,omitempty" xml:"ZeroResourceCount,omitempty"`
@@ -12671,9 +14498,9 @@ func (s *DescribeVulnerabilityProtectedListResponseBody) SetZeroResourceCount(v 
 }
 
 type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
-	// The number of vulnerabilities.
+	// The number of vulnerability attacks.
 	AttackCnt *int32 `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
-	// The attack type of the intrusion event. Valid values:
+	// The attack type of the vulnerability prevention event. Valid values:
 	//
 	// *   **1**: suspicious connection
 	// *   **2**: command execution
@@ -12688,8 +14515,6 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
 	// *   **11**: computer worm
 	// *   **12**: mining
 	// *   **13**: reverse shell
-	//
-	// > If no attack type is specified, the intrusion events of all attack types are queried.
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// The IDs of associated basic protection policies.
 	BasicRuleIds *string `json:"BasicRuleIds,omitempty" xml:"BasicRuleIds,omitempty"`
@@ -12703,40 +14528,41 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
 	// *   **1**: yes
 	HighlightTag *int32 `json:"HighlightTag,omitempty" xml:"HighlightTag,omitempty"`
 	// The time when the last attack was launched.
-	LastTime  *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The status of basic protection. Valid values:
+	// Indicates whether the basic protection policy that related to the vulnerability is enabled. Valid values:
 	//
-	// *   **false**: enabled
-	// *   **false**: disabled
+	// *   **true**
+	// *   **false**
 	//
-	// > If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
+	// >  If the value of this parameter is true, you must set the action of the basic protection policy related to the vulnerability to Block.
 	NeedOpenBasicRule *bool `json:"NeedOpenBasicRule,omitempty" xml:"NeedOpenBasicRule,omitempty"`
-	// The UUIDs of the basic protection policies for which you want to set the Current Action parameter to Block.
+	// The UUIDs of the basic protection policies for which the action needs to be changed to Block.
 	NeedOpenBasicRuleUuids *string `json:"NeedOpenBasicRuleUuids,omitempty" xml:"NeedOpenBasicRuleUuids,omitempty"`
-	// Indicates whether the intrusion prevention feature needs to be configured when you enable protection. Valid values:
+	// Indicates whether Threat Engine Mode needs to be configured when you enable protection. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	NeedOpenRunMode *bool `json:"NeedOpenRunMode,omitempty" xml:"NeedOpenRunMode,omitempty"`
-	// The status of virtual patching. Valid values:
+	// Indicates whether the virtual patching policy that related to the vulnerability is enabled. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// *   **true**
+	// *   **false**
 	//
-	// > If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
+	// >  If the value of this parameter is true, you must set the action of the virtual patching policy that related to the vulnerability to Block.
 	NeedOpenVirtualPatche *bool `json:"NeedOpenVirtualPatche,omitempty" xml:"NeedOpenVirtualPatche,omitempty"`
-	// The UUIDs of the virtual patching policies for which you want to set the Current Action parameter to Block.
+	// The UUIDs of the virtual patching policies for which the action needs to be changed to Block.
 	NeedOpenVirtualPatcheUuids *string `json:"NeedOpenVirtualPatcheUuids,omitempty" xml:"NeedOpenVirtualPatcheUuids,omitempty"`
-	// The Rule Group that you want to specify. Valid values:
+	// The type of the rule group. Valid values:
 	//
-	// *   **1**: Loose (default)
-	// *   **2**: Medium
-	// *   **3**: Strict
+	// *   **1** (default): loose
+	// *   **2**: medium
+	// *   **3**: strict
 	NeedRuleClass *int32 `json:"NeedRuleClass,omitempty" xml:"NeedRuleClass,omitempty"`
 	// The number of assets on which vulnerabilities are detected.
 	ResourceCnt *int32 `json:"ResourceCnt,omitempty" xml:"ResourceCnt,omitempty"`
-	// An array consisting of the assets on which vulnerabilities are detected.
+	// The assets on which the vulnerability is detected.
 	ResourceList []*DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 	// The IDs of associated virtual patching policies.
 	VirtualPatcheIds *string `json:"VirtualPatcheIds,omitempty" xml:"VirtualPatcheIds,omitempty"`
@@ -12750,17 +14576,17 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
 	VulnLevel *string `json:"VulnLevel,omitempty" xml:"VulnLevel,omitempty"`
 	// The name of the vulnerability.
 	VulnName *string `json:"VulnName,omitempty" xml:"VulnName,omitempty"`
-	// The status of vulnerability protection. Valid values:
+	// The status of the vulnerability prevention feature. Valid values:
 	//
-	// *   **partProtected**: partially protected
-	// *   **protected**: protected
-	// *   **unProtected**: unprotected
+	// *   **partProtected**: enabled for partial assets
+	// *   **protected**: enabled
+	// *   **unProtected**: disabled
 	VulnStatus *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
-	// *   **cve**: Windows vulnerability
-	// *   **cms**: Web-CMS vulnerability
-	// *   **App**: application vulnerability
+	// *   **emg**: urgent vulnerability
+	// *   **webcms**: Web-CMS vulnerability
+	// *   **app**: application vulnerability
 	VulnType *string `json:"VulnType,omitempty" xml:"VulnType,omitempty"`
 }
 
@@ -12889,9 +14715,9 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList struct {
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// The private IP address of the instance.
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The ID of the region in which Cloud Firewall is supported.
+	// The region ID of your Cloud Firewall.
 	//
-	// > For more information about the regions, see [Supported regions](~~195657~~).
+	// >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the instance.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -12903,11 +14729,11 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList struct {
 	// *   **EIP**
 	// *   **ECS**
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of vulnerability protection. Valid values:
+	// The status of the vulnerability prevention feature. Valid values:
 	//
-	// *   **partProtected**: partially protected
-	// *   **protected**: protected
-	// *   **unProtected**: unprotected
+	// *   **partProtected**: enabled for partial assets
+	// *   **protected**: enabled
+	// *   **unProtected**: disabled
 	VulnStatus *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
 }
 
@@ -12960,9 +14786,9 @@ func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) Set
 }
 
 type DescribeVulnerabilityProtectedListResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVulnerabilityProtectedListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVulnerabilityProtectedListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVulnerabilityProtectedListResponse) String() string {
@@ -13122,9 +14948,9 @@ func (s *ModifyAddressBookResponseBody) SetRequestId(v string) *ModifyAddressBoo
 }
 
 type ModifyAddressBookResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAddressBookResponse) String() string {
@@ -13417,9 +15243,9 @@ func (s *ModifyControlPolicyResponseBody) SetRequestId(v string) *ModifyControlP
 }
 
 type ModifyControlPolicyResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyControlPolicyResponse) String() string {
@@ -13456,13 +15282,9 @@ type ModifyControlPolicyPositionRequest struct {
 	// *   zh: Chinese (default)
 	// *   en: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The new priority of the IPv4 access control policy.
+	// The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
 	//
-	// You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
-	//
-	// >  The value of this parameter must be within the priority range of existing IPv4 access control policies. Otherwise, an error occurs when you call this operation.
-	//
-	// We recommend that you first call the [DescribePolicyPriorUsed](~~138862~~) operation to query the priority range of existing IPv4 access control policies that apply to the traffic of the specified direction.
+	// >  The new priority cannot exceed the priority range of the IPv4 access control policy. Otherwise, an error occurs when you call this operation. Before you call this operation, we recommend that you use the [DescribePolicyPriorUsed](~~138862~~) operation to query the priority range of the IPv4 access control policy in the specified direction.
 	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
 	// The original priority of the IPv4 access control policy.
 	OldOrder *string `json:"OldOrder,omitempty" xml:"OldOrder,omitempty"`
@@ -13505,7 +15327,7 @@ func (s *ModifyControlPolicyPositionRequest) SetSourceIp(v string) *ModifyContro
 }
 
 type ModifyControlPolicyPositionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13523,9 +15345,9 @@ func (s *ModifyControlPolicyPositionResponseBody) SetRequestId(v string) *Modify
 }
 
 type ModifyControlPolicyPositionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyControlPolicyPositionResponse) String() string {
@@ -13640,9 +15462,9 @@ func (s *ModifyDefaultIPSConfigResponseBody) SetRequestId(v string) *ModifyDefau
 }
 
 type ModifyDefaultIPSConfigResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDefaultIPSConfigResponse) String() string {
@@ -13742,9 +15564,9 @@ func (s *ModifyFirewallV2RoutePolicySwitchResponseBody) SetRequestId(v string) *
 }
 
 type ModifyFirewallV2RoutePolicySwitchResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyFirewallV2RoutePolicySwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFirewallV2RoutePolicySwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyFirewallV2RoutePolicySwitchResponse) String() string {
@@ -13832,9 +15654,9 @@ func (s *ModifyInstanceMemberAttributesResponseBody) SetRequestId(v string) *Mod
 }
 
 type ModifyInstanceMemberAttributesResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyInstanceMemberAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceMemberAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyInstanceMemberAttributesResponse) String() string {
@@ -13902,14 +15724,20 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	// *   **domain**: domain name
 	// *   **location**
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	Direction       *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The direction of the traffic to which the access control policy applies.
+	//
+	// *   Set the value to **out**.
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
 	//
 	// *   **0**: Fully qualified domain name (FQDN)-based resolution
 	// *   **1**: Domain Name System (DNS)-based dynamic resolution
 	// *   **2**: FQDN and DNS-based dynamic resolution
 	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+	//
+	// >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the request and the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
@@ -13928,33 +15756,50 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	// The status of the access control policy. Valid values:
 	//
-	// *   true: enabled
-	// *   false: disabled
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
-	// The source address in the access control policy.
+	// *   **true**: enabled
+	// *   **false**: disabled
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
 	//
-	// Valid values:
+	// *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
+	// *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
 	//
-	// *   If **SourceType** is set to `net`, the value of Source is a CIDR block.
+	// >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
 	//
-	//     Example: 10.2.4.0/24
+	// *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
 	//
-	// *   If **SourceType** is set to `group`, the value of this parameter is an address book.
+	// >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
 	//
-	//     Example: db_group
+	// >  If RepeatType is set to Permanent or None, RepeatEndTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must be specified.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+	//
+	// >  If RepeatType is set to Permanent or None, RepeatStartTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	// The source address in the access control policy. Valid values:
+	//
+	// *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block. Example: 10.2.XX.XX/24.
+	// *   If **SourceType** is set to `group`, the value of this parameter is an address book name. Example: db_group.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the source address in the access control policy.
-	//
-	// Valid values:
+	// The type of the source address in the access control policy. Valid values:
 	//
 	// *   **net**: CIDR block
 	// *   **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+	//
+	// >  If RepeatType is set to Permanent, StartTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must be specified.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ModifyNatFirewallControlPolicyRequest) String() string {
@@ -14099,9 +15944,9 @@ func (s *ModifyNatFirewallControlPolicyResponseBody) SetRequestId(v string) *Mod
 }
 
 type ModifyNatFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyNatFirewallControlPolicyResponse) String() string {
@@ -14129,7 +15974,10 @@ func (s *ModifyNatFirewallControlPolicyResponse) SetBody(v *ModifyNatFirewallCon
 
 type ModifyNatFirewallControlPolicyPositionRequest struct {
 	// The UUID of the access control policy.
-	AclUuid   *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The direction of the traffic to which the access control policy applies.
+	//
+	// *   Set the value to **out**.
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
@@ -14198,9 +16046,9 @@ func (s *ModifyNatFirewallControlPolicyPositionResponseBody) SetRequestId(v stri
 }
 
 type ModifyNatFirewallControlPolicyPositionResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyNatFirewallControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNatFirewallControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyNatFirewallControlPolicyPositionResponse) String() string {
@@ -14284,9 +16132,9 @@ func (s *ModifyPolicyAdvancedConfigResponseBody) SetRequestId(v string) *ModifyP
 }
 
 type ModifyPolicyAdvancedConfigResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyPolicyAdvancedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPolicyAdvancedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyPolicyAdvancedConfigResponse) String() string {
@@ -14359,9 +16207,9 @@ func (s *ModifyTrFirewallV2ConfigurationResponseBody) SetRequestId(v string) *Mo
 }
 
 type ModifyTrFirewallV2ConfigurationResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyTrFirewallV2ConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTrFirewallV2ConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyTrFirewallV2ConfigurationResponse) String() string {
@@ -14391,6 +16239,7 @@ type ModifyTrFirewallV2RoutePolicyScopeRequest struct {
 	DestCandidateList       []*ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
 	FirewallId              *string                                                       `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
 	Lang                    *string                                                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ShouldRecover           *string                                                       `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
 	SrcCandidateList        []*ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList  `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
 	TrFirewallRoutePolicyId *string                                                       `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
 }
@@ -14415,6 +16264,11 @@ func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) SetFirewallId(v string) *Mod
 
 func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) SetLang(v string) *ModifyTrFirewallV2RoutePolicyScopeRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) SetShouldRecover(v string) *ModifyTrFirewallV2RoutePolicyScopeRequest {
+	s.ShouldRecover = &v
 	return s
 }
 
@@ -14478,6 +16332,7 @@ type ModifyTrFirewallV2RoutePolicyScopeShrinkRequest struct {
 	DestCandidateListShrink *string `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty"`
 	FirewallId              *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
 	Lang                    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ShouldRecover           *string `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
 	SrcCandidateListShrink  *string `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty"`
 	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
 }
@@ -14502,6 +16357,11 @@ func (s *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) SetFirewallId(v string
 
 func (s *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) SetLang(v string) *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) SetShouldRecover(v string) *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest {
+	s.ShouldRecover = &v
 	return s
 }
 
@@ -14539,9 +16399,9 @@ func (s *ModifyTrFirewallV2RoutePolicyScopeResponseBody) SetTrFirewallRoutePolic
 }
 
 type ModifyTrFirewallV2RoutePolicyScopeResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyTrFirewallV2RoutePolicyScopeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTrFirewallV2RoutePolicyScopeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyTrFirewallV2RoutePolicyScopeResponse) String() string {
@@ -14638,9 +16498,9 @@ func (s *ModifyUserIPSWhitelistResponseBody) SetRequestId(v string) *ModifyUserI
 }
 
 type ModifyUserIPSWhitelistResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyUserIPSWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyUserIPSWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyUserIPSWhitelistResponse) String() string {
@@ -14729,9 +16589,9 @@ func (s *ModifyVpcFirewallCenConfigureResponseBody) SetRequestId(v string) *Modi
 }
 
 type ModifyVpcFirewallCenConfigureResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVpcFirewallCenConfigureResponse) String() string {
@@ -14823,9 +16683,9 @@ func (s *ModifyVpcFirewallCenSwitchStatusResponseBody) SetRequestId(v string) *M
 }
 
 type ModifyVpcFirewallCenSwitchStatusResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVpcFirewallCenSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcFirewallCenSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVpcFirewallCenSwitchStatusResponse) String() string {
@@ -14938,9 +16798,9 @@ func (s *ModifyVpcFirewallConfigureResponseBody) SetRequestId(v string) *ModifyV
 }
 
 type ModifyVpcFirewallConfigureResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVpcFirewallConfigureResponse) String() string {
@@ -15259,9 +17119,9 @@ func (s *ModifyVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *Mod
 }
 
 type ModifyVpcFirewallControlPolicyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVpcFirewallControlPolicyResponse) String() string {
@@ -15371,9 +17231,9 @@ func (s *ModifyVpcFirewallControlPolicyPositionResponseBody) SetRequestId(v stri
 }
 
 type ModifyVpcFirewallControlPolicyPositionResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVpcFirewallControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcFirewallControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVpcFirewallControlPolicyPositionResponse) String() string {
@@ -15494,9 +17354,9 @@ func (s *ModifyVpcFirewallDefaultIPSConfigResponseBody) SetRequestId(v string) *
 }
 
 type ModifyVpcFirewallDefaultIPSConfigResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVpcFirewallDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcFirewallDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVpcFirewallDefaultIPSConfigResponse) String() string {
@@ -15518,6 +17378,99 @@ func (s *ModifyVpcFirewallDefaultIPSConfigResponse) SetStatusCode(v int32) *Modi
 }
 
 func (s *ModifyVpcFirewallDefaultIPSConfigResponse) SetBody(v *ModifyVpcFirewallDefaultIPSConfigResponseBody) *ModifyVpcFirewallDefaultIPSConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyVpcFirewallIPSWhitelistRequest struct {
+	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ListType      *int64  `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	ListValue     *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	MemberUid     *int64  `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
+	WhiteType     *int64  `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+}
+
+func (s ModifyVpcFirewallIPSWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpcFirewallIPSWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistRequest) SetLang(v string) *ModifyVpcFirewallIPSWhitelistRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistRequest) SetListType(v int64) *ModifyVpcFirewallIPSWhitelistRequest {
+	s.ListType = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistRequest) SetListValue(v string) *ModifyVpcFirewallIPSWhitelistRequest {
+	s.ListValue = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistRequest) SetMemberUid(v int64) *ModifyVpcFirewallIPSWhitelistRequest {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistRequest) SetVpcFirewallId(v string) *ModifyVpcFirewallIPSWhitelistRequest {
+	s.VpcFirewallId = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistRequest) SetWhiteType(v int64) *ModifyVpcFirewallIPSWhitelistRequest {
+	s.WhiteType = &v
+	return s
+}
+
+type ModifyVpcFirewallIPSWhitelistResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyVpcFirewallIPSWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpcFirewallIPSWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistResponseBody) SetRequestId(v string) *ModifyVpcFirewallIPSWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyVpcFirewallIPSWhitelistResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcFirewallIPSWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyVpcFirewallIPSWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpcFirewallIPSWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistResponse) SetHeaders(v map[string]*string) *ModifyVpcFirewallIPSWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistResponse) SetStatusCode(v int32) *ModifyVpcFirewallIPSWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallIPSWhitelistResponse) SetBody(v *ModifyVpcFirewallIPSWhitelistResponseBody) *ModifyVpcFirewallIPSWhitelistResponse {
 	s.Body = v
 	return s
 }
@@ -15588,9 +17541,9 @@ func (s *ModifyVpcFirewallSwitchStatusResponseBody) SetRequestId(v string) *Modi
 }
 
 type ModifyVpcFirewallSwitchStatusResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVpcFirewallSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcFirewallSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVpcFirewallSwitchStatusResponse) String() string {
@@ -15671,9 +17624,9 @@ func (s *PutDisableAllFwSwitchResponseBody) SetRequestId(v string) *PutDisableAl
 }
 
 type PutDisableAllFwSwitchResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PutDisableAllFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutDisableAllFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutDisableAllFwSwitchResponse) String() string {
@@ -15774,9 +17727,9 @@ func (s *PutDisableFwSwitchResponseBody) SetRequestId(v string) *PutDisableFwSwi
 }
 
 type PutDisableFwSwitchResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PutDisableFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutDisableFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutDisableFwSwitchResponse) String() string {
@@ -15857,9 +17810,9 @@ func (s *PutEnableAllFwSwitchResponseBody) SetRequestId(v string) *PutEnableAllF
 }
 
 type PutEnableAllFwSwitchResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PutEnableAllFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutEnableAllFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutEnableAllFwSwitchResponse) String() string {
@@ -16017,9 +17970,9 @@ func (s *PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) SetStatus(v st
 }
 
 type PutEnableFwSwitchResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PutEnableFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutEnableFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutEnableFwSwitchResponse) String() string {
@@ -16098,9 +18051,9 @@ func (s *ReleasePostInstanceResponseBody) SetSuccess(v bool) *ReleasePostInstanc
 }
 
 type ReleasePostInstanceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleasePostInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleasePostInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleasePostInstanceResponse) String() string {
@@ -16122,6 +18075,81 @@ func (s *ReleasePostInstanceResponse) SetStatusCode(v int32) *ReleasePostInstanc
 }
 
 func (s *ReleasePostInstanceResponse) SetBody(v *ReleasePostInstanceResponseBody) *ReleasePostInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ResetNatFirewallRuleHitCountRequest struct {
+	AclUuid      *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+}
+
+func (s ResetNatFirewallRuleHitCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetNatFirewallRuleHitCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetNatFirewallRuleHitCountRequest) SetAclUuid(v string) *ResetNatFirewallRuleHitCountRequest {
+	s.AclUuid = &v
+	return s
+}
+
+func (s *ResetNatFirewallRuleHitCountRequest) SetLang(v string) *ResetNatFirewallRuleHitCountRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ResetNatFirewallRuleHitCountRequest) SetNatGatewayId(v string) *ResetNatFirewallRuleHitCountRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+type ResetNatFirewallRuleHitCountResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResetNatFirewallRuleHitCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetNatFirewallRuleHitCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetNatFirewallRuleHitCountResponseBody) SetRequestId(v string) *ResetNatFirewallRuleHitCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResetNatFirewallRuleHitCountResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetNatFirewallRuleHitCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResetNatFirewallRuleHitCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetNatFirewallRuleHitCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetNatFirewallRuleHitCountResponse) SetHeaders(v map[string]*string) *ResetNatFirewallRuleHitCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetNatFirewallRuleHitCountResponse) SetStatusCode(v int32) *ResetNatFirewallRuleHitCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetNatFirewallRuleHitCountResponse) SetBody(v *ResetNatFirewallRuleHitCountResponseBody) *ResetNatFirewallRuleHitCountResponse {
 	s.Body = v
 	return s
 }
@@ -16175,9 +18203,9 @@ func (s *ResetVpcFirewallRuleHitCountResponseBody) SetRequestId(v string) *Reset
 }
 
 type ResetVpcFirewallRuleHitCountResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetVpcFirewallRuleHitCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetVpcFirewallRuleHitCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetVpcFirewallRuleHitCountResponse) String() string {
@@ -16256,7 +18284,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 /**
  * You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
- * ## Limits
+ * ## [](#qps)Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request AddAddressBookRequest
@@ -16330,7 +18358,7 @@ func (client *Client) AddAddressBookWithOptions(request *AddAddressBookRequest, 
 
 /**
  * You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
- * ## Limits
+ * ## [](#qps)Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request AddAddressBookRequest
@@ -16633,6 +18661,54 @@ func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFir
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchCopyVpcFirewallControlPolicyResponse{}
 	_body, _err := client.BatchCopyVpcFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDownloadTaskWithOptions(request *CreateDownloadTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDownloadTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskData)) {
+		query["TaskData"] = request.TaskData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDownloadTask"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDownloadTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDownloadTask(request *CreateDownloadTaskRequest) (_result *CreateDownloadTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDownloadTaskResponse{}
+	_body, _err := client.CreateDownloadTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17456,6 +19532,110 @@ func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteControlPolicyTemplateWithOptions(request *DeleteControlPolicyTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteControlPolicyTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteControlPolicyTemplate"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteControlPolicyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteControlPolicyTemplate(request *DeleteControlPolicyTemplateRequest) (_result *DeleteControlPolicyTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteControlPolicyTemplateResponse{}
+	_body, _err := client.DeleteControlPolicyTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDownloadTaskWithOptions(request *DeleteDownloadTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteDownloadTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDownloadTask"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDownloadTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDownloadTask(request *DeleteDownloadTaskRequest) (_result *DeleteDownloadTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDownloadTaskResponse{}
+	_body, _err := client.DeleteDownloadTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteFirewallV2RoutePoliciesWithOptions(request *DeleteFirewallV2RoutePoliciesRequest, runtime *util.RuntimeOptions) (_result *DeleteFirewallV2RoutePoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17631,6 +19811,62 @@ func (client *Client) DeleteNatFirewallControlPolicy(request *DeleteNatFirewallC
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNatFirewallControlPolicyResponse{}
 	_body, _err := client.DeleteNatFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteNatFirewallControlPolicyBatchWithOptions(request *DeleteNatFirewallControlPolicyBatchRequest, runtime *util.RuntimeOptions) (_result *DeleteNatFirewallControlPolicyBatchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclUuidList)) {
+		query["AclUuidList"] = request.AclUuidList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNatFirewallControlPolicyBatch"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNatFirewallControlPolicyBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNatFirewallControlPolicyBatch(request *DeleteNatFirewallControlPolicyBatchRequest) (_result *DeleteNatFirewallControlPolicyBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNatFirewallControlPolicyBatchResponse{}
+	_body, _err := client.DeleteNatFirewallControlPolicyBatchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17954,8 +20190,8 @@ func (client *Client) DescribeACLProtectTrend(request *DescribeACLProtectTrendRe
 }
 
 /**
- * You can call the DescribeAddressBook operation to query the details about an address book for an access control policy.
- * ## Limits
+ * You can call this operation to query the details about an address book for an access control policy.
+ * ## [](#qps)Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeAddressBookRequest
@@ -18016,8 +20252,8 @@ func (client *Client) DescribeAddressBookWithOptions(request *DescribeAddressBoo
 }
 
 /**
- * You can call the DescribeAddressBook operation to query the details about an address book for an access control policy.
- * ## Limits
+ * You can call this operation to query the details about an address book for an access control policy.
+ * ## [](#qps)Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeAddressBookRequest
@@ -18136,6 +20372,114 @@ func (client *Client) DescribeAssetList(request *DescribeAssetListRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAssetListResponse{}
 	_body, _err := client.DescribeAssetListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAssetRiskListWithOptions(request *DescribeAssetRiskListRequest, runtime *util.RuntimeOptions) (_result *DescribeAssetRiskListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpAddrList)) {
+		query["IpAddrList"] = request.IpAddrList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAssetRiskList"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAssetRiskListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAssetRiskList(request *DescribeAssetRiskListRequest) (_result *DescribeAssetRiskListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAssetRiskListResponse{}
+	_body, _err := client.DescribeAssetRiskListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCfwRiskLevelSummaryWithOptions(request *DescribeCfwRiskLevelSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeCfwRiskLevelSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCfwRiskLevelSummary"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCfwRiskLevelSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCfwRiskLevelSummary(request *DescribeCfwRiskLevelSummaryRequest) (_result *DescribeCfwRiskLevelSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCfwRiskLevelSummaryResponse{}
+	_body, _err := client.DescribeCfwRiskLevelSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18381,6 +20725,118 @@ func (client *Client) DescribeDomainResolve(request *DescribeDomainResolveReques
 	return _result, _err
 }
 
+func (client *Client) DescribeDownloadTaskWithOptions(request *DescribeDownloadTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeDownloadTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDownloadTask"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDownloadTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDownloadTask(request *DescribeDownloadTaskRequest) (_result *DescribeDownloadTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDownloadTaskResponse{}
+	_body, _err := client.DescribeDownloadTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDownloadTaskTypeWithOptions(request *DescribeDownloadTaskTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeDownloadTaskTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDownloadTaskType"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDownloadTaskTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDownloadTaskType(request *DescribeDownloadTaskTypeRequest) (_result *DescribeDownloadTaskTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDownloadTaskTypeResponse{}
+	_body, _err := client.DescribeDownloadTaskTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can use this operation to query the information about members in Cloud Firewall.
  * ## Limits
@@ -18451,6 +20907,54 @@ func (client *Client) DescribeInstanceMembers(request *DescribeInstanceMembersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceMembersResponse{}
 	_body, _err := client.DescribeInstanceMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceRiskLevelsWithOptions(request *DescribeInstanceRiskLevelsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceRiskLevelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		query["Instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceRiskLevels"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceRiskLevelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceRiskLevels(request *DescribeInstanceRiskLevelsRequest) (_result *DescribeInstanceRiskLevelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceRiskLevelsResponse{}
+	_body, _err := client.DescribeInstanceRiskLevelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18727,6 +21231,50 @@ func (client *Client) DescribeInvadeEventList(request *DescribeInvadeEventListRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInvadeEventListResponse{}
 	_body, _err := client.DescribeInvadeEventListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeNatAclPageStatusWithOptions(request *DescribeNatAclPageStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeNatAclPageStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNatAclPageStatus"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNatAclPageStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNatAclPageStatus(request *DescribeNatAclPageStatusRequest) (_result *DescribeNatAclPageStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNatAclPageStatusResponse{}
+	_body, _err := client.DescribeNatAclPageStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19230,6 +21778,46 @@ func (client *Client) DescribePolicyPriorUsed(request *DescribePolicyPriorUsedRe
 	return _result, _err
 }
 
+func (client *Client) DescribePrefixListsWithOptions(request *DescribePrefixListsRequest, runtime *util.RuntimeOptions) (_result *DescribePrefixListsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePrefixLists"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePrefixListsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePrefixLists(request *DescribePrefixListsRequest) (_result *DescribePrefixListsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePrefixListsResponse{}
+	_body, _err := client.DescribePrefixListsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
  * ## Limits
@@ -19455,12 +22043,55 @@ func (client *Client) DescribeRiskEventPayload(request *DescribeRiskEventPayload
 	return _result, _err
 }
 
-func (client *Client) DescribeTrFirewallPolicyBackUpAssociationListWithOptions(request *DescribeTrFirewallPolicyBackUpAssociationListRequest, runtime *util.RuntimeOptions) (_result *DescribeTrFirewallPolicyBackUpAssociationListResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeSignatureLibVersionWithOptions(runtime *util.RuntimeOptions) (_result *DescribeSignatureLibVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSignatureLibVersion"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSignatureLibVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSignatureLibVersion() (_result *DescribeSignatureLibVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSignatureLibVersionResponse{}
+	_body, _err := client.DescribeSignatureLibVersionWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallPolicyBackUpAssociationListWithOptions(tmpReq *DescribeTrFirewallPolicyBackUpAssociationListRequest, runtime *util.RuntimeOptions) (_result *DescribeTrFirewallPolicyBackUpAssociationListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CandidateList)) {
+		request.CandidateListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CandidateList, tea.String("CandidateList"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CandidateListShrink)) {
+		query["CandidateList"] = request.CandidateListShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
 		query["FirewallId"] = request.FirewallId
 	}
@@ -20363,6 +22994,58 @@ func (client *Client) DescribeVpcFirewallDetail(request *DescribeVpcFirewallDeta
 	return _result, _err
 }
 
+func (client *Client) DescribeVpcFirewallIPSWhitelistWithOptions(request *DescribeVpcFirewallIPSWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeVpcFirewallIPSWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberUid)) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcFirewallId)) {
+		query["VpcFirewallId"] = request.VpcFirewallId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVpcFirewallIPSWhitelist"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVpcFirewallIPSWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVpcFirewallIPSWhitelist(request *DescribeVpcFirewallIPSWhitelistRequest) (_result *DescribeVpcFirewallIPSWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVpcFirewallIPSWhitelistResponse{}
+	_body, _err := client.DescribeVpcFirewallIPSWhitelistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
  * ### Limits
@@ -20526,6 +23209,122 @@ func (client *Client) DescribeVpcFirewallPolicyPriorUsed(request *DescribeVpcFir
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVpcFirewallPolicyPriorUsedResponse{}
 	_body, _err := client.DescribeVpcFirewallPolicyPriorUsedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVpcListLiteWithOptions(request *DescribeVpcListLiteRequest, runtime *util.RuntimeOptions) (_result *DescribeVpcListLiteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcName)) {
+		query["VpcName"] = request.VpcName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVpcListLite"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVpcListLiteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVpcListLite(request *DescribeVpcListLiteRequest) (_result *DescribeVpcListLiteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVpcListLiteResponse{}
+	_body, _err := client.DescribeVpcListLiteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVpcZoneWithOptions(request *DescribeVpcZoneRequest, runtime *util.RuntimeOptions) (_result *DescribeVpcZoneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberUid)) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVpcZone"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVpcZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVpcZone(request *DescribeVpcZoneRequest) (_result *DescribeVpcZoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVpcZoneResponse{}
+	_body, _err := client.DescribeVpcZoneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20884,8 +23683,8 @@ func (client *Client) ModifyControlPolicy(request *ModifyControlPolicyRequest) (
 }
 
 /**
- * You can call the ModifyControlPolicyPosition operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
- * ## Limits
+ * You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
+ * ## [](#qps)Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request ModifyControlPolicyPositionRequest
@@ -20942,8 +23741,8 @@ func (client *Client) ModifyControlPolicyPositionWithOptions(request *ModifyCont
 }
 
 /**
- * You can call the ModifyControlPolicyPosition operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
- * ## Limits
+ * You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
+ * ## [](#qps)Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request ModifyControlPolicyPositionRequest
@@ -21513,6 +24312,10 @@ func (client *Client) ModifyTrFirewallV2RoutePolicyScopeWithOptions(tmpReq *Modi
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShouldRecover)) {
+		query["ShouldRecover"] = request.ShouldRecover
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SrcCandidateListShrink)) {
@@ -22165,6 +24968,70 @@ func (client *Client) ModifyVpcFirewallDefaultIPSConfig(request *ModifyVpcFirewa
 	return _result, _err
 }
 
+func (client *Client) ModifyVpcFirewallIPSWhitelistWithOptions(request *ModifyVpcFirewallIPSWhitelistRequest, runtime *util.RuntimeOptions) (_result *ModifyVpcFirewallIPSWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListType)) {
+		query["ListType"] = request.ListType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListValue)) {
+		query["ListValue"] = request.ListValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberUid)) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcFirewallId)) {
+		query["VpcFirewallId"] = request.VpcFirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhiteType)) {
+		query["WhiteType"] = request.WhiteType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyVpcFirewallIPSWhitelist"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyVpcFirewallIPSWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyVpcFirewallIPSWhitelist(request *ModifyVpcFirewallIPSWhitelistRequest) (_result *ModifyVpcFirewallIPSWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyVpcFirewallIPSWhitelistResponse{}
+	_body, _err := client.ModifyVpcFirewallIPSWhitelistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
  * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
@@ -22569,6 +25436,58 @@ func (client *Client) ReleasePostInstance(request *ReleasePostInstanceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleasePostInstanceResponse{}
 	_body, _err := client.ReleasePostInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResetNatFirewallRuleHitCountWithOptions(request *ResetNatFirewallRuleHitCountRequest, runtime *util.RuntimeOptions) (_result *ResetNatFirewallRuleHitCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclUuid)) {
+		query["AclUuid"] = request.AclUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetNatFirewallRuleHitCount"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetNatFirewallRuleHitCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetNatFirewallRuleHitCount(request *ResetNatFirewallRuleHitCountRequest) (_result *ResetNatFirewallRuleHitCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetNatFirewallRuleHitCountResponse{}
+	_body, _err := client.ResetNatFirewallRuleHitCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
