@@ -5,25 +5,26 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type CreateTaskDetail struct {
-	Admins                *CreateTaskDetailAdmins         `json:"Admins,omitempty" xml:"Admins,omitempty" type:"Struct"`
-	AllowAppendData       *bool                           `json:"AllowAppendData,omitempty" xml:"AllowAppendData,omitempty"`
-	AssignConfig          *TaskAssginConfig               `json:"AssignConfig,omitempty" xml:"AssignConfig,omitempty"`
-	DatasetProxyRelations []*DatasetProxyConfig           `json:"DatasetProxyRelations,omitempty" xml:"DatasetProxyRelations,omitempty" type:"Repeated"`
-	Exif                  map[string]interface{}          `json:"Exif,omitempty" xml:"Exif,omitempty"`
-	Tags                  []*string                       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskName              *string                         `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskTemplateConfig    *TaskTemplateConfig             `json:"TaskTemplateConfig,omitempty" xml:"TaskTemplateConfig,omitempty"`
-	TaskWorkflow          []*CreateTaskDetailTaskWorkflow `json:"TaskWorkflow,omitempty" xml:"TaskWorkflow,omitempty" type:"Repeated"`
-	TemplateId            *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UUID                  *string                         `json:"UUID,omitempty" xml:"UUID,omitempty"`
+	Admins                *CreateTaskDetailAdmins              `json:"Admins,omitempty" xml:"Admins,omitempty" type:"Struct"`
+	AllowAppendData       *bool                                `json:"AllowAppendData,omitempty" xml:"AllowAppendData,omitempty"`
+	AssignConfig          *TaskAssginConfig                    `json:"AssignConfig,omitempty" xml:"AssignConfig,omitempty"`
+	DatasetProxyRelations []*DatasetProxyConfig                `json:"DatasetProxyRelations,omitempty" xml:"DatasetProxyRelations,omitempty" type:"Repeated"`
+	Exif                  map[string]interface{}               `json:"Exif,omitempty" xml:"Exif,omitempty"`
+	Tags                  []*string                            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaskName              *string                              `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskTemplateConfig    *TaskTemplateConfig                  `json:"TaskTemplateConfig,omitempty" xml:"TaskTemplateConfig,omitempty"`
+	TaskWorkflow          []*CreateTaskDetailTaskWorkflow      `json:"TaskWorkflow,omitempty" xml:"TaskWorkflow,omitempty" type:"Repeated"`
+	TemplateId            *string                              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UUID                  *string                              `json:"UUID,omitempty" xml:"UUID,omitempty"`
+	VoteConfigs           map[string]*CreateTaskDetailVoteInfo `json:"VoteConfigs,omitempty" xml:"VoteConfigs,omitempty"`
 }
 
 func (s CreateTaskDetail) String() string {
@@ -89,6 +90,11 @@ func (s *CreateTaskDetail) SetUUID(v string) *CreateTaskDetail {
 	return s
 }
 
+func (s *CreateTaskDetail) SetVoteConfigs(v map[string]*CreateTaskDetailVoteInfo) *CreateTaskDetail {
+	s.VoteConfigs = v
+	return s
+}
+
 type CreateTaskDetailAdmins struct {
 	Users []*SimpleUser `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -120,6 +126,29 @@ func (s CreateTaskDetailTaskWorkflow) GoString() string {
 
 func (s *CreateTaskDetailTaskWorkflow) SetNodeName(v string) *CreateTaskDetailTaskWorkflow {
 	s.NodeName = &v
+	return s
+}
+
+type CreateTaskDetailVoteInfo struct {
+	MinVote *int64 `json:"MinVote,omitempty" xml:"MinVote,omitempty"`
+	VoteNum *int64 `json:"VoteNum,omitempty" xml:"VoteNum,omitempty"`
+}
+
+func (s CreateTaskDetailVoteInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskDetailVoteInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskDetailVoteInfo) SetMinVote(v int64) *CreateTaskDetailVoteInfo {
+	s.MinVote = &v
+	return s
+}
+
+func (s *CreateTaskDetailVoteInfo) SetVoteNum(v int64) *CreateTaskDetailVoteInfo {
+	s.VoteNum = &v
 	return s
 }
 
@@ -337,6 +366,41 @@ func (s *MarkResult) SetUserMarkResultId(v string) *MarkResult {
 
 func (s *MarkResult) SetVersion(v string) *MarkResult {
 	s.Version = &v
+	return s
+}
+
+type OpenDatasetProxyAppendDataRequest struct {
+	DataMeta []map[string]*string `json:"DataMeta,omitempty" xml:"DataMeta,omitempty" type:"Repeated"`
+	TaskId   *string              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TraceId  *string              `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	UUID     *string              `json:"UUID,omitempty" xml:"UUID,omitempty"`
+}
+
+func (s OpenDatasetProxyAppendDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenDatasetProxyAppendDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenDatasetProxyAppendDataRequest) SetDataMeta(v []map[string]*string) *OpenDatasetProxyAppendDataRequest {
+	s.DataMeta = v
+	return s
+}
+
+func (s *OpenDatasetProxyAppendDataRequest) SetTaskId(v string) *OpenDatasetProxyAppendDataRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *OpenDatasetProxyAppendDataRequest) SetTraceId(v string) *OpenDatasetProxyAppendDataRequest {
+	s.TraceId = &v
+	return s
+}
+
+func (s *OpenDatasetProxyAppendDataRequest) SetUUID(v string) *OpenDatasetProxyAppendDataRequest {
+	s.UUID = &v
 	return s
 }
 
@@ -2494,9 +2558,9 @@ func (s *AddWorkNodeWorkforceResponseBody) SetSuccess(v bool) *AddWorkNodeWorkfo
 }
 
 type AddWorkNodeWorkforceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddWorkNodeWorkforceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddWorkNodeWorkforceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddWorkNodeWorkforceResponse) String() string {
@@ -2593,9 +2657,9 @@ func (s *CreateTaskResponseBody) SetTaskId(v string) *CreateTaskResponseBody {
 }
 
 type CreateTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTaskResponse) String() string {
@@ -2692,9 +2756,9 @@ func (s *CreateTemplateResponseBody) SetTemplateId(v string) *CreateTemplateResp
 }
 
 type CreateTemplateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTemplateResponse) String() string {
@@ -2809,9 +2873,9 @@ func (s *CreateUserResponseBody) SetUserId(v int64) *CreateUserResponseBody {
 }
 
 type CreateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -2885,9 +2949,9 @@ func (s *DeleteTaskResponseBody) SetSuccess(v bool) *DeleteTaskResponseBody {
 }
 
 type DeleteTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTaskResponse) String() string {
@@ -2967,9 +3031,9 @@ func (s *DeleteTemplateResponseBody) SetTemplateId(v string) *DeleteTemplateResp
 }
 
 type DeleteTemplateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTemplateResponse) String() string {
@@ -3043,9 +3107,9 @@ func (s *DeleteUserResponseBody) SetSuccess(v bool) *DeleteUserResponseBody {
 }
 
 type DeleteUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -3154,9 +3218,9 @@ func (s *ExportAnnotationsResponseBody) SetSuccess(v bool) *ExportAnnotationsRes
 }
 
 type ExportAnnotationsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExportAnnotationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportAnnotationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExportAnnotationsResponse) String() string {
@@ -3253,9 +3317,9 @@ func (s *GetJobResponseBody) SetSuccess(v bool) *GetJobResponseBody {
 }
 
 type GetJobResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobResponse) String() string {
@@ -3335,9 +3399,9 @@ func (s *GetSubtaskResponseBody) SetSuccess(v bool) *GetSubtaskResponseBody {
 }
 
 type GetSubtaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSubtaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSubtaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSubtaskResponse) String() string {
@@ -3417,9 +3481,9 @@ func (s *GetSubtaskItemResponseBody) SetSuccess(v bool) *GetSubtaskItemResponseB
 }
 
 type GetSubtaskItemResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSubtaskItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSubtaskItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSubtaskItemResponse) String() string {
@@ -3499,9 +3563,9 @@ func (s *GetTaskResponseBody) SetTask(v *TaskDetail) *GetTaskResponseBody {
 }
 
 type GetTaskResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskResponse) String() string {
@@ -3598,9 +3662,9 @@ func (s *GetTaskStatisticsResponseBody) SetTaskStatistics(v *TaskStatistic) *Get
 }
 
 type GetTaskStatisticsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskStatisticsResponse) String() string {
@@ -3680,9 +3744,9 @@ func (s *GetTaskStatusResponseBody) SetTaskStatus(v string) *GetTaskStatusRespon
 }
 
 type GetTaskStatusResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskStatusResponse) String() string {
@@ -3762,9 +3826,9 @@ func (s *GetTaskTemplateResponseBody) SetTemplate(v *TemplateDetail) *GetTaskTem
 }
 
 type GetTaskTemplateResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskTemplateResponse) String() string {
@@ -3844,9 +3908,9 @@ func (s *GetTaskTemplateQuestionsResponseBody) SetSuccess(v bool) *GetTaskTempla
 }
 
 type GetTaskTemplateQuestionsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskTemplateQuestionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskTemplateQuestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskTemplateQuestionsResponse) String() string {
@@ -3943,9 +4007,9 @@ func (s *GetTaskTemplateViewsResponseBodyViews) SetViewPlugins(v []*ViewPlugin) 
 }
 
 type GetTaskTemplateViewsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskTemplateViewsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskTemplateViewsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskTemplateViewsResponse) String() string {
@@ -4025,9 +4089,9 @@ func (s *GetTaskWorkforceResponseBody) SetWorkforce(v []*Workforce) *GetTaskWork
 }
 
 type GetTaskWorkforceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskWorkforceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskWorkforceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskWorkforceResponse) String() string {
@@ -4160,9 +4224,9 @@ func (s *GetTaskWorkforceStatisticResponseBody) SetUsersStatistic(v []*UserStati
 }
 
 type GetTaskWorkforceStatisticResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskWorkforceStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskWorkforceStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskWorkforceStatisticResponse) String() string {
@@ -4242,9 +4306,9 @@ func (s *GetTemplateResponseBody) SetTemplate(v *TemplateDetail) *GetTemplateRes
 }
 
 type GetTemplateResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTemplateResponse) String() string {
@@ -4324,9 +4388,9 @@ func (s *GetTemplateQuestionsResponseBody) SetSuccess(v bool) *GetTemplateQuesti
 }
 
 type GetTemplateQuestionsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTemplateQuestionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemplateQuestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTemplateQuestionsResponse) String() string {
@@ -4423,9 +4487,9 @@ func (s *GetTemplateViewResponseBodyViewConfigs) SetViewPlugins(v []*ViewPlugin)
 }
 
 type GetTemplateViewResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTemplateViewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemplateViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTemplateViewResponse) String() string {
@@ -4505,9 +4569,9 @@ func (s *GetTenantResponseBody) SetTenant(v *SingleTenant) *GetTenantResponseBod
 }
 
 type GetTenantResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTenantResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTenantResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTenantResponse) String() string {
@@ -4587,9 +4651,9 @@ func (s *GetUserResponseBody) SetUser(v *SimpleUser) *GetUserResponseBody {
 }
 
 type GetUserResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserResponse) String() string {
@@ -4722,9 +4786,9 @@ func (s *ListJobsResponseBody) SetTotalPage(v int32) *ListJobsResponseBody {
 }
 
 type ListJobsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJobsResponse) String() string {
@@ -4851,9 +4915,9 @@ func (s *ListSubtaskItemsResponseBody) SetTotalPage(v int32) *ListSubtaskItemsRe
 }
 
 type ListSubtaskItemsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSubtaskItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSubtaskItemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSubtaskItemsResponse) String() string {
@@ -4980,9 +5044,9 @@ func (s *ListSubtasksResponseBody) SetTotalPage(v int32) *ListSubtasksResponseBo
 }
 
 type ListSubtasksResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSubtasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSubtasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSubtasksResponse) String() string {
@@ -5109,9 +5173,9 @@ func (s *ListTasksResponseBody) SetTotalPage(v int32) *ListTasksResponseBody {
 }
 
 type ListTasksResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTasksResponse) String() string {
@@ -5285,9 +5349,9 @@ func (s *ListTemplatesResponseBody) SetTotalPage(v int32) *ListTemplatesResponse
 }
 
 type ListTemplatesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTemplatesResponse) String() string {
@@ -5414,9 +5478,9 @@ func (s *ListTenantsResponseBody) SetTotalPage(v int32) *ListTenantsResponseBody
 }
 
 type ListTenantsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTenantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTenantsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTenantsResponse) String() string {
@@ -5543,9 +5607,9 @@ func (s *ListUsersResponseBody) SetUsers(v []*SimpleUser) *ListUsersResponseBody
 }
 
 type ListUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -5636,9 +5700,9 @@ func (s *RemoveWorkNodeWorkforceResponseBody) SetSuccess(v bool) *RemoveWorkNode
 }
 
 type RemoveWorkNodeWorkforceResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveWorkNodeWorkforceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveWorkNodeWorkforceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveWorkNodeWorkforceResponse) String() string {
@@ -5729,9 +5793,9 @@ func (s *UpdateTaskResponseBody) SetSuccess(v bool) *UpdateTaskResponseBody {
 }
 
 type UpdateTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTaskResponse) String() string {
@@ -5822,9 +5886,9 @@ func (s *UpdateTaskWorkforceResponseBody) SetSuccess(v bool) *UpdateTaskWorkforc
 }
 
 type UpdateTaskWorkforceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTaskWorkforceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTaskWorkforceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTaskWorkforceResponse) String() string {
@@ -5921,9 +5985,9 @@ func (s *UpdateTemplateResponseBody) SetTemplateId(v string) *UpdateTemplateResp
 }
 
 type UpdateTemplateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTemplateResponse) String() string {
@@ -6020,9 +6084,9 @@ func (s *UpdateTenantResponseBody) SetSuccess(v bool) *UpdateTenantResponseBody 
 }
 
 type UpdateTenantResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTenantResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTenantResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTenantResponse) String() string {
@@ -6125,9 +6189,9 @@ func (s *UpdateUserResponseBody) SetUserId(v string) *UpdateUserResponseBody {
 }
 
 type UpdateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserResponse) String() string {
@@ -6200,18 +6264,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddWorkNodeWorkforce(TenantId *string, TaskId *string, WorkNodeId *string, request *AddWorkNodeWorkforceRequest) (_result *AddWorkNodeWorkforceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddWorkNodeWorkforceResponse{}
-	_body, _err := client.AddWorkNodeWorkforceWithOptions(TenantId, TaskId, WorkNodeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddWorkNodeWorkforceWithOptions(TenantId *string, TaskId *string, WorkNodeId *string, request *AddWorkNodeWorkforceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddWorkNodeWorkforceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6246,11 +6298,11 @@ func (client *Client) AddWorkNodeWorkforceWithOptions(TenantId *string, TaskId *
 	return _result, _err
 }
 
-func (client *Client) CreateTask(TenantId *string, request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
+func (client *Client) AddWorkNodeWorkforce(TenantId *string, TaskId *string, WorkNodeId *string, request *AddWorkNodeWorkforceRequest) (_result *AddWorkNodeWorkforceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTaskResponse{}
-	_body, _err := client.CreateTaskWithOptions(TenantId, request, headers, runtime)
+	_result = &AddWorkNodeWorkforceResponse{}
+	_body, _err := client.AddWorkNodeWorkforceWithOptions(TenantId, TaskId, WorkNodeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6265,7 +6317,7 @@ func (client *Client) CreateTaskWithOptions(TenantId *string, request *CreateTas
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTask"),
@@ -6287,11 +6339,11 @@ func (client *Client) CreateTaskWithOptions(TenantId *string, request *CreateTas
 	return _result, _err
 }
 
-func (client *Client) CreateTemplate(TenantId *string, request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
+func (client *Client) CreateTask(TenantId *string, request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTemplateResponse{}
-	_body, _err := client.CreateTemplateWithOptions(TenantId, request, headers, runtime)
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CreateTaskWithOptions(TenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6306,7 +6358,7 @@ func (client *Client) CreateTemplateWithOptions(TenantId *string, request *Creat
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTemplate"),
@@ -6328,11 +6380,11 @@ func (client *Client) CreateTemplateWithOptions(TenantId *string, request *Creat
 	return _result, _err
 }
 
-func (client *Client) CreateUser(TenantId *string, request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
+func (client *Client) CreateTemplate(TenantId *string, request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateUserResponse{}
-	_body, _err := client.CreateUserWithOptions(TenantId, request, headers, runtime)
+	_result = &CreateTemplateResponse{}
+	_body, _err := client.CreateTemplateWithOptions(TenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6386,11 +6438,11 @@ func (client *Client) CreateUserWithOptions(TenantId *string, request *CreateUse
 	return _result, _err
 }
 
-func (client *Client) DeleteTask(TenantId *string, TaskId *string) (_result *DeleteTaskResponse, _err error) {
+func (client *Client) CreateUser(TenantId *string, request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTaskResponse{}
-	_body, _err := client.DeleteTaskWithOptions(TenantId, TaskId, headers, runtime)
+	_result = &CreateUserResponse{}
+	_body, _err := client.CreateUserWithOptions(TenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6422,11 +6474,11 @@ func (client *Client) DeleteTaskWithOptions(TenantId *string, TaskId *string, he
 	return _result, _err
 }
 
-func (client *Client) DeleteTemplate(TenantId *string, TemplateId *string) (_result *DeleteTemplateResponse, _err error) {
+func (client *Client) DeleteTask(TenantId *string, TaskId *string) (_result *DeleteTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTemplateResponse{}
-	_body, _err := client.DeleteTemplateWithOptions(TenantId, TemplateId, headers, runtime)
+	_result = &DeleteTaskResponse{}
+	_body, _err := client.DeleteTaskWithOptions(TenantId, TaskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6458,11 +6510,11 @@ func (client *Client) DeleteTemplateWithOptions(TenantId *string, TemplateId *st
 	return _result, _err
 }
 
-func (client *Client) DeleteUser(TenantId *string, UserId *string) (_result *DeleteUserResponse, _err error) {
+func (client *Client) DeleteTemplate(TenantId *string, TemplateId *string) (_result *DeleteTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteUserResponse{}
-	_body, _err := client.DeleteUserWithOptions(TenantId, UserId, headers, runtime)
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DeleteTemplateWithOptions(TenantId, TemplateId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6494,11 +6546,11 @@ func (client *Client) DeleteUserWithOptions(TenantId *string, UserId *string, he
 	return _result, _err
 }
 
-func (client *Client) ExportAnnotations(TenantId *string, TaskId *string, request *ExportAnnotationsRequest) (_result *ExportAnnotationsResponse, _err error) {
+func (client *Client) DeleteUser(TenantId *string, UserId *string) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ExportAnnotationsResponse{}
-	_body, _err := client.ExportAnnotationsWithOptions(TenantId, TaskId, request, headers, runtime)
+	_result = &DeleteUserResponse{}
+	_body, _err := client.DeleteUserWithOptions(TenantId, UserId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6548,11 +6600,11 @@ func (client *Client) ExportAnnotationsWithOptions(TenantId *string, TaskId *str
 	return _result, _err
 }
 
-func (client *Client) GetJob(TenantId *string, JobId *string, request *GetJobRequest) (_result *GetJobResponse, _err error) {
+func (client *Client) ExportAnnotations(TenantId *string, TaskId *string, request *ExportAnnotationsRequest) (_result *ExportAnnotationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(TenantId, JobId, request, headers, runtime)
+	_result = &ExportAnnotationsResponse{}
+	_body, _err := client.ExportAnnotationsWithOptions(TenantId, TaskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6594,11 +6646,11 @@ func (client *Client) GetJobWithOptions(TenantId *string, JobId *string, request
 	return _result, _err
 }
 
-func (client *Client) GetSubtask(TenantId *string, TaskID *string, SubtaskId *string) (_result *GetSubtaskResponse, _err error) {
+func (client *Client) GetJob(TenantId *string, JobId *string, request *GetJobRequest) (_result *GetJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSubtaskResponse{}
-	_body, _err := client.GetSubtaskWithOptions(TenantId, TaskID, SubtaskId, headers, runtime)
+	_result = &GetJobResponse{}
+	_body, _err := client.GetJobWithOptions(TenantId, JobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6630,11 +6682,11 @@ func (client *Client) GetSubtaskWithOptions(TenantId *string, TaskID *string, Su
 	return _result, _err
 }
 
-func (client *Client) GetSubtaskItem(TenantId *string, TaskId *string, SubtaskId *string, ItemId *string) (_result *GetSubtaskItemResponse, _err error) {
+func (client *Client) GetSubtask(TenantId *string, TaskID *string, SubtaskId *string) (_result *GetSubtaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSubtaskItemResponse{}
-	_body, _err := client.GetSubtaskItemWithOptions(TenantId, TaskId, SubtaskId, ItemId, headers, runtime)
+	_result = &GetSubtaskResponse{}
+	_body, _err := client.GetSubtaskWithOptions(TenantId, TaskID, SubtaskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6666,11 +6718,11 @@ func (client *Client) GetSubtaskItemWithOptions(TenantId *string, TaskId *string
 	return _result, _err
 }
 
-func (client *Client) GetTask(TenantId *string, TaskId *string) (_result *GetTaskResponse, _err error) {
+func (client *Client) GetSubtaskItem(TenantId *string, TaskId *string, SubtaskId *string, ItemId *string) (_result *GetSubtaskItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskResponse{}
-	_body, _err := client.GetTaskWithOptions(TenantId, TaskId, headers, runtime)
+	_result = &GetSubtaskItemResponse{}
+	_body, _err := client.GetSubtaskItemWithOptions(TenantId, TaskId, SubtaskId, ItemId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6702,11 +6754,11 @@ func (client *Client) GetTaskWithOptions(TenantId *string, TaskId *string, heade
 	return _result, _err
 }
 
-func (client *Client) GetTaskStatistics(TenantId *string, TaskId *string, request *GetTaskStatisticsRequest) (_result *GetTaskStatisticsResponse, _err error) {
+func (client *Client) GetTask(TenantId *string, TaskId *string) (_result *GetTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskStatisticsResponse{}
-	_body, _err := client.GetTaskStatisticsWithOptions(TenantId, TaskId, request, headers, runtime)
+	_result = &GetTaskResponse{}
+	_body, _err := client.GetTaskWithOptions(TenantId, TaskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6748,11 +6800,11 @@ func (client *Client) GetTaskStatisticsWithOptions(TenantId *string, TaskId *str
 	return _result, _err
 }
 
-func (client *Client) GetTaskStatus(TenantId *string, TaskId *string) (_result *GetTaskStatusResponse, _err error) {
+func (client *Client) GetTaskStatistics(TenantId *string, TaskId *string, request *GetTaskStatisticsRequest) (_result *GetTaskStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskStatusResponse{}
-	_body, _err := client.GetTaskStatusWithOptions(TenantId, TaskId, headers, runtime)
+	_result = &GetTaskStatisticsResponse{}
+	_body, _err := client.GetTaskStatisticsWithOptions(TenantId, TaskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6784,11 +6836,11 @@ func (client *Client) GetTaskStatusWithOptions(TenantId *string, TaskId *string,
 	return _result, _err
 }
 
-func (client *Client) GetTaskTemplate(TenantId *string, TaskId *string) (_result *GetTaskTemplateResponse, _err error) {
+func (client *Client) GetTaskStatus(TenantId *string, TaskId *string) (_result *GetTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskTemplateResponse{}
-	_body, _err := client.GetTaskTemplateWithOptions(TenantId, TaskId, headers, runtime)
+	_result = &GetTaskStatusResponse{}
+	_body, _err := client.GetTaskStatusWithOptions(TenantId, TaskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6820,11 +6872,11 @@ func (client *Client) GetTaskTemplateWithOptions(TenantId *string, TaskId *strin
 	return _result, _err
 }
 
-func (client *Client) GetTaskTemplateQuestions(TenantId *string, TaskId *string) (_result *GetTaskTemplateQuestionsResponse, _err error) {
+func (client *Client) GetTaskTemplate(TenantId *string, TaskId *string) (_result *GetTaskTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskTemplateQuestionsResponse{}
-	_body, _err := client.GetTaskTemplateQuestionsWithOptions(TenantId, TaskId, headers, runtime)
+	_result = &GetTaskTemplateResponse{}
+	_body, _err := client.GetTaskTemplateWithOptions(TenantId, TaskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6856,11 +6908,11 @@ func (client *Client) GetTaskTemplateQuestionsWithOptions(TenantId *string, Task
 	return _result, _err
 }
 
-func (client *Client) GetTaskTemplateViews(TenantId *string, TaskId *string) (_result *GetTaskTemplateViewsResponse, _err error) {
+func (client *Client) GetTaskTemplateQuestions(TenantId *string, TaskId *string) (_result *GetTaskTemplateQuestionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskTemplateViewsResponse{}
-	_body, _err := client.GetTaskTemplateViewsWithOptions(TenantId, TaskId, headers, runtime)
+	_result = &GetTaskTemplateQuestionsResponse{}
+	_body, _err := client.GetTaskTemplateQuestionsWithOptions(TenantId, TaskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6892,11 +6944,11 @@ func (client *Client) GetTaskTemplateViewsWithOptions(TenantId *string, TaskId *
 	return _result, _err
 }
 
-func (client *Client) GetTaskWorkforce(TenantId *string, TaskId *string) (_result *GetTaskWorkforceResponse, _err error) {
+func (client *Client) GetTaskTemplateViews(TenantId *string, TaskId *string) (_result *GetTaskTemplateViewsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskWorkforceResponse{}
-	_body, _err := client.GetTaskWorkforceWithOptions(TenantId, TaskId, headers, runtime)
+	_result = &GetTaskTemplateViewsResponse{}
+	_body, _err := client.GetTaskTemplateViewsWithOptions(TenantId, TaskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6928,11 +6980,11 @@ func (client *Client) GetTaskWorkforceWithOptions(TenantId *string, TaskId *stri
 	return _result, _err
 }
 
-func (client *Client) GetTaskWorkforceStatistic(TenantId *string, TaskId *string, request *GetTaskWorkforceStatisticRequest) (_result *GetTaskWorkforceStatisticResponse, _err error) {
+func (client *Client) GetTaskWorkforce(TenantId *string, TaskId *string) (_result *GetTaskWorkforceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskWorkforceStatisticResponse{}
-	_body, _err := client.GetTaskWorkforceStatisticWithOptions(TenantId, TaskId, request, headers, runtime)
+	_result = &GetTaskWorkforceResponse{}
+	_body, _err := client.GetTaskWorkforceWithOptions(TenantId, TaskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6982,11 +7034,11 @@ func (client *Client) GetTaskWorkforceStatisticWithOptions(TenantId *string, Tas
 	return _result, _err
 }
 
-func (client *Client) GetTemplate(TenantId *string, TemplateId *string) (_result *GetTemplateResponse, _err error) {
+func (client *Client) GetTaskWorkforceStatistic(TenantId *string, TaskId *string, request *GetTaskWorkforceStatisticRequest) (_result *GetTaskWorkforceStatisticResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTemplateResponse{}
-	_body, _err := client.GetTemplateWithOptions(TenantId, TemplateId, headers, runtime)
+	_result = &GetTaskWorkforceStatisticResponse{}
+	_body, _err := client.GetTaskWorkforceStatisticWithOptions(TenantId, TaskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7018,11 +7070,11 @@ func (client *Client) GetTemplateWithOptions(TenantId *string, TemplateId *strin
 	return _result, _err
 }
 
-func (client *Client) GetTemplateQuestions(TenantId *string, TemplateId *string) (_result *GetTemplateQuestionsResponse, _err error) {
+func (client *Client) GetTemplate(TenantId *string, TemplateId *string) (_result *GetTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTemplateQuestionsResponse{}
-	_body, _err := client.GetTemplateQuestionsWithOptions(TenantId, TemplateId, headers, runtime)
+	_result = &GetTemplateResponse{}
+	_body, _err := client.GetTemplateWithOptions(TenantId, TemplateId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7054,11 +7106,11 @@ func (client *Client) GetTemplateQuestionsWithOptions(TenantId *string, Template
 	return _result, _err
 }
 
-func (client *Client) GetTemplateView(TenantId *string, TemplateId *string) (_result *GetTemplateViewResponse, _err error) {
+func (client *Client) GetTemplateQuestions(TenantId *string, TemplateId *string) (_result *GetTemplateQuestionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTemplateViewResponse{}
-	_body, _err := client.GetTemplateViewWithOptions(TenantId, TemplateId, headers, runtime)
+	_result = &GetTemplateQuestionsResponse{}
+	_body, _err := client.GetTemplateQuestionsWithOptions(TenantId, TemplateId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7090,11 +7142,11 @@ func (client *Client) GetTemplateViewWithOptions(TenantId *string, TemplateId *s
 	return _result, _err
 }
 
-func (client *Client) GetTenant(TenantId *string) (_result *GetTenantResponse, _err error) {
+func (client *Client) GetTemplateView(TenantId *string, TemplateId *string) (_result *GetTemplateViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTenantResponse{}
-	_body, _err := client.GetTenantWithOptions(TenantId, headers, runtime)
+	_result = &GetTemplateViewResponse{}
+	_body, _err := client.GetTemplateViewWithOptions(TenantId, TemplateId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7126,11 +7178,11 @@ func (client *Client) GetTenantWithOptions(TenantId *string, headers map[string]
 	return _result, _err
 }
 
-func (client *Client) GetUser(TenantId *string, UserId *string) (_result *GetUserResponse, _err error) {
+func (client *Client) GetTenant(TenantId *string) (_result *GetTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetUserResponse{}
-	_body, _err := client.GetUserWithOptions(TenantId, UserId, headers, runtime)
+	_result = &GetTenantResponse{}
+	_body, _err := client.GetTenantWithOptions(TenantId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7162,11 +7214,11 @@ func (client *Client) GetUserWithOptions(TenantId *string, UserId *string, heade
 	return _result, _err
 }
 
-func (client *Client) ListJobs(TenantId *string, request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
+func (client *Client) GetUser(TenantId *string, UserId *string) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(TenantId, request, headers, runtime)
+	_result = &GetUserResponse{}
+	_body, _err := client.GetUserWithOptions(TenantId, UserId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7216,11 +7268,11 @@ func (client *Client) ListJobsWithOptions(TenantId *string, request *ListJobsReq
 	return _result, _err
 }
 
-func (client *Client) ListSubtaskItems(TenantId *string, TaskID *string, SubtaskId *string, request *ListSubtaskItemsRequest) (_result *ListSubtaskItemsResponse, _err error) {
+func (client *Client) ListJobs(TenantId *string, request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSubtaskItemsResponse{}
-	_body, _err := client.ListSubtaskItemsWithOptions(TenantId, TaskID, SubtaskId, request, headers, runtime)
+	_result = &ListJobsResponse{}
+	_body, _err := client.ListJobsWithOptions(TenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7266,11 +7318,11 @@ func (client *Client) ListSubtaskItemsWithOptions(TenantId *string, TaskID *stri
 	return _result, _err
 }
 
-func (client *Client) ListSubtasks(TenantId *string, TaskID *string, request *ListSubtasksRequest) (_result *ListSubtasksResponse, _err error) {
+func (client *Client) ListSubtaskItems(TenantId *string, TaskID *string, SubtaskId *string, request *ListSubtaskItemsRequest) (_result *ListSubtaskItemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSubtasksResponse{}
-	_body, _err := client.ListSubtasksWithOptions(TenantId, TaskID, request, headers, runtime)
+	_result = &ListSubtaskItemsResponse{}
+	_body, _err := client.ListSubtaskItemsWithOptions(TenantId, TaskID, SubtaskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7316,11 +7368,11 @@ func (client *Client) ListSubtasksWithOptions(TenantId *string, TaskID *string, 
 	return _result, _err
 }
 
-func (client *Client) ListTasks(TenantId *string, request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
+func (client *Client) ListSubtasks(TenantId *string, TaskID *string, request *ListSubtasksRequest) (_result *ListSubtasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTasksResponse{}
-	_body, _err := client.ListTasksWithOptions(TenantId, request, headers, runtime)
+	_result = &ListSubtasksResponse{}
+	_body, _err := client.ListSubtasksWithOptions(TenantId, TaskID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7366,11 +7418,11 @@ func (client *Client) ListTasksWithOptions(TenantId *string, request *ListTasksR
 	return _result, _err
 }
 
-func (client *Client) ListTemplates(TenantId *string, request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
+func (client *Client) ListTasks(TenantId *string, request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTemplatesResponse{}
-	_body, _err := client.ListTemplatesWithOptions(TenantId, request, headers, runtime)
+	_result = &ListTasksResponse{}
+	_body, _err := client.ListTasksWithOptions(TenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7430,11 +7482,11 @@ func (client *Client) ListTemplatesWithOptions(TenantId *string, tmpReq *ListTem
 	return _result, _err
 }
 
-func (client *Client) ListTenants(request *ListTenantsRequest) (_result *ListTenantsResponse, _err error) {
+func (client *Client) ListTemplates(TenantId *string, request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTenantsResponse{}
-	_body, _err := client.ListTenantsWithOptions(request, headers, runtime)
+	_result = &ListTemplatesResponse{}
+	_body, _err := client.ListTemplatesWithOptions(TenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7480,11 +7532,11 @@ func (client *Client) ListTenantsWithOptions(request *ListTenantsRequest, header
 	return _result, _err
 }
 
-func (client *Client) ListUsers(TenantId *string, request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
+func (client *Client) ListTenants(request *ListTenantsRequest) (_result *ListTenantsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListUsersResponse{}
-	_body, _err := client.ListUsersWithOptions(TenantId, request, headers, runtime)
+	_result = &ListTenantsResponse{}
+	_body, _err := client.ListTenantsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7530,11 +7582,11 @@ func (client *Client) ListUsersWithOptions(TenantId *string, request *ListUsersR
 	return _result, _err
 }
 
-func (client *Client) RemoveWorkNodeWorkforce(TenantId *string, TaskId *string, WorkNodeId *string, request *RemoveWorkNodeWorkforceRequest) (_result *RemoveWorkNodeWorkforceResponse, _err error) {
+func (client *Client) ListUsers(TenantId *string, request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveWorkNodeWorkforceResponse{}
-	_body, _err := client.RemoveWorkNodeWorkforceWithOptions(TenantId, TaskId, WorkNodeId, request, headers, runtime)
+	_result = &ListUsersResponse{}
+	_body, _err := client.ListUsersWithOptions(TenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7576,11 +7628,11 @@ func (client *Client) RemoveWorkNodeWorkforceWithOptions(TenantId *string, TaskI
 	return _result, _err
 }
 
-func (client *Client) UpdateTask(TenantId *string, TaskId *string, request *UpdateTaskRequest) (_result *UpdateTaskResponse, _err error) {
+func (client *Client) RemoveWorkNodeWorkforce(TenantId *string, TaskId *string, WorkNodeId *string, request *RemoveWorkNodeWorkforceRequest) (_result *RemoveWorkNodeWorkforceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateTaskResponse{}
-	_body, _err := client.UpdateTaskWithOptions(TenantId, TaskId, request, headers, runtime)
+	_result = &RemoveWorkNodeWorkforceResponse{}
+	_body, _err := client.RemoveWorkNodeWorkforceWithOptions(TenantId, TaskId, WorkNodeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7595,7 +7647,7 @@ func (client *Client) UpdateTaskWithOptions(TenantId *string, TaskId *string, re
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTask"),
@@ -7617,11 +7669,11 @@ func (client *Client) UpdateTaskWithOptions(TenantId *string, TaskId *string, re
 	return _result, _err
 }
 
-func (client *Client) UpdateTaskWorkforce(TenantId *string, TaskId *string, request *UpdateTaskWorkforceRequest) (_result *UpdateTaskWorkforceResponse, _err error) {
+func (client *Client) UpdateTask(TenantId *string, TaskId *string, request *UpdateTaskRequest) (_result *UpdateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateTaskWorkforceResponse{}
-	_body, _err := client.UpdateTaskWorkforceWithOptions(TenantId, TaskId, request, headers, runtime)
+	_result = &UpdateTaskResponse{}
+	_body, _err := client.UpdateTaskWithOptions(TenantId, TaskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7663,11 +7715,11 @@ func (client *Client) UpdateTaskWorkforceWithOptions(TenantId *string, TaskId *s
 	return _result, _err
 }
 
-func (client *Client) UpdateTemplate(TenantId *string, TemplateId *string, request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
+func (client *Client) UpdateTaskWorkforce(TenantId *string, TaskId *string, request *UpdateTaskWorkforceRequest) (_result *UpdateTaskWorkforceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateTemplateResponse{}
-	_body, _err := client.UpdateTemplateWithOptions(TenantId, TemplateId, request, headers, runtime)
+	_result = &UpdateTaskWorkforceResponse{}
+	_body, _err := client.UpdateTaskWorkforceWithOptions(TenantId, TaskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7682,7 +7734,7 @@ func (client *Client) UpdateTemplateWithOptions(TenantId *string, TemplateId *st
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTemplate"),
@@ -7704,11 +7756,11 @@ func (client *Client) UpdateTemplateWithOptions(TenantId *string, TemplateId *st
 	return _result, _err
 }
 
-func (client *Client) UpdateTenant(TenantId *string, request *UpdateTenantRequest) (_result *UpdateTenantResponse, _err error) {
+func (client *Client) UpdateTemplate(TenantId *string, TemplateId *string, request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateTenantResponse{}
-	_body, _err := client.UpdateTenantWithOptions(TenantId, request, headers, runtime)
+	_result = &UpdateTemplateResponse{}
+	_body, _err := client.UpdateTemplateWithOptions(TenantId, TemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7754,11 +7806,11 @@ func (client *Client) UpdateTenantWithOptions(TenantId *string, request *UpdateT
 	return _result, _err
 }
 
-func (client *Client) UpdateUser(TenantId *string, UserId *string, request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
+func (client *Client) UpdateTenant(TenantId *string, request *UpdateTenantRequest) (_result *UpdateTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateUserResponse{}
-	_body, _err := client.UpdateUserWithOptions(TenantId, UserId, request, headers, runtime)
+	_result = &UpdateTenantResponse{}
+	_body, _err := client.UpdateTenantWithOptions(TenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7801,5 +7853,17 @@ func (client *Client) UpdateUserWithOptions(TenantId *string, UserId *string, re
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUser(TenantId *string, UserId *string, request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateUserResponse{}
+	_body, _err := client.UpdateUserWithOptions(TenantId, UserId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
