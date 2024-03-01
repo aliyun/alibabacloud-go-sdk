@@ -910,8 +910,10 @@ func (s *DataIngestionActions) SetParameters(v []*string) *DataIngestionActions 
 }
 
 type DataIngestionNotification struct {
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Topic    *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Endpoint *string   `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	MNS      *MNS      `json:"MNS,omitempty" xml:"MNS,omitempty"`
+	RocketMQ *RocketMQ `json:"RocketMQ,omitempty" xml:"RocketMQ,omitempty"`
+	Topic    *string   `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s DataIngestionNotification) String() string {
@@ -924,6 +926,16 @@ func (s DataIngestionNotification) GoString() string {
 
 func (s *DataIngestionNotification) SetEndpoint(v string) *DataIngestionNotification {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *DataIngestionNotification) SetMNS(v *MNS) *DataIngestionNotification {
+	s.MNS = v
+	return s
+}
+
+func (s *DataIngestionNotification) SetRocketMQ(v *RocketMQ) *DataIngestionNotification {
+	s.RocketMQ = v
 	return s
 }
 
