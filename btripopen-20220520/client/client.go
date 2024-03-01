@@ -54197,6 +54197,7 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemList) SetFlightJourn
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem struct {
 	AgreementPriceCodes []*string                                                         `json:"agreement_price_codes,omitempty" xml:"agreement_price_codes,omitempty" type:"Repeated"`
+	ItemType            *string                                                           `json:"item_type,omitempty" xml:"item_type,omitempty"`
 	ShoppingItemMap     map[string]*ModuleFlightItemListBestPriceItemShoppingItemMapValue `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
 }
 
@@ -54210,6 +54211,11 @@ func (s IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem) Go
 
 func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem) SetAgreementPriceCodes(v []*string) *IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem {
 	s.AgreementPriceCodes = v
+	return s
+}
+
+func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem) SetItemType(v string) *IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem {
+	s.ItemType = &v
 	return s
 }
 
@@ -55478,6 +55484,7 @@ type IntlFlightOtaItemDetailResponseBodyModuleGroupItem struct {
 	AgreementPriceCodes []*string                                                               `json:"agreement_price_codes,omitempty" xml:"agreement_price_codes,omitempty" type:"Repeated"`
 	FlightRuleInfoList  []*IntlFlightOtaItemDetailResponseBodyModuleGroupItemFlightRuleInfoList `json:"flight_rule_info_list,omitempty" xml:"flight_rule_info_list,omitempty" type:"Repeated"`
 	ItemId              *string                                                                 `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	ItemType            *string                                                                 `json:"item_type,omitempty" xml:"item_type,omitempty"`
 	ShoppingItemMap     map[string]*ModuleGroupItemShoppingItemMapValue                         `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
 	SubItemPositionMap  map[string][]*ModuleGroupItemSubItemPositionMapValue                    `json:"sub_item_position_map,omitempty" xml:"sub_item_position_map,omitempty"`
 	SubItems            []*IntlFlightOtaItemDetailResponseBodyModuleGroupItemSubItems           `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
@@ -55503,6 +55510,11 @@ func (s *IntlFlightOtaItemDetailResponseBodyModuleGroupItem) SetFlightRuleInfoLi
 
 func (s *IntlFlightOtaItemDetailResponseBodyModuleGroupItem) SetItemId(v string) *IntlFlightOtaItemDetailResponseBodyModuleGroupItem {
 	s.ItemId = &v
+	return s
+}
+
+func (s *IntlFlightOtaItemDetailResponseBodyModuleGroupItem) SetItemType(v string) *IntlFlightOtaItemDetailResponseBodyModuleGroupItem {
+	s.ItemType = &v
 	return s
 }
 
@@ -56700,6 +56712,7 @@ type IntlFlightOtaSearchResponseBodyModuleItemList struct {
 	AgreementPriceCodes []*string                                                          `json:"agreement_price_codes,omitempty" xml:"agreement_price_codes,omitempty" type:"Repeated"`
 	FlightRuleInfoList  []*IntlFlightOtaSearchResponseBodyModuleItemListFlightRuleInfoList `json:"flight_rule_info_list,omitempty" xml:"flight_rule_info_list,omitempty" type:"Repeated"`
 	ItemId              *string                                                            `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	ItemType            *string                                                            `json:"item_type,omitempty" xml:"item_type,omitempty"`
 	ShoppingItemMap     map[string]*ModuleItemListShoppingItemMapValue                     `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
 	SubItemPositionMap  map[string][]*ModuleItemListSubItemPositionMapValue                `json:"sub_item_position_map,omitempty" xml:"sub_item_position_map,omitempty"`
 	SubItems            []*IntlFlightOtaSearchResponseBodyModuleItemListSubItems           `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
@@ -56725,6 +56738,11 @@ func (s *IntlFlightOtaSearchResponseBodyModuleItemList) SetFlightRuleInfoList(v 
 
 func (s *IntlFlightOtaSearchResponseBodyModuleItemList) SetItemId(v string) *IntlFlightOtaSearchResponseBodyModuleItemList {
 	s.ItemId = &v
+	return s
+}
+
+func (s *IntlFlightOtaSearchResponseBodyModuleItemList) SetItemType(v string) *IntlFlightOtaSearchResponseBodyModuleItemList {
+	s.ItemType = &v
 	return s
 }
 
