@@ -10328,6 +10328,7 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetWebsite(v *CreateTiming
 }
 
 type CreateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
+	CheckCert      *bool                                                          `json:"CheckCert,omitempty" xml:"CheckCert,omitempty"`
 	ConnectTimeout *int64                                                         `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
 	Method         *string                                                        `json:"Method,omitempty" xml:"Method,omitempty"`
 	RequestBody    *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
@@ -10342,6 +10343,11 @@ func (s CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) String() string {
 
 func (s CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetCheckCert(v bool) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.CheckCert = &v
+	return s
 }
 
 func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetConnectTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
@@ -24523,6 +24529,7 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetWebsite(v *GetTim
 }
 
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP struct {
+	CheckCert *bool `json:"CheckCert,omitempty" xml:"CheckCert,omitempty"`
 	// The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
 	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
 	// The request method.
@@ -24546,6 +24553,11 @@ func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) String() strin
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) GoString() string {
 	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetCheckCert(v bool) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
+	s.CheckCert = &v
+	return s
 }
 
 func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetConnectTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
@@ -45308,6 +45320,7 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetWebsite(v *UpdateTiming
 }
 
 type UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
+	CheckCert *bool `json:"CheckCert,omitempty" xml:"CheckCert,omitempty"`
 	// The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
 	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
 	// The request method.
@@ -45331,6 +45344,11 @@ func (s UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) String() string {
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetCheckCert(v bool) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.CheckCert = &v
+	return s
 }
 
 func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetConnectTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
