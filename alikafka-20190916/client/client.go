@@ -2551,6 +2551,198 @@ func (s *DescribeSaslUsersResponse) SetBody(v *DescribeSaslUsersResponseBody) *D
 	return s
 }
 
+type EnableAutoGroupCreationRequest struct {
+	Enable     *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s EnableAutoGroupCreationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAutoGroupCreationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAutoGroupCreationRequest) SetEnable(v bool) *EnableAutoGroupCreationRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *EnableAutoGroupCreationRequest) SetInstanceId(v string) *EnableAutoGroupCreationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EnableAutoGroupCreationRequest) SetRegionId(v string) *EnableAutoGroupCreationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type EnableAutoGroupCreationResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableAutoGroupCreationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAutoGroupCreationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAutoGroupCreationResponseBody) SetCode(v int32) *EnableAutoGroupCreationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableAutoGroupCreationResponseBody) SetMessage(v string) *EnableAutoGroupCreationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableAutoGroupCreationResponseBody) SetRequestId(v string) *EnableAutoGroupCreationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableAutoGroupCreationResponseBody) SetSuccess(v bool) *EnableAutoGroupCreationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableAutoGroupCreationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableAutoGroupCreationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableAutoGroupCreationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAutoGroupCreationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAutoGroupCreationResponse) SetHeaders(v map[string]*string) *EnableAutoGroupCreationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableAutoGroupCreationResponse) SetStatusCode(v int32) *EnableAutoGroupCreationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableAutoGroupCreationResponse) SetBody(v *EnableAutoGroupCreationResponseBody) *EnableAutoGroupCreationResponse {
+	s.Body = v
+	return s
+}
+
+type EnableAutoTopicCreationRequest struct {
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Operate      *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
+	PartitionNum *int64  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s EnableAutoTopicCreationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAutoTopicCreationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAutoTopicCreationRequest) SetInstanceId(v string) *EnableAutoTopicCreationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EnableAutoTopicCreationRequest) SetOperate(v string) *EnableAutoTopicCreationRequest {
+	s.Operate = &v
+	return s
+}
+
+func (s *EnableAutoTopicCreationRequest) SetPartitionNum(v int64) *EnableAutoTopicCreationRequest {
+	s.PartitionNum = &v
+	return s
+}
+
+func (s *EnableAutoTopicCreationRequest) SetRegionId(v string) *EnableAutoTopicCreationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type EnableAutoTopicCreationResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableAutoTopicCreationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAutoTopicCreationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAutoTopicCreationResponseBody) SetCode(v int32) *EnableAutoTopicCreationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableAutoTopicCreationResponseBody) SetMessage(v string) *EnableAutoTopicCreationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableAutoTopicCreationResponseBody) SetRequestId(v string) *EnableAutoTopicCreationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableAutoTopicCreationResponseBody) SetSuccess(v bool) *EnableAutoTopicCreationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableAutoTopicCreationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableAutoTopicCreationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableAutoTopicCreationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAutoTopicCreationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAutoTopicCreationResponse) SetHeaders(v map[string]*string) *EnableAutoTopicCreationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableAutoTopicCreationResponse) SetStatusCode(v int32) *EnableAutoTopicCreationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableAutoTopicCreationResponse) SetBody(v *EnableAutoTopicCreationResponseBody) *EnableAutoTopicCreationResponse {
+	s.Body = v
+	return s
+}
+
 type GetAllInstanceIdListRequest struct {
 	// The region ID of the instance. This parameter is reserved.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -8678,6 +8870,114 @@ func (client *Client) DescribeSaslUsers(request *DescribeSaslUsersRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSaslUsersResponse{}
 	_body, _err := client.DescribeSaslUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableAutoGroupCreationWithOptions(request *EnableAutoGroupCreationRequest, runtime *util.RuntimeOptions) (_result *EnableAutoGroupCreationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableAutoGroupCreation"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableAutoGroupCreationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableAutoGroupCreation(request *EnableAutoGroupCreationRequest) (_result *EnableAutoGroupCreationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableAutoGroupCreationResponse{}
+	_body, _err := client.EnableAutoGroupCreationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableAutoTopicCreationWithOptions(request *EnableAutoTopicCreationRequest, runtime *util.RuntimeOptions) (_result *EnableAutoTopicCreationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operate)) {
+		query["Operate"] = request.Operate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
+		query["PartitionNum"] = request.PartitionNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableAutoTopicCreation"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableAutoTopicCreationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableAutoTopicCreation(request *EnableAutoTopicCreationRequest) (_result *EnableAutoTopicCreationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableAutoTopicCreationResponse{}
+	_body, _err := client.EnableAutoTopicCreationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
