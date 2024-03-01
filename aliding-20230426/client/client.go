@@ -4056,19 +4056,20 @@ func (s *CreateEventShrinkHeaders) SetAccountContextShrink(v string) *CreateEven
 }
 
 type CreateEventRequest struct {
-	Attendees         []*CreateEventRequestAttendees       `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
-	Description       *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	End               *CreateEventRequestEnd               `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
-	Extra             map[string]*string                   `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	IsAllDay          *bool                                `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
-	Location          *CreateEventRequestLocation          `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	OnlineMeetingInfo *CreateEventRequestOnlineMeetingInfo `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty" type:"Struct"`
-	Recurrence        *CreateEventRequestRecurrence        `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
-	Reminders         []*CreateEventRequestReminders       `json:"Reminders,omitempty" xml:"Reminders,omitempty" type:"Repeated"`
-	Summary           *string                              `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	UiConfigs         []*CreateEventRequestUiConfigs       `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty" type:"Repeated"`
-	CalendarId        *string                              `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
-	Start             *CreateEventRequestStart             `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
+	Attendees           []*CreateEventRequestAttendees         `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
+	Description         *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	End                 *CreateEventRequestEnd                 `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
+	Extra               map[string]*string                     `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	IsAllDay            *bool                                  `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
+	Location            *CreateEventRequestLocation            `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	OnlineMeetingInfo   *CreateEventRequestOnlineMeetingInfo   `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty" type:"Struct"`
+	Recurrence          *CreateEventRequestRecurrence          `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
+	Reminders           []*CreateEventRequestReminders         `json:"Reminders,omitempty" xml:"Reminders,omitempty" type:"Repeated"`
+	RichTextDescription *CreateEventRequestRichTextDescription `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty" type:"Struct"`
+	Summary             *string                                `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	UiConfigs           []*CreateEventRequestUiConfigs         `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty" type:"Repeated"`
+	CalendarId          *string                                `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
+	Start               *CreateEventRequestStart               `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
 }
 
 func (s CreateEventRequest) String() string {
@@ -4121,6 +4122,11 @@ func (s *CreateEventRequest) SetRecurrence(v *CreateEventRequestRecurrence) *Cre
 
 func (s *CreateEventRequest) SetReminders(v []*CreateEventRequestReminders) *CreateEventRequest {
 	s.Reminders = v
+	return s
+}
+
+func (s *CreateEventRequest) SetRichTextDescription(v *CreateEventRequestRichTextDescription) *CreateEventRequest {
+	s.RichTextDescription = v
 	return s
 }
 
@@ -4346,6 +4352,23 @@ func (s *CreateEventRequestReminders) SetMinutes(v int32) *CreateEventRequestRem
 	return s
 }
 
+type CreateEventRequestRichTextDescription struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CreateEventRequestRichTextDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventRequestRichTextDescription) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventRequestRichTextDescription) SetText(v string) *CreateEventRequestRichTextDescription {
+	s.Text = &v
+	return s
+}
+
 type CreateEventRequestUiConfigs struct {
 	UiName   *string `json:"uiName,omitempty" xml:"uiName,omitempty"`
 	UiStatus *string `json:"uiStatus,omitempty" xml:"uiStatus,omitempty"`
@@ -4399,19 +4422,20 @@ func (s *CreateEventRequestStart) SetTimeZone(v string) *CreateEventRequestStart
 }
 
 type CreateEventShrinkRequest struct {
-	AttendeesShrink         *string `json:"Attendees,omitempty" xml:"Attendees,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndShrink               *string `json:"End,omitempty" xml:"End,omitempty"`
-	ExtraShrink             *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	IsAllDay                *bool   `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
-	LocationShrink          *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OnlineMeetingInfoShrink *string `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty"`
-	RecurrenceShrink        *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	RemindersShrink         *string `json:"Reminders,omitempty" xml:"Reminders,omitempty"`
-	Summary                 *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	UiConfigsShrink         *string `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty"`
-	CalendarId              *string `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
-	StartShrink             *string `json:"start,omitempty" xml:"start,omitempty"`
+	AttendeesShrink           *string `json:"Attendees,omitempty" xml:"Attendees,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndShrink                 *string `json:"End,omitempty" xml:"End,omitempty"`
+	ExtraShrink               *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	IsAllDay                  *bool   `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
+	LocationShrink            *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	OnlineMeetingInfoShrink   *string `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty"`
+	RecurrenceShrink          *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	RemindersShrink           *string `json:"Reminders,omitempty" xml:"Reminders,omitempty"`
+	RichTextDescriptionShrink *string `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty"`
+	Summary                   *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	UiConfigsShrink           *string `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty"`
+	CalendarId                *string `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
+	StartShrink               *string `json:"start,omitempty" xml:"start,omitempty"`
 }
 
 func (s CreateEventShrinkRequest) String() string {
@@ -4467,6 +4491,11 @@ func (s *CreateEventShrinkRequest) SetRemindersShrink(v string) *CreateEventShri
 	return s
 }
 
+func (s *CreateEventShrinkRequest) SetRichTextDescriptionShrink(v string) *CreateEventShrinkRequest {
+	s.RichTextDescriptionShrink = &v
+	return s
+}
+
 func (s *CreateEventShrinkRequest) SetSummary(v string) *CreateEventShrinkRequest {
 	s.Summary = &v
 	return s
@@ -4500,11 +4529,12 @@ type CreateEventResponseBody struct {
 	Recurrence        *CreateEventResponseBodyRecurrence        `json:"recurrence,omitempty" xml:"recurrence,omitempty" type:"Struct"`
 	Reminders         []*CreateEventResponseBodyReminders       `json:"reminders,omitempty" xml:"reminders,omitempty" type:"Repeated"`
 	// requestId
-	RequestId  *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Start      *CreateEventResponseBodyStart       `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
-	Summary    *string                             `json:"summary,omitempty" xml:"summary,omitempty"`
-	UiConfigs  []*CreateEventResponseBodyUiConfigs `json:"uiConfigs,omitempty" xml:"uiConfigs,omitempty" type:"Repeated"`
-	UpdateTime *string                             `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	RequestId           *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RichTextDescription *CreateEventResponseBodyRichTextDescription `json:"richTextDescription,omitempty" xml:"richTextDescription,omitempty" type:"Struct"`
+	Start               *CreateEventResponseBodyStart               `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
+	Summary             *string                                     `json:"summary,omitempty" xml:"summary,omitempty"`
+	UiConfigs           []*CreateEventResponseBodyUiConfigs         `json:"uiConfigs,omitempty" xml:"uiConfigs,omitempty" type:"Repeated"`
+	UpdateTime          *string                                     `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s CreateEventResponseBody) String() string {
@@ -4572,6 +4602,11 @@ func (s *CreateEventResponseBody) SetReminders(v []*CreateEventResponseBodyRemin
 
 func (s *CreateEventResponseBody) SetRequestId(v string) *CreateEventResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateEventResponseBody) SetRichTextDescription(v *CreateEventResponseBodyRichTextDescription) *CreateEventResponseBody {
+	s.RichTextDescription = v
 	return s
 }
 
@@ -4859,6 +4894,23 @@ func (s *CreateEventResponseBodyReminders) SetMethod(v string) *CreateEventRespo
 
 func (s *CreateEventResponseBodyReminders) SetMinutes(v string) *CreateEventResponseBodyReminders {
 	s.Minutes = &v
+	return s
+}
+
+type CreateEventResponseBodyRichTextDescription struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CreateEventResponseBodyRichTextDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventResponseBodyRichTextDescription) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventResponseBodyRichTextDescription) SetText(v string) *CreateEventResponseBodyRichTextDescription {
+	s.Text = &v
 	return s
 }
 
@@ -13930,7 +13982,7 @@ func (s *GetDocContentHeaders) SetAccountContext(v *GetDocContentHeadersAccountC
 }
 
 type GetDocContentHeadersAccountContext struct {
-	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 
 func (s GetDocContentHeadersAccountContext) String() string {
@@ -13941,8 +13993,8 @@ func (s GetDocContentHeadersAccountContext) GoString() string {
 	return s.String()
 }
 
-func (s *GetDocContentHeadersAccountContext) SetUserToken(v string) *GetDocContentHeadersAccountContext {
-	s.UserToken = &v
+func (s *GetDocContentHeadersAccountContext) SetAccountId(v string) *GetDocContentHeadersAccountContext {
+	s.AccountId = &v
 	return s
 }
 
@@ -13973,6 +14025,7 @@ type GetDocContentRequest struct {
 	DentryUuid    *string                            `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	TargetFormat  *string                            `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContext *GetDocContentRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	UserToken     *string                            `json:"userToken,omitempty" xml:"userToken,omitempty"`
 }
 
 func (s GetDocContentRequest) String() string {
@@ -13998,6 +14051,11 @@ func (s *GetDocContentRequest) SetTenantContext(v *GetDocContentRequestTenantCon
 	return s
 }
 
+func (s *GetDocContentRequest) SetUserToken(v string) *GetDocContentRequest {
+	s.UserToken = &v
+	return s
+}
+
 type GetDocContentRequestTenantContext struct {
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
@@ -14019,6 +14077,7 @@ type GetDocContentShrinkRequest struct {
 	DentryUuid          *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	TargetFormat        *string `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	UserToken           *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
 }
 
 func (s GetDocContentShrinkRequest) String() string {
@@ -14041,6 +14100,11 @@ func (s *GetDocContentShrinkRequest) SetTargetFormat(v string) *GetDocContentShr
 
 func (s *GetDocContentShrinkRequest) SetTenantContextShrink(v string) *GetDocContentShrinkRequest {
 	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *GetDocContentShrinkRequest) SetUserToken(v string) *GetDocContentShrinkRequest {
+	s.UserToken = &v
 	return s
 }
 
@@ -48694,6 +48758,10 @@ func (client *Client) CreateEventWithOptions(tmpReq *CreateEventRequest, tmpHead
 		request.RemindersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Reminders, tea.String("Reminders"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.RichTextDescription)) {
+		request.RichTextDescriptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RichTextDescription, tea.String("RichTextDescription"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.UiConfigs)) {
 		request.UiConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UiConfigs, tea.String("UiConfigs"), tea.String("json"))
 	}
@@ -48737,6 +48805,10 @@ func (client *Client) CreateEventWithOptions(tmpReq *CreateEventRequest, tmpHead
 
 	if !tea.BoolValue(util.IsUnset(request.RemindersShrink)) {
 		body["Reminders"] = request.RemindersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RichTextDescriptionShrink)) {
+		body["RichTextDescription"] = request.RichTextDescriptionShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Summary)) {
@@ -52212,6 +52284,10 @@ func (client *Client) GetDocContentWithOptions(tmpReq *GetDocContentRequest, tmp
 
 	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
 		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserToken)) {
+		body["userToken"] = request.UserToken
 	}
 
 	realHeaders := make(map[string]*string)
