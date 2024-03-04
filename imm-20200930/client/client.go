@@ -12610,6 +12610,458 @@ func (s *FuzzyQueryResponse) SetBody(v *FuzzyQueryResponseBody) *FuzzyQueryRespo
 	return s
 }
 
+type GenerateVideoPlaylistRequest struct {
+	CredentialConfig *CredentialConfig                              `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	MasterURI        *string                                        `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	Notification     *Notification                                  `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	OverwritePolicy  *string                                        `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
+	ProjectName      *string                                        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceDuration   *float32                                       `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	SourceStartTime  *float32                                       `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceSubtitles  []*GenerateVideoPlaylistRequestSourceSubtitles `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty" type:"Repeated"`
+	SourceURI        *string                                        `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags             map[string]*string                             `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Targets          []*GenerateVideoPlaylistRequestTargets         `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	UserData         *string                                        `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GenerateVideoPlaylistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistRequest) SetCredentialConfig(v *CredentialConfig) *GenerateVideoPlaylistRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetMasterURI(v string) *GenerateVideoPlaylistRequest {
+	s.MasterURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetNotification(v *Notification) *GenerateVideoPlaylistRequest {
+	s.Notification = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetOverwritePolicy(v string) *GenerateVideoPlaylistRequest {
+	s.OverwritePolicy = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetProjectName(v string) *GenerateVideoPlaylistRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetSourceDuration(v float32) *GenerateVideoPlaylistRequest {
+	s.SourceDuration = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetSourceStartTime(v float32) *GenerateVideoPlaylistRequest {
+	s.SourceStartTime = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetSourceSubtitles(v []*GenerateVideoPlaylistRequestSourceSubtitles) *GenerateVideoPlaylistRequest {
+	s.SourceSubtitles = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetSourceURI(v string) *GenerateVideoPlaylistRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetTags(v map[string]*string) *GenerateVideoPlaylistRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetTargets(v []*GenerateVideoPlaylistRequestTargets) *GenerateVideoPlaylistRequest {
+	s.Targets = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetUserData(v string) *GenerateVideoPlaylistRequest {
+	s.UserData = &v
+	return s
+}
+
+type GenerateVideoPlaylistRequestSourceSubtitles struct {
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	URI      *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GenerateVideoPlaylistRequestSourceSubtitles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistRequestSourceSubtitles) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistRequestSourceSubtitles) SetLanguage(v string) *GenerateVideoPlaylistRequestSourceSubtitles {
+	s.Language = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestSourceSubtitles) SetURI(v string) *GenerateVideoPlaylistRequestSourceSubtitles {
+	s.URI = &v
+	return s
+}
+
+type GenerateVideoPlaylistRequestTargets struct {
+	Audio            *TargetAudio       `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	Duration         *float32           `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InitialSegments  []*float32         `json:"InitialSegments,omitempty" xml:"InitialSegments,omitempty" type:"Repeated"`
+	InitialTranscode *float32           `json:"InitialTranscode,omitempty" xml:"InitialTranscode,omitempty"`
+	Subtitle         *TargetSubtitle    `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	Tags             map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TranscodeAhead   *int32             `json:"TranscodeAhead,omitempty" xml:"TranscodeAhead,omitempty"`
+	URI              *string            `json:"URI,omitempty" xml:"URI,omitempty"`
+	Video            *TargetVideo       `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s GenerateVideoPlaylistRequestTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistRequestTargets) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetAudio(v *TargetAudio) *GenerateVideoPlaylistRequestTargets {
+	s.Audio = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetDuration(v float32) *GenerateVideoPlaylistRequestTargets {
+	s.Duration = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetInitialSegments(v []*float32) *GenerateVideoPlaylistRequestTargets {
+	s.InitialSegments = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetInitialTranscode(v float32) *GenerateVideoPlaylistRequestTargets {
+	s.InitialTranscode = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetSubtitle(v *TargetSubtitle) *GenerateVideoPlaylistRequestTargets {
+	s.Subtitle = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetTags(v map[string]*string) *GenerateVideoPlaylistRequestTargets {
+	s.Tags = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetTranscodeAhead(v int32) *GenerateVideoPlaylistRequestTargets {
+	s.TranscodeAhead = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetURI(v string) *GenerateVideoPlaylistRequestTargets {
+	s.URI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetVideo(v *TargetVideo) *GenerateVideoPlaylistRequestTargets {
+	s.Video = v
+	return s
+}
+
+type GenerateVideoPlaylistShrinkRequest struct {
+	CredentialConfigShrink *string  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	MasterURI              *string  `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	NotificationShrink     *string  `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	OverwritePolicy        *string  `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
+	ProjectName            *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceDuration         *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	SourceStartTime        *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceSubtitlesShrink  *string  `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty"`
+	SourceURI              *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink             *string  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetsShrink          *string  `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	UserData               *string  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GenerateVideoPlaylistShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetCredentialConfigShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetMasterURI(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.MasterURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetNotificationShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.NotificationShrink = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetOverwritePolicy(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.OverwritePolicy = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetProjectName(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetSourceDuration(v float32) *GenerateVideoPlaylistShrinkRequest {
+	s.SourceDuration = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetSourceStartTime(v float32) *GenerateVideoPlaylistShrinkRequest {
+	s.SourceStartTime = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetSourceSubtitlesShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.SourceSubtitlesShrink = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetSourceURI(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetTagsShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetTargetsShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.TargetsShrink = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetUserData(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type GenerateVideoPlaylistResponseBody struct {
+	// 转码文件列表。
+	AudioPlaylist []*GenerateVideoPlaylistResponseBodyAudioPlaylist `json:"AudioPlaylist,omitempty" xml:"AudioPlaylist,omitempty" type:"Repeated"`
+	Duration      *float32                                          `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	MasterURI     *string                                           `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 转码文件列表。
+	SubtitlePlaylist []*GenerateVideoPlaylistResponseBodySubtitlePlaylist `json:"SubtitlePlaylist,omitempty" xml:"SubtitlePlaylist,omitempty" type:"Repeated"`
+	Token            *string                                              `json:"Token,omitempty" xml:"Token,omitempty"`
+	URI              *string                                              `json:"URI,omitempty" xml:"URI,omitempty"`
+	// 转码文件列表。
+	VideoPlaylist []*GenerateVideoPlaylistResponseBodyVideoPlaylist `json:"VideoPlaylist,omitempty" xml:"VideoPlaylist,omitempty" type:"Repeated"`
+}
+
+func (s GenerateVideoPlaylistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetAudioPlaylist(v []*GenerateVideoPlaylistResponseBodyAudioPlaylist) *GenerateVideoPlaylistResponseBody {
+	s.AudioPlaylist = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetDuration(v float32) *GenerateVideoPlaylistResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetMasterURI(v string) *GenerateVideoPlaylistResponseBody {
+	s.MasterURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetRequestId(v string) *GenerateVideoPlaylistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetSubtitlePlaylist(v []*GenerateVideoPlaylistResponseBodySubtitlePlaylist) *GenerateVideoPlaylistResponseBody {
+	s.SubtitlePlaylist = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetToken(v string) *GenerateVideoPlaylistResponseBody {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetURI(v string) *GenerateVideoPlaylistResponseBody {
+	s.URI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetVideoPlaylist(v []*GenerateVideoPlaylistResponseBodyVideoPlaylist) *GenerateVideoPlaylistResponseBody {
+	s.VideoPlaylist = v
+	return s
+}
+
+type GenerateVideoPlaylistResponseBodyAudioPlaylist struct {
+	Channels *int32 `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GenerateVideoPlaylistResponseBodyAudioPlaylist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponseBodyAudioPlaylist) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetChannels(v int32) *GenerateVideoPlaylistResponseBodyAudioPlaylist {
+	s.Channels = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodyAudioPlaylist {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodyAudioPlaylist {
+	s.URI = &v
+	return s
+}
+
+type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
+	// 字幕流编号，从0开始。
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// 视频源中字幕流的语言。
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// 输出m3u8的OSS地址。地址规则为 Target.URI + “_” + Index + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GenerateVideoPlaylistResponseBodySubtitlePlaylist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponseBodySubtitlePlaylist) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetIndex(v int32) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
+	s.Index = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetLanguage(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
+	s.Language = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
+	s.URI = &v
+	return s
+}
+
+type GenerateVideoPlaylistResponseBodyVideoPlaylist struct {
+	FrameRate  *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GenerateVideoPlaylistResponseBodyVideoPlaylist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponseBodyVideoPlaylist) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponseBodyVideoPlaylist) SetFrameRate(v string) *GenerateVideoPlaylistResponseBodyVideoPlaylist {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodyVideoPlaylist) SetResolution(v string) *GenerateVideoPlaylistResponseBodyVideoPlaylist {
+	s.Resolution = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodyVideoPlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodyVideoPlaylist {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodyVideoPlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodyVideoPlaylist {
+	s.URI = &v
+	return s
+}
+
+type GenerateVideoPlaylistResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateVideoPlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateVideoPlaylistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponse) SetHeaders(v map[string]*string) *GenerateVideoPlaylistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponse) SetStatusCode(v int32) *GenerateVideoPlaylistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponse) SetBody(v *GenerateVideoPlaylistResponseBody) *GenerateVideoPlaylistResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateWebofficeTokenRequest struct {
 	CachePreview     *bool             `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
@@ -22181,6 +22633,116 @@ func (client *Client) FuzzyQuery(request *FuzzyQueryRequest) (_result *FuzzyQuer
 	runtime := &util.RuntimeOptions{}
 	_result = &FuzzyQueryResponse{}
 	_body, _err := client.FuzzyQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateVideoPlaylistWithOptions(tmpReq *GenerateVideoPlaylistRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoPlaylistResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GenerateVideoPlaylistShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceSubtitles)) {
+		request.SourceSubtitlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceSubtitles, tea.String("SourceSubtitles"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Targets)) {
+		request.TargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Targets, tea.String("Targets"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterURI)) {
+		query["MasterURI"] = request.MasterURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OverwritePolicy)) {
+		query["OverwritePolicy"] = request.OverwritePolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDuration)) {
+		query["SourceDuration"] = request.SourceDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceStartTime)) {
+		query["SourceStartTime"] = request.SourceStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceSubtitlesShrink)) {
+		query["SourceSubtitles"] = request.SourceSubtitlesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetsShrink)) {
+		query["Targets"] = request.TargetsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateVideoPlaylist"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateVideoPlaylistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateVideoPlaylist(request *GenerateVideoPlaylistRequest) (_result *GenerateVideoPlaylistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateVideoPlaylistResponse{}
+	_body, _err := client.GenerateVideoPlaylistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
