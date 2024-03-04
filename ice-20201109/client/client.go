@@ -35079,6 +35079,100 @@ func (s *SubmitSyncMediaInfoJobResponse) SetBody(v *SubmitSyncMediaInfoJobRespon
 	return s
 }
 
+type SubmitTextGenerateJobRequest struct {
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GenerateConfig *string `json:"GenerateConfig,omitempty" xml:"GenerateConfig,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserData       *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitTextGenerateJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTextGenerateJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTextGenerateJobRequest) SetDescription(v string) *SubmitTextGenerateJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitTextGenerateJobRequest) SetGenerateConfig(v string) *SubmitTextGenerateJobRequest {
+	s.GenerateConfig = &v
+	return s
+}
+
+func (s *SubmitTextGenerateJobRequest) SetTitle(v string) *SubmitTextGenerateJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitTextGenerateJobRequest) SetType(v string) *SubmitTextGenerateJobRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitTextGenerateJobRequest) SetUserData(v string) *SubmitTextGenerateJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitTextGenerateJobResponseBody struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitTextGenerateJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTextGenerateJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTextGenerateJobResponseBody) SetJobId(v string) *SubmitTextGenerateJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitTextGenerateJobResponseBody) SetRequestId(v string) *SubmitTextGenerateJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitTextGenerateJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTextGenerateJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitTextGenerateJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTextGenerateJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTextGenerateJobResponse) SetHeaders(v map[string]*string) *SubmitTextGenerateJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitTextGenerateJobResponse) SetStatusCode(v int32) *SubmitTextGenerateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitTextGenerateJobResponse) SetBody(v *SubmitTextGenerateJobResponseBody) *SubmitTextGenerateJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitTranscodeJobRequest struct {
 	ClientToken    *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	InputGroup     []*SubmitTranscodeJobRequestInputGroup   `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
@@ -50007,6 +50101,66 @@ func (client *Client) SubmitSyncMediaInfoJob(request *SubmitSyncMediaInfoJobRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSyncMediaInfoJobResponse{}
 	_body, _err := client.SubmitSyncMediaInfoJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitTextGenerateJobWithOptions(request *SubmitTextGenerateJobRequest, runtime *util.RuntimeOptions) (_result *SubmitTextGenerateJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GenerateConfig)) {
+		query["GenerateConfig"] = request.GenerateConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitTextGenerateJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitTextGenerateJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitTextGenerateJob(request *SubmitTextGenerateJobRequest) (_result *SubmitTextGenerateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitTextGenerateJobResponse{}
+	_body, _err := client.SubmitTextGenerateJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
