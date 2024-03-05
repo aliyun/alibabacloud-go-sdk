@@ -107,9 +107,9 @@ func (s *AddContainerAppResponseBodyContainerId) SetContainerId(v []*string) *Ad
 }
 
 type AddContainerAppResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddContainerAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddContainerAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddContainerAppResponse) String() string {
@@ -242,9 +242,9 @@ func (s *AddExistedNodesResponseBody) SetTaskId(v string) *AddExistedNodesRespon
 }
 
 type AddExistedNodesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddExistedNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddExistedNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddExistedNodesResponse) String() string {
@@ -345,9 +345,9 @@ func (s *AddLocalNodesResponseBodyInstanceIds) SetInstanceId(v []*string) *AddLo
 }
 
 type AddLocalNodesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddLocalNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddLocalNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddLocalNodesResponse) String() string {
@@ -437,7 +437,8 @@ type AddNodesRequest struct {
 	CreateMode *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The list of data disks.
 	DataDisks []*AddNodesRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	DnsConfig *string                     `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty"`
+	// The information about Domain Name System (DNS) settings.
+	DnsConfig *string `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty"`
 	// The billing method of the compute nodes. Valid values:
 	//
 	// *   PostPaid: pay-as-you-go
@@ -826,6 +827,7 @@ func (s *AddNodesRequestDataDisks) SetDataDiskSize(v int32) *AddNodesRequestData
 }
 
 type AddNodesResponseBody struct {
+	// The instance IDs.
 	InstanceIds *AddNodesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -874,9 +876,9 @@ func (s *AddNodesResponseBodyInstanceIds) SetInstanceId(v []*string) *AddNodesRe
 }
 
 type AddNodesResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddNodesResponse) String() string {
@@ -966,9 +968,9 @@ func (s *AddQueueResponseBody) SetRequestId(v string) *AddQueueResponseBody {
 }
 
 type AddQueueResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddQueueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddQueueResponse) String() string {
@@ -1049,9 +1051,9 @@ func (s *AddSecurityGroupResponseBody) SetRequestId(v string) *AddSecurityGroupR
 }
 
 type AddSecurityGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddSecurityGroupResponse) String() string {
@@ -1180,9 +1182,9 @@ func (s *AddUsersResponseBody) SetRequestId(v string) *AddUsersResponseBody {
 }
 
 type AddUsersResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddUsersResponse) String() string {
@@ -1345,7 +1347,8 @@ type ApplyNodesRequest struct {
 	//
 	// *   If ResourceAmountType is set to Instance, the value range of TargetCapacity is 1 to 200.
 	// *   If ResourceAmountType is set to Cores, the value range of TargetCapacity is 1 to 1,000.
-	TargetCapacity *int32 `json:"TargetCapacity,omitempty" xml:"TargetCapacity,omitempty"`
+	TargetCapacity *int32  `json:"TargetCapacity,omitempty" xml:"TargetCapacity,omitempty"`
+	UserData       *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The details of the zones. You can specify up to 10 zones.
 	ZoneInfos []*ApplyNodesRequestZoneInfos `json:"ZoneInfos,omitempty" xml:"ZoneInfos,omitempty" type:"Repeated"`
 }
@@ -1485,6 +1488,11 @@ func (s *ApplyNodesRequest) SetTag(v []*ApplyNodesRequestTag) *ApplyNodesRequest
 
 func (s *ApplyNodesRequest) SetTargetCapacity(v int32) *ApplyNodesRequest {
 	s.TargetCapacity = &v
+	return s
+}
+
+func (s *ApplyNodesRequest) SetUserData(v string) *ApplyNodesRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -1652,9 +1660,9 @@ func (s *ApplyNodesResponseBodyInstanceIds) SetInstanceId(v []*string) *ApplyNod
 }
 
 type ApplyNodesResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyNodesResponse) String() string {
@@ -2668,9 +2676,9 @@ func (s *CreateClusterResponseBody) SetTaskId(v string) *CreateClusterResponseBo
 }
 
 type CreateClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateClusterResponse) String() string {
@@ -2756,9 +2764,9 @@ func (s *CreateGWSClusterResponseBody) SetRequestId(v string) *CreateGWSClusterR
 }
 
 type CreateGWSClusterResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateGWSClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGWSClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateGWSClusterResponse) String() string {
@@ -2835,9 +2843,9 @@ func (s *CreateGWSImageResponseBody) SetRequestId(v string) *CreateGWSImageRespo
 }
 
 type CreateGWSImageResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateGWSImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGWSImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateGWSImageResponse) String() string {
@@ -3000,9 +3008,9 @@ func (s *CreateGWSInstanceResponseBody) SetRequestId(v string) *CreateGWSInstanc
 }
 
 type CreateGWSInstanceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateGWSInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGWSInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateGWSInstanceResponse) String() string {
@@ -3641,9 +3649,9 @@ func (s *CreateHybridClusterResponseBody) SetTaskId(v string) *CreateHybridClust
 }
 
 type CreateHybridClusterResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHybridClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHybridClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHybridClusterResponse) String() string {
@@ -3747,9 +3755,9 @@ func (s *CreateJobFileResponseBody) SetRequestId(v string) *CreateJobFileRespons
 }
 
 type CreateJobFileResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateJobFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateJobFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateJobFileResponse) String() string {
@@ -3980,9 +3988,9 @@ func (s *CreateJobTemplateResponseBody) SetTemplateId(v string) *CreateJobTempla
 }
 
 type CreateJobTemplateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateJobTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateJobTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateJobTemplateResponse) String() string {
@@ -4063,9 +4071,9 @@ func (s *DeleteClusterResponseBody) SetTaskId(v string) *DeleteClusterResponseBo
 }
 
 type DeleteClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteClusterResponse) String() string {
@@ -4146,9 +4154,9 @@ func (s *DeleteContainerAppsResponseBody) SetRequestId(v string) *DeleteContaine
 }
 
 type DeleteContainerAppsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteContainerAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteContainerAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteContainerAppsResponse) String() string {
@@ -4211,9 +4219,9 @@ func (s *DeleteGWSClusterResponseBody) SetRequestId(v string) *DeleteGWSClusterR
 }
 
 type DeleteGWSClusterResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteGWSClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGWSClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteGWSClusterResponse) String() string {
@@ -4276,9 +4284,9 @@ func (s *DeleteGWSInstanceResponseBody) SetRequestId(v string) *DeleteGWSInstanc
 }
 
 type DeleteGWSInstanceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteGWSInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGWSInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteGWSInstanceResponse) String() string {
@@ -4368,9 +4376,9 @@ func (s *DeleteImageResponseBody) SetRequestId(v string) *DeleteImageResponseBod
 }
 
 type DeleteImageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -4437,9 +4445,9 @@ func (s *DeleteJobTemplatesResponseBody) SetRequestId(v string) *DeleteJobTempla
 }
 
 type DeleteJobTemplatesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteJobTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteJobTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteJobTemplatesResponse) String() string {
@@ -4524,9 +4532,9 @@ func (s *DeleteJobsResponseBody) SetRequestId(v string) *DeleteJobsResponseBody 
 }
 
 type DeleteJobsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteJobsResponse) String() string {
@@ -4603,9 +4611,9 @@ func (s *DeleteLocalImageResponseBody) SetRequestId(v string) *DeleteLocalImageR
 }
 
 type DeleteLocalImageResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteLocalImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLocalImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteLocalImageResponse) String() string {
@@ -4725,9 +4733,9 @@ func (s *DeleteNodesResponseBody) SetTaskId(v string) *DeleteNodesResponseBody {
 }
 
 type DeleteNodesResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteNodesResponse) String() string {
@@ -4801,9 +4809,9 @@ func (s *DeleteQueueResponseBody) SetRequestId(v string) *DeleteQueueResponseBod
 }
 
 type DeleteQueueResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteQueueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteQueueResponse) String() string {
@@ -4873,9 +4881,9 @@ func (s *DeleteSecurityGroupResponseBody) SetRequestId(v string) *DeleteSecurity
 }
 
 type DeleteSecurityGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSecurityGroupResponse) String() string {
@@ -4976,9 +4984,9 @@ func (s *DeleteUsersResponseBody) SetRequestId(v string) *DeleteUsersResponseBod
 }
 
 type DeleteUsersResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUsersResponse) String() string {
@@ -5155,9 +5163,9 @@ func (s *DescribeAutoScaleConfigResponseBody) SetUid(v string) *DescribeAutoScal
 }
 
 type DescribeAutoScaleConfigResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAutoScaleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAutoScaleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAutoScaleConfigResponse) String() string {
@@ -5184,10 +5192,7 @@ func (s *DescribeAutoScaleConfigResponse) SetBody(v *DescribeAutoScaleConfigResp
 }
 
 type DescribeClusterRequest struct {
-	// The type of the protocol that is used by the file system. Valid values:
-	//
-	// *   nfs
-	// *   smb
+	// The cluster ID. You can call the [ListClusters](~~87116~~) operation to query the list of clusters in a region.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -5205,9 +5210,9 @@ func (s *DescribeClusterRequest) SetClusterId(v string) *DescribeClusterRequest 
 }
 
 type DescribeClusterResponseBody struct {
-	// The ID of the Apsara File Storage NAS file system. NAS file systems cannot be automatically created.
+	// The cluster information.
 	ClusterInfo *DescribeClusterResponseBodyClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	// The description of the cluster.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5230,13 +5235,103 @@ func (s *DescribeClusterResponseBody) SetRequestId(v string) *DescribeClusterRes
 }
 
 type DescribeClusterResponseBodyClusterInfo struct {
+	// The server type of the account. Valid values:
+	//
+	// *   nis
+	// *   ldap
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The information about the custom component service.
+	AddOnsInfo *DescribeClusterResponseBodyClusterInfoAddOnsInfo `json:"AddOnsInfo,omitempty" xml:"AddOnsInfo,omitempty" type:"Struct"`
+	// The array of the software in the cluster. The array contains the name and version of the software.
+	Applications *DescribeClusterResponseBodyClusterInfoApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
+	// Specifies whether to enable auto-renewal. The parameter takes effect only when EcsChargeType is set to PrePaid. Valid values:
+	//
+	// *   true: enables auto-renewal.
+	// *   false: disables auto-renewal.
+	//
+	// Default value: true.
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
+	//
+	// *   If PeriodUnit is set to Week, the valid values of the AutoRenewPeriod parameter are 1, 2, and 3.
+	// *   If PeriodUnit is set to Month, the valid values of the AutoRenewPeriod parameter are 1, 2, 3, 6, and 12.
+	//
+	// Default value: 1.
+	AutoRenewPeriod *string `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// The image of the cluster.
+	BaseOsTag *string `json:"BaseOsTag,omitempty" xml:"BaseOsTag,omitempty"`
+	// The version of the E-HPC client.
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The version of the E-HPC cluster.
+	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
+	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
+	ComputeSpotPriceLimit *string `json:"ComputeSpotPriceLimit,omitempty" xml:"ComputeSpotPriceLimit,omitempty"`
+	// The bidding method of the compute node. Valid values:
+	//
+	// *   NoSpot: The instance is created as a pay-as-you-go instance.
+	// *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
+	// *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+	ComputeSpotStrategy *string `json:"ComputeSpotStrategy,omitempty" xml:"ComputeSpotStrategy,omitempty"`
+	// The time at which the instance is created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The mode in which the cluster is deployed. Valid values:
+	//
+	// *   Standard: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+	// *   Advanced: Two high availability (HA) account nodes, two HA scheduler nodes, one logon node, and multiple compute nodes are separately deployed.
+	// *   Simple: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+	// *   Tiny: The account node, scheduling node, and logon node are deployed on one node. The compute node is separately deployed.
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The description of the cluster.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The domain name of the on-premises E-HPC cluster.
+	//
+	// This parameter takes effect only when the AccoutType parameter is set to Idap.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The billing method of the nodes in the cluster. Valid values:
+	//
+	// *   PostPaid: pay-as-you-go
+	// *   PrePaid: subscription
+	EcsChargeType *string `json:"EcsChargeType,omitempty" xml:"EcsChargeType,omitempty"`
+	// The list of ECS instance specifications and quantity.
+	EcsInfo *DescribeClusterResponseBodyClusterInfoEcsInfo `json:"EcsInfo,omitempty" xml:"EcsInfo,omitempty" type:"Struct"`
+	// Specifies whether to enable the high availability feature.
+	//
+	// >  If high availability is enabled, each management role in the cluster uses both primary and secondary instances.
+	HaEnable *bool `json:"HaEnable,omitempty" xml:"HaEnable,omitempty"`
+	// The instance ID.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The image ID.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The image type. Valid values:
 	//
 	// *   system: public image
 	// *   self: custom image
 	// *   others: shared image
 	// *   marketplace: Alibaba Cloud Marketplace image
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
+	// The image information of the operating systems.
+	InitialImage *DescribeClusterResponseBodyClusterInfoInitialImage `json:"InitialImage,omitempty" xml:"InitialImage,omitempty" type:"Struct"`
+	// The name of the AccessKey pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The location where the cluster is deployed. Valid values:
+	//
+	// *   OnPremise: The node is deployed on a hybrid cloud.
+	// *   PublicCloud: The cluster is deployed on a public cloud.
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The name of the cluster.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The information of the on-premises node in the cluster.
+	Nodes *DescribeClusterResponseBodyClusterInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Struct"`
+	// The list of on-premises management nodes.
+	//
+	// This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
+	OnPremiseInfo *DescribeClusterResponseBodyClusterInfoOnPremiseInfo `json:"OnPremiseInfo,omitempty" xml:"OnPremiseInfo,omitempty" type:"Struct"`
+	// The parameter that is used to connect to the OpenLDAP server.
+	OpenldapPar *string `json:"OpenldapPar,omitempty" xml:"OpenldapPar,omitempty"`
+	// The operating system tag of the image.
+	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
 	// The duration of the subscription. The unit of the duration is specified by the `PeriodUnit` parameter.
 	//
 	// *   If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -5244,59 +5339,15 @@ type DescribeClusterResponseBodyClusterInfo struct {
 	// *   If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
 	//
 	// Default value: 1.
-	AddOnsInfo *DescribeClusterResponseBodyClusterInfoAddOnsInfo `json:"AddOnsInfo,omitempty" xml:"AddOnsInfo,omitempty" type:"Struct"`
-	// The number of management nodes.
-	Applications *DescribeClusterResponseBodyClusterInfoApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
-	AutoRenew    *string                                             `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The image ID.
-	AutoRenewPeriod *string `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The vSwitch ID. E-HPC can be deployed only in VPCs.
-	BaseOsTag *string `json:"BaseOsTag,omitempty" xml:"BaseOsTag,omitempty"`
-	// The URL used to download the script.
-	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The role of the on-premises node in the cluster. Valid values:
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. Valid value:
 	//
-	// *   Manager: management node
-	// *   Login: logon node
-	// *   Compute: compute node
-	ClusterVersion        *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
-	ComputeSpotPriceLimit *string `json:"ComputeSpotPriceLimit,omitempty" xml:"ComputeSpotPriceLimit,omitempty"`
-	ComputeSpotStrategy   *string `json:"ComputeSpotStrategy,omitempty" xml:"ComputeSpotStrategy,omitempty"`
-	// The mode in which the cluster is deployed. Valid values:
+	// *   Year
+	// *   Month
+	// *   Hour
 	//
-	// *   Standard: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-	// *   Advanced: Two high availability (HA) account nodes, two HA scheduler nodes, one logon node, and multiple compute nodes are separately deployed.
-	// *   Simple: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-	// *   Tiny: The account node, scheduling node, and logon node are deployed on one node. The compute node is separately deployed.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance ID.
-	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// The mount target of the NAS file system. The mount target is of the VPC type. Mount targets cannot be automatically created for NAS file systems.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory of the on-premises node in the cluster.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The image ID.
-	EcsChargeType *string `json:"EcsChargeType,omitempty" xml:"EcsChargeType,omitempty"`
-	// The number of proxy nodes.
-	EcsInfo *DescribeClusterResponseBodyClusterInfoEcsInfo `json:"EcsInfo,omitempty" xml:"EcsInfo,omitempty" type:"Struct"`
-	// The region ID.
-	HaEnable *bool `json:"HaEnable,omitempty" xml:"HaEnable,omitempty"`
-	// The list of post-installation scripts
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the network shared storage. Valid value: NAS.
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The tag of the software.
-	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The version of the E-HPC client.
-	ImageOwnerAlias *string                                             `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	InitialImage    *DescribeClusterResponseBodyClusterInfoInitialImage `json:"InitialImage,omitempty" xml:"InitialImage,omitempty" type:"Struct"`
-	// The name of the cluster.
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The version of the software.
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The image name.
-	Name  *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Nodes *DescribeClusterResponseBodyClusterInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Struct"`
+	// Default value: Month.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom.
 	//
 	// The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
@@ -5309,85 +5360,66 @@ type DescribeClusterResponseBodyClusterInfo struct {
 	// *   pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in the oss mode and a non-shared directory in the image mode.
 	//
 	// *   pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only if you set the pluginMod parameter to oss.
-	OnPremiseInfo *DescribeClusterResponseBodyClusterInfoOnPremiseInfo `json:"OnPremiseInfo,omitempty" xml:"OnPremiseInfo,omitempty" type:"Struct"`
-	// The scheduler type of the on-premises node in the cluster. Valid values:
-	//
-	// *   pbs
-	// *   slurm
-	// *   opengridscheduler
-	// *   deadline
-	//
-	// Default value: pbs.
-	OpenldapPar *string `json:"OpenldapPar,omitempty" xml:"OpenldapPar,omitempty"`
-	// The zone ID.
-	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
-	// An array of OS images that are supported by E-HPC.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The type of the image. Valid values:
-	//
-	// *   system: public image
-	// *   self: custom image
-	// *   others: shared image
-	// *   marketplace: Alibaba Cloud Marketplace image
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The IP address of the on-premises node in the cluster.
 	Plugin *string `json:"Plugin,omitempty" xml:"Plugin,omitempty"`
-	// The instance type of the logon nodes.
+	// The list of post-installation scripts
 	PostInstallScripts *DescribeClusterResponseBodyClusterInfoPostInstallScripts `json:"PostInstallScripts,omitempty" xml:"PostInstallScripts,omitempty" type:"Struct"`
-	// The instance type of the management nodes.
-	RamNodeTypes *string `json:"RamNodeTypes,omitempty" xml:"RamNodeTypes,omitempty"`
-	// The information of management nodes.
-	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	// The node type details of the instance RAM role.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RamNodeTypes *string `json:"RamNodeTypes,omitempty" xml:"RamNodeTypes,omitempty"`
 	// The name of the instance Resource Access Management (RAM) role.
+	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The remote directory on which the file system is mounted.
 	RemoteDirectory *string `json:"RemoteDirectory,omitempty" xml:"RemoteDirectory,omitempty"`
-	// The list of ECS instance specifications and quantity.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The version of the scheduler.
+	// The ID of the Super Computing Cluster (SCC) instance. If the cluster is not an SCC instance, a null string is returned.
 	SccClusterId *string `json:"SccClusterId,omitempty" xml:"SccClusterId,omitempty"`
-	// The service type of the domain account to which the on-premises node in the cluster belongs. Valid values:
+	// Specifies whether the scheduler is preinstalled for the image. Valid values:
 	//
-	// *   nis
-	// *   ldap
-	//
-	// Default value: nis.
+	// *   true: The scheduler is preinstalled. When you create a node or scale out a cluster, you do not need to install the scheduler.
+	// *   false: The scheduler is not preinstalled. When you create or add a cluster, you must install the scheduler.
 	SchedulerPreInstall *int32 `json:"SchedulerPreInstall,omitempty" xml:"SchedulerPreInstall,omitempty"`
-	// The location where the cluster is deployed. Valid values:
-	//
-	// *   OnPremise: The node is deployed on a hybrid cloud.
-	// *   PublicCloud: The cluster is deployed on a public cloud.
-	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
-	// The version of the scheduler.
-	SchedulerVersion *string `json:"SchedulerVersion,omitempty" xml:"SchedulerVersion,omitempty"`
 	// The type of the scheduler. Valid values:
 	//
 	// *   pbs
 	// *   slurm
 	// *   opengridscheduler
 	// *   deadline
+	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+	// The version of the scheduler.
+	SchedulerVersion *string `json:"SchedulerVersion,omitempty" xml:"SchedulerVersion,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// Specifies whether to enable the high availability feature.
+	// The status of the cluster. Valid values:
 	//
-	// >  If high availability is enabled, each management role in the cluster uses both primary and secondary instances.
+	// *   uninit: The cluster is not initialized.
+	// *   creating: The cluster is being created.
+	// *   init: The cluster is being initialized.
+	// *   running: The cluster is running.
+	// *   exception: The cluster encounters an exception.
+	// *   releasing: The cluster is being released.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The array of the software in the cluster. The array contains the name and version of the software.
+	// The vSwitch ID. E-HPC can be deployed only in VPCs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The remote directory on which the file system is mounted.
+	// The ID of the Apsara File Storage NAS file system. NAS file systems cannot be automatically created.
 	VolumeId *string `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
-	// The resource group ID.
+	// The mount target of the NAS file system. The mount target is of the VPC type. Mount targets cannot be automatically created for NAS file systems.
 	VolumeMountpoint *string `json:"VolumeMountpoint,omitempty" xml:"VolumeMountpoint,omitempty"`
-	// The operating system tag of the image.
+	// The type of the protocol that is used by the file system. Valid values:
+	//
+	// *   nfs
+	// *   smb
 	VolumeProtocol *string `json:"VolumeProtocol,omitempty" xml:"VolumeProtocol,omitempty"`
-	// The name of the software.
+	// The type of the network shared storage. Valid value: NAS.
 	VolumeType *string `json:"VolumeType,omitempty" xml:"VolumeType,omitempty"`
-	// The image of the cluster.
+	// The VPC ID of the node.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The image information of the operating systems.
+	// The parameter that is used to connect to the Windows AD server.
 	WinAdPar *string `json:"WinAdPar,omitempty" xml:"WinAdPar,omitempty"`
-	// The hostname of the on-premises node in the cluster.
+	// Specifies whether to not install the agent.
 	WithoutAgent *int32 `json:"WithoutAgent,omitempty" xml:"WithoutAgent,omitempty"`
-	// The runtime parameter of the script.
+	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5682,29 +5714,22 @@ func (s *DescribeClusterResponseBodyClusterInfoAddOnsInfo) SetAddOnsInfo(v []*De
 }
 
 type DescribeClusterResponseBodyClusterInfoAddOnsInfoAddOnsInfo struct {
-	// Specifies whether to enable auto-renewal. The parameter takes effect only when EcsChargeType is set to PrePaid. Valid values:
+	// The deployment mode of the custom component. Valid values:
 	//
-	// *   true: enables auto-renewal.
-	// *   false: disables auto-renewal.
-	//
-	// Default value: true.
+	// *   local
+	// *   ecs
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// The bidding method of the compute node. Valid values:
-	//
-	// *   NoSpot: The instance is created as a pay-as-you-go instance.
-	// *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
-	// *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+	// The TCP port number of the custom component.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
-	//
-	// *   If PeriodUnit is set to Week, the valid values of the AutoRenewPeriod parameter are 1, 2, and 3.
-	// *   If PeriodUnit is set to Month, the valid values of the AutoRenewPeriod parameter are 1, 2, 3, 6, and 12.
-	//
-	// Default value: 1.
+	// The software ID of the component.
 	SoftwareId *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
+	// The running status of the custom component. Valid values:
+	//
+	// *   running
+	// *   stopped
+	// *   exception
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information of the on-premises node in the cluster.
+	// The endpoint of the custom component service.
 	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
@@ -5759,11 +5784,11 @@ func (s *DescribeClusterResponseBodyClusterInfoApplications) SetApplicationInfo(
 }
 
 type DescribeClusterResponseBodyClusterInfoApplicationsApplicationInfo struct {
-	// The number of compute nodes in the cluster.
+	// The name of the software.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The instance type of the compute nodes.
+	// The tag of the software.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The list of logon nodes.
+	// The version of the software.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -5791,18 +5816,15 @@ func (s *DescribeClusterResponseBodyClusterInfoApplicationsApplicationInfo) SetV
 }
 
 type DescribeClusterResponseBodyClusterInfoEcsInfo struct {
-	// The IP address of the on-premises management nodes.
+	// The list of compute nodes.
 	Compute *DescribeClusterResponseBodyClusterInfoEcsInfoCompute `json:"Compute,omitempty" xml:"Compute,omitempty" type:"Struct"`
-	// The deployment mode of the custom component. Valid values:
-	//
-	// *   local
-	// *   ecs
+	// The list of logon nodes.
 	Login *DescribeClusterResponseBodyClusterInfoEcsInfoLogin `json:"Login,omitempty" xml:"Login,omitempty" type:"Struct"`
-	// The list of on-premises management nodes.
+	// The information of management nodes.
+	Manager *DescribeClusterResponseBodyClusterInfoEcsInfoManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
+	// The list of proxy nodes on the cloud.
 	//
 	// This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
-	Manager *DescribeClusterResponseBodyClusterInfoEcsInfoManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
-	// The endpoint of the custom component service.
 	ProxyMgr *DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr `json:"ProxyMgr,omitempty" xml:"ProxyMgr,omitempty" type:"Struct"`
 }
 
@@ -5835,9 +5857,9 @@ func (s *DescribeClusterResponseBodyClusterInfoEcsInfo) SetProxyMgr(v *DescribeC
 }
 
 type DescribeClusterResponseBodyClusterInfoEcsInfoCompute struct {
-	// The software ID of the component.
+	// The number of compute nodes in the cluster.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The information about the custom component service.
+	// The instance type of the compute nodes.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -5860,13 +5882,9 @@ func (s *DescribeClusterResponseBodyClusterInfoEcsInfoCompute) SetInstanceType(v
 }
 
 type DescribeClusterResponseBodyClusterInfoEcsInfoLogin struct {
-	// The running status of the custom component. Valid values:
-	//
-	// *   running
-	// *   stopped
-	// *   exception
+	// The number of logon nodes in the cluster.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The TCP port number of the custom component.
+	// The instance type of the logon nodes.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -5889,13 +5907,9 @@ func (s *DescribeClusterResponseBodyClusterInfoEcsInfoLogin) SetInstanceType(v s
 }
 
 type DescribeClusterResponseBodyClusterInfoEcsInfoManager struct {
-	// The hostname of the on-premises management nodes.
+	// The number of management nodes.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The type of on-premises management nodes. Valid values:
-	//
-	// *   scheduler
-	// *   account
-	// *   account, scheduler
+	// The instance type of the management nodes.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -5918,9 +5932,9 @@ func (s *DescribeClusterResponseBodyClusterInfoEcsInfoManager) SetInstanceType(v
 }
 
 type DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr struct {
-	// Specifies whether to not install the agent.
+	// The number of proxy nodes.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The version of the E-HPC cluster.
+	// The instance type of the proxy node.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -5943,9 +5957,17 @@ func (s *DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr) SetInstanceType(
 }
 
 type DescribeClusterResponseBodyClusterInfoInitialImage struct {
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image ID.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The type of the image. Valid values:
+	//
+	// *   system: public image
+	// *   self: custom image
+	// *   others: shared image
+	// *   marketplace: Alibaba Cloud Marketplace image
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	OsTag           *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
+	// An array of OS images that are supported by E-HPC.
+	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
 }
 
 func (s DescribeClusterResponseBodyClusterInfoInitialImage) String() string {
@@ -5989,11 +6011,33 @@ func (s *DescribeClusterResponseBodyClusterInfoNodes) SetNodesInfo(v []*Describe
 }
 
 type DescribeClusterResponseBodyClusterInfoNodesNodesInfo struct {
-	AccountType   *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Dir           *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	HostName      *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	IpAddress     *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	Role          *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The service type of the domain account to which the on-premises node in the cluster belongs. Valid values:
+	//
+	// *   nis
+	// *   ldap
+	//
+	// Default value: nis.
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The directory of the on-premises node in the cluster.
+	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	// The hostname of the on-premises node in the cluster.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The IP address of the on-premises node in the cluster.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The role of the on-premises node in the cluster. Valid values:
+	//
+	// *   Manager: management node
+	// *   Login: logon node
+	// *   Compute: compute node
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The scheduler type of the on-premises node in the cluster. Valid values:
+	//
+	// *   pbs
+	// *   slurm
+	// *   opengridscheduler
+	// *   deadline
+	//
+	// Default value: pbs.
 	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 }
 
@@ -6053,13 +6097,15 @@ func (s *DescribeClusterResponseBodyClusterInfoOnPremiseInfo) SetOnPremiseInfo(v
 }
 
 type DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo struct {
-	// The parameter that is used to connect to the OpenLDAP server.
+	// The hostname of the on-premises management nodes.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The parameter that is used to connect to the Windows AD server.
+	// The IP address of the on-premises management nodes.
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The domain name of the on-premises E-HPC cluster.
+	// The type of on-premises management nodes. Valid values:
 	//
-	// This parameter takes effect only when the AccoutType parameter is set to Idap.
+	// *   scheduler
+	// *   account
+	// *   account, scheduler
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -6104,11 +6150,9 @@ func (s *DescribeClusterResponseBodyClusterInfoPostInstallScripts) SetPostInstal
 }
 
 type DescribeClusterResponseBodyClusterInfoPostInstallScriptsPostInstallScriptInfo struct {
-	// The instance type of the proxy node.
+	// The runtime parameter of the script.
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The list of proxy nodes on the cloud.
-	//
-	// This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
+	// The URL used to download the script.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -6131,9 +6175,9 @@ func (s *DescribeClusterResponseBodyClusterInfoPostInstallScriptsPostInstallScri
 }
 
 type DescribeClusterResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeClusterResponse) String() string {
@@ -6265,9 +6309,9 @@ func (s *DescribeContainerAppResponseBodyContainerAppInfo) SetType(v string) *De
 }
 
 type DescribeContainerAppResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeContainerAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeContainerAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeContainerAppResponse) String() string {
@@ -6428,9 +6472,9 @@ func (s *DescribeEstackImageResponseBodyImageListImageListInfo) SetRecentUpdateT
 }
 
 type DescribeEstackImageResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEstackImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEstackImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEstackImageResponse) String() string {
@@ -6527,9 +6571,9 @@ func (s *DescribeGWSClusterPolicyResponseBody) SetWatermark(v string) *DescribeG
 }
 
 type DescribeGWSClusterPolicyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeGWSClusterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGWSClusterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeGWSClusterPolicyResponse) String() string {
@@ -6718,9 +6762,9 @@ func (s *DescribeGWSClustersResponseBodyClustersClusterInfo) SetVpcId(v string) 
 }
 
 type DescribeGWSClustersResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeGWSClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGWSClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeGWSClustersResponse) String() string {
@@ -6881,9 +6925,9 @@ func (s *DescribeGWSImagesResponseBodyImagesImageInfo) SetStatus(v string) *Desc
 }
 
 type DescribeGWSImagesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeGWSImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGWSImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeGWSImagesResponse) String() string {
@@ -7184,9 +7228,9 @@ func (s *DescribeGWSInstancesResponseBodyInstancesInstanceInfoAppListAppInfo) Se
 }
 
 type DescribeGWSInstancesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeGWSInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGWSInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeGWSInstancesResponse) String() string {
@@ -7340,9 +7384,9 @@ func (s *DescribeImageResponseBodyImageInfo) SetUpdateDateTime(v string) *Descri
 }
 
 type DescribeImageResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeImageResponse) String() string {
@@ -7524,9 +7568,9 @@ func (s *DescribeImageGatewayConfigResponseBodyImagegwLocationsLocationInfo) Set
 }
 
 type DescribeImageGatewayConfigResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeImageGatewayConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeImageGatewayConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeImageGatewayConfigResponse) String() string {
@@ -7673,9 +7717,9 @@ func (s *DescribeImagePriceResponseBody) SetTradePrice(v float32) *DescribeImage
 }
 
 type DescribeImagePriceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeImagePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeImagePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeImagePriceResponse) String() string {
@@ -7783,9 +7827,9 @@ func (s *DescribeJobResponseBodyMessage) SetJobInfo(v string) *DescribeJobRespon
 }
 
 type DescribeJobResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeJobResponse) String() string {
@@ -7898,9 +7942,9 @@ func (s *DescribeNFSClientStatusResponseBodyResult) SetOutput(v string) *Describ
 }
 
 type DescribeNFSClientStatusResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNFSClientStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNFSClientStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNFSClientStatusResponse) String() string {
@@ -8306,9 +8350,9 @@ func (s *DescribePriceResponseBodyPricesPriceInfo) SetTradePrice(v float32) *Des
 }
 
 type DescribePriceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePriceResponse) String() string {
@@ -10395,9 +10439,9 @@ func (s *DescribeServerlessJobsResponseBodyJobInfosContainerGroupsVolumesConfigF
 }
 
 type DescribeServerlessJobsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeServerlessJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeServerlessJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeServerlessJobsResponse) String() string {
@@ -10637,9 +10681,9 @@ func (s *EditJobTemplateResponseBody) SetTemplateId(v string) *EditJobTemplateRe
 }
 
 type EditJobTemplateResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditJobTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditJobTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EditJobTemplateResponse) String() string {
@@ -10835,9 +10879,9 @@ func (s *GetAccountingReportResponseBodyData) SetData(v []*string) *GetAccountin
 }
 
 type GetAccountingReportResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccountingReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccountingReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccountingReportResponse) String() string {
@@ -10864,7 +10908,7 @@ func (s *GetAccountingReportResponse) SetBody(v *GetAccountingReportResponseBody
 }
 
 type GetAutoScaleConfigRequest struct {
-	// The ID of the cluster.
+	// The interval between two consecutive rounds of scale-out. Unit: minutes. Valid values: 2 to 10.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -10882,70 +10926,66 @@ func (s *GetAutoScaleConfigRequest) SetClusterId(v string) *GetAutoScaleConfigRe
 }
 
 type GetAutoScaleConfigResponseBody struct {
-	// The ID of the cluster.
+	// The prefix of the queue name. You can query queues that have a specified prefix.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the scheduler. Valid values:
+	// The ID of the cluster.
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// Specifies whether to enable hyper-threading for the ECS instance that is used as the compute node.
 	//
-	// *   slurm
-	// *   pbs
-	// *   opengridscheduler
-	// *   deadline
-	ClusterType     *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ComputeEnableHt *bool   `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
-	DnsConfig       *string `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty"`
-	// Indicates whether the cluster enabled auto scale-out. Valid values:
-	//
-	// *   true
-	// *   false
-	EnableAutoGrow *bool `json:"EnableAutoGrow,omitempty" xml:"EnableAutoGrow,omitempty"`
-	// Indicates whether the cluster enabled auto scale-in. Valid values:
-	//
-	// *   true
-	// *   false
-	EnableAutoShrink *bool `json:"EnableAutoShrink,omitempty" xml:"EnableAutoShrink,omitempty"`
-	// The compute nodes that were excluded from the list of auto scaling nodes. Multiple compute nodes were separated with commas (,).
-	ExcludeNodes *string `json:"ExcludeNodes,omitempty" xml:"ExcludeNodes,omitempty"`
-	// The percentage of extra compute nodes. Valid values: 0 to 100.
-	//
-	// If you need to add 100 compute nodes and the value of the ExtraNodesGrowRatio parameter is 2, 102 compute nodes are added.
-	ExtraNodesGrowRatio *int32 `json:"ExtraNodesGrowRatio,omitempty" xml:"ExtraNodesGrowRatio,omitempty"`
-	// The interval between two consecutive rounds of scale-in. Unit: minutes. Valid values: 2 to 10.
-	//
-	// >  An interval may exist during multiple rounds of a scale-out task or between two consecutive scale-out tasks.
-	GrowIntervalInMinutes *int32 `json:"GrowIntervalInMinutes,omitempty" xml:"GrowIntervalInMinutes,omitempty"`
+	// >  You can only disable hyper-threading for some instance types. The hyper-threading is enabled for ECS instances by default. For more information, see [Specify and view CPU options](~~145895~~).
+	ComputeEnableHt *bool `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
+	// The Domain Name System (DNS) settings.
+	DnsConfig *string `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty"`
 	// The percentage of each round of scale-out. Valid values: 1 to 100.
 	//
 	// If you set GrowRatio to 50, the scale-out has two rounds. Each round completes half of the scale-out.
-	GrowRatio *int32 `json:"GrowRatio,omitempty" xml:"GrowRatio,omitempty"`
-	// The timeout period before the scale-out nodes were started. Unit: minutes. Valid values: 10 to 60.
-	//
-	// If the scale-out timeout period has been reached but the scale-out nodes still do not reach the Running state, the system resets them.
-	GrowTimeoutInMinutes *int32 `json:"GrowTimeoutInMinutes,omitempty" xml:"GrowTimeoutInMinutes,omitempty"`
-	// The image ID of the compute nodes in the queue.
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The maximum number of compute nodes that can be added in the cluster. Valid values: 0 to 500.
-	MaxNodesInCluster *int32 `json:"MaxNodesInCluster,omitempty" xml:"MaxNodesInCluster,omitempty"`
-	// The auto scaling configuration of the queue.
-	//
-	// >  If auto scaling is enabled for the cluster and queue at the same time, the queue settings prevail.
-	Queues *GetAutoScaleConfigResponseBodyQueues `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	EnableAutoGrow *bool `json:"EnableAutoGrow,omitempty" xml:"EnableAutoGrow,omitempty"`
 	// The number of consecutive times that a compute node is idle during the resource scale-in check. Valid values: 2 to 5.
 	//
 	// If the parameter is set to 3, a compute node is idle for more than three consecutive times. In this case, the node is released.
-	ShrinkIdleTimes *int32 `json:"ShrinkIdleTimes,omitempty" xml:"ShrinkIdleTimes,omitempty"`
-	// The interval between two consecutive rounds of scale-out. Unit: minutes. Valid values: 2 to 10.
-	ShrinkIntervalInMinutes *int32 `json:"ShrinkIntervalInMinutes,omitempty" xml:"ShrinkIntervalInMinutes,omitempty"`
+	EnableAutoShrink *bool `json:"EnableAutoShrink,omitempty" xml:"EnableAutoShrink,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	ExcludeNodes *string `json:"ExcludeNodes,omitempty" xml:"ExcludeNodes,omitempty"`
+	// The instance type of the compute nodes that were automatically added in the queue.
+	ExtraNodesGrowRatio *int32 `json:"ExtraNodesGrowRatio,omitempty" xml:"ExtraNodesGrowRatio,omitempty"`
+	// The image ID of the compute nodes in the queue.
+	GrowIntervalInMinutes *int32 `json:"GrowIntervalInMinutes,omitempty" xml:"GrowIntervalInMinutes,omitempty"`
+	// The minimum number of compute nodes that can be retained in a queue. Valid values: 0 to 50.
+	GrowRatio *int32 `json:"GrowRatio,omitempty" xml:"GrowRatio,omitempty"`
 	// The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
-	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	GrowTimeoutInMinutes *int32 `json:"GrowTimeoutInMinutes,omitempty" xml:"GrowTimeoutInMinutes,omitempty"`
 	// The preemption policy of the compute nodes. Valid values:
 	//
 	// *   NoSpot: The compute nodes are pay-as-you-go instances.
 	// *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
 	// *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The interval between two consecutive rounds of scale-in. Unit: minutes. Valid values: 2 to 10.
+	//
+	// >  An interval may exist during multiple rounds of a scale-out task or between two consecutive scale-out tasks.
+	MaxNodesInCluster *int32 `json:"MaxNodesInCluster,omitempty" xml:"MaxNodesInCluster,omitempty"`
+	// The maximum number of compute nodes that can be added in a queue. Valid values: 0 to 500.
+	Queues *GetAutoScaleConfigResponseBodyQueues `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Struct"`
+	// The image ID of the compute nodes in the queue.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The suffix of the queue name. You can query queues that have a specified suffix.
+	ShrinkIdleTimes *int32 `json:"ShrinkIdleTimes,omitempty" xml:"ShrinkIdleTimes,omitempty"`
+	// The auto scaling configuration of the queue.
+	//
+	// >  If auto scaling is enabled for the cluster and queue at the same time, the queue settings prevail.
+	ShrinkIntervalInMinutes *int32 `json:"ShrinkIntervalInMinutes,omitempty" xml:"ShrinkIntervalInMinutes,omitempty"`
+	// The type of the system disk. Valid values:
+	//
+	// *   cloud_efficiency: ultra disk
+	// *   cloud_ssd: SSD
+	// *   cloud_essd: ESSD
+	// *   cloud: basic disk
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// The percentage of extra compute nodes. Valid values: 0 to 100.
+	//
+	// If you need to add 100 compute nodes and the value of the ExtraNodesGrowRatio parameter is 2, 102 compute nodes are added.
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The size of the system disk. Unit: GB. Valid values: 40 to 500.
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -11075,73 +11115,57 @@ func (s *GetAutoScaleConfigResponseBodyQueues) SetQueueInfo(v []*GetAutoScaleCon
 }
 
 type GetAutoScaleConfigResponseBodyQueuesQueueInfo struct {
-	AutoMinNodesPerCycle *bool `json:"AutoMinNodesPerCycle,omitempty" xml:"AutoMinNodesPerCycle,omitempty"`
-	// The list of data disks.
-	DataDisks *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
-	// Indicates whether the queue enabled auto scale-out. Valid values:
-	//
-	// *   true
-	// *   false
+	AutoMinNodesPerCycle *bool                                                   `json:"AutoMinNodesPerCycle,omitempty" xml:"AutoMinNodesPerCycle,omitempty"`
+	DataDisks            *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
+	// The instance type of the node.
 	EnableAutoGrow *bool `json:"EnableAutoGrow,omitempty" xml:"EnableAutoGrow,omitempty"`
-	// Indicates whether the queue enabled auto scale-in. Valid values:
-	//
-	// *   true
-	// *   false
+	// The ID of the zone.
 	EnableAutoShrink *bool `json:"EnableAutoShrink,omitempty" xml:"EnableAutoShrink,omitempty"`
-	// The prefix of the queue name. You can query queues that have a specified prefix.
-	HostNamePrefix *string `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
-	// The suffix of the queue name. You can query queues that have a specified suffix.
-	HostNameSuffix *string `json:"HostNameSuffix,omitempty" xml:"HostNameSuffix,omitempty"`
-	// The instance type of the compute nodes that were automatically added in the queue.
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The specification information of the compute nodes.
-	InstanceTypes *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
-	// The maximum number of compute nodes that can be added in a queue. Valid values: 0 to 500.
-	MaxNodesInQueue *int32 `json:"MaxNodesInQueue,omitempty" xml:"MaxNodesInQueue,omitempty"`
-	// The maximum number of compute nodes that can be added in each round of an auto scale-out task. Valid values: 0 to 99.
-	//
-	// Default value: 0.
-	MaxNodesPerCycle *int64 `json:"MaxNodesPerCycle,omitempty" xml:"MaxNodesPerCycle,omitempty"`
-	// The minimum number of compute nodes that can be retained in a queue. Valid values: 0 to 50.
-	MinNodesInQueue *int32 `json:"MinNodesInQueue,omitempty" xml:"MinNodesInQueue,omitempty"`
-	// The minimum number of compute nodes that can be added in each round of an auto scale-out task. Valid values: 1 to 99.
-	//
-	// Default value: 1.
-	//
-	// If the number of compute nodes that you want to add in a round is less than the value of this property, the system automatically changes the value of this property to the number of compute nodes that you want to add in a round. This helps ensure that compute nodes can be added as expected.
-	//
-	// > The configuration takes effect only for the minimum compute nodes that can be added in the current round.
-	MinNodesPerCycle *int64 `json:"MinNodesPerCycle,omitempty" xml:"MinNodesPerCycle,omitempty"`
-	// The image ID of the compute nodes in the queue.
-	QueueImageId *string `json:"QueueImageId,omitempty" xml:"QueueImageId,omitempty"`
-	// The name of the queue.
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The ID of the resource group to which the compute nodes belong.
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SortedByInventory *bool   `json:"SortedByInventory,omitempty" xml:"SortedByInventory,omitempty"`
-	// The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
-	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// The preemption policy of the compute nodes. Valid values:
-	//
-	// *   NoSpot: The compute nodes are pay-as-you-go instances.
-	// *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-	// *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
-	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The type of the system disk. Valid values:
-	//
-	// *   cloud_efficiency: ultra disk
-	// *   cloud_ssd: SSD
-	// *   cloud_essd: ESSD
-	// *   cloud: basic disk
-	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	HostNamePrefix *string `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
 	// The performance level of the system disk. Valid values:
 	//
 	// *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 	// *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
 	// *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
 	// *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	HostNameSuffix *string `json:"HostNameSuffix,omitempty" xml:"HostNameSuffix,omitempty"`
+	// Indicates whether the queue enabled auto scale-out. Valid values:
+	//
+	// *   true
+	// *   false
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The list of data disks.
+	InstanceTypes *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
+	// The ID of the vSwitch.
+	MaxNodesInQueue  *int32 `json:"MaxNodesInQueue,omitempty" xml:"MaxNodesInQueue,omitempty"`
+	MaxNodesPerCycle *int64 `json:"MaxNodesPerCycle,omitempty" xml:"MaxNodesPerCycle,omitempty"`
+	// The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
+	MinNodesInQueue  *int32 `json:"MinNodesInQueue,omitempty" xml:"MinNodesInQueue,omitempty"`
+	MinNodesPerCycle *int64 `json:"MinNodesPerCycle,omitempty" xml:"MinNodesPerCycle,omitempty"`
+	// Indicates whether the queue enabled auto scale-in. Valid values:
+	//
+	// *   true
+	// *   false
+	QueueImageId *string `json:"QueueImageId,omitempty" xml:"QueueImageId,omitempty"`
+	// The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The protection period of the preemptible instance. Unit: hours. Valid values: 0 to 1. Default value: 1. A value of 0 means no protection period is specified.
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SortedByInventory *bool   `json:"SortedByInventory,omitempty" xml:"SortedByInventory,omitempty"`
+	// The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released.
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// The ID of the resource group to which the compute nodes belong.
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// The name of the queue.
+	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The bidding method of the compute nodes. Valid values:
+	//
+	// *   NoSpot: The compute nodes are pay-as-you-go instances.
+	// *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+	// *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	SystemDiskLevel *string `json:"SystemDiskLevel,omitempty" xml:"SystemDiskLevel,omitempty"`
-	// The size of the system disk. Unit: GB. Valid values: 40 to 500.
+	// The prefix of the hostname. You can query compute nodes that have a specified prefix.
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
@@ -11276,36 +11300,12 @@ func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks) SetDataDisksInf
 }
 
 type GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo struct {
-	// The type of the data disk. Valid values:
-	//
-	// - cloud_efficiency: ultra disk
-	// - cloud_ssd: SSD
-	// - cloud_essd: ESSD
-	// - cloud: basic disk
-	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// Indicates whether the data disk is released when the node is released. Valid values:
-	//
-	// - true
-	// - false
-	DataDiskDeleteWithInstance *bool `json:"DataDiskDeleteWithInstance,omitempty" xml:"DataDiskDeleteWithInstance,omitempty"`
-	// Indicates whether the data disk is encrypted. Valid values:
-	//
-	// - true
-	// - false
-	DataDiskEncrypted *bool `json:"DataDiskEncrypted,omitempty" xml:"DataDiskEncrypted,omitempty"`
-	// The KMS key ID of the data disk.
-	DataDiskKMSKeyId *string `json:"DataDiskKMSKeyId,omitempty" xml:"DataDiskKMSKeyId,omitempty"`
-	// The performance level of the ESSD used as the data disk. The parameter takes effect only when the DataDisks.N.DataDiskCategory parameter is set to cloud_essd. Valid values:
-	//
-	// - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	// - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	// - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	// - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
-	// The capacity of the data disk. Unit: GB.
-	//
-	// Valid values: 40 to 500.
-	DataDiskSize *int32 `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DataDiskCategory           *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskDeleteWithInstance *bool   `json:"DataDiskDeleteWithInstance,omitempty" xml:"DataDiskDeleteWithInstance,omitempty"`
+	DataDiskEncrypted          *bool   `json:"DataDiskEncrypted,omitempty" xml:"DataDiskEncrypted,omitempty"`
+	DataDiskKMSKeyId           *string `json:"DataDiskKMSKeyId,omitempty" xml:"DataDiskKMSKeyId,omitempty"`
+	DataDiskPerformanceLevel   *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
+	DataDiskSize               *int32  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
 }
 
 func (s GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) String() string {
@@ -11364,25 +11364,45 @@ func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypes) SetInstance
 }
 
 type GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo struct {
-	// The prefix of the hostname. You can query compute nodes that have a specified prefix.
-	HostNamePrefix *string `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
-	// The instance type of the node.
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The protection period of the preemptible instance. Unit: hours. Valid values: 0 to 1. Default value: 1. A value of 0 means no protection period is specified.
-	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released.
-	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	// The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
-	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// The bidding method of the compute nodes. Valid values:
+	// The type of the data disk. Valid values:
 	//
-	// *   NoSpot: The compute nodes are pay-as-you-go instances.
-	// *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-	// *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
+	// - cloud_efficiency: ultra disk
+	// - cloud_ssd: SSD
+	// - cloud_essd: ESSD
+	// - cloud: basic disk
+	HostNamePrefix *string `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
+	// Indicates whether the data disk is encrypted. Valid values:
+	//
+	// - true
+	// - false
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The list of data disks.
+	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	// The minimum number of compute nodes that can be added in each round of an auto scale-out task. Valid values: 1 to 99.
+	//
+	// Default value: 1.
+	//
+	// If the number of compute nodes that you want to add in a round is less than the value of this property, the system automatically changes the value of this property to the number of compute nodes that you want to add in a round. This helps ensure that compute nodes can be added as expected.
+	//
+	// > The configuration takes effect only for the minimum compute nodes that can be added in the current round.
+	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
+	// The performance level of the ESSD used as the data disk. The parameter takes effect only when the DataDisks.N.DataDiskCategory parameter is set to cloud_essd. Valid values:
+	//
+	// - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// The KMS key ID of the data disk.
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The ID of the vSwitch.
+	// The capacity of the data disk. Unit: GB.
+	//
+	// Valid values: 40 to 500.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone.
+	// Indicates whether the data disk is released when the node is released. Valid values:
+	//
+	// - true
+	// - false
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11435,9 +11455,9 @@ func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeI
 }
 
 type GetAutoScaleConfigResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoScaleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoScaleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutoScaleConfigResponse) String() string {
@@ -11659,9 +11679,9 @@ func (s *GetCloudMetricLogsResponseBodyMetricLogsMetricLog) SetTime(v int32) *Ge
 }
 
 type GetCloudMetricLogsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCloudMetricLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCloudMetricLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCloudMetricLogsResponse) String() string {
@@ -11801,9 +11821,9 @@ func (s *GetCloudMetricProfilingResponseBodySvgUrlsSvgInfo) SetUrl(v string) *Ge
 }
 
 type GetCloudMetricProfilingResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCloudMetricProfilingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCloudMetricProfilingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCloudMetricProfilingResponse) String() string {
@@ -12027,9 +12047,9 @@ func (s *GetClusterVolumesResponseBodyVolumesVolumeInfoRolesRoleInfo) SetName(v 
 }
 
 type GetClusterVolumesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetClusterVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClusterVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetClusterVolumesResponse) String() string {
@@ -12113,9 +12133,9 @@ func (s *GetCommonImageResponseBody) SetRequestId(v string) *GetCommonImageRespo
 }
 
 type GetCommonImageResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCommonImageResponse) String() string {
@@ -12188,9 +12208,9 @@ func (s *GetGWSConnectTicketResponseBody) SetTicket(v string) *GetGWSConnectTick
 }
 
 type GetGWSConnectTicketResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetGWSConnectTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGWSConnectTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetGWSConnectTicketResponse) String() string {
@@ -12274,9 +12294,9 @@ func (s *GetHybridClusterConfigResponseBody) SetRequestId(v string) *GetHybridCl
 }
 
 type GetHybridClusterConfigResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHybridClusterConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHybridClusterConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHybridClusterConfigResponse) String() string {
@@ -12369,9 +12389,9 @@ func (s *GetIfEcsTypeSupportHtConfigResponseBody) SetSupportHtConfig(v bool) *Ge
 }
 
 type GetIfEcsTypeSupportHtConfigResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIfEcsTypeSupportHtConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIfEcsTypeSupportHtConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIfEcsTypeSupportHtConfigResponse) String() string {
@@ -12494,9 +12514,9 @@ func (s *GetJobLogResponseBody) SetRequestId(v string) *GetJobLogResponseBody {
 }
 
 type GetJobLogResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobLogResponse) String() string {
@@ -12602,9 +12622,9 @@ func (s *GetPostScriptsResponseBodyPostInstallScripts) SetUrl(v string) *GetPost
 }
 
 type GetPostScriptsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPostScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPostScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPostScriptsResponse) String() string {
@@ -12739,9 +12759,9 @@ func (s *GetSchedulerInfoResponseBodySchedInfo) SetSchedName(v string) *GetSched
 }
 
 type GetSchedulerInfoResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSchedulerInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSchedulerInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSchedulerInfoResponse) String() string {
@@ -12839,9 +12859,9 @@ func (s *GetUserImageResponseBody) SetRequestId(v string) *GetUserImageResponseB
 }
 
 type GetUserImageResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserImageResponse) String() string {
@@ -12913,9 +12933,9 @@ func (s *GetVisualServiceStatusResponseBody) SetRequestId(v string) *GetVisualSe
 }
 
 type GetVisualServiceStatusResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVisualServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVisualServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVisualServiceStatusResponse) String() string {
@@ -12945,7 +12965,8 @@ type InitializeEHPCRequest struct {
 	// The ID of the region where the service-linked role is created.
 	//
 	// You can call the [ListRegions](~~188593~~) operation to obtain the IDs of regions supported by E-HPC.
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is unavailable for public use.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -12986,9 +13007,9 @@ func (s *InitializeEHPCResponseBody) SetRequestId(v string) *InitializeEHPCRespo
 }
 
 type InitializeEHPCResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InitializeEHPCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitializeEHPCResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitializeEHPCResponse) String() string {
@@ -13143,9 +13164,9 @@ func (s *InspectImageResponseBodyImageStatusImageInspectInfo) SetSchemaVersion(v
 }
 
 type InspectImageResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InspectImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InspectImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InspectImageResponse) String() string {
@@ -13219,9 +13240,9 @@ func (s *InstallSoftwareResponseBody) SetRequestId(v string) *InstallSoftwareRes
 }
 
 type InstallSoftwareResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InstallSoftwareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InstallSoftwareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InstallSoftwareResponse) String() string {
@@ -13319,7 +13340,8 @@ func (s *InvokeShellCommandRequestInstance) SetId(v string) *InvokeShellCommandR
 
 type InvokeShellCommandResponseBody struct {
 	// The ID of the command. It is used to query the execution status of the command.
-	CommandId   *string                                    `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	// The list of IDs of the instances on which you want to run the command.
 	InstanceIds *InvokeShellCommandResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -13366,9 +13388,9 @@ func (s *InvokeShellCommandResponseBodyInstanceIds) SetInstanceId(v []*string) *
 }
 
 type InvokeShellCommandResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InvokeShellCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InvokeShellCommandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InvokeShellCommandResponse) String() string {
@@ -13662,9 +13684,9 @@ func (s *ListAvailableEcsTypesResponseBodyInstanceTypeFamiliesInstanceTypeFamily
 }
 
 type ListAvailableEcsTypesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAvailableEcsTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAvailableEcsTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAvailableEcsTypesResponse) String() string {
@@ -13863,9 +13885,9 @@ func (s *ListCloudMetricProfilingsResponseBodyProfilingsProfilingInfo) SetTrigge
 }
 
 type ListCloudMetricProfilingsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCloudMetricProfilingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudMetricProfilingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCloudMetricProfilingsResponse) String() string {
@@ -14035,9 +14057,9 @@ func (s *ListClusterLogsResponseBodyLogsLogInfo) SetOperation(v string) *ListClu
 }
 
 type ListClusterLogsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClusterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClusterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClusterLogsResponse) String() string {
@@ -14602,9 +14624,9 @@ func (s *ListClustersResponseBodyClustersClusterInfoSimpleUsedResources) SetMemo
 }
 
 type ListClustersResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClustersResponse) String() string {
@@ -14861,9 +14883,9 @@ func (s *ListClustersMetaResponseBodyClustersClusterInfoSimple) SetVpcId(v strin
 }
 
 type ListClustersMetaResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClustersMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClustersMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClustersMetaResponse) String() string {
@@ -15039,9 +15061,9 @@ func (s *ListCommandsResponseBodyCommandsCommand) SetWorkingDir(v string) *ListC
 }
 
 type ListCommandsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCommandsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCommandsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCommandsResponse) String() string {
@@ -15365,9 +15387,9 @@ func (s *ListCommunityImagesResponseBodyImagesImageInfoOsTag) SetVersion(v strin
 }
 
 type ListCommunityImagesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCommunityImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCommunityImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCommunityImagesResponse) String() string {
@@ -15548,9 +15570,9 @@ func (s *ListContainerAppsResponseBodyContainerAppsContainerApps) SetType(v stri
 }
 
 type ListContainerAppsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListContainerAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListContainerAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListContainerAppsResponse) String() string {
@@ -15754,9 +15776,9 @@ func (s *ListContainerImagesResponseBodyImagesImages) SetUpdateDateTime(v string
 }
 
 type ListContainerImagesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListContainerImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListContainerImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListContainerImagesResponse) String() string {
@@ -16024,9 +16046,9 @@ func (s *ListCpfsFileSystemsResponseBodyFileSystemListFileSystemsMountTargetList
 }
 
 type ListCpfsFileSystemsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCpfsFileSystemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCpfsFileSystemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCpfsFileSystemsResponse) String() string {
@@ -16078,9 +16100,9 @@ func (s *ListCurrentClientVersionResponseBody) SetRequestId(v string) *ListCurre
 }
 
 type ListCurrentClientVersionResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCurrentClientVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCurrentClientVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCurrentClientVersionResponse) String() string {
@@ -16415,9 +16437,9 @@ func (s *ListCustomImagesResponseBodyImagesImageInfoOsTag) SetVersion(v string) 
 }
 
 type ListCustomImagesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCustomImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCustomImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCustomImagesResponse) String() string {
@@ -16534,37 +16556,37 @@ func (s *ListFileSystemWithMountTargetsResponseBodyFileSystemList) SetFileSystem
 type ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystems struct {
 	// The bandwidth of the file system. Unit: MB/s.
 	BandWidth *int32 `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	// The capacity of the file system. Unit: GiB.
+	// The capacity of the file system. Unit: GiB
 	Capacity *int32 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The time at which the file system is created.
+	// The time when the file system was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the file system.
 	Destription *string `json:"Destription,omitempty" xml:"Destription,omitempty"`
-	// Specifies whether to encrypt the data in the file system.
+	// Indicates whether data in the file system is encrypted.
 	//
-	// You can use keys that are managed by Key Management Service (KMS) to encrypt the data that is stored in a file system. When you read and write the encrypted data, the data is automatically decrypted.
+	// You can use keys that are hosted by Key Management Service (KMS) to encrypt the data in a file system. When you read and write the encrypted data, the data is automatically decrypted.
 	//
 	// Valid values:
 	//
-	// *   0 (default): The data in the file system is not encrypted.
-	// *   1: NAS-managed keys are used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
-	// *   2: KMS-managed keys are used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to extreme.
+	// *   0 (default): does not encrypt the data in the file system.
+	// *   1: encrypts data in the file system by using a NAS-managed key. This parameter is valid only if the FileSystemType parameter is set to standard or extreme.
+	// *   2: A KMS-managed key is used to encrypt the data in the file system. This parameter is valid only if the FileSystemType parameter is set to extreme.
 	EncryptType *int32 `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	// The ID of the file system.
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The type of the file system. Valid values:
+	// The type of the file system.
 	//
-	// *   standard: general-purpose NAS. extreme: Extreme NAS.
+	// *   Valid values: standard (General-purpose NAS file systems) and extreme (Extreme NAS file systems).
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	// The used storage of the NAS file system. Unit: byte.
+	// The used capacity of the NAS file system. Unit: bytes.
 	MeteredSize *int32 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
-	// The mount targets.
+	// The list of mount targets.
 	MountTargetList *ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystemsMountTargetList `json:"MountTargetList,omitempty" xml:"MountTargetList,omitempty" type:"Struct"`
 	// The list of storage plans.
 	PackageList *ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystemsPackageList `json:"PackageList,omitempty" xml:"PackageList,omitempty" type:"Struct"`
 	// The protocol type of the file system. Valid values:
 	//
-	// *   NFS- SMB
+	// *   NFS-SMB
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -16574,14 +16596,15 @@ type ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystems struct 
 	// *   Running: The file system is available.
 	// *   Stopped: The file system is unavailable.
 	// *   Extending: The file system is being scaled out.
-	// *   Stopping: The file system is being disabled.
+	// *   Stopping: The file system is being stopped.
 	// *   Deleting: The file system is being deleted.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The storage type of the file system.
 	//
-	// *   Valid values when FileSystemType is set to standard: Capacity and Performance. Valid values when FileSystemType is set to extreme: standard and advance.
+	// *   Valid values if FileSystemType is set to standard: Capacity and Performance.
+	// *   Valid values if FileSystemType is set to extreme: standard and advance.
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The VPC ID of the node.
+	// The ID of the VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -16690,21 +16713,21 @@ type ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystemsMountTar
 	//
 	// Valid values:
 	//
-	// *   true: ueses the default permission group. If you use the default permission group, access from all IP addresses are allowed. The default permission group and the permission rules in the default permission group cannot be deleted.
+	// *   true: uses the default permission group. If the permission group is the default one, all IP addresses are allowed to access the permission group, and users cannot delete the group and its rules.
 	// *   false: does not use the default permission group.
 	AccessGroup *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
-	// The domain where the mount target resides.
+	// The domain in which the mount target resides.
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	// The network type of the cluster. Valid values:
+	// The network type. Valid values:
 	//
-	// *   vpc: Virtual Private Cloud (VPC)
-	// *   classic: the classic network
+	// *   vpc
+	// *   classic
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The status of the mount target. Valid values:
+	// The state of the mount target. Valid values:
 	//
 	// *   Active: The mount target is available.
 	// *   Inactive: The mount target is unavailable.
-	// *   Pending: The mount target is being created or modified.
+	// *   Pending: The mount target is pending to be used.
 	// *   Deleting: The mount target is being deleted.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the VPC.
@@ -16787,9 +16810,9 @@ func (s *ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystemsPack
 }
 
 type ListFileSystemWithMountTargetsResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFileSystemWithMountTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFileSystemWithMountTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFileSystemWithMountTargetsResponse) String() string {
@@ -16959,9 +16982,9 @@ func (s *ListImagesResponseBodyOsTagsOsInfo) SetVersion(v string) *ListImagesRes
 }
 
 type ListImagesResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListImagesResponse) String() string {
@@ -17092,9 +17115,9 @@ func (s *ListInstalledSoftwareResponseBodySoftwareListSoftwareList) SetSoftwareV
 }
 
 type ListInstalledSoftwareResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstalledSoftwareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstalledSoftwareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstalledSoftwareResponse) String() string {
@@ -17337,9 +17360,9 @@ func (s *ListInvocationResultsResponseBodyInvocationResultsInvocationResult) Set
 }
 
 type ListInvocationResultsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInvocationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInvocationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInvocationResultsResponse) String() string {
@@ -17486,9 +17509,9 @@ func (s *ListInvocationStatusResponseBodyInvokeInstancesInvokeInstance) SetInsta
 }
 
 type ListInvocationStatusResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInvocationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInvocationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInvocationStatusResponse) String() string {
@@ -17792,9 +17815,9 @@ func (s *ListJobTemplatesResponseBodyTemplatesJobTemplates) SetWithUnzipCmd(v bo
 }
 
 type ListJobTemplatesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJobTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJobTemplatesResponse) String() string {
@@ -18103,9 +18126,9 @@ func (s *ListJobsResponseBodyJobsJobInfoResources) SetNodes(v int32) *ListJobsRe
 }
 
 type ListJobsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJobsResponse) String() string {
@@ -18498,9 +18521,9 @@ func (s *ListJobsWithFiltersResponseBodyJobsResources) SetNodes(v int64) *ListJo
 }
 
 type ListJobsWithFiltersResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJobsWithFiltersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobsWithFiltersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJobsWithFiltersResponse) String() string {
@@ -19018,9 +19041,9 @@ func (s *ListNodesResponseBodyNodesNodeInfoUsedResources) SetMemory(v int32) *Li
 }
 
 type ListNodesResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNodesResponse) String() string {
@@ -19430,9 +19453,9 @@ func (s *ListNodesByQueueResponseBodyNodesNodeInfoUsedResources) SetMemory(v int
 }
 
 type ListNodesByQueueResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNodesByQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodesByQueueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNodesByQueueResponse) String() string {
@@ -19607,9 +19630,9 @@ func (s *ListNodesNoPagingResponseBodyNodesNodeInfo) SetStatus(v string) *ListNo
 }
 
 type ListNodesNoPagingResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNodesNoPagingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodesNoPagingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNodesNoPagingResponse) String() string {
@@ -19849,9 +19872,9 @@ func (s *ListPreferredEcsTypesResponseBodySeriesSeriesInfoRolesManager) SetInsta
 }
 
 type ListPreferredEcsTypesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPreferredEcsTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPreferredEcsTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPreferredEcsTypesResponse) String() string {
@@ -20113,9 +20136,9 @@ func (s *ListQueuesResponseBodyQueuesQueueInfoSpotInstanceTypesInstance) SetSpot
 }
 
 type ListQueuesResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListQueuesResponse) String() string {
@@ -20209,9 +20232,9 @@ func (s *ListRegionsResponseBodyRegionsRegionInfo) SetRegionId(v string) *ListRe
 }
 
 type ListRegionsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -20305,9 +20328,9 @@ func (s *ListSecurityGroupsResponseBodySecurityGroups) SetSecurityGroup(v []*str
 }
 
 type ListSecurityGroupsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSecurityGroupsResponse) String() string {
@@ -20580,9 +20603,9 @@ func (s *ListServerlessJobsResponseBodyJobs) SetUser(v string) *ListServerlessJo
 }
 
 type ListServerlessJobsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServerlessJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServerlessJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServerlessJobsResponse) String() string {
@@ -20813,9 +20836,9 @@ func (s *ListSoftwaresResponseBodySoftwaresSoftwareInfoApplicationsApplicationIn
 }
 
 type ListSoftwaresResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSoftwaresResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSoftwaresResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSoftwaresResponse) String() string {
@@ -21001,9 +21024,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -21237,9 +21260,9 @@ func (s *ListTasksResponseBodyTasks) SetTotalSteps(v int32) *ListTasksResponseBo
 }
 
 type ListTasksResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTasksResponse) String() string {
@@ -21369,9 +21392,9 @@ func (s *ListUpgradeClientsResponseBodyClientRecords) SetUpdateTime(v string) *L
 }
 
 type ListUpgradeClientsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUpgradeClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUpgradeClientsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUpgradeClientsResponse) String() string {
@@ -21536,9 +21559,9 @@ func (s *ListUsersResponseBodyUsersUserInfo) SetName(v string) *ListUsersRespons
 }
 
 type ListUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -21731,9 +21754,9 @@ func (s *ListUsersAsyncResponseBodyUsersUserInfo) SetUserId(v string) *ListUsers
 }
 
 type ListUsersAsyncResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersAsyncResponse) String() string {
@@ -22032,9 +22055,9 @@ func (s *ListVolumesResponseBodyVolumesVolumeInfoAdditionalVolumesVolumeInfo) Se
 }
 
 type ListVolumesResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVolumesResponse) String() string {
@@ -22197,9 +22220,9 @@ func (s *ModifyClusterAttributesResponseBody) SetRequestId(v string) *ModifyClus
 }
 
 type ModifyClusterAttributesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyClusterAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyClusterAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyClusterAttributesResponse) String() string {
@@ -22271,9 +22294,9 @@ func (s *ModifyContainerAppAttributesResponseBody) SetRequestId(v string) *Modif
 }
 
 type ModifyContainerAppAttributesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyContainerAppAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyContainerAppAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyContainerAppAttributesResponse) String() string {
@@ -22429,9 +22452,9 @@ func (s *ModifyImageGatewayConfigResponseBody) SetRequestId(v string) *ModifyIma
 }
 
 type ModifyImageGatewayConfigResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyImageGatewayConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyImageGatewayConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyImageGatewayConfigResponse) String() string {
@@ -22542,9 +22565,9 @@ func (s *ModifyUserGroupsResponseBody) SetRequestId(v string) *ModifyUserGroupsR
 }
 
 type ModifyUserGroupsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyUserGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyUserGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyUserGroupsResponse) String() string {
@@ -22661,9 +22684,9 @@ func (s *ModifyUserPasswordsResponseBody) SetRequestId(v string) *ModifyUserPass
 }
 
 type ModifyUserPasswordsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyUserPasswordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyUserPasswordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyUserPasswordsResponse) String() string {
@@ -22761,9 +22784,9 @@ func (s *ModifyVisualServicePasswdResponseBody) SetRequestId(v string) *ModifyVi
 }
 
 type ModifyVisualServicePasswdResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVisualServicePasswdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVisualServicePasswdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVisualServicePasswdResponse) String() string {
@@ -22864,9 +22887,9 @@ func (s *MountNFSResponseBody) SetRequestId(v string) *MountNFSResponseBody {
 }
 
 type MountNFSResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MountNFSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MountNFSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MountNFSResponse) String() string {
@@ -22950,9 +22973,9 @@ func (s *PullImageResponseBody) SetRequestId(v string) *PullImageResponseBody {
 }
 
 type PullImageResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PullImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PullImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PullImageResponse) String() string {
@@ -23096,9 +23119,9 @@ func (s *QueryServicePackAndPriceResponseBodyServicePackServicePackInfo) SetStar
 }
 
 type QueryServicePackAndPriceResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryServicePackAndPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryServicePackAndPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryServicePackAndPriceResponse) String() string {
@@ -23236,9 +23259,9 @@ func (s *RecoverClusterResponseBody) SetTaskId(v string) *RecoverClusterResponse
 }
 
 type RecoverClusterResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecoverClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecoverClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecoverClusterResponse) String() string {
@@ -23325,9 +23348,9 @@ func (s *RerunJobsResponseBody) SetRequestId(v string) *RerunJobsResponseBody {
 }
 
 type RerunJobsResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RerunJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RerunJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RerunJobsResponse) String() string {
@@ -23425,9 +23448,9 @@ func (s *ResetNodesResponseBody) SetTaskId(v string) *ResetNodesResponseBody {
 }
 
 type ResetNodesResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetNodesResponse) String() string {
@@ -23531,9 +23554,9 @@ func (s *RunCloudMetricProfilingResponseBody) SetRequestId(v string) *RunCloudMe
 }
 
 type RunCloudMetricProfilingResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RunCloudMetricProfilingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunCloudMetricProfilingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RunCloudMetricProfilingResponse) String() string {
@@ -23565,8 +23588,9 @@ type SetAutoScaleConfigRequest struct {
 	// Specifies whether to enable hyper-threading for the ECS instance that is used as the compute node.
 	//
 	// >  You can only disable hyper-threading for some instance types. The hyper-threading is enabled for ECS instances by default. For more information, see [Specify and view CPU options](~~145895~~).
-	ComputeEnableHt *bool   `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
-	DnsConfig       *string `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty"`
+	ComputeEnableHt *bool `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
+	// The Domain Name System (DNS) settings.
+	DnsConfig *string `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty"`
 	// Specifies whether to enable auto scale-out. Valid values:
 	//
 	// *   true: enables auto scale-out.
@@ -23748,6 +23772,8 @@ func (s *SetAutoScaleConfigRequest) SetSpotStrategy(v string) *SetAutoScaleConfi
 }
 
 type SetAutoScaleConfigRequestQueues struct {
+	// Automatic Configuration of the Minimum Node Number for Each Scale-out.
+	// If you set this parameter to true, the minimum number of nodes for each scale-out is equal to the number of nodes required by the job. The maximum number is 99.
 	AutoMinNodesPerCycle *bool `json:"AutoMinNodesPerCycle,omitempty" xml:"AutoMinNodesPerCycle,omitempty"`
 	// The list of data disks.
 	DataDisks []*SetAutoScaleConfigRequestQueuesDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
@@ -24175,9 +24201,9 @@ func (s *SetAutoScaleConfigResponseBody) SetRequestId(v string) *SetAutoScaleCon
 }
 
 type SetAutoScaleConfigResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetAutoScaleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetAutoScaleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetAutoScaleConfigResponse) String() string {
@@ -24314,9 +24340,9 @@ func (s *SetGWSClusterPolicyResponseBody) SetRequestId(v string) *SetGWSClusterP
 }
 
 type SetGWSClusterPolicyResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetGWSClusterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetGWSClusterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetGWSClusterPolicyResponse) String() string {
@@ -24383,9 +24409,9 @@ func (s *SetGWSInstanceNameResponseBody) SetRequestId(v string) *SetGWSInstanceN
 }
 
 type SetGWSInstanceNameResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetGWSInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetGWSInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetGWSInstanceNameResponse) String() string {
@@ -24462,9 +24488,9 @@ func (s *SetGWSInstanceUserResponseBody) SetRequestId(v string) *SetGWSInstanceU
 }
 
 type SetGWSInstanceUserResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetGWSInstanceUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetGWSInstanceUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetGWSInstanceUserResponse) String() string {
@@ -24568,9 +24594,9 @@ func (s *SetPostScriptsResponseBody) SetRequestId(v string) *SetPostScriptsRespo
 }
 
 type SetPostScriptsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetPostScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPostScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetPostScriptsResponse) String() string {
@@ -24670,9 +24696,9 @@ func (s *SetQueueResponseBody) SetRequestId(v string) *SetQueueResponseBody {
 }
 
 type SetQueueResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetQueueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetQueueResponse) String() string {
@@ -24984,9 +25010,9 @@ func (s *SetSchedulerInfoResponseBody) SetRequestId(v string) *SetSchedulerInfoR
 }
 
 type SetSchedulerInfoResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetSchedulerInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetSchedulerInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetSchedulerInfoResponse) String() string {
@@ -25056,9 +25082,9 @@ func (s *StartClusterResponseBody) SetTaskId(v string) *StartClusterResponseBody
 }
 
 type StartClusterResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartClusterResponse) String() string {
@@ -25121,9 +25147,9 @@ func (s *StartGWSInstanceResponseBody) SetRequestId(v string) *StartGWSInstanceR
 }
 
 type StartGWSInstanceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartGWSInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartGWSInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartGWSInstanceResponse) String() string {
@@ -25234,9 +25260,9 @@ func (s *StartNodesResponseBody) SetTaskId(v string) *StartNodesResponseBody {
 }
 
 type StartNodesResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartNodesResponse) String() string {
@@ -25323,9 +25349,9 @@ func (s *StartVisualServiceResponseBody) SetRequestId(v string) *StartVisualServ
 }
 
 type StartVisualServiceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartVisualServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartVisualServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartVisualServiceResponse) String() string {
@@ -25397,9 +25423,9 @@ func (s *StopClusterResponseBody) SetTaskId(v string) *StopClusterResponseBody {
 }
 
 type StopClusterResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopClusterResponse) String() string {
@@ -25460,9 +25486,9 @@ func (s *StopGWSInstanceResponseBody) SetRequestId(v string) *StopGWSInstanceRes
 }
 
 type StopGWSInstanceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopGWSInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopGWSInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopGWSInstanceResponse) String() string {
@@ -25549,9 +25575,9 @@ func (s *StopJobsResponseBody) SetRequestId(v string) *StopJobsResponseBody {
 }
 
 type StopJobsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopJobsResponse) String() string {
@@ -25662,9 +25688,9 @@ func (s *StopNodesResponseBody) SetTaskId(v string) *StopNodesResponseBody {
 }
 
 type StopNodesResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopNodesResponse) String() string {
@@ -25739,9 +25765,9 @@ func (s *StopServerlessJobsResponseBody) SetRequestId(v string) *StopServerlessJ
 }
 
 type StopServerlessJobsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopServerlessJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopServerlessJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopServerlessJobsResponse) String() string {
@@ -25828,9 +25854,9 @@ func (s *StopVisualServiceResponseBody) SetRequestId(v string) *StopVisualServic
 }
 
 type StopVisualServiceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopVisualServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopVisualServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopVisualServiceResponse) String() string {
@@ -26147,9 +26173,9 @@ func (s *SubmitJobResponseBody) SetRequestId(v string) *SubmitJobResponseBody {
 }
 
 type SubmitJobResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitJobResponse) String() string {
@@ -26178,7 +26204,7 @@ func (s *SubmitJobResponse) SetBody(v *SubmitJobResponseBody) *SubmitJobResponse
 type SubmitServerlessJobRequest struct {
 	// The configuration of the array job.
 	//
-	// >  The index value of an array job is passed to the serverless job container by using the environment variable **EHPC_JOB_ARRAY_INDEX** to allow access to the array job from business programs.
+	// >  The value of an array job index is passed to a serverless job container through the environment variable `EHPC_ARRAY_TASK_ID`. Users can access the container from business programs.
 	ArrayProperties *SubmitServerlessJobRequestArrayProperties `json:"ArrayProperties,omitempty" xml:"ArrayProperties,omitempty" type:"Struct"`
 	// The ID of the E-HPC cluster.
 	//
@@ -26197,16 +26223,13 @@ type SubmitServerlessJobRequest struct {
 	// The ECS instance types used by the serverless job container.
 	InstanceType []*string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
 	// The name of the serverless job.
-	//
-	// >  The name can contain lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen.
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The scheduling priority of the serverless job. Valid values: 0 to 999. A greater value indicates a higher priority.
 	JobPriority *int64 `json:"JobPriority,omitempty" xml:"JobPriority,omitempty"`
 	// The memory size of the serverless job container. Unit: GiB.
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The name of the RAM role that is associated with the serverless job container.
-	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The retry policy for the serverless job.
+	RamRoleName   *string                                  `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	RetryStrategy *SubmitServerlessJobRequestRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
 	// The maximum hourly price of the preemptible instance. The value can contain up to three decimal places.
 	//
@@ -26317,11 +26340,11 @@ func (s *SubmitServerlessJobRequest) SetVSwitchId(v []*string) *SubmitServerless
 type SubmitServerlessJobRequestArrayProperties struct {
 	// The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
 	IndexEnd *int64 `json:"IndexEnd,omitempty" xml:"IndexEnd,omitempty"`
-	// The starting value of the array job index. Valid values: 0 to 4999.
+	// The start value of the array job index. Valid values: 0 to 4999.
 	IndexStart *int64 `json:"IndexStart,omitempty" xml:"IndexStart,omitempty"`
 	// The interval of the array job index.
 	//
-	// >  If the IndexStart of the array job is set to 1, IndexEnd is set to 5, and IndexStep is set to 2, the array job contains three subtasks. The subtask indexes are 1, 3, and 5.
+	// >  If the array job property is IndexStart=1,IndexEnd=5, and IndexStep=2, the array job contains three subtasks. The values of the subtask indexes are 1,3, and 5.
 	IndexStep *int64 `json:"IndexStep,omitempty" xml:"IndexStep,omitempty"`
 }
 
@@ -26353,13 +26376,13 @@ type SubmitServerlessJobRequestContainer struct {
 	Arg []*string `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
 	// The container startup commands.
 	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	// The value of the environment variable for the container.
+	// The environment variable of the container.
 	EnvironmentVar []*SubmitServerlessJobRequestContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
 	// The number of GPUs of the container.
 	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
 	// The image of the container.
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The data volumes that are mounted to the container.
+	// The data volumes mounted to the container.
 	VolumeMount []*SubmitServerlessJobRequestContainerVolumeMount `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
 	// The working directory of the container.
 	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
@@ -26409,9 +26432,8 @@ func (s *SubmitServerlessJobRequestContainer) SetWorkingDir(v string) *SubmitSer
 }
 
 type SubmitServerlessJobRequestContainerEnvironmentVar struct {
-	// The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (\_). The name cannot start with a digit. Specify the name in the \[0-9a-zA-Z] format.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the environment variable. The value can be up to 256 characters in length.
+	// The value of the environment variable for the container. The value must be 0 to 256 characters in length.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26434,16 +26456,11 @@ func (s *SubmitServerlessJobRequestContainerEnvironmentVar) SetValue(v string) *
 }
 
 type SubmitServerlessJobRequestContainerVolumeMount struct {
-	// The driver type when you use the FlexVolume plug-in to mount the volume. Valid values:
-	//
-	// *   alicloud/nas: a NAS driver.
-	// *   alicloud/oss: an OSS driver.
-	FlexVolumeDriver *string `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
-	// The options when you set the Type parameter to FlexVolume. Each option is a key-value pair in a JSON string.
+	FlexVolumeDriver  *string `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
 	FlexVolumeOptions *string `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
 	// The directory to which the volume is mounted.
 	//
-	// >  The data stored in this directory is overwritten by the data on the volume. Specify the parameter with caution.
+	// > The data stored in this directory is overwritten by the data on the volume. Specify this parameter with caution.
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
@@ -26503,9 +26520,7 @@ func (s *SubmitServerlessJobRequestDependsOn) SetType(v string) *SubmitServerles
 }
 
 type SubmitServerlessJobRequestRetryStrategy struct {
-	// The number of retries for the serverless job. Valid values: 1 to 10.
-	Attempts *int32 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
-	// The list of retry rules for the serverless job. You can specify up to 10 rules.
+	Attempts       *int32                                                   `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
 	EvaluateOnExit []*SubmitServerlessJobRequestRetryStrategyEvaluateOnExit `json:"EvaluateOnExit,omitempty" xml:"EvaluateOnExit,omitempty" type:"Repeated"`
 }
 
@@ -26528,12 +26543,7 @@ func (s *SubmitServerlessJobRequestRetryStrategy) SetEvaluateOnExit(v []*SubmitS
 }
 
 type SubmitServerlessJobRequestRetryStrategyEvaluateOnExit struct {
-	// The action that you want to take on the job. Valid values:
-	//
-	// *   Retry: The job starts a retry when a specific exit code is hit.
-	// *   Exit: The job exits when a specific exit code is hit.
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The job exit code, which is used together with the Action parameter as a job retry rule. Valid values: 0 to 255.
+	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	OnExitCode *string `json:"OnExitCode,omitempty" xml:"OnExitCode,omitempty"`
 }
 
@@ -26558,7 +26568,7 @@ func (s *SubmitServerlessJobRequestRetryStrategyEvaluateOnExit) SetOnExitCode(v 
 type SubmitServerlessJobShrinkRequest struct {
 	// The configuration of the array job.
 	//
-	// >  The index value of an array job is passed to the serverless job container by using the environment variable **EHPC_JOB_ARRAY_INDEX** to allow access to the array job from business programs.
+	// >  The value of an array job index is passed to a serverless job container through the environment variable `EHPC_ARRAY_TASK_ID`. Users can access the container from business programs.
 	ArrayPropertiesShrink *string `json:"ArrayProperties,omitempty" xml:"ArrayProperties,omitempty"`
 	// The ID of the E-HPC cluster.
 	//
@@ -26577,16 +26587,13 @@ type SubmitServerlessJobShrinkRequest struct {
 	// The ECS instance types used by the serverless job container.
 	InstanceTypeShrink *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The name of the serverless job.
-	//
-	// >  The name can contain lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen.
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The scheduling priority of the serverless job. Valid values: 0 to 999. A greater value indicates a higher priority.
 	JobPriority *int64 `json:"JobPriority,omitempty" xml:"JobPriority,omitempty"`
 	// The memory size of the serverless job container. Unit: GiB.
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The name of the RAM role that is associated with the serverless job container.
-	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The retry policy for the serverless job.
+	RamRoleName         *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	RetryStrategyShrink *string `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty"`
 	// The maximum hourly price of the preemptible instance. The value can contain up to three decimal places.
 	//
@@ -26720,9 +26727,9 @@ func (s *SubmitServerlessJobResponseBody) SetRequestId(v string) *SubmitServerle
 }
 
 type SubmitServerlessJobResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitServerlessJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitServerlessJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitServerlessJobResponse) String() string {
@@ -26799,9 +26806,9 @@ func (s *SummaryImagesResponseBody) SetRequestId(v string) *SummaryImagesRespons
 }
 
 type SummaryImagesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SummaryImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SummaryImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SummaryImagesResponse) String() string {
@@ -26885,9 +26892,9 @@ func (s *SummaryImagesInfoResponseBody) SetRequestId(v string) *SummaryImagesInf
 }
 
 type SummaryImagesInfoResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SummaryImagesInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SummaryImagesInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SummaryImagesInfoResponse) String() string {
@@ -26961,9 +26968,9 @@ func (s *SyncUsersResponseBody) SetRequestId(v string) *SyncUsersResponseBody {
 }
 
 type SyncUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SyncUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SyncUsersResponse) String() string {
@@ -27072,9 +27079,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -27170,9 +27177,9 @@ func (s *UnTagResourcesResponseBody) SetRequestId(v string) *UnTagResourcesRespo
 }
 
 type UnTagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnTagResourcesResponse) String() string {
@@ -27246,9 +27253,9 @@ func (s *UninstallSoftwareResponseBody) SetRequestId(v string) *UninstallSoftwar
 }
 
 type UninstallSoftwareResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UninstallSoftwareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UninstallSoftwareResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UninstallSoftwareResponse) String() string {
@@ -27427,9 +27434,9 @@ func (s *UpdateClusterVolumesResponseBody) SetRequestId(v string) *UpdateCluster
 }
 
 type UpdateClusterVolumesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateClusterVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateClusterVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateClusterVolumesResponse) String() string {
@@ -27536,9 +27543,9 @@ func (s *UpdateQueueConfigResponseBody) SetRequestId(v string) *UpdateQueueConfi
 }
 
 type UpdateQueueConfigResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateQueueConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateQueueConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateQueueConfigResponse) String() string {
@@ -27608,9 +27615,9 @@ func (s *UpgradeClientResponseBody) SetRequestId(v string) *UpgradeClientRespons
 }
 
 type UpgradeClientResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpgradeClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeClientResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpgradeClientResponse) String() string {
@@ -29573,14 +29580,6 @@ func (client *Client) GetAccountingReport(request *GetAccountingReportRequest) (
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=EHPC\\&api=GetAutoScaleConfig\\&type=RPC\\&version=2018-04-12)
- *
- * @param request GetAutoScaleConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAutoScaleConfigResponse
- */
 func (client *Client) GetAutoScaleConfigWithOptions(request *GetAutoScaleConfigRequest, runtime *util.RuntimeOptions) (_result *GetAutoScaleConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29610,13 +29609,6 @@ func (client *Client) GetAutoScaleConfigWithOptions(request *GetAutoScaleConfigR
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=EHPC\\&api=GetAutoScaleConfig\\&type=RPC\\&version=2018-04-12)
- *
- * @param request GetAutoScaleConfigRequest
- * @return GetAutoScaleConfigResponse
- */
 func (client *Client) GetAutoScaleConfig(request *GetAutoScaleConfigRequest) (_result *GetAutoScaleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutoScaleConfigResponse{}
