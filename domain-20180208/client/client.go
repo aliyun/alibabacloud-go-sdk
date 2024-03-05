@@ -521,6 +521,7 @@ type CheckSelectedDomainStatusResponseBodyModule struct {
 	DeadDate *int64   `json:"DeadDate,omitempty" xml:"DeadDate,omitempty"`
 	Domain   *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	EndTime  *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Premium  *bool    `json:"Premium,omitempty" xml:"Premium,omitempty"`
 	Price    *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
 	RegDate  *int64   `json:"RegDate,omitempty" xml:"RegDate,omitempty"`
 }
@@ -545,6 +546,11 @@ func (s *CheckSelectedDomainStatusResponseBodyModule) SetDomain(v string) *Check
 
 func (s *CheckSelectedDomainStatusResponseBodyModule) SetEndTime(v int64) *CheckSelectedDomainStatusResponseBodyModule {
 	s.EndTime = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBodyModule) SetPremium(v bool) *CheckSelectedDomainStatusResponseBodyModule {
+	s.Premium = &v
 	return s
 }
 

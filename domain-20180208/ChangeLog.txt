@@ -1,3 +1,8 @@
+2024-03-05 Version: v0.2.0
+- Support API SubmitPurchaseInfo.
+- Update API CheckSelectedDomainStatus: update response param.
+
+
 2024-02-22 Version: v0.1.0
 - Support API SubmitPurchaseInfo.
 
