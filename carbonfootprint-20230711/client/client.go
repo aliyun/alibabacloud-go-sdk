@@ -36,9 +36,9 @@ func (s *AllowResponseBody) SetRequestId(v string) *AllowResponseBody {
 }
 
 type AllowResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AllowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AllowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AllowResponse) String() string {
@@ -171,9 +171,9 @@ func (s *GetSummaryDataResponseBodyData) SetTotalCarbonConsumptionConversion(v s
 }
 
 type GetSummaryDataResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSummaryDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSummaryDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSummaryDataResponse) String() string {
@@ -299,9 +299,9 @@ func (s *QueryCarbonTrackResponseBodyData) SetUid(v string) *QueryCarbonTrackRes
 }
 
 type QueryCarbonTrackResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCarbonTrackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCarbonTrackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCarbonTrackResponse) String() string {
@@ -416,9 +416,9 @@ func (s *QueryMultiAccountCarbonTrackResponseBodyData) SetUid(v string) *QueryMu
 }
 
 type QueryMultiAccountCarbonTrackResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMultiAccountCarbonTrackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMultiAccountCarbonTrackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMultiAccountCarbonTrackResponse) String() string {
@@ -468,7 +468,12 @@ func (s *VerifyResponseBody) SetRequestId(v string) *VerifyResponseBody {
 }
 
 type VerifyResponseBodyData struct {
-	AllowedUids []*string `json:"AllowedUids,omitempty" xml:"AllowedUids,omitempty" type:"Repeated"`
+	AllowedUids         []*string                                    `json:"AllowedUids,omitempty" xml:"AllowedUids,omitempty" type:"Repeated"`
+	AccountType         *int32                                       `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	AllMultiAccountUids []*VerifyResponseBodyDataAllMultiAccountUids `json:"allMultiAccountUids,omitempty" xml:"allMultiAccountUids,omitempty" type:"Repeated"`
+	Code                *string                                      `json:"code,omitempty" xml:"code,omitempty"`
+	Message             *string                                      `json:"message,omitempty" xml:"message,omitempty"`
+	MultiAccountsAllow  *int32                                       `json:"multiAccountsAllow,omitempty" xml:"multiAccountsAllow,omitempty"`
 }
 
 func (s VerifyResponseBodyData) String() string {
@@ -484,10 +489,58 @@ func (s *VerifyResponseBodyData) SetAllowedUids(v []*string) *VerifyResponseBody
 	return s
 }
 
+func (s *VerifyResponseBodyData) SetAccountType(v int32) *VerifyResponseBodyData {
+	s.AccountType = &v
+	return s
+}
+
+func (s *VerifyResponseBodyData) SetAllMultiAccountUids(v []*VerifyResponseBodyDataAllMultiAccountUids) *VerifyResponseBodyData {
+	s.AllMultiAccountUids = v
+	return s
+}
+
+func (s *VerifyResponseBodyData) SetCode(v string) *VerifyResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *VerifyResponseBodyData) SetMessage(v string) *VerifyResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifyResponseBodyData) SetMultiAccountsAllow(v int32) *VerifyResponseBodyData {
+	s.MultiAccountsAllow = &v
+	return s
+}
+
+type VerifyResponseBodyDataAllMultiAccountUids struct {
+	AccountId   *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s VerifyResponseBodyDataAllMultiAccountUids) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyResponseBodyDataAllMultiAccountUids) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyResponseBodyDataAllMultiAccountUids) SetAccountId(v string) *VerifyResponseBodyDataAllMultiAccountUids {
+	s.AccountId = &v
+	return s
+}
+
+func (s *VerifyResponseBodyDataAllMultiAccountUids) SetDisplayName(v string) *VerifyResponseBodyDataAllMultiAccountUids {
+	s.DisplayName = &v
+	return s
+}
+
 type VerifyResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyResponse) String() string {
