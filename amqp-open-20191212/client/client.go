@@ -525,12 +525,13 @@ type CreateInstanceRequest struct {
 	PeriodCycle     *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
 	QueueCapacity   *int32  `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
 	// autoRenew和renewStatus都是续费方式，当两个同时填写时，以renewStatus为准
-	RenewStatus         *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
-	RenewalDurationUnit *string `json:"RenewalDurationUnit,omitempty" xml:"RenewalDurationUnit,omitempty"`
-	StorageSize         *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	SupportEip          *bool   `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
-	SupportTracing      *bool   `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
-	TracingStorageTime  *int32  `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+	RenewStatus          *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
+	RenewalDurationUnit  *string `json:"RenewalDurationUnit,omitempty" xml:"RenewalDurationUnit,omitempty"`
+	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
+	StorageSize          *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SupportEip           *bool   `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
+	SupportTracing       *bool   `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	TracingStorageTime   *int32  `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -608,6 +609,11 @@ func (s *CreateInstanceRequest) SetRenewStatus(v string) *CreateInstanceRequest 
 
 func (s *CreateInstanceRequest) SetRenewalDurationUnit(v string) *CreateInstanceRequest {
 	s.RenewalDurationUnit = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetServerlessChargeType(v string) *CreateInstanceRequest {
+	s.ServerlessChargeType = &v
 	return s
 }
 
@@ -3779,6 +3785,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RenewalDurationUnit)) {
 		query["RenewalDurationUnit"] = request.RenewalDurationUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessChargeType)) {
+		query["ServerlessChargeType"] = request.ServerlessChargeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
