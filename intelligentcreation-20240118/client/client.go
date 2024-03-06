@@ -362,6 +362,193 @@ func (s *ActualDeductResourcesResponse) SetBody(v *ActualDeductResourceResult) *
 	return s
 }
 
+type CopywritingQARequest struct {
+	AccountId    *string                      `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	History      *CopywritingQARequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Struct"`
+	Question     *string                      `json:"question,omitempty" xml:"question,omitempty"`
+	SessionId    *string                      `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	Stream       *bool                        `json:"stream,omitempty" xml:"stream,omitempty"`
+	SubAccountId *string                      `json:"subAccountId,omitempty" xml:"subAccountId,omitempty"`
+}
+
+func (s CopywritingQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopywritingQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopywritingQARequest) SetAccountId(v string) *CopywritingQARequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *CopywritingQARequest) SetHistory(v *CopywritingQARequestHistory) *CopywritingQARequest {
+	s.History = v
+	return s
+}
+
+func (s *CopywritingQARequest) SetQuestion(v string) *CopywritingQARequest {
+	s.Question = &v
+	return s
+}
+
+func (s *CopywritingQARequest) SetSessionId(v string) *CopywritingQARequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CopywritingQARequest) SetStream(v bool) *CopywritingQARequest {
+	s.Stream = &v
+	return s
+}
+
+func (s *CopywritingQARequest) SetSubAccountId(v string) *CopywritingQARequest {
+	s.SubAccountId = &v
+	return s
+}
+
+type CopywritingQARequestHistory struct {
+	Bot  *string `json:"bot,omitempty" xml:"bot,omitempty"`
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s CopywritingQARequestHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopywritingQARequestHistory) GoString() string {
+	return s.String()
+}
+
+func (s *CopywritingQARequestHistory) SetBot(v string) *CopywritingQARequestHistory {
+	s.Bot = &v
+	return s
+}
+
+func (s *CopywritingQARequestHistory) SetUser(v string) *CopywritingQARequestHistory {
+	s.User = &v
+	return s
+}
+
+type CopywritingQAShrinkRequest struct {
+	AccountId     *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	HistoryShrink *string `json:"history,omitempty" xml:"history,omitempty"`
+	Question      *string `json:"question,omitempty" xml:"question,omitempty"`
+	SessionId     *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	Stream        *bool   `json:"stream,omitempty" xml:"stream,omitempty"`
+	SubAccountId  *string `json:"subAccountId,omitempty" xml:"subAccountId,omitempty"`
+}
+
+func (s CopywritingQAShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopywritingQAShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopywritingQAShrinkRequest) SetAccountId(v string) *CopywritingQAShrinkRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *CopywritingQAShrinkRequest) SetHistoryShrink(v string) *CopywritingQAShrinkRequest {
+	s.HistoryShrink = &v
+	return s
+}
+
+func (s *CopywritingQAShrinkRequest) SetQuestion(v string) *CopywritingQAShrinkRequest {
+	s.Question = &v
+	return s
+}
+
+func (s *CopywritingQAShrinkRequest) SetSessionId(v string) *CopywritingQAShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CopywritingQAShrinkRequest) SetStream(v bool) *CopywritingQAShrinkRequest {
+	s.Stream = &v
+	return s
+}
+
+func (s *CopywritingQAShrinkRequest) SetSubAccountId(v string) *CopywritingQAShrinkRequest {
+	s.SubAccountId = &v
+	return s
+}
+
+type CopywritingQAResponseBody struct {
+	Content      *string `json:"content,omitempty" xml:"content,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	SessionId    *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CopywritingQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopywritingQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CopywritingQAResponseBody) SetContent(v string) *CopywritingQAResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *CopywritingQAResponseBody) SetErrorCode(v string) *CopywritingQAResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CopywritingQAResponseBody) SetErrorMessage(v string) *CopywritingQAResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CopywritingQAResponseBody) SetSessionId(v string) *CopywritingQAResponseBody {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CopywritingQAResponseBody) SetSuccess(v bool) *CopywritingQAResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CopywritingQAResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CopywritingQAResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CopywritingQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopywritingQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CopywritingQAResponse) SetHeaders(v map[string]*string) *CopywritingQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CopywritingQAResponse) SetStatusCode(v int32) *CopywritingQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CopywritingQAResponse) SetBody(v *CopywritingQAResponseBody) *CopywritingQAResponse {
+	s.Body = v
+	return s
+}
+
 type DirectDeductResourceRequest struct {
 	Body *DirectDeductResourceCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -646,6 +833,165 @@ func (s *GetRemainResourceResponse) SetBody(v *GetRemainResourceResponseBody) *G
 	return s
 }
 
+type SubmitBulletQuestionsRequest struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// questions
+	Questions    []*SubmitBulletQuestionsRequestQuestions `json:"questions,omitempty" xml:"questions,omitempty" type:"Repeated"`
+	RoomId       *string                                  `json:"roomId,omitempty" xml:"roomId,omitempty"`
+	SubAccountId *string                                  `json:"subAccountId,omitempty" xml:"subAccountId,omitempty"`
+}
+
+func (s SubmitBulletQuestionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBulletQuestionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBulletQuestionsRequest) SetAccountId(v string) *SubmitBulletQuestionsRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsRequest) SetQuestions(v []*SubmitBulletQuestionsRequestQuestions) *SubmitBulletQuestionsRequest {
+	s.Questions = v
+	return s
+}
+
+func (s *SubmitBulletQuestionsRequest) SetRoomId(v string) *SubmitBulletQuestionsRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsRequest) SetSubAccountId(v string) *SubmitBulletQuestionsRequest {
+	s.SubAccountId = &v
+	return s
+}
+
+type SubmitBulletQuestionsRequestQuestions struct {
+	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	Id       *string `json:"id,omitempty" xml:"id,omitempty"`
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s SubmitBulletQuestionsRequestQuestions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBulletQuestionsRequestQuestions) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBulletQuestionsRequestQuestions) SetContent(v string) *SubmitBulletQuestionsRequestQuestions {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsRequestQuestions) SetId(v string) *SubmitBulletQuestionsRequestQuestions {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsRequestQuestions) SetUsername(v string) *SubmitBulletQuestionsRequestQuestions {
+	s.Username = &v
+	return s
+}
+
+type SubmitBulletQuestionsShrinkRequest struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// questions
+	QuestionsShrink *string `json:"questions,omitempty" xml:"questions,omitempty"`
+	RoomId          *string `json:"roomId,omitempty" xml:"roomId,omitempty"`
+	SubAccountId    *string `json:"subAccountId,omitempty" xml:"subAccountId,omitempty"`
+}
+
+func (s SubmitBulletQuestionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBulletQuestionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBulletQuestionsShrinkRequest) SetAccountId(v string) *SubmitBulletQuestionsShrinkRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsShrinkRequest) SetQuestionsShrink(v string) *SubmitBulletQuestionsShrinkRequest {
+	s.QuestionsShrink = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsShrinkRequest) SetRoomId(v string) *SubmitBulletQuestionsShrinkRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsShrinkRequest) SetSubAccountId(v string) *SubmitBulletQuestionsShrinkRequest {
+	s.SubAccountId = &v
+	return s
+}
+
+type SubmitBulletQuestionsResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SubmitBulletQuestionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBulletQuestionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBulletQuestionsResponseBody) SetErrorCode(v string) *SubmitBulletQuestionsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsResponseBody) SetErrorMessage(v string) *SubmitBulletQuestionsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsResponseBody) SetSuccess(v bool) *SubmitBulletQuestionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitBulletQuestionsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitBulletQuestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitBulletQuestionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBulletQuestionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBulletQuestionsResponse) SetHeaders(v map[string]*string) *SubmitBulletQuestionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitBulletQuestionsResponse) SetStatusCode(v int32) *SubmitBulletQuestionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsResponse) SetBody(v *SubmitBulletQuestionsResponseBody) *SubmitBulletQuestionsResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -768,6 +1114,78 @@ func (client *Client) ActualDeductResources(request *ActualDeductResourcesReques
 	headers := make(map[string]*string)
 	_result = &ActualDeductResourcesResponse{}
 	_body, _err := client.ActualDeductResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CopywritingQAWithOptions(tmpReq *CopywritingQARequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CopywritingQAResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CopywritingQAShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.History)) {
+		request.HistoryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.History, tea.String("history"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["accountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoryShrink)) {
+		query["history"] = request.HistoryShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Question)) {
+		query["question"] = request.Question
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		query["stream"] = request.Stream
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubAccountId)) {
+		query["subAccountId"] = request.SubAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CopywritingQA"),
+		Version:     tea.String("2024-01-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/digitalHuman/commands/copywritingQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CopywritingQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CopywritingQA(request *CopywritingQARequest) (_result *CopywritingQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CopywritingQAResponse{}
+	_body, _err := client.CopywritingQAWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -986,6 +1404,70 @@ func (client *Client) GetRemainResource(request *GetRemainResourceRequest) (_res
 	headers := make(map[string]*string)
 	_result = &GetRemainResourceResponse{}
 	_body, _err := client.GetRemainResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitBulletQuestionsWithOptions(tmpReq *SubmitBulletQuestionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitBulletQuestionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitBulletQuestionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Questions)) {
+		request.QuestionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Questions, tea.String("questions"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["accountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuestionsShrink)) {
+		query["questions"] = request.QuestionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomId)) {
+		query["roomId"] = request.RoomId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubAccountId)) {
+		query["subAccountId"] = request.SubAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitBulletQuestions"),
+		Version:     tea.String("2024-01-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/digitalHuman/commands/submitBulletQuestions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitBulletQuestionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitBulletQuestions(request *SubmitBulletQuestionsRequest) (_result *SubmitBulletQuestionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitBulletQuestionsResponse{}
+	_body, _err := client.SubmitBulletQuestionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
