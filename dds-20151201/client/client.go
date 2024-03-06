@@ -5162,6 +5162,152 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 	return s
 }
 
+type DescribeBackupTasksRequest struct {
+	BackupJobId          *int64  `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeBackupTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupTasksRequest) SetBackupJobId(v int64) *DescribeBackupTasksRequest {
+	s.BackupJobId = &v
+	return s
+}
+
+func (s *DescribeBackupTasksRequest) SetDBInstanceId(v string) *DescribeBackupTasksRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeBackupTasksRequest) SetOwnerAccount(v string) *DescribeBackupTasksRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeBackupTasksRequest) SetOwnerId(v int64) *DescribeBackupTasksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupTasksRequest) SetResourceOwnerAccount(v string) *DescribeBackupTasksRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeBackupTasksRequest) SetResourceOwnerId(v int64) *DescribeBackupTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupTasksRequest) SetSecurityToken(v string) *DescribeBackupTasksRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeBackupTasksResponseBody struct {
+	BackupJobs []*DescribeBackupTasksResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Repeated"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeBackupTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupTasksResponseBody) SetBackupJobs(v []*DescribeBackupTasksResponseBodyBackupJobs) *DescribeBackupTasksResponseBody {
+	s.BackupJobs = v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBody) SetRequestId(v string) *DescribeBackupTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeBackupTasksResponseBodyBackupJobs struct {
+	BackupSetStatus *string `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
+	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupjobId     *int64  `json:"BackupjobId,omitempty" xml:"BackupjobId,omitempty"`
+	JobMode         *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
+	Progress        *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+}
+
+func (s DescribeBackupTasksResponseBodyBackupJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupTasksResponseBodyBackupJobs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupTasksResponseBodyBackupJobs) SetBackupSetStatus(v string) *DescribeBackupTasksResponseBodyBackupJobs {
+	s.BackupSetStatus = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyBackupJobs) SetBackupStartTime(v string) *DescribeBackupTasksResponseBodyBackupJobs {
+	s.BackupStartTime = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyBackupJobs) SetBackupjobId(v int64) *DescribeBackupTasksResponseBodyBackupJobs {
+	s.BackupjobId = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyBackupJobs) SetJobMode(v string) *DescribeBackupTasksResponseBodyBackupJobs {
+	s.JobMode = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyBackupJobs) SetProgress(v string) *DescribeBackupTasksResponseBodyBackupJobs {
+	s.Progress = &v
+	return s
+}
+
+type DescribeBackupTasksResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBackupTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupTasksResponse) SetHeaders(v map[string]*string) *DescribeBackupTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupTasksResponse) SetStatusCode(v int32) *DescribeBackupTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponse) SetBody(v *DescribeBackupTasksResponseBody) *DescribeBackupTasksResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeBackupsRequest struct {
 	// The ID of the backup set. You can call the [CreateBackup](~~62171~~) operation to query the backup set ID.
 	//
@@ -10747,6 +10893,134 @@ func (s *DescribeInstanceAutoRenewalAttributeResponse) SetBody(v *DescribeInstan
 	return s
 }
 
+type DescribeInstanceRecoverTimeRequest struct {
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeInstanceRecoverTimeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRecoverTimeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetDBInstanceId(v string) *DescribeInstanceRecoverTimeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetOwnerAccount(v string) *DescribeInstanceRecoverTimeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetOwnerId(v int64) *DescribeInstanceRecoverTimeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetResourceOwnerAccount(v string) *DescribeInstanceRecoverTimeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetResourceOwnerId(v int64) *DescribeInstanceRecoverTimeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetSecurityToken(v string) *DescribeInstanceRecoverTimeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeInstanceRecoverTimeResponseBody struct {
+	RequestId     *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RestoreRanges []*DescribeInstanceRecoverTimeResponseBodyRestoreRanges `json:"RestoreRanges,omitempty" xml:"RestoreRanges,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceRecoverTimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRecoverTimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRecoverTimeResponseBody) SetRequestId(v string) *DescribeInstanceRecoverTimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeResponseBody) SetRestoreRanges(v []*DescribeInstanceRecoverTimeResponseBodyRestoreRanges) *DescribeInstanceRecoverTimeResponseBody {
+	s.RestoreRanges = v
+	return s
+}
+
+type DescribeInstanceRecoverTimeResponseBodyRestoreRanges struct {
+	RestoreBeginTime *string `json:"RestoreBeginTime,omitempty" xml:"RestoreBeginTime,omitempty"`
+	RestoreEndTime   *string `json:"RestoreEndTime,omitempty" xml:"RestoreEndTime,omitempty"`
+	RestoreType      *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+}
+
+func (s DescribeInstanceRecoverTimeResponseBodyRestoreRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRecoverTimeResponseBodyRestoreRanges) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRecoverTimeResponseBodyRestoreRanges) SetRestoreBeginTime(v string) *DescribeInstanceRecoverTimeResponseBodyRestoreRanges {
+	s.RestoreBeginTime = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeResponseBodyRestoreRanges) SetRestoreEndTime(v string) *DescribeInstanceRecoverTimeResponseBodyRestoreRanges {
+	s.RestoreEndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeResponseBodyRestoreRanges) SetRestoreType(v string) *DescribeInstanceRecoverTimeResponseBodyRestoreRanges {
+	s.RestoreType = &v
+	return s
+}
+
+type DescribeInstanceRecoverTimeResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceRecoverTimeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceRecoverTimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRecoverTimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRecoverTimeResponse) SetHeaders(v map[string]*string) *DescribeInstanceRecoverTimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeResponse) SetStatusCode(v int32) *DescribeInstanceRecoverTimeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeResponse) SetBody(v *DescribeInstanceRecoverTimeResponseBody) *DescribeInstanceRecoverTimeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeKernelReleaseNotesRequest struct {
 	// The minor version number of the instance. Example: **mongodb\_20180522\_0.4.8**.
 	//
@@ -12081,12 +12355,17 @@ func (s *DescribePriceResponseBody) SetTraceId(v string) *DescribePriceResponseB
 }
 
 type DescribePriceResponseBodyOrder struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ContractActivity *bool   `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty"`
 	// The information of coupons.
 	Coupons *DescribePriceResponseBodyOrderCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
 	// The currency.
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Currency       *string                                       `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo *DescribePriceResponseBodyOrderDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	// The discount amount of the order.
 	DiscountAmount     *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool   `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions *string `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty"`
 	// The original price of the order.
 	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
@@ -12094,7 +12373,9 @@ type DescribePriceResponseBodyOrder struct {
 	// The rules of the order.
 	RuleIds *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
 	// Indicates whether the information of the discount is displayed.
-	ShowDiscountInfo *bool `json:"ShowDiscountInfo,omitempty" xml:"ShowDiscountInfo,omitempty"`
+	ShowDiscountInfo   *bool    `json:"ShowDiscountInfo,omitempty" xml:"ShowDiscountInfo,omitempty"`
+	StandDiscountPrice *float64 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *float64 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
 	// The final price of the order.
 	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
@@ -12107,6 +12388,16 @@ func (s DescribePriceResponseBodyOrder) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePriceResponseBodyOrder) SetCode(v string) *DescribePriceResponseBodyOrder {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrder) SetContractActivity(v bool) *DescribePriceResponseBodyOrder {
+	s.ContractActivity = &v
+	return s
+}
+
 func (s *DescribePriceResponseBodyOrder) SetCoupons(v *DescribePriceResponseBodyOrderCoupons) *DescribePriceResponseBodyOrder {
 	s.Coupons = v
 	return s
@@ -12117,8 +12408,23 @@ func (s *DescribePriceResponseBodyOrder) SetCurrency(v string) *DescribePriceRes
 	return s
 }
 
+func (s *DescribePriceResponseBodyOrder) SetDepreciateInfo(v *DescribePriceResponseBodyOrderDepreciateInfo) *DescribePriceResponseBodyOrder {
+	s.DepreciateInfo = v
+	return s
+}
+
 func (s *DescribePriceResponseBodyOrder) SetDiscountAmount(v string) *DescribePriceResponseBodyOrder {
 	s.DiscountAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrder) SetIsContractActivity(v bool) *DescribePriceResponseBodyOrder {
+	s.IsContractActivity = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrder) SetMessage(v string) *DescribePriceResponseBodyOrder {
+	s.Message = &v
 	return s
 }
 
@@ -12144,6 +12450,16 @@ func (s *DescribePriceResponseBodyOrder) SetRuleIds(v *DescribePriceResponseBody
 
 func (s *DescribePriceResponseBodyOrder) SetShowDiscountInfo(v bool) *DescribePriceResponseBodyOrder {
 	s.ShowDiscountInfo = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrder) SetStandDiscountPrice(v float64) *DescribePriceResponseBodyOrder {
+	s.StandDiscountPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrder) SetStandPrice(v float64) *DescribePriceResponseBodyOrder {
+	s.StandPrice = &v
 	return s
 }
 
@@ -12259,6 +12575,147 @@ func (s *DescribePriceResponseBodyOrderCouponsCouponPromotionRuleIdList) SetProm
 	return s
 }
 
+type DescribePriceResponseBodyOrderDepreciateInfo struct {
+	CheapRate           *float64                                                      `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *float64                                                      `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	ContractActivity    *DescribePriceResponseBodyOrderDepreciateInfoContractActivity `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty" type:"Struct"`
+	Differential        *float64                                                      `json:"Differential,omitempty" xml:"Differential,omitempty"`
+	DifferentialName    *string                                                       `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
+	IsContractActivity  *bool                                                         `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	IsShow              *string                                                       `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	ListPrice           *float64                                                      `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	MonthPrice          *float64                                                      `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *float64                                                      `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetCheapRate(v float64) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.CheapRate = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetCheapStandAmount(v float64) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetContractActivity(v *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.ContractActivity = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetDifferential(v float64) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.Differential = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetDifferentialName(v string) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.DifferentialName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetIsContractActivity(v bool) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.IsContractActivity = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetIsShow(v string) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.IsShow = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetListPrice(v float64) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.ListPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetMonthPrice(v float64) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.MonthPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetOriginalStandAmount(v float64) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.OriginalStandAmount = &v
+	return s
+}
+
+type DescribePriceResponseBodyOrderDepreciateInfoContractActivity struct {
+	ActivityId   *int64                                                                 `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ActivityName *string                                                                `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	FinalFee     *float64                                                               `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`
+	FinalPromFee *float64                                                               `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
+	OptionCode   *string                                                                `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionIds    *DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds `json:"OptionIds,omitempty" xml:"OptionIds,omitempty" type:"Struct"`
+	ProdFee      *float64                                                               `json:"ProdFee,omitempty" xml:"ProdFee,omitempty"`
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfoContractActivity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfoContractActivity) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetActivityId(v int64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetActivityName(v string) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.ActivityName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetFinalFee(v float64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.FinalFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetFinalPromFee(v float64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.FinalPromFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetOptionCode(v string) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetOptionIds(v *DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.OptionIds = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetProdFee(v float64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.ProdFee = &v
+	return s
+}
+
+type DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds struct {
+	OptionId []*int64 `json:"OptionId,omitempty" xml:"OptionId,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds) SetOptionId(v []*int64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds {
+	s.OptionId = v
+	return s
+}
+
 type DescribePriceResponseBodyOrderRuleIds struct {
 	RuleId []*string `json:"RuleId,omitempty" xml:"RuleId,omitempty" type:"Repeated"`
 }
@@ -12343,14 +12800,23 @@ func (s *DescribePriceResponseBodySubOrders) SetSubOrder(v []*DescribePriceRespo
 }
 
 type DescribePriceResponseBodySubOrdersSubOrder struct {
+	ContractActivity *bool                                                     `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty"`
+	DepreciateInfo   *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	// The discount amount of the order.
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
 	// The instance ID.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId            *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsContractActivity    *bool                                                         `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	IsNewOfficialActivity *string                                                       `json:"IsNewOfficialActivity,omitempty" xml:"IsNewOfficialActivity,omitempty"`
+	ModuleInstance        *DescribePriceResponseBodySubOrdersSubOrderModuleInstance     `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Struct"`
+	OptionalPromotions    *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Struct"`
 	// The list price of the order.
-	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	OriginalAmount *string                                                   `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	PromDetailList *DescribePriceResponseBodySubOrdersSubOrderPromDetailList `json:"PromDetailList,omitempty" xml:"PromDetailList,omitempty" type:"Struct"`
 	// The promotion rules.
-	RuleIds *DescribePriceResponseBodySubOrdersSubOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	RuleIds            *DescribePriceResponseBodySubOrdersSubOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	StandDiscountPrice *float64                                           `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *float64                                           `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
 	// The actual price of the order.
 	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
@@ -12363,6 +12829,16 @@ func (s DescribePriceResponseBodySubOrdersSubOrder) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetContractActivity(v bool) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.ContractActivity = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetDepreciateInfo(v *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.DepreciateInfo = v
+	return s
+}
+
 func (s *DescribePriceResponseBodySubOrdersSubOrder) SetDiscountAmount(v string) *DescribePriceResponseBodySubOrdersSubOrder {
 	s.DiscountAmount = &v
 	return s
@@ -12373,8 +12849,33 @@ func (s *DescribePriceResponseBodySubOrdersSubOrder) SetInstanceId(v string) *De
 	return s
 }
 
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetIsContractActivity(v bool) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.IsContractActivity = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetIsNewOfficialActivity(v string) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.IsNewOfficialActivity = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetModuleInstance(v *DescribePriceResponseBodySubOrdersSubOrderModuleInstance) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.ModuleInstance = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetOptionalPromotions(v *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.OptionalPromotions = v
+	return s
+}
+
 func (s *DescribePriceResponseBodySubOrdersSubOrder) SetOriginalAmount(v string) *DescribePriceResponseBodySubOrdersSubOrder {
 	s.OriginalAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetPromDetailList(v *DescribePriceResponseBodySubOrdersSubOrderPromDetailList) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.PromDetailList = v
 	return s
 }
 
@@ -12383,8 +12884,639 @@ func (s *DescribePriceResponseBodySubOrdersSubOrder) SetRuleIds(v *DescribePrice
 	return s
 }
 
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetStandDiscountPrice(v float64) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.StandDiscountPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetStandPrice(v float64) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.StandPrice = &v
+	return s
+}
+
 func (s *DescribePriceResponseBodySubOrdersSubOrder) SetTradeAmount(v string) *DescribePriceResponseBodySubOrdersSubOrder {
 	s.TradeAmount = &v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo struct {
+	CheapRate           *float64                                                                  `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *float64                                                                  `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	ContractActivity    *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty" type:"Struct"`
+	Differential        *float64                                                                  `json:"Differential,omitempty" xml:"Differential,omitempty"`
+	DifferentialName    *string                                                                   `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
+	IsContractActivity  *bool                                                                     `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	IsShow              *string                                                                   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	ListPrice           *float64                                                                  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	MonthPrice          *float64                                                                  `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *float64                                                                  `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetCheapRate(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.CheapRate = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetCheapStandAmount(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetContractActivity(v *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.ContractActivity = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetDifferential(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.Differential = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetDifferentialName(v string) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.DifferentialName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetIsContractActivity(v bool) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.IsContractActivity = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetIsShow(v string) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.IsShow = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetListPrice(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.ListPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetMonthPrice(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.MonthPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetOriginalStandAmount(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.OriginalStandAmount = &v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity struct {
+	ActivityId   *int64                                                                             `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ActivityName *string                                                                            `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	FinalFee     *float64                                                                           `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`
+	FinalPromFee *float64                                                                           `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
+	OptionCode   *string                                                                            `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionIds    *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds `json:"OptionIds,omitempty" xml:"OptionIds,omitempty" type:"Struct"`
+	ProdFee      *float64                                                                           `json:"ProdFee,omitempty" xml:"ProdFee,omitempty"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetActivityId(v int64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetActivityName(v string) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.ActivityName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetFinalFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.FinalFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetFinalPromFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.FinalPromFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetOptionCode(v string) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetOptionIds(v *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.OptionIds = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetProdFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.ProdFee = &v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds struct {
+	OptionId []*int64 `json:"OptionId,omitempty" xml:"OptionId,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds) SetOptionId(v []*int64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds {
+	s.OptionId = v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderModuleInstance struct {
+	ModuleInstance []*DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstance) SetModuleInstance(v []*DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) *DescribePriceResponseBodySubOrdersSubOrderModuleInstance {
+	s.ModuleInstance = v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance struct {
+	ContractActivity *bool                                                                                 `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty"`
+	CycleFee         *string                                                                               `json:"CycleFee,omitempty" xml:"CycleFee,omitempty"`
+	DepreciateInfo   *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	DiscountFee      *string                                                                               `json:"DiscountFee,omitempty" xml:"DiscountFee,omitempty"`
+	ModuleAttrs      *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs    `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Struct"`
+	ModuleCode       *string                                                                               `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId         *int64                                                                                `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleName       *string                                                                               `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	NeedOrderPay     *bool                                                                                 `json:"NeedOrderPay,omitempty" xml:"NeedOrderPay,omitempty"`
+	PayFee           *float64                                                                              `json:"PayFee,omitempty" xml:"PayFee,omitempty"`
+	PricingModule    *bool                                                                                 `json:"PricingModule,omitempty" xml:"PricingModule,omitempty"`
+	PromDetailList   *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList `json:"PromDetailList,omitempty" xml:"PromDetailList,omitempty" type:"Struct"`
+	StandPrice       *float64                                                                              `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	TotalProductFee  *float64                                                                              `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetContractActivity(v bool) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.ContractActivity = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetCycleFee(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.CycleFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetDepreciateInfo(v *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.DepreciateInfo = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetDiscountFee(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.DiscountFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetModuleAttrs(v *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.ModuleAttrs = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetModuleCode(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetModuleId(v int64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetModuleName(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetNeedOrderPay(v bool) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.NeedOrderPay = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetPayFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.PayFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetPricingModule(v bool) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.PricingModule = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetPromDetailList(v *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.PromDetailList = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetStandPrice(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.StandPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetTotalProductFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.TotalProductFee = &v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo struct {
+	CheapRate           *float64 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *float64 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	Differential        *float64 `json:"Differential,omitempty" xml:"Differential,omitempty"`
+	DifferentialName    *string  `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
+	IsContractActivity  *bool    `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	IsShow              *string  `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	ListPrice           *float64 `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	MonthPrice          *float64 `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *float64 `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetCheapRate(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.CheapRate = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetCheapStandAmount(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetDifferential(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.Differential = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetDifferentialName(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.DifferentialName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetIsContractActivity(v bool) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.IsContractActivity = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetIsShow(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.IsShow = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetListPrice(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.ListPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetMonthPrice(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.MonthPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo) SetOriginalStandAmount(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo {
+	s.OriginalStandAmount = &v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs struct {
+	ModuleAttr []*DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr `json:"moduleAttr,omitempty" xml:"moduleAttr,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs) SetModuleAttr(v []*DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs {
+	s.ModuleAttr = v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr struct {
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr) SetCode(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr) SetName(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr) SetType(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr) SetValue(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr {
+	s.Value = &v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList struct {
+	PromDetal []*DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal `json:"PromDetal,omitempty" xml:"PromDetal,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList) SetPromDetal(v []*DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList {
+	s.PromDetal = v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal struct {
+	ActivityExtInfo map[string]interface{} `json:"ActivityExtInfo,omitempty" xml:"ActivityExtInfo,omitempty"`
+	DerivedPromType *string                `json:"DerivedPromType,omitempty" xml:"DerivedPromType,omitempty"`
+	FinalPromFee    *float64               `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
+	OptionCode      *string                `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PromType        *string                `json:"PromType,omitempty" xml:"PromType,omitempty"`
+	PromotionCode   *string                `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	PromotionId     *int64                 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionName   *string                `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) SetActivityExtInfo(v map[string]interface{}) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal {
+	s.ActivityExtInfo = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) SetDerivedPromType(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal {
+	s.DerivedPromType = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) SetFinalPromFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal {
+	s.FinalPromFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) SetOptionCode(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) SetPromType(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal {
+	s.PromType = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) SetPromotionCode(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal {
+	s.PromotionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) SetPromotionId(v int64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal) SetPromotionName(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal {
+	s.PromotionName = &v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions struct {
+	OptionalPromotion []*DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion `json:"OptionalPromotion,omitempty" xml:"OptionalPromotion,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions) SetOptionalPromotion(v []*DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions {
+	s.OptionalPromotion = v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion struct {
+	ActivityCategory       *string                                                                                              `json:"ActivityCategory,omitempty" xml:"ActivityCategory,omitempty"`
+	ActivityExtInfo        map[string]interface{}                                                                               `json:"ActivityExtInfo,omitempty" xml:"ActivityExtInfo,omitempty"`
+	CanPromFee             *float64                                                                                             `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	OptionCode             *string                                                                                              `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PromotionName          *string                                                                                              `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionOptionNo      *string                                                                                              `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	Selected               *bool                                                                                                `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	Show                   *bool                                                                                                `json:"Show,omitempty" xml:"Show,omitempty"`
+	TargetArticleItemCodes *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes `json:"TargetArticleItemCodes,omitempty" xml:"TargetArticleItemCodes,omitempty" type:"Struct"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetActivityCategory(v string) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.ActivityCategory = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetActivityExtInfo(v map[string]interface{}) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.ActivityExtInfo = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetCanPromFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.CanPromFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetOptionCode(v string) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetPromotionName(v string) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetPromotionOptionNo(v string) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.PromotionOptionNo = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetSelected(v bool) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.Selected = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetShow(v bool) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.Show = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetTargetArticleItemCodes(v *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.TargetArticleItemCodes = v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes struct {
+	TargetArticleItemCode []*string `json:"targetArticleItemCode,omitempty" xml:"targetArticleItemCode,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes) SetTargetArticleItemCode(v []*string) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes {
+	s.TargetArticleItemCode = v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderPromDetailList struct {
+	PromDetal []*DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal `json:"PromDetal,omitempty" xml:"PromDetal,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderPromDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderPromDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailList) SetPromDetal(v []*DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) *DescribePriceResponseBodySubOrdersSubOrderPromDetailList {
+	s.PromDetal = v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal struct {
+	ActivityExtInfo map[string]interface{} `json:"ActivityExtInfo,omitempty" xml:"ActivityExtInfo,omitempty"`
+	DerivedPromType *string                `json:"DerivedPromType,omitempty" xml:"DerivedPromType,omitempty"`
+	FinalPromFee    *float64               `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
+	OptionCode      *string                `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PromType        *string                `json:"PromType,omitempty" xml:"PromType,omitempty"`
+	PromotionCode   *string                `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	PromotionId     *int64                 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionName   *string                `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) SetActivityExtInfo(v map[string]interface{}) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal {
+	s.ActivityExtInfo = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) SetDerivedPromType(v string) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal {
+	s.DerivedPromType = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) SetFinalPromFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal {
+	s.FinalPromFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) SetOptionCode(v string) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) SetPromType(v string) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal {
+	s.PromType = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) SetPromotionCode(v string) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal {
+	s.PromotionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) SetPromotionId(v int64) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal) SetPromotionName(v string) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal {
+	s.PromotionName = &v
 	return s
 }
 
@@ -23131,6 +24263,46 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeBackupTasksWithOptions(request *DescribeBackupTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupTasks"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (_result *DescribeBackupTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupTasksResponse{}
+	_body, _err := client.DescribeBackupTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24640,6 +25812,46 @@ func (client *Client) DescribeInstanceAutoRenewalAttribute(request *DescribeInst
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceAutoRenewalAttributeResponse{}
 	_body, _err := client.DescribeInstanceAutoRenewalAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceRecoverTimeWithOptions(request *DescribeInstanceRecoverTimeRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceRecoverTimeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceRecoverTime"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceRecoverTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceRecoverTime(request *DescribeInstanceRecoverTimeRequest) (_result *DescribeInstanceRecoverTimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceRecoverTimeResponse{}
+	_body, _err := client.DescribeInstanceRecoverTimeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
