@@ -65,9 +65,10 @@ func (s *AllowResponse) SetBody(v *AllowResponseBody) *AllowResponse {
 }
 
 type GetSummaryDataRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Group     *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime   *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Group     *string   `json:"Group,omitempty" xml:"Group,omitempty"`
+	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Uids      []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
 }
 
 func (s GetSummaryDataRequest) String() string {
@@ -90,6 +91,46 @@ func (s *GetSummaryDataRequest) SetGroup(v string) *GetSummaryDataRequest {
 
 func (s *GetSummaryDataRequest) SetStartTime(v string) *GetSummaryDataRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *GetSummaryDataRequest) SetUids(v []*string) *GetSummaryDataRequest {
+	s.Uids = v
+	return s
+}
+
+type GetSummaryDataShrinkRequest struct {
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Group      *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UidsShrink *string `json:"Uids,omitempty" xml:"Uids,omitempty"`
+}
+
+func (s GetSummaryDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryDataShrinkRequest) SetEndTime(v string) *GetSummaryDataShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetSummaryDataShrinkRequest) SetGroup(v string) *GetSummaryDataShrinkRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *GetSummaryDataShrinkRequest) SetStartTime(v string) *GetSummaryDataShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetSummaryDataShrinkRequest) SetUidsShrink(v string) *GetSummaryDataShrinkRequest {
+	s.UidsShrink = &v
 	return s
 }
 
@@ -118,6 +159,8 @@ func (s *GetSummaryDataResponseBody) SetRequestId(v string) *GetSummaryDataRespo
 }
 
 type GetSummaryDataResponseBodyData struct {
+	AircraftConsumptionConversion    *string `json:"AircraftConsumptionConversion,omitempty" xml:"AircraftConsumptionConversion,omitempty"`
+	CarConsumptionConversion         *string `json:"CarConsumptionConversion,omitempty" xml:"CarConsumptionConversion,omitempty"`
 	LastMonthConsumptionConversion   *string `json:"LastMonthConsumptionConversion,omitempty" xml:"LastMonthConsumptionConversion,omitempty"`
 	LastYearConsumptionConversion    *string `json:"LastYearConsumptionConversion,omitempty" xml:"LastYearConsumptionConversion,omitempty"`
 	LastYearConsumptionConversionSum *string `json:"LastYearConsumptionConversionSum,omitempty" xml:"LastYearConsumptionConversionSum,omitempty"`
@@ -125,6 +168,7 @@ type GetSummaryDataResponseBodyData struct {
 	ThisMonthConsumptionConversion   *string `json:"ThisMonthConsumptionConversion,omitempty" xml:"ThisMonthConsumptionConversion,omitempty"`
 	ThisYearConsumptionConversion    *string `json:"ThisYearConsumptionConversion,omitempty" xml:"ThisYearConsumptionConversion,omitempty"`
 	TotalCarbonConsumptionConversion *string `json:"TotalCarbonConsumptionConversion,omitempty" xml:"TotalCarbonConsumptionConversion,omitempty"`
+	TreeConsumptionConversion        *string `json:"TreeConsumptionConversion,omitempty" xml:"TreeConsumptionConversion,omitempty"`
 }
 
 func (s GetSummaryDataResponseBodyData) String() string {
@@ -133,6 +177,16 @@ func (s GetSummaryDataResponseBodyData) String() string {
 
 func (s GetSummaryDataResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetSummaryDataResponseBodyData) SetAircraftConsumptionConversion(v string) *GetSummaryDataResponseBodyData {
+	s.AircraftConsumptionConversion = &v
+	return s
+}
+
+func (s *GetSummaryDataResponseBodyData) SetCarConsumptionConversion(v string) *GetSummaryDataResponseBodyData {
+	s.CarConsumptionConversion = &v
+	return s
 }
 
 func (s *GetSummaryDataResponseBodyData) SetLastMonthConsumptionConversion(v string) *GetSummaryDataResponseBodyData {
@@ -167,6 +221,11 @@ func (s *GetSummaryDataResponseBodyData) SetThisYearConsumptionConversion(v stri
 
 func (s *GetSummaryDataResponseBodyData) SetTotalCarbonConsumptionConversion(v string) *GetSummaryDataResponseBodyData {
 	s.TotalCarbonConsumptionConversion = &v
+	return s
+}
+
+func (s *GetSummaryDataResponseBodyData) SetTreeConsumptionConversion(v string) *GetSummaryDataResponseBodyData {
+	s.TreeConsumptionConversion = &v
 	return s
 }
 
@@ -646,11 +705,17 @@ func (client *Client) Allow() (_result *AllowResponse, _err error) {
 	return _result, _err
 }
 
-func (client *Client) GetSummaryDataWithOptions(request *GetSummaryDataRequest, runtime *util.RuntimeOptions) (_result *GetSummaryDataResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetSummaryDataWithOptions(tmpReq *GetSummaryDataRequest, runtime *util.RuntimeOptions) (_result *GetSummaryDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetSummaryDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Uids)) {
+		request.UidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Uids, tea.String("Uids"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
@@ -662,6 +727,10 @@ func (client *Client) GetSummaryDataWithOptions(request *GetSummaryDataRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UidsShrink)) {
+		query["Uids"] = request.UidsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
