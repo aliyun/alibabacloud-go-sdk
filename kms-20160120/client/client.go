@@ -1023,11 +1023,16 @@ func (s *CertificatePublicKeyVerifyResponse) SetBody(v *CertificatePublicKeyVeri
 }
 
 type ConnectKmsInstanceRequest struct {
-	KMProvider    *string `json:"KMProvider,omitempty" xml:"KMProvider,omitempty"`
+	// The provider of the KMS instance. Set the value to Aliyun.
+	KMProvider *string `json:"KMProvider,omitempty" xml:"KMProvider,omitempty"`
+	// The ID of the KMS instance that you want to enable.
 	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
-	VSwitchIds    *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneIds       *string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
+	// The vSwitch in the two zones. The vSwitch must have at least one available IP address.
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The two zones for the KMS instance. Dual-zone deployment improves service availability and disaster recovery capabilities.
+	ZoneIds *string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
 }
 
 func (s ConnectKmsInstanceRequest) String() string {
@@ -1064,6 +1069,7 @@ func (s *ConnectKmsInstanceRequest) SetZoneIds(v string) *ConnectKmsInstanceRequ
 }
 
 type ConnectKmsInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1184,10 +1190,16 @@ func (s *CreateAliasResponse) SetBody(v *CreateAliasResponseBody) *CreateAliasRe
 }
 
 type CreateApplicationAccessPointRequest struct {
+	// The authentication method. Currently, only ClientKey is supported.
 	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policies             *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
+	// The description of the AAP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the AAP.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The permission policy.
+	//
+	// > You can bind up to three permission policies to each AAP.
+	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 }
 
 func (s CreateApplicationAccessPointRequest) String() string {
@@ -1219,12 +1231,18 @@ func (s *CreateApplicationAccessPointRequest) SetPolicies(v string) *CreateAppli
 }
 
 type CreateApplicationAccessPointResponseBody struct {
-	Arn                  *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the AAP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The authentication method.
 	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policies             *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The description of the AAP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the AAP.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The permission policy.
+	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateApplicationAccessPointResponseBody) String() string {
@@ -1485,10 +1503,23 @@ func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *C
 }
 
 type CreateClientKeyRequest struct {
-	AapName   *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
-	NotAfter  *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The operation that you want to perform. Set the value to **CreateClientKey**.
+	AapName *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
+	// The encryption password of the client key.
+	//
+	// The password must be 8 to 64 characters in length and must contain at least two of the following types: digits, letters, and special characters. Special characters include `~ ! @ # $ % ^ & * ? _ -`.
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The end of the validity period of the client key.
+	//
+	// Specify the time in the ISO 8601 standard. The time must be in UTC. The time must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
+	// >
+	//
+	// *   If you do not configure NotAfter, the default value is the time when the client key was created plus five years.
+	// *   If you configure NotAfter, you must configure NotBefore.
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	Password  *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the AAP.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
 func (s CreateClientKeyRequest) String() string {
@@ -1520,12 +1551,25 @@ func (s *CreateClientKeyRequest) SetPassword(v string) *CreateClientKeyRequest {
 }
 
 type CreateClientKeyResponseBody struct {
-	ClientKeyId    *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
-	KeyAlgorithm   *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	NotAfter       *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	NotBefore      *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	ClientKeyId *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
+	// The ID of the client key.
+	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
+	// The beginning of the validity period of the client key.
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The private key of the client key.
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The algorithm that is used to encrypt the private key of the client key. Currently, only RSA\_2048 is supported.
 	PrivateKeyData *string `json:"PrivateKeyData,omitempty" xml:"PrivateKeyData,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the validity period of the client key.
+	//
+	// Specify the time in the ISO 8601 standard. The time must be in UTC. The time must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
+	// >
+	//
+	// *   If you do not configure NotBefore, the default value is the time when the client key was created.
+	// *   If you configure NotBefore, you must configure NotAfter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateClientKeyResponseBody) String() string {
@@ -1596,67 +1640,69 @@ func (s *CreateClientKeyResponse) SetBody(v *CreateClientKeyResponseBody) *Creat
 }
 
 type CreateKeyRequest struct {
-	// The ID of the dedicated KMS instance.
+	// The ID of the KMS instance.
+	//
+	// > You must specify this parameter if you need to create a key for a KMS instance. If you need to create a default key of the CMK type, you do not need to specify this parameter.
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The description of the CMK.
+	// The description of the key.
 	//
 	// The description can be 0 to 8,192 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable automatic key rotation. Valid values:
 	//
-	// *   true
-	// *   false
+	// - true
+	// - false (default)
 	//
-	// Default value: false.
-	//
-	// >  If the Origin parameter is set to EXTERNAL or the KeySpec parameter is set to an asymmetric CMK type, automatic key rotation is not supported.
+	// This parameter is valid only when the key belongs to an instance type that supports automatic rotation. For more information, see [Key rotation](~~2358146~~).
 	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
-	// The type of the CMK. Valid values:
+	// The key specification. The valid values vary based on the KMS instance type. For more information, see [Overview](~~480159~~).
 	//
-	// *   Aliyun_AES\_256
-	// *   Aliyun_AES\_128
-	// *   Aliyun_AES\_192
-	// *   Aliyun_SM4
-	// *   RSA\_2048
-	// *   RSA\_3072
-	// *   EC_P256
-	// *   EC_P256K
-	// *   EC_SM2
-	//
-	// > * The default type of the CMK is Aliyun\_AES\_256.
-	// > * Only Dedicated KMS supports Aliyun\_AES\_128 and Aliyun\_AES\_192.
+	// > If you do not specify a value for this parameter, the default key specification is Aliyun_AES_256.
 	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	// The usage of the CMK. Valid values:
+	// The usage of the key. Valid values:
 	//
-	// *   ENCRYPT/DECRYPT: encrypts or decrypts data.
-	// *   SIGN/VERIFY: generates or verifies a digital signature.
+	// - ENCRYPT/DECRYPT
+	// - SIGN/VERIFY
 	//
-	// If the CMK supports signature verification, the default value is SIGN/VERIFY. If the CMK does not support signature verification, the default value is ENCRYPT/DECRYPT.
+	// If the key supports signing and verification, the default value is SIGN/VERIFY. If the key does not support signing and verification, the default value is ENCRYPT/DECRYPT.
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The source of key material. Valid values:
+	// The key material origin. Valid values:
 	//
-	// *   Aliyun_KMS (default value)
-	// *   EXTERNAL
+	// - Aliyun_KMS (default): KMS generates key material.
+	// - EXTERNAL: You import key material.
 	//
-	// > * The value of this parameter is case-sensitive.
-	// > * If you set the KeySpec parameter to an asymmetric CMK type, you are not allowed to set the Origin parameter to EXTERNAL.
-	// > * If you set the Origin parameter to EXTERNAL, you must import key material. For more information, see [Import key material](~~68523~~).
+	//
+	// > - The value of this parameter is case-sensitive.
+	// > - Default keys of the customer master key (CMK) type support Aliyun_KMS and EXTERNAL. Keys in instances of the software key management type support only Aliyun_KMS. Keys in instances of the hardware key management type support Aliyun_KMS and EXTERNAL.
+	// > - If you set Origin to EXTERNAL, you must import key material. For more information, see [Import key material into a symmetric key](~~607841~~) or [Import key material into an asymmetric key](~~608827~~).
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The protection level of the CMK. Valid values:
+	// You do not need to specify this parameter. KMS sets a protection level for your key.
 	//
-	// *   SOFTWARE
-	// *   HSM
+	// The protection level of the key. Valid values:
 	//
-	// Default value: SOFTWARE.
+	// - SOFTWARE
+	// - HSM
 	//
-	// > * The value of this parameter is case-sensitive.
-	// > * Assume that you set this parameter to HSM. If you set the Origin parameter to Aliyun_KMS, the CMK is created in a managed HSM. If you set the Origin parameter to EXTERNAL, you can import an external key into the managed HSM.
+	//
+	// > - If DKMSInstanceId is specified, this parameter does not take effect. If your instance is an instance of the software key management type, set the value to SOFTWARE. If your instance is an instance of the hardware key management type, set the value to HSM.
+	// > - If you do not specify DKMSInstanceId, we recommend that you do not specify this parameter. KMS sets a protection level for your key. If managed hardware security modules (HSMs) exist in the region of your KMS instance, set the value to HSM. If managed HSMs do not exist in the region of your KMS instance, set the value to SOFTWARE. For more information, see Managed HSM overview.
 	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The period of automatic key rotation. Specify the value in the integer\[unit] format. Unit: d (day), h (hour), m (minute), or s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
+	// The period of automatic key rotation. Format: integer[unit]. Unit: d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s represent a seven-day interval.
 	//
-	// >  If you set the EnableAutomaticRotation parameter to true, you must also specify this parameter. If you set the EnableAutomaticRotation parameter to false, you can leave this parameter unspecified.
+	// - For a default key, set the value to 365 days.
+	// - For a software-protected key, set a value that ranges from 7 to 365 days.
+	// - A hardware-protected key does not support automatic rotation.
+	//
+	// > If EnableAutomaticRotation is set to true, this parameter is required.
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tag that is added to the key. A tag consists of a key-value pair.
+	//
+	// You can enter up to 20 tags. Enter multiple tags in the [{"TagKey":"key1","TagValue":"value1"},{"TagKey":"key2","TagValue":"value2"},..] format.
+	//
+	// Each tag key or tag value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+	//
+	// > The tag key cannot start with aliyun or acs:.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateKeyRequest) String() string {
@@ -1713,7 +1759,7 @@ func (s *CreateKeyRequest) SetTags(v string) *CreateKeyRequest {
 }
 
 type CreateKeyResponseBody struct {
-	// The metadata of the CMK.
+	// The metadata of the key.
 	KeyMetadata *CreateKeyResponseBodyKeyMetadata `json:"KeyMetadata,omitempty" xml:"KeyMetadata,omitempty" type:"Struct"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1738,62 +1784,57 @@ func (s *CreateKeyResponseBody) SetRequestId(v string) *CreateKeyResponseBody {
 }
 
 type CreateKeyResponseBodyKeyMetadata struct {
-	// The Alibaba Cloud Resource Name (ARN) of the CMK.
+	// The Alibaba Cloud Resource Name (ARN) of the key.
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// Indicates whether automatic key rotation is enabled. Valid values:
+	// The status of automatic key rotation. Valid values:
 	//
-	// *   Enabled: Automatic key rotation is enabled.
-	// *   Disabled: Automatic key rotation is disabled.
-	// *   Suspended: Automatic key rotation is suspended. For more information, see [Automatic key rotation](~~134270~~).
-	//
-	// >  Automatic key rotation is available only for symmetric CMKs.
+	// - Enabled
+	// - Disabled
+	// - Suspended
 	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	// The date and time when the CMK was created. The time is displayed in UTC.
+	// The date and time (UTC) when the key was created.
 	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
-	// The creator of the CMK.
+	// The user who created the key.
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The ID of the dedicated KMS instance.
+	// The ID of the KMS instance.
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The time when the CMK is scheduled for deletion.
+	// The time when the key is scheduled for deletion. For more information, see ScheduleKeyDeletion.
 	//
-	// For more information, see [ScheduleKeyDeletion](~~44196~~).
-	//
-	// >  This value is returned only when the value of the KeyState parameter is PendingDeletion.
+	// This parameter is returned only when the value of KeyState is PendingDeletion.
 	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The description of the CMK.
+	// The description of the key.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the CMK. The ID must be globally unique.
+	// The globally unique ID of the key.
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The type of the CMK.
+	// The specification of the key.
 	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	// The status of the CMK.
+	// The status of the key.
 	//
-	// For more information, see [Impact of CMK status on API operations](~~44211~~).
+	// For more information, see [Impacts of key status on API operations](~~44211~~).
 	KeyState *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
-	// The usage of the CMK.
+	// The usage of the key.
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
 	// The time when the last rotation was performed. The time is displayed in UTC.
 	//
-	// For a new CMK, this parameter value is the time when the initial version of the CMK was generated.
+	// For a new key, this parameter value is the time when the initial version of the key was generated.
 	LastRotationDate *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
 	// The time when the key material expires. The time is displayed in UTC.
 	//
 	// If this parameter value is empty, the key material does not expire.
 	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	// The time when the next rotation will be performed.
+	// The time when the key is next rotated.
 	//
-	// >  This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+	// This value is returned only when the value of AutomaticRotation is Enabled or Suspended.
 	NextRotationDate *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
-	// The source of the key material for the CMK.
+	// The key material origin.
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the current primary key version of the symmetric CMK.
-	//
-	// > * The primary key version of a symmetric CMK is an active encryption key. KMS uses the primary key version of a specified CMK to encrypt data.
-	// > * This parameter is unavailable for asymmetric CMKs.
+	// The current primary version identifier of the key.
 	PrimaryKeyVersion *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
-	// The protection level of the CMK.
+	// The protection level of the key.
 	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The period of automatic key rotation. Unit: seconds. The value is in the format of an integer followed by the letter s. For example, if the rotation period is seven days, this parameter is set to 604800s. This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+	// The interval for automatic key rotation. Unit: seconds. The format is an integer value followed by the character s. For example, if the rotation period is seven days, this parameter is set to 604800s.
+	//
+	// This value is returned only when the value of AutomaticRotation is Enabled or Suspended.
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 }
 
@@ -2031,10 +2072,16 @@ func (s *CreateKeyVersionResponse) SetBody(v *CreateKeyVersionResponseBody) *Cre
 }
 
 type CreateNetworkRuleRequest struct {
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the access control rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The private IP address or private CIDR block. Separate multiple items with commas (,).
 	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The network type.
+	//
+	// Only private IP addresses are supported. Set the value to Private.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateNetworkRuleRequest) String() string {
@@ -2066,12 +2113,18 @@ func (s *CreateNetworkRuleRequest) SetType(v string) *CreateNetworkRuleRequest {
 }
 
 type CreateNetworkRuleResponseBody struct {
-	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARN of the access control rule.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the access control rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The private IP address or private CIDR block.
 	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The network type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateNetworkRuleResponseBody) String() string {
@@ -2142,12 +2195,28 @@ func (s *CreateNetworkRuleResponse) SetBody(v *CreateNetworkRuleResponseBody) *C
 }
 
 type CreatePolicyRequest struct {
+	// The name of the access control rule.
+	//
+	// > For more information about how to query created access control rules, see [ListNetworkRules](~~2539433~~).
 	AccessControlRules *string `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	KmsInstance        *string `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Permissions        *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
-	Resources          *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The scope of the permission policy. You need to specify the KMS instance that you want to access.
+	KmsInstance *string `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
+	// The name of the permission policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operations that can be performed. Valid values:
+	//
+	// *   RbacPermission/Template/CryptoServiceKeyUser: allows you to perform cryptographic operations.
+	// *   RbacPermission/Template/CryptoServiceSecretUser: allows you to perform secret-related operations.
+	//
+	// You can select both.
+	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// The key and secret that are allowed to access.
+	//
+	// *   Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\*.
+	// *   Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\*.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
 func (s CreatePolicyRequest) String() string {
@@ -2189,14 +2258,25 @@ func (s *CreatePolicyRequest) SetResources(v string) *CreatePolicyRequest {
 }
 
 type CreatePolicyResponseBody struct {
+	// The name of the access control rule.
 	AccessControlRules *string `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
-	Arn                *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	KmsInstance        *string `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Permissions        *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources          *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The ARN of the permission policy.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The scope of the permission policy.
+	KmsInstance *string `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
+	// The name of the permission policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operations that can be performed.
+	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The key and secret that are allowed to access.
+	//
+	// *   `key/*` indicates that all keys of the KMS instance can be accessed.
+	// *   `secret/*` indicates all secrets of the KMS instance can be accessed.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
 func (s CreatePolicyResponseBody) String() string {
@@ -2923,6 +3003,7 @@ func (s *DeleteAliasResponse) SetBody(v *DeleteAliasResponseBody) *DeleteAliasRe
 }
 
 type DeleteApplicationAccessPointRequest struct {
+	// The name of the AAP that you want to delete.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -2940,6 +3021,7 @@ func (s *DeleteApplicationAccessPointRequest) SetName(v string) *DeleteApplicati
 }
 
 type DeleteApplicationAccessPointResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3051,6 +3133,7 @@ func (s *DeleteCertificateResponse) SetBody(v *DeleteCertificateResponseBody) *D
 }
 
 type DeleteClientKeyRequest struct {
+	// The ID of the client key.
 	ClientKeyId *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
 }
 
@@ -3068,6 +3151,7 @@ func (s *DeleteClientKeyRequest) SetClientKeyId(v string) *DeleteClientKeyReques
 }
 
 type DeleteClientKeyResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3179,6 +3263,7 @@ func (s *DeleteKeyMaterialResponse) SetBody(v *DeleteKeyMaterialResponseBody) *D
 }
 
 type DeleteNetworkRuleRequest struct {
+	// The name of the network access rule that you want to delete.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -3196,6 +3281,7 @@ func (s *DeleteNetworkRuleRequest) SetName(v string) *DeleteNetworkRuleRequest {
 }
 
 type DeleteNetworkRuleResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3242,6 +3328,7 @@ func (s *DeleteNetworkRuleResponse) SetBody(v *DeleteNetworkRuleResponseBody) *D
 }
 
 type DeletePolicyRequest struct {
+	// The name of the permission policy that you want to delete.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -3259,6 +3346,7 @@ func (s *DeletePolicyRequest) SetName(v string) *DeletePolicyRequest {
 }
 
 type DeletePolicyResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3467,6 +3555,7 @@ func (s *DescribeAccountKmsStatusResponse) SetBody(v *DescribeAccountKmsStatusRe
 }
 
 type DescribeApplicationAccessPointRequest struct {
+	// The name of the AAP that you want to query.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -3484,12 +3573,18 @@ func (s *DescribeApplicationAccessPointRequest) SetName(v string) *DescribeAppli
 }
 
 type DescribeApplicationAccessPointResponseBody struct {
-	Arn                  *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ARN of the AAP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The authentication method.
 	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policies             *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the AAP.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The permission policy that is bound to the AAP.
+	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApplicationAccessPointResponseBody) String() string {
@@ -4125,6 +4220,7 @@ func (s *DescribeKeyVersionResponse) SetBody(v *DescribeKeyVersionResponseBody) 
 }
 
 type DescribeNetworkRuleRequest struct {
+	// The name of the access control rule that you want to query.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -4142,11 +4238,16 @@ func (s *DescribeNetworkRuleRequest) SetName(v string) *DescribeNetworkRuleReque
 }
 
 type DescribeNetworkRuleResponseBody struct {
-	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARN of the access control rule.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The private IP address or private CIDR block.
 	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The network type. Only private IP addresses are supported. The value is fixed as Private.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeNetworkRuleResponseBody) String() string {
@@ -4212,6 +4313,7 @@ func (s *DescribeNetworkRuleResponse) SetBody(v *DescribeNetworkRuleResponseBody
 }
 
 type DescribePolicyRequest struct {
+	// The name of the permission policy that you want to query.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -4229,14 +4331,22 @@ func (s *DescribePolicyRequest) SetName(v string) *DescribePolicyRequest {
 }
 
 type DescribePolicyResponseBody struct {
-	AccessControlRules *string   `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
-	Arn                *string   `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	KmsInstance        *string   `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
-	Name               *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Permissions        []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources          []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The network access rule that is associated with the permission policy.
+	AccessControlRules *string `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the permission policy.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The scope of the permission policy.
+	KmsInstance *string `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
+	// The name of the permission policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A list of operations that can be performed.
+	Permissions []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of keys and secrets that are allowed to access.
+	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s DescribePolicyResponseBody) String() string {
@@ -5780,6 +5890,7 @@ func (s *GetCertificateResponse) SetBody(v *GetCertificateResponseBody) *GetCert
 }
 
 type GetClientKeyRequest struct {
+	// The ID of the client key.
 	ClientKeyId *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
 }
 
@@ -5797,15 +5908,26 @@ func (s *GetClientKeyRequest) SetClientKeyId(v string) *GetClientKeyRequest {
 }
 
 type GetClientKeyResponseBody struct {
-	AapName       *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
-	ClientKeyId   *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	KeyAlgorithm  *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	KeyOrigin     *string `json:"KeyOrigin,omitempty" xml:"KeyOrigin,omitempty"`
-	NotAfter      *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	NotBefore     *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The name of the application access point (AAP).
+	AapName *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
+	// The ID of the client key.
+	ClientKeyId *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
+	// The time when the client key was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The private key algorithm of the client key.
+	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
+	// The provider of the client key.
+	//
+	// Currently, only Key Management Service (KMS) is supported. The value is fixed as KMS_PROVIDED.
+	KeyOrigin *string `json:"KeyOrigin,omitempty" xml:"KeyOrigin,omitempty"`
+	// The end of the validity period of the client key.
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The beginning of the validity period of the client key.
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The content of the public key of the client key.
 	PublicKeyData *string `json:"PublicKeyData,omitempty" xml:"PublicKeyData,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetClientKeyResponseBody) String() string {
@@ -5891,6 +6013,7 @@ func (s *GetClientKeyResponse) SetBody(v *GetClientKeyResponseBody) *GetClientKe
 }
 
 type GetKmsInstanceRequest struct {
+	// The ID of the KMS instance that you want to query.
 	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
 }
 
@@ -5908,8 +6031,10 @@ func (s *GetKmsInstanceRequest) SetKmsInstanceId(v string) *GetKmsInstanceReques
 }
 
 type GetKmsInstanceResponseBody struct {
+	// The details of the KMS instance.
 	KmsInstance *GetKmsInstanceResponseBodyKmsInstance `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty" type:"Struct"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetKmsInstanceResponseBody) String() string {
@@ -5931,21 +6056,44 @@ func (s *GetKmsInstanceResponseBody) SetRequestId(v string) *GetKmsInstanceRespo
 }
 
 type GetKmsInstanceResponseBodyKmsInstance struct {
-	BindVpcs              *GetKmsInstanceResponseBodyKmsInstanceBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
-	CaCertificateChainPem *string                                        `json:"CaCertificateChainPem,omitempty" xml:"CaCertificateChainPem,omitempty"`
-	CreateTime            *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndDate               *string                                        `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	InstanceId            *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName          *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	KeyNum                *int64                                         `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
-	SecretNum             *string                                        `json:"SecretNum,omitempty" xml:"SecretNum,omitempty"`
-	Spec                  *int64                                         `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	StartDate             *string                                        `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Status                *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId                 *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcNum                *int64                                         `json:"VpcNum,omitempty" xml:"VpcNum,omitempty"`
-	VswitchIds            *string                                        `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty"`
-	ZoneIds               *string                                        `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
+	// A list of associated VPCs.
+	//
+	// >  If your self-managed applications are deployed in multiple VPCs in the same region, you can associate VPCs with the KMS instance beyond the VPC that you specify when you enable the KMS instance. The VPCs can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. After the configuration is complete, self-managed applications in the VPCs can access the specified KMS instance.
+	BindVpcs *GetKmsInstanceResponseBodyKmsInstanceBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
+	// The content of the certificate authority (CA) certificate of the KMS instance.
+	CaCertificateChainPem *string `json:"CaCertificateChainPem,omitempty" xml:"CaCertificateChainPem,omitempty"`
+	// The time when the KMS instance is created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expiration time of the KMS instance.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The ID of the KMS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the KMS instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The number of keys that can be created for the KMS instance.
+	KeyNum *int64 `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
+	// The number of secrets that can be created for the KMS instance.
+	SecretNum *string `json:"SecretNum,omitempty" xml:"SecretNum,omitempty"`
+	// The computing performance of the KMS instance.
+	Spec *int64 `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The time when the KMS instance is enabled.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The status of the KMS instance. Valid values:
+	//
+	// *   Uninitialized: The KMS instance is not enabled.
+	// *   Connecting: The KMS instance is being connected.
+	// *   Connected: The KMS instance is enabled.
+	// *   Disconnected: The KMS instance is disconnected.
+	// *   Error: The KMS instance is abnormal.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The virtual private cloud (VPC) with which the KMS instance is associated.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The access management quota for the KMS instance.
+	VpcNum *int64 `json:"VpcNum,omitempty" xml:"VpcNum,omitempty"`
+	// The vSwitch in the VPC.
+	VswitchIds *string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty"`
+	// The zone with which the KMS instance is associated.
+	ZoneIds *string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
 }
 
 func (s GetKmsInstanceResponseBodyKmsInstance) String() string {
@@ -6049,9 +6197,13 @@ func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcs) SetBindVpc(v []*GetKmsIn
 }
 
 type GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The region to which the VPC belongs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vSwitch in the VPC.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The Alibaba Cloud account to which the VPC belongs.
 	VpcOwnerId *string `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
 }
 
@@ -7116,8 +7268,10 @@ func (s *ListAliasesByKeyIdResponse) SetBody(v *ListAliasesByKeyIdResponseBody) 
 }
 
 type ListApplicationAccessPointsRequest struct {
+	// The page number. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListApplicationAccessPointsRequest) String() string {
@@ -7139,11 +7293,16 @@ func (s *ListApplicationAccessPointsRequest) SetPageSize(v int32) *ListApplicati
 }
 
 type ListApplicationAccessPointsResponseBody struct {
+	// A list of AAPs.
 	ApplicationAccessPoints *ListApplicationAccessPointsResponseBodyApplicationAccessPoints `json:"ApplicationAccessPoints,omitempty" xml:"ApplicationAccessPoints,omitempty" type:"Struct"`
-	PageNumber              *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId               *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount              *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListApplicationAccessPointsResponseBody) String() string {
@@ -7197,8 +7356,10 @@ func (s *ListApplicationAccessPointsResponseBodyApplicationAccessPoints) SetAppl
 }
 
 type ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint struct {
+	// The authentication method.
 	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the AAP.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint) String() string {
@@ -7249,6 +7410,7 @@ func (s *ListApplicationAccessPointsResponse) SetBody(v *ListApplicationAccessPo
 }
 
 type ListClientKeysRequest struct {
+	// The name of the application access point (AAP).
 	AapName *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
 }
 
@@ -7266,8 +7428,10 @@ func (s *ListClientKeysRequest) SetAapName(v string) *ListClientKeysRequest {
 }
 
 type ListClientKeysResponseBody struct {
+	// A list of client keys.
 	ClientKeys []*ListClientKeysResponseBodyClientKeys `json:"ClientKeys,omitempty" xml:"ClientKeys,omitempty" type:"Repeated"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListClientKeysResponseBody) String() string {
@@ -7289,13 +7453,23 @@ func (s *ListClientKeysResponseBody) SetRequestId(v string) *ListClientKeysRespo
 }
 
 type ListClientKeysResponseBodyClientKeys struct {
-	AapName       *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
-	ClientKeyId   *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	KeyAlgorithm  *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	KeyOrigin     *string `json:"KeyOrigin,omitempty" xml:"KeyOrigin,omitempty"`
-	NotAfter      *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	NotBefore     *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The name of the AAP.
+	AapName *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
+	// The ID of the client key.
+	ClientKeyId *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
+	// The time when the client key was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The private key algorithm of the client key.
+	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
+	// The provider of the client key.
+	//
+	// Currently, only KMS is supported. The value is fixed as KMS_PROVIDED.
+	KeyOrigin *string `json:"KeyOrigin,omitempty" xml:"KeyOrigin,omitempty"`
+	// The end of the validity period of the client key.
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The beginning of the validity period of the client key.
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public key of the client key.
 	PublicKeyData *string `json:"PublicKeyData,omitempty" xml:"PublicKeyData,omitempty"`
 }
 
@@ -7543,11 +7717,61 @@ func (s *ListKeyVersionsResponse) SetBody(v *ListKeyVersionsResponseBody) *ListK
 }
 
 type ListKeysRequest struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The CMK filter. The filter consists of one or more key-value pairs. You can specify a maximum of 10 key-value pairs.
+	//
+	// *   Key
+	//
+	//     *   Description: the property that you want to filter.
+	//
+	//     *   Type: string.
+	//
+	//     *   Valid values:
+	//
+	//         *   KeyState: the status of the CMK.
+	//         *   KeySpec: the type of the CMK.
+	//         *   KeyUsage: the usage of the CMK.
+	//         *   ProtectionLevel: the protection level.
+	//         *   CreatorType: the type of the creator.
+	//
+	// *   Values
+	//
+	//     *   Description: the value to be included after filtering.
+	//
+	//     *   Format: string array.
+	//
+	//     *   Length: 0 to 10.
+	//
+	//     *   Valid values:
+	//
+	//         *   When Key is set to KeyState, the value can be Enabled, Disabled, PendingDeletion, or PendingImport.
+	//
+	//         *   When Key is set to KeySpec, the value can be Aliyun_AES\_256, Aliyun_SM4, RSA\_2048, EC_P256, EC_P256K, or EC_SM2.
+	//
+	//             Note: You can create CMKs of the EC_SM2 or Aliyun_SM4 type only in regions where State Cryptography Administration (SCA)-certified managed HSMs reside. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support EC_SM2 or Aliyun_SM4, the two values are ignored if they are specified.
+	//
+	//         *   When Key is set to KeyUsage, the value can be ENCRYPT/DECRYPT or SIGN/VERIFY. ENCRYPT/DECRYPT indicates that the CMK is used to encrypt and decrypt data. SIGN/VERIFY indicates that the CMK is used to generate and verify digital signatures.
+	//
+	//         *   When Key is set to ProtectionLevel, the value can be SOFTWARE (software) or HSM (hardware).
+	//
+	//             You can set ProtectionLevel to HSM in only specific regions. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support the value HSM, the value is ignored if the value is specified.
+	//
+	//         *   If Key is set to CreatorType, the value can be User or Service. User indicates that CMKs created by the current account are queried. Service indicates that CMKs automatically created by other cloud services authorized by the current account are queried.
+	//
+	// The logical relationship between different keys is AND, and the logical relationship between multiple items in the same key is OR. Example:
+	//
+	// `[ {"Key":"KeyState", "Values":["Enabled","Disabled"]}, {"Key":"KeyState", "Values":["PendingDeletion"]}, {"Key":"KeySpec", "Values":["Aliyun_AES_256"]}]`. In this example, the semantics are:`(KeyState=Enabled OR KeyState=Disabled OR KeyState=PendingDeletion) AND (KeySpec=Aliyun_AES_ 256)`.
 	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	// The page number of the returned page.
+	// The number of the page to return.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -7575,14 +7799,15 @@ func (s *ListKeysRequest) SetPageSize(v int32) *ListKeysRequest {
 }
 
 type ListKeysResponseBody struct {
-	Keys *ListKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
-	// The total number of CMKs.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// An array that consists of the CMKs of the current Alibaba Cloud account in the current region.
+	Keys *ListKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the CMK. The ID must be globally unique.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the CMK.
+	// The total number of CMKs.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7637,8 +7862,10 @@ func (s *ListKeysResponseBodyKeys) SetKey(v []*ListKeysResponseBodyKeysKey) *Lis
 }
 
 type ListKeysResponseBodyKeysKey struct {
+	// The Alibaba Cloud Resource Name (ARN) of the CMK.
 	KeyArn *string `json:"KeyArn,omitempty" xml:"KeyArn,omitempty"`
-	KeyId  *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The ID of the CMK. The ID must be globally unique.
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s ListKeysResponseBodyKeysKey) String() string {
@@ -7689,8 +7916,10 @@ func (s *ListKeysResponse) SetBody(v *ListKeysResponseBody) *ListKeysResponse {
 }
 
 type ListKmsInstancesRequest struct {
+	// The page number. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListKmsInstancesRequest) String() string {
@@ -7712,11 +7941,16 @@ func (s *ListKmsInstancesRequest) SetPageSize(v int32) *ListKmsInstancesRequest 
 }
 
 type ListKmsInstancesResponseBody struct {
+	// A list of KMS instances.
 	KmsInstances *ListKmsInstancesResponseBodyKmsInstances `json:"KmsInstances,omitempty" xml:"KmsInstances,omitempty" type:"Struct"`
-	PageNumber   *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of KMS instances.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListKmsInstancesResponseBody) String() string {
@@ -7770,8 +8004,10 @@ func (s *ListKmsInstancesResponseBodyKmsInstances) SetKmsInstance(v []*ListKmsIn
 }
 
 type ListKmsInstancesResponseBodyKmsInstancesKmsInstance struct {
+	// The ARN of the KMS instance.
 	KmsInstanceArn *string `json:"KmsInstanceArn,omitempty" xml:"KmsInstanceArn,omitempty"`
-	KmsInstanceId  *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+	// The ID of the KMS instance.
+	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
 }
 
 func (s ListKmsInstancesResponseBodyKmsInstancesKmsInstance) String() string {
@@ -7822,8 +8058,10 @@ func (s *ListKmsInstancesResponse) SetBody(v *ListKmsInstancesResponseBody) *Lis
 }
 
 type ListNetworkRulesRequest struct {
+	// The page number. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListNetworkRulesRequest) String() string {
@@ -7845,11 +8083,16 @@ func (s *ListNetworkRulesRequest) SetPageSize(v int32) *ListNetworkRulesRequest 
 }
 
 type ListNetworkRulesResponseBody struct {
+	// A list of access control rules.
 	NetworkRules *ListNetworkRulesResponseBodyNetworkRules `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty" type:"Struct"`
-	PageNumber   *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListNetworkRulesResponseBody) String() string {
@@ -7903,7 +8146,9 @@ func (s *ListNetworkRulesResponseBodyNetworkRules) SetNetworkRule(v []*ListNetwo
 }
 
 type ListNetworkRulesResponseBodyNetworkRulesNetworkRule struct {
+	// The name of the access control rule.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The network type. The value is fixed as Private. Self-managed applications can access KMS instances only over a private virtual private cloud (VPC).
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -7955,8 +8200,10 @@ func (s *ListNetworkRulesResponse) SetBody(v *ListNetworkRulesResponseBody) *Lis
 }
 
 type ListPoliciesRequest struct {
+	// The page number. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListPoliciesRequest) String() string {
@@ -7978,11 +8225,16 @@ func (s *ListPoliciesRequest) SetPageSize(v int32) *ListPoliciesRequest {
 }
 
 type ListPoliciesResponseBody struct {
-	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Policies   *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A list of permission policies.
+	Policies *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPoliciesResponseBody) String() string {
@@ -8036,6 +8288,7 @@ func (s *ListPoliciesResponseBodyPolicies) SetPolicy(v []*ListPoliciesResponseBo
 }
 
 type ListPoliciesResponseBodyPoliciesPolicy struct {
+	// The name of the permission policy.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -8660,11 +8913,25 @@ func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsRe
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// >  If the call does not return all result entries, the value of the NextToken parameter is returned. By default, 200 rows are returned. You can call this operation again and set the value of the parameter to the value of the parameter that is returned in the last call to implement paged query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the resource.
+	//
+	// >  You can call the [DescribeRegions](~~601478~~) to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A list of resource IDs for which you want to query tags. You can enter a maximum of 50 resource IDs.
+	//
+	// Enter multiple resource IDs in the `["ResourceId. 1","ResourceId. 2",...]` format.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of resource whose tags you want to query. Valid value:
+	//
+	// *   key
+	// *   secret
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// A list of tags that you want to query. Valid values of N: 1 to 20.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -8701,7 +8968,15 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. A tag consists of a key-value pair.
+	//
+	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+	//
+	// >  The key cannot start with aliyun or acs:.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. A tag consists of a key-value pair.
+	//
+	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8724,8 +8999,14 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// *   If NextToken is empty ("NextToken": ""), no next page exists.
+	// *   If NextToken is not empty, the next query is required, and the value is the token used to start the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -8770,10 +9051,14 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -9673,10 +9958,23 @@ func (s *TagResourceResponse) SetBody(v *TagResourceResponseBody) *TagResourceRe
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The region ID of the resource.
+	//
+	// >  You can call the [DescribeRegions](~~601478~~) to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the resources to which you want to add tags. You can enter a maximum of 50 resource IDs.
+	//
+	// Enter multiple resource IDs in the `["ResourceId. 1","ResourceId. 2",...]` format.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource to which you want to add tags. Valid values:
+	//
+	// *   key
+	// *   secret
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// A list of tags. You can enter up to 20 tags.
+	//
+	// A tag consists of a key-value pair. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -9708,7 +10006,19 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. A tag consists of a key-value pair.
+	//
+	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+	//
+	// Each key can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (\_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+	//
+	// >  The key cannot start with aliyun or acs:.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. A tag consists of a key-value pair.
+	//
+	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+	//
+	// Each value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (\_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9731,6 +10041,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9859,11 +10170,32 @@ func (s *UntagResourceResponse) SetBody(v *UntagResourceResponseBody) *UntagReso
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// Specifies whether to remove all tags from resources. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	//
+	// >  This parameter takes effect only when you specify an empty tag key.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The region ID of the resource.
+	//
+	// >  You can call the [DescribeRegions](~~601478~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the resources from which you want to remove tags. You can enter up to 50 resource IDs.
+	//
+	// Enter multiple resource IDs in the `["ResourceId.1","ResourceId.2",...]` format.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource from which you want to remove tags. Valid values:
+	//
+	// *   key
+	// *   secret
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The keys of the tags that you want to remove. You can enter up to 20 tag keys.
+	//
+	// Enter multiple tag keys in the `["key.1","key.2",...]` format.
+	//
+	// >  The tag key cannot start with aliyun or acs:.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -9900,6 +10232,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10020,9 +10353,13 @@ func (s *UpdateAliasResponse) SetBody(v *UpdateAliasResponseBody) *UpdateAliasRe
 }
 
 type UpdateApplicationAccessPointRequest struct {
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policies    *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
+	// The name of the AAP that you want to update.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The permission policy that you want to update.
+	// > You can associate up to three permission policies with each AAP.
+	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 }
 
 func (s UpdateApplicationAccessPointRequest) String() string {
@@ -10049,6 +10386,7 @@ func (s *UpdateApplicationAccessPointRequest) SetPolicies(v string) *UpdateAppli
 }
 
 type UpdateApplicationAccessPointResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10247,7 +10585,16 @@ func (s *UpdateKeyDescriptionResponse) SetBody(v *UpdateKeyDescriptionResponseBo
 }
 
 type UpdateKmsInstanceBindVpcRequest struct {
-	BindVpcs      *string `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty"`
+	// The VPC configuration. The configuration of each VPC contains the following content:
+	//
+	// *   VpcId: the ID of the VPC.
+	// *   VSwitchId: the vSwitch in the VPC.
+	// *   RegionID: the ID of the region to which the VPC belongs.
+	// *   VpcOwnerId: the Alibaba Cloud account to which the VPC belongs.
+	//
+	// Format: `[{"VpcId":"${VpcId}","VSwitchId":"${VSwitchId}","RegionId":"${RegionId}","VpcOwnerId":${VpcOwnerId}},..]`.
+	BindVpcs *string `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty"`
+	// The ID of the KMS instance.
 	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
 }
 
@@ -10270,6 +10617,7 @@ func (s *UpdateKmsInstanceBindVpcRequest) SetKmsInstanceId(v string) *UpdateKmsI
 }
 
 type UpdateKmsInstanceBindVpcResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10316,8 +10664,11 @@ func (s *UpdateKmsInstanceBindVpcResponse) SetBody(v *UpdateKmsInstanceBindVpcRe
 }
 
 type UpdateNetworkRuleRequest struct {
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description after the update.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the access control rule that you want to update.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The private IP address or CIDR block after the update. Separate multiple items with commas (,).
 	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
 }
 
@@ -10345,6 +10696,7 @@ func (s *UpdateNetworkRuleRequest) SetSourcePrivateIp(v string) *UpdateNetworkRu
 }
 
 type UpdateNetworkRuleResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10391,11 +10743,26 @@ func (s *UpdateNetworkRuleResponse) SetBody(v *UpdateNetworkRuleResponseBody) *U
 }
 
 type UpdatePolicyRequest struct {
+	// The access control rule.
+	//
+	// > For more information about how to query created access control rules, see [ListNetworkRules](~~2539433~~).
 	AccessControlRules *string `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Permissions        *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
-	Resources          *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission policy that you want to update.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operations that are supported by the updated policy. Valid values:
+	//
+	// *   RbacPermission/Template/CryptoServiceKeyUser: allows you to perform cryptographic operations.
+	// *   RbacPermission/Template/CryptoServiceSecretUser: allows you to perform secret-related operations.
+	//
+	// You can select both.
+	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// The key and secret that are allowed to access after the update.
+	//
+	// *   Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\*.
+	// *   Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\*.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
 func (s UpdatePolicyRequest) String() string {
@@ -10432,6 +10799,7 @@ func (s *UpdatePolicyRequest) SetResources(v string) *UpdatePolicyRequest {
 }
 
 type UpdatePolicyResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11759,6 +12127,14 @@ func (client *Client) CertificatePublicKeyVerify(request *CertificatePublicKeyVe
 	return _result, _err
 }
 
+/**
+ * ### [](#)Limits
+ * You can enable only instances of the software key management type. You cannot enable instances of the hardware key management type.
+ *
+ * @param request ConnectKmsInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ConnectKmsInstanceResponse
+ */
 func (client *Client) ConnectKmsInstanceWithOptions(request *ConnectKmsInstanceRequest, runtime *util.RuntimeOptions) (_result *ConnectKmsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11808,6 +12184,13 @@ func (client *Client) ConnectKmsInstanceWithOptions(request *ConnectKmsInstanceR
 	return _result, _err
 }
 
+/**
+ * ### [](#)Limits
+ * You can enable only instances of the software key management type. You cannot enable instances of the hardware key management type.
+ *
+ * @param request ConnectKmsInstanceRequest
+ * @return ConnectKmsInstanceResponse
+ */
 func (client *Client) ConnectKmsInstance(request *ConnectKmsInstanceRequest) (_result *ConnectKmsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConnectKmsInstanceResponse{}
@@ -11884,6 +12267,17 @@ func (client *Client) CreateAlias(request *CreateAliasRequest) (_result *CreateA
 	return _result, _err
 }
 
+/**
+ * To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based AAP:
+ * 1.Create a network access rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](~~2539407~~).
+ * 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind network access rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+ * 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. This topic describes how to create an AAP.
+ * 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+ *
+ * @param request CreateApplicationAccessPointRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateApplicationAccessPointResponse
+ */
 func (client *Client) CreateApplicationAccessPointWithOptions(request *CreateApplicationAccessPointRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationAccessPointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11929,6 +12323,16 @@ func (client *Client) CreateApplicationAccessPointWithOptions(request *CreateApp
 	return _result, _err
 }
 
+/**
+ * To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based AAP:
+ * 1.Create a network access rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](~~2539407~~).
+ * 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind network access rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+ * 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. This topic describes how to create an AAP.
+ * 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+ *
+ * @param request CreateApplicationAccessPointRequest
+ * @return CreateApplicationAccessPointResponse
+ */
 func (client *Client) CreateApplicationAccessPoint(request *CreateApplicationAccessPointRequest) (_result *CreateApplicationAccessPointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApplicationAccessPointResponse{}
@@ -12017,6 +12421,19 @@ func (client *Client) CreateCertificate(request *CreateCertificateRequest) (_res
 	return _result, _err
 }
 
+/**
+ * To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
+ * 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](~~2539407~~).
+ * 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+ * 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+ * 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP.
+ * ### Precautions
+ * A client key has a validity period. After a client key expires, applications into which the client key is integrated cannot access the required KMS instance. You must replace the client key before the client key expires. We recommend that you delete the expired client key in KMS after the new client key is used.
+ *
+ * @param request CreateClientKeyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateClientKeyResponse
+ */
 func (client *Client) CreateClientKeyWithOptions(request *CreateClientKeyRequest, runtime *util.RuntimeOptions) (_result *CreateClientKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12062,6 +12479,18 @@ func (client *Client) CreateClientKeyWithOptions(request *CreateClientKeyRequest
 	return _result, _err
 }
 
+/**
+ * To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
+ * 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](~~2539407~~).
+ * 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+ * 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+ * 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP.
+ * ### Precautions
+ * A client key has a validity period. After a client key expires, applications into which the client key is integrated cannot access the required KMS instance. You must replace the client key before the client key expires. We recommend that you delete the expired client key in KMS after the new client key is used.
+ *
+ * @param request CreateClientKeyRequest
+ * @return CreateClientKeyResponse
+ */
 func (client *Client) CreateClientKey(request *CreateClientKeyRequest) (_result *CreateClientKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateClientKeyResponse{}
@@ -12074,21 +12503,7 @@ func (client *Client) CreateClientKey(request *CreateClientKeyRequest) (_result 
 }
 
 /**
- * A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
- * The following table describes different types of CMKs and the operations that are supported by the CMKs.
- * | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
- * | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
- * | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
- * | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
- * | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
- * | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
- * | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
- * | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
- * | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
- * | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
- * | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
- * > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
- * > - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
+ * KMS supports common symmetric keys and asymmetric keys. For more information, see [Key types and specifications](~~480161~~).
  *
  * @param request CreateKeyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12160,21 +12575,7 @@ func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *u
 }
 
 /**
- * A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
- * The following table describes different types of CMKs and the operations that are supported by the CMKs.
- * | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
- * | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
- * | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
- * | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
- * | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
- * | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
- * | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
- * | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
- * | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
- * | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
- * | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
- * > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
- * > - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
+ * KMS supports common symmetric keys and asymmetric keys. For more information, see [Key types and specifications](~~480161~~).
  *
  * @param request CreateKeyRequest
  * @return CreateKeyResponse
@@ -12255,6 +12656,17 @@ func (client *Client) CreateKeyVersion(request *CreateKeyVersionRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a KMS instance. The following process shows how to create a client key-based application access point (AAP):
+ * 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance.
+ * 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+ * 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+ * 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+ *
+ * @param request CreateNetworkRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateNetworkRuleResponse
+ */
 func (client *Client) CreateNetworkRuleWithOptions(request *CreateNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12300,6 +12712,16 @@ func (client *Client) CreateNetworkRuleWithOptions(request *CreateNetworkRuleReq
 	return _result, _err
 }
 
+/**
+ * To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a KMS instance. The following process shows how to create a client key-based application access point (AAP):
+ * 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance.
+ * 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+ * 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+ * 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+ *
+ * @param request CreateNetworkRuleRequest
+ * @return CreateNetworkRuleResponse
+ */
 func (client *Client) CreateNetworkRule(request *CreateNetworkRuleRequest) (_result *CreateNetworkRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNetworkRuleResponse{}
@@ -12311,6 +12733,17 @@ func (client *Client) CreateNetworkRule(request *CreateNetworkRuleRequest) (_res
 	return _result, _err
 }
 
+/**
+ * To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
+ * 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](~~2539407~~).
+ * 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets.
+ * 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+ * 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+ *
+ * @param request CreatePolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreatePolicyResponse
+ */
 func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12364,6 +12797,16 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 	return _result, _err
 }
 
+/**
+ * To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
+ * 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](~~2539407~~).
+ * 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets.
+ * 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+ * 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+ *
+ * @param request CreatePolicyRequest
+ * @return CreatePolicyResponse
+ */
 func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePolicyResponse{}
@@ -12588,6 +13031,13 @@ func (client *Client) DeleteAlias(request *DeleteAliasRequest) (_result *DeleteA
 	return _result, _err
 }
 
+/**
+ * Before you delete an AAP, make sure that the AAP is no longer in use. If you delete an AAP that is in use, applications that use the AAP cannot access Key Management Service (KMS). Exercise caution when you delete an AAP.
+ *
+ * @param request DeleteApplicationAccessPointRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteApplicationAccessPointResponse
+ */
 func (client *Client) DeleteApplicationAccessPointWithOptions(request *DeleteApplicationAccessPointRequest, runtime *util.RuntimeOptions) (_result *DeleteApplicationAccessPointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12621,6 +13071,12 @@ func (client *Client) DeleteApplicationAccessPointWithOptions(request *DeleteApp
 	return _result, _err
 }
 
+/**
+ * Before you delete an AAP, make sure that the AAP is no longer in use. If you delete an AAP that is in use, applications that use the AAP cannot access Key Management Service (KMS). Exercise caution when you delete an AAP.
+ *
+ * @param request DeleteApplicationAccessPointRequest
+ * @return DeleteApplicationAccessPointResponse
+ */
 func (client *Client) DeleteApplicationAccessPoint(request *DeleteApplicationAccessPointRequest) (_result *DeleteApplicationAccessPointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApplicationAccessPointResponse{}
@@ -12691,6 +13147,13 @@ func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_res
 	return _result, _err
 }
 
+/**
+ * Before you delete a client key, make sure that the client key is no longer in use. If you delete a client key that is in use, applications that use the client key cannot access Key Management Service (KMS). Exercise caution when you delete a client key.
+ *
+ * @param request DeleteClientKeyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteClientKeyResponse
+ */
 func (client *Client) DeleteClientKeyWithOptions(request *DeleteClientKeyRequest, runtime *util.RuntimeOptions) (_result *DeleteClientKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12724,6 +13187,12 @@ func (client *Client) DeleteClientKeyWithOptions(request *DeleteClientKeyRequest
 	return _result, _err
 }
 
+/**
+ * Before you delete a client key, make sure that the client key is no longer in use. If you delete a client key that is in use, applications that use the client key cannot access Key Management Service (KMS). Exercise caution when you delete a client key.
+ *
+ * @param request DeleteClientKeyRequest
+ * @return DeleteClientKeyResponse
+ */
 func (client *Client) DeleteClientKey(request *DeleteClientKeyRequest) (_result *DeleteClientKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClientKeyResponse{}
@@ -12796,6 +13265,13 @@ func (client *Client) DeleteKeyMaterial(request *DeleteKeyMaterialRequest) (_res
 	return _result, _err
 }
 
+/**
+ * Before you delete a network access rule, make sure that the network access rule is not bound to permission policies. Otherwise, related applications cannot access Key Management Service (KMS).
+ *
+ * @param request DeleteNetworkRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteNetworkRuleResponse
+ */
 func (client *Client) DeleteNetworkRuleWithOptions(request *DeleteNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12829,6 +13305,12 @@ func (client *Client) DeleteNetworkRuleWithOptions(request *DeleteNetworkRuleReq
 	return _result, _err
 }
 
+/**
+ * Before you delete a network access rule, make sure that the network access rule is not bound to permission policies. Otherwise, related applications cannot access Key Management Service (KMS).
+ *
+ * @param request DeleteNetworkRuleRequest
+ * @return DeleteNetworkRuleResponse
+ */
 func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_result *DeleteNetworkRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNetworkRuleResponse{}
@@ -12840,6 +13322,13 @@ func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_res
 	return _result, _err
 }
 
+/**
+ * Before you delete a permission policy, make sure that the permission policy is not associated with application access points (AAPs). Otherwise, related applications cannot access Key Management Service (KMS).
+ *
+ * @param request DeletePolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeletePolicyResponse
+ */
 func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12873,6 +13362,12 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 	return _result, _err
 }
 
+/**
+ * Before you delete a permission policy, make sure that the permission policy is not associated with application access points (AAPs). Otherwise, related applications cannot access Key Management Service (KMS).
+ *
+ * @param request DeletePolicyRequest
+ * @return DeletePolicyResponse
+ */
 func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *DeletePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePolicyResponse{}
@@ -13291,6 +13786,14 @@ func (client *Client) DescribePolicy(request *DescribePolicyRequest) (_result *D
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Kms\\&api=DescribeRegions\\&type=RPC\\&version=2016-01-20)
+ *
+ * @param request DescribeRegionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeRegionsResponse
+ */
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -13313,6 +13816,12 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Kms\\&api=DescribeRegions\\&type=RPC\\&version=2016-01-20)
+ *
+ * @return DescribeRegionsResponse
+ */
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -15684,6 +16193,13 @@ func (client *Client) TagResource(request *TagResourceRequest) (_result *TagReso
 	return _result, _err
 }
 
+/**
+ * You can add multiple tags to multiple keys or multiple secrets at a time.
+ *
+ * @param request TagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15729,6 +16245,12 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+/**
+ * You can add multiple tags to multiple keys or multiple secrets at a time.
+ *
+ * @param request TagResourcesRequest
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -15813,6 +16335,14 @@ func (client *Client) UntagResource(request *UntagResourceRequest) (_result *Unt
 	return _result, _err
 }
 
+/**
+ * You can remove multiple tags from multiple keys or multiple secrets at a time. You cannot remove tags that start with aliyun or acs:.
+ * If you enter multiple tag keys in the request parameters and only some of the tag keys are associated with resources, the operation can be called and the tags whose keys are associated with resources are removed from the resources.
+ *
+ * @param request UntagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UntagResourcesResponse
+ */
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15862,6 +16392,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+/**
+ * You can remove multiple tags from multiple keys or multiple secrets at a time. You cannot remove tags that start with aliyun or acs:.
+ * If you enter multiple tag keys in the request parameters and only some of the tag keys are associated with resources, the operation can be called and the tags whose keys are associated with resources are removed from the resources.
+ *
+ * @param request UntagResourcesRequest
+ * @return UntagResourcesResponse
+ */
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -15921,6 +16458,13 @@ func (client *Client) UpdateAlias(request *UpdateAliasRequest) (_result *UpdateA
 	return _result, _err
 }
 
+/**
+ * The update takes effect immediately after an AAP information is updated. Exercise caution when you perform this operation. You can update the description of an AAP and the permission policies that are associated with the AAP. You cannot update the name of the AAP.
+ *
+ * @param request UpdateApplicationAccessPointRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateApplicationAccessPointResponse
+ */
 func (client *Client) UpdateApplicationAccessPointWithOptions(request *UpdateApplicationAccessPointRequest, runtime *util.RuntimeOptions) (_result *UpdateApplicationAccessPointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15962,6 +16506,12 @@ func (client *Client) UpdateApplicationAccessPointWithOptions(request *UpdateApp
 	return _result, _err
 }
 
+/**
+ * The update takes effect immediately after an AAP information is updated. Exercise caution when you perform this operation. You can update the description of an AAP and the permission policies that are associated with the AAP. You cannot update the name of the AAP.
+ *
+ * @param request UpdateApplicationAccessPointRequest
+ * @return UpdateApplicationAccessPointResponse
+ */
 func (client *Client) UpdateApplicationAccessPoint(request *UpdateApplicationAccessPointRequest) (_result *UpdateApplicationAccessPointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateApplicationAccessPointResponse{}
@@ -16095,6 +16645,15 @@ func (client *Client) UpdateKeyDescription(request *UpdateKeyDescriptionRequest)
 	return _result, _err
 }
 
+/**
+ * If your own applications are deployed in multiple VPCs in the same region, you can associate the VPCs except the VPC in which the KMS instance resides with the KMS instance. This topic describes how to configure the VPCs.
+ * The VPCs can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. After the configuration is complete, the applications in these VPCs can access the KMS instance.
+ * > If the VPCs belong to different Alibaba Cloud accounts, you must first configure resource sharing to share the vSwitches of other Alibaba Cloud accounts with the Alibaba Cloud account to which the KMS instance belongs. For more information, see [Access a KMS instance from multiple VPCs in the same region](~~2393236~~).
+ *
+ * @param request UpdateKmsInstanceBindVpcRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateKmsInstanceBindVpcResponse
+ */
 func (client *Client) UpdateKmsInstanceBindVpcWithOptions(request *UpdateKmsInstanceBindVpcRequest, runtime *util.RuntimeOptions) (_result *UpdateKmsInstanceBindVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16124,6 +16683,14 @@ func (client *Client) UpdateKmsInstanceBindVpcWithOptions(request *UpdateKmsInst
 	return _result, _err
 }
 
+/**
+ * If your own applications are deployed in multiple VPCs in the same region, you can associate the VPCs except the VPC in which the KMS instance resides with the KMS instance. This topic describes how to configure the VPCs.
+ * The VPCs can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. After the configuration is complete, the applications in these VPCs can access the KMS instance.
+ * > If the VPCs belong to different Alibaba Cloud accounts, you must first configure resource sharing to share the vSwitches of other Alibaba Cloud accounts with the Alibaba Cloud account to which the KMS instance belongs. For more information, see [Access a KMS instance from multiple VPCs in the same region](~~2393236~~).
+ *
+ * @param request UpdateKmsInstanceBindVpcRequest
+ * @return UpdateKmsInstanceBindVpcResponse
+ */
 func (client *Client) UpdateKmsInstanceBindVpc(request *UpdateKmsInstanceBindVpcRequest) (_result *UpdateKmsInstanceBindVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateKmsInstanceBindVpcResponse{}
@@ -16135,6 +16702,14 @@ func (client *Client) UpdateKmsInstanceBindVpc(request *UpdateKmsInstanceBindVpc
 	return _result, _err
 }
 
+/**
+ * - You can update only private IP addresses and description of an access control rule. You cannot update the name and network type of an access control rule.
+ * - Updating an access control rule affects all permission policies that are bound to the access control rule. Exercise caution when you perform this operation.
+ *
+ * @param request UpdateNetworkRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateNetworkRuleResponse
+ */
 func (client *Client) UpdateNetworkRuleWithOptions(request *UpdateNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateNetworkRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16176,6 +16751,13 @@ func (client *Client) UpdateNetworkRuleWithOptions(request *UpdateNetworkRuleReq
 	return _result, _err
 }
 
+/**
+ * - You can update only private IP addresses and description of an access control rule. You cannot update the name and network type of an access control rule.
+ * - Updating an access control rule affects all permission policies that are bound to the access control rule. Exercise caution when you perform this operation.
+ *
+ * @param request UpdateNetworkRuleRequest
+ * @return UpdateNetworkRuleResponse
+ */
 func (client *Client) UpdateNetworkRule(request *UpdateNetworkRuleRequest) (_result *UpdateNetworkRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateNetworkRuleResponse{}
@@ -16187,6 +16769,14 @@ func (client *Client) UpdateNetworkRule(request *UpdateNetworkRuleRequest) (_res
 	return _result, _err
 }
 
+/**
+ * - You can update the role-based access control (RBAC) permissions, accessible resources, access control rules, and description of a permission policy. You cannot update the name or scope of a permission policy.
+ * - Updating a permission policy affects all application access points (AAPs) that are bound to the permission policy. Exercise caution when you perform this operation.
+ *
+ * @param request UpdatePolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdatePolicyResponse
+ */
 func (client *Client) UpdatePolicyWithOptions(request *UpdatePolicyRequest, runtime *util.RuntimeOptions) (_result *UpdatePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16236,6 +16826,13 @@ func (client *Client) UpdatePolicyWithOptions(request *UpdatePolicyRequest, runt
 	return _result, _err
 }
 
+/**
+ * - You can update the role-based access control (RBAC) permissions, accessible resources, access control rules, and description of a permission policy. You cannot update the name or scope of a permission policy.
+ * - Updating a permission policy affects all application access points (AAPs) that are bound to the permission policy. Exercise caution when you perform this operation.
+ *
+ * @param request UpdatePolicyRequest
+ * @return UpdatePolicyResponse
+ */
 func (client *Client) UpdatePolicy(request *UpdatePolicyRequest) (_result *UpdatePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePolicyResponse{}
