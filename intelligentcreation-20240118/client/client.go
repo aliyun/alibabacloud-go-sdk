@@ -363,7 +363,9 @@ func (s *ActualDeductResourcesResponse) SetBody(v *ActualDeductResourceResult) *
 }
 
 type CopywritingQARequest struct {
-	AccountId    *string                      `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AccountId *string                          `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	Histories []*CopywritingQARequestHistories `json:"histories,omitempty" xml:"histories,omitempty" type:"Repeated"`
+	// Deprecated
 	History      *CopywritingQARequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Struct"`
 	Question     *string                      `json:"question,omitempty" xml:"question,omitempty"`
 	SessionId    *string                      `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
@@ -381,6 +383,11 @@ func (s CopywritingQARequest) GoString() string {
 
 func (s *CopywritingQARequest) SetAccountId(v string) *CopywritingQARequest {
 	s.AccountId = &v
+	return s
+}
+
+func (s *CopywritingQARequest) SetHistories(v []*CopywritingQARequestHistories) *CopywritingQARequest {
+	s.Histories = v
 	return s
 }
 
@@ -409,6 +416,29 @@ func (s *CopywritingQARequest) SetSubAccountId(v string) *CopywritingQARequest {
 	return s
 }
 
+type CopywritingQARequestHistories struct {
+	Bot  *string `json:"bot,omitempty" xml:"bot,omitempty"`
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s CopywritingQARequestHistories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopywritingQARequestHistories) GoString() string {
+	return s.String()
+}
+
+func (s *CopywritingQARequestHistories) SetBot(v string) *CopywritingQARequestHistories {
+	s.Bot = &v
+	return s
+}
+
+func (s *CopywritingQARequestHistories) SetUser(v string) *CopywritingQARequestHistories {
+	s.User = &v
+	return s
+}
+
 type CopywritingQARequestHistory struct {
 	Bot  *string `json:"bot,omitempty" xml:"bot,omitempty"`
 	User *string `json:"user,omitempty" xml:"user,omitempty"`
@@ -433,7 +463,9 @@ func (s *CopywritingQARequestHistory) SetUser(v string) *CopywritingQARequestHis
 }
 
 type CopywritingQAShrinkRequest struct {
-	AccountId     *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AccountId       *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	HistoriesShrink *string `json:"histories,omitempty" xml:"histories,omitempty"`
+	// Deprecated
 	HistoryShrink *string `json:"history,omitempty" xml:"history,omitempty"`
 	Question      *string `json:"question,omitempty" xml:"question,omitempty"`
 	SessionId     *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
@@ -451,6 +483,11 @@ func (s CopywritingQAShrinkRequest) GoString() string {
 
 func (s *CopywritingQAShrinkRequest) SetAccountId(v string) *CopywritingQAShrinkRequest {
 	s.AccountId = &v
+	return s
+}
+
+func (s *CopywritingQAShrinkRequest) SetHistoriesShrink(v string) *CopywritingQAShrinkRequest {
+	s.HistoriesShrink = &v
 	return s
 }
 
@@ -872,6 +909,7 @@ func (s *SubmitBulletQuestionsRequest) SetSubAccountId(v string) *SubmitBulletQu
 type SubmitBulletQuestionsRequestQuestions struct {
 	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
 	Id       *string `json:"id,omitempty" xml:"id,omitempty"`
+	Time     *int64  `json:"time,omitempty" xml:"time,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -890,6 +928,11 @@ func (s *SubmitBulletQuestionsRequestQuestions) SetContent(v string) *SubmitBull
 
 func (s *SubmitBulletQuestionsRequestQuestions) SetId(v string) *SubmitBulletQuestionsRequestQuestions {
 	s.Id = &v
+	return s
+}
+
+func (s *SubmitBulletQuestionsRequestQuestions) SetTime(v int64) *SubmitBulletQuestionsRequestQuestions {
+	s.Time = &v
 	return s
 }
 
@@ -1128,6 +1171,10 @@ func (client *Client) CopywritingQAWithOptions(tmpReq *CopywritingQARequest, hea
 	}
 	request := &CopywritingQAShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Histories)) {
+		request.HistoriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Histories, tea.String("histories"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.History)) {
 		request.HistoryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.History, tea.String("history"), tea.String("json"))
 	}
@@ -1135,6 +1182,10 @@ func (client *Client) CopywritingQAWithOptions(tmpReq *CopywritingQARequest, hea
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
 		query["accountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoriesShrink)) {
+		query["histories"] = request.HistoriesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HistoryShrink)) {
