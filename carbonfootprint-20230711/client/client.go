@@ -259,9 +259,11 @@ func (s *GetSummaryDataResponse) SetBody(v *GetSummaryDataResponseBody) *GetSumm
 }
 
 type QueryCarbonTrackRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Group     *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime         *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FilterRDAccount *int32    `json:"FilterRDAccount,omitempty" xml:"FilterRDAccount,omitempty"`
+	Group           *string   `json:"Group,omitempty" xml:"Group,omitempty"`
+	StartTime       *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Uids            []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
 }
 
 func (s QueryCarbonTrackRequest) String() string {
@@ -277,6 +279,11 @@ func (s *QueryCarbonTrackRequest) SetEndTime(v string) *QueryCarbonTrackRequest 
 	return s
 }
 
+func (s *QueryCarbonTrackRequest) SetFilterRDAccount(v int32) *QueryCarbonTrackRequest {
+	s.FilterRDAccount = &v
+	return s
+}
+
 func (s *QueryCarbonTrackRequest) SetGroup(v string) *QueryCarbonTrackRequest {
 	s.Group = &v
 	return s
@@ -284,6 +291,52 @@ func (s *QueryCarbonTrackRequest) SetGroup(v string) *QueryCarbonTrackRequest {
 
 func (s *QueryCarbonTrackRequest) SetStartTime(v string) *QueryCarbonTrackRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *QueryCarbonTrackRequest) SetUids(v []*string) *QueryCarbonTrackRequest {
+	s.Uids = v
+	return s
+}
+
+type QueryCarbonTrackShrinkRequest struct {
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FilterRDAccount *int32  `json:"FilterRDAccount,omitempty" xml:"FilterRDAccount,omitempty"`
+	Group           *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UidsShrink      *string `json:"Uids,omitempty" xml:"Uids,omitempty"`
+}
+
+func (s QueryCarbonTrackShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCarbonTrackShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCarbonTrackShrinkRequest) SetEndTime(v string) *QueryCarbonTrackShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryCarbonTrackShrinkRequest) SetFilterRDAccount(v int32) *QueryCarbonTrackShrinkRequest {
+	s.FilterRDAccount = &v
+	return s
+}
+
+func (s *QueryCarbonTrackShrinkRequest) SetGroup(v string) *QueryCarbonTrackShrinkRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *QueryCarbonTrackShrinkRequest) SetStartTime(v string) *QueryCarbonTrackShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryCarbonTrackShrinkRequest) SetUidsShrink(v string) *QueryCarbonTrackShrinkRequest {
+	s.UidsShrink = &v
 	return s
 }
 
@@ -767,14 +820,24 @@ func (client *Client) GetSummaryData(request *GetSummaryDataRequest) (_result *G
 	return _result, _err
 }
 
-func (client *Client) QueryCarbonTrackWithOptions(request *QueryCarbonTrackRequest, runtime *util.RuntimeOptions) (_result *QueryCarbonTrackResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) QueryCarbonTrackWithOptions(tmpReq *QueryCarbonTrackRequest, runtime *util.RuntimeOptions) (_result *QueryCarbonTrackResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &QueryCarbonTrackShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Uids)) {
+		request.UidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Uids, tea.String("Uids"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterRDAccount)) {
+		query["FilterRDAccount"] = request.FilterRDAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Group)) {
@@ -783,6 +846,10 @@ func (client *Client) QueryCarbonTrackWithOptions(request *QueryCarbonTrackReque
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UidsShrink)) {
+		query["Uids"] = request.UidsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
