@@ -8617,6 +8617,169 @@ func (s *DiagnoseInstanceResponse) SetBody(v *DiagnoseInstanceResponseBody) *Dia
 	return s
 }
 
+type DisableKibanaPvlNetworkResponseBody struct {
+	// request id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DisableKibanaPvlNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableKibanaPvlNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableKibanaPvlNetworkResponseBody) SetRequestId(v string) *DisableKibanaPvlNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisableKibanaPvlNetworkResponseBody) SetResult(v bool) *DisableKibanaPvlNetworkResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DisableKibanaPvlNetworkResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableKibanaPvlNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableKibanaPvlNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableKibanaPvlNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableKibanaPvlNetworkResponse) SetHeaders(v map[string]*string) *DisableKibanaPvlNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableKibanaPvlNetworkResponse) SetStatusCode(v int32) *DisableKibanaPvlNetworkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableKibanaPvlNetworkResponse) SetBody(v *DisableKibanaPvlNetworkResponseBody) *DisableKibanaPvlNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type EnableKibanaPvlNetworkRequest struct {
+	EndpointName   *string                                        `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+	SecurityGroups []*string                                      `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
+	VSwitchIdsZone []*EnableKibanaPvlNetworkRequestVSwitchIdsZone `json:"vSwitchIdsZone,omitempty" xml:"vSwitchIdsZone,omitempty" type:"Repeated"`
+	VpcId          *string                                        `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s EnableKibanaPvlNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableKibanaPvlNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableKibanaPvlNetworkRequest) SetEndpointName(v string) *EnableKibanaPvlNetworkRequest {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *EnableKibanaPvlNetworkRequest) SetSecurityGroups(v []*string) *EnableKibanaPvlNetworkRequest {
+	s.SecurityGroups = v
+	return s
+}
+
+func (s *EnableKibanaPvlNetworkRequest) SetVSwitchIdsZone(v []*EnableKibanaPvlNetworkRequestVSwitchIdsZone) *EnableKibanaPvlNetworkRequest {
+	s.VSwitchIdsZone = v
+	return s
+}
+
+func (s *EnableKibanaPvlNetworkRequest) SetVpcId(v string) *EnableKibanaPvlNetworkRequest {
+	s.VpcId = &v
+	return s
+}
+
+type EnableKibanaPvlNetworkRequestVSwitchIdsZone struct {
+	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	ZoneId    *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s EnableKibanaPvlNetworkRequestVSwitchIdsZone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableKibanaPvlNetworkRequestVSwitchIdsZone) GoString() string {
+	return s.String()
+}
+
+func (s *EnableKibanaPvlNetworkRequestVSwitchIdsZone) SetVswitchId(v string) *EnableKibanaPvlNetworkRequestVSwitchIdsZone {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *EnableKibanaPvlNetworkRequestVSwitchIdsZone) SetZoneId(v string) *EnableKibanaPvlNetworkRequestVSwitchIdsZone {
+	s.ZoneId = &v
+	return s
+}
+
+type EnableKibanaPvlNetworkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s EnableKibanaPvlNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableKibanaPvlNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableKibanaPvlNetworkResponseBody) SetRequestId(v string) *EnableKibanaPvlNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableKibanaPvlNetworkResponseBody) SetResult(v bool) *EnableKibanaPvlNetworkResponseBody {
+	s.Result = &v
+	return s
+}
+
+type EnableKibanaPvlNetworkResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableKibanaPvlNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableKibanaPvlNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableKibanaPvlNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableKibanaPvlNetworkResponse) SetHeaders(v map[string]*string) *EnableKibanaPvlNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableKibanaPvlNetworkResponse) SetStatusCode(v int32) *EnableKibanaPvlNetworkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableKibanaPvlNetworkResponse) SetBody(v *EnableKibanaPvlNetworkResponseBody) *EnableKibanaPvlNetworkResponse {
+	s.Body = v
+	return s
+}
+
 type EstimatedLogstashRestartTimeRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// Specifies whether to forcibly restart the cluster. Default value: false.
@@ -17284,6 +17447,141 @@ func (s *ListKibanaPluginsResponse) SetBody(v *ListKibanaPluginsResponseBody) *L
 	return s
 }
 
+type ListKibanaPvlNetworkResponseBody struct {
+	// request id
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListKibanaPvlNetworkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListKibanaPvlNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKibanaPvlNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListKibanaPvlNetworkResponseBody) SetRequestId(v string) *ListKibanaPvlNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBody) SetResult(v []*ListKibanaPvlNetworkResponseBodyResult) *ListKibanaPvlNetworkResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListKibanaPvlNetworkResponseBodyResult struct {
+	CreateTime     *string                                                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	EndpointId     *string                                                 `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	EndpointName   *string                                                 `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+	EndpointStatus *string                                                 `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
+	PvlId          *string                                                 `json:"pvlId,omitempty" xml:"pvlId,omitempty"`
+	SecurityGroups []*string                                               `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
+	VSwitchIdsZone []*ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone `json:"vSwitchIdsZone,omitempty" xml:"vSwitchIdsZone,omitempty" type:"Repeated"`
+	VpcId          *string                                                 `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s ListKibanaPvlNetworkResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKibanaPvlNetworkResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetCreateTime(v string) *ListKibanaPvlNetworkResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetEndpointId(v string) *ListKibanaPvlNetworkResponseBodyResult {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetEndpointName(v string) *ListKibanaPvlNetworkResponseBodyResult {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetEndpointStatus(v string) *ListKibanaPvlNetworkResponseBodyResult {
+	s.EndpointStatus = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetPvlId(v string) *ListKibanaPvlNetworkResponseBodyResult {
+	s.PvlId = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetSecurityGroups(v []*string) *ListKibanaPvlNetworkResponseBodyResult {
+	s.SecurityGroups = v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetVSwitchIdsZone(v []*ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone) *ListKibanaPvlNetworkResponseBodyResult {
+	s.VSwitchIdsZone = v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResult) SetVpcId(v string) *ListKibanaPvlNetworkResponseBodyResult {
+	s.VpcId = &v
+	return s
+}
+
+type ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone struct {
+	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	ZoneId    *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone) GoString() string {
+	return s.String()
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone) SetVswitchId(v string) *ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone) SetZoneId(v string) *ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone {
+	s.ZoneId = &v
+	return s
+}
+
+type ListKibanaPvlNetworkResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListKibanaPvlNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListKibanaPvlNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKibanaPvlNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListKibanaPvlNetworkResponse) SetHeaders(v map[string]*string) *ListKibanaPvlNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponse) SetStatusCode(v int32) *ListKibanaPvlNetworkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListKibanaPvlNetworkResponse) SetBody(v *ListKibanaPvlNetworkResponseBody) *ListKibanaPvlNetworkResponse {
+	s.Body = v
+	return s
+}
+
 type ListLogstashRequest struct {
 	// rg-acfm2h5vbzd\*\*\*\*
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
@@ -25897,6 +26195,87 @@ func (s *UpdateInstanceSettingsResponse) SetBody(v *UpdateInstanceSettingsRespon
 	return s
 }
 
+type UpdateKibanaPvlNetworkRequest struct {
+	EndpointName   *string   `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+	SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
+	PvlId          *string   `json:"pvlId,omitempty" xml:"pvlId,omitempty"`
+}
+
+func (s UpdateKibanaPvlNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKibanaPvlNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKibanaPvlNetworkRequest) SetEndpointName(v string) *UpdateKibanaPvlNetworkRequest {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *UpdateKibanaPvlNetworkRequest) SetSecurityGroups(v []*string) *UpdateKibanaPvlNetworkRequest {
+	s.SecurityGroups = v
+	return s
+}
+
+func (s *UpdateKibanaPvlNetworkRequest) SetPvlId(v string) *UpdateKibanaPvlNetworkRequest {
+	s.PvlId = &v
+	return s
+}
+
+type UpdateKibanaPvlNetworkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s UpdateKibanaPvlNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKibanaPvlNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKibanaPvlNetworkResponseBody) SetRequestId(v string) *UpdateKibanaPvlNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateKibanaPvlNetworkResponseBody) SetResult(v bool) *UpdateKibanaPvlNetworkResponseBody {
+	s.Result = &v
+	return s
+}
+
+type UpdateKibanaPvlNetworkResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateKibanaPvlNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateKibanaPvlNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKibanaPvlNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKibanaPvlNetworkResponse) SetHeaders(v map[string]*string) *UpdateKibanaPvlNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateKibanaPvlNetworkResponse) SetStatusCode(v int32) *UpdateKibanaPvlNetworkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateKibanaPvlNetworkResponse) SetBody(v *UpdateKibanaPvlNetworkResponseBody) *UpdateKibanaPvlNetworkResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateKibanaSettingsRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// This parameter is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
@@ -31117,6 +31496,100 @@ func (client *Client) DiagnoseInstance(InstanceId *string, request *DiagnoseInst
 	return _result, _err
 }
 
+func (client *Client) DisableKibanaPvlNetworkWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableKibanaPvlNetworkResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableKibanaPvlNetwork"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/disable-kibana-private"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableKibanaPvlNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableKibanaPvlNetwork(InstanceId *string) (_result *DisableKibanaPvlNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DisableKibanaPvlNetworkResponse{}
+	_body, _err := client.DisableKibanaPvlNetworkWithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableKibanaPvlNetworkWithOptions(InstanceId *string, request *EnableKibanaPvlNetworkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableKibanaPvlNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointName)) {
+		body["endpointName"] = request.EndpointName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroups)) {
+		body["securityGroups"] = request.SecurityGroups
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIdsZone)) {
+		body["vSwitchIdsZone"] = request.VSwitchIdsZone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["vpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableKibanaPvlNetwork"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/enable-kibana-private"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableKibanaPvlNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableKibanaPvlNetwork(InstanceId *string, request *EnableKibanaPvlNetworkRequest) (_result *EnableKibanaPvlNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableKibanaPvlNetworkResponse{}
+	_body, _err := client.EnableKibanaPvlNetworkWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EstimatedLogstashRestartTimeWithOptions(InstanceId *string, request *EstimatedLogstashRestartTimeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EstimatedLogstashRestartTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33627,6 +34100,42 @@ func (client *Client) ListKibanaPlugins(InstanceId *string, request *ListKibanaP
 	headers := make(map[string]*string)
 	_result = &ListKibanaPluginsResponse{}
 	_body, _err := client.ListKibanaPluginsWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListKibanaPvlNetworkWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListKibanaPvlNetworkResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListKibanaPvlNetwork"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/get-kibana-private"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListKibanaPvlNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListKibanaPvlNetwork(InstanceId *string) (_result *ListKibanaPvlNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListKibanaPvlNetworkResponse{}
+	_body, _err := client.ListKibanaPvlNetworkWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37262,6 +37771,62 @@ func (client *Client) UpdateInstanceSettings(InstanceId *string, request *Update
 	headers := make(map[string]*string)
 	_result = &UpdateInstanceSettingsResponse{}
 	_body, _err := client.UpdateInstanceSettingsWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateKibanaPvlNetworkWithOptions(InstanceId *string, request *UpdateKibanaPvlNetworkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateKibanaPvlNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PvlId)) {
+		query["pvlId"] = request.PvlId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointName)) {
+		body["endpointName"] = request.EndpointName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroups)) {
+		body["securityGroups"] = request.SecurityGroups
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateKibanaPvlNetwork"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/update-kibana-private"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateKibanaPvlNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateKibanaPvlNetwork(InstanceId *string, request *UpdateKibanaPvlNetworkRequest) (_result *UpdateKibanaPvlNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateKibanaPvlNetworkResponse{}
+	_body, _err := client.UpdateKibanaPvlNetworkWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
