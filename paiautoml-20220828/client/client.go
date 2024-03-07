@@ -1038,6 +1038,272 @@ func (s *CreateHpoExperimentResponse) SetBody(v *CreateHpoExperimentResponseBody
 	return s
 }
 
+type ListHpoExperimentsRequest struct {
+	Accessibility     *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Creator           *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	IncludeConfigData *string `json:"IncludeConfigData,omitempty" xml:"IncludeConfigData,omitempty"`
+	MaxCreateTime     *string `json:"MaxCreateTime,omitempty" xml:"MaxCreateTime,omitempty"`
+	MinCreateTime     *string `json:"MinCreateTime,omitempty" xml:"MinCreateTime,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order             *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy            *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListHpoExperimentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHpoExperimentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHpoExperimentsRequest) SetAccessibility(v string) *ListHpoExperimentsRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetCreator(v string) *ListHpoExperimentsRequest {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetIncludeConfigData(v string) *ListHpoExperimentsRequest {
+	s.IncludeConfigData = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetMaxCreateTime(v string) *ListHpoExperimentsRequest {
+	s.MaxCreateTime = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetMinCreateTime(v string) *ListHpoExperimentsRequest {
+	s.MinCreateTime = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetName(v string) *ListHpoExperimentsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetOrder(v string) *ListHpoExperimentsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetPageNumber(v int32) *ListHpoExperimentsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetPageSize(v int32) *ListHpoExperimentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetSortBy(v string) *ListHpoExperimentsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetStatus(v string) *ListHpoExperimentsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHpoExperimentsRequest) SetWorkspaceId(v string) *ListHpoExperimentsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListHpoExperimentsResponseBody struct {
+	Code        *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Detail      map[string]*string                           `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Experiments []*ListHpoExperimentsResponseBodyExperiments `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
+	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHpoExperimentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHpoExperimentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHpoExperimentsResponseBody) SetCode(v string) *ListHpoExperimentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBody) SetDetail(v map[string]*string) *ListHpoExperimentsResponseBody {
+	s.Detail = v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBody) SetExperiments(v []*ListHpoExperimentsResponseBodyExperiments) *ListHpoExperimentsResponseBody {
+	s.Experiments = v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBody) SetMessage(v string) *ListHpoExperimentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBody) SetRequestId(v string) *ListHpoExperimentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBody) SetTotalCount(v int32) *ListHpoExperimentsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHpoExperimentsResponseBodyExperiments struct {
+	Accessibility   *string            `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	ConfigIni       *string            `json:"ConfigIni,omitempty" xml:"ConfigIni,omitempty"`
+	ConfigYml       *string            `json:"ConfigYml,omitempty" xml:"ConfigYml,omitempty"`
+	Creator         *string            `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Deleted         *bool              `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	Description     *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExperimentId    *string            `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	GmtCreateTime   *string            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	JobType         *string            `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Name            *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	SearchSpace     *string            `json:"SearchSpace,omitempty" xml:"SearchSpace,omitempty"`
+	Status          *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrialCount      *int32             `json:"TrialCount,omitempty" xml:"TrialCount,omitempty"`
+	TrialStatus     map[string]*string `json:"TrialStatus,omitempty" xml:"TrialStatus,omitempty"`
+	WorkspaceId     *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListHpoExperimentsResponseBodyExperiments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHpoExperimentsResponseBodyExperiments) GoString() string {
+	return s.String()
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetAccessibility(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetConfigIni(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.ConfigIni = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetConfigYml(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.ConfigYml = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetCreator(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetDeleted(v bool) *ListHpoExperimentsResponseBodyExperiments {
+	s.Deleted = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetDescription(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.Description = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetExperimentId(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetGmtCreateTime(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetGmtModifiedTime(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetJobType(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetName(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.Name = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetSearchSpace(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.SearchSpace = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetStatus(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetTrialCount(v int32) *ListHpoExperimentsResponseBodyExperiments {
+	s.TrialCount = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetTrialStatus(v map[string]*string) *ListHpoExperimentsResponseBodyExperiments {
+	s.TrialStatus = v
+	return s
+}
+
+func (s *ListHpoExperimentsResponseBodyExperiments) SetWorkspaceId(v string) *ListHpoExperimentsResponseBodyExperiments {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListHpoExperimentsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHpoExperimentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHpoExperimentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHpoExperimentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHpoExperimentsResponse) SetHeaders(v map[string]*string) *ListHpoExperimentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHpoExperimentsResponse) SetStatusCode(v int32) *ListHpoExperimentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHpoExperimentsResponse) SetBody(v *ListHpoExperimentsResponseBody) *ListHpoExperimentsResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1140,6 +1406,96 @@ func (client *Client) CreateHpoExperiment(request *CreateHpoExperimentRequest) (
 	headers := make(map[string]*string)
 	_result = &CreateHpoExperimentResponse{}
 	_body, _err := client.CreateHpoExperimentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHpoExperimentsWithOptions(request *ListHpoExperimentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListHpoExperimentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		query["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Creator)) {
+		query["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeConfigData)) {
+		query["IncludeConfigData"] = request.IncludeConfigData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxCreateTime)) {
+		query["MaxCreateTime"] = request.MaxCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinCreateTime)) {
+		query["MinCreateTime"] = request.MinCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHpoExperiments"),
+		Version:     tea.String("2022-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/automl/v1/hpo/experiments"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHpoExperimentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHpoExperiments(request *ListHpoExperimentsRequest) (_result *ListHpoExperimentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListHpoExperimentsResponse{}
+	_body, _err := client.ListHpoExperimentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
