@@ -3367,6 +3367,171 @@ func (s *ListVirtualHostsResponse) SetBody(v *ListVirtualHostsResponseBody) *Lis
 	return s
 }
 
+type UpdateInstanceRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaxConnections       *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxEipTps            *int64  `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	MaxPrivateTps        *int64  `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
+	ModifyType           *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	QueueCapacity        *int32  `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
+	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
+	StorageSize          *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SupportEip           *bool   `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
+	SupportTracing       *bool   `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	TracingStorageTime   *int32  `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+}
+
+func (s UpdateInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequest) SetClientToken(v string) *UpdateInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetInstanceId(v string) *UpdateInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetInstanceType(v string) *UpdateInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetMaxConnections(v int32) *UpdateInstanceRequest {
+	s.MaxConnections = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetMaxEipTps(v int64) *UpdateInstanceRequest {
+	s.MaxEipTps = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetMaxPrivateTps(v int64) *UpdateInstanceRequest {
+	s.MaxPrivateTps = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetModifyType(v string) *UpdateInstanceRequest {
+	s.ModifyType = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetQueueCapacity(v int32) *UpdateInstanceRequest {
+	s.QueueCapacity = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetServerlessChargeType(v string) *UpdateInstanceRequest {
+	s.ServerlessChargeType = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetStorageSize(v int32) *UpdateInstanceRequest {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetSupportEip(v bool) *UpdateInstanceRequest {
+	s.SupportEip = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetSupportTracing(v bool) *UpdateInstanceRequest {
+	s.SupportTracing = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetTracingStorageTime(v int32) *UpdateInstanceRequest {
+	s.TracingStorageTime = &v
+	return s
+}
+
+type UpdateInstanceResponseBody struct {
+	Code       *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data       interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message    *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StatusCode *string     `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Success    *string     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceResponseBody) SetCode(v int32) *UpdateInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBody) SetData(v interface{}) *UpdateInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateInstanceResponseBody) SetMessage(v string) *UpdateInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBody) SetRequestId(v string) *UpdateInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBody) SetStatusCode(v string) *UpdateInstanceResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBody) SetSuccess(v string) *UpdateInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceResponse) SetHeaders(v map[string]*string) *UpdateInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceResponse) SetStatusCode(v int32) *UpdateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateInstanceNameRequest struct {
 	// The ID of the ApsaraMQ for RabbitMQ instance for which you want to update the name.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4717,6 +4882,98 @@ func (client *Client) ListVirtualHosts(request *ListVirtualHostsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVirtualHostsResponse{}
 	_body, _err := client.ListVirtualHostsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxConnections)) {
+		query["MaxConnections"] = request.MaxConnections
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxEipTps)) {
+		query["MaxEipTps"] = request.MaxEipTps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxPrivateTps)) {
+		query["MaxPrivateTps"] = request.MaxPrivateTps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
+		query["ModifyType"] = request.ModifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueCapacity)) {
+		query["QueueCapacity"] = request.QueueCapacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessChargeType)) {
+		query["ServerlessChargeType"] = request.ServerlessChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
+		query["StorageSize"] = request.StorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportEip)) {
+		query["SupportEip"] = request.SupportEip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportTracing)) {
+		query["SupportTracing"] = request.SupportTracing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TracingStorageTime)) {
+		query["TracingStorageTime"] = request.TracingStorageTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstance"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.UpdateInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
