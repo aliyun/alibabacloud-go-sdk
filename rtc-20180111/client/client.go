@@ -372,7 +372,6 @@ func (s *CreateAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *Create
 }
 
 type CreateAppStreamingOutTemplateRequestStreamingOutTemplate struct {
-	EnableVad   *bool     `json:"EnableVad,omitempty" xml:"EnableVad,omitempty"`
 	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
 	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
 	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -384,11 +383,6 @@ func (s CreateAppStreamingOutTemplateRequestStreamingOutTemplate) String() strin
 
 func (s CreateAppStreamingOutTemplateRequestStreamingOutTemplate) GoString() string {
 	return s.String()
-}
-
-func (s *CreateAppStreamingOutTemplateRequestStreamingOutTemplate) SetEnableVad(v bool) *CreateAppStreamingOutTemplateRequestStreamingOutTemplate {
-	s.EnableVad = &v
-	return s
 }
 
 func (s *CreateAppStreamingOutTemplateRequestStreamingOutTemplate) SetLayoutIds(v []*string) *CreateAppStreamingOutTemplateRequestStreamingOutTemplate {
@@ -1549,7 +1543,6 @@ func (s *DescribeAppStreamingOutTemplatesResponseBody) SetTotalPage(v int64) *De
 
 type DescribeAppStreamingOutTemplatesResponseBodyTemplates struct {
 	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableVad   *bool     `json:"EnableVad,omitempty" xml:"EnableVad,omitempty"`
 	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
 	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
 	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1566,11 +1559,6 @@ func (s DescribeAppStreamingOutTemplatesResponseBodyTemplates) GoString() string
 
 func (s *DescribeAppStreamingOutTemplatesResponseBodyTemplates) SetCreateTime(v string) *DescribeAppStreamingOutTemplatesResponseBodyTemplates {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeAppStreamingOutTemplatesResponseBodyTemplates) SetEnableVad(v bool) *DescribeAppStreamingOutTemplatesResponseBodyTemplates {
-	s.EnableVad = &v
 	return s
 }
 
@@ -3957,75 +3945,6 @@ func (s *DescribeChannelUsersResponse) SetStatusCode(v int32) *DescribeChannelUs
 }
 
 func (s *DescribeChannelUsersResponse) SetBody(v *DescribeChannelUsersResponseBody) *DescribeChannelUsersResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeChannelsRequest struct {
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-}
-
-func (s DescribeChannelsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeChannelsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeChannelsRequest) SetAppId(v string) *DescribeChannelsRequest {
-	s.AppId = &v
-	return s
-}
-
-type DescribeChannelsResponseBody struct {
-	ChannelIds []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeChannelsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeChannelsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeChannelsResponseBody) SetChannelIds(v []*string) *DescribeChannelsResponseBody {
-	s.ChannelIds = v
-	return s
-}
-
-func (s *DescribeChannelsResponseBody) SetRequestId(v string) *DescribeChannelsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeChannelsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeChannelsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeChannelsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeChannelsResponse) SetHeaders(v map[string]*string) *DescribeChannelsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeChannelsResponse) SetStatusCode(v int32) *DescribeChannelsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeChannelsResponse) SetBody(v *DescribeChannelsResponseBody) *DescribeChannelsResponse {
 	s.Body = v
 	return s
 }
@@ -9313,7 +9232,6 @@ func (s *ModifyAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *Modify
 }
 
 type ModifyAppStreamingOutTemplateRequestStreamingOutTemplate struct {
-	EnableVad   *bool     `json:"EnableVad,omitempty" xml:"EnableVad,omitempty"`
 	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
 	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
 	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -9326,11 +9244,6 @@ func (s ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) String() strin
 
 func (s ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) SetEnableVad(v bool) *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate {
-	s.EnableVad = &v
-	return s
 }
 
 func (s *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) SetLayoutIds(v []*string) *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate {
@@ -9890,9 +9803,7 @@ func (s *StartCloudRecordRequest) SetTemplateId(v string) *StartCloudRecordReque
 
 type StartCloudRecordRequestPanes struct {
 	// paneId
-	PaneId *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	// source
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
 	// sourceType
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
@@ -9905,13 +9816,8 @@ func (s StartCloudRecordRequestPanes) GoString() string {
 	return s.String()
 }
 
-func (s *StartCloudRecordRequestPanes) SetPaneId(v string) *StartCloudRecordRequestPanes {
+func (s *StartCloudRecordRequestPanes) SetPaneId(v int32) *StartCloudRecordRequestPanes {
 	s.PaneId = &v
-	return s
-}
-
-func (s *StartCloudRecordRequestPanes) SetSource(v string) *StartCloudRecordRequestPanes {
-	s.Source = &v
 	return s
 }
 
@@ -14467,50 +14373,6 @@ func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelUsersResponse{}
 	_body, _err := client.DescribeChannelUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeChannelsWithOptions(request *DescribeChannelsRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeChannels"),
-		Version:     tea.String("2018-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeChannelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeChannels(request *DescribeChannelsRequest) (_result *DescribeChannelsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeChannelsResponse{}
-	_body, _err := client.DescribeChannelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
