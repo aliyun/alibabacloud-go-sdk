@@ -5162,6 +5162,123 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 	return s
 }
 
+type DescribeBackupStorageRequest struct {
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeBackupStorageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupStorageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupStorageRequest) SetDBInstanceId(v string) *DescribeBackupStorageRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeBackupStorageRequest) SetNodeId(v string) *DescribeBackupStorageRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeBackupStorageRequest) SetOwnerAccount(v string) *DescribeBackupStorageRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeBackupStorageRequest) SetOwnerId(v int64) *DescribeBackupStorageRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupStorageRequest) SetRegionId(v string) *DescribeBackupStorageRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBackupStorageRequest) SetResourceOwnerAccount(v string) *DescribeBackupStorageRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeBackupStorageRequest) SetResourceOwnerId(v int64) *DescribeBackupStorageRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeBackupStorageResponseBody struct {
+	FreeSize        *int64  `json:"FreeSize,omitempty" xml:"FreeSize,omitempty"`
+	FullStorageSize *int64  `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
+	LogStorageSize  *int64  `json:"LogStorageSize,omitempty" xml:"LogStorageSize,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeBackupStorageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupStorageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupStorageResponseBody) SetFreeSize(v int64) *DescribeBackupStorageResponseBody {
+	s.FreeSize = &v
+	return s
+}
+
+func (s *DescribeBackupStorageResponseBody) SetFullStorageSize(v int64) *DescribeBackupStorageResponseBody {
+	s.FullStorageSize = &v
+	return s
+}
+
+func (s *DescribeBackupStorageResponseBody) SetLogStorageSize(v int64) *DescribeBackupStorageResponseBody {
+	s.LogStorageSize = &v
+	return s
+}
+
+func (s *DescribeBackupStorageResponseBody) SetRequestId(v string) *DescribeBackupStorageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeBackupStorageResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupStorageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBackupStorageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupStorageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupStorageResponse) SetHeaders(v map[string]*string) *DescribeBackupStorageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupStorageResponse) SetStatusCode(v int32) *DescribeBackupStorageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupStorageResponse) SetBody(v *DescribeBackupStorageResponseBody) *DescribeBackupStorageResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeBackupTasksRequest struct {
 	BackupJobId          *int64  `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -24256,6 +24373,46 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
 	_body, _err := client.DescribeBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupStorageWithOptions(request *DescribeBackupStorageRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupStorageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupStorage"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupStorage(request *DescribeBackupStorageRequest) (_result *DescribeBackupStorageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupStorageResponse{}
+	_body, _err := client.DescribeBackupStorageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
