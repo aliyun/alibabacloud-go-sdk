@@ -265,6 +265,7 @@ type QueryCarbonTrackRequest struct {
 	StartTime       *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TopNum          *int32    `json:"TopNum,omitempty" xml:"TopNum,omitempty"`
 	Uids            []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
+	UseCode         *int32    `json:"UseCode,omitempty" xml:"UseCode,omitempty"`
 }
 
 func (s QueryCarbonTrackRequest) String() string {
@@ -305,6 +306,11 @@ func (s *QueryCarbonTrackRequest) SetUids(v []*string) *QueryCarbonTrackRequest 
 	return s
 }
 
+func (s *QueryCarbonTrackRequest) SetUseCode(v int32) *QueryCarbonTrackRequest {
+	s.UseCode = &v
+	return s
+}
+
 type QueryCarbonTrackShrinkRequest struct {
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FilterRDAccount *int32  `json:"FilterRDAccount,omitempty" xml:"FilterRDAccount,omitempty"`
@@ -312,6 +318,7 @@ type QueryCarbonTrackShrinkRequest struct {
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TopNum          *int32  `json:"TopNum,omitempty" xml:"TopNum,omitempty"`
 	UidsShrink      *string `json:"Uids,omitempty" xml:"Uids,omitempty"`
+	UseCode         *int32  `json:"UseCode,omitempty" xml:"UseCode,omitempty"`
 }
 
 func (s QueryCarbonTrackShrinkRequest) String() string {
@@ -349,6 +356,11 @@ func (s *QueryCarbonTrackShrinkRequest) SetTopNum(v int32) *QueryCarbonTrackShri
 
 func (s *QueryCarbonTrackShrinkRequest) SetUidsShrink(v string) *QueryCarbonTrackShrinkRequest {
 	s.UidsShrink = &v
+	return s
+}
+
+func (s *QueryCarbonTrackShrinkRequest) SetUseCode(v int32) *QueryCarbonTrackShrinkRequest {
+	s.UseCode = &v
 	return s
 }
 
@@ -866,6 +878,10 @@ func (client *Client) QueryCarbonTrackWithOptions(tmpReq *QueryCarbonTrackReques
 
 	if !tea.BoolValue(util.IsUnset(request.UidsShrink)) {
 		query["Uids"] = request.UidsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseCode)) {
+		query["UseCode"] = request.UseCode
 	}
 
 	req := &openapi.OpenApiRequest{
